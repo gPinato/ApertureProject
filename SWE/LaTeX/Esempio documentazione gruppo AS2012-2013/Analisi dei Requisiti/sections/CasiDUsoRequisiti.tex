@@ -1,0 +1,565 @@
+
+
+\begin{longtable}{|c|p{7cm}|c|}
+\caption{Tracciamento dei requisiti}
+\label{tab:Tracciamento requisiti} \\
+\toprule
+\multicolumn{1}{|c}{\textbf{Caso d'uso}} & \multicolumn{1}{|p{7cm}}{\textbf{Descrizione}}  & \multicolumn{1}{|c|}{\textbf{Requisiti}} \\
+\midrule
+\endfirsthead
+\multicolumn{2}{l}{\footnotesize\itshape\tablename~\thetable: continua dalla pagina precedente} \\
+\toprule
+\multicolumn{1}{|c}{\textbf{Caso d'uso}} & \multicolumn{1}{|p{7cm}}{\textbf{Descrizione}}  & \multicolumn{1}{|c|}{\textbf{Requisiti}} \\
+\midrule
+\endhead
+\midrule
+\multicolumn{2}{r}{\footnotesize\itshape\tablename~\thetable: continua nella prossima pagina} \\
+\endfoot
+\bottomrule
+\multicolumn{2}{r}{\footnotesize\itshape\tablename~\thetable: si conclude dalla pagina precedente} \\
+\endlastfoot
+
+
+\midrule
+UC1
+& un utente deve poter scegliere un file opportuno da cui caricare la scena 3D descritta. Una volta caricata, deve essere possibile modificarla ed esportarla nel formato desiderato. Il caricamento e la modifica della scena 3D comportano la visualizzazione dell'anteprima della stessa
+& RFOb1 \\
+& & RFOb2 \\
+& & RFOb2.1 \\
+& & RFDe2.2 \\
+& & RFDe2.3 \\
+& & RFDe2.4 \\
+& & RFOb3 \\
+& & RFOb3.1 \\
+& & RFOb3.2 \\
+& & RFOb3.3 \\
+& & RFOb4 \\
+& & RFOb4.1 \\
+& & RFOb4.2 \\
+& & RFOb4.3 \\
+& & RFOp5 \\
+& & RFOp6 \\
+& & RFDe7 \\
+
+
+\midrule
+UC1.1
+& un utente deve poter selezionare il formato del file dal quale caricare la scena 3D e scegliere il percorso del file medesimo
+& RFOb1.1 \\
+
+
+\midrule
+UC1.1.1
+& un utente deve poter selezionare il formato del file dal quale caricare la scena 3D
+& RFOb1.1.1 \\
+
+
+\midrule
+UC1.1.1.1
+& un utente deve poter importare dal formato 3DS
+& RFOb1.1.1.1 \\
+
+
+\midrule
+UC1.1.1.2
+& un utente deve poter importare dal formato Wavefront OBJ/MTL
+& RFDe1.1.1.2 \\
+
+
+\midrule
+UC1.1.1.3
+& un utente deve poter importare dal formato JSON
+& RFDe1.1.1.3 \\
+
+
+\midrule
+UC1.1.1.4
+& un utente deve poter importare dal formato XML
+& RFDe1.1.1.4 \\
+
+
+\midrule
+UC1.1.2
+& un utente deve poter selezionare il percorso del file da cui caricare la scena 3D
+& RFOb1.1.2 \\
+
+
+\midrule
+UC1.2
+& un utente deve poter modificare la scena 3D
+& RFDe1.2 \\
+
+
+\midrule
+UC1.2.1
+& un utente deve poter selezionare la fonte di luce che intende modificare
+& RFDe1.2.1 \\
+
+
+\midrule
+UC1.2.2
+& un utente deve poter selezionare la mesh che intende modificare
+& RFDe1.2.2 \\
+
+
+\midrule
+UC1.2.3
+& un utente deve poter aggiungere una nuova fonte di luce con valori di default
+& RFDe1.2.3 \\
+
+
+\midrule
+UC1.2.4
+& un utente deve poter modificare la mesh selezionata
+& RFDe1.2.4 \\
+
+
+\midrule
+UC1.2.4.1
+& un utente deve poter scegliere i valori del vettore [x,y,z] di traslazione da applicare alla mesh selezionata
+& RFDe1.2.4.1 \\
+
+
+\midrule
+UC1.2.4.1.2
+& un utente deve poter impostare il valore della componente y del vettore di traslazione
+& RFDe1.2.4.1.1 \\
+& & RFDe1.2.4.1.2 \\
+
+
+\midrule
+UC1.2.4.1.3
+& un utente deve poter impostare il valore della componente z del vettore di traslazione
+& RFDe1.2.4.1.3 \\
+
+
+\midrule
+UC1.2.4.2
+& un utente deve poter ruotare la mesh selezionata scegliendo l’asse di rotazione e l’angolo theta di rotazione
+& RFDe1.2.4.2 \\
+
+
+\midrule
+UC1.2.4.2.1
+& un utente deve poter scegliere l'asse di rotazione in base al quale ruotare la mesh selezionata
+& RFDe1.2.4.2.1 \\
+
+
+\midrule
+UC1.2.4.2.1.1
+& un utente deve poter scegliere l'asse x come asse di rotazione
+& RFDe1.2.4.2.1.1 \\
+
+
+\midrule
+UC1.2.4.2.1.2
+& un utente deve poter scegliere l'asse y come asse di rotazione
+& RFDe1.2.4.2.1.2 \\
+
+
+\midrule
+UC1.2.4.2.1.3
+& un utente deve poter scegliere l'asse z come asse di rotazione
+& RFDe1.2.4.2.1.3 \\
+
+
+\midrule
+UC1.2.4.2.2
+& un utente deve poter impostare l'ampiezza dell'angolo theta di rotazione secondo il quale routare la mesh selezionata
+& RFDe1.2.4.2.2 \\
+
+
+\midrule
+UC1.2.4.3
+& un utente deve poter modificare la dimensione della mesh selezionata
+& RFDe1.2.4.3 \\
+
+
+\midrule
+UC1.2.4.3.1
+& un utente deve poter ridimensionare la mesh selezionata secondo i suoi assi
+& RFDe1.2.4.3.1 \\
+
+
+\midrule
+UC1.2.4.3.1.1
+& un utente deve poter impostare il valore della componente x
+& RFDe1.2.4.3.1.1 \\
+
+
+\midrule
+UC1.2.4.3.1.2
+& un utente deve poter impostare il valore della componente y
+& RFDe1.2.4.3.1.2 \\
+
+
+\midrule
+UC1.2.4.3.1.3
+& un utente deve poter impostare il valore della componente z
+& RFDe1.2.4.3.1.3 \\
+
+
+\midrule
+UC1.2.4.3.2
+& un utente deve poter ridimensionare la mesh impostando un moltiplicatore scalare
+& RFDe1.2.4.3.2 \\
+
+
+\midrule
+UC1.2.4.3.2.1
+& un utente deve poter impostare il moltiplicatore scalare relativo al ridimensionamento di una mesh
+& RFDe1.2.4.3.2.1 \\
+
+
+\midrule
+UC1.2.4.4
+& un utente deve poter modificare le caratteristiche di uno dei materiali che compongono la mesh selezionata
+& RFDe1.2.4.4 \\
+
+
+\midrule
+UC1.2.4.4.1
+& un utente deve poter modificare la componente riflessiva diffusa di un materiale
+& RFDe1.2.4.4.1 \\
+
+
+\midrule
+UC1.2.4.4.2
+& un utente deve poter modificare la componente emissiva di un materiale
+& RFDe1.2.4.4.2 \\
+
+
+\midrule
+UC1.2.4.4.3
+& un utente deve poter modificare la componente riflessiva speculare di un materiale
+& RFDe1.2.4.4.3 \\
+
+
+\midrule
+UC1.2.4.4.4
+& un utente deve poter modificare la componente riflessiva ambientale di un materiale
+& RFDe1.2.4.4.4 \\
+
+
+\midrule
+UC1.2.4.4.5
+& un utente deve poter modificare il valore di opacità del materiale selezionato
+& RFDe1.2.4.4.5 \\
+
+
+\midrule
+UC1.2.4.5
+& un utente deve poter rimuovere la mesh selezionata
+& RFOp1.2.4.5 \\
+
+
+\midrule
+UC1.2.5
+& un utente deve poter selezionare la camera che intende modificare
+& RFOp1.2.5 \\
+
+
+\midrule
+UC1.2.6
+& un utente deve poter modificare la camera selezionata
+& RFOp1.2.6 \\
+
+
+\midrule
+UC1.2.6.1
+& un utente deve poter modificare la posizione della camera
+& RFOp1.2.6.1 \\
+
+
+\midrule
+UC1.2.6.1.1
+& un utente deve poter traslare la camera
+& RFOp1.2.6.1.1 \\
+
+
+\midrule
+UC1.2.6.1.1.1
+& un utente deve poter avvicinare la camera al centro della scena 3D
+& RFOp1.2.6.1.1.1 \\
+
+
+\midrule
+UC1.2.6.1.1.2
+& un utente deve poter allontanare la camera dal centro della scena 3D
+& RFOp1.2.6.1.1.2 \\
+
+
+\midrule
+UC1.2.6.1.1.3
+& un utente deve poter impostare lo spostamento della camera
+& RFOp1.2.6.1.1.3 \\
+
+
+\midrule
+UC1.2.6.1.2
+& un utente deve poter ruotare la camera attorno alla scena 3D
+& RFOp1.2.6.1.2 \\
+
+
+\midrule
+UC1.2.6.2
+& un utente deve poter rimuovere la camera selezionata
+& RFOp1.2.6.2 \\
+
+
+\midrule
+UC1.2.7
+& un utente deve poter modificare le caratteristiche di una fonte di luce (quali posizione, intensità, colore e tipologia)
+& RFDe1.2.7 \\
+
+
+\midrule
+UC1.2.7.1
+& un utente deve poter rimuovere una fonte di luce
+& RFOp1.2.7.1 \\
+
+
+\midrule
+UC1.2.7.2
+& un utente deve poter modificare la posizione di una fonte di luce
+& RFDe1.2.7.2 \\
+
+
+\midrule
+UC1.2.7.3
+& l’utente deve poter modificare i parametri d’attenuazione di una fonte di luce
+& RFOp1.2.7.3 \\
+
+
+\midrule
+UC1.2.7.3.1
+& l'utente deve poter modificare il parametro di attenuazione costante
+& RFOp1.2.7.3.1 \\
+
+
+\midrule
+UC1.2.7.3.2
+& l'utente deve poter modificare il parametro di attenuazione lineare
+& RFOp1.2.7.3.2 \\
+
+
+\midrule
+UC1.2.7.3.3
+& l'utente deve poter modificare il paramentro di attenuazione quadratica
+& RFOp1.2.7.3.3 \\
+
+
+\midrule
+UC1.2.7.4
+& un utente deve poter modificare il colore di una fonte di luce, alterando i valori RGB dei componenti che la compongono
+& RFDe1.2.7.4 \\
+
+
+\midrule
+UC1.2.7.4.1
+& un utente deve poter selezionare la componente di luce il cui colore vuole modificare
+& RFDe1.2.7.4.1 \\
+
+
+\midrule
+UC1.2.7.4.1.1
+& un utente deve poter selezionare la componente ambient di una fonte di luce
+& RFDe1.2.7.4.1.1 \\
+
+
+\midrule
+UC1.2.7.4.1.2
+& un utente deve poter selezionare la componente specular di una fonte di luce
+& RFDe1.2.7.4.1.2 \\
+
+
+\midrule
+UC1.2.7.4.1.3
+& un utente deve poter selezionare la componente diffuse di una fonte di luce
+& RFDe1.2.7.4.1.3 \\
+
+
+\midrule
+UC1.2.7.4.2
+& un utente deve poter impostare i valori RGB di una componente di luce
+& RFDe1.2.7.4.2 \\
+
+
+\midrule
+UC1.2.7.4.2.1
+& un utente deve poter impostare il valore red di una componente di una fonte di luce
+& RFDe1.2.7.4.2.1 \\
+
+
+\midrule
+UC1.2.7.4.2.2
+& un utente deve poter impostare il valore green di una componente di una fonte di luce
+& RFDe1.2.7.4.2.2 \\
+
+
+\midrule
+UC1.2.7.4.2.3
+& un utente deve poter impostare il valore blue di una componente di una fonte di luce
+& RFDe1.2.7.4.2.3 \\
+
+
+\midrule
+UC1.2.7.5
+& un utente deve poter modificare la tipologia corrente di una fonte di luce
+& RFDe1.2.7.5 \\
+
+
+\midrule
+UC1.2.7.5.1
+& un utente deve poter modificare la tipologia corrente di una fonte di luce in spotlight
+& RFDe1.2.7.5.1 \\
+
+
+\midrule
+UC1.2.7.5.2
+& un utente deve poter modificare la tipologia corrente di una fonte di luce in omni light
+& RFDe1.2.7.5.2 \\
+
+
+\midrule
+UC1.2.7.5.3
+& un utente deve poter modificare la tipologia corrente di una fonte di luce in directional light
+& RFDe1.2.7.5.3 \\
+
+
+\midrule
+UC1.3
+& un utente deve poter scegliere in che formato esportare la scena 3D, scegliere la directory di destinazione e il nome del file. La scelta del formato comporta la scelta della precisione
+& RFOb1.3 \\
+
+
+\midrule
+UC1.3.1
+& un utente deve poter scegliere il formato verso il quale esportare
+& RFOb1.3.1 \\
+
+
+\midrule
+UC1.3.1.1
+& un utente deve poter scegliere se esportare la scena 3D in JSON “compatto” o “leggibile”
+& RFOb1.3.1.1 \\
+
+
+\midrule
+UC1.3.1.1.1
+& un utente deve poter esportare la scena 3D nel formato JSON "compatto"
+& RFOb1.3.1.1.1 \\
+
+
+\midrule
+UC1.3.1.1.2
+& un utente deve poter esportare la scena 3D nel formato JSON "leggibile"
+& RFOb1.3.1.1.2 \\
+
+
+\midrule
+UC1.3.1.2
+& un utente deve poter esportare la scena 3D nel formato XML
+& RFDe1.3.1.2 \\
+
+
+\midrule
+UC1.3.2
+& un utente deve poter scegliere se esportare la scena 3D in singola o doppia precisione
+& RFOb1.3.2 \\
+
+
+\midrule
+UC1.3.2.1
+& un utente deve poter esportare la scena 3D in singola precisione
+& RFOb1.3.2.1 \\
+
+
+\midrule
+UC1.3.2.2
+& un utente deve poter esportare la scena 3D in doppia precisione
+& RFOb1.3.2.2 \\
+
+
+\midrule
+UC1.3.3
+& un utente deve poter scegliere la directory di destinazione del file di esportazione
+& RFDe1.3.3 \\
+
+
+\midrule
+UC1.3.4
+& un utente deve poter scegliere il nome del file di esportazione
+& RFDe1.3.4 \\
+
+
+\midrule
+UC1.4
+& un utente deve poter visualizzare l’anteprima della scena 3D
+& RFDe1.4 \\
+
+
+\midrule
+UC1.4.1
+& un utente deve avere la possibilità di spostare il punto d’osservazione della scena 3D
+& RFDe1.4.1 \\
+
+
+\midrule
+UC1.4.1.1
+& un utente deve poter traslare il punto d'osservazione della scena 3D
+& RFDe1.4.1.1 \\
+
+
+\midrule
+UC1.4.1.1.1
+& un utente deve poter avvicinare il punto d'osservazione al centro della scena 3D
+& RFDe1.4.1.1.1 \\
+
+
+\midrule
+UC1.4.1.1.2
+& un utente deve poter allontanare il punto d'osservazione dal centro della scena 3D
+& RFDe1.4.1.1.2 \\
+
+
+\midrule
+UC1.4.1.1.3
+& un utente deve poter impostare lo spostamento del punto di osservazione
+& RFDe1.4.1.1.3 \\
+
+
+\midrule
+UC1.4.1.2
+& un utente deve poter ruotare il punto d'osservazione attorno alla scena 3D
+& RFDe1.4.1.2 \\
+
+
+\midrule
+UC1.4.2
+& un utente deve poter eseguire il rendering della scena 3D
+& RFOp1.4.2 \\
+
+
+\midrule
+UC1.5
+& un utente deve poter agire sulle modifiche effettuate
+& RFDe1.5 \\
+
+
+\midrule
+UC1.5.1
+& un utente deve poter annullare l'ultima modifica effettuata
+& RFDe1.5.1 \\
+
+
+\midrule
+UC1.5.2
+& un utente deve poter ripetere l'ultima modifica annullata
+& RFDe1.5.2 \\
+
+
+
+
+\end{longtable}
+

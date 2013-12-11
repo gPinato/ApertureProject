@@ -1,0 +1,939 @@
+
+
+\begin{longtable}{|c|p{6cm}|c|c|}
+\caption{Requisiti}
+\label{tab:Requisiti} \\
+\toprule
+\multicolumn{1}{|c}{\textbf{\underline{Requisito}}} & \multicolumn{1}{|p{6cm}}{\textbf{Descrizione}}   & \multicolumn{1}{|c}{\textbf{Fonte}} & \multicolumn{1}{|c|}{\textbf{Caso d'uso}}\\
+\midrule
+\endfirsthead
+\multicolumn{2}{l}{\footnotesize\itshape\tablename~\thetable: continua dalla pagina precedente} \\
+\toprule
+\multicolumn{1}{|c}{\textbf{Requisito}} & \multicolumn{1}{|p{6cm}}{\textbf{Descrizione}}   & \multicolumn{1}{|c}{\textbf{Fonte}} & \multicolumn{1}{|c|}{\textbf{Caso d'uso}}\\
+\midrule
+\endhead
+\midrule
+\multicolumn{2}{r}{\footnotesize\itshape\tablename~\thetable: continua nella prossima pagina} \\
+\endfoot
+\bottomrule
+\multicolumn{2}{r}{\footnotesize\itshape\tablename~\thetable: si conclude dalla pagina precedente} \\
+\endlastfoot
+
+
+
+\midrule
+RFOb1
+& Il software deve essere in grado di caricare una scena 3D descritta da un file con un formato particolare, modificarla secondo le richieste dell'utente e convertirla nel formato desiderato
+& Capitolato
+& UC1
+\\
+
+
+\midrule
+RFOb1.1
+& Il software deve permettere all'utente di selezionare un file da cui caricare la scena 3D
+& Capitolato
+& UC1.1
+\\
+
+
+\midrule
+RFOb1.1.1
+& Il software deve permettere all'utente di selezionare il formato del file da cui caricare la scena 3D
+& Capitolato
+& UC1.1.1
+\\
+
+
+\midrule
+RFOb1.1.1.1
+& Il software deve permettere all'utente di selezionare il formato 3DS
+& Capitolato
+& UC1.1.1.1
+\\
+
+
+\midrule
+RFDe1.1.1.2
+& Il software deve permettere all'utente di selezionare il formato Wavefront OBJ/MTL
+& Capitolato
+& UC1.1.1.2
+\\
+
+
+\midrule
+RFDe1.1.1.3
+& Il software deve permettere all'utente di selezionare il formato JSON
+& Capitolato
+& UC1.1.1.3
+\\
+
+
+\midrule
+RFDe1.1.1.4
+& Il software deve permettere all'utente di selezionare il formato XML
+& Interno
+& UC1.1.1.4
+\\
+
+
+\midrule
+RFOb1.1.2
+& Il software deve permettere di selezionare il percorso di un file di cui si conosce il formato
+& Interno
+& UC1.1.2
+\\
+
+
+\midrule
+RFDe1.2
+& Il software deve permettere all'utente di modificare la scena 3D
+& Capitolato
+& UC1.2
+\\
+
+
+\midrule
+RFDe1.2.1
+& Il software deve permettere all'utente di selezionare una fonte di luce esistente
+& Interno
+& UC1.2.1
+\\
+
+
+\midrule
+RFDe1.2.2
+& Il software deve permettere all'utente di selezionare la mesh da modificare
+& Capitolato
+& UC1.2.2
+\\
+
+
+\midrule
+RFDe1.2.3
+& Il software deve permettere all'utente di aggiungere una nuova fonte di luce
+& Interno
+& UC1.2.3
+\\
+
+
+\midrule
+RFDe1.2.4
+& Il software deve permettere all'utente di modificare la mesh selezionata
+& Capitolato
+& UC1.2.4
+\\
+
+
+\midrule
+RFDe1.2.4.1
+& Il software deve permettere all'utente di spostare la mesh selezionata nello spazio tridimensionale di un vettore arbitrario (traslate)
+& Capitolato
+& UC1.2.4.1
+\\
+
+
+\midrule
+RFDe1.2.4.1.1
+& Il software deve permettere all'utente di impostare il valore della componente x del vettore di traslazione
+& Interno
+& UC1.2.4.1.2
+\\
+
+
+\midrule
+RFDe1.2.4.1.2
+& Il software deve permettere all'utente di impostare il valore della componente y del vettore di traslazione
+& Interno
+& UC1.2.4.1.2
+\\
+
+
+\midrule
+RFDe1.2.4.1.3
+& Il software deve permettere all'utente di impostare il valore della componente z del vettore di traslazione
+& Interno
+& UC1.2.4.1.3
+\\
+
+
+\midrule
+RFDe1.2.4.2
+& Il software deve offrire la possibilità di ruotare la mesh selezionata di un angolo theta arbitrario rispetto ad un asse di rotazione
+& Capitolato
+& UC1.2.4.2
+\\
+
+
+\midrule
+RFDe1.2.4.2.1
+& Il software deve permettere all'utente di selezionare l'asse di rotazione
+& Capitolato
+& UC1.2.4.2.1
+\\
+
+
+\midrule
+RFDe1.2.4.2.1.1
+& Il software deve permettere all'utente di selezionare l'asse x come asse di rotazione
+& Interno
+& UC1.2.4.2.1.1
+\\
+
+
+\midrule
+RFDe1.2.4.2.1.2
+& Il software deve permettere all'utente di selezionare l'asse y come asse di rotazione
+& Interno
+& UC1.2.4.2.1.2
+\\
+
+
+\midrule
+RFDe1.2.4.2.1.3
+& Il software deve permettere all'utente di selezionare l'asse z come asse di rotazione
+& Interno
+& UC1.2.4.2.1.3
+\\
+
+
+\midrule
+RFDe1.2.4.2.2
+& Il software deve permettere all'utente di impostare l'ampiezza dell'angolo theta di rotazione nell'intervallo 0-360°
+& Capitolato
+& UC1.2.4.2.2
+\\
+
+
+\midrule
+RFDe1.2.4.3
+& Il software deve permettere all'utente di ridimensionare la mesh selezionata
+& Capitolato
+& UC1.2.4.3
+\\
+
+
+\midrule
+RFDe1.2.4.3.1
+& Il software deve permettere all'utente di ridimensionare la mesh secondo uno dei suoi assi
+& Capitolato
+& UC1.2.4.3.1
+\\
+
+
+\midrule
+RFDe1.2.4.3.1.1
+& Il software deve permettere all'utente di scegliere il valore della componente x
+& Capitolato
+& UC1.2.4.3.1.1
+\\
+
+
+\midrule
+RFDe1.2.4.3.1.2
+& Il software deve permettere all'utente di scegliere il valore della componente y
+& Capitolato
+& UC1.2.4.3.1.2
+\\
+
+
+\midrule
+RFDe1.2.4.3.1.3
+& Il software deve permettere all'utente di scegliere il valore della componente z
+& Capitolato
+& UC1.2.4.3.1.3
+\\
+
+
+\midrule
+RFDe1.2.4.3.2
+& Il software deve permettere all'utente di ridimensionare la mesh selezionata tramite moltiplicatore scalare
+& Capitolato
+& UC1.2.4.3.2
+\\
+
+
+\midrule
+RFDe1.2.4.3.2.1
+& Il software deve permettere all'utente di scegliere il valore del moltiplicatore scalare
+& Capitolato
+& UC1.2.4.3.2.1
+\\
+
+
+\midrule
+RFDe1.2.4.4
+& Il software deve permettere all'utente di modificare le caratteristiche del materiale della mesh selezionata
+& Capitolato
+& UC1.2.4.4
+\\
+
+
+\midrule
+RFDe1.2.4.4.1
+& Il software deve permettere all'utente di modificare la componente riflessiva diffusa del materiale della mesh selezionata
+& Capitolato
+& UC1.2.4.4.1
+\\
+
+
+\midrule
+RFDe1.2.4.4.2
+& Il software deve permettere all'utente di modificare la componente emissiva del materiale della mesh selezionata
+& Capitolato
+& UC1.2.4.4.2
+\\
+
+
+\midrule
+RFDe1.2.4.4.3
+& Il software deve permettere all'utente di modificare la componente riflessiva speculare del materiale della mesh selezionata
+& Capitolato
+& UC1.2.4.4.3
+\\
+
+
+\midrule
+RFDe1.2.4.4.4
+& Il software deve permettere all'utente di modificare la componente riflessiva ambientale del materiale della mesh selezionata
+& Capitolato
+& UC1.2.4.4.4
+\\
+
+
+\midrule
+RFDe1.2.4.4.5
+& Il software deve permettere all'utente di impostare l'opacità del materiale della mesh selezionata nell'intervallo 0-1
+& Capitolato
+& UC1.2.4.4.5
+\\
+
+
+\midrule
+RFOp1.2.4.5
+& Il software deve permettere all'utente di rimuovere la mesh selezionata
+& Interno
+& UC1.2.4.5
+\\
+
+
+\midrule
+RFOp1.2.5
+& Il software deve permettere all'utente di selezionare una camera
+& Interno
+& UC1.2.5
+\\
+
+
+\midrule
+RFOp1.2.6
+& Il software deve permettere all'utente di modificare la camera selezionata
+& Interno
+& UC1.2.6
+\\
+
+
+\midrule
+RFOp1.2.6.1
+& Il software deve permettere all'utente di modificare la posizione della camera
+& Interno
+& UC1.2.6.1
+\\
+
+
+\midrule
+RFOp1.2.6.1.1
+& Il software deve permettere all'utente di traslare la camera
+& Interno
+& UC1.2.6.1.1
+\\
+
+
+\midrule
+RFOp1.2.6.1.1.1
+& Il software deve permettere all'utente di avvicinare la camera al centro della scena
+& Interno
+& UC1.2.6.1.1.1
+\\
+
+
+\midrule
+RFOp1.2.6.1.1.2
+& Il software deve permettere all'utente di allontanare la camera dal centro della scena
+& Interno
+& UC1.2.6.1.1.2
+\\
+
+
+\midrule
+RFOp1.2.6.1.1.3
+& Il software deve permettere all'utente di impostare la traslazione della camera
+& Interno
+& UC1.2.6.1.1.3
+\\
+
+
+\midrule
+RFOp1.2.6.1.2
+& Il software deve permettere all'utente di ruotare la camera attorno alla scena 3D
+& Capitolato
+& UC1.2.6.1.2
+\\
+
+
+\midrule
+RFOp1.2.6.2
+& Il software deve permettere all'utente di rimuovere la camera selezionata
+& Interno
+& UC1.2.6.2
+\\
+
+
+\midrule
+RFDe1.2.7
+& Il software deve permettere all'utente di modificare le caratteristiche di una fonte di luce
+& Capitolato
+& UC1.2.7
+\\
+
+
+\midrule
+RFOp1.2.7.1
+& Il software deve permettere all'utente di rimuovere la fonte di luce selezionata
+& Interno
+& UC1.2.7.1
+\\
+
+
+\midrule
+RFDe1.2.7.2
+& Il software deve permettere all'utente di modificare la posizione della fonte di luce selezionata
+& Capitolato
+& UC1.2.7.2
+\\
+
+
+\midrule
+RFOp1.2.7.3
+& Il software deve permettere all'utente di modificare i \underline{parametri d'attenuazione} della fonte di luce selezionata
+& Interno
+& UC1.2.7.3
+\\
+
+
+\midrule
+RFOp1.2.7.3.1
+& Il software deve permettere all'utente di impostare il \underline{parametro d'attenuazione costante} nell'intervallo 0-1
+& Interno
+& UC1.2.7.3.1
+\\
+
+
+\midrule
+RFOp1.2.7.3.2
+& Il software deve permettere all'utente di impostare il \underline{parametro d'attenuazione lineare} nell'intervallo 0-1
+& Interno
+& UC1.2.7.3.2
+\\
+
+
+\midrule
+RFOp1.2.7.3.3
+& Il software deve permettere all'utente di impostare il \underline{parametro d'attenuazione quadratica} nell'intervallo 0-1
+& Interno
+& UC1.2.7.3.3
+\\
+
+
+\midrule
+RFDe1.2.7.4
+& Il software deve permettere all'utente di modificare il colore della fonte di luce selezionata
+& Capitolato
+& UC1.2.7.4
+\\
+
+
+\midrule
+RFDe1.2.7.4.1
+& Il software deve permettere all'utente di modificare il colore della componente di fonte di luce selezionata
+& Capitolato
+& UC1.2.7.4.1
+\\
+
+
+\midrule
+RFDe1.2.7.4.1.1
+& Il software deve permettere all'utente di selezionare la componente ambient di una fonte di luce
+& Capitolato
+& UC1.2.7.4.1.1
+\\
+
+
+\midrule
+RFDe1.2.7.4.1.2
+& Il software deve permettere all'utente di selezionare la componente specular di una fonte di luce
+& Capitolato
+& UC1.2.7.4.1.2
+\\
+
+
+\midrule
+RFDe1.2.7.4.1.3
+& Il software deve permettere all'utente di selezionare la componente diffuse di una fonte di luce
+& Capitolato
+& UC1.2.7.4.1.3
+\\
+
+
+\midrule
+RFDe1.2.7.4.2
+& Il software deve permettere all'utente di impostare i valori RGB della componente di luce selezionata
+& Capitolato
+& UC1.2.7.4.2
+\\
+
+
+\midrule
+RFDe1.2.7.4.2.1
+& Il software deve permettere all'utente di impostare il valore red della componente di luce selezionata nell'intervallo 0-1
+& Capitolato
+& UC1.2.7.4.2.1
+\\
+
+
+\midrule
+RFDe1.2.7.4.2.2
+& Il software deve permettere all'utente di impostare il valore green della componente di luce selezionata nell'intervallo 0-1
+& Capitolato
+& UC1.2.7.4.2.2
+\\
+
+
+\midrule
+RFDe1.2.7.4.2.3
+& Il software deve permettere all'utente di impostare il valore blue della componente di luce selezionata nell'intervallo 0-1
+& Capitolato
+& UC1.2.7.4.2.3
+\\
+
+
+\midrule
+RFDe1.2.7.5
+& Il software deve permettere all'utente di modificare la tipologia di una fonte di luce selezionata
+& Capitolato
+& UC1.2.7.5
+\\
+
+
+\midrule
+RFDe1.2.7.5.1
+& Il software deve permettere all'utente di modificare la tipologia di luce corrente in spotlight
+& Capitolato
+& UC1.2.7.5.1
+\\
+
+
+\midrule
+RFDe1.2.7.5.2
+& Il software deve permettere all'utente di modificare la tipologia di luce corrente in omni light
+& Capitolato
+& UC1.2.7.5.2
+\\
+
+
+\midrule
+RFDe1.2.7.5.3
+& Il software deve permettere all'utente di modificare la tipologia di luce corrente in directional light
+& Capitolato
+& UC1.2.7.5.3
+\\
+
+
+\midrule
+RFOb1.3
+& Il software deve permettere all'utente di esportare la scena 3D
+& Capitolato
+& UC1.3
+\\
+
+
+\midrule
+RFOb1.3.1
+& Il software deve permettere all'utente di selezionare il formato verso il quale desidera esportare
+& Capitolato
+& UC1.3.1
+\\
+
+
+\midrule
+RFOb1.3.1.1
+& Il software deve permettere all'utente di selezionare l'esportazione in formato JSON
+& Capitolato
+& UC1.3.1.1
+\\
+
+
+\midrule
+RFOb1.3.1.1.1
+& Il software deve permettere all'utente di selezionare l'esportazione in formato JSON "compatta"
+& Capitolato
+& UC1.3.1.1.1
+\\
+
+
+\midrule
+RFOb1.3.1.1.2
+& Il software deve permettere all'utente di selezionare l'esportazione in formato JSON "leggibile"
+& Capitolato
+& UC1.3.1.1.2
+\\
+
+
+\midrule
+RFDe1.3.1.2
+& Il software deve permettere all'utente di selezionare l'esportazione in formato XML
+& Capitolato
+& UC1.3.1.2
+\\
+
+
+\midrule
+RFOb1.3.2
+& Il software deve permettere all'utente di selezionare la precisione dei valori da esportare
+& Capitolato
+& UC1.3.2
+\\
+
+
+\midrule
+RFOb1.3.2.1
+& Il software deve permettere all'utente di selezionare la precisione float
+& Capitolato
+& UC1.3.2.1
+\\
+
+
+\midrule
+RFOb1.3.2.2
+& Il software deve permettere all'utente di poter selezionare la precisione double
+& Capitolato
+& UC1.3.2.2
+\\
+
+
+\midrule
+RFDe1.3.3
+& Il software deve permettere all'utente di selezionare la directory di destinazione
+& Interno
+& UC1.3.3
+\\
+
+
+\midrule
+RFDe1.3.4
+& Il software deve permettere all'utente di nominare il file di esportazione
+& Interno
+& UC1.3.4
+\\
+
+
+\midrule
+RFDe1.4
+& Il software deve permettere all'utente di poter visualizzare l'anteprima della scena 3D
+& Capitolato
+& UC1.4
+\\
+
+
+\midrule
+RFDe1.4.1
+& Il software deve permettere all'utente di visualizzare un'anteprima semplice
+& Interno
+& UC1.4.1
+\\
+
+
+\midrule
+RFDe1.4.1.1
+& Il software deve permettere all'utente di traslare il suo punto d'osservazione
+& Interno
+& UC1.4.1.1
+\\
+
+
+\midrule
+RFDe1.4.1.1.1
+& Il software deve permettere all'utente di avvicinare il suo punto di osservazione al centro della scena
+& Interno
+& UC1.4.1.1.1
+\\
+
+
+\midrule
+RFDe1.4.1.1.2
+& Il software deve permettere all'utente di allontanare il suo punto di vista dal centro della scena
+& Interno
+& UC1.4.1.1.2
+\\
+
+
+\midrule
+RFDe1.4.1.1.3
+& Il software deve permettere all'utente traslare il punto di osservazione
+& Interno
+& UC1.4.1.1.3
+\\
+
+
+\midrule
+RFDe1.4.1.2
+& Il software deve permettere all'utente di ruotare il punto d'osservazione attorno alla scena 3D
+& Capitolato
+& UC1.4.1.2
+\\
+
+
+\midrule
+RFOp1.4.2
+& Il software deve permettere all'utente di eseguire il rendering della scena 3D
+& Interno
+& UC1.4.2
+\\
+
+
+\midrule
+RFDe1.5
+& Il software deve permettere all'utente di agire sulla cronologia delle modifiche
+& Capitolato
+& UC1.5
+\\
+
+
+\midrule
+RFDe1.5.1
+& Il software deve permettere all'utente di annullare l'ultima modifica effettuata
+& Capitolato
+& UC1.5.1
+\\
+
+
+\midrule
+RFDe1.5.2
+& Il software deve permettere all'utente di ripetere l'ultima modifica annullata
+& Capitolato
+& UC1.5.2
+\\
+
+
+\midrule
+RFOb2
+& Il software deve poter fare il \underline{parsing} di un file con un determinato tipo
+& Capitolato
+& UC1
+\\
+
+
+\midrule
+RFOb2.1
+& Il software deve poter fare il parsing di un file in formato 3DS
+& Capitolato
+& UC1
+\\
+
+
+\midrule
+RFDe2.2
+& Il software deve poter fare il parsing di un file in formato OBJ con MTL associati
+& Capitolato
+& UC1
+\\
+
+
+\midrule
+RFDe2.3
+& Il software deve poter fare il parsing di un file in formato JSON
+& Capitolato
+& UC1
+\\
+
+
+\midrule
+RFDe2.4
+& Il software deve poter fare il parsing di un file in formato XML
+& Capitolato
+& UC1
+\\
+
+
+\midrule
+RFOb3
+& Il software deve garantire che la \underline{conversione} mantenga le caratteristiche della scena 3D
+& Capitolato
+& UC1
+\\
+
+
+\midrule
+RFOb3.1
+& Il software deve garantire che la conversione mantenga lo stesso numero di vertici
+& Capitolato
+& UC1
+\\
+
+
+\midrule
+RFOb3.2
+& Il software deve garantire che la conversione mantenga le caratteristiche delle \underline{texture} della scena 3D
+& Capitolato
+& UC1
+\\
+
+
+\midrule
+RFOb3.3
+& Il software deve garantire che la conversione mantenga le caratteristiche che determinano il colore della texture
+& Capitolato
+& UC1
+\\
+
+
+\midrule
+RFOb4
+& Il software deve garantire che la conversione mantenga tutte le peculiarità dell'illuminazione della scena 3D
+& Capitolato
+& UC1
+\\
+
+
+\midrule
+RFOb4.1
+& Il software deve garantire che la conversione mantenga la posizione delle luci
+& Capitolato
+& UC1
+\\
+
+
+\midrule
+RFOb4.2
+& Il software deve garantire che la conversione mantenga il colore delle luci
+& Capitolato
+& UC1
+\\
+
+
+\midrule
+RFOb4.3
+& Il software deve garantire che la conversione mantenga la direzione definita delle luci
+& Capitolato
+& UC1
+\\
+
+
+\midrule
+RFOp5
+& Il software deve mantenere le animazioni implementate con keyframes
+& Capitolato
+& UC1
+\\
+
+
+\midrule
+RFOp6
+& Il software deve garantire l'invarianza di ogni altra caratteristica del solido in seguito a una delle possibili modifiche
+& Capitolato
+& UC1
+\\
+
+
+\midrule
+RFDe7
+& Il software deve memorizzare la cronologia delle modifiche utente
+& Capitolato
+& UC1
+\\
+
+
+\midrule
+RDOb8
+& Il sistema deve permettere all'utente di applicare alla scena i limiti di OpenGL ES 2.0
+& Capitolato
+&
+\\
+
+
+\midrule
+RDOb9
+& Il software deve funzionare in ambiente Windows 7 Professional 64 bit
+& Capitolato
+&
+\\
+
+
+\midrule
+RFDe10
+& Il sistema deve segnalare l'avanzamento dell'operazione di import o export mostrando il progresso
+& Interno
+&
+\\
+
+
+\midrule
+RQOb11
+& Il gruppo fornirà documentazione in tecnologia Doxygen di tutte le classi e di tutti i metodi del software
+& Interno
+&
+\\
+
+
+\midrule
+RQOp12
+& Il software deve essere estensibile, in particolare riguardo ai tipi di file caricabili ed esportabili
+& Interno
+&
+\\
+
+
+\midrule
+RQOp13
+& Se il software si blocca prima che l'utente abbia salvato il file, si deve essere in grado di ripristinare tutte le modifiche effettuate
+& Interno
+&
+\\
+
+
+\midrule
+RQOp14
+& Il software sarà disponibile anche in lingua inglese
+& Interno
+&
+\\
+
+
+\midrule
+RQOp15
+& Il software deve impedire l'introduzione di dati scorretti e ove necessario segnalare l'errore
+& Interno
+&
+\\
+
+
+\midrule
+RQOp16
+& Insieme al software deve essere fornito un manuale utente
+& Interno
+&
+\\
+
+
+\midrule
+RQOp17
+& Insieme al software deve essere fornito l'XML Schema di validazione
+& Capitolato
+&
+\\
+
+
+
+
+\end{longtable}
+
