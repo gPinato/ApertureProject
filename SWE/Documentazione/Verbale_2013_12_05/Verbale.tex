@@ -1,0 +1,129 @@
+%"variabili globali" che verranno aggiornate in tutte le pagine/footer
+% per inserire nuove macro ->  \newcommand{\nomeMacro}{valoreMacro}
+
+\newcommand{\Versione}{1.0}							%Versione Finale
+\newcommand{\Data}{2013-12-10}						%Data di creazione
+\newcommand{\DataUltimaModifica}{2013-12-10}
+\newcommand{\TipoDocumento}{Verbale esterno 2013-12-05}		%tipo documento
+
+%includo il file header.tex (logo grande in prima pagina piu qualche altra regola)
+\input{../Logo&Header/header.tex}
+
+%\vspace{.05in}
+
+%informazioni documento
+\begin{center}
+%\section{Informazioni documento}
+\begin{tabular}{r|l}
+%\textbf{Nome} &\TipoDocumento \\
+\textbf{Versione} & \Versione{} \\
+\textbf{Data creazione} & \Data{} \\
+\textbf{Data ultima modifica} & \DataUltimaModifica{} \\
+\textbf{Stato del Documento} & Formale \\		%CAMBIARE QUI
+\textbf{Uso del Documento} & Esterno \\			%CAMBIARE QUI
+\textbf{Redazione} & Michele Maso\\				%CAMBIARE QUI
+\textbf{Verifica} & Fabio Miotto, Alberto Garbui\\%ED ANCHE QUI!
+\textbf{Approvazione} & Mattia\\				%CAMBIARE QUI
+\textbf{Distribuzione} & \parbox[t]{4cm}{\NomeGruppo{} \\ Prof. Tullio Vardanega \\ Prof. Riccardo Cardin \\ \Prop{} }\\
+\end{tabular}
+\end{center}
+
+\vspace{0.05in}
+
+%inizio sommario del documento
+\begin{abstract}
+\begin{center}
+Verbale di incontro tra il gruppo \NomeGruppo{} per il progetto MaaP ed il Proponente \Prop{}.
+\end{center}
+\end{abstract}
+
+%\vspace{.4in}
+
+%seconda pagina, diario delle modifiche
+\newpage
+Diario delle modifiche
+\begin{center}
+\begin{longtable}{|c|c|c|p{0.5\linewidth}|}
+\toprule
+\textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Modifiche effettuate}\\
+
+%aggiungere qui una midrule per aggiungere una nuova riga alla tabella
+
+\midrule
+1.0 & 2013-12-10 & Michele Maso (AN) & Stesura documento\\
+
+\bottomrule
+\caption{Registro delle modifiche}
+\label{tab:changelog}
+\end{longtable}
+\end{center}
+
+%terza pagina Indice (viene aggiornato in automatico con due compilazioni)
+\newpage
+\tableofcontents
+
+%pagine successive hanno la lista di tabelle e lista delle figure
+%(vengono aggiornate in automatico)
+%\newpage
+%\listoftables
+%\listoffigures
+
+%qui inizia la prima pagina ufficiale
+\newpage
+\section{Informazioni sulla riunione}%1.0
+\label{1.0}
+\begin{itemize}
+\item \grassetto{Data}: 2013-12-05;
+\item \grassetto{Luogo}: aula Luf1 del Dipartimento di Informatica;
+\item \grassetto{Ora}: 14:30;
+\item \grassetto{Durata}: 1h;
+\item \grassetto{Partecipanti interni}: \NomeGruppo{}
+\begin{itemize}
+\item Maso Michele;
+\item Miotto Fabio;
+\item Garbui Alberto;
+\item Sorgato Mattia;
+\item Perin Andrea;
+\end{itemize}
+\item \grassetto{Partecipanti esterni}: \Prop{}
+\begin{itemize}
+\item Maccagnan Alessandro;
+\item Casiraghi Mahesh;
+\end{itemize}
+\item \grassetto{Motivazioni riunione}: delucidazioni sui requisiti.
+\end{itemize}
+
+\newpage
+\section{Domande e risposte}
+\label{2}
+
+\subsection{Quali sono i filtri applicabili alla visualizzazione dei dati della pagina collection-index?} 
+I filtri visualizzabili nella pagina web non rappresentano un requisito essenziale perchè bisogna conoscere come fare le query in MongoDB. Di default devono poter essere definite delle query da utilizzare per creare la pagina risultante sulla base del risultato della loro estrazione. 
+
+\subsection{Alla prima generazione dello scheletro del progetto, viene generato un utente admin di default?}
+Si, viene subito generato un admin con username e password di default.
+
+\subsection{Solo l'admin può registrare un utente o sarà presente un form di registrazione?}
+Sarà presente di default un form di registrazione, se successivamente lo sviluppatore vorrà non rendenderlo più disponibile potrà andare a modificare il file di configurazione della pagina web.
+
+\subsection{L'utente admin può gestire gli utenti, si può utilizzare un tool già pronto come drywall?}
+Si, va bene perché non ha senso andare a riscrivere cose che si possono trovare.
+
+\subsection{Delucidazione riguardo la creazione degli indici}
+Gli indici sono documenti specifici di MongoDB utilizzati per rendere le ricerche delle query più veloci, rappresentano un requisito desiderabile. Può essere lo stesso MongoDB a creare degli indici oppure siamo noi a crearli via shell.
+
+\subsection{Perché l'inserimento di nuovi documenti è tanto problematico?}
+Perché bisogna sapere la business logic dell'applicazione e trovare il modo di portare questa informazione all'interno di MongDB. Si può fare solo se si utilizza Mongoose perché si crea lui dei vincoli da rispettare; aiuta lo sviluppatore a scrivere lo schema del database utilizzando javascript.
+
+\subsection{Ci sono solo le pagine Collection-index e Document-show o possono essere presenti più livelli?}
+Possono esserci più livelli e questo darebbe un valore innovativo al prodotto in quanto non esiste sul mercato.
+
+\subsection{Quando vengono create le pagine web?}
+I template delle pagine web vengono generati alla creazione dello scheletro. Ovviamente queste pagine saranno vuote e andranno popolate tramite il file di descrizione.
+
+\subsection{Bisogna permettere all'utente di configurare posizione e nome della voce nel menu oppure è lo sviluppatore che lo decide inserendo delle regole nel file di descrizione?}
+Può farlo solo lo sviluppatore.
+
+
+%FINE DOCUMENTO NON CANCELLARE
+\end{document}

@@ -1,0 +1,1726 @@
+
+\subsection{UC1 Caso d’uso generale}
+\textbf{Diagramma associato:}
+\ref{UC1} \\ \\
+\textbf{Attori Coinvolti:}
+Utente. \\ \\
+\textbf{Scopo e Descrizione:}
+un utente deve poter scegliere un file opportuno da cui caricare la scena 3D descritta. Una volta caricata, deve essere possibile modificarla ed esportarla nel formato desiderato. Il caricamento e la modifica della scena 3D comportano la visualizzazione dell'anteprima della stessa. \\ \\
+\textbf{Precondizione:}
+il sistema si trova nello stato iniziale. \\ \\
+\textbf{Postcondizione:}
+il sistema ha caricato in memoria la scena 3D descritta nel file selezionato. \\ \\
+\textbf{Scenario Principale:}
+\begin{itemize}
+\item l’utente seleziona il file da cui caricare la scena 3D
+\item  l’utente eventualmente decide che modifiche apportare alla scena 3D
+\item  l’utente esporta la scena 3D nel formato desiderato
+\item l'utente agisce sulla cronologia delle modifiche
+\\ \\ \end{itemize}
+\begin{figure}[h!]
+\centering
+\includegraphics[width=\textwidth]{{{UC3}}}
+\caption{UC1 Caso d'uso generale}
+\label{UC1}
+\end{figure}
+
+
+\subsection{UC1.1 Sceglie file da importare}
+\textbf{Diagramma associato:}
+\ref{UC1.1} \\ \\
+\textbf{Attori Coinvolti:}
+Utente. \\ \\
+\textbf{Scopo e Descrizione:}
+un utente deve poter selezionare il formato del file dal quale caricare la scena 3D e scegliere il percorso del file medesimo. \\ \\
+\textbf{Precondizione:}
+il sistema è in attesa che l'utente selezioni una funzionalità. \\ \\
+\textbf{Postcondizione:}
+il sistema ha caricato la scena 3D descritta nel file scelto, la scena si trova nel suo stato iniziale. \\ \\
+\textbf{Scenario Principale:}
+\begin{itemize}
+\item  l’utente seleziona l’estensione del file da importare
+\item l’utente seleziona il percorso del file
+\\ \\ \end{itemize}
+\begin{figure}[h!]
+\centering
+\includegraphics[width=\textwidth]{{{UC1.1}}}
+\caption{UC1.1 Sceglie file da importare}
+\label{UC1.1}
+\end{figure}
+
+
+\subsection{UC1.1.1 Sceglie tipo file}
+\textbf{Diagramma associato:}
+\ref{UC1.1.1} \\ \\
+\textbf{Attori Coinvolti:}
+Utente. \\ \\
+\textbf{Scopo e Descrizione:}
+un utente deve poter selezionare il formato del file dal quale caricare la scena 3D. \\ \\
+\textbf{Precondizione:}
+il sistema è in attesa di input riguardo all'importazione. \\ \\
+\textbf{Postcondizione:}
+il sistema conosce il formato del file scelto dall’utente. \\ \\
+\textbf{Scenario Principale:}
+\begin{itemize}
+\item l’utente seleziona il formato 3DS
+\item l’utente seleziona il formato Wavefront OBJ/MTL
+\item l’utente seleziona il formato JSON
+\item l'utente seleziona il formato XML
+\\ \\ \end{itemize}
+\begin{figure}[h!]
+\centering
+\includegraphics[width=\textwidth]{{{UC3}}}
+\caption{UC1.1.1 Sceglie tipo file}
+\label{UC1.1.1}
+\end{figure}
+
+
+\subsection{UC1.1.1.1 Sceglie formato 3DS}
+\textbf{Diagramma associato:}
+\ref{UC1.1.1} \\ \\
+\textbf{Attori Coinvolti:}
+Utente. \\ \\
+\textbf{Scopo e Descrizione:}
+un utente deve poter importare dal formato 3DS. \\ \\
+\textbf{Precondizione:}
+il sistema è in attesa di input riguardo al formato del file da importare. \\ \\
+\textbf{Postcondizione:}
+il sistema sa che si sta per importare dal formato 3DS. \\ \\
+\textbf{Scenario Principale:}
+\begin{itemize}
+\item l'utente seleziona il formato 3DS
+\\ \\ \end{itemize}
+
+
+\subsection{UC1.1.1.2 Sceglie formato Wavefront OBJ/MTL}
+\textbf{Diagramma associato:}
+\ref{UC1.1.1} \\ \\
+\textbf{Attori Coinvolti:}
+Utente. \\ \\
+\textbf{Scopo e Descrizione:}
+un utente deve poter importare dal formato Wavefront OBJ/MTL. \\ \\
+\textbf{Precondizione:}
+il sistema è in attesa di input riguardo al formato del file da importare. \\ \\
+\textbf{Postcondizione:}
+il sistema sa che si sta per importare dal formato OBJ/MTL. \\ \\
+\textbf{Scenario Principale:}
+\begin{itemize}
+\item l'utente seleziona il formato Wavefront OBJ/MTL
+\\ \\ \end{itemize}
+
+
+\subsection{UC1.1.1.3 Sceglie formato JSON}
+\textbf{Diagramma associato:}
+\ref{UC1.1.1} \\ \\
+\textbf{Attori Coinvolti:}
+Utente. \\ \\
+\textbf{Scopo e Descrizione:}
+un utente deve poter importare dal formato JSON. \\ \\
+\textbf{Precondizione:}
+il sistema è in attesa di input riguardo al formato del file da importare. \\ \\
+\textbf{Postcondizione:}
+il sistema sa che si sta per importare dal formato JSON. \\ \\
+\textbf{Scenario Principale:}
+\begin{itemize}
+\item l'utente seleziona il formato JSON
+\\ \\ \end{itemize}
+
+
+\subsection{UC1.1.1.4 Sceglie formato XML}
+\textbf{Diagramma associato:}
+\ref{UC1.1.1} \\ \\
+\textbf{Attori Coinvolti:}
+Utente. \\ \\
+\textbf{Scopo e Descrizione:}
+un utente deve poter importare dal formato XML. \\ \\
+\textbf{Precondizione:}
+il sistema è in attesa di input riguardo al formato del file da importare. \\ \\
+\textbf{Postcondizione:}
+il sistema sa che si sta per importare dal formato XML. \\ \\
+\textbf{Scenario Principale:}
+\begin{itemize}
+\item l'utente seleziona il formato XML
+\\ \\ \end{itemize}
+
+
+\subsection{UC1.1.2 Seleziona percorso file}
+\textbf{Diagramma associato:}
+\ref{UC1.1} \\ \\
+\textbf{Attori Coinvolti:}
+Utente. \\ \\
+\textbf{Scopo e Descrizione:}
+un utente deve poter selezionare il percorso del file da cui caricare la scena 3D. \\ \\
+\textbf{Precondizione:}
+il sistema è in attesa di input riguardo all'importazione. \\ \\
+\textbf{Postcondizione:}
+il sistema conosce la posizione del file dal quale caricare la scena 3D. \\ \\
+\textbf{Scenario Principale:}
+\begin{itemize}
+\item l’utente seleziona il percorso del file dal quale caricare la scena 3D
+\\ \\ \end{itemize}
+
+
+\subsection{UC1.2 Modifica scena 3D}
+\textbf{Diagramma associato:}
+\ref{UC1.2} \\ \\
+\textbf{Attori Coinvolti:}
+Utente. \\ \\
+\textbf{Scopo e Descrizione:}
+un utente deve poter modificare la scena 3D. \\ \\
+\textbf{Precondizione:}
+il sistema ha in memoria la scena 3D caricata in precedenza (UC1.1), ed è in attesa che l'utente selezioni una funzionalità. \\ \\
+\textbf{Postcondizione:}
+il sistema ha modificato la scena 3D secondo le richieste dell’utente, e la modifica è stata inserita nella cronologia delle modifiche. La scena non è più nel suo stato iniziale. \\ \\
+\textbf{Scenario Principale:}
+\begin{itemize}
+\item l'utente seleziona la \underline{fonte di luce} che intende modificare (UC1.2.1)
+\item l'utente seleziona la \underline{mesh} che intende modificare (UC1.2.2)
+\item l'utente aggiunge una nuova fonte di luce con valori di default (UC1.2.3)
+\item l'utente modifica la mesh (UC1.2.4)
+\item l'utente seleziona la \underline{camera} che intende modificare (UC1.2.5)
+\item l'utente modifica la camera (UC1.2.6)
+\item l'utente modifica la fonte di luce (UC1.2.7)
+\\ \\ \end{itemize}
+\begin{figure}[h!]
+\centering
+\includegraphics[width=\textwidth]{{{UC1.2}}}
+\caption{UC1.2 Modifica scena 3D}
+\label{UC1.2}
+\end{figure}
+
+
+\subsection{UC1.2.1 Seleziona fonte di luce}
+\textbf{Diagramma associato:}
+\ref{UC1.2} \\ \\
+\textbf{Attori Coinvolti:}
+Utente. \\ \\
+\textbf{Scopo e Descrizione:}
+un utente deve poter selezionare la fonte di luce che intende modificare. \\ \\
+\textbf{Precondizione:}
+il sistema è in attesa di input  per quanto riguarda la modifica della scena 3D. \\ \\
+\textbf{Postcondizione:}
+il sistema conosce la fonte di luce selezionata dall'utente. \\ \\
+\textbf{Scenario Principale:}
+\begin{itemize}
+\item l'utente seleziona una fonte di luce
+\\ \\ \end{itemize}
+
+
+\subsection{UC1.2.2 Seleziona mesh}
+\textbf{Diagramma associato:}
+\ref{UC1.2} \\ \\
+\textbf{Attori Coinvolti:}
+Utente. \\ \\
+\textbf{Scopo e Descrizione:}
+un utente deve poter selezionare la mesh che intende modificare. \\ \\
+\textbf{Precondizione:}
+il sistema è in attesa di input  per quanto riguarda la modifica della scena 3D. \\ \\
+\textbf{Postcondizione:}
+il sistema conosce la mesh che l'utente vuole modificare. \\ \\
+\textbf{Scenario Principale:}
+\begin{itemize}
+\item l'utente seleziona una mesh
+\\ \\ \end{itemize}
+
+
+\subsection{UC1.2.3 Aggiungi fonte di luce}
+\textbf{Diagramma associato:}
+\ref{UC1.2} \\ \\
+\textbf{Attori Coinvolti:}
+Utente. \\ \\
+\textbf{Scopo e Descrizione:}
+un utente deve poter aggiungere una nuova fonte di luce con valori di default. \\ \\
+\textbf{Precondizione:}
+il sistema è in attesa di input  per quanto riguarda la modifica della scena 3D. \\ \\
+\textbf{Postcondizione:}
+il sistema aggiunge la nuova fonte di luce con valori di default. \\ \\
+\textbf{Scenario Principale:}
+\begin{itemize}
+\item l'utente aggiunge una nuova fonte di luce
+\\ \\ \end{itemize}
+
+
+\subsection{UC1.2.4 Modifica mesh}
+\textbf{Diagramma associato:}
+\ref{UC1.2.4} \\ \\
+\textbf{Attori Coinvolti:}
+Utente. \\ \\
+\textbf{Scopo e Descrizione:}
+un utente deve poter modificare la mesh selezionata. \\ \\
+\textbf{Precondizione:}
+il sistema conosce la mesh da modificare (UC1.2.2). \\ \\
+\textbf{Postcondizione:}
+il sistema ha modificato la mesh selezionata secondo le richieste dell'utente. \\ \\
+\textbf{Scenario Principale:}
+\begin{itemize}
+\item l'utente effettua una \underline{traslazione} (UC1.2.4.1)
+\item l'utente effettua una rotazione (UC1.2.4.2)
+\item l'utente modifica la dimensione (UC1.2.4.3)
+\item l'utente modifica le caratteristiche del materiale (UC1.2.4.4)
+\item l'utente rimuove la mesh (UC1.2.4.5)
+\\ \\ \end{itemize}
+\begin{figure}[h!]
+\centering
+\includegraphics[width=\textwidth]{{{UC1.2.4}}}
+\caption{UC1.2.4 Modifica mesh}
+\label{UC1.2.4}
+\end{figure}
+
+
+\subsection{UC1.2.4.1 Effettua traslazione}
+\textbf{Diagramma associato:}
+\ref{UC1.2.4.1} \\ \\
+\textbf{Attori Coinvolti:}
+Utente. \\ \\
+\textbf{Scopo e Descrizione:}
+un utente deve poter scegliere i valori del vettore [x,y,z] di traslazione da applicare alla mesh selezionata. \\ \\
+\textbf{Precondizione:}
+il sistema è in attesa che l'utente selezioni una funzionalità di modifica della mesh. \\ \\
+\textbf{Postcondizione:}
+il sistema ha traslato la mesh secondo le richieste dell’utente. \\ \\
+\textbf{Scenario Principale:}
+\begin{itemize}
+\item l’utente sceglie il valore della componente x del \underline{vettore di traslazione} (UC1.2.4.1.1)
+\item  l’utente sceglie il valore della componente y del vettore di traslazione (UC1.2.4.1.2)
+\item l’utente sceglie il valore della componente z del vettore di traslazione (UC1.2.4.1.3)
+\\ \\ \end{itemize}
+\begin{figure}[h!]
+\centering
+\includegraphics[width=\textwidth]{{{UC1.2.4.1}}}
+\caption{UC1.2.4.1 Effettua traslazione}
+\label{UC1.2.4.1}
+\end{figure}
+
+
+\subsection{UC1.2.4.1.1 Sceglie valore componente x}
+\textbf{Diagramma associato:}
+\ref{UC1.2.4.1} \\ \\
+\textbf{Attori Coinvolti:}
+Utente. \\ \\
+\textbf{Scopo e Descrizione:}
+un utente deve poter impostare il valore della componente x del vettore di traslazione. \\ \\
+\textbf{Precondizione:}
+il sistema è in attesa di input riguardo alla traslazione. \\ \\
+\textbf{Postcondizione:}
+il sistema conosce il valore impostato dall'utente della componente x del vettore di traslazione . \\ \\
+\textbf{Scenario Principale:}
+\begin{itemize}
+\item l'utente imposta il valore della componente x
+\\ \\ \end{itemize}
+
+
+\subsection{UC1.2.4.1.2 Sceglie valore componente y}
+\textbf{Diagramma associato:}
+\ref{UC1.2.4.1} \\ \\
+\textbf{Attori Coinvolti:}
+Utente. \\ \\
+\textbf{Scopo e Descrizione:}
+un utente deve poter impostare il valore della componente y del vettore di traslazione. \\ \\
+\textbf{Precondizione:}
+il sistema è in attesa di input riguardo alla traslazione. \\ \\
+\textbf{Postcondizione:}
+il sistema conosce il valore impostato dall'utente della componente y del vettore di traslazione. \\ \\
+\textbf{Scenario Principale:}
+\begin{itemize}
+\item l'utente imposta il valore della componente y
+\\ \\ \end{itemize}
+
+
+\subsection{UC1.2.4.1.3 Sceglie valore componente z}
+\textbf{Diagramma associato:}
+\ref{UC1.2.4.1} \\ \\
+\textbf{Attori Coinvolti:}
+Utente. \\ \\
+\textbf{Scopo e Descrizione:}
+un utente deve poter impostare il valore della componente z del vettore di traslazione. \\ \\
+\textbf{Precondizione:}
+il sistema è in attesa di input riguardo alla traslazione. \\ \\
+\textbf{Postcondizione:}
+il sistema conosce il valore impostato dall'utente della componente z del vettore di traslazione. \\ \\
+\textbf{Scenario Principale:}
+\begin{itemize}
+\item l'utente imposta il valore della componente z
+\\ \\ \end{itemize}
+
+
+\subsection{UC1.2.4.2 Effettua rotazione}
+\textbf{Diagramma associato:}
+\ref{UC1.2.4.2} \\ \\
+\textbf{Attori Coinvolti:}
+Utente. \\ \\
+\textbf{Scopo e Descrizione:}
+un utente deve poter ruotare la mesh selezionata scegliendo l’asse di rotazione e l’angolo theta di rotazione. \\ \\
+\textbf{Precondizione:}
+il sistema è in attesa che l'utente selezioni una funzionalità di modifica della mesh. \\ \\
+\textbf{Postcondizione:}
+il sistema ha ruotato la mesh secondo le richieste dell’utente. \\ \\
+\textbf{Scenario Principale:}
+\begin{itemize}
+\item l’utente sceglie l’asse di rotazione (UC1.2.4.2.1)
+\item l’utente sceglie l’angolo theta di rotazione (UC1.2.4.2.2)
+\\ \\ \end{itemize}
+\begin{figure}[h!]
+\centering
+\includegraphics[width=\textwidth]{{{UC1.2.4.2}}}
+\caption{UC1.2.4.2 Effettua rotazione}
+\label{UC1.2.4.2}
+\end{figure}
+
+
+\subsection{UC1.2.4.2.1 Sceglie asse di rotazione}
+\textbf{Diagramma associato:}
+\ref{UC1.2.4.2.1} \\ \\
+\textbf{Attori Coinvolti:}
+Utente. \\ \\
+\textbf{Scopo e Descrizione:}
+un utente deve poter scegliere l'\underline{asse di rotazione} in base al quale ruotare la mesh selezionata. \\ \\
+\textbf{Precondizione:}
+il sistema è in attesa di input riguardo alla rotazione. \\ \\
+\textbf{Postcondizione:}
+il sistema conosce l'asse di rotazione selezionato dall'utente. \\ \\
+\textbf{Scenario Principale:}
+\begin{itemize}
+\item l’utente sceglie l'asse x (UC1.2.4.2.1.1)
+\item  l’utente sceglie l'asse y (UC1.2.4.2.1.2)
+\item l’utente sceglie l'asse z (UC1.2.4.2.1.3)
+\\ \\ \end{itemize}
+\begin{figure}[h!]
+\centering
+\includegraphics[width=\textwidth]{{{UC1.2.4.2.1}}}
+\caption{UC1.2.4.2.1 Sceglie asse di rotazione}
+\label{UC1.2.4.2.1}
+\end{figure}
+
+
+\subsection{UC1.2.4.2.1.1 Sceglie asse x}
+\textbf{Diagramma associato:}
+\ref{UC1.2.4.2.1} \\ \\
+\textbf{Attori Coinvolti:}
+Utente. \\ \\
+\textbf{Scopo e Descrizione:}
+un utente deve poter scegliere l'asse x come asse di rotazione. \\ \\
+\textbf{Precondizione:}
+il sistema è in attesa di input riguardo l'asse di rotazione. \\ \\
+\textbf{Postcondizione:}
+il sistema sa che l'utente ha selezionato l'asse x. \\ \\
+\textbf{Scenario Principale:}
+\begin{itemize}
+\item l'utente seleziona l'asse x
+\\ \\ \end{itemize}
+
+
+\subsection{UC1.2.4.2.1.2 Sceglie asse y}
+\textbf{Diagramma associato:}
+\ref{UC1.2.4.2.1} \\ \\
+\textbf{Attori Coinvolti:}
+Utente. \\ \\
+\textbf{Scopo e Descrizione:}
+un utente deve poter scegliere l'asse y come asse di rotazione. \\ \\
+\textbf{Precondizione:}
+il sistema è in attesa di input riguardo l'asse di rotazione. \\ \\
+\textbf{Postcondizione:}
+il sistema sa che l'utente ha selezionato l'asse y. \\ \\
+\textbf{Scenario Principale:}
+\begin{itemize}
+\item l'utente seleziona l'asse y
+\\ \\ \end{itemize}
+
+
+\subsection{UC1.2.4.2.1.3 Sceglie asse z}
+\textbf{Diagramma associato:}
+\ref{UC1.2.4.2.1} \\ \\
+\textbf{Attori Coinvolti:}
+Utente. \\ \\
+\textbf{Scopo e Descrizione:}
+un utente deve poter scegliere l'asse z come asse di rotazione. \\ \\
+\textbf{Precondizione:}
+il sistema è in attesa di input riguardo l'asse di rotazione. \\ \\
+\textbf{Postcondizione:}
+il sistema sa che l'utente ha selezionato l'asse z. \\ \\
+\textbf{Scenario Principale:}
+\begin{itemize}
+\item l'utente seleziona l'asse z
+\\ \\ \end{itemize}
+
+
+\subsection{UC1.2.4.2.2 Sceglie ampiezza angolo theta}
+\textbf{Diagramma associato:}
+\ref{UC1.2.4.2} \\ \\
+\textbf{Attori Coinvolti:}
+Utente. \\ \\
+\textbf{Scopo e Descrizione:}
+un utente deve poter impostare l'ampiezza dell'\underline{angolo theta di rotazione} secondo il quale routare la mesh selezionata. \\ \\
+\textbf{Precondizione:}
+il sistema è in attesa di input riguardo alla rotazione. \\ \\
+\textbf{Postcondizione:}
+il sistema conosce l'ampiezza dell'angolo theta di rotazione impostato dall'utente. \\ \\
+\textbf{Scenario Principale:}
+\begin{itemize}
+\item l'utente imposta l'ampiezza dell'angolo theta di rotazione
+\\ \\ \end{itemize}
+
+
+\subsection{UC1.2.4.3 Modifica dimensione}
+\textbf{Diagramma associato:}
+\ref{UC1.2.4.3} \\ \\
+\textbf{Attori Coinvolti:}
+Utente. \\ \\
+\textbf{Scopo e Descrizione:}
+un utente deve poter modificare la dimensione della mesh selezionata. \\ \\
+\textbf{Precondizione:}
+il sistema è in attesa che l'utente selezioni una funzionalità di modifica della mesh. \\ \\
+\textbf{Postcondizione:}
+il sistema ha effettuato il ridimensionamento della mesh selezionata secondo le richieste dell’utente. \\ \\
+\textbf{Scenario Principale:}
+\begin{itemize}
+\item l’utente sceglie il ridimensionamento secondo gli assi (UC1.2.4.3.1)
+\item l’utente sceglie il \underline{ridimensionamento scalare} (UC1.2.4.3.2)
+\\ \\ \end{itemize}
+\begin{figure}[h!]
+\centering
+\includegraphics[width=\textwidth]{{{UC1.2.4.3}}}
+\caption{UC1.2.4.3 Modifica dimensione}
+\label{UC1.2.4.3}
+\end{figure}
+
+
+\subsection{UC1.2.4.3.1 Ridimensiona secondo gli assi}
+\textbf{Diagramma associato:}
+\ref{UC1.2.4.3.1} \\ \\
+\textbf{Attori Coinvolti:}
+Utente. \\ \\
+\textbf{Scopo e Descrizione:}
+un utente deve poter ridimensionare la mesh selezionata secondo i suoi assi. \\ \\
+\textbf{Precondizione:}
+il sistema propone all'utente una scelta sul tipo di ridimensionamento. \\ \\
+\textbf{Postcondizione:}
+il sistema ha ridimensionato la mesh secondo le impostazioni dell'utente. \\ \\
+\textbf{Scenario Principale:}
+\begin{itemize}
+\item l'utente sceglie il valore della componente x (UC1.2.4.3.1.1)
+\item l'utente sceglie il valore della componente y (UC1.2.4.3.1.2)
+\item l'utente sceglie il valore della componente z (UC1.2.4.3.1.3)
+\\ \\ \end{itemize}
+\begin{figure}[h!]
+\centering
+\includegraphics[width=\textwidth]{{{UC1.2.4.3.1}}}
+\caption{UC1.2.4.3.1 Ridimensiona secondo gli assi}
+\label{UC1.2.4.3.1}
+\end{figure}
+
+
+\subsection{UC1.2.4.3.1.1 Sceglie valore componente x}
+\textbf{Diagramma associato:}
+\ref{UC1.2.4.3.1} \\ \\
+\textbf{Attori Coinvolti:}
+Utente. \\ \\
+\textbf{Scopo e Descrizione:}
+un utente deve poter impostare il valore della componente x. \\ \\
+\textbf{Precondizione:}
+il sistema è in attesa di input riguardo al ridimensionamento della mesh. \\ \\
+\textbf{Postcondizione:}
+il sistema conosce il valore della componente x impostato dall'utente. \\ \\
+\textbf{Scenario Principale:}
+\begin{itemize}
+\item l'utente imposta il valore della componente x
+\\ \\ \end{itemize}
+
+
+\subsection{UC1.2.4.3.1.2 Sceglie valore componente y}
+\textbf{Diagramma associato:}
+\ref{UC1.2.4.3.1} \\ \\
+\textbf{Attori Coinvolti:}
+Utente. \\ \\
+\textbf{Scopo e Descrizione:}
+un utente deve poter impostare il valore della componente y. \\ \\
+\textbf{Precondizione:}
+il sistema è in attesa di input riguardo al ridimensionamento della mesh. \\ \\
+\textbf{Postcondizione:}
+il sistema conosce il valore della componente y impostato dall'utente. \\ \\
+\textbf{Scenario Principale:}
+\begin{itemize}
+\item l'utente imposta il valore della componente y
+\\ \\ \end{itemize}
+
+
+\subsection{UC1.2.4.3.1.3 Sceglie valore componente z}
+\textbf{Diagramma associato:}
+\ref{UC1.2.4.3.1} \\ \\
+\textbf{Attori Coinvolti:}
+Utente. \\ \\
+\textbf{Scopo e Descrizione:}
+un utente deve poter impostare il valore della componente z. \\ \\
+\textbf{Precondizione:}
+il sistema è in attesa di input riguardo al ridimensionamento della mesh. \\ \\
+\textbf{Postcondizione:}
+il sistema conosce il valore della componente z impostato dall'utente. \\ \\
+\textbf{Scenario Principale:}
+\begin{itemize}
+\item l'utente imposta il valore della componente z
+\\ \\ \end{itemize}
+
+
+\subsection{UC1.2.4.3.2 Ridimensiona scalarmente}
+\textbf{Diagramma associato:}
+\ref{UC1.2.4.3.2} \\ \\
+\textbf{Attori Coinvolti:}
+Utente. \\ \\
+\textbf{Scopo e Descrizione:}
+un utente deve poter ridimensionare la mesh impostando un moltiplicatore scalare. \\ \\
+\textbf{Precondizione:}
+il sistema propone all'utente una scelta sul tipo di ridimensionamento. \\ \\
+\textbf{Postcondizione:}
+il sistema ha ridimensionato (scalarmente) la mesh secondo l'input utente. \\ \\
+\textbf{Scenario Principale:}
+\begin{itemize}
+\item l'utente sceglie il ridimensionamento scalare
+\\ \\ \end{itemize}
+\begin{figure}[h!]
+\centering
+\includegraphics[width=\textwidth]{{{UC1.2.4.3.2}}}
+\caption{UC1.2.4.3.2 Ridimensiona scalarmente}
+\label{UC1.2.4.3.2}
+\end{figure}
+
+
+\subsection{UC1.2.4.3.2.1 Sceglie componente scalare}
+\textbf{Diagramma associato:}
+\ref{UC1.2.4.3.2} \\ \\
+\textbf{Attori Coinvolti:}
+Utente. \\ \\
+\textbf{Scopo e Descrizione:}
+un utente deve poter impostare il moltiplicatore scalare relativo al ridimensionamento di una mesh. \\ \\
+\textbf{Precondizione:}
+il sistema è in attesa di input riguardo al ridimensionamento della mesh. \\ \\
+\textbf{Postcondizione:}
+il sistema conosce il valore del moltiplicatore scalare impostato dall'utente. \\ \\
+\textbf{Scenario Principale:}
+\begin{itemize}
+\item l'utente sceglie il valore della componente scalare
+\\ \\ \end{itemize}
+
+
+\subsection{UC1.2.4.4 Modifica caratteristiche materiale}
+\textbf{Diagramma associato:}
+\ref{UC1.2.4.4} \\ \\
+\textbf{Attori Coinvolti:}
+Utente. \\ \\
+\textbf{Scopo e Descrizione:}
+un utente deve poter modificare le caratteristiche di uno dei materiali che compongono la mesh selezionata. \\ \\
+\textbf{Precondizione:}
+il sistema è in attesa che l'utente selezioni una funzionalità di modifica della mesh. \\ \\
+\textbf{Postcondizione:}
+il sistema ha effettuato le modifiche a uno dei materiali che compongono la mesh selezionata secondo le richieste dell’utente. \\ \\
+\textbf{Scenario Principale:}
+\begin{itemize}
+\item l'utente modifica la componente riflessiva diffusa (UC1.2.4.4.1)
+\item l'utente modifica la componente emissiva (UC1.2.4.4.2)
+\item l'utente modifica la componente riflessiva speculare (UC1.2.4.4.3)
+\item l'utente modifica la componente riflessiva ambientale (UC1.2.4.4.4)
+\item l'utente modifica il parametro di \underline{opacità} (UC1.2.4.4.5)
+\\ \\ \end{itemize}
+\begin{figure}[h!]
+\centering
+\includegraphics[width=\textwidth]{{{UC1.2.4.4}}}
+\caption{UC1.2.4.4 Modifica caratteristiche materiale}
+\label{UC1.2.4.4}
+\end{figure}
+
+
+\subsection{UC1.2.4.4.1 Modifica componente riflessiva diffusa}
+\textbf{Diagramma associato:}
+\ref{UC1.2.4.4} \\ \\
+\textbf{Attori Coinvolti:}
+Utente. \\ \\
+\textbf{Scopo e Descrizione:}
+un utente deve poter modificare la \underline{componente riflessiva diffusa di un materiale}. \\ \\
+\textbf{Precondizione:}
+il sistema conosce il materiale da modificare ed è in attesa di input per quanto riguarda la modifica dello stesso. \\ \\
+\textbf{Postcondizione:}
+il sistema conosce il nuovo valore della componente riflessiva diffusa impostato dall'utente. \\ \\
+\textbf{Scenario Principale:}
+\begin{itemize}
+\item l'utente imposta il valore della componente riflessiva diffusa del materiale selezionato
+\\ \\ \end{itemize}
+
+
+\subsection{UC1.2.4.4.2 Modifica componente emissiva}
+\textbf{Diagramma associato:}
+\ref{UC1.2.4.4} \\ \\
+\textbf{Attori Coinvolti:}
+Utente. \\ \\
+\textbf{Scopo e Descrizione:}
+un utente deve poter modificare la \underline{componente emissiva di un materiale}. \\ \\
+\textbf{Precondizione:}
+il sistema conosce il materiale da modificare ed è in attesa di input per quanto riguarda la modifica dello stesso. \\ \\
+\textbf{Postcondizione:}
+il sistema conosce il nuovo valore della componente emissiva impostato dall'utente. \\ \\
+\textbf{Scenario Principale:}
+\begin{itemize}
+\item l'utente imposta il valore della componente emissiva del materiale selezionato
+\\ \\ \end{itemize}
+
+
+\subsection{UC1.2.4.4.3 Modifica componente riflessiva speculare}
+\textbf{Diagramma associato:}
+\ref{UC1.2.4.4} \\ \\
+\textbf{Attori Coinvolti:}
+Utente. \\ \\
+\textbf{Scopo e Descrizione:}
+un utente deve poter modificare la \underline{componente riflessiva speculare di un materiale}. \\ \\
+\textbf{Precondizione:}
+il sistema conosce il materiale da modificare ed è in attesa di input per quanto riguarda la modifica dello stesso. \\ \\
+\textbf{Postcondizione:}
+il sistema conosce il nuovo valore della componente riflessiva speculare impostato dall'utente. \\ \\
+\textbf{Scenario Principale:}
+\begin{itemize}
+\item l'utente imposta il valore della componente riflessiva speculare del materiale selezionato
+\\ \\ \end{itemize}
+
+
+\subsection{UC1.2.4.4.4 Modifica componente riflessiva ambientale}
+\textbf{Diagramma associato:}
+\ref{UC1.2.4.4} \\ \\
+\textbf{Attori Coinvolti:}
+Utente. \\ \\
+\textbf{Scopo e Descrizione:}
+un utente deve poter modificare la \underline{componente riflessiva ambientale di un materiale}. \\ \\
+\textbf{Precondizione:}
+il sistema conosce il materiale da modificare ed è in attesa di input per quanto riguarda la modifica dello stesso. \\ \\
+\textbf{Postcondizione:}
+il sistema conosce il nuovo valore della componente riflessiva ambientale impostato dall'utente. \\ \\
+\textbf{Scenario Principale:}
+\begin{itemize}
+\item l'utente imposta il valore della componente riflessiva ambientale del materiale selezionato
+\\ \\ \end{itemize}
+
+
+\subsection{UC1.2.4.4.5 Modifica parametro opacità}
+\textbf{Diagramma associato:}
+\ref{UC1.2.4.4} \\ \\
+\textbf{Attori Coinvolti:}
+Utente. \\ \\
+\textbf{Scopo e Descrizione:}
+un utente deve poter modificare il valore di opacità del materiale selezionato. \\ \\
+\textbf{Precondizione:}
+il sistema conosce il materiale da modificare ed è in attesa di input per quanto riguarda la modifica dello stesso. \\ \\
+\textbf{Postcondizione:}
+il sistema conosce il nuovo valore del parametro di opacità impostato dall'utente. \\ \\
+\textbf{Scenario Principale:}
+\begin{itemize}
+\item l'utente imposta il valore del parametro di opacità associato al materiale selezionato
+\\ \\ \end{itemize}
+
+
+\subsection{UC1.2.4.5 Rimuovi mesh}
+\textbf{Diagramma associato:}
+\ref{UC1.2.4} \\ \\
+\textbf{Attori Coinvolti:}
+Utente. \\ \\
+\textbf{Scopo e Descrizione:}
+un utente deve poter rimuovere la mesh selezionata. \\ \\
+\textbf{Precondizione:}
+il sistema è in attesa che l'utente selezioni una funzionalità di modifica della mesh. \\ \\
+\textbf{Postcondizione:}
+il sistema ha rimosso la mesh selezionata in precedenza secondo le richieste utente. \\ \\
+\textbf{Scenario Principale:}
+\begin{itemize}
+\item l'utente rimuove la mesh
+\\ \\ \end{itemize}
+
+
+\subsection{UC1.2.5 Seleziona camera}
+\textbf{Diagramma associato:}
+\ref{UC1.2} \\ \\
+\textbf{Attori Coinvolti:}
+Utente. \\ \\
+\textbf{Scopo e Descrizione:}
+un utente deve poter selezionare la camera che intende modificare. \\ \\
+\textbf{Precondizione:}
+il sistema è in attesa di input  per quanto riguarda la modifica della scena 3D. \\ \\
+\textbf{Postcondizione:}
+il sistema conosce la camera selezionata dall'utente. \\ \\
+\textbf{Scenario Principale:}
+\begin{itemize}
+\item l'utente seleziona la camera che intende modificare
+\\ \\ \end{itemize}
+
+
+\subsection{UC1.2.6 Modifica camera}
+\textbf{Diagramma associato:}
+\ref{UC1.2.6} \\ \\
+\textbf{Attori Coinvolti:}
+Utente. \\ \\
+\textbf{Scopo e Descrizione:}
+un utente deve poter modificare la camera selezionata. \\ \\
+\textbf{Precondizione:}
+il sistema conosce la camera da modificare (UC1.2.5). \\ \\
+\textbf{Postcondizione:}
+il sistema ha modificato la camera secondo le richieste dell'utente. \\ \\
+\textbf{Scenario Principale:}
+\begin{itemize}
+\item l'utente modifica la posizione della camera (UC1.2.6.1)
+\item l'utente rimuove la camera (UC1.2.6.2)
+\\ \\ \end{itemize}
+\begin{figure}[h!]
+\centering
+\includegraphics[width=\textwidth]{{{UC1.2.6}}}
+\caption{UC1.2.6 Modifica camera}
+\label{UC1.2.6}
+\end{figure}
+
+
+\subsection{UC1.2.6.1 Modifica posizione camera}
+\textbf{Diagramma associato:}
+\ref{UC1.2.6.1} \\ \\
+\textbf{Attori Coinvolti:}
+Utente. \\ \\
+\textbf{Scopo e Descrizione:}
+un utente deve poter modificare la posizione della camera. \\ \\
+\textbf{Precondizione:}
+il sistema è in attesa che l'utente selezioni una funzionalità di modifica della camera. \\ \\
+\textbf{Postcondizione:}
+il sistema ha riposizionato la camera secondo le richieste utente. \\ \\
+\textbf{Scenario Principale:}
+\begin{itemize}
+\item l'utente trasla la camera (UC1.2.6.1.1)
+\item l'utente ruota la camera attorno alla scena 3D (UC1.2.6.1.2)
+\\ \\ \end{itemize}
+\begin{figure}[h!]
+\centering
+\includegraphics[width=\textwidth]{{{UC1.2.6.1}}}
+\caption{UC1.2.6.1 Modifica posizione camera}
+\label{UC1.2.6.1}
+\end{figure}
+
+
+\subsection{UC1.2.6.1.1 Trasla camera}
+\textbf{Diagramma associato:}
+\ref{UC1.2.6.1.1} \\ \\
+\textbf{Attori Coinvolti:}
+Utente. \\ \\
+\textbf{Scopo e Descrizione:}
+un utente deve poter traslare la camera. \\ \\
+\textbf{Precondizione:}
+il sistema è in attesa di input per quanto riguarda la modifica della posizione della camera. \\ \\
+\textbf{Postcondizione:}
+il sistema ha in memoria la scena 3D ed ha traslato la camera secondo l'input utente. \\ \\
+\textbf{Scenario Principale:}
+\begin{itemize}
+\item l'utente sceglie di quanto avvicinare la camera verso il centro della scena 3D (UC1.2.6.1.1.1)
+\item l'utente sceglie di quanto allontanare la camera dal centro della scena 3D (UC1.2.6.1.1.2)
+\item l'utente sceglie i valori secondo i quali traslare la camera della scena 3D (UC1.2.6.1.1.3)
+\\ \\ \end{itemize}
+\begin{figure}[h!]
+\centering
+\includegraphics[width=\textwidth]{{{UC1.2.6.1.1}}}
+\caption{UC1.2.6.1.1 Trasla camera}
+\label{UC1.2.6.1.1}
+\end{figure}
+
+
+\subsection{UC1.2.6.1.1.1 Avvicina camera al centro della scena 3D}
+\textbf{Diagramma associato:}
+\ref{UC1.2.6.1.1} \\ \\
+\textbf{Attori Coinvolti:}
+Utente. \\ \\
+\textbf{Scopo e Descrizione:}
+un utente deve poter avvicinare la camera al centro della scena 3D. \\ \\
+\textbf{Precondizione:}
+il sistema è in attesa di input per quanto riguarda la traslazione della camera. \\ \\
+\textbf{Postcondizione:}
+il sistema ha avvicinato la camera verso il centro della scena 3D. \\ \\
+\textbf{Scenario Principale:}
+\begin{itemize}
+\item l'utente sceglie di quanto avvicinare la camera verso il centro della scena 3D
+\\ \\ \end{itemize}
+
+
+\subsection{UC1.2.6.1.1.2 Allontana camera dal centro della scena 3D}
+\textbf{Diagramma associato:}
+\ref{UC1.2.6.1.1} \\ \\
+\textbf{Attori Coinvolti:}
+Utente. \\ \\
+\textbf{Scopo e Descrizione:}
+un utente deve poter allontanare la camera dal centro della scena 3D. \\ \\
+\textbf{Precondizione:}
+il sistema è in attesa di input per quanto riguarda la traslazione della camera. \\ \\
+\textbf{Postcondizione:}
+il sistema ha allontanato la camera dal centro della scena 3D. \\ \\
+\textbf{Scenario Principale:}
+\begin{itemize}
+\item l'utente sceglie di quanto allontanare la camera dal centro della scena 3D
+\\ \\ \end{itemize}
+
+
+\subsection{UC1.2.6.1.1.3 Imposta traslazione della camera}
+\textbf{Diagramma associato:}
+\ref{UC1.2.6.1.1} \\ \\
+\textbf{Attori Coinvolti:}
+Utente. \\ \\
+\textbf{Scopo e Descrizione:}
+un utente deve poter impostare lo spostamento della camera. \\ \\
+\textbf{Precondizione:}
+il sistema è in attesa di input per quanto riguarda la traslazione della camera. \\ \\
+\textbf{Postcondizione:}
+il sistema ha spostato la camera secondo le specifiche richieste dell'utente. \\ \\
+\textbf{Scenario Principale:}
+\begin{itemize}
+\item l'utente sceglie i valori secondo i quali traslare la camera della scena 3D
+\\ \\ \end{itemize}
+
+
+\subsection{UC1.2.6.1.2 Ruota camera attorno alla scena 3D}
+\textbf{Diagramma associato:}
+\ref{UC1.2.6.1} \\ \\
+\textbf{Attori Coinvolti:}
+Utente. \\ \\
+\textbf{Scopo e Descrizione:}
+un utente deve poter ruotare la camera attorno alla scena 3D. \\ \\
+\textbf{Precondizione:}
+il sistema è in attesa di input per quanto riguarda la modifica della posizione della camera. \\ \\
+\textbf{Postcondizione:}
+il sistema ha in memoria la scena 3D ed ha ruotato la camera 3D secondo l'input utente. \\ \\
+\textbf{Scenario Principale:}
+\begin{itemize}
+\item l'utente ruota la camera attorno la scena
+\\ \\ \end{itemize}
+
+
+\subsection{UC1.2.6.2 Rimuovi camera}
+\textbf{Diagramma associato:}
+\ref{UC1.2.6} \\ \\
+\textbf{Attori Coinvolti:}
+Utente. \\ \\
+\textbf{Scopo e Descrizione:}
+un utente deve poter rimuovere la camera selezionata. \\ \\
+\textbf{Precondizione:}
+il sistema è in attesa che l'utente selezioni una funzionalità di modifica della camera. \\ \\
+\textbf{Postcondizione:}
+il sistema ha rimosso la camera selezionata in precedenza secondo le richieste utente. \\ \\
+\textbf{Scenario Principale:}
+\begin{itemize}
+\item l'utente rimuove la camera
+\\ \\ \end{itemize}
+
+
+\subsection{UC1.2.7 Modifica fonte di luce}
+\textbf{Diagramma associato:}
+\ref{UC1.2.7} \\ \\
+\textbf{Attori Coinvolti:}
+Utente. \\ \\
+\textbf{Scopo e Descrizione:}
+un utente deve poter modificare le caratteristiche di una fonte di luce (quali posizione, intensità, colore e tipologia). \\ \\
+\textbf{Precondizione:}
+il sistema conosce la fonte di luce da modficare (UC1.2.1). \\ \\
+\textbf{Postcondizione:}
+il sistema ha modificato le caratteristiche di una fonte di luce secondo le richieste dell’utente. \\ \\
+\textbf{Scenario Principale:}
+\begin{itemize}
+\item l'utente rimuove la fonte di luce (UC1.2.7.1)
+\item l’utente modifica la posizione della fonte di luce (UC1.2.7.2)
+\item l’utente modifica l’attenuazione della fonte di luce (UC1.2.7.3)
+\item l’utente modifica il colore della fonte di luce (UC.1.2.7.4)
+\item l’utente modifica la tipologia della fonte di luce (UC1.2.7.5)
+\\ \\ \end{itemize}
+\begin{figure}[h!]
+\centering
+\includegraphics[width=\textwidth]{{{UC1.2.7}}}
+\caption{UC1.2.7 Modifica fonte di luce}
+\label{UC1.2.7}
+\end{figure}
+
+
+\subsection{UC1.2.7.1 Rimuovi luce}
+\textbf{Diagramma associato:}
+\ref{UC1.2.7} \\ \\
+\textbf{Attori Coinvolti:}
+Utente. \\ \\
+\textbf{Scopo e Descrizione:}
+un utente deve poter rimuovere una fonte di luce. \\ \\
+\textbf{Precondizione:}
+il sistema è in attesa che l'utente selezioni una funzionalità di modifica delle caratteristiche della fonte di luce. \\ \\
+\textbf{Postcondizione:}
+il sistema ha rimosso la fonte di luce selezionata in precedenza secondo le richieste utente. \\ \\
+\textbf{Scenario Principale:}
+\begin{itemize}
+\item l'utente sceglie di rimuovere la fonte di luce
+\\ \\ \end{itemize}
+
+
+\subsection{UC1.2.7.2 Modifica posizione luce}
+\textbf{Diagramma associato:}
+\ref{UC1.2.7} \\ \\
+\textbf{Attori Coinvolti:}
+Utente. \\ \\
+\textbf{Scopo e Descrizione:}
+un utente deve poter modificare la posizione di una fonte di luce. \\ \\
+\textbf{Precondizione:}
+il sistema è in attesa che l'utente selezioni una funzionalità di modifica delle caratteristiche della fonte di luce. \\ \\
+\textbf{Postcondizione:}
+il sistema ha riposizionato la fonte di luce secondo le impostazioni utente. \\ \\
+\textbf{Scenario Principale:}
+\begin{itemize}
+\item l'utente riposiziona la fonte di luce
+\\ \\ \end{itemize}
+
+
+\subsection{UC1.2.7.3 Modifica attenuazione luce}
+\textbf{Diagramma associato:}
+\ref{UC1.2.7.3} \\ \\
+\textbf{Attori Coinvolti:}
+Utente. \\ \\
+\textbf{Scopo e Descrizione:}
+l’utente deve poter modificare i parametri d’attenuazione di una fonte di luce. \\ \\
+\textbf{Precondizione:}
+il sistema è in attesa che l'utente selezioni una funzionalità di modifica delle caratteristiche della fonte di luce. \\ \\
+\textbf{Postcondizione:}
+il sistema ha modificato i parametri di attenuazione secondo l'input utente. \\ \\
+\textbf{Scenario Principale:}
+\begin{itemize}
+\item l’utente modifica l’attenuazione costante (UC1.2.7.3.1)
+\item l’utente modifica l’attenuazione lineare (UC1.2.7.3.2)
+\item  l’utente modifica l’attenuazione quadratica (UC1.2.7.3.3)
+\\ \\ \end{itemize}
+\begin{figure}[h!]
+\centering
+\includegraphics[width=\textwidth]{{{UC1.2.7.3}}}
+\caption{UC1.2.7.3 Modifica attenuazione luce}
+\label{UC1.2.7.3}
+\end{figure}
+
+
+\subsection{UC1.2.7.3.1 Modifica attenuazione costante}
+\textbf{Diagramma associato:}
+\ref{UC1.2.7.3} \\ \\
+\textbf{Attori Coinvolti:}
+Utente. \\ \\
+\textbf{Scopo e Descrizione:}
+l'utente deve poter modificare il parametro di attenuazione costante. \\ \\
+\textbf{Precondizione:}
+il sistema è in attesa di input per la modifica dei parametri di attenuazione della luce. \\ \\
+\textbf{Postcondizione:}
+il sistema conosce il valore del parametro di attenuazione costante scelto dall'utente. \\ \\
+\textbf{Scenario Principale:}
+\begin{itemize}
+\item l'utente modifica il valore del parametro di attenuazione costante
+\\ \\ \end{itemize}
+
+
+\subsection{UC1.2.7.3.2 Modifica attenuazione lineare}
+\textbf{Diagramma associato:}
+\ref{UC1.2.7.3} \\ \\
+\textbf{Attori Coinvolti:}
+Utente. \\ \\
+\textbf{Scopo e Descrizione:}
+l'utente deve poter modificare il parametro di attenuazione lineare. \\ \\
+\textbf{Precondizione:}
+il sistema è in attesa di input per la modifica dei parametri di attenuazione della luce. \\ \\
+\textbf{Postcondizione:}
+il sistema conosce il valore del parametro di attenuazione lineare scelto dall'utente. \\ \\
+\textbf{Scenario Principale:}
+\begin{itemize}
+\item l'utente modifica il valore del parametro di attenuazione lineare
+\\ \\ \end{itemize}
+
+
+\subsection{UC1.2.7.3.3 Modifica attenuazione quadratica}
+\textbf{Diagramma associato:}
+\ref{UC1.2.7.3} \\ \\
+\textbf{Attori Coinvolti:}
+Utente. \\ \\
+\textbf{Scopo e Descrizione:}
+l'utente deve poter modificare il paramentro di attenuazione quadratica. \\ \\
+\textbf{Precondizione:}
+il sistema è in attesa di input per la modifica dei parametri di attenuazione della luce. \\ \\
+\textbf{Postcondizione:}
+il sistema conosce il valore del parametro di attenuazione quadratica scelto dall'utente. \\ \\
+\textbf{Scenario Principale:}
+\begin{itemize}
+\item l'utente modifica il valore del parametro di attenuazione quadratica
+\\ \\ \end{itemize}
+
+
+\subsection{UC1.2.7.4 Modifica colore componenti luce}
+\textbf{Diagramma associato:}
+\ref{UC1.2.7.4} \\ \\
+\textbf{Attori Coinvolti:}
+Utente. \\ \\
+\textbf{Scopo e Descrizione:}
+un utente deve poter modificare il colore di una fonte di luce, alterando i valori \underline{RGB} dei componenti che la compongono. \\ \\
+\textbf{Precondizione:}
+il sistema è in attesa che l'utente selezioni una funzionalità di modifica delle caratteristiche della fonte di luce. \\ \\
+\textbf{Postcondizione:}
+il sistema ha modificato il colore della fonte di luce secondo le richieste dell'utente. \\ \\
+\textbf{Scenario Principale:}
+\begin{itemize}
+\item l’utente sceglie la componente di luce che vuole modificare (UC1.2.7.4.1)
+\item l'utente imposta i valori RGB (UC1.2.7.4.2)
+\\ \\ \end{itemize}
+\begin{figure}[h!]
+\centering
+\includegraphics[width=\textwidth]{{{UC1.2.7.4}}}
+\caption{UC1.2.7.4 Modifica colore componenti luce}
+\label{UC1.2.7.4}
+\end{figure}
+
+
+\subsection{UC1.2.7.4.1 Seleziona componente luce}
+\textbf{Diagramma associato:}
+\ref{UC1.2.7.4.1} \\ \\
+\textbf{Attori Coinvolti:}
+Utente. \\ \\
+\textbf{Scopo e Descrizione:}
+un utente deve poter selezionare la componente di luce il cui colore vuole modificare. \\ \\
+\textbf{Precondizione:}
+il sistema è in attesa di input per la modifica del colore della componente della fonte di luce. \\ \\
+\textbf{Postcondizione:}
+il sistema ha in memoria la scena 3D e conosce la componente della fonte di luce selezionata dall’utente. \\ \\
+\textbf{Scenario Principale:}
+\begin{itemize}
+\item l’utente seleziona la componente ambient (UC1.2.7.4.1.1)
+\item l’utente seleziona la componente specular (UC1.2.7.4.1.2)
+\item l’utente seleziona la componente diffuse (UC1.2.7.4.1.3)
+\\ \\ \end{itemize}
+\begin{figure}[h!]
+\centering
+\includegraphics[width=\textwidth]{{{UC1.2.7.4.1}}}
+\caption{UC1.2.7.4.1 Seleziona componente luce}
+\label{UC1.2.7.4.1}
+\end{figure}
+
+
+\subsection{UC1.2.7.4.1.1 Seleziona componente ambient}
+\textbf{Diagramma associato:}
+\ref{UC1.2.7.4.1} \\ \\
+\textbf{Attori Coinvolti:}
+Utente. \\ \\
+\textbf{Scopo e Descrizione:}
+un utente deve poter selezionare la componente ambient di una fonte di luce. \\ \\
+\textbf{Precondizione:}
+il sistema è in attesa che l'utente scelga la componente il cui colore vuole cambiare. \\ \\
+\textbf{Postcondizione:}
+il sistema sa che l'utente ha selezionato la componente ambient. \\ \\
+\textbf{Scenario Principale:}
+\begin{itemize}
+\item l'utente seleziona la componente ambient
+\\ \\ \end{itemize}
+
+
+\subsection{UC1.2.7.4.1.2 Seleziona componente specular}
+\textbf{Diagramma associato:}
+\ref{UC1.2.7.4.1} \\ \\
+\textbf{Attori Coinvolti:}
+Utente. \\ \\
+\textbf{Scopo e Descrizione:}
+un utente deve poter selezionare la componente specular di una fonte di luce. \\ \\
+\textbf{Precondizione:}
+il sistema è in attesa che l'utente scelga la componente il cui colore vuole cambiare. \\ \\
+\textbf{Postcondizione:}
+il sistema sa che l'utente ha selezionato la componente specular. \\ \\
+\textbf{Scenario Principale:}
+\begin{itemize}
+\item l'utente seleziona la componente specular
+\\ \\ \end{itemize}
+
+
+\subsection{UC1.2.7.4.1.3 Seleziona componente diffuse}
+\textbf{Diagramma associato:}
+\ref{UC1.2.7.4.1} \\ \\
+\textbf{Attori Coinvolti:}
+Utente. \\ \\
+\textbf{Scopo e Descrizione:}
+un utente deve poter selezionare la componente diffuse di una fonte di luce. \\ \\
+\textbf{Precondizione:}
+il sistema è in attesa che l'utente scelga la componente il cui colore vuole cambiare. \\ \\
+\textbf{Postcondizione:}
+il sistema sa che l'utente ha selezionato la componente diffuse. \\ \\
+\textbf{Scenario Principale:}
+\begin{itemize}
+\item l'utente seleziona la componente diffuse
+\\ \\ \end{itemize}
+
+
+\subsection{UC1.2.7.4.2 Imposta valori RGB}
+\textbf{Diagramma associato:}
+\ref{UC1.2.7.4.2} \\ \\
+\textbf{Attori Coinvolti:}
+Utente. \\ \\
+\textbf{Scopo e Descrizione:}
+un utente deve poter impostare i valori RGB di una componente di luce. \\ \\
+\textbf{Precondizione:}
+il sistema conosce la componente selezionata (UC1.2.7.4.1), ed è in attesa di input per la modifica del colore. \\ \\
+\textbf{Postcondizione:}
+il sistema conosce i valori RGB impostati dall'utente. \\ \\
+\textbf{Scenario Principale:}
+\begin{itemize}
+\item l'utente imposta il valore red (UC1.2.7.4.2.1)
+\item l'utente imposta il valore green (UC1.2.7.4.2.2)
+\item l'utente imposta il valore blue (UC1.2.7.4.2.3)
+\\ \\ \end{itemize}
+\begin{figure}[h!]
+\centering
+\includegraphics[width=\textwidth]{{{UC1.2.7.4.2}}}
+\caption{UC1.2.7.4.2 Imposta valori RGB}
+\label{UC1.2.7.4.2}
+\end{figure}
+
+
+\subsection{UC1.2.7.4.2.1 Imposta valore red}
+\textbf{Diagramma associato:}
+\ref{UC1.2.7.4.2} \\ \\
+\textbf{Attori Coinvolti:}
+Utente. \\ \\
+\textbf{Scopo e Descrizione:}
+un utente deve poter impostare il valore red di una componente di una fonte di luce. \\ \\
+\textbf{Precondizione:}
+il sistema è in attesa di input per quanto riguarda i valori RGB. \\ \\
+\textbf{Postcondizione:}
+il sistema conosce il valore red impostato dall'utente. \\ \\
+\textbf{Scenario Principale:}
+\begin{itemize}
+\item l'utente imposta il valore red
+\\ \\ \end{itemize}
+
+
+\subsection{UC1.2.7.4.2.2 Imposta valore green}
+\textbf{Diagramma associato:}
+\ref{UC1.2.7.4.2} \\ \\
+\textbf{Attori Coinvolti:}
+Utente. \\ \\
+\textbf{Scopo e Descrizione:}
+un utente deve poter impostare il valore green di una componente di una fonte di luce. \\ \\
+\textbf{Precondizione:}
+il sistema è in attesa di input per quanto riguarda i valori RGB. \\ \\
+\textbf{Postcondizione:}
+il sistema conosce il valore green impostato dall'utente. \\ \\
+\textbf{Scenario Principale:}
+\begin{itemize}
+\item l'utente imposta il valore green
+\\ \\ \end{itemize}
+
+
+\subsection{UC1.2.7.4.2.3 Imposta valore blue}
+\textbf{Diagramma associato:}
+\ref{UC1.2.7.4.2} \\ \\
+\textbf{Attori Coinvolti:}
+Utente. \\ \\
+\textbf{Scopo e Descrizione:}
+un utente deve poter impostare il valore blue di una componente di una fonte di luce. \\ \\
+\textbf{Precondizione:}
+il sistema è in attesa di input per quanto riguarda i valori RGB. \\ \\
+\textbf{Postcondizione:}
+il sistema conosce il valore blue impostato dall'utente. \\ \\
+\textbf{Scenario Principale:}
+\begin{itemize}
+\item l'utente imposta il valore blue
+\\ \\ \end{itemize}
+
+
+\subsection{UC1.2.7.5 Modifica tipologia luce}
+\textbf{Diagramma associato:}
+\ref{UC1.2.7.5} \\ \\
+\textbf{Attori Coinvolti:}
+Utente. \\ \\
+\textbf{Scopo e Descrizione:}
+un utente deve poter modificare la tipologia corrente di una fonte di luce. \\ \\
+\textbf{Precondizione:}
+il sistema è in attesa che l'utente selezioni una funzionalità di modifica delle caratteristiche della fonte di luce. \\ \\
+\textbf{Postcondizione:}
+il sistema ha modificato la tipologia della fonte di luce corrente secondo le richieste utente. \\ \\
+\textbf{Scenario Principale:}
+\begin{itemize}
+\item l'utente modifica la tipologia di luce corrente in \underline{spotlight} (UC1.2.7.5.1)
+\item l'utente modifica la tipologia di luce corrente in \underline{omni light} (UC1.2.7.5.2)
+\item l'utente modifica la tipologia di luce corrente in \underline{directional light} (UC1.2.7.5.3)
+\\ \\ \end{itemize}
+\begin{figure}[h!]
+\centering
+\includegraphics[width=\textwidth]{{{UC1.2.7.5}}}
+\caption{UC1.2.7.5 Modifica tipologia luce}
+\label{UC1.2.7.5}
+\end{figure}
+
+
+\subsection{UC1.2.7.5.1 Modifica la tipologia di luce corrente in spotlight}
+\textbf{Diagramma associato:}
+\ref{UC1.2.7.5} \\ \\
+\textbf{Attori Coinvolti:}
+Utente. \\ \\
+\textbf{Scopo e Descrizione:}
+un utente deve poter modificare la tipologia corrente di una fonte di luce in spotlight. \\ \\
+\textbf{Precondizione:}
+il sistema è in attesa di input per quanto riguarda la modifica della tipologia di luce corrente. \\ \\
+\textbf{Postcondizione:}
+il sistema conosce la richiesta di modifica tipologia corrente di luce in spotlight. \\ \\
+\textbf{Scenario Principale:}
+\begin{itemize}
+\item l'utente imposta la tipologia di luce corrente in spotlight
+\\ \\ \end{itemize}
+
+
+\subsection{UC1.2.7.5.2 Modifica la tipologia di luce corrente in omni light}
+\textbf{Diagramma associato:}
+\ref{UC1.2.7.5} \\ \\
+\textbf{Attori Coinvolti:}
+Utente. \\ \\
+\textbf{Scopo e Descrizione:}
+un utente deve poter modificare la tipologia corrente di una fonte di luce in omni light. \\ \\
+\textbf{Precondizione:}
+il sistema è in attesa di input per quanto riguarda la modifica della tipologia di luce corrente. \\ \\
+\textbf{Postcondizione:}
+il sistema conosce la richiesta di modifica tipologia corrente di luce in omni light. \\ \\
+\textbf{Scenario Principale:}
+\begin{itemize}
+\item l'utente imposta la tipologia di luce corrente in omni light
+\\ \\ \end{itemize}
+
+
+\subsection{UC1.2.7.5.3 Modifica la tipologia di luce corrente in directional light}
+\textbf{Diagramma associato:}
+\ref{UC1.2.7.5} \\ \\
+\textbf{Attori Coinvolti:}
+Utente. \\ \\
+\textbf{Scopo e Descrizione:}
+un utente deve poter modificare la tipologia corrente di una fonte di luce in directional light. \\ \\
+\textbf{Precondizione:}
+il sistema è in attesa di input per quanto riguarda la modifica della tipologia di luce corrente. \\ \\
+\textbf{Postcondizione:}
+il sistema conosce la richiesta di modifica tipologia corrente di luce in directional light. \\ \\
+\textbf{Scenario Principale:}
+\begin{itemize}
+\item l'utente imposta la tipologia di luce corrente in directional light
+\\ \\ \end{itemize}
+
+
+\subsection{UC1.3 Esporta modello 3D}
+\textbf{Diagramma associato:}
+\ref{UC1.3} \\ \\
+\textbf{Attori Coinvolti:}
+Utente. \\ \\
+\textbf{Scopo e Descrizione:}
+un utente deve poter scegliere in che formato esportare la scena 3D, scegliere la \underline{directory} di destinazione e il nome del file. La scelta del formato comporta la scelta della precisione. \\ \\
+\textbf{Precondizione:}
+il sistema ha in memoria la scena 3D caricata in precedenza (UC1.1), il sistema è in attesa che l'utente selezioni una funzionalità. \\ \\
+\textbf{Postcondizione:}
+il sistema ha esportato la scena 3D secondo le richieste dell’utente. \\ \\
+\textbf{Scenario Principale:}
+\begin{itemize}
+\item l’utente sceglie il formato verso il quale esportare (UC1.3.1)
+\item l’utente sceglie la precisione (UC1.3.2)
+\item l’utente sceglie la directory di destinazione (UC1.3.3)
+\item l’utente sceglie il nome del file (UC1.3.4)
+\\ \\ \end{itemize}
+\begin{figure}[h!]
+\centering
+\includegraphics[width=\textwidth]{{{UC1.3}}}
+\caption{UC1.3 Esporta modello 3D}
+\label{UC1.3}
+\end{figure}
+
+
+\subsection{UC1.3.1 Seleziona formato}
+\textbf{Diagramma associato:}
+\ref{UC1.3.1} \\ \\
+\textbf{Attori Coinvolti:}
+Utente. \\ \\
+\textbf{Scopo e Descrizione:}
+un utente deve poter scegliere il formato verso il quale esportare. \\ \\
+\textbf{Precondizione:}
+il sistema è in attesa di input per quanto riguarda l'esportazione. \\ \\
+\textbf{Postcondizione:}
+il sistema conosce il formato scelto dall’utente. \\ \\
+\textbf{Scenario Principale:}
+\begin{itemize}
+\item l’utente sceglie il formato JSON (UC1.3.1.1)
+\item l’utente sceglie il formato XML
+\\ \\ \end{itemize}
+\begin{figure}[h!]
+\centering
+\includegraphics[width=\textwidth]{{{UC1.3.1}}}
+\caption{UC1.3.1 Seleziona formato}
+\label{UC1.3.1}
+\end{figure}
+
+
+\subsection{UC1.3.1.1 Seleziona formato JSON}
+\textbf{Diagramma associato:}
+\ref{UC1.3.1.1} \\ \\
+\textbf{Attori Coinvolti:}
+Utente. \\ \\
+\textbf{Scopo e Descrizione:}
+un utente deve poter scegliere se esportare la scena 3D in JSON “compatto” o “leggibile”. \\ \\
+\textbf{Precondizione:}
+il sistema è in attesa di input per quanto riguarda il formato di esportazione. \\ \\
+\textbf{Postcondizione:}
+il sistema conosce il tipo di formato JSON scelto dall’utente. \\ \\
+\textbf{Scenario Principale:}
+\begin{itemize}
+\item  l’utente sceglie il formato JSON “compatto”
+\item l’utente sceglie il formato JSON ”leggibile”
+\\ \\ \end{itemize}
+\begin{figure}[h!]
+\centering
+\includegraphics[width=\textwidth]{{{UC1.3.1.1}}}
+\caption{UC1.3.1.1 Seleziona formato JSON}
+\label{UC1.3.1.1}
+\end{figure}
+
+
+\subsection{UC1.3.1.1.1 Seleziona formato JSON compatto}
+\textbf{Diagramma associato:}
+\ref{UC1.3.1.1} \\ \\
+\textbf{Attori Coinvolti:}
+Utente. \\ \\
+\textbf{Scopo e Descrizione:}
+un utente deve poter esportare la scena 3D nel formato JSON "compatto". \\ \\
+\textbf{Precondizione:}
+il sistema è in attesa di input per quanto riguarda il tipo JSON di esportazione. \\ \\
+\textbf{Postcondizione:}
+il sistema conosce il formato del file di esportazione scelto dall'utente. \\ \\
+\textbf{Scenario Principale:}
+\begin{itemize}
+\item l'utente seleziona il formato JSON "compatto"
+\\ \\ \end{itemize}
+
+
+\subsection{UC1.3.1.1.2 Seleziona formato JSON leggibile}
+\textbf{Diagramma associato:}
+\ref{UC1.3.1.1} \\ \\
+\textbf{Attori Coinvolti:}
+Utente. \\ \\
+\textbf{Scopo e Descrizione:}
+un utente deve poter esportare la scena 3D nel formato JSON "leggibile". \\ \\
+\textbf{Precondizione:}
+il sistema è in attesa di input per quanto riguarda il tipo JSON di esportazione. \\ \\
+\textbf{Postcondizione:}
+il sistema conosce il formato del file di esportazione scelto dall'utente. \\ \\
+\textbf{Scenario Principale:}
+\begin{itemize}
+\item l'utente seleziona il formato JSON "leggibile"
+\\ \\ \end{itemize}
+
+
+\subsection{UC1.3.1.2 Seleziona formato XML}
+\textbf{Diagramma associato:}
+\ref{UC1.3.1} \\ \\
+\textbf{Attori Coinvolti:}
+Utente. \\ \\
+\textbf{Scopo e Descrizione:}
+un utente deve poter esportare la scena 3D nel formato XML. \\ \\
+\textbf{Precondizione:}
+il sistema è in attesa di input per quanto riguarda il formato di esportazione. \\ \\
+\textbf{Postcondizione:}
+il sistema conosce il formato del file di esportazione scelto dall'utente. \\ \\
+\textbf{Scenario Principale:}
+\begin{itemize}
+\item l'utente seleziona il formato XML
+\\ \\ \end{itemize}
+
+
+\subsection{UC1.3.2 Sceglie precisione}
+\textbf{Diagramma associato:}
+\ref{UC1.3.2} \\ \\
+\textbf{Attori Coinvolti:}
+Utente. \\ \\
+\textbf{Scopo e Descrizione:}
+un utente deve poter scegliere se esportare la scena 3D in singola o doppia precisione. \\ \\
+\textbf{Precondizione:}
+il sistema conosce il formato di esportazione, ed è in attesa di input per quanto riguarda l'esportazione. \\ \\
+\textbf{Postcondizione:}
+il sistema conosce la precisione scelta dall’utente. \\ \\
+\textbf{Scenario Principale:}
+\begin{itemize}
+\item l’utente sceglie la precisione float
+\item l’utente sceglie la precisione double
+\\ \\ \end{itemize}
+\begin{figure}[h!]
+\centering
+\includegraphics[width=\textwidth]{{{UC1.3.2}}}
+\caption{UC1.3.2 Sceglie precisione}
+\label{UC1.3.2}
+\end{figure}
+
+
+\subsection{UC1.3.2.1 Seleziona precisione float}
+\textbf{Diagramma associato:}
+\ref{UC1.3.2} \\ \\
+\textbf{Attori Coinvolti:}
+Utente. \\ \\
+\textbf{Scopo e Descrizione:}
+un utente deve poter esportare la scena 3D in singola precisione. \\ \\
+\textbf{Precondizione:}
+il sistema è in attesa di input per quanto riguarda la precisione dell'esportazione. \\ \\
+\textbf{Postcondizione:}
+il sistema conosce la precisione scelta dall’utente. \\ \\
+\textbf{Scenario Principale:}
+\begin{itemize}
+\item l'utente sceglie la precisione float
+\\ \\ \end{itemize}
+
+
+\subsection{UC1.3.2.2 Seleziona precisione double}
+\textbf{Diagramma associato:}
+\ref{UC1.3.2} \\ \\
+\textbf{Attori Coinvolti:}
+Utente. \\ \\
+\textbf{Scopo e Descrizione:}
+un utente deve poter esportare la scena 3D in doppia precisione. \\ \\
+\textbf{Precondizione:}
+il sistema ha in memoria la scena 3D caricata in precedenza e conosce il formato verso il quale l’utente vuole esportare (UC1.3.1). \\ \\
+\textbf{Postcondizione:}
+il sistema conosce la precisione scelta dall’utente. \\ \\
+\textbf{Scenario Principale:}
+\begin{itemize}
+\item l'utente sceglie la precisione double
+\\ \\ \end{itemize}
+
+
+\subsection{UC1.3.3 Sceglie directory destinazione}
+\textbf{Diagramma associato:}
+\ref{UC1.3} \\ \\
+\textbf{Attori Coinvolti:}
+Utente. \\ \\
+\textbf{Scopo e Descrizione:}
+un utente deve poter scegliere la directory di destinazione del file di esportazione. \\ \\
+\textbf{Precondizione:}
+il sistema conosce il formato di esportazione, ed è in attesa di input per quanto riguarda l'esportazione. \\ \\
+\textbf{Postcondizione:}
+il sistema conosce la directory di destinazione selezionata dall'utente. \\ \\
+\textbf{Scenario Principale:}
+\begin{itemize}
+\item l'utente seleziona la directory di destinazione
+\\ \\ \end{itemize}
+
+
+\subsection{UC1.3.4 Sceglie nome file}
+\textbf{Diagramma associato:}
+\ref{UC1.3} \\ \\
+\textbf{Attori Coinvolti:}
+Utente. \\ \\
+\textbf{Scopo e Descrizione:}
+un utente deve poter scegliere il nome del file di esportazione. \\ \\
+\textbf{Precondizione:}
+il sistema conosce il formato di esportazione, è in attesa di input per quanto riguarda l'esportazione, e conosce la directory di destinazione. \\ \\
+\textbf{Postcondizione:}
+il sistema conosce il nome del file scelto dall'utente. \\ \\
+\textbf{Scenario Principale:}
+\begin{itemize}
+\item l'utente sceglie il nome del file
+\\ \\ \end{itemize}
+
+
+\subsection{UC1.4 Visualizza anteprima scena 3D}
+\textbf{Diagramma associato:}
+\ref{UC1.4} \\ \\
+\textbf{Attori Coinvolti:}
+Utente. \\ \\
+\textbf{Scopo e Descrizione:}
+un utente deve poter visualizzare l’anteprima della scena 3D. \\ \\
+\textbf{Precondizione:}
+il sistema ha in memoria la scena 3D caricata in precedenza (UC1.1), il sistema è in attesa che l'utente selezioni una funzionalità. \\ \\
+\textbf{Postcondizione:}
+l sistema sta visualizzando la scena 3D secondo le richieste dell’utente. \\ \\
+\textbf{Scenario Principale:}
+\begin{itemize}
+\item l’utente visualizza l’anteprima semplice (UC1.4.1)
+\item  l’utente esegue il rendering
+\\ \\ \end{itemize}
+\begin{figure}[h!]
+\centering
+\includegraphics[width=\textwidth]{{{UC1.4}}}
+\caption{UC1.4 Visualizza anteprima scena 3D}
+\label{UC1.4}
+\end{figure}
+
+
+\subsection{UC1.4.1 Visualizza anteprima semplice}
+\textbf{Diagramma associato:}
+\ref{UC1.4.1} \\ \\
+\textbf{Attori Coinvolti:}
+Utente. \\ \\
+\textbf{Scopo e Descrizione:}
+un utente deve avere la possibilità di spostare il punto d’osservazione della scena 3D. \\ \\
+\textbf{Precondizione:}
+il sistema è in attesa che l'utente selezioni una funzionalità per l'anteprima 3D. \\ \\
+\textbf{Postcondizione:}
+il sistema ha in memoria la scena 3D e ha spostato il punto d’osservazione secondo le richieste dell’utente. \\ \\
+\textbf{Scenario Principale:}
+\begin{itemize}
+\item l’utente trasla  il punto d’osservazione
+\item l’utente ruota il punto d’osservazione attorno alla scena
+\\ \\ \end{itemize}
+\begin{figure}[h!]
+\centering
+\includegraphics[width=\textwidth]{{{UC1.4.1}}}
+\caption{UC1.4.1 Visualizza anteprima semplice}
+\label{UC1.4.1}
+\end{figure}
+
+
+\subsection{UC1.4.1.1 Trasla punto d'osservazione}
+\textbf{Diagramma associato:}
+\ref{UC1.4.1.1} \\ \\
+\textbf{Attori Coinvolti:}
+Utente. \\ \\
+\textbf{Scopo e Descrizione:}
+un utente deve poter traslare il \underline{punto d'osservazione} della scena 3D. \\ \\
+\textbf{Precondizione:}
+il sistema sta visualizzando un'anteprima semplice ed è in attesa che l'utente selezioni una funzionalità. \\ \\
+\textbf{Postcondizione:}
+il sistema ha in memoria la scena 3D ed ha traslato il punto d'osservazione della scena secondo l'input utente. \\ \\
+\textbf{Scenario Principale:}
+\begin{itemize}
+\item l'utente trasla il punto d'osservazione
+\\ \\ \end{itemize}
+\begin{figure}[h!]
+\centering
+\includegraphics[width=\textwidth]{{{UC1.4.1.1}}}
+\caption{UC1.4.1.1 Trasla punto d'osservazione}
+\label{UC1.4.1.1}
+\end{figure}
+
+
+\subsection{UC1.4.1.1.1 Avvicina punto di osservazione al centro della scena 3D}
+\textbf{Diagramma associato:}
+\ref{UC1.4.1.1} \\ \\
+\textbf{Attori Coinvolti:}
+Utente. \\ \\
+\textbf{Scopo e Descrizione:}
+un utente deve poter avvicinare il punto d'osservazione al centro della scena 3D. \\ \\
+\textbf{Precondizione:}
+il sistema è in attesa che l'utente selezioni una funzionalità per quanto riguarda la traslazione del punto di osservazione. \\ \\
+\textbf{Postcondizione:}
+il sistema ha avvicinato il punto di osservazione verso il centro della scena 3D. \\ \\
+\textbf{Scenario Principale:}
+\begin{itemize}
+\item l'utente sceglie di quanto avvicinare il punto di osservazione verso il centro della scena 3D
+\\ \\ \end{itemize}
+
+
+\subsection{UC1.4.1.1.2 Allontana punto di osservazione dal centro della scena 3D}
+\textbf{Diagramma associato:}
+\ref{UC1.4.1.1} \\ \\
+\textbf{Attori Coinvolti:}
+Utente. \\ \\
+\textbf{Scopo e Descrizione:}
+un utente deve poter allontanare il punto d'osservazione dal centro della scena 3D. \\ \\
+\textbf{Precondizione:}
+il sistema è in attesa che l'utente selezioni una funzionalità per quanto riguarda la traslazione del punto di osservazione. \\ \\
+\textbf{Postcondizione:}
+il sistema ha allontanato il punto di osservazione dal centro della scena 3D. \\ \\
+\textbf{Scenario Principale:}
+\begin{itemize}
+\item l'utente sceglie di quanto allontanare il punto di osservazione dal centro della scena 3D
+\\ \\ \end{itemize}
+
+
+\subsection{UC1.4.1.1.3 Imposta traslazione del punto di osservazione}
+\textbf{Diagramma associato:}
+\ref{UC1.4.1.1} \\ \\
+\textbf{Attori Coinvolti:}
+Utente. \\ \\
+\textbf{Scopo e Descrizione:}
+un utente deve poter impostare lo spostamento del punto di osservazione. \\ \\
+\textbf{Precondizione:}
+il sistema è in attesa che l'utente selezioni una funzionalità per quanto riguarda la traslazione del punto di osservazione. \\ \\
+\textbf{Postcondizione:}
+il sistema ha spostato il punto di osservazione secondo le specifiche richieste dell'utente. \\ \\
+\textbf{Scenario Principale:}
+\begin{itemize}
+\item l'utente sceglie i valori secondo i quali traslare il punto di osservazione della scena 3D
+\\ \\ \end{itemize}
+
+
+\subsection{UC1.4.1.2 Ruota il punto d'osservazione attorno alla scena 3D}
+\textbf{Diagramma associato:}
+\ref{UC1.4.1} \\ \\
+\textbf{Attori Coinvolti:}
+Utente. \\ \\
+\textbf{Scopo e Descrizione:}
+un utente deve poter ruotare il punto d'osservazione attorno alla scena 3D. \\ \\
+\textbf{Precondizione:}
+il sistema sta visualizzando un'anteprima semplice ed è in attesa che l'utente selezioni una funzionalità. \\ \\
+\textbf{Postcondizione:}
+il sistema ha in memoria la scena 3D ed ha ruotato il punto d'osservazione della scena 3D secondo l'input utente. \\ \\
+\textbf{Scenario Principale:}
+\begin{itemize}
+\item l'utente ruota il punto d'osservazione attorno alla scena
+\\ \\ \end{itemize}
+
+
+\subsection{UC1.4.2 Esegue rendering}
+\textbf{Diagramma associato:}
+\ref{UC1.4} \\ \\
+\textbf{Attori Coinvolti:}
+Utente. \\ \\
+\textbf{Scopo e Descrizione:}
+un utente deve poter eseguire il rendering della scena 3D. \\ \\
+\textbf{Precondizione:}
+il sistema è in attesa che l'utente selezioni una funzionalità per l'anteprima 3D. \\ \\
+\textbf{Postcondizione:}
+il sistema ha in memoria la scena 3D e propone all'utente l'immagine risultante dal rendering. \\ \\
+\textbf{Scenario Principale:}
+\begin{itemize}
+\item l'utente esegue il rendering
+\\ \\ \end{itemize}
+
+
+\subsection{UC1.5 Agisce sulla cronologia delle modifiche}
+\textbf{Diagramma associato:}
+\ref{UC1.5} \\ \\
+\textbf{Attori Coinvolti:}
+Utente. \\ \\
+\textbf{Scopo e Descrizione:}
+un utente deve poter agire sulle modifiche effettuate. \\ \\
+\textbf{Precondizione:}
+il sistema ha in memoria una scena 3D caricata in precedenza e la cronologia delle modifiche utente non è vuota (UC1.2). \\ \\
+\textbf{Postcondizione:}
+il sistema ha in memoria la scena 3D ed ha agito sulla cronologia delle modifiche secondo le richieste utente. \\ \\
+\textbf{Scenario Principale:}
+\begin{itemize}
+\item l'utente annulla l'ultima modifica effettuata
+\item l'utente ripete l'ultima modifica effettuata
+\\ \\ \end{itemize}
+\begin{figure}[h!]
+\centering
+\includegraphics[width=\textwidth]{{{UC1.5}}}
+\caption{UC1.5 Agisce sulla cronologia delle modifiche}
+\label{UC1.5}
+\end{figure}
+
+
+\subsection{UC1.5.1 Annulla ultima modifica}
+\textbf{Diagramma associato:}
+\ref{UC1.5} \\ \\
+\textbf{Attori Coinvolti:}
+Utente. \\ \\
+\textbf{Scopo e Descrizione:}
+un utente deve poter annullare l'ultima modifica effettuata. \\ \\
+\textbf{Precondizione:}
+il sistema è in attesa di input, lo stato corrente della scena 3D è diverso da quello iniziale (UC1.1). \\ \\
+\textbf{Postcondizione:}
+il sistema ha annullato l'ultima modifica effettuata, nella cronologia delle modifiche c'è almeno una modifica da ripetere. \\ \\
+\textbf{Scenario Principale:}
+\begin{itemize}
+\item l'utente annulla l'ultima modifica effettuata
+\\ \\ \end{itemize}
+
+
+\subsection{UC1.5.2 Ripeti ultima modifica}
+\textbf{Diagramma associato:}
+\ref{UC1.5} \\ \\
+\textbf{Attori Coinvolti:}
+Utente. \\ \\
+\textbf{Scopo e Descrizione:}
+un utente deve poter ripetere l'ultima modifica annullata. \\ \\
+\textbf{Precondizione:}
+il sistema è in attesa di input, nella cronologia delle modifiche ci sono delle modifiche da ripetere (UC1.5.1). \\ \\
+\textbf{Postcondizione:}
+il sistema ha ripetuto l'ultima modifica annullata. \\ \\
+\textbf{Scenario Principale:}
+\begin{itemize}
+\item l'utente ripete l'ultima modifica annullata
+\\ \\ \end{itemize}
+
+

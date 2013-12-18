@@ -1,0 +1,112 @@
+%questo file contiene impostazioni comuni per tutte i documenti
+
+%definizione packages utilizzati
+\documentclass[a4paper]{article}
+\usepackage[utf8x]{inputenc}
+\usepackage[italian]{babel}
+\usepackage{xparse}
+\usepackage{float}
+\usepackage{subfloat}
+\usepackage{subfig}
+\usepackage{fancyhdr}
+\usepackage{eurofont}
+\usepackage{lastpage}
+\usepackage{graphicx}
+\usepackage{textcomp}
+\usepackage{booktabs}
+\usepackage{color}
+\usepackage{lscape}
+\usepackage{hyperref}
+\hypersetup{colorlinks=true, linkcolor=black, anchorcolor=red, urlcolor=blue}
+\usepackage{longtable}
+\usepackage{tabularx}
+\usepackage{abstract}
+\usepackage{appendix}
+\usepackage{multicol}
+\usepackage{bmpsize}
+\usepackage[all]{hypcap}
+\oddsidemargin=.15in
+\evensidemargin=.15in
+\textwidth=6in
+\topmargin=-.5in
+\parindent=0in
+\headheight=1in
+\pagestyle{fancy}
+\lhead{
+\bfseries {\Large \TipoDocumento}\\
+\bfseries Versione: \Versione\\
+}
+\chead{}
+\lhead{
+\includegraphics[scale=0.455]{../Logo&Header/apertureHead.png}
+}
+\lfoot{\bfseries \TipoDocumento{} v\Versione}
+\cfoot{}
+\rfoot{\thepage\ of \mypageref{LastPage}}
+\newcommand{\mypageref}[1]{
+\hypersetup{linkcolor=black}\pageref{#1}\hypersetup{linkcolor=black}}
+%\userpackage{lipsum}
+\renewcommand{\footrulewidth}{0.4pt}
+
+%definizioni comandi comuni utilizzati
+\newcommand{\numref}[1]{\textsl{\nameref{#1} (\ref{#1})}}
+\newcommand{\NomeGruppo}{Aperture Software}
+\newcommand{\Progetto}{MaaP: MongoDB as an admin Platform}
+\newcommand{\Prop}{CoffeeStrap}
+
+%definizione tecnologie
+\newcommand{\Node}{Node.js}
+\newcommand{\NodeJS}{Node.js}
+\newcommand{\Nodejs}{Node.js}
+
+\newcommand{\mongodb}{MongoDB}
+
+%definizione comando per parola glossario
+\newcommand{\gloss}[1]{ {#1}\ped{\ped{\emph{G}}} }
+
+\newcommand{\grassetto}{\textbf}
+
+%per inserire immagini
+\newcommand{\immagine}[2]{ 
+\begin{center}
+\begin{figure}[H]
+\includegraphics[width=\textwidth]{{{#1}}}
+\caption{#2}
+\label{#1}
+\end{figure}
+\end{center}
+}
+
+\newcommand{\Glossario}{
+Al fine di evitare ogni ambiguità nella comprensione del linguaggio utilizzato nel presente documento e, in generale, nella documentazione fornita dal gruppo \NomeGruppo{}, ogni termine tecnico, di difficile comprensione o di necessario approfondimento verrà inserito nel documento \emph{Glossario\_{}v\versioneGlossario{}.pdf}.\\
+Saranno in esso definiti e descritti tutti i termini in corsivo e allo stesso tempo marcati da una lettera "G" maiuscola in pedice nella documentazione fornita.
+}
+
+\newcommand{\Prodotto}{
+Lo scopo del progetto è produrre un framework per generare interfacce web di amministrazione dei dati di business basati sullo stack \Nodejs{} e \mongodb{}.\\
+L'obbiettivo è quello di semplificare il lavoro allo sviluppatore che dovrà rispondere in modo rapido e standard alle richieste degli esperti di business.
+}
+
+%inizio pagina del documento 
+\begin{document}
+\thispagestyle{empty}
+
+\begin{center}\centerline{
+%inserisco il logo grande della prima pagina
+\includegraphics[scale=0.8]{../Logo&Header/logo.png}}
+
+%metto il link dell'email sotto al logo
+%{\href{mailto:ApertureSWE@gmail.com}{\color[rgb]{0.39,0.37,0.38}%ApertureSWE@gmail.com}}\\ [3pc]
+
+\vspace{0.8in}
+
+%titolo del progetto
+{\Huge {\Progetto}}\\[.5pc]
+
+\underline{\hspace{6in}}\\[8pc]
+
+{\Huge {\TipoDocumento}}\\[1pc]
+%{\emph{Versione \Versione}}\\
+\end{center}
+
+%\vspace{.05in}

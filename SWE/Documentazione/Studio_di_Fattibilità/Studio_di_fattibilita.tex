@@ -1,0 +1,183 @@
+%"variabili globali" che verranno aggiornate in tutte le pagine/footer
+% per inserire nuove macro ->  \newcommand{\nomeMacro}{valoreMacro}
+
+%includo il file che contiene la versione dei documenti
+\input{../Logo&Header/versioneDocumenti.tex}
+
+\newcommand{\Versione}{\versioneStudioDiFattibilita{}}	%Versione Finale
+\newcommand{\Data}{2013-12-01}							%Data di creazione
+\newcommand{\DataUltimaModifica}{2013-12-08}
+\newcommand{\TipoDocumento}{Studio di Fattibilit\'a}	%tipo documento
+
+%includo il file header.tex (logo grande in prima pagina piu qualche altra regola)
+\input{../Logo&Header/header.tex}
+
+%\vspace{.05in}
+
+%informazioni documento
+\begin{center}
+%\section{Informazioni documento}
+\begin{tabular}{r|l}
+%\textbf{Nome} &\TipoDocumento \\
+\textbf{Versione} & \Versione{} \\
+\textbf{Data creazione} & \Data{} \\
+\textbf{Data ultima modifica} & \DataUltimaModifica{} \\
+\textbf{Stato del Documento} & Formale \\		%CAMBIARE QUI
+\textbf{Uso del Documento} & Interno \\			%CAMBIARE QUI
+\textbf{Redazione} & Alberto Garbui\\			%CAMBIARE QUI
+\textbf{Verifica} & Fabio Miotto, Michele Maso\\%ED ANCHE QUI!
+\textbf{Approvazione} & Mattia\\				%CAMBIARE QUI
+\textbf{Distribuzione} & \parbox[t]{4cm}{\NomeGruppo{} \\ Prof. Tullio Vardanega \\ Prof. Riccardo Cardin \\ \Prop{} }\\
+\end{tabular}
+\end{center}
+
+\vspace{0.05in}
+
+%inizio sommario del documento
+\begin{abstract}
+\begin{center}
+Questo documento si propone di effettuare un'analisi di fattbilita' dei capitolati proposti\Prop{}.
+\end{center}
+\end{abstract}
+
+%\vspace{.4in}
+
+%seconda pagina, diario delle modifiche
+\newpage
+Diario delle modifiche
+\begin{center}
+\begin{longtable}{|c|c|c|p{0.5\linewidth}|}
+\toprule
+\textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Modifiche effettuate}\\
+
+%aggiungere qui una midrule per aggiungere una nuova riga alla tabella
+
+\midrule
+0.2 & 2013-12-05 & Alberto Garbui (AN) & Aggiunto capitolo 1\\
+\midrule
+0.1 & 2013-12-01 & Alberto Garbui (AN) & Creazione documento\\
+
+\bottomrule
+\caption{Registro delle modifiche}
+\label{tab:changelog}
+\end{longtable}
+\end{center}
+
+%terza pagina Indice (viene aggiornato in automatico con due compilazioni)
+\newpage
+\tableofcontents
+
+%pagine successive hanno la lista di tabelle e lista delle figure
+%(vengono aggiornate in automatico)
+\newpage
+\listoftables
+\listoffigures
+
+%qui inizia la prima pagina ufficiale
+\newpage
+\section{Introduzione}%1.0
+\label{1.0}
+\subsection{Scopo del documento}%1.1
+\label{1.1}
+Questo documento nasce con lo scopo di descrivere le considerazioni e le motivazioni che hanno portato il gruppo alla scelta del capitolato C2. Vengono inoltre riportate le valutazioni sugli altri capitolati proposti e le motivazioni che hanno portato alla loro esclusione.
+
+\subsection{Glossario}%1.2
+\label{1.2}
+\Glossario{}
+
+\subsection{Riferimenti} %1.3
+\label{1.3}
+
+\begin{itemize}
+\item Capitolato d’appalto C1: MaaP: MongoDB as an admin Platform\\
+\url{http://www.math.unipd.it/~tullio/IS-1/2013/Progetto/C1.pdf};
+\item Capitolato d’appalto C2: RING: Residue Interaction Network Generator\\
+\url{http://www.math.unipd.it/~tullio/IS-1/2013/Progetto/C2.pdf};
+\item Capitolato d’appalto C3: Romeo: Medical Imaging Cluster Analysis Tool\\
+\url{http://www.math.unipd.it/~tullio/IS-1/2013/Progetto/C3.pdf};
+\item Capitolato d’appalto C4: Seq: Gestore di processi sequenziali con esecuzione da smartphone\\
+\url{http://www.math.unipd.it/~tullio/IS-1/2013/Progetto/C4.pdf};
+\item Capitolato d’appalto C5: SGAD: Social Game con Architettura Distribuita\\
+\url{http://www.math.unipd.it/~tullio/IS-1/2013/Progetto/C5.pdf}.
+\end{itemize}
+
+\newpage
+\section{Capitolato C1, \Progetto{}}%2.0
+\label{2}
+Il capitolato proposto da CoffeeStrap propone di sviluppare un framework ad alto livello che permetta la facile creazione di pagine web per la visualizzazione e la modifica di dati provenienti da MongoDB.
+\subsection{Studio del dominio applicativo} %2.1
+\label{2.1}
+Sempre più frequentemente agli sviluppatori viene richiesto di fornire in modo rapido strumenti per la gestione di dati business accessibili anche da utenti inesperti.
+Il capitolato affronta il difficile problema di fornire loro uno strumento per la creazione di pagine web adatte alla visualizzazione e modifica di dati business, che potrà essere usato ogni qualvolta si abbia bisogno di rispondere in modo rapido e standard a tali richieste.
+\subsection{Studio del dominio tecnologico} %2.1
+\label{2.2}
+Il dominio applicativo principale saranno le applicazioni web, principalmente server side, e la gestione di database.
+Nello specifico le principali tecnologie che verranno utilizzate saranno le seguenti:
+\begin{itemize}
+\item Node.js per la realizzazione della struttura server side;
+\item Express per la realizzazione dell’infrastruttura della web application generata;
+\item Mongoose.js  per l’interfacciamento con il database;
+\item MongoDB per il recupero e l’eventuale archiviazione dei dati;
+\item Javascript per la gestione dei dati su MongoDB e funzioni ausiliarie.
+\end{itemize}
+\subsection{Studio del mercato} 
+\label{2.3}
+Come si evince dal capitolato, gli strumenti per la gestione dinamica e veloce di pagine web per l’amministrazione di database NoSQL sono molteplici e in rapida espansione a causa della grande richiesta del mercato, che cerca sempre di più di avvicinare lo sviluppatore e l’utente finale in modo da facilitare al primo il lavoro, al secondo l’utilizzo. Le potenzialità si intravedono quando nel capitolato viene richiesto che lo stack tecnologico si basi su Node.js, applicazione per lo sviluppo web molto potente ed efficiente, e su MongoDB, database non relazionale che permette una maggiore semplicità del processo di modellazione dei dati, una migliore propensione allo scaling orizzontale del database e un controllo maggiore della disponibilità dei dati rispetto a modelli relazionali.
+\subsection{Studio delle criticità} 
+\label{2.4}
+Le principali criticità che si intravedono fin da subito sono la complessità che può avere l’astrarre dati da un database NoSQL e presentarli in forma semplice all’utente, nascondendo tutta la complessità gestionale dietro al framework. 
+Inoltre, nel caso si decida di implementare la possibilità di creare documenti, come segnalato nel capitolato, tale funzionalità “\emph {potrebbe corrompere il funzionamento delle applicazioni che fanno riferimento al database}”.
+Un ultima grande criticità la pone la creazione del DLS, che dovrà essere implementato con estrema precisione, eliminando qualsiasi ambiguità e con un  livello di astrazione adeguato allo scopo.Un ultima grande criticità la pone la creazione del DLS, che dovrà essere implementato con estrema precisione, eliminando qualsiasi ambiguità e con un  livello di astrazione adeguato allo scopo.
+\subsection{Valutazione finale} 
+\label{2.5}
+Il capitolato in questione presenta aspetti molto interessanti sotto molteplici punti di vista. Tecnologie come javascript e node.js promettono di avere un ruolo di primo piano nell’informatica dei prossimi anni. Alla luce di ciò l’apprendimento di tali tecnologie costituisce senza dubbio un’opportunità preziona per incrementare il proprio bagaglio di conoscenze. Alcuni componenti del gruppo hanno gia’ delle conoscenze basiche delle tecnologie richieste, e questo non puo’ che portare un vantaggio e una facilitazione dell’apprendimento anche per il resto del gruppo. Infine la proposta di sviluppare un framework e’ stata valutata come originale e interessante ed è riuscita a catturare l’attenzione e la curiosita’ di tutti i componenti del gruppo. Per tutte queste motivazioni il gruppo ha scelto il capitolato C1 come progetto da sviluppare.
+
+\newpage
+\section{Altri capitolati}%2.0
+\label{3}
+\subsection{Capitolato C2, RING: Residue Interaction Network Generator} 
+\label{3.1}
+\subsubsection{Valutazione generale} 
+Si è valutato di scartare il capitolato per i seguenti motivi:
+\begin{itemize}
+\item Scarso interesse del gruppo verso il settore tecnologico del capitolato e verso il settore di sviluppo;
+\item Dipendenza da software precedentemente esistenze.
+\end{itemize}
+\subsubsection{Potenziali criticità} 
+Era richiesto lo sviluppo di un plug-in per un programma gia’ esistente, pertanto il fatto di doversi interfacciare con qualcosa di completamente sconosciuto avrebbe potuto essere fonte di grandi problemi.
+\subsection{Capitolato C3,  Romeo: Medical Imaging Cluster Analysis Tool} 
+\label{3.2}
+\subsubsection{Valutazione generale} 
+Questo capitolato era una valida alternativa a Maap ed una possibile scelta del gruppo. Tuttavia, si è deciso di non scegliere il seguente capitolato per i seguenti motivi:
+\begin{itemize}
+\item Nessuna nuova tecnologia da imparare;
+\item Scarsa competenza nel dominio applicativo.
+\end{itemize}
+\subsubsection{Potenziali delle criticità} 
+La completa ignoranza in campo medico del team avrebbe reso necessario uno strettissimo rapporto con il proponente al fine di garantire che le sue aspettative venissero soddisfatte. Garantire questo tipo di rapporto e’ molto oneroso e non sempre fattibile.
+\subsection{Capitolato C4,  Seq: Gestore di processi sequenziali con esecuzione da smartphone} 
+\label{3.3}
+\subsubsection{Valutazione generale} 
+Si e’ scelto di non sviluppare il capitolato per le seguenti ragioni:
+\begin{itemize}
+\item I requisiti e le funzionalita’ del programma sono parse troppo vaghe ed elusive;
+\item Nessun componente del team era particolarmente interessato all’ambiente mobile.
+\end{itemize}
+\subsection{Capitolato C5,  SGAD: Social Game con Architettura Distribuita} 
+\label{3.5}
+\subsubsection{Valutazione generale} 
+Durante l’analisi il gruppo ha evidenziato i seguenti aspetti positivi:
+\begin{itemize}
+\item Interessanti nuove tecnologie con cui sviluppare il progetto;
+\item Interessante la gestione della concorrenza ed il modello ad attori.
+\end{itemize}
+Le seguenti criticita’ hanno portato all’eliminazione del capitolato dalle possibili scelte:
+\begin{itemize}
+\item La concorrenza e’ estremamente complessa da implementare correttamente;
+\item La larga scala su cui doveva essere implementato il progetto avrebbe reso molto difficili i test di funzionamento.
+\end{itemize}
+\subsubsection{Potenziali criticita'} 
+Nonostante i proponenti si fossero gentilmente offerti di affittare un server di Amazon per i test, l’implementazione dell’infrastruttura su di essi avrebbe potuto rivelarsi molto difficoltosa e onerosa in termini di tempo. Non avrebbe inoltre assicurato le stesse prestazioni su server com impostazione differenti.
+
+%FINE DOCUMENTO NON CANCELLARE
+\end{document}
