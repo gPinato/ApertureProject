@@ -1,0 +1,72 @@
+%comandi per generare i casi d'uso:
+
+%comando per inserire un item nella lista
+\newcommand{\inserisciItem}[1]{\item #1 }
+
+%comando per generare una lista completa, necessita del package xparse
+\NewDocumentCommand{\scenario}{>{\SplitList{|}}m}
+{
+	\textbf{Scenario Principale:}
+	\begin{enumerate}
+		\ProcessList{#1}{\inserisciItem}
+	\end{enumerate}
+}
+
+\NewDocumentCommand{\scenarioAlt}{>{\SplitList{|}}m}
+{
+	\textbf{Scenario Alternativo:}
+	\begin{enumerate}
+		\ProcessList{#1}{\inserisciItem}
+	\end{enumerate}
+}
+
+\NewDocumentCommand{\lista}{>{\SplitList{;}}m}
+{
+	\begin{itemize}
+		\ProcessList{#1}{\inserisciItem}
+	\end{itemize}
+}
+
+\NewDocumentCommand{\inclusioni}{>{\SplitList{|}}m}
+{
+	\textbf{Inclusioni:}
+	\begin{itemize}
+		\ProcessList{#1}{\inserisciItem}
+	\end{itemize}
+}
+
+\NewDocumentCommand{\estensioni}{>{\SplitList{|}}m}
+{
+	\textbf{Estensioni:}
+	\begin{itemize}
+		\ProcessList{#1}{\inserisciItem}
+	\end{itemize}
+}
+
+%\UC{nome}{descrizione}{attori}{scopo e descrizione}{pre}{scenario1;scenario2;...}{post}
+\newcommand{\UCtitle}[2]{
+\subsection{{#1}: {#2}}
+}
+
+\newcommand{\UC}[4]{
+\textbf{Diagramma associato:} \ref{#1}\\[\baselineskip]
+\textbf{Attori:} {#2};\\[\baselineskip]
+\textbf{Scopo e Descrizione:} {#3};\\[\baselineskip]
+\textbf{Precondizione:} {#4};\\[\baselineskip]
+}
+
+\newcommand{\post}[1]{
+\textbf{Postcondizione:} {#1}.
+}
+
+%comando per inserire un diagramma
+% \UCimmagine{nomeFileSenzaEstensione}{descrizioneDidascalia}
+\newcommand{\UCimmagine}[2]{ 
+\begin{center}
+\begin{figure}[H]
+\includegraphics[width=\textwidth]{{{#1}}}
+\caption{#2}
+\label{#1}
+\end{figure}
+\end{center}
+}

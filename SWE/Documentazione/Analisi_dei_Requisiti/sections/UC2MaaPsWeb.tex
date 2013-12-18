@@ -1,0 +1,432 @@
+
+\UCtitle
+{Caso d'uso UC2}
+{MaaP's Web}
+\UCimmagine{UC2}{UC2 - Azioni utente business}
+\UC
+{UC2}
+{Utente business, Utente business autenticato}
+{L'utente business attraverso il browser visualizza la pagina di autenticazione dove può accedere, recuperare la password o registrarsi, mentre l'utente business autenticato può aprire una Collection, disconnettersi o gestire il profilo}
+{Il sistema ha creato lo scheletro del progetto, la pagina di autenticazione viene proposta all'utente business mediante il browser, se il sistema reputa l'utente business come autenticato, viene proposta la dashboard}
+\scenario{
+L'utente business può registrarsi (UC2.1);|
+L'utente business può autenticarsi (UC2.2);|
+L'utente business può recuperare la password (UC2.3);|
+L'utente business autenticato può aprire una Collection(UC2.4);|
+L'utente business autenticato può disconnettersi dal sistema (UC2.5);|
+L'utente business autenticato può gestire il profilo (UC2.6).
+}
+\inclusioni
+{L'utente business inserisce la propria mail e la propria password (UC2.7).
+}
+\scenarioAlt{
+Nel caso in cui le credenziali di accesso fornite dall'utente business non fossero corrette il sistema segnala il problema e ripresenta il form di autenticazione.
+}
+\post
+{Il sistema ha memorizzato le informazioni inserite dall'utente business per l'autenticazione o per il recupero password e le operazioni che l'utente business autenticato può effettuare}
+
+
+
+\UCtitle
+{Caso d'uso UC2.1} 
+{Registrazione}
+\UC
+{UC2}
+{Utente business}
+{L'utente business può registrarsi}
+{Il sistema si trova nello stato iniziale e propone all'utente una schermata per registrarsi}
+\post
+{Il sistema ha creato un nuovo utente e reputa l'utente business autenticato}
+
+
+\UCtitle
+{Caso d'uso UC2.2} 
+{Autenticazione}
+\UC
+{UC2}
+{Utente business}
+{Un utente business tenta di autenticarsi}
+{Il sistema si trova nello stato iniziale e propone all'utente una schermata per inserire i dati per l'autenticazione}
+\post
+{Il sistema reputa l'utente business come autenticato}
+
+
+
+\UCtitle
+{Caso d'uso UC2.3} 
+{Recupero password}
+\UC
+{UC2}
+{Utente business}
+{Un utente business registrato recupera la password dimenticata}
+{Il sistema  reputa l'utente business come registrato}
+\post
+{Il sistema ha fornito la password all'utente business}
+
+
+
+\UCtitle
+{Caso d'uso UC2.4} 
+{Apertura Collection}
+\UCimmagine{UC2.4}{UC2.4 - Apertura Collection}
+\UC
+{UC2.4}
+{Utente business autenticato}
+{L’ utente business autenticato può effettuare diverse operazioni: visualizzare una pagina Document-Show, modificare la visualizzazione dei Document, visualizzare una diversa Collection, disconnettersi dal sistema, navigare tra le pagine della pagina Collection-Index correntemente visualizzata,  gestire il profilo. L'utente business autenticato amministratore potrà inoltre cancellare o modificare un Document}
+{Il sistema reputa l'utente business come autenticato e visualizza la Collection}
+\scenario{
+L'utente business autenticato può visualizzare pagine Document-Show (UC2.4.1);|
+L'utente business autenticato può modificare la visualizzazione dei Document (UC2.4.2);|
+L'utente business autenticato può visualizzare una diversa Collection (UC2.4);|
+L'utente business autenticato può disconnettersi (UC2.5);|
+L'utente business autenticato può navigare tra le pagine della Collection-Index attualmente visualizzata (UC2.4.3);|
+L'utente business autenticato può gestire il profilo (UC2.6);|
+L'utente business autenticato amministratore può cancellare un Document (UC2.4.4);|
+L'utente business autenticato amministratore può modificare un Document (UC2.4.5);|
+L'utente business autenticato amministratore può visualizzare le query più frequenti che il sistema gli propone (UC2.4.6);|
+L'utente business autenticato amministratore può creare degli indici sulle query più frequenti visualizzare (UC2.4.7).
+}
+\post
+{Il sistema ha ottenuto le informazioni sulle operazioni che l'utente business autenticato o l'utente business autenticato amministratore desidera eseguire}
+
+
+
+\UCtitle
+{Caso d'uso UC2.4.1} 
+{Visualizzazione pagina Document-Show}
+\UC
+{UC2.4}
+{Utente business autenticato}
+{L'utente business autenticato visualizza la pagina Document-Show relativa alla chiave selezionata}
+{Il sistema reputa l'utente business come autenticato e visualizza la Collection scelta}
+\post
+{Viene visualizzata la pagina Document-Show relativa alla chiave selezionata}
+
+
+\UCtitle
+{Caso d'uso UC2.4.2} 
+{Modifica visualizzazione dei Document}
+\UCimmagine{UC2.4.2}{UC2.4.2 - Modifica visualizzazione dei Document}
+\UC
+{UC2.4.2}
+{Utente business autenticato}
+{L'utente business autenticato può cambiare la modalità di visualizzazione dei Document}
+{Il sistema reputa l'utente business come autenticato e visualizza la Collection scelta}
+\scenario{
+L'utente business autenticato può selezionare i criteri per la visualizzazione della lista di Document (UC2.4.2.1);|
+L'utente business autenticato può applicare dei filtri (UC2.4.2.2).
+}
+\estensioni
+{Solo nel caso in cui venga applicato un filtro, l'utente business autenticato può annullarlo (UC2.4.2.3).}
+\post
+{Il sistema ha ottenuto le informazioni sulle operazioni che l'utente business autenticato desidera eseguire ed aggiorna la visualizzazione della pagina}
+
+\UCtitle
+{Caso d'uso UC2.4.2.1} 
+{Seleziona criteri per la visualizzazione}
+\UCimmagine{UC2.4.2.1}{UC2.4.2.1 - Seleziona criteri per la visualizzazione}
+\UC
+{UC2.4.2.1}
+{Utente business autenticato}
+{L'utente business autenticato può selezionare dei criteri per cambiare la visualizzazione della lista di Document: cambiare il numeri di Document da visualizzare per pagina o cambiare l'ordinamento dei Document secondo una chiave}
+{Il sistema reputa l'utente business come autenticato e visualizza la Collection scelta}
+\scenario{
+L'utente business autenticato può cambiare il numero di Document da visualizzare per pagina (UC2.4.2.1.2);|
+L'utente business autenticato può cambiare l'ordinamento dei Document secondo una chiave (UC2.4.2.1.1).
+}
+\post
+{Il sistema ha ottenuto le informazioni sulle operazioni che l'utente business autenticato desidera eseguire ed aggiorna la visualizzazione della pagina}
+
+
+\UCtitle
+{Caso d'uso UC2.4.2.1.1}
+{Cambio ordinamento per chiave}
+\UC
+{UC2.4.2.1}
+{Utente business autenticato}
+{L'utente business autenticato può cambiare l'ordinamento dei documenti visualizzati secondo una chiave}
+{Il sistema reputa l'utente business come autenticato e visualizza la Collection scelta}
+\post
+{Il sistema aggiorna la visualizzazione della pagina secondo i criteri imposti dall'utente business autenticato}
+
+
+\UCtitle
+{Caso d'uso UC2.4.2.1.2} 
+{Cambio numero di Document da visualizzare per pagina}
+\UC
+{UC2.4.2.1}
+{Utente business autenticato}
+{L'utente business autenticato puo’ cambiare il numero di Document da visualizzare per pagina}
+{Il sistema reputa l'utente business come autenticato e visualizza la Collection scelta}
+\post
+{Il sistema aggiorna la visualizzazione del numero di Document per pagina secondo i criteri imposti dall'utente business autenticato}
+
+\UCtitle
+{Caso d'uso UC2.4.2.2}
+{Applicazione filtro}
+\UC
+{UC2.4.2}
+{Utente business autenticato}
+{L'utente business autenticato può applicare un filtro disponibile nella pagina Collection-Index}
+{Il sistema reputa l'utente business come autenticato e visualizza la Collection scelta}
+\post
+{Il sistema aggiorna la visualizzazione della pagina secondo i criteri imposti dal filtro applicato}
+
+\UCtitle
+{Caso d'uso UC2.4.2.3}
+{Annullare filtro applicato}
+\UC
+{UC2.4.2}
+{Utente business autenticato}
+{L'utente business autenticato ha la possibilità di rimuovere un filtro precedentemente applicato}
+{Il sistema ha applicato un filtro secondo i criteri imposti dall'utente business autenticato}
+\post
+{Il sistema aggiorna la visualizzazione della Collection allo stato precedente all'applicazione del filtro}
+
+
+\UCtitle
+{Caso d'uso UC2.4.3} 
+{Navigazione tra le pagine della Collection-Index}
+\UC
+{UC2.4}
+{Utente business autenticato}
+{L'utente business autenticato può navigare tra le pagine della Collection-Index attualmente visualizzata}
+{Il sistema reputa l'utente business come autenticato e visualizza la Collection scelta}
+\post
+{Il sistema visualizza un'altra Collection scelta dall'utente business autenticato}
+
+\UCtitle
+{Caso d'uso UC2.4.4} 
+{Cancellazione Document}
+\UC
+{UC2.4}
+{Utente business autenticato amministratore}
+{L'utente business autenticato come amministratore può cancellare un Document presente nella Collection attualmente visualizzata}
+{Il sistema reputa l'utente business autenticato come amministratore e visualizza la Collection scelta}
+\post
+{Il sistema ha cancellato il Document selezionato dall'utente business autenticato amministratore ed aggiorna la pagina attualmente visualizzata}
+
+
+
+\UCtitle
+{Caso d'uso UC2.4.5} 
+{Modifica Document}
+\UCimmagine{UC2.4.5}{UC2.4.5 - Modifica Document}
+\UC
+{UC2.4.5}
+{Utente business autenticato amministratore}
+{L'utente business autenticato come amministratore può modificare un Document presente nella Collection attualmente visualizzata}
+{Il sistema reputa l'utente business autenticato come amministratore e visualizza la Collection scelta}
+\scenario{
+L'utente business autenticato amministratore può modificare il valore di ciascuna chiave (UC2.4.5.1);|
+L'utente business autenticato amministratore può salvare il Document appena modificato (UC2.4.5.2).
+}
+\estensioni
+{L'utente business autenticato amministratore può annullarle le modifiche fino a quel momento apportate (UC2.4.5.3).}
+\post
+{Il sistema modifica il Document selezionato secondo le specifiche imposte dall'utente business autenticato amministratore}
+
+
+\UCtitle
+{Caso d'uso UC2.4.5.1} 
+{Modifica valore della chiave}
+\UC
+{UC2.4.5}
+{Utente business autenticato amministratore}
+{L'utente business autenticato come amministratore può modificare il valore di ciascuna chiave del Document tramite form editabile}
+{Il sistema reputa l'utente business autenticato come amministratore e visualizza la pagina Document-Show che l'utente business autenticato come amministratore desidera modificare}
+\post
+{Il sistema ha ottenuto un valore per ogni chiave del Document che l'utente business autenticato come amministratore ha modificato}
+
+\UCtitle
+{Caso d'uso UC2.4.5.2} 
+{Salvataggio Document}
+\UC
+{UC2.4.5}
+{Utente business autenticato amministratore}
+{L'utente business autenticato come amministratore può salvare le modifiche fino a quel momento apportate al Document}
+{Il sistema ha ottenuto un valore per ogni chiave del Document che l'utente business autenticato come amministratore vuole modificare}
+\post
+{Il sistema salva le modifiche apportate al Document}
+
+\UCtitle
+{Caso d'uso UC2.4.5.3} 
+{Annulla modifiche Document}
+\UC
+{UC2.4.5}
+{Utente business autenticato amministratore}
+{L'utente business autenticato come amministratore ha la possibilità di annullare le modifiche apportate al Document (vedi UC2.4.5)}
+{Il sistema ha ottenuto un valore per ogni chiave del Document che si sta modificando}
+\post
+{Il sistema non considera i valori inseriti per ogni chiave del Document e visualizza la pagina Collection-Index principale}
+
+\UCtitle
+{Caso d'uso UC2.4.6}
+{Visualizzazione query più utilizzate}
+\UC
+{UC2.4}
+{Utente business autenticato amministratore}
+{Il sistema reputa l'utente business autenticato come amministratore}
+{L'utente business autenticato amministratore può visualizzare le query più utilizzate che il sistema gli offre.}
+\post
+{Il sistema mostra all'utente business autenticato amministratore le query più utilizzate.}
+
+\UCtitle
+{Caso d'uso UC2.4.7}
+{Creazione indici}
+\UC
+{UC2.4}
+{Utente business autenticato amministratore}
+{Il sistema reputa l'utente business autenticato come amministratore}
+{L'utente business autenticato amministratore può creare degli indici sulla base delle query più utilizzate}
+\post
+{Il sistema permette all'utente business autenticato amministratore di creare degli indici}
+
+\UCtitle
+{Caso d'uso UC2.5}
+{Disconnessione}
+\UC
+{UC2}
+{Utente business autenticato}
+{L'utente può uscire dal proprio profilo e disconnettersi dal sistema}
+{Il sistema reputa l'utente business come autenticato}
+{Il sistema reputa l'utente business come non autenticato}
+
+\UCtitle
+{Caso d'uso UC2.6} 
+{Gestione utente}
+\UCimmagine{UC2.6}{UC2.6 - Gestione utente}
+\UC
+{UC2.6}
+{Utente business autenticato}
+{L'utente business autenticato può modificare i dati utente, mentre l'utente business autenticato amministratore può anche eseguire operazioni di creazione e cancellazione di un utente}
+{Il sistema reputa l'utente business come autenticato}
+\scenario{
+L'utente business autenticato può gestire i dati (UC2.6.3);|
+L'utente business autenticato amministratore può creare un nuovo utente (UC2.6.1);|
+L'utente business autenticato amministratore può eliminare un utente (UC2.6.2).
+}
+\post
+{Il sistema ha ottenuto le informazioni sulle operazioni che l'utente business desidera eseguire}
+
+\UCtitle
+{Caso d'uso UC2.6.1} 
+{Creazione nuovo utente}
+\UC
+{UC2.6}
+{Utente business autenticato amministratore}
+{L'utente business autenticato come amministratore può creare un nuovo utente}
+{Il sistema reputa l'utente business autenticato come amministratore}
+\post
+{Il sistema ha creato un nuovo utente}
+
+
+\UCtitle
+{Caso d'uso UC2.6.2} 
+{Eliminazione utente}
+\UC
+{UC2.6}
+{Utente business autenticato amministratore}
+{L'utente business autenticato come amministratore può eliminare un profilo utente preesistente}
+{Il sistema reputa l'utente business autenticato come amministratore}
+\post
+{Il sistema ha eliminato il profilo utente specificato}
+
+\UCtitle
+{Caso d'uso UC2.6.3} 
+{Gestione dati}
+\UCimmagine{UC2.6.3}{UC2.6.3 - Gestione dati}
+\UC
+{UC2.6.3}
+{Utente business autenticato}
+{L'utente business autenticato può modificare i dati utente del proprio profilo e salvare le modifiche o annullarle. L'utente business autenticato come amministratore può modificare i dati dei vari profili utenti, modificare i permessi degli utenti, salvare le modifiche o annullarle}
+{Il sistema reputa l'utente business come autenticato}
+\scenario{
+L'utente business autenticato può modificare i dati utente del proprio profilo (UC2.6.3.1);|
+L'utente business autenticato può salvare le modifiche (UC2.6.3.2);|
+L'utente business autenticato come amministratore può modificare i dati utenti (UC2.6.3.3);|
+L'utente business autenticato come amministratore può modificare i permessi degli utenti (UC2.6.3.4).
+}
+\post
+{Il sistema modifica i dati utente secondo le specifiche imposte dall'utente business autenticato}
+
+
+\UCtitle
+{Caso d'uso UC2.6.3.1} 
+{Modifica dati utente}
+\UC
+{UC2.6.3}
+{Utente business autenticato}
+{L'utente business autenticato può modificare i dati utente del proprio profilo}
+{Il sistema reputa l'utente business come autenticato}
+\post
+{Il sistema ha ottenuto tutti i dati modificati del profilo utente}
+
+
+
+\UCtitle
+{Caso d'uso UC2.6.3.2} 
+{Salvataggio modifiche}
+\UC
+{UC2.6.3}
+{Utente business autenticato}
+{L'utente business autenticato può salvare le modifiche apportate durante la modifica dei dati utenti}
+{Il sistema ha ottenuto i dati modificati del profilo utente}
+\post
+{Il sistema aggiorna il profilo utente con i nuovi dati inseriti}
+
+\UCtitle
+{Caso d'uso UC2.6.3.3}
+{Modifica dati utenti}
+\UC
+{UC2.6.3}
+{Utente business autenticato amministratore}
+{L'utente business autenticato come amministratore può modificare i dati degli utenti}
+{Il sistema reputa l'utente business autenticato come amministratore}
+\estensioni
+{L'utente business autenticato può annullare le modifiche fin'ora apportate (UC2.6.3.5).}
+\post
+{Il sistema ha ottenuto tutti i dati modificati del profilo utente}
+
+\UCtitle
+{Caso d'uso UC2.6.3.4} 
+{Modifica permessi utenti}
+\UC
+{UC2.6.3}
+{Utente business autenticato amministratore}
+{L'utente business autenticato come amministratore può modificare i permessi degli utenti, ovvero elevare un utente a livello maggiore o declassare un utente amministratore}
+{Il sistema reputa l'utente business autenticato come amministratore}
+\post
+{Il sistema ha ottenuto i nuovi permessi da applicare al profilo utente}
+
+
+\UCtitle
+{Caso d'uso UC2.6.3.5} 
+{Annulla modifiche}
+\UC
+{UC2.6.3}
+{Utente business autenticato, Utente business autenticato amministratore}
+{L'utente business autenticato e l'amministratore possono annullare le modifiche apportate}
+{Il sistema ha ottenuto i dati modificati del profilo utente; se si tratta di amministratore il sistema ottiene i dati modificati dei profili e/o dei dati relativi ai permessi dell'utente}
+\post
+{Il sistema non considera le modifiche apportate e visualizza la pagina precedente}
+
+
+
+\UCtitle
+{Caso d'uso UC2.7} 
+{Inserimento email e password}
+\UC
+{UC2}
+{Utente business}
+{Un utente business inserisce email e password per autenticarsi}
+{Il sistema si trova nello stato iniziale e propone all'utente business una schermata per inserire i dati di autenticazione}
+\post
+{Il sistema ha acquisito i dati dell'utente business}
+
+
+
+
+
+
+
