@@ -1,10 +1,9 @@
-
 %includo il file che contiene la versione dei documenti
 \input{../Logo&Header/versioneDocumenti.tex}
 
 \newcommand{\Versione}{\versioneGlossario{}}
-\newcommand{\Data}{2013-12-08}
-\newcommand{\DataUltimaModifica}{2013-12-08}
+\newcommand{\Data}{2013-11-28}
+\newcommand{\DataUltimaModifica}{2013-12-18}
 \newcommand{\TipoDocumento}{Glossario}
 \newcommand{\Lettera}{\Huge\fbox}
 \newcommand{\Riga}{\\\rule[2mm]{\textwidth}{0.25mm}}
@@ -21,21 +20,23 @@
 
 \begin{center}
 
-\section{Informazioni documento}
+%\section{Informazioni documento}
 \begin{tabular}{r|l}
-\textbf{Nome} &\TipoDocumento \\
+%\textbf{Nome} &\TipoDocumento \\
 \textbf{Versione} & \Versione\\
 \textbf{Data creazione} & \Data \\
 \textbf{Data ultima modifica} & \DataUltimaModifica \\
 \textbf{Stato del documento} & Formale \\
 \textbf{Uso del documento} & Esterno \\
-\textbf{Redazione} & Fabio Miotto, Mattia Sorgato\\
-\textbf{Verifica} & Michele Maso, Giacomo Pinato \\
-\textbf{Approvazione} & Alberto Garbui \\
-\textbf{Distribuzione} & \parbox[t]{4cm}{\NomeGruppo \\ Prof. Tullio Vardanega \\ Prof. Riccardo Cardin \\ \Prop{} } \\
+\textbf{Redazione} & Alberto Garbui, Fabio Miotto,\\
+			      & Mattia Sorgato, Michele Maso,\\
+			      & Andrea Perin, Alessandro Benetti\\
+\textbf{Verifica} & Giacomo Pinato \\
+\textbf{Approvazione} & Alessandro Benetti \\
+\textbf{Distribuzione} & \parbox[t]{4cm}{Prof. Tullio Vardanega \\ Prof. Riccardo Cardin \\ \Prop{} } \\
 \end{tabular}
 \end{center}
-\vspace{.1in}
+\vspace{.01in}
 
 \begin{abstract}
 \begin{center}
@@ -51,25 +52,27 @@ Questo documento si prefigge di chiarire le possibili ambiguità tra i vari term
 \toprule
 \textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Modifiche effettuate}\\
 \midrule
-1.2.0 &  & Alberto Garbui & Approvazione finale del documento\\
+1.2.0 & 2013-12-18 & Alessandro Benetti & Approvazione finale del documento\\
 \midrule
-1.1.1 &  & Michele Maso & Verifica del documento \\
+1.1.0 & 2013-12-17 & Giacomo Pinato & Verifica del documento \\
 \midrule
-1.1.0 &  & Giacomo Pinato & Verifica del documento \\
+1.0.8 & 2013-12-16 & Alessandro Benetti & Inserimento termini\\
 \midrule
-1.0.6 &  & Fabio Miotto &   Inserimento termini\\
+1.0.7 & 2013-12-13 & Fabio Miotto & Inserimento termini\\
 \midrule
-1.0.5 &  & Mattia sorgato &   Inserimento termini\\
+1.0.6 & 2013-12-12 & Michele Maso & Inserimento termini\\
 \midrule
-1.0.4 &  & Mattia Sorgato  &   Inserimento termini\\
+1.0.5 & 2013-12-09 & Mattia Sorgato & Inserimento termini\\
 \midrule
-1.0.3 &  & Mattia Sorgato  &  Inserimento termini \\
+1.0.4 & 2013-12-06 & Mattia Sorgato & Inserimento termini \\
 \midrule
-1.0.2 & & Fabio Miotto  &  Inserimento termini\\
+1.0.3 & 2013-12-06 & Andrea Perin & Inserimento termini\\
 \midrule
-1.0.1 &  & Fabio Miotto &  Inserimento termini\\
+1.0.2 & 2013-12-02 & Fabio Miotto & Inserimento termini\\
 \midrule
-1.0.0 &  & Fabio Miotto & Creazione struttura iniziale del documento\\
+1.0.1 & 2013-11-28 & Alberto Garbui & Inserimento termini\\
+\midrule
+1.0.0 & 2013-11-28 & Fabio Miotto & Creazione struttura iniziale del documento\\
 
 
 \bottomrule
@@ -90,7 +93,7 @@ Questo documento raccoglie tutti i termini che sono sconosciuti al lettore ester
 \subsubsection{Normativi} %1.4.1
 \label{1.4.1}
 \begin{itemize}
-\item Norme di Progetto: Norme\_{}di\_{}Progetto\_{}v\versioneNormeProgetto{}.pdf  (allegato alla presente documentazione)\\
+\item Norme di Progetto: \emph{Norme\_{}di\_{}Progetto\_{}v\versioneNormeDiProgetto{}.pdf}  (allegato alla presente documentazione)\\
 \end{itemize}
 \subsubsection{Informativi} %1.4.2
 \label{1.4.2}
@@ -105,11 +108,13 @@ Questo documento raccoglie tutti i termini che sono sconosciuti al lettore ester
 
 %inizio glossario
 \newpage
-\Inizio{} %questo serve allo script del glossario
-\begin{flushright}
-\Lettera{\#}  %QUI CI SONO LE PAROLE DEL GLOSSARIO CHE INIZIANO CON UNA CIFRA
-\end{flushright}
+%\Inizio{} %questo serve allo script del glossario
+\section{Termini}
+Di seguito saranno elencati e definiti tutti i vari termini in ordine alfabetico.
 
+%\begin{flushright}
+%\Lettera{\#}  %QUI CI SONO LE PAROLE DEL GLOSSARIO CHE INIZIANO CON UNA CIFRA
+%\end{flushright}
 
 
 \input{./GlossarioAM.tex}
