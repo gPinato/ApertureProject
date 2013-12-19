@@ -1,0 +1,136 @@
+\newpage
+\appendix
+\section{Standard di qualità} %A.0
+
+\subsection{ISO/IEC 15504} %A.1
+ISO/IEC 15504, anche conosciuto come SPICE(Software Process Improvement and Capability Determination, ovvero miglioramento di processi software e determinazione di capacità) è un insieme di documenti di standard tecnici per lo sviluppo software.
+Questo documento viene utilizzato nel perseguimento della qualità di processo in quanto stabilisce una struttura per la definizione degli obiettivi per il miglioramento dei processi stessi.
+Lo standard dichiara che ogni processo deve essere sottoposto ad un controllo continuo, ripetibile e quantificabile al fine di individuare i punti critici e misurare i miglioramenti.
+
+\immagine{SPY}{Software Process Assessment and Improvement}
+
+Secondo SPICE, un processo può essere classificato in base al suo livello di maturità, in una scala da 1 a 6, con annessi i livelli di capacità ad ogni livello:
+\begin{itemize}
+    \item \grassetto{Incomplete:} I risultati del processo non esistono o non sono appropriati;
+    \item \grassetto{Performed:} Si ottengono dei risultati, ma in un modo non specificato o non prevedibile;
+    \begin{itemize}
+        \item \emph{Process Performance}: capacità del processo di produrre degli output da dagli input.
+    \end{itemize}
+    \item  \grassetto{Managed:} l'esecuzione è pianificata e tracciata, il prodotto è conforme a standard e requisiti specifici;
+    \begin{itemize}
+            \item \emph{Performance Management:} capacità del processo di produrre un output coerente con gli obiettivi del processo;
+             \item \emph{Work Product Management:} capacità del processo di creare un risultato documentato, controllato e verificato.
+    \end{itemize}
+    \item  \grassetto{Established:} il processo è eseguito e controllato riferendosi a dei buoni principi di ingegneria del software;
+    \begin{itemize}
+    	\item \emph{Process Definition}: il processo fa riferimento a degli standard di processo per definire i risultati attesi;
+    	\item \emph{Process Deployment}: capacità del processo di utilizzare risorse appropriate per il raggiungimento degli obiettivi.
+    \end{itemize}
+     \item  \grassetto{Predictable:}  il processo è eseguito consistentemente con dei limiti di controllo definiti, per raggiungere altrettanto definiti obiettivi di processo;
+        \begin{itemize}
+        	\item \emph{Process Measurement}: capacità di definizione di obiettivi e metriche di prodotto e di processo, con cui garantire il raggiungimento di obiettivi aziendali;
+        	\item \emph{Process Control}: capacità di controllo tramite metriche di progetto e prodotto definite, per puntare al miglioramento.
+        \end{itemize}
+     \item  \grassetto{Optimizing:} l'esecuzione del processo è ottimizzata per soddisfare bisogni correnti e futuri, e il processo soddisfa ripetibilmente i suoi obiettivi prefissati;
+            \begin{itemize}
+            	\item \emph{Process Innovation}: capacità di gestione di eventuali cambiamenti nel prodotto in modo controllato ed efficace;
+            	\item \emph{Continuous Optimization}: capacità di identificare e applicare modifiche atte al miglioramento dei processi aziendali.
+            \end{itemize} 
+\end{itemize}
+Per finire, lo standard definisce 4 stadi di misurazione degli attributi di un processo, suddivisi in:
+\begin{itemize}
+	\item \grassetto{N}, non adeguato o non posseduto;
+	\item \grassetto{P}, parzialmente posseduto;
+	\item \grassetto{L}, largamente posseduto;
+	\item \grassetto{F}, completamente posseduto.
+\end{itemize}
+
+\subsection{ ISO/IEC 9126} %A.2
+
+Con la sigla ISO/IEC 9126 si individua una serie di normative e linee guida, sviluppate dall'ISO (Organizzazione internazionale per la normazione) in collaborazione con l'IEC (Commissione Elettrotecnica Internazionale), preposte a descrivere un modello di qualità del software. Il modello propone un approccio alla qualità in modo tale che le società di software possano migliorare l'organizzazione e i processi e, quindi come conseguenza concreta, la qualità del prodotto sviluppato.
+
+\immagine{ISOIEC}{Modello di qualità ISO/IEC 9126}
+
+Il presente standard definisce 6 caratteristiche di qualità che ogni prodotto software deve perseguire, al fine di garantire la conformità agli standard con efficienza ed efficacia. Le caratteristiche delle qualità in uso esulano dal presente progetto didattico, in quanto non è prevista l'attività di manutenzione conseguente al rilascio del prodotto. Quindi ci soffermiamo all'analisi della qualità interna ed esterna dello standard ISO/IEC 9126.
+Le caratteristiche che un prodotto deve avere sono le seguenti:
+
+\begin{itemize}
+	\item \grassetto{Funzionalità}: capacità di un prodotto software di fornire funzioni che soddisfano esigenze stabilite, necessarie per operare sotto condizioni specifiche;
+	\begin{itemize}
+		\item \emph{Appropriatezza}: rappresenta la capacità del prodotto software di fornire un appropriato insieme di funzioni per gli specificati compiti ed obiettivi prefissati all'utente;
+		\item \emph{Accuratezza}: la capacità del prodotto software di fornire i risultati concordati o precisi effetti richiesti;
+		\item \emph{Interoperabilità}: la capacità del prodotto software di interagire ed operare con uno o più sistemi specificati;
+		\item \emph{Conformità}: la capacità del prodotto software di aderire agli standard, convenzioni e regolamentazioni rilevanti al settore operativo a cui vengono applicati;
+		\item \emph{Sicurezza}: la capacità del prodotto software di proteggere informazioni e i dati negando in ogni modo che persone o sistemi non autorizzati possano accedervi o modificarli, e che a persone o sistemi effettivamente autorizzati non sia negato l'accesso ad essi.
+	\end{itemize}
+	\item \grassetto{Affidabilità}: capacità del prodotto software di mantenere uno specificato livello di prestazioni quando usato in date condizioni per un dato periodo;
+	\begin{itemize}
+		\item \emph{Maturità}: capacità di un prodotto software di evitare che si verificano errori, malfunzionamenti o siano prodotti risultati non corretti;
+		\item \emph{Tolleranza degli errori}: capacità di mantenere livelli predeterminati di prestazioni anche in presenza di malfunzionamenti o usi scorretti del prodotto;
+		\item \emph{Recuperabilità}: capacità di un prodotto di ripristinare il livello appropriato di prestazioni e di recupero delle informazioni rilevanti, in seguito a un malfunzionamento. A seguito di un errore, il software può risultare non accessibile per un determinato periodo di tempo, questo arco di tempo è valutato proprio dalla caratteristica di recuperabilità;
+		\item \emph{Aderenza}: capacità di aderire a standard, regole e convenzioni inerenti all'affidabilità.
+	\end{itemize}
+	\item \grassetto{Efficienza}: capacità di fornire appropriate prestazioni relativamente alla quantità di risorse usate;
+		\begin{itemize}
+			\item \emph{Comportamento rispetto al tempo}: capacità di fornire adeguati tempi di risposta, elaborazione e velocità di attraversamento, sotto condizioni determinate;
+			\item \emph{Utilizzo delle risorse}: capacità di utilizzo di quantità e tipo di risorse in maniera adeguata;
+			\item \emph{Conformità}: capacità di aderire a standard e specifiche sull'efficienza.
+		\end{itemize}
+	\item \grassetto{Usabilità}: capacità del prodotto software di essere capito, appreso, usato e benaccetto dall'utente, quando usato sotto condizioni specificate.
+		\begin{itemize}
+			\item \emph{Comprensibilità}: esprime la facilità di comprensione dei concetti del prodotto, mettendo in grado l'utente di comprendere se il software è appropriato;
+			\item \emph{Apprendibilità}: capacità di ridurre l'impegno richiesto agli utenti per imparare ad usare la sua applicazione;
+			\item \emph{Operabilità}: capacità di mettere in condizione gli utenti di farne uso per i propri scopi e controllarne l'uso;
+			\item \emph{Attrattiva}: capacità del software di essere piacevole per l'utente che ne fa uso;
+			\item \emph{Conformità}: capacità del software di aderire a standard o convenzioni relativi all'usabilità.			
+		\end{itemize}
+	\item \grassetto{Manutenibilità}: capacità del software di essere modificato, includendo correzioni, miglioramenti o adattamenti;
+		\begin{itemize}
+			\item \emph{Analizzabilità}: rappresenta la facilità con la quale è possibile analizzare il codice per localizzare un errore nello stesso;
+			\item \emph{Modificabilità}: capacità del prodotto software di permettere l'implementazione di una specificata modifica (sostituzioni componenti);
+			\item \emph{Stabilità}: capacità del software di evitare effetti inaspettati derivanti da modifiche errate;
+			\item \emph{Testabilità}: capacità di essere facilmente testato per validare le modifiche apportate al software.
+		\end{itemize}
+	\item \grassetto{Portabilità}: capacità del software di essere trasportato da un ambiente di lavoro ad un altro. (Ambiente che può variare dall'hardware al sistema operativo);
+		\begin{itemize}
+			\item \emph{Adattabilità}: capacità del software di essere adattato per differenti ambienti operativi senza dover applicare modifiche diverse da quelle fornite per il software considerato;
+			\item \emph{Installabilità}: capacità del software di essere installato in uno specificato ambiente;
+			\item \emph{Conformità}: capacità del prodotto software di aderire a standard e convenzioni relative alla portabilità;
+			\item \emph{Sostituibilità}: capacità di essere utilizzato al posto di un altro software per svolgere gli stessi compiti nello stesso ambiente.
+		\end{itemize}
+	\end{itemize}
+	
+\subsubsection{Qualità esterne} %A.2.1
+
+Le metriche esterne, specificate nella norma ISO/IEC 9126-2, misurano i comportamenti del software sulla base dei test, dall'operatività e dall'osservazione durante la sua esecuzione, in funzione degli obiettivi stabiliti in un contesto tecnico rilevante o di business.
+
+\subsubsection{Qualità interne} %A.2.2
+
+La qualità interna, più precisamente le metriche interne, è specificata nella norma ISO/IEC 9126-3 e si applica al software non eseguibile (ad esempio il codice sorgente) durante le fasi di progettazione e codifica. Le misure effettuate permettono di prevedere il livello di qualità esterna ed in uso del prodotto finale, poiché gli attributi interni influiscono su quelli esterni e quelli in uso. Le metriche interne permettono di individuare eventuali problemi che potrebbero influire sulla qualità finale del prodotto prima che sia realizzato il software eseguibile. Esistono metriche che possono simulare il comportamento del prodotto finale tramite simulazioni.
+
+\subsection{Ciclo di Deming (ciclo PDCA)} %A.3
+
+Il ciclo di Deming o Deming Cycle (ciclo di PDCA - plan–do–check–act) è un modello studiato per il miglioramento continuo della qualità in un'ottica a lungo raggio. Serve per promuovere una cultura della qualità che è tesa al miglioramento continuo dei processi e all'utilizzo ottimale delle risorse. Questo strumento parte dall'assunto che per il raggiungimento del massimo della qualità sia necessaria la costante interazione tra ricerca, progettazione, test, produzione e vendita. Per migliorare la qualità e soddisfare il cliente, le quattro fasi devono ruotare costantemente, tenendo come criterio principale la qualità.
+La sequenza logica dei quattro punti ripetuti per un miglioramento continuo è la seguente:
+\begin{itemize}
+	\item \grassetto{P} - Plan. Pianificazione.
+	\item \grassetto{D} - Do. Esecuzione del programma, dapprima in contesti circoscritti.
+	\item \grassetto{C} - Check. Test e controllo, studio e raccolta dei risultati e dei riscontri.
+	\item \grassetto{A} - Act. Azione per rendere definitivo e/o migliorare il processo.
+\end{itemize}
+
+\immagine{PDCA}{Ciclo di PDCA}
+
+Matematicamente, la complessità ciclomatica di un programma è definita in riferimento ad un grafo diretto contenente i blocchi base di un programma con un arco tra due blocchi se il controllo può passare dal primo al secondo (il "grafo di controllo di flusso"). La complessità è quindi definita come:
+
+\begin{math}
+v(G)=e-n+2p
+\end{math}
+
+dove:
+\begin{itemize}
+\item \grassetto{v(G)} = complessità ciclomatica del grafo G;
+\item \grassetto{e} = numero di archi del grafo;
+\item \grassetto{n} = numero di nodi del grafo;
+\item \grassetto{p} = numero di componenti connesse.
+\end{itemize}
