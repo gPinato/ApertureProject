@@ -1,0 +1,419 @@
+%"variabili globali" che verranno aggiornate in tutte le pagine/footer
+% per inserire nuove macro ->  \newcommand{\nomeMacro}{valoreMacro}
+
+%includo il file che contiene la versione dei documenti
+\input{../Logo&Header/versioneDocumenti.tex}
+
+\newcommand{\Versione}{\versionePianoDiQualifica{}}	%Versione Finale
+\newcommand{\Data}{2013-12-01}						%Data di creazione
+\newcommand{\DataUltimaModifica}{2013-12-08}
+\newcommand{\TipoDocumento}{Piano di Qualifica}		%tipo documento
+
+%includo il file header.tex (logo grande in prima pagina piu qualche altra regola)
+\input{../Logo&Header/header.tex}
+
+%\vspace{.05in}
+
+%informazioni documento
+\begin{center}
+%\section{Informazioni documento}
+\begin{tabular}{r|l}
+%\textbf{Nome} &\TipoDocumento \\
+\textbf{Versione} & \Versione{} \\
+\textbf{Data creazione} & \Data{} \\
+\textbf{Data ultima modifica} & \DataUltimaModifica{} \\
+\textbf{Stato del Documento} & Formale \\		%CAMBIARE QUI
+\textbf{Uso del Documento} & Esterno \\			%CAMBIARE QUI
+\textbf{Redazione} & Alberto Garbui\\			%CAMBIARE QUI
+\textbf{Verifica} & Fabio Miotto, Michele Maso\\%ED ANCHE QUI!
+\textbf{Approvazione} & Mattia\\				%CAMBIARE QUI
+\textbf{Distribuzione} & \parbox[t]{4cm}{\NomeGruppo{} \\ Prof. Tullio Vardanega \\ Prof. Riccardo Cardin \\ \Prop{} }\\
+\end{tabular}
+\end{center}
+
+\vspace{0.05in}
+
+%inizio sommario del documento
+\begin{abstract}
+\begin{center}
+Questo documento ha lo scopo di presentare le strategie adottate dal gruppo Aperture Software nell’ottica del miglioramento continuo e assicurazione della qualità.
+\end{center}
+\end{abstract}
+
+%\vspace{.4in}
+
+%seconda pagina, diario delle modifiche
+\newpage
+Diario delle modifiche
+\begin{center}
+\begin{longtable}{|c|c|c|p{0.5\linewidth}|}
+\toprule
+\textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Modifiche effettuate}\\
+
+%aggiungere qui una midrule per aggiungere una nuova riga alla tabella
+
+\midrule
+0.2 & 2013-12-05 & Alberto Garbui (AN) & Aggiunto capitolo 1\\
+\midrule
+0.1 & 2013-12-01 & Alberto Garbui (AN) & Creazione documento\\
+
+\bottomrule
+\caption{Registro delle modifiche}
+\label{tab:changelog}
+\end{longtable}
+\end{center}
+
+%terza pagina Indice (viene aggiornato in automatico con due compilazioni)
+\newpage
+\tableofcontents
+
+%pagine successive hanno la lista di tabelle e lista delle figure
+%(vengono aggiornate in automatico)
+\newpage
+\listoftables
+\listoffigures
+
+%qui inizia la prima pagina ufficiale
+\newpage
+\section{Introduzione}%1.0
+\label{1.0}
+\subsection{Scopo del documento}%1.1
+\label{1.1}
+Il piano di qualifica ha l'obiettivo di definire le strategie adottate dal gruppo Aperture Software per garantire la qualità del prodotto che verrà sviluppato. 
+Il presente documento descriverà la qualità desiderate che il software dovrà avere, le metriche utilizzate per rendere il prodotto e i processi quantificabili. Verrà inoltre definito cosa significa software "di alta qualità", in riferimento a questo specifico dominio, così da avere un ideale di riferimento per gli obiettivi del team.
+
+\subsection{Scopo del prodotto}%1.2
+\label{1.2}
+\Prodotto{}
+
+\subsection{Glossario}%1.3
+\label{1.3}
+\Glossario{}
+
+\subsection{Riferimenti} %1.4
+\label{1.4}
+\subsubsection{Normativi}
+\label{1.4.1}
+\begin{itemize}
+\item \grassetto{Norme di Progetto}:  \emph{Norme di Progetto v.1.2.0};\\
+\item \grassetto{Capitolato d'appalto C1}: MaaP as an admin Platform\\
+	\url{http://www.math.unipd.it/~tullio/IS-1/2013/Progetto/C1.pdf}.
+\end{itemize}
+\subsubsection{Informativi}
+\label{1.4.2}
+\begin{itemize}
+\item \grassetto{Piano di Progetto}:  \emph{Piano di Progetto v.1.2.0};\\
+\item \grassetto{Glossario}: \emph{Glossario v1.2.0};\\
+\item \grassetto{Slides del corso di Ingegneria del software Modulo A, AA 2013/2014 del prof. Tullio Vardanega}:
+\\ \url{http://www.math.unipd.it/~tullio/IS-1/2013/};
+\item \grassetto{Wikipedia}: \url{http://it.wikipedia.org};
+\item Ian Sommerville, Software Engineering, 9 edizione (2011);
+\item \grassetto{Standard ISO/IEC TR 15504 Software process assessment}:
+	\\ \url{http://en.wikipedia.org/wiki/ISO/IEC_15504};
+\item \grassetto{Standard ISO/IEC 9126:2001 Software engineering-product quality}:
+	\\ \url{http://en.wikipedia.org/wiki/ISO_9126};
+\item \grassetto{Budget Variance e Schedule Variance - Dati empirici}: \\ \url{http://office.microsoft.com/en-us/project-help/determine-the-right-threshold-for-project-cost-and-schedule-variances-HA010173335.aspx}.
+\end{itemize}
+
+
+\newpage
+\section{Strategia di verifica}%2.0
+\label{2.0}
+\subsection{Qualità di processo} %2.1
+\label{2.1}
+Per garantire la qualità del prodotto finale è necessario migliorare la metodologia che porta alla qualità dei processi che compongono il prodotto. Per fare questo si è deciso di utilizzare lo standard ISO/IEC 15504\footnote{vedi Appendice, sezione A.1} denominato SPICE\footnote{Software Process Improvement and Capability Determination}.
+Per applicare il modello appena citato si deve utilizzare il ciclo di Deming\footnote{Vedi appendice, sezione A.3} che ha come obiettivo il miglioramento continuo dei processi nel loro ciclo di vita.
+
+\subsection{Qualità di prodotto} %2.1
+\label{2.2}
+Per cercare di realizzare e progettare un prodotto software, in accordo con specifiche e standard definiti, ed essere privo di non conformità o difetti, è necessario usare lo standard ISO/IEC 9126\footnote{vedi appendice, sezione A.2}, il quale redige e descrive obiettivi qualitativi e fornisce delle linee guida l'utilizzo di metriche al fine di tracciare il progresso nel miglioramento continuo di processo e prodotto.
+
+\subsection{Procedure di controllo di qualità di processo} %2.1
+\label{2.3}
+Per garantire la qualità dei processi si utilizza il ciclo PDCA\footnote{Alias, Ciclo di Deming, vedi appendice, sezione A.3}.  Questo principio permette un continuo miglioramento della qualità di tutti i processi coinvolti nella realizzazione del prodotto finale.
+Per controllare la qualità bisogna che i processi siano pianificati dettagliatamente, che le risorse siano individuate e ripartite in maniera quantificabile e ci deve essere un controllo sui processi.
+Per rendere quantificabile la qualità dei processi si utilizzano le metriche descritte nella sezione 4 di questo documento.
+
+\subsection{Procedure di controllo di qualità di prodotto} %2.1
+\label{2.4}
+Per garantire il controllo di qualità si utilizza:
+\begin{itemize}
+\item \grassetto{Quality Assurance}: tradotta in "assicurazione di qualità", è l'insieme di processi che hanno come fine il miglioramento e il perseguimento della qualità. L'intenzione di un team di lavoro consiste nell'ottenere quella che si dice correction by construction, ovvero "correttezza per costruzione";
+\item \grassetto{Verifica}: è la valutazione che un prodotto, servizio o sistema è conforme a regole, requisiti, specifiche o condizioni imposte. E' spesso un processo interno e differisce dalla validazione. In analogia, l'attività di Verifica deve rispondere alla domanda: "did i built the system right?", ovvero "ho costruito il sistema in modo corretto?";
+\item \grassetto{Validazione}: è l'assicurazione che un prodotto, servizio o sistema incontra nelle necessità che i clienti o gli stakeholders identificano. Spesso comporta l'accettazione e l'idoneità con clienti esterni. In questo caso la domanda è: "did i built the right system?", tradotto in "ho costruito il sistema giusto?".
+\end{itemize}
+
+\subsection{Organizzazione} %2.1
+\label{2.5}
+Per ogni processo attuato si ci sono delle attività di verifica e per ogni processo realizzato viene verificata la qualità del processo stesso e la qualità dell'eventuale prodotto ottenuto da esso.
+Ogni fase descritta nel Piano di Progetto necessita di attività di verifica:
+\begin{itemize}
+\item \grassetto{Analisi}: si seguono i metodi di verifica descritti nelle Norme di Progetto sui documenti prodotti e i processi attuati. La messa in opera di tali tecniche è descritta in (SEZIONE DI TEST SUI DOCUMENTI).
+\end{itemize}
+Questa sezione conterrà i riferimenti alle successive attività di verifica, aggiornati dopo ogni fase di produzione e di test del prodotto.
+La stesura dei documenti è l'attività principale e costante nello svolgimento del progetto, il processo di Verifica viene diviso in due attività.
+In ogni documento è presente un diario delle modifiche per mantenere una cronologia delle attività svolte e di chi le ha svolte.
+
+\subsection{Pianificazione strategica e temporale} %2.1
+\label{2.6}
+Avendo scadenze prefissate nel Piano di Progetto, dobbiamo garantire che le attività di verifica di tutti i documenti e prodotti deve essere sistematica, disciplinata e quantificabile. Procedendo in questa maniera si correggono gli errori il prima possibile.
+La metodologia da seguire è descritta nelle Norme di Progetto.
+
+\subsection{Responsabilità} %2.1
+\label{2.7}
+Per garantire che il processo di verifica sia disciplinato, sistematico e quantificabile, bisogna attribuire responsabilità a specifici ruoli di progetto. I ruoli sono Responsabile di Progetto e Verificatore. I compiti di ciascun ruolo sono descritti nelle Norme di Progetto.
+
+\subsection{Risorse} %2.1
+\label{2.8}
+Per raggiungere gli obiettivi di qualità prefissati sono necessarie risorse umane e tecnologiche, suddivise rispettivamente in strumenti software e hardware utilizzati dai componenti del gruppo per effettuare verifica su processi e prodotti. I ruoli maggiormente coinvolti nella responsabilità delle attività di Verifica e validazione sono il Responsabile di Progetto e il Verificatore, e i rispettivi compiti sono descritti dettagliatamente nelle Norme di Progetto.
+
+\newpage
+\section{Analisi} %3.0
+\label{3.0}
+
+\subsection{Analisi statica}
+\label{3.1}
+Questa tipologia di analisi può essere applicata sia al codice che alla documentazione, dato che prevede l'utilizzo di tecniche generali per ogni tipo di prodotto del team.
+
+\subsubsection{Walkthrough}
+\label{3.1.1}
+Questa tecnica utilizza una scansione ampia e non mirata dell'oggetto in verifica, data la mancanza di esperienza e best practice del Verificatore.
+L'attuazione di questa tecnica di Analisi è quindi molto onerosa, per questo sarà nostro obiettivo renderla più parallelizzabile possibile, così da ridurre i costi di Verifica. 
+Dopo ogni attività di verifica tramite Walkthrough, sperabilmente avremo trovato la maggior parte degli errori, fornendoci una visione delle erroneità commesse, di conseguenza potremo raffinare l'Analisi e avvicinarci alla metodologia di Inspection. 
+
+\subsubsection{Inspection}
+\label{3.1.2}
+Questa tecnica è un'evoluzione del Walkthrough e applica una ricerca più mirata e specifica. E' possibile utilizzare questa tecnica dopo aver acquisito dimestichezza con l'attività di Verifica, quindi non sarà possibile utilizzarla fin da subito.
+E' obiettivo di una fase di Inspection la ricerca mirata di errori, aumentando l'efficienza della Verifica e riducendo i costi in termini di tempo e risorse.
+
+\subsection{Analisi dinamica}
+\label{3.2}
+Questa particolare tipologia di Analisi si applica solamente ai prodotti software sviluppati dal team, mediante l'utilizzo di test progettati e scritti appositamente per verificare la correttezza dei prodotti e la loro effettiva Validazione.
+L'importanza di un test si attua nella sua automazione, in quanto riduce il tempo dedicato alla Verifica manuale del codice, certamente più onerosa. Per questo motivo la proprietà più importante di un test è la sua ripetibilità. 
+Per fare in modo che un test abbia questa qualità, è fondamentale definire a priori certe caratteristiche, ovvero:
+\begin{itemize}
+\item \grassetto{Ambiente}: deve essere specificato l'insieme di componenti hardware e software su cui verrà eseguito il prodotto software, al fine di evitare problemi di incompatibilità e malfunzionamento;
+\item \grassetto{Variabili}: si deve conoscere e garantire la corretta struttura delle variabili in ingresso ai test, in modo da prevedere gli output attesi e verificare la loro correttezza;
+\item \grassetto{Procedure}: deve essere chiara la sequenza delle operazioni e la metodologia di applicazione dei test.
+\end{itemize}
+Di seguito analizzeremo i diversi tipi di test attuati nelle varie parti del progetto:
+\begin{itemize}
+\item \grassetto{Test di unità}: attività di Verifica svolta su ogni singola unità software del sistema, mediante l'utilizzo di stub, driver e logger.;
+\item \grassetto{Test di integrazione}: attività di Verifica che controlla la corretta integrazione di più unità software. Grazie a questo test si possono rilevare errori non riscontrabili nei test di unità. Anche in questa fase, per poter simulare le unità nell'integrazione, vengono create unità fittizie ad hoc;
+\item \grassetto{Test di sistema}: questo test si propone di validare il prodotto, una volta che si è stabilita  la sua versione definitiva;
+\item \grassetto{Test di regressione}: attività di Verifica che consiste nel ripetere i test già effettuati su una componente, ogni qualvolta quella componente venga modificata o aggiornata;
+\item \grassetto{Test di accettazione}: test finale effettuato dal proponente del software, al cui superamento segue il rilascio del prodotto ultimato.
+\end{itemize}
+
+\newpage
+\section{Metrica}
+\label{4.0}
+La definizione di metriche di prodotto e di processo è imprescindibile per garantire che il nostro prodotto sia quantificabile. Grazie l'utilizzo di metriche si stabilisce un riferimento per quantificare la maturità, la consistenza e la conformità agli standard.
+Data la variabilità delle metriche, si suddivideranno gli obiettivi per ciascuna metrica in due range possibili:
+\begin{itemize}
+\item \grassetto{Sufficiente}: range stabilito come minimo accettabile, sotto il quale ogni unità o documento non verrà accettato come completo;
+\item \grassetto{Ottimale}: range consigliato e da usare come riferimento, dal quale è necessario scostarsi il meno possibile.
+\end{itemize}
+
+\subsection{Metrica documenti}
+\label{4.1}
+Dopo aver vagliato diverse metriche di misurazione nell'ambito dei documenti, abbiamo scelto di utilizzare una metrica di complessità di leggibilità di un testo, tarata sulla lingua italiana. L'eccessiva variabilità nei metodi di Analisi della sillabazione dei termini e la conseguente non predicibilità dei test basati sulla sillabazione, hanno portato a scartare diverse metriche internazionali. Inoltre non sono state trovate metriche (oltre all'indice Gulpease) specifiche della lingua italiana e con esito certo.
+
+\subsubsection{Indice Gulpease}
+\label{4.1.1}
+L'indice Gulpease\footnote{vedi appendice, sezione B.1} è un indice di leggibilità del testo che basa il suo calcolo su componenti del testo enumerabili meccanicamente, così da rendere automatico il processo di Verifica.
+L'indice prevede un intervallo di valori tra 0 e 100, dove 100 esprime la leggibilità massima.
+I nostri obiettivi per l'indice Gulpease sono i seguenti:
+\begin{itemize}
+\item \grassetto{Obiettivo ottimale}: [50--100];
+\item \grassetto{Obiettivo sufficiente}: [40--100].
+\end{itemize}
+
+\subsection{Metrica software}
+\label{4.2}
+Sebbene nella fase di Analisi dei Requisiti non sia prevista la stesura di codice, è comunque utile riportare metriche per l'Analisi della complessità del codice, da utilizzare nei processi di Verifica del software. Di seguito verranno riportate le metriche che in questa fase sono ritenute le più efficaci, che potranno tuttavia subire variazioni in corso d'opera, soprattutto nella fase di Codifica software.
+
+\subsubsection{Complessità ciclomatica}
+\label{4.2.1}
+La complessità ciclomatica è una metrica software applicabile singolarmente a funzioni, moduli, metodi e classi di un programma.
+Questa metrica è calcolata utilizzando il grafo di controllo di flusso del programma.
+Alti valori di questa metrica implicano una scarsa manutenibilità del software, mentre valori troppo bassi possono indicare un'altrettanta bassa efficienza del software.
+Degli obiettivi ragionevoli per questa metrica sono i seguenti:
+\begin{itemize}
+\item \grassetto{Obiettivo Sufficiente}: [1--15];
+\item \grassetto{Obiettivo Ottimale}: [1--10]\footnote{Il valore 10 come massimo è stato calcolato da T.J.McCabe, inventore della metrica.}.
+\end{itemize}
+
+\subsubsection{Livelli di annidamento}
+\label{4.2.2}
+Il numero di livelli di annidamento dei metodi rappresenta la quantità di richiami di altri metodi all'interno di uno stesso metodo.
+Un elevato livello di annidamento definisce un'elevata complessità del codice e di conseguenza comprensione dello stesso.
+I nostri obiettivi stimati per questa metrica sono:
+\begin{itemize}
+\item \grassetto{Obiettivo Sufficiente}: [1-6];
+\item \grassetto{Obiettivo Ottimale}: [1-3].
+\end{itemize}
+
+\subsubsection{Attributi per classe}
+\label{4.2.3}
+Il numero di attributi per classe esprime, appunto, la quantità di proprietà di una classe. Un elevato numero di attributi può denotare un'eccessiva dimensione della classe stessa, che potrebbe piuttosto essere suddivisa in più classi più piccole.
+Gli obiettivi per questa metrica sono:
+\begin{itemize}
+\item \grassetto{Obiettivo Sufficiente}: [0-16];
+\item \grassetto{Obiettivo Ottimale}: [3-8].
+\end{itemize}
+
+\subsubsection{Parametri per metodo}
+\label{4.2.4}
+Un alto numero di parametri per metodo denota un'eccessiva complessità del metodo stesso, comportandone probabilmente un'ulteriore lunghezza non accettabile. E' buona norma scrivere dei metodi con pochi parametri, al fine di ottenere procedure specifiche e atomiche, di conseguenza facilmente assegnabili e verificabili.
+Degli obiettivi validi per questa metrica sono:
+\begin{itemize}
+\item \grassetto{Obiettivo Sufficiente}: [0-8];
+\item \grassetto{Obiettivo Ottimale}: [0-4].
+\end{itemize}
+
+\subsubsection{Linee di codice per linee di commento}
+\label{4.2.5}
+Questo numero indica il rapporto tra linee di codice e linee di commento, per avere un fattore di commenti all'interno di un'unità software. In generale, un alto grado di commento del codice porta ad una maggiore manutenibilità ed informazione per uno sviluppatore.
+Gli obiettivi stimati sono:
+\begin{itemize}
+\item \grassetto{Obiettivo Sufficiente}: [$>0.25$];
+\item \grassetto{Obiettivo Ottimale}: [0.30]\footnote{Il valore di 0.30 è stato calcolato dal rapporto 22/78, derivato dalle medie di Ohloh \url{https://www.ohloh.net/p/firefox/factoids\#FactoidCommentsLow}}.
+\end{itemize}
+
+\subsubsection{Flusso di informazioni}
+\label{4.2.6}
+Valore che calcola il flusso di informazioni passanti per un modulo.
+Definiti:
+\begin{itemize}
+\item \grassetto{Fan-in}: numero di moduli che passano informazioni al modulo in esame;
+\item \grassetto{Fan-out}: numero di moduli a cui il modulo in esame passa informazioni.
+\end{itemize}
+il valore calcolato è:
+\begin{math}(lunghezza\:funzione)2 * Fan-in * Fan-out\end{math}
+
+\subsubsection{Accoppiamento}
+\label{4.2.7}
+\begin{itemize}
+\item \grassetto{Accoppiamento afferente}: questo fattore indica la quantità di di classi esterne ad un package che dipendono da classi interne allo stesso.
+Un alto valore di accoppiamento in una singola classe del package influisce sull'accoppiamento dell'intero package. Questo fatto non è necessariamente un errore di progettazione, ma il package in esame può rappresentare un punto critico del software. Per contro, un package con basso fattore di accoppiamento può delineare una scarsa utilità del package stesso, che probabilmente andrebbe inglobato con altri package;
+\item \grassetto{Accoppiamento efferente}: questo fattore indica l'accoppiamento contrario, ovvero il numero di classi interne al package che dipendono da classi esterne. Più questo indice è basso, più indipendente è il package stesso.
+\end{itemize}
+
+\subsubsection{Instabilità}
+\label{4.2.8}
+Il fattore di instabilità di un package indica la possibilità di modifica del package senza influire sulla stabilità del software ad esso dipendente.
+Questo indice e’ calcolato con la formula seguente:
+$$I = Ce / (Ca + Ce)$$
+dove Ca è l'accoppiamento afferente e Ce l'accoppiamento efferente.
+Gli obiettivi forniti da \emph{best practice}\footnote{Range ricavati da \url{http://staff.unak.is/andy/StaticAnalysis0809/metrics/i.html}} sono i seguenti:
+\begin{itemize}
+\item \grassetto{Obiettivo Sufficiente}: [0.0 - 0.8];
+\item \grassetto{Obiettivo Ottimale}: [0.0 - 0.3].
+\end{itemize}
+
+\subsubsection{Copertura del codice}
+\label{4.2.9}
+Questo fattore indica la percentuale di codice coperto durante l'esecuzione dei test. Più alta sarà la percentuale, minore sarà la possibilità di errori riscontrabili nell'esecuzione del software. Il valore ideale di 100\% indica che tutte le porzioni di codice sono testate da uno o più test.
+Gli obiettivi stimati per questa metrica sono:
+\begin{itemize}
+\item \grassetto{Obiettivo Sufficiente}: [42\% - 100\%];
+\item \grassetto{Obiettivo Ottimale}: [65\% - 100\%].
+\end{itemize}
+
+
+\subsection{Metrica processo} %2.1
+\label{4.3}
+Delle metriche ragionevoli per rendere i processi quantificabili si sono scelti due indicatori che si basano sui costi e i tempi spesi per un processo. Data la scarsa esperienza di cooperazione e di pianificazione delle attività del gruppo, gli obiettivi di questi indici fanno riferimento a convenzioni comuni.
+
+\subsubsection{Schedule Variance}
+\label{4.3.1}
+Indica se si è in linea, in anticipo o in ritardo rispetto alla schedulazione delle attività di progetto pianificate nella baseline. E' un indicatore di efficacia e se il suo valore è $> 0$ allora il progetto sta avanzando con maggiore velocità rispetto a quanto pianificato. Viceversa se negativo.
+Gli obiettivi fissati sono:
+\begin{itemize}
+\item \grassetto{Obiettivo Sufficiente}: $ [\geq -(costo\:preventivo\:per\:fase * 5\%)]; $
+\item \grassetto{Obiettivo Ottimale}: $ [\geq 0]. $
+\end{itemize}
+
+\subsubsection{Budget Variance}
+\label{4.3.2}
+Indica se alla data corrente si è speso di più o di meno rispetto a quanto si era pianificato alla data corrente. Se tale valore è $>0$ allora il progetto sta consumando il proprio budget con minor velocità rispetto a quanto pianificato. Viceversa se negativo.
+\begin{itemize}
+\item \grassetto{Obiettivo Sufficiente}: $[\geq -(costo\:preventivo\:per\:fase * 10\%)];$
+\item \grassetto{Obiettivo Ottimale}: $[\geq 0].$
+\end{itemize}
+
+\newpage
+\section{Resoconto attività di verifica}
+\label{5.0}
+
+\subsection{Processi}
+\label{5.1}
+Di seguito vengono riportati i valori degli indici di SV e BV calcolati per i documenti durante la fase di Analisi.
+
+\begin{longtable}{|c|p{3cm}|p{3cm}|}
+\toprule
+\textbf{Attività} & \textbf{SV} & \textbf{BV} \\
+
+%aggiungere qui una midrule per aggiungere una nuova riga alla tabella
+
+\midrule
+Studio Fattibilità & & \\
+\midrule
+Analisi dei Requisiti & & \\
+\midrule
+Glossario & & \\
+\midrule
+Norme di Progetto & & \\
+\midrule
+Piano di Progetto  & & \\
+\midrule
+Piano di Qualifica & & \\
+\bottomrule
+\caption{SV e BV dei processi durante l'Analisi}
+\label{tab:changelog}
+\end{longtable}
+
+\subsection{Documenti}
+\label{5.2}
+Di seguito vengono riportati gli indici di Gulpease calcolati per i vari documenti durante la fase di Analisi. L'esito di ciascun documento sarà superato o bocciato in base all'indice di Gulpease stabilito nel paragrafo(???).
+
+\begin{longtable}{|c|p{3cm}|p{3cm}|}
+\toprule
+\textbf{Documento} & \textbf{Valore indice} & \textbf{Esito} \\
+
+%aggiungere qui una midrule per aggiungere una nuova riga alla tabella
+
+\midrule
+\emph{Studio Fattibilità v1.2.0} & & \\
+\midrule
+\emph{Analisi dei Requisiti v1.2.0} & & \\
+\midrule
+\emph{Glossario v1.2.0} & & \\
+\midrule
+\emph{Norme di Progetto v1.2.0} & & \\
+\midrule
+\emph{Piano di Progetto v1.2.0} & & \\
+\midrule
+\emph{Piano di Qualifica v1.2.0} & & \\
+\bottomrule
+\caption{Esiti dell'indice di Gulpease calcolato sui documenti durante l'Analisi}
+\label{tab:changelog}
+\end{longtable}
+
+
+
+
+
+
+
+
+
+
+
+\input{./Piano_di_qualifica_appendice_A.tex}
+\input{./Piano_di_qualifica_appendice_B.tex}
+
+
+%FINE DOCUMENTO NON CANCELLARE
+\end{document}

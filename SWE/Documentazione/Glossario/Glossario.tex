@@ -1,0 +1,119 @@
+
+%includo il file che contiene la versione dei documenti
+\input{../Logo&Header/versioneDocumenti.tex}
+
+\newcommand{\Versione}{\versioneGlossario{}}
+\newcommand{\Data}{2013-12-08}
+\newcommand{\DataUltimaModifica}{2013-12-08}
+\newcommand{\TipoDocumento}{Glossario}
+\newcommand{\Lettera}{\Huge\fbox}
+\newcommand{\Riga}{\\\rule[2mm]{\textwidth}{0.25mm}}
+\newcommand{\Termine}{\emph}
+\newcommand{\Inizio}{}
+
+%comando per creare una nuova pagina del glossario
+\newcommand{\paginaGlossario}[1]{\newpage\begin{flushright}\Lettera{#1}\end{flushright}}
+
+%comando per creare un nuovo elemento del glossario
+\newcommand{\elemento}[2]{\Termine{#1}\Riga\begin{quote}{#2}\end{quote}}
+
+\input{../Logo&Header/header.tex}
+
+\begin{center}
+
+\section{Informazioni documento}
+\begin{tabular}{r|l}
+\textbf{Nome} &\TipoDocumento \\
+\textbf{Versione} & \Versione\\
+\textbf{Data creazione} & \Data \\
+\textbf{Data ultima modifica} & \DataUltimaModifica \\
+\textbf{Stato del documento} & Formale \\
+\textbf{Uso del documento} & Esterno \\
+\textbf{Redazione} & Fabio Miotto, Mattia Sorgato\\
+\textbf{Verifica} & Michele Maso, Giacomo Pinato \\
+\textbf{Approvazione} & Alberto Garbui \\
+\textbf{Distribuzione} & \parbox[t]{4cm}{\NomeGruppo \\ Prof. Tullio Vardanega \\ Prof. Riccardo Cardin \\ \Prop{} } \\
+\end{tabular}
+\end{center}
+\vspace{.1in}
+
+\begin{abstract}
+\begin{center}
+Questo documento si prefigge di chiarire le possibili ambiguità tra i vari termini utilizzati all'interno dei documenti redatti dal gruppo \NomeGruppo{}
+\end{center}
+\end{abstract}
+
+%pagina diario delle modifiche
+\newpage
+\textbf{Diario delle modifiche}
+\begin{center}
+\begin{longtable}{|c|c|c|p{0.5\linewidth}|}
+\toprule
+\textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Modifiche effettuate}\\
+\midrule
+1.2.0 &  & Alberto Garbui & Approvazione finale del documento\\
+\midrule
+1.1.1 &  & Michele Maso & Verifica del documento \\
+\midrule
+1.1.0 &  & Giacomo Pinato & Verifica del documento \\
+\midrule
+1.0.6 &  & Fabio Miotto &   Inserimento termini\\
+\midrule
+1.0.5 &  & Mattia sorgato &   Inserimento termini\\
+\midrule
+1.0.4 &  & Mattia Sorgato  &   Inserimento termini\\
+\midrule
+1.0.3 &  & Mattia Sorgato  &  Inserimento termini \\
+\midrule
+1.0.2 & & Fabio Miotto  &  Inserimento termini\\
+\midrule
+1.0.1 &  & Fabio Miotto &  Inserimento termini\\
+\midrule
+1.0.0 &  & Fabio Miotto & Creazione struttura iniziale del documento\\
+
+
+\bottomrule
+\caption{Registro delle modifiche}
+\label{tab:changelog}
+\end{longtable}
+\end{center}
+
+%qui inizia la prima pagina ufficiale
+\newpage
+\section{Introduzione}%1.0
+\label{1.0}
+\subsection{Scopo del documento}%1.1
+\label{1.1}
+Questo documento raccoglie tutti i termini che sono sconosciuti al lettore esterno o che possono portare ad ambiguità. Per ciascun termine viene riportato sotto il nome una breve definizione che ne chiarisce il significato.
+\subsection{Riferimenti} %1.41
+\label{1.4}
+\subsubsection{Normativi} %1.4.1
+\label{1.4.1}
+\begin{itemize}
+\item Norme di Progetto: Norme\_{}di\_{}Progetto\_{}v\versioneNormeProgetto{}.pdf  (allegato alla presente documentazione)\\
+\end{itemize}
+\subsubsection{Informativi} %1.4.2
+\label{1.4.2}
+\begin{itemize}
+\item Wikipedia:\\ \url{ http://www.wikipedia.org/}
+\item OkPedia:\\ \url{ http://www.okpedia.it/}
+\item W3C:\\ \url{http://www.w3.org/}
+\item Techterms:\\ \url{http://www.techterms.com/}
+\item ISO:\\ \url{http://www.iso.org/iso/home/about.htm}
+\item Francesco Ranzato, Appunti di programmazione oggetti, Edizione II.\\
+\end{itemize}
+
+%inizio glossario
+\newpage
+\Inizio{} %questo serve allo script del glossario
+\begin{flushright}
+\Lettera{\#}  %QUI CI SONO LE PAROLE DEL GLOSSARIO CHE INIZIANO CON UNA CIFRA
+\end{flushright}
+
+
+
+\input{./GlossarioAM.tex}
+\input{./GlossarioNZ.tex}
+
+%%FINE GLOSSARIO, NON CANCELLARE
+\end{document}
