@@ -1,0 +1,664 @@
+%"variabili globali" che verranno aggiornate in tutte le pagine/footer
+% per inserire nuove macro ->  \newcommand{\nomeMacro}{valoreMacro}
+
+%includo il file che contiene la versione dei documenti
+\input{../Logo&Header/versioneDocumenti.tex}
+
+\newcommand{\Versione}{\versioneNormeDiProgetto{}}	%Versione Finale
+\newcommand{\Data}{2013-11-20}						%Data di creazione
+\newcommand{\DataUltimaModifica}{2013-12-08}
+\newcommand{\TipoDocumento}{Norme di Progetto}		%tipo documento
+
+%includo il file header.tex (logo grande in prima pagina piu qualche altra regola)
+\input{../Logo&Header/header.tex}
+
+%\vspace{.05in}
+
+%informazioni documento
+\begin{center}
+%\section{Informazioni documento}
+\begin{tabular}{r|l}
+%\textbf{Nome} &\TipoDocumento \\
+\textbf{Versione} & \Versione{} \\
+\textbf{Data creazione} & \Data{} \\
+\textbf{Data ultima modifica} & \DataUltimaModifica{} \\
+\textbf{Stato del Documento} & Formale \\		%CAMBIARE QUI
+\textbf{Uso del Documento} & Interno \\			%CAMBIARE QUI
+\textbf{Redazione} & Alberto Garbui\\			%CAMBIARE QUI
+\textbf{Verifica} & Fabio Miotto, Michele Maso\\%ED ANCHE QUI!
+\textbf{Approvazione} & Mattia\\				%CAMBIARE QUI
+\textbf{Distribuzione} & \parbox[t]{4cm}{\NomeGruppo{} \\ Prof. Tullio Vardanega \\ Prof. Riccardo Cardin \\ \Prop{} }\\
+\end{tabular}
+\end{center}
+
+\vspace{0.05in}
+
+%inizio sommario del documento
+\begin{abstract}
+\begin{center}
+Questo documento si propone di presentare le norme che il gruppo \textbf{\NomeGruppo{}} ha stabilito per la realizzazione del prodotto \textbf{\Progetto{}}.
+\end{center}
+\end{abstract}
+
+%\vspace{.4in}
+
+%seconda pagina, diario delle modifiche
+\newpage
+Diario delle modifiche
+\begin{center}
+\begin{longtable}{|c|c|c|p{0.5\linewidth}|}
+\toprule
+\textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Modifiche effettuate}\\
+
+%aggiungere qui una midrule per aggiungere una nuova riga alla tabella
+
+\midrule
+0.2 & 2013-12-05 & Alberto Garbui (AN) & Aggiunto capitolo 1\\
+\midrule
+0.1 & 2013-12-01 & Alberto Garbui (AN) & Creazione documento\\
+\midrule
+0.1 & 2013-12-01 & Alberto Garbui (AN) & Creazione documento\\
+\midrule
+0.1 & 2013-12-01 & Alberto Garbui (AN) & Creazione documento\\
+\midrule
+0.1 & 2013-12-01 & Alberto Garbui (AN) & Creazione documento\\
+\midrule
+0.1 & 2013-12-01 & Alberto Garbui (AN) & Creazione documento\\
+\midrule
+0.1 & 2013-12-01 & Alberto Garbui (AN) & Creazione documento\\
+\midrule
+0.1 & 2013-12-01 & Alberto Garbui (AN) & Creazione documento\\
+\midrule
+0.1 & 2013-12-01 & Alberto Garbui (AN) & Creazione documento\\
+\midrule
+0.1 & 2013-12-01 & Alberto Garbui (AN) & Creazione documento\\
+
+\bottomrule
+\caption{Registro delle modifiche}
+\label{tab:changelog}
+\end{longtable}
+\end{center}
+
+%terza pagina Indice (viene aggiornato in automatico con due compilazioni)
+\newpage
+\tableofcontents
+
+%pagine successive hanno la lista di tabelle e lista delle figure
+%(vengono aggiornate in automatico)
+%\newpage
+%\listoftables
+%\listoffigures
+
+%qui inizia la prima pagina ufficiale
+\newpage
+\section{Introduzione}%1.0
+\label{1.0}
+\subsection{Scopo del documento}%1.1
+\label{1.1}
+Questo documento è volto a definire le norme che dovranno essere osservate da tutti i componenti del team per l'intera durata del progetto. Tali norme sono volte a garantire la qualità finale del prodotto attraverso la rigida regolamentazione dei processi e delle strategie di produzione. In queste pagine vengono delineate le linee guida e le norme per tutte le attività che concorreranno allo sviluppo del software, della documentazione e del progetto in generale.
+
+\subsection{Scopo del prodotto}
+\label{1.2}
+\Prodotto{}
+
+\subsection{Glossario}%1.2
+\label{1.3}
+\Glossario{}
+
+\subsection{Riferimenti} %1.3
+\label{1.4}
+
+\begin{itemize}
+\item \grassetto{Slide dell'insegnamento Ingegneria del Software modulo A}:\\
+Ingegneria dei requisiti: \url{http://www.math.unipd.it/~tullio/IS-1/2013/};
+\item \grassetto{Software Engineering - Ian Sommerville - 9th Edition (2010)};\\
+\item \grassetto{Piano di Qualifica}: \emph{Piano di Qualifica v1.2.0};
+\item \grassetto{Piano di Progetto}: \emph{Piano di Progetto v1.2.0}.
+\end{itemize}
+
+\newpage
+\section{Ruoli di progetto}%2.0
+\label{2}
+Per la piena riuscita del progetto è indispensabile distinguere i vari ruoli che concorrono alla creazione del prodotto finale e le loro diverse responsabilità e competenze.
+Ogni ruolo avrà una specifica area di competenza, degli specifici compiti, oneri e particolari autorizzazioni. Ogni componente dovrà limitarsi ai compiti ad esso assegnati e, nel caso qualcosa esuli dal suo campo di pertinenza, lo stesso dovrà rivolgersi al collega occupante il ruolo competente.
+Tutti i membri, a rotazione, dovranno occupare come minimo una volta ciascuno dei ruoli descritti sottostante.
+
+\subsection{Responsabile di Progetto} %2.1
+\label{2.1}
+Il Responsabile di Progetto incentra su di s le responsabilità di scelta ed approvazione dei lavori. Ha inoltre il ruolo di rappresentare il gruppo nei contatti con l'esterno e durante la presentazione dei lavori.\\
+Le sue competenze principali comprendono:
+\begin{itemize}
+\item Pianificazione, coordinamento e controllo delle attività;
+\item Gestione e controllo delle risorse;
+\item Approvazione delle analisi di gestione e rischio;
+\item Approvazione dei documenti;
+\item Comunicazioni con i committenti/proponenti.
+\end{itemize}
+Il Responsabile ha il compito di assicurarsi che le attività di Verifica vengano svolte sistematicamente seguendo le \emph{Norme di Progetto v1.2.0}, deve al contempo accertarsi che vengano rispettati i ruoli e le competenze assegnate nel \emph{Piano di Progetto v1.2.0} e che non vi siano conflitti di interesse tra redattori e Verificatori. Ha infine l'onere di gestire la creazione e l'assegnazione dei ticket di pianificazione e di assegnare ad un membro del gruppo il ruolo di Responsabile di quest'ultimo, nel caso riguardi una sotto-attività.
+
+\subsection{Amministratore}
+\label{2.2}
+L'Amministratore è il responsabile del controllo, dell'efficienza e dell'operatività dell'ambiente di lavoro e degli strumenti per la condivisone e la sincronizzazione.\\
+Inoltre deve garantire:
+\begin{itemize}
+\item L'individuazione e la gestione di strumenti per automatizzare quanto più possibile processi o attività;
+\item L'individuazione e la gestione di strumenti per il controllo dei processi e delle risorse;
+\item L'individuazione e la gestione di strumenti e strategie per il controllo della qualità;
+\item Gestione del versionamento.
+\end{itemize}
+
+\subsection{Analista}
+\label{2.3}
+L'Analista è il responsabile dell'analisi dei requisiti di progetto. Dopo aver compreso pienamente la natura del problema e tutti i suoi domini, il suo ruolo è delineare vincoli e caratteristiche del prodotto finale, redigendo una specifica di progetto dettagliata, precisa e non ambigua, comprensibile sia dal Proponente che dal Progettista.
+
+\subsection{Progettista}
+\label{2.4}
+Il Progettista è colui che disegna una soluzione attuabile ed efficace che soddisfi i requisiti dettati dagli Analisti. Il suo compito è progettare un'architettura che assicuri sia una facile manutenibilità del prodotto, sia una buona scomposizione in moduli indipendenti tra di loro.
+
+\subsection{Verificatore}
+\label{2.5}
+Il Verificatore è Responsabile delle attività di Verifica. Ha il compito di assicurare che i documenti e il codice rispettino gli standard stabiliti nelle \emph{Norme di Progetto v1.2.0}.
+
+\subsection{Programmatore}
+\label{2.6}
+Il Programmatore è Responsabile delle attività di codifica e delle componenti di ausilio
+necessarie per l'esecuzione delle prove di Verifica e Validazione. Le responsabilità di tale ruolo sono:
+\begin{itemize}
+\item Implementare rigorosamente le soluzioni descritte dal Progettista per la realizzazione del progetto;
+\item Scrivere codice e la sua relativa documentazione che rispettino gli standard stabiliti per la loro scrittura;
+\item Implementare i test sul codice scritto, necessari per prove di Verifica e Validazione.
+\end{itemize}
+
+\newpage
+\section{Comunicazioni}
+\label{3.0}
+
+\subsection{Email}
+\label{3.1}
+La email ufficiale del gruppo è \textbf{\url{ApertureSWE@gmail.com}}.\\
+Tale email può essere usata soltanto dal Responsabile di Progetto e verrà utilizzata per tutte le comunicazioni che il gruppo terrà con l'ambiente esterno.
+
+\subsection{Comunicazioni interne}
+\label{3.2}
+
+\subsubsection{Skype}
+\label{3.2.1}
+Per facilitare le comunicazioni istantanee è stata creata su Skype una chat di gruppo dove sono presenti tutti i membri del team di sviluppo. Tale chat deve essere usata solo per conversazioni non ufficiali o per discussioni non importanti come lo scambio di articoli, consigli o comunicazioni non rilevanti.
+
+\subsubsection{Mailing List}
+\label{3.2.2}
+E' stata creata una mailing list all'indirizzo \textbf{\url{aperture-team@googlegroups.com}}.
+Ogni email inviata a tale indirizzo verrà inoltrata alla email personale di ogni componente nel gruppo.
+La mailing list è collegata ad un gruppo su Google Groups, che permette di velocizzare le comunicazioni implementando una simil-chat tramite email distribuite, inoltre mantiene uno storico di qualsiasi comunicazione. Va usato quindi come strumento per discussioni e comunicazioni ufficiali.
+
+\subsection{Riunioni}
+\label{3.3}
+
+\subsubsection{Richiesta}
+\label{3.3.1}
+Ogni membro del team può richiedere che venga organizzata una riunione al Responsabile che, una volta verificata la motivazione della richiesta, accoglie o meno la stessa.
+Il Responsabile di Progetto ha la facoltà di indire riunioni qualora sentisse la necessità di farlo.
+La riunione deve essere segnalata sul calendario di gruppo con almeno due giorni di anticipo e non deve andare a sovrapporsi con impegni precedenti di altri componenti, a meno che la loro presenza non possa essere esclusa. Deve inoltre essere inviata una email circolare di promemoria a tutti i membri del gruppo indicante giorno, ora e motivazione della riunione.
+
+\subsubsection{Svolgimento}
+\label{3.3.2}
+Alle riunioni è gradita, ma non richiesta, la partecipazione di tutti i membri del gruppo. E' giustificata l'assenza nel caso in cui la riunione riguardi temi non inerenti al ruolo di progetto che si sta ricoprendo o nel caso di impegni validi, giustificabili e improrogabili.
+
+\subsubsection{Verbale}
+\label{3.3.3}
+Ad ogni riunione verrà eletto un segretario che avrà il compito di annotare gli argomenti di discussione e le decisioni prese durante la stessa.
+Dovrà inoltre redigere un verbale che verrà ufficialmente raccolto e archiviato come documentazione interna entro tre giorni dalla data della riunione.
+La struttura del Verbale deve contenere i seguenti elementi:
+\begin{itemize}
+\item Data;
+\item Luogo;
+\item Ora;
+\item Durata;
+\item Partecipanti interni;
+\item Partecipanti esterni;
+\item Motivazione della riunione/incontro;
+\item Argomenti trattati.
+\end{itemize}
+
+\subsection{Comunicazioni con i committenti e proponenti}
+\label{3.4}
+
+\subsubsection{Prerequisiti}
+\label{3.4.1}
+Prima di richiedere un colloquio personale con i proponenti e/o committenti il team deve preparare un documento che riassume i punti che verranno discussi contenente argomenti, dubbi e domande da porre.
+
+\subsubsection{Richiesta di colloquio}
+\label{3.4.2}
+I colloqui con i committenti di progetto possono essere richieste dal Responsabile mediante la email ufficiale del team. Tutti i membri devono essere avvisati prima di richiedere un incontro con il Committente.
+
+\subsubsection{Verbale}
+\label{3.4.3}
+Alla fine del colloquio deve essere redatto un verbale (vedi 3.3.3) che riassume gli argomenti trattati, le conclusioni, nonché le strategie che si sono delineate in concordanza col Committente/Proponente.
+
+\newpage
+\section{Ambiente e strumenti di lavoro}
+\label{4.0}
+
+\subsection{Redmine}
+\label{4.1}
+Come piattaforma per la gestione del progetto è stato scelto Redmine. Le principali funzioni che esso fornisce sono:
+\begin{itemize}
+\item Un sistema di gestione dei ticket;
+\item Il grafico Gantt delle attività;
+\item Un calendario per organizzare i compiti e le attività;
+\item La visualizzazione della repository associato al progetto;
+\item Un sistema di  gestione del tempo e delle milestone.
+\end{itemize}
+
+\subsection{Google Calendar}
+\label{4.2}
+Viene messo a disposizione del team un calendario per coordinare temporalmente le attività e gli impegni di ciascuno dei componenti.
+Tutti i membri del team useranno il calendario messo a disposizione su Google Calendar per segnalare i giorni in cui per loro non sarà possibile lavorare al progetto o partecipare a riunioni e sessioni di lavoro di gruppo. I componenti si impegnano a segnare sul calendario quanto prima qualsiasi impegno o impedimento dovesse sorgere e a controllare periodicamente il suddetto per essere aggiornati su eventuali impegni altrui e/o di gruppo.
+Il calendario verrà inoltre usato dal Responsabile per la segnalazione di riunioni o sessioni di lavoro di gruppo.
+
+\subsection{Repository}
+\label{4.3}
+Viene messa a disposizione una repository Git su GitHub per la gestione e il versionamento di codice e documenti tra i vari membri del gruppo.\\
+La repository pubblica è disponibile all'indirizzo: \\
+\begin{center}
+\textbf{\url{https://github.com/ApertureSoftware/AperturePublic.git}.}
+\end{center}
+
+\subsection{Branch}
+\label{4.4}
+Nella repository saranno disponibili vari branch per favorire lo sviluppo del codice da parte degli sviluppatori.
+
+\subsubsection{Master}
+\label{4.4.1}
+Il branch principale sarà chiamato master e conterrà l'ultima versione del software stabile rilasciata. Affinché una nuova versione possa essere caricata nel branch master, quest'ultima deve compilare senza errori o warning e deve aver superato tutti i test disegnati per verificarne la qualità.
+
+\subsubsection{Secondari}
+\label{4.4.2}
+Gli sviluppatori possono richiedere la creazione di un branch secondario, provando nuove strategie di sviluppo senza alterare il branch master. Il Responsabile di Progetto è Responsabile dell'approvazione della richiesta.
+
+\newpage
+\section{Documentazione}
+\label{5.0}
+
+\subsection{Template}
+\label{5.1}
+Viene fornito un template in \LaTeX\ per la realizzazione della documentazione, sia interna che esterna, che i membri del gruppo dovranno seguire nella stesura dei documenti.
+
+\subsection{Struttura del documento}
+\label{5.2}
+
+\subsubsection{Header}
+\label{5.2.1}
+Ogni documento ha un header presente in ogni pagina che riporta logo e nome del gruppo sulla sinistra.
+
+\subsubsection{Footer}
+\label{5.2.2}
+Ogni documento ha un footer presente in ogni pagina che riporta il nome e la versione del documento a sinistra e il numero della pagina a destra.
+
+\subsubsection{Prima pagina}
+\label{5.2.3}
+La prima pagina di ogni documento deve riportare nel seguente ordine:
+\begin{itemize}
+\item Il logo esteso del gruppo;
+\item Il nome del progetto;
+\item Il nome del documento;
+\item Informazioni sul documento (versione, data creazione, data ultima modifica, stato del documento, uso del documento, i redattori del documento, i Verificatori, chi ha approvato il documento e la distribuzione del documento);
+\item Breve sommario del documento.
+\end{itemize}
+
+\subsubsection{Seconda pagina}
+\label{5.2.4}
+La seconda pagina deve riportare il diario delle modifiche apportate al documento dalla sua creazione fino alla versione corrente.
+
+\subsubsection{Terza pagina}
+\label{5.2.5}
+La terza pagina deve riportare l'indice del documento.
+
+\subsection{Documentazione del codice}
+\label{5.3}
+
+\subsubsection{Header dei file}
+\label{5.3.1}
+Ogni file dovrà contenere un header strutturato come segue:
+\begin{itemize}
+\item File: Nome del file;
+\item Module: modulo di appartenenza;
+\item Author: Autore (indirizzo email dell'autore);
+\item Created: Data di creazione;
+\item Version: Versione corrente;
+\item Description: Descrizione dettagliata del file;
+\item Modification History: Tabella dei cambiamenti effettuati sul file.
+\end{itemize}
+
+\subsubsection{Documentazione dei metodi}
+\label{5.3.2}
+Ogni metodo/funzione di codice dovrà essere preceduta da un commento contenente le seguenti informazioni:
+\begin{itemize}
+\item Name: Nome del metodo;
+\item Param: lista del tipo dei parametri;
+\item Descr: Breve descrizione del comportamento del metodo;
+\item  Return: Cosa ritorna la funzione.
+\end{itemize}
+
+\subsubsection{Documentazione delle classi}
+\label{5.3.3}
+Ogni classe deve essere preceduta da un commento contenente le seguenti informazioni:
+\begin{itemize}
+\item Name: Nome della classe;
+\item Descr: Breve descrizione della classe.
+\end{itemize}
+
+\subsection{Norme tipografiche e stili di testo}
+\label{5.4}
+Nella stesura della documentazione si dovranno seguire le seguenti indicazioni:
+\begin{itemize}
+\item I documenti dovranno essere grammaticalmente e sintatticamente corretti e scritti in modo fluido;
+\item Elenco puntato termina con il punto e virgola oppure con il punto se è l'ultimo elemento;
+\item Un carattere di punteggiatura non deve mai seguire un carattere di spaziatura;
+\item Il testo racchiuso tra parentesi non deve aprirsi o chiudersi con un carattere di spaziatura e non deve terminare con un carattere di punteggiatura;
+\item Le lettere maiuscole vanno poste solo dopo il punto, il punto di domanda, il punto esclamativo e all'inizio di ogni elemento di un elenco puntato, oltre che dove previsto dalla lingua italiana. È inoltre utilizzata l'iniziale maiuscola nel nome del team, del progetto, dei documenti, dei ruoli di progetto, delle fasi di lavoro e nelle parole Proponente e Committente.
+\item Nel caso in cui ci si riferisca ad un documento, il titolo di quest'ultimo dovrà essere scritto in corsivo e si dovrà riportare la versione riferita;
+\item I ruoli di progetto (es. Analista) dovranno essere scritti in corsivo per differenziarli dal riferimento generale alla figura professionale;
+\item Gli acronimi dovranno essere scritti in lettere maiuscole;
+\item E' preferibile usare la forma attiva a quella passiva;
+\item Quando possibile usare elenchi puntati invece che frasi;
+\item Usare termini specifici e segnare i termini del glossario in corsivo e con la G in pedice;
+\item Dividere i documenti in sezioni e sottosezioni titolate;
+\item Le date dovranno essere espresse nella forma AAAA-MM-GG secondo lo standard ISO 8601:2004;
+\item Gli elenchi puntati sono formati da dei pallini neri pieni, tranne quando si deve elencare una sequenza numerata di istruzioni da fare in un ordine stabilito.
+\end{itemize}
+
+\subsection{Sigle e abbreviazioni}
+\label{5.5}
+Le sigle e le abbreviazioni dovranno essere utilizzate solo in contesti in cui lo spazio è limitato come tabelle e diagrammi. Sono previste le seguenti abbreviazioni:
+\begin{itemize}
+\item AdR = Analisi dei Requisiti;
+\item GL=Glossario;
+\item NdP = Norme di Progetto;
+\item PdP = Piano di Progetto;
+\item PdQ = Piano di Qualifica;
+\item SdF = Studio di Fattibilità;
+\item ST = Specifica Tecnica;
+\item RA = Revisione di Accettazione;
+\item RP = Revisione di Progettazione;
+\item RQ = Revisione di Qualifica;
+\item RR = Revisione dei Requisiti;
+\item AS = Aperture Software.
+\end{itemize}
+
+\subsection{Termini del Glossario}
+\label{5.6}
+Alla prima occorrenza di un termine definito nel Glossario, esso dovrà essere marcato con la lettera G in pedice della parola. Verrà marcata solo la prima occorrenza al fine di mantenere il testo più pulito e leggibile. L'intera parola verrà inoltre marcata in corsivo, e se il termine è composto da più parole, le componenti singole saranno in corsivo e la G in pedice sarà posta sull'ultima parola. 
+
+\subsection{LaTeX}
+\label{5.7}
+Per la stesura dei documenti verrà utilizzato il linguaggio di markup \LaTeX. Esso rende possibile definite template di documenti standardizzati da poter applicare a qualsiasi contenuto, separando cosi formattazione da contenuto e facilitando il lavoro di stesura. \LaTeX\ inoltre dispone di qualsiasi strumento di formattazione di cui si possa avere bisogno, eliminando il bisogno di strumenti ausiliari alla stesura dei documenti.
+
+\newpage
+\section{Versionamento}
+\label{6.0}
+Il versionamento verrà effettuato sia sul codice che sui documenti prodotti dal gruppo al fine di differenziare e rendere immediatamente riconoscibile la fase di sviluppo in cui ci si trova attualmente, mantenendo uno storico organizzato dei cambiamenti effettuati.
+
+\subsection{Regole generali}
+\label{6.1}
+\begin{itemize}
+\item Il numero di versionamento deve essere nella forma X.Y.Z, con X,Y e Z numeri interi non negativi. Tutti gli elementi devono salire numericamente di una unità alla volta;
+\item Ogni qualvolta che una versione viene rilasciata non può più essere effettuato alcun cambiamento ad essa. Ogni modifica sarà inserita nella versione successiva.
+\end{itemize}
+
+\subsection{Versionamento del software}
+\label{6.2}
+Nel versionare il software, le tre cifre di versionamento verranno modificate in base ai seguenti parametri:
+\begin{itemize}
+\item La prima cifra decimale verrà aumentata nel caso in cui vengano introdotti cambiamenti non retro compatibili al framework. Possono essere inclusi cambiamenti minori. Nel caso in cui la prima cifra venga aumentata la seconda e la terza ripartono da 0;
+\item La seconda cifra decimale verrà aumentata nel caso in cui vengano rilasciate nuove funzionalità retro compatibili. Deve necessariamente essere aumentata se una qualsiasi funzionalità pubblica del framework viene marcata deprecata. E' possibile aumentare la seconda cifra anche in caso di rilascio di nuove funzionalità o miglioramenti sostanziali. Al cambiamento della seconda cifra la terza deve ripartire da 0;
+\item La terza cifra decimale verrà aumentata nel caso di correzione di errori o altri piccoli cambiamenti retro compatibili;
+\item La cifra X a 0 è riservata per lo sviluppo iniziale. Le versioni con X a 0 non sono da considerarsi stabili;
+\item La versione 1.0.0 definisce la prima versione stabile del framework.
+\end{itemize}
+
+\subsection{Versionamento dei documenti}
+\label{6.3}
+Nel versionare il software, le tre cifre di versionamento verranno modificate in base alle seguenti regole:
+\begin{itemize}
+\item X: indica il numero di uscite formali del documento, diviso come segue:
+	\begin{enumerate}[start=0]
+	\item Fase di Analisi, si estende fino alla Revisione dei Requisiti;
+	\item Fase di Analisi in Dettaglio, si estende fino all'ingresso nella fase di Progettazione;
+	\item Fase di Progettazione Architetturale, si estende fino alla Revisione di Progettazione;
+	\item Fase di Progettazione di Dettaglio e Codifica, si estende fino alla Revisione di Qualifica;
+	\item Fase di Verifica e Validazione, si estende fino alla Revisione di Accettazione e alla fine del progetto.
+	\end{enumerate}
+\item Y: indica la fase di sviluppo del documento e varia come segue:
+	\begin{enumerate}[start=0]
+	\item Fase di stesura del documento, dove il documento è ancora modificabile;
+	\item Fase di Verifica del documento, dove il documento non è più modificabile e sta venendo controllato dal Verificatore;
+	\item Documento ultimato e approvato.
+	\end{enumerate}
+Sarà compito del Responsabile impostare la versione a X.1.0 nel momento in cui assegnerà il ticket di controllo ai Verificatori e impostare la versione a X.2.0 nel caso in cui il documento risulti approvato dagli stessi.
+\item Z: indica il numero di modifiche minori apportare al documento. Aumenta al termine di ogni sessione di lavoro sul documento. Non ha un limite massimo.
+\end{itemize}
+
+\subsection{Tabella delle modifiche}
+\label{6.4}
+Ogni documento soggetto a versionamento dovrà riportare in qualche sua parte un diario delle modifiche strutturato nella seguente maniera:
+\begin{center}
+\begin{longtable}{|c|c|c|p{0.5\linewidth}|}
+\toprule
+\textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Modifiche effettuate}\\
+
+\bottomrule
+%\label{tab:changelog}
+\end{longtable}
+\end{center}
+Le modifiche dovranno essere ordinate cronologicamente dalla più alla meno recente.
+
+\newpage
+\section{Analisi dei requisiti}
+\label{7.0}
+La stesura del documento denominato Analisi dei Requisiti è compito degli Analisti. 
+In questo documento verranno trovati, analizzati e catalogati tutti i requisiti, impliciti e non, imposti dal progetto.
+
+\subsection{Identificazione e classificazione dei requisiti}
+\label{7.1}
+È compito degli Analisti stilare una lista dei requisiti emersi dal capitolato e da eventuali riunioni con il Proponente. E' inoltre loro compito identificare tutti quei requisiti impliciti che per loro natura non vengono specificati ma devono essere individuati e studiati. Tutti questi requisiti dovranno essere classificati per tipo e importanza, utilizzando la seguente codifica:
+\begin{center}
+\textbf{R[importanza][tipo][codice]}
+\end{center}
+dove:
+\begin{itemize}
+\item Importanza può assumere i seguenti valori:
+	\begin{itemize}
+	\item O: Requisito obbligatorio;
+	\item D: Requisito desiderabile;
+	\item F: Requisito facoltativo.
+	\end{itemize}
+\item Tipo può assumere i seguenti valori:
+	\begin{itemize}
+	\item F: Funzionale;
+	\item Q: Di qualità;
+	\item P: Prestazionale;
+	\item V: Vincolo.
+	\end{itemize}
+\item Codice è il codice che identifica univocamente ogni requisito. La sua regolamentazione è descritta nell' \emph{Analisi dei Requisiti v1.2.0}.
+\end{itemize}
+
+\subsection{Casi d’uso e UML}
+\label{7.2}
+Successivamente all'individuazione ed al tracciamento dei requisiti si procede all'analisi dei casi d'uso, denominati nelle sezioni seguenti anche come use case o con l'acronimo UC.
+Per realizzare i diagrammi UML dei casi d'uso è stato scelto Astah. Il software era stato consigliato dal Professor Cardin e soddisfa tutte le necessità del team.
+Tutti i diagrammi devono rispettare la specifica UML 2.0.
+
+\newpage
+\section{Norme di sviluppo}
+\label{8.0}
+
+\subsection{Creare un nuovo progetto}
+\label{8.1}
+La creazione del progetto è onere del Responsabile di Progetto.
+Il progetto è una macro-attività che verrà suddivisa in molte sotto-attività al fine di semplificare la progettazione, la realizzazione e la Verifica delle stesse. Ogni attività sarà a carico di un Responsabile.
+
+\subsection{Ticket}
+\label{8.2}
+I ticket sono uno strumento per il tracciamento di attività, funzionalità e problematiche utile per sincronizzare e mantenere traccia del lavoro del team.
+
+\subsection{Creazione dei ticket}
+\label{8.3}
+I ticket vengono creati da:
+\begin{itemize}
+\item Responsabile di Progetto: crea i ticket di maggiore importanza per l'avanzamento tra le fasi macroscopiche di progetto;
+\item Responsabile di sotto-progetto: crea i ticket minori per lo sviluppo delle caratteristiche e delle funzionalità delle singole componenti del progetto;
+\item Verificatore: crea ticket per la segnalazione di problematiche o bug che necessitano di controllo e correzione.
+\end{itemize}
+
+\subsection{Tipologie di Ticket}
+\label{8.4}
+I ticket rappresentano operazioni e attività che devono essere portate a termine.
+
+\subsubsection{Ticket di pianificazione}
+\label{8.4.1}
+Gestiscono la pianificazione delle macro-attività di maggiore importanza. Sono organizzati in una gerarchia con vari livelli di importanza.
+
+\subsubsection{Ticket di realizzazione e controllo}
+\label{8.4.2}
+Gestiscono la pianificazione delle macro-attività di maggiore importanza. Sono organizzati in una gerarchia con vari livelli di importanza.
+
+\subsubsection{Ticket di verifica}
+\label{8.4.3}
+Rappresentano segnalazioni di errori, problematiche o imprecisioni riscontrate dai Verificatori durante le fase di Verifica. Dovranno essere assegnati ad un membro del team che in quel momento ricopre un ruolo adatto ad intervenire per la correzione e in seguito riverificati da un Verificatore.
+I ticket di verifica avranno specifici stadi di avanzamento:
+\begin{itemize}
+\item Enqueued: il ticket è stato creato ed è in attesa di essere assegnato ad un X per la risoluzione del problema;
+\item In Progress: il ticket è stato assegnato ed è in lavorazione;
+\item Closed: la lavorazione è terminata e il problema segnalato dal ticket è stato risolto;
+\item Approved o Rejected: un Verificatore approva o rigetta il lavoro effettuato. Nel caso di rigetto deve venire creato un nuovo ticket per risolvere il problema.
+\end{itemize}
+
+\subsubsection{Ticket di modifica}
+\label{8.4.4}
+Rappresentano richieste di modifica fatte da membri del team al Responsabile. Quest'ultimo poi decide se accettare la richiesta di modifica o rifiutarla. Se la richiesta viene accettata, il Responsabile convoca una riunione per la discussione della modifica. Se la modifica viene rettificata dall'assemblea, le viene assegnata una priorità e viene messa nell'elenco di modifiche in attesa di implementazione.
+Le priorità che possono essere assegnate sono le seguenti:
+\begin{itemize}
+\item Urgente: da applicare il prima possibile;
+\item Media: da applicare entro la prossima milestone;
+\item Bassa: l'implementazione non è obbligatoria, non c'è una scadenza definita.
+\end{itemize}
+
+\newpage
+\section{Glossario}
+\label{9.0}
+Ogni qualvolta, durante la stesura di un documento, si incorra in un termine tecnico o non di uso comune, esso dovrà essere inserito nel Glossario insieme ad una sua precisa definizione. Se la definizione conterrà a sua volta termini di questo tipo, anche essi a loro volta dovranno essere inseriti nel Glossario.
+Le definizioni dei termini devono essere quanto più semplici e chiare possibile, e devono cercare di evitare ricorsioni o termini da glossario.
+I termini nel Glossario devono necessariamente essere elencati in ordine alfabetico.
+Ogni definizione del termine del Glossario deve contenere una spiegazione coincisa; è preferibile che la definizione inizi con un sostantivo, in ogni caso non deve mai iniziare con l'espressione "è un". 
+All'interno della definizione del termine, l'occorrenza del termine stesso non dovrà contenere la notazione che lo identifica come termine da Glossario, ovvero scritto in corsivo e con la lettera G come pedice.
+
+\newpage
+\section{Strumenti}
+\label{10.0}
+Le risorse software che si utilizzeranno durante il processo di Verifica sono:
+\begin{itemize}
+\item Correttore automatico TeXstudio: per la scrittura di documenti è consigliato utilizzare l'ambiente grafico TeXstudio. Tale strumento integra i dizionari di OpenOffice.org e segnala i potenziali errori ortografici presenti nel testo;
+\item Aspell: strumento per la correzione tipografica dei documenti redatti in \LaTeX ;
+\item Glossario-script: script, scritto dai componenti del gruppo, che marca i termini nel glossario con la simbologia sopracitata.
+\end{itemize}
+
+\newpage
+\section{Metodi}
+\label{11.0}
+Vengono qui esplicitate le procedure con cui si eseguono l'analisi statica e dinamica per la Verifica dei documenti.
+
+\subsection{Analisi dei documenti}
+\label{11.1}
+\begin{itemize}
+\item Controllo sintattico e del periodo:
+Utilizzando TeXstudio e GNU Aspell vengono evidenziati e corretti gli errori di
+grammatica più evidenti. Ciascun documento dovrà essere sottoposto ad un walkthrough da parte dei Verificatori per individuare errori di sintassi e periodi di difficile comprensione;
+\item Controllo di formattazione \LaTeX:
+Compilatore \LaTeX. 
+\end{itemize}
+
+\subsection{Walkthrough}
+\label{11.2}
+Questa tecnica consiste nella lettura totale dell'oggetto di Verifica, senza presupposti, mirata a rilevare anomalie di cui non si e a conoscenza. E' una tecnica usata principalmente nelle prime fasi del progetto in quanto i membri del gruppo non possiedono ancora l'esperienza necessaria per una Verifica più mirata. Verrà utilizzata dal gruppo in prima persona durante la redazione dei documenti, anche da componenti del gruppo diversi dal redattore, data la natura ancora informale del documento analizzato. Inoltre essa verrà implicitamente utilizzata da tutti gli strumenti software di analisi statica utilizzati per la Verifica. 
+La Verifica tramite walkthrough viene effettuata in 4 fasi distinte:
+\begin{enumerate}
+\item Pianificazione della Verifica;
+\item Lettura;
+\item Discussione, fase in cui si riportano gli errori riscontrati, al fine di rendere più specifica la ricerca;
+\item Correzione dei difetti.
+\end{enumerate}
+
+\subsection{Inspection}
+\label{11.3}
+Questa tecnica consiste nella ricerca di anomalie velocizzata da assunzioni riguardanti la tipologia e la posizione sulla base di conoscenze di tipo statistico, apprese dai Verificatori attraverso la tecnica del walkthrough. Grazie a queste assunzioni l'inspection è una strategia più rapida del walkthrough e non necessita delle lettura integrale del documento in oggetto.
+Ogni applicazione della tecnica di inspection si divide in quattro fasi distinte:
+\begin{enumerate}
+\item Pianificazione della Verifica;
+\item Definizione della lista di controllo, ovvero il riferimento ad un preciso elenco di Verifica mirata;
+\item Lettura;
+\item Correzione.
+\end{enumerate}
+Durante l'applicazione del walkthrough ai documenti, sono state riportate le tipologie di errori più frequenti. La lista di controllo risultante è la seguente:
+\begin{itemize}
+\item Norme stilistiche:
+	\begin{itemize}
+	\item Elenco puntato: non inizia con la lettera maiuscola;
+	\item Elenco puntato: non termina con il punto e virgola oppure con il punto se è l'ultimo elemento.
+	\end{itemize}
+\item \LaTeX:
+	\begin{itemize}
+	\item Lettere accentate nelle variabili: non viene utilizzato il comando apposito;
+	\item Carattere di spaziatura: non deve essere utilizzato all'interno dei tag;
+	\item Macro \LaTeX: non viene scritta usando l'apposito comando \LaTeX{}.
+	\end{itemize}
+\item UML:
+	\begin{itemize}
+	\item Il sistema non deve mai essere un attore;
+	\item Controllo ortografico: deve essere effettuato in modo dettagliato a causa dell'impossibilità di automatizzare i controlli sui diagrammi;
+	\item Direzione delle frecce non corrette;
+	\item Consistenza della nomenclatura tra i diagrammi e le descrizioni testuali nei documenti.
+	\end{itemize}
+\end{itemize}
+Per quanto riguarda la Verifica mirata del codice, non abbiamo sviluppato un elenco di errori comuni, in quanto non compete alla fase di Analisi dei Requisiti la stesura di codice.
+Quindi ci appoggiamo su tecniche di best practice assodate per avere un insieme di ispezioni di riferimento. Queste tecniche comprendono il controllo in più campi:
+\begin{itemize}
+\item Errori nei dati:
+	\begin{itemize}
+	\item Le variabili sono state inizializzate prima di essere utilizzate?;
+	\item Le costanti sono state specificate e nominate correttamente?;
+	\item Gli upper bound , nello scorrimento di un array, sono corretti?;
+	\item Esiste la possibilità del verificarsi di un overflow?.
+	\end{itemize}
+\item Errori nei controlli:
+	\begin{itemize}
+	\item Le condizioni negli statement condizionali sono effettivamente corrette?;
+	\item Ogni ciclo è certo di terminare?;
+	\end{itemize}
+\item Errori input/output:
+	\begin{itemize}
+	\item Le variabili di input sono state interamente utilizzate?;
+	\item E' stato assegnato un valore ad ogni variabile di output prima di essere esportata?;
+	\item Input imprevisti possono causare corruzione?.
+	\end{itemize}
+\item Errori di interfaccia:
+	\begin{itemize}
+	\item Tutte le funzioni e le chiamate di metodi hanno il corretto numero di parametri?;
+	\item I tipi dei parametri formali e attuali sono gli stessi?;
+	\item Tutti i parametri sono nell'ordine giusto?;
+	\item Se i componenti condividono della memoria, condividono anche la struttura di memorizzazione condivisa?.
+	\end{itemize}		
+\item Errori di gestione della memoria:	
+	\begin{itemize}
+	\item Se una struttura a riferimenti viene modificata, tutti i riferimenti sono stati correttamente riassegnati?;
+	\item Se viene usata un'allocazione dinamica della memoria, lo spazio viene allocato correttamente?;
+	\item lo spazio occupato viene esplicitamente deallocato, una volta che non è più richiesto?.
+	\end{itemize}	
+\item Errori di gestione delle eccezioni:
+	\begin{itemize}
+	\item Tutte le possibili eccezioni vengono tracciate e gestite?.
+	\end{itemize}
+\end{itemize}
+
+%FINE DOCUMENTO NON CANCELLARE
+\end{document}
