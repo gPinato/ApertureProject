@@ -135,13 +135,13 @@ La problematica che il prodotto si pone di risolvere è quella di ridurre il car
 \subsection{Funzioni del prodotto} %2.2
 \label{2.2}
 Il prodotto MaaP permetterà di creare uno scheletro del progetto comprensivo di:
-\lista{
-{librerie necessarie al funzionamento del progetto}
-{file di configurazione necessari al funzionamento dell'applicazione nella loro versione predefinita}
-{sistema di autenticazione}
-{directory di descrizione pagine web}
-}
-Tramite l'utilizzo di un linguaggio astratto DSL, permetterà all'utente di generare due tipi di pagine:
+\begin{itemize}
+\item Librerie necessarie al funzionamento del progetto;
+\item File di configurazione necessari al funzionamento dell'applicazione nella loro versione predefinita;
+\item Sistema di autenticazione;
+\item Directory di descrizione pagine web.
+\end{itemize}
+Tramite l'utilizzo di un linguaggio astratto DSL, il prodotto permetterà all'utente di generare due tipi di pagine:
 \begin{itemize}
 \item Collection-index;
 \item Document-show.
@@ -149,17 +149,17 @@ Tramite l'utilizzo di un linguaggio astratto DSL, permetterà all'utente di gene
 
 All'interno della pagina di tipo "Collection-index" sarà possibile:
 \begin{itemize}
-\item visualizzare tutti i documenti della Collection;
-\item selezionare, per ogni documento, una chiave che rimanderà alla relativa pagina "show".
+\item Visualizzare tutti i documenti della Collection;
+\item Selezionare, per ogni documento, una chiave che rimanderà alla relativa pagina di tipo Document-show.
 \end{itemize}
 
-All'interno della pagina di tipo "document-show" sarà possibile:
+All'interno della pagina di tipo Document-show sarà possibile:
 \begin{itemize}
-\item visualizzare in forma estesa tutte le coppie chiave valore;
-\item editare i campi del documento nel caso l'utente abbia permessi di scrittura.
+\item Visualizzare in forma estesa tutte le coppie chiave-valore;
+\item Editare i campi del documento nel caso l'utente abbia permessi di scrittura.
 \end{itemize}
 
-Inoltre sarà possibile, attraverso un menu, di selezionare la Collection che si desidera visualizzare.
+Inoltre sarà possibile, attraverso un menù, di selezionare la Collection che si desidera visualizzare.
 
 \subsection{Caratteristiche degli utenti}
 \label{2.3}
