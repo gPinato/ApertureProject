@@ -6,7 +6,7 @@ import sys
 lista_documenti=["Analisi_dei_requisiti.tex"]
 
 def get_lista_termini():
-    inp = open("..\\Glossario\\Glossario.tex")
+    inp = open("..\\Glossario\\GlossarioAM.tex")
     testo = []
     for i in inp:
         testo.append(i.strip())
@@ -14,7 +14,7 @@ def get_lista_termini():
     #
     lista = []
     for riga in testo:
-        if riga.startswith("\\elemento{"):
+        if riga.startswith("\\elemento"):
             lista.append(riga[10:-1])
     print lista
     return lista
