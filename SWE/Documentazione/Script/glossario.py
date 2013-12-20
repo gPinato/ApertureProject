@@ -6,7 +6,7 @@ import sys
 lista_documenti=["Analisi_dei_requisiti.tex"]
 
 def get_lista_termini():
-    inp = open("..\\Glossario\\GlossarioNZ.tex")
+    inp = open("..\\Glossario\\GlossarioAM.tex")
     testo = []
     for i in inp:
         testo.append(i.strip())
