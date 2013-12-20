@@ -11,10 +11,22 @@
 \newcommand{\Inizio}{}
 
 %comando per creare una nuova pagina del glossario
-\newcommand{\paginaGlossario}[1]{\newpage\begin{flushright}\Lettera{#1}\end{flushright}}
+%\newcommand{\paginaGlossario}[1]{\newpage\begin{flushright}\Lettera{#1}\end{flushright}}
+\newcommand{\paginaGlossario}[1]{
+\newpage
+\setcounter{secnumdepth}{0} %elimino la numerazione della section
+\section{\Lettera{#1}}
+}
 
 %comando per creare un nuovo elemento del glossario
-\newcommand{\elemento}[2]{\Termine{#1}\Riga\begin{quote}{#2}\end{quote}}
+\newcommand{\elemento}[2]{
+\setcounter{secnumdepth}{0} %elimino la numerazione della subsection
+\subsection{#1}
+%\Riga
+\begin{quote}
+{#2}
+\end{quote}
+}
 
 \input{../Logo&Header/header.tex}
 
@@ -80,6 +92,10 @@ Questo documento si prefigge di chiarire le possibili ambiguità tra i vari term
 \label{tab:changelog}
 \end{longtable}
 \end{center}
+
+%terza pagina Indice (viene aggiornato in automatico con due compilazioni)
+\newpage
+\tableofcontents
 
 %qui inizia la prima pagina ufficiale
 \newpage
