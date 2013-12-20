@@ -24,7 +24,7 @@
 \textbf{Stato del Documento} & Formale \\					%CAMBIARE QUI
 \textbf{Uso del Documento} & Esterno \\						%CAMBIARE QUI
 \textbf{Redazione} & Michele Maso, Alberto Garbui\\			%CAMBIARE QUI
-				   & Fabio Miotto, Mattia Sorgato\\
+& Fabio Miotto, Mattia Sorgato\\
 \textbf{Verifica} & Alessandro Benetti, Andrea Perin\\		%ED ANCHE QUI!
 \textbf{Approvazione} & Giacomo Pinato\\					%CAMBIARE QUI
 \textbf{Distribuzione} & \parbox[t]{4cm}{Prof. Tullio Vardanega \\ Prof. Riccardo Cardin \\ \Prop{} }\\
@@ -93,7 +93,7 @@ Diario delle modifiche
 \label{1.0}
 \subsection{Scopo del documento}%1.1
 \label{1.1}
-Il presente documento ha lo scopo di illustrare ed analizzare in modo dettagliato i requisiti del prodotto \grassetto{MaaP} evidenziati nel capitolato d'appalto C1 dal Proponente \Prop{} presentando così le funzionalità che offrirà il prodotto.
+Il presente documento ha lo scopo di illustrare ed analizzare in modo dettagliato i requisiti del prodotto \grassetto{\gloss{MaaP}} evidenziati nel capitolato d'appalto C1 dal Proponente \Prop{} presentando così le funzionalità che offrirà il prodotto.
 
 \subsection{Scopo del prodotto} %1.2
 \label{1.2}
@@ -130,18 +130,18 @@ Chapter 4: Requirements engineering.
 \label{2.0}
 \subsection{Contesto d'uso del prodotto} %2.1
 \label{2.1}
-La problematica che il prodotto si pone di risolvere è quella di ridurre il carico di lavoro degli sviluppatori per la creazione di pagine web di visualizzazione di dati provenienti da MongoDB.
-            
+La problematica che il prodotto si pone di risolvere è quella di ridurre il carico di lavoro degli sviluppatori per la creazione di pagine \gloss{web} di visualizzazione di dati provenienti da \gloss{MongoDB}.
+
 \subsection{Funzioni del prodotto} %2.2
 \label{2.2}
 Il prodotto MaaP permetterà di creare uno scheletro del progetto comprensivo di:
 \begin{itemize}
 \item Librerie necessarie al funzionamento del progetto;
-\item File di configurazione necessari al funzionamento dell'applicazione nella loro versione predefinita;
-\item Sistema di autenticazione;
+\item \gloss{File di configurazione} necessari al funzionamento dell'applicazione nella loro \gloss{versione} predefinita;
+\item \gloss{Sistema di autenticazione};
 \item Directory di descrizione pagine web.
 \end{itemize}
-Tramite l'utilizzo di un linguaggio astratto DSL, il prodotto permetterà all'utente di generare due tipi di pagine:
+Tramite l'utilizzo di un linguaggio astratto \gloss{DSL}, il prodotto permetterà all'\gloss{utente} di generare due tipi di pagine:
 \begin{itemize}
 \item Collection-index;
 \item Document-show.
@@ -149,8 +149,8 @@ Tramite l'utilizzo di un linguaggio astratto DSL, il prodotto permetterà all'ut
 
 All'interno della pagina di tipo "Collection-index" sarà possibile:
 \begin{itemize}
-\item Visualizzare tutti i documenti della Collection;
-\item Selezionare, per ogni documento, una chiave che rimanderà alla relativa pagina di tipo Document-show.
+\item Visualizzare tutti i documenti della \gloss{Collection};
+\item Selezionare, per ogni documento, una \gloss{chiave} che rimanderà alla relativa pagina di tipo Document-show.
 \end{itemize}
 
 All'interno della pagina di tipo Document-show sarà possibile:
@@ -163,19 +163,19 @@ Inoltre sarà possibile, attraverso un menù, di selezionare la Collection che s
 
 \subsection{Caratteristiche degli utenti}
 \label{2.3}
-Il prodotto MaaP si rivolge ad una sola tipologia di utenti che possiedono alte competenze tecniche, nello specifico sviluppatori e/o esperti in amministrazione di database.
-Non emerge quindi il requisito di aver alcuna gerarchia di utenti o con privilegi differenziati.
+Il prodotto MaaP si rivolge ad una sola tipologia di utenti che possiedono alte competenze tecniche, nello specifico sviluppatori e/o esperti in amministrazione di \gloss{database}.
+Non emerge quindi il \gloss{requisito} di aver alcuna gerarchia di utenti o con privilegi differenziati.
 
 \subsection{Vincoli generali}
 \label{2.4}
-Nel computer è necessario che sia installata la versione 30.0.x di Google Chrome o superiori, oppure la versione 24.x o superiori di Firefox.
+Nel computer è necessario che sia installata la versione 30.0.x di \gloss{Google} Chrome o superiori, oppure la versione 24.x o superiori di \gloss{Firefox}.
 
 \newpage
 \section{Casi d'uso} %3
 \label{3.0}
 Di seguito sono presentati i casi d'uso identificati a partire dal capitolato d'appalto \Progetto. \\
 Ogni caso d'uso figlio eredita le precondizioni dei casi d'uso di livello superiore che fanno parte della sua gerarchia al fine di ridurre l'esposizione delle precondizioni.
-Ogni caso d'uso ha un codice univoco gerarchico, nella forma:
+Ogni caso d'uso ha un \gloss{codice} univoco gerarchico, nella forma:
 \begin{center}
 UC[codice progressivo di livello]
 \end{center}
@@ -222,7 +222,7 @@ R[importanza][tipo][codice]
 \input{./sections/Requisiti.tex}
 
 \newpage
-\section{Tracciamento Requisiti} 
+\section{Tracciamento Requisiti}
 \label{5.0}
 \input{./sections/tracciamentoRequisiti.tex}
 

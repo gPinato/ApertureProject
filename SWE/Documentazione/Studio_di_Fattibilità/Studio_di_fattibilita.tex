@@ -22,7 +22,7 @@
 \textbf{Stato del Documento} & Formale \\		%CAMBIARE QUI
 \textbf{Uso del Documento} & Interno \\			%CAMBIARE QUI
 \textbf{Redazione} & Alberto Garbui, Michele Maso\\			%CAMBIARE QUI
-				   & Fabio Miotto, Mattia Sorgato\\
+& Fabio Miotto, Mattia Sorgato\\
 \textbf{Verifica} & Andrea Perin\\							%ED ANCHE QUI!
 \textbf{Approvazione} & Alessandro Benetti\\				%CAMBIARE QUI
 \textbf{Distribuzione} & \parbox[t]{4cm}{\NomeGruppo{}}\\
@@ -109,68 +109,68 @@ Questo documento nasce con lo scopo di descrivere le considerazioni e le motivaz
 \newpage
 \section{Capitolato C1, \Progetto{}}%2.0
 \label{2}
-Il capitolato proposto da CoffeeStrap propone di sviluppare un framework ad alto livello che permetta la facile creazione di pagine web per la visualizzazione e la modifica di dati provenienti da MongoDB.
+Il capitolato proposto da CoffeeStrap propone di sviluppare un \gloss{framework} ad alto livello che permetta la facile creazione di pagine \gloss{web} per la visualizzazione e la modifica di dati provenienti da \gloss{MongoDB}.
 \subsection{Studio del dominio applicativo} %2.1
 \label{2.1}
-Sempre più frequentemente agli sviluppatori viene richiesto di fornire in modo rapido strumenti per la gestione di dati business accessibili anche da utenti inesperti.
+Sempre più frequentemente agli sviluppatori viene richiesto di fornire in modo rapido strumenti per la gestione di dati \gloss{business} accessibili anche da utenti inesperti.
 Il capitolato affronta il difficile problema di fornire loro uno strumento per la creazione di pagine web adatte alla visualizzazione e modifica di dati business, che potrà essere usato ogni qualvolta si abbia bisogno di rispondere in modo rapido e standard a tali richieste.
 \subsection{Studio del dominio tecnologico} %2.1
 \label{2.2}
-Il dominio applicativo principale saranno le applicazioni web, principalmente server side, e la gestione di database.
+Il dominio applicativo principale saranno le applicazioni web, principalmente \gloss{server} side, e la gestione di \gloss{database}.
 Nello specifico le principali tecnologie che verranno utilizzate saranno le seguenti:
 \begin{itemize}
-\item Node.js per la realizzazione della struttura server side;
-\item Express per la realizzazione dell'infrastruttura della web application generata;
+\item \gloss{Node.js} per la realizzazione della struttura server side;
+\item \gloss{Express} per la realizzazione dell'\gloss{infrastruttura} della web application generata;
 \item Mongoose.js  per l'interfacciamento con il database;
 \item MongoDB per il recupero e l'eventuale archiviazione dei dati;
 \item Javascript per la gestione dei dati su MongoDB e funzioni ausiliarie.
 \end{itemize}
-\subsection{Studio del mercato} 
+\subsection{Studio del mercato}
 \label{2.3}
-Come si evince dal capitolato, gli strumenti per la gestione dinamica e veloce di pagine web per l'amministrazione di database NoSQL sono molteplici e in rapida espansione a causa della grande richiesta del mercato, che cerca sempre di più di avvicinare lo sviluppatore e l'utente finale in modo da facilitare al primo il lavoro, al secondo l'utilizzo. Le potenzialità si intravedono quando nel capitolato viene richiesto che lo stack tecnologico si basi su Node.js, applicazione per lo sviluppo web molto potente ed efficiente, e su MongoDB, database non relazionale che permette una maggiore semplicità del processo di modellazione dei dati, una migliore propensione allo scaling orizzontale del database e un controllo maggiore della disponibilità dei dati rispetto a modelli relazionali.
-\subsection{Studio delle criticità} 
+Come si evince dal capitolato, gli strumenti per la gestione dinamica e veloce di pagine web per l'amministrazione di database \gloss{NoSQL} sono molteplici e in rapida espansione a causa della grande richiesta del mercato, che cerca sempre di più di avvicinare lo \gloss{sviluppatore} e l'\gloss{utente} finale in modo da facilitare al primo il lavoro, al secondo l'utilizzo. Le potenzialità si intravedono quando nel capitolato viene richiesto che lo stack tecnologico si basi su Node.js, applicazione per lo sviluppo web molto potente ed efficiente, e su MongoDB, database non \gloss{relazionale} che permette una maggiore semplicità del processo di modellazione dei dati, una migliore propensione allo \gloss{scaling orizzontale} del database e un controllo maggiore della disponibilità dei dati rispetto a modelli relazionali.
+\subsection{Studio delle criticità}
 \label{2.4}
-Le principali criticità che si intravedono fin da subito sono la complessità che può avere l'astrarre dati da un database NoSQL e presentarli in forma semplice all'utente, nascondendo tutta la complessità gestionale dietro al framework. 
+Le principali criticità che si intravedono fin da subito sono la complessità che può avere l'astrarre dati da un database NoSQL e presentarli in forma semplice all'utente, nascondendo tutta la complessità gestionale dietro al framework.
 Inoltre, nel caso si decida di implementare la possibilità di creare documenti, come segnalato nel capitolato, tale funzionalità “\emph {potrebbe corrompere il funzionamento delle applicazioni che fanno riferimento al database}”.
 Un ultima grande criticità la pone la creazione del DLS, che dovrà essere implementato con estrema precisione, eliminando qualsiasi ambiguità e con un  livello di astrazione adeguato allo scopo.Un ultima grande criticità la pone la creazione del DLS, che dovrà essere implementato con estrema precisione, eliminando qualsiasi ambiguità e con un  livello di astrazione adeguato allo scopo.
-\subsection{Valutazione finale} 
+\subsection{Valutazione finale}
 \label{2.5}
 Il capitolato in questione presenta aspetti molto interessanti sotto molteplici punti di vista. Tecnologie come javascript e node.js promettono di avere un ruolo di primo piano nell'informatica dei prossimi anni. Alla luce di ciò l'apprendimento di tali tecnologie costituisce senza dubbio un'opportunità preziosa per incrementare il proprio bagaglio di conoscenze. Alcuni componenti del gruppo hanno già delle conoscenze basiche delle tecnologie richieste, e questo non può che portare un vantaggio e una facilitazione dell'apprendimento anche per il resto del gruppo. Infine la proposta di sviluppare un framework è stata valutata come originale e interessante ed è riuscita a catturare l'attenzione e la curiosità di tutti i componenti del gruppo. Per tutte queste motivazioni il gruppo ha scelto il capitolato C1 come progetto da sviluppare.
 
 \newpage
 \section{Altri capitolati}%2.0
 \label{3}
-\subsection{Capitolato C2, RING: Residue Interaction Network Generator} 
+\subsection{Capitolato C2, RING: Residue Interaction Network Generator}
 \label{3.1}
-\subsubsection{Valutazione generale} 
+\subsubsection{Valutazione generale}
 Si è valutato di scartare il capitolato per i seguenti motivi:
 \begin{itemize}
 \item Scarso interesse del gruppo verso il settore tecnologico del capitolato e verso il settore di sviluppo;
-\item Dipendenza da software precedentemente esistenze.
+\item Dipendenza da \gloss{software} precedentemente esistenze.
 \end{itemize}
-\subsubsection{Potenziali criticità} 
-Era richiesto lo sviluppo di un plug-in per un programma già esistente, pertanto il fatto di doversi interfacciare con qualcosa di completamente sconosciuto avrebbe potuto essere fonte di grandi problemi.
-\subsection{Capitolato C3,  Romeo: Medical Imaging Cluster Analysis Tool} 
+\subsubsection{Potenziali criticità}
+Era richiesto lo sviluppo di un plug-in per un \gloss{programma} già esistente, pertanto il fatto di doversi interfacciare con qualcosa di completamente sconosciuto avrebbe potuto essere fonte di grandi problemi.
+\subsection{Capitolato C3,  Romeo: Medical Imaging Cluster Analysis Tool}
 \label{3.2}
-\subsubsection{Valutazione generale} 
+\subsubsection{Valutazione generale}
 Questo capitolato era una valida alternativa a Maap ed una possibile scelta del gruppo. Tuttavia, si è deciso di non scegliere il seguente capitolato per i seguenti motivi:
 \begin{itemize}
 \item Nessuna nuova tecnologia da imparare;
 \item Scarsa competenza nel dominio applicativo.
 \end{itemize}
-\subsubsection{Potenziali delle criticità} 
+\subsubsection{Potenziali delle criticità}
 La completa ignoranza in campo medico del team avrebbe reso necessario uno strettissimo rapporto con il proponente al fine di garantire che le sue aspettative venissero soddisfatte. Garantire questo tipo di rapporto è molto oneroso e non sempre fattibile.
-\subsection{Capitolato C4,  Seq: Gestore di processi sequenziali con esecuzione da smartphone} 
+\subsection{Capitolato C4,  Seq: Gestore di processi sequenziali con esecuzione da smartphone}
 \label{3.3}
-\subsubsection{Valutazione generale} 
+\subsubsection{Valutazione generale}
 Si è scelto di non sviluppare il capitolato per le seguenti ragioni:
 \begin{itemize}
 \item I requisiti e le funzionalità del programma sono parse troppo vaghe ed elusive;
-\item Nessun componente del team era particolarmente interessato all'ambiente mobile.
+\item Nessun componente del team era particolarmente interessato all'\gloss{ambiente} mobile.
 \end{itemize}
-\subsection{Capitolato C5,  SGAD: Social Game con Architettura Distribuita} 
+\subsection{Capitolato C5,  SGAD: Social Game con Architettura Distribuita}
 \label{3.5}
-\subsubsection{Valutazione generale} 
+\subsubsection{Valutazione generale}
 Durante l'analisi il gruppo ha evidenziato i seguenti aspetti positivi:
 \begin{itemize}
 \item Interessanti nuove tecnologie con cui sviluppare il progetto;
@@ -179,10 +179,10 @@ Durante l'analisi il gruppo ha evidenziato i seguenti aspetti positivi:
 Le seguenti criticità hanno portato all'eliminazione del capitolato dalle possibili scelte:
 \begin{itemize}
 \item La concorrenza è estremamente complessa da implementare correttamente;
-\item La larga scala su cui doveva essere implementato il progetto avrebbe reso molto difficili i test di funzionamento.
+\item La larga \gloss{scala} su cui doveva essere implementato il progetto avrebbe reso molto difficili i test di funzionamento.
 \end{itemize}
-\subsubsection{Potenziali criticità} 
+\subsubsection{Potenziali criticità}
 Nonostante i proponenti si fossero gentilmente offerti di affittare un server di Amazon per i test, l'implementazione dell'infrastruttura su di essi avrebbe potuto rivelarsi molto difficoltosa e onerosa in termini di tempo. Non avrebbe inoltre assicurato le stesse prestazioni su server con impostazione differenti.
 
 %FINE DOCUMENTO NON CANCELLARE
-\end{document}
+\end{\gloss{document}}
