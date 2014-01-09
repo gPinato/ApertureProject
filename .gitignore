@@ -9,3 +9,7 @@ SWE/Documentazione/Piano_di_Qualifica/Piano_di_qualifica.toc
 *.lot
 *.gz
 *.toc
+*.aux
+*.synctex
+*.out
+
