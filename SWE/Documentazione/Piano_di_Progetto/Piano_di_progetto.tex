@@ -57,6 +57,8 @@ Diario delle modifiche
 %aggiungere qui una midrule per aggiungere una nuova riga alla tabella
 
 \midrule
+1.2.0 & 2014-01-14 & Giacomo Pinato (RE) & Correzioni\\
+\midrule
 1.2.0 & 2013-12-18 & Giacomo Pinato (RE) & Approvazione documento\\
 \midrule
 1.1.1 & 2013-12-17 & Michele Maso (VE) & Verifica documento\\
@@ -77,7 +79,7 @@ Diario delle modifiche
 \midrule
 1.0.2 & 2013-11-29 & Giacomo Pinato (RE) & Aggiunto organigramma\\
 \midrule
-1.0.1 & 2013-11-28 & Giacomo Pinato (RE) & Creazione documento\\
+1.0.1 & 2013-11-28 & Giacomo Pinato (RE) & Creazione dementoo\\
 
 \bottomrule
 \caption{Registro delle modifiche}
@@ -96,7 +98,116 @@ Diario delle modifiche
 \listoffigures
 
 %qui inizia la prima pagina ufficiale
+
 \newpage
+\section{Introduzione}
+\label{2.0}
+\subsection{Scopo del documento}
+\label{2.1}
+Il presente documento ha l'obiettivo di definire la pianificazione secondo la quale saranno scadenziati i lavori dal gruppo Aperture Software sul progetto \Progetto{}.\\
+
+Gli scopi del presente documento sono:
+\begin{itemize}
+\item Presentare la pianificazione dei tempi e delle attività;
+\item Preventivare l'utilizzo delle risorse;
+\item Consuntivare l'utilizzo delle risorse durante l'evolversi dei lavori;
+\item Analizzare i possibili fattori di rischio.
+\end{itemize}
+
+\subsection{Scopo del prodotto}
+\label{2.2}
+\Prodotto{}
+
+\subsection{Glossario}
+\label{2.3}
+\Glossario{}
+
+\subsection{Riferimenti}
+\label{2.4}
+\subsubsection{Normativi}
+\label{2.4.1}
+\begin{itemize}
+\item \grassetto{Capitolato d'appalto C1}:\\ \url{http://www.math.unipd.it/~tullio/IS-1/2013/Progetto/C1.pdf}
+\item Norme di Progetto: Norme\_{}di\_{}Progetto\_{}v\versioneNormeDiProgetto{}.pdf  (allegato alla presente documentazione)\\
+\end{itemize}
+
+\subsubsection{Informativi}
+\label{2.4.2}
+\begin{itemize}
+\item \grassetto{Software Engineering} - Ian Sommerville - 9th Edition (2010):
+– Part 4: Software Management.
+\item \grassetto{Slide dell'insegnamento Ingegneria del Software modulo A}:\\
+– Il ciclo di vita del software;
+– Gestione di progetto.\\
+\url{http://www.math.unipd.it/~tullio/IS-1/2013/};
+\item \grassetto{Metriche di progetto}:\\
+\url{http://it.wikipedia.org/wiki/Metriche_di_progetto}.
+\end{itemize}
+
+\subsection{Ciclo di vita}
+\label{2.5}
+Come ciclo di vita abbiamo deciso di utilizzare il modello incrementale perché, grazie alle sue caratteristiche, lo riteniamo più flessibile e idoneo a supportare il lavoro di gruppo:
+\begin{itemize}
+\item Il problema viene scomposto in più sotto-problemi in modo da permettere una suddivisione più semplice delle risorse e dei tempi in quanto, tutte le risorse vengono utilizzate per un numero limitato di attività in un breve lasso di tempo. Questo rende più facile l'esecuzione dei test perché essi saranno più dettagliati e quindi più esaustivi;
+\item I requisiti del progetto vengono trattati in base ad un ordine di priorità ottenuto ordinando i requisiti per la loro importanza strategica e quindi vengono svolti per primi quelli di maggiore criticità;
+\item Il rischio di fallimento viene ridotto in quanto ogni incremento consolida soltanto la sezione coinvolta;
+\item I rilasci del software sono multipli e successivi in quanto nei primi rilasci saranno relativi ai requisiti di primaria importanza, in modo che tali requisiti subiscano il maggior numero attività di verifica e risultino quindi più raffinati e migliorati, mentre negli ultimi rilasci si andranno ad aumentare il numero di funzionalità del prodotto e un miglioramento delle funzionalità già in essere.
+\end{itemize}
+
+Il modello quindi permette al sia al proponente che al committente di vedere dei prototipi con le funzionalità di primaria importanza già implementate e di valutare il lavoro in corso d'opera, suggerendo eventuali correzioni e miglioramenti.
+
+
+\subsection{Scadenze}
+\label{2.6}
+\NomeGruppo{} ha deciso di rispettare le seguenti scadenze per la pianificazione del progetto:
+\begin{itemize}
+\item Revisione dei Requisiti: 2013-12-20;
+\item Revisione di Progetto:  2014-03-18;
+\item Revisione di Qualifica: 2014-07-07;
+\item Revisione di Accettazione: 2014-07-21.
+\end{itemize}
+
+\newpage
+\section{Pianificazione}
+\label{3.0}
+Avendo scelto di operare con il ciclo incrementale e per rispettare le scadenze come esposte nel punto precedente, abbiamo deciso di dividere il progetto in cinque fasi incrementali distinte.
+
+\begin{enumerate}
+\item Analisi (AR);
+\item Analisi di Dettaglio (AD);
+\item Progettazione Architetturale (PA);
+\item Progettazione di Dettaglio e Codifica (PC);
+\item Verifica e Validazione (VV).
+\end{enumerate}
+
+Ognuna delle fasi del progetto è stata poi divisa in attività in modo da poter associare ad ogni attività una o più risorse. Per avere una miglior organizzazione le attività sono state poi spezzante in sotto-attività.
+
+\input{./sections/Analisi.tex}
+
+\newpage
+\input{./sections/AnalisiDettaglio.tex}
+
+\newpage
+\input{./sections/ProgettazioneArchitetturale.tex}
+
+\newpage
+\input{./sections/ProgettazioneCodifica.tex}
+
+\newpage
+\input{./sections/Verifica.tex}
+
+\newpage
+\input{./sections/ProspettoEconomico.tex}
+
+%parte finale, analisi dei rischi
+\newpage
+\input{./sections/AnalisiDeiRischi.tex}
+
+\newpage
+\input{./sections/Preventivo.tex}
+
+\newpage
+\setcounter{secnumdepth}{0}
 \section{Organigramma}%1.0
 \label{1.0}
 \subsection{Redazione}%1.1
@@ -174,7 +285,7 @@ I ruoli che in ogni progetto devono essere ricoperti sono:
 \item \emph{Analista};
 \item \emph{Progettista};
 \item \emph{Verificatore};
-\item \emph{Programmatore};
+\item \emph{Programmatore}.
 \end{itemize} 
 
 Nella seguente tabella riportiamo i vari costi per ruolo:
@@ -195,112 +306,6 @@ Programmatore & 15\\
 \end{longtable}
 \end{center}
 
-\newpage
-\section{Introduzione}
-\label{2.0}
-\subsection{Scopo del documento}
-\label{2.1}
-Il presente documento ha l'obiettivo di definire la pianificazione secondo la quale saranno scadenziati i lavori dal gruppo Aperture \gloss{Software} sul progetto \Progetto{}.\\
-
-Gli scopi del presente documento sono:
-\begin{itemize}
-\item Presentare la pianificazione dei tempi e delle attività;
-\item Preventivare l'utilizzo delle risorse;
-\item Consuntivare l'utilizzo delle risorse durante l'evolversi dei lavori;
-\item Analizzare i possibili fattori di rischio.
-\end{itemize}
-
-\subsection{Scopo del prodotto}
-\label{2.2}
-\Prodotto{}
-
-\subsection{Glossario}
-\label{2.3}
-\Glossario{}
-
-\subsection{Riferimenti}
-\label{2.4}
-\subsubsection{Normativi}
-\label{2.4.1}
-\begin{itemize}
-\item \grassetto{Capitolato d'appalto C1}:\\ \url{http://www.math.unipd.it/~tullio/IS-1/2013/Progetto/C1.pdf}
-\item Norme di Progetto: Norme\_{}di\_{}Progetto\_{}v\versioneNormeDiProgetto{}.pdf  (allegato alla presente documentazione)\\
-\end{itemize}
-
-\subsubsection{Informativi}
-\label{2.4.2}
-\begin{itemize}
-\item \grassetto{Software Engineering} - Ian Sommerville - 9th Edition (2010):
-– Part 4: Software Management.
-\item \grassetto{Slide dell'insegnamento Ingegneria del Software modulo A}:\\
-– Il ciclo di vita del software;
-– Gestione di progetto.\\
-\url{http://www.math.unipd.it/~tullio/IS-1/2013/};
-\item \grassetto{Metriche di progetto}:\\
-\url{http://it.wikipedia.org/wiki/Metriche_di_progetto}.
-\end{itemize}
-
-\subsection{Ciclo di vita}
-\label{2.5}
-Un processo software è costituito da un insieme di attività che conducono alla realizzazione di un prodotto software. Abbiamo deciso di utilizzare il modello incrementale perché grazie alle sue caratteristiche lo riteniamo più idoneo e flessibile per fare un lavoro di gruppo:
-\begin{itemize}
-\item Il problema viene scomposto in più sotto-problemi in modo da permettere una suddivisione più semplice delle risorse e dei tempi in quanto, tutte le risorse vengono utilizzate per un numero limitato di attività in un breve lasso di tempo. Questo rende più facile l'esecuzione dei test perché essi saranno più dettagliati e quindi più esaustivi;
-\item I requisiti del progetto vengono trattati in base ad un ordine di priorità ottenuto ordinando i requisiti per la loro importanza strategica e quindi vengono svolti per primi quelli di maggiore criticità;
-\item Il rischio di fallimento viene ridotto in quanto ogni incremento consolida soltanto la sezione coinvolta;
-\item I rilasci del software sono multipli e successivi in quanto nei primi rilasci saranno relativi ai requisiti di primaria importanza, in modo che tali requisiti subiscano il maggior numero attività di verifica e risultino quindi più raffinati e migliorati, mentre negli ultimi rilasci si andranno ad aumentare il numero di funzionalità del prodotto e un miglioramento delle funzionalità già in essere.
-\end{itemize}
-
-Il modello quindi permette che il committente in corso d'opera possa già vedere dei prototipi con le funzionalità di primaria importanza già implementate e possa quindi valutare il lavoro in corso d'opera e suggerire eventuali correzioni e miglioramenti.
-
-
-\subsection{Scadenze}
-\label{2.6}
-\NomeGruppo{} ha deciso di rispettare le seguenti scadenze per la pianificazione del progetto:
-\begin{itemize}
-\item Revisione dei Requisiti: 2013-12-20;
-\item Revisione di Progetto:  2014-03-18;
-\item Revisione di Qualifica: 2014-07-07;
-\item Revisione di Accettazione: 2014-07-21.
-\end{itemize}
-
-\newpage
-\section{Pianificazione}
-\label{3.0}
-Avendo scelto di operare con il ciclo incrementale e per rispettare le scadenze come esposte nel punto precedente, abbiamo deciso di dividere il progetto in cinque fasi incrementali distinte.
-
-\begin{enumerate}
-\item Analisi (AR);
-\item Analisi di Dettaglio (AD);
-\item Progettazione Architetturale (PA);
-\item Progettazione di Dettaglio e Codifica (PC);
-\item Verifica e Validazione (VV).
-\end{enumerate}
-
-Ognuna delle fasi del progetto è stata poi divisa in attività in modo da poter associare ad ogni attività una o più risorse. Per avere una miglior organizzazione le attività sono state poi spezzante in sotto-attività.
-
-\input{./sections/Analisi.tex}
-
-\newpage
-\input{./sections/AnalisiDettaglio.tex}
-
-\newpage
-\input{./sections/ProgettazioneArchitetturale.tex}
-
-\newpage
-\input{./sections/ProgettazioneCodifica.tex}
-
-\newpage
-\input{./sections/Verifica.tex}
-
-\newpage
-\input{./sections/ProspettoEconomico.tex}
-
-%parte finale, analisi dei rischi
-\newpage
-\input{./sections/AnalisiDeiRischi.tex}
-
-\newpage
-\input{./sections/Consuntivo.tex}
 
 %FINE DOCUMENTO NON CANCELLARE
 \end{document}
