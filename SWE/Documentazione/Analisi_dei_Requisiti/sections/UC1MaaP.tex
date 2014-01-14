@@ -24,7 +24,7 @@ L'utente sviluppatore può inserire un file di descrizione(UC1.5).
 \UC
 {UC1}
 {Utente sviluppatore}
-{L'utente sviluppatore può generare lo scheletro del progetto}
+{L'utente sviluppatore può generare lo scheletro del progetto, il quale comprende: librerie e file di configurazione necessari al funzionamento dello stesso, directory di descrizione delle pagine web generate e il sistema di autenticazione per quest'ultime}
 {Il sistema è installato e funzionante nel pc in uso e permette all'utente sviluppatore di generare scheletro di un nuovo progetto}
 \post{Il sistema ha generato lo scheletro del progetto}
 
@@ -43,7 +43,7 @@ L'utente sviluppatore può inserire un file di descrizione(UC1.5).
 L'utente sviluppatore può creare la visualizzazione di una Collection (UC1.2.1);|
 L'utente sviluppatore può modificare la visualizzazione di una Collection (UC1.2.2).
 }
-\post{Il sistema contiene la definizione della visualizzazione della Collection}
+\post{Il sistema contiene la descrizione per la visualizzazione della Collection}
 
 \UCtitle
 {Caso d'uso UC1.2.1}
@@ -53,13 +53,13 @@ L'utente sviluppatore può modificare la visualizzazione di una Collection (UC1.
 {UC1.2.1}
 {Utente sviluppatore}
 {L'utente sviluppatore  può impostare la visualizzazione del menù delle Collection, delle pagine \gloss{Collection-Index} e \gloss{Document-Show}}
-{Il sistema contiene una definizioe della visualizzazione della Collection predefinita e l'utente sviluppatore desidera crearne una nuova}
+{Il sistema contiene la descrizione per la visualizzazione della Collection predefinita e l'utente sviluppatore desidera crearne una nuova}
 \scenario{
 L'utente sviluppatore può impostare la visualizzazione del menù per le pagine di tipo Collection-index (UC1.2.1.1);|
 L'utente sviluppatore può impostare la visualizzazione della pagina Collection-Index (UC1.2.1.2);|
 L'utente sviluppatore può impostare la visualizzazione della pagina Document-Show (UC1.2.1.3).
 }
-\post{Il sistema ha creato una nuova definizione della visualizzazione della Collection}
+\post{Il sistema ha creato una nuova descrizione per la visualizzazione della Collection}
 
 \UCtitle
 {Caso d'uso UC1.2.1.1}
@@ -69,51 +69,51 @@ L'utente sviluppatore può impostare la visualizzazione della pagina Document-Sh
 {UC1.2.1.1}
 {Utente sviluppatore}
 {L'utente sviluppatore può definire il nome della voce relativa alla Collection che verrà visualizzata e la posizione di questa nel menù delle Collection}
-{Il sistema contiene la definizione della visualizzazione del menù predefinita. Nella definizione è specificato il nome della voce del menù corrispondente al nome della Collection e la posizione, la prima disponibile in ordine crescente.Il sistema permette all'utente sviluppatore di creare una nuova visualizzazione del menù}
+{Il sistema contiene la descrizione della visualizzazione del menù predefinita. Nella definizione è specificato il nome della voce del menù corrispondente al nome della Collection e la posizione, la prima disponibile in ordine crescente}
 \scenario{
 L'utente sviluppatore può definire il nome della voce relativa alla Collection all'interno del menù (UC1.2.1.1.1);|
 L'utente sviluppatore può definire la posizione della Collection all'interno del menù (UC1.2.1.1.2).
 }
-\post{Il sistema ha creato una nuova definizione della visualizzazione del menù delle Collection}
+\post{Il sistema ha creato una nuova descrizione per la visualizzazione del menù delle Collection}
 
 \UCtitle
 {Caso d'uso UC1.2.1.1.1}
-{Definizione nome}
+{Definizione nome voce}
 \UC
 {UC1.2.1.1}
 {Utente sviluppatore}
 {L'utente sviluppatore può definire il nome della voce relativa alla Collection nel menù delle Collection}
-{Il sistema contiene la definizione della visualizzazione del menù predefinita, nella quale il nome della voce del menù corrisponde al nome della Collection. L'utente desidera definire un nuovo nome per la voce}
-\post{Il sistema contiene la definizione della visualizzazione del menù, nella quale il nome della voce del menù corrisponde al nome della Collection è definito dall'utente sviluppatore}
+{Il sistema contiene la descrizione per la visualizzazione del menù predefinita, nella quale il nome della voce del menù corrisponde al nome della Collection. L'utente desidera definire un nuovo nome per la voce}
+\post{Il sistema contiene la descrizione per la visualizzazione del menù, nella quale il nome della voce del menù corrisponde al nome della Collection è definito dall'utente sviluppatore}
 
 \UCtitle
 {Caso d'uso UC1.2.1.1.2}
-{Definizione posizione}
+{Definizione posizione voce}
 \UC
 {UC1.2.1.1}
 {Utente sviluppatore}
 {L'utente può definire la posizione della voce relativa al nome della Collection all'interno del menù delle Collection }
-{Il sistema contiene la definizione della visualizzazione del menù predefinita, nella quale la posizione \'e la prima disponibile in ordine crescente. L'utente sviluppatore desidera specificare la posizione della voce}
-\post{Il sistema contiene la definizione della visualizzazione del menù, nella quale la posizione della voce nel menù è definita dall'utente sviluppatore}
+{Il sistema contiene la descrizione per la visualizzazione del menù predefinita, nella quale la posizione \'e la prima disponibile in ordine crescente. L'utente sviluppatore desidera specificare la posizione della voce}
+\post{Il sistema contiene la descrizione per la visualizzazione del menù, nella quale la posizione della voce nel menù è definita dall'utente sviluppatore}
 
 
 
 \UCtitle
 {Caso d'uso UC1.2.1.2}
-{Creazione visualizzazione pagina Collection-index}
+{Creazione visualizzazione pagina Collection-Index}
 \UCimmagine{UC1.2.1.2}{UC1.2.1.2 Creazione visualizzazione pagina Collection-Index}
 \UC
 {UC1.2.1.2}
 {Utente sviluppatore}
-{L'utente sviluppatore  può creare una definizione della visualizzazione della pagina Collection-Index e aggiungere varie specifiche al suo interno}
-{Il sistema contiene la definizione della visualizzazione della pagina Collection-Index predefinita e permette all'utente sviluppatore di crearne una nuova}
+{L'utente sviluppatore  può creare una descrizione per la visualizzazione della pagina Collection-Index e aggiungere varie specifiche al suo interno}
+{Il sistema contiene la descrizione per la visualizzazione della pagina Collection-Index predefinita}
 \scenario{
 L'utente sviluppatore può aggiungere una chiave da visualizzare (UC1.2.1.2.1);|
 L'utente sviluppatore può definire un ordinamento per chiave (UC1.2.1.2.2);|
 L'utente sviluppatore può aggiungere un numero massimo di \gloss{Document} da visualizzare(UC1.2.1.2.3);|
 L'utente sviluppatore può aggiungere un pulsante(UC1.2.1.2.4).
 }
-\post{Il sistema ha creato la definizione della visualizzazione della pagina Collection-Index con le specifiche aggiunte}
+\post{Il sistema ha creato la descrizione per la visualizzazione della pagina Collection-Index con le specifiche aggiunte}
 
 
 \UCtitle
@@ -123,19 +123,19 @@ L'utente sviluppatore può aggiungere un pulsante(UC1.2.1.2.4).
 {UC1.2.1.2}
 {Utente sviluppatore}
 {L'utente sviluppatore  può aggiungere una chiave alla definizione della visualizzazione della pagina Collection-Index}
-{Il sistema permette all'utente  sviluppatore di aggiungere una chiave}
-\post{Il sistema contiene la definizione della visualizzazione della pagina Collection-Index aggiornata con la chiave aggiunta dall'utente sviluppatore}
+{Il sistema contiene la descrizione per la visualizzazione della pagina Collection-Index}
+\post{Il sistema contiene la descrizione per la visualizzazione della pagina Collection-Index aggiornata con la chiave aggiunta dall'utente sviluppatore}
 
 
 \UCtitle
 {Caso d'uso UC1.2.1.2.2}
-{Aggiunta ordinamento per chiave}
+{Definizione ordinamento per chiave}
 \UC
 {UC1.2.1.2}
 {Utente sviluppatore}
-{L'utente sviluppatore  può  definire un ordinamento rispetto a una chiave nella definizione della visualizzazione della pagina Collection-Index}
-{Il sistema contiene la definizione della visualizzazione della pagina Collection-Index predefinita, nella quale non è presente alcun ordinamento per chiave definito dall'utente. Il sistema permette all'utente  sviluppatore di definire un nuovo ordinamento per chiave}
-\post{Il sistema contiene la definizione della visualizzazione della pagina Collection-Index aggiornata con il nuovo ordinamento per chiave definito dall'utente sviluppatore}
+{L'utente sviluppatore  può  definire un ordinamento, alfabetico crescente o decrescente, rispetto ad una chiave nella definizione della visualizzazione della pagina Collection-Index}
+{Il sistema contiene la descrizione per la visualizzazione della pagina Collection-Index predefinita, nella quale non è presente alcun ordinamento per chiave definito dall'utente}
+\post{Il sistema contiene la descrizione per la visualizzazione della pagina Collection-Index aggiornata con il nuovo ordinamento per chiave definito dall'utente sviluppatore}
 
 \UCtitle
 {Caso d'uso UC1.2.1.2.3}
@@ -144,8 +144,8 @@ L'utente sviluppatore può aggiungere un pulsante(UC1.2.1.2.4).
 {UC1.2.1.2}
 {Utente sviluppatore}
 {L'utente sviluppatore  può definire un numero massimo di Document da visualizzare nella definizione della visualizzazione della pagina Collection-Index}
-{Il sistema contiene la definizione della visualizzazione della pagina Collection-Index predefinita, nella quale non è presente alcun numero massimo di Document definito dall'utente. Il sistema permette all'utente  sviluppatore di definire un nuovo numero massimo di Document da visualizzare}
-\post{Il sistema contiene la definizione della visualizzazione della pagina Collection-Index aggiornata con il nuovo numero massimo di Document per pagina definito dall'utente sviluppatore}
+{Il sistema contiene la descrizione per la visualizzazione della pagina Collection-Index predefinita, nella quale non è presente alcun numero massimo di Document definito dall'utente}
+\post{Il sistema contiene la descrizione per la visualizzazione della pagina Collection-Index aggiornata con il nuovo numero massimo di Document per pagina definito dall'utente sviluppatore}
 
 \UCtitle
 {Caso d'uso UC1.2.1.2.4}
@@ -154,8 +154,8 @@ L'utente sviluppatore può aggiungere un pulsante(UC1.2.1.2.4).
 {UC1.2.1.2}
 {Utente sviluppatore}
 {L'utente sviluppatore  può aggiungere un pulsante definizione della visualizzazione della pagina Collection-Index}
-{Il sistema permette all'utente  sviluppatore di aggiungere un pulsante}
-\post{Il sistema contiene la definizione della visualizzazione della pagina Collection-Index aggiornata con il nuovo  pulsante aggiunto dall'utente sviluppatore}
+{Il sistema contiene la descrizione per la visualizzazione della pagina Collection-Index}
+\post{Il sistema contiene la descrizione per la visualizzazione della pagina Collection-Index aggiornata con il nuovo  pulsante aggiunto dall'utente sviluppatore}
 
 
 \UCtitle
@@ -165,13 +165,13 @@ L'utente sviluppatore può aggiungere un pulsante(UC1.2.1.2.4).
 \UC
 {UC1.2.1.3}
 {Utente sviluppatore}
-{L'utente sviluppatore  può creare la definizione della visualizzazione della pagina Document-Show e aggiungere varie specifiche al suo interno}
-{Il sistema contiene la definizione della visualizzazione della pagina Document-Show predefinita e permette all'utente sviluppatore di crearne una}
+{L'utente sviluppatore  può creare la descrizione per la visualizzazione della pagina Document-Show e aggiungere varie specifiche al suo interno}
+{Il sistema contiene la descrizione per la visualizzazione della pagina Document-Show predefinita}
 \scenario{
 L'utente può aggiungere una chiave da visualizzare (UC1.2.1.3.1);|
 L'utente può aggiungere un pulsante da visualizzare (UC1.2.1.3.2).
 }
-\post{Il sistema ha creato la nuova definizione della visualizzazione della pagina Document-Show con le specifiche aggiunte}
+\post{Il sistema ha creato la nuova descrizione per la visualizzazione della pagina Document-Show con le specifiche aggiunte}
 
 \UCtitle
 {Caso d'uso UC1.2.1.3.1}
@@ -179,9 +179,9 @@ L'utente può aggiungere un pulsante da visualizzare (UC1.2.1.3.2).
 \UC
 {UC1.2.1.3}
 {Utente sviluppatore}
-{L'utente sviluppatore  può aggiungere una chiave alla definizione della visualizzazione della pagina Document-Show}
-{Il sistema permette all'utente sviluppatore di aggiungere una chiave}
-\post{Il sistema contiene la definizione della visualizzazione della pagina Document-Show aggiornata con la nuova chiave aggiunta dall'utente sviluppatore}
+{L'utente sviluppatore  può aggiungere una chiave alla descrizione della visualizzazione della pagina Document-Show}
+{Il sistema contiene la descrizione per la visualizzazione della pagina Document-Show}
+\post{Il sistema contiene la descrizione per la visualizzazione della pagina Document-Show aggiornata con la nuova chiave aggiunta dall'utente sviluppatore}
 
 \UCtitle
 {Caso d'uso UC1.2.1.3.2}
@@ -190,8 +190,8 @@ L'utente può aggiungere un pulsante da visualizzare (UC1.2.1.3.2).
 {UC1.2.1.3}
 {Utente sviluppatore}
 {L'utente sviluppatore può aggiungere un pulsante alla definizione della visualizzazione della pagina Document-Show}
-{Il sistema permette all'utente sviluppatore aggiungere un pulsante}
-\post{Il sistema contiene la definizione della visualizzazione della pagina Document-Show aggiornata con il nuovo pulsante aggiunto dall'utente sviluppatore}
+{Il sistema contiene la descrizione per la visualizzazione della pagina Document-Show}
+\post{Il sistema contiene la descrizione per la visualizzazione della pagina Document-Show aggiornata con il nuovo pulsante aggiunto dall'utente sviluppatore}
 
 
 \UCtitle
@@ -202,13 +202,13 @@ L'utente può aggiungere un pulsante da visualizzare (UC1.2.1.3.2).
 {UC1.2.2}
 {Utente sviluppatore}
 {L'utente sviluppatore  può impostare la visualizzazione del menù delle Collection, delle pagine Collection-Index e Document-Show}
-{Il sistema contiene la definizione della visualizzazione della Collection}
+{Il sistema contiene la descrizione per la visualizzazione della Collection}
 \scenario{
 L'utente sviluppatore può impostare la visualizzazione del menù per le pagine di tipo Collection-Index (UC1.2.2.1);|
 L'utente sviluppatore può impostare la visualizzazione della pagina Collection-Index (UC1.2.2.2);|
 L'utente sviluppatore può impostare la visualizzazione della pagina Document-Show (UC1.2.2.3).
 }
-\post{Il sistema ha aggiornato la definizione della visualizzazione della Collection}
+\post{Il sistema ha aggiornato la descrizione per la visualizzazione della Collection}
 
 \UCtitle
 {Caso d'uso UC1.2.2.1}
@@ -217,13 +217,13 @@ L'utente sviluppatore può impostare la visualizzazione della pagina Document-Sh
 \UC
 {UC1.2.2.1}
 {Utente sviluppatore}
-{L'utente sviluppatore può modificare, nella definizione della visualizzazione del menù della Collection, il nome della Collection e la posizione nel menù principale}
-{Il sistema contiene la definizione della visualizzazione del menù e permette all'utente sviluppatore di modificarla}
+{L'utente sviluppatore può modificare, nella descrizione per la visualizzazione del menù della Collection, il nome della Collection e la posizione nel menù principale}
+{Il sistema contiene la descrizione per la visualizzazione del menù e permette all'utente sviluppatore di modificarla}
 \scenario{
 L'utente può modificare il nome della Collection (UC1.2.2.1.1);|
 L'utente può modificare la posizione della Collection (UC1.2.2.1.2).
 }
-\post{Il sistema ha aggiornato la definizione della visualizzazione del menù con le modifiche apportate dall'utente sviluppatore}
+\post{Il sistema ha aggiornato la descrizione per la visualizzazione del menù con le modifiche apportate dall'utente sviluppatore}
 
 
 \UCtitle
@@ -232,9 +232,9 @@ L'utente può modificare la posizione della Collection (UC1.2.2.1.2).
 \UC
 {UC1.2.2.1}
 {Utente sviluppatore}
-{L'utente può modificare, nella definizione della visualizzazione del menù della Collection, il nome della voce relativa alla Collection}
-{Il sistema permette all'utente di cambiare il nome della voce nel menù}
-\post{Il sistema ha aggiornato la definizione della visualizzazione del menù delle Collection con il nuovo nome specificato dall'utente sviluppatore}
+{L'utente può modificare, nella descrizione per la visualizzazione del menù della Collection, il nome della voce relativa alla Collection}
+{Il sistema contiene la descrizione per la visualizzazione della pagina Collection-Index}
+\post{Il sistema ha aggiornato la descrizione per la visualizzazione del menù delle Collection con il nuovo nome specificato dall'utente sviluppatore}
 
 \UCtitle
 {Caso d'uso UC1.2.2.1.2}
@@ -242,21 +242,21 @@ L'utente può modificare la posizione della Collection (UC1.2.2.1.2).
 \UC
 {UC1.2.2.1}
 {Utente sviluppatore}
-{L'utente può modificare, nella definizione della visualizzazione del menù della Collection, la posizione della voce relativa al nome della Collection}
+{L'utente può modificare, nella descrizione per la visualizzazione del menù della Collection, la posizione della voce relativa al nome della Collection}
 {L'utente desidera cambiare la posizione della voce nel menù}
-\post{Il sistema ha aggiornato la definizione della visualizzazione del menù delle Collection con la nuova posizione della voce specificata dall'utente sviluppatore}
+\post{Il sistema ha aggiornato la descrizione per la visualizzazione del menù delle Collection con la nuova posizione della voce specificata dall'utente sviluppatore}
 
 
 
 \UCtitle
 {Caso d'uso UC1.2.2.2}
-{Impostazioni visualizzazione pagina Collection-index}
-\UCimmagine{UC1.2.2.2}{UC1.2.2.2 Impostazioni visualizzazione pagina Collection-index}
+{Impostazioni visualizzazione pagina Collection-Index}
+\UCimmagine{UC1.2.2.2}{UC1.2.2.2 Impostazioni visualizzazione pagina Collection-Index}
 \UC
 {UC1.2.2.2}
 {Utente sviluppatore}
-{L'utente sviluppatore  può modificare varie impostazioni della definizione della visualizzazione della pagina Collection-Index}
-{Il sistema contiene la definizione della visualizzazione della pagina Collection-Index e permette all'utente sviluppatore di modificarla}
+{L'utente sviluppatore  può modificare varie impostazioni della descrizione per la visualizzazione della pagina Collection-Index}
+{Il sistema contiene la descrizione per la visualizzazione della pagina Collection-Index e permette all'utente sviluppatore di modificarla}
 \scenario{
 L'utente può aggiungere una chiave da visualizzare (UC1.2.1.2.1);|
 L'utente può eliminare una chiave da visualizzare (UC1.2.2.2.1);|
@@ -268,7 +268,7 @@ L'utente può eliminare il numero massimo di Document da visualizzare per pagina
 L'utente può aggiungere un pulsante(UC1.2.1.2.4);|
 L'utente può eliminare un pulsante(UC1.2.2.2.5).
 }
-\post{Il sistema contiene la definizione aggiornata della visualizzazione della Collection}
+\post{Il sistema contiene la descrizione aggiornata per la visualizzazione della Collection}
 
 \UCtitle
 {Caso d'uso UC1.2.2.2.1}
@@ -276,9 +276,9 @@ L'utente può eliminare un pulsante(UC1.2.2.2.5).
 \UC
 {UC1.2.2.2}
 {Utente sviluppatore}
-{L'utente sviluppatore  può eliminare una chiave dalla definizione della visualizzazione della pagina Collection-Index}
-{Il sistema contiene la definizione della visualizzazione della pagina Collection-Index, la quale contiene almeno una chiave da visualizzare. L'utente sviluppatore desidera eliminare una chiave}
-\post{Il sistema contiene la definizione della visualizzazione della pagina Collection-Index aggiornata con la chiave eliminata dall'utente sviluppatore}
+{L'utente sviluppatore  può eliminare una chiave dalla descrizione per la visualizzazione della pagina Collection-Index}
+{Il sistema contiene la descrizione per la visualizzazione della pagina Collection-Index, la quale contiene almeno una chiave da visualizzare}
+\post{Il sistema contiene la descrizione per la visualizzazione della pagina Collection-Index aggiornata con la chiave eliminata dall'utente sviluppatore}
 
 
 \UCtitle
@@ -287,9 +287,9 @@ L'utente può eliminare un pulsante(UC1.2.2.2.5).
 \UC
 {UC1.2.2.2}
 {Utente sviluppatore}
-{L'utente sviluppatore  può eliminare un ordinamento rispetto a una chiave dalla definizione della visualizzazione della pagina Collection-Index}
-{Il sistema contiene la definizione della visualizzazione della pagina Collection-Index, la quale contiene un ordinamento rispetto una chiave definito dall'utente sviluppatore. Il sistema permette all'utente di eliminare un ordinamento rispetto a una chiave}
-\post{Il sistema contiene la definizione della visualizzazione della pagina Collection-Index aggiornata con l'ordinamento eliminato dall'utente sviluppatore}
+{L'utente sviluppatore  può eliminare un ordinamento rispetto a una chiave dalla descrizione per la visualizzazione della pagina Collection-Index}
+{Il sistema contiene la descrizione per la visualizzazione della pagina Collection-Index, la quale contiene un ordinamento rispetto una chiave definito dall'utente sviluppatore}
+\post{Il sistema contiene la descrizione per la visualizzazione della pagina Collection-Index aggiornata con l'ordinamento eliminato dall'utente sviluppatore}
 
 \UCtitle
 {Caso d'uso UC1.2.2.2.3}
@@ -297,9 +297,9 @@ L'utente può eliminare un pulsante(UC1.2.2.2.5).
 \UC
 {UC1.2.2.2}
 {Utente sviluppatore}
-{L'utente sviluppatore  può modificare il numero massimo di Document da visualizzare per la pagina Collection-Index dalla definizione della visualizzazione della pagina Collection-Index}
-{Il sistema contiene la definizione della visualizzazione della pagina Collection-Index, nella quale è presente un numero massimo di Document definito dall'utente. Il sistema permette all'utente di cambiare il numero massimo}
-\post{Il sistema contiene la definizione della visualizzazione della pagina Collection-Index aggiornata con il numero massimo di Document per pagina modificato dall'utente sviluppatore}
+{L'utente sviluppatore  può modificare il numero massimo di Document da visualizzare per la pagina Collection-Index dalla descrizione per la visualizzazione della pagina Collection-Index}
+{Il sistema contiene la descrizione per la visualizzazione della pagina Collection-Index, nella quale è presente un numero massimo di Document definito dall'utente}
+\post{Il sistema contiene la descrizione per la visualizzazione della pagina Collection-Index aggiornata con il numero massimo di Document per pagina modificato dall'utente sviluppatore}
 
 \UCtitle
 {Caso d'uso UC1.2.2.2.4}
@@ -307,9 +307,9 @@ L'utente può eliminare un pulsante(UC1.2.2.2.5).
 \UC
 {UC1.2.2.2}
 {Utente sviluppatore}
-{L'utente sviluppatore  può eliminare il numero massimo di Document da visualizzare dalla definizione della visualizzazione della pagina Collection-Index}
-{Il sistema contiene la definizione della visualizzazione della pagina Collection-Index, nella quale è presente un numero massimo di Document definito dall'utente. Il sistema permette all'utente di eliminare il numero massimo}
-\post{Il sistema contiene la definizione della visualizzazione della pagina Collection-Index aggiornata con il numero massimo di Document per pagina eliminato dall'utente sviluppatore}
+{L'utente sviluppatore  può eliminare il numero massimo di Document da visualizzare dalla descrizione per la visualizzazione della pagina Collection-Index}
+{Il sistema contiene la descrizione per la visualizzazione della pagina Collection-Index, nella quale è presente un numero massimo di Document definito dall'utente}
+\post{Il sistema contiene la descrizione per la visualizzazione della pagina Collection-Index aggiornata con il numero massimo di Document per pagina eliminato dall'utente sviluppatore}
 
 \UCtitle
 {Caso d'uso UC1.2.2.2.5}
@@ -318,8 +318,8 @@ L'utente può eliminare un pulsante(UC1.2.2.2.5).
 {UC1.2.2.2}
 {Utente sviluppatore}
 {L'utente sviluppatore  può eliminare un pulsante da visualizzare nella pagina Collection-Index}
-{Il sistema contiene la definizione della visualizzazione della pagina Collection-Index, nella quale è presente un pulsante definito dall'utente. L'utente sviluppatore desidera eliminare il pulsante}
-\post{Il sistema contiene la definizione della visualizzazione della pagina Collection-Index aggiornata con il pulsante eliminato dall'utente sviluppatore}
+{Il sistema contiene la descrizione per la visualizzazione della pagina Collection-Index, nella quale è presente un pulsante definito dall'utente}
+\post{Il sistema contiene la descrizione per la visualizzazione della pagina Collection-Index aggiornata con il pulsante eliminato dall'utente sviluppatore}
 
 
 \UCtitle
@@ -329,15 +329,15 @@ L'utente può eliminare un pulsante(UC1.2.2.2.5).
 \UC
 {UC1.2.2.3}
 {Utente sviluppatore}
-{L'utente sviluppatore  può modificare la definizione della visualizzazione della pagina Document-Show e varie specifiche al suo interno}
-{Il sistema contiene la definizione della visualizzazione della pagina Document-Show}
+{L'utente sviluppatore  può modificare la descrizione per la visualizzazione della pagina Document-Show e varie specifiche al suo interno}
+{Il sistema contiene la descrizione per la visualizzazione della pagina Document-Show}
 \scenario{
 L'utente può aggiungere una chiave da visualizzare (UC1.2.1.3.1);|
 L'utente può eliminare una chiave da visualizzare (UC1.2.2.3.1);|
 L'utente può aggiungere un pulsante(UC1.2.1.3.2);|
 L'utente può eliminare un pulsante(UC1.2.2.3.2).
 }
-\post{Il sistema contiene la definizione aggiornata della visualizzazione della Collection}
+\post{Il sistema contiene la descrizione aggiornata per la visualizzazione della Collection}
 
 
 \UCtitle
@@ -346,9 +346,9 @@ L'utente può eliminare un pulsante(UC1.2.2.3.2).
 \UC
 {UC1.2.2.3}
 {Utente sviluppatore}
-{L'utente sviluppatore  può eliminare una chiave  dalla definizione della visualizzazione della pagina Document-Show}
-{Il sistema contiene la definizione della visualizzazione della pagina Document-Show, la quale contiene almeno una chiave da visualizzare. Il sistema permette all'utente di eliminare una chiave}
-\post{Il sistema contiene la definizione della visualizzazione della pagina Document-Show aggiornata con la chiave eliminata dall'utente sviluppatore}
+{L'utente sviluppatore  può eliminare una chiave  dalla descrizione per la visualizzazione della pagina Document-Show}
+{Il sistema contiene la descrizione per la visualizzazione della pagina Document-Show, la quale contiene almeno una chiave da visualizzare}
+\post{Il sistema contiene la descrizione per la visualizzazione della pagina Document-Show aggiornata con la chiave eliminata dall'utente sviluppatore}
 
 \UCtitle
 {Caso d'uso UC1.2.2.3.2}
@@ -356,9 +356,9 @@ L'utente può eliminare un pulsante(UC1.2.2.3.2).
 \UC
 {UC1.2.2.3}
 {Utente sviluppatore}
-{L'utente sviluppatore può eliminare un pulsante dalla definizione della visualizzazione della pagina Document-Show}
-{Il sistema contiene la definizione della visualizzazione della pagina Document-Show, la quale contiene almeno una chiave da visualizzare. Il sistema permette all'utente di eliminare una chiave}
-\post{Il sistema contiene la definizione della visualizzazione della pagina Document-Show aggiornata il pulsante eliminato dall'utente sviluppatore}
+{L'utente sviluppatore può eliminare un pulsante dalla descrizione per la visualizzazione della pagina Document-Show}
+{Il sistema contiene la descrizione per la visualizzazione della pagina Document-Show, la quale contiene almeno una chiave da visualizzare}
+\post{Il sistema contiene la descrizione per la visualizzazione della pagina Document-Show aggiornata il pulsante eliminato dall'utente sviluppatore}
 
 
 \UCtitle
@@ -371,7 +371,7 @@ L'utente può eliminare un pulsante(UC1.2.2.3.2).
 {L'utente sviluppatore  può modificare varie impostazioni dei file di configurazione}
 {Il sistema ha creato lo scheletro del progetto e permette all'utente sviluppatore di modificare i file di configurazione}
 \scenario{
-L'utente sviluppatore pu\'o abilitare la registrazione alle pagine web generate da MaaP (UC1.3.1);|
+L'utente sviluppatore può abilitare la registrazione alle pagine web generate da MaaP (UC1.3.1);|
 L'utente sviluppatore può abilitare la creazione di Document (UC1.3.2);|
 L'utente sviluppatore può modificare i template delle pagine web (UC1.3.3);|
 L'utente sviluppatore può specificare i dati per la connessione al database di analisi(UC1.3.4);|
@@ -386,7 +386,7 @@ L'utente sviluppatore può abilitare la creazione di indici(UC1.3.5).
 {UC1.3}
 {Utente sviluppatore}
 {L'utente sviluppatore può abilitare o disabilitare la registrazione alle pagine web generate da MaaP}
-{Il sistema permette all'utente sviluppatore di abilitare o disabilitare la registrazione}
+{Il sistema contiene il file di configurazione con l'abilitazione della registrazione predefinita}
 \post{Il sistema ha aggiornato il file di configurazione con la scelta dell'utente sviluppatore}
 
 \UCtitle
@@ -395,8 +395,8 @@ L'utente sviluppatore può abilitare la creazione di indici(UC1.3.5).
 \UC
 {UC1.3}
 {Utente sviluppatore}
-{L'utente sviluppatore pu\'o abilitare o disabilitare la creazione di Document nel database di analisi}
-{Il sistema permette all'utente sviluppatore di abilitare o disabilitare la creazione di Document nel database di analisi}
+{L'utente sviluppatore può abilitare o disabilitare la creazione di Document nel database di analisi}
+{Il sistema contiene il file di configurazione con l'abilitazione della creazione di Document nel database di analisi}
 \post{Il sistema ha aggiornato il file di configurazione con la scelta dell'utente sviluppatore}
 
 \UCtitle
@@ -406,7 +406,7 @@ L'utente sviluppatore può abilitare la creazione di indici(UC1.3.5).
 {UC1.3}
 {Utente sviluppatore}
 {L'utente sviluppatore pu\'o modificare i template delle pagine web}
-{Il sistema permette all'utente sviluppatore di modificare i template delle pagine web}
+{Il sistema contiene le directory di descrizione delle pagine web}
 \post{Il sistema ha aggiornato i template delle pagine web con le modifiche apportate dall'utente sviluppatore}
 
 \UCtitle
@@ -416,7 +416,7 @@ L'utente sviluppatore può abilitare la creazione di indici(UC1.3.5).
 {UC1.3}
 {Utente sviluppatore}
 {L'utente sviluppatore può specificare i dati necessari alla connessione del database di analisi}
-{Il sistema permette all'utente sviluppatore di connettersi a un database di analisi}
+{Il sistema contiene il file di configurazione per la connessione a un database di analisi}
 \post{Il sistema contiene le informazioni per connettersi a un database di analisi}
 
 \UCtitle
@@ -426,7 +426,7 @@ L'utente sviluppatore può abilitare la creazione di indici(UC1.3.5).
 {UC1.3}
 {Utente sviluppatore}
 {L'utente sviluppatore può abilitare o disabilitare la creazione di indici nelle pagine web generate da MaaP}
-{Il sistema permette all'utente sviluppatore di abilitare o disabilitare la creazione di indici}
+{Il sistema contiene il file di configurazione con l'abilitazione per la creazione di indici}
 \post{Il sistema ha aggiornato il file di configurazione con la scelta dell'utente sviluppatore}
 
 \UCtitle

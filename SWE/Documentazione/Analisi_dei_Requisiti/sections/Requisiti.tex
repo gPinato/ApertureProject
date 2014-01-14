@@ -22,12 +22,6 @@
 
 % Requisiti utente sviluppatore
 
-\midrule
-ROF1
-& Il \gloss{framework} MaaP deve essere installato nel computer in uso
-& Interna
-&
-\\
 
 \midrule
 ROF2
@@ -68,7 +62,7 @@ ROF2.4.1
 \\
 \midrule
 ROF3
-& Il sistema MaaP deve permettere all'utente sviluppatore di utilizzare un editor specializzato per la scrittura del file di descrizione
+& Il sistema MaaP deve permettere all'utente sviluppatore di utilizzare un editor interno specializzato per la scrittura del file di descrizione
 & Capitolato
 & UC1 \\
 & & & UC1.4
@@ -225,7 +219,7 @@ ROF5.2.2.2
 \\
 \midrule
 ROF5.2.2.3
-& Il sistema MaaP deve permettere all'utente sviluppatore di definire un ordinamento rispetto a una chiave
+& Il sistema MaaP deve permettere all'utente sviluppatore di definire un ordinamento, alfabetico crescente o decrescente, rispetto a una chiave
 & Capitolato
 & UC1.2.1.2\\
 & & & UC1.2.1.2.2
@@ -335,7 +329,7 @@ RDF6.3
 
 \midrule
 ROF6.4
-& Il sistema deve permettere all'utente sviluppatore di specificare il database di database di analisi con il quale interagire
+& Il sistema deve permettere all'utente sviluppatore di specificare il database di analisi con il quale interagire
 & Interna
 & UC1.3\\
 & & & UC1.3.4
@@ -392,7 +386,7 @@ ROF8
 
 \midrule
 ROF8.1
-& L'utente business deve inserire email e password per l'autenticazione
+& L'utente business deve inserire i dati per l'autenticazione
 & Capitolato
 & UC2\\
 & & & UC2.7
@@ -400,6 +394,22 @@ ROF8.1
 
 \midrule
 ROF8.1.1
+& L'utente business deve inserire l'email per l'autenticazione
+& Capitolato
+& UC2\\
+& & & UC2.7
+\\
+
+\midrule
+ROF8.1.2
+& L'utente business deve inserire la password per l'autenticazione
+& Capitolato
+& UC2\\
+& & & UC2.7
+\\
+
+\midrule
+ROF8.1.2.1
 & La password per l'autenticazione deve essere alfanumerica e contenere almeno otto caratteri
 & Interna
 &
@@ -423,6 +433,22 @@ RDF9.1
 
 \midrule
 RDF9.1.1
+& L'utente business, per registrarsi, deve inserire una email non presente nel sistema
+& Capitolato
+& UC2\\
+& & & UC2.7
+\\
+
+\midrule
+RDF9.1.2
+& L'utente business, per registrarsi, deve inserire una password
+& Capitolato
+& UC2\\
+& & & UC2.7
+\\
+
+\midrule
+RDF9.1.2.1
 & La password per la registrazione deve essere alfanumerica e contenere almeno otto caratteri
 & Interna
 &
@@ -881,14 +907,27 @@ RFF12.9
 & UC3\\
 & & & UC3.5\\
 
+\midrule
+ROF25
+& Definizione di un linguaggio astratto DSL per la definizione delle pagine che verranno generate
+& Capitolato
+&
+\\
+
+\midrule
+ROF25.1
+& Il linguaggio definito deve essere testuale
+& Capitolato
+&
+\\
+
 %FINE TABELLA REQUISITI MAAS, NON CANCELLARE
 \end{longtable}
-
 \newpage
-\subsection{Requisiti di qualit\`{a}}
+\subsection{Requisiti di qualita}
 \begin{longtable}{|c|p{6cm}|c|c|}
-\caption{Requisiti di qualit\`{a}}
-\label{tab:Requisiti di qualit\`{a}} \\
+\caption{Requisiti di qualita}
+\label{tab:Requisiti di qualita} \\
 \toprule
 \multicolumn{1}{|c}{\textbf{Requisito}} & \multicolumn{1}{|p{6cm}}{\textbf{Descrizione}}   & \multicolumn{1}{|c}{\textbf{Fonte}} & \multicolumn{1}{|c|}{\textbf{Caso d'uso}}\\
 \midrule
@@ -922,9 +961,9 @@ ROQ14
 \\
 
 \midrule
-ROQ15
-& Il database degli utenti deve essere \gloss{criptato}
-& Interna
+ROQ28
+& Il progetto deve essere pubblicato su \gloss{GitHub} e utilizzare le sue distribuzioni per segnalare eventuali correzioni o errori
+& Capitolato
 &
 \\
 
@@ -953,6 +992,14 @@ ROQ15
 \endlastfoot
 
 % Requisiti di vincolo
+
+\midrule
+ROV15
+& Il database degli utenti deve essere \gloss{criptato}
+& Interna
+&
+\\
+
 \midrule
 ROV16
 & Le pagine web prodotte dal framework MaaP devono essere compatibili con la versione 30.0.x di \gloss{Google Chrome} o superiori
@@ -1016,19 +1063,7 @@ ROV24
 &
 \\
 
-\midrule
-ROV25
-& Definizione di un linguaggio astratto DSL per la definizione delle pagine che verranno generate
-& Capitolato
-&
-\\
 
-\midrule
-ROV25.1
-& Il linguaggio definito deve essere testuale
-& Capitolato
-&
-\\
 
 \midrule
 ROV26
@@ -1044,12 +1079,7 @@ ROV27
 &
 \\
 
-\midrule
-ROV28
-& Il progetto deve essere pubblicato su \gloss{GitHub} e utilizzare le sue distribuzioni per segnalare eventuali correzioni o errori
-& Capitolato
-&
-\\
+
 
 %FINE TABELLA REQUISITI DI VINCOLO, NON CANCELLARE
 \end{longtable}

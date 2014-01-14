@@ -7,7 +7,7 @@
 {UC2}
 {\gloss{Utente business}, \gloss{Utente business autenticato}}
 {L'utente business attraverso il \gloss{browser} visualizza la pagina di autenticazione dove può accedere, recuperare la \gloss{password} o registrarsi, mentre l'utente business autenticato può aprire una Collection, disconnettersi o gestire il \gloss{profilo}}
-{Il sistema ha creato lo scheletro del progetto, la pagina di autenticazione viene proposta all'utente business mediante il browser, se il sistema reputa l'utente business come autenticato, viene proposta la \gloss{dashboard}}
+{Il sistema ha creato lo scheletro del progetto, la pagina di autenticazione viene proposta all'utente business mediante il browser}
 \scenario{
 L'utente business può registrarsi (UC2.1);|
 L'utente business può autenticarsi (UC2.2);|
@@ -71,13 +71,13 @@ Nel caso in cui le credenziali di accesso fornite dall'utente business non fosse
 \UCimmagine{UC2.4}{UC2.4 - Apertura Collection}
 \UC
 {UC2.4}
-{Utente business autenticato}
+{Utente business autenticato, Utente business autenticato amministratore}
 {L’ utente business autenticato può effettuare diverse operazioni: visualizzare una pagina Document-Show, modificare la visualizzazione dei Document, visualizzare una diversa Collection, disconnettersi dal sistema, navigare tra le pagine della pagina Collection-Index correntemente visualizzata,  gestire il profilo. L'utente business autenticato \gloss{amministratore} potrà inoltre cancellare o modificare un Document}
 {Il sistema reputa l'utente business come autenticato e visualizza la Collection}
 \scenario{
 L'utente business autenticato può visualizzare pagine Document-Show (UC2.4.1);|
 L'utente business autenticato può modificare la visualizzazione dei Document (UC2.4.2);|
-L'utente business autenticato può visualizzare una diversa Collection (UC2.4);|
+L'utente business autenticato può aprire una diversa Collection (UC2.4);|
 L'utente business autenticato può disconnettersi (UC2.5);|
 L'utente business autenticato può navigare tra le pagine della Collection-Index attualmente visualizzata (UC2.4.3);|
 L'utente business autenticato può gestire il profilo (UC2.6);|
@@ -277,8 +277,8 @@ L'utente business autenticato amministratore può salvare il Document appena mod
 \UC
 {UC2.4}
 {Utente business autenticato amministratore}
+{L'utente business autenticato amministratore può creare degli indici sulla base delle query più utilizzate, le quali vengono fornite dal sistema}
 {Il sistema reputa l'utente business autenticato come amministratore}
-{L'utente business autenticato amministratore può creare degli indici sulla base delle query più utilizzate}
 \post
 {Il sistema permette all'utente business autenticato amministratore di creare degli indici}
 
@@ -358,7 +358,7 @@ L'utente business autenticato come amministratore può modificare i permessi deg
 \UC
 {UC2.6.3}
 {Utente business autenticato}
-{L'utente business autenticato può modificare i dati utente del proprio profilo}
+{L'utente business autenticato può modificare i dati utente del proprio profilo, ovvero email e password}
 {Il sistema reputa l'utente business come autenticato}
 \post
 {Il sistema ha ottenuto tutti i dati modificati del profilo utente}
@@ -382,7 +382,7 @@ L'utente business autenticato come amministratore può modificare i permessi deg
 \UC
 {UC2.6.3}
 {Utente business autenticato amministratore}
-{L'utente business autenticato come amministratore può modificare i dati degli utenti}
+{L'utente business autenticato come amministratore può modificare i dati degli utenti, ovvero email e password}
 {Il sistema reputa l'utente business autenticato come amministratore}
 \estensioni
 {L'utente business autenticato può annullare le modifiche fin'ora apportate (UC2.6.3.5).}
@@ -395,7 +395,7 @@ L'utente business autenticato come amministratore può modificare i permessi deg
 \UC
 {UC2.6.3}
 {Utente business autenticato amministratore}
-{L'utente business autenticato come amministratore può modificare i permessi degli utenti, ovvero elevare un utente a livello maggiore o declassare un utente amministratore}
+{L'utente business autenticato come amministratore può modificare i permessi degli utenti, ovvero elevare un utente a livello amministratore o declassare un utente amministratore ad utente business autenticato}
 {Il sistema reputa l'utente business autenticato come amministratore}
 \post
 {Il sistema ha ottenuto i nuovi permessi da applicare al profilo utente}

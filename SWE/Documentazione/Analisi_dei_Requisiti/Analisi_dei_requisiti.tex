@@ -141,30 +141,30 @@ Il prodotto MaaP permetterà di creare uno scheletro del progetto comprensivo di
 \item \gloss{Sistema di autenticazione};
 \item Directory di descrizione pagine web.
 \end{itemize}
-Tramite l'utilizzo di un linguaggio astratto \gloss{DSL}, il prodotto permetterà all'\gloss{utente} di generare due tipi di pagine:
+Tramite l'utilizzo di un linguaggio astratto \gloss{DSL}(Domain Specific Language), il prodotto permetterà all'\gloss{utente} di generare due tipi di pagine:
 \begin{itemize}
 \item Collection-index;
 \item Document-show.
 \end{itemize}
 
-All'interno della pagina di tipo "Collection-index" sarà possibile:
+All'interno della pagina di tipo "Collection-Index" sarà possibile:
 \begin{itemize}
 \item Visualizzare tutti i documenti della \gloss{Collection};
 \item Selezionare, per ogni documento, una \gloss{chiave} che rimanderà alla relativa pagina di tipo Document-show.
 \end{itemize}
 
-All'interno della pagina di tipo Document-show sarà possibile:
+All'interno della pagina di tipo Document-Show sarà possibile:
 \begin{itemize}
 \item Visualizzare in forma estesa tutte le coppie chiave-valore;
 \item Modificare i campi del documento nel caso l'utente abbia permessi di scrittura.
 \end{itemize}
 
-Inoltre sarà possibile, attraverso un menù, di selezionare la Collection che si desidera visualizzare.
+Inoltre sarà possibile, attraverso un menù, selezionare la Collection che si desidera visualizzare.
 
 \subsection{Caratteristiche degli utenti}
 \label{2.3}
-Il prodotto MaaP si rivolge ad una sola tipologia di utenti che possiedono alte competenze tecniche, nello specifico sviluppatori e/o esperti in amministrazione di \gloss{database}.
-Non emerge quindi il \gloss{requisito} di aver alcuna gerarchia di utenti o con privilegi differenziati.
+Il prodotto MaaP si rivolge ad una sola tipologia di utenti che possiedono alte competenze tecniche, nello specifico sviluppatori e/o esperti in amministrazione di \gloss{database}. Le pagine generate dal framework verranno utilizzate da utenti esperti di business, i quali non dovranno obbligatoriamente possedere particolari conoscenze informatiche. Questi utenti si dividono in due categorie: utenti business, con soli permessi di lettura e visualizzazione del database di analisi ed eventuale gestione del profilo, e utenti business amministratori, i quali avranno ulteriori privilegi di gestione.
+Il prodotto MaaS si rivolge sia agli sviluppatori sia agli esperti di business.
 
 \subsection{Vincoli generali}
 \label{2.4}
