@@ -44,7 +44,7 @@ Questo documento si propone di presentare l'analisi dei requisiti che il prodott
 
 %seconda pagina, diario delle modifiche
 \newpage
-Diario delle modifiche
+\section{Diario delle modifiche}
 \begin{center}
 \begin{longtable}{|c|c|c|p{0.5\linewidth}|}
 \toprule
@@ -90,22 +90,17 @@ Diario delle modifiche
 %qui inizia la prima pagina ufficiale
 \newpage
 \section{Introduzione}%1.0
-\label{1.0}
 \subsection{Scopo del documento}%1.1
-\label{1.1}
 Il presente documento ha lo scopo di illustrare ed analizzare in modo dettagliato i requisiti del prodotto \grassetto{\gloss{MaaP}} evidenziati nel capitolato d'appalto C1 dal Proponente \Prop{} presentando così le funzionalità che offrirà il prodotto.
 
 \subsection{Scopo del prodotto} %1.2
-\label{1.2}
 \Prodotto{}
 \subsection{Glossario}%1.3
-\label{1.3}
 \Glossario{}
 
 \subsection{Riferimenti} %1.41
-\label{1.4}
 \subsubsection{Normativi} %1.4.1
-\label{1.4.1}
+
 
 \begin{itemize}
 \item Capitolato d'appalto C1 - \Progetto{} \\
@@ -115,7 +110,6 @@ Il presente documento ha lo scopo di illustrare ed analizzare in modo dettagliat
 \end{itemize}
 
 \subsubsection{Informativi} %1.4.2
-\label{1.4.2}
 \begin{itemize}
 \item Slide dell'insegnamento Ingegneria del Software modulo A:\\
 Ingegneria dei requisiti: \url{http://www.math.unipd.it/~tullio/IS-1/2013/Dispense/L06.pdf}
@@ -127,13 +121,10 @@ Chapter 4: Requirements engineering.
 
 \newpage
 \section{Descrizione generale}%2.0
-\label{2.0}
 \subsection{Contesto d'uso del prodotto} %2.1
-\label{2.1}
 La problematica che il prodotto si pone di risolvere è quella di ridurre il carico di lavoro degli sviluppatori per la creazione di pagine \gloss{web} di visualizzazione di dati provenienti da \gloss{MongoDB}.
 
 \subsection{Funzioni del prodotto} %2.2
-\label{2.2}
 Il prodotto MaaP permetterà di creare uno scheletro del progetto comprensivo di:
 \begin{itemize}
 \item Librerie necessarie al funzionamento del progetto;
@@ -162,17 +153,14 @@ All'interno della pagina di tipo Document-Show sarà possibile:
 Inoltre sarà possibile, attraverso un menù, selezionare la Collection che si desidera visualizzare.
 
 \subsection{Caratteristiche degli utenti}
-\label{2.3}
 Il prodotto MaaP si rivolge ad una sola tipologia di utenti che possiedono alte competenze tecniche, nello specifico sviluppatori e/o esperti in amministrazione di \gloss{database}. Le pagine generate dal framework verranno utilizzate da utenti esperti di business, i quali non dovranno obbligatoriamente possedere particolari conoscenze informatiche. Questi utenti si dividono in due categorie: utenti business, con soli permessi di lettura e visualizzazione del database di analisi ed eventuale gestione del profilo, e utenti business amministratori, i quali avranno ulteriori privilegi di gestione.
 Il prodotto MaaS si rivolge sia agli sviluppatori sia agli esperti di business.
 
 \subsection{Vincoli generali}
-\label{2.4}
 Nel computer è necessario che sia installata la versione 30.0.x di \gloss{Google} Chrome o superiori, oppure la versione 24.x o superiori di \gloss{Firefox}.
 
 \newpage
 \section{Casi d'uso} %3
-\label{3.0}
 Di seguito sono presentati i casi d'uso identificati a partire dal capitolato d'appalto \Progetto. \\
 Ogni caso d'uso figlio eredita le precondizioni dei casi d'uso di livello superiore che fanno parte della sua gerarchia al fine di ridurre l'esposizione delle precondizioni.
 Ogni caso d'uso ha un \gloss{codice} univoco gerarchico, nella forma:
@@ -180,6 +168,12 @@ Ogni caso d'uso ha un \gloss{codice} univoco gerarchico, nella forma:
 UC[codice progressivo di livello]
 \end{center}
 Il codice progressivo può includere diversi livelli di gerarchia separati da un punto.
+A ogni descrizione di caso d'uso viene riportato il numero del diagramma associato di cui fa parte, ovvero la rappresentazione del caso d'uso generale a cui esso appartiene. 
+Ogni diagramma associato è scritto nella seguente forma:
+\begin{center}
+Figura[numero progressivo]:[codice univoco e nome del caso d'uso]
+\end{center}
+
 
 \input{./sections/UC1MaaP.tex}
 
@@ -191,7 +185,6 @@ Il codice progressivo può includere diversi livelli di gerarchia separati da un
 
 \newpage
 \section{Requisiti} %4
-\label{4.0}
 Di seguito sono riportati tutti i requisiti individuati, in base ai casi d'uso, dal capitolato, e alla luce di quanto emerso dall'incontro con il Proponente e da necessità interne.\\
 Per garantire una migliore leggibilità sono divisi in tabelle separate a seconda della categoria d'appartenenza.\\
 Di ogni requisito si specificano la tipologia, la priorità e ne viene indicata la provenienza.\\
@@ -223,7 +216,6 @@ R[importanza][tipo][codice]
 
 \newpage
 \section{Tracciamento Requisiti}
-\label{5.0}
 \input{./sections/tracciamentoRequisiti.tex}
 
 
