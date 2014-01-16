@@ -16,9 +16,6 @@ L'utente business autenticato può aprire una Collection (UC2.4);|
 L'utente business autenticato può disconnettersi dal sistema (UC2.5);|
 L'utente business autenticato può gestire il profilo (UC2.6).
 }
-\inclusioni
-{L'utente business inserisce la propria mail e la propria password (UC2.7).
-}
 \scenarioAlt{
 Nel caso in cui le credenziali di accesso fornite dall'utente business non fossero corrette il sistema segnala il problema e ripresenta il \gloss{form} di autenticazione.
 }
@@ -30,39 +27,106 @@ Nel caso in cui le credenziali di accesso fornite dall'utente business non fosse
 \UCtitle
 {Caso d'uso UC2.1}
 {Registrazione}
+\UCimmagine{UC2.1}{UC2.1 Registrazione}
 \UC
-{UC2}
+{UC2.1}
 {Utente business}
 {L'utente business può registrarsi}
 {Il sistema si trova nello stato iniziale e propone all'utente una schermata per registrarsi}
+\scenario
+{
+L'utente business può inserire l'email (UC2.1.1);|
+L'utente business può inserire la password (UC2.1.2).
+}
 \post
 {Il sistema ha creato un nuovo utente e reputa l'utente business autenticato}
 
+\UCtitle
+{Caso d'uso UC2.1.1}
+{Inserimento email}
+\UC
+{UC2.1}
+{Utente business}
+{L'utente business può inserire l'email per la registrazione}
+{Il sistema si trova nello stato iniziale e propone all'utente una casella per inserire l'email}
+\post
+{Il sistema ha ottenuto il contenuto del testo inserito dall'utente business}
+
+\UCtitle
+{Caso d'uso UC2.1.2}
+{Inserimento password}
+\UC
+{UC2.1}
+{Utente business}
+{L'utente business può inserire la password per la registrazione}
+{Il sistema si trova nello stato iniziale e propone all'utente una casella per inserire la password}
+\post
+{Il sistema ha ottenuto il contenuto del testo inserito dall'utente business}
 
 \UCtitle
 {Caso d'uso UC2.2}
 {Autenticazione}
+\UCimmagine{UC2.2}{UC2.2 Autenticazione}
 \UC
-{UC2}
+{UC2.2}
 {Utente business}
 {Un utente business tenta di autenticarsi}
 {Il sistema si trova nello stato iniziale e propone all'utente una schermata per inserire i dati per l'autenticazione}
+\scenario
+{
+L'utente business può inserire l'email (UC2.2.1);|
+L'utente business può inserire la password (UC2.2.2).
+}
 \post
 {Il sistema reputa l'utente business come autenticato}
 
+\UCtitle
+{Caso d'uso UC2.2.1}
+{Inserimento email}
+\UC
+{UC2.2}
+{Utente business}
+{L'utente business può inserire l'email per l'autenticazione}
+{Il sistema si trova nello stato iniziale e propone all'utente una casella per inserire l'email}
+\post
+{Il sistema ha ottenuto il contenuto del testo inserito dall'utente business}
 
+\UCtitle
+{Caso d'uso UC2.2.2}
+{Inserimento password}
+\UC
+{UC2.2}
+{Utente business}
+{L'utente business può inserire la password per l'autenticazione}
+{Il sistema si trova nello stato iniziale e propone all'utente una casella per inserire la password}
+\post
+{Il sistema ha ottenuto il contenuto del testo inserito dall'utente business}
 
 \UCtitle
 {Caso d'uso UC2.3}
 {Recupero password}
+\UCimmagine{UC2.3}{UC2.3 Recupero password}
 \UC
-{UC2}
+{UC2.3}
 {Utente business}
 {Un utente business registrato recupera la password dimenticata}
 {Il sistema  reputa l'utente business come registrato}
+\scenario
+{L'utente business inserire l'email (UC2.3.1).
+}
 \post
 {Il sistema ha fornito la password all'utente business}
 
+\UCtitle
+{Caso d'uso UC2.3.1}
+{Inserimento email}
+\UC
+{UC2.3}
+{Utente business}
+{L'utente business può inserire l'email per il recupero password}
+{Il sistema propone all'utente una casella per inserire l'email}
+\post
+{Il sistema ha ottenuto il contenuto del testo inserito dall'utente business}
 
 
 \UCtitle
@@ -114,10 +178,9 @@ L'utente business autenticato amministratore può creare degli indici sulle quer
 {Il sistema reputa l'utente business come autenticato e visualizza la Collection scelta}
 \scenario{
 L'utente business autenticato può selezionare i criteri per la visualizzazione della lista di Document (UC2.4.2.1);|
-L'utente business autenticato può applicare dei filtri (UC2.4.2.2).
+L'utente business autenticato può applicare dei filtri (UC2.4.2.2);|
+L'utente business autenticato può annullare un filtro applicato (UC2.4.2.3).
 }
-\estensioni
-{Solo nel caso in cui venga applicato un \gloss{filtro}, l'utente business autenticato può annullarlo (UC2.4.2.3).}
 \post
 {Il sistema ha ottenuto le informazioni sulle operazioni che l'utente business autenticato desidera eseguire ed aggiorna la visualizzazione della pagina}
 
@@ -412,18 +475,6 @@ L'utente business autenticato come amministratore può modificare i permessi deg
 \post
 {Il sistema non considera le modifiche apportate e visualizza la pagina precedente}
 
-
-
-\UCtitle
-{Caso d'uso UC2.7}
-{Inserimento \gloss{email} e password}
-\UC
-{UC2}
-{Utente business}
-{Un utente business inserisce email e password per autenticarsi}
-{Il sistema si trova nello stato iniziale e propone all'utente business una schermata per inserire i dati di autenticazione}
-\post
-{Il sistema ha acquisito i dati dell'utente business}
 
 
 

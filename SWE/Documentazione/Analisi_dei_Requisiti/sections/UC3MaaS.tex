@@ -6,22 +6,22 @@
 \UC
 {UC3}
 {Utente, Utente autenticato}
-{L'Utente e l'Utente autenticato possono visualizzare le pagine web accedendo attraverso uno specifico \gloss{URL}, l'Utente può registrarsi, richiedere il recupero password, effettuare l'autenticazione. Se ritenuto autenticato dal sistema può inoltre creare lo scheletro di un nuovo progetto, gestire le pagine web, gestire il proprio profilo e disconnettersi}
-{Il sistema MaaS è correttamente installato, funzionante e le pagine web sono disponibili online e raggiungibili dall'Utente e dall'Utente autenticato tramite browser. All'Utente viene proposta la pagina di login al sistema mentre all'Utente autenticato viene proposta la pagina del proprio \gloss{account} utente}
+{L'utente e l'utente autenticato possono visualizzare le pagine web accedendo attraverso uno specifico \gloss{URL}, l'utente può registrarsi, richiedere il recupero password, effettuare l'autenticazione. Se ritenuto autenticato dal sistema può inoltre creare lo scheletro di un nuovo progetto, gestire le pagine web, gestire il proprio profilo e disconnettersi}
+{Il sistema MaaS è correttamente installato, funzionante e le pagine web sono disponibili online e raggiungibili dall'utente e dall'utente autenticato tramite browser. All'utente viene proposta la pagina di login al sistema mentre all'utente autenticato viene proposta la pagina del proprio \gloss{account} utente}
 
 \scenario
-{L'Utente autenticato può creare lo scheletro del progetto (UC3.1);|
-L'Utente autenticato può  gestire le pagine web (UC3.2);|
-L'Utente autenticato può  gestire il proprio profilo (UC3.3);|
-L'Utente autenticato può  disconnettersi dal proprio account (UC3.4);|
-L'Utente e l'Utente autenticato possono visualizzare le pagine web tramite URL specifico (UC3.5);|
-L'Utente può autenticarsi al sistema (UC3.6);|
-L'Utente può registrarsi (UC3.7);|
-L'Utente può recuperare la password (UC3.8).
+{L'utente autenticato può creare lo scheletro del progetto (UC3.1);|
+L'utente autenticato può  gestire le pagine web (UC3.2);|
+L'utente autenticato può  gestire il proprio profilo (UC3.3);|
+L'utente autenticato può  disconnettersi dal proprio account (UC3.4);|
+L'utente e l'utente autenticato possono visualizzare le pagine web tramite URL specifico (UC3.5);|
+L'utente può autenticarsi al sistema (UC3.6);|
+L'utente può registrarsi (UC3.7);|
+L'utente può recuperare la password (UC3.8).
 }
 
 \post
-{Il sistema ha ottenuto le informazioni relative alle azioni che l'Utente e l'Utente autenticato vogliono eseguire}
+{Il sistema ha ottenuto le informazioni relative alle azioni che l'utente e l'utente autenticato vogliono eseguire}
 
 
 \UCtitle
@@ -31,12 +31,12 @@ L'Utente può recuperare la password (UC3.8).
 \UC
 {UC3.1}
 {Utente autenticato}
-{L'Utente autenticato può creare lo scheletro di un nuovo progetto}
-{Il sistema reputa l'Utente come autenticato}
+{L'utente autenticato può creare lo scheletro di un nuovo progetto}
+{Il sistema reputa l'utente come autenticato}
 \scenario
-{L'Utente autenticato può inserire il nome del progetto che intende creare (UC3.1.1)}
+{L'utente autenticato può inserire il nome del progetto che intende creare (UC3.1.1)}
 \post
-{Il sistema ha completato la creazione dello scheletro del progetto utilizzando il nome specificato dall'Utente autenticato. E' disponibile un URL specifico per accedere alla pagina principale del progetto appena creato}
+{Il sistema ha completato la creazione dello scheletro del progetto utilizzando il nome specificato dall'utente autenticato. E' disponibile un URL specifico per accedere alla pagina principale del progetto appena creato}
 
 \UCtitle
 {Caso d'uso UC3.1.1}
@@ -47,7 +47,7 @@ L'Utente può recuperare la password (UC3.8).
 {L'utente può inserire il nome del progetto che intende creare}
 {Il sistema ha iniziato la creazione dello scheletro del progetto}
 \post
-{Il sistema ha acquisito il nome del progetto che l'Utente autenticato desidera creare}
+{Il sistema ha acquisito il nome del progetto che l'utente autenticato desidera creare}
 
 \UCtitle
 {Caso d'uso UC3.2}
@@ -57,16 +57,16 @@ L'Utente può recuperare la password (UC3.8).
 {UC3.2}
 {Utente autenticato}
 {L'utente autenticato può gestire le pagine web presenti nel sistema}
-{Il sistema reputa l'Utente come autenticato e precedentemente è stato creato con successo lo scheletro di un progetto}
+{Il sistema reputa l'utente come autenticato e precedentemente è stato creato con successo lo scheletro di un progetto}
 \scenario
-{L'Utente autenticato può creare un nuovo file di descrizione (UC3.2.1);|
-L'Utente autenticato può eseguire l'\gloss{upload} di un file di descrizione precedentemente creato con il sistema MaaP (UC3.2.2);|
-L'Utente autenticato può modificare un file di descrizione esistente (UC3.2.3);|
-L'Utente autenticato può modificare il file di configurazione (UC3.2.4);|
-L'Utente autenticato può visualizzare tutti i file di descrizione presenti (UC3.2.5).
+{L'utente autenticato può creare un nuovo file di descrizione (UC3.2.1);|
+L'utente autenticato può eseguire l'\gloss{upload} di un file di descrizione precedentemente creato con il sistema MaaP (UC3.2.2);|
+L'utente autenticato può modificare un file di descrizione esistente (UC3.2.3);|
+L'utente autenticato può modificare il file di configurazione (UC3.2.4);|
+L'utente autenticato può visualizzare tutti i file di descrizione presenti (UC3.2.5).
 }
 \post
-{Il sistema ha ottenuto le informazioni relative alle azioni che l'Utente autenticato vuole eseguire}
+{Il sistema ha ottenuto le informazioni relative alle azioni che l'utente autenticato vuole eseguire}
 
 
 \UCtitle
@@ -79,11 +79,11 @@ L'Utente autenticato può visualizzare tutti i file di descrizione presenti (UC3
 {L'utente autenticato può creare un file di descrizione utilizzando un apposito editor online e successivamente salvarlo nel sistema}
 {Il sistema ha generato lo scheletro del progetto}
 \scenario
-{L'Utente autenticato può scrivere un file di descrizione (UC3.2.1.1);|
-L'Utente autenticato può salvare il file di descrizione (UC3.2.1.2).
+{L'utente autenticato può scrivere un file di descrizione (UC3.2.1.1);|
+L'utente autenticato può salvare il file di descrizione (UC3.2.1.2).
 }
 \post
-{Il sistema ha ottenuto il contenuto relativo al file di descrizione che l'Utente autenticato ha scritto ed ha salvato il file di descrizione in modo permanente}
+{Il sistema ha ottenuto il contenuto relativo al file di descrizione che l'utente autenticato ha scritto ed ha salvato il file di descrizione in modo permanente}
 
 \UCtitle
 {Caso d'uso UC3.2.1.1}
@@ -92,9 +92,9 @@ L'Utente autenticato può salvare il file di descrizione (UC3.2.1.2).
 {UC3.2.1}
 {Utente autenticato}
 {L'utente autenticato può scrivere il contenuto del file di descrizione che desidera creare in un apposito form}
-{Il sistema propone all'Utente autenticato un apposita casella di testo per scrivere il contenuto del file di descrizione da creare ed è in attesa dell'inserimento}
+{Il sistema propone all'utente autenticato un apposita casella di testo per scrivere il contenuto del file di descrizione da creare ed è in attesa dell'inserimento}
 \post
-{Il sistema conosce il contenuto del testo inserito dall'Utente}
+{Il sistema conosce il contenuto del testo inserito dall'utente}
 
 \UCtitle
 {Caso d'uso UC3.2.1.2}
@@ -103,9 +103,9 @@ L'Utente autenticato può salvare il file di descrizione (UC3.2.1.2).
 {UC3.2.1}
 {Utente autenticato}
 {L'utente autenticato può salvare in modo permanente il contenuto del file di descrizione scritto precedentemente}
-{Il sistema conosce il contenuto del testo inserito dall'Utente}
+{Il sistema conosce il contenuto del testo inserito dall'utente}
 \post
-{Il sistema ha ottenuto il contenuto relativo al file di descrizione che l'Utente autenticato ha scritto ed ha salvato il file di descrizione in modo permanente}
+{Il sistema ha ottenuto il contenuto relativo al file di descrizione che l'utente autenticato ha scritto ed ha salvato il file di descrizione in modo permanente}
 
 \UCtitle
 {Caso d'uso UC3.2.2}
@@ -117,37 +117,26 @@ L'Utente autenticato può salvare il file di descrizione (UC3.2.1.2).
 {L'utente autenticato può eseguire l'upload di un file di descrizione precedentemente creato con il sistema MaaP}
 {Il sistema ha generato lo scheletro del progetto}
 \scenario
-{L'Utente autenticato può navigare nel file system (UC3.2.2.1);|
-L'Utente autenticato può selezionare un file di descrizione (UC3.2.2.2);|
-L'Utente autenticato può confermare l'upload del file selezionato (UC3.2.2.3).
+{
+L'utente autenticato può selezionare un file di descrizione (UC3.2.2.1);|
+L'utente autenticato può confermare l'upload del file selezionato (UC3.2.2.3).
 }
 \post
-{Il sistema ha ottenuto le informazioni relative al file di descrizione che l'Utente autenticato desidera caricare, ha eseguito l'upload ed ha salvato il file in modo permanente}
+{Il sistema ha ottenuto le informazioni relative al file di descrizione che l'utente autenticato desidera caricare, ha eseguito l'upload ed ha salvato il file in modo permanente}
 
 \UCtitle
 {Caso d'uso UC3.2.2.1}
-{Navigazione nel file system}
-\UC
-{UC3.2.2}
-{Utente autenticato}
-{L'utente autenticato può navigare nel file system per selezionare la cartella contenente il file che vuole caricare}
-{Il sistema è in attesa che l'Utente autenticato selezioni una cartella all'interno del file system}
-\post
-{Il sistema ha modificato la cartella corrente riflettendo la selezione dell'Utente autenticato}
-
-\UCtitle
-{Caso d'uso UC3.2.2.2}
 {Selezione di un file di descrizione}
 \UC
 {UC3.2.2}
 {Utente autenticato}
 {L'utente autenticato può selezionare il file che desidera caricare nel sistema}
-{Il sistema mostra i file presenti nella cartella selezionata dall'Utente autenticato}
+{Il sistema mostra i file presenti nella cartella selezionata dall'utente autenticato}
 \post
-{Il sistema evidenzia il file indicato dall'Utente autenticato}
+{Il sistema evidenzia il file indicato dall'utente autenticato}
 
 \UCtitle
-{Caso d'uso UC3.2.2.3}
+{Caso d'uso UC3.2.2.2}
 {Conferma upload del file selezionato}
 \UC
 {UC3.2.2}
@@ -155,7 +144,7 @@ L'Utente autenticato può confermare l'upload del file selezionato (UC3.2.2.3).
 {L'utente autenticato può confermare il caricamento del file selezionato}
 {Il sistema ha un file selezionato pronto per essere caricato}
 \post
-{Il sistema ha letto il file selezionato dall'Utente autenticato, ha eseguito l'upload e lo ha salvato in modo permanente}
+{Il sistema ha letto il file selezionato dall'utente autenticato, ha eseguito l'upload e lo ha salvato in modo permanente}
 
 \UCtitle
 {Caso d'uso UC3.2.3}
@@ -164,16 +153,16 @@ L'Utente autenticato può confermare l'upload del file selezionato (UC3.2.2.3).
 \UC
 {UC3.2.3}
 {Utente autenticato}
-{L'utente autenticato può modificare un file di descrizione presente nel sistema}
-{Il sistema ha creato lo scheletro del progetto e l'Utente autenticato ha selezionato il file di descrizione che desidera modificare}
+{L'utente autenticato può modificare un file di descrizione presente nel sistema utilizzando l'editor fornito da MaaS}
+{Il sistema ha creato lo scheletro del progetto e l'utente autenticato ha selezionato il file di descrizione che desidera modificare}
 \scenario
-{L'Utente autenticato può modificare il codice del file di descrizione selezionato (UC3.2.3.1);|
-L'Utente autenticato può salvare le modifiche apportate al codice del file di descrizione selezionato (UC3.2.3.2).
+{L'utente autenticato può modificare il codice del file di descrizione selezionato (UC3.2.3.1);|
+L'utente autenticato può salvare le modifiche apportate al codice del file di descrizione selezionato (UC3.2.3.2).
 }
 \estensioni
-{L'Utente autenticato può in qualsiasi momento annullare le modifiche apportate al file di descrizione selezionato (UC3.2.3.3).}
+{L'utente autenticato può in qualsiasi momento annullare le modifiche apportate al file di descrizione selezionato (UC3.2.3.3).}
 \post
-{Il sistema ha ottenuto le informazioni relative alle azioni che l'Utente autenticato desidera eseguire. Nello specifico se l'Utente autenticato ha scelto di salvare le modifiche apportate, il sistema ha ottenuto le informazioni relative al contenuto del file di descrizione modificato ed ha salvato tali informazioni in modo permanente sovrascrivendo il file di descrizione originario}
+{Il sistema ha ottenuto le informazioni relative alle azioni che l'utente autenticato desidera eseguire. Nello specifico se l'utente autenticato ha scelto di salvare le modifiche apportate, il sistema ha ottenuto le informazioni relative al contenuto del file di descrizione modificato ed ha salvato tali informazioni in modo permanente sovrascrivendo il file di descrizione originario}
 
 \UCtitle
 {Caso d'uso UC3.2.3.1}
@@ -182,9 +171,9 @@ L'Utente autenticato può salvare le modifiche apportate al codice del file di d
 {UC3.2.3}
 {Utente autenticato}
 {L'utente autenticato può modificare il codice del file di descrizione selezionato}
-{Il sistema propone all'Utente autenticato un'apposita casella di testo con all'interno il codice contenuto nel file di descrizione che desidera modificare ed è in attesa dell'inserimento}
+{Il sistema propone all'utente autenticato un'apposita casella di testo con all'interno il codice contenuto nel file di descrizione che desidera modificare ed è in attesa dell'inserimento}
 \post
-{Il sistema conosce il contenuto del testo inserito dall'Utente}
+{Il sistema conosce il contenuto del testo inserito dall'utente}
 
 \UCtitle
 {Caso d'uso UC3.2.3.2}
@@ -193,7 +182,7 @@ L'Utente autenticato può salvare le modifiche apportate al codice del file di d
 {UC3.2.3}
 {Utente autenticato}
 {L'utente autenticato può salvare in modo permanente le modifiche apportate al file di descrizione}
-{Il sistema conosce il contenuto del testo inserito dall'Utente}
+{Il sistema conosce il contenuto del testo inserito dall'utente}
 \post
 {Il sistema ha ottenuto le informazioni relative al contenuto del file di descrizione modificato ed ha salvato la nuova versione del file sovrascrivendo il file originario}
 
@@ -204,9 +193,9 @@ L'Utente autenticato può salvare le modifiche apportate al codice del file di d
 {UC3.2.3}
 {Utente autenticato}
 {L'utente autenticato può annullare le modifiche apportate al contenuto del file di descrizione}
-{Il sistema ha ottenuto le informazioni sul contenuto del testo inserito dall'Utente}
+{Il sistema ha ottenuto le informazioni sul contenuto del testo inserito dall'utente}
 \post
-{Il sistema ignora le modifiche apportate dall'Utente autenticato e non sovrascrive il file originario}
+{Il sistema ignora le modifiche apportate dall'utente autenticato e non sovrascrive il file originario}
 
 
 \UCtitle
@@ -216,16 +205,16 @@ L'Utente autenticato può salvare le modifiche apportate al codice del file di d
 \UC
 {UC3.2.4}
 {Utente autenticato}
-{L'utente autenticato può modificare il file di configurazione presente nel sistema}
+{L'utente autenticato può modificare il file di configurazione presente nel sistema utilizzando l'editor fornito da MaaS}
 {Il sistema ha creato lo scheletro del progetto}
 \scenario
-{L'Utente autenticato può modificare il codice del file di configurazione (UC3.2.4.1);|
-L'Utente autenticato può salvare le modifiche apportate al codice del file di configurazione (UC3.2.4.2).
+{L'utente autenticato può modificare il codice del file di configurazione (UC3.2.4.1);|
+L'utente autenticato può salvare le modifiche apportate al codice del file di configurazione (UC3.2.4.2).
 }
 \estensioni
-{L'Utente autenticato può in qualsiasi momento annullare le modifiche apportate al file di configurazione (UC3.2.4.3).}
+{L'utente autenticato può in qualsiasi momento annullare le modifiche apportate al file di configurazione (UC3.2.4.3).}
 \post
-{Il sistema ha ottenuto le informazioni relative alle azioni che l'Utente autenticato desidera eseguire. Nello specifico se l'Utente autenticato ha scelto di salvare le modifiche apportate, il sistema ha ottenuto le informazioni relative al contenuto del file di configurazione modificato ed ha salvato tali informazioni in modo permanente sovrascrivendo il file di configurazione originario}
+{Il sistema ha ottenuto le informazioni relative alle azioni che l'utente autenticato desidera eseguire. Nello specifico se l'utente autenticato ha scelto di salvare le modifiche apportate, il sistema ha ottenuto le informazioni relative al contenuto del file di configurazione modificato ed ha salvato tali informazioni in modo permanente sovrascrivendo il file di configurazione originario}
 
 \UCtitle
 {Caso d'uso UC3.2.4.1}
@@ -234,9 +223,9 @@ L'Utente autenticato può salvare le modifiche apportate al codice del file di c
 {UC3.2.4}
 {Utente autenticato}
 {L'utente autenticato può modificare il codice del file di configurazione}
-{Il sistema propone all'Utente autenticato un'apposita casella di testo con all'interno il codice contenuto nel file di configurazione da modificare ed è in attesa dell'inserimento}
+{Il sistema propone all'utente autenticato un'apposita casella di testo con all'interno il codice contenuto nel file di configurazione da modificare ed è in attesa dell'inserimento}
 \post
-{Il sistema ha ottenuto le informazioni sul contenuto del testo modificato dall'Utente}
+{Il sistema ha ottenuto le informazioni sul contenuto del testo modificato dall'utente}
 
 \UCtitle
 {Caso d'uso UC3.2.4.2}
@@ -279,12 +268,12 @@ L'Utente autenticato può salvare le modifiche apportate al codice del file di c
 \UC
 {UC3.3}
 {Utente autenticato}
-{L'Utente autenticato può gestire il proprio profilo}
-{Il sistema reputa l'Utente come autenticato}
+{L'utente autenticato può gestire il proprio profilo}
+{Il sistema reputa l'utente come autenticato}
 \scenario
-{L'Utente autenticato può generare una nuova password per accedere al sistema (UC3.3.1).}
+{L'utente autenticato può generare una nuova password per accedere al sistema (UC3.3.1).}
 \post
-{Il sistema ha ottenuto le informazioni relative alle azioni che l'Utente autenticato desidera effettuare}
+{Il sistema ha ottenuto le informazioni relative alle azioni che l'utente autenticato desidera effettuare}
 
 \UCtitle
 {Caso d'uso UC3.3.1}
@@ -292,8 +281,8 @@ L'Utente autenticato può salvare le modifiche apportate al codice del file di c
 \UC
 {UC3.3}
 {Utente autenticato}
-{L'Utente autenticato può generare una nuova passowrd per accedere al sistema}
-{Il sistema reputa l'Utente come autenticato}
+{L'utente autenticato può generare una nuova password per accedere al sistema}
+{Il sistema reputa l'utente come autenticato}
 \post
 {Il sistema ha generato una nuova password per l'utente autenticato ed ha inviato una email di notifica all'utente stesso}
 
@@ -304,9 +293,9 @@ L'Utente autenticato può salvare le modifiche apportate al codice del file di c
 {UC3}
 {Utente autenticato}
 {L'utente può disconnettersi dal sistema}
-{Il sistema reputa l'Utente come autenticato}
+{Il sistema reputa l'utente come autenticato}
 \post
-{Il sistema reputa l'Utente non autenticato e propone la pagina principale di login}
+{Il sistema reputa l'utente non autenticato e propone la pagina principale di login}
 
 
 \UCtitle
@@ -315,7 +304,7 @@ L'Utente autenticato può salvare le modifiche apportate al codice del file di c
 \UC
 {UC3}
 {Utente, Utente autenticato}
-{L'utente e l'Utente autenticato possono visualizzare le pagine web di un determinato progetto mediante un URL specifico}
+{L'utente e l'utente autenticato possono visualizzare le pagine web di un determinato progetto mediante un URL specifico}
 {Il sistema ha creato lo scheletro del progetto}
 \post
 {Il sistema visualizza la pagina principale del progetto}
@@ -328,17 +317,17 @@ L'Utente autenticato può salvare le modifiche apportate al codice del file di c
 \UC
 {UC3.6}
 {Utente}
-{L'Utente può effettuare l'autenticazione al sistema}
-{Il sistema reputa l'Utente come non autenticato}
+{L'utente può effettuare l'autenticazione al sistema}
+{Il sistema reputa l'utente come non autenticato}
 \scenario
-{L'Utente può inserire il nome utente (UC3.6.1);|
-L'Utente può inserire la password (UC3.6.2).
+{L'utente può inserire il nome utente (UC3.6.1);|
+L'utente può inserire la password (UC3.6.2).
 }
 \scenarioAlt
 {Nel caso in cui le credenziali di accesso non fossero corrette il sistema segnala il problema e ripresenta la pagina principale di login.
 }
 \post
-{Il sistema ha ottenuto le informazioni relative all'operazione di autenticazione inserite dall'Utente. Viene proposta la pagina relativa all'account utente}
+{Il sistema ha ottenuto le informazioni relative all'operazione di autenticazione inserite dall'utente. Viene proposta la pagina relativa all'account utente}
 
 
 \UCtitle
@@ -347,7 +336,7 @@ L'Utente può inserire la password (UC3.6.2).
 \UC
 {UC3.6}
 {Utente}
-{L'Utente può inserire il nome utente}
+{L'utente può inserire il nome utente}
 {Il sistema permette di inserire il nome utente all'interno di un'apposita casella di testo ed è in attesa dell'inserimento}
 \post
 {Il sistema conosce il nome utente inserito}
@@ -358,7 +347,7 @@ L'Utente può inserire la password (UC3.6.2).
 \UC
 {UC3.6}
 {Utente}
-{L'Utente può inserire la password}
+{L'utente può inserire la password}
 {Il sistema permette di inserire la password all'interno di un'apposita casella di testo ed è in attesa dell'inserimento}
 \post
 {Il sistema conosce la password inserita}
@@ -371,28 +360,50 @@ L'Utente può inserire la password (UC3.6.2).
 {UC3.7}
 {Utente}
 {L'utente può registrarsi al sistema}
-{Il sistema reputa l'Utente come non autenticato}
+{Il sistema reputa l'utente come non autenticato}
 \scenario
-{L'Utente può inserire il nome utente (UC3.6.1);|
-L'Utente può inserire la password (UC3.6.2);|
-L'Utente può inserire l'email (UC3.7.1).
+{L'utente può inserire il nome utente (UC3.7.1);|
+L'utente può inserire la password (UC3.7.2);|
+L'utente può inserire l'email (UC3.7.3).
 }
 \scenarioAlt
-{Nel caso in cui i dati forniti dall'Utente non siano formalmente corretti oppure già presenti nel sistema viene segnalato un messaggio di errore e viene riproposta la pagina di registrazione.
+{Nel caso in cui i dati forniti dall'utente non siano formalmente corretti oppure già presenti nel sistema viene segnalato un messaggio di errore e viene riproposta la pagina di registrazione.
 }
 \post
-{Il sistema ha acquisito i dati dell'Utente, li ha salvati in modo permanente e propone all'Utente la pagina relativa al suo account}
+{Il sistema ha acquisito i dati dell'utente, li ha salvati in modo permanente e propone all'utente la pagina relativa al suo account}
 
 \UCtitle
 {Caso d'uso UC3.7.1}
+{Inserimento nome utente}
+\UC
+{UC3.7}
+{Utente}
+{L'utente può inserire il nome utente per la registrazione dell'account}
+{Il sistema permette di inserire il nome utente all'interno di un'apposita casella di testo ed è in attesa dell'inserimento}
+\post
+{Il sistema ha ottenuto il contenuto del testo inserito dall'utente}
+
+\UCtitle
+{Caso d'uso UC3.7.2}
+{Inserimento password}
+\UC
+{UC3.7}
+{Utente}
+{L'utente può inserire la password per la registrazione dell'account}
+{Il sistema permette di inserire la password all'interno di un'apposita casella di testo ed è in attesa dell'inserimento}
+\post
+{Il sistema ha ottenuto il contenuto del testo inserito dall'utente}
+
+\UCtitle
+{Caso d'uso UC3.7.3}
 {Inserimento email}
 \UC
 {UC3.7}
 {Utente}
-{L'Utente può inserire l'email per la registrazione dell'account}
+{L'utente può inserire l'email per la registrazione dell'account}
 {Il sistema permette di inserire la password all'interno di un'apposita casella di testo ed è in attesa dell'inserimento}
 \post
-{Il sistema ha ottenuto il contenuto del testo inserito dall'Utente}
+{Il sistema ha ottenuto il contenuto del testo inserito dall'utente}
 
 \UCtitle
 {Caso d'uso UC3.8}
@@ -402,6 +413,6 @@ L'Utente può inserire l'email (UC3.7.1).
 {UC3.8}
 {Utente}
 {L'utente può recuperare la password dimenticata}
-{Il sistema reputa l'Utente come non autenticato}
-\scenario{L'Utente può inserire il nome utente per effettuare il recupero password (UC3.6.1).}
-\post{Il sistema ha ottenuto il nome dell'Utente che richiede il recupero password ed ha inviato la relativa password all'email associata all'account}
+{Il sistema reputa l'utente come non autenticato}
+\scenario{L'utente può inserire il nome utente per effettuare il recupero password (UC3.6.1).}
+\post{Il sistema ha ottenuto il nome dell'utente che richiede il recupero password ed ha inviato la relativa password all'email associata all'account}
