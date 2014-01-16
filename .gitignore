@@ -12,4 +12,7 @@ SWE/Documentazione/Piano_di_Qualifica/Piano_di_qualifica.toc
 *.aux
 *.synctex
 *.out
+*.asta.lock
+*.asta.bak
+*.bak
 
