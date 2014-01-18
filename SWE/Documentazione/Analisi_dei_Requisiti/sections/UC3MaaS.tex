@@ -34,7 +34,7 @@ L'utente può recuperare la password (UC3.8).
 {L'utente autenticato può creare lo scheletro di un nuovo progetto}
 {Il sistema reputa l'utente come autenticato}
 \scenario
-{L'utente autenticato può inserire il nome del progetto che intende creare (UC3.1.1)}
+{L'utente autenticato può inserire il nome del progetto che intende creare (UC3.1.1).}
 \post
 {Il sistema ha completato la creazione dello scheletro del progetto utilizzando il nome specificato dall'utente autenticato. E' disponibile un URL specifico per accedere alla pagina principale del progetto appena creato}
 
@@ -46,6 +46,8 @@ L'utente può recuperare la password (UC3.8).
 {Utente autenticato}
 {L'utente può inserire il nome del progetto che intende creare}
 {Il sistema ha iniziato la creazione dello scheletro del progetto}
+\scenario
+{L'utente può inserire il nome del progetto.}
 \post
 {Il sistema ha acquisito il nome del progetto che l'utente autenticato desidera creare}
 
@@ -93,6 +95,8 @@ L'utente autenticato può salvare il file di descrizione (UC3.2.1.2).
 {Utente autenticato}
 {L'utente autenticato può scrivere il contenuto del file di descrizione che desidera creare in un apposito form}
 {Il sistema propone all'utente autenticato un apposita casella di testo per scrivere il contenuto del file di descrizione da creare ed è in attesa dell'inserimento}
+\scenario
+{L'utente autenticato può scrivere il file di descrizione.}
 \post
 {Il sistema conosce il contenuto del testo inserito dall'utente}
 
@@ -104,6 +108,8 @@ L'utente autenticato può salvare il file di descrizione (UC3.2.1.2).
 {Utente autenticato}
 {L'utente autenticato può salvare in modo permanente il contenuto del file di descrizione scritto precedentemente}
 {Il sistema conosce il contenuto del testo inserito dall'utente}
+\scenario
+{L'utente autenticato può salvare il file di descrizione scritto precedentemente.}
 \post
 {Il sistema ha ottenuto il contenuto relativo al file di descrizione che l'utente autenticato ha scritto ed ha salvato il file di descrizione in modo permanente}
 
@@ -132,6 +138,8 @@ L'utente autenticato può confermare l'upload del file selezionato (UC3.2.2.3).
 {Utente autenticato}
 {L'utente autenticato può selezionare il file che desidera caricare nel sistema}
 {Il sistema mostra i file presenti nella cartella selezionata dall'utente autenticato}
+\scenario
+{L'utente autenticato può caricare un file nel sistema.}
 \post
 {Il sistema evidenzia il file indicato dall'utente autenticato}
 
@@ -143,6 +151,8 @@ L'utente autenticato può confermare l'upload del file selezionato (UC3.2.2.3).
 {Utente autenticato}
 {L'utente autenticato può confermare il caricamento del file selezionato}
 {Il sistema ha un file selezionato pronto per essere caricato}
+\scenario
+{L'utente autenticato può confermare il caricamento del file selezionato.}
 \post
 {Il sistema ha letto il file selezionato dall'utente autenticato, ha eseguito l'upload e lo ha salvato in modo permanente}
 
@@ -172,6 +182,8 @@ L'utente autenticato può salvare le modifiche apportate al codice del file di d
 {Utente autenticato}
 {L'utente autenticato può modificare il codice del file di descrizione selezionato}
 {Il sistema propone all'utente autenticato un'apposita casella di testo con all'interno il codice contenuto nel file di descrizione che desidera modificare ed è in attesa dell'inserimento}
+\scenario
+{L'utente autenticato può modificare il codice del file di descrizione selezionato.}
 \post
 {Il sistema conosce il contenuto del testo inserito dall'utente}
 
@@ -183,6 +195,8 @@ L'utente autenticato può salvare le modifiche apportate al codice del file di d
 {Utente autenticato}
 {L'utente autenticato può salvare in modo permanente le modifiche apportate al file di descrizione}
 {Il sistema conosce il contenuto del testo inserito dall'utente}
+\scenario
+{L'utente autenticato può salvare modifiche apportate al file di descrizione.}
 \post
 {Il sistema ha ottenuto le informazioni relative al contenuto del file di descrizione modificato ed ha salvato la nuova versione del file sovrascrivendo il file originario}
 
@@ -194,6 +208,8 @@ L'utente autenticato può salvare le modifiche apportate al codice del file di d
 {Utente autenticato}
 {L'utente autenticato può annullare le modifiche apportate al contenuto del file di descrizione}
 {Il sistema ha ottenuto le informazioni sul contenuto del testo inserito dall'utente}
+\scenario
+{L'utente autenticato può annullare le modifiche apportate al file di descrizione.}
 \post
 {Il sistema ignora le modifiche apportate dall'utente autenticato e non sovrascrive il file originario}
 
@@ -224,6 +240,8 @@ L'utente autenticato può salvare le modifiche apportate al codice del file di c
 {Utente autenticato}
 {L'utente autenticato può modificare il codice del file di configurazione}
 {Il sistema propone all'utente autenticato un'apposita casella di testo con all'interno il codice contenuto nel file di configurazione da modificare ed è in attesa dell'inserimento}
+\scenario
+{L'utente autenticato può modificare il codice del file di configurazione.}
 \post
 {Il sistema ha ottenuto le informazioni sul contenuto del testo modificato dall'utente}
 
@@ -235,6 +253,8 @@ L'utente autenticato può salvare le modifiche apportate al codice del file di c
 {Utente autenticato}
 {L'utente autenticato può salvare in modo permanente le modifiche apportate al file di configurazione}
 {Il sistema ha ottenuto le informazioni sul contenuto del testo modificato dall'utente}
+\scenario
+{L'utente autenticato può salvare le modifiche apportate al file di configurazione.}
 \post
 {Il sistema ha ottenuto le informazioni relative al contenuto del file di configurazione modificato ed ha salvato la nuova versione del file sovrascrivendo il file originario}
 
@@ -246,6 +266,8 @@ L'utente autenticato può salvare le modifiche apportate al codice del file di c
 {Utente autenticato}
 {L'utente autenticato può annullare le modifiche apportate al contenuto del file di configurazione}
 {Il sistema ha ottenuto le informazioni sul contenuto del testo modificato dall'utente}
+\scenario
+{L'utente autenticato può annullare le modifiche apportate al contenuto del file di configurazione.}
 \post
 {Il sistema ignora le modifiche apportate dall'utente autenticato}
 
@@ -257,6 +279,8 @@ L'utente autenticato può salvare le modifiche apportate al codice del file di c
 {Utente autenticato}
 {L'utente autenticato può visualizzare tutti i file di descrizione presenti nel sistema}
 {Il sistema ha generato lo scheletro del progetto}
+\scenario
+{L'utente autenticato può visualizzare tutti i file di descrizione presenti nel sistema.}
 \post
 {Il sistema propone all'utente autenticato una lista di tutti i file di descrizione presenti relativi ai diversi progetti dell'utente stesso}
 
@@ -283,6 +307,8 @@ L'utente autenticato può salvare le modifiche apportate al codice del file di c
 {Utente autenticato}
 {L'utente autenticato può generare una nuova password per accedere al sistema}
 {Il sistema reputa l'utente come autenticato}
+\scenario
+{L'utente autenticato può generare una nuova password per accedere al sistema.}
 \post
 {Il sistema ha generato una nuova password per l'utente autenticato ed ha inviato una email di notifica all'utente stesso}
 
@@ -294,6 +320,8 @@ L'utente autenticato può salvare le modifiche apportate al codice del file di c
 {Utente autenticato}
 {L'utente può disconnettersi dal sistema}
 {Il sistema reputa l'utente come autenticato}
+\scenario
+{L'utente può disconnettersi dal sistema.}
 \post
 {Il sistema reputa l'utente non autenticato e propone la pagina principale di login}
 
@@ -306,6 +334,8 @@ L'utente autenticato può salvare le modifiche apportate al codice del file di c
 {Utente, Utente autenticato}
 {L'utente e l'utente autenticato possono visualizzare le pagine web di un determinato progetto mediante un URL specifico}
 {Il sistema ha creato lo scheletro del progetto}
+\scenario
+{L'utente e l'utente autenticato possono visualizzare le pagine web di un determinato progetto mediante un URL specifico.}
 \post
 {Il sistema visualizza la pagina principale del progetto}
 
@@ -338,6 +368,8 @@ L'utente può inserire la password (UC3.6.2).
 {Utente}
 {L'utente può inserire il nome utente}
 {Il sistema permette di inserire il nome utente all'interno di un'apposita casella di testo ed è in attesa dell'inserimento}
+\scenario
+{L'utente può inserire il nome utente.}
 \post
 {Il sistema conosce il nome utente inserito}
 
@@ -349,6 +381,8 @@ L'utente può inserire la password (UC3.6.2).
 {Utente}
 {L'utente può inserire la password}
 {Il sistema permette di inserire la password all'interno di un'apposita casella di testo ed è in attesa dell'inserimento}
+\scenario
+{L'utente può inserire la password.}
 \post
 {Il sistema conosce la password inserita}
 
@@ -380,6 +414,8 @@ L'utente può inserire l'email (UC3.7.3).
 {Utente}
 {L'utente può inserire il nome utente per la registrazione dell'account}
 {Il sistema permette di inserire il nome utente all'interno di un'apposita casella di testo ed è in attesa dell'inserimento}
+\scenario
+{L'utente può inserire il nome utente per la registrazione.}
 \post
 {Il sistema ha ottenuto il contenuto del testo inserito dall'utente}
 
@@ -391,6 +427,8 @@ L'utente può inserire l'email (UC3.7.3).
 {Utente}
 {L'utente può inserire la password per la registrazione dell'account}
 {Il sistema permette di inserire la password all'interno di un'apposita casella di testo ed è in attesa dell'inserimento}
+\scenario
+{L'utente può inserire la password per la registrazione.}
 \post
 {Il sistema ha ottenuto il contenuto del testo inserito dall'utente}
 
@@ -402,6 +440,8 @@ L'utente può inserire l'email (UC3.7.3).
 {Utente}
 {L'utente può inserire l'email per la registrazione dell'account}
 {Il sistema permette di inserire la password all'interno di un'apposita casella di testo ed è in attesa dell'inserimento}
+\scenario
+{L'utente può inserire l'email per la registrazione.}
 \post
 {Il sistema ha ottenuto il contenuto del testo inserito dall'utente}
 
