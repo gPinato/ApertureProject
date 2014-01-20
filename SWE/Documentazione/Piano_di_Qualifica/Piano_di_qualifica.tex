@@ -3,7 +3,7 @@
 
 \newcommand{\Versione}{\versionePianoDiQualifica{}}	%Versione Finale
 \newcommand{\Data}{2013-11-28}						%Data di creazione
-\newcommand{\DataUltimaModifica}{2013-12-16}
+\newcommand{\DataUltimaModifica}{2014-01-20}
 \newcommand{\TipoDocumento}{Piano di Qualifica}		%tipo documento
 
 %includo il file header.tex (logo grande in prima pagina piu qualche altra regola)
@@ -49,7 +49,8 @@ Diario delle modifiche
 \textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Modifiche effettuate}\\
 
 %aggiungere qui una midrule per aggiungere una nuova riga alla tabella
-
+\midrule
+2.0.0 & 2014-01-20 & Andrea Perin (RE) & Sistemato documenti come da indicazione del prof.\\
 \midrule
 1.2.0 & 2013-12-16 & Giacomo Pinato (RE) & Approvazione documento\\
 \midrule
@@ -57,13 +58,13 @@ Diario delle modifiche
 \midrule
 1.1.0 & 2013-12-15 & Fabio Miotto (VE) & Verifica documento\\
 \midrule
-1.0.6 & 2013-12-13 & Giacomo Pinato (RE) & Aggiunto resoconto attività di verifica e strandard di qualità\\
+1.0.6 & 2013-12-13 & Giacomo Pinato (RE) & Aggiunto resoconto attività di Verifica e standard di qualità\\
 \midrule
 1.0.4 & 2013-12-04 & Mattia Sorgato (AM) & Aggiunta metriche\\
 \midrule
 1.0.3 & 2013-12-03 & Alberto Garbui (AN) & Aggiunta analisi\\
 \midrule
-1.0.2 & 2013-12-01 & Andrea Perin (RE) & Aggiunta strategie di verifica\\
+1.0.2 & 2013-12-01 & Andrea Perin (RE) & Aggiunta strategie di Verifica\\
 \midrule
 1.0.1 & 2013-11-28 & Andrea Perin (RE) & Creazione documento\\
 
@@ -117,7 +118,7 @@ Il presente documento descriverà le qualità desiderate che il software dovrà 
 \item \grassetto{Slides del corso di Ingegneria del software Modulo A, AA 2013/2014 del prof. Tullio Vardanega}:
 \\ \url{http://www.math.unipd.it/~tullio/IS-1/2013/};
 \item \grassetto{Wikipedia}: \url{http://it.wikipedia.org};
-\item Ian Sommerville, Software Engineering, 9 edizione (2011);
+\item \grassetto{Ian Sommerville, Software Engineering, 9 edizione (2011)};
 \item \grassetto{Standard ISO/IEC TR 15504 Software process assessment}:
 \\ \url{http://en.wikipedia.org/wiki/ISO/IEC_15504};
 \item \grassetto{Standard ISO/IEC 9126:2001 Software engineering-product quality}:
@@ -127,7 +128,7 @@ Il presente documento descriverà le qualità desiderate che il software dovrà 
 
 
 \newpage
-\section{Strategia di verifica}%2.0
+\section{Obiettivi di qualità}%2.0
 \label{2.0}
 \subsection{Qualità di processo} %2.1
 \label{2.1}
@@ -155,27 +156,27 @@ Per garantire il controllo di qualità si utilizza:
 
 \subsection{Organizzazione} %2.1
 \label{2.5}
-Per ogni processo attuato si ci sono delle attività di verifica e per ogni processo realizzato viene verificata la qualità del processo stesso e la qualità dell'eventuale prodotto ottenuto da esso.
-Ogni fase descritta nel Piano di Progetto necessita di attività di verifica:
+Per ogni processo attuato ci sono delle attività di Verifica e per ogni processo realizzato viene verificata la qualità del processo stesso e la qualità dell'eventuale prodotto ottenuto da esso.
+Ogni fase descritta nel Piano di Progetto necessita di attività di Verifica:
 \begin{itemize}
-\item \grassetto{Analisi}: si seguono i metodi di verifica descritti nelle Norme di Progetto sui documenti prodotti e i processi attuati. La messa in opera di tali tecniche è descritta in (SEZIONE DI TEST SUI DOCUMENTI).
+\item \grassetto{Analisi}: si seguono i metodi di Verifica descritti nelle Norme di Progetto sui documenti prodotti e i processi attuati. La messa in opera di tali tecniche è descritta in (SEZIONE DI TEST SUI DOCUMENTI).
 \end{itemize}
-Questa sezione conterrà i riferimenti alle successive attività di verifica, aggiornati dopo ogni fase di produzione e di test del prodotto.
+Questa sezione conterrà i riferimenti alle successive attività di Verifica, aggiornati dopo ogni fase di produzione e di test del prodotto.
 La stesura dei documenti è l'attività principale e costante nello svolgimento del progetto, il processo di Verifica viene diviso in due attività.
 In ogni documento è presente un diario delle modifiche per mantenere una cronologia delle attività svolte e di chi le ha svolte.
 
 \subsection{Pianificazione strategica e temporale} %2.1
 \label{2.6}
-Avendo scadenze prefissate nel Piano di Progetto, dobbiamo garantire che le attività di verifica di tutti i documenti e prodotti deve essere sistematica, disciplinata e quantificabile. Procedendo in questa maniera si correggono gli errori il prima possibile.
+Avendo scadenze prefissate nel Piano di Progetto, dobbiamo garantire che le attività di Verifica di tutti i documenti e prodotti devono essere sistematiche, disciplinate e quantificabili. Procedendo in questa maniera si correggono gli errori il prima possibile.
 La metodologia da seguire è descritta nelle Norme di Progetto.
 
 \subsection{Responsabilità} %2.1
 \label{2.7}
-Per garantire che il processo di verifica sia disciplinato, sistematico e quantificabile, bisogna attribuire responsabilità a specifici ruoli di progetto. I ruoli sono Responsabile di Progetto e Verificatore. I compiti di ciascun ruolo sono descritti nelle Norme di Progetto.
+Per garantire che il processo di Verifica sia disciplinato, sistematico e quantificabile, bisogna attribuire responsabilità a specifici ruoli di progetto. I ruoli sono Responsabile di Progetto e Verificatore. I compiti di ciascun ruolo sono descritti nelle Norme di Progetto.
 
 \subsection{Risorse} %2.1
 \label{2.8}
-Per raggiungere gli obiettivi di qualità prefissati sono necessarie risorse umane e tecnologiche, suddivise rispettivamente in strumenti software e \gloss{hardware} utilizzati dai componenti del gruppo per effettuare verifica su processi e prodotti. I ruoli maggiormente coinvolti nella responsabilità delle attività di Verifica e Validazione sono il Responsabile di Progetto e il Verificatore, e i rispettivi compiti sono descritti dettagliatamente nelle Norme di Progetto.
+Per raggiungere gli obiettivi di qualità prefissati sono necessarie risorse umane e tecnologiche, suddivise rispettivamente in strumenti software e \gloss{hardware} utilizzati dai componenti del gruppo per effettuare Verifica su processi e prodotti. I ruoli maggiormente coinvolti nella responsabilità delle attività di Verifica e validazione sono il Responsabile di Progetto e il Verificatore, e i rispettivi compiti sono descritti dettagliatamente nelle Norme di Progetto.
 
 \newpage
 \section{Analisi} %3.0
@@ -187,9 +188,9 @@ Questa tipologia di analisi può essere applicata sia al \gloss{codice} che alla
 
 \subsubsection{Walkthrough}
 \label{3.1.1}
-Questa tecnica utilizza una scansione ampia e non mirata dell'oggetto in verifica, data la mancanza di esperienza e \gloss{best practice} del Verificatore.
+Questa tecnica utilizza una scansione ampia e non mirata dell'oggetto in Verifica, data la mancanza di esperienza e \gloss{best practice} del Verificatore.
 L'attuazione di questa tecnica di Analisi è quindi molto onerosa, per questo sarà nostro obiettivo renderla più parallelizzabile possibile, così da ridurre i costi di Verifica.
-Dopo ogni attività di verifica tramite Walkthrough, sperabilmente avremo trovato la maggior parte degli errori, fornendoci una visione delle erroneità commesse, di conseguenza potremo raffinare l'Analisi e avvicinarci alla metodologia di Inspection.
+Dopo ogni attività di Verifica tramite Walkthrough, sperabilmente avremo trovato la maggior parte degli errori, fornendoci una visione delle erroneità commesse, di conseguenza potremo raffinare l'Analisi e avvicinarci alla metodologia di Inspection.
 
 \subsubsection{Inspection}
 \label{3.1.2}
@@ -198,7 +199,7 @@ E' obiettivo di una fase di Inspection la ricerca mirata di errori, aumentando l
 
 \subsection{Analisi dinamica}
 \label{3.2}
-Questa particolare tipologia di Analisi si applica solamente ai prodotti software sviluppati dal team, mediante l'utilizzo di test progettati e scritti appositamente per verificare la correttezza dei prodotti e la loro effettiva Validazione.
+Questa particolare tipologia di Analisi si applica solamente ai prodotti software sviluppati dal team, mediante l'utilizzo di test progettati e scritti appositamente per verificare la correttezza dei prodotti e la loro effettiva validazione.
 L'importanza di un test si attua nella sua automazione, in quanto riduce il tempo dedicato alla Verifica manuale del codice, certamente più onerosa. Per questo motivo la proprietà più importante di un test è la sua ripetibilità.
 Per fare in modo che un test abbia questa qualità, è fondamentale definire a priori certe caratteristiche, ovvero:
 \begin{itemize}
@@ -218,7 +219,7 @@ Di seguito analizzeremo i diversi tipi di test attuati nelle varie parti del pro
 \newpage
 \section{Metrica}
 \label{4.0}
-La definizione di metriche di prodotto e di processo è imprescindibile per garantire che il nostro prodotto sia quantificabile. Grazie l'utilizzo di metriche si stabilisce un riferimento per quantificare la maturità, la consistenza e la conformità agli standard.
+La definizione di metriche di prodotto e di processo è imprescindibile per garantire che il nostro prodotto sia quantificabile. Grazie all'utilizzo di metriche si stabilisce un riferimento per quantificare la maturità, la consistenza e la conformità agli standard.
 Data la variabilità delle metriche, si suddivideranno gli obiettivi per ciascuna metrica in due range possibili:
 \begin{itemize}
 \item \grassetto{Sufficiente}: range stabilito come minimo accettabile, sotto il quale ogni unità o documento non verrà accettato come completo;
@@ -266,7 +267,7 @@ I nostri obiettivi stimati per questa metrica sono:
 
 \subsubsection{Attributi per classe}
 \label{4.2.3}
-Il numero di attributi per \gloss{classe} esprime, appunto, la quantità di proprietà di una classe. Un elevato numero di attributi può denotare un'eccessiva dimensione della classe stessa, che potrebbe piuttosto essere suddivisa in più classi più piccole.
+Il numero di attributi per \gloss{classe} esprime, appunto, la quantità di proprietà di una classe. Un elevato numero di attributi può denotare un'eccessiva dimensione della classe stessa, che potrebbe piuttosto essere suddivisa in classi più piccole.
 Gli obiettivi per questa metrica sono:
 \begin{itemize}
 \item \grassetto{Obiettivo Sufficiente}: [0-16];
@@ -354,7 +355,7 @@ Indica se alla data corrente si è speso di più o di meno rispetto a quanto si 
 \end{itemize}
 
 \newpage
-\section{Resoconto attività di verifica}
+\section{Resoconto attività di Verifica}
 \label{5.0}
 
 \subsection{Processi}
