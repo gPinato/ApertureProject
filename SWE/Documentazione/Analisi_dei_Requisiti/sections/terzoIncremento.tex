@@ -1,0 +1,319 @@
+%tabella requisiti codice requisito, descrizione, fonte, UC di riferimento
+
+\subsection{Terzo incremento}
+\begin{longtable}{|c|p{6cm}|c|c|}
+
+\label{tab:Requisiti MaaP} \\
+\toprule
+\multicolumn{1}{|c}{\textbf{Requisito}} & \multicolumn{1}{|p{6cm}}{\textbf{Descrizione}}   & \multicolumn{1}{|c}{\textbf{Fonte}} & \multicolumn{1}{|c|}{\textbf{Caso d'uso}}\\
+\midrule
+\endfirsthead
+\multicolumn{2}{l}{\footnotesize\itshape\tablename~\thetable: continua dalla pagina precedente} \\
+\toprule
+\multicolumn{1}{|c}{\textbf{Requisito}} & \multicolumn{1}{|p{6cm}}{\textbf{Descrizione}}   & \multicolumn{1}{|c}{\textbf{Fonte}} & \multicolumn{1}{|c|}{\textbf{Caso d'uso}}\\
+\midrule
+\endhead
+\midrule
+\multicolumn{2}{r}{\footnotesize\itshape\tablename~\thetable: continua nella prossima pagina} \\
+\endfoot
+\bottomrule
+\multicolumn{2}{r}{\footnotesize\itshape\tablename~\thetable: si conclude dalla pagina precedente} \\
+\endlastfoot
+
+% Requisiti utente sviluppatore
+
+
+
+
+\midrule
+ROF1.4
+& Il sistema MaaP deve generare il sistema di autenticazione per le pagine web
+& Capitolato
+&
+\\
+
+\midrule
+ROF1.4.1
+& Il sistema di autenticazione per le pagine web deve essere generato insieme ad un profilo amministratore di \gloss{default}
+& Verbale\_2013\_12\_05
+&
+\\
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\midrule
+ROF5
+& Il sistema deve permettere all'utente sviluppatore la modifica dei file di configurazione
+& Interna
+& UC1.3
+\\
+
+\midrule
+RDF5.1
+& Il sistema deve permettere all'utente sviluppatore di abilitare la funzionalità di registrazione per l'utente finale nelle pagine web. Nel caso la registrazione sia abilitata l'utente finale può registrarsi al sistema, altrimenti no.
+& Verbale\_2013\_12\_05
+& UC1.3\\
+& & & UC1.3.1
+\\
+
+\midrule
+RFF5.2
+& Il sistema MaaP deve permettere all'utente sviluppatore di abilitare la funzionalità per la creazione di nuovi Document all'interno della pagina Collection-Index
+& Capitolato
+& UC1.3\\
+& &  & UC1.3.2
+\\
+
+\midrule
+RDF5.3
+& Il sistema MaaP deve permettere all'utente sviluppatore di modificare i template per le pagine web
+& Interna
+& UC1.3\\
+& & & UC1.3.3
+\\
+
+
+
+\midrule
+ROF5.5
+& Il sistema deve permettere all'utente sviluppatore di abilitare la funzionalità per la creazione di nuovi indici all'interno della pagina Collection-Index
+& Capitolato
+& UC1.3\\
+& & Verbale\_2013\_12\_05 & UC1.3.5
+\\
+
+
+%Requisiti utente business
+\midrule
+ROF6
+& L'utente business, al primo accesso, deve poter usare il profilo amministratore di default
+& Verbale\_2013\_12\_05
+&
+\\
+
+\midrule
+ROF7
+& L'utente business deve potersi autenticare inserendo dei dati personali
+& Capitolato
+& UC2\\
+& & & UC2.2
+\\
+
+\midrule
+ROF7.1
+& L'utente business deve inserire l'email per l'autenticazione
+& Capitolato
+& UC2.2\\
+& & & UC2.2.1
+\\
+
+\midrule
+ROF7.2
+& L'utente business deve inserire la password per l'autenticazione
+& Capitolato
+& UC2.2\\
+& & & UC2.2.2
+\\
+
+\midrule
+ROF7.2.1
+& La password per l'autenticazione deve essere alfanumerica e contenere almeno otto caratteri
+& Interna
+&
+\\
+
+
+
+\midrule
+ROF9
+& L'utente business deve poter recuperare la password
+& Capitolato
+& UC2\\
+& & & UC2.3
+\\
+
+
+\midrule
+ROF10.2.4
+& L'utente business autenticato deve poter disconnettersi
+& Interna
+& UC2.4\\
+& & & UC2.5
+\\
+
+
+
+\midrule
+ROF10.3
+& L'utente business autenticato deve poter gestire il proprio profilo
+& Interna
+& UC2\\
+& & & UC2.6
+\\
+
+\midrule
+ROF10.3.1
+& L'utente business autenticato deve poter gestire i propri dati
+& Capitolato
+& UC2.6\\
+& & & UC2.6.3
+\\
+
+\midrule
+ROF10.3.1.1
+& L'utente business autenticato deve poter modificare i propri dati utente
+& Capitolato
+& UC2.6.3\\
+& & & UC2.6.3.1
+\\
+
+\midrule
+ROF10.3.1.2
+& L'utente business autenticato deve poter  salvare le modifiche apportate
+& Interna
+& UC2.6.3\\
+& & & UC2.6.3.2
+\\
+
+\midrule
+ROF10.3.1.3
+& L'utente business autenticato deve poter annullare le modifiche apportate
+& Interna
+& UC2.6.3\\
+& & & UC2.6.3.5
+\\
+
+\midrule
+ROF10.3.1.4
+& L'utente business autenticato amministratore deve poter modificare i dati degli utenti business
+& Interna
+& UC2.6.3\\
+& & & UC2.6.3.3
+\\
+
+\midrule
+ROF10.3.1.5
+& L'utente business autenticato deve poter modificare i permessi degli utenti business
+& Capitolato
+& UC2.6.3\\
+& & & UC2.6.3.4
+\\
+
+\midrule
+ROF10.3.2
+& L'utente business autenticato amministratore deve poter creare un nuovo utene business
+& Capitolato
+& UC2.6\\
+& & & UC2.6.1
+\\
+
+\midrule
+ROF10.3.3
+& L'utente business autenticato amministratore deve poter eliminare un utene business
+& Capitolato
+& UC2.6\\
+& & & UC2.6.2
+\\
+
+\midrule
+ROF10.4
+& L'utente business autenticato amministratore deve poter cancellare un Document
+& Interna
+& UC2.4\\
+& & & UC2.4.4
+\\
+
+\midrule
+ROF10.5
+& L'utente business autenticato amministratore deve poter modificare un Document
+& Capitolato
+& UC2.4\\
+& & & UC2.4.5
+\\
+
+\midrule
+ROF10.5.1
+& L'utente business autenticato amministratore deve poter modificare i valori associati alla chiavi
+& Interna
+& UC2.4.5\\
+& & & UC2.4.5.1
+\\
+
+\midrule
+ROF10.5.2
+& L'utente business autenticato amministratore deve poter salvare le modifiche apportate al Document
+& Interna
+& UC2.4.5\\
+& & & UC2.4.5.2
+\\
+
+\midrule
+ROF10.5.3
+& L'utente business autenticato amministratore deve poter annullare le modifiche apportate al Document
+& Interna
+& UC2.4.5\\
+& & & UC2.4.5.3
+\\
+
+\midrule
+ROF10.6
+& L'utente business autenticato amministratore deve poter visualizzare le query più utilizzate dal sistema MaaP
+& Capitolato
+& UC2.4\\
+& & & UC2.4.6
+\\
+
+\midrule
+ROF10.7
+& L'utente business autenticato amministratore deve poter creare degli indici
+& Capitolato
+& UC2.4\\
+& & & UC2.4.7
+\\
+
+
+%FINE TABELLA REQUISITI MAAS, NON CANCELLARE
+
+
+% Requisiti di vincolo
+
+\midrule
+ROV16
+& Il database degli utenti deve essere \gloss{criptato}
+& Interna
+&
+\\
+
+
+
+
+\midrule
+ROV27
+& Deve essere possibile effettuare il \gloss{deployment} su \gloss{Heroku}
+& Capitolato
+&
+\\
+
+%FINE TABELLA REQUISITI DI VINCOLO, NON CANCELLARE
+\end{longtable}

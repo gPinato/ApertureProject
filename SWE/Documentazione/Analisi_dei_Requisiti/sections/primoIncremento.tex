@@ -1,0 +1,276 @@
+%tabella requisiti codice requisito, descrizione, fonte, UC di riferimento
+
+\subsection{Primo incremento}
+\begin{longtable}{|c|p{6cm}|c|c|}
+
+\label{tab:Requisiti MaaP} \\
+\toprule
+\multicolumn{1}{|c}{\textbf{Requisito}} & \multicolumn{1}{|p{6cm}}{\textbf{Descrizione}}   & \multicolumn{1}{|c}{\textbf{Fonte}} & \multicolumn{1}{|c|}{\textbf{Caso d'uso}}\\
+\midrule
+\endfirsthead
+\multicolumn{2}{l}{\footnotesize\itshape\tablename~\thetable: continua dalla pagina precedente} \\
+\toprule
+\multicolumn{1}{|c}{\textbf{Requisito}} & \multicolumn{1}{|p{6cm}}{\textbf{Descrizione}}   & \multicolumn{1}{|c}{\textbf{Fonte}} & \multicolumn{1}{|c|}{\textbf{Caso d'uso}}\\
+\midrule
+\endhead
+\midrule
+\multicolumn{2}{r}{\footnotesize\itshape\tablename~\thetable: continua nella prossima pagina} \\
+\endfoot
+\bottomrule
+\multicolumn{2}{r}{\footnotesize\itshape\tablename~\thetable: si conclude dalla pagina precedente} \\
+\endlastfoot
+
+% Requisiti utente sviluppatore
+
+\midrule
+ROF1
+& Il sistema MaaP deve essere in grado di generare lo scheletro del progetto
+& Capitolato
+& UC1 \\
+& & & UC1.1
+\\
+
+\midrule
+ROF1.1
+& Il sistema MaaP deve generare le librerie necessarie al funzionamento del progetto
+& Capitolato
+&
+\\
+\midrule
+ROF1.2
+& Il sistema MaaP deve generare i file di configurazione necessari al funzionamento del progetto
+& Capitolato
+&
+\\
+\midrule
+ROF1.3
+& Il sistema MaaP deve generare le directory di descrizione delle pagine web
+& Capitolato
+&
+\\
+
+\midrule
+ROF3
+& Il sistema MaaP deve permette all'utente sviluppatore di inserire un file di descrizione
+& Interna
+& UC1\\
+& & & UC1.5
+\\
+
+\midrule
+ROF4
+& Il sistema deve permette all'utente sviluppatore di utilizzare un file di descrizione
+& Capitolato
+& UC1 \\
+& & & UC1.2
+\\
+
+\midrule
+ROF4.1
+& Il sistema MaaP deve permettere all'utente sviluppatore di creare la visualizzazione della Collection
+& Capitolato
+& UC1.2 \\
+& & & UC1.2.1
+\\
+
+\midrule
+ROF4.1.2
+& Il sistema MaaP deve permettere all'utente sviluppatore di creare la visualizzazione della pagina Collection-Index
+& Capitolato
+& UC1.2.1\\
+& & & UC1.2.1.2
+\\
+\midrule
+ROF4.1.2.1
+& Il sistema MaaP deve permettere all'utente sviluppatore di aggiungere delle chiavi da visualizzare nella pagina Collection-Index
+& Capitolato
+& UC1.2.1.2\\
+& & & UC1.2.1.2.1
+\\
+
+\midrule
+ROF4.1.3
+& Il sistema MaaP deve permettere all'utente sviluppatore di creare la visualizzazione per la pagine Document-Show
+& Capitolato
+& UC1.2.1\\
+& & & UC1.2.1.3
+\\
+\midrule
+ROF4.1.3.1
+& Il sistema MaaP deve permettere all'utente sviluppatore di aggiungere delle chiavi da visualizzare nella pagina Document-Show
+& Capitolato
+& UC1.2.1.3\\
+& & & UC1.2.1.3.1
+\\
+
+\midrule
+ROF4.2
+& Il sistema MaaP deve permettere all'utente sviluppatore di modificare la visualizzazione della Collection
+& Capitolato
+& UC1.2\\
+& & & UC1.2.2
+\\
+
+\midrule
+ROF4.2.2
+& Il sistema MaaP deve permettere all'utente sviluppatore di impostare la visualizzazione della pagina Collection-Index
+& Capitolato
+& UC1.2.2\\
+& & & UC1.2.2.2
+\\
+
+\midrule
+ROF4.2.2.1
+& Il sistema MaaP deve permettere all'utente sviluppatore di aggiungere delle chiavi da visualizzare nella pagina Collection-Index
+& Capitolato
+& UC1.2.1.2\\
+& & & UC1.2.1.2.1
+\\
+
+\midrule
+ROF4.2.2.2
+& Il sistema MaaP deve permettere all'utente sviluppatore di eliminare delle chiavi da visualizzare nella pagina Collection-Index
+& Interna
+& UC1.2.2.2\\
+& & & UC1.2.2.2.1
+\\
+
+\midrule
+ROF4.2.3
+& Il sistema MaaP deve permettere all'utente sviluppatore di impostare la visualizzazione per la pagine Document-Show
+& Capitolato
+& UC1.2.2\\
+& & & UC1.2.2.3
+\\
+\midrule
+ROF4.2.3.1
+& Il sistema MaaP deve permettere all'utente sviluppatore di aggiungere delle chiavi da visualizzare nella pagina Document-Show
+& Capitolato
+& UC1.2.1.3\\
+& & & UC1.2.1.3.1
+\\
+\midrule
+ROF4.2.3.2
+& Il sistema MaaP deve permettere all'utente sviluppatore di eliminare delle chiavi da visualizzare nella pagina Document-Show
+& Capitolato
+& UC1.2.2.3\\
+& & & UC1.2.2.3.1
+\\
+
+\midrule
+ROF5.4
+& Il sistema deve permettere all'utente sviluppatore di specificare nome, indirizzo e password, relativi al database di analisi con il quale interagire
+& Interna
+& UC1.3\\
+& & & UC1.3.4
+\\
+
+\midrule
+ROF10
+& L'utente business autenticato deve poter aprire una Collection e visualizzare la sua pagina Collection-Index
+& Capitolato
+& UC2\\
+& & & UC2.4
+\\
+
+\midrule
+ROF10.1
+& L'utente business autenticato deve poter visualizzare una pagina Document-Show
+& Capitolato
+& UC2.4\\
+& & & UC2.4.1
+\\
+
+\midrule
+ROF10.2.5
+& L'utente business autenticato deve poter navigare tra la Collection
+& Capitolato
+& UC2.4\\
+& & & UC2.4.3\\
+
+\midrule
+ROF12
+& Definizione di un linguaggio astratto DSL per la definizione delle pagine che verranno generate
+& Capitolato
+&
+\\
+
+\midrule
+ROF12.1
+& Il linguaggio definito deve essere testuale
+& Capitolato
+&
+\\
+
+\midrule
+ROV17
+& Le pagine web prodotte dal framework MaaP devono essere compatibili con la versione 30.0.x di \gloss{Google Chrome} o superiori
+& Capitolato
+&
+\\
+
+\midrule
+ROV18
+& Le pagine web prodotte dal framework MaaP devono essere compatibili con la versione 24.x o superiore di Firefox
+& Capitolato
+&
+\\
+
+\midrule
+ROV19
+& Il sistema deve accettare solo file di configurazione che hanno un determinato formato già fissato
+& Interna
+&
+\\
+
+\midrule
+ROV20
+& Il database degli utenti deve essere realizzato utilizzando MongoDB
+& Capitolato
+&
+\\
+
+\midrule
+ROV21
+& Il database degli utenti deve essere indipendente dal database di analisi
+& Capitolato
+&
+\\
+
+\midrule
+ROV22
+& Il database di analisi utilizzato deve essere stato realizzato utilizzando MongoDB
+& Capitolato
+&
+\\
+
+\midrule
+ROV23
+& L'\gloss{interfaccia}  con il database deve essere realizzata con Mongoose
+& Capitolato
+&
+\\
+
+\midrule
+ROV24
+& L'\gloss{infrastruttura} delle pagine web generate deve essere realizzata con \gloss{Express}
+& Capitolato
+&
+\\
+
+\midrule
+ROV25
+& La componente \gloss{server} deve essere realizzata con \gloss{Node.js}
+& Capitolato
+&
+\\
+
+\midrule
+ROV26
+& Il software sarà fornito di un sistema di installazione per farlo funzionare
+& Interna
+&
+\\
+\end{longtable}
+
+
