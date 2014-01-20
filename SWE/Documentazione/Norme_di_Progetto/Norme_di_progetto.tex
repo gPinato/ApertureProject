@@ -502,25 +502,22 @@ I ticket vengono creati dal:
 \subsection{Tipologie di Ticket}
 \label{8.4}
 I ticket rappresentano operazioni e attività che devono essere portate a termine.
+I ticket avranno specifici stadi di avanzamento:
+\begin{itemize}
+\item Nuovo: il ticket è stato creato ed è in attesa di essere assegnato;
+\item In Elaborazione: il ticket è stato assegnato ed è in lavorazione;
+\item Chiuso: la lavorazione è terminata e l'attività è in attesa di verifica;
+\item Risolto o Rifiutato: un Verificatore approva o rigetta il lavoro effettuato. Nel caso di rigetto deve venire creato un nuovo ticket di modifica per risolvere il problema.
+\end{itemize}
 
-\subsubsection{Ticket di pianificazione}
-\label{8.4.1}
-Gestiscono la pianificazione delle macro-attività di maggiore importanza. Sono organizzati in una gerarchia con vari livelli di importanza.
-
-\subsubsection{Ticket di Realizzazione e Controllo}
+\subsubsection{Ticket di Realizzazione}
 \label{8.4.2}
-Gestiscono la pianificazione delle macro-attività di maggiore importanza. Sono organizzati in una gerarchia con vari livelli di importanza.
+Assegnano la realizzazione delle attività ai membri del gruppo competenti. Sono organizzati in una gerarchia con vari livelli di priorità.
 
 \subsubsection{Ticket di Verifica}
 \label{8.4.3}
 Rappresentano segnalazioni di errori, problematiche o imprecisioni riscontrate dai Verificatori durante le fase di Verifica. Dovranno essere assegnati ad un membro del team che in quel momento ricopre un ruolo adatto ad intervenire per la correzione e in seguito riverificati da un Verificatore.
-I ticket di Verifica avranno specifici stadi di avanzamento:
-\begin{itemize}
-\item Enqueued: il ticket è stato creato ed è in attesa di essere assegnato per la risoluzione del problema;
-\item In Progress: il ticket è stato assegnato ed è in lavorazione;
-\item Closed: la lavorazione è terminata e il problema segnalato dal ticket è stato risolto;
-\item Approved o Rejected: un Verificatore approva o rigetta il lavoro effettuato. Nel caso di rigetto deve venire creato un nuovo ticket per risolvere il problema.
-\end{itemize}
+
 
 \subsubsection{Ticket di modifica}
 \label{8.4.4}
