@@ -1,14 +1,12 @@
-
-\UCtitle{Caso d'uso UC3}
+\UCtitle
+{Caso d'uso UC3}
 {MaaS}
 \UCimmagine{UC3}{UC3 MaaS}
-
 \UC
 {UC3}
 {Utente, Utente autenticato}
 {L'utente e l'utente autenticato possono visualizzare le pagine web accedendo attraverso uno specifico \gloss{URL}, l'utente può registrarsi, richiedere il recupero password, effettuare l'autenticazione. Se ritenuto autenticato dal sistema può inoltre creare lo scheletro di un nuovo progetto, gestire le pagine web, gestire il proprio profilo e disconnettersi}
 {Il sistema MaaS è correttamente installato, funzionante e le pagine web sono disponibili online e raggiungibili dall'utente e dall'utente autenticato tramite browser. All'utente viene proposta la pagina di login al sistema mentre all'utente autenticato viene proposta la pagina del proprio \gloss{account} utente}
-
 \scenario
 {L'utente autenticato può creare lo scheletro del progetto (UC3.1);|
 L'utente autenticato può  gestire le pagine web (UC3.2);|
@@ -19,7 +17,6 @@ L'utente può autenticarsi al sistema (UC3.6);|
 L'utente può registrarsi (UC3.7);|
 L'utente può recuperare la password (UC3.8).
 }
-
 \post
 {Il sistema ha ottenuto le informazioni relative alle azioni che l'utente e l'utente autenticato vogliono eseguire}
 
@@ -454,5 +451,8 @@ L'utente può inserire l'email (UC3.7.3).
 {Utente}
 {L'utente può recuperare la password dimenticata}
 {Il sistema reputa l'utente come non autenticato}
-\scenario{L'utente può inserire il nome utente per effettuare il recupero password (UC3.6.1).}
-\post{Il sistema ha ottenuto il nome dell'utente che richiede il recupero password ed ha inviato la relativa password all'email associata all'account}
+\scenario{
+L'utente può inserire il nome utente per effettuare il recupero password (UC3.6.1).
+}
+\post
+{Il sistema ha ottenuto il nome dell'utente che richiede il recupero password ed ha inviato la relativa password all'email associata all'account}

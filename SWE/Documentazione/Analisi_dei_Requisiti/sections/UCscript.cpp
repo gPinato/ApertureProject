@@ -1,6 +1,6 @@
 /*****************************************************\
 | UCscript - Alberto Garbui
-| v1.1 - 2014/01/21
+| v1.2 - 2014/01/21
 |
 | Script per il parsing del file tex dei casi d'uso e 
 | generazione file di testo da importare con Access.
@@ -55,6 +55,7 @@ int setText(const char * buffer, char * outBuffer)
 				outBuffer[j++] = buffer[i++];
 			i++;
 		}
+		if(buffer[i] == '{'){i++;}
 		if(buffer[i] == '\n' || buffer[i] == ';'){outBuffer[j++]=' '; i++;}
 		if(buffer[i] != '}')
 			outBuffer[j++] = buffer[i++];
@@ -90,22 +91,23 @@ int getUC(const char * buffer, int length, int start, ofstream * OUT)
 {
 	char *buffOUT=new char[1000];
 	
-	int i=cercaStringa(buffer,length,start,"UCtitle",7);
+	int i=cercaStringa(buffer,length,start,"UCtitle\n",8);
 	if(i==-1)return i; //errore, non trovato
 	
 	i+=2; //salto "acapo" e "{"
 	i+=setText(&buffer[i],buffOUT); //title
-	cout<<&buffOUT[11]<<endl;
-	*OUT<<'"'<<&buffOUT[11]<<'"'<<';';    //UCxxxx
+	cout<<&buffOUT[10]<<endl;
+	*OUT<<'"'<<&buffOUT[10]<<'"'<<';';    //UCxxxx
 	
 	i+=2; //salto "acapo" e "{"
 	i+=setText(&buffer[i],buffOUT); //NOME
 	cout<<buffOUT<<endl;
 	*OUT<<'"'<<buffOUT<<'"'<<';'; 
 	
-	i=cercaStringa(buffer,length,i,"UC\n{",4);
+	i=cercaStringa(buffer,length,i,"\\UC\n",4);
 	if(i==-1)return i; //errore, non trovato
 	
+	i++;
 	i+=setText(&buffer[i],buffOUT); //caso
 	cout<<buffOUT<<endl;
 	*OUT<<'"'<<buffOUT<<'"'<<';'; //DIAGRAMMA ASSOCIATO
@@ -130,37 +132,43 @@ int getUC(const char * buffer, int length, int start, ofstream * OUT)
 	cout<<buffOUT<<endl;
 	*OUT<<'"'<<buffOUT<<'"'<<';'; 
 	
+	//QUI c'è scenario alternativo
+	
 	i++; //salto "acapo" 
+	if(buffer[i]=='\\' && buffer[i+1]=='s') //scenarioAlt
+	{
+		i+=14;
+		i+=setText(&buffer[i],buffOUT); 
+		cout<<buffOUT<<endl;
+		*OUT<<'"'<<buffOUT<<'"'<<';'; 
+				
+	}else{
+		*OUT<<'"'<<' '<<'"'<<';'; 
+	}
+	
+	//poi estensioni
 	if(buffer[i]=='\\' && buffer[i+1]=='e') //estensioni
 	{
 		i+=13;
 		i+=setText(&buffer[i],buffOUT); //estensioni
 		cout<<buffOUT<<endl;
 		*OUT<<'"'<<buffOUT<<'"'<<';'; 
-		i+=7;		
 	}else{
-		if(buffer[i]=='\\' && buffer[i+1]=='i') //inclusioni
-		{
-			i+=13;
-			i+=setText(&buffer[i],buffOUT);       
-			cout<<buffOUT<<endl;
-			*OUT<<'"'<<buffOUT<<'"'<<';'; 
-			i+=7;		
-		}else{
-			if(buffer[i]=='\\' && buffer[i+1]=='s') //scenarioAlt
-			{
-				i+=14;
-				i+=setText(&buffer[i],buffOUT); 
-				cout<<buffOUT<<endl;
-				*OUT<<'"'<<buffOUT<<'"'<<';'; 
-				i+=7;		
-			}else{
-				*OUT<<'"'<<' '<<'"'<<';'; 
-				i+=6;
-			}
-		}
+		*OUT<<'"'<<' '<<'"'<<';'; 
+	}	
+		
+	//poi inclusioni
+	if(buffer[i]=='\\' && buffer[i+1]=='i') //inclusioni
+	{
+		i+=13;
+		i+=setText(&buffer[i],buffOUT); //inclusioni
+		cout<<buffOUT<<endl;
+		*OUT<<'"'<<buffOUT<<'"'<<';'; 
+	}else{
+		*OUT<<'"'<<' '<<'"'<<';'; 
 	}
 	
+	i+=6;	
 	i+=setText(&buffer[i],buffOUT); //post
 	cout<<buffOUT<<endl;	
 	*OUT<<'"'<<buffOUT<<'"'<<';'; 
