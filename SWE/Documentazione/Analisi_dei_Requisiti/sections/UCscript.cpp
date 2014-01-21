@@ -1,6 +1,6 @@
 /*****************************************************\
 | UCscript - Alberto Garbui
-| v1.0 - 2014/01/21
+| v1.1 - 2014/01/21
 |
 | Script per il parsing del file tex dei casi d'uso e 
 | generazione file di testo da importare con Access.
@@ -139,14 +139,33 @@ int getUC(const char * buffer, int length, int start, ofstream * OUT)
 		*OUT<<'"'<<buffOUT<<'"'<<';'; 
 		i+=7;		
 	}else{
-		i+=6;
+		if(buffer[i]=='\\' && buffer[i+1]=='i') //inclusioni
+		{
+			i+=13;
+			i+=setText(&buffer[i],buffOUT);       
+			cout<<buffOUT<<endl;
+			*OUT<<'"'<<buffOUT<<'"'<<';'; 
+			i+=7;		
+		}else{
+			if(buffer[i]=='\\' && buffer[i+1]=='s') //scenarioAlt
+			{
+				i+=14;
+				i+=setText(&buffer[i],buffOUT); 
+				cout<<buffOUT<<endl;
+				*OUT<<'"'<<buffOUT<<'"'<<';'; 
+				i+=7;		
+			}else{
+				*OUT<<'"'<<' '<<'"'<<';'; 
+				i+=6;
+			}
+		}
 	}
 	
 	i+=setText(&buffer[i],buffOUT); //post
 	cout<<buffOUT<<endl;	
-	*OUT<<'"'<<buffOUT<<'"'; 
+	*OUT<<'"'<<buffOUT<<'"'<<';'; 
 	
-	*OUT<<buffOUT<<'\n'; 
+	*OUT<<'"'<<' '<<'"'<<'\n';  //figura 
 	
 	delete buffOUT; // :)
 	return i;
