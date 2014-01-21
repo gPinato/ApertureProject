@@ -1,0 +1,119 @@
+%"variabili globali" che verranno aggiornate in tutte le pagine/footer
+% per inserire nuove macro ->  \newcommand{\nomeMacro}{valoreMacro}
+
+\newcommand{\Versione}{1.2.0}						%Versione Finale
+\newcommand{\Data}{2014-01-20}						%Data di creazione
+\newcommand{\DataUltimaModifica}{2014-01-21}
+\newcommand{\TipoDocumento}{Verbale esterno 2014-01-20}		%tipo documento
+
+%includo il file header.tex (logo grande in prima pagina piu qualche altra regola)
+\input{../Logo&Header/header.tex}
+
+%\vspace{.05in}
+
+%informazioni documento
+\begin{center}
+%\section{Informazioni documento}
+\begin{tabular}{r|l}
+%\textbf{Nome} &\TipoDocumento \\
+\textbf{Versione} & \Versione{} \\
+\textbf{Data creazione} & \Data{} \\
+\textbf{Data ultima modifica} & \DataUltimaModifica{} \\
+\textbf{Stato del Documento} & Formale \\		%CAMBIARE QUI
+\textbf{Uso del Documento} & Esterno \\			%CAMBIARE QUI
+\textbf{Redazione} & Giacomo Pinato\\				%CAMBIARE QUI
+\textbf{Verifica} & \\		%ED ANCHE QUI!
+\textbf{Approvazione} & \\		%CAMBIARE QUI
+\textbf{Distribuzione} & \parbox[t]{4cm}{\NomeGruppo{} \\Prof. Tullio Vardanega \\ Prof. Riccardo Cardin \\ \Prop{} }\\
+\end{tabular}
+\end{center}
+
+\vspace{0.05in}
+
+%inizio sommario del documento
+\begin{abstract}
+\begin{center}
+Verbale della riunione di gruppo del 2014-01-20.
+\end{center}
+\end{abstract}
+
+%\vspace{.4in}
+
+%seconda pagina, diario delle modifiche
+\newpage
+Diario delle modifiche
+\begin{center}
+\begin{longtable}{|c|c|c|p{0.5\linewidth}|}
+\toprule
+\textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Modifiche effettuate}\\
+
+%aggiungere qui una midrule per aggiungere una nuova riga alla tabella
+
+\midrule
+1.0.1 & 2013-12-06 & Giacomo Pinato (AN) & Stesura documento\\
+
+\bottomrule
+\caption{Registro delle modifiche}
+\label{tab:changelog}
+\end{longtable}
+\end{center}
+
+%terza pagina Indice (viene aggiornato in automatico con due compilazioni)
+\newpage
+\tableofcontents
+
+%pagine successive hanno la lista di tabelle e lista delle figure
+%(vengono aggiornate in automatico)
+%\newpage
+%\listoftables
+%\listoffigures
+
+%qui inizia la prima pagina ufficiale
+\newpage
+\section{Informazioni sulla riunione}%1.0
+\label{1.0}
+\begin{itemize}
+\item \grassetto{Data}: 2014-01-20;
+\item \grassetto{Luogo}: Laboratorio informatico Paolotti;
+\item \grassetto{Ora}: 15:00;
+\item \grassetto{Durata}: 30m;
+\item \grassetto{Partecipanti interni}: \NomeGruppo{}
+\begin{itemize}
+\item Maso Michele;
+\item Miotto Fabio;
+\item Garbui Alberto;
+\item Sorgato Mattia;
+\item Perin Andrea;
+\item Pinato Giacomo
+\end{itemize}
+\item \grassetto{Motivazioni riunione}: Pianificazione della fase di progettazione.
+\end{itemize}
+
+\newpage
+\section{Punti all'ordine del giorno}
+\label{2}
+
+\begin{itemize}
+\item Numero incrementi e loro contenuto;
+\item Comunicazioni con Proponente;
+\item Strategie di Progettazione.
+\end{itemize}
+
+
+\subsection{Delibere dell’assemblea:}
+La revisione di progettazione che si andrà a sostenere il 18 marzo sarà di progettazione generale e non specifica.
+
+Gli incrementi rilasciati durante lo sviluppo saranno quattro, definiti come segue:
+
+\begin{itemize}
+\item Funzioni base minime (creazione di pagine e documenti, DSL di base);
+\item DSL completo;
+\item Requisiti obbligatori completi;
+\item Requisiti opzionali completi.
+\end{itemize}
+
+Si è deciso di scrivere al proponente per comunicargli  le ultime scelte progettuali effettuate e ricevere un suo feedback, in particolare per quanto riguarda gli incrementi e il loro contenuto, nonchè di scrivere al Committente riguardo ad alcune correzioni e modifiche da apportare ai documenti  e ad una possibile richiesta di colloquio per poter meglio discutere le stesse.
+
+
+%FINE DOCUMENTO NON CANCELLARE
+\end{document}
