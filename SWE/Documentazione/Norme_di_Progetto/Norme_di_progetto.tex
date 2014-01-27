@@ -3,7 +3,7 @@
 
 \newcommand{\Versione}{\versioneNormeDiProgetto{}}	%Versione Finale
 \newcommand{\Data}{2013-11-20}						%Data di creazione
-\newcommand{\DataUltimaModifica}{2013-11-27}
+\newcommand{\DataUltimaModifica}{2014-01-27}
 \newcommand{\TipoDocumento}{Norme di Progetto}		%tipo documento
 
 %includo il file header.tex (logo grande in prima pagina piu qualche altra regola)
@@ -137,15 +137,24 @@ Inoltre deve garantire:
 
 \subsection{Analista}
 \label{2.3}
-L'Analista è il responsabile dell'Analisi dei Requisiti di progetto. Dopo aver compreso pienamente la natura del problema e tutti i suoi domini, il suo ruolo è delineare vincoli e caratteristiche del prodotto finale, redigendo una specifica di progetto dettagliata, precisa e non ambigua, comprensibile sia dal Proponente che dal Progettista.
+L'Analista è il responsabile dell'Analisi dei Requisiti di progetto. Dopo aver compreso pienamente la natura del problema e tutti i suoi domini, il suo ruolo è delineare vincoli e caratteristiche del prodotto finale, redigendo una specifica di progetto dettagliata, precisa e non ambigua, comprensibile sia dal Proponente che dal Progettista. Partecipa inoltre al Piano di Qualifica e allo Studio di Fattibilità.
 
 \subsection{Progettista}
 \label{2.4}
-Il Progettista è colui che disegna una soluzione attuabile ed efficace che soddisfi i requisiti dettati dagli Analisti. Il suo compito è progettare un'architettura che assicuri sia una facile manutenibilità del prodotto, sia una buona scomposizione in moduli indipendenti tra di loro.
+Il Progettista è colui che disegna una soluzione attuabile ed efficace che soddisfi i requisiti dettati dagli Analisti. I suoi compiti principali sono:
+
+\begin{itemize}
+\item Disegnare una soluzione fattibile e adatta ad soddisfare i requisiti delineati dagli Analisti;
+\item Implementare soluzioni di progettazione ottimali, ottimizzate e collaudate;
+\item Utilizzare tecnologie e standard che rendano facile la realizzazione e la manutenzione del prodotto.
+\end{itemize}
+
+Redige la Specifica Tecnica e la Definizione di Prodotto, oltre a partecipare alla stesura delle metriche di verifica della progettazione del Piano di Qualifica.
 
 \subsection{Verificatore}
 \label{2.5}
 Il Verificatore è responsabile delle attività di Verifica. Ha il compito di assicurare che i documenti e il \gloss{codice} rispettino gli standard stabiliti nel documento \emph{Norme\_di\_Progetto\_v1.2.0}.
+Redige la sezione del Piano di Qualifica che illustra gli esiti delle prove e delle verifiche effettuate.
 
 \subsection{Programmatore}
 \label{2.6}
@@ -156,6 +165,8 @@ necessarie per l'esecuzione delle prove di Verifica e Validazione. Le responsabi
 \item Scrivere codice e la sua relativa documentazione che rispettino gli standard stabiliti per la loro scrittura;
 \item Implementare i test sul codice scritto, necessari per prove di Verifica e Validazione.
 \end{itemize}
+
+Redige inoltre il Manuale Utente e tutta la documentazione relativa al codice.
 
 \newpage
 \section{Comunicazioni}
@@ -257,6 +268,11 @@ Viene messo a disposizione del team un calendario per coordinare temporalmente l
 Tutti i membri del team useranno il calendario messo a disposizione su Google Calendar per segnalare i giorni in cui per loro non sarà possibile lavorare al progetto o partecipare a riunioni e sessioni di lavoro di gruppo. I componenti si impegnano a segnare sul calendario quanto prima qualsiasi impegno o impedimento dovesse sorgere e a controllare periodicamente il suddetto per essere aggiornati su eventuali impegni altrui e/o di gruppo.
 Il calendario verrà inoltre usato dal Responsabile per la segnalazione di riunioni o sessioni di lavoro di gruppo.
 
+\subsection{Jenkins}
+\label{}
+Jenkins è una cosa tanto bella. //ESPANDERE FFS///
+
+
 \subsection{Repository}
 \label{4.3}
 Viene messo a disposizione un repository \gloss{Git} su \gloss{GitHub} per la gestione e il versionamento di codice e documenti tra i vari membri del gruppo.\\
@@ -276,6 +292,17 @@ Il branch principale sarà chiamato master e conterrà l'ultima \gloss{versione}
 \subsubsection{Secondari}
 \label{4.4.2}
 Gli sviluppatori possono richiedere la creazione di un branch secondario, provando nuove strategie di sviluppo senza alterare il branch master. Il Responsabile di Progetto è Responsabile dell'approvazione della richiesta.
+
+
+\subsection{Strumenti di Verifica}
+\label{}
+Le risorse software che si utilizzeranno durante i processi di Verifica sono:
+\begin{itemize}
+\item Correttore automatico TeXstudio: questo strumento integra i dizionari di OpenOffice.org e segnala i potenziali errori ortografici presenti nel testo;
+\item Aspell: strumento per la correzione tipografica dei documenti redatti in \LaTeX ;
+\item Glossario-script: script, scritto dai componenti del gruppo, che marca i termini nel glossario con la simbologia sopracitata.
+\item Script Gulpease: script per il calcolo automatico dell'indice di Gulpease.
+\end{itemize}
 
 \newpage
 \section{Documentazione}
@@ -361,14 +388,16 @@ Nella stesura della documentazione si dovranno seguire le seguenti indicazioni:
 \item Nel caso in cui ci si riferisca ad un documento, il titolo di quest'ultimo dovrà essere scritto in corsivo e si dovrà riportare la versione riferita;
 \item I ruoli di progetto (es. Analista) dovranno essere scritti con la lettera iniziale maiuscola;
 \item Gli acronimi dovranno essere scritti in lettere maiuscole;
-\item E' preferibile usare la forma attiva a quella passiva;
+\item \`{E} preferibile usare la forma attiva a quella passiva;
 \item Quando possibile usare elenchi puntati invece che frasi;
 \item Usare termini specifici e segnare i termini del glossario in corsivo e con la G in pedice;
 \item Dividere i documenti in sezioni e sottosezioni titolate;
 \item Le date dovranno essere espresse nella forma AAAA-MM-GG secondo lo standard \gloss{ISO} 8601:2004;
 \item Le attività (es. Verifica) vanno scritte con la lettera iniziale maiuscola;
-\item Gli elenchi puntati con un primo livello di profondità sono formati da dei pallini neri pieni, tranne quando si deve
-elencare una sequenza numerata di istruzioni da fare in un ordine stabilito, allora in quel caso si una un elenco numerato; \item Gli elenchi puntati con un secondo livello di profondità hanno un trattino.
+\item Gli elenchi puntati con un primo livello di profondità sono formati da dei pallini neri pieni, tranne quando si deve elencare una sequenza numerata di istruzioni da fare in un ordine stabilito, allora in quel caso si una un elenco numerato; 
+\item Gli elenchi puntati con un secondo livello di profondità hanno un trattino;
+\item Il numero massimo di subordinate in una frase è quattro;
+\item 
 \end{itemize}
 
 \subsection{Sigle e abbreviazioni}
@@ -398,18 +427,18 @@ Alla prima occorrenza di un termine definito nel Glossario, esso dovrà essere m
 Per la stesura dei documenti verrà utilizzato il linguaggio di markup \LaTeX. Esso rende possibile definire template di documenti standardizzati da poter applicare a qualsiasi contenuto, separando così formattazione da contenuto e facilitando il lavoro di stesura. \LaTeX\ inoltre dispone di qualsiasi strumento di formattazione di cui si possa avere bisogno, eliminando il bisogno di strumenti ausiliari alla stesura dei documenti.
 
 \newpage
-\section{Versionamento}
+\subsection{Versionamento}
 \label{6.0}
 Il versionamento verrà effettuato sia sul codice che sui documenti prodotti dal gruppo al fine di differenziare e rendere immediatamente riconoscibile la fase di sviluppo in cui ci si trova attualmente, mantenendo uno storico organizzato dei cambiamenti effettuati.
 
-\subsection{Regole generali}
+\subsubsection{Regole generali}
 \label{6.1}
 \begin{itemize}
 \item Il numero di versionamento deve essere nella forma X.Y.Z, con X,Y e Z numeri interi non negativi. Tutti gli elementi devono salire numericamente di una unità alla volta;
 \item Ogni qualvolta che una versione viene rilasciata non può più essere effettuato alcun cambiamento ad essa. Ogni modifica sarà inserita nella versione successiva.
 \end{itemize}
 
-\subsection{Versionamento del software}
+\subsubsection{Versionamento del software}
 \label{6.2}
 Nel versionare il software, le tre cifre di versionamento verranno modificate in base ai seguenti parametri:
 \begin{itemize}
@@ -420,7 +449,7 @@ Nel versionare il software, le tre cifre di versionamento verranno modificate in
 \item La versione 1.0.0 definisce la prima versione stabile del framework.
 \end{itemize}
 
-\subsection{Versionamento dei documenti}
+\subsubsection{Versionamento dei documenti}
 \label{6.3}
 Nel versionare il software, le tre cifre di versionamento verranno modificate in base alle seguenti regole:
 \begin{itemize}
@@ -457,12 +486,12 @@ Ogni documento soggetto a versionamento dovrà riportare in qualche sua parte un
 Le modifiche dovranno essere ordinate cronologicamente dalla più alla meno recente.
 
 \newpage
-\section{Analisi dei requisiti}
+\subsection{Analisi dei requisiti}
 \label{7.0}
 La stesura del documento denominato Analisi dei Requisiti è compito degli Analisti.
 In questo documento verranno trovati, analizzati e catalogati tutti i requisiti, impliciti e non, imposti dal progetto.
 
-\subsection{Identificazione e classificazione dei requisiti}
+\subsubsection{Identificazione e classificazione dei requisiti}
 \label{7.1}
 È compito degli Analisti stilare una lista dei requisiti emersi dal capitolato e da eventuali riunioni con il Proponente. E' inoltre loro compito identificare tutti quei requisiti impliciti che per loro natura non vengono specificati ma devono essere individuati e studiati. Tutti questi requisiti dovranno essere classificati per tipo e importanza, utilizzando la seguente codifica:
 \begin{center}
@@ -486,14 +515,22 @@ dove:
 \item Codice è il codice che identifica univocamente ogni requisito. La sua regolamentazione è descritta nell'\emph{Analisi\_dei\_Requisiti\_v1.2.0}.
 \end{itemize}
 
-\subsection{Casi d’uso e UML}
+\subsubsection{Casi d’uso e UML}
 \label{7.2}
 Successivamente all'individuazione ed al tracciamento dei requisiti si procede all'analisi dei casi d'uso, denominati nelle sezioni seguenti anche come use case o con l'acronimo UC.
 Per realizzare i diagrammi UML dei casi d'uso è stato scelto Astah. Il software era stato consigliato dal Professor Cardin e soddisfa tutte le necessità del team.
 Tutti i diagrammi devono rispettare la specifica UML 2.0.
 
+\subsection{Glossario}
+\label{9.0}
+Ogni qualvolta, durante la stesura di un documento, si incorra in un termine tecnico o non di uso comune, esso dovrà essere inserito nel Glossario insieme ad una sua precisa definizione. Se la definizione conterrà a sua volta termini di questo tipo, anche essi a loro volta dovranno essere inseriti nel Glossario.
+Le definizioni dei termini devono essere quanto più semplici e chiare possibili, e devono cercare di evitare ricorsioni o termini da glossario.
+I termini nel Glossario devono necessariamente essere elencati in ordine alfabetico.
+Ogni definizione del termine del Glossario deve contenere una spiegazione coincisa; è preferibile che la definizione inizi con un sostantivo, in ogni caso non deve mai iniziare con l'espressione "è un".
+All'interno della definizione del termine, l'occorrenza del termine stesso non dovrà contenere la notazione che lo identifica come termine da Glossario, ovvero scritto in corsivo e con la lettera G come pedice.
+
 \newpage
-\section{Norme di sviluppo}
+\section{Norme di gestione del progetto}
 \label{8.0}
 
 \subsection{Creare un nuovo progetto}
@@ -544,24 +581,8 @@ Le priorità che possono essere assegnate sono le seguenti:
 \item Bassa: l'implementazione non è obbligatoria, non c'è una scadenza definita.
 \end{itemize}
 
-\newpage
-\section{Glossario}
-\label{9.0}
-Ogni qualvolta, durante la stesura di un documento, si incorra in un termine tecnico o non di uso comune, esso dovrà essere inserito nel Glossario insieme ad una sua precisa definizione. Se la definizione conterrà a sua volta termini di questo tipo, anche essi a loro volta dovranno essere inseriti nel Glossario.
-Le definizioni dei termini devono essere quanto più semplici e chiare possibili, e devono cercare di evitare ricorsioni o termini da glossario.
-I termini nel Glossario devono necessariamente essere elencati in ordine alfabetico.
-Ogni definizione del termine del Glossario deve contenere una spiegazione coincisa; è preferibile che la definizione inizi con un sostantivo, in ogni caso non deve mai iniziare con l'espressione "è un".
-All'interno della definizione del termine, l'occorrenza del termine stesso non dovrà contenere la notazione che lo identifica come termine da Glossario, ovvero scritto in corsivo e con la lettera G come pedice.
 
-\newpage
-\section{Strumenti}
-\label{10.0}
-Le risorse software che si utilizzeranno durante il processo di Verifica sono:
-\begin{itemize}
-\item Correttore automatico TeXstudio: per la scrittura di documenti è consigliato utilizzare l'ambiente grafico TeXstudio. Tale strumento integra i dizionari di OpenOffice.org e segnala i potenziali errori ortografici presenti nel testo;
-\item Aspell: strumento per la correzione tipografica dei documenti redatti in \LaTeX ;
-\item Glossario-script: script, scritto dai componenti del gruppo, che marca i termini nel glossario con la simbologia sopracitata.
-\end{itemize}
+
 
 \newpage
 \section{Metodi}
