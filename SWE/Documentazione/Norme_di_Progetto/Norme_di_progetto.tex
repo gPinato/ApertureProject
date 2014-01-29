@@ -1,6 +1,8 @@
 %includo il file che contiene la versione dei documenti
 \input{../Logo&Header/versioneDocumenti.tex}
 
+
+
 \newcommand{\Versione}{\versioneNormeDiProgetto{}}	%Versione Finale
 \newcommand{\Data}{2013-11-20}						%Data di creazione
 \newcommand{\DataUltimaModifica}{2014-01-27}
@@ -48,7 +50,8 @@ Diario delle modifiche
 \textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Modifiche effettuate}\\
 
 %aggiungere qui una midrule per aggiungere una nuova riga alla tabella
-
+\midrule
+2.0.1 & 2014-01-29 & Giacomo Pinato (RE) & Sezione Progettazione, Riorganizzazione\\
 \midrule
 2.0.1 & 2014-01-21 & Mattia Sorgato (RE) & Modifica sezione Comunicazioni\\
 \midrule
@@ -251,7 +254,10 @@ Alla fine del colloquio verrà redatto un verbale (vedi 3.3.3) che riassume gli 
 \section{Ambiente e strumenti di lavoro}
 \label{4.0}
 
-\subsection{Redmine}
+\subsection{Coordinamento}
+\label{}
+
+\subsubsection{Redmine}
 \label{4.1}
 Come piattaforma per la gestione del progetto è stato scelto Redmine. Le principali funzioni che esso fornisce sono:
 \begin{itemize}
@@ -262,18 +268,18 @@ Come piattaforma per la gestione del progetto è stato scelto Redmine. Le princi
 \item Un sistema di  gestione del tempo e delle \gloss{milestone}.
 \end{itemize}
 
-\subsection{Google Calendar}
+\subsubsection{Google Calendar}
 \label{4.2}
 Viene messo a disposizione del team un calendario per coordinare temporalmente le attività e gli impegni di ciascuno dei componenti.
 Tutti i membri del team useranno il calendario messo a disposizione su Google Calendar per segnalare i giorni in cui per loro non sarà possibile lavorare al progetto o partecipare a riunioni e sessioni di lavoro di gruppo. I componenti si impegnano a segnare sul calendario quanto prima qualsiasi impegno o impedimento dovesse sorgere e a controllare periodicamente il suddetto per essere aggiornati su eventuali impegni altrui e/o di gruppo.
 Il calendario verrà inoltre usato dal Responsabile per la segnalazione di riunioni o sessioni di lavoro di gruppo.
 
-\subsection{Jenkins}
+\subsubsection{Jenkins}
 \label{}
 Jenkins è una cosa tanto bella. //ESPANDERE FFS///
 
 
-\subsection{Repository}
+\subsubsection{Git}
 \label{4.3}
 Viene messo a disposizione un repository \gloss{Git} su \gloss{GitHub} per la gestione e il versionamento di codice e documenti tra i vari membri del gruppo.\\
 Il repository pubblico è disponibile all'indirizzo: \\
@@ -281,20 +287,25 @@ Il repository pubblico è disponibile all'indirizzo: \\
 \textbf{\url{https://github.com/ApertureSoftware/AperturePublic.git}.}
 \end{center}
 
-\subsection{Branch}
+\subparagraph{Branch}
 \label{4.4}
 Nel repository saranno disponibili vari \gloss{branch} per favorire lo sviluppo del codice da parte degli sviluppatori.
 
-\subsubsection{Master}
+\subparagraph{Master}
 \label{4.4.1}
 Il branch principale sarà chiamato master e conterrà l'ultima \gloss{versione} del software stabile rilasciata. Affinché una nuova versione possa essere caricata nel branch master, quest'ultima deve compilare senza errori o warning e deve aver superato tutti i test disegnati per verificarne la qualità.
 
-\subsubsection{Secondari}
+\subparagraph{Secondari}
 \label{4.4.2}
 Gli sviluppatori possono richiedere la creazione di un branch secondario, provando nuove strategie di sviluppo senza alterare il branch master. Il Responsabile di Progetto è Responsabile dell'approvazione della richiesta.
 
+\subsection{Strumenti per la documentazione}
+\label{}
+\subsubsection{LaTeX}
+\label{5.7}
+Per la stesura dei documenti verrà utilizzato il linguaggio di markup \LaTeX. Esso rende possibile definire template di documenti standardizzati da poter applicare a qualsiasi contenuto, separando così formattazione da contenuto e facilitando il lavoro di stesura. \LaTeX\ inoltre dispone di qualsiasi strumento di formattazione di cui si possa avere bisogno, eliminando il bisogno di strumenti ausiliari alla stesura dei documenti.
 
-\subsection{Strumenti di Verifica}
+\subsubsection{Strumenti di Verifica}
 \label{}
 Le risorse software che si utilizzeranno durante i processi di Verifica sono:
 \begin{itemize}
@@ -303,6 +314,8 @@ Le risorse software che si utilizzeranno durante i processi di Verifica sono:
 \item Glossario-script: script, scritto dai componenti del gruppo, che marca i termini nel glossario con la simbologia sopracitata.
 \item Script Gulpease: script per il calcolo automatico dell'indice di Gulpease.
 \end{itemize}
+
+\subsection{Codifica}
 
 \newpage
 \section{Documentazione}
@@ -336,7 +349,19 @@ La prima pagina di ogni documento deve riportare nel seguente ordine:
 
 \subsubsection{Seconda pagina}
 \label{5.2.4}
-La seconda pagina deve riportare il diario delle modifiche apportate al documento dalla sua creazione fino alla versione corrente.
+La seconda pagina deve riportare il diario delle modifiche apportate al documento dalla sua creazione fino alla versione corrente, strutturato nella seguente maniera:
+
+\begin{center}
+\begin{longtable}{|c|c|c|p{0.5\linewidth}|}
+\toprule
+\textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Modifiche effettuate}\\
+
+\bottomrule
+%\label{tab:changelog}
+\end{longtable}
+\end{center}
+Le modifiche dovranno essere ordinate cronologicamente dalla più alla meno recente.
+
 
 \subsubsection{Terza pagina}
 \label{5.2.5}
@@ -400,7 +425,7 @@ Nella stesura della documentazione si dovranno seguire le seguenti indicazioni:
 \item 
 \end{itemize}
 
-\subsection{Sigle e abbreviazioni}
+\subparagraph{Sigle e abbreviazioni}
 \label{5.5}
 Le sigle e le abbreviazioni dovranno essere utilizzate solo in contesti in cui lo spazio è limitato come tabelle e diagrammi. Sono previste le seguenti abbreviazioni:
 \begin{itemize}
@@ -418,13 +443,6 @@ Le sigle e le abbreviazioni dovranno essere utilizzate solo in contesti in cui l
 \item AS = Aperture Software.
 \end{itemize}
 
-\subsection{Termini del Glossario}
-\label{5.6}
-Alla prima occorrenza di un termine definito nel Glossario, esso dovrà essere marcato con la lettera G in pedice della parola. Verrà marcata solo la prima occorrenza al fine di mantenere il testo più pulito e leggibile. L'intera parola verrà inoltre marcata in corsivo, e se il termine è composto da più parole, le componenti singole saranno in corsivo e la G in pedice sarà posta sull'ultima parola.
-
-\subsection{LaTeX}
-\label{5.7}
-Per la stesura dei documenti verrà utilizzato il linguaggio di markup \LaTeX. Esso rende possibile definire template di documenti standardizzati da poter applicare a qualsiasi contenuto, separando così formattazione da contenuto e facilitando il lavoro di stesura. \LaTeX\ inoltre dispone di qualsiasi strumento di formattazione di cui si possa avere bisogno, eliminando il bisogno di strumenti ausiliari alla stesura dei documenti.
 
 \newpage
 \subsection{Versionamento}
@@ -471,21 +489,21 @@ Sarà compito del Responsabile impostare la versione a X.1.0 nel momento in cui 
 \item Z: indica il numero di modifiche minori apportare al documento. Aumenta al termine di ogni sessione di lavoro sul documento. Non ha un limite massimo.
 \end{itemize}
 
-\subsection{Tabella delle modifiche}
-\label{6.4}
-Ogni documento soggetto a versionamento dovrà riportare in qualche sua parte un diario delle modifiche strutturato nella seguente maniera:
-\begin{center}
-\begin{longtable}{|c|c|c|p{0.5\linewidth}|}
-\toprule
-\textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Modifiche effettuate}\\
-
-\bottomrule
-%\label{tab:changelog}
-\end{longtable}
-\end{center}
-Le modifiche dovranno essere ordinate cronologicamente dalla più alla meno recente.
 
 \newpage
+
+\subsection{Glossario}
+\label{9.0}
+Ogni qualvolta, durante la stesura di un documento, si incorra in un termine tecnico o non di uso comune, esso dovrà essere inserito nel Glossario insieme ad una sua precisa definizione. Se la definizione conterrà a sua volta termini di questo tipo, anche essi a loro volta dovranno essere inseriti nel Glossario.
+Le definizioni dei termini devono essere quanto più semplici e chiare possibili, e devono cercare di evitare ricorsioni o termini da glossario.
+I termini nel Glossario devono necessariamente essere elencati in ordine alfabetico.
+Ogni definizione del termine del Glossario deve contenere una spiegazione coincisa; è preferibile che la definizione inizi con un sostantivo, in ogni caso non deve mai iniziare con l'espressione "è un".
+All'interno della definizione del termine, l'occorrenza del termine stesso non dovrà contenere la notazione che lo identifica come termine da Glossario, ovvero scritto in corsivo e con la lettera G come pedice.
+
+\newpage
+\section{Procedure}
+\label{8.0}
+
 \subsection{Analisi dei requisiti}
 \label{7.0}
 La stesura del documento denominato Analisi dei Requisiti è compito degli Analisti.
@@ -521,28 +539,87 @@ Successivamente all'individuazione ed al tracciamento dei requisiti si procede a
 Per realizzare i diagrammi UML dei casi d'uso è stato scelto Astah. Il software era stato consigliato dal Professor Cardin e soddisfa tutte le necessità del team.
 Tutti i diagrammi devono rispettare la specifica UML 2.0.
 
-\subsection{Glossario}
-\label{9.0}
-Ogni qualvolta, durante la stesura di un documento, si incorra in un termine tecnico o non di uso comune, esso dovrà essere inserito nel Glossario insieme ad una sua precisa definizione. Se la definizione conterrà a sua volta termini di questo tipo, anche essi a loro volta dovranno essere inseriti nel Glossario.
-Le definizioni dei termini devono essere quanto più semplici e chiare possibili, e devono cercare di evitare ricorsioni o termini da glossario.
-I termini nel Glossario devono necessariamente essere elencati in ordine alfabetico.
-Ogni definizione del termine del Glossario deve contenere una spiegazione coincisa; è preferibile che la definizione inizi con un sostantivo, in ogni caso non deve mai iniziare con l'espressione "è un".
-All'interno della definizione del termine, l'occorrenza del termine stesso non dovrà contenere la notazione che lo identifica come termine da Glossario, ovvero scritto in corsivo e con la lettera G come pedice.
+\subsection{Progettazione}
+\label{}
+\subsubsection{Specifica Tecnica}
+\label{}
+I Progettisti devono descrivere l'architettura d'alto livello del sistema e dei singoli componenti nella Specifica Tecnica in modo chiaro, formale e non ambiguo.
 
-\newpage
-\section{Norme di gestione del progetto}
-\label{8.0}
+\paragraph{Design Pattern}
+\label{}
+I Progettisti dovranno fornire una descrizione dei design pattern utilizzati per la progettazione dell'architettura. In essi si deve includere una descrizione ed un diagramma che mostri il funzionamento e la struttura.
 
-\subsection{Creare un nuovo progetto}
+
+\paragraph{Tracciamento componenti}
+\label{}
+
+Ogni requisito deve essere tracciato al componente che lo soddisfa, ed ogni componente deve essere tracciato al requisito che ha imposto la sua realizzazione.
+
+\paragraph{Test di integrazione}
+\label{}
+I Progettisti dovranno definire in dei test e delle classi atte a verificare il lavoro svolto. 
+
+\subsubsection{Definizione di Prodotto}
+\label{}
+I Progettisti devono descrivere l'architettura di basso livello del sistema e dei singoli componenti nella Definizione di Prodotto in modo chiaro, formale e non ambiguo, integrando quanto scritto nella Specifica Tecnica.
+
+\paragraph{Diagrammi UML}
+\label{}
+Devono essere realizzati i seguenti diagrammi UML
+\begin{itemize}
+\item Diagrammi delle attività;
+\item Diagrammi di sequenza;
+\item Diagrammi delle classi.
+\end{itemize}
+
+\paragraph{Definizione delle classi}
+\label{}
+
+Ogni classe progettata deve essere riportata all'interno della Definizione di Prodotto secondo lo schema definito nei formalismi di specifica.
+
+\paragraph{Tracciamento delle classi}
+\label{}
+Ogni requisito deve essere tracciato alla classe che lo soddisfa, ed ogni classe deve essere tracciata al requisito che ha imposto la sua realizzazione.
+
+
+\paragraph{Test di Unità}
+\label{}
+I Progettisti dovranno definire i test d’unità necessari per verificare che i componenti del sistema funzionino nella modo previsto.
+
+\subsection{Gestione di Progetto}
+\label{}
+
+\subsubsection{Gestione delle attività}
+\label{}
+
+\paragraph{Pianificazione}
+\label{}
+All'inizio di ciascuna delle fasi delineate nel \emph{Piano di Progetto v2.2.0} il Responsabile di Progetto deve realizzare un diagramma di Gantt su Redmine per tracciare e gestire le attività che andranno a cominciare.
+Deve inoltre assegnare ogni attività ad un componente o gruppo di componenti.
+\paragraph{Controllo dell'avanzamento}
+\label{}
+Dopo ogni sessione di lavoro di un componente o gruppo di componenti, gli stessi devono tracciare il loro lavoro modificando l'avanzamento dell'attività e le ore/persona spese.
+Dovranno inoltre modificare lo stato dell'attività in base al ruolo ricoperto e lo stato di avanzamento della stessa come descritto nel paragrafo successivo.
+\paragraph{Stati d'avanzamento}
+\label{}
+I possibili stati di avanzamento di un'attività sono i seguenti:
+c
+
+
+\paragraph{Gestione dei rischi}
+\label{}
+Durante l'avanzamento del progetto il Responsabile  deve monitorare costantemente il verificarsi dei rischi descritti nel \emph{Piano di Progetto v2.2.0} cosi come la possibità che l'avanzamento comporti nuovi rischi non previsti precedentemente. 
+
+\subsubsection{Creare un nuovo progetto}
 \label{8.1}
 La creazione del progetto è onere del Responsabile di Progetto.
 Il progetto è una macro-attività che verrà suddivisa in molte sotto-attività al fine di semplificare la Progettazione, la Realizzazione e la Verifica delle stesse. Ogni attività sarà a carico di un Responsabile.
 
-\subsection{Ticket}
+\subsubsection{Ticket}
 \label{8.2}
 I ticket sono uno strumento per il tracciamento di attività, funzionalità e problematiche utile per sincronizzare e mantenere traccia del lavoro del team.
 
-\subsection{Creazione dei ticket}
+\subsubsection{Creazione dei ticket}
 \label{8.3}
 I ticket vengono creati dal:
 \begin{itemize}
@@ -551,27 +628,27 @@ I ticket vengono creati dal:
 \item Verificatore: crea ticket per la segnalazione di problematiche o bug che necessitano di controllo e correzione.
 \end{itemize}
 
-\subsection{Tipologie di Ticket}
+\subsubsection{Tipologie di Ticket}
 \label{8.4}
 I ticket rappresentano operazioni e attività che devono essere portate a termine.
 I ticket avranno specifici stadi di avanzamento:
 \begin{itemize}
-\item Nuovo: il ticket è stato creato ed è in attesa di essere assegnato;
-\item In Elaborazione: il ticket è stato assegnato ed è in lavorazione;
-\item Chiuso: la lavorazione è terminata e l'attività è in attesa di verifica;
-\item Risolto o Rifiutato: un Verificatore approva o rigetta il lavoro effettuato. Nel caso di rigetto deve venire creato un nuovo ticket di modifica per risolvere il problema.
+\item \emph{Nuovo}: il ticket è stato creato ed è in attesa di essere assegnato;
+\item \emph{In Elaborazione}: il ticket è stato assegnato ed è in lavorazione;
+\item \emph{Chiuso}: la lavorazione è terminata e l'attività è in attesa di verifica;
+\item \emph{Risolto o Rifiutato}: un Verificatore approva o rigetta il lavoro effettuato. Nel caso di rigetto deve venire creato un nuovo ticket di modifica per risolvere il problema.
 \end{itemize}
 
-\subsubsection{Ticket di Realizzazione}
+\paragraph{Ticket di Realizzazione}
 \label{8.4.2}
 Assegnano la realizzazione delle attività ai membri del gruppo competenti. Sono organizzati in una gerarchia con vari livelli di priorità.
 
-\subsubsection{Ticket di Verifica}
+\paragraph{Ticket di Verifica}
 \label{8.4.3}
 Rappresentano segnalazioni di errori, problematiche o imprecisioni riscontrate dai Verificatori durante le fase di Verifica. Dovranno essere assegnati ad un membro del team che in quel momento ricopre un ruolo adatto ad intervenire per la correzione e in seguito riverificati da un Verificatore.
 
 
-\subsubsection{Ticket di modifica}
+\paragraph{Ticket di modifica}
 \label{8.4.4}
 Rappresentano richieste di modifica fatte da membri del team al Responsabile. Quest'ultimo poi decide se accettare la richiesta di modifica o rifiutarla. Se la richiesta viene accettata, il Responsabile convoca una riunione per la discussione della modifica. Se la modifica viene rettificata dall'assemblea, le viene assegnata una priorità e viene messa nell'elenco di modifiche in attesa di implementazione.
 Le priorità che possono essere assegnate sono le seguenti:
@@ -585,11 +662,53 @@ Le priorità che possono essere assegnate sono le seguenti:
 
 
 \newpage
-\section{Metodi}
+\subsection{Verifica}
 \label{11.0}
-Vengono qui esplicitate le procedure con cui si eseguono l'analisi statica e dinamica per la Verifica dei documenti.
 
-\subsection{Analisi dei documenti}
+\subsubsection{Metriche per errori}
+Sono riportate delle metriche utili alla valutazione degli errori che si potranno riscontrare durante le attività di verifica e ad una loro prima correzione.
+\begin{center}
+\begin{longtable}{|c|c|c|p{0.5\linewidth}|}
+\toprule
+\textbf{Errore} & \textbf{Gravità} & \textbf{Priorità} \\
+
+%aggiungere qui una midrule per aggiungere una nuova riga alla tabella
+\midrule
+Indici Errati & Alta & Urgente\\
+\midrule
+Tracciamento errato & Media & Breve\\
+\midrule
+Errore di progettazione & Alta & Alta\\
+\midrule
+Errore ortografico o di formattazione & Bassa & Entro Milestone\\
+\midrule
+Valore Gulpease fuori norma & Bassa & Entro Milestone\\
+\midrule
+Violazione norme di codifica & Media & Breve\\
+
+\bottomrule
+\caption{Tabella errori}
+\label{tab:changelog}
+\end{longtable}
+\end{center}
+
+La gravità di un errore può essere:
+
+\begin{itemize}
+\item \emph{Bassa}: L'errore ha impatto minimo e su aspetti marginali;
+\item \emph{Media}: L'errore ha un impatto significativo e causa un ritardo o un aumento di costo considerevole;
+\item \emph{Alta}: L'errore rende il prodotto inutilizzabile e porta potenzialmente al fallimento del progetto.
+\end{itemize}
+
+I tempi di risoluzione possono essere:
+\begin{itemize}
+\item \emph{Entro Milestone}: L'errore va corretto prima della milestone;
+\item \emph{Breve}: L'errore va corretto entro qualche giorno dalla sua scoperta;
+\item \emph{Urgente}: L'errore va corretto il prima possibile.
+\end{itemize}
+
+
+\subsubsection{Verifica dei documenti}
 \label{11.1}
 \begin{itemize}
 \item Controllo sintattico e del periodo:
