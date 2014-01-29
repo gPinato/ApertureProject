@@ -51,7 +51,9 @@ Diario delle modifiche
 
 %aggiungere qui una midrule per aggiungere una nuova riga alla tabella
 \midrule
-2.0.1 & 2014-01-29 & Giacomo Pinato (RE) & Sezione Progettazione, Riorganizzazione\\
+2.0.3 & 2014-01-29 & Giacomo Pinato (RE) & Sezione Progettazione, Riorganizzazione\\
+\midrule
+2.0.2 & 2014-01-22 & Mattia Sorgato (RE) & Modifica sezione Glossario\\
 \midrule
 2.0.1 & 2014-01-21 & Mattia Sorgato (RE) & Modifica sezione Comunicazioni\\
 \midrule
@@ -125,7 +127,9 @@ Le sue competenze principali comprendono:
 \item Approvazione dei documenti;
 \item Comunicazioni con i committenti/proponenti.
 \end{itemize}
-Il Responsabile ha il compito di assicurarsi che le attività di Verifica vengano svolte sistematicamente seguendo le \emph{Norme\_di\_Progetto\_v1.2.0}, deve al contempo accertarsi che vengano rispettati i ruoli e le competenze assegnate nel \emph{Piano\_di\_Progetto\_v1.2.0} e che non vi siano conflitti di interesse tra redattori e Verificatori. Ha infine l'onere di gestire la creazione e l'assegnazione dei ticket di pianificazione e di assegnare ad un membro del gruppo il ruolo di Responsabile di quest'ultimo, nel caso riguardi una sotto-attività.
+Il Responsabile ha il compito di assicurarsi che le attività di Verifica vengano svolte sistematicamente seguendo le \emph{Norme\_di\_Progetto\_v1.2.0}. Deve al contempo accertarsi che vengano rispettati i ruoli e le competenze assegnate nel \emph{Piano\_di\_Progetto\_v1.2.0} e che non vi siano conflitti di interesse tra redattori e Verificatori. A tale proposito, sarà sua responsabilità stilare un \emph{Piano di Progetto} in cui ogni redattore di uno specifico documento o codice potrà solamente verificare prodotti altrui.\\
+Ha inoltre l'onere di gestire la creazione e l'assegnazione dei ticket di pianificazione e di assegnare ad un membro del gruppo il ruolo di Responsabile di quest'ultimo, nel caso riguardi una sotto-attività.\\
+Redige il \emph{Piano di Progetto} e collabora alla stesura del \emph{Piano di Qualifica}, per quanto riguarda la sezione di pianificazione delle attività.
 
 \subsection{Amministratore}
 \label{2.2}
@@ -137,21 +141,25 @@ Inoltre deve garantire:
 \item L'individuazione e la gestione di strumenti e strategie per il controllo della qualità;
 \item Gestione del \gloss{versionamento}.
 \end{itemize}
+Redige la sezione delle \emph{Norme di Progetto}, nei pararafi e sezioni relativi agli strumenti utilizzati a suppporto dei processi. Inoltre redige la sezione del \emph{Piano di Qualifica} inerente agli strumenti di Verifica.
 
 \subsection{Analista}
 \label{2.3}
-L'Analista è il responsabile dell'Analisi dei Requisiti di progetto. Dopo aver compreso pienamente la natura del problema e tutti i suoi domini, il suo ruolo è delineare vincoli e caratteristiche del prodotto finale, redigendo una specifica di progetto dettagliata, precisa e non ambigua, comprensibile sia dal Proponente che dal Progettista. Partecipa inoltre al Piano di Qualifica e allo Studio di Fattibilità.
+L'Analista è il responsabile delle atttività di Analisi all'interno del progetto. Il suoi compiti comprendono:
+\begin{itemize}
+\item La piena comprensione del problema e il suo dominio;
+\item La stesura di una specifica recisa, completa e comprensibile dal Proponente, dal Committente e dal Progettista.
+\end{itemize}
+L'Analista redige il documento di \emph{Studio di Fattibilità}, successivamente l'\emph{Analisi dei Requsiti} e in parte il \emph{Piano di Qualifica}.  
 
 \subsection{Progettista}
 \label{2.4}
 Il Progettista è colui che disegna una soluzione attuabile ed efficace che soddisfi i requisiti dettati dagli Analisti. I suoi compiti principali sono:
-
 \begin{itemize}
 \item Disegnare una soluzione fattibile e adatta ad soddisfare i requisiti delineati dagli Analisti;
 \item Implementare soluzioni di progettazione ottimali, ottimizzate e collaudate;
 \item Utilizzare tecnologie e standard che rendano facile la realizzazione e la manutenzione del prodotto.
 \end{itemize}
-
 Redige la Specifica Tecnica e la Definizione di Prodotto, oltre a partecipare alla stesura delle metriche di verifica della progettazione del Piano di Qualifica.
 
 \subsection{Verificatore}
@@ -168,8 +176,7 @@ necessarie per l'esecuzione delle prove di Verifica e Validazione. Le responsabi
 \item Scrivere codice e la sua relativa documentazione che rispettino gli standard stabiliti per la loro scrittura;
 \item Implementare i test sul codice scritto, necessari per prove di Verifica e Validazione.
 \end{itemize}
-
-Redige inoltre il Manuale Utente e tutta la documentazione relativa al codice.
+Redige il Manuale Utente e tutta la documentazione relativa al codice.
 
 \newpage
 \section{Comunicazioni}
@@ -464,15 +471,38 @@ Sarà compito del Responsabile impostare la versione a X.1.0 nel momento in cui 
 
 \subsection{Glossario}
 \label{9.0}
-Ogni qualvolta, durante la stesura di un documento, si incorra in un termine tecnico o non di uso comune, esso dovrà essere inserito nel Glossario insieme ad una sua precisa definizione. Se la definizione conterrà a sua volta termini di questo tipo, anche essi a loro volta dovranno essere inseriti nel Glossario.
-Le definizioni dei termini devono essere quanto più semplici e chiare possibili, e devono cercare di evitare ricorsioni o termini da glossario.
-I termini nel Glossario devono necessariamente essere elencati in ordine alfabetico.
-Ogni definizione del termine del Glossario deve contenere una spiegazione coincisa; è preferibile che la definizione inizi con un sostantivo, in ogni caso non deve mai iniziare con l'espressione "è un".
-All'interno della definizione del termine, l'occorrenza del termine stesso non dovrà contenere la notazione che lo identifica come termine da Glossario, ovvero scritto in corsivo e con la lettera G come pedice.
+Il documento Glossario contiene le definizioni di tutti i termini di difficile comprensione. La difficoltà di questi termini sta nella loro natura di linguaggi tecnici o dall'uso non comune. \\
+Per ogni temine definito nel Glossario, la sua prima occorrenza in ogni documento è marcata in corsivo e con una G in pedice. Ad esempio: \gloss{termine}.
+
+\subsubsection{Inserimento termine} 
+\label{7.1}
+Ogniqualvolta un membro del gruppo incontra un termine di questo tipo, durante la stesura di qualsiasi documento, deve seguire la seguente procedura:
+\begin{enumerate}
+\item controllare che il termine non sia già presente all'interno del Glossario;
+\item nel caso non fosse presente, interrompere la stesura del documento corrente per inserire il termine nel Glossario;
+\item collocare il termine rispettando l'ordine alfabetico delle definizioni;
+\item dare una definizione chiara e concisa del termine;
+\item nel caso in cui la definizione del termine corrente causi la definizione di altri termini, bisogna tenerne traccia e definirli in ordine;
+\item aggiornare la tabella delle modifiche all'interno del documento Glossario, modificando conseguentemente il numero di versione del documento stesso.
+\end{enumerate}
+
+\subsubsection{Norme stilistiche}
+\label{7.2}
+Di seguito vengono elencate le norme che dovranno essere seguite durante la stesura di una definizione:
+\begin{itemize}
+\item reperire la definizione da una fonte autorevole, oppure ottenerla da più fonti;
+\item non superare le 400 lettere per definizione;
+\item preferibilmente, iniziare la definizione con un sostantivo;
+\item in ogni caso, non iniziare una definizione con "è un".
+\end{itemize}
+
+\subsubsection{Marcatore termini}
+\label{7.3}
+Il nostro gruppo si avvale di uno script automatico in linguaggio \gloss{Python} per la marcatura dei termini definiti nel Glossario. Questo strumento esegue una scansione di ogni documento basandosi sull'elenco dei termini nel Glossario e marca ogni termine (se presente) come descritto a inizio paragrafo.
 
 \newpage
 \section{Procedure}
-\label{8.0}
+label{8.0}
 
 \subsection{Analisi dei requisiti}
 \label{7.0}
@@ -755,14 +785,13 @@ Il calcolo dell'indice di Gulpease dovrà essere applicato dopo l'attività di v
 
 \section{Lista di Controllo}
 \label{}
-Durante le attività di walkthrough sono stati riscontrati principalmente i seguenti errori:
+Durante le attività di walkthrough sono stati riscontrati principalmente i seguenti errori:\\
 
-\begin{itemize} Stili di testo:
+Stili di testo:
 \begin{itemize}
 \item Implementare rigorosamente le soluzioni descritte dal Progettista per la Realizzazione del progetto;
 \item Scrivere codice e la sua relativa documentazione che rispettino gli standard stabiliti per la loro scrittura;
 \item Implementare i test sul codice scritto, necessari per prove di Verifica e Validazione.
-\end{itemize}
 \item Scrivere codice e la sua relativa documentazione che rispettino gli standard stabiliti per la loro scrittura;
 \item Implementare i test sul codice scritto, necessari per prove di Verifica e Validazione.
 \end{itemize}
