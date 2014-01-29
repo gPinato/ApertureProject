@@ -315,7 +315,9 @@ Le risorse software che si utilizzeranno durante i processi di Verifica sono:
 \item Script Gulpease: script per il calcolo automatico dell'indice di Gulpease.
 \end{itemize}
 
-\subsection{Codifica}
+\subsection{Tracciamento dei requisiti}
+\label{}
+Per semplificare e automatizzare il tracciamento dei requisiti è stato realizzato un database relazionale che associa ad ogni requisito la sua sorgente e gli eventuali moduli che lo implementano. E' inoltre possibile effettuare la ricerca inversa e, partendo da un componente od un use case, vedere i requisiti associati.
 
 \newpage
 \section{Documentazione}
@@ -367,39 +369,7 @@ Le modifiche dovranno essere ordinate cronologicamente dalla più alla meno rece
 \label{5.2.5}
 La terza pagina deve riportare l'indice del documento.
 
-\subsection{Documentazione del codice}
-\label{5.3}
 
-\subsubsection{Header dei file}
-\label{5.3.1}
-Ogni file dovrà contenere un header strutturato come segue:
-\begin{itemize}
-\item File: Nome del file;
-\item Module: modulo di appartenenza;
-\item Author: Autore (indirizzo email dell'autore);
-\item Created: Data di creazione;
-\item Version: Versione corrente;
-\item Description: Descrizione dettagliata del file;
-\item Modification History: Tabella dei cambiamenti effettuati sul file.
-\end{itemize}
-
-\subsubsection{Documentazione dei metodi}
-\label{5.3.2}
-Ogni metodo/funzione di codice dovrà essere preceduta da un commento contenente le seguenti informazioni:
-\begin{itemize}
-\item Name: Nome del \gloss{metodo};
-\item Param: lista del tipo dei parametri;
-\item Descr: Breve descrizione del comportamento del metodo;
-\item Return: Cosa ritorna la funzione.
-\end{itemize}
-
-\subsubsection{Documentazione delle classi}
-\label{5.3.3}
-Ogni \gloss{classe} deve essere preceduta da un commento contenente le seguenti informazioni:
-\begin{itemize}
-\item Name: Nome della classe;
-\item Descr: Breve descrizione della classe.
-\end{itemize}
 
 \subsection{Norme tipografiche e stili di testo}
 \label{5.4}
@@ -710,98 +680,93 @@ I tempi di risoluzione possono essere:
 
 \subsubsection{Verifica dei documenti}
 \label{11.1}
+Il processo di verifica viene istanziato nel momento in cui l’output di un processo passa
+dalla versione X.0.Z alla versione X.1.0. E' compito del responsabile assegnare ai Verificatori il ticket di verifica per il documento in questione.
+Per una corretta verifica del documento è necessario seguire il seguente schema:
 \begin{itemize}
-\item Controllo sintattico e del periodo:
-utilizzando TeXstudio e GNU Aspell vengono evidenziati e corretti gli errori di
-grammatica più evidenti. Ciascun documento dovrà essere sottoposto ad un walkthrough da parte dei Verificatori per individuare errori di \gloss{sintassi} e periodi di difficile comprensione;
-\item Controllo di formattazione \LaTeX:
-compilatore \LaTeX.
+\item Controllo sintattico e del periodo: Utilizzando TeXstudio e GNU Aspell vengono evidenziati e corretti gli errori di grammatica più evidenti. Ciascun documento dovrà essere sottoposto ad un walkthrough da parte dei Verificatori per individuare errori di \gloss{sintassi} e periodi di difficile comprensione;
+\item Rispetto delle norme: I Verificatori devono effettuare Inspection per verificare che le norme di progetto siano state rispettate;
+\item Verifica termini da glossario: Mediante uno script automatizzato vengono marcate tutte le prime occorrenze di un termine del glossario;
+\item Calcolo indice Gulpease: Su ogni documento va verificato che l'indice di Gulpease, calcolato con l'apposito script, sia entro i limiti stabiliti del PdQ. Nel caso non fosse così bisognerà effettuare walkthrough alla ricerca di frasi troppo lughe o complesse.
+\item Miglioramento del processo: Nell'effettuare i processi di verifica, i Verificatori dovranno raccogliere gli errori riscontrati piu frequentemente al fine di poter utilizzare piu efficacemente Inspection.
+\item Segnalazione errori: Alla fine del processo di verifica, i Verificatori devono creare un ticket per ogni errore da riparare, come specificato nella sezione 8.4.3.
 \end{itemize}
 
-\subsection{Walkthrough}
-\label{11.2}
-Questa tecnica consiste nella lettura totale dell'oggetto di Verifica, senza presupposti, mirata a rilevare anomalie di cui non si è a conoscenza. E' una tecnica usata principalmente nelle prime fasi del progetto in quanto i membri del gruppo non possiedono ancora l'esperienza necessaria per una Verifica più mirata. Verrà utilizzata dal gruppo in prima persona durante la redazione dei documenti, anche da componenti del gruppo diversi dal redattore, data la natura ancora informale del documento analizzato. Inoltre essa verrà implicitamente utilizzata da tutti gli strumenti software di analisi statica utilizzati per la Verifica.
-La Verifica tramite walkthrough viene effettuata in 4 fasi distinte:
-\begin{enumerate}
-\item Pianificazione della Verifica;
-\item Lettura;
-\item Discussione, fase in cui si riportano gli errori riscontrati, al fine di rendere più specifica la ricerca;
-\item Correzione dei difetti.
-\end{enumerate}
+\subsubsection{Verifica della Progettazione}
+\label{}
+Ai Verificatori è richiesto il controllo della qualità della progettazione, sia generale che in dettaglio.
+E' inoltre loro compito assicurarsi che i moduli del sistema abbiano dimensione e contenuto adatti ad essere realizzati da un singolo Programmatore.
+\subsection{Codifica}
+\label{}
+Nella codifica ci si dovrà attenere alle seguenti convenzioni, al fine di garantire la maggior qualità di processo possibile.
+Gli sviluppatori dovranno attenersi alle comuni Coding Conventions, in particolare a quelle suggerite dal Prof. Crockford nel suo sito web.\footnote{http://javascript.crockford.com/code.html}\\
 
-\subsection{Inspection}
-\label{11.3}
-Questa tecnica consiste nella ricerca di anomalie velocizzata da assunzioni riguardanti la tipologia e la posizione sulla base di conoscenze di tipo statistico, apprese dai Verificatori attraverso la tecnica del walkthrough. Grazie a queste assunzioni l'inspection è una strategia più rapida del walkthrough e non necessita delle lettura integrale del documento in oggetto.
-Ogni applicazione della tecnica di inspection si divide in quattro fasi distinte:
-\begin{enumerate}
-\item Pianificazione della Verifica;
-\item Definizione della lista di controllo, ovvero il riferimento ad un preciso elenco di Verifica mirata;
-\item Lettura;
-\item Correzione.
-\end{enumerate}
-Durante l'applicazione del walkthrough ai documenti, sono state riportate le tipologie di errori più frequenti. La lista di controllo risultante è la seguente:
+\subsubsection{Nomi}
+\label{}
+I nomi di classi, metodi, variabili e funzioni dovranno essere in camel case, le parole componenti separate da underscore e scritti in inglese.
+La prima lettera dovrà essere minuscola, fatta eccezione per le classi che inizieranno sempre con lettera maiuscola.
+
+\subsubsection{Ricorsione}
+\label{}
+La ricorsione deve essere implementata solo in caso di vera necessità, altrimenti va evitata. Nel caso in cui venga implementata si dovrà fornire una prova di corretta terminazione e un calcolo approssimato delle risorse richieste per la corretta esecuzione.
+
+\subsubsection{Concorrenza}
+\label{}
+
+La concorrenza dovrà essere per quanto possibile evitata. Nel caso questo non sia possibile si dovrà cercare di evitare la condivisione di risorse e serializzare il più possibile l'accesso alle risorse.
+
+\subsubsection{Documentazione del codice}
+\label{5.3}
+
+\paragraph{Header dei file}
+\label{5.3.1}
+Ogni file dovrà contenere un header strutturato come segue:
 \begin{itemize}
-\item Norme stilistiche:
-\begin{itemize}
-\item Elenco puntato: non inizia con la lettera maiuscola;
-\item Elenco puntato: non termina con il punto e virgola oppure con il punto se è l'ultimo elemento.
+\item File: Nome del file;
+\item Module: modulo di appartenenza;
+\item Author: Autore (indirizzo email dell'autore);
+\item Created: Data di creazione;
+\item Version: Versione corrente;
+\item Description: Descrizione dettagliata del file;
+\item Modification History: Tabella dei cambiamenti effettuati sul file.
 \end{itemize}
-\item \LaTeX:
+
+\paragraph{Documentazione dei metodi}
+\label{5.3.2}
+Ogni metodo/funzione di codice dovrà essere preceduta da un commento contenente le seguenti informazioni:
 \begin{itemize}
-\item Lettere accentate nelle variabili: non viene utilizzato il comando apposito;
-\item Carattere di spaziatura: non deve essere utilizzato all'interno dei tag;
-\item Macro \LaTeX: non viene scritta usando l'apposito comando \LaTeX{}.
+\item Name: Nome del \gloss{metodo};
+\item Param: lista del tipo dei parametri;
+\item Descr: Breve descrizione del comportamento del metodo;
+\item Return: Cosa ritorna la funzione.
 \end{itemize}
-\item UML:
+
+\paragraph{Documentazione delle classi}
+\label{5.3.3}
+Ogni \gloss{classe} deve essere preceduta da un commento contenente le seguenti informazioni:
 \begin{itemize}
-\item Il sistema non deve mai essere un attore;
-\item Controllo ortografico: deve essere effettuato in modo dettagliato a causa dell'impossibilità di automatizzare i controlli sui diagrammi;
-\item Direzione delle frecce non corrette;
-\item Consistenza della nomenclatura tra i diagrammi e le descrizioni testuali nei documenti.
-\end{itemize}
-\end{itemize}
-Per quanto riguarda la Verifica mirata del codice, non abbiamo sviluppato un elenco di errori comuni, in quanto non compete alla fase di Analisi dei Requisiti la stesura di codice.
-Quindi ci appoggiamo su tecniche di \gloss{best practice} assodate per avere un insieme di ispezioni di riferimento. Queste tecniche comprendono il controllo in più campi:
-\begin{itemize}
-\item Errori nei dati:
-\begin{itemize}
-\item Le variabili sono state inizializzate prima di essere utilizzate?;
-\item Le costanti sono state specificate e nominate correttamente?;
-\item Gli \gloss{upper bound} , nello scorrimento di un \gloss{array}, sono corretti?;
-\item Esiste la possibilità del verificarsi di un \gloss{overflow}?.
-\end{itemize}
-\item Errori nei controlli:
-\begin{itemize}
-\item Le condizioni negli \gloss{statement} condizionali sono effettivamente corrette?;
-\item Ogni ciclo è certo di terminare?;
-\end{itemize}
-\item Errori input/output:
-\begin{itemize}
-\item Le variabili di \gloss{input} sono state interamente utilizzate?;
-\item E' stato assegnato un valore ad ogni variabile di \gloss{output} prima di essere esportata?;
-\item Input imprevisti possono causare corruzione?.
-\end{itemize}
-\item Errori di \gloss{interfaccia}:
-\begin{itemize}
-\item Tutte le funzioni e le chiamate di metodi hanno il corretto numero di parametri?;
-\item I tipi dei parametri formali e attuali sono gli stessi?;
-\item Tutti i parametri sono nell'ordine giusto?;
-\item Se i componenti condividono della memoria, condividono anche la struttura di memorizzazione condivisa?.
-\end{itemize}
-\item Errori di gestione della memoria:
-\begin{itemize}
-\item Se una struttura a riferimenti viene modificata, tutti i riferimenti sono stati correttamente riassegnati?;
-\item Se viene usata un'allocazione dinamica della memoria, lo spazio viene allocato correttamente?;
-\item Lo spazio occupato viene esplicitamente deallocato, una volta che non è più richiesto?.
-\end{itemize}
-\item Errori di gestione delle eccezioni:
-\begin{itemize}
-\item Tutte le possibili eccezioni vengono tracciate e gestite?.
-\end{itemize}
+\item Name: Nome della classe;
+\item Descr: Breve descrizione della classe.
 \end{itemize}
 
 \subsection{Calcolo indice Gulpease}
 Il calcolo dell'indice di Gulpease dovrà essere applicato dopo l'attività di verifica dello stesso documento, ma prima dell'approvazione. Il rislutato di questo calcolo sarà un indice della qualità del documento. Se l'indice si scosterà in negativo dagli obiettivi del gruppo, si dovrà informare il Responsabile. Il Responsabile, successivamente, portà decidere di chiedere una revisione dell'intero documento al fine di aumentarne la leggibilità.
+
+
+\section{Lista di Controllo}
+\label{}
+Durante le attività di walkthrough sono stati riscontrati principalmente i seguenti errori:
+
+\begin{itemize} Stili di testo:
+\begin{itemize}
+\item Implementare rigorosamente le soluzioni descritte dal Progettista per la Realizzazione del progetto;
+\item Scrivere codice e la sua relativa documentazione che rispettino gli standard stabiliti per la loro scrittura;
+\item Implementare i test sul codice scritto, necessari per prove di Verifica e Validazione.
+\end{itemize}
+\item Scrivere codice e la sua relativa documentazione che rispettino gli standard stabiliti per la loro scrittura;
+\item Implementare i test sul codice scritto, necessari per prove di Verifica e Validazione.
+\end{itemize}
+
 
 %FINE DOCUMENTO NON CANCELLARE
 \end{document}
