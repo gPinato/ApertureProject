@@ -41,7 +41,9 @@ L'utente sviluppatore può inserire un file di descrizione (UC1.5).
 {Il sistema ha generato lo scheletro del progetto e il file di descrizione deve essere stato inserito}
 \scenario{
 L'utente sviluppatore può creare la visualizzazione di una Collection (UC1.2.1);|
-L'utente sviluppatore può modificare la visualizzazione di una Collection (UC1.2.2).
+L'utente sviluppatore può modificare la visualizzazione di una Collection (UC1.2.2);|
+L'utente sviluppatore può aggiungere una query (UC1.2.3);|
+L'utente sviluppatore può eliminare una query (UC1.2.4).
 }
 \post{Il sistema contiene la descrizione per la visualizzazione della Collection}
 
@@ -123,15 +125,80 @@ L'utente sviluppatore può aggiungere un pulsante (UC1.2.1.2.4).
 \UCtitle
 {Caso d'uso UC1.2.1.2.1}
 {Aggiunta chiave}
+\UCimmagine{UC1.2.1.2.1}{UC1.2.1.2.1 Aggiunta chiave}
 \UC
-{UC1.2.1.2}
+{UC1.2.1.2.1}
 {Utente sviluppatore}
-{L'utente sviluppatore  può aggiungere una chiave alla definizione della visualizzazione della pagina Collection-Index}
+{L'utente sviluppatore può aggiungere una chiave alla definizione della visualizzazione della pagina Collection-Index}
 {Il sistema contiene la descrizione per la visualizzazione della pagina Collection-Index}
-\scenario
-{L'utente sviluppatore può aggiungere una chiave alla definizione della visualizzazione della Collection-Index.}
+\scenario{
+L'utente sviluppatore può definire un'etichetta per la chiave da visualizzare (UC1.2.1.2.1.1);|
+L'utente sviluppatore può definire il campo del \gloss{Document} ed associarlo alla chiave da visualizzare (UC1.2.1.2.1.2);|
+L'utente sviluppatore può definire il campo di un Document esterno e associarlo alla chiave da visualizzare (UC1.2.1.2.1.3);|
+L'utente sviluppatore può definire il campo associato alla chiave da visualizzare come trasformazione tramite funzione Javascript (UC1.2.1.2.1.4);|
+L'utente sviluppatore può definire il campo associato alla chiave da visualizzare proveniente dal risultato di una query (UC1.2.1.2.1.5).
+}
 \post{Il sistema contiene la descrizione per la visualizzazione della pagina Collection-Index aggiornata con la chiave aggiunta dall'utente sviluppatore}
 
+\UCtitle
+{Caso d'uso UC1.2.1.2.1.1}
+{Definizione etichetta chiave}
+\UC
+{UC1.2.1.2.1}
+{Utente sviluppatore}
+{L'utente sviluppatore può definire un'etichetta per la chiave da visualizzare}
+{Il sistema contiene la descrizione per la visualizzazione della pagina Collection-Index predefinita, nella quale non è specificata nessuna etichetta per la chiave da visualizzare}
+\scenario
+{L'utente sviluppatore può definire un'etichetta per la chiave da visualizzare.}
+\post{Il sistema contiene la descrizione per la visualizzazione della pagina Collection-Index aggiornata con l'etichetta relativa alla chiave da visualizzare}
+
+\UCtitle
+{Caso d'uso UC1.2.1.2.1.2}
+{Definizione campo associato alla chiave}
+\UC
+{UC1.2.1.2.1}
+{Utente sviluppatore}
+{L'utente sviluppatore può definire un campo associato alla chiave da visualizzare}
+{Il sistema contiene la descrizione per la visualizzazione della pagina Collection-Index predefinita, nella quale non è specificato nessun campo per la chiave da visualizzare}
+\scenario
+{L'utente sviluppatore può definire un campo associato alla chiave da visualizzare}
+\post{Il sistema contiene la descrizione per la visualizzazione della pagina Collection-Index aggiornata con il campo associato alla chiave da visualizzare}
+
+\UCtitle
+{Caso d'uso UC1.2.1.2.1.3}
+{Definizione campo associato alla chiave proveniente da un documento esterno}
+\UC
+{UC1.2.1.2.1}
+{Utente sviluppatore}
+{L'utente sviluppatore può definire un campo associato alla chiave da visualizzare, proveniente da un documento esterno}
+{Il sistema contiene la descrizione per la visualizzazione della pagina Collection-Index predefinita, nella quale non è specificato nessun campo per la chiave da visualizzare}
+\scenario
+{L'utente sviluppatore può definire un campo associato alla chiave da visualizzare, proveniente da un documento esterno.}
+\post{Il sistema contiene la descrizione per la visualizzazione della pagina Collection-Index aggiornata con il campo associato alla chiave da visualizzare}
+
+\UCtitle
+{Caso d'uso UC1.2.1.2.1.4}
+{Definizione campo associato alla chiave proveniente dal risultato di una query}
+\UC
+{UC1.2.1.2.1}
+{Utente sviluppatore}
+{L'utente sviluppatore può definire un campo associato alla chiave da visualizzare, proveniente dal risultato di una query}
+{Il sistema contiene la descrizione per la visualizzazione della pagina Collection-Index predefinita, nella quale non è specificato nessun campo per la chiave da visualizzare, la query deve essere definita}
+\scenario
+{L'utente sviluppatore può definire un campo associato alla chiave da visualizzare, proveniente dal risultato di una query.}
+\post{Il sistema contiene la descrizione per la visualizzazione della pagina Collection-Index aggiornata con il campo associato alla chiave da visualizzare}
+
+\UCtitle
+{Caso d'uso UC1.2.1.2.1.5}
+{Definizione campo associato alla chiave come trasformazione}
+\UC
+{UC1.2.1.2.1}
+{Utente sviluppatore}
+{L'utente sviluppatore può definire un campo associato alla chiave da visualizzare come trasformazione}
+{Il sistema contiene la descrizione per la visualizzazione della pagina Collection-Index predefinita, nella quale non è specificato nessun campo per la chiave da visualizzare}
+\scenario
+{L'utente sviluppatore può definire un campo associato alla chiave da visualizzare come trasformazione.}
+\post{Il sistema contiene la descrizione per la visualizzazione della pagina Collection-Index aggiornata con il campo associato alla chiave da visualizzare}
 
 \UCtitle
 {Caso d'uso UC1.2.1.2.2}
@@ -172,8 +239,8 @@ L'utente sviluppatore può aggiungere un pulsante (UC1.2.1.2.4).
 
 \UCtitle
 {Caso d'uso UC1.2.1.3}
-{Creazione visualizzazione pagina Document}
-\UCimmagine{UC1.2.1.3}{UC1.2.1.3 Creazione visualizzazione pagina Document}
+{Creazione visualizzazione pagina Document-Show}
+\UCimmagine{UC1.2.1.3}{UC1.2.1.3 Creazione visualizzazione pagina Document-Show}
 \UC
 {UC1.2.1.3}
 {Utente sviluppatore}
@@ -188,14 +255,80 @@ L'utente può aggiungere un pulsante da visualizzare (UC1.2.1.3.2).
 \UCtitle
 {Caso d'uso UC1.2.1.3.1}
 {Aggiunta chiave}
+\UCimmagine{UC1.2.1.3.1}{UC1.2.1.3.1 Aggiunta chiave}
 \UC
-{UC1.2.1.3}
+{UC1.2.1.3.1}
 {Utente sviluppatore}
-{L'utente sviluppatore  può aggiungere una chiave alla descrizione della visualizzazione della pagina Document-Show}
+{L'utente sviluppatore può aggiungere una chiave alla definizione della visualizzazione della pagina Document-Show}
 {Il sistema contiene la descrizione per la visualizzazione della pagina Document-Show}
+\scenario{
+L'utente sviluppatore può definire un'etichetta per la chiave da visualizzare (UC1.2.1.3.1.1);|
+L'utente sviluppatore può definire il campo del \gloss{Document} ed associarlo alla chiave da visualizzare (UC1.2.1.3.1.2);|
+L'utente sviluppatore può definire il campo di un Document esterno e associarlo alla chiave da visualizzare (UC1.2.1.3.1.3);|
+L'utente sviluppatore può definire il campo associato alla chiave da visualizzare come trasformazione tramite funzione Javascript (UC1.2.1.3.1.4);|
+L'utente sviluppatore può definire il campo associato alla chiave da visualizzare proveniente dal risultato di una query (UC1.2.1.3.1.5).
+}
+\post{Il sistema contiene la descrizione per la visualizzazione della pagina Document-Show aggiornata con la chiave aggiunta dall'utente sviluppatore}
+
+\UCtitle
+{Caso d'uso UC1.2.1.3.1.1}
+{Definizione etichetta chiave}
+\UC
+{UC1.2.1.3.1}
+{Utente sviluppatore}
+{L'utente sviluppatore può definire un'etichetta per la chiave da visualizzare}
+{Il sistema contiene la descrizione per la visualizzazione della pagina Document-Show predefinita, nella quale non è specificata nessuna etichetta per la chiave da visualizzare}
 \scenario
-{L'utente sviluppatore può aggiungere una chiave da visualizzare in una Document-Show.}
-\post{Il sistema contiene la descrizione per la visualizzazione della pagina Document-Show aggiornata con la nuova chiave aggiunta dall'utente sviluppatore}
+{L'utente sviluppatore può definire un'etichetta per la chiave da visualizzare.}
+\post{Il sistema contiene la descrizione per la visualizzazione della pagina Document-Show aggiornata con l'etichetta relativa alla chiave da visualizzare}
+
+\UCtitle
+{Caso d'uso UC1.2.1.3.1.2}
+{Definizione campo associato alla chiave}
+\UC
+{UC1.2.1.3.1}
+{Utente sviluppatore}
+{L'utente sviluppatore può definire un campo associato alla chiave da visualizzare}
+{Il sistema contiene la descrizione per la visualizzazione della pagina Document-Show predefinita, nella quale non è specificato nessun campo per la chiave da visualizzare}
+\scenario
+{L'utente sviluppatore può definire un campo associato alla chiave da visualizzare}
+\post{Il sistema contiene la descrizione per la visualizzazione della pagina Document-Show aggiornata con il campo associato alla chiave da visualizzare}
+
+\UCtitle
+{Caso d'uso UC1.2.1.3.1.3}
+{Definizione campo associato alla chiave proveniente da un documento esterno}
+\UC
+{UC1.2.1.3.1}
+{Utente sviluppatore}
+{L'utente sviluppatore può definire un campo associato alla chiave da visualizzare, proveniente da un documento esterno}
+{Il sistema contiene la descrizione per la visualizzazione della pagina Document-Show predefinita, nella quale non è specificato nessun campo per la chiave da visualizzare}
+\scenario
+{L'utente sviluppatore può definire un campo associato alla chiave da visualizzare, proveniente da un documento esterno.}
+\post{Il sistema contiene la descrizione per la visualizzazione della pagina Document-Show aggiornata con il campo associato alla chiave da visualizzare}
+
+\UCtitle
+{Caso d'uso UC1.2.1.3.1.4}
+{Definizione campo associato alla chiave proveniente dal risultato di una query}
+\UC
+{UC1.2.1.3.1}
+{Utente sviluppatore}
+{L'utente sviluppatore può definire un campo associato alla chiave da visualizzare, proveniente dal risultato di una query}
+{Il sistema contiene la descrizione per la visualizzazione della pagina Document-Show predefinita, nella quale non è specificato nessun campo per la chiave da visualizzare, la query deve essere definita}
+\scenario
+{L'utente sviluppatore può definire un campo associato alla chiave da visualizzare, proveniente dal risultato di una query.}
+\post{Il sistema contiene la descrizione per la visualizzazione della pagina Document-Show aggiornata con il campo associato alla chiave da visualizzare}
+
+\UCtitle
+{Caso d'uso UC1.2.1.3.1.5}
+{Definizione campo associato alla chiave come trasformazione}
+\UC
+{UC1.2.1.3.1}
+{Utente sviluppatore}
+{L'utente sviluppatore può definire un campo associato alla chiave da visualizzare come trasformazione}
+{Il sistema contiene la descrizione per la visualizzazione della pagina Document-Show predefinita, nella quale non è specificato nessun campo per la chiave da visualizzare}
+\scenario
+{L'utente sviluppatore può definire un campo associato alla chiave da visualizzare come trasformazione.}
+\post{Il sistema contiene la descrizione per la visualizzazione della pagina Document-Show aggiornata con il campo associato alla chiave da visualizzare}
 
 \UCtitle
 {Caso d'uso UC1.2.1.3.2}
@@ -208,7 +341,6 @@ L'utente può aggiungere un pulsante da visualizzare (UC1.2.1.3.2).
 \scenario
 {L'utente sviluppatore può aggiungere un pulsante in una Document-Show.}
 \post{Il sistema contiene la descrizione per la visualizzazione della pagina Document-Show aggiornata con il nuovo pulsante aggiunto dall'utente sviluppatore}
-
 
 \UCtitle
 {Caso d'uso UC1.2.2}
@@ -241,7 +373,6 @@ L'utente può modificare la posizione della Collection (UC1.2.2.1.2).
 }
 \post{Il sistema ha aggiornato la descrizione per la visualizzazione del menù con le modifiche apportate dall'utente sviluppatore}
 
-
 \UCtitle
 {Caso d'uso UC1.2.2.1.1}
 {Modifica nome}
@@ -265,8 +396,6 @@ L'utente può modificare la posizione della Collection (UC1.2.2.1.2).
 \scenario
 {L'utente sviluppatore può modificare la posizione della Collection nel menù delle Collection.}
 \post{Il sistema ha aggiornato la descrizione per la visualizzazione del menù delle Collection con la nuova posizione della voce specificata dall'utente sviluppatore}
-
-
 
 \UCtitle
 {Caso d'uso UC1.2.2.2}
@@ -394,6 +523,29 @@ L'utente può eliminare un pulsante (UC1.2.2.3.2).
 {L'utente sviluppatore può eliminare un pulsante da una Document-Show.}
 \post{Il sistema contiene la descrizione per la visualizzazione della pagina Document-Show aggiornata il pulsante eliminato dall'utente sviluppatore}
 
+\UCtitle
+{Caso d'uso UC1.2.3}
+{Aggiunta query}
+\UC
+{UC1.2}
+{Utente sviluppatore}
+{L'utente sviluppatore può aggiungere una query}
+{Il sistema contiene la descrizione per la visualizzazione della pagina Collection-Index e Document-Show}
+\scenario
+{L'utente sviluppatore può aggiungere una query personalizzata.}
+\post{Il sistema contiene la descrizione per la visualizzazione della pagina Collection-Index e Document-Show aggiornata con la definizione della query personalizzata}
+
+\UCtitle
+{Caso d'uso UC1.2.4}
+{Eliminazione query}
+\UC
+{UC1.2}
+{Utente sviluppatore}
+{L'utente sviluppatore può eliminare una query precedentemente definita}
+{Il sistema contiene la descrizione per la visualizzazione della pagina Collection-Index e Document-Show ed è presente almeno la definizione di una query}
+\scenario
+{L'utente sviluppatore può eliminare una query precedentemente definita.}
+\post{Il sistema contiene la descrizione per la visualizzazione della pagina Collection-Index e Document-Show aggiornata}
 
 \UCtitle
 {Caso d'uso UC1.3}
