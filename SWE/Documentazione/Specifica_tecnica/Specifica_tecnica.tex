@@ -1,0 +1,179 @@
+%includo il file che contiene la versione dei documenti
+\input{../Logo&Header/versioneDocumenti.tex}
+
+
+
+\newcommand{\Versione}{\versioneSpecificaTecnica{}}	  %Versione Finale
+\newcommand{\Data}{xxxx-xx-xx}						            %Data di creazione
+\newcommand{\DataUltimaModifica}{xxxx-xx-xx}
+\newcommand{\TipoDocumento}{Norme di Progetto}		    %tipo documento
+
+%includo il file header.tex (logo grande in prima pagina piu qualche altra regola)
+\input{../Logo&Header/header.tex}
+
+%\vspace{.05in}
+
+%informazioni documento
+\begin{center}
+%\section{Informazioni documento}
+\begin{tabular}{r|l}
+%\textbf{Nome} &\TipoDocumento \\
+\textbf{Versione} & \Versione{} \\
+\textbf{Data creazione} & \Data{} \\
+\textbf{Data ultima modifica} & \DataUltimaModifica{} \\
+\textbf{Stato del Documento} & Formale \\		          %CAMBIARE QUI
+\textbf{Uso del Documento} & Interno \\			          %CAMBIARE QUI
+\textbf{Redazione} &  <<nome1,nome2,...>>\\		        %CAMBIARE QUI
+\textbf{Verifica} & <<nome1,nome2,...>>\\			        %ED ANCHE QUI!
+\textbf{Approvazione} & <<nome1,nome2,...>>\\				 %CAMBIARE QUI
+\textbf{Distribuzione} & \parbox[t]{4cm}{\NomeGruppo{}}\\
+\end{tabular}
+\end{center}
+
+\vspace{0.05in}
+
+%inizio sommario del documento
+\begin{abstract}
+\begin{center}
+Questo documento si propone di presentare la Speciﬁca tecnica e architetturale per la Realizzazione del prodotto \textbf{\Progetto{}}.
+\end{center}
+\end{abstract}
+
+%\vspace{.4in}
+
+%seconda pagina, diario delle modifiche
+\newpage
+Diario delle modifiche
+\begin{center}
+\begin{longtable}{|c|c|c|p{0.5\linewidth}|}
+\toprule
+\textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Modifiche effettuate}\\
+
+%aggiungere qui una midrule per aggiungere una nuova riga alla tabella
+\midrule
+<<versione>> & <<xxxx-xx-xx>> & <<Nome>> <<(XX)>> & <<Descrizione testuale della modifica>>
+
+
+\bottomrule
+\caption{Registro delle modifiche}
+\label{tab:changelog}
+\end{longtable}
+\end{center}
+
+%terza pagina Indice (viene aggiornato in automatico con due compilazioni)
+\newpage
+\tableofcontents
+
+%pagine successive hanno la lista di tabelle e lista delle figure
+%(vengono aggiornate in automatico)
+%\newpage
+%\listoftables
+%\listoffigures
+
+%qui inizia la prima pagina ufficiale
+\newpage
+\section{Introduzione}
+\label{1.0}
+\subsection{Scopo del documento}
+\label{1.1}
+Questo documento ha lo scopo di deﬁnire la progettazione ad alto livello del progetto \textbf{\Progetto{}}
+Verrà presentata l’architettura generale secondo la quale saranno organizzate le varie 
+componenti software e saranno descritti i \gloss{Design Pattern} utilizzati.
+
+\subsection{Scopo del prodotto}
+\label{1.2}
+\Prodotto{}
+
+\subsection{Glossario}%1.2
+\label{1.3}
+\Glossario{}
+
+\subsection{Riferimenti}
+\label{1.4}
+
+\subsubsection{Normativi}
+\label{1.4.1}
+\begin{itemize}
+\item \grassetto{Analisi dei requisiti}: Analisi\_{}dei\_{}Requisiti\_{}v\versioneNormeDiProgetto{}.pdf
+\item Norme di Progetto: Norme\_{}di\_{}Progetto\_{}v\versioneNormeDiProgetto{}.pdf  (allegato alla presente documentazione)\\
+\end{itemize}
+
+\subsubsection{Informativi}
+\label{1.4.2}
+\begin{itemize}
+\item <<Documentazione 1>>
+\item <<Documentazione 2>>
+\item <<Documentazione 3>>
+\end{itemize}
+
+\newpage
+\section{Tecnologie Utilizzate}%2.0
+In questa sezione vengono descritte le tecnologie su cui si basa lo sviluppo del progetto e la motivazione del loro utilizzo.
+\subsection{MongoDB} %2.1
+\subsection{Javascript} %2.2
+\subsection{NodeJs} %2.3
+\subsection{AngularJs} %2.4
+
+\newpage
+\section{Descrizione architettura}%3.0
+\subsection{Metodo e formalismo di speciﬁca} %3.1
+\subsection{Architettura generale} %3.2
+
+\newpage
+\section{Componenti}%4.0
+
+\newpage
+\section{Classi}%5.0
+
+\newpage
+\section{Diagrammi di attivita'}%6.0
+
+\newpage
+\section{Design Pattern}%7.0
+\subsection{Design Pattern architetturali} %7.1
+\subsection{Design Pattern creazionali} %7.2
+\subsection{Design Pattern comportamentali} %7.3
+
+\newpage
+\section{Stime di fattibilità e di bisogno di risorse}%8.0
+
+\newpage
+\section{Tracciamento} %9.0
+\subsection{Tracciamento componenti - requisiti} %9.1
+\subsection{Tracciamento requisiti - componenti} %9.2
+
+\newpage
+\appendix
+\section{Descrizione Design Pattern} %A.0
+
+\subsection{Design Pattern architetturali} %A.1
+\subsection{<<Design Pattern 1>>} %A.1.1
+\begin{itemize}
+\item \grassetto{Scopo:} 
+\item \grassetto{Motivazione:} 
+\item \grassetto{Applicabilita':}
+\end{itemize}
+
+\subsection{Design Pattern creazionali} %A.2
+\subsection{<<Design Pattern 1>>} %A.2.1
+\begin{itemize}
+\item \grassetto{Scopo:} 
+\item \grassetto{Motivazione:} 
+\item \grassetto{Applicabilita':}
+\end{itemize}
+
+\subsection{Design Pattern strutturali} %A.3
+\subsection{<<Design Pattern 1>>} %A.3.1
+\begin{itemize}
+\item \grassetto{Scopo:} 
+\item \grassetto{Motivazione:} 
+\item \grassetto{Applicabilita':}
+\end{itemize}
+
+\subsection{Design Pattern comportamentali} %A.4
+\subsection{<<Design Pattern 1>>} %A.4.1
+\begin{itemize}
+\item \grassetto{Scopo:} 
+\item \grassetto{Motivazione:} 
+\item \grassetto{Applicabilita':}
+\end{itemize}
