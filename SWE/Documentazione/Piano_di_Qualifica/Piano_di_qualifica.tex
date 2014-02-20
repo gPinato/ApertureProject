@@ -128,25 +128,28 @@ Il presente documento descriverà le qualità desiderate che il software dovrà 
 
 
 \newpage
-\section{Obiettivi di qualità}%2.0
-\label{2.0}
-\subsection{Qualità di processo} %2.1
+\section{Panoramica della metodologia di verifica}%2.0
 \label{2.1}
+\subsection{Definizione obiettivi}
+\subsubsection{Qualità di processo} %2.1
+\label{2.1.1}
 Per garantire la qualità del prodotto finale è necessario migliorare la metodologia che porta alla qualità dei processi che compongono il prodotto. Per fare questo si è deciso di utilizzare lo standard ISO/IEC 15504\footnote{vedi Appendice, sezione A.1} denominato SPICE\footnote{Software Process Improvement and Capability Determination}.
 Per applicare il modello appena citato si deve utilizzare il ciclo di Deming\footnote{vedi appendice, sezione A.3} che ha come obiettivo il miglioramento continuo dei processi nel loro ciclo di vita.
 
-\subsection{Qualità di prodotto} %2.1
-\label{2.2}
+\subsubsection{Qualità di prodotto} %2.1
+\label{2.1.2}
 Per cercare di realizzare e progettare un prodotto software, in accordo con specifiche e standard definiti, ed essere privo di non conformità o difetti, è necessario usare lo standard ISO/IEC 9126\footnote{vedi appendice, sezione A.2}, il quale redige e descrive obiettivi qualitativi e fornisce delle linee guida l'utilizzo di metriche al fine di tracciare il progresso nel miglioramento continuo di processo e prodotto.
 
 \subsection{Procedure di controllo di qualità di processo} %2.1
-\label{2.3}
+\label{2.2}
 Per garantire la qualità dei processi si utilizza il ciclo PDCA\footnote{Alias, Ciclo di Deming, vedi appendice, sezione A.3}.  Questo principio permette un continuo miglioramento della qualità di tutti i processi coinvolti nella realizzazione del prodotto finale.
-Per controllare la qualità bisogna che i processi siano pianificati dettagliatamente, che le risorse siano individuate e ripartite in maniera quantificabile e ci deve essere un controllo sui processi.
+Per controllare la qualità bisogna che i processi siano pianificati dettagliatamente, che le risorse siano individuate e ripartite in maniera quantificabile e ci deve essere un controllo sui processi. Lo sviluppo di quanto scritto prima è descritto dettagliatamente nel \emph{Piano di Progetto \versionePianoDiProgetto{}}.
+Inoltre verrà monitorata la qualità dei processi con l'analisi continua della qualità del prodotto.
 Per rendere quantificabile la qualità dei processi si utilizzano le metriche descritte nella sezione 4 di questo documento.
 
+
 \subsection{Procedure di controllo di qualità di prodotto} %2.1
-\label{2.4}
+\label{2.3}
 Per garantire il controllo di qualità si utilizza:
 \begin{itemize}
 \item \grassetto{Quality Assurance}: tradotta in "assicurazione di qualità", è l'insieme di processi che hanno come fine il miglioramento e il perseguimento della qualità. L'intenzione di un team di lavoro consiste nell'ottenere quella che si dice correction by construction, ovvero "correttezza per costruzione";
@@ -155,31 +158,34 @@ Per garantire il controllo di qualità si utilizza:
 \end{itemize}
 
 \subsection{Organizzazione} %2.1
-\label{2.5}
+\label{2.4}
 Per ogni processo attuato ci sono delle attività di Verifica e per ogni processo realizzato viene verificata la qualità del processo stesso e la qualità dell'eventuale prodotto ottenuto da esso.
 Ogni fase descritta nel Piano di Progetto necessita di attività di Verifica:
 \begin{itemize}
-\item \grassetto{Analisi}: si seguono i metodi di Verifica descritti nelle Norme di Progetto sui documenti prodotti e i processi attuati. La messa in opera di tali tecniche è descritta in (SEZIONE DI TEST SUI DOCUMENTI).
+\item \grassetto{Analisi:} si seguono i metodi di Verifica descritti nelle Norme di Progetto sui documenti prodotti e i processi attuati. La messa in opera di tali tecniche è descritta nell'appendice sezione B.1.1
+\item\grassetto{Analisi di Dettaglio:} si verificano i processi che determinano l'incremento dei documenti redatti per il precedente periodo di Analisi, e si verificano i prodotti generati dai relativi processi, seguendo le Norme di Progetto. La messa in opera di tale attività è descritta nell'appendice sezione B.1.2
+\item\grassetto{Progettazione Architetturale:}  si verificano i processi che determinano l'incremento dei documenti redatti per il precedente periodo di Analisi in Dettaglio, e si verificano i prodotti generati dai relativi processi; inoltre si verificano processi e prodotti per l'attività di Progettazione Architetturale, seguendo le Norme di Progetto. La messa in opera di tale attività è descritta nell'appendice sezione B.1.2
 \end{itemize}
 Questa sezione conterrà i riferimenti alle successive attività di Verifica, aggiornati dopo ogni fase di produzione e di test del prodotto.
 La stesura dei documenti è l'attività principale e costante nello svolgimento del progetto, il processo di Verifica viene diviso in due attività.
 In ogni documento è presente un diario delle modifiche per mantenere una cronologia delle attività svolte e di chi le ha svolte.
 
 \subsection{Pianificazione strategica e temporale} %2.1
-\label{2.6}
+\label{2.5}
 Avendo scadenze prefissate nel Piano di Progetto, dobbiamo garantire che le attività di Verifica di tutti i documenti e prodotti devono essere sistematiche, disciplinate e quantificabili. Procedendo in questa maniera si correggono gli errori il prima possibile.
-La metodologia da seguire è descritta nelle Norme di Progetto.
+La metodologia da seguire per l'individuazione e correzione degli errori è descritta nelle Norme di Progetto.
+Ogni attività di redazione di documenti e di scrittura del codice è stata preceduta da uno studio iniziale sull'impaginazione dei documenti e del contenuto degli stessi. Questo serve per minimizzare la possibilità di incorrere in errori di tipo concettuale e tecnico.
 
 \subsection{Responsabilità} %2.1
-\label{2.7}
+\label{2.6}
 Per garantire che il processo di Verifica sia disciplinato, sistematico e quantificabile, bisogna attribuire responsabilità a specifici ruoli di progetto. I ruoli sono Responsabile di Progetto e Verificatore. I compiti di ciascun ruolo sono descritti nelle Norme di Progetto.
 
 \subsection{Risorse} %2.1
-\label{2.8}
-Per raggiungere gli obiettivi di qualità prefissati sono necessarie risorse umane e tecnologiche, suddivise rispettivamente in strumenti software e \gloss{hardware} utilizzati dai componenti del gruppo per effettuare Verifica su processi e prodotti. I ruoli maggiormente coinvolti nella responsabilità delle attività di Verifica e validazione sono il Responsabile di Progetto e il Verificatore, e i rispettivi compiti sono descritti dettagliatamente nelle Norme di Progetto.
+\label{2.7}
+Per raggiungere gli obiettivi di qualità prefissati sono necessarie risorse umane e tecnologiche, suddivise rispettivamente in strumenti software e \gloss{hardware} utilizzati dai componenti del gruppo per effettuare Verifica su processi e prodotti. I ruoli maggiormente coinvolti nella responsabilità delle attività di Verifica e validazione sono il Responsabile di Progetto e il Verificatore, e i rispettivi compiti sono descritti dettagliatamente nelle Norme di Progetto. Per facilitare il lavoro dei Verificatori sono stati usati degli strumenti automatici che eseguono controlli sistematici sui prodotti generati. Questi strumenti sono descritti nelle Norme di Progetto.
 
 \newpage
-\section{Analisi} %3.0
+\section{Tecniche di analisi} %3.0
 \label{3.0}
 
 \subsection{Analisi statica}
@@ -188,14 +194,16 @@ Questa tipologia di analisi può essere applicata sia al \gloss{codice} che alla
 
 \subsubsection{Walkthrough}
 \label{3.1.1}
-Questa tecnica utilizza una scansione ampia e non mirata dell'oggetto in Verifica, data la mancanza di esperienza e \gloss{best practice} del Verificatore.
-L'attuazione di questa tecnica di Analisi è quindi molto onerosa, per questo sarà nostro obiettivo renderla più parallelizzabile possibile, così da ridurre i costi di Verifica.
+Questa tecnica utilizza una scansione ampia e non mirata dell'oggetto in Verifica, data la mancanza di esperienza \gloss{best practice} del Verificatore.
+L'attuazione di questa tecnica di Analisi è quindi molto onerosa, per questo sarà nostro obiettivo renderla più parallelizzabile possibile, così da ridurre i costi di Verifica e per essere più efficace ed efficiente.
+Si comincia con una attività preliminare di lettura, seguita da una individuazione degli errori; poi si procede con la correzione degli stessi e con una successiva attività di lettura per controllare le modifiche apportate.
 Dopo ogni attività di Verifica tramite Walkthrough, sperabilmente avremo trovato la maggior parte degli errori, fornendoci una visione delle erroneità commesse, di conseguenza potremo raffinare l'Analisi e avvicinarci alla metodologia di Inspection.
 
 \subsubsection{Inspection}
 \label{3.1.2}
-Questa tecnica è un'evoluzione del Walkthrough e applica una ricerca più mirata e specifica. E' possibile utilizzare questa tecnica dopo aver acquisito dimestichezza con l'attività di Verifica, quindi non sarà possibile utilizzarla fin da subito.
+Questa tecnica è un'evoluzione del Walkthrough e applica una ricerca più mirata e specifica. E' possibile utilizzare questa tecnica dopo aver acquisito dimestichezza con l'attività di Verifica, stilando una lista di controllo contenente i maggiori errori riscontrati applicando la tecnica di Walkthrough, quindi non sarà possibile utilizzarla fin da subito in quanto la lista inizialmente è vuota.
 E' obiettivo di una fase di Inspection la ricerca mirata di errori, aumentando l'efficienza della Verifica e riducendo i costi in termini di tempo e risorse.
+Durante l'utilizzo della tecnica di Walkthrough la lista verrà aggiornata; la lista risultante è in appendice delle Norme di Progetto.
 
 \subsection{Analisi dinamica}
 \label{3.2}
@@ -398,33 +406,6 @@ Non avendo previsto degli intervalli di tempo libero tra un'attività e la succe
 Questa è stata una mancanza da parte del team, che vedrà di migliorarsi nelle prossime fasi e di adottare una tattica di pianificazione più flessibile.
 I costi aggiuntivi sono comunque in linea con i nostri obiettivi.
 
-
-\subsection{Documenti}
-\label{6.2}
-Di seguito vengono riportati gli indici di Gulpease calcolati per i vari documenti durante la fase di Analisi. L'esito di ciascun documento sarà superato o bocciato in base all'indice di Gulpease stabilito nel paragrafo 4.1.1.
-
-\begin{longtable}{|c|p{3cm}|p{3cm}|}
-\toprule
-\textbf{Documento} & \textbf{Valore indice} & \textbf{Esito} \\
-
-%aggiungere qui una midrule per aggiungere una nuova riga alla tabella
-
-\midrule
-\emph{Studio Fattibilità v1.2.0} & 46 & Sufficiente\\
-\midrule
-\emph{Analisi dei Requisiti v1.2.0} & 52& Superato\\
-\midrule
-\emph{Glossario v1.2.0} & 46 & Sufficiente\\
-\midrule
-\emph{Norme di Progetto v1.2.0} & 52 & Superato\\
-\midrule
-\emph{Piano di Progetto v1.2.0} & 50 & Superato\\
-\midrule
-\emph{Piano di Qualifica v1.2.0} & 47 & Sufficiente\\
-\bottomrule
-\caption{Esiti dell'indice di Gulpease calcolato sui documenti durante l'Analisi}
-\label{tab:changelog}
-\end{longtable}
 
 
 
