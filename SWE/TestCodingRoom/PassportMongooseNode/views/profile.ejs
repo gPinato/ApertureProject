@@ -1,0 +1,97 @@
+<!-- views/profile.ejs -->
+<!doctype html>
+
+<!-- ASSIGN OUR ANGULAR MODULE -->
+<html ng-app="MaaP">
+<head>
+	<!-- META -->
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1"><!-- Optimize mobile viewport -->
+
+	<title>MaaP test</title>
+
+	<!-- SCROLLS -->
+	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css"><!-- load bootstrap -->
+	<style>
+		html 					{ overflow-y:scroll; }
+		body 					{ padding-top:50px; }
+		#doc-list 				{ margin-bottom:30px; }
+		#doc-form 	 			{ margin-bottom:50px; }
+	</style>
+
+	<!-- SPELLS -->
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script><!-- load jquery -->
+	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.0.8/angular.min.js"></script><!-- load angular -->
+	<script src="/controller/core.js"></script>
+
+</head>
+<!-- SET THE CONTROLLER AND GET ALL TODOS WITH INITIALIZE FUNCTION -->
+<body>
+	<div class="container" ng-controller="mainController">
+
+		<!-- HEADER AND TODO COUNT -->
+		<div>
+			<h1>Documents presenti <span class="label label-info">{{ collection.length }}</span></h1>
+		</div>
+
+		<!-- TODO LIST -->
+		<div id="doc-list" class="row">
+			<div class="col-sm-4 col-sm-offset-4">
+
+				<!-- LOOP OVER THE DOCS IN $scope.documents -->
+				<div class="checkbox" ng-repeat="document in collection"
+					<label>
+						<input type="checkbox" ng-click="deleteDoc(document._id)"> {{ document.nome }} , {{ document.info }}
+					</label>
+				</div>
+
+			</div>
+		</div>
+
+		<!-- FORM TO CREATE DOCUMENTS -->
+		<div id="doc-form" class="row">
+			<div class="col-sm-8 col-sm-offset-2 text-center">
+				<form>
+					<div class="form-group">
+
+						<!-- BIND THIS VALUE TO formData.text IN ANGULAR -->
+						<input type="text" class="form-control input-lg text-center" placeholder="Aggiungi Documents" ng-model="formData.text">
+					</div>
+
+					<!-- createToDo() WILL CREATE NEW Documents -->
+					<button type="submit" class="btn btn-primary btn-lg" ng-click="createDoc()">Aggiungi</button>
+				</form>
+			</div>
+		</div>
+	</div>
+	
+	<div class="container" ng-controller="secondController">
+		<button type="submit" class="btn btn-primary btn-lg" ng-click="testButton()">TEST ME! {{campoTest[1].nome}}</button>
+		<p>{{campoTest}}</p>
+	</div>
+	
+	
+	<div class="page-header text-center">
+		<a href="/logout" class="btn btn-default btn-sm">Logout</a>
+	</div>
+
+	<div class="row">
+
+		<!-- LOCAL INFORMATION -->
+		<div class="col-sm-6">
+			<div class="well">
+				<h3><span class="fa fa-user"></span>Utente:</h3>
+
+					<p>
+						<strong>id</strong>: <%= user._id %><br>
+						<strong>email</strong>: <%= user.local.email %><br>
+						<strong>password</strong>: <%= user.local.password %>
+					</p>
+
+			</div>
+		</div>
+
+	</div>
+
+</body>
+</html>
