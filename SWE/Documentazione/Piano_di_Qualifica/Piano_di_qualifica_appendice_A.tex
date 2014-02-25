@@ -2,15 +2,16 @@
 \appendix
 \section{Standard di qualità} %A.0
 
-\subsection{ISO/IEC 15504} %A.1
-ISO/IEC 15504, anche conosciuto come SPICE(Software Process Improvement and Capability Determination, ovvero miglioramento di processi software e determinazione di capacità) è un insieme di documenti e di standard tecnici per lo sviluppo software.
+\subsection{Standard ISO/IEC 15504} %A.1
+Lo standard ISO/IEC 15504, anche conosciuto come SPICE(Software Process Improvement and Capability Determination, ovvero miglioramento di processi software e determinazione di capacità) è un insieme di documenti e di standard tecnici per lo sviluppo software.
 Questo documento viene utilizzato nel perseguimento della qualità di processo in quanto stabilisce una struttura per la definizione degli obiettivi per il miglioramento dei processi stessi.
-Lo standard dichiara che ogni processo deve essere sottoposto ad un controllo continuo, ripetibile e quantificabile al fine di individuare i punti critici e misurare i miglioramenti.
+Lo standard dichiara che ogni processo deve essere sottoposto ad un controllo continuo, ripetibile e quantificabile, al fine di individuare i punti critici che impediscono di raggiungere gli obiettivi prefissati, e misurare i miglioramenti.
 
 \immagine{SPY}{Software Process Assessment and Improvement}
 
 Secondo SPICE, un processo può essere classificato in base al suo livello di maturità, in una \gloss{scala} da 1 a 6, con annessi i livelli di capacità ad ogni livello:
-\begin{itemize}
+\begin{enumerate}
+\setcounter{enumi}{0}
 \item \grassetto{Incomplete:} i risultati del processo non esistono o non sono appropriati;
 \item \grassetto{Performed:} si ottengono dei risultati, ma in un modo non specificato o non prevedibile;
 \begin{itemize}
@@ -36,7 +37,7 @@ Secondo SPICE, un processo può essere classificato in base al suo livello di ma
 \item \emph{Process Innovation}: capacità di gestione di eventuali cambiamenti nel prodotto in modo controllato ed efficace;
 \item \emph{Continuous Optimization}: capacità di identificare e applicare modifiche atte al miglioramento dei processi aziendali.
 \end{itemize}
-\end{itemize}
+\end{enumerate}
 Per finire, lo standard definisce 4 stadi di misurazione degli attributi di un processo, suddivisi in:
 \begin{itemize}
 \item \grassetto{N}, non adeguato o non posseduto;
@@ -45,9 +46,31 @@ Per finire, lo standard definisce 4 stadi di misurazione degli attributi di un p
 \item \grassetto{F}, completamente posseduto.
 \end{itemize}
 
-\subsection{ISO/IEC 9126} %A.2
+\subsection{Ciclo di Deming (ciclo PDCA)} %A.3
 
-Con la sigla ISO/IEC 9126 si individua una serie di normative e linee guida, sviluppate dall'\gloss{ISO} (Organizzazione internazionale per la normazione) in collaborazione con l'\gloss{IEC} (Commissione Elettrotecnica Internazionale), preposte a descrivere un modello di qualità del software. Il modello propone un approccio alla qualità in modo tale che le società di software possano migliorare l'organizzazione e i processi e, quindi come conseguenza concreta, la qualità del prodotto sviluppato.
+Il ciclo di Deming o Deming Cycle (ciclo di PDCA - plan–do–check–act) è un modello studiato per il miglioramento continuo della qualità in un'ottica a lungo raggio. Serve per promuovere una cultura della qualità che è tesa al miglioramento continuo dei processi e all'utilizzo ottimale delle risorse. Questo strumento parte dall'assunto che per il raggiungimento del massimo della qualità sia necessaria la costante interazione tra ricerca, progettazione, test, produzione e vendita. Per migliorare la qualità e soddisfare il cliente, le quattro fasi devono ruotare costantemente, tenendo come criterio principale la qualità.
+La sequenza logica dei quattro punti ripetuti per un miglioramento continuo è la seguente:
+\begin{itemize}
+\item \grassetto{P} - Plan. Pianificazione.
+\item \grassetto{D} - Do. Esecuzione del programma, dapprima in contesti circoscritti.
+\item \grassetto{C} - Check. Test e controllo, studio e raccolta dei risultati e dei riscontri.
+\item \grassetto{A} - Act. Azione per rendere definitivo e/o migliorare il processo.
+\end{itemize}
+
+\immagine{PDCA}{Ciclo PDCA}
+
+\subsection{Standard ISO/IEC 9126} %A.2
+
+Con la sigla ISO/IEC 9126 si individua una serie di normative e linee guida, sviluppate dall'\gloss{ISO} (Organizzazione internazionale per la normazione) in collaborazione con l'\gloss{IEC} (Commissione Elettrotecnica Internazionale), preposte a descrivere un modello di qualità del software. Il modello propone un approccio alla qualità in modo tale che le società di software possano migliorare l'organizzazione e i processi e, quindi come conseguenza concreta, la qualità del prodotto sviluppato. Ci sono 3 tipi di qualità:
+\begin{itemize}
+\item \grassetto{Qualità in uso:} le metriche in uso, specificate nella norma ISO/IEC 9126-1, misurano la qualità del prodotto software dal punto di vista dell'utilizzatore, che le usa internamente ad uno specifico sistema e contesto.
+\end{itemize}
+\begin{itemize}
+\item \grassetto{Qualità esterna:} le metriche esterne, specificate nella norma ISO/IEC 9126-2, misurano i comportamenti del software sulla base dei test, dall'operatività e dall'osservazione durante la sua esecuzione, in funzione degli obiettivi stabiliti in un contesto tecnico rilevante o di \gloss{business}.
+\end{itemize}
+\begin{itemize}
+\item \grassetto{Qualità interna:} la qualità interna, più precisamente la metrica interna, è specificata nella norma ISO/IEC 9126-3 e si applica al software non eseguibile (ad esempio il codice sorgente) durante le fasi di Progettazione e Codifica. Le misure effettuate permettono di prevedere il livello di qualità esterna ed in uso del prodotto finale, poiché gli attributi interni influiscono su quelli esterni e quelli in uso. Le metriche interne permettono di individuare eventuali problemi che potrebbero influire sulla qualità finale del prodotto prima che sia realizzato il software eseguibile. Esistono metriche che possono simulare il comportamento del prodotto finale tramite simulazioni.
+\end{itemize}
 
 \immagine{ISOIEC}{Modello di qualità ISO/IEC 9126}
 
@@ -100,23 +123,6 @@ Le caratteristiche che un prodotto deve avere sono le seguenti:
 \end{itemize}
 \end{itemize}
 
-\subsubsection{Qualità esterne} %A.2.1
 
-Le metriche esterne, specificate nella norma ISO/IEC 9126-2, misurano i comportamenti del software sulla base dei test, dall'operatività e dall'osservazione durante la sua esecuzione, in funzione degli obiettivi stabiliti in un contesto tecnico rilevante o di \gloss{business}.
 
-\subsubsection{Qualità interne} %A.2.2
 
-La qualità interna, più precisamente la metrica interna, è specificata nella norma ISO/IEC 9126-3 e si applica al software non eseguibile (ad esempio il codice sorgente) durante le fasi di Progettazione e Codifica. Le misure effettuate permettono di prevedere il livello di qualità esterna ed in uso del prodotto finale, poiché gli attributi interni influiscono su quelli esterni e quelli in uso. Le metriche interne permettono di individuare eventuali problemi che potrebbero influire sulla qualità finale del prodotto prima che sia realizzato il software eseguibile. Esistono metriche che possono simulare il comportamento del prodotto finale tramite simulazioni.
-
-\subsection{Ciclo di Deming (ciclo PDCA)} %A.3
-
-Il ciclo di Deming o Deming Cycle (ciclo di PDCA - plan–do–check–act) è un modello studiato per il miglioramento continuo della qualità in un'ottica a lungo raggio. Serve per promuovere una cultura della qualità che è tesa al miglioramento continuo dei processi e all'utilizzo ottimale delle risorse. Questo strumento parte dall'assunto che per il raggiungimento del massimo della qualità sia necessaria la costante interazione tra ricerca, progettazione, test, produzione e vendita. Per migliorare la qualità e soddisfare il cliente, le quattro fasi devono ruotare costantemente, tenendo come criterio principale la qualità.
-La sequenza logica dei quattro punti ripetuti per un miglioramento continuo è la seguente:
-\begin{itemize}
-\item \grassetto{P} - Plan. Pianificazione.
-\item \grassetto{D} - Do. Esecuzione del programma, dapprima in contesti circoscritti.
-\item \grassetto{C} - Check. Test e controllo, studio e raccolta dei risultati e dei riscontri.
-\item \grassetto{A} - Act. Azione per rendere definitivo e/o migliorare il processo.
-\end{itemize}
-
-\immagine{PDCA}{Ciclo PDCA}
