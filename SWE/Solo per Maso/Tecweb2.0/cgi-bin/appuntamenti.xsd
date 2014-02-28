@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+    xmlns="http://tecnologie-web.studenti.math.unipd.it/tecweb/~gpinato"
+    targetNamespace="http://tecnologie-web.studenti.math.unipd.it/tecweb/~gpinato"
+    elementFormDefault="qualified">
+
+<xs:element name="lista">
+	<xs:complexType>
+		<xs:sequence>
+			<xs:element name="appuntamento" minOccurs="0" maxOccurs="unbounded">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="numero">
+							<xs:simpleType>
+								<xs:restriction base="xs:integer">
+									<xs:maxExclusive value="32"/>
+								</xs:restriction>
+							</xs:simpleType>
+						</xs:element>
+						<xs:element name="nmese">
+							<xs:simpleType>
+								<xs:restriction base="xs:integer">
+									<xs:maxExclusive value="13"/>
+								</xs:restriction>
+							</xs:simpleType>
+						</xs:element>
+						<xs:element name="anno" type="xs:integer" />
+						<xs:element name="utente" type="xs:string" />
+						<xs:element name="nota" minOccurs="0" type="xs:string" />
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+</xs:element>
+
+</xs:schema>

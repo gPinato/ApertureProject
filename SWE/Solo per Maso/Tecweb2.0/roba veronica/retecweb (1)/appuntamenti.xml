@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="appuntamenti.xsl"?>
+<lista xmlns="http://tecnologie-web.studenti.math.unipd.it/tecweb/~gpinato" 
+	xmlns:xs="http://www.w3.org/2001/XMLSchema-instance" 
+	xs:schemaLocation="http://tecnologie-web.studenti.math.unipd.it/tecweb/~gpinato appuntamenti.xsd">
+
+	<appuntamento>
+		<numero>10</numero>
+		<nmese>11</nmese>
+		<giorno>Sunday</giorno>
+		<mese>November</mese>
+		<anno>2013</anno>
+		<utente>Ciop</utente>
+		<nota>ojhggft</nota>
+	</appuntamento>
+
+	<appuntamento>
+		<numero>4</numero>
+		<nmese>11</nmese>
+		<giorno>Monday</giorno>
+		<mese>November</mese>
+		<anno>2013</anno>
+		<utente>Pippo</utente>
+		<nota>ojhggft</nota>
+	</appuntamento>
+
+	<appuntamento>
+		<numero>6</numero>
+		<nmese>11</nmese>
+		<giorno>Wednesday</giorno>
+		<mese>November</mese>
+		<anno>2013</anno>
+		<utente>Paperino</utente>
+		<nota>iyugu oiu</nota>
+	</appuntamento>
+
+
+	<appuntamento>
+		<numero>12</numero>
+		<nmese>11</nmese>
+		<giorno>Tuesday</giorno>
+		<mese>November</mese>
+		<anno>2013</anno>
+		<utente>Willy</utente>
+		<nota>yuu yui</nota>
+	</appuntamento>
+
+
+	<appuntamento>
+		<numero>13</numero>
+		<nmese>11</nmese>
+		<giorno>Wednesday</giorno>
+		<mese>November</mese>
+		<anno>2013</anno>
+		<utente>Silvestro</utente>
+		<nota>ojhggft</nota>
+	</appuntamento>
+
+	<appuntamento>
+		<numero>21</numero>
+		<nmese>11</nmese>
+		<giorno>Thursday</giorno>
+		<mese>November</mese>
+		<anno>2013</anno>
+		<utente>Minnie</utente>
+		<nota>ah ah ah</nota>
+	</appuntamento>
+
+	<appuntamento>
+		<numero>2</numero>
+		<nmese>12</nmese>
+		<giorno>Monday</giorno>
+		<mese>December</mese>
+		<anno>2013</anno>
+		<utente>Pippo</utente>
+		<nota>ah ah ah</nota>
+	</appuntamento>
+
+</lista>

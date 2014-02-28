@@ -1,0 +1,286 @@
+﻿html, body{
+    margin: 0;
+    padding: 0;
+    font-family: 'Roboto', Arial, Verdana, Helvetica, sans-serif;
+    height: 100%;
+    font-size: 0.75em;/* 12px/16px*/
+    background-size: 100%;
+    color: #033;
+	 overflow-y: auto;
+
+     background: url('immagini/cieloazzurro.jpg') no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+h2{
+  font-size: 1em;
+  margin-left: 3.5%;
+  margin-bottom: 1%;
+}
+
+h1{
+  font-size: 1.5em;
+  text-align: center;
+  margin-top: 0;
+}
+
+a{color: #033; text-decoration: none;}
+
+a:hover{font-weight: bold; font-size:150%; text-decoration: underline;}
+a:visited{color:purple;}
+
+table{
+      border: solid 2px;
+	  text-align: center;
+}	  
+
+caption{
+     font-size: 2em;
+}
+#header{
+  width: 20%;
+  min-height: 92%;
+  height: 92%;
+  background-color: rgba(255, 255, 255, 0.5);
+  float: left;
+  margin: 2%;
+  position:fixed;
+}
+
+#tabella{
+   margin-left:40%;
+   margin-top:20%
+}   
+
+#header p{
+  margin-left: 5%;
+  bottom: 0;
+  position: relative;
+  font-size: 1.2em;
+}
+
+#header img {
+  width: 100%;
+}
+
+#nav{ 
+  list-style: none;
+  line-height: 200%;
+  font-size: 1.6em;
+  margin-left: 5%;
+}
+
+#nav li{margin-left: -40px;}
+
+#content{
+
+  width: 73%;
+  min-height: 92%;
+  /*height: 92%;*/
+  float: right;
+  margin: 2% 2% 2% 0;
+  font-size: 1.4em;
+  background-color: rgba(255, 255, 255, 0.5);
+  /*border-radius:0.4em;
+  -moz-border-radius:0.4em;
+  -webkit-border-radius:0.4em; 
+  */
+ 
+  text-align: justify;
+}
+
+
+#content p{ 
+  background-color: rgba(255, 255, 255, 0.7);
+  /*border:solid 1px #033;
+  border-radius:0.4em;*/
+  padding: 1.3%;
+}
+
+.news {
+  margin: 0 2% 3% 2%;
+}
+.servizio {
+  margin: 4% 2% 3% 2%;
+}
+
+.corrente {font-weight: bold;}
+
+#esperienza{padding: 2%;}
+
+#colonna1{
+  width: 28%;
+  float: left;
+  margin: 2.5% 0 2.5% 2.5%;
+  height: 92%;
+}
+
+#colonne2e3{
+  float:right; 
+  width: 64.5%;
+  margin-top: 2.5%;
+  margin-right: 2.5%;
+  height: 92%;
+}
+#colonna2{
+  width: 48%;
+  float: left;
+  margin: 0;
+  height: 100%;
+}
+
+#colonna3{
+  width: 48%;
+  float: right;
+  margin: 0;
+  height: 100%;
+}
+
+#pylons{
+width:100%;
+}
+
+#formcommento{
+  background-color: #fff;
+  margin: 0 auto;
+  width: 30%;
+  padding:3%;
+}
+
+#formcommento input{width: 95%;}
+
+#formcommento label {}
+#formcommento textarea {resize: none; width: 95%;}
+
+.hide{display: none;}
+
+#chiudi, #pulsante {text-decoration: underline;}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@media screen and (max-width: 1000px) and (orientation: portrait){
+html, body{ background-image: none; background-color: #368;}
+
+#header{
+  width: 96%;
+  float: none;
+  background-color: rgba(255, 255, 255, 0.9);
+  height: auto;
+  min-height: 21%;
+}
+
+#header p{
+  float: right;
+  text-align: right;
+  margin: 3% 3% 0 0;
+}
+
+#header img{width: 55%; float: left;}
+
+#nav{
+  position: absolute; 
+  margin-top:17%;
+  margin-left: 0;
+  line-height: 130%;
+  text-align: center;
+  padding:0;
+  width: 96%;
+}
+
+#nav li {display: inline;
+margin-left: 0;
+margin-right: 3%;
+}
+
+
+
+#content{
+  background-color: rgba(255, 255, 255, 0.9);
+  width: 96%;
+  min-height: 92%;
+  float: none;
+  margin: 2%;
+  height: auto;
+}
+
+#content p{
+  background-color: transparent;
+}
+
+#colonna1{
+  width: 95%;
+  float: none;
+  height: auto;
+}
+
+#colonne2e3{
+  float: none; 
+  width: 100%;
+  margin-top: 2.5%;
+  margin-right: 2.5%;
+  height: auto;
+}
+#colonna2{
+  width: 100%;
+  float: none;
+  margin: 0;
+  height: auto;
+}
+
+#colonna3{
+  display:none;
+}
+
+#formcommento{
+  width: 80%;
+}
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+@media screen and (max-width: 430px) and (orientation: portrait){
+
+#header img{width: 90%; float: none; padding: 5%;}
+
+#nav {margin-top: 0; position: relative; width: 100%;}
+
+#header p{
+  float: none;
+  text-align: center;
+  margin: 3%;
+  padding-bottom: 3%;
+}
+
+
+}

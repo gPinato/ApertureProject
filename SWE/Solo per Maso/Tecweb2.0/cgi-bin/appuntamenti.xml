@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="appuntamenti.xsl"?>
+<lista xmlns="http://tecnologie-web.studenti.math.unipd.it/tecweb/~gpinato" xmlns:xs="http://www.w3.org/2001/XMLSchema-instance" schemaLocation="http://tecnologie-web.studenti.math.unipd.it/tecweb/~gpinato appuntamenti.xsd">
+
+	<appuntamento>
+		<numero>24</numero>
+		<nmese>1</nmese>
+		<anno>2014</anno>
+		<utente>Ciop</utente>
+		<nota>ojhggft</nota>
+	</appuntamento>
+	
+	<appuntamento>
+		<numero>30</numero>
+		<nmese>1</nmese>
+		<anno>2014</anno>
+		<utente>Ciop</utente>
+		<nota>ojhggft</nota>
+	</appuntamento>
+	
+	<appuntamento>
+		<numero>10</numero>
+		<nmese>2</nmese>
+		<anno>2014</anno>
+		<utente>Ciop</utente>
+		<nota>ojhggft</nota>
+	</appuntamento>
+	
+
+
+
+<appuntamento>
+               <numero>2</numero>
+               <nmese>2</nmese>
+               <anno>2014</anno>
+               <utente>maso</utente>
+               <nota>ojhggft</nota>
+               </appuntamento><appuntamento>
+               <numero>20</numero>
+               <nmese>2</nmese>
+               
+               <anno>2014</anno>
+               <utente>jack</utente>
+               
+               </appuntamento><appuntamento>
+               <numero>21</numero>
+               <nmese>2</nmese>
+               
+               <anno>2014</anno>
+               <utente>jack</utente>
+               
+               </appuntamento></lista>
