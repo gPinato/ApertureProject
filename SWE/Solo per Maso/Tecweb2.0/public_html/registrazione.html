@@ -28,11 +28,13 @@
 
 	<div id="content">
 	
-		<form action="cgi-bin/login.cgi" method="post"> 
+		<form action="cgi-bin/adduser.cgi" method="post"> 
 		
 		<fieldset>
 
-			<legend  lang="en">Insert UserID and Password</legend>
+			<legend  lang="en">Inserisci email, username e password</legend>
+			
+			<label lang="en" >Email</label> <input type="text" id="email" name="email" /><br/>
 
 			<label lang="en" >Username</label> <input type="text" id="username" name="username" /><br/>
 
@@ -48,8 +50,6 @@
 			<input type="submit" value="Invia" name="action"/>
 
 			<input type="reset" value="Cancella"/>
-			
-			<button type="button"><a href="registrazione.html">Oppure registrati!</a></button>
 
 		</p>
 		</form>	

@@ -17,12 +17,13 @@ require utilities;
 
 my $cgi=new CGI;
 my $found="false";
-# my $user=encode_entities($cgi->param('user'));
-# my $pass=encode_entities($cgi->param('pass'));
-# my $email=encode_entities($cgi->param('email'));
-my $digestuser = sha1_hex($cgi->param('user'));
-my $digestpass = sha1_hex($cgi->param('pass'));
+
+
+my $digestuser = sha1_hex($cgi->param('username'));
+my $digestpass = sha1_hex($cgi->param('password'));
 my $digestmail = sha1_hex($cgi->param('email'));
+
+
 
 
 my $file='user.xml';

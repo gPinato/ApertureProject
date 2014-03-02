@@ -17,8 +17,8 @@ my $cgi = new CGI;
 
 my $user = $cgi->param('username');
 my $pass = $cgi->param('password');
-my $digestuser =  sha1_hex("admin");
-my $digestpass =  sha1_hex("admin");
+my $digestuser =  sha1_hex($user);
+my $digestpass =  sha1_hex($pass);
 
 
 my $session;
@@ -47,7 +47,7 @@ for my $u ($xpc->findnodes('xs:userlist/xs:user', $doc)) {
 						$session->param("username", $user);
 						$session->expire("+10m");
 						if( $user eq "admin"){print $session->header(-location=>'admin.cgi');}
-						print $session->header(-location=>'menu.cgi');
+						else {print $session->header(-location=>'menu.cgi');}
         }
         last
     }
