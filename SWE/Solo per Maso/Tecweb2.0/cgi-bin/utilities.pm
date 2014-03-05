@@ -77,7 +77,7 @@ my $xpc = 'XML::LibXML::XPathContext'->new;
 $xpc->registerNs('xs', 'http://tecnologie-web.studenti.math.unipd.it/tecweb/~gpinato');
 $doc->documentElement->setNamespace("http://tecnologie-web.studenti.math.unipd.it/tecweb/~gpinato","xs");
 
-print " verifico ".$day." ". $month." ". $year." ";
+#print " verifico ".$day." ". $month." ". $year." ";
 
 for my $u ($xpc->findnodes('xs:lista/xs:appuntamento', $doc)) {
 my ($numero) = $xpc->findnodes('xs:numero', $u);
@@ -86,11 +86,12 @@ my ($numero) = $xpc->findnodes('xs:numero', $u);
 	#my $mese=$u->findnodes('./xs:nmese')->get_node(1)->textContent(); 
     #my $anno=$u->findnodes('./xs:anno')->get_node(1)->textContent();
 	my ($anno) = $xpc->findnodes('xs:anno', $u);
-	print " ho fetchato ".$numero->textContent()." ".$mese->textContent()." ".$anno->textContent()." \n";
+	#print " ho fetchato ".$numero->textContent()." ".$mese->textContent()." ".$anno->textContent()." \n";
 	if ($numero->textContent()==$day && $mese->textContent()==$month && $anno->textContent()==$year){
-	print " return 1";return 1; last;}	
+	#print " return 1";
+	return 1; last;}	
 }
-print " return 0";
+#print " return 0";
 return 0;
 
 }

@@ -43,18 +43,30 @@ ENDO
 print $cgi->start_form(
         -name    => 'passchange',
         -method  => 'post',
-        -action => 'passchange.cgi',
+        -action => 'profilechange.cgi',
     );
-print $cgi->password(
+	
+print $cgi->hidden(
+         -name      => 'operation',
+		 -default   => "passchange",
+	);
+		
+print $cgi->password_field(
         -name      => 'pass1',
         -size      => 20,
         -maxlength => 30,
     );
     
-print $cgi->password(
+print $cgi->password_field(
         -name      => 'pass2',
         -size      => 20,
         -maxlength => 30,
+    );
+	
+  print $cgi->submit(
+        -name     => 'submit_form',
+        -value    => 'Conferma',
+        
     );
     
 print $cgi->end_form;
@@ -69,8 +81,13 @@ STE
 print $cgi->start_form(
         -name    => 'mailchange',
         -method  => 'post',
-        -action => 'mailchange.cgi',
+        -action => 'profilechange.cgi',
     );
+	
+print $cgi->hidden(
+         -name      => 'operation',
+		 -default   => "mailchange",
+	);
 print $cgi->textfield(
         -name      => 'mail1',
         -size      => 20,
@@ -82,7 +99,13 @@ print $cgi->textfield(
         -size      => 20,
         -maxlength => 30,
     );
-    
+	
+print $cgi->submit(
+        -name     => 'submit_form',
+        -value    => 'Conferma',
+        
+    );
+	
 print $cgi->end_form;
 
 print<<END;
@@ -91,7 +114,39 @@ print<<END;
 	<h1>Cancella account</h1>
 	
 END
+print $cgi->start_form(
+        -name    => 'accountdelete',
+        -method  => 'post',
+        -action => 'profilechange.cgi',
+    );
+	
+print $cgi->hidden(
+         -name      => 'operation',
+		 -default   => "delete",
+	);
+	
+print $cgi->password_field(
+        -name      => 'pass',
+        -size      => 20,
+        -maxlength => 30,
+    );
+	
+print $cgi->submit(
+        -name     => 'submit_form',
+        -value    => 'Conferma',
+        
+    );
+	
+print $cgi->end_form;
 #LINK FOR DESTRUCTION
+
+print<<END;
+</div><!--colonna3-->
+			
+		</div><!--colonne2e3-->
+    </div><!--content-->
+	
+END
 
 print $cgi->end_html; 
 }

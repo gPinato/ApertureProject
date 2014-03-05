@@ -11,34 +11,23 @@ use CGI::Session ( '-ip_match' );
 use Digest::SHA qw( sha1_hex);
 require utilities;
 
-# my $s = CGI::Session->load() or die CGI::Session->errstr();
-    # if ( $s->is_expired || $s->is_empty ) {
-	 # my $q = new CGI;
-	# print $s->header(-location=>'../riservata.html');
-  
-	
-	
-        # exit(0);
-    # }
-# else{
+my $s = CGI::Session->load() or die CGI::Session->errstr();
+    if ( $s->is_expired || $s->is_empty ) {
+	 my $q = new CGI;
+	print $s->header(-location=>'../riservata.html');
+   	
+        exit(0);
+    }
+else{
 
 
+if ($s->id() ne ''){
 
-#my $name = $s->param("username");
-# if ($s->id() ne '' ){
-
-
-# my $cgi = new CGI;
-
-# my $numero = $cgi->param('giorno');
-# my $mese = $cgi->param('mese');
-# my $anno = $cgi->param('anno');
-
-my $numero= '21';
-my $mese= '2';
-my $anno='2014';
-my $name="jack";
-
+my $cgi = new CGI;
+my $name = $s->param("username");
+my $numero = $cgi->param('giorno');
+my $mese = $cgi->param('mese');
+my $anno = $cgi->param('anno');
 
 my $occupato =utilities::verify($numero, $mese, $anno);
 if ($occupato==0){
@@ -64,44 +53,40 @@ open(OUT, ">$fileDati");
 print OUT $doc->toString;
 close(OUT);	
 
- #print $cgi->header;
+print $cgi->header;
  
 utilities::printmenu();
-
+print $cgi->h1("Prenotazione effettuata!");
 print<<EOF;
 		
 		<p>Prenotazione effettuata correttamente!</p>
 		<button type="button"><a href="calendar.cgi">Back</a></button>
     </div><!--content-->
 
-</body>
-</html>
 
 EOF
 }
 
 else{
+print $cgi->h1("Prenotazione non effettuata");
        print<<EOF;
 		
 		<p>Si e' verificato un errore durante la prenotazione, riprova.</p>
 		<button type="button"><a href="calendar.cgi">Back</a></button>
     </div><!--content-->
 
-</body>
-</html>
-
 EOF
                
                }
-#print $cgi->end_html; 		
+print $cgi->end_html; 		
 
 
-# }				
+}				
 	
 	
-# exit;
+exit;
   
   
-  # }
+  }
  
 
