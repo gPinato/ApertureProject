@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?xml-stylesheet type="text/xsl" href="appuntamenti.xsl"?>
-<lista xmlns="http://tecnologie-web.studenti.math.unipd.it/tecweb/~gpinato" xmlns:xs="http://www.w3.org/2001/XMLSchema-instance" schemaLocation="http://tecnologie-web.studenti.math.unipd.it/tecweb/~gpinato appuntamenti.xsd">
+<lista xmlns="http://tecnologie-web.studenti.math.unipd.it/tecweb/~gpinato" xmlns:xs="http://www.w3.org/2001/XMLSchema-instance" xs:schemaLocation="http://tecnologie-web.studenti.math.unipd.it/tecweb/~gpinato appuntamenti.xsd">
 
 	<appuntamento>
 		<numero>24</numero>
@@ -26,8 +26,6 @@
 		<nota>ojhggft</nota>
 	</appuntamento>
 	
-
-
 
 <appuntamento>
                <numero>2</numero>

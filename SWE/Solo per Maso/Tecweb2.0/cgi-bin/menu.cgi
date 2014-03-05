@@ -48,7 +48,7 @@ print<<ENDO;
 
 </div><!--colonna2-->
 <div id="colonna3">
-	<button type="button"><a href="panel.cgi">User Panel</a></button>
+	<button type="button"><a href="userpanel.cgi">User Panel</a></button>
 ENDO
 
 print $cgi->end_html; 
