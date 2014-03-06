@@ -614,11 +614,50 @@ Devono essere realizzati i seguenti diagrammi UML
 \label{}
 Ogni componente progettato deve essere riportato all'interno della Specifica Tecnica secondo lo schema definito nei formalismi di specifica, nel documento Specifica Tecnica. Il componente verrà modellato secondo la seguente struttura:
 \begin{itemize}
-\item \grassetto{Nome: }specifica il nome del componente;
+\item \grassetto{Nome: }specifica il nome del componente; ogni nome di ciascun componente deve essere scritto secondo la seguente notazione: E1::E2::E3::E4;la struttura è la seguente: 
+\begin{itemize}
+\item \grassetto{E1: }è il nome della componente generale, ovvero il namespace globale;
+\item \grassetto{E2: }è il sotto-componente di E1;
+\item \grassetto{E3: }è il sotto-componente di E2;
+\item \grassetto{E4: }è una singola unità la cui responsabilità è affidata ad un singolo programmatore.  
+\end{itemize}
 \item \grassetto{Descrizione: }descrive in maniera testuale la funzionalità del componente;
 \item \grassetto{Sotto-componenti}: specifica se il componente ha altri sotto-componenti;
+\item \grassetto{Interazioni con altri componenti: } specifica se il componente ha relazioni con altri componenti.
 \end{itemize}
 
+\paragraph{Definizione delle classi \\}
+\label{}
+Ogni classe progettata deve essere riportata all'interno della Specifica tecnica secondo lo schema definito nei formalismi di specifica, nel documento Specifica Tecnica. La classe verrà modellata secondo la seguente struttura:
+\begin{itemize}
+\item \grassetto{Nome: }specifica il nome della classe, in cui tra parantesi si mette se è astratta oppure no; ogni nome di ciascuna classe deve essere scritto secondo la seguente notazione: E1::E2::E3::E4::E5;la struttura è la seguente: 
+\begin{itemize}
+\item \grassetto{E1: }è il nome della componente generale, ovvero il namespace globale;
+\item \grassetto{E2: }è il sotto-componente di E1;
+\item \grassetto{E3: }è il sotto-componente di E2;
+\item \grassetto{E4: }è il sotto-componente di E3; 
+\item \grassetto{E5: }è il nome della classe.
+\end{itemize}
+\item \grassetto{Descrizione: }descrive in maniera testuale la funzionalità della classe;
+\item \grassetto{Utilizzo: }descrizione testuale di come viene utilizzata la classe;
+\item \grassetto{Utilizzo: }descrizione testuale di come viene utilizzata la classe;
+\item \grassetto{Classe da cui eredita (superclasse): }specifica se la classe eredita da altre classi; si usa la seguente notazione: E1::E2::E3::E4::E5; la struttura è così formata:
+	\begin{itemize}
+	\item \grassetto{E1: }è il nome del namespace globale;
+	\item \grassetto{E2: }package utilizzato;
+	\item \grassetto{E3 (eventuale): }componente generico del package E2;
+	\item \grassetto{E4 (eventuale): }componente generico del sotto-package E3;
+	\item \grassetto{E5: }nome della classe;
+	\end{itemize}
+\item \grassetto{Classi che ereditano (sottoclassi)}: specifica se la classe viene ereditata da altre classi; si usa la seguente notazione: E1::E2::E3::E4::E5; la struttura è così formata:
+	\begin{itemize}
+	\item \grassetto{E1: }è il nome del namespace globale;
+	\item \grassetto{E2: }package utilizzato;
+	\item \grassetto{E3 (eventuale): }componente generico del package E2;
+	\item \grassetto{E4 (eventuale): }componente generico del sotto-package E3;
+	\item \grassetto{E5: }nome della classe;
+	\end{itemize}
+\end{itemize}
 
 \paragraph{Design Pattern \\}
 \label{}
@@ -626,10 +665,26 @@ I Progettisti dovranno fornire una descrizione dei design pattern utilizzati per
 
 
 
-\paragraph{Tracciamento componenti \\}
+\paragraph{Tracciamento \\}
 \label{}
-
 Ogni requisito deve essere tracciato al componente che lo soddisfa, ed ogni componente deve essere tracciato al requisito che ha imposto la sua realizzazione.
+
+\subparagraph{Tracciamento requisiti-componenti \\}
+Di seguito verrà mostrata una tabella che rappresenta il tracciamento requisiti-componenti. \\
+La tabella avrà la seguente forma:
+\begin{itemize}
+\item \grassetto{Requisito: }specifica il requisito;
+\item \grassetto{Descrizione: }descrizione del requisito;
+\item \grassetto{Componenti: }specifica le componenti che soddisfano il requisito.
+\end{itemize}
+
+\subparagraph{Tracciamento componenti-requisiti \\}
+Di seguito verrà mostrata una tabella che rappresenta il tracciamento componenti-requisiti. \\
+La tabella avrà la seguente forma:
+\begin{itemize}
+\item \grassetto{Componenti: }specifica la componente;
+\item \grassetto{Requisiti: }specifica i requisiti che vengono soddisfatti dalla componente.
+\end{itemize}
 
 \subsubsection{Test}
 
@@ -639,7 +694,7 @@ I Progettisti dovranno definire dei test e delle classi atte a verificare il lav
 
 \paragraph{Test di Unità \\}
 \label{}
-I Progettisti dovranno definire i test d’unità necessari per verificare che i componenti del sistema funzionino nella modo previsto.
+I Progettisti dovranno definire i test d'unità necessari per verificare che i componenti del sistema funzionino nella modo previsto.
 
 \paragraph{Norme per il tracciamento dei test \\}
 Nel Piano di Qualifica il tracciamento verrà riportato in forma tabellare e suddiviso per tipologia del test.\\
@@ -693,7 +748,14 @@ Devono essere realizzati i seguenti diagrammi UML
 \label{}
 Ogni classe progettata deve essere riportata all'interno della Definizione di Prodotto secondo lo schema definito nei formalismi di specifica, nel documento Specifica Tecnica. La classe verrà modellata secondo la seguente struttura:
 \begin{itemize}
-\item \grassetto{Nome: }specifica il nome della classe, in cui tra parantesi si mette se è astratta oppure no;
+\item \grassetto{Nome: }specifica il nome della classe, in cui tra parantesi si mette se è astratta oppure no; ogni nome di ciascuna classe deve essere scritto secondo la seguente notazione: E1::E2::E3::E4::E5;la struttura è la seguente: 
+\begin{itemize}
+\item \grassetto{E1: }è il nome della componente generale, ovvero il namespace globale;
+\item \grassetto{E2: }è il sotto-componente di E1;
+\item \grassetto{E3: }è il sotto-componente di E2;
+\item \grassetto{E4: }è il sotto-componente di E3; 
+\item \grassetto{E5: }è il nome della classe.
+\end{itemize}
 \item \grassetto{Descrizione: }descrive in maniera testuale la funzionalità della classe;
 \item \grassetto{Classe da cui eredita (superclasse): }specifica se la classe eredita da altre classi; si usa la seguente notazione: E1::E2::E3::E4::E5; la struttura è così formata:
 	\begin{itemize}
@@ -834,7 +896,7 @@ Per una corretta verifica del documento è necessario seguire il seguente schema
 \item Verifica termini da glossario: Mediante uno script automatizzato vengono marcate tutte le prime occorrenze di un termine del glossario;
 \item Calcolo indice Gulpease: Su ogni documento va verificato che l'indice di Gulpease, calcolato con l'apposito script, sia entro i limiti stabiliti del PdQ. Nel caso non fosse così bisognerà effettuare walkthrough alla ricerca di frasi troppo lughe o complesse.
 \item Miglioramento del processo: Nell'effettuare i processi di verifica, i Verificatori dovranno raccogliere gli errori riscontrati piu frequentemente al fine di poter utilizzare piu efficacemente Inspection.
-\item Segnalazione errori: Alla fine del processo di verifica, i Verificatori devono creare un ticket per ogni errore da riparare, come specificato nella sezione 8.4.3.
+\item Segnalazione errori: Alla fine del processo di verifica, i Verificatori devono creare un ticket per ogni errore da riparare;
 \item Lista di controllo: il Verificatore è tenuto a usare la lista di controllo per la tecnica Inspection, al fine di rimuovere gli errori tipici che essa contiene; la lista è disponibile nell'appendice A di questo documento.
 \end{itemize}
 
@@ -842,52 +904,64 @@ Per una corretta verifica del documento è necessario seguire il seguente schema
 Il Verificatore dovrà anche controllare i diagrammi UML che sono stati prodotti, in particolare:
 \begin{itemize}
 \item \grassetto{Diagrammi dei casi d'uso:} il verificatore dovrà controllare che quanto scritto rispetti lo standard UML 2.0 e controllare che ciascun caso d'uso rispecchi quanto descritto dallo stesso
-\item \grassetto{Diagrammi delle classi (DA FINIRE):} il verificato dovrà controllare che progettazione e i diagrammi delle classi abbiamo corrispondenza tra di loro; inoltre dovrà controllare che quanto scritto rispetti lo standard UML 2.0.
+\item \grassetto{Diagrammi delle classi: } il verificato dovrà controllare che progettazione e i diagrammi delle classi abbiamo corrispondenza tra di loro; inoltre dovrà controllare che quanto scritto rispetti lo standard UML 2.0.
 \end{itemize}
 
 \subsubsection{Verifica dei processi}
-Un altro compito dei Verificatori è quello di calcolare, prima della fine di ogni milestone(ovvero consegna di revisione) prefissata, gli indicatori descritti nella sezione Metriche per i Processi del Piano di Qualifica. Per calcolare tali indici in modo automatico verrà utilizzato il software descritto nella sezione 6.2 di questo documento.
+Un altro compito dei Verificatori è quello di calcolare, prima della fine di ogni milestone (ovvero consegna di revisione) prefissata, gli indicatori descritti nella sezione Metriche per i Processi del Piano di Qualifica. Per calcolare tali indici in modo automatico verrà utilizzato il software descritto nella sezione 6.2 di questo documento.
 
 \subsubsection{Verifica della Progettazione}
 \label{}
 Ai Verificatori è richiesto il controllo della qualità della progettazione, sia generale che in dettaglio.
 È inoltre loro compito assicurarsi che i moduli del sistema abbiano dimensione e contenuto adatti ad essere realizzati da un singolo Programmatore.
 
-\subsubsection{Verifica della progettazione architetturale DA FINIRE}
+\subsubsection{Verifica della progettazione architetturale}
+Il Verificatore dovrà controllare che i valori delle metriche di accoppiamento efferente e afferente siano accettabili.
 
-\subsubsection{Verifica della progettazione di dettaglio DA FINIRE}
-È loro compito assicurarsi che i moduli del sistema abbiano dimensione e contenuto adatti ad essere realizzati da un singolo Programmatore.
+\subsubsection{Verifica della progettazione di dettaglio}
+Il Verificatore dovrà controllare il documento Definizione di Prodotto, il quale contiene l'architettura in dettaglio, per assicurarsi che i moduli del sistema abbiano dimensione e contenuto adatti ad essere realizzati da un singolo Programmatore.
+Ciascun modulo dovrà essere associato ad almeno un requisito; un altro compito del Verificatore è quello di controllare tale tracciamento.
 
-\subsubsection{Verifica del codice DA FINIRE}
-Il Verificatore dovrà utilizzare i test statici e dinamici per la verifica del codice. Per ciascuna categoria di test verranno utilizzati degli strumenti che il software Jenkins, descritto nella sezione 6.1.4 di questo documento, mette a disposizione:
+\subsubsection{Verifica del codice}
+Il Verificatore dovrà utilizzare i test statici e dinamici per la verifica del codice. Per ciascuna categoria di test verranno utilizzati degli strumenti che il software Jenkins, descritto nella sezione 6.1.4 di questo documento, mette a disposizione.
 \begin{itemize}
 \item \grassetto{Analisi statica: }
+\begin{itemize}
+\item \grassetto{Eclipse Metrics: }plug-in per Eclipse che calcola varie metriche del codice, descritte in sezione 2.9.3 del Piano di Qualifica
+\item \grassetto{JSHint: }software esterno che può essere aggiunto come plug-in a Jenkins o Eclipse
+\item \grassetto{Closure Compiler: }tool per ottimizzare codice JavaScript
+\end{itemize}
 \item \grassetto{Analisi dinamica: }
+\begin{itemize}
+\item \grassetto{QUnit: }framework per i test d'unità in JavaScript
+\item \grassetto{Jasmine: }framework per i test d'unità in JavaScript
+\item \grassetto{Karma: }plug-in per QUnit o per Jenkins, per il testing di AngularJS
+\item \grassetto{Protractor: }framework per testing di AngularJS
+\end{itemize}
 \end{itemize}
 
-\paragraph{Codifica \\}
+\paragraph{Documentazione del codice}
+
+\subparagraph{Codifica \\}
 \label{}
 Nella codifica ci si dovrà attenere alle seguenti convenzioni, al fine di garantire la maggior qualità di processo possibile.
 Gli sviluppatori dovranno attenersi alle comuni Coding Conventions, in particolare a quelle suggerite dal Prof. Crockford nel suo sito web.\footnote{http://javascript.crockford.com/code.html}\\
 
-\paragraph{Nomi \\}
+\subparagraph{Nomi \\}
 \label{}
 I nomi di classi, metodi, variabili e funzioni dovranno essere in camel case, le parole componenti separate da underscore e scritti in inglese.
 La prima lettera dovrà essere minuscola, fatta eccezione per le classi che inizieranno sempre con lettera maiuscola.
 
-\paragraph{Ricorsione \\}
+\subparagraph{Ricorsione \\}
 \label{}
 La ricorsione deve essere implementata solo in caso di vera necessità, altrimenti va evitata. Nel caso in cui venga implementata si dovrà fornire una prova di corretta terminazione e un calcolo approssimato delle risorse richieste per la corretta esecuzione.
 
-\paragraph{Concorrenza \\}
+\subparagraph{Concorrenza \\}
 \label{}
 
 La concorrenza dovrà essere per quanto possibile evitata. Nel caso questo non sia possibile si dovrà cercare di evitare la condivisione di risorse e serializzare il più possibile l'accesso alle risorse.
 
-\paragraph{Documentazione del codice \\}
-\label{5.3}
-
-\paragraph{Header dei file \\}
+\subparagraph{Header dei file \\}
 \label{5.3.1}
 Ogni file dovrà contenere un header strutturato come segue:
 \begin{itemize}
@@ -900,7 +974,7 @@ Ogni file dovrà contenere un header strutturato come segue:
 \item Modification History: Tabella dei cambiamenti effettuati sul file.
 \end{itemize}
 
-\paragraph{Documentazione dei metodi \\}
+\subparagraph{Documentazione dei metodi \\}
 \label{5.3.2}
 Ogni metodo/funzione di codice dovrà essere preceduta da un commento contenente le seguenti informazioni:
 \begin{itemize}
@@ -910,7 +984,7 @@ Ogni metodo/funzione di codice dovrà essere preceduta da un commento contenente
 \item Return: Cosa ritorna la funzione.
 \end{itemize}
 
-\paragraph{Documentazione delle classi \\}
+\subparagraph{Documentazione delle classi \\}
 \label{5.3.3}
 Ogni \gloss{classe} deve essere preceduta da un commento contenente le seguenti informazioni:
 \begin{itemize}
