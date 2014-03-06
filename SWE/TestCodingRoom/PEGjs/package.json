@@ -1,0 +1,10 @@
+﻿{
+  "name"         : "PEGjsToolKit",
+  "version"      : "0.0.1",
+  "description"  : "Toolkit di generazione parser per MaaP",
+  "main"         : "parserGenerator.js",
+  "author"       : "AjK",
+  "dependencies" : {
+   	"pegjs" : "latest"
+  }
+}
