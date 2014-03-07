@@ -172,7 +172,7 @@ print $cgi->end_form;
 print "</table>\n";
 }
 print<<END;
-<button type="button"><a href="logout.cgi">Logout</a></button>
+<button type="button"><a href="menu.cgi">Torna al menu'</a></button>
 			</div><!--colonna3-->
 			
 		</div><!--colonne2e3-->

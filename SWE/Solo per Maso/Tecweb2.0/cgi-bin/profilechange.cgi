@@ -14,12 +14,8 @@ require utilities;
 
 my $s = CGI::Session->load() or die CGI::Session->errstr();
     if ( $s->is_expired || $s->is_empty ) {
-	 my $q = new CGI;
 	print $s->header(-location=>'../riservata.html');
-  
-	
-	
-        exit(0);
+	exit(0);
     }
 else{
 
@@ -35,6 +31,7 @@ my $pass1 = $cgi->param('pass1'); #cambio password
 my $pass2 = $cgi->param('pass2');
 my $mail1 = $cgi->param('mail1'); #cambio mail
 my $mail2 = $cgi->param('mail2');
+my $userban = $cgi->param('ban');#ban utente
 
 my $digestuser = sha1_hex($name);
 
@@ -153,6 +150,40 @@ if ($operation eq "delete"){
 	else {$errore="Le password inserita non coincide"}
 }
 #fine delete
+
+if ($operation eq "ban" && $name eq 'admin' ){
+	
+	my $toban =  sha1_hex($userban);
+	my $tempmail;
+	my $u;
+		for $u ($xpc->findnodes('xs:userlist/xs:user', $doc)) {
+			
+			my ($property) = $xpc->findnodes('xs:username', $u);
+				if ($property->textContent eq $toban) {
+					
+					($property) = $xpc->findnodes('xs:email', $u);
+					$tempmail = $property->textContent;
+					my $childnode = $root->removeChild($u);
+					last
+				}
+		}
+		
+		
+		
+		my $frammento="<user>
+               <username>".$digestuser."</username>
+               <password>utentebannato</password>
+			   <email>".$tempmail."</email>
+				</user>";
+		my $nodo=$parser->parse_balanced_chunk($frammento)|| die("nodo non creato");
+		$root->appendChild($nodo);
+    		
+
+		open(OUT, ">$file");
+		print OUT $doc->toString;
+		close(OUT);
+}
+#fine ban utente
 
  print $cgi->header;
 

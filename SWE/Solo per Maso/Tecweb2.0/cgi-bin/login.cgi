@@ -58,7 +58,7 @@ utilities::printmenu();
 print<<EOF;
 
 		
-		<p>Login Failed, please try again</p>
+		<p>Login Failed, please <a href="../riservata.html">try again</a></p>
     </div><!--content-->
 
 </body>

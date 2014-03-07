@@ -138,12 +138,13 @@ print $cgi->submit(
     );
 	
 print $cgi->end_form;
-#LINK FOR DESTRUCTION
+
 
 print<<END;
 </div><!--colonna3-->
 			
 		</div><!--colonne2e3-->
+		<button type="button"><a href="menu.cgi">Torna al menu'</a></button>
     </div><!--content-->
 	
 END

@@ -107,7 +107,9 @@ print "<table border=2>\n";
 
 print "</table>\n";
 print<<ENDO;
+<button type="button"><a href="menu.cgi">Torna al menu'</a></button>
 	</div>
+	
 ENDO
 print $cgi->end_html; 
 

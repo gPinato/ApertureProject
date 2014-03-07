@@ -14,7 +14,6 @@ require utilities;
 
 my $s = CGI::Session->load() or die CGI::Session->errstr();
     if ( $s->is_expired || $s->is_empty ) {
-	 my $q = new CGI;
 	print $s->header(-location=>'../riservata.html');
    	
         exit(0);
@@ -49,6 +48,12 @@ print<<ENDO;
 </div><!--colonna2-->
 <div id="colonna3">
 	<button type="button"><a href="userpanel.cgi">User Panel</a></button>
+			</div><!--colonna3-->
+			
+		</div><!--colonne2e3-->
+			<button type="button"><a href="logout.cgi">Logout</a></button>
+
+    </div><!--content-->
 ENDO
 
 print $cgi->end_html; 
