@@ -11,6 +11,19 @@ use CGI::Session ( '-ip_match' );
 use Digest::SHA qw( sha1_hex);
 require utilities;
 
+sub toEnglish{
+	my $string=@_[0];
+	$string =~ s/è/e'/g;
+	$string =~ s/à/a'/g;
+	$string =~ s/ò/o'/g;
+	$string =~ s/ì/i'/g;
+	$string =~ s/ù/u'/g;
+	$string =~ s/é/e'/g;
+	
+	return $string;
+
+	}
+
 my $s = CGI::Session->load() or die CGI::Session->errstr();
     if ( $s->is_expired || $s->is_empty ) {
 	 my $q = new CGI;
@@ -20,7 +33,6 @@ my $s = CGI::Session->load() or die CGI::Session->errstr();
     }
 else{
 
-
 if ($s->id() ne ''){
 
 my $cgi = new CGI;
@@ -28,9 +40,18 @@ my $name = $s->param("username");
 my $numero = $cgi->param('giorno');
 my $mese = $cgi->param('mese');
 my $anno = $cgi->param('anno');
+my $nota = $cgi->param('nota');
+
+$nota=toEnglish($nota);
+$nota=encode_entities($nota);
 
 my $occupato =utilities::verify($numero, $mese, $anno);
 if ($occupato==0){
+
+if ($numero<10) {$numero="0".$numero;}
+if ($mese<10) {$mese="0".$mese;}
+# $nota=toEnglish($nota);
+# $nota=encode_entities($nota);
 my $fileDati="appuntamenti.xml";
 
 my $parser=XML::LibXML->new();
@@ -43,7 +64,7 @@ my $frammento="<appuntamento>
                
                <anno>".$anno."</anno>
                <utente>".$name."</utente>
-               
+			   <nota>".$nota."</nota>               
                </appuntamento>";
 my $nodo=$parser->parse_balanced_chunk($frammento)|| die("nodo non creato");
 $root->appendChild($nodo);
@@ -69,7 +90,7 @@ EOF
 
 else{
 print $cgi->h1("Prenotazione non effettuata");
-       print<<EOF;
+print<<EOF;
 		
 		<p>Si e' verificato un errore durante la prenotazione, riprova.</p>
 		<button type="button"><a href="calendar.cgi">Back</a></button>

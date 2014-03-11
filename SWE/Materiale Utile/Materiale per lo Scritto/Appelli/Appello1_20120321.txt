@@ -1,0 +1,15 @@
+INGEGNERIA - SCRITTO 21/03/2012
+
+Domanda 1 6pti
+Fissando l'attenzione sulla definizione di processo associata allo standard ISO/IEC 12270, indicare come (secondo quali regole), quando (in quali fasi di progetto) e perché (attraverso quali attività) la vostra esperienza di progetto didattico ha visto attuato tale concetto.
+
+Domanda 2 8pti
+Fornire una definizione di qualità, applicabile al dominio dell'ingegneria del software. Discutere concisamente quali attività il proprio gruppo di progetto didattico abbia svolto nella direzione di tale definizione e valutarne criticamente l'esito rilevato.
+
+Domanda 3 2pti
+Fornire una definizione di ciclo di vita Iterativo e ciclo di vita Incrementale. Descrivere quale dei due cicli è stato adottato all'interno del proprio progetto didattico e valutare se fose stato necessario utilizzarne un altro. (Quest'ultima domanda non era esattamente così ma il concetto era quanto ho descritto)
+
+
+
+Credits: Giacomo Ted Quadrio
+Author: Luca Sottani
