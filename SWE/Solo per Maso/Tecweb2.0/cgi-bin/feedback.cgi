@@ -61,6 +61,7 @@ my $xslt = XML::LibXSLT->new();
 
 
 print<<end;
+<div id="formcommento">
 <form action="addfeed.cgi" method="post">
 			    <fieldset>
                 <label>Nome:</label><br /><input type="text" title="nome" name="nome" tabindex="1" /><br />
@@ -69,7 +70,7 @@ print<<end;
 				<button type="submit">Submit!</button>
 				</fieldset>
             </form>
-			
+		</div>
 		</div>
 		</body>
 		</html>
