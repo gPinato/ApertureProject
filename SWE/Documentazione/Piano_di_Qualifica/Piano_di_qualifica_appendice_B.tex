@@ -6,9 +6,63 @@ Di seguito verrà mostrata una tabella che riporta tutti i test di sistema piani
 I test sono da intendere solo per requisiti ai quali è stato ragionevole associare un test.
 \subsubsection{Descrizione dei test di sistema}
 \begin{center}
-\begin{longtable}{|c|c|c|c|}
+\begin{longtable}{|c|p{0.5\linewidth}|c|c|}
 \toprule
 \textbf{Test} & \textbf{Descrizione} & \textbf{Requisito} & \textbf{Stato}\\
+\midrule
+TS1 & Viene verificato che il sistema MaaP generi correttamente lo scheletro necessario al funzionamento & ROF1 & D.E \\
+\midrule
+TS1.1 & Viene verificato che il sistema MaaP installi correttamente le librerie necessarie al funzionamento & ROF1.1 & D.E \\
+\midrule
+TS1.2 & Viene verificato che il sistema MaaP generi correttamente i file necessari al funzionamento & ROF1.2 & D.E \\
+\midrule
+TS1.3 & Viene verificato che il sistema MaaP generi correttamente le directory necessarie al funzionamento & ROF1.3 & D.E\\
+\midrule
+TS1.4 & Viene verificato che il sottosistema di autenticazione sia installato e configurato correttamente & ROF1.4 & D.E\\
+\midrule
+TS1.4.1.1 & Viene verificato che nel database degli utenti sia presente un profilo di amministrazione di default & ROF 1.4.1 & D.E\\
+\midrule
+TS4 & Viene verificato che il sistema crei correttamente le pagine web partendo dal loro file di descrizione & ROF 4.1 & D.E\\
+\midrule
+TS5.1 & Viene verificato che la funzione di registrazione possa essere correttamente abilitata/disabilitata & RDF5.1 & D.E\\
+\midrule
+TS5.4 & Viene verificato che il sistema possa correttamente cambiare database di analisi & ROF5.4 & D.E\\
+\midrule
+TS7 & Viene verificato che il sistema consenta all’utente registrato di potersi autenticare & ROF 7.0 & D.E\\
+\midrule
+TS8 & Viene verificato che il sistema consenta all’utente di potersi registrare & RDF 8.0 & D.E\\
+\midrule
+TS9 & Viene verificato che il sistema consenta all’utente di recuperare la password  & ROF 9.0 & D.E\\
+\midrule
+TS10 & Viene verificato che il sistema apra e visualizzi correttamente le Collection e le Collection-Index & ROF10 & D.E\\
+\midrule
+TS10.2 & Viene verificato che il sistema visualizzi correttamente le pagine di Document-Show & ROF10.1 & D.E\\
+\midrule
+TS10.2.4 & Viene verificato che il sistema disconnetta correttamente un utente alla sua richiesta & ROF10.2.4 & D.E\\
+\midrule
+TS10.3.1 & Viene verificato che le modifiche apportate al profilo di un utente business autenticato siano consistenti & ROF10.3.1 & D.E\\
+\midrule
+TS10.3.2 & Viene verificato che la creazione di un nuovo utente da parte di un utente business autenticato amministratore avvenga correttamente & ROF10.3.2 & D.E\\
+\midrule
+TS10.3.3 & Viene verificata la corretta cancellazione di un utente da parte di un utente business autenticato amministratore & ROF10.3.3 & D.E\\
+\midrule
+TS10.4 & Viene verificato che l'utente business autenticato amministratore possa modificare correttamente un Document & ROF10.4 & D.E\\
+\midrule
+TS10.5 & Viene verificato che l’utente business autenticato amministratore possa eliminare correttamente un Document & ROF10.5 & D.E\\
+\midrule
+TS10.6 & Viene verificata la corretta visualizzazione delle query più utilizzate & ROF10.6 & D.E\\
+\midrule
+TS10.7 & Viene verificata la corretta creazione degli indici di analisi & ROF10.7 & D.E\\
+\midrule
+TS17 & Viene verificato che le pagine web prodotte dal framework MaaP siano compatibili con la versione 30.0.x o superiore di Google Chrome & ROV17 & D.E\\
+\midrule
+TS18 & Viene verificato che le pagine web prodotte dal framework MaaP siano compatibili con la versione 24.x o superiore di Firefox & ROV18 & D.E\\
+\midrule
+TS19 & Viene verificato che il sistema accetti solo file di configurazione che validi & ROV19 & D.E\\
+\midrule
+TS26 & Viene verificato che il sistema di installazione del software funzioni correttamente & ROV26 & D.E\\
+\midrule
+TS27 & Viene verificato che il deployment su Heroku avvenga con successo & ROV27 & D.E\\
 %inserire i test
 \bottomrule
 \caption{Tabella per test di sistema}
@@ -19,9 +73,25 @@ I test sono da intendere solo per requisiti ai quali è stato ragionevole associ
 Di seguito verrà mostrata una tabella che riporta tutti i test d'integrazione pianificati, associati alle componenti descritte nella progettazione ad alto livello.\\
 \subsubsection{Descrizione dei test d'integrazione}
 \begin{center}
-\begin{longtable}{|c|c|c|c|}
+\begin{longtable}{|c|p{0.5\linewidth}|c|c|}
 \toprule
-\textbf{Test} & \textbf{Descrizione} & \textbf{Requisito} & \textbf{Stato}\\
+\textbf{Test} & \textbf{Descrizione} & \textbf{Componente} & \textbf{Stato}\\
+\midrule
+TI.MaaP & Test integrazione finale client-server & MaaP & D.E\\
+\midrule
+TI.Server & Test integrazione finale server & Server & D.E\\
+\midrule
+TI.Model & Test di funzionalità recupero e salvataggio dati & Server.Model & D.E\\
+\midrule
+TI.DSL & Verifica che le operazioni di elaborazione del DSL vengano eseguite correttamente /* interpretazione, caricamento roots, collections n shit*/ & DSL & D.E\\
+\midrule
+TI.Databases & Verifica che tutte le operazioni di recupero e scrittura dati e di creazione indici avvengano correttamente & Databases & D.E\\
+\midrule
+TI.DBAnalysis & Verifica che le operazioni di recupero e scrittura dati sul database di analisi avvengano correttamente & DBAnalysis & D.E\\
+\midrule
+TI.DBUser & Verifica che le operazioni di recupero e scrittura dati sul database utenti avvengano correttamente & DBUser & D.E\\
+\midrule
+TI.Client & Test integrazione finale client & Client & D.E\\
 %inserire i test
 \bottomrule
 \caption{Tabella per test d'integrazione}
