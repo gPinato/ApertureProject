@@ -84,9 +84,7 @@ Diario delle modifiche
 \label{1.0}
 \subsection{Scopo del documento}
 \label{1.1}
-Questo documento ha lo scopo di definire la progettazione ad alto livello del progetto \textbf{\Progetto{}}.\\
-Verrà presentata l'architettura generale secondo la quale saranno organizzate le varie 
-componenti software e saranno descritti i \gloss{Design Pattern} utilizzati.
+Il presente documento ha lo scopo di definire la progettazione ad alto livello del progetto \textbf{MaaP}, a partire dai requisiti individuati durante l'Analisi. Verrà presentata l'architettura generale secondo la quale saranno organizzate le varie componenti software, i \gloss{Design Pattern} e le tecnologie utilizzate per poi descrivere più dettagliatamente le varie componenti e relative dipendenze.
 
 \subsection{Scopo del prodotto}
 \label{1.2}
@@ -109,29 +107,116 @@ componenti software e saranno descritti i \gloss{Design Pattern} utilizzati.
 \subsubsection{Informativi}
 \label{1.4.2}
 \begin{itemize}
-\item Documentazione 1
-\item Documentazione 2
-\item Documentazione 3
+\item Learning Node: O'Reilly Shelley Powers
+\item AngularJS: O'Reilly Brad Green e Shyam Seshadri
+\item Software Engineering (8th edition), Ian Sommerville, Pearson Education | Addison-Wesley
+\item Design Patterns, E. Gamma, R. Helm, R. Johnson, J. Vlissides, Pearson Education | Addison-Wesley
+\item Dall'idea al codice con UML 2       L. Baresi, L. Lavazza, M. Pianciamore, Pearson Education
 \end{itemize}
 
 \newpage
 \section{Tecnologie utilizzate}
-In questa sezione vengono descritte le tecnologie su cui si basa lo sviluppo del progetto e la motivazione del loro utilizzo.
+In questa sezione verrano elencate e descritte le tecnologie che si utilizzeranno durante lo sviluppo del progetto.
+
 \subsection{MongoDB}
+Il database con il quale la nostra applicazione dovrà interagire è realizzato con MongoDB, come specificato nel capitolato. Questa tecnologia offre i seguenti vantaggi:
+\begin{itemize}
+\item Conoscenza: alcuni componenti del gruppo hanno già avuto esperienze passate con questa tecnologia;
+\item Novità: tecnologia nuova che si sta diffondendo nel mercato, nata per risolvere i problemi derivanti da database di tipo SQL.
+\end{itemize}
+
 \subsection{Javascript}
+Si è deciso di utilizzare questo linguaggio in quanto è stato fortemente consigliato nel capitolato, i vantaggi offerti sono:
+\begin{itemize}
+\item Interpretazione: il linguaggio viene interpretato e non compilato;
+\item Compatibilità: tramite questo linguaggio è possibile interagire con alcune tecnologie, quali MongoDB e NodeJS;
+\item Conoscenza: tutti i membri del gruppo hanno già lavorato con questa tecnologia;
+\item Esecuzione: il codice JavaScript viene eseguito sul client, e questo sollecita meno i server.
+\end{itemize}
+Ha inoltre i seguenti svantaggi:
+\begin{itemize}
+\item Script: gli script hanno capacità limitata, non si può operare sull'hardware solo con il linguaggio JavaScript;
+\item Visibilità: il codice è visibile e leggibile da chiunque.
+\end{itemize}
+
 \subsection{NodeJs}
+Si è deciso di utilizzare il linguaggio Node.js in quanto è stato richiesto nel capitolato, in oltre offre i seguenti vantaggi:
+\begin{itemize}
+\item Modello event-driven: ovvero "programmazione ad eventi", che si basa su un concetto semplice: si lancia un'azione quando accade qualcosa;
+\item Azioni: ogni azione è asincrona, e grazie a questa caratteristica durante le attese di una certa azione il runtime può gestire dell'altro. Questa tecnologia è utilizzata per realizzare la componente server.
+\end{itemize}
+
+\subsection{jQuery}
+Per migliorare e semplificare la scrittura di funzioni nel linguaggio JavaScript, si è deciso di adottare il framework jQuery. I vantaggi sono:
+\begin{itemize}
+\item Semplicità: l'utilizzo di jQuery semplifica e facilita la scrittura di codice JavaScript, inoltre offre plug-in on-line per fornire nuove funzionalità.
+\end{itemize}
+Svantaggi:
+\begin{itemize}
+\item Pericolosità: jQuery offre funzionalità e plug-in molto utili, ma non tutto è compatibile con i vari browser, inoltre alcune funzionalità possono essere vecchie, non aggiornate o scritte male.
+\end{itemize}
+
+\subsection{JSON}
+Rappresenta il tipo di messaggi con cui client e server si scambiano informazioni. I vantaggi offerti sono:
+\begin{itemize}
+\item Semplicità: i messaggi JSON sono più corti rispetto ad altri formati di interscambio, e vengono eseguiti più velocemente dal parser. JSON inoltre risulta più semplice e immediato rispetto ad esempio a XML.
+\end{itemize}
+Svantaggi:
+\begin{itemize}
+\item Restrittività: JSON è meno restrittivo rispetto ad XML, e questo può permettere di inserire errori nello scambio di messaggi.
+\end{itemize}
+
 \subsection{AngularJs}
+
+\subsection{Mongoose}
+
+\subsection{HTML5}
 
 \newpage
 \section{Descrizione architettura}
 \subsection{Metodo e formalismo di specifica}
+Si è deciso di procedere utilizzando un approccio top-down per l'esposizione          dell'architettura dell'applicazione, ovvero descrivendo inizialmente le componenti in generale per poi arrivare a trattarle al particolare.
+Si descriveranno i package e i componenti per poi dettagliare le singole classi, specificando per ciascuna di esse il tipo, l'obiettivo, la funzionalità e le relazioni in ingresso ed uscita. Poi si passerà ad illustrare degli esempi d'uso di Design Pattern (descritti approfonditamente nell'Appendice A) e le tecnologie utilizzate.
+
 \subsection{Architettura generale}
+L'architettura del framework segue un modello di architettura in stile three-tier che prevede la suddivisione dell'applicazione  in tre diversi strati dedicati rispettivamente all'interfaccia utente (Client), alla business logic (Controller) e alla gestione dei dati persistenti (Model). La parte Client segue il design pattern MVVM utilizzato da AngularJS ed è quindi suddivisa in Model, View, ViewModel.\\
+
+Il seguente diagramma rappresenta l'architettura ad alto livello del framework, indicando i package e le relazioni che intercorrono tra questi.
+
+...TODO aggiungere diagramma dell'installer CLI comprensivo di descrizione...
+
+\immagine{./Diagrammi/GeneralePackage}{MaaP, Diagramma generale package}
+...TODO aggiungere descrizione...
+
+\immagine{./Diagrammi/GeneraleClassi}{MaaP, Diagramma generale classi}
+...TODO aggiungere descrizione...
 
 \newpage
-\section{Componenti}
+\subsubsection{Model}
+\immagine{./Diagrammi/ModelClassi}{MaaP, Diagramma classi model}
+...TODO aggiungere descrizione...
+
+\subsubsection{Controller}
+\immagine{./Diagrammi/ControllerClassi}{MaaP, Diagramma classi controller}
+...TODO aggiungere descrizione...
+
+\subsubsection{Client}
+\immagine{./Diagrammi/ClientClassi}{MaaP, Diagramma classi client}
+...TODO aggiungere descrizione...
 
 \newpage
-\section{Classi}
+\section{Componenti e Classi}
+
+\subsection{MaaP}
+\subsubsection{Informazioni sul package}
+\immagine{./Diagrammi/ClientClassi}{Componente MaaP}
+\paragraph{Descrizione}
+
+\paragraph{Sottocomponenti}
+\begin{itemize}
+\item MaaP::bla1 bla1
+\item MaaP::bla2 bla2
+\end{itemize}
 
 \newpage
 \section{Diagrammi di attività}
