@@ -1,0 +1,23 @@
+GeneralePackage - OK
+GeneraleClassi - OK
+	ModelServerClassi - OK
+	ControllerClassi - OK
+	ClientClassi - OK
+ComponentiMaaP - OK
+	ComponentiModelServer - OK
+		ComponentiDataManager - OK
+			ComponentiDatabaseAnalysisManager - OK
+			ComponentiDatabaseUserManager - OK
+			ComponentiIndexManager - OK
+		ComponentiDatabase - OK
+		ComponentiDSL - OK
+	ComponentiController - OK
+	ComponentiClient - OK
+		ComponentiView - OK
+			ComponentiTemplate - OK
+		ComponentiControllerModelView - OK
+			ComponentiControllerClient - OK
+			ComponentiScope - OK
+		ComponentiModelClient - OK
+			ComponentiServices - OK
+			ComponentiModelClient - OK
