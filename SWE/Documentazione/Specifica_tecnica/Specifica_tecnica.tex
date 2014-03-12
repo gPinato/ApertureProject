@@ -60,11 +60,12 @@ Diario delle modifiche
 \midrule
 1.0.2 & 2014-02-xx & ... (AN) & bla bla\\
 \midrule
-1.0.1 & 2014-02-xx & ... (AN) & Creazione documento\\
+1.0.0 & 2014-01-24 & Giacomo Pinato (PR) & Prima stesura del documento\\
 
 \bottomrule
 \caption{Registro delle modifiche}
 \label{tab:changelog}
+
 \end{longtable}
 \end{center}
 
@@ -116,34 +117,28 @@ Il presente documento ha lo scopo di definire la progettazione ad alto livello d
 
 \newpage
 \section{Tecnologie utilizzate}
-In questa sezione verrano elencate e descritte le tecnologie che si utilizzeranno durante lo sviluppo del progetto.
+In questa sezione verrano elencate e descritte le tecnologie che si utilizzeranno durante lo sviluppo del progetto. In particolare la colonna portante del progetto sar\`{a} lo stack MEAN, ovvero MongoDB, Express, Angular e Node.js.
 
 \subsection{MongoDB}
 Il database con il quale la nostra applicazione dovrà interagire è realizzato con MongoDB, come specificato nel capitolato. Questa tecnologia offre i seguenti vantaggi:
 \begin{itemize}
-\item Conoscenza: alcuni componenti del gruppo hanno già avuto esperienze passate con questa tecnologia;
-\item Novità: tecnologia nuova che si sta diffondendo nel mercato, nata per risolvere i problemi derivanti da database di tipo SQL.
+\item Facile indicizzazione: Ogni campo in MongoDB puo' diventare un indice;
+\item Bilanciamento di carico: MongoDB scala orizzontalmente molto facilmente grazie all'utilizzo di shard;
+\item Integrazione con Javascript: Query o altre funzioni scritte in Javascript possono essere eseguite direttamente dal dabatase;
+
 \end{itemize}
 
 \subsection{Javascript}
-Si è deciso di utilizzare questo linguaggio in quanto è stato fortemente consigliato nel capitolato, i vantaggi offerti sono:
-\begin{itemize}
-\item Interpretazione: il linguaggio viene interpretato e non compilato;
-\item Compatibilità: tramite questo linguaggio è possibile interagire con alcune tecnologie, quali MongoDB e NodeJS;
-\item Conoscenza: tutti i membri del gruppo hanno già lavorato con questa tecnologia;
-\item Esecuzione: il codice JavaScript viene eseguito sul client, e questo sollecita meno i server.
-\end{itemize}
-Ha inoltre i seguenti svantaggi:
-\begin{itemize}
-\item Script: gli script hanno capacità limitata, non si può operare sull'hardware solo con il linguaggio JavaScript;
-\item Visibilità: il codice è visibile e leggibile da chiunque.
-\end{itemize}
+Si è deciso di utilizzare Javascript in quanto è il linguaggio su cui si basano tutte le altre tecnologie che andremo ad utilizzare, e offre quindi una facile integrazione, oltre ad essere un ottimo linguaggio per applicazioni web e client side.
+
 
 \subsection{NodeJs}
-Si è deciso di utilizzare il linguaggio Node.js in quanto è stato richiesto nel capitolato, in oltre offre i seguenti vantaggi:
+Si è deciso di utilizzare il linguaggio Node.js in quanto consigliato dal capitolato e adatto al progetto. Le sue caratteristiche piu' vantaggiose sono:
 \begin{itemize}
-\item Modello event-driven: ovvero "programmazione ad eventi", che si basa su un concetto semplice: si lancia un'azione quando accade qualcosa;
-\item Azioni: ogni azione è asincrona, e grazie a questa caratteristica durante le attese di una certa azione il runtime può gestire dell'altro. Questa tecnologia è utilizzata per realizzare la componente server.
+\item Modello event-driven: ovvero "programmazione ad eventi", che si basa su un concetto semplice: il flusso del programma non segue un corso specifico ma è guidato dalle azioni dell'utilizzatore;
+\item Modello asincrono: grazie a questa caratteristica è possibile ridurre al minimo i tempi di morti in quanto, nell’attesa dell completamento di una operazione, si procede con altri flussi logici. 
+\item Grande scalabilità: Grazie al modo in cui è implementato, Node.js riesce ad essere largamente scalabile con minimo sforzo.
+
 \end{itemize}
 
 \subsection{jQuery}
@@ -168,18 +163,25 @@ Svantaggi:
 
 \subsection{AngularJs}
 
-\subsection{Mongoose}
+\begin{itemize}
+\item Two Way Data-Binding: Una delle caratteristiche principali di angular. Le modifiche apportate al model si rifletto direttamente sugli elementi del DOM, e le modifiche al DOM si ripercuotono automaticamente sul model. Questo alleggerisce tremendamente il codice necessario a controllare ad ascoltare e gestire il DOM, automatizzando il processo. E noi sappiamo che automatico \`{e} bene.
+\item Templates: I template HTML sono parsati dal browswe nel DOM,il quale costituisce poi l’input per il compilatore Angular. Quest’ultimo poi crea il data binding tra il DOM e lo scope dei dati. Uno dei piu’ grandi vantaggi di questa tecnica e’ che separa presentazione da implementazione, in quanto i template html possono modificati senza alterare il modo in cui sono inseriti i dati.
+\item Dependecy Injection: Angular possiede nativamente una “dependecy injection”, che aiuta gli sviluppatori permettendo facilitando lo sviluppo, la compresione e il testing dell’applicazione.
+\item Directives: Le directives possono essere usate per definire tag HTML personalizzati che fungono da widget. Possono inoltre essere usate per “decorare” elementi con comportamenti personalizzati o per manipolare attributi del DOM. 
+
+\end{itemize}
 
 \subsection{HTML5}
 
 \newpage
 \section{Descrizione architettura}
 \subsection{Metodo e formalismo di specifica}
-Si è deciso di procedere utilizzando un approccio top-down per l'esposizione          dell'architettura dell'applicazione, ovvero descrivendo inizialmente le componenti in generale per poi arrivare a trattarle al particolare.
-Si descriveranno i package e i componenti per poi dettagliare le singole classi, specificando per ciascuna di esse il tipo, l'obiettivo, la funzionalità e le relazioni in ingresso ed uscita. Poi si passerà ad illustrare degli esempi d'uso di Design Pattern (descritti approfonditamente nell'Appendice A) e le tecnologie utilizzate.
+Si è deciso di procedere utilizzando un approccio top-down per l’esposizione          dell’architettura dell’applicazione, ovvero descrivendo inizialmente le componenti in generale per poi arrivare a trattarle al particolare.
+Si descriveranno i package e i componenti per poi dettagliare le singole classi, specificando per ciascuna di esse il tipo, l’obiettivo e la funzionalità. Poi si passerà ad illustrare degli esempi d’uso di Design Pattern (descritti approfonditamente nell’ Appendice A) e le tecnologie utilizzate.
+Per facilitare la lettura dei diagrammi di package e di classe si farà uso di vari colori per distinguere le componenti.
 
 \subsection{Architettura generale}
-L'architettura del framework segue un modello di architettura in stile three-tier che prevede la suddivisione dell'applicazione  in tre diversi strati dedicati rispettivamente all'interfaccia utente (Client), alla business logic (Controller) e alla gestione dei dati persistenti (Model). La parte Client segue il design pattern MVVM utilizzato da AngularJS ed è quindi suddivisa in Model, View, ViewModel.\\
+L’architettura generale del prodotto è basata sul Design Pattern MVC ed è quindi suddivisa in tre componenti principali: Model, View e Controller. Il Model e il Controller si trovano sul lato server dell’applicazione, mentre la View viene collocata a lato client. Quest’ultima a sua volta implementa il Design Pattern MVW, su cui si basa Angular, per il mantenimento temporaneo dei dati e la loro visualizzazione.\\
 
 Il seguente diagramma rappresenta l'architettura ad alto livello del framework, indicando i package e le relazioni che intercorrono tra questi.
 
@@ -194,15 +196,22 @@ Il seguente diagramma rappresenta l'architettura ad alto livello del framework, 
 \newpage
 \subsubsection{Model}
 \immagine{./Diagrammi/ModelClassi}{MaaP, Diagramma classi model}
-...TODO aggiungere descrizione...
+Il model contiene:
+\begin{itemize}
+\item Il database di analisi e quello degli utenti
+\item I file DSL e il parser che li interpreta
+\item I package dediti al recupero e alla gestione dei dati richiesti dal controller
+\end{itemize}
+Tutte le operazioni di gestione, modifica e recupero dei dati vengono messe a disposizione dal model. In tal modo il controller è responsabile solamente di gestire la logica dell’applicazione.
 
 \subsubsection{Controller}
 \immagine{./Diagrammi/ControllerClassi}{MaaP, Diagramma classi controller}
-...TODO aggiungere descrizione...
+Il controller è responsabile dell’autenticazione delle richieste e del loro routing da client a model e viceversa.
 
-\subsubsection{Client}
+\subsubsection{View}
 \immagine{./Diagrammi/ClientClassi}{MaaP, Diagramma classi client}
-...TODO aggiungere descrizione...
+La View, essendo gestita da Angular, è a sua volta composta da una View, un Controller ed un Model. Scope e View sono collegati da un “two way data binding”, ovvero le modifiche apportate ad uno dei due si riflettono immediatamente anche nell’altro.
+I dati ricevuti dal server vengono caricati sullo Scope, il quale aggiorna automaticamente la View. Quest’ultima aggiorna lo Scope in caso di modifiche da parte dell’utente finale.
 
 \newpage
 \section{Componenti e Classi}
@@ -222,10 +231,24 @@ Il seguente diagramma rappresenta l'architettura ad alto livello del framework, 
 \section{Diagrammi di attività}
 
 \newpage
-\section{Design Pattern}%7.0
+\section{Design Pattern Utilizzati}%7.0
 \subsection{Design Pattern architetturali} %7.1
+\begin{itemize}
+\item MVC
+\end{itemize}
 \subsection{Design Pattern creazionali} %7.2
+\begin{itemize}
+\item Singleton
+\end{itemize}
 \subsection{Design Pattern comportamentali} %7.3
+\begin{itemize}
+\item Factory
+\end{itemize}
+\subsection{Design Pattern strutturali} %7.3
+\begin{itemize}
+\item Facade
+\item Adapter
+\end{itemize}
 
 \newpage
 \section{Stime di fattibilità e di bisogno di risorse}%8.0
