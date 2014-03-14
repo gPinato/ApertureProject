@@ -40,11 +40,9 @@ for my $u ($xpc->findnodes('xs:userlist/xs:user', $doc)) {
     
     my ($property) = $xpc->findnodes('xs:username', $u);
     if ($property->textContent eq $digestuser) {
-        
-        ($property) = $xpc->findnodes('xs:password', $u);
-        if ($property->textContent eq $digestpass) {
-            $found="true";
-        }
+       
+        $found="true";
+       
         last
     }
 }
@@ -57,7 +55,7 @@ if ($found eq "true"){
 #FIX GO BACK
 print<<ENDO;
 		<div id="colonna1">
-			<h1>go back</h1>
+			<button type="button"><a href="../registrazione.html">Ritorna alla registrazione</a></button>
 		</div>
 
 ENDO

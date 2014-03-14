@@ -21,10 +21,10 @@
 function generaPagina(){
 var xmlDoc = loadDocument("feedback.xml");
 var xslDoc = loadDocument("feedback.xsl");
-if (window.ActiveXObject){ // if IE
+if (window.ActiveXObject){ //IE
 ex=xmlDoc.transformNode(xslDoc);
 document.getElementById("dlFeed").innerHTML=ex;
-} else {// code for Mozilla, Firefox, Opera, etc.
+} else {// Mozilla, Firefox, Opera, etc.
 xsltProcessor=new XSLTProcessor();
 xsltProcessor.importStylesheet(xslDoc);
 resultDocument = xsltProcessor.transformToFragment(xmlDoc,document);
@@ -56,18 +56,13 @@ return xmlDoc;
 }
  
 </script>
-<!-- <noscript>
-    <meta HTTP-EQUIV="REFRESH" content="0; url=cgi-bin/feedback.cgi"> 
-</noscript> -->
 
 
 </head>
 
 <body onload="generaPagina();">  
 
-<noscript>
-<p>Javascript è disabilitato. Abilita Javascript oppure  <a href="cgi-bin/feedback.cgi.php"> clicca qui! </a></p>
-</noscript>
+
      <div id="header">
      	<img src="immagini/logo2.png" alt="Consulen energy consulting logo" />
 		<ul id="nav">
@@ -81,11 +76,13 @@ return xmlDoc;
     </div><!--header-->
 
 	<div id="content">
+	<noscript>
+	<p>Javascript &egrave; disabilitato. Abilita Javascript oppure  <a href="cgi-bin/feedback.cgi"> clicca qui! </a></p>
+	</noscript>
 	
      
             	<dl id="dlFeed">
-            		<dd class="hide"><noscript><p>Per visualizzare i feed devi avere attivato javascript</p>
-            		<p><a href="feedback.xml" title="Archivio Feed">Feedback degli utenti</a></p></noscript></dd>
+            		<dd class="hide"></dd>
             	</dl>
 				
        <a href="javascript:void(0);" id="pulsante" tabindex="6" accesskey="l">Lascia un commento</a> 

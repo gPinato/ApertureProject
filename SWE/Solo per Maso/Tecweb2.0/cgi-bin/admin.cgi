@@ -47,7 +47,7 @@ my $parser = XML::LibXML->new();
 my $xslt = XML::LibXSLT->new();
 
   my $source = $parser->parse_file('appuntamenti.xml');
-  # $source=decode_entities($source);
+  
   my $style_doc = $parser->parse_file('appuntamenti.xsl');
 
   my $stylesheet = $xslt->parse_stylesheet($style_doc);
@@ -58,10 +58,12 @@ my $xslt = XML::LibXSLT->new();
   print $stylesheet->output_string($results);
 
 print<<end;
-</div>
-<div id="colonna2">
+</div><!--colonna1-->
+		<div id="colonne2e3">
+			<div id="colonna2">				
+			<h1>Pannello Ban utente</h1>
 end
-print $cgi->h1("Benvenuto, $name");
+#print $cgi->h1("Benvenuto, $name");
 
 
 
@@ -92,7 +94,12 @@ print $cgi->textfield(
 print $cgi->end_form;
 
 print<<end;
-</div>
+		</div><!--colonna2-->
+			<div id="colonna3">
+				<button type="button"><a href="logout.cgi">Logout</a></button>
+			</div>
+	</div>
+</div><!--content-->
 end
 
 print $cgi->end_html; 
