@@ -616,11 +616,12 @@ Ogni componente progettato deve essere riportato all'interno della Specifica Tec
 \begin{itemize}
 \item \grassetto{Nome: }specifica il nome del componente; ogni nome di ciascun componente deve essere scritto secondo la seguente notazione: E1::E2::E3::E4;la struttura è la seguente: 
 \begin{itemize}
-\item \grassetto{E1: }è il nome della componente generale, ovvero il namespace globale;
+\item \grassetto{E1: }è il nome del componente generale, ovvero il namespace globale;
 \item \grassetto{E2: }è il sotto-componente di E1;
 \item \grassetto{E3: }è il sotto-componente di E2;
 \item \grassetto{E4: }è una singola unità la cui responsabilità è affidata ad un singolo programmatore.  
 \end{itemize}
+\item \grassetto{Informazioni sul package:}contiene un'immagine che mostra il componente corrente;
 \item \grassetto{Descrizione: }descrive in maniera testuale la funzionalità del componente;
 \item \grassetto{Sotto-componenti}: specifica se il componente ha altri sotto-componenti;
 \item \grassetto{Interazioni con altri componenti: } specifica se il componente ha relazioni con altri componenti.
@@ -641,6 +642,7 @@ Ogni classe progettata deve essere riportata all'interno della Specifica tecnica
 \end{itemize}
 \item \grassetto{Descrizione: }descrive in maniera testuale la funzionalità della classe;
 \item \grassetto{Utilizzo: }descrizione testuale di come viene utilizzata la classe;
+\item \grassetto{Relazioni con altre classi: }viene specificato se la classe corrente ha relazioni con delle classi di altri componenti;
 \item \grassetto{Classe da cui eredita (superclasse): }specifica se la classe eredita da altre classi; si usa la seguente notazione: E1::E2::E3::E4::E5; la struttura è così formata:
 	\begin{itemize}
 	\item \grassetto{E1: }è il nome del namespace globale;
