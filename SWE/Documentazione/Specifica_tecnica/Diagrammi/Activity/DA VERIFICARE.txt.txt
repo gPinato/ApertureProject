@@ -1,0 +1,6 @@
+L'utente business può registrarsi?
+
+Manca attività recupero password su utente business
+
+Manca attività gestione indici su amministratore
+
