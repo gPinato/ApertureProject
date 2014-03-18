@@ -1,0 +1,138 @@
+%"variabili globali" che verranno aggiornate in tutte le pagine/footer
+% per inserire nuove macro ->  \newcommand{\nomeMacro}{valoreMacro}
+
+\newcommand{\Versione}{1.2.0}						%Versione Finale
+\newcommand{\Data}{2014-03-7}						%Data di creazione
+\newcommand{\DataUltimaModifica}{2014-03-7}
+\newcommand{\TipoDocumento}{Verbale esterno 2014-03-5}		%tipo documento
+
+%includo il file header.tex (logo grande in prima pagina piu qualche altra regola)
+\input{../Logo&Header/header.tex}
+
+%\vspace{.05in}
+
+%informazioni documento
+\begin{center}
+%\section{Informazioni documento}
+\begin{tabular}{r|l}
+%\textbf{Nome} &\TipoDocumento \\
+\textbf{Versione} & \Versione{} \\
+\textbf{Data creazione} & \Data{2014-03-7} \\
+\textbf{Data ultima modifica} & \DataUltimaModifica{2014-03-7} \\
+\textbf{Stato del Documento} & Formale \\		%CAMBIARE QUI
+\textbf{Uso del Documento} & Esterno \\			%CAMBIARE QUI
+\textbf{Redazione} & Giacomo Pinato\\				%CAMBIARE QUI
+\textbf{Verifica} & Fabio Miotto\\		%ED ANCHE QUI!
+\textbf{Approvazione} & Alberto Garbui \\		%CAMBIARE QUI
+\textbf{Distribuzione} & \parbox[t]{4cm}{\NomeGruppo{} \\Prof. Tullio Vardanega \\ Prof. Riccardo Cardin \\ \Prop{} }\\
+\end{tabular}
+\end{center}
+
+\vspace{0.05in}
+
+%inizio sommario del documento
+\begin{abstract}
+\begin{center}
+Verbale dell'incontro tra i componenti del gruppo \NomeGruppo{} e il Proponente.
+\end{center}
+\end{abstract}
+
+%\vspace{.4in}
+
+%seconda pagina, diario delle modifiche
+\newpage
+Diario delle modifiche
+\begin{center}
+\begin{longtable}{|c|c|c|p{0.5\linewidth}|}
+\toprule
+\textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Modifiche effettuate}\\
+
+%aggiungere qui una midrule per aggiungere una nuova riga alla tabella
+\midrule
+1.2.0 & 2014-01-21 & Alberto Garbui (RE)  & Approvazione documento\\
+\midrule
+1.1.0 & 2014-01-21 & Fabio Miotto (VE) & Verifica documento\\
+\midrule
+1.0.1 & 2014-03-7 & Giacomo Pinato (AN) & Stesura documento\\
+
+\bottomrule
+\caption{Registro delle modifiche}
+\label{tab:changelog}
+\end{longtable}
+\end{center}
+
+%terza pagina Indice (viene aggiornato in automatico con due compilazioni)
+\newpage
+\tableofcontents
+
+%pagine successive hanno la lista di tabelle e lista delle figure
+%(vengono aggiornate in automatico)
+%\newpage
+%\listoftables
+%\listoffigures
+
+%qui inizia la prima pagina ufficiale
+\newpage
+\section{Informazioni sulla riunione}%1.0
+\label{1.0}
+\begin{itemize}
+\item \grassetto{Data}: 2014-03-7;
+\item \grassetto{Luogo}: Laboratorio informatico Paolotti;
+\item \grassetto{Ora}: 15:00;
+\item \grassetto{Durata}: 1h 30m;
+\item \grassetto{Partecipanti interni}: \NomeGruppo{}
+\begin{itemize}
+\item Maso Michele;
+\item Miotto Fabio;
+\item Garbui Alberto;
+\item Sorgato Mattia;
+\item Perin Andrea;
+\item Pinato Giacomo.
+\item \grassetto{Partecipanti esterni}:
+\begin{itemize}
+\item Alessandro Comecavolosichiama
+\end{itemize}
+\item \grassetto{Motivazioni riunione}: Validazione della progettazione effettuata e discussione su scelte future;
+\item \grassetto{Argomenti trattati}: Scelte progettuali effettuate e da effettuare, HTML5 Mode per Angular, gestione mail del sistema.
+\end{itemize}
+\end{itemize}
+
+\newpage
+\section{Punti all'ordine del giorno}
+\label{2}
+
+\begin{itemize}
+\item Validazione progettazione effettuata;
+\item Scelte progettuali a breve termine;
+\item Consigli e spunti da parte del Proponente.
+\end{itemize}
+
+
+\subsection{Validazione progettazione effettuata:}
+Il Proponente, dopo aver analizzato la progettazione effettuata fin'ora, ha valutato la stessa coerente con il prodotto finale e con le sue aspettative.
+Non ha inoltre evidenziato falle, mancanze o inconsistenze nel lavoro effettuato.
+
+\subsection{Scelte progettuali a breve termine:}
+Dopo aver discusso col Proponente in merito a scelte progettuali da effettuare a brevissimo e breve termine, si è concluso che:
+
+\begin{itemize}
+\item Tutti i file DSL verranno compilati all'avvio del server invece che alla loro prima richiesta di utilizzo;
+\item Le trasmissioni tra client e server saranno pi\'{u} frequenti e meno pesanti dal punto di vista della quantit\'{a} di dati trasmessi. Ovvero si faranno molte richieste per pochi dati piuttosto che poche richieste con molti dati;
+\item La gestione delle email del sistema, ad esempio per registrazione e recupero password, avver\'{a} utilizzando nodemailer.
+\end{itemize}
+
+
+\subsection{Consigli e spunti da parte del Proponente:}
+Il Proponente ha portato alla nostra attenzione le seguenti problematiche e spunti di riflessione:
+
+\begin{itemize}
+\item Le URL di Angular, essendo fittizie, non possono essere inserite direttamente nella barra URL del browser. Essendo una funzionalit\'{a} fortemente desiderabile, ci è stato consigliato di valutare l'utilizzo di HTML5 Mode. Questa funzionalità di Angular permette di ristabilire la coerenza tra URL e informazioni visualizzate sul browser;
+\item Con un leggero lavoro di adattamento \'{e} possibile far si che MaaP si interfacci anche con database NoSQL non MongoDB.
+\end{itemize}
+
+
+
+
+
+%FINE DOCUMENTO NON CANCELLARE
+\end{document}

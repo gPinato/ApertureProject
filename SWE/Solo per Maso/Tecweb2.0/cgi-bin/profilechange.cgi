@@ -143,7 +143,7 @@ if ($operation eq "delete"){
 	print OUT $doc->toString;
 	close(OUT);
 
-	if($found="true"){
+	if($found eq "true"){
 		
 		print $s->header(-location=>'logout.cgi');
 		}
@@ -154,26 +154,26 @@ if ($operation eq "delete"){
 if ($operation eq "ban" && $name eq 'admin' ){
 	
 	my $toban =  sha1_hex($userban);
-	my $tempmail;
+	my $found="false";
 	my $u;
+		
 		for $u ($xpc->findnodes('xs:userlist/xs:user', $doc)) {
 			
 			my ($property) = $xpc->findnodes('xs:username', $u);
 				if ($property->textContent eq $toban) {
 					
-					($property) = $xpc->findnodes('xs:email', $u);
-					$tempmail = $property->textContent;
+					$found="true";
 					my $childnode = $root->removeChild($u);
 					last
 				}
 		}
 		
 		
-		
+	if($found eq "true"){	
 		my $frammento="<user>
-               <username>".$digestuser."</username>
+               <username>".$toban."</username>
                <password>utentebannato</password>
-			   <email>".$tempmail."</email>
+			   <email>utentebannato</email>
 				</user>";
 		my $nodo=$parser->parse_balanced_chunk($frammento)|| die("nodo non creato");
 		$root->appendChild($nodo);
@@ -182,6 +182,8 @@ if ($operation eq "ban" && $name eq 'admin' ){
 		open(OUT, ">$file");
 		print OUT $doc->toString;
 		close(OUT);
+		}
+	else {$errore="Utente non trovato!"}
 }
 #fine ban utente
 
@@ -190,26 +192,27 @@ if ($operation eq "ban" && $name eq 'admin' ){
 utilities::printmenu();
 
 if ($errore eq "void"){
-print $cgi->h1("Operazione eseguita correttamente");
-
-print<<EOF
-<button type="button"><a href="userpanel.cgi">Ritorna al pannello utente</a></button>
-
-</div>
-EOF
-}
+	print $cgi->h1("Operazione eseguita correttamente");
+	}
 else {
-print $cgi->h1("Operazione non eseguita ");
-print $cgi->p("$errore");
+	print $cgi->h1("Operazione non eseguita ");
+	print $cgi->p("$errore");
+	}
 
-print<<EOF
+if ($name eq 'admin' ){
+	print<<EOF
+<button type="button"><a href="admin.cgi">Ritorna alla pagina admin</a></button>
+
+</div>
+EOF
+	}
+else {
+	print<<EOF
 <button type="button"><a href="userpanel.cgi">Ritorna al pannello utente</a></button>
 
 </div>
 EOF
-
-}
-
+	}
 
 print $cgi->end_html; 
 }				

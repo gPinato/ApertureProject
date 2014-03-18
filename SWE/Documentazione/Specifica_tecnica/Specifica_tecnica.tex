@@ -18,11 +18,11 @@
 \begin{tabular}{r|l}
 %\textbf{Nome} &\TipoDocumento \\
 \textbf{Versione} & \Versione{} \\
-\textbf{Data creazione} & \Data{} \\
+\textbf{Data creazione} & \Data{2014-01-24} \\
 \textbf{Data ultima modifica} & \DataUltimaModifica{} \\
 \textbf{Stato del Documento} & Formale \\		          %CAMBIARE QUI
 \textbf{Uso del Documento} & Esterno \\			          %CAMBIARE QUI
-\textbf{Redazione} &  nome1,nome2,...\\		        %CAMBIARE QUI
+\textbf{Redazione} &  Pinato Giacomo,nome2,...\\		        %CAMBIARE QUI
 \textbf{Verifica} & nome1,nome2,...\\			        %ED ANCHE QUI!
 \textbf{Approvazione} & nome1,nome2,...\\				 %CAMBIARE QUI
 \textbf{Distribuzione} & \parbox[t]{4cm}{\NomeGruppo{}}\\
@@ -54,11 +54,11 @@ Diario delle modifiche
 \midrule
 1.1.0 & 2014-02-xx & ... (VE) & Verifica documento\\
 \midrule
-1.0.4 & 2014-02-xx & ... (AN) & bla bla\\
+1.0.0 & 2014-03-05 & Giacomo Pinato (PR) & Componenti e Classi\\
 \midrule
-1.0.3 & 2014-02-xx & ... (AN) & bla bla\\
+1.0.0 & 2014-01-25 & Giacomo Pinato (PR) & Tecnologie Utilizzate\\
 \midrule
-1.0.2 & 2014-02-xx & ... (AN) & bla bla\\
+1.0.0 & 2014-01-25 & Fabio Miotto (PR) & Tecnologie Utilizzate\\
 \midrule
 1.0.0 & 2014-01-24 & Giacomo Pinato (PR) & Prima stesura del documento\\
 
@@ -125,7 +125,6 @@ Il database con il quale la nostra applicazione dovrà interagire è realizzato 
 \item Facile indicizzazione: Ogni campo in MongoDB puo' diventare un indice;
 \item Bilanciamento di carico: MongoDB scala orizzontalmente molto facilmente grazie all'utilizzo di shard;
 \item Integrazione con Javascript: Query o altre funzioni scritte in Javascript possono essere eseguite direttamente dal dabatase;
-
 \end{itemize}
 
 \subsection{Javascript}
@@ -138,7 +137,6 @@ Si è deciso di utilizzare il linguaggio Node.js in quanto consigliato dal capit
 \item Modello event-driven: ovvero "programmazione ad eventi", che si basa su un concetto semplice: il flusso del programma non segue un corso specifico ma è guidato dalle azioni dell'utilizzatore;
 \item Modello asincrono: grazie a questa caratteristica è possibile ridurre al minimo i tempi di morti in quanto, nell’attesa dell completamento di una operazione, si procede con altri flussi logici. 
 \item Grande scalabilità: Grazie al modo in cui è implementato, Node.js riesce ad essere largamente scalabile con minimo sforzo.
-
 \end{itemize}
 
 \subsection{jQuery}
@@ -166,7 +164,7 @@ Svantaggi:
 \begin{itemize}
 \item Two Way Data-Binding: Una delle caratteristiche principali di angular. Le modifiche apportate al model si rifletto direttamente sugli elementi del DOM, e le modifiche al DOM si ripercuotono automaticamente sul model. Questo alleggerisce tremendamente il codice necessario a controllare ad ascoltare e gestire il DOM, automatizzando il processo. E noi sappiamo che automatico \`{e} bene.
 \item Templates: I template HTML sono parsati dal browswe nel DOM,il quale costituisce poi l’input per il compilatore Angular. Quest’ultimo poi crea il data binding tra il DOM e lo scope dei dati. Uno dei piu’ grandi vantaggi di questa tecnica e’ che separa presentazione da implementazione, in quanto i template html possono modificati senza alterare il modo in cui sono inseriti i dati.
-\item Dependecy Injection: Angular possiede nativamente una “dependecy injection”, che aiuta gli sviluppatori permettendo facilitando lo sviluppo, la compresione e il testing dell’applicazione.
+\item Dependecy Injection: Angular possiede nativamente una “dependecy injection”, che aiuta gli sviluppatori facilitando la creazione, la comprensione e il testing dell’applicazione.
 \item Directives: Le directives possono essere usate per definire tag HTML personalizzati che fungono da widget. Possono inoltre essere usate per “decorare” elementi con comportamenti personalizzati o per manipolare attributi del DOM. 
 
 \end{itemize}
@@ -218,14 +216,276 @@ I dati ricevuti dal server vengono caricati sullo Scope, il quale aggiorna autom
 
 \subsection{MaaP}
 \subsubsection{Informazioni sul package}
-\immagine{./Diagrammi/ClientClassi}{Componente MaaP}
+\immagine{./Diagrammi/GeneralePackage}{Componente MaaP}
 \paragraph{Descrizione}
+Package (?) globale del progetto. 
 
 \paragraph{Sottocomponenti}
 \begin{itemize}
-\item MaaP::bla1 bla1
-\item MaaP::bla2 bla2
+\item MaaP::Server
+\item MaaP::Client
 \end{itemize}
+
+\subsection{Server}
+\subsubsection{Informazioni sul package}
+\immagine{./Diagrammi/ClientClassi}{Componente MaaP}
+\paragraph{Descrizione}
+Package contente la componente server-side del progetto. Contiene il model ed il controller.
+
+\paragraph{Sottocomponenti}
+\begin{itemize}
+\item MaaP::Server::Controller
+\item MaaP::Server::Model
+\end{itemize}
+
+\subsection{Controller}
+\subsubsection{Informazioni sul package}
+\immagine{./Diagrammi/ComponentiController}{Componenti Controller}
+\paragraph{Descrizione}
+Package contenente il controller dell'applicazione MaaP. Il controller si occupa del routing delle richiesti provenienti da e dirette al client, oltre alla loro autenticazione.
+
+
+\paragraph{Classi}
+\begin{itemize}
+\item MaaP::Server::Controller::Dispatcher
+\item MaaP::Server::Controller::FrontController
+\item MaaP::Server::Controller::PassportAdapter
+\item MaaP::Server::Controller::Passport (?)
+\end{itemize}
+
+\paragraph{Iterazioni con altri componenti}
+\begin{itemize}
+\item MaaP::Server::Model
+\item MaaP::Client::Controller
+\end{itemize}
+
+\subsection{Model}
+\subsubsection{Informazioni sul package}
+\immagine{./Diagrammi/ComponentiModelServer}{Componenti Model}
+\paragraph{Descrizione}
+Package del model server-side. Il model contiene i database di analisi e degli utenti, il parser e i file di descrizione DSL e ulteriori file di configurazione, oltre a tutta la logica di recupero e gestione dei dati dei database. 
+
+\paragraph{Sottocomponenti}
+\begin{itemize}
+\item MaaP::Server::Model::DataManager
+\item MaaP::Server::Model::Database
+\item MaaP::Server::Model::DSL
+\end{itemize}
+
+\subsection{DSL}
+\subsubsection{Informazioni sul package}
+\immagine{./Diagrammi/ComponentiDSL}{Componenti DSL}
+\paragraph{Descrizione}
+Package della gestione DSL. Contiene i file di descrizione per le collection e il parser per generare la loro struttura partendo dagli stessi.
+
+\paragraph{Classi}
+\begin{itemize}
+\item MaaP::Server::Model::DSL::DSLParser
+\item MaaP::Server::Model::DSL::DSLManager
+\item MaaP::Server::Model::DSL::CollectionData
+\item MaaP::Server::Model::DSL::DSLDescriptionFile
+\item MaaP::Server::Model::DSL::ParserInterface (?)
+\end{itemize}
+
+\subsection{Database}
+\subsubsection{Informazioni sul package}
+\immagine{./Diagrammi/ComponentiDatabase}{Componenti Database}
+\paragraph{Descrizione}
+Package dei database presenti nel model. Contiene il database degli utenti, il database di analisi e la raccolta delle query effettuate pi frequentemente.\`{u}
+
+\paragraph{Classi}
+\begin{itemize}
+\item MaaP::Server::Model::Database::MongooseDBAnalysis
+\item MaaP::Server::Model::Database::DBAnalysis
+\item MaaP::Server::Model::Database::Mongoose (?)
+\item MaaP::Server::Model::Database::MongooseDBFramework
+\item MaaP::Server::Model::Database::DBFramework
+\item MaaP::Server::Model::Database::USer
+\item MaaP::Server::Model::Database::Query
+\end{itemize}
+
+\subsection{DataManager}
+\subsubsection{Informazioni sul package}
+\immagine{./Diagrammi/ComponentiDataManager}{Componenti DataManager}
+\paragraph{Descrizione}
+Package del DataManager. Contiene la logica per la gestione dei database degli utenti e di analisi, per la gestione degli indici e per la composizione dei JSON. 
+
+\paragraph{Sottocomponenti}
+\begin{itemize}
+\item MaaP::Server::Model::DataManager::DatabaseAnalysisManager
+\item MaaP::Server::Model::DataManager::DatabaseUserManager
+\item MaaP::Server::Model::DataManager::IndexManager
+\end{itemize}
+
+\paragraph{Classi}
+\begin{itemize}
+\item MaaP::Server::Model::DataManager::JSonComposer
+\item MaaP::Server::Model::DataManager::IDatabaseManager
+\item MaaP::Server::Model::DataManager::IDataRetrievers
+\end{itemize}
+
+\subsection{DatabaseAnalysisManager}
+\subsubsection{Informazioni sul package}
+\immagine{./Diagrammi/ComponentiDatabaseAnalysisManager}{Componenti DatabaseAnalysisManager}
+\paragraph{Descrizione}
+Package del gestore del database di analisi.
+
+\paragraph{Classi}
+\begin{itemize}
+\item MaaP::Server::Model::DataManager::DatabaseAnalysisManager::DatabaseAnalysisManager
+\item MaaP::Server::Model::DataManager::DatabaseAnalysisManager::DataRetrieverAnalysis
+\end{itemize}
+
+\subsection{DatabaseUserManager}
+\subsubsection{Informazioni sul package}
+\immagine{./Diagrammi/ComponentiDatabaseUserManager}{Componenti DatabaseUserManager}
+\paragraph{Descrizione}
+Package del gestore del database degli utenti.
+
+\paragraph{Classi}
+\begin{itemize}
+\item MaaP::Server::Model::DataManager::DatabaseUserManager::DatabaseUserManager
+\item MaaP::Server::Model::DataManager::DatabaseUserManager::DataRetrieverUser
+\end{itemize}
+
+\subsection{IndexManager}
+\subsubsection{Informazioni sul package}
+\immagine{./Diagrammi/ComponentiIndexManager}{Componenti IndexManager}
+\paragraph{Descrizione}
+Package del gestore degli indici.
+
+\paragraph{Classi}
+\begin{itemize}
+\item MaaP::Server::Model::DataManager::IndexManager::IndexManager
+\end{itemize}
+
+\subsection{Client}
+\subsubsection{Informazioni sul package}
+\immagine{./Diagrammi/ComponentiClient}{Componenti Client}
+\paragraph{Descrizione}
+Package contente la componente client-side del progetto.
+
+\paragraph{Sottocomponenti}
+\begin{itemize}
+\item MaaP::Client::View
+\item MaaP::Client::ControllerModelView
+\item MaaP::Client::ModelClient
+\end{itemize}
+
+
+\subsection{View}
+\subsubsection{Informazioni sul package}
+\immagine{./Diagrammi/ComponentiView}{Componenti View}
+\paragraph{Descrizione}
+Package contente la componente i template delle pagine html generate dal framework.
+
+\paragraph{Sottocomponenti}
+\begin{itemize}
+\item MaaP::Client::View::Template
+\end{itemize}
+
+
+\subsection{Template}
+\subsubsection{Informazioni sul package}
+\immagine{./Diagrammi/ComponentiTemplate}{Componenti Template}
+\paragraph{Descrizione}
+Package contente la componente i template delle pagine html generate dal framework.
+
+\paragraph{Classi}
+\begin{itemize}
+\item MaaP::Client::View::Template::SignIn
+\item MaaP::Client::View::Template::SignUp
+\item MaaP::Client::View::Template::AdminMainPageCollection
+\item MaaP::Client::View::Template::UserMainPageCollection
+\item MaaP::Client::View::Template::MainPageDocument
+\item MaaP::Client::View::Template::MainPageDocumentEdit
+\item MaaP::Client::View::Template::UserProfileEdit
+\item MaaP::Client::View::Template::UserProfile
+\item MaaP::Client::View::Template::AdminProfile
+\item MaaP::Client::View::Template::PasswordRecovery
+\end{itemize}
+
+
+\subsection{ControllerModelView}
+\subsubsection{Informazioni sul package}
+\immagine{./Diagrammi/ComponentiControllerModelView}{Componenti ControllerModelView}
+\paragraph{Descrizione}
+Package contente la componente i template delle pagine html generate dal framework.
+
+\paragraph{Sottocomponenti}
+\begin{itemize}
+\item MaaP::Client::ControllerModelView::ControllerClient
+\item MaaP::Client::ControllerModelView::Scope
+\end{itemize}
+
+
+\subsection{ControllerClient}
+\subsubsection{Informazioni sul package}
+\immagine{./Diagrammi/ComponentiControllerClient}{Componenti ControllerClient}
+\paragraph{Descrizione}
+Package contente la componente i template delle pagine html generate dal framework.
+
+\paragraph{Classi}
+\begin{itemize}
+\item MaaP::Client::ControllerModelView::ControllerClient::ControllerAutenticazione
+\item MaaP::Client::ControllerModelView::ControllerClient::ControllerCollection
+\item MaaP::Client::ControllerModelView::ControllerClient::ControllerDocument
+\item MaaP::Client::ControllerModelView::ControllerClient::ControllerProfilo
+\item MaaP::Client::ControllerModelView::ControllerClient::ControllerMenu
+\end{itemize}
+
+
+\subsection{Scope}
+\subsubsection{Informazioni sul package}
+\immagine{./Diagrammi/ComponentiScope}{Componenti Scope}
+\paragraph{Descrizione}
+Package contente la componente i template delle pagine html generate dal framework.
+
+\paragraph{Classi}
+\begin{itemize}
+\item MaaP::Client::ControllerModelView::Scope::Collection
+\item MaaP::Client::ControllerModelView::Scope::Query
+\item MaaP::Client::ControllerModelView::Scope::Document
+\item MaaP::Client::ControllerModelView::Scope::Profilo
+\item MaaP::Client::ControllerModelView::Scope::Menu
+\end{itemize}
+
+
+\subsection{ModelClient}
+\subsubsection{Informazioni sul package}
+\immagine{./Diagrammi/ComponentiModelClient}{Componenti ModelClient}
+\paragraph{Descrizione}
+Package contente la componente i template delle pagine html generate dal framework.
+
+\paragraph{Sottocomponenti}
+\begin{itemize}
+\item MaaP::Client::ModelClient::Model
+\item MaaP::Client::ModelClient::Services
+\end{itemize}
+
+\subsection{Services}
+\subsubsection{Informazioni sul package}
+\immagine{./Diagrammi/ComponentiServices}{Componenti Services}
+\paragraph{Descrizione}
+Package contente la componente i template delle pagine html generate dal framework.
+
+\paragraph{Classi}
+\begin{itemize}
+\item MaaP::Client::ModelClient::Services::HTTP
+\end{itemize}
+
+
+\subsection{Model}
+\subsubsection{Informazioni sul package}
+\immagine{./Diagrammi/ComponentiModel}{Componenti Model}
+\paragraph{Descrizione}
+Package contente la componente i template delle pagine html generate dal framework.
+
+\paragraph{Classi}
+\begin{itemize}
+\item MaaP::Client::ModelClient::Model::SessionData
+\end{itemize}
+
 
 \newpage
 \section{Diagrammi di attività}
@@ -234,7 +494,7 @@ I dati ricevuti dal server vengono caricati sullo Scope, il quale aggiorna autom
 \section{Design Pattern Utilizzati}%7.0
 \subsection{Design Pattern architetturali} %7.1
 \begin{itemize}
-\item MVC
+\item MVC: Utilizzato per l'architettura generale dell'applicazione.
 \end{itemize}
 \subsection{Design Pattern creazionali} %7.2
 \begin{itemize}
