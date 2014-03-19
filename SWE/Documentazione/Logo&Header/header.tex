@@ -29,7 +29,44 @@
 \usepackage{titlesec}
 \usepackage{indentfirst}
 
-\setcounter{secnumdepth}{4}
+%\setcounter{secnumdepth}{4}
+
+%****************INIZIO GESTIONE SUBSECTION MULTIPLE
+\makeatletter
+\newcommand\level[1]{%
+  \ifcase#1\relax\expandafter\chapter\or
+    \expandafter\section\or
+    \expandafter\subsection\or
+    \expandafter\subsubsection\else
+    \def\next{\@level{#1}}\expandafter\next
+  \fi}
+\newcommand{\@level}[1]{%
+  \@startsection{level#1}
+    {#1}
+    {\z@}%
+    {-3.25ex\@plus -1ex \@minus -.2ex}%
+    {1.5ex \@plus .2ex}%
+    {\normalfont\normalsize\bfseries}}
+
+\newcounter{level4}[subsubsection]
+\@namedef{thelevel4}{\thesubsubsection.\arabic{level4}}
+\@namedef{level4mark}#1{}
+\count@=4
+\loop\ifnum\count@<100
+  \begingroup\edef\x{\endgroup
+    \noexpand\newcounter{level\number\numexpr\count@+1\relax}[level\number\count@]
+    \noexpand\@namedef{thelevel\number\numexpr\count@+1\relax}{%
+      \noexpand\@nameuse{thelevel\number\count@}.\noexpand\arabic{level\number\numexpr\count@+1\relax}}
+    \noexpand\@namedef{level\number\numexpr\count@+1\relax mark}####1{}}
+  \x
+  \advance\count@\@ne
+\repeat
+\makeatother
+\setcounter{secnumdepth}{10}
+
+%****************FINE GESTIONE SUBSECTION MULTIPLE
+
+
 \oddsidemargin=.15in
 \evensidemargin=.15in
 \textwidth=6in
@@ -66,6 +103,12 @@
 \newcommand{\Nodejs}{Node.js}
 
 \newcommand{\mongodb}{MongoDB}
+
+%tanti sub quanti ne vogliamo! :)
+\newcommand{\subsubsubsection}{\level{4}}
+\newcommand{\subsubsubsubsection}{\level{5}}
+\newcommand{\subsubsubsubsubsection}{\level{6}}
+\newcommand{\subsubsubsubsubsubsection}{\level{7}}
 
 %definizione comando per parola glossario
 \newcommand{\gloss}[1]{\emph{#1}\ped{\emph{\tiny{G}}}}
