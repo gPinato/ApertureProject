@@ -142,15 +142,6 @@ Si è deciso di utilizzare il linguaggio Node.js in quanto consigliato dal capit
 \item Grande scalabilità: Grazie al modo in cui è implementato, Node.js riesce ad essere largamente scalabile con minimo sforzo.
 \end{itemize}
 
-\subsection{jQuery}
-Per migliorare e semplificare la scrittura di funzioni nel linguaggio JavaScript, si è deciso di adottare il framework jQuery. I vantaggi sono:
-\begin{itemize}
-\item Semplicità: l'utilizzo di jQuery semplifica e facilita la scrittura di codice JavaScript, inoltre offre plug-in on-line per fornire nuove funzionalità.
-\end{itemize}
-Svantaggi:
-\begin{itemize}
-\item Pericolosità: jQuery offre funzionalità e plug-in molto utili, ma non tutto è compatibile con i vari browser, inoltre alcune funzionalità possono essere vecchie, non aggiornate o scritte male.
-\end{itemize}
 
 \subsection{JSON}
 Rappresenta il tipo di messaggi con cui client e server si scambiano informazioni. I vantaggi offerti sono:
@@ -187,7 +178,10 @@ Si descriveranno i package e i componenti per poi dettagliare le singole classi,
 
 Il seguente diagramma rappresenta l'architettura ad alto livello del framework, indicando i package e le relazioni che intercorrono tra questi.
 
-...TODO aggiungere diagramma dell'installer CLI comprensivo di descrizione...
+\newpage
+\subsubsection{MaaP Sviluppatore}
+\immagine{./Diagrammi/Installer}{Diagramma delle classi relativo alla gestione del framework da parte dell'utente svilupatore}
+
 
 \immagine{./Diagrammi/GeneralePackage}{Architettura generale del software - vista package}
 Nel precedente diagramma sono presenti le relazioni tra i package Client, Controller e ModelServer.\\
@@ -197,7 +191,7 @@ Nel precedente diagramma è presente l'architettura ad alto livello del software
 
 \newpage
 \subsubsection{ModelServer}
-\immagine{./Diagrammi/ModelClassi}{Diagramma delle classi del ModelServer}
+\immagine{./Diagrammi/ModelServerClassi}{Diagramma delle classi del ModelServer}
 Nel ModelServer sono presenti oggetti che rappresentano:
 \begin{itemize}
 \item Il database di analisi e quello degli utenti;
