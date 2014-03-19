@@ -91,7 +91,10 @@ Il presente documento ha lo scopo di definire la progettazione ad alto livello d
 \label{1.2}
 \Prodotto{}
 
-\subsection{Glossario}%1.2
+\subsection{Glossario}
+\subsubsection{Glossario2}
+\subsubsubsection{Glossario3}
+\subsubsubsubsection{Glossario4}
 \label{1.3}
 \Glossario{}
 
@@ -174,75 +177,130 @@ Svantaggi:
 \newpage
 \section{Descrizione architettura}
 \subsection{Metodo e formalismo di specifica}
-Si è deciso di procedere utilizzando un approccio top-down per l’esposizione          dell’architettura dell’applicazione, ovvero descrivendo inizialmente le componenti in generale per poi arrivare a trattarle al particolare.
+Si è deciso di procedere utilizzando un approccio top-down per l’esposizione dell’architettura dell’applicazione, ovvero descrivendo inizialmente le componenti in generale per poi arrivare a trattarle al particolare.
 Si descriveranno i package e i componenti per poi dettagliare le singole classi, specificando per ciascuna di esse il tipo, l’obiettivo e la funzionalità. Poi si passerà ad illustrare degli esempi d’uso di Design Pattern (descritti approfonditamente nell’ Appendice A) e le tecnologie utilizzate.
-Per facilitare la lettura dei diagrammi di package e di classe si farà uso di vari colori per distinguere le componenti.
+
 
 \subsection{Architettura generale}
-L’architettura generale del prodotto è basata sul Design Pattern MVC ed è quindi suddivisa in tre componenti principali: Model, View e Controller. Il Model e il Controller si trovano sul lato server dell’applicazione, mentre la View viene collocata a lato client. Quest’ultima a sua volta implementa il Design Pattern MVW, su cui si basa Angular, per il mantenimento temporaneo dei dati e la loro visualizzazione.\\
+-	L'architettura del framework segue un modello di architettura in stile three-tier che prevede la suddivisione dell'applicazione  in tre diversi strati dedicati rispettivamente all'interfaccia utente (Client), alla business logic (Controller) e alla gestione dei dati persistenti (Model). La parte Client segue il design pattern MVVM utilizzato da AngularJS ed è quindi suddivisa in Model, View, ViewModel.\\
+
 
 Il seguente diagramma rappresenta l'architettura ad alto livello del framework, indicando i package e le relazioni che intercorrono tra questi.
 
 ...TODO aggiungere diagramma dell'installer CLI comprensivo di descrizione...
 
-\immagine{./Diagrammi/GeneralePackage}{MaaP, Diagramma generale package}
-...TODO aggiungere descrizione...
-
-\immagine{./Diagrammi/GeneraleClassi}{MaaP, Diagramma generale classi}
-...TODO aggiungere descrizione...
+\immagine{./Diagrammi/GeneralePackage}{Architettura generale del software - vista package}
+Nel precedente diagramma sono presenti le relazioni tra i package Client, Controller e ModelServer.\\
+Vengono inoltre presentati tutti i sotto-package così da facilitare la comprensione dell'intero sistema.
+\immagine{./Diagrammi/GeneraleClassi}{Architettura generale del software}
+Nel precedente diagramma è presente l'architettura ad alto livello del software e vengono indicate le classi fondamentali per rappresentare le relazioni del modello  three-tier. TO DO DESCRIVERE 3TIER IN APPENDICE. I diagrammi di sequenza relativi allo scambio di segnali, lo scopo ed il contesto di utilizzo sono presenti nella sezione ????.
 
 \newpage
-\subsubsection{Model}
-\immagine{./Diagrammi/ModelClassi}{MaaP, Diagramma classi model}
-Il model contiene:
+\subsubsection{ModelServer}
+\immagine{./Diagrammi/ModelClassi}{Diagramma delle classi del ModelServer}
+Nel ModelServer sono presenti oggetti che rappresentano:
 \begin{itemize}
-\item Il database di analisi e quello degli utenti
-\item I file DSL e il parser che li interpreta
-\item I package dediti al recupero e alla gestione dei dati richiesti dal controller
+\item Il database di analisi e quello degli utenti;
+\item La gestione del file DSL e il suo parsing;
+\item La gestione dei dati richiesti dal controller.
 \end{itemize}
 Tutte le operazioni di gestione, modifica e recupero dei dati vengono messe a disposizione dal model. In tal modo il controller è responsabile solamente di gestire la logica dell’applicazione.
 
 \subsubsection{Controller}
-\immagine{./Diagrammi/ControllerClassi}{MaaP, Diagramma classi controller}
-Il controller è responsabile dell’autenticazione delle richieste e del loro routing da client a model e viceversa.
+\immagine{./Diagrammi/ControllerClassi}{Diagramma delle classi del Controller}
+Il controller è responsabile dell’autenticazione delle richieste e del loro routing da Client a ModelServer e viceversa.
 
-\subsubsection{View}
-\immagine{./Diagrammi/ClientClassi}{MaaP, Diagramma classi client}
-La View, essendo gestita da Angular, è a sua volta composta da una View, un Controller ed un Model. Scope e View sono collegati da un “two way data binding”, ovvero le modifiche apportate ad uno dei due si riflettono immediatamente anche nell’altro.
-I dati ricevuti dal server vengono caricati sullo Scope, il quale aggiorna automaticamente la View. Quest’ultima aggiorna lo Scope in caso di modifiche da parte dell’utente finale.
+\subsubsection{Client}
+\immagine{./Diagrammi/ClientClassi}{Diagramma delle classi del Client}
+Nel Client sono presenti oggetti che rappresentano:
+\begin{itemize}
+\item I template per le pagine web;
+\item I Controller per la gestione dei template;
+\item Lo Scope per l'aggiornamento dei dati dei template;
+\item I Servizi utilizzati dai Controller.
+\end{itemize}
 
 \newpage
 \section{Componenti e Classi}
 
 \subsection{MaaP}
 \subsubsection{Informazioni sul package}
-\immagine{./Diagrammi/GeneralePackage}{Componente MaaP}
+\immagine{./Diagrammi/ComponentiMaaP}{Componenti MaaP}
 \paragraph{Descrizione}
-Package (?) globale del progetto. 
+Namespace globale per il progetto. Le relazioni tra i package ModelServer, Controller e Client identificano il modello di architettura three-tier.
 
-\paragraph{Sottocomponenti}
+\paragraph{Sotto-componenti}
 \begin{itemize}
-\item MaaP::Server
+\item MaaP::ModelServer
+\item MaaP::Controller
 \item MaaP::Client
 \end{itemize}
 
-\subsection{Server}
+\subsection{MaaP::ModelServer}
 \subsubsection{Informazioni sul package}
-\immagine{./Diagrammi/ClientClassi}{Componente MaaP}
+\immagine{./Diagrammi/ComponentiModelServer}{Componente MaaP::ModelServer}
 \paragraph{Descrizione}
-Package contente la componente server-side del progetto. Contiene il model ed il controller.
+Package per il componente ModelServer del modello di architettura three-tier.
 
 \paragraph{Sottocomponenti}
 \begin{itemize}
-\item MaaP::Server::Controller
-\item MaaP::Server::Model
+\item MaaP::ModelServer::DataManager;
+\item MaaP::ModelServer::Database;
+\item MaaP::ModelServer::DSL.
 \end{itemize}
 
-\subsection{Controller}
-\subsubsection{Informazioni sul package}
-\immagine{./Diagrammi/ComponentiController}{Componenti Controller}
+\subsubsection{MaaP::ModelServer::DataManager}
+\paragraph{Informazioni sul package}
+\immagine{./Diagrammi/ComponentiDataManager}{Componente MaaP::ModelServer::DataManager}
 \paragraph{Descrizione}
-Package contenente il controller dell'applicazione MaaP. Il controller si occupa del routing delle richiesti provenienti da e dirette al client, oltre alla loro autenticazione.
+Componente parte del ServerModel per la gestione dei dati.
+\paragraph{Sotto-componenti}
+\begin{itemize}
+\item MaaP::ModelServer::DataManager::DataBaseAnalysisManager;
+\item MaaP::ModelServer::DataManager::DatabaseUserManager;
+\item MaaP::ModelServer::DataManager::IndexManager.
+\end{itemize}
+\paragraph{Classi}
+\subparagraph{MaaP::ModelServer::DataManager::JSonComposer}
+\grassetto{Descrizione}\\
+Classe che costruisce un file JSON a partire dalla struttura di una Collection, o di un Document, e dai suoi dati.\\
+\grassetto{Utilizzo}
+Viene utilizzata dai DatabaseManager per costruire il file JSON da inviare al Controller.
+
+\subparagraph{MaaP::ModelServer::DataManager::IDatabaseManager}
+\grassetto{Descrizione}\\
+Interfaccia che rappresenta il gestore dei database. Contiene tutte le operazioni che si possono effettuare sul database e l'elaborazione dei dati recuperati da essi.\\
+\grassetto{Utilizzo}
+Viene utilizzata per la gestione delle richieste inoltrate dal Controller.
+
+\subparagraph{MaaP::ModelServer::DataManager::IDataRetriever}
+\grassetto{Descrizione}\\
+Interfaccia attraverso cui i DatabaseManager dialogano con i batabase. Contiene le operazioni di lettura e scrittura nei database.\\
+\grassetto{Utilizzo}
+Viene utilizzata per recuperare e inserire dati, sui database, su richiesta dei DataManager.
+
+\subsubsection{MaaP::ModelServer::DataManager::DatabaseAnalysisManager}
+\paragraph{Informazioni sul package}
+\immagine{./Diagrammi/ComponentiDatabaseAnalysisManager}{Componente MaaP::ModelServer::DataManager::DatabaseAnalysisManager}
+\paragraph{Descrizione}
+Componente parte del DataManager per la gestione dei dati del database di analisi.
+\paragraph{Classi}
+\subparagraph{MaaP::ModelServer::DataManager::DatabaseAnalysisManager::DatabaseAnalysisManager}
+\grassetto{Descrizione}\\
+Classe che rappresenta il gestore dei database di analisi. Contiene tutte le operazioni che si possono effettuare sul database di analisi e l'elaborazione dei dati recuperati da essi.\\
+\grassetto{Utilizzo}
+Viene utilizzata per la gestione delle richieste, relative al database di analisi, inoltrate dal Controller.
+\grassetto{Classi da cui eredita}
+\begin{itemize}
+\item MaaP::ModelServer::DataManager::IDatabaseManager;
+\end{itemize}
+\grassetto{Relazioni con altre classi}
+     \grassetto{MaaP::ModelServer::DataManager::JSonComposer}
+     Relazione uscente, utilizza un riferimento a un oggetto di tipo JsonComposer per ottenere il JSON da spedire. 
+     \grassetto{MaaP::ModelServer::DSL::CollectionData}
+     Relazione uscente, utilizza un riferimento a un oggetto CollectionData che contiene la struttura di un file di descrizione 
+
+
 
 
 \paragraph{Classi}
