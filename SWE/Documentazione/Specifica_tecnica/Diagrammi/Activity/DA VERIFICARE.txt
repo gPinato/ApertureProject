@@ -4,3 +4,5 @@ Manca attività recupero password su utente business
 
 Manca attività gestione indici su amministratore
 
+Da mettere a posto il diagramma delle attività dell'Utente Business Amministratore, hanno i branch che non vanno bene
+
