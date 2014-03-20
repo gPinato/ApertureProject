@@ -5,12 +5,12 @@
 
 \newcommand{\Versione}{\versioneNormeDiProgetto{}}	%Versione Finale
 \newcommand{\Data}{2013-11-20}						%Data di creazione
-\newcommand{\DataUltimaModifica}{2014-01-27}
+\newcommand{\DataUltimaModifica}{2014-01-23}
 \newcommand{\TipoDocumento}{Norme di Progetto}		%tipo documento
 
 %includo il file header.tex (logo grande in prima pagina piu qualche altra regola)
 \input{../Logo&Header/header.tex}
-\setcounter{secnumdepth}{5}
+%\setcounter{secnumdepth}{5}
 %\vspace{.05in}
 
 %informazioni documento
@@ -23,9 +23,9 @@
 \textbf{Data ultima modifica} & \DataUltimaModifica{} \\
 \textbf{Stato del Documento} & Formale \\		%CAMBIARE QUI
 \textbf{Uso del Documento} & Interno \\			%CAMBIARE QUI
-\textbf{Redazione} & Giacomo Pinato, Andrea Perin\\			%CAMBIARE QUI
-\textbf{Verifica} & Alessandro Benetti\\			%ED ANCHE QUI!
-\textbf{Approvazione} & Andrea Perin\\				%CAMBIARE QUI
+\textbf{Redazione} & Giacomo Pinato, Andrea Perin, Fabio Miotto, Alberto Garbui\\			%CAMBIARE QUI
+\textbf{Verifica} & Alessandro Benetti, Mattia Sorgato, Giacomo Pinato\\			%ED ANCHE QUI!
+\textbf{Approvazione} & Andrea Perin, Michele Maso, Alberto Garbui\\				%CAMBIARE QUI
 \textbf{Distribuzione} & \parbox[t]{4cm}{\NomeGruppo{}}\\
 \end{tabular}
 \end{center}
@@ -51,11 +51,25 @@ Diario delle modifiche
 
 %aggiungere qui una midrule per aggiungere una nuova riga alla tabella
 \midrule
-2.0.3 & 2014-01-29 & Giacomo Pinato (RE) & Sezione Progettazione, Riorganizzazione\\
+3.2.0 & 2014-01-23 & Michele Maso (RE) & Approvazione documento.\\
 \midrule
-2.0.2 & 2014-01-22 & Mattia Sorgato (RE) & Modifica sezione Glossario\\
+3.1.1 & 2014-01-23   & Alessandro Benetti (VE) & Verifica documento.\\
 \midrule
-2.0.1 & 2014-01-21 & Mattia Sorgato (RE) & Modifica sezione Comunicazioni\\
+3.1.0 & 2014-01-21   & Mattia Sorgato (VE) & Verifica documento.\\
+\midrule
+3.0.2 & 2014-01-15 	& Alberto Garbui (AM) & Incremento documento.\\
+\midrule
+3.0.1 & 2014-01-13	& Alberto Garbui (AM) & Effettuate correzioni segnalate dal Committente.\\
+\midrule
+2.2.0 &	2014-01-04	& Alberto Garbui (RE) & Approvazione documento.\\ 
+\midrule
+2.1.0 &	2014-01-04	& Giacomo Pinato (VE) & Verifica documento.\\ 
+\midrule
+2.0.3 & 2013-12-29 & Fabio Miotto (AM) & Sezione Progettazione, Riorganizzazione\\
+\midrule
+2.0.2 & 2013-12-27 & Fabio Miotto (AM) & Modifica sezione Glossario\\
+\midrule
+2.0.1 & 2013-12-23 & Fabio Miotto (AM) & Modifica sezione Comunicazioni\\
 \midrule
 1.2.0 & 2013-11-27 & Andrea Perin (RE) & Approvazione documento\\
 \midrule
@@ -121,7 +135,7 @@ Le comunicazioni interne sono divise in comunicazioni formali e informali, in ba
 \subsubsection{Comunicazioni interne formali}
 Le comunicazioni interne formali appartengono all'area di organizzazione generale del gruppo. A questa categoria appartengono tutti gli avvisi di impegni collettivi del team, la segnalazione di imprevisti organizzativi o la convocazione di riunioni.
 
-\paragraph{Mailing List \\}
+\subsubsubsection{Mailing List}
 \label{3.2.2}
 È stata creata una mailing list all'indirizzo \textbf{\url{aperture-team@googlegroups.com}}.
 Ogni \gloss{email} inviata a tale indirizzo verrà inoltrata alla email personale di ogni componente nel gruppo.
@@ -139,6 +153,13 @@ Una mail usata per la comunicazione interna deve avere la seguente struttura:
 \subsubsection{Comunicazioni interne informali}
 Le comunicazioni riguardanti dubbi o chiarimenti marginali o comunque non inerenti all'organizzazione del gruppo, vengono definiti informali. Per loro natura, queste comunicazioni devono essere veloci e non complesse, quindi abbiamo deciso di utilizzare strumenti immediati di comunicazione, quali le \gloss{chat}. In questo caso, un membro del gruppo esprime il dubbio come messaggio istantaneo, il quale sarà visibile da ogni altro componente. 
 
+\subsubsubsection{Skype}
+\label{3.2.1}
+Per facilitare le comunicazioni istantanee è stata creata su \gloss{Skype} una chat di gruppo dove sono presenti tutti i membri del team. Tale chat deve essere usata solo per conversazioni non ufficiali o per discussioni non importanti come lo scambio di articoli, consigli o comunicazioni non rilevanti.
+
+\subsubsubsection{Gruppo Facebook}
+Data la grande diffusione di questo \gloss{social network} e l'aderenza di tutti i membri del gruppo ad esso, abbiamo deciso di creare un gruppo apposito su questa piattaforma. \gloss{Facebook} fornisce un accesso ancora più immediato di Skype, data la sua diffusione su dispositivi mobile.  
+
 \subsection{Comunicazioni esterne}
 \subsubsection{Email}
 La email ufficiale del gruppo è \textbf{\url{ApertureSWE@gmail.com}}.\\
@@ -152,12 +173,6 @@ Una mail usata per la comunicazione interna deve avere la seguente struttura:
 \item \grassetto{Allegati: } si possono, qualora se ne ritenga necessario, usare degli allegati, per completare l'informazione che si vuole spedire. Un esempio utile potrebbe essere quello di allegare un verbale o un resoconto di incontri con il Proponente  o con il Committente.
 \end{itemize}
 
-\paragraph{Skype \\}
-\label{3.2.1}
-Per facilitare le comunicazioni istantanee è stata creata su \gloss{Skype} una chat di gruppo dove sono presenti tutti i membri del team. Tale chat deve essere usata solo per conversazioni non ufficiali o per discussioni non importanti come lo scambio di articoli, consigli o comunicazioni non rilevanti.
-
-\paragraph{Gruppo Facebook \\}
-Data la grande diffusione di questo \gloss{social network} e l'aderenza di tutti i membri del gruppo ad esso, abbiamo deciso di creare un gruppo apposito su questa piattaforma. \gloss{Facebook} fornisce un accesso ancora più immediato di Skype, data la sua diffusione su dispositivi mobile.  
 
 \subsection{Riunioni}
 \label{3.3}
@@ -286,7 +301,7 @@ Nella stesura della documentazione si dovranno seguire le seguenti indicazioni:
 \item Il numero massimo di subordinate in una frase è quattro;
 \end{itemize}
 
-\subparagraph{Sigle e abbreviazioni \\}
+\subsubsection{Sigle e abbreviazioni \\}
 \label{5.5}
 Le sigle e le abbreviazioni dovranno essere utilizzate solo in contesti in cui lo spazio è limitato come tabelle e diagrammi. Sono previste le seguenti abbreviazioni:
 \begin{itemize}
@@ -304,7 +319,15 @@ Le sigle e le abbreviazioni dovranno essere utilizzate solo in contesti in cui l
 \item AS = Aperture Software;
 \item DP = Design Pattern.
 \end{itemize}
-
+Per i ruoli si useranno le seguenti abbreviazioni:
+\begin{itemize}
+\item AN=Analista;
+\item VE=Verificatore;
+\item RE=Responsabile;
+\item AM=Amministratore;
+\item PT=Progettista;
+\item PR=Programmatore;
+\end{itemize}
 
 \newpage
 \subsection{Versionamento}
@@ -477,6 +500,18 @@ Redige il Manuale Utente e tutta la documentazione relativa al codice.
 \label{6.0}
 Verranno elencate le procedure che i ruoli di progetto dovranno attenersi in maniera scrupolosa per raggiungere i fini preposti nel Piano di Qualifica.
 
+\subsection{Procedure proattive}
+Nel processo documentazione, che appartiene alla categoria dei processi di supporto, sono state adottate le seguenti procedure proattive:
+\begin{itemize}
+\item \grassetto{Correttore \LaTeX :}lo strumento utilizzato, descritto nella sezione delle Norme di Progetto, per la scrittura dei documenti permette di identificare le parole contenenti errori ortografici; in questo modo ci si può accorgere dell'errore e procedere alla correzione mentre si sta scrivendo;
+\item \grassetto{Scrittura frasi: }si cerca di scrivere frasi corte e semplici e con termini di uso comune per ottenere un valore accettabile dell'indice di Gulpease;
+\item \grassetto{Scrittura paragrafo: }ogni volta che verrà scritto un paragrafo, si procederà alla lettura per più volte per assicurare che quello che è stato scritto abbia senso.
+\end{itemize}
+Nell'attività di codifica, appartenente al processo di sviluppo, verranno adottate le seguenti procedure proattive:
+\begin{itemize}
+\item \grassetto{Ambiente di sviluppo: }l'ambiente di sviluppo, che verrà utilizzato nel prossimo periodo di tempo dedicato alla codifica, permetterà di segnalare, mentre si sta scrivendo, degli errori sintattici; questo permette di correggerli mentre si sta scrivendo del codice.
+\end{itemize}
+
 \subsection{Gestione di Progetto}
 E' compito del Responsabile di Progetto gestire questo processo.
 \label{}
@@ -484,17 +519,17 @@ E' compito del Responsabile di Progetto gestire questo processo.
 \subsubsection{Gestione delle attività}
 \label{}
 
-\paragraph{Pianificazione \\}
+\subsubsubsection{Pianificazione}
 \label{}
 All'inizio di ciascuna delle fasi delineate nel \emph{Piano di Progetto v2.2.0} il Responsabile di Progetto deve realizzare un diagramma di Gantt su Redmine, come descritto in sezione 6.1.1 di questo documento, per tracciare e gestire le attività dei processi utilizzati dal progetto.
 Deve inoltre assegnare ogni attività ad un componente o gruppo di componenti.
-\paragraph{Assegnazione attività \\}
+\subsubsubsection{Assegnazione attività}
 Per assegnare le attività alle persone, il Responsabile di progetto dovrà seguire il sistema di ticketing descritto in sezione 6.1.1.1. 
-\paragraph{Controllo dell'avanzamento \\}
+\subsubsubsection{Controllo dell'avanzamento}
 \label{}
 Dopo ogni sessione di lavoro di un componente o gruppo di componenti, gli stessi devono tracciare il loro lavoro modificando l'avanzamento dell'attività e le ore/persona spese mediante il sistema di ticketing scelto, identificato in RedMine.
 Dovranno inoltre modificare lo stato dell'attività in base al ruolo ricoperto e lo stato di avanzamento della stessa come descritto nel paragrafo successivo. Anche questa operazione verrà eseguita mediante il sistema di ticketing.
-\paragraph{Stati d'avanzamento \\}
+\subsubsubsection{Stati d'avanzamento}
 \label{}
 I possibili stati di avanzamento di un'attività sono i seguenti:
 \begin{itemize}
@@ -503,9 +538,7 @@ I possibili stati di avanzamento di un'attività sono i seguenti:
 \item \emph{Chiuso}: La lavorazione è terminata.
 \end{itemize}
 
-
-
-\paragraph{Gestione dei rischi \\}
+\subsubsubsection{Gestione dei rischi}
 \label{}
 Durante l'avanzamento del progetto il Responsabile  deve monitorare costantemente il verificarsi dei rischi descritti nel \emph{Piano di Progetto v2.2.0} cosi come la possibilità che l'avanzamento comporti nuovi rischi non previsti precedentemente. 
 
@@ -517,8 +550,8 @@ Il progetto è una macro-attività che verrà suddivisa in molte sotto-attività
 \subsubsection{Ticket}
 \label{8.2}
 I ticket sono uno strumento per il tracciamento di attività, funzionalità e problematiche utile per sincronizzare e mantenere traccia del lavoro del team.
- •
-\paragraph{Creazione dei ticket \\}
+
+\subsubsubsection{Creazione dei ticket}
 \label{8.3}
 I ticket vengono creati dal:
 \begin{itemize}
@@ -526,7 +559,7 @@ I ticket vengono creati dal:
 \item Verificatore: crea ticket per la segnalazione di problematiche o bug che necessitano di controllo e correzione.
 \end{itemize}
 
-\paragraph{Tipologie di Ticket \\}
+\subsubsubsection{Tipologie di Ticket}
 \label{8.4}
 I ticket rappresentano operazioni e attività che devono essere portate a termine.
 I ticket avranno specifici stadi di avanzamento:
@@ -538,16 +571,16 @@ I ticket avranno specifici stadi di avanzamento:
 \end{itemize}
 Di seguito verrano elencate le tipologie che i ticket possono assumere.
 
-\subparagraph{Ticket di Realizzazione \\}
+\subsubsubsubsection{Ticket di Realizzazione}
 \label{8.4.2}
 Assegnano la realizzazione delle attività ai membri del gruppo competenti. Sono organizzati in una gerarchia con vari livelli di priorità.
 
-\subparagraph{Ticket di Verifica \\}
+\subsubsubsubsection{Ticket di Verifica}
 \label{8.4.3}
 Rappresentano segnalazioni di errori, problematiche o imprecisioni riscontrate dai Verificatori durante le fase di Verifica. Dovranno essere assegnati ad un membro del team che in quel momento ricopre un ruolo adatto ad intervenire per la correzione e in seguito riverificati da un Verificatore.
 
 
-\subparagraph{Ticket di modifica \\}
+\subsubsubsubsection{Ticket di modifica}
 \label{8.4.4}
 Rappresentano richieste di modifica fatte da membri del team al Responsabile. Quest'ultimo poi decide se accettare la richiesta di modifica o rifiutarla. Se la richiesta viene accettata, il Responsabile convoca una riunione per la discussione della modifica. Se la modifica viene rettificata dall'assemblea, le viene assegnata una priorità e viene messa nell'elenco di modifiche in attesa di implementazione.
 Le priorità che possono essere assegnate sono le seguenti:
@@ -557,7 +590,7 @@ Le priorità che possono essere assegnate sono le seguenti:
 \item Bassa: l'implementazione non è obbligatoria, non è stata definita una scadenza.
 \end{itemize}
 
-\subparagraph{Ticket di pianificazione \\}
+\subsubsubsubsection{Ticket di pianificazione}
 
 \subsection{Analisi dei requisiti}
 \label{6.1}
@@ -600,7 +633,7 @@ Tutti i diagrammi devono rispettare la specifica UML 2.0.
 \label{}
 I Progettisti devono descrivere l'architettura d'alto livello del sistema e dei singoli componenti nella Specifica Tecnica in modo chiaro, formale e non ambiguo; inoltre dovranno essere progettati i corrispondenti test d'integrazione.
 
-\paragraph{Diagrammi UML \\}
+\subsubsubsection{Diagrammi UML}
 \label{}
 Tutti i diagrammi UML rispetteranno lo standard UML 2.0.
 Devono essere realizzati i seguenti diagrammi UML
@@ -611,7 +644,7 @@ Devono essere realizzati i seguenti diagrammi UML
 \item Diagrammi dei package.
 \end{itemize}
 
-\paragraph{Definizione delle componenti \\}
+\subsubsubsection{Definizione delle componenti}
 \label{}
 Ogni componente progettato deve essere riportato all'interno della Specifica Tecnica secondo lo schema definito nei formalismi di specifica, nel documento Specifica Tecnica. Il componente verrà modellato secondo la seguente struttura:
 \begin{itemize}
@@ -629,7 +662,7 @@ Ogni componente progettato deve essere riportato all'interno della Specifica Tec
 \item \grassetto{Classi: }specifica se il componente ha eventuali classi; se c'è una classe deve essere scritta secondo la struttura definita nella successiva sezione.
 \end{itemize}
 
-\paragraph{Definizione delle classi \\}
+\subsubsubsection{Definizione delle classi}
 \label{}
 Ogni classe progettata deve essere riportata all'interno della Specifica tecnica secondo lo schema definito nei formalismi di specifica, nel documento Specifica Tecnica. La classe verrà modellata secondo la seguente struttura:
 \begin{itemize}
@@ -662,17 +695,17 @@ Ogni classe progettata deve essere riportata all'interno della Specifica tecnica
 	\end{itemize}
 \end{itemize}
 
-\paragraph{Design Pattern \\}
+\subsubsubsection{Design Pattern}
 \label{}
 I Progettisti dovranno fornire una descrizione dei design pattern utilizzati per la progettazione dell'architettura. In essi si deve includere una descrizione ed un diagramma che mostri il funzionamento e la struttura.
 
 
 
-\paragraph{Tracciamento \\}
+\subsubsubsection{Tracciamento}
 \label{}
 Ogni requisito deve essere tracciato al componente che lo soddisfa, ed ogni componente deve essere tracciato al requisito che ha imposto la sua realizzazione.
 
-\subparagraph{Tracciamento requisiti-componenti \\}
+\subsubsubsubsection{Tracciamento requisiti-componenti}
 Di seguito verrà mostrata una tabella che rappresenta il tracciamento requisiti-componenti. \\
 La tabella avrà la seguente forma:
 \begin{itemize}
@@ -681,7 +714,7 @@ La tabella avrà la seguente forma:
 \item \grassetto{Componenti: }specifica le componenti che soddisfano il requisito.
 \end{itemize}
 
-\subparagraph{Tracciamento componenti-requisiti \\}
+\subsubsubsubsection{Tracciamento componenti-requisiti}
 Di seguito verrà mostrata una tabella che rappresenta il tracciamento componenti-requisiti. \\
 La tabella avrà la seguente forma:
 \begin{itemize}
@@ -691,15 +724,15 @@ La tabella avrà la seguente forma:
 
 \subsubsection{Test}
 
-\paragraph{Test di integrazione \\}
+\subsubsubsection{Test di integrazione}
 \label{}
 I Progettisti dovranno definire dei test e delle classi atte a verificare il lavoro svolto. 
 
-\paragraph{Test di Unità \\}
+\subsubsubsection{Test di Unità}
 \label{}
 I Progettisti dovranno definire i test d'unità necessari per verificare che i componenti del sistema funzionino nella modo previsto.
 
-\paragraph{Norme per il tracciamento dei test \\}
+\subsubsubsection{Norme per il tracciamento dei test}
 Nel Piano di Qualifica il tracciamento verrà riportato in forma tabellare e suddiviso per tipologia del test.\\
 La tabella dei test di sistema avrà la seguente forma:
 \begin{itemize}
@@ -716,14 +749,14 @@ La tabella dei test d'integrazione avrà la seguente forma:
 \item \grassetto{Stato: }lo stato in questo caso sarà uguale per tutti, ovvero D.E (da eseguire), in quanto i test verranno eseguiti più avanti
 \end{itemize}
 
-\paragraph{Tracciamento componente-test d'integrazione \\}
+\subsubsubsection{Tracciamento componente-test d'integrazione}
 La tabella per il tracciamento componente-test d'integrazione avrà la seguente forma:
 \begin{itemize}
 \item \grassetto{Componente: } il nome del componente associato al corrispondente test
 \item \grassetto{Test: }codice univoco che identifica il test
 \end{itemize}
 
-\paragraph{Tracciamento test d'integrazione-componente \\}
+\subsubsubsection{Tracciamento test d'integrazione-componente}
 La tabella per il tracciamento test d'integrazione-componente avrà la seguente forma:
 \begin{itemize}
 \item \grassetto{Test: }codice univoco che identifica il test
@@ -734,7 +767,7 @@ La tabella per il tracciamento test d'integrazione-componente avrà la seguente 
 \label{}
 I Progettisti devono descrivere l'architettura di basso livello del sistema e dei singoli componenti nella Definizione di Prodotto in modo chiaro, formale e non ambiguo, integrando quanto scritto nella Specifica Tecnica.
 
-\paragraph{Diagrammi UML \\}
+\subsubsubsection{Diagrammi UML}
 \label{}
 Tutti i diagrammi UML rispetteranno lo standard UML 2.0.
 Devono essere realizzati i seguenti diagrammi UML
@@ -745,7 +778,7 @@ Devono essere realizzati i seguenti diagrammi UML
 \item Diagrammi dei package.
 \end{itemize}
 
-\paragraph{Definizione delle classi \\}
+\subsubsubsection{Definizione delle classi}
 \label{}
 Ogni classe progettata deve essere riportata all'interno della Definizione di Prodotto secondo lo schema definito nei formalismi di specifica, nel documento Specifica Tecnica. La classe verrà modellata secondo la seguente struttura:
 \begin{itemize}
@@ -776,7 +809,7 @@ Ogni classe progettata deve essere riportata all'interno della Definizione di Pr
 	\end{itemize}
 \end{itemize}
 
-\paragraph{Definizione dei metodi}
+\subsubsubsection{Definizione dei metodi}
 Ogni metodo progettato deve essere riportato all'interno della Definizione di Prodotto. I metodi verranno modellati secondo la seguente struttura:
 \begin{itemize}
 \item \grassetto{Nome: }identifica il nome del metodo
@@ -796,7 +829,7 @@ Ogni metodo progettato deve essere riportato all'interno della Definizione di Pr
 \item \grassetto{Note (eventuali): }specifica eventuali note del metodo
 \end{itemize}
 
-\paragraph{Definizione degli attributi \\}
+\subsubsubsection{Definizione degli attributi}
 Ogni attributo progettato deve essere riportato all'interno della Definizione di Prodotto. Gli attributi verranno modellati secondo la seguente struttura:
 \begin{itemize}
 \item \grassetto{Nome: }identifica il nome dell'attributo
@@ -810,23 +843,23 @@ Ogni attributo progettato deve essere riportato all'interno della Definizione di
 \item \grassetto{Descrizione: }è una descrizione testuale dell'attributo
 \end{itemize}
 
-\paragraph{Tracciamenti\\}
+\subsubsubsection{Tracciamenti}
 Di seguito verranno mostrati i seguenti tracciamenti:
 \label{}
-\subparagraph{Tracciamento classi-requisiti \\}
+\subsubsubsubsection{Tracciamento classi-requisiti}
 Ogni requisito deve essere tracciato alla classe che lo soddisfa, ed ogni classe deve essere tracciata al requisito che ha imposto la sua realizzazione.
 La tabella del tracciamento avrà la seguente forma:
 \begin{itemize}
 \item \grassetto{Classe: }specifica il nome della classe
 \item \grassetto{Requisiti: }specifica i requisiti
 \end{itemize}
-\subparagraph{Tracciamento requisiti-classi \\}
+\subsubsubsubsection{Tracciamento requisiti-classi}
 La tabella del tracciamento avrà la seguente forma:
 \begin{itemize}
 \item \grassetto{Requisiti: }specifica i requisiti
 \item \grassetto{Classe: }specifica il nome della classe
 \end{itemize}
-\subparagraph{Tracciamento modulo-test \\}
+\subsubsubsubsection{Tracciamento modulo-test}
 La tabella del tracciamento avrà la seguente forma:
 \begin{itemize}
 \item \grassetto{Modulo: }specifica il modulo
@@ -941,28 +974,28 @@ Il Verificatore dovrà utilizzare i test statici e dinamici per la verifica del 
 \end{itemize}
 \end{itemize}
 
-\paragraph{Documentazione del codice}
+\subsubsubsection{Documentazione del codice}
 
-\subparagraph{Codifica \\}
+\subsubsubsubsection{Codifica}
 \label{}
 Nella codifica ci si dovrà attenere alle seguenti convenzioni, al fine di garantire la maggior qualità di processo possibile.
 Gli sviluppatori dovranno attenersi alle comuni Coding Conventions, in particolare a quelle suggerite dal Prof. Crockford nel suo sito web.\footnote{http://javascript.crockford.com/code.html}\\
 
-\subparagraph{Nomi \\}
+\subsubsubsubsection{Nomi}
 \label{}
 I nomi di classi, metodi, variabili e funzioni dovranno essere in camel case, le parole componenti separate da underscore e scritti in inglese.
 La prima lettera dovrà essere minuscola, fatta eccezione per le classi che inizieranno sempre con lettera maiuscola.
 
-\subparagraph{Ricorsione \\}
+\subsubsubsubsection{Ricorsione}
 \label{}
 La ricorsione deve essere implementata solo in caso di vera necessità, altrimenti va evitata. Nel caso in cui venga implementata si dovrà fornire una prova di corretta terminazione e un calcolo approssimato delle risorse richieste per la corretta esecuzione.
 
-\subparagraph{Concorrenza \\}
+\subsubsubsubsection{Concorrenza}
 \label{}
 
 La concorrenza dovrà essere per quanto possibile evitata. Nel caso questo non sia possibile si dovrà cercare di evitare la condivisione di risorse e serializzare il più possibile l'accesso alle risorse.
 
-\subparagraph{Header dei file \\}
+\subsubsubsubsection{Header dei file}
 \label{5.3.1}
 Ogni file dovrà contenere un header strutturato come segue:
 \begin{itemize}
@@ -975,7 +1008,7 @@ Ogni file dovrà contenere un header strutturato come segue:
 \item Modification History: Tabella dei cambiamenti effettuati sul file.
 \end{itemize}
 
-\subparagraph{Documentazione dei metodi \\}
+\subsubsubsubsection{Documentazione dei metodi}
 \label{5.3.2}
 Ogni metodo/funzione di codice dovrà essere preceduta da un commento contenente le seguenti informazioni:
 \begin{itemize}
@@ -985,7 +1018,7 @@ Ogni metodo/funzione di codice dovrà essere preceduta da un commento contenente
 \item Return: Cosa ritorna la funzione.
 \end{itemize}
 
-\subparagraph{Documentazione delle classi \\}
+\subsubsubsubsection{Documentazione delle classi}
 \label{5.3.3}
 Ogni \gloss{classe} deve essere preceduta da un commento contenente le seguenti informazioni:
 \begin{itemize}
@@ -1023,7 +1056,7 @@ Su RedMine per creare un nuovo progetto bisogna seguire la seguente procedura:
 \item Assegnare un nome al progetto che si desidera creare;
 \item Specificare un identificativo
 \end{itemize}
-\paragraph{Ticket \\}
+\subsubsubsection{Ticket}
 Per quanto riguarda i ticket, si possono aprire le seguenti tipologie di ticket:
 \begin{itemize}
 \item \grassetto{Ticket di realizzazione e controllo}
@@ -1032,7 +1065,7 @@ Per quanto riguarda i ticket, si possono aprire le seguenti tipologie di ticket:
 \item \grassetto{Ticket di modifica}
 \end{itemize}
 
-\subparagraph{Ticket di realizzazione e controllo \\}
+\subsubsubsubsection{Ticket di realizzazione e controllo}
 \begin{itemize}
 \item Cliccare su Nuova segnalazione
 \item Nel menù a tendina corrispondente a Tracker selezionare Realizzazione
@@ -1047,7 +1080,7 @@ Per quanto riguarda i ticket, si possono aprire le seguenti tipologie di ticket:
 \item specificare la percentuale che rappresenta quanto completo è
 \end{itemize}
 
-\subparagraph{Ticket per la verifica \\}
+\subsubsubsubsection{Ticket per la verifica}
 Un verificatore può creare un ticket di verifica, e deve attenersi alla seguente linea guida:
 \begin{itemize}
 \item Cliccare su Nuova segnalazione
@@ -1063,7 +1096,7 @@ Un verificatore può creare un ticket di verifica, e deve attenersi alla seguent
 \item specificare la percentuale che rappresenta quanto completo è
 \end{itemize}
 
-\subparagraph{Ticket per pianificare attività \\}
+\subsubsubsubsection{Ticket per pianificare attività}
 \begin{itemize}
 \item Cliccare su Nuova segnalazione
 \item Nel menù a tendina corrispondente a Tracker selezionare Attività
@@ -1078,12 +1111,12 @@ Un verificatore può creare un ticket di verifica, e deve attenersi alla seguent
 \item specificare la percentuale che rappresenta quanto completo è
 \end{itemize}
 
-\subparagraph{Ticket di modifica BOHHHHHHHH}
+\subsubsubsubsection{Ticket di modifica BOHHHHHHHH}
 
 \subsubsection{Condivisione dei file}
 E' stato usato uno strumento per la condivisione dei file online, per velocizzare e semplificare l'organizzazione di alcune attività.
 
-\paragraph{Google Drive \\}
+\subsubsubsection{Google Drive}
 Questo strumento permette di condividere tra i membri del gruppo alcuni documenti, che possiedono queste caratteristiche:
 \begin{itemize}
 \item Non è richiesta la versione
@@ -1110,15 +1143,15 @@ Il repository pubblico è disponibile all'indirizzo: \\
 \textbf{\url{https://github.com/ApertureSoftware/AperturePublic.git}.}
 \end{center}
 
-\subparagraph{Branch \\}
+\subsubsubsubsection{Branch}
 \label{4.4}
 Nel repository saranno disponibili vari \gloss{branch} per favorire lo sviluppo del codice da parte degli sviluppatori.
 
-\subparagraph{Master \\}
+\subsubsubsubsection{Master}
 \label{4.4.1}
 Il branch principale sarà chiamato master e conterrà l'ultima \gloss{versione} del software stabile rilasciata. Affinché una nuova versione possa essere caricata nel branch master, quest'ultima deve compilare senza errori o warning e deve aver superato tutti i test disegnati per verificarne la qualità.
 
-\subparagraph{Secondari \\}
+\subsubsubsubsection{Secondari}
 \label{4.4.2}
 Gli sviluppatori possono richiedere la creazione di un branch secondario, provando nuove strategie di sviluppo senza alterare il branch master. Il Responsabile di Progetto è Responsabile dell'approvazione della richiesta.
 
