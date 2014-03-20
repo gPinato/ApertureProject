@@ -6,5 +6,8 @@ Attività Sviluppatore - non so se serva davvero l'azione in alto a destra "Torna
 Attività Utente Business Amministratore - serve davvero la freccia speculare a "effettua il logout"? è per prevedere che un utente chiuda
 	il browser senza sloggare? 
 
-
+CASI D'USO:
+- non è previsto l'inserimento di un link ad un document appena loggati (inserimento nella barra di navigazione, né al document né alla collection)
+- prevedere nei casi d'uso un menù che contiene l'elenco delle collection (magari tenere le più utilizzate in alto, poi però aprire il menù per selezionare
+	la collection specifica)
 
