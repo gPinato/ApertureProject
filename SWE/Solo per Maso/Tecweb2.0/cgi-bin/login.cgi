@@ -66,7 +66,6 @@ print<<EOF;
 
 EOF
 
-print $cgi->end_html;
    
 
 
