@@ -2,3 +2,7 @@ Da mettere a posto il diagramma delle attività dell'Utente Business Amministrato
 (sicuri?)
 
 Sistemare "premere pulsante menu"
+
+Unificare "premere il link al document utente" con "visualizzazione document show utente" più cicciate sullo stesso file
+
+
