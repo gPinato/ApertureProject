@@ -28,6 +28,7 @@
 \usepackage[all]{hypcap}
 \usepackage{titlesec}
 \usepackage{indentfirst}
+\usepackage{lipsum,titletoc}
 
 %\setcounter{secnumdepth}{4}
 
@@ -80,6 +81,16 @@
 \setcounter{secnumdepth}{100}
 \setcounter{tocdepth}{100}
 %****************FINE GESTIONE SUBSECTION MULTIPLE
+
+%impostazioni relative alla visualizzazione delle section 
+%nell'indice
+\titlecontents{section}
+[0pt]%left indent
+{\bfseries}
+{\contentslabel{2.3em}}
+{\hspace*{-2.3em}}
+{\hfill\contentspage}
+[]%separator
 
 
 \oddsidemargin=.15in
