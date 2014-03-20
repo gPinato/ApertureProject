@@ -1,7 +1,10 @@
 Da mettere a posto il diagramma delle attività dell'Utente Business Amministratore, hanno i branch che non vanno bene
-(sicuri?)
 
 Sistemare "premere pulsante menu"
+
+Attività Sviluppatore - non so se serva davvero l'azione in alto a destra "Torna alla cartella dei progetti"
+Attività Utente Business Amministratore - serve davvero la freccia speculare a "effettua il logout"? è per prevedere che un utente chiuda
+	il browser senza sloggare? 
 
 
 
