@@ -3,8 +3,8 @@
 \input{../Logo&Header/versioneDocumenti.tex}
 
 \newcommand{\Versione}{\versioneSpecificaTecnica{}}	  %Versione Finale
-\newcommand{\Data}{xxxx-xx-xx}				           %Data di creazione
-\newcommand{\DataUltimaModifica}{xxxx-xx-xx}
+\newcommand{\Data}{2014-01-24}				           %Data di creazione
+\newcommand{\DataUltimaModifica}{2014-03-xx}
 \newcommand{\TipoDocumento}{Specifica Tecnica}	       %tipo documento
 
 %includo il file header.tex (logo grande in prima pagina piu qualche altra regola)
@@ -17,14 +17,14 @@
 \begin{tabular}{r|l}
 %\textbf{Nome} &\TipoDocumento \\
 \textbf{Versione} & \Versione{} \\
-\textbf{Data creazione} & \Data{2014-01-24} \\
+\textbf{Data creazione} & \Data{} \\
 \textbf{Data ultima modifica} & \DataUltimaModifica{} \\
 \textbf{Stato del Documento} & Formale \\		          %CAMBIARE QUI
 \textbf{Uso del Documento} & Esterno \\			          %CAMBIARE QUI
 \textbf{Redazione} &  Pinato Giacomo,nome2,...\\		        %CAMBIARE QUI
 \textbf{Verifica} & nome1,nome2,...\\			        %ED ANCHE QUI!
 \textbf{Approvazione} & nome1,nome2,...\\				 %CAMBIARE QUI
-\textbf{Distribuzione} & \parbox[t]{4cm}{\NomeGruppo{}}\\
+\textbf{Distribuzione} & \parbox[t]{4cm}{\NomeGruppo{}\\Prof. Vardanega Tullio\\Prof. Cardin Riccardo}\\
 \end{tabular}
 \end{center}
 
@@ -33,7 +33,7 @@
 %inizio sommario del documento
 \begin{abstract}
 \begin{center}
-Questo documento si propone di presentare la Specifica tecnica e architetturale per la Realizzazione del prodotto \textbf{MaaP}.
+Questo documento si propone di presentare la Specifica tecnica e architetturale per la realizzazione del prodotto \textbf{MaaP}.
 \end{center}
 \end{abstract}
 
@@ -74,9 +74,9 @@ Diario delle modifiche
 
 %pagine successive hanno la lista di tabelle e lista delle figure
 %(vengono aggiornate in automatico)
-%\newpage
-%\listoftables
-%\listoffigures
+\newpage
+%\listoftables	%tabelle
+\listoffigures %elenco delle immagini
 
 %qui inizia la prima pagina ufficiale
 \newpage
@@ -109,14 +109,14 @@ Il presente documento ha lo scopo di definire la progettazione ad alto livello d
 
 \newpage
 \section{Tecnologie utilizzate}
-In questa sezione verrano elencate e descritte le tecnologie che si utilizzeranno durante lo sviluppo del progetto. In particolare la colonna portante del progetto sar\`{a} lo stack MEAN, ovvero MongoDB, Express, Angular e Node.js.
+In questa sezione verranno elencate e descritte le tecnologie che si utilizzeranno durante lo sviluppo del progetto. In particolare la colonna portante del progetto sarà lo stack MEAN, ovvero MongoDB, Express, AngularJS e Node.js.
 
 \subsection{MongoDB}
 Il database con il quale la nostra applicazione dovrà interagire è realizzato con MongoDB, come specificato nel capitolato. Questa tecnologia offre i seguenti vantaggi:
 \begin{itemize}
 \item Facile indicizzazione: Ogni campo in MongoDB può diventare un indice;
-\item Bilanciamento di carico: MongoDB scala orizzontalmente molto facilmente grazie all'utilizzo di shard;
-\item Integrazione con Javascript: Query o altre funzioni scritte in Javascript possono essere eseguite direttamente dal dabatase.
+\item Bilanciamento di carico: MongoDB scala orizzontalmente molto facilmente grazie all'utilizzo di Shard;
+\item Integrazione con Javascript: Query o altre funzioni scritte in Javascript possono essere eseguite direttamente dal database.
 \end{itemize}
 
 \subsection{Javascript}
@@ -126,8 +126,8 @@ Si è deciso di utilizzare Javascript in quanto è il linguaggio su cui si basan
 \subsection{NodeJs}
 Si è deciso di utilizzare il linguaggio Node.js in quanto consigliato dal capitolato e adatto al progetto. Le sue caratteristiche più vantaggiose sono:
 \begin{itemize}
-\item Modello event-driven: ovvero "programmazione ad eventi", che si basa su un concetto semplice: il flusso del programma non segue un corso specifico ma è guidato dalle azioni dell'utilizzatore;
-\item Modello asincrono: grazie a questa caratteristica è possibile ridurre al minimo i tempi di morti in quanto, nell'attesa dell completamento di una operazione, si procede con altri flussi logici. 
+\item Modello Event-driven: ovvero "programmazione ad eventi", che si basa su un concetto semplice: il flusso del programma non segue un corso specifico ma è guidato dalle azioni dell'utilizzatore;
+\item Modello asincrono: grazie a questa caratteristica è possibile ridurre al minimo i tempi di morti in quanto, nell'attesa del completamento di una operazione, si procede con altri flussi logici. 
 \item Grande scalabilità: Grazie al modo in cui è implementato, Node.js riesce ad essere largamente scalabile con minimo sforzo.
 \end{itemize}
 
@@ -135,7 +135,7 @@ Si è deciso di utilizzare il linguaggio Node.js in quanto consigliato dal capit
 \subsection{JSON}
 Rappresenta il tipo di messaggi con cui client e server si scambiano informazioni. I vantaggi offerti sono:
 \begin{itemize}
-\item Semplicità: i messaggi JSON sono più corti rispetto ad altri formati di interscambio, e vengono eseguiti più velocemente dal parser. JSON inoltre risulta più semplice e immediato rispetto ad esempio a XML.
+\item Semplicità: i messaggi JSON sono più corti rispetto ad altri formati di interscambio, e vengono eseguiti più velocemente dal \gloss{parser}. JSON inoltre risulta più semplice e immediato rispetto ad esempio a XML.
 \end{itemize}
 Svantaggi:
 \begin{itemize}
@@ -144,25 +144,27 @@ Svantaggi:
 
 \subsection{AngularJs}
 \begin{itemize}
-\item Two Way Data-Binding: Una delle caratteristiche principali di angular. Le modifiche apportate al model si rifletto direttamente sugli elementi del DOM, e le modifiche al DOM si ripercuotono automaticamente sul model. Questo alleggerisce tremendamente il codice necessario a controllare ad ascoltare e gestire il DOM, automatizzando il processo. E noi sappiamo che automatico \`{e} bene.
-\item Templates: I template HTML sono parsati dal browswe nel DOM,il quale costituisce poi l'input per il compilatore Angular. Quest'ultimo poi crea il data binding tra il DOM e lo scope dei dati. Uno dei più grandi vantaggi di questa tecnica è che separa presentazione da implementazione, in quanto i template html possono modificati senza alterare il modo in cui sono inseriti i dati.
-\item Dependecy Injection: Angular possiede nativamente una “dependecy injection”, che aiuta gli sviluppatori facilitando la creazione, la comprensione e il testing dell'applicazione.
+\item \gloss{Two Way Data-Binding}: Una delle caratteristiche principali di angular. Le modifiche apportate al model si rifletto direttamente sugli elementi del DOM, e le modifiche al DOM si ripercuotono automaticamente sul model. Questo alleggerisce tremendamente il codice necessario a controllare ad ascoltare e gestire il DOM, automatizzando il processo. E noi sappiamo che automatico è bene.
+\item Templates: I template HTML sono parsati dal browser nel DOM, il quale costituisce poi l'input per il compilatore Angular. Quest'ultimo poi crea il data binding tra il DOM e lo scope dei dati. Uno dei più grandi vantaggi di questa tecnica è che separa presentazione da implementazione, in quanto i template html possono modificati senza alterare il modo in cui sono inseriti i dati.
+\item Dependency Injection: Angular possiede nativamente una "dependency injection", che aiuta gli sviluppatori facilitando la creazione, la comprensione e il testing dell'applicazione.
 \item Directives: Le directives possono essere usate per definire tag HTML personalizzati che fungono da widget. Possono inoltre essere usate per "decorare" elementi con comportamenti personalizzati o per manipolare attributi del DOM. 
 
 \end{itemize}
 
 \subsection{HTML5}
-TODO**************************DA completare.....
+L'\gloss{HTML5} è un linguaggio di markup per la strutturazione delle pagine web.\\
+Nel progetto MaaP è stato scelto di utilizzare l'HTML5 perché introduce novità finalizzate soprattutto a migliorare il \gloss{disaccoppiamento} tra struttura, definita dal markup, caratteristiche di resa (tipo di carattere, colori, eccetera), definite dalle direttive di stile, e contenuti di una pagina web, definiti dal testo vero e proprio.\\
+Inoltre l'HTML5 prevede il supporto per la memorizzazione locale di grosse quantità di dati scaricati dal web browser, ideale per consentire l'utilizzo di applicazioni web e quindi per il framework MaaP.
 
 \newpage
 \section{Descrizione architettura}
 \subsection{Metodo e formalismo di specifica}
-Si è deciso di procedere utilizzando un approccio top-down per l'esposizione dell'architettura dell'applicazione, ovvero descrivendo inizialmente le componenti in generale per poi arrivare a trattarle al particolare.
+Si è deciso di procedere utilizzando un approccio Top-down per l'esposizione dell'architettura dell'applicazione, ovvero descrivendo inizialmente le componenti in generale per poi arrivare a trattarle al particolare.
 Si descriveranno i package e i componenti per poi dettagliare le singole classi, specificando per ciascuna di esse il tipo, l'obiettivo e la funzionalità. Poi si passerà ad illustrare degli esempi d'uso di Design Pattern (descritti approfonditamente nell'Appendice A) e le tecnologie utilizzate.
 
 
 \subsection{Architettura generale}
-L'architettura del framework segue un modello di architettura in stile three-tier che prevede la suddivisione dell'applicazione  in tre diversi strati dedicati rispettivamente all'interfaccia utente (Client), alla business logic (Controller) e alla gestione dei dati persistenti (Model). La parte Client segue il design pattern MVVM utilizzato da AngularJS ed è quindi suddivisa in Model, View, ViewModel.\\
+L'architettura del framework segue un modello di architettura in stile Three-tier che prevede la suddivisione dell'applicazione  in tre diversi strati dedicati rispettivamente all'interfaccia utente (Client), alla business logic (Controller) e alla gestione dei dati persistenti (Model). La parte Client segue il design pattern MVVM utilizzato da AngularJS ed è quindi suddivisa in Model, View, ViewModel.\\
 
 I seguenti diagrammi rappresentano l'architettura ad alto livello del framework, indicando i package e le relazioni che intercorrono tra questi.
 
@@ -279,7 +281,7 @@ Vengono inoltre presentati tutti i sotto-package così da facilitare la comprens
 
 \subsubsection{Classi}
 \immagine{./Diagrammi/GeneraleClassi}{Architettura generale del software}
-Nel precedente diagramma è presente l'architettura ad alto livello del software e vengono indicate le classi fondamentali per rappresentare le relazioni del modello  three-tier. *****************************************TO DO DESCRIVERE 3TIER IN APPENDICE. I diagrammi di sequenza relativi allo scambio di segnali, lo scopo ed il contesto di utilizzo sono presenti nella sezione ????.
+Nel precedente diagramma è presente l'architettura ad alto livello del software e vengono indicate le classi fondamentali per rappresentare le relazioni del modello  Three-tier. I diagrammi di sequenza relativi allo scambio di segnali, lo scopo ed il contesto di utilizzo sono presenti nella sezione ????.
 
 \subsubsubsection{ModelServer}
 \immagine{./Diagrammi/ModelServerClassi}{Diagramma delle classi del ModelServer}
@@ -312,7 +314,7 @@ Nel Client sono presenti oggetti che rappresentano:
 \subsubsection{Informazioni sul package}
 \immagine{./Diagrammi/ComponentiMaaP}{Componenti MaaP}
 \subsubsubsection{Descrizione}
-Namespace globale per il progetto. Le relazioni tra i package ModelServer, Controller e Client identificano il modello di architettura three-tier.
+Namespace globale per il progetto. Le relazioni tra i package ModelServer, Controller e Client identificano il modello di architettura Three-tier.
 \subsubsubsection{Sotto-componenti}
 \begin{itemize}
 \item MaaP::ModelServer
@@ -324,7 +326,7 @@ Namespace globale per il progetto. Le relazioni tra i package ModelServer, Contr
 \subsubsection{Informazioni sul package}
 \immagine{./Diagrammi/ComponentiModelServer}{Componente MaaP::ModelServer}
 \subsubsubsection{Descrizione}
-Package per il componente ModelServer del modello di architettura three-tier.
+Package per il componente ModelServer del modello di architettura Three-tier.
 
 \subsubsubsection{Sottocomponenti}
 \begin{itemize}
@@ -1236,21 +1238,43 @@ Componente parte del ModelClient contenente i dati di sessione.
 \newpage
 \section{Diagrammi di attività}
 
+%TEMPLATE PER DIAGRAMMA ATTIVITA'
+
+%\subsection{Nomediagramma}
+%\immagine{./Diagrammi/nomediagramma}{didascalia diagramma...}
+%...Descrizione del diagramma... 
+
+%\subsection{Nomediagramma}
+%\immagine{./Diagrammi/nomediagramma}{didascalia diagramma...}
+%...Descrizione del diagramma... 
+
 \newpage
-\section{Design Pattern Utilizzati}%7.0
-\subsection{Design Pattern architetturali} %7.1
+\section{Design Pattern}
+I Design Pattern sono soluzioni a problemi ricorrenti. Adottare i Design Pattern semplifica l'attività di progettazione, rende l'architettura più manutenibile e favorisce il riutilizzo del codice.\\
+I design pattern possono essere suddivisi in:
+
+\begin{itemize}
+\item \grassetto{Design pattern architetturali:} definiscono l'architettura dell'applicazione ad un livello più elevato;
+\item \grassetto{Design pattern creazionali:} consentono di nascondere i costruttori delle classi, permettendo di creare oggetti senza conoscere la loro implementazione;
+\item \grassetto{Design pattern strutturali:} consentono di riutilizzare classi pre-esistenti, fornendo un'interfaccia più adatta;
+\item \grassetto{Design pattern comportamentali:} definiscono soluzioni per le interazioni tra oggetti.
+\end{itemize}
+Per una descrizione generale ed approfondita dei Design Pattern utilizzati si veda l'Appendice A.\\
+Nella realizzazione del progetto MaaP si è deciso di implementare i seguenti Design Pattern:\\
+
+\subsection{Design Pattern architetturali}
 \subsubsection{MVVM}
 \immagine{./Diagrammi/ComponentiClient}{Applicazione di MVVM in MaaP}
 \begin{itemize}
-\item \grassetto{Scopo:} Viene usato il pattern Model-View-ViewModel per... ; 
-\item \grassetto{Utilizzo:} .
+\item \grassetto{Scopo:} Il pattern MVVM è stato scelto per separare la logica dell'applicazione lato client dalla rappresentazione grafica; 
+\item \grassetto{Utilizzo:} Nel progetto MaaP la scelta di utilizzare AngularJS come base di partenza per l'applicazione lato client ha implicitamente comportato l'utilizzo del design pattern MVVM perché proprio di AngularJS.
 \end{itemize}
 
 \subsubsection{Three-tier}
 \immagine{./Diagrammi/GeneralePackage}{Applicazione di Three-tier in MaaP}
 \begin{itemize}
-\item \grassetto{Scopo:} Viene usato il pattern Three-tier per... ; 
-\item \grassetto{Utilizzo:} .
+\item \grassetto{Scopo:} Il pattern Three-tier è stato scelto per suddividere...  ; 
+\item \grassetto{Utilizzo:} Nel progetto MaaP ...
 \end{itemize}
 
 \subsection{Design Pattern creazionali}
@@ -1292,69 +1316,113 @@ La concrete strategy attualmente presente è: DSLParser.
 
 \newpage
 \section{Stime di fattibilità e di bisogno di risorse}
+L'architettura definita precedentemente ha raggiunto un livello di dettaglio sufficiente per fornire una stima sulla fattibilità e di bisogno delle risorse.\\
+L'analisi dell'architettura progettata ha permesso di constatare che le tecnologie che si è scelto di adottare risultano sufficientemente adeguate per la realizzazione del prodotto e riescono a ricoprire le esigenze progettuali.\\
+Gli strumenti scelti sono conosciuti dalla maggioranza dei componenti del gruppo che si impegneranno comunque ad approfondire le loro conoscenze inerenti all'utilizzo degli stessi.\\
+Gli strumenti utilizzati sono:
+\begin{itemize}
+\item \grassetto{NodeJS:} per la realizzazione dell'applicazione web lato server;
+\item \grassetto{AngularJS:} per la realizzazione dell'applicazione web lato client;
+\item \grassetto{Mongoose:} per la comunicazione con il database MongoDB;
+\item \grassetto{Express:} framework per NodeJS;
+\item \grassetto{Passport:} modulo per la gestione dell'autenticazione utente;
+\item \grassetto{PegJS:} generatore di parser javascript per il file di descrizione.
+\end{itemize}
 
-\newpage
-\section{Tracciamento} 
-\subsection{Tracciamento componenti - requisiti} 
-\subsection{Tracciamento requisiti - componenti} 
 
 \newpage
 \appendix
 \section{Descrizione Design Pattern} %A.0
 
-\subsection{Design Pattern architetturali} %A.1
+\subsection{Design Pattern architetturali}
 \subsubsection{MVVM} 
 \immagine{./Diagrammi/MVVM}{Diagramma del design pattern MVVM}
 \begin{itemize}
-\item \grassetto{Scopo:} 
-\item \grassetto{Motivazione:} 
-\item \grassetto{Applicabilità:}
+\item \grassetto{Scopo:} Disaccoppiare le tre componenti seguenti:
+\begin{itemize}
+\item Model: dati di business e regole di accesso;
+\item View: rappresentazione grafica;
+\item ViewModel: punto d'incontro tra View e Model. I dati ricevuti da quest'ultimo sono elaborati per essere presentati e passati alla View.
+\end{itemize}
+\item \grassetto{Motivazione:} Lo scopo di molte applicazioni è quello di recuperare dati e visualizzarli in maniera opportuna a seconda delle esigenze degli utenti. Poiché il flusso chiave di informazione avviene tra il dispositivo su cui sono memorizzati i dati e l'interfaccia utente, si è portati a legare insieme queste due parti per ridurre la quantità di codice e migliorare le performance dell'applicazione. Questo approccio, apparentemente naturale, presente alcuni problemi significativi; uno di questi è che l'interfaccia utente tende a cambiare più in fretta rispetto al sistema di memorizzazione dei dati. Un altro problema, che si ha nel mettere insieme i dati e l'interfaccia utente, è che le applicazioni aziendali tendono ad incorporare logica di business che va al di là della semplice trasmissione dei dati. C'è la necessità, quindi, di rendere modulari le funzionalità dell'interfaccia utente in maniera tale da poter facilmente modificare le singole parti. La soluzione a tutto ciò è costituita dal pattern Model-View-ViewModel (MVVM) che separa la modellazione del dominio, la presentazione e le azioni basate sugli input degli utenti all'interno di tre classi separate;
+\item \grassetto{Applicabilità:} Il pattern MVVM può essere utilizzo nei seguenti casi:
+\begin{itemize}
+\item Quando si vuole trattare un gruppo di oggetti come un oggetto singolo;
+\item Quando si vuole disaccoppiare View e Model instaurando un \gloss{protocollo di sottoscrizione} e notifica tra loro;
+\item Quando si vogliono agganciare più View ad un Model per fornire più rappresentazioni del Model stesso.
+\end{itemize}
 \end{itemize}
 
 \subsubsection{Three-Tier} 
 \immagine{./Diagrammi/THREETIER}{Diagramma del design pattern Three-tier}
 \begin{itemize}
-\item \grassetto{Scopo:} 
-\item \grassetto{Motivazione:} 
-\item \grassetto{Applicabilità:}
+\item \grassetto{Scopo:} Disaccoppiare le tre componenti seguenti:
+\begin{itemize}
+\item Client tier: strato che definisce l'interfaccia utente;
+\item Business logic tier: strato che definisce la logica funzionale;
+\item Database tier:strato che definisce la gestione dei dati persistenti.
+\end{itemize}
+\item \grassetto{Motivazione:} Il pattern Three-tier presenta diverse analogie con il pattern MVVM presentato precedentemente. Esso svolge un ruolo importante nella progettazione di applicazioni web specialmente basati su Web-service. Inoltre la suddivisione in moduli separati che seguono il paradigma client-server permette la sostituzione e/o modifica di un singolo modulo o strato indipendentemente dagli altri conferendo scalabilità e manutenibilità all'applicazione. I moduli possono essere inoltre distribuiti su diversi nodi di una rete anche eterogenea.
+\item \grassetto{Applicabilità:} Il pattern Three-tier può essere utilizzo nei seguenti casi:
+\begin{itemize}
+\item bla bla.
+\end{itemize}
 \end{itemize}
 
 \subsection{Design Pattern creazionali}
 \subsubsection{Singleton} 
 \immagine{./Diagrammi/SINGLETON}{Diagramma del design pattern Singleton}
 \begin{itemize}
-\item \grassetto{Scopo:} 
-\item \grassetto{Motivazione:} 
-\item \grassetto{Applicabilità:}
+\item \grassetto{Scopo:} Assicurare che una classe abbia solo un'istanza e fornire un punto d'accesso globale a tale istanza;
+\item \grassetto{Motivazione:} L'uso di questo design pattern è importante poter assicurare che per alcune classi esista una sola istanza. Per far ciò la classe stessa ha la responsabilità di creare le proprie istanze, assicurare che nessun'altra istanza possa essere creata e fornire un modo semplice per accedere all'istanza;
+\item \grassetto{Applicabilità:} Il pattern Singleton può essere utilizzato nei seguenti casi:
+\begin{itemize}
+\item Quando deve esistere esattamente un'istanza di una classe e tale istanza deve essere resa accessibile ai client attraverso un punto di accesso noto a tutti gli utilizzatori;
+\item Quando l'unica istanza deve poter essere estesa attraverso la definizione di sottoclassi e i client devono essere in grado di utilizzare le istanze estese senza dover modificare il proprio codice.
+\end{itemize}
 \end{itemize}
 
 \subsection{Design Pattern strutturali} 
 \subsubsection{Adapter} 
 \immagine{./Diagrammi/ADAPTER}{Diagramma del design pattern Adapter}
 \begin{itemize}
-\item \grassetto{Scopo:} 
-\item \grassetto{Motivazione:} 
-\item \grassetto{Applicabilità:}
+\item \grassetto{Scopo:} Convertire l'interfaccia di una classe in un'altra interfaccia richiesta dal client. Consente a classi diverse di operare insieme quando ciò non sarebbe altrimenti possibile a causa di interfacce incompatibili;
+\item \grassetto{Motivazione:} A volte una classe di supporto, che è stata progettata con obbiettivi di riuso, non può essere riusata semplicemente perché la sua interfaccia non è compatibile con l'interfaccia richiesta da un'applicazione;
+\item \grassetto{Applicabilità:} Il pattern Adapter può essere utilizzato nei seguenti casi:
+\begin{itemize}
+\item Quando si vuole usare una classe esistente, ma la sua interfaccia non è compatibile con quella desiderata;
+\item Quando si vuole creare una classe riusabile in grado di cooperare con classi non correlate o impreviste, cioè con classi che non necessariamente hanno interfacce compatibili;
+\item Per gli oggetti adapter quando si devono utilizzare diverse sottoclassi esistenti, ma non è pratico adattare la loro interfaccia creando una sottoclasse per ciascuna di esse.
+\end{itemize}
 \end{itemize}
 
 \subsubsection{Facade} 
 \immagine{./Diagrammi/FACADE}{Diagramma del design pattern Facade}
 \begin{itemize}
-\item \grassetto{Scopo:} 
-\item \grassetto{Motivazione:} 
-\item \grassetto{Applicabilità:}
+\item \grassetto{Scopo:} Fornire un'interfaccia unificata per un insieme di interfacce presenti in un sottosistema. Definisce un'interfaccia di livello più alto che rende il sottosistema più semplice da utilizzare;
+\item \grassetto{Motivazione:} Suddividere un sistema in sottosistemi aiuta a ridurre la complessità. Un obbiettivo comune di progettazione è la minimizzazione delle comunicazioni e delle dipendenze fra i diversi sottosistemi. Un modo per raggiungere questo obbiettivo è introdurre un oggetto facade, che fornisce un'interfaccia unica e semplificata per accedere alle funzionalità offerte da un sottosistema;
+\item \grassetto{Applicabilità:} Il pattern Facade può essere utilizzato nei seguenti casi:
+\begin{itemize}
+\item Quando si vuole fornire un'interfaccia semplice a un sottosistema complesso poiché fornisce una vista semplice di base su un sottosistema che si rivela essere sufficiente per la maggior parte dei client;
+\item Nei casi in cui si cono molte dipendenze fra i client e le classi che implementano un'astrazione in quanto si disaccoppia il sottosistema dai client e dagli altri sistemi, promuovendo portabilità ed indipendenza dei sottosistemi;
+\item Quando si vogliono organizzare i sottosistemi in una struttura a livelli.
+\end{itemize}
 \end{itemize}
 
 \subsection{Design Pattern comportamentali} %A.4
 \subsubsection{Strategy} 
 \immagine{./Diagrammi/STRATEGY}{Diagramma del design pattern Strategy}
 \begin{itemize}
-\item \grassetto{Scopo:} 
-\item \grassetto{Motivazione:} 
-\item \grassetto{Applicabilità:}
+\item \grassetto{Scopo:} Definire una famiglia di algoritmi, incapsularli e renderli intercambiabili. Permette agli algoritmi di variare indipendentemente dai client che ne fanno uso;
+\item \grassetto{Motivazione:} Esistono molti algoritmi per risolvere un problema. Codificare statisticamente ognuno di questi algoritmi nelle classi che ne fanno richiesta non è auspicabile per svariati motivi. Si possono evitare questi problemi definendo delle classi che incapsulano svariati algoritmi chiamati Strategy; 
+\item \grassetto{Applicabilità:} Il pattern Strategy può essere utilizzato nei seguenti casi:
+\begin{itemize}
+\item Molte classi correlate differiscono fra loro solo per il comportamento;
+\item Sono necessarie più varianti di un algoritmo;
+\item Un algoritmo usa una struttura dati che non dovrebbe essere resa nota ai client;
+\item Una classe definisce molti comportamenti che compaiono all'interno delle scelte condizionali multiple.
 \end{itemize}
-
-
+\end{itemize}
 
 
 %FINE DOCUMENTO NON CANCELLARE
