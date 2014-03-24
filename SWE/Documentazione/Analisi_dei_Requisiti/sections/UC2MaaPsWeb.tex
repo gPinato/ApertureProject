@@ -174,7 +174,8 @@ L'utente business autenticato amministratore può creare degli indici sulle quer
 {Il sistema reputa l'utente business come autenticato e visualizza la Collection scelta}
 \scenario{
 L'utente business autenticato visualizza la Document-Show relativa alla chiave selezionata (UC2.4.1.1);|
-L'utente business autenticato può eliminare il Document che sta visualizzando (UC2.4.1.2).
+L'utente business autenticato può eliminare il Document che sta visualizzando (UC2.4.1.2);|
+L'utente business autenticato può modificare il Document che sta visualizzando (UC2.4.1.3).
 }
 \post
 {Viene visualizzata la pagina Document-Show relativa alla chiave selezionata}
@@ -204,6 +205,19 @@ L'utente business autenticato visualizza il Document relativo alla chiave selezi
 {L'utente business autenticato può eliminare il Document che sta visualizzando.}
 \post
 {Il sistema ha eliminato il Document selezionato}
+
+\UCtitle
+{Caso d'uso UC2.4.1.3}
+{Eliminazione Document}
+\UC
+{UC2.4.1}
+{Utente business autenticato}
+{L'utente business autenticato può modificare il Document che sta visualizzando}
+{Il sistema reputa l'utente business come autenticato e visualizza il Document precedentemente selezionato}
+\scenario
+{L'utente business autenticato può modificare il Document che sta visualizzando.}
+\post
+{Il sistema permette all'utente di modificare il Document che sta visualizzando}
 
 \UCtitle
 {Caso d'uso UC2.4.2}
