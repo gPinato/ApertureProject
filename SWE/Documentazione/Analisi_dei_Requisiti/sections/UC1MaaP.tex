@@ -12,7 +12,9 @@ L'utente sviluppatore può generare lo scheletro del progetto (UC1.1);|
 L'utente sviluppatore può utilizzare il file di descrizione (UC1.2);|
 L'utente sviluppatore può modificare i file di configurazione (UC1.3);|
 L'utente sviluppatore può utilizzare un editor di testo specializzato (UC1.4);|
-L'utente sviluppatore può inserire un file di descrizione (UC1.5).
+L'utente sviluppatore può inserire un file di descrizione (UC1.5);|
+L'utente sviluppatore può eliminare un progetto (UC1.6);|
+L'utente sviluppatore può clonare un progetto (UC1.7).
 }
 \post{Il sistema ha ottenuto le informazioni sulle operazioni che l'utente sviluppatore desidera eseguire}
 
@@ -749,5 +751,29 @@ L'utente sviluppatore può salvare le modifiche apportate al file di descrizione
 \scenario
 {L'utente sviluppatore può inserire il file di descrizione nel progetto.}
 \post{Il sistema contiene il file di descrizione}
+
+\UCtitle
+{Caso d'uso UC1.6}
+{Eliminazione progetto}
+\UC
+{UC1}
+{Utente sviluppatore}
+{L'utente sviluppatore può eliminare un progetto}
+{Il sistema contiene almeno un progetto precedentemente creato}
+\scenario
+{L'utente sviluppatore può eliminare un progetto esistente.}
+\post{Il sistema ha eliminato il progetto specificato dall'utente sviluppatore}
+
+\UCtitle
+{Caso d'uso UC1.7}
+{Clonazione progetto}
+\UC
+{UC1}
+{Utente sviluppatore}
+{L'utente sviluppatore può clonare un progetto}
+{Il sistema contiene almeno un progetto precedentemente creato}
+\scenario
+{L'utente sviluppatore può clonare un progetto esistente.}
+\post{Il sistema ha creato un nuovo progetto clonandolo da un progetto esistente specificato dall'utente sviluppatore}
 
 
