@@ -1,35 +1,1107 @@
-\subsection{Tracciamento componenti requisiti}
-In questa sezione verranno tracci
-
-
 \subsubsection{Tracciamento componenti - requisiti} 
+
 \begin{center}
-\begin{longtable}{|c|p{0.5\linewidth}|}
+\begin{longtable}{|p{0.8\linewidth}|c|}
 \toprule
-\textbf{Componenti} & \textbf{Requisiti}\\
-
-\midrule MaaP & \\
-\midrule MaaP::ModelServer & \\
-
-\midrule MaaP::Controller & \\
-
-\midrule MaaP::Client & \\
-
-
+\multicolumn{1}{|p{0.8\linewidth}}{\textbf{Componente}} & \multicolumn{1}{|c|}{\textbf{Requisito}}\\
+\midrule
+\endfirsthead
+\multicolumn{2}{l}{\footnotesize\itshape\tablename~\thetable: continua dalla pagina precedente} \\
+\toprule
+\multicolumn{1}{|p{0.8\linewidth}}{\textbf{Componente}} & \multicolumn{1}{|c|}{\textbf{Requisito}}\\
+\midrule
+\endhead
+\midrule
+\multicolumn{2}{r}{\footnotesize\itshape\tablename~\thetable: continua nella prossima pagina} \\
+\endfoot
 \bottomrule
 \caption{Tracciamento componenti - requisiti}
+\label{tab:Tracciamento componenti - requisiti}\\
+\endlastfoot
+
+\midrule 
+MaaPCLI
+& \\
+
+\midrule 
+MaaPCLI::Installer
+& \\
+
+\midrule 
+MaaPCLI::CLI
+& \\
+
+\midrule 
+MaaPCLI::InstanceManager
+& \\
+
+\midrule 
+MaaPCLI::ProjectFacade
+& \\
+
+\midrule 
+MaaPCLI::ProjectCreate
+& ROF1\\
+& ROF1.1\\
+& ROF1.2\\
+& ROF1.3\\
+& ROF1.4\\
+& ROF1.4.1\\
+
+\midrule 
+MaaPCLI::ProjectClone
+& ROF1.6\\
+
+\midrule 
+MaaPCLI::ProjectRemove
+& ROF1.5\\
+
+\midrule 
+MaaP 
+& \\
+
+\midrule 
+MaaP::ModelServer::DataManager 
+& \\
+
+\midrule
+MaaP::ModelServer::DataManager::DatabaseAnalysisManager 
+& \\
+
+\midrule 
+MaaP::ModelServer::DataManager::DatabaseAnalysisManager ::DatabaseAnalysisManager 
+& \\
+
+\midrule
+MaaP::ModelServer::DataManager::DatabaseAnalysisManager:: DataRetrieverAnalysis 
+& \\
+
+\midrule 
+MaaP::ModelServer::DataManager::DatabaseUserManager 
+& \\
+
+\midrule 
+MaaP::ModelServer::DataManager::DatabaseUserManager:: DatabaseUserManager
+& \\
+
+\midrule 
+MaaP::ModelServer::DataManager::DatabaseUserManager::DataRetrieverUsers
+& \\
+
+\midrule 
+MaaP::ModelServer::DataManager::IndexManager
+& \\
+
+\midrule 
+MaaP::ModelServer::DataManager::IndexManager::IndexManager
+& \\
+
+\midrule 
+MaaP::ModelServer::DataManager::JSonComposer
+& \\
+
+\midrule 
+MaaP::ModelServer::DataManager::IDatabaseManager
+& \\
+
+\midrule 
+MaaP::ModelServer::DataManager::IDataRetriever
+& \\
+
+\midrule 
+MaaP::ModelServer::Database
+& \\
+
+\midrule 
+MaaP::ModelServer::Database::MongooseDBAnalysis
+& \\
+
+\midrule 
+MaaP::ModelServer::Database::DBAnalysis
+& \\
+
+\midrule 
+MaaP::ModelServer::Database::Mongoose
+& \\
+
+\midrule 
+MaaP::ModelServer::Database::MongooseDBFramework
+& \\
+
+\midrule 
+MaaP::ModelServer::Database::DBFramework
+& \\
+
+\midrule 
+MaaP::ModelServer::Database::User
+& \\
+
+\midrule 
+MaaP::ModelServer::Database::Query
+& \\
+
+\midrule 
+MaaP::ModelServer::DSL::DSLParser
+& \\
+
+\midrule 
+MaaP::ModelServer::DSL::ParserInterface
+& \\
+
+\midrule 
+MaaP::ModelServer::DSL::DSLManager
+& \\
+
+\midrule 
+MaaP::ModelServer::DSL::DSLDescriptionFile
+& \\
+
+\midrule 
+MaaP::ModelServer::DSL::CollectionData
+& \\
+
+\midrule 
+MaaP::Controller 
+& \\
+
+\midrule 
+MaaP::Controller::Dispatcher
+& \\
+
+\midrule 
+MaaP::Controller::FrontController
+& \\
+
+\midrule 
+MaaP::Controller::IPassport
+& \\
+
+\midrule 
+MaaP::Controller::PassportAdapter 
+& \\
+
+\midrule 
+MaaP::Controller::Passport
+& \\
+
+\midrule 
+MaaP::Client 
+& \\
+
+\midrule 
+MaaP::Client::View 
+& \\
+
+\midrule 
+MaaP::Client::View::Template
+& \\
+
+\midrule 
+MaaP::Client::View::Template::SignIn
+& \\
+
+\midrule 
+MaaP::Client::View::Template::SingUp
+& \\
+
+\midrule 
+MaaP::Client::View::Template::AdminMainPageCollection
+& \\
+
+\midrule 
+MaaP::Client::View::Template::UserMainPageCollection
+& \\
+
+\midrule 
+MaaP::Client::View::Template::MainPageDocument
+& \\
+
+\midrule 
+MaaP::Client::View::Template::MainPageDocumentEdit
+& \\
+
+\midrule 
+MaaP::Client::View::Template::UserProfileEdit
+& \\
+
+\midrule 
+MaaP::Client::View::Template::UserProfile
+& \\
+
+\midrule 
+MaaP::Client::View::Template::AdminProfile
+& \\
+
+\midrule 
+MaaP::Client::View::Template::PasswordRecovery
+& \\
+
+\midrule 
+MaaP::Client::ControllerModelView
+& \\
+
+\midrule 
+MaaP::Client::ControllerModelView::ControllerClient
+& \\
+
+\midrule 
+MaaP::Client::ControllerModelView::ControllerClient::ControllerAutenticazione
+& \\
+
+\midrule 
+MaaP::Client::ControllerModelView::ControllerClient::ControllerCollection
+& \\
+
+\midrule 
+MaaP::Client::ControllerModelView::ControllerClient::ControllerDocument
+& \\
+
+\midrule 
+MaaP::Client::ControllerModelView::ControllerClient::ControllerProfilo
+& \\
+
+\midrule 
+MaaP::Client::ControllerModelView::ControllerClient::ControllerMenu
+& \\
+
+\midrule 
+MaaP::Client::ControllerModelView::Scope
+& \\
+
+\midrule 
+MaaP::Client::ControllerModelView::Scope::Collection
+& \\
+
+\midrule 
+MaaP::Client::ControllerModelView::Scope::Query
+& \\
+
+\midrule 
+MaaP::Client::ControllerModelView::Scope::Document
+& \\
+
+\midrule 
+MaaP::Client::ControllerModelView::Scope::Profilo
+& \\
+
+\midrule 
+MaaP::Client::ControllerModelView::Scope::Menu
+& \\
+
+\midrule 
+MaaP::Client::ModelClient
+& \\
+
+\midrule 
+MaaP::Client::ModelClient::Services
+& \\
+
+\midrule 
+MaaP::Client::ModelClient::Services::HTTP
+& \\
+
+\midrule 
+MaaP::Client::ModelClient::Model
+& \\
+
+\midrule 
+MaaP::Client::ModelClient::Model::SessionData
+& \\
+
+%FINE TABELLA TRACCIAMENTO COMPONENTI REQUISITI
 \end{longtable}
 \end{center}
 
 \subsubsection{Tracciamento requisiti - componenti}
 \begin{center}
-\begin{longtable}{|c|c|p{0.5\linewidth}|}
+\begin{longtable}{|c|p{0.25\linewidth}|p{0.5\linewidth}|}
 \toprule
-\textbf{Requisito} & \textbf{Descrizione} & \textbf{Componenti}\\
+\multicolumn{1}{|c|}{\textbf{Requisito}}
+& \multicolumn{1}{|p{0.25\linewidth}}{\textbf{Descrizione}} 
+& \multicolumn{1}{|p{0.5\linewidth}|}{\textbf{Componente}}\\
+\midrule
+\endfirsthead
+\multicolumn{2}{l}{\footnotesize\itshape\tablename~\thetable: continua dalla pagina precedente} \\
+\toprule
+\multicolumn{1}{|c|}{\textbf{Requisito}}
+& \multicolumn{1}{|p{0.25\linewidth}}{\textbf{Descrizione}} 
+& \multicolumn{1}{|p{0.5\linewidth}|}{\textbf{Componente}}\\
+\midrule
+\endhead
+\midrule
+\multicolumn{2}{r}{\footnotesize\itshape\tablename~\thetable: continua nella prossima pagina} \\
+\endfoot
+\bottomrule
+\caption{Tracciamento requisiti - componenti}
+\label{tab:Tracciamento requisiti - componenti}\\
+\endlastfoot
 
 \midrule
-R0F1 & Il programma bla bla & MaaP::Controller::\\
+ROF1
+& Il sistema MaaP deve essere in grado di generare lo scheletro del progetto
+& \\
 
+\midrule
+ROF1.1
+& Il sistema MaaP deve installare le librerie necessarie al funzionamento del progetto
+& \\
+
+\midrule
+ROF1.2
+& Il sistema MaaP deve generare i file di configurazione necessari al funzionamento del progetto
+& \\
+
+\midrule
+ROF1.3
+& Il sistema MaaP deve generare le directory necessarie al funzionamento del progetto
+& \\
+
+\midrule
+ROF1.4
+& Il sistema MaaP deve generare il sistema di autenticazione per le pagine web
+& \\
+
+\midrule
+ROF1.4.1
+& Il sistema di autenticazione per le pagine web deve essere generato insieme ad un profilo amministratore di default
+& \\
+
+\midrule
+ROF1.5
+& Il sistema MaaP deve essere in grado eliminare un progetto esistente
+& \\
+
+\midrule
+RFF2
+& Il sistema MaaP deve permettere all'utente sviluppatore di utilizzare un editor interno specializzato per la scrittura/modifica dei file di descrizione
+& \\
+
+\midrule
+RFF2.1
+& Il sistema MaaP deve permettere all'utente sviluppatore di utilizzare un editor interno specializzato per la scrittura di un nuovo file di descrizione
+& \\
+
+\midrule
+RFF2.1.1
+& Il sistema MaaP deve permettere all'utente sviluppatore di utilizzare un editor interno specializzato per scrivere il codice del file di descrizione che intende creare
+& \\
+
+\midrule
+RFF2.1.2
+& Il sistema MaaP deve permettere all'utente sviluppatore di utilizzare un editor interno specializzato per salvare il codice scritto in modo permanente
+& \\
+
+\midrule
+RFF2.2
+& Il sistema MaaP deve permettere all'utente sviluppatore di utilizzare un editor interno specializzato per la modifica di un file di descrizione esistente
+& \\
+
+\midrule
+RFF2.2.1
+& Il sistema MaaP deve permettere all'utente sviluppatore di utilizzare un editor interno specializzato per modificare il codice di un file di descrizione esistente
+& \\
+
+\midrule
+RFF2.2.2
+& Il sistema MaaP deve permettere all'utente sviluppatore di utilizzare un editor interno specializzato per salvare il codice modificato in modo permanente
+& \\
+
+\midrule
+RFF2.2.3
+& Il sistema MaaP deve permettere all'utente sviluppatore di utilizzare un editor interno specializzato per annullare le modifiche al codice del file di descrizione modificato
+& \\
+
+\midrule
+ROF3
+& Il sistema MaaP deve permette all'utente sviluppatore di inserire un file di descrizione
+& \\
+
+\midrule
+ROF4
+& Il sistema deve permette all'utente sviluppatore di utilizzare un file di descrizione
+& \\
+
+\midrule
+ROF4.1
+& Il sistema MaaP deve permettere all'utente sviluppatore di creare la visualizzazione della Collection
+& \\
+
+\midrule
+ROF4.1.1
+& Il sistema MaaP deve permettere all'utente sviluppatore di creare la visualizzazione del menù per le Collection
+& \\
+
+\midrule
+ROF4.1.1.1
+& Il sistema MaaP deve permettere all'utente sviluppatore di definire il nome della voce relativa alla Collection
+& \\
+
+\midrule
+ROF4.1.1.2
+& Il sistema MaaP deve permettere all'utente sviluppatore di definire la posizione di una voce all'interno del menù
+& \\
+
+\midrule
+ROF4.1.2
+& Il sistema MaaP deve permettere all'utente sviluppatore di creare la visualizzazione della pagina Collection-Index
+& \\
+
+\midrule
+ROF4.1.2.1
+& Il sistema MaaP deve permettere all'utente sviluppatore di aggiungere delle chiavi da visualizzare nella pagina Collection-Index
+& \\
+
+\midrule
+ROF4.1.2.1.1
+& Il sistema MaaP deve permettere all'utente sviluppatore di aggiungere definire un'etichetta per la chiave da visualizzare
+& \\
+
+\midrule
+ROF4.1.2.1.2
+& Il sistema MaaP deve permettere all'utente sviluppatore di definire un campo associato alla chiave da visualizzare
+& \\
+
+\midrule
+ROF4.1.2.1.3
+& Il sistema MaaP deve permettere all'utente sviluppatore di definire un campo associato alla chiave da visualizzare, proveniente da un documento esterno
+& \\
+
+\midrule
+ROF4.1.2.1.4
+& Il sistema MaaP deve permettere all'utente sviluppatore di definire un campo associato alla chiave da visualizzare, proveniente dal risultato di una query
+& \\
+
+\midrule
+ROF4.1.2.1.5
+& Il sistema MaaP deve permettere all'utente sviluppatore di definire un campo associato alla chiave da visualizzare come trasformazione
+& \\
+
+\midrule
+ROF4.1.2.2
+& Il sistema MaaP deve permettere all'utente sviluppatore di definire un ordinamento rispetto a una chiave
+& \\
+
+\midrule
+ROF4.1.2.3
+& Il sistema deve permettere all'utente sviluppatore di  definire un numero massimo di Document da visualizzare per la pagina Collection-Index
+& \\
+
+\midrule
+RFF4.1.2.4
+& Il sistema MaaP deve permettere all'utente sviluppatore di aggiungere dei pulsanti all'interno della pagina Collection-Index
+& \\
+
+\midrule
+ROF4.1.3
+& Il sistema MaaP deve permettere all'utente sviluppatore di creare la visualizzazione per la pagine Document-Show
+& \\
+
+\midrule
+ROF4.1.3.1
+& Il sistema MaaP deve permettere all'utente sviluppatore di aggiungere delle chiavi da visualizzare nella pagina Document-Show
+& \\
+
+\midrule
+ROF4.1.3.1.1
+& Il sistema MaaP deve permettere all'utente sviluppatore di aggiungere definire un'etichetta per la chiave da visualizzare
+& \\
+
+\midrule
+ROF4.1.3.1.2
+& Il sistema MaaP deve permettere all'utente sviluppatore di definire un campo associato alla chiave da visualizzare
+& \\
+
+\midrule
+ROF4.1.3.1.3
+& Il sistema MaaP deve permettere all'utente sviluppatore di definire un campo associato alla chiave da visualizzare, proveniente da un documento esterno
+& \\
+
+\midrule
+ROF4.1.3.1.4
+& Il sistema MaaP deve permettere all'utente sviluppatore di definire un campo associato alla chiave da visualizzare, proveniente dal risultato di una query
+& \\
+
+\midrule
+ROF4.1.3.1.5
+& Il sistema MaaP deve permettere all'utente sviluppatore di definire un campo associato alla chiave da visualizzare come trasformazione
+& \\
+
+\midrule
+RFF4.1.3.2
+& Il sistema MaaP deve permettere all'utente sviluppatore di aggiungere un pulsante all'interno della  pagina Document-Show
+& \\
+
+\midrule
+ROF4.2
+& Il sistema MaaP deve permettere all'utente sviluppatore di modificare la visualizzazione della Collection
+& \\
+
+\midrule
+ROF4.2.1
+& Il sistema MaaP deve permettere all'utente sviluppatore di impostare la visualizzazione del menù delle le Collection
+& \\
+
+\midrule
+ROF4.2.1.1
+& Il sistema MaaP deve permettere all'utente sviluppatore di modificare il nome della voce relativa alla Collection
+& \\
+
+\midrule
+ROF4.2.1.2
+& Il sistema MaaP deve permettere all'utente sviluppatore di modificare la posizione di una voce all'interno del menù
+& \\
+
+\midrule
+ROF4.2.2
+& Il sistema MaaP deve permettere all'utente sviluppatore di impostare la visualizzazione della pagina Collection-Index
+& \\
+
+\midrule
+ROF4.2.2.1
+& Il sistema MaaP deve permettere all'utente sviluppatore di aggiungere delle chiavi da visualizzare nella pagina Collection-Index
+& \\
+
+\midrule
+ROF4.2.2.2
+& Il sistema MaaP deve permettere all'utente sviluppatore di eliminare delle chiavi da visualizzare nella pagina Collection-Index
+& \\
+
+\midrule
+ROF4.2.2.3
+& Il sistema MaaP deve permettere all'utente sviluppatore di definire un ordinamento, alfabetico crescente o decrescente, rispetto a una chiave
+& \\
+
+\midrule
+ROF4.2.2.4
+& Il sistema MaaP deve permettere all'utente sviluppatore di eliminare un ordinamento rispetto a una chiave
+& \\
+
+\midrule
+ROF4.2.2.5
+& Il sistema deve permettere all'utente sviluppatore di  definire un numero massimo di Document da visualizzare per la pagina Collection-Index
+& \\
+
+\midrule
+ROF4.2.2.6
+& Il sistema deve permettere all'utente sviluppatore di  eliminare il numero massimo di Document da visualizzare per la pagina Collection-Index
+& \\
+
+\midrule
+RFF4.2.2.7
+& Il sistema MaaP deve permettere all'utente sviluppatore di aggiungere dei pulsanti all'interno della pagina Collection-Index, specificando il nome del pulsante e l'azione che deve eseguire
+& \\
+
+\midrule
+RFF4.2.2.8
+& Il sistema MaaP deve permettere all'utente sviluppatore di eliminare dei pulsanti all'interno della pagina Collection-Index
+& \\
+
+\midrule
+ROF4.2.3
+& Il sistema MaaP deve permettere all'utente sviluppatore di impostare la visualizzazione per la pagine Document-Show
+& \\
+
+\midrule
+ROF4.2.3.1
+& Il sistema MaaP deve permettere all'utente sviluppatore di aggiungere delle chiavi da visualizzare nella pagina Document-Show
+& \\
+
+\midrule
+ROF4.2.3.2
+& Il sistema MaaP deve permettere all'utente sviluppatore di eliminare delle chiavi da visualizzare nella pagina Document-Show
+& \\
+
+\midrule
+RFF4.2.3.3
+& Il sistema MaaP deve permettere all'utente sviluppatore di aggiungere dei pulsanti all'interno della  pagina Document-Show, specificando il nome del pulsante e l'azione che deve eseguire
+& \\
+
+\midrule
+RFF4.2.3.4
+& Il sistema MaaP deve permettere all'utente sviluppatore di eliminare dei pulsanti all'interno della  pagina Document-Show
+& \\
+
+\midrule
+ROF4.3
+& Il sistema MaaP deve permettere all'utente sviluppatore di definire una query personalizzata
+& \\
+
+\midrule
+ROF4.4
+& Il sistema MaaP deve permettere all'utente sviluppatore di eliminare una query personalizzata
+& \\
+
+\midrule
+ROF5
+& Il sistema deve permettere all'utente sviluppatore la modifica dei file di configurazione
+& \\
+
+\midrule
+RDF5.1
+& Il sistema deve permettere all'utente sviluppatore di abilitare la funzionalità di registrazione per l'utente finale nelle pagine web. Nel caso la registrazione sia abilitata l'utente finale può registrarsi al sistema, altrimenti no.
+& \\
+
+\midrule
+RFF5.2
+& Il sistema MaaP deve permettere all'utente sviluppatore di abilitare la funzionalità per la creazione di nuovi Document all'interno della pagina Collection-Index
+& \\
+
+\midrule
+RDF5.3
+& Il sistema MaaP deve permettere all'utente sviluppatore di modificare i template per le pagine web
+& \\
+
+\midrule
+ROF5.4
+& Il sistema deve permettere all'utente sviluppatore di specificare nome, indirizzo e password, relativi al database di analisi con il quale interagire
+& \\
+
+\midrule
+ROF5.5
+& Il sistema deve permettere all'utente sviluppatore di abilitare la funzionalità per la creazione di nuovi indici all'interno della pagina Collection-Index
+& \\
+
+
+%FINE TABELLA REQUISITI MAAP, 
+%Requisiti utente business
+
+\midrule
+ROF6
+& L'utente business, al primo accesso, deve poter usare il profilo amministratore di default
+& \\
+
+\midrule
+ROF7
+& L'utente business deve potersi autenticare inserendo dei dati personali
+& \\
+
+\midrule
+ROF7.1
+& L'utente business deve inserire l'email per l'autenticazione
+& \\
+
+\midrule
+ROF7.2
+& L'utente business deve inserire la password per l'autenticazione
+& \\
+
+\midrule
+ROF7.2.1
+& La password per l'autenticazione deve essere alfanumerica e contenere almeno otto caratteri
+& \\
+
+\midrule
+RDF8
+& L'utente business deve potersi registrare inserendo dei dati personali
+& \\
+
+\midrule
+RDF8.1
+& L'utente business, per registrarsi, deve inserire una email non presente nel sistema
+& \\
+
+\midrule
+RDF8.2
+& L'utente business, per registrarsi, deve inserire una password
+& \\
+
+\midrule
+RDF8.2.1
+& La password per la registrazione deve essere alfanumerica e contenere almeno otto caratteri
+& \\
+
+\midrule
+ROF9
+& L'utente business deve poter recuperare la password
+& \\
+
+\midrule
+ROF10
+& L'utente business autenticato deve poter aprire una Collection e visualizzare la sua pagina Collection-Index
+& \\
+
+\midrule
+ROF10.1
+& L'utente business autenticato deve poter visualizzare una pagina Document-Show
+& \\
+
+\midrule
+ROF10.1.1
+& L'utente business autenticato deve poter visualizzare il Document selezionato
+& \\
+
+\midrule
+ROF10.1.2
+& L'utente business autenticato deve poter eliminare il Document che sta visualizzando
+& \\
+
+
+\midrule
+RDF10.2
+& L'utente business autenticato deve poter modificare la visualizzazione dei Document
+& \\
+
+\midrule
+RDF10.2.1
+& L'utente business autenticato deve poter selezionare dei criteri per la visualizzazione
+& \\
+
+\midrule
+RDF10.2.1.1
+& L'utente business autenticato deve poter effettuare un ordinamento rispetto a una chiave
+& \\
+
+\midrule
+RDF10.2.1.2
+& L'utente business deve poter selezionare un numero massimo di Document da visualizzare per pagina
+& \\
+
+\midrule
+RDF10.2.2
+& L'utente business autenticato deve poter applicare un filtro alla visualizzazione dei Document
+& \\
+
+\midrule
+RDF10.2.3
+& L'utente business autenticato deve poter annullare il filtro
+& \\
+
+\midrule
+ROF10.2.4
+& L'utente business autenticato deve poter disconnettersi
+& \\
+
+\midrule
+ROF10.2.5
+& L'utente business autenticato deve poter navigare tra la Collection
+& \\
+
+\midrule
+ROF10.3
+& L'utente business autenticato deve poter gestire il proprio profilo
+& \\
+
+\midrule
+ROF10.3.1
+& L'utente business autenticato deve poter gestire i propri dati
+& \\
+
+\midrule
+ROF10.3.1.1
+& L'utente business autenticato deve poter modificare i propri dati utente
+& \\
+
+\midrule
+ROF10.3.1.2
+& L'utente business autenticato deve poter  salvare le modifiche apportate
+& \\
+
+\midrule
+ROF10.3.1.3
+& L'utente business autenticato deve poter annullare le modifiche apportate
+& \\
+
+\midrule
+ROF10.3.1.4
+& L'utente business autenticato amministratore deve poter modificare i dati degli utenti business
+& \\
+
+\midrule
+ROF10.3.1.5
+& L'utente business autenticato deve poter modificare i permessi degli utenti business
+& \\
+
+\midrule
+ROF10.3.2
+& L'utente business autenticato amministratore deve poter creare un nuovo utente business
+& \\
+
+\midrule
+ROF10.3.3
+& L'utente business autenticato amministratore deve poter eliminare un utente business
+& \\
+
+\midrule
+ROF10.4
+& L'utente business autenticato amministratore deve poter cancellare un Document
+& \\
+
+\midrule
+ROF10.5
+& L'utente business autenticato amministratore deve poter modificare un Document
+& \\
+
+\midrule
+ROF10.5.1
+& L'utente business autenticato amministratore deve poter modificare i valori associati alla chiavi
+& \\
+
+\midrule
+ROF10.5.2
+& L'utente business autenticato amministratore deve poter salvare le modifiche apportate al Document
+& \\
+
+\midrule
+ROF10.5.3
+& L'utente business autenticato amministratore deve poter annullare le modifiche apportate al Document
+& \\
+
+\midrule
+ROF10.6
+& L'utente business autenticato amministratore deve poter visualizzare le query più utilizzate dal sistema MaaP
+& \\
+
+\midrule
+ROF10.7
+& L'utente business autenticato amministratore deve poter creare degli indici
+& \\
+
+%FINE TABELLA REQUISITI MAAPSWEB, 
+%REQUISITI MAAS
+
+\midrule
+RFF11.1
+& Il sistema MaaS deve permettere all'utente di autenticarsi al sistema
+& \\
+
+\midrule
+RFF11.1.1
+& Il sistema MaaS deve permettere all'utente di inserire il nome utente
+& \\
+
+\midrule
+RFF11.1.2
+& Il sistema MaaS deve permettere all'utente di inserire la password
+& \\
+
+\midrule
+RFF11.2
+& Il sistema MaaS deve permettere all'utente di registrarsi al sistema
+& \\
+
+\midrule
+RFF11.2.1
+& Il sistema MaaS deve permettere all'utente di inserire la propria email
+& \\
+
+\midrule
+RFF11.3
+& Il sistema MaaS deve permettere all'utente di recuperare la password
+& \\
+
+\midrule
+RFF11.4
+& Il sistema MaaS deve permettere all'utente di visualizzare le pagine web create
+& \\
+
+\midrule
+RFF11.5
+& Il sistema MaaS deve permettere all'utente autenticato di creare lo scheletro del progetto
+& \\
+
+\midrule
+RFF11.5.1
+& Il sistema MaaS deve permettere all'utente autenticato di inserire il nome del progetto
+& \\
+
+\midrule
+RFF11.6
+& Il sistema MaaS deve permettere all'utente autenticato di gestire le pagine web
+& \\
+
+\midrule
+RFF11.6.1
+& Il sistema MaaS deve permettere all'utente autenticato di creare un file di descrizione
+& \\
+
+\midrule
+RFF11.6.1.1
+& Il sistema MaaS deve permettere all'utente autenticato la scrittura di un file di descrizione tramite editor di testo
+& \\
+
+\midrule
+RFF11.6.1.2
+& Il sistema MaaS deve permettere all'utente autenticato di salvare il file di descrizione
+& \\
+
+\midrule
+RFF11.6.2
+& Il sistema MaaS deve permettere all'utente autenticato di eseguire l'upload di un file di descrizione creato precedentemente con il sistema MaaP
+& \\
+
+\midrule
+RFF11.6.2.1
+& Il sistema MaaS deve permettere all'utente autenticato di navigare all'interno del file system
+& \\
+
+\midrule
+RFF11.6.2.2
+& Il sistema MaaS deve permettere all'utente autenticato di selezionare un file di descrizione
+& \\
+
+\midrule
+RFF11.6.2.3
+& Il sistema MaaS deve permettere all'utente autenticato di confermare l'upload del file selezionato
+& \\
+
+\midrule
+RFF11.6.3
+& Il sistema MaaS deve permettere all'utente autenticato di modificare un file di descrizione esistente
+& \\
+
+\midrule
+RFF11.6.3.1
+& Il sistema MaaS deve permettere all'utente autenticato di modificare il codice del file di descrizione selezionato
+& \\
+
+\midrule
+RFF11.6.3.2
+& Il sistema MaaS deve permettere all'utente autenticato di salvare le modifiche apportate al file di descrizione
+& \\
+
+\midrule
+RFF11.6.3.3
+& Il sistema MaaS deve permettere all'utente autenticato di annullare le modifiche apportate al file di descrizione
+& \\
+
+\midrule
+RFF11.6.4
+& Il sistema MaaS deve permettere all'utente autenticato di modificare il file di configurazione
+& \\
+
+\midrule
+RFF11.6.4.1
+& Il sistema MaaS deve permettere all'utente autenticato di modificare il codice del file di configurazione selezionato
+& \\
+
+\midrule
+RFF11.6.4.2
+& Il sistema MaaS deve permettere all'utente autenticato di salvare le modifiche apportate al file di configurazione
+& \\
+
+\midrule
+RFF11.6.4.3
+& Il sistema MaaS deve permettere all'utente autenticato di annullare le modifiche apportate al file di configurazione
+& \\
+
+\midrule
+RFF11.6.5
+& Il sistema MaaS deve permettere all'utente autenticato di visualizzare tutti i file di descrizione presenti
+& \\
+
+\midrule
+RFF11.7
+& Il sistema MaaS deve permettere all'utente autenticato di gestire il proprio profilo utente
+& \\
+
+\midrule
+RFF11.7.1
+& Il sistema MaaS deve permettere all'utente autenticato di generare una nuova password
+& \\
+
+\midrule
+RFF11.8
+& Il sistema MaaS deve permettere all'utente autenticato di disconnettersi dal sistema
+& \\
+
+\midrule
+RFF11.9
+& Il sistema MaaS deve permettere all'utente autenticato di visualizzare le pagine web create
+& \\
+
+\midrule
+ROF12
+& Definizione di un linguaggio astratto DSL per la definizione delle pagine che verranno generate
+& \\
+
+\midrule
+ROF12.1
+& Il linguaggio definito deve essere testuale
+& \\
+
+%FINE TABELLA REQUISITI MAAS, NON CANCELLARE
+% Requisiti di qualita
+
+\midrule
+ROQ13
+& Devono essere rispettate tutte le norme riportate nel documento Norme di Progetto
+& \\
+
+\midrule
+ROQ14
+& Il \gloss{software} deve essere dotato di un manuale utente che ne descriva l'utilizzo
+& \\
+
+\midrule
+ROQ15
+& Il progetto deve essere pubblicato su \gloss{GitHub} e utilizzare le sue distribuzioni per segnalare eventuali correzioni o errori
+& \\
+
+%FINE TABELLA REQUISITI QUALITA',
+% Requisiti di vincolo
+
+\midrule
+ROV16
+& Il database degli utenti deve essere \gloss{criptato}
+& \\
+
+\midrule
+ROV17
+& Le pagine web prodotte dal framework MaaP devono essere compatibili con la versione 30.0.x di \gloss{Google Chrome} o superiori
+& \\
+
+\midrule
+ROV18
+& Le pagine web prodotte dal framework MaaP devono essere compatibili con la versione 24.x o superiore di Firefox
+& \\
+
+\midrule
+ROV19
+& Il sistema deve accettare solo file di configurazione che hanno un determinato formato già fissato
+& \\
+
+\midrule
+ROV20
+& Il database degli utenti deve essere realizzato utilizzando MongoDB
+& \\
+
+\midrule
+ROV21
+& Il database degli utenti deve essere indipendente dal database di analisi
+& \\
+
+\midrule
+ROV22
+& Il database di analisi utilizzato deve essere stato realizzato utilizzando MongoDB
+& \\
+
+\midrule
+ROV23
+& L'\gloss{interfaccia}  con il database deve essere realizzata con Mongoose
+& \\
+
+\midrule
+ROV24
+& L'\gloss{infrastruttura} delle pagine web generate deve essere realizzata con \gloss{Express}
+& \\
+
+\midrule
+ROV25
+& La componente \gloss{server} deve essere realizzata con \gloss{Node.js}
+& \\
+
+\midrule
+ROV26
+& Il software sarà fornito di un sistema di installazione per farlo funzionare
+& \\
+
+\midrule
+ROV27
+& Deve essere possibile effettuare il \gloss{deployment} su \gloss{Heroku}
+& \\
+
+
+%FINE TABELLA TRACCIAMENTO REQUISITI COMPONENTI
 \bottomrule
 \caption{Tracciamento requisiti - componenti}
 \end{longtable}
