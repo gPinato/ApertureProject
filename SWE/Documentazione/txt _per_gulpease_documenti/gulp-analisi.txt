@@ -1,0 +1,825 @@
+Questo documento si propone di presentare l'analisi dei requisiti che il prodotto MaaP: MongoDB as an admin Platform dovrà rispettare, individuati a partire dal capitolato d'appalto del Proponente CoffeeStrap.
+Il presente documento ha lo scopo di illustrare ed analizzare in modo dettagliato i requisiti del prodotto MaaP evidenziati nel capitolato d'appalto C1 dal Proponente CoffeeStrap presentando così le funzionalità che offrirà il prodotto.
+Lo scopo del prodotto è produrre un framework per generare interfacce web di amministrazione dei dati di business basati sullo stack Nodejs e mongodb.
+L'obiettivo è quello di semplificare il lavoro allo sviluppatore che dovrà rispondere in modo rapido e standard alle richieste degli esperti di business.
+Al fine di evitare ogni ambiguità nella comprensione del linguaggio utilizzato nel presente documento e, in generale, nella documentazione fornita dal gruppo ApertureSoftware, ogni termine tecnico, di difficile comprensione o di necessario approfondimento verrà inserito nel documento glossario.pdf.
+Saranno in esso definiti e descritti tutti i termini in corsivo e allo stesso tempo marcati da una lettera "G" maiuscola in pedice nella documentazione fornita.
+Capitolato d'appalto C1 - MaaP: MongoDB as an admin Platform.
+http://www.math.unipd.it/~tullio/IS-1/2013/Progetto/C1.pdf.
+Verbale esterno del 2013-12-05.
+Norme di Progetto: norme di progetto.pdf.
+Slide dell'insegnamento Ingegneria del Software modulo A:
+Ingegneria dei requisiti: http://www.math.unipd.it/~tullio/IS-1/2013/Dispense/L06.pdf.
+Software Engineering - Ian Sommerville - 9th Edition (2010):
+Chapter 4: Requirements engineering.
+IEEE 830-1998: Recommended Practice for Software Requirements Specifications.
+http://en.wikipedia.org/wiki/Software_requirements_specification.
+La problematica che il prodotto si pone di risolvere è quella di ridurre il carico di lavoro degli sviluppatori per la creazione di pagine \gloss{web} di visualizzazione di dati provenienti da MongoDB.
+Il prodotto MaaP permetterà di creare uno scheletro del progetto comprensivo di.
+Librerie necessarie al funzionamento del progetto.
+File di configurazione necessari al funzionamento dell'applicazione nella loro versione predefinita.
+Sistema di autenticazione.
+Directory di descrizione pagine web.
+Tramite l'utilizzo di un linguaggio astratto DSL(Domain Specific Language), il prodotto permetterà all' utente di generare due tipi di pagine.
+Collection-Index.
+Document-Show.
+All'interno della pagina di tipo "Collection-Index" sarà possibile.
+Visualizzare tutti i documenti della Collection.
+Selezionare, per ogni documento, una chiave che rimanderà alla relativa pagina di tipo Document-show.
+All'interno della pagina di tipo Document-Show sarà possibile.
+Visualizzare in forma estesa tutte le coppie chiave-valore.
+Modificare i campi del documento nel caso l'utente abbia permessi di scrittura.
+Inoltre sarà possibile, attraverso un menù, selezionare la Collection che si desidera visualizzare.
+Il prodotto MaaP si rivolge ad una sola tipologia di utenti che possiedono alte competenze tecniche, nello specifico sviluppatori e/o esperti in amministrazione di  database. Le pagine generate dal framework verranno utilizzate da utenti esperti di business, i quali non dovranno obbligatoriamente possedere particolari conoscenze informatiche. Questi utenti si dividono in due categorie: utenti business, con soli permessi di lettura e visualizzazione del database di analisi ed eventuale gestione del profilo, e utenti business amministratori, i quali avranno ulteriori privilegi di gestione.
+Il prodotto MaaS si rivolge sia agli sviluppatori sia agli esperti di business.
+Nel computer è necessario che sia installata la versione 30.0.x di  Google Chrome o superiori, oppure la versione 24.x o superiori di Firefox.
+Di seguito sono presentati i casi d'uso identificati a partire dal capitolato d'appalto MaaP: MongoDB as an admin Platform.
+Ogni caso d'uso figlio eredita le precondizioni dei casi d'uso di livello superiore che fanno parte della sua gerarchia al fine di ridurre l'esposizione delle precondizioni.
+Ogni caso d'uso ha un codice univoco gerarchico, nella forma.
+UC[codice progressivo di livello].
+Il codice progressivo può includere diversi livelli di gerarchia separati da un punto.
+A ogni descrizione di caso d'uso viene riportato il numero del diagramma associato di cui fa parte, ovvero la rappresentazione del caso d'uso generale a cui esso appartiene. 
+Ogni diagramma associato è scritto nella seguente forma.
+Figura[numero progressivo]:[codice univoco e nome del caso d'uso].
+Utente sviluppatore.
+L' utente sviluppatore  può eseguire dei comandi per generare lo scheletro, inserire il \gloss{file di descrizione}, usare un \gloss{editor} specializzato per scrivere il file di descrizione, utilizzare il file di descrizione e modificare il file di configurazione.
+Il sistema è installato e funzionante nel pc in uso.
+L'utente sviluppatore può generare lo scheletro del progetto (UC1.1).
+L'utente sviluppatore può utilizzare il file di descrizione (UC1.2).
+L'utente sviluppatore può modificare i file di configurazione (UC1.3).
+L'utente sviluppatore può utilizzare un editor di testo specializzato (UC1.4).
+L'utente sviluppatore può inserire un file di descrizione (UC1.5).
+L'utente sviluppatore può eliminare un progetto (UC1.6).
+L'utente sviluppatore può clonare un progetto (UC1.7).
+Il sistema ha ottenuto le informazioni sulle operazioni che l'utente sviluppatore desidera eseguire.
+Utente sviluppatore.
+L'utente sviluppatore può generare lo scheletro del progetto, il quale comprende: librerie e file di configurazione necessari al funzionamento dello stesso, directory di descrizione delle pagine web generate e il sistema di autenticazione per quest'ultime.
+Il sistema è installato e funzionante nel pc in uso e permette all'utente sviluppatore di generare scheletro di un nuovo progetto.
+L'utente sviluppatore può generare lo scheletro del progetto.
+Il sistema ha generato lo scheletro del progetto.
+Utente sviluppatore.
+L'utente sviluppatore  può usare il file di descrizione per definire la visualizzazione della Collection utilizzando i template delle pagine web inseriti nel file di configurazione.
+Il sistema ha generato lo scheletro del progetto e il file di descrizione deve essere stato inserito.
+L'utente sviluppatore può creare la visualizzazione di una Collection (UC1.2.1).
+L'utente sviluppatore può modificare la visualizzazione di una Collection (UC1.2.2).
+L'utente sviluppatore può aggiungere una query (UC1.2.3).
+L'utente sviluppatore può eliminare una query (UC1.2.4).
+Il sistema contiene la descrizione per la visualizzazione della Collection.
+Utente sviluppatore.
+L'utente sviluppatore  può impostare la visualizzazione del menù delle Collection, delle pagine Collection-Index e Document-Show.
+Il sistema contiene la descrizione per la visualizzazione della Collection predefinita e l'utente sviluppatore desidera crearne una nuova.
+L'utente sviluppatore può impostare la visualizzazione del menù per le pagine di tipo Collection-index (UC1.2.1.1).
+L'utente sviluppatore può impostare la visualizzazione della pagina Collection-Index (UC1.2.1.2).
+L'utente sviluppatore può impostare la visualizzazione della pagina Document-Show (UC1.2.1.3).
+Il sistema ha creato una nuova descrizione per la visualizzazione della Collection.
+Utente sviluppatore.
+L'utente sviluppatore può definire il nome della voce relativa alla Collection che verrà visualizzata e la posizione di questa nel menù delle Collection.
+Il sistema contiene la descrizione della visualizzazione del menù predefinita. Nella definizione è specificato il nome della voce del menù corrispondente al nome della Collection e la posizione, la prima disponibile in ordine crescente.
+L'utente sviluppatore può definire il nome della voce relativa alla Collection all'interno del menù (UC1.2.1.1.1).
+L'utente sviluppatore può definire la posizione della Collection all'interno del menù (UC1.2.1.1.2).
+Il sistema ha creato una nuova descrizione per la visualizzazione del menù delle Collection.
+Utente sviluppatore.
+L'utente sviluppatore può definire il nome della voce relativa alla Collection nel menù delle Collection.
+Il sistema contiene la descrizione per la visualizzazione del menù predefinita, nella quale il nome della voce del menù corrisponde al nome della Collection. L'utente desidera definire un nuovo nome per la voce.
+L'utente sviluppatore può definire il nome della Collection da visualizzare nel menù delle Colelction.
+Il sistema contiene la descrizione per la visualizzazione del menù, nella quale il nome della voce del menù corrisponde al nome della Collection è definito dall'utente sviluppatore.
+Utente sviluppatore.
+L'utente può definire la posizione della voce relativa al nome della Collection all'interno del menù delle Collection.
+Il sistema contiene la descrizione per la visualizzazione del menù predefinita, nella quale la posizione è la prima disponibile in ordine crescente. L'utente sviluppatore desidera specificare la posizione della voce.
+L'utente sviluppatore può definire la posizione della Collection nel menù delle Collection.
+Il sistema contiene la descrizione per la visualizzazione del menù, nella quale la posizione della voce nel menù è definita dall'utente sviluppatore.
+Utente sviluppatore.
+L'utente sviluppatore  può creare una descrizione per la visualizzazione della pagina Collection-Index e aggiungere varie specifiche al suo interno.
+Il sistema contiene la descrizione per la visualizzazione della pagina Collection-Index predefinita.
+L'utente sviluppatore può aggiungere una chiave da visualizzare (UC1.2.1.2.1).
+L'utente sviluppatore può definire un ordinamento per chiave (UC1.2.1.2.2).
+L'utente sviluppatore può aggiungere un numero massimo di Document da visualizzare (UC1.2.1.2.3).
+L'utente sviluppatore può aggiungere un pulsante (UC1.2.1.2.4).
+Il sistema ha creato la descrizione per la visualizzazione della pagina Collection-Index con le specifiche aggiunte.
+Utente sviluppatore.
+L'utente sviluppatore può aggiungere una chiave alla definizione della visualizzazione della pagina Collection-Index.
+Il sistema contiene la descrizione per la visualizzazione della pagina Collection-Index.
+L'utente sviluppatore può definire un'etichetta per la chiave da visualizzare (UC1.2.1.2.1.1).
+L'utente sviluppatore può definire il campo del \gloss{Document} ed associarlo alla chiave da visualizzare (UC1.2.1.2.1.2).
+L'utente sviluppatore può definire il campo di un Document esterno e associarlo alla chiave da visualizzare (UC1.2.1.2.1.3).
+L'utente sviluppatore può definire il campo associato alla chiave da visualizzare come trasformazione tramite funzione Javascript (UC1.2.1.2.1.4)
+L'utente sviluppatore può definire il campo associato alla chiave da visualizzare proveniente dal risultato di una query (UC1.2.1.2.1.5).
+Il sistema contiene la descrizione per la visualizzazione della pagina Collection-Index aggiornata con la chiave aggiunta dall'utente sviluppatore.
+Utente sviluppatore.
+L'utente sviluppatore può definire un'etichetta per la chiave da visualizzare.
+Il sistema contiene la descrizione per la visualizzazione della pagina Collection-Index predefinita, nella quale non è specificata nessuna etichetta per la chiave da visualizzare.
+L'utente sviluppatore può definire un'etichetta per la chiave da visualizzare.
+Il sistema contiene la descrizione per la visualizzazione della pagina Collection-Index aggiornata con l'etichetta relativa alla chiave da visualizzare.
+Utente sviluppatore.
+L'utente sviluppatore può definire un campo associato alla chiave da visualizzare.
+Il sistema contiene la descrizione per la visualizzazione della pagina Collection-Index predefinita, nella quale non è specificato nessun campo per la chiave da visualizzare.
+L'utente sviluppatore può definire un campo associato alla chiave da visualizzare.
+Il sistema contiene la descrizione per la visualizzazione della pagina Collection-Index aggiornata con il campo associato alla chiave da visualizzare.
+Utente sviluppatore.
+L'utente sviluppatore può definire un campo associato alla chiave da visualizzare, proveniente da un documento esterno.
+Il sistema contiene la descrizione per la visualizzazione della pagina Collection-Index predefinita, nella quale non è specificato nessun campo per la chiave da visualizzare.
+L'utente sviluppatore può definire un campo associato alla chiave da visualizzare, proveniente da un documento esterno.
+Il sistema contiene la descrizione per la visualizzazione della pagina Collection-Index aggiornata con il campo associato alla chiave da visualizzare.
+Utente sviluppatore.
+L'utente sviluppatore può definire un campo associato alla chiave da visualizzare, proveniente dal risultato di una query.
+Il sistema contiene la descrizione per la visualizzazione della pagina Collection-Index predefinita, nella quale non è specificato nessun campo per la chiave da visualizzare, la query deve essere definita.
+L'utente sviluppatore può definire un campo associato alla chiave da visualizzare, proveniente dal risultato di una query.
+Il sistema contiene la descrizione per la visualizzazione della pagina Collection-Index aggiornata con il campo associato alla chiave da visualizzare.
+Utente sviluppatore.
+L'utente sviluppatore può definire un campo associato alla chiave da visualizzare come trasformazione.
+Il sistema contiene la descrizione per la visualizzazione della pagina Collection-Index predefinita, nella quale non è specificato nessun campo per la chiave da visualizzare.
+L'utente sviluppatore può definire un campo associato alla chiave da visualizzare come trasformazione.
+Il sistema contiene la descrizione per la visualizzazione della pagina Collection-Index aggiornata con il campo associato alla chiave da visualizzare.
+Utente sviluppatore.
+L'utente sviluppatore  può  definire un ordinamento, alfabetico crescente o decrescente, rispetto ad una chiave nella definizione della visualizzazione della pagina Collection-Index.
+Il sistema contiene la descrizione per la visualizzazione della pagina Collection-Index predefinita, nella quale non è presente alcun ordinamento per chiave definito dall'utente.
+L'utente sviluppatore può definire un ordinamento rispetto ad una chiave della Collection-Index.
+Il sistema contiene la descrizione per la visualizzazione della pagina Collection-Index aggiornata con il nuovo ordinamento per chiave definito dall'utente sviluppatore.
+Utente sviluppatore.
+L'utente sviluppatore  può definire un numero massimo di Document da visualizzare nella definizione della visualizzazione della pagina Collection-Index.
+Il sistema contiene la descrizione per la visualizzazione della pagina Collection-Index predefinita, nella quale non è presente alcun numero massimo di Document definito dall'utente.
+L'utente sviluppatore può definire un numero massimo di Document da visualizzare in una Collection-Index.
+Il sistema contiene la descrizione per la visualizzazione della pagina Collection-Index aggiornata con il nuovo numero massimo di Document per pagina definito dall'utente sviluppatore.
+Utente sviluppatore.
+L'utente sviluppatore può aggiungere un pulsante per modificare la visualizzazione della pagina Collection-Index, specificando l'etichetta e l'azione che deve eseguire.
+Il sistema contiene la descrizione per la visualizzazione della pagina Collection-Index.
+L'utente sviluppatore può aggiungere un pulsante nella Collection-Index.
+Il sistema contiene la descrizione per la visualizzazione della pagina Collection-Index aggiornata con il nuovo  pulsante aggiunto dall'utente sviluppatore.
+Utente sviluppatore.
+L'utente sviluppatore  può creare la descrizione per la visualizzazione della pagina Document-Show e aggiungere varie specifiche al suo interno.
+Il sistema contiene la descrizione per la visualizzazione della pagina Document-Show predefinita.
+L'utente può aggiungere una chiave da visualizzare (UC1.2.1.3.1).
+L'utente può aggiungere un pulsante da visualizzare (UC1.2.1.3.2).
+Il sistema ha creato la nuova descrizione per la visualizzazione della pagina Document-Show con le specifiche aggiunte.
+Utente sviluppatore.
+L'utente sviluppatore può aggiungere una chiave alla definizione della visualizzazione della pagina Document-Show.
+Il sistema contiene la descrizione per la visualizzazione della pagina Document-Show.
+L'utente sviluppatore può definire un'etichetta per la chiave da visualizzare (UC1.2.1.3.1.1).
+L'utente sviluppatore può definire il campo del Document ed associarlo alla chiave da visualizzare (UC1.2.1.3.1.2).
+L'utente sviluppatore può definire il campo di un Document esterno e associarlo alla chiave da visualizzare (UC1.2.1.3.1.3).
+L'utente sviluppatore può definire il campo associato alla chiave da visualizzare come trasformazione tramite funzione Javascript (UC1.2.1.3.1.4).
+L'utente sviluppatore può definire il campo associato alla chiave da visualizzare proveniente dal risultato di una query (UC1.2.1.3.1.5).
+Il sistema contiene la descrizione per la visualizzazione della pagina Document-Show aggiornata con la chiave aggiunta dall'utente sviluppatore.
+Utente sviluppatore.
+L'utente sviluppatore può definire un'etichetta per la chiave da visualizzare.
+Il sistema contiene la descrizione per la visualizzazione della pagina Document-Show predefinita, nella quale non è specificata nessuna etichetta per la chiave da visualizzare.
+L'utente sviluppatore può definire un'etichetta per la chiave da visualizzare.
+Il sistema contiene la descrizione per la visualizzazione della pagina Document-Show aggiornata con l'etichetta relativa alla chiave da visualizzare.
+Utente sviluppatore.
+L'utente sviluppatore può definire un campo associato alla chiave da visualizzare.
+Il sistema contiene la descrizione per la visualizzazione della pagina Document-Show predefinita, nella quale non è specificato nessun campo per la chiave da visualizzare.
+L'utente sviluppatore può definire un campo associato alla chiave da visualizzare.
+Il sistema contiene la descrizione per la visualizzazione della pagina Document-Show aggiornata con il campo associato alla chiave da visualizzare.
+Utente sviluppatore.
+L'utente sviluppatore può definire un campo associato alla chiave da visualizzare, proveniente da un documento esterno.
+Il sistema contiene la descrizione per la visualizzazione della pagina Document-Show predefinita, nella quale non è specificato nessun campo per la chiave da visualizzare.
+L'utente sviluppatore può definire un campo associato alla chiave da visualizzare, proveniente da un documento esterno.
+Il sistema contiene la descrizione per la visualizzazione della pagina Document-Show aggiornata con il campo associato alla chiave da visualizzare.
+Utente sviluppatoreUtente sviluppatore.
+L'utente sviluppatore può definire un campo associato alla chiave da visualizzare, proveniente dal risultato di una query.
+Il sistema contiene la descrizione per la visualizzazione della pagina Document-Show predefinita, nella quale non è specificato nessun campo per la chiave da visualizzare, la query deve essere definita.
+L'utente sviluppatore può definire un campo associato alla chiave da visualizzare, proveniente dal risultato di una query.
+Il sistema contiene la descrizione per la visualizzazione della pagina Document-Show aggiornata con il campo associato alla chiave da visualizzare.
+Utente sviluppatore.
+L'utente sviluppatore può definire un campo associato alla chiave da visualizzare come trasformazione.
+Il sistema contiene la descrizione per la visualizzazione della pagina Document-Show predefinita, nella quale non è specificato nessun campo per la chiave da visualizzare.
+L'utente sviluppatore può definire un campo associato alla chiave da visualizzare come trasformazione.
+Il sistema contiene la descrizione per la visualizzazione della pagina Document-Show aggiornata con il campo associato alla chiave da visualizzare.
+Utente sviluppatore.
+L'utente sviluppatore può aggiungere un pulsante per la visualizzazione della pagina Document-Show, specificando l'etichetta e l'azione che deve eseguire.
+Il sistema contiene la descrizione per la visualizzazione della pagina Document-Show.
+L'utente sviluppatore può aggiungere un pulsante in una Document-Show.
+Il sistema contiene la descrizione per la visualizzazione della pagina Document-Show aggiornata con il nuovo pulsante aggiunto dall'utente sviluppatore.
+Utente sviluppatore.
+L'utente sviluppatore  può impostare la visualizzazione del menù delle Collection, delle pagine Collection-Index e Document-Show.
+Il sistema contiene la descrizione per la visualizzazione della Collection.
+L'utente sviluppatore può impostare la visualizzazione del menù per le pagine di tipo Collection-Index (UC1.2.2.1).
+L'utente sviluppatore può impostare la visualizzazione della pagina Collection-Index (UC1.2.2.2).
+L'utente sviluppatore può impostare la visualizzazione della pagina Document-Show (UC1.2.2.3).
+Il sistema ha aggiornato la descrizione per la visualizzazione della Collection.
+Utente sviluppatore.
+L'utente sviluppatore può modificare, nella descrizione per la visualizzazione del menù della Collection, il nome della Collection e la posizione nel menù principale.
+Il sistema contiene la descrizione per la visualizzazione del menù e permette all'utente sviluppatore di modificarla.
+L'utente può modificare il nome della Collection (UC1.2.2.1.1).
+L'utente può modificare la posizione della Collection (UC1.2.2.1.2).
+Il sistema ha aggiornato la descrizione per la visualizzazione del menù con le modifiche apportate dall'utente sviluppatore.
+Utente sviluppatore.
+L'utente può modificare, nella descrizione per la visualizzazione del menù della Collection, il nome della voce relativa alla Collection.
+Il sistema contiene la descrizione per la visualizzazione della pagina Collection-Index.
+L'utente sviluppatore può modificare il nome della Collection nel menù delle Colelction.
+Il sistema ha aggiornato la descrizione per la visualizzazione del menù delle Collection con il nuovo nome specificato dall'utente sviluppatore.
+Utente sviluppatore.
+L'utente può modificare, nella descrizione per la visualizzazione del menù della Collection, la posizione della voce relativa al nome della Collection.
+L'utente desidera cambiare la posizione della voce nel menù.
+L'utente sviluppatore può modificare la posizione della Collection nel menù delle Collection.
+Il sistema ha aggiornato la descrizione per la visualizzazione del menù delle Collection con la nuova posizione della voce specificata dall'utente sviluppatore.
+Utente sviluppatore.
+L'utente sviluppatore  può modificare varie impostazioni della descrizione per la visualizzazione della pagina Collection-Index.
+Il sistema contiene la descrizione per la visualizzazione della pagina Collection-Index e permette all'utente sviluppatore di modificarla.
+L'utente può aggiungere una chiave da visualizzare (UC1.2.1.2.1).
+L'utente può eliminare una chiave da visualizzare (UC1.2.2.2.1).
+L'utente può definire un ordinamento per chiave (UC1.2.1.2.2).
+L'utente può eliminare un ordinamento per chiave (UC1.2.2.2.2).
+L'utente può aggiungere il numero massimo di Document da visualizzare per pagina (UC1.2.1.2.3).
+L'utente può modificare il numero massimo di Document da visualizzare per pagina (UC1.2.2.2.3).
+L'utente può eliminare il numero massimo di Document da visualizzare per pagina (UC1.2.2.2.4).
+L'utente può aggiungere un pulsante (UC1.2.1.2.4).
+L'utente può eliminare un pulsante (UC1.2.2.2.5).
+Il sistema contiene la descrizione aggiornata per la visualizzazione della Collection.
+Utente sviluppatore.
+L'utente sviluppatore  può eliminare una chiave dalla descrizione per la visualizzazione della pagina Collection-Index.
+Il sistema contiene la descrizione per la visualizzazione della pagina Collection-Index, la quale contiene almeno una chiave da visualizzare.
+L'utente sviluppatore può eliminare una chiave.
+Il sistema contiene la descrizione per la visualizzazione della pagina Collection-Index aggiornata con la chiave eliminata dall'utente sviluppatore.
+Utente sviluppatore.
+L'utente sviluppatore  può eliminare un ordinamento rispetto a una chiave dalla descrizione per la visualizzazione della pagina Collection-Index.
+Il sistema contiene la descrizione per la visualizzazione della pagina Collection-Index, la quale contiene un ordinamento rispetto una chiave definito dall'utente sviluppatore.
+L'utente sviluppatore può eliminare un ordinamento rispetto ad una chiave.
+Il sistema contiene la descrizione per la visualizzazione della pagina Collection-Index aggiornata con l'ordinamento eliminato dall'utente sviluppatore.
+Utente sviluppatore.
+L'utente sviluppatore  può modificare il numero massimo di Document da visualizzare per la pagina Collection-Index dalla descrizione per la visualizzazione della pagina Collection-Index.
+Il sistema contiene la descrizione per la visualizzazione della pagina Collection-Index, nella quale è presente un numero massimo di Document definito dall'utente.
+L'utente sviluppatore può modificare il numero massimo di Document da visualizzare in una Collection-Index.
+Il sistema contiene la descrizione per la visualizzazione della pagina Collection-Index aggiornata con il numero massimo di Document per pagina modificato dall'utente sviluppatore.
+Utente sviluppatore.
+L'utente sviluppatore  può eliminare il numero massimo di Document da visualizzare dalla descrizione per la visualizzazione della pagina Collection-Index.
+Il sistema contiene la descrizione per la visualizzazione della pagina Collection-Index, nella quale è presente un numero massimo di Document definito dall'utente.
+L'utente sviluppatore può eliminare il numero massimo di Document da visualizzare in una Collection-Index.
+Il sistema contiene la descrizione per la visualizzazione della pagina Collection-Index aggiornata con il numero massimo di Document per pagina eliminato dall'utente sviluppatore.
+Utente sviluppatore.
+L'utente sviluppatore  può eliminare un pulsante da visualizzare nella pagina Collection-Index.
+Il sistema contiene la descrizione per la visualizzazione della pagina Collection-Index, nella quale è presente un pulsante definito dall'utente.
+L'utente sviluppatore può eliminare un pulsante.
+Il sistema contiene la descrizione per la visualizzazione della pagina Collection-Index aggiornata con il pulsante eliminato dall'utente sviluppatore.
+Utente sviluppatore.
+L'utente sviluppatore  può modificare la descrizione per la visualizzazione della pagina Document-Show e varie specifiche al suo interno.
+Il sistema contiene la descrizione per la visualizzazione della pagina Document-Show.
+L'utente può aggiungere una chiave da visualizzare (UC1.2.1.3.1).
+L'utente può eliminare una chiave da visualizzare (UC1.2.2.3.1).
+L'utente può aggiungere un pulsante (UC1.2.1.3.2).
+L'utente può eliminare un pulsante (UC1.2.2.3.2).
+Il sistema contiene la descrizione aggiornata per la visualizzazione della Collection.
+Utente sviluppatore.
+L'utente sviluppatore  può eliminare una chiave  dalla descrizione per la visualizzazione della pagina Document-Show.
+Il sistema contiene la descrizione per la visualizzazione della pagina Document-Show, la quale contiene almeno una chiave da visualizzare.
+L'utente sviluppatore può eliminare una chiave da una Document-Show.
+Il sistema contiene la descrizione per la visualizzazione della pagina Document-Show aggiornata con la chiave eliminata dall'utente sviluppatore.
+Utente sviluppatore.
+L'utente sviluppatore può eliminare un pulsante dalla descrizione per la visualizzazione della pagina Document-Show.
+Il sistema contiene la descrizione per la visualizzazione della pagina Document-Show, la quale contiene almeno una chiave da visualizzare.
+L'utente sviluppatore può eliminare un pulsante da una Document-Show.
+Il sistema contiene la descrizione per la visualizzazione della pagina Document-Show aggiornata il pulsante eliminato dall'utente sviluppatore.
+Utente sviluppatore.
+L'utente sviluppatore può aggiungere una query.
+Il sistema contiene la descrizione per la visualizzazione della pagina Collection-Index e Document-Show.
+L'utente sviluppatore può aggiungere una query personalizzata.
+Il sistema contiene la descrizione per la visualizzazione della pagina Collection-Index e Document-Show aggiornata con la definizione della query personalizzata.
+Utente sviluppatore.
+L'utente sviluppatore può eliminare una query precedentemente definita.
+Il sistema contiene la descrizione per la visualizzazione della pagina Collection-Index e Document-Show ed è presente almeno la definizione di una query.
+L'utente sviluppatore può eliminare una query precedentemente definita.
+Il sistema contiene la descrizione per la visualizzazione della pagina Collection-Index e Document-Show aggiornata.
+Utente sviluppatore.
+L'utente sviluppatore  può modificare varie impostazioni dei file di configurazione.
+Il sistema ha creato lo scheletro del progetto e permette all'utente sviluppatore di modificare i file di configurazione.
+L'utente sviluppatore può abilitare la registrazione alle pagine web generate da MaaP (UC1.3.1).
+L'utente sviluppatore può abilitare la creazione di Document (UC1.3.2).
+L'utente sviluppatore può modificare i template delle pagine web (UC1.3.3).
+L'utente sviluppatore può specificare i dati per la connessione al database di analisi (UC1.3.4).
+L'utente sviluppatore può abilitare la creazione di indici (UC1.3.5).
+Il sistema ha aggiornato il file di configurazione.
+Utente sviluppatore.
+L'utente sviluppatore può abilitare o disabilitare la registrazione alle pagine web generate da MaaP.
+Il sistema contiene il file di configurazione con l'abilitazione della registrazione predefinita.
+L'utente sviluppatore può abilitare o no la registrazione.
+Il sistema ha aggiornato il file di configurazione con la scelta dell'utente sviluppatore.
+Utente sviluppatore.
+L'utente sviluppatore può abilitare o disabilitare la creazione di Document nel database di analisi.
+Il sistema contiene il file di configurazione con l'abilitazione della creazione di Document nel database di analisi.
+L'utente sviluppatore può abilitare o no la creazione di Document.
+Il sistema ha aggiornato il file di configurazione con la scelta dell'utente sviluppatore.
+Utente sviluppatore.
+L'utente sviluppatore pu\'o modificare i template delle pagine web.
+Il sistema contiene le directory di descrizione delle pagine web.
+L'utente sviluppatore pu\'o modificare i template delle pagine web.
+Il sistema ha aggiornato i template delle pagine web con le modifiche apportate dall'utente sviluppatore.
+Utente sviluppatore.
+L'utente sviluppatore può specificare i dati necessari alla connessione del database di analisi.
+Il sistema contiene il file di configurazione per la connessione a un database di analisi.
+L'utente sviluppatore può specificare il database di analisi.
+Il sistema contiene le informazioni per connettersi a un database di analisi.
+Utente sviluppatore.
+L'utente sviluppatore può abilitare o disabilitare la creazione di indici nelle pagine web generate da MaaP.
+Il sistema contiene il file di configurazione con l'abilitazione per la creazione di indici.
+L'utente sviluppatore può abilitare o no la creazione di indici.
+Il sistema ha aggiornato il file di configurazione con la scelta dell'utente sviluppatore.
+Utente sviluppatore.
+L'utente sviluppatore può utilizzare un editor specializzato per scrivere il file di descrizione.
+Il sistema ha creato lo scheletro del progetto e contiene un editor specializzato che può essere utilizzato dall'utente sviluppatore.
+L'utente sviluppatore può creare un file di descrizione (UC1.4.1).
+L'utente sviluppatore può modificare un file di descrizione esistente (UC1.4.2).
+Il sistema consente all'utente sviluppatore di scrivere con l'editor specializzato.
+Utente sviluppatore.
+L'utente sviluppatore può utilizzare un editor specializzato per creare un file di descrizione.
+Il sistema ha creato lo scheletro del progetto.
+L'utente sviluppatore può scrivere un file di descrizione (UC1.4.1.1).
+L'utente sviluppatore può salvare il file di descrizione (UC1.4.1.2).
+Il sistema ha ottenuto il contenuto relativo al file di descrizione che l'utente sviluppatore ha scritto ed ha salvato il file di descrizione in modo permanente.
+Utente sviluppatore.
+L'utente sviluppatore può utilizzare un editor specializzato per scrivere un file di descrizione.
+Il sistema propone all'utente una schermata per scrivere il file di descrizione.
+L'utente sviluppatore può utilizzare un editor per la scrittura di un file di descrizione.
+Il sistema conosce il contenuto del file scritto dall'utente sviluppatore.
+Utente sviluppatore.
+L'utente sviluppatore può salvare in modo permanente il file di descrizione scritto precedentemente.
+Il sistema conosce il contenuto del file scritto dall'utente sviluppatore.
+L'utente sviluppatore può salvare un file di configurazione scritto.
+Il sistema ha salvato il file di descrizione in modo permanente.
+Utente sviluppatore.
+L'utente sviluppatore può modificare un file di descrizione presente nel sistema.
+Il sistema ha creato lo scheletro del progetto e l'utente sviluppatore ha selezionato un file di descrizione da modificare.
+L'utente sviluppatore può modificare il codice del file di descrizione (UC1.4.2.1).
+L'utente sviluppatore può salvare le modifiche apportate al file di descrizione (UC1.4.2.2).
+L'utente sviluppatore può in qualsiasi momento annullare le modifiche apportate al codice del file di descrizione selezionato. (UC1.4.2.3).
+Il sistema ha ottenuto le informazione relative alle azioni che l'utente sviluppatore desidera eseguire. Se l'utente sviluppatore ha scelto di salvare le modifiche apportate, il sistema salva tali informazioni in modo permanente sovrascrivendo il file di descrizione originario.
+Utente sviluppatore.
+L'utente sviluppatore può modificare il codice del file di descrizione.
+Il sistema propone all'utente una schermata per modificare il codice del file di descrizione.
+L'utente sviluppatore può modificare il codice del file di descrizione.
+Il sistema conosce il contenuto del testo scritto dall'utente sviluppatore.
+Utente sviluppatore.
+L'utente sviluppatore può modificare in modo permanente le modifiche apportate al file di descrizione.
+Il sistema conosce il contenuto del testo scritto dall'utente sviluppatore.
+L'utente sviluppatore può salvare le modifiche apportate ad un file di descrizione.
+Il sistema ha salvato in modo permanente le modifiche apportate al file di descrizione, sovrascrivendo il file di descrizione originario.
+Utente sviluppatore.
+L'utente sviluppatore può annullare le modifiche apportate al contenuto del file di descrizione.
+Il sistema conosce il contenuto del testo scritto dall'utente sviluppatore.
+L'utente sviluppatore può annullare delle modifiche apportate.
+Il sistema ignora le modifiche apportate al contenuto del file di descrizione, e non sovrascrive il file originario.
+Utente sviluppatore.
+L'utente sviluppatore può inserire il file di descrizione nel progetto.
+Il sistema ha creato lo scheletro di un nuovo progetto.
+L'utente sviluppatore può inserire il file di descrizione nel progetto.
+Il sistema contiene il file di descrizione.
+Utente sviluppatore.
+L'utente sviluppatore può eliminare un progetto.
+Il sistema contiene almeno un progetto precedentemente creato.
+L'utente sviluppatore può eliminare un progetto esistente.
+Il sistema ha eliminato il progetto specificato dall'utente sviluppatore.
+Utente sviluppatore.
+L'utente sviluppatore può clonare un progetto.
+Il sistema contiene almeno un progetto precedentemente creato.
+L'utente sviluppatore può clonare un progetto esistente.
+Il sistema ha creato un nuovo progetto clonandolo da un progetto esistente specificato dall'utente sviluppatore.
+Utente business, Utente business autenticato.
+L'utente business attraverso il browser visualizza la pagina di autenticazione dove può accedere, recuperare la password o registrarsi, mentre l'utente business autenticato può aprire una Collection, disconnettersi o gestire il profilo.
+Il sistema ha creato lo scheletro del progetto, la pagina di autenticazione viene proposta all'utente business mediante il browser.
+L'utente business può registrarsi (UC2.1).
+L'utente business può autenticarsi (UC2.2).
+L'utente business può recuperare la password (UC2.3).
+L'utente business autenticato può aprire una Collection (UC2.4).
+L'utente business autenticato può disconnettersi dal sistema (UC2.5).
+L'utente business autenticato può gestire il profilo (UC2.6).
+Nel caso in cui le credenziali di accesso fornite dall'utente business non fossero corrette il sistema segnala il problema e ripresenta il form di autenticazione.
+Il sistema ha memorizzato le informazioni inserite dall'utente business per l'autenticazione o per il recupero password e le operazioni che l'utente business autenticato può effettuare.
+Utente business.
+L'utente business può registrarsi.
+Il sistema si trova nello stato iniziale e propone all'utente una schermata per registrarsi.
+L'utente business può inserire l'email (UC2.1.1).
+L'utente business può inserire la password (UC2.1.2).
+Il sistema ha creato un nuovo utente e reputa l'utente business autenticato.
+Utente business.
+L'utente business può inserire l'email per la registrazione.
+Il sistema si trova nello stato iniziale e propone all'utente una casella per inserire l'email.
+L'utente business può inserire l'email per la registrazione.
+Il sistema ha ottenuto il contenuto del testo inserito dall'utente business.
+Utente business.
+L'utente business può inserire la password per la registrazione.
+Il sistema si trova nello stato iniziale e propone all'utente una casella per inserire la password.
+L'utente business può inserire la password per la registrazione.
+Il sistema ha ottenuto il contenuto del testo inserito dall'utente business.
+Utente business.
+Un utente business tenta di autenticarsi.
+Il sistema si trova nello stato iniziale e propone all'utente una schermata per inserire i dati per l'autenticazione.
+L'utente business può inserire l'email (UC2.2.1).
+L'utente business può inserire la password (UC2.2.2).
+Il sistema reputa l'utente business come autenticato.
+Utente business.
+L'utente business può inserire l'email per l'autenticazione.
+Il sistema si trova nello stato iniziale e propone all'utente una casella per inserire l'email.
+L'utente business può inserire l'email per l'autenticazione.
+Il sistema ha ottenuto il contenuto del testo inserito dall'utente business.
+Utente business.
+L'utente business può inserire la password per l'autenticazione.
+Il sistema si trova nello stato iniziale e propone all'utente una casella per inserire la password.
+L'utente business può inserire la password per l'autenticazione.
+Il sistema ha ottenuto il contenuto del testo inserito dall'utente business.
+Utente business.
+Un utente business registrato recupera la password dimenticata.
+Il sistema  reputa l'utente business come registrato.
+L'utente business inserire l'email (UC2.3.1).
+Il sistema ha fornito la password all'utente business.
+Utente business.
+L'utente business può inserire l'email per il recupero password.
+Il sistema propone all'utente una casella per inserire l'email.
+L'utente business può inserire l'email per il recupero password.
+Il sistema ha ottenuto il contenuto del testo inserito dall'utente business.
+Utente business autenticato, Utente business autenticato amministratore.
+L'utente business autenticato può effettuare diverse operazioni: visualizzare una pagina Document-Show, modificare la visualizzazione dei Document, visualizzare una diversa Collection, disconnettersi dal sistema, navigare tra le pagine della pagina Collection-Index correntemente visualizzata,  gestire il profilo. L'utente business autenticato amministratore potrà inoltre cancellare o modificare un Document.
+Il sistema reputa l'utente business come autenticato e visualizza la Collection.
+L'utente business autenticato può visualizzare pagine Document-Show (UC2.4.1).
+L'utente business autenticato può modificare la visualizzazione dei Document (UC2.4.2).
+L'utente business autenticato può navigare tra le pagine della Collection-Index attualmente visualizzata (UC2.4.3).
+L'utente business autenticato può disconnettersi (UC2.5).
+L'utente business autenticato può gestire il profilo (UC2.6).
+L'\gloss{utente business autenticato amministratore} può cancellare un Document (UC2.4.4).
+L'utente business autenticato amministratore può modificare un Document (UC2.4.5).
+L'utente business autenticato amministratore può visualizzare le \gloss{query} più frequenti che il sistema gli propone (UC2.4.6).
+L'utente business autenticato amministratore può creare degli indici sulle query più frequenti visualizzare (UC2.4.7).
+Il sistema ha ottenuto le informazioni sulle operazioni che l'utente business autenticato o l'utente business autenticato amministratore desidera eseguire.
+Utente business autenticato.
+L'utente business autenticato visualizza la pagina Document-Show relativa alla chiave selezionata.
+Il sistema reputa l'utente business come autenticato e visualizza la Collection scelta.
+L'utente business autenticato visualizza la Document-Show relativa alla chiave selezionata (UC2.4.1.1).
+L'utente business autenticato può eliminare il Document che sta visualizzando (UC2.4.1.2).
+L'utente business autenticato può modificare il Document che sta visualizzando (UC2.4.1.3).
+Viene visualizzata la pagina Document-Show relativa alla chiave selezionata.
+Utente business autenticato.
+L'utente business autenticato visualizza il Document relativo alla chiave selezionata.
+Il sistema reputa l'utente business come autenticato ed ha ottenuto la chiave relativa al Document da visualizzare.
+L'utente business autenticato visualizza il Document relativo alla chiave selezionata.
+Viene visualizzato il Document relativo alla chiave selezionata.
+Utente business autenticato.
+L'utente business autenticato può eliminare il Document che sta visualizzando.
+Il sistema reputa l'utente business come autenticato e visualizza il Document precedentemente selezionato.
+L'utente business autenticato può eliminare il Document che sta visualizzando.
+Il sistema ha eliminato il Document selezionato.
+Utente business autenticato.
+L'utente business autenticato può modificare il Document che sta visualizzando.
+Il sistema reputa l'utente business come autenticato e visualizza il Document precedentemente selezionato.
+L'utente business autenticato può modificare il Document che sta visualizzando.
+Il sistema permette all'utente di modificare il Document che sta visualizzando.
+Utente business autenticato.
+L'utente business autenticato può cambiare la modalità di visualizzazione dei Document.
+Il sistema reputa l'utente business come autenticato e visualizza la Collection scelta.
+L'utente business autenticato può selezionare i criteri per la visualizzazione della lista di Document (UC2.4.2.1).
+L'utente business autenticato può applicare dei filtri (UC2.4.2.2).
+L'utente business autenticato può annullare un filtro applicato (UC2.4.2.3).
+Il sistema ha ottenuto le informazioni sulle operazioni che l'utente business autenticato desidera eseguire ed aggiorna la visualizzazione della pagina.
+Utente business autenticato.
+L'utente business autenticato può selezionare dei criteri per cambiare la visualizzazione della lista di Document: cambiare il numeri di Document da visualizzare per pagina o cambiare l'ordinamento dei Document secondo una chiave.
+Il sistema reputa l'utente business come autenticato e visualizza la Collection scelta.
+L'utente business autenticato può cambiare il numero di Document da visualizzare per pagina (UC2.4.2.1.2).
+L'utente business autenticato può cambiare l'ordinamento dei Document secondo una chiave (UC2.4.2.1.1).
+Il sistema ha ottenuto le informazioni sulle operazioni che l'utente business autenticato desidera eseguire ed aggiorna la visualizzazione della pagina.
+Utente business autenticato.
+L'utente business autenticato può cambiare l'ordinamento dei documenti visualizzati secondo una chiave.
+Il sistema reputa l'utente business come autenticato e visualizza la Collection scelta.
+L'utente business autenticato può cambiare l'ordinamento dei documenti visualizzati.
+Il sistema aggiorna la visualizzazione della pagina secondo i criteri imposti dall'utente business autenticato.
+Utente business autenticato.
+L'utente business autenticato può cambiare il numero di Document da visualizzare per pagina.
+Il sistema reputa l'utente business come autenticato e visualizza la Collection scelta.
+L'utente business autenticato può cambiare il numero di Document da visualizzare per pagina.
+Il sistema aggiorna la visualizzazione del numero di Document per pagina secondo i criteri imposti dall'utente business autenticato.
+Utente business autenticato.
+L'utente business autenticato può applicare un filtro disponibile nella pagina Collection-Index.
+Il sistema reputa l'utente business come autenticato e visualizza la Collection scelta.
+L'utente business autenticato può applicare un filtro.
+Il sistema aggiorna la visualizzazione della pagina secondo i criteri imposti dal filtro applicato.
+Utente business autenticato.
+L'utente business autenticato ha la possibilità di rimuovere un filtro precedentemente applicato.
+Il sistema ha applicato un filtro secondo i criteri imposti dall'utente business autenticato.
+L'utente business autenticato può rimuovere un filtro.
+Il sistema aggiorna la visualizzazione della Collection allo stato precedente all'applicazione del filtro.
+Utente business autenticato.
+L'utente business autenticato può navigare tra le pagine della Collection-Index attualmente visualizzata.
+Il sistema reputa l'utente business come autenticato e visualizza la Collection scelta.
+L'utente business autenticato può navigare tra le pagine della Collection-Index attualmente visualizzata.
+Il sistema visualizza un'altra Collection scelta dall'utente business autenticato.
+Utente business autenticato amministratore.
+L'utente business autenticato come amministratore può cancellare un Document presente nella Collection attualmente visualizzata.
+Il sistema reputa l'utente business autenticato come amministratore e visualizza la Collection scelta.
+L'utente business autenticato come amministratore può cancellare un Document presente nella Collection attualmente visualizzata.
+Il sistema ha cancellato il Document selezionato dall'utente business autenticato amministratore ed aggiorna la pagina attualmente visualizzata.
+Utente business autenticato amministratore.
+L'utente business autenticato come amministratore può modificare un Document presente nella Collection attualmente visualizzata.
+Il sistema reputa l'utente business autenticato come amministratore e visualizza la Collection scelta.
+L'utente business autenticato amministratore può modificare il valore di ciascuna chiave (UC2.4.5.1).
+L'utente business autenticato amministratore può salvare il Document appena modificato (UC2.4.5.2).
+L'utente business autenticato amministratore può annullare le modifiche fino a quel momento apportate (UC2.4.5.3).
+Il sistema modifica il Document selezionato secondo le specifiche imposte dall'utente business autenticato amministratore.
+Utente business autenticato amministratore.
+L'utente business autenticato come amministratore può modificare il valore di ciascuna chiave del Document tramite form editabile.
+Il sistema reputa l'utente business autenticato come amministratore e visualizza la pagina Document-Show che l'utente business autenticato come amministratore desidera modificare.
+L'utente business autenticato come amministratore può modificare il valore di ciascuna chiave del Document.
+Il sistema ha ottenuto un valore per ogni chiave del Document che l'utente business autenticato come amministratore ha modificato.
+Utente business autenticato amministratore.
+L'utente business autenticato come amministratore può salvare le modifiche fino a quel momento apportate al Document.
+Il sistema ha ottenuto un valore per ogni chiave del Document che l'utente business autenticato come amministratore vuole modificare.
+L'utente business autenticato come amministratore può salvare delle modifiche apportate al Document.
+Utente business autenticato amministratore.
+L'utente business autenticato come amministratore ha la possibilità di annullare le modifiche apportate al Document (vedi UC2.4.5).
+Il sistema ha ottenuto un valore per ogni chiave del Document che si sta modificando.
+L'utente business autenticato come amministratore ha la possibilità di annullare delle modifiche apportate al Document.
+Il sistema non considera i valori inseriti per ogni chiave del Document e visualizza la pagina Collection-Index principale.
+Utente business autenticato amministratore.
+L'utente business autenticato amministratore può visualizzare le query più utilizzate che il sistema gli offre.
+Il sistema reputa l'utente business autenticato come amministratore.
+L'utente business autenticato amministratore può visualizzare le query più utilizzate.
+Il sistema mostra all'utente business autenticato amministratore le query più utilizzate.
+Utente business autenticato amministratore.
+L'utente business autenticato amministratore può creare degli indici sulla base delle query più utilizzate, le quali vengono fornite dal sistema.
+Il sistema reputa l'utente business autenticato come amministratore.
+L'utente business autenticato amministratore può creare degli indici.
+Il sistema permette all'utente business autenticato amministratore di creare degli indici.
+Utente business autenticato.
+L'utente può uscire dal proprio profilo e disconnettersi dal sistema.
+Il sistema reputa l'utente business come autenticato.
+L'utente può disconnettersi dal sistema.
+Il sistema reputa l'utente business come non autenticato.
+Utente business autenticato.
+L'utente business autenticato può modificare i dati utente, mentre l'utente business autenticato amministratore può anche eseguire operazioni di creazione e cancellazione di un utente.
+Il sistema reputa l'utente business come autenticato.
+L'utente business autenticato può gestire i dati (UC2.6.3).
+L'utente business autenticato amministratore può creare un nuovo utente (UC2.6.1).
+L'utente business autenticato amministratore può eliminare un utente (UC2.6.2).
+Il sistema ha ottenuto le informazioni sulle operazioni che l'utente business desidera eseguire.
+Utente business autenticato amministratore.
+L'utente business autenticato come amministratore può creare un nuovo utente.
+Il sistema reputa l'utente business autenticato come amministratore.
+L'utente business autenticato come amministratore può creare un nuovo utente.
+Il sistema ha creato un nuovo utente.
+Utente business autenticato amministratore.
+L'utente business autenticato come amministratore può eliminare un profilo utente preesistente.
+Il sistema reputa l'utente business autenticato come amministratore.
+L'utente business autenticato come amministratore può eliminare un profilo utente.
+Il sistema ha eliminato il profilo utente specificato.
+Utente business autenticato.
+L'utente business autenticato può modificare i dati utente del proprio profilo e salvare le modifiche o annullarle. L'utente business autenticato come amministratore può modificare i dati dei vari profili utenti, modificare i permessi degli utenti, salvare le modifiche o annullarle.
+Il sistema reputa l'utente business come autenticato.
+L'utente business autenticato può modificare i dati utente del proprio profilo (UC2.6.3.1).
+L'utente business autenticato può salvare le modifiche (UC2.6.3.2).
+L'utente business autenticato come amministratore può modificare i dati utenti (UC2.6.3.3).
+L'utente business autenticato come amministratore può modificare i permessi degli utenti (UC2.6.3.4).
+Il sistema modifica i dati utente secondo le specifiche imposte dall'utente business autenticato.
+Utente business autenticato.
+L'utente business autenticato può modificare i dati utente del proprio profilo, ovvero email e password.
+Il sistema reputa l'utente business come autenticato.
+L'utente business autenticato può modificare i dati utente del proprio profilo.
+Il sistema ha ottenuto tutti i dati modificati del profilo utente.
+Utente business autenticato.
+L'utente business autenticato può salvare le modifiche apportate durante la modifica dei dati utente.
+Il sistema ha ottenuto i dati modificati del profilo utente.
+L'utente business autenticato può salvare le modifiche apportate durante la modifica dei dati utente.
+Il sistema aggiorna il profilo utente con i nuovi dati inseriti.
+Utente business autenticato amministratore.
+L'utente business autenticato come amministratore può modificare i dati degli utenti, ovvero email e password.
+Il sistema reputa l'utente business autenticato come amministratore.
+L'utente business autenticato come amministratore può modificare i dati degli utenti.
+L'utente business autenticato può annullare le modifiche fin'ora apportate (UC2.6.3.5).
+Il sistema ha ottenuto tutti i dati modificati del profilo utente.
+Utente business autenticato amministratore.
+L'utente business autenticato come amministratore può modificare i permessi degli utenti, ovvero elevare un utente a livello amministratore o declassare un utente amministratore ad utente business autenticato.
+Il sistema reputa l'utente business autenticato come amministratore.
+L'utente business autenticato come amministratore può modificare i permessi degli utenti.
+Il sistema ha ottenuto i nuovi permessi da applicare al profilo utente.
+Utente business autenticato, Utente business autenticato amministratore.
+L'utente business autenticato e l'amministratore possono annullare le modifiche apportate.
+Il sistema ha ottenuto i dati modificati del profilo utente; se si tratta di amministratore il sistema ottiene i dati modificati dei profili e/o dei dati relativi ai permessi dell'utente.
+L'utente business autenticato e l'amministratore possono annullare le modifiche apportate.
+Il sistema non considera le modifiche apportate e visualizza la pagina precedente.
+Utente, Utente autenticato.
+L'utente e l'utente autenticato possono visualizzare le pagine web accedendo attraverso uno specifico URL, l'utente pun registrarsi, richiedere il recupero password, effettuare l'autenticazione. Se ritenuto autenticato dal sistema pun inoltre creare lo scheletro di un nuovo progetto, gestire le pagine web, gestire il proprio profilo e disconnettersi.
+Il sistema MaaS è correttamente installato, funzionante e le pagine web sono disponibili online e raggiungibili dall'utente e dall'utente autenticato tramite browser. All'utente viene proposta la pagina di login al sistema mentre all'utente autenticato viene proposta la pagina del proprio account utente.
+L'utente autenticato può creare lo scheletro del progetto (UC3.1).
+L'utente autenticato può  gestire le pagine web (UC3.2).
+L'utente autenticato può  gestire il proprio profilo (UC3.3).
+L'utente autenticato può  disconnettersi dal proprio account (UC3.4).
+L'utente e l'utente autenticato possono visualizzare le pagine web tramite URL specifico (UC3.5).
+L'utente può autenticarsi al sistema (UC3.6).
+L'utente può registrarsi (UC3.7).
+L'utente può recuperare la password (UC3.8).
+Il sistema ha ottenuto le informazioni relative alle azioni che l'utente e l'utente autenticato vogliono eseguire.
+Utente autenticato.
+L'utente autenticato può creare lo scheletro di un nuovo progetto.
+Il sistema reputa l'utente come autenticato.
+L'utente autenticato può inserire il nome del progetto che intende creare (UC3.1.1).
+Il sistema ha completato la creazione dello scheletro del progetto utilizzando il nome specificato dall'utente autenticato. E' disponibile un URL specifico per accedere alla pagina principale del progetto appena creato.
+Utente autenticato.
+L'utente può inserire il nome del progetto che intende creare.
+Il sistema ha iniziato la creazione dello scheletro del progetto.
+L'utente può inserire il nome del progetto.
+Il sistema ha acquisito il nome del progetto che l'utente autenticato desidera creare.
+Utente autenticato.
+L'utente autenticato può gestire le pagine web presenti nel sistema.
+Il sistema reputa l'utente come autenticato e precedentemente è stato creato con successo lo scheletro di un progetto.
+L'utente autenticato può creare un nuovo file di descrizione (UC3.2.1).
+L'utente autenticato può eseguire l'upload di un file di descrizione precedentemente creato con il sistema MaaP (UC3.2.2).
+L'utente autenticato può modificare un file di descrizione esistente (UC3.2.3).
+L'utente autenticato può modificare il file di configurazione (UC3.2.4).
+L'utente autenticato può visualizzare tutti i file di descrizione presenti (UC3.2.5).
+Il sistema ha ottenuto le informazioni relative alle azioni che l'utente autenticato vuole eseguire.
+Utente autenticato.
+L'utente autenticato può creare un file di descrizione utilizzando un apposito editor online e successivamente salvarlo nel sistema.
+Il sistema ha generato lo scheletro del progetto.
+L'utente autenticato può scrivere un file di descrizione (UC3.2.1.1).
+L'utente autenticato può salvare il file di descrizione (UC3.2.1.2).
+Il sistema ha ottenuto il contenuto relativo al file di descrizione che l'utente autenticato ha scritto ed ha salvato il file di descrizione in modo permanente.
+Utente autenticato.
+L'utente autenticato può scrivere il contenuto del file di descrizione che desidera creare in un apposito form.
+Il sistema propone all'utente autenticato un apposita casella di testo per scrivere il contenuto del file di descrizione da creare ed è in attesa dell'inserimento.
+L'utente autenticato può scrivere il file di descrizione.
+Il sistema conosce il contenuto del testo inserito dall'utente.
+Utente autenticato.
+L'utente autenticato può salvare in modo permanente il contenuto del file di descrizione scritto precedentemente.
+Il sistema conosce il contenuto del testo inserito dall'utente.
+L'utente autenticato può salvare il file di descrizione scritto precedentemente.
+Il sistema ha ottenuto il contenuto relativo al file di descrizione che l'utente autenticato ha scritto ed ha salvato il file di descrizione in modo permanente.
+Utente autenticato.
+L'utente autenticato può eseguire l'upload di un file di descrizione precedentemente creato con il sistema MaaP.
+Il sistema ha generato lo scheletro del progetto.
+L'utente autenticato può selezionare un file di descrizione (UC3.2.2.1).
+L'utente autenticato può confermare l'upload del file selezionato (UC3.2.2.3).
+Il sistema ha ottenuto le informazioni relative al file di descrizione che l'utente autenticato desidera caricare, ha eseguito l'upload ed ha salvato il file in modo permanente.
+Utente autenticato.
+L'utente autenticato può selezionare il file che desidera caricare nel sistema.
+Il sistema mostra i file presenti nella cartella selezionata dall'utente autenticato.
+L'utente autenticato può caricare un file nel sistema.
+Il sistema evidenzia il file indicato dall'utente autenticato.
+Utente autenticato.
+L'utente autenticato può confermare il caricamento del file selezionato.
+Il sistema ha un file selezionato pronto per essere caricato.
+L'utente autenticato può confermare il caricamento del file selezionato.
+Il sistema ha letto il file selezionato dall'utente autenticato, ha eseguito l'upload e lo ha salvato in modo permanente.
+Utente autenticato.
+L'utente autenticato può modificare un file di descrizione presente nel sistema utilizzando l'editor fornito da MaaS.
+Il sistema ha creato lo scheletro del progetto e l'utente autenticato ha selezionato il file di descrizione che desidera modificare.
+L'utente autenticato può modificare il codice del file di descrizione selezionato (UC3.2.3.1).
+L'utente autenticato può salvare le modifiche apportate al codice del file di descrizione selezionato (UC3.2.3.2).
+L'utente autenticato può in qualsiasi momento annullare le modifiche apportate al file di descrizione selezionato (UC3.2.3.3).
+Il sistema ha ottenuto le informazioni relative alle azioni che l'utente autenticato desidera eseguire. Nello specifico se l'utente autenticato ha scelto di salvare le modifiche apportate, il sistema ha ottenuto le informazioni relative al contenuto del file di descrizione modificato ed ha salvato tali informazioni in modo permanente sovrascrivendo il file di descrizione originario.
+Utente autenticato.
+L'utente autenticato può modificare il codice del file di descrizione selezionato.
+Il sistema propone all'utente autenticato un'apposita casella di testo con all'interno il codice contenuto nel file di descrizione che desidera modificare ed è in attesa dell'inserimento.
+L'utente autenticato può modificare il codice del file di descrizione selezionato.
+Il sistema conosce il contenuto del testo inserito dall'utente.
+Utente autenticato.
+L'utente autenticato può salvare in modo permanente le modifiche apportate al file di descrizione.
+Il sistema conosce il contenuto del testo inserito dall'utente.
+L'utente autenticato può salvare modifiche apportate al file di descrizione.
+Il sistema ha ottenuto le informazioni relative al contenuto del file di descrizione modificato ed ha salvato la nuova versione del file sovrascrivendo il file originario.
+Utente autenticato.
+L'utente autenticato può annullare le modifiche apportate al contenuto del file di descrizione.
+Il sistema ha ottenuto le informazioni sul contenuto del testo inserito dall'utente.
+L'utente autenticato può annullare le modifiche apportate al file di descrizione.
+Il sistema ignora le modifiche apportate dall'utente autenticato e non sovrascrive il file originario.
+Utente autenticato.
+L'utente autenticato può modificare il file di configurazione presente nel sistema utilizzando l'editor fornito da MaaS.
+Il sistema ha creato lo scheletro del progetto.
+L'utente autenticato può modificare il codice del file di configurazione (UC3.2.4.1).
+L'utente autenticato può salvare le modifiche apportate al codice del file di configurazione (UC3.2.4.2).
+L'utente autenticato può in qualsiasi momento annullare le modifiche apportate al file di configurazione (UC3.2.4.3).
+Il sistema ha ottenuto le informazioni relative alle azioni che l'utente autenticato desidera eseguire. Nello specifico se l'utente autenticato ha scelto di salvare le modifiche apportate, il sistema ha ottenuto le informazioni relative al contenuto del file di configurazione modificato ed ha salvato tali informazioni in modo permanente sovrascrivendo il file di configurazione originario.
+Utente autenticato.
+L'utente autenticato può modificare il codice del file di configurazione.
+Il sistema propone all'utente autenticato un'apposita casella di testo con all'interno il codice contenuto nel file di configurazione da modificare ed c in attesa dell'inserimento.
+L'utente autenticato può modificare il codice del file di configurazione.
+Il sistema ha ottenuto le informazioni sul contenuto del testo modificato dall'utente.
+Utente autenticato.
+L'utente autenticato può salvare in modo permanente le modifiche apportate al file di configurazione.
+Il sistema ha ottenuto le informazioni sul contenuto del testo modificato dall'utente.
+L'utente autenticato può salvare le modifiche apportate al file di configurazione.
+Il sistema ha ottenuto le informazioni relative al contenuto del file di configurazione modificato ed ha salvato la nuova versione del file sovrascrivendo il file originario.
+Utente autenticato.
+L'utente autenticato può annullare le modifiche apportate al contenuto del file di configurazione.
+Il sistema ha ottenuto le informazioni sul contenuto del testo modificato dall'utente.
+L'utente autenticato può annullare le modifiche apportate al contenuto del file di configurazione.
+Il sistema ignora le modifiche apportate dall'utente autenticato.
+Utente autenticato.
+L'utente autenticato può visualizzare tutti i file di descrizione presenti nel sistema.
+Il sistema ha generato lo scheletro del progetto.
+L'utente autenticato può visualizzare tutti i file di descrizione presenti nel sistema.
+Il sistema propone all'utente autenticato una lista di tutti i file di descrizione presenti relativi ai diversi progetti dell'utente stesso.
+Utente autenticato.
+L'utente autenticato può gestire il proprio profilo.
+Il sistema reputa l'utente come autenticato.
+L'utente autenticato può generare una nuova password per accedere al sistema (UC3.3.1).
+Il sistema ha ottenuto le informazioni relative alle azioni che l'utente autenticato desidera effettuare.
+Utente autenticato.
+L'utente autenticato può generare una nuova password per accedere al sistema.
+Il sistema reputa l'utente come autenticato.
+L'utente autenticato può generare una nuova password per accedere al sistema.
+Il sistema ha generato una nuova password per l'utente autenticato ed ha inviato una email di notifica all'utente stesso.
+Utente autenticato.
+L'utente può disconnettersi dal sistema.
+Il sistema reputa l'utente come autenticato.
+L'utente può disconnettersi dal sistema.
+Il sistema reputa l'utente non autenticato e propone la pagina principale di login.
+Utente, Utente autenticato.
+L'utente e l'utente autenticato possono visualizzare le pagine web di un determinato progetto mediante un URL specifico.
+Il sistema ha creato lo scheletro del progetto.
+L'utente e l'utente autenticato possono visualizzare le pagine web di un determinato progetto mediante un URL specifico.
+Il sistema visualizza la pagina principale del progetto.
+Utente.
+L'utente può effettuare l'autenticazione al sistema.
+Il sistema reputa l'utente come non autenticato.
+L'utente può inserire il nome utente (UC3.6.1).
+L'utente può inserire la password (UC3.6.2).
+Nel caso in cui le credenziali di accesso non fossero corrette il sistema segnala il problema e ripresenta la pagina principale di login.
+Il sistema ha ottenuto le informazioni relative all'operazione di autenticazione inserite dall'utente. Viene proposta la pagina relativa all'account utente.
+Utente.
+L'utente può inserire il nome utente.
+Il sistema permette di inserire il nome utente all'interno di un'apposita casella di testo ed è in attesa dell'inserimento.
+L'utente può inserire il nome utente.
+Il sistema conosce il nome utente inserito.
+Utente.
+L'utente può inserire la password.
+Il sistema permette di inserire la password all'interno di un'apposita casella di testo ed è in attesa dell'inserimento.
+L'utente può inserire la password.
+Il sistema conosce la password inserita.
+Utente.
+L'utente può registrarsi al sistema.
+Il sistema reputa l'utente come non autenticato.
+L'utente può inserire il nome utente (UC3.7.1).
+L'utente può inserire la password (UC3.7.2).
+L'utente può inserire l'email (UC3.7.3).
+Nel caso in cui i dati forniti dall'utente non siano formalmente corretti oppure già presenti nel sistema viene segnalato un messaggio di errore e viene riproposta la pagina di registrazione.
+Il sistema ha acquisito i dati dell'utente, li ha salvati in modo permanente e propone all'utente la pagina relativa al suo account.
+Utente.
+L'utente può inserire il nome utente per la registrazione dell'account.
+Il sistema permette di inserire il nome utente all'interno di un'apposita casella di testo ed è in attesa dell'inserimento.
+L'utente può inserire il nome utente per la registrazione.
+Il sistema ha ottenuto il contenuto del testo inserito dall'utente.
+Utente.
+L'utente può inserire la password per la registrazione dell'account.
+Il sistema permette di inserire la password all'interno di un'apposita casella di testo ed è in attesa dell'inserimento.
+L'utente può inserire la password per la registrazione.
+Il sistema ha ottenuto il contenuto del testo inserito dall'utente.
+Utente.
+L'utente può inserire l'email per la registrazione dell'account.
+Il sistema permette di inserire la password all'interno di un'apposita casella di testo ed è in attesa dell'inserimento.
+L'utente può inserire l'email per la registrazione.
+Il sistema ha ottenuto il contenuto del testo inserito dall'utente.
+Utente.
+L'utente può recuperare la password dimenticata.
+Il sistema reputa l'utente come non autenticato.
+L'utente può inserire il nome utente per effettuare il recupero password (UC3.6.1).
+Il sistema ha ottenuto il nome dell'utente che richiede il recupero password ed ha inviato la relativa password all'email associata all'account.
+Di seguito sono riportati tutti i requisiti individuati, in base ai casi d'uso, dal capitolato, e alla luce di quanto emerso dall'incontro con il Proponente e da necessità interne.
+Per garantire una migliore leggibilità sono divisi in tabelle separate a seconda della categoria d'appartenenza.
+Di ogni requisito si specificano la tipologia, la priorità e ne viene indicata la provenienza.
+I requisiti sono classificati per tipo e importanza, utilizzando la seguente codifica.
+R[importanza][tipo][codice].
+Importanza può assumere i seguenti valori.
+O: Requisito obbligatorio.
+D: Requisito desiderabile.
+F: Requisito opzionale.
+Tipo può assumere i seguenti valori.
+F: Funzionale.
+Q: Di qualità.
+P: Prestazionale.
+V: Vincolo.
+Codice è il codice di ogni requisito espresso in modo gerarchico.
+Tutti i requisiti obbligatori e desiderabili saranno implementati. A causa di tempo e risorse limitate
+i requisiti opzionali non potranno essere soddisfatti.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

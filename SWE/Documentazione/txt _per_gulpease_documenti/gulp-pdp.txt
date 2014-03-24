@@ -1,0 +1,176 @@
+Questo documento si propone di presentare la pianificazione del progetto MaaP: MongoDB as an admin Platform.
+Il presente documento ha l'obiettivo di definire la pianificazione secondo la quale saranno scadenziati i lavori dal gruppo Aperture Software sul progetto MaaP: MongoDB as an admin Platform.
+Gli scopi del presente documento sono.
+Presentare la pianificazione dei tempi e delle attività.
+Preventivare l'utilizzo delle risorse.
+Consuntivare l'utilizzo delle risorse durante l'evolversi dei lavori.
+Analizzare i possibili fattori di rischio.
+Lo scopo del prodotto è produrre un framework per generare interfacce web di amministrazione dei dati di business basati sullo stack  e.
+L'obiettivo è quello di semplificare il lavoro allo sviluppatore che dovrà rispondere in modo rapido e standard alle richieste degli esperti di business.
+Al fine di evitare ogni ambiguità nella comprensione del linguaggio utilizzato nel presente documento e, in generale, nella documentazione fornita dal gruppo ApertureSoftware, ogni termine tecnico, di difficile comprensione o di necessario approfondimento verrà inserito nel documento glossario.pdf.
+Saranno in esso definiti e descritti tutti i termini in corsivo e allo stesso tempo marcati da una lettera "G" maiuscola in pedice nella documentazione fornita.
+Capitolato d'appalto C1: http://www.math.unipd.it/~tullio/IS-1/2013/Progetto/C1.pdf.
+Organigramma e offerta tecnica-economica: http://www.math.unipd.it/~tullio/IS-1/2013/Progetto/PD01b.html.
+Norme di Progetto: norme.dpf.
+Software Engineerin - Ian Sommerville - 9th Edition (2010).
+– Part 4: Software Management.
+Slide dell'insegnamento Ingegneria del Software modulo A.
+– Il ciclo di vita del software.
+– Gestione di progetto.
+http://www.math.unipd.it/~tullio/IS-1/2013/.
+Metriche di progetto.
+http://it.wikipedia.org/wiki/Metriche_di_progetto.
+Un modello di ciclo di vita descrive come i processi si relazionano tra loro nel tempo; ne esistono diversi, ma non per il numero e significato degli stati, ma diversi per le transizioni tra gli stati e le loro regole di attivazione.
+Come modello di ciclo di vita del prodotto software abbiamo deciso di utilizzare il modello incrementale perché, grazie alle sue caratteristiche, lo riteniamo più flessibile e idoneo a supportare il lavoro di gruppo.
+Il problema viene scomposto in più sotto-problemi in modo da permettere una suddivisione più semplice delle risorse e dei tempi in quanto, tutte le risorse vengono utilizzate per un numero limitato di attività in un breve lasso di tempo. Questo rende più facile l'esecuzione dei test perché essi saranno più dettagliati e quindi più esaustivi.
+I requisiti del progetto vengono trattati in base ad un ordine di priorità ottenuto ordinando i requisiti per la loro importanza strategica e quindi vengono svolti per primi quelli di maggiore criticità.
+Il rischio di fallimento viene ridotto in quanto ogni incremento consolida soltanto la sezione coinvolta.
+I rilasci del software sono multipli e successivi in quanto nei primi rilasci saranno relativi ai requisiti di primaria importanza, in modo che tali requisiti subiscano il maggior numero attività di verifica e risultino quindi più raffinati e migliorati, mentre negli ultimi rilasci si andranno ad aumentare il numero di funzionalità del prodotto e un miglioramento delle funzionalità già in essere.
+Il modello quindi permette al sia al proponente che al committente di vedere dei prototipi con le funzionalità di primaria importanza già implementate e di valutare il lavoro in corso d'opera, suggerendo eventuali correzioni e miglioramenti.
+ApertureSoftware ha deciso di rispettare le seguenti scadenze per la pianificazione del progetto.
+Revisione dei Requisiti: 2013-12-20.
+Revisione di Progetto:  2014-03-29.
+Revisione di Qualifica: 2014-06-28.
+Revisione di Accettazione: 2014-07-18.
+Avendo scelto di operare con il ciclo incrementale e per rispettare le scadenze come esposte nel punto precedente, abbiamo deciso di dividere il progetto in cinque intervalli di tempo sequenziali e distinti.
+Fase Pre RR.
+Fase Post RR.
+Fase Pre PR.
+Fase Pre RQ.
+Fase Pre RA.
+Ognuno dei seguenti intervalli del progetto è stato poi diviso in attività in modo da poter associare ad ogni attività una o più risorse. Per avere una miglior organizzazione le attività sono state poi spezzante in sotto-attività.
+Questa fase ha inizio in data 2013-11-20 e avrà fine in data 2014-01-08; in realtà la scadenza di consegna della documentazione fissata per il 2013-12-20 restringe l'attività ad un totale di 30 giorni.
+In questa fase sono attivi i ruoli di Amministratore, Analista, Verificatore e Responsabile.
+Si prevede per la fase Pre RR un carico di lavoro medio di 19.5 ore per ciascun componente.
+Dal momento che le attività presenti nella fase Pre RR non rientrano nelle spese a carico del Committente, i costi di tali attività non saranno messi in preventivo.
+Per la medesima motivazione le ore di lavoro spese in questo periodo di tempo non fanno parte del tetto massimo di 105 ore per ciascun componente del gruppo.
+Questa fase ha inizio in data 2013-12-23 e avrà fine in data 2014-01-07.
+Questa fase inizia dopo la Revisione dei Requisiti e termina con l'inizio della fase Pre RP.
+Questa fase ha inizio in data 2014-01-13 e avrà fine in data 2014-03-29, per una durata totale di 76 giorni. In questa fase sono attivi i ruoli di Amministratore, Analista, Progettista, Responsabile e Verificatore.
+Il seguente grafico mostra la suddivisione dei ruoli e il monte ore ricoperto da ciascun componente del gruppo.
+Nella fase Pre RP, ciascun componente dovrà rivestire i seguenti ruoli.
+Questa fase ha inizio in data 2014-03-31 e avrà fine in data 2014-06-28 per un totale di 105 giorni. In questa fase sono attivi i ruoli di Amministratore, Analista (per un ultimissimo ritocco all'Analisi dei requisiti, se necessario), Progettista, Responsabile, Programmatore e Verificatore.
+Nella fase Pre RQ, ciascun componente dovrà rivestire i seguenti ruoli.
+Il seguente grafico mostra la suddivisione dei ruoli e il monte ore ricoperto da ciascun componente del gruppo.
+Questa fase ha inizio in data 2014-01-13 e avrà fine in data 2014-03-29, per una durata totale di 76 giorni. In questa fase sono attivi i ruoli di Amministratore, Analista, Progettista, Responsabile e Verificatore.
+Nella fase Pre RP, ciascun componente dovrà rivestire i seguenti ruoli.
+Il seguente grafico mostra la suddivisione dei ruoli e il monte ore ricoperto da ciascun componente del gruppo.
+Nella tabella seguente sono riportate le ore totali di investimento previste per la realizzazione dell'intero progetto, assieme alle ore rendicontate.
+I seguenti grafici descrivono quanto ogni ruolo abbia partecipato rispettivamente in ore complessive ed ore retribuite alla realizzazione del progetto.
+Infine i seguenti diagrammi descrivono il carico di lavoro assegnato ad ogni componente del gruppo per ogni ruolo rispettivamente per le ore totali del progetto e per le ore retribuite.
+In conclusione le ore complessive delle fasi di PreRP, PreRQ, PreRA ammontano a 733 ore con un costo preventivato di euro 13801 che sarà interamente a carico del Proponente.
+Nello sviluppo del progetto si è dedicato parte del tempo per individuare rischi che potrebbero compromettere la realizzazione del progetto.
+Per prevedere e controllare eventuali rischi si è seguita questa sequenza di passi.
+Identificazione e analisi: si cerca di individuare i rischi che possono comparire durante lo sviluppo del progetto e nella realizzazione del prodotto; successivamente con l'analisi si cerca di comprendere eventuali criticità e conseguenze che questi rischi possono portare.
+Controllo: si valutano le strategie da attuare  per prevenire i rischi.
+Soluzione: azioni da intraprendere, in caso di rischio già avvenuto, per vanificare l'effetto dello stesso.
+Di seguito verranno elencati i rischi emersi e saranno accompagnati da una breve descrizione, un livello di rischio, le contromisure da adottare e l'impatto che essi avranno.
+Descrizione: i componenti del gruppo non hanno una buona conoscenza delle tecnologie utilizzate, in quanto queste sono delle novità assolute per alcuni di loro,in particolare.
+MongoDB.
+Node.js.
+Mongoose.
+Express.
+La scarsa conoscenza delle precedenti tecnologie saranno un ostacolo che troveranno durante lo sviluppo del progetto;
+Livello di rischio: alto.
+Contromisure: i componenti del gruppo si impegnano per istruirsi sull'utilizzo delle tecnologie richieste, partecipando a seminari specifici e utilizzando materiale e documentazione reperibile sul Web o che fornisce l'Amministratore. Questi apprendimenti saranno fatti in tempi brevi, per non compromettere e ritardare il proseguimento del progetto; i componenti del gruppo hanno dedicato delle ore pianificate il fine settimana per studiare queste tecnologie necessarie.
+Impatto: alto. I componenti incontreranno difficoltà nell'utilizzo delle tecnologie apprese.
+Descrizione: gran parte del lavoro è basato sull'utilizzo di personal computer e di un server per il repository e per il sistema di gestione dei ticket, descritto nella sezione apposita delle Norme di Progetto. In seguito ad una loro eventuale rottura si potrebbe perdere parte del lavoro svolto e le conseguenti attività di ripristino porterebbero ad un ritardo nello svolgimento delle attività ripartite per il prosieguo del progetto.
+Livello di rischio: basso.
+Contromisure: sulla componente server verranno effettuati periodici backup per non perdere il lavoro svolto, ed anche i singoli componenti del gruppo, al termine della giornata lavorativa, effettueranno un backup su sistemi di Cloud o dispositivi hardware esterni.
+Impatto: basso. In caso di rischio avvenuto, la presenza dei numerosi backup faciliterà il compito dell' Amministratore, ovvero il ripristino del lavoro svolto.
+Descrizione: il gruppo non deve sottovalutare la possibilità che il Proponente possa cambiare i requisiti in corso d'opera.
+Livello di rischio: medio.
+Contromisure: se il rischio si verifica, sarà compito del gruppo adeguarsi ai nuovi requisiti imposti dal Proponente.
+Impatto: medio-alto. Cambiamento sostanziale dei requisiti porterà ad un impatto alto di tale rischio e al conseguente ritardo nella consegna del prodotto finale.
+Descrizione: è possibile che i componenti del gruppo non comprendano in pieno i requisiti e che alcuni aspetti vengano trattati in maniera errata o incompleta.
+Livello di rischio: medio.
+Contromisure: per ridurre al minimo gli effetti che il rischio comporta, ci saranno, durante il periodo di tempo dedicato all'Analisi dei Requisiti, degli incontri con il Proponente per delle delucidazioni in merito ai requisiti richiesti dal prodotto.
+Impatto: alto. Se si verifica tale rischio è necessario aggiornare con piccole modifiche il documento di Analisi dei Requisiti, o nel caso peggiore sarà necessario stilare una nuova versione del medesimo documento.
+Descrizione: ogni componente del gruppo ha impegni personali e svolge attività extra accademiche ed alcuni di essi svolgono un vero e proprio lavoro e di conseguenza non possono essere spesso disponibili.
+Livello di rischio: alto.
+Contromisure: è compito del Responsabile di Progetto stilare appositi calendari di gruppo per organizzare le giornate lavorative per il progetto, in modo tale da non contrastare gli impegni personali di ciascun componente. Inoltre il carico di lavoro che un componente non svolgerà per impegni personali, dovrà essere ripartito tra gli altri componenti del gruppo.
+Impatto: alto.
+Descrizione: i componenti del gruppo, non avendo esperienza in ambito manageriale e finanziario, possono imbattersi in errori nella pianificazione dei tempi e conseguente aumento dei costi.
+Livello di rischio: medio.
+Contromisure: si cercherà di dedicare più tempo alla pianificazione dei tempi e costi, affrontando i vari passi che ne derivano con maggior calma e attenzione.
+Impatto: medio-alto. Se il rischio si verifica, bisognerà avvisare il Proponente e cercare di ridurre i costi per avvicinarsi il più possibile alla soglia prestabilita.
+Questa sezione contiene il prospetto economico che riporta le spese effettivamente sostenute. Vengono riportate le ore impiegate per svolgere i compiti preventivati. In base alla differenza di ore tra il preventivo ed il consuntivo, detta conguaglio, avremmo un bilancio.
+Positivo: se il preventivo ha superato il consuntivo;
+Negativo: se il consuntivo ha superato il preventivo;
+In pari: se preventivo e consuntivo coincidono.
+Di seguito è riportato il consuntivo del periodo di tempo dedicato all'Analisi dei Requisiti.
+La tabella sottostante riporta la differenza delle ore tra preventivo e consuntivo, divise per ruolo.
+Nella tabella seguente sono riportate le differenze tra le ore di lavoro previste per ogni componente con quelle realmente impiegate.
+In conclusione, come si può notare dai valori presenti nelle precedenti tabelle, è stata impiegata un'ora in più per svolgere le attività programmate con un bilancio in negativo di euro 35. Questa somma non andrà ad intaccare il costo totale del progetto, in quanto le ore spese in questo periodo non sono rendicontate e quindi non sono a carico del Proponente.
+Di seguito è riportato il consuntivo del periodo di tempo dedicato all' Analisi in Dettaglio.
+La tabella sottostante riporta la differenza delle ore tra preventivo e consuntivo, divise per ruolo.
+Nella tabella seguente sono riportate le differenze tra le ore di lavoro previste per ogni componente con quelle realmente impiegate.
+L'Analisi dei Requisiti è stata corretta secondo le osservazioni fatte dal Committente, inoltre è stata incrementata dettagliandola maggiormente.
+In conclusione, come si può notare dai valori presenti nelle precedenti tabelle, sono state impiegate due ore in più per svolgere le attività di Analisi programmate, con un bilancio in negativo di euro 50. Questa somma non andrà ad intaccare il costo totale del progetto, in quanto le ore spese in questo periodo non sono rendicontate e quindi non sono a carico del Proponente.
+Di seguito è riportato il consuntivo del periodo di tempo dedicato alla Progettazione Architetturale.
+La tabella sottostante riporta la differenza delle ore tra preventivo e consuntivo, divise per ruolo.
+Nella tabella seguente sono riportate le differenze tra le ore di lavoro previste per ogni componente con quelle realmente impiegate.
+Si è deciso di spostare la data per la revisione di progettazione dal 2014-03-18 al 2014-03-29, perchè, il tempo preventivato dedicato allo studio personale di tecnologie e di conoscenze specifiche per la progettazione, è stato molto sottostimato rispetto al tempo realmente occorso. Il tutto ha portato allo slittamento della consegna, ma il costo a budget speso per il tempo dedicato allo studio personale non è a carico del Proponente.
+In conclusione, come si può notare dai valori presenti nelle precedenti tabelle, sono state tolte delle ore di Amministratore e di Analista, mentre sono state richieste delle ore di Verificatore in più rispetto a quanto pianificato; questa modifica ha portato ad un bilancio in positivo di 63 euro.
+Come si può notare da quanto scritto in precedenza, c'è stato un attivo pari a 63 euro; questa somma verrà sicuramente utilizzata per aumentare le ore di Verifica nel periodo di tempo che porta alla successiva revisione.\\
+Si è deciso di investire questa somma nell'attività di Verifica nella fase di Pre RQ, così da migliorare la qualità dei prodotti in uscita.
+Durante lo sviluppo del progetto i ruoli che i membri del gruppo andranno a ricoprire saranno turnati a rotazione in modo che ogni membro abbia l'opportunità di adempiere a tutti gli incarichi. Indispensabile è che non vi siano periodi in cui una stessa risorsa sia verificatrice di se stessa.
+Tali regole sono state definite chiaramente dal Committente nelle regole di progetto.http://www.math.unipd.it/\textasciitilde tullio/IS-1/2013/Progetto/PD01b.html.
+I ruoli che in ogni progetto devono essere ricoperti sono.
+Responsabile.
+Amministratore.
+Analista.
+Progettista.
+Verificatore.
+Programmatore.
+Al fine di garantire il soddisfacimento dei vincoli imposti dal Committente e garantire una corretta rotazione dei ruoli, abbiamo suddiviso ogni attività in sottoattività ed assegnato ogni attività al ruolo competente. 
+In seguito abbiamo assegnato l'attività, e dunque il ruolo, ad un componente del gruppo. Abbiamo quindi optato per una divisione "per attività" piuttosto che temporale. Questo tipo di divisione consente di gestire meglio le ore che ogni componente ricopre per ogni ruolo e garantire un'esperienza più completa del ruolo impersonato. Garantisce inoltre una più equa distribuzione delle ore per ruolo rispetto ad una divisone temporale, in quanto le ore di lavoro possono variare significamente da settimana a settimana.
+Nel suddividere i ruoli si è cercato di essere quanto più possibili omogenei nella distribuzione dei ruoli tra i componenti. Ci si è inoltre assicurati che a nessun componente che abbia partecipato ad una attività di sviluppo sia poi stato assegnato un ruolo da verificatore sulla stessa.
+
+
+Nella seguente tabella riportiamo i vari costi per ruolo.
+Nel creare l'ambiente di lavoro, si sono predisposti dei meccanismi per.
+Controllare l'andamento delle attività.
+Permettere un aggiornamento facilitato della pianificazione.
+Rendicontare le ore di lavoro spese nelle varie attività.
+Per controllare l'andamento delle attività, si usa una struttura visiva basata su grafici, perchè rendono l'acquisizione dell'informazione più immediata, permettendo così una visione istantanea.
+Il sistema di ticketing utilizzato, e descritto nelle Norme di Progetto, fornisce il diagramma di Gantt delle attività in maniera versatile. Il diagramma espone.
+Una copertura espressa in forma percentuale delle attività aperte.
+Il periodo di tempo dell'eventuale ritardo delle attività verrà evidenziato con un colore rosso, per richiamare l'attenzione.
+Il periodo di tempo speso per ciascuna attività verrà evidenziato con un colore verde.
+Verranno utilizzati dei calendari per gestire meglio la pianificazione.
+Il sistema di ticketing utilizzato e descritto nelle Norme di Progetto, crea automaticamente un calendario con date di inizio e fine delle attività.
+Il gruppo ha a disposizione un calendario, come descritto nelle Norme di Progetto, per gestire i vari impegni personali di ogni componente del gruppo.
+Vengono utilizzate delle metriche di progetto per quantificare nella maniera più oggettiva possibile la prestazione nello svolgimento del progetto da parte del gruppo, mediante la misurazione degli indicatori di cui è composto il progetto. L'uso più utilizzato delle metriche è quello di quantificare l'avanzamento del progetto rispetto al piano. Mediante le metriche si può.
+Individuare i problemi di budget/scheduling evitando che sfocino in criticità.
+Permette al team di concentrarsi sulla finalizzazione delle attività.
+La metrica di processo Schedule Variance (SV) permette di.
+Identificare lo stato di avanzamento delle attività di progetto,  rispetto allo scheduling delle attività pianificate nella baseline corrispondente.
+La metrica di processo Budget Variance (BV) permette di.
+Stabilire se il costo sostenuto è in linea con il budget istanziato.
+Lo Schedule Variance è un indicatore di efficacia che interessa maggiormente il Cliente. Se il valore di tale indicatore è $>{0}$ significa che il progetto ha prodotto di più rispetto a quello che era stato pianificato, se negativo viceversa.
+Il Budget Variance ha valore solo in ambito contabile e finanziario. Se il suo valore è $>{0}$ vuol dire che il progetto sta spendendo il budget a disposizione con velocità minore rispetto a quella pianificata, se negativo viceversa.
+La descrizione di tali metriche e i valori corrispondenti sono descritti nel Piano di Qualifica.
+Il sistema di ticketing utilizzato e descritto nelle Norme di Progetto, permette di rendicontare le ore di lavoro; in questo modo  si possono vedere le ore di lavoro in base all'attività svolta e in base al ruolo svolto.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

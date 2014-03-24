@@ -1,0 +1,262 @@
+Questo documento ha lo scopo di presentare le strategie adottate dal gruppo ApertureSoftware nell'ottica del miglioramento continuo e assicurazione della qualità.
+Il Piano di Qualifica ha l'obiettivo di definire le strategie adottate dal gruppo Aperture \gloss{Software} per garantire la qualità del prodotto che verrà sviluppato.
+Il presente documento descriverà le qualità desiderate che il software dovrà avere, le metriche utilizzate per rendere il prodotto e i processi quantificabili. Per ottenere obiettivi finali qualitativi è necessario un continuo e costante processo di verifica, per scovare ed eliminare errori in maniera rapida e senza spreco di risorse.
+Lo scopo del prodotto è produrre un framework per generare interfacce web di amministrazione dei dati di business basati sullo stack Nodejs e mongodb.
+L'obiettivo è quello di semplificare il lavoro allo sviluppatore che dovrà rispondere in modo rapido e standard alle richieste degli esperti di business.
+Al fine di evitare ogni ambiguità nella comprensione del linguaggio utilizzato nel presente documento e, in generale, nella documentazione fornita dal gruppo ApertureSoftware, ogni termine tecnico, di difficile comprensione o di necessario approfondimento verrà inserito nel documento glossario.pdf.
+Saranno in esso definiti e descritti tutti i termini in corsivo e allo stesso tempo marcati da una lettera "G" maiuscola in pedice nella documentazione fornita.
+Norme di Progetto: normediprogetto.pdf.
+Capitolato d'appalto C1: MaaP as an admin Platform http://www.math.unipd.it/~tullio/IS-1/2013/Progetto/C1.pdf.
+Piano di Progetto:  piano di progetto.pdf.
+Glossario: glossario.pdf.
+Slides del corso di Ingegneria del software Modulo A, AA 2013/2014 del prof. Tullio Vardanega: http://www.math.unipd.it/~tullio/IS-1/2013.
+SWEBOK-Version 3 (2004): capitolo 11-Software Quality http://www.computer.org/portal/web/swebook/html/ch11.
+Wikipedia: http://it.wikipedia.org.
+Ian Sommerville, Software Engineering, 9 edizione (2011).
+Capitolo 24 - Quality management.
+Capitolo 26 - Process improvement.
+Standard ISO/IEC TR 15504 Software process assessment: http://en.wikipedia.org/wiki/ISO/IEC_15504.
+Standard ISO/IEC 9126:2001 Software engineering-product quality: http://en.wikipedia.org/wiki/ISO_9126.
+Budget Variance e Schedule Variance - Dati empirici: http://office.microsoft.com/en-us/project-help/determine-the-right-threshold-for-project-cost-and-schedule-variances-HA010173335.aspx.
+http://it.wikipedia.org/wiki/Indice_Gulpease.
+http://xoomer.virgilio.it/roberto-ricci/variabilialeatorie/esperimenti/leggibilita.htm.
+Complessità ciclomatica.
+http://it.wikipedia.org/wiki/Complessit%C3%A0_ciclomatica.
+Per garantire la qualità del prodotto finale è necessario migliorare la metodologia che porta alla qualità dei processi che compongono il prodotto. Per fare questo si è deciso di utilizzare lo standard ISO/IEC 15504 vedi Appendice, sezione A.1 denominato SPICE\footnote{Software Process Improvement and Capability Determination.
+Per applicare il modello appena citato si deve utilizzare il ciclo di Deming vedi appendice, sezione A.2 che ha come obiettivo il miglioramento continuo dei processi nel loro ciclo di vita.
+Per cercare di realizzare e progettare un prodotto software, in accordo con specifiche e standard definiti, ed essere privo di non conformità o difetti, è necessario usare lo standard ISO/IEC 9126 vedi appendice, sezione A.3, il quale redige e descrive obiettivi qualitativi e fornisce delle linee guida l'utilizzo di metriche al fine di tracciare il progresso nel miglioramento continuo di processo e prodotto.
+Per garantire la qualità dei processi si utilizza il ciclo PDCA Alias, Ciclo di Deming, vedi appendice, sezione A.2.  Questo principio permette un continuo miglioramento della qualità di tutti i processi coinvolti nella realizzazione del prodotto finale.
+Per controllare la qualità bisogna che i processi siano pianificati dettagliatamente, che le risorse siano individuate e ripartite in maniera quantificabile e ci deve essere un controllo sui processi. Lo sviluppo di quanto scritto prima è descritto dettagliatamente nel piano di progetto.
+Inoltre verrà monitorata la qualità dei processi con l'analisi continua della qualità del prodotto.
+Per rendere quantificabile la qualità dei processi si utilizzano le metriche descritte nella sezione 2.9.1 di questo documento.
+Quality Assurance: tradotta in "assicurazione di qualità", è l'insieme di processi che hanno come fine il miglioramento e il perseguimento della qualità. L'intenzione di un team di lavoro consiste nell'ottenere quella che si dice correction by construction, ovvero "correttezza per costruzione".
+Strategie proattive: l'insieme delle strategie proattive, le cui procedure sono descritte nelle Norme di Progetto, permettono di garantire qualità a tempo zero, limitando attività di verifica che hanno un costo non indifferente.
+Verifica: è la valutazione che un prodotto, servizio o sistema è conforme a regole, requisiti, specifiche o condizioni imposte. E' spesso un processo interno e differisce dalla validazione. In analogia, l'attività di Verifica deve rispondere alla domanda: "did i built the system right?", ovvero "ho costruito il sistema in modo corretto?".
+Validazione: è l'assicurazione che un prodotto, servizio o sistema incontra nelle necessità che i clienti o gli stakeholders identificano. Spesso comporta l'accettazione e l'idoneità con clienti esterni. In questo caso la domanda è: "did i built the right system?", tradotto in "ho costruito il sistema giusto?".
+Per ogni processo attuato ci sono delle attività di Verifica e per ogni processo realizzato viene verificata la qualità del processo stesso e la qualità dell'eventuale prodotto ottenuto da esso.
+Ogni periodo di tempo antecedente la consegna di revisione descritto nel Piano di Progetto, necessita di attività di Verifica.
+Analisi: si seguono i metodi di Verifica descritti nelle Norme di Progetto sui documenti prodotti e i processi attuati. La messa in opera di tali tecniche è descritta nell'appendice sezione C.3.1.
+Analisi di Dettaglio: si verificano i processi che determinano l'incremento dei documenti redatti per il precedente periodo di Analisi, e si verificano i prodotti generati dai relativi processi, seguendo le Norme di Progetto. La messa in opera di tale attività è descritta nell'appendice sezione C.3.2.
+Progettazione Architetturale:  si verificano i processi che determinano l'incremento dei documenti redatti per il precedente periodo di Analisi in Dettaglio, e si verificano i prodotti generati dai relativi processi; inoltre si verificano processi e prodotti per l'attività di Progettazione Architetturale, seguendo le Norme di Progetto. La messa in opera di tale attività è descritta nell'appendice sezione C.3.3.
+Questa sezione conterrà i riferimenti alle successive attività di Verifica, aggiornati dopo ogni fase di produzione e di test del prodotto.
+La stesura dei documenti è l'attività principale e costante nello svolgimento del progetto, il processo di Verifica viene diviso in due attività.
+In ogni documento è presente un diario delle modifiche per mantenere una cronologia delle attività svolte e di chi le ha svolte.
+Avendo scadenze prefissate nel Piano di Progetto, dobbiamo garantire che le attività di Verifica di tutti i documenti e prodotti devono essere sistematiche, disciplinate e quantificabili. Procedendo in questa maniera si correggono gli errori il prima possibile.
+La metodologia da seguire per l'individuazione e correzione degli errori è descritta nelle Norme di Progetto.
+Ogni attività di redazione di documenti e di scrittura del codice è stata preceduta da uno studio iniziale sull'impaginazione dei documenti e del contenuto degli stessi. Questo serve per minimizzare la possibilità di incorrere in errori di tipo concettuale e tecnico.
+Per garantire che il processo di Verifica sia disciplinato, sistematico e quantificabile, bisogna attribuire responsabilità a specifici ruoli di progetto. I ruoli sono Responsabile di Progetto e Verificatore. I compiti di ciascun ruolo sono descritti nelle Norme di Progetto, rispettivamente nelle sezioni 4.1 e 4.5.
+Per raggiungere gli obiettivi di qualità prefissati sono necessarie risorse umane e tecnologiche, suddivise rispettivamente in strumenti software e hardware utilizzati dai componenti del gruppo per effettuare Verifica su processi e prodotti. I ruoli maggiormente coinvolti nella responsabilità delle attività di Verifica e validazione sono il Responsabile di Progetto e il Verificatore, e i rispettivi compiti sono descritti dettagliatamente nelle Norme di Progetto. Per facilitare il lavoro dei Verificatori sono stati usati degli strumenti automatici che eseguono controlli sistematici sui prodotti generati. Questi strumenti sono descritti nelle Norme di Progetto.
+Questa tipologia di analisi può essere applicata sia al codice che alla documentazione, dato che prevede l'utilizzo di tecniche generali per ogni tipo di prodotto del team.
+Questa tecnica utilizza una scansione ampia e non mirata dell'oggetto in Verifica, data la mancanza di esperienza best practice del Verificatore.
+L'attuazione di questa tecnica di Analisi è quindi molto onerosa, per questo sarà nostro obiettivo renderla più parallelizzabile possibile, così da ridurre i costi di Verifica e per essere più efficace ed efficiente.
+Si comincia con una attività preliminare di lettura, seguita da una individuazione degli errori; poi si procede con la correzione degli stessi e con una successiva attività di lettura per controllare le modifiche apportate.
+Dopo ogni attività di Verifica tramite Walkthrough, sperabilmente avremo trovato la maggior parte degli errori, fornendoci una visione delle erroneità commesse, di conseguenza potremo raffinare l'Analisi e avvicinarci alla metodologia di Inspection.
+Questa tecnica è un'evoluzione del Walkthrough e applica una ricerca più mirata e specifica. E' possibile utilizzare questa tecnica dopo aver acquisito dimestichezza con l'attività di Verifica, stilando una lista di controllo contenente i maggiori errori riscontrati applicando la tecnica di Walkthrough, quindi non sarà possibile utilizzarla fin da subito in quanto la lista inizialmente è vuota.
+E' obiettivo di una fase di Inspection la ricerca mirata di errori, aumentando l'efficienza della Verifica e riducendo i costi in termini di tempo e risorse.
+Durante l'utilizzo della tecnica di Inspection la lista verrà aggiornata; la lista risultante è in appendice A delle Norme di Progetto.
+Questa particolare tipologia di Analisi si applica solamente ai prodotti software sviluppati dal team, mediante l'utilizzo di test progettati e scritti appositamente per verificare la correttezza dei prodotti e la loro effettiva validazione.
+L'importanza di un test si attua nella sua automazione, in quanto riduce il tempo dedicato alla Verifica manuale del codice, certamente più onerosa. Per questo motivo la proprietà più importante di un test è la sua ripetibilità.
+Per fare in modo che un test abbia questa qualità, è fondamentale definire a priori certe caratteristiche, ovvero.
+Ambiente: deve essere specificato l'insieme di componenti hardware e software su cui verrà eseguito il prodotto software, al fine di evitare problemi di incompatibilità e malfunzionamento.
+Variabili: si deve conoscere e garantire la corretta struttura delle variabili in ingresso ai test, in modo da prevedere gli output attesi e verificare la loro correttezza.
+Procedure: deve essere chiara la sequenza delle operazioni e la metodologia di applicazione dei test.
+Di seguito analizzeremo i 5 tipi di test attuati nelle varie parti del progetto.
+Test di unità: attività di Verifica svolta su ogni singola unità software del sistema, mediante l'utilizzo di stub, driver e logger. Un'unità è la più piccola parte di lavoro che viene assegnata individualmente al programmatore, successivamente sarà prodotta e verificata singolarmente. Mediante tali test viene verificato il corretto funzionamento dei moduli di cui il sistema è composto, in modo da cancellare eventuali errori di implementazione commessi dai programmatori.
+Test di integrazione: attività di Verifica che controlla la corretta integrazione di più unità software aggiunte in maniera incrementale, il cui scopo è analizzare che la combinazione delle unità software funzioni come attesa. Grazie a questo test si possono rilevare errori non riscontrabili nei test di unità e comportamenti inaspettati di componenti software già esistenti rilasciati da altri fornitori che non interagiscono correttamente tra di loro. Anche in questa attività, per poter simulare le unità nell'integrazione, vengono create unità fittizie specifiche, come stub e driver, in modo da replicare componenti non ancora sviluppate in modo da non falsare i test.
+Test di sistema: questo test si propone di validare il prodotto, una volta che si è stabilita  la sua versione definitiva. Questo test verifica che la copertura dei requisiti obbligatori decisi nel periodo di tempo dedicato all'Analisi in Dettaglio sia completa.
+Test di regressione: attività di Verifica che consiste nel ripetere i test già effettuati su una componente, ogni qualvolta quella componente venga modificata o aggiornata; un aiuto lo fornisce il tracciamento delle componenti che permette di scovare e ripetere in modo semplificato i test di unità, di regressione e possibilmente quelli di sistema che sono stati potenzialmente alterati dalla modifica.
+Test di accettazione: test finale effettuato dal proponente del software, al cui superamento segue il rilascio del prodotto ultimato.
+Il processo di verifica, per essere chiarificatore, deve essere quantificabile. Le misure apprese dal processo di verifica devono quindi essere basate su metriche prestabilite. Di seguito sono descritte due tipologie di range per le metriche.
+Sufficiente: range stabilito come minimo accettabile, sotto il quale ogni unità o documento non verrà accettato come completo.
+Ottimale: range consigliato e da usare come riferimento, dal quale è necessario scostarsi il meno possibile.
+Sono stati scelti due indicatori che si basano sui costi e i tempi spesi per un processo come delle metriche ragionevoli per rendere i processi quantificabili. Tali indicatori sono descritti nel Piano di Progetto. Data la scarsa esperienza di cooperazione e di pianificazione delle attività del gruppo, gli obiettivi di questi indici fanno riferimento a convenzioni comuni.
+Indica se si è in linea, in anticipo o in ritardo rispetto alla schedulazione delle attività di progetto pianificate nella baseline. E' un indicatore di efficacia e se il suo valore è $> 0$ allora il progetto sta avanzando con maggiore velocità rispetto a quanto pianificato. Viceversa se negativo.
+Gli obiettivi fissati sono.
+Obiettivo Sufficiente: $ [\geq -(costo\:preventivo\:per\:fase * 5\%)]; $.
+Obiettivo Ottimale: $ [\geq 0]. $.
+Indica se alla data corrente si è speso di più o di meno rispetto a quanto si era pianificato. Se tale valore è $>0$ allora il progetto sta consumando il proprio budget con minor velocità rispetto a quanto pianificato. Viceversa se negativo.
+Obiettivo Sufficiente: $[\geq -(costo\:preventivo\:per\:fase * 10\%)];$.
+Obiettivo Ottimale: $[\geq 0].$.
+Dopo aver vagliato diverse metriche di misurazione nell'ambito dei documenti, abbiamo scelto di utilizzare una metrica di complessità di leggibilità di un testo, tarata sulla lingua italiana. L'eccessiva variabilità nei metodi di Analisi della sillabazione dei termini e la conseguente non predicibilità dei test basati sulla sillabazione, hanno portato a scartare diverse metriche internazionali. Inoltre non sono state trovate metriche (oltre all'indice Gulpease) specifiche della lingua italiana e con esito certo.
+L'indice Gulpease è un indice di leggibilità del testo che basa il suo calcolo su componenti del testo enumerabili meccanicamente, così da rendere automatico il processo di Verifica. Consente di misurare la complessità dello stile di un documento.
+L'indice di Gulpease considera due variabili linguistiche: la lunghezza della parola e la lunghezza della frase rispetto al numero delle lettere.
+La formula per il suo calcolo è la seguente.
+I risultati sono compresi tra 0 e 100, dove il valore "100" indica la leggibilità più alta e "0" la leggibilità più bassa. In generale risulta che testi con un indice.
+inferiore a 80 sono difficili da leggere per chi ha la licenza elementare.
+inferiore a 60 sono difficili da leggere per chi ha la licenza media.
+inferiore a 40 sono difficili da leggere per chi ha un diploma superiore.
+L'indice prevede un intervallo di valori tra 0 e 100, dove 100 esprime la leggibilità massima.
+I nostri obiettivi per l'indice Gulpease sono i seguenti.
+Obiettivo ottimale: [50--100].
+Obiettivo sufficiente: [40--100].
+Di seguito verranno riportate delle metriche ritenute le più efficaci, per raggiungere obiettivi di qualità software. Visto che questa sezione riguarda la prossima attività di Codifica, ci potranno essere ulteriori aggiornamenti nelle prossime revisioni.
+La complessità ciclomatica è una metrica software applicabile singolarmente a funzioni, moduli, metodi e classi di un programma.
+Questa metrica è calcolata utilizzando il grafo di controllo di flusso del programma, ovvero i nodi del grafo rappresentano gruppi indivisibili di istruzioni, mentre gli archi connettono due nodi se il secondo gruppo di istruzioni può essere eseguito subito dopo il primo gruppo.
+Alti valori di questa metrica implicano una scarsa manutenibilità del software, mentre valori troppo bassi possono indicare un'altrettanta bassa efficienza del software.
+Un modulo, con complessità ciclomatica elevata, necessita di più testing rispetto ad un altro modulo con complessità ciclomatica minore.
+La complessità è quindi definita come.
+v(G) = complessità ciclomatica del grafo G.
+e = numero di archi del grafo.
+n= numero di nodi del grafo.
+p= numero di componenti connesse.
+Degli obiettivi ragionevoli per questa metrica sono i seguenti.
+Obiettivo Sufficiente: [1--15].
+Obiettivo Ottimale: [1--10].Il valore 10 come massimo è stato calcolato da T.J.McCabe, inventore della metrica..
+Il numero di livelli di annidamento dei metodi rappresenta la quantità di richiami di altri metodi all'interno di uno stesso metodo.
+Un elevato livello di annidamento definisce un'elevata complessità del codice e di altrettanta comprensione dello stesso.
+Gli obiettivi stimati per questa metrica sono.
+Obiettivo Sufficiente: [1-6].
+Obiettivo Ottimale: [1-3].
+Il numero di attributi per classe esprime, appunto, la quantità di proprietà di una classe. Un elevato numero di attributi può denotare un'eccessiva dimensione della classe stessa, che potrebbe piuttosto essere suddivisa in classi più piccole, relazionate tra di loro.
+Gli obiettivi per questa metrica sono.
+Obiettivo Sufficiente: [0-16].
+Obiettivo Ottimale: [3-8].
+Un alto numero di parametri per metodo denota un'eccessiva complessità del metodo stesso, comportandone probabilmente un'ulteriore lunghezza non accettabile. E' buona norma scrivere dei metodi con pochi parametri, al fine di ottenere procedure specifiche e atomiche, di conseguenza facilmente assegnabili e verificabili.
+Degli obiettivi validi per questa metrica sono.
+Obiettivo Sufficiente: [0-8].
+Obiettivo Ottimale: [0-4].
+Questo numero indica il rapporto tra linee di codice e linee di commento, per avere un fattore di commenti all'interno di un'unità software. In generale, un alto grado di commento del codice porta ad una maggiore manutenibilità ed informazione per uno sviluppatore.
+Gli obiettivi stimati sono.
+Obiettivo Sufficiente: [$>0.25$].
+Obiettivo Ottimale: [0.30].
+Valore che indica il flusso di informazioni passanti per un modulo.
+Con.
+Fan-in: numero di moduli che passano informazioni al modulo in esame.
+Fan-out: numero di moduli a cui il modulo in esame passa informazioni.
+il valore calcolato è.
+Si divide in due categorie.
+Accoppiamento afferente: questo valore indica la quantità di di classi esterne ad un \gloss{package} che dipendono da classi interne allo stesso.
+Un alto valore di accoppiamento in una singola classe del package influisce sull'accoppiamento dell'intero package. Questo fatto non è necessariamente un errore di progettazione, ma il package in esame può rappresentare un punto critico del software. Per contro, un package con basso fattore di accoppiamento può delineare una scarsa utilità del package stesso, che probabilmente andrebbe inglobato con altri package.
+Accoppiamento efferente: questo fattore indica l'accoppiamento contrario, ovvero il numero di classi interne al package che dipendono da classi esterne. Più questo indice è basso, più indipendente è il package stesso.
+Il fattore di instabilità di un package indica la possibilità di modifica del package senza influire sulla stabilità del software ad esso dipendente.
+Questo indice è calcolato con la formula seguente.
+Obiettivo Sufficiente: [0.0 - 0.8].
+Obiettivo Ottimale: [0.0 - 0.3].
+Questo fattore indica la percentuale di codice coperto durante l'esecuzione dei test. Più alta sarà la percentuale, minore sarà la possibilità di errori riscontrabili nell'esecuzione del software. Per abbassare questo questo indice sarà sufficiente scrivere metodi semplici che non necessitano di testing. Il valore ideale di 100\% indica che tutte le porzioni di codice sono testate da uno o più test.
+Gli obiettivi stimati per questa metrica sono.
+Obiettivo Sufficiente: [42\% - 100\%].
+Obiettivo Ottimale: [65\% - 100\%].
+Di seguito verrà descritto come avviene, all'interno del gruppo, la comunicazione per la gestione di anomalie e per il trattamento delle discrepanze.
+Con anomalia si intende un esito diverso del prodotto rispetto alle aspettative, una violazione delle norme tipografiche di un documento, un valore di qualche indice non valido, ovvero fuori dal range di accettazione. 
+Se un verificatore scova un'anomalia, di conseguenza aprirà un ticket su RedMine, strumento descritto nelle Norme di Progetto, in sezione 6.1.1.
+La discrepanza indica una mancata corrispondenza tra il prodotto atteso e il prodotto finito. Essa non ostruisce il funzionamento del software, ma è inesatto rispetto ai requisiti descritti. Per la gestione delle discrepanze si procede nella stessa maniera vista per la gestione delle anomalie.
+Per la gestione dei processi e per il miglioramento degli stessi si utilizzerà il ciclo di Deming o PDCA, descritto in appendice sezione A.
+Lo standard ISO/IEC 15504, anche conosciuto come SPICE(Software Process Improvement and Capability Determination, ovvero miglioramento di processi software e determinazione di capacità) è un insieme di documenti e di standard tecnici per lo sviluppo software.
+Questo documento viene utilizzato nel perseguimento della qualità di processo in quanto stabilisce una struttura per la definizione degli obiettivi per il miglioramento dei processi stessi.
+Lo standard dichiara che ogni processo deve essere sottoposto ad un controllo continuo, ripetibile e quantificabile, al fine di individuare i punti critici che impediscono di raggiungere gli obiettivi prefissati, e misurare i miglioramenti.
+Secondo SPICE, un processo può essere classificato in base al suo livello di maturità, in una scala da 1 a 6, con annessi i livelli di capacità ad ogni livello.
+Incomplete: i risultati del processo non esistono o non sono appropriati
+Performed: si ottengono dei risultati, ma in un modo non specificato o non prevedibile.
+Process Performance: capacità del processo di produrre degli output da dagli input.
+Managed:l'esecuzione è pianificata e tracciata, il prodotto è conforme a standard e requisiti specifici.
+Performance Management: capacità del processo di produrre un output coerente con gli obiettivi del processo.
+Work Product Management: capacità del processo di creare un risultato documentato, controllato e verificato.
+Established: il processo è eseguito e controllato riferendosi a dei buoni principi di ingegneria del software.
+Process Definition: il processo fa riferimento a degli standard di processo per definire i risultati attesi.
+Process Deployment: capacità del processo di utilizzare risorse appropriate per il raggiungimento degli obiettivi.
+Predictable: il processo è eseguito consistentemente con dei limiti di controllo definiti, per raggiungere altrettanto definiti obiettivi di processo.
+Process Measurement: capacità di definizione di obiettivi e metriche di prodotto e di processo, con cui garantire il raggiungimento di obiettivi aziendali.
+Process Control: capacità di controllo tramite metriche di progetto e prodotto definite, per puntare al miglioramento.
+Optimizing: l'esecuzione del processo è ottimizzata per soddisfare bisogni correnti e futuri, e il processo soddisfa ripetibilmente i suoi obiettivi prefissati.
+Process Innovation: capacità di gestione di eventuali cambiamenti nel prodotto in modo controllato ed efficace.
+Continuous Optimization: capacità di identificare e applicare modifiche atte al miglioramento dei processi aziendali.
+Per finire, lo standard definisce 4 stadi di misurazione degli attributi di un processo, suddivisi in.
+N, non adeguato o non posseduto
+P, parzialmente posseduto
+L, largamente posseduto
+F, completamente posseduto.
+Il ciclo di Deming o Deming Cycle (ciclo di PDCA - plan–do–check–act) è un modello studiato per il miglioramento continuo della qualità in un'ottica a lungo raggio. Serve per promuovere una cultura della qualità che è tesa al miglioramento continuo dei processi e all'utilizzo ottimale delle risorse. Questo strumento parte dall'assunto che per il raggiungimento del massimo della qualità sia necessaria la costante interazione tra ricerca, progettazione, test, produzione e vendita. Per migliorare la qualità e soddisfare il cliente, le quattro fasi devono ruotare costantemente, tenendo come criterio principale la qualità.
+La sequenza logica dei quattro punti ripetuti per un miglioramento continuo è la seguente.
+P- Plan. Pianificazione.
+D- Do. Esecuzione del programma, dapprima in contesti circoscritti.
+C- Check. Test e controllo, studio e raccolta dei risultati e dei riscontri.
+A- Act. Azione per rendere definitivo e/o migliorare il processo.
+Con la sigla ISO/IEC 9126 si individua una serie di normative e linee guida, sviluppate dall' ISO (Organizzazione internazionale per la normazione) in collaborazione con l' IEC (Commissione Elettrotecnica Internazionale), preposte a descrivere un modello di qualità del software. Il modello propone un approccio alla qualità in modo tale che le società di software possano migliorare l'organizzazione e i processi e, quindi come conseguenza concreta, la qualità del prodotto sviluppato. Ci sono 3 tipi di qualità.
+Qualità in uso: le metriche in uso, specificate nella norma ISO/IEC 9126-1, misurano la qualità del prodotto software dal punto di vista dell'utilizzatore, che le usa internamente ad uno specifico sistema e contesto.
+Qualità esterna: le metriche esterne, specificate nella norma ISO/IEC 9126-2, misurano i comportamenti del software sulla base dei test, dall'operatività e dall'osservazione durante la sua esecuzione, in funzione degli obiettivi stabiliti in un contesto tecnico rilevante o di business.
+Qualità interna: la qualità interna, più precisamente la metrica interna, è specificata nella norma ISO/IEC 9126-3 e si applica al software non eseguibile (ad esempio il codice sorgente) durante le fasi di Progettazione e Codifica. Le misure effettuate permettono di prevedere il livello di qualità esterna ed in uso del prodotto finale, poiché gli attributi interni influiscono su quelli esterni e quelli in uso. Le metriche interne permettono di individuare eventuali problemi che potrebbero influire sulla qualità finale del prodotto prima che sia realizzato il software eseguibile. Esistono metriche che possono simulare il comportamento del prodotto finale tramite simulazioni.
+Il presente standard definisce sei caratteristiche di qualità che ogni prodotto software deve perseguire, al fine di garantire la conformità agli standard con efficienza ed efficacia. Le caratteristiche delle qualità in uso esulano dal presente progetto didattico, in quanto non è prevista l'attività di manutenzione conseguente al rilascio del prodotto. Quindi ci soffermiamo all'analisi della qualità interna ed esterna dello standard ISO/IEC 9126.
+Le caratteristiche che un prodotto deve avere sono le seguenti.
+Funzionalità: capacità di un prodotto software di fornire funzioni che soddisfano esigenze stabilite, necessarie per operare sotto condizioni specifiche.
+Appropriatezza: rappresenta la capacità del prodotto software di fornire un appropriato insieme di funzioni per gli specificati compiti ed obiettivi prefissati all' utente.
+Accuratezza: la capacità del prodotto software di fornire i risultati concordati o precisi effetti richiesti.
+Interoperabilità: la capacità del prodotto software di interagire ed operare con uno o più sistemi specificati.
+Conformità: la capacità del prodotto software di aderire agli standard, convenzioni e regolamentazioni rilevanti al settore operativo a cui vengono applicati.
+Sicurezza: la capacità del prodotto software di proteggere informazioni e i dati negando in ogni modo che persone o sistemi non autorizzati possano accedervi o modificarli, e che a persone o sistemi effettivamente autorizzati non sia negato l'accesso ad essi.
+Affidabilità: capacità del prodotto software di mantenere uno specificato livello di prestazioni quando usato in date condizioni per un dato periodo.
+Maturità: capacità di un prodotto software di evitare che si verificano errori, malfunzionamenti o siano prodotti risultati non corretti.
+Tolleranza degli errori: capacità di mantenere livelli predeterminati di prestazioni anche in presenza di malfunzionamenti o usi scorretti del prodotto.
+Recuperabilità: capacità di un prodotto di ripristinare il livello appropriato di prestazioni e di recupero delle informazioni rilevanti, in seguito a un malfunzionamento. A seguito di un errore, il software può risultare non accessibile per un determinato periodo di tempo, questo arco di tempo è valutato proprio dalla caratteristica di recuperabilità.
+Aderenza: capacità di aderire a standard, regole e convenzioni inerenti all'affidabilità.
+Efficienza: capacità di fornire appropriate prestazioni relativamente alla quantità di risorse usate.
+Comportamento rispetto al tempo: capacità di fornire adeguati tempi di risposta, elaborazione e velocità di attraversamento, sotto condizioni determinate.
+Utilizzo delle risorse: capacità di utilizzo di quantità e tipo di risorse in maniera adeguata.
+Conformità: capacità di aderire a standard e specifiche sull'efficienza.
+Usabilità: capacità del prodotto software di essere capito, appreso, usato e benaccetto dall'utente, quando usato sotto condizioni specificate.
+Comprensibilità: esprime la facilità di comprensione dei concetti del prodotto, mettendo in grado l'utente di comprendere se il software è appropriato.
+Apprendibilità: capacità di ridurre l'impegno richiesto agli utenti per imparare ad usare la sua applicazione.
+Operabilità: capacità di mettere in condizione gli utenti di farne uso per i propri scopi e controllarne l'uso.
+Attrattiva: capacità del software di essere piacevole per l'utente che ne fa uso.
+Conformità: capacità del software di aderire a standard o convenzioni relativi all'usabilità.
+Manutenibilità: capacità del software di essere modificato, includendo correzioni, miglioramenti o adattamenti.
+Analizzabilità: rappresenta la facilità con la quale è possibile analizzare il codice per localizzare un errore nello stesso.
+Modificabilità: capacità del prodotto software di permettere l'implementazione di una specificata modifica (sostituzioni componenti).
+Stabilità: capacità del software di evitare effetti inaspettati derivanti da modifiche errate.
+Testabilità: capacità di essere facilmente testato per validare le modifiche apportate al software.
+Portabilità: capacità del software di essere trasportato da un ambiente di lavoro ad un altro. (Ambiente che può variare dall'hardware al sistema operativo).
+Adattabilità: capacità del software di essere adattato per differenti ambienti operativi senza dover applicare modifiche diverse da quelle fornite per il software considerato.
+Installabilità: capacità del software di essere installato in uno specificato ambiente.
+Conformità: capacità del prodotto software di aderire a standard e convenzioni relative alla portabilità.
+Sostituibilità: capacità di essere utilizzato al posto di un altro software per svolgere gli stessi compiti nello stesso ambiente.
+Di seguito verranno visualizzata delle tabelle, strutturate secondo la sezione 5.3.2 delle Norme di Progetto, che riportano tutti i test che si sono pianificati.
+Di seguito verrà mostrata una tabella che riporta tutti i test di sistema pianificati, associati ai requisiti descritti nel documento Analisi dei Requisiti.
+I test sono da intendere solo per requisiti ai quali è stato ragionevole associare un test.
+Di seguito verrà mostrata una tabella che riporta tutti i test d'integrazione pianificati, associati alle componenti descritte nella progettazione ad alto livello.
+Di seguito verranno riportati in forma tabellare, descritta nella sezione 5.3.2 delle Norme di Progetto, i tracciamenti componente-test d'integrazione e test d'integrazione-componente.
+In questa sezione sono descritti i resoconti delle attività di verifica effettuate sui documenti prima di ciascuna revisione.
+Nel periodo precedente a questa revisione i documenti sono stati controllati dai verificatori seguendo le Norme di Progetto nelle sezione 6.4.1 e 6.4.2; è stata applicata l'analisi statica descritta nella sezione 2.8.1 di questo documento.
+Inizialmente è stata applicata la tecnica di Walkthrough, dove sono scovati e successivamente corretti gli errori; ogni volta che si trovava un errore, esso veniva messo nell'apposta lista che serve per l'inspection.
+Dopo il walkthrough è stata applicata la tecnica di Inspection, utilizzando l'apposita lista, disponible in appendice delle Norme di Progetto. Inoltre per questo documento sono state calcolate le metriche descritte nella sezione 2.9.2 del documento corrente.
+Per quanto riguarda i processi, essi sono stati controllati e verificati secondo le metodologie descritte nelle Norme di Progetto in sezione 5.4.4. Sono state calcolate le metriche per i processi descritti in sezione 2.9.1 di questo documento, e riportati i corrispondenti valori di BV e SV in forma tabellare.
+Nel periodo precedente a questa revisione i documenti sono stati controllati dai verificatori seguendo le Norme di Progetto nelle sezione 6.4.1 e 6.4.2; è stata applicata l'analisi statica descritta nella sezione 2.8.1 di questo documento.
+Inizialmente è stata applicata la tecnica di Walkthrough, dove sono scovati e successivamente corretti gli errori; ogni volta che si trovava un errore, esso veniva messo nell'apposta lista che serve per l'inspection.
+Dopo il walkthrough è stata applicata la tecnica di Inspection, utilizzando l'apposita lista, disponible in appendice delle Norme di Progetto; è stata posta particolare attenzione al documento Specifica Tecnica. Inoltre per questo documento sono state calcolate le metriche descritte nella sezione 2.9.2 del documento corrente.
+Per quanto riguarda i processi, essi sono stati controllati e verificati secondo le metodologie descritte nelle Norme di Progetto in sezione 5.4.4. Sono state calcolate le metriche per i processi descritti in sezione 2.9.1 di questo documento, e riportati i corrispondenti valori di BV e SV in forma tabellare.
+Di seguito vengono riportati i valori degli indici SV e BV calcolati durante il periodo di tempo dedicato all'Analisi dei Requisiti.
+In questa tabella, i valori positivi indicano un costo eccedente, viceversa i valori negativi mostrano un costo risparmiato.
+I valori indicati in tabella sono espressi in euro.
+Non avendo previsto degli intervalli di tempo libero tra un'attività e la successiva, abbiamo ottenuto degli SV positivi in Analisi dei Requisiti e negativi in Piano di Qualifica.
+Questa è stata una mancanza da parte del team, che vedrà di migliorarsi nelle prossime fasi e di adottare una tattica di pianificazione più flessibile.
+I costi aggiuntivi sono comunque in linea con i nostri obiettivi.
+Di seguito vengono riportati, per ogni documento, i valori dell'indice di Gulpease calcolati durante il periodo di tempo dedicato all'Analisi dei Requisiti. Un documento è valido solo se rispecchia i range in sezione 2.9.2.1.
+Di seguito vengono riportati i valori degli indici SV e BV calcolati durante il periodo di tempo dedicato all'Analisi in Dettaglio.
+Come si può notare dalla tabella, il BV è negativo, in quanto non sono state pianificate alcune attività correttive, ed è stato messo a budget il costo necessario per effettuare queste attività non previste.
+Lo SV invece è pari a zero, in quanto l'ampio slack di tempo pianificato è servito a coprire le correzioni non previste e di conseguenza non è stato prodotto niente di più rispetto a quanto pianificato. 
+Di seguito vengono riportati, per ogni documento, i valori dell'indice di Gulpease calcolati durante il periodo di tempo dedicato all'Analisi in Dettaglio.
+Di seguito vengono riportati i valori degli indici SV e BV calcolati durante il periodo di tempo dedicato alla Progettazione Architetturale.
+Lo SV è positivo, in quanto lo slack dedicato al documento Norme di Progetto ha permesso l'aggiunta di valore non pianificato, come l'aggiunta di sezioni.
+Il BV è positivo, e nonostante il fatto che si è dedicato più tempo alla progettazione, e quindi dedicandoci più budget; a causa di questo si è riuscito a risparmiare budget per le attività dedicate agli altri documenti, dedicando maggior budget per la Verifica della progettazione, che nella pianificazione non era adeguato, e togliendone da altre attività.
+Di seguito vengono riportati, per ogni documento, i valori dell'indice di Gulpease calcolati durante il periodo di tempo dedicato alla Progettazione Architetturale.
+Per ciascuna revisione alla quale si intende partecipare, il Committente avrà il compito di segnalare eventuali problematiche trovate, dando una valutazione globale dell'andamento del progetto e una descrizione per ciascun documento con correzioni e accorgimenti da apportare.
+Di seguito vengono elencate le modifiche apportate ai documenti, come suggerito dal Committente, per ciascuna revisione.
+Studio di Fattibilità: il documento ha avuto una valutazione positiva, quindi non ci sono stati accorgimenti da apportare.
+Norme di Progetto: il documento è stato riorganizzato come suggerito, ovvero per processi, attività procedure e strumenti; è stata migliorata la descrizione della rotazione dei ruoli e il documento è stato incrementato con le parti riguardanti la parte di progettazione.
+Analisi dei Requisiti: sono stati corretti degli errori grammaticali, chiariti i significati di alcune parole; i casi d'uso segnalati hanno subito modifiche e aggiustamenti alle pre e post condizioni, mentre altri sono stati descritti più approfonditamente. Sempre dei casi d'uso sono stati tolti o spostati perchè in contrasto tra di loro, mentre per quanto riguarda la suddivisione dei requisiti in funzionali, desiderabili, obbligatori ecc.. sono stati rimossi e spostati perchè non adatti alla categoria in cui si presentavano. Il documento ha avuto una buona valutazione sulla struttura, quindi non si è cambiata.
+Piano di Progetto: come suggerito, alcuni contenuti sono stati spostati nell'Appendice del documento; è stato corretto l'utilizzo della parola fase, e usata solo se strettamente necessario e in contesti che la richiedono. La sezione "Preventivo a finire" è stata corretta in "Consuntivo", in quanto si è capito la differenza tra i significati dei due termini. Si è deciso, per i prossimi intervalli di tempo antecedenti le revisioni, di dedicare più tempo all'attività di Verifica, cercando di raggiungere la soglia del 30\% del tempo totale, come suggerito. Il documento inoltre è stato incrementato con le parti relative alla progettazione.
+Piano di Qualifica: il documento ha subito profonde modifiche, è stato ristrutturato e riorganizzato. Per fare ciò, è stata seguita la best practice per la struttura dei documenti presente nel sito del Professor Vardanega; il documento ha subito profonde modifiche anche nei contenuti, inoltre è stato incrementato con le parti relative alla progettazione.
+Glossario: il documento ha subito una lieve ristrutturazione, è stato tolto l'indice come suggerito; il documento è stato incrementato con l'inserimento di altri termini.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
