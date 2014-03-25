@@ -122,7 +122,6 @@ Il database con il quale la nostra applicazione dovrà interagire è realizzato 
 \subsection{Javascript}
 Si è deciso di utilizzare Javascript in quanto è il linguaggio su cui si basano tutte le altre tecnologie che andremo ad utilizzare, e offre quindi una facile integrazione, oltre ad essere un ottimo linguaggio per applicazioni web e client side.
 
-
 \subsection{NodeJs}
 Si è deciso di utilizzare il linguaggio Node.js in quanto consigliato dal capitolato e adatto al progetto. Le sue caratteristiche più vantaggiose sono:
 \begin{itemize}
@@ -130,7 +129,6 @@ Si è deciso di utilizzare il linguaggio Node.js in quanto consigliato dal capit
 \item Modello asincrono: grazie a questa caratteristica è possibile ridurre al minimo i tempi di morti in quanto, nell'attesa del completamento di una operazione, si procede con altri flussi logici. 
 \item Grande scalabilità: Grazie al modo in cui è implementato, Node.js riesce ad essere largamente scalabile con minimo sforzo.
 \end{itemize}
-
 
 \subsection{JSON}
 Rappresenta il tipo di messaggi con cui client e server si scambiano informazioni. I vantaggi offerti sono:
@@ -164,7 +162,7 @@ Si descriveranno i package e i componenti per poi dettagliare le singole classi,
 
 
 \subsection{Architettura generale}
-L'architettura del framework segue un modello di architettura in stile Three-tier che prevede la suddivisione dell'applicazione  in tre diversi strati dedicati rispettivamente all'interfaccia utente (Client), alla business logic (Controller) e alla gestione dei dati persistenti (Model). La parte Client segue il design pattern MVVM utilizzato da AngularJS ed è quindi suddivisa in Model, View, ViewModel.\\
+L'architettura del framework segue un modello di architettura in stile Client-server che prevede la suddivisione dell'applicazione  in due parti: la parte client composta dall'interfaccia utente (Client) e la parte server composta dalla business logic (Controller) e alla gestione dei dati persistenti (ModelServer). La parte Client segue il design pattern MVVM utilizzato da AngularJS ed è quindi suddivisa in Model, View, ViewModel.\\
 
 I seguenti diagrammi rappresentano l'architettura ad alto livello del framework, indicando i package e le relazioni che intercorrono tra questi.
 
@@ -276,14 +274,16 @@ Descrizione...
 
 \subsubsection{Package}
 \immagine{./Diagrammi/GeneralePackage}{Architettura generale del software - vista package}
-Nel precedente diagramma sono presenti le relazioni tra i package Client, Controller e ModelServer.\\
+Nel precedente diagramma sono presenti le relazioni tra i package Client ed il package Server.\\
 Vengono inoltre presentati tutti i sotto-package così da facilitare la comprensione dell'intero sistema.
 
 \subsubsection{Classi}
 \immagine{./Diagrammi/GeneraleClassi}{Architettura generale del software}
-Nel precedente diagramma è presente l'architettura ad alto livello del software e vengono indicate le classi fondamentali per rappresentare le relazioni del modello  Three-tier. I diagrammi di sequenza relativi allo scambio di segnali, lo scopo ed il contesto di utilizzo sono presenti nella sezione ????.
+Nel precedente diagramma è presente l'architettura ad alto livello del software e vengono indicate le classi fondamentali per rappresentare le relazioni dell'architettura Client-server. I diagrammi di sequenza relativi allo scambio di segnali, lo scopo ed il contesto di utilizzo sono presenti nella sezione ????.
 
-\subsubsubsection{ModelServer}
+\subsubsubsection{Server}
+La parte Server è composta da due package: ModelServer per la gestione dei dati persistenti ed il Controller per la gestione della business logic.\\
+\subsubsubsubsection{ModelServer}
 \immagine{./Diagrammi/ModelServerClassi}{Diagramma delle classi del ModelServer}
 Nel ModelServer sono presenti oggetti che rappresentano:
 \begin{itemize}
@@ -293,7 +293,7 @@ Nel ModelServer sono presenti oggetti che rappresentano:
 \end{itemize}
 Tutte le operazioni di gestione, modifica e recupero dei dati vengono messe a disposizione dal model. In tal modo il controller è responsabile solamente di gestire la logica dell'applicazione.
 
-\subsubsubsection{Controller}
+\subsubsubsubsection{Controller}
 \immagine{./Diagrammi/ControllerClassi}{Diagramma delle classi del Controller}
 Il controller è responsabile dell'autenticazione delle richieste e del loro routing da Client a ModelServer e viceversa.
 
@@ -314,43 +314,53 @@ Nel Client sono presenti oggetti che rappresentano:
 \subsubsection{Informazioni sul package}
 \immagine{./Diagrammi/ComponentiMaaP}{Componenti MaaP}
 \subsubsubsection{Descrizione}
-Namespace globale per il progetto. Le relazioni tra i package ModelServer, Controller e Client identificano il modello di architettura Three-tier.
+Namespace globale per il progetto. Le relazioni tra i package Server e Client identificano il modello di architettura Client-server.
 \subsubsubsection{Sotto-componenti}
 \begin{itemize}
-\item MaaP::ModelServer
-\item MaaP::Controller
+\item MaaP::Server
 \item MaaP::Client
 \end{itemize}
 
-\subsection{MaaP::ModelServer}
+\subsection{MaaP::Server}
 \subsubsection{Informazioni sul package}
-\immagine{./Diagrammi/ComponentiModelServer}{Componente MaaP::ModelServer}
+\immagine{./Diagrammi/ComponentiServer}{Componenti Server}
 \subsubsubsection{Descrizione}
-Package per il componente ModelServer del modello di architettura Three-tier.
+Package per il componente Server del modello di architettura Client-server.
+\subsubsubsection{Sotto-componenti}
+\begin{itemize}
+\item MaaP::Server::ModelServer
+\item MaaP::Server::Controller
+\end{itemize}
+
+\subsection{MaaP::Server::ModelServer}
+\subsubsection{Informazioni sul package}
+\immagine{./Diagrammi/ComponentiModelServer}{Componente MaaP::Server::ModelServer}
+\subsubsubsection{Descrizione}
+Package ModelServer per il componente Server del modello di architettura Client-server che gestisce i dati persistenti del sistema.
 
 \subsubsubsection{Sottocomponenti}
 \begin{itemize}
-\item MaaP::ModelServer::DataManager;
-\item MaaP::ModelServer::Database;
-\item MaaP::ModelServer::DSL.
+\item MaaP::Server::ModelServer::DataManager;
+\item MaaP::Server::ModelServer::Database;
+\item MaaP::Server::ModelServer::DSL.
 \end{itemize}
 
-\subsubsection{MaaP::ModelServer::DataManager}
+\subsubsection{MaaP::Server::ModelServer::DataManager}
 \subsubsubsection{Informazioni sul package}
-\immagine{./Diagrammi/ComponentiDataManager}{Componente MaaP::ModelServer::DataManager}
+\immagine{./Diagrammi/ComponentiDataManager}{Componente MaaP::Server::ModelServer::DataManager}
 \subsubsubsection{Descrizione}
-Componente parte del ServerModel per la gestione dei dati.
+Componente parte del ModelServer per la gestione dei dati.
 \subsubsubsection{Sotto-componenti}
 \begin{itemize}
-\item MaaP::ModelServer::DataManager::DataBaseAnalysisManager;
-\item MaaP::ModelServer::DataManager::DatabaseUserManager;
-\item MaaP::ModelServer::DataManager::IndexManager.
+\item MaaP::Server::ModelServer::DataManager::DataBaseAnalysisManager;
+\item MaaP::Server::ModelServer::DataManager::DatabaseUserManager;
+\item MaaP::Server::ModelServer::DataManager::IndexManager.
 \end{itemize}
 \subsubsubsection{Classi}
 
 	\subsubsubsubsection{JSonComposer}
 	\grassetto{Nome}\\
-	MaaP::ModelServer::DataManager::JSonComposer\\
+	MaaP::Server::ModelServer::DataManager::JSonComposer\\
 	\grassetto{Descrizione}\\
 	Classe che costruisce un file JSON a partire dalla struttura di una Collection, o di un Document, e dai suoi dati.\\
 	\grassetto{Utilizzo}\\
@@ -358,156 +368,156 @@ Componente parte del ServerModel per la gestione dei dati.
 
 	\subsubsubsubsection{IDatabaseManager}
 	\grassetto{Nome}\\
-	MaaP::ModelServer::DataManager::IDatabaseManager\\
+	MaaP::Server::ModelServer::DataManager::IDatabaseManager\\
 	\grassetto{Descrizione}\\
 	Interfaccia che rappresenta il gestore dei database. Contiene tutte le operazioni che si possono effettuare sul database e l'elaborazione dei dati recuperati da essi.\\
 	\grassetto{Utilizzo}\\
 	Viene utilizzata per la gestione delle richieste inoltrate dal Controller.\\
 	\grassetto{Classi che ereditano}
 	\begin{itemize}
-	\item MaaP::ModelServer::DataManager::DatabaseAnalysisManager::DatabaseAnalysisManager;
-	\item MaaP::ModelServer::DataManager::DatabaseUserManager::DatabaseUserManager.	
+	\item MaaP::Server::ModelServer::DataManager::DatabaseAnalysisManager::DatabaseAnalysisManager;
+	\item MaaP::Server::ModelServer::DataManager::DatabaseUserManager::DatabaseUserManager.	
 	\end{itemize}
 
 	\subsubsubsubsection{IDataRetriever}
 	\grassetto{Nome}\\
-	MaaP::ModelServer::DataManager::IDataRetriever\\
+	MaaP::Server::ModelServer::DataManager::IDataRetriever\\
 	\grassetto{Descrizione}\\
 	Interfaccia attraverso cui i DatabaseManager dialogano con i batabase. Contiene le operazioni di lettura e scrittura nei database.\\
 	\grassetto{Utilizzo}\\
 	Viene utilizzata per recuperare e inserire dati, sui database, su richiesta dei DataManager.\\
 	\grassetto{Classi che ereditano}
 	\begin{itemize}
-	\item MaaP::ModelServer::DataManager::DatabaseAnalysisManager::DataRetrieverAnalysis;
-	\item MaaP::ModelServer::DataManager::DatabaseUserManager::DataRetrieverUsers.	
+	\item MaaP::Server::ModelServer::DataManager::DatabaseAnalysisManager::DataRetrieverAnalysis;
+	\item MaaP::Server::ModelServer::DataManager::DatabaseUserManager::DataRetrieverUsers.	
 	\end{itemize}
 
-\subsubsubsection{MaaP::ModelServer::DataManager::DatabaseAnalysisManager}
+\subsubsubsection{MaaP::Server::ModelServer::DataManager::DatabaseAnalysisManager}
 \subsubsubsubsection{Informazioni sul package}
-\immagine{./Diagrammi/ComponentiDatabaseAnalysisManager}{Componente MaaP::ModelServer::DataManager::DatabaseAnalysisManager}
+\immagine{./Diagrammi/ComponentiDatabaseAnalysisManager}{Componente MaaP::Server::ModelServer::DataManager::DatabaseAnalysisManager}
 \subsubsubsubsection{Descrizione}
 Componente parte del DataManager per la gestione dei dati del database di analisi.
 \subsubsubsubsection{Classi}
 
 \subsubsubsubsubsection{DatabaseAnalysisManager}
 \grassetto{Nome}\\
-MaaP::ModelServer::DataManager::DatabaseAnalysisManager::DatabaseAnalysisManager\\
+MaaP::Server::ModelServer::DataManager::DatabaseAnalysisManager::DatabaseAnalysisManager\\
 \grassetto{Descrizione}\\
 Classe che rappresenta il gestore dei database di analisi. Contiene tutte le operazioni che si possono effettuare sul database di analisi e l'elaborazione dei dati recuperati da essi.\\
 \grassetto{Utilizzo}\\
 Viene utilizzata per la gestione delle richieste, relative al database di analisi, inoltrate dal Controller.
 \grassetto{Classi da cui eredita}
 \begin{itemize}
-\item MaaP::ModelServer::DataManager::IDatabaseManager;
+\item MaaP::Server::ModelServer::DataManager::IDatabaseManager;
 \end{itemize}
 \grassetto{Relazioni con altre classi}
 \begin{itemize}
-\item\grassetto{MaaP::ModelServer::DataManager::JSonComposer}\\
+\item\grassetto{MaaP::Server::ModelServer::DataManager::JSonComposer}\\
 Relazione uscente, utilizza un riferimento a un oggetto di tipo JsonComposer per ottenere il JSON da spedire;
-\item\grassetto{MaaP::ModelServer::DSL::CollectionData}\\
+\item\grassetto{MaaP::Server::ModelServer::DSL::CollectionData}\\
 Relazione uscente, utilizza un riferimento a un oggetto CollectionData che contiene la struttura di un file di descrizione;
-\item\grassetto{MaaP::ModelServer::DataManager::DataAnalysisManager::DataRetrieverAnalysis}\\
+\item\grassetto{MaaP::Server::ModelServer::DataManager::DataAnalysisManager::DataRetrieverAnalysis}\\
 Relazione uscente, utilizza un riferimento a un oggetto DataRetrieverAnalysis per relazionarsi con il database di analisi;
-\item\grassetto{MaaP::ModelServer::DataManager::IndexManager::IndexManager}\\
+\item\grassetto{MaaP::Server::ModelServer::DataManager::IndexManager::IndexManager}\\
 Relazione uscente, utilizza un riferimento a un oggetto IndexManager per la creazione degli indici;
-\item\grassetto{MaaP::Controller::Dispatcher}\\
+\item\grassetto{MaaP::Server::Controller::Dispatcher}\\
 Relazione entrante, interazioni con le funzionalità del gestore del database di analisi.
 \end{itemize}
 
 \subsubsubsubsubsection{DatabaseRetrieverAnalysis}
 \grassetto{Nome}\\
-MaaP::ModelServer::DataManager::DatabaseAnalysisManager::DatabaseRetrieverAnalysis\\
+MaaP::Server::ModelServer::DataManager::DatabaseAnalysisManager::DatabaseRetrieverAnalysis\\
 \grassetto{Descrizione}\\
 Classe che rappresenta l'oggetto per interagire con i database.\\
 \grassetto{Utilizzo}\\
 Viene utilizzata per inserire e leggere dati sui database di analisi e framework.\\
 \grassetto{Classi da cui eredita}
 \begin{itemize}
-\item MaaP::ModelServer::DataManager::IDataRetriever;
+\item MaaP::Server::ModelServer::DataManager::IDataRetriever;
 \end{itemize}
 \grassetto{Relazioni con altre classi}
 \begin{itemize}
-\item\grassetto{MaaP::ModelServer::DataManager::DatabaseAnalysisManager::DatabaseAnalysisManager}\\
+\item\grassetto{MaaP::Server::ModelServer::DataManager::DatabaseAnalysisManager::DatabaseAnalysisManager}\\
 Relazione entrante, interazione con il database;
-\item\grassetto{MaaP::ModelServer::Database::MongooseDBAnalysis}\\
+\item\grassetto{MaaP::Server::ModelServer::Database::MongooseDBAnalysis}\\
 Relazione uscente, utilizza un riferimento a un oggetto di tipo MongooseDBAnalysis per creare lo schema dei dati del database di analisi e per interagire con essi;
-\item\grassetto{MaaP::ModelServer::Database::MongooseDBFramework}\\
+\item\grassetto{MaaP::Server::ModelServer::Database::MongooseDBFramework}\\
 Relazione uscente, utilizza un riferimento a un oggetto di tipo MongooseDBFramework per creare lo schema dei dati del database del framework e per interagire con essi;
 \end{itemize}
 
 
-\subsubsubsection{MaaP::ModelServer::DataManager::DatabaseUserManager}
+\subsubsubsection{MaaP::Server::ModelServer::DataManager::DatabaseUserManager}
 \subsubsubsubsection{Informazioni sul package}
-\immagine{./Diagrammi/ComponentiDatabaseUserManager}{Componente MaaP::ModelServer::DataManager::DatabaseUserManager}
+\immagine{./Diagrammi/ComponentiDatabaseUserManager}{Componente MaaP::Server::ModelServer::DataManager::DatabaseUserManager}
 \subsubsubsubsection{Descrizione}
 Componente parte del DataManager per la gestione dei dati del database del framwork che comprende sia dati utente che impostazioni del sistema.
 \subsubsubsubsection{Classi}
 
 \subsubsubsubsubsection{DatabaseUserManager}
 \grassetto{Nome}\\
-MaaP::ModelServer::DataManager::DatabaseUserManager::DatabaseUserManager\\
+MaaP::Server::ModelServer::DataManager::DatabaseUserManager::DatabaseUserManager\\
 \grassetto{Descrizione}\\
 Classe che rappresenta il gestore del database del framework. Contiene tutte le operazioni che si possono effettuare sul database del framework e l'elaborazione dei dati recuperati da esso.\\
 \grassetto{Utilizzo}\\
 Viene utilizzata per la gestione delle richieste relative al database del framework inoltrate dal Controller.\\
 \grassetto{Classi da cui eredita}
 \begin{itemize}
-\item MaaP::ModelServer::DataManager::IDatabaseManager;
+\item MaaP::Server::ModelServer::DataManager::IDatabaseManager;
 \end{itemize}
 \grassetto{Relazioni con altre classi}
 \begin{itemize}
-\item\grassetto{MaaP::ModelServer::DataManager::JSonComposer}\\
+\item\grassetto{MaaP::Server::ModelServer::DataManager::JSonComposer}\\
 Relazione uscente, utilizza un riferimento a un oggetto di tipo JsonComposer per ottenere il JSON da spedire;
-\item\grassetto{MaaP::ModelServer::DataManager::DataUserManager::DataRetrieverUsers}\\
+\item\grassetto{MaaP::Server::ModelServer::DataManager::DataUserManager::DataRetrieverUsers}\\
 Relazione uscente, utilizza un riferimento a un oggetto DataRetrieverUsers per relazionarsi con il database del framework;
-\item\grassetto{MaaP::Controller::Dispatcher}\\
+\item\grassetto{MaaP::Server::Controller::Dispatcher}\\
 Relazione entrante, interazioni con le funzionalità del gestore del database di analisi.
 \end{itemize}
 
 \subsubsubsubsubsection{DataRetrieverUsers}
 \grassetto{Nome}\\
-MaaP::ModelServer::DataManager::DatabaseUserManager::DataRetrieverUsers\\
+MaaP::Server::ModelServer::DataManager::DatabaseUserManager::DataRetrieverUsers\\
 Classe che rappresenta l'oggetto per interagire con il database del framework.\\
 \grassetto{Utilizzo}\\
 Viene utilizzata per inserire e leggere dati sul database del framework.\\
 \grassetto{Classi da cui eredita}
 \begin{itemize}
-\item MaaP::ModelServer::DataManager::IDataRetriever;
+\item MaaP::Server::ModelServer::DataManager::IDataRetriever;
 \end{itemize}
 \grassetto{Relazioni con altre classi}
 \begin{itemize}
-\item\grassetto{MaaP::ModelServer::DataManager::DatabaseUserManager::DatabaseUserManager}\\
+\item\grassetto{MaaP::Server::ModelServer::DataManager::DatabaseUserManager::DatabaseUserManager}\\
 Relazione entrante, interazione con il database;
-\item\grassetto{MaaP::ModelServer::Database::MongooseDBFramework}\\
+\item\grassetto{MaaP::Server::ModelServer::Database::MongooseDBFramework}\\
 Relazione uscente, utilizza un riferimento a un oggetto di tipo MongooseDBFramework per creare lo schema dei dati del database del framework e per interagire con essi.
 \end{itemize}
 
 
 
-\subsubsubsection{MaaP::ModelServer::DataManager::IndexManager}
+\subsubsubsection{MaaP::Server::ModelServer::DataManager::IndexManager}
 \subsubsubsubsection{Informazioni sul package}
-\immagine{./Diagrammi/ComponentiIndexManager}{Componente MaaP::ModelServer::DataManager::IndexManager}
+\immagine{./Diagrammi/ComponentiIndexManager}{Componente MaaP::Server::ModelServer::DataManager::IndexManager}
 \subsubsubsubsection{Descrizione}
 Componente parte del DataManager per la creazione e gestione degli indici.
 \subsubsubsubsection{Classi}
 	\subsubsubsubsubsection{IndexManager}
 	\grassetto{Nome}\\
-	MaaP::ModelServer::DataManager::IndexManager::IndexManager\\
+	MaaP::Server::ModelServer::DataManager::IndexManager::IndexManager\\
 	\grassetto{Descrizione}\\
 	Classe che rappresenta il gestore degli indici. Contiene tutte le operazioni per la creazione degli indici.\\
 	\grassetto{Utilizzo}\\
 	Viene utilizzata per la creazione di indici personalizzati su richiesta del DatavaseAnalysisManager.\\
 	\grassetto{Relazioni con altre classi}
 	\begin{itemize}
-	\item\grassetto{MaaP::ModelServer::DataManager::DatabaseAnalysisManager::DatabaseAnalysisManager}\\
+	\item\grassetto{MaaP::Server::ModelServer::DataManager::DatabaseAnalysisManager::DatabaseAnalysisManager}\\
 	Relazione entrante, interazione con il database;
-	\item\grassetto{MaaP::ModelServer::DataManager::Database::MongooseDBAnalysis}\\
+	\item\grassetto{MaaP::Server::ModelServer::DataManager::Database::MongooseDBAnalysis}\\
 	Relazione uscente, utilizza un riferimento ad un oggetto di tipo MongooseDBAnalysis per creare lo schema dei dati del database di analisi e per interagire con essi;
-	\item\grassetto{MaaP::ModelServer::DataManager::Database::Query}\\
+	\item\grassetto{MaaP::Server::ModelServer::DataManager::Database::Query}\\
 	Relazione uscente debole, utilizza un riferimento ad un oggetto Query per il recupero delle query più utilizzate.
 	\end{itemize}
 
-\subsubsection{MaaP::ModelServer::Database}
+\subsubsection{MaaP::Server::ModelServer::Database}
 \subsubsubsection{Informazioni sul package}
 \immagine{./Diagrammi/ComponentiDatabase}{Componente MaaP::ModelServer::Database}
 \subsubsubsection{Descrizione}
@@ -516,161 +526,160 @@ Componente parte del ModelServer per la gestione dei dati.
 
 	\subsubsubsubsection{MongooseDBAnalysis}
 	\grassetto{Nome}\\
-	MaaP::ModelServer::Database::MongooseDBAnalysis\\
+	MaaP::Server::ModelServer::Database::MongooseDBAnalysis\\
 	\grassetto{Descrizione}\\
 	Classe che rappresenta l'interfaccia di connessione con il database di analisi.\\
 	\grassetto{Utilizzo}\\
 	Viene utilizzata per interfacciarsi con il database di analisi fornendo uno schema adeguato.\\
 	\grassetto{Classi da cui eredita}
 	\begin{itemize}
-	\item MaaP::ModelServer::Database::Mongoose;
+	\item MaaP::Server::ModelServer::Database::Mongoose;
 	\end{itemize}
 	\grassetto{Relazioni con altre classi}
 	\begin{itemize}
-	\item\grassetto{MaaP::ModelServer::DataManager::DatabaseAnalysisManager::DataRetrieverAnalysis}\\
+	\item\grassetto{MaaP::Server::ModelServer::DataManager::DatabaseAnalysisManager::DataRetrieverAnalysis}\\
 	Relazione entrante, interazione con il database di analisi;
-	\item\grassetto{MaaP::ModelServer::DataManager::IndexManager::IndexManager}\\
+	\item\grassetto{MaaP::Server::ModelServer::DataManager::IndexManager::IndexManager}\\
 	Relazione entrante, interazione con il database di analisi;
-	\item\grassetto{MaaP::ModelServer::Database::DBAnalysis}\\
+	\item\grassetto{MaaP::Server::ModelServer::Database::DBAnalysis}\\
 	Relazione uscente debole, utilizza un riferimento al database di analisi a cui connettersi.
 	\end{itemize}
 		
 	\subsubsubsubsection{DBAnalysis}
 	\grassetto{Nome}\\
-	MaaP::ModelServer::Database::DBAnalysis\\
+	MaaP::Server::ModelServer::Database::DBAnalysis\\
 	\grassetto{Descrizione}\\
 	Classe che rappresenta il database di analisi.\\
 	\grassetto{Utilizzo}\\
 	Viene utilizzata per contenere i dati di analisi.\\
 	\grassetto{Relazioni con altre classi}
 	\begin{itemize}
-	\item\grassetto{MaaP::ModelServer::Database::MongooseDBAnalysis}\\
+	\item\grassetto{MaaP::Server::ModelServer::Database::MongooseDBAnalysis}\\
 	Relazione entrante debole, interazione con il database di analisi.
 	\end{itemize}
 		
 	\subsubsubsubsection{Mongoose}
 	\grassetto{Nome}\\
-	MaaP::ModelServer::Database::Mongoose\\
+	MaaP::Server::ModelServer::Database::Mongoose\\
 	\grassetto{Descrizione}\\
 	Interfaccia che permette di dialogare con i database utilizzando Mongoose.\\
 	\grassetto{Utilizzo}\\
 	Viene utilizzata per interfacciarsi con i vari database.\\
 	\grassetto{Classi che ereditano}
 	\begin{itemize}
-	\item MaaP::ModelServer::Database::MongooseDBAnalysis;
-	\item MaaP::ModelServer::Database::MongooseDBFramework.	
+	\item MaaP::Server::ModelServer::Database::MongooseDBAnalysis;
+	\item MaaP::Server::ModelServer::Database::MongooseDBFramework.	
 	\end{itemize}
 		
 	\subsubsubsubsection{MongooseDBFramework}
 	\grassetto{Nome}\\
-	MaaP::ModelServer::Database::MongooseDBMongooseDBFramework\\
+	MaaP::Server::ModelServer::Database::MongooseDBMongooseDBFramework\\
 	\grassetto{Descrizione}\\
 	Classe che rappresenta l'interfaccia di connessione con il database del framework.\\
 	\grassetto{Utilizzo}\\
 	Viene utilizzata per interfacciarsi con il database del framework fornendo uno schema adeguato.\\
 	\grassetto{Classi da cui eredita}
 	\begin{itemize}
-	\item MaaP::ModelServer::Database::Mongoose;
+	\item MaaP::Server::ModelServer::Database::Mongoose;
 	\end{itemize}
 	\grassetto{Relazioni con altre classi}
 	\begin{itemize}
-	\item\grassetto{MaaP::ModelServer::DataManager::DatabaseAnalysisManager::DataRetrieverAnalysis}\\
+	\item\grassetto{MaaP::Server::ModelServer::DataManager::DatabaseAnalysisManager::DataRetrieverAnalysis}\\
 	Relazione entrante, interazione con il database del framework;
-	\item\grassetto{MaaP::ModelServer::DataManager::DatabaseUserManager::DataRetrieverUsers}\\
+	\item\grassetto{MaaP::Server::ModelServer::DataManager::DatabaseUserManager::DataRetrieverUsers}\\
 	Relazione entrante, interazione con il database del framework;
-	\item\grassetto{MaaP::ModelServer::Database::DBFramework}\\
+	\item\grassetto{MaaP::Server::ModelServer::Database::DBFramework}\\
 	Relazione uscente debole, utilizza un riferimento al database del framework a cui connettersi.
 	\end{itemize}
 	
 		
 	\subsubsubsubsection{DBFramework}
 	\grassetto{Nome}\\
-	MaaP::ModelServer::Database::DBFramework\\
+	MaaP::Server::ModelServer::Database::DBFramework\\
 	\grassetto{Descrizione}\\
 	Classe che rappresenta il database del framework.\\
 	\grassetto{Utilizzo}\\
 	Viene utilizzata per contenere i dati utente ed impostazioni varie del sistema.\\
 	\grassetto{Relazioni con altre classi}
 	\begin{itemize}
-	\item\grassetto{MaaP::ModelServer::Database::User}\\
+	\item\grassetto{MaaP::Server::ModelServer::Database::User}\\
 	Relazione uscente, utilizza un riferimento ad un oggetto User per gestire i dati utente.
-	\item\grassetto{MaaP::ModelServer::Database::Query}\\
+	\item\grassetto{MaaP::Server::ModelServer::Database::Query}\\
 	Relazione uscente, utilizza un riferimento ad un oggetto Query per gestire la lista di query fin'ora effettuate dal sistema;
-	\item\grassetto{MaaP::Controller::FrontController}\\
+	\item\grassetto{MaaP::Server::Controller::FrontController}\\
 	Relazione entrante, interazione con il database del framework;
-	\item\grassetto{MaaP::Controller::Passport}\\
+	\item\grassetto{MaaP::Server::Controller::Passport}\\
 	Relazione entrante debole, interazione con il database del framework.
 	\end{itemize}
 	
 	\subsubsubsubsection{User}
 	\grassetto{Nome}\\
-	MaaP::ModelServer::Database::User\\
+	MaaP::Server::ModelServer::Database::User\\
 	\grassetto{Descrizione}\\
 	Classe che rappresenta la parte contenuta nel database del framework relativa ai dati utenti.\\
 	\grassetto{Utilizzo}\\
 	Viene utilizzata per contenere i dati utente.\\
 	\grassetto{Relazioni con altre classi}
 	\begin{itemize}
-	\item\grassetto{MaaP::ModelServer::Database::DBFramework}\\
+	\item\grassetto{MaaP::Server::ModelServer::Database::DBFramework}\\
 	Relazione entrante, interazione con i dati utente.
 	\end{itemize}
 	
 	\subsubsubsubsection{Query}
 	\grassetto{Nome}\\
-	MaaP::ModelServer::Database::Query\\
+	MaaP::Server::ModelServer::Database::Query\\
 	\grassetto{Descrizione}\\
 	Classe che rappresenta la parte contenuta nel database del framework relativa alle query effettuate del sistema.\\
 	\grassetto{Utilizzo}\\
 	Viene utilizzata per contenere le query effettuate del sistema.\\
 	\grassetto{Relazioni con altre classi}
 	\begin{itemize}
-	\item\grassetto{MaaP::ModelServer::Database::DBFramework}\\
+	\item\grassetto{MaaP::Server::ModelServer::Database::DBFramework}\\
 	Relazione entrante, interazione con le query effettuate del sistema.
-	\item\grassetto{MaaP::ModelServer::DataManager::IndexManager::IndexManager}\\
+	\item\grassetto{MaaP::Server::ModelServer::DataManager::IndexManager::IndexManager}\\
 	Relazione entrante debole, interazione con le query effettuate del sistema.
 	\end{itemize}
 	
 
-\subsubsection{MaaP::ModelServer::DSL}
+\subsubsection{MaaP::Server::ModelServer::DSL}
 \subsubsubsection{Informazioni sul package}
 \immagine{./Diagrammi/ComponentiDSL}{Componente MaaP::ModelServer::DSL}
 \subsubsubsection{Descrizione}
 Componente parte del ServerModel per la gestione dei file di descrizione.
-\subsubsubsection{Sotto-componenti}
 \subsubsubsection{Classi}
 
 	\subsubsubsubsection{ParserInterface}
 	\grassetto{Nome}\\
-	MaaP::ModelServer::DSL::ParserInterface\\
+	MaaP::Server::ModelServer::DSL::ParserInterface\\
 	\grassetto{Descrizione}\\
 	Interfaccia che rappresenta la componente interfaccia del design pattern strategy per il parser di un linguaggio DSL.\\
 	\grassetto{Utilizzo}\\
 	Viene utilizzata per la effettuare il parsing di un file di descrizione.\\
 	\grassetto{Classi che ereditano}
 	\begin{itemize}
-	\item MaaP::ModelServer::DSL::DSLParser.
+	\item MaaP::Server::ModelServer::DSL::DSLParser.
 	\end{itemize}
 		
 	\subsubsubsubsection{DSLParser}
 	\grassetto{Nome}\\
-	MaaP::ModelServer::DSL::DSLParser\\
+	MaaP::Server::ModelServer::DSL::DSLParser\\
 	\grassetto{Descrizione}\\
 	Classe che rappresenta l'algoritmo per il parser DSL del design pattern strategy.\\
 	\grassetto{Utilizzo}\\
 	Viene utilizzata all'avvio del sistema per eseguire il parsing dei file di descrizione.
 	\grassetto{Classi da cui eredita}
 	\begin{itemize}
-	\item MaaP::ModelServer::DSL::ParserInterface;
+	\item MaaP::Server::ModelServer::DSL::ParserInterface;
 	\end{itemize}
 	\grassetto{Relazioni con altre classi}
 	\begin{itemize}
-	\item\grassetto{MaaP::ModelServer::DSL::DSLDescriptionFile}\\
+	\item\grassetto{MaaP::Server::ModelServer::DSL::DSLDescriptionFile}\\
 	Relazione uscente debole, utilizza un riferimento ad un oggetto DSLDescriptionFile per leggere il file di descrizione;
 	\end{itemize}
 		
 	\subsubsubsubsection{DSLManager}
 	\grassetto{Nome}\\
-	MaaP::ModelServer::DSL::DSLManager\\
+	MaaP::Server::ModelServer::DSL::DSLManager\\
 	\grassetto{Descrizione}\\
 	Classe che rappresenta il gestore dei file di descrizione. Contiene tutte le operazioni per eseguire il parsing dei file di descrizione e per salvare il risultato su appositi file di tipo CollectionData\\
 	\grassetto{Utilizzo}\\
@@ -678,98 +687,98 @@ Componente parte del ServerModel per la gestione dei file di descrizione.
 	\grassetto{Classi da cui eredita}
 	\grassetto{Relazioni con altre classi}
 	\begin{itemize}
-	\item\grassetto{MaaP::ModelServer::DSL::ParserInterface}\\
+	\item\grassetto{MaaP::Server::ModelServer::DSL::ParserInterface}\\
 	Relazione uscente, utilizza un riferimento ad un oggetto ParserInterface per eseguire il parsing del file di descrizione;
-	\item\grassetto{MaaP::ModelServer::DSL::DSLDescriptionFile}\\
+	\item\grassetto{MaaP::Server::ModelServer::DSL::DSLDescriptionFile}\\
 	Relazione uscente, utilizza un riferimento ad un oggetto DSLDescriptionFile per leggere il file di descrizione;
-	\item\grassetto{MaaP::ModelServer::DSL::CollectionData}\\
+	\item\grassetto{MaaP::Server::ModelServer::DSL::CollectionData}\\
 	Relazione uscente, utilizza un riferimento ad un oggetto CollectionData per salvare i risultati dell'operazione di parsing.
 	\end{itemize}
 	
 	\subsubsubsubsection{CollectionData}
 	\grassetto{Nome}\\
-	MaaP::ModelServer::DSL::CollectionData\\
+	MaaP::Server::ModelServer::DSL::CollectionData\\
 	\grassetto{Descrizione}\\
 	Classe che rappresenta il file contenente il risultato dell'operazione di parsing.\\
 	\grassetto{Utilizzo}\\
 	Viene utilizzata all'avvio del sistema per salvare il risultato dell'operazione di parsing del file di descrizione.
 	\grassetto{Relazioni con altre classi}
 	\begin{itemize}
-	\item\grassetto{MaaP::ModelServer::DSL::DSLManager}\\
+	\item\grassetto{MaaP::Server::ModelServer::DSL::DSLManager}\\
 	Relazione entrante, interazione con il file;
-	\item\grassetto{MaaP::ModelServer::DataManager::DatabaseAnalysisManager::DatabaseAnalysisManager}\\
+	\item\grassetto{MaaP::Server::ModelServer::DataManager::DatabaseAnalysisManager::DatabaseAnalysisManager}\\
 	Relazione entrante, interazione con il file.
 	\end{itemize}
 	
 
-\subsection{MaaP::Controller}
+\subsection{MaaP::Server::Controller}
 \subsubsection{Informazioni sul package}
-\immagine{./Diagrammi/ComponentiController}{Componente MaaP::Controller}
+\immagine{./Diagrammi/ComponentiController}{Componente MaaP::Server::Controller}
 \subsubsubsection{Descrizione}
-Package per il componente Controller del modello di architettura three-tier.
+Package per il componente Controller del modello di architettura Client-server.
 \subsubsubsection{Classi}
 
 	\subsubsubsubsection{IPassport}
 	\grassetto{Nome}\\
-	MaaP::Controller::IPassport\\
+	MaaP::Server::Controller::IPassport\\
 	\grassetto{Descrizione}\\
 	Interfaccia che rappresenta il componente target del design pattern object adapter.\\
 	\grassetto{Utilizzo}\\
 	Viene utilizzata per gestire l'autenticazione utente.
 	\grassetto{Relazioni con altre classi}
 	\begin{itemize}
-	\item\grassetto{MaaP::Controller::FrontController}\\
+	\item\grassetto{MaaP::Server::Controller::FrontController}\\
 	Relazione entrante, interazione con il gestore dell'autenticazione.
 	\end{itemize}
 	\grassetto{Classi che ereditano}
 	\begin{itemize}
-	\item MaaP::Controller::PassportAdapter.
+	\item MaaP::Server::Controller::PassportAdapter.
 	\end{itemize}
 	
 	\subsubsubsubsection{PassportAdapter}
 	\grassetto{Nome}\\
-	MaaP::Controller::PassportAdapter\\
+	MaaP::Server::Controller::PassportAdapter\\
 	\grassetto{Descrizione}\\
 	Classe che rappresenta il componente adapter del design pattern object adapter.\\
 	\grassetto{Utilizzo}\\
 	Viene utilizzata per gestire l'autenticazione utente.
 	\grassetto{Classi da cui eredita}
 	\begin{itemize}
-	\item MaaP::Controller::IPassport.
+	\item MaaP::Server::Controller::IPassport.
 	\end{itemize}
 	\grassetto{Relazioni con altre classi}
 	\begin{itemize}
-	\item\grassetto{MaaP::Controller::Passport}\\
+	\item\grassetto{MaaP::Server::Controller::Passport}\\
 	Relazione uscente, utilizza un riferimento ad un oggetto di tipo Passport per gestire l'autenticazione utente.
 	\end{itemize}
 	
 	\subsubsubsubsection{Passport}
 	\grassetto{Nome}\\
-	MaaP::Controller::Passport\\
+	MaaP::Server::Controller::Passport\\
 	\grassetto{Descrizione}\\
 	Classe che rappresenta il componente adaptee del design patter object adapter.\\
 	\grassetto{Utilizzo}\\
 	Viene utilizzata per gestire l'autenticazione utente.
 	\grassetto{Relazioni con altre classi}
 	\begin{itemize}
-	\item\grassetto{MaaP::ModelServer::Database::MongooseDBFramework}\\
+	\item\grassetto{MaaP::Server::ModelServer::Database::MongooseDBFramework}\\
 	Relazione uscente debole, utilizza un riferimento ad un oggetto MongooseDBFramework per accedere ai dati utente.
 	\end{itemize}
 	
 	\subsubsubsubsection{FrontController}
 	\grassetto{Nome}\\
-	MaaP::Controller::FrontController\\
+	MaaP::Server::Controller::FrontController\\
 	\grassetto{Descrizione}\\
 	Classe che rappresenta il componente controller del design patter Front Controller.\\
 	\grassetto{Utilizzo}\\
 	Viene utilizzata per gestire le richieste del client ed inoltrarle al dispatcher.
 	\grassetto{Relazioni con altre classi}
 	\begin{itemize}
-	\item\grassetto{MaaP::Controller::IPassport}\\
+	\item\grassetto{MaaP::Server::Controller::IPassport}\\
 	Relazione uscente, contiene un riferimento ad un oggetto IPassport per gestire l'autenticazione utente;
-	\item\grassetto{MaaP::Controller::Dispatcher}\\
+	\item\grassetto{MaaP::Server::Controller::Dispatcher}\\
 	Relazione uscente, contiene un riferimento ad un oggetto Dispatcher per smistare le richieste del client ai vari manager;
-	\item\grassetto{MaaP::ModelServer::Database::MongooseDBFramework}\\
+	\item\grassetto{MaaP::Server::ModelServer::Database::MongooseDBFramework}\\
 	Relazione uscente, contiene un riferimento ad un oggetto MongooseDBFramework per inserire nuovi dati nel database del framework relativi a nuovi utenti;
 	\item\grassetto{MaaP::Client::ModelClient::Services::HTTP}\\
 	Relazione entrante debole, interazione con il servizio HTTP.
@@ -777,18 +786,18 @@ Package per il componente Controller del modello di architettura three-tier.
 	
 	\subsubsubsubsection{Dispatcher}
 	\grassetto{Nome}\\
-	MaaP::Controller::Dispatcher\\
+	MaaP::Server::Controller::Dispatcher\\
 	\grassetto{Descrizione}\\
 	Classe che rappresenta il componente dispatcher del design patter Front Controller.\\
 	\grassetto{Utilizzo}\\
 	Viene utilizzata per smistare le richieste del client ai vari gestori dei dati.
 	\grassetto{Relazioni con altre classi}
 	\begin{itemize}
-	\item\grassetto{MaaP::Controller::FrontController}\\
+	\item\grassetto{MaaP::Server::Controller::FrontController}\\
 	Relazione entrante, interazione con il FrontController;
-	\item\grassetto{MaaP::ModelServer::DataManager::DatabaseAnalysisManager::DatabaseAnalysisManager}\\
+	\item\grassetto{MaaP::Server::ModelServer::DataManager::DatabaseAnalysisManager::DatabaseAnalysisManager}\\
 	Relazione uscente, contiene un riferimento ad un oggetto DatabaseAnalysisManager per richiedere azioni relative ai dati di analisi;
-	\item\grassetto{MaaP::ModelServer::DataManager::DatabaseUserManager::DatabaseUserManager}\\
+	\item\grassetto{MaaP::Server::ModelServer::DataManager::DatabaseUserManager::DatabaseUserManager}\\
 	Relazione uscente, contiene un riferimento ad un oggetto DatabaseUserManager per richiedere azioni relative ai dati utenti ed impostazioni di sistema.
 	\end{itemize}
 
@@ -797,7 +806,7 @@ Package per il componente Controller del modello di architettura three-tier.
 \subsubsection{Informazioni sul package}
 \immagine{./Diagrammi/ComponentiClient}{Componente MaaP::Client}
 \subsubsubsection{Descrizione}
-Package per il componente Client del modello di architettura three-tier.
+Package per il componente Client del modello di architettura Client-server.
 \subsubsubsection{Sottocomponenti}
 \begin{itemize}
 \item MaaP::Client::View;
@@ -982,6 +991,21 @@ Componente che contiene i template per la visualizzazione delle pagine web.
 	\item\grassetto{MaaP::Client::ControllerModelView::ControllerClient::ControllerMenu}\\
 	Relazione uscente, contiene un riferimento ad un oggetto ControllerMenu per gestire la visualizzazione del menù.
 	\end{itemize}
+		
+	\subsubsubsubsection{IndexPage}
+	\grassetto{Nome}\\
+	MaaP::Client::View::Template::IndexPage\\
+	\grassetto{Descrizione}\\
+	Classe che rappresenta il template per la pagina di gestione degli indici.\\
+	\grassetto{Utilizzo}\\
+	Viene utilizzata per gestire la creazione e l'eliminazione degli indici.
+	\grassetto{Relazioni con altre classi}
+	\begin{itemize}
+	\item\grassetto{MaaP::Client::ControllerModelView::ControllerClient::ControllerIndici}\\
+	Relazione uscente, contiene un riferimento ad un oggetto ControllerIndici per gestire la creazione e l'eliminazione degli indici;
+	\item\grassetto{MaaP::Client::ControllerModelView::ControllerClient::ControllerMenu}\\
+	Relazione uscente, contiene un riferimento ad un oggetto ControllerMenu per gestire la visualizzazione del menù.
+	\end{itemize}
 
 \subsubsection{MaaP::Client::ControllerModelView}
 \subsubsubsection{Informazioni sul package}
@@ -1080,6 +1104,23 @@ Componente parte del ControllerModelView contenente i vari controller.
 	\item\grassetto{MaaP::Client::View::Template::AdminProfile}\\
 	Relazione entrante, interazione con il template.
 	\item\grassetto{MaaP::Client::View::Template::PasswordRecovery}\\
+	Relazione entrante, interazione con il template.
+	\end{itemize}
+	
+	\subsubsubsubsubsection{ControllerIndici}
+	\grassetto{Nome}\\
+	MaaP::Client::ControllerModelView::ControllerClient::ControllerIndici\\
+	\grassetto{Descrizione}\\
+	Classe che rappresenta il controller per gestire la creazione e l'eliminazione degli indici.\\
+	\grassetto{Utilizzo}\\
+	Viene utilizzata per creare un nuovo indice o elimiare un indice esistente.\\
+	\grassetto{Relazioni con altre classi}
+	\begin{itemize}
+	\item\grassetto{MaaP::Client::ModelClient::Services::HTTP}\\
+	Relazione uscente debole, contiene un riferimento ad un oggetto HTTP per utilizzare il relativo servizio;
+	\item\grassetto{MaaP::Client::ControllerModelView::Scope::Query}\\
+	Relazione uscente debole, contiene un riferimento ad un oggetto Query per accedere allo scope relativo ai dati relativi alle query;
+	\item\grassetto{MaaP::Client::View::Template::IndexPage}\\
 	Relazione entrante, interazione con il template.
 	\end{itemize}
 	
@@ -1285,13 +1326,6 @@ Nella realizzazione del progetto MaaP si è deciso di implementare i seguenti De
 \item \grassetto{Utilizzo:} Nel progetto MaaP la scelta di utilizzare AngularJS come base di partenza per l'applicazione lato client ha implicitamente comportato l'utilizzo del design pattern MVVM perché proprio di AngularJS.
 \end{itemize}
 
-\subsubsection{Three-tier}
-\immagine{./Diagrammi/GeneralePackage}{Applicazione di Three-tier in MaaP}
-\begin{itemize}
-\item \grassetto{Scopo:} Il pattern Three-tier è stato scelto per suddividere...  ; 
-\item \grassetto{Utilizzo:} Nel progetto MaaP ...
-\end{itemize}
-
 \subsection{Design Pattern creazionali}
 \subsubsection{Singleton}
 \immagine{./Diagrammi/DPSingleton}{Applicazione di Singleton in MaaP}
@@ -1365,22 +1399,6 @@ Gli strumenti utilizzati sono:
 \item Quando si vuole trattare un gruppo di oggetti come un oggetto singolo;
 \item Quando si vuole disaccoppiare View e Model instaurando un \gloss{protocollo di sottoscrizione} e notifica tra loro;
 \item Quando si vogliono agganciare più View ad un Model per fornire più rappresentazioni del Model stesso.
-\end{itemize}
-\end{itemize}
-
-\subsubsection{Three-Tier} 
-\immagine{./Diagrammi/THREETIER}{Diagramma del design pattern Three-tier}
-\begin{itemize}
-\item \grassetto{Scopo:} Disaccoppiare le tre componenti seguenti:
-\begin{itemize}
-\item Client tier: strato che definisce l'interfaccia utente;
-\item Business logic tier: strato che definisce la logica funzionale;
-\item Database tier:strato che definisce la gestione dei dati persistenti.
-\end{itemize}
-\item \grassetto{Motivazione:} Il pattern Three-tier presenta diverse analogie con il pattern MVVM presentato precedentemente. Esso svolge un ruolo importante nella progettazione di applicazioni web specialmente basati su Web-service. Inoltre la suddivisione in moduli separati che seguono il paradigma client-server permette la sostituzione e/o modifica di un singolo modulo o strato indipendentemente dagli altri conferendo scalabilità e manutenibilità all'applicazione. I moduli possono essere inoltre distribuiti su diversi nodi di una rete anche eterogenea.
-\item \grassetto{Applicabilità:} Il pattern Three-tier può essere utilizzo nei seguenti casi:
-\begin{itemize}
-\item bla bla.
 \end{itemize}
 \end{itemize}
 
