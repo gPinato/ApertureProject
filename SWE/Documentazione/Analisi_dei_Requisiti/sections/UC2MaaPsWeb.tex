@@ -405,16 +405,119 @@ L'utente business autenticato amministratore può salvare il Document appena mod
 
 \UCtitle
 {Caso d'uso UC2.4.7}
-{Creazione indici}
+{Gestione indici}
+\UCimmagine{UC2.4.7}{UC2.4.7 - Gestione indici}
 \UC
-{UC2.4}
+{UC2.4.7}
 {Utente business autenticato amministratore}
-{L'utente business autenticato amministratore può creare degli indici sulla base delle query più utilizzate, le quali vengono fornite dal sistema}
+{L'utente business autenticato amministratore può gestire la creazione degli indici sulla base delle query più utilizzate e l'eliminazione degli indici già presenti nel sistema.}
 {Il sistema reputa l'utente business autenticato come amministratore}
-\scenario
-{L'utente business autenticato amministratore può creare degli indici.}
+\scenario{
+L'utente business autenticato amministratore può creare degli indici (UC2.4.7.1);|
+L'utente business autenticato amministratore può eliminare degli indici (UC2.4.7.2);|
+L'utente business autenticato amministratore può visualizzare gli indici presenti nel sistema (UC2.4.7.3).
+}
 \post
-{Il sistema permette all'utente business autenticato amministratore di creare degli indici}
+{Il sistema ha creato un nuovo indice o eliminato un indice esistente come richiesto dall'utente business autenticato amministratore}
+
+\UCtitle
+{Caso d'uso UC2.4.7.1}
+{Creazione indici}
+\UCimmagine{UC2.4.7.1}{UC2.4.7.1 - Creazione indici}
+\UC
+{UC2.4.7.1}
+{Utente business autenticato amministratore}
+{L'utente business autenticato amministratore può selezionare una query tra quelle che il sistema presenta come più utilizzate e può creare l'indice corrispondente.}
+{Il sistema reputa l'utente business autenticato come amministratore e visualizza una lista di query più utilizzate}
+\scenario{
+L'utente business autenticato amministratore può selezionare una query (UC2.4.7.1.1);|
+L'utente business autenticato amministratore può creare l'indice (UC2.4.7.1.2).
+}
+\post
+{Il sistema ha creato un nuovo indice relativo alla query selezionata dall'utente business autenticato amministratore}
+
+\UCtitle
+{Caso d'uso UC2.4.7.1.1}
+{Seleziona query}
+\UC
+{UC2.4.7.1}
+{Utente business autenticato amministratore}
+{L'utente business autenticato amministratore può selezionare una query tra quelle che il sistema presenta come più utilizzate.}
+{Il sistema reputa l'utente business autenticato come amministratore e visualizza una lista di query più utilizzate}
+\scenario
+{L'utente business autenticato amministratore può selezionare una query.}
+\post
+{Il sistema ha ottentuo l'informazione riguardo alla query selezionata dall'utente business autenticato amministratore}
+
+\UCtitle
+{Caso d'uso UC2.4.7.1.2}
+{Crea indice}
+\UC
+{UC2.4.7.1}
+{Utente business autenticato amministratore}
+{L'utente business autenticato amministratore può creare un indice relativo alla query precedentemente selezionata.}
+{Il sistema reputa l'utente business autenticato come amministratore e l'utente business autenticato amministratore ha precedentemente selezionato una query}
+\scenario
+{L'utente business autenticato amministratore può creare un indice.}
+\post
+{Il sistema ha creato un indice relativo alla query selezionata dall'utente business autenticato amministratore}
+
+
+\UCtitle
+{Caso d'uso UC2.4.7.2}
+{Eliminazione indici}
+\UCimmagine{UC2.4.7.2}{UC2.4.7.2 - Eliminazione indici}
+\UC
+{UC2.4.7.2}
+{Utente business autenticato amministratore}
+{L'utente business autenticato amministratore può selezionare un indice tra quelli presenti nel sistema e può eliminarlo.}
+{Il sistema reputa l'utente business autenticato come amministratore e visualizza una lista degli indici presenti nel sistema.}
+\scenario{
+L'utente business autenticato amministratore può selezionare un indice (UC2.4.7.2.1);|
+L'utente business autenticato amministratore può eliminare l'indice (UC2.4.7.2.2).
+}
+\post
+{Il sistema ha eliminato l'indice selezionato dall'utente business autenticato amministratore}
+
+\UCtitle
+{Caso d'uso UC2.4.7.2.1}
+{Seleziona indice}
+\UC
+{UC2.4.7.2}
+{Utente business autenticato amministratore}
+{L'utente business autenticato amministratore può selezionare un indice tra quelli presenti nel sistema}
+{Il sistema reputa l'utente business autenticato come amministratore e visualizza una lista degli indici presenti nel sistema.}
+\scenario{
+L'utente business autenticato amministratore può selezionare un indice.}
+\post
+{Il sistema ha ottenuto le informazioni riguardo all'indice selezionato dall'utente business autenticato amministratore}
+
+\UCtitle
+{Caso d'uso UC2.4.7.2.2}
+{Elimina indice}
+\UC
+{UC2.4.7.2}
+{Utente business autenticato amministratore}
+{L'utente business autenticato amministratore può eliminare l'indice precedentemente selezionato}
+{Il sistema reputa l'utente business autenticato come amministratore e l'utente business autenticato amministratore ha selezionato un indice tra quelli presenti nel sistema.}
+\scenario{
+L'utente business autenticato amministratore può eliminare l'indice selezionato.}
+\post
+{Il sistema ha eliminato l'indice selezionato dall'utente business autenticato amministratore}
+
+
+\UCtitle
+{Caso d'uso UC2.4.7.3}
+{Visualizzazione indici}
+\UC
+{UC2.4.7}
+{Utente business autenticato amministratore}
+{L'utente business autenticato amministratore può visualizzare gli indici presenti nel sistema.}
+{Il sistema reputa l'utente business autenticato come amministratore}
+\scenario{
+L'utente business autenticato amministratore può visualizzare gli indici presenti nel sistema.}
+\post
+{Il sistema visualizza gli indici attualmente presenti nel sistema}
 
 \UCtitle
 {Caso d'uso UC2.5}
