@@ -878,13 +878,28 @@ Componente che contiene i template per la visualizzazione delle pagine web.
 	Relazione uscente, contiene un riferimento ad un oggetto ControllerMenu per gestire la visualizzazione del menù.
 	\end{itemize}
 	
-	\subsubsubsubsection{MainPageDocument}
+	\subsubsubsubsection{AdminMainPageDocument}
 	\grassetto{Nome}\\
-	MaaP::Client::View::Template::MainPageDocument\\
+	MaaP::Client::View::Template::AdminMainPageDocument\\
 	\grassetto{Descrizione}\\
-	Classe che rappresenta il template per la pagina di visualizzazione Document.\\
+	Classe che rappresenta il template per la pagina di visualizzazione Document per l'utente amministratore.\\
 	\grassetto{Utilizzo}\\
-	Viene utilizzata per renderizzare la pagina web di visualizzazione del Document.\\
+	Viene utilizzata per renderizzare la pagina web di visualizzazione del Document per l'utente amministratore.\\
+	\grassetto{Relazioni con altre classi}
+	\begin{itemize}
+	\item\grassetto{MaaP::Client::ControllerModelView::ControllerClient::ControllerDocument}\\
+	Relazione uscente, contiene un riferimento ad un oggetto ControllerDocument per gestire la visualizzazione della pagina Document;
+	\item\grassetto{MaaP::Client::ControllerModelView::ControllerClient::ControllerMenu}\\
+	Relazione uscente, contiene un riferimento ad un oggetto ControllerMenu per gestire la visualizzazione del menù.
+	\end{itemize}
+	
+	\subsubsubsubsection{UserMainPageDocument}
+	\grassetto{Nome}\\
+	MaaP::Client::View::Template::UserMainPageDocument\\
+	\grassetto{Descrizione}\\
+	Classe che rappresenta il template per la pagina di visualizzazione Document per l'utente.\\
+	\grassetto{Utilizzo}\\
+	Viene utilizzata per renderizzare la pagina web di visualizzazione del Document per l'utente.\\
 	\grassetto{Relazioni con altre classi}
 	\begin{itemize}
 	\item\grassetto{MaaP::Client::ControllerModelView::ControllerClient::ControllerDocument}\\
