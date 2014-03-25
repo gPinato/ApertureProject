@@ -79,23 +79,28 @@ Di seguito verrà mostrata una tabella che riporta tutti i test d'integrazione p
 \begin{center}
 \begin{longtable}{|c|p{0.5\linewidth}|c|c|}
 \toprule
-\textbf{Test} & \textbf{Descrizione} & \textbf{Componente} & \textbf{Stato}\\
+\textbf{Test} & \textbf{Descrizione} & \textbf{Componenti} & \textbf{Stato}\\
 \midrule
-TI.MaaP & Test integrazione finale client-server & MaaP & D.E\\
+TI.MaaP & Test di integrazione finale tra client e server & MaaP & D.E.\\
 \midrule
-TI.Server & Test integrazione finale server & Server & D.E\\
+TI.Server & Verifica il corretto funzionamento delle componenti del server, quindi la corretta integrazione
+tra ModelServer e Controller del server. In particolare, viene verificato che le funzionalit\`{a} presenti nel
+Controller debbano agire consistentemente sui dati del ModelServer. & Server & D.E.\\
 \midrule
-TI.Model & Test di funzionalità recupero e salvataggio dati & Server.Model & D.E\\
+TI.Server.ModelServer & Verifica che tutte le operazioni di lettura, scrittura e interpretazione dei dati avvengano
+correttamente. & Server.ModelServer & D.E.\\
 \midrule
-TI.DSL & Verifica che le operazioni di elaborazione del DSL vengano eseguite correttamente /* interpretazione, caricamento roots, collections n shit*/ & DSL & D.E\\
+TI.Server.ModelServer.DataManager-Database & Verifica che i gestori dei dati siano correttamente integrati ai database di riferimento. & Server.ModelServer.DataManager Server.ModelServer.Database & D.E.\\
 \midrule
-TI.Databases & Verifica che tutte le operazioni di recupero e scrittura dati e di creazione indici avvengano correttamente & Databases & D.E\\
+TI.Server.ModelServer.DataManager & Verifica che le operazioni di recupero, gestione e scrittura dati nei database avvengano correttamente. & Server.ModelServer.DataManager & D.E.\\
 \midrule
-TI.DBAnalysis & Verifica che le operazioni di recupero e scrittura dati sul database di analisi avvengano correttamente & DBAnalysis & D.E\\
+TI.Client & Verifica che i dati ottenuti e forniti da e verso il client siano corretti e correttamente gestiti all'interno del client stesso. & Client & D.E.\\
 \midrule
-TI.DBUser & Verifica che le operazioni di recupero e scrittura dati sul database utenti avvengano correttamente & DBUser & D.E\\
+TI.Client.View-ControllerModelView & Verifica che i dati uscenti ed entranti la View siano gestiti correttamente dal ControllerModelView & Client.View Client.ControllerModelView & D.E.\\
 \midrule
-TI.Client & Test integrazione finale client & Client & D.E\\
+TI.Client.ControllerModelView-ModelClient & Viene verificato che le funzionalit\`{a} del ControllerModelView agiscano correttamente sul ModelClient & Client.ControllerModelView Client.ModelClient & D.E.\\
+\midrule
+TI.Client.ControllerModelView & Viene verificato che le funzioni del ClientController modifichino correttamente i dati presenti nello Scope & Client.ControllerModelView & D.E.\\
 %inserire i test
 \bottomrule
 \caption{Tabella per test d'integrazione}
@@ -109,6 +114,24 @@ Di seguito verranno riportati in forma tabellare, descritta nella sezione 5.3.2 
 \begin{longtable}{|c|c|}
 \toprule
 \textbf{Componente} & \textbf{Test}\\
+\midrule
+MaaP & TI.MaaP\\
+\midrule
+Server & TI.Server\\
+\midrule
+Server.ModelServer & TI.Server.ModelServer\\
+\midrule
+Server.ModelServer.DataManager & TI.Server.ModelServer.DataManager TI.Server.ModelServer.DataManager-Database\\
+\midrule
+Server.ModelServer.Database & TI.Server.ModelServer.DataManager-Database\\
+\midrule
+Client & TI.Client\\
+\midrule
+Client.View & TI.Client.View-ControllerModelView\\
+\midrule
+Client.ControllerModelView & TI.Client.ControllerModelView TI.Client.View-ControllerModelView TI.Client.ControllerModelView-ModelClient\\
+\midrule
+Client.ModelClient & TI.Client.ControllerModelView-ModelClient\\
 %inserire i test
 \bottomrule
 \caption{Tabella tracciamento componente-test d'integrazione}
@@ -119,7 +142,25 @@ Di seguito verranno riportati in forma tabellare, descritta nella sezione 5.3.2 
 \begin{center}
 \begin{longtable}{|c|c|}
 \toprule
-\textbf{Test} & \textbf{Componente}\\
+\textbf{Test} & \textbf{Componenti}\\
+\midrule
+TI.MaaP & MaaP\\
+\midrule
+TI.Server & Server\\
+\midrule
+TI.Server.ModelServer & Server.ModelServer\\
+\midrule
+TI.Server.ModelServer.DataManager-Database & Server.ModelServer.DataManager Server.ModelServer.Database\\
+\midrule
+TI.Server.ModelServer.DataManager & Server.ModelServer.DataManager\\
+\midrule
+TI.Client & Client\\
+\midrule
+TI.Client.View-ControllerModelView & Client.View Client.ControllerModelView\\
+\midrule
+TI.Client.ControllerModelView-ModelClient & Client.ControllerModelView Client.ModelClient\\
+\midrule
+TI.Client.ControllerModelView & Client.ControllerModelView\\
 %inserire i test
 \bottomrule
 \caption{Tabella tracciamento test d'integrazione-componenti}

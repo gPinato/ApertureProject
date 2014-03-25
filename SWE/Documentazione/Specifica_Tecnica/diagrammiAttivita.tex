@@ -1,9 +1,42 @@
 %TEMPLATE PER DIAGRAMMA ATTIVITA' o sequenza
 
-\subsection{Nomediagramma}
-\immagine{./Diagrammi/nomediagramma}{didascalia diagramma...}
-...Descrizione del diagramma... 
+\subsection{Utente Business}
+\immagine{./Diagrammi/Activity/attUtenteBusiness}{Diagramma attività: Utente Business}
+Il diagramma precedente illustra le funzionalità disponibili all'utente business.\\
+Quest'ultimo, dopo aver effettuato il login, può scegliere se navigare il menu delle collection o accedere direttamente ad una di esse, o ad un document, mediante un link diretto.
+Nel caso decidesse di ricercare manualmente un documento sono disponibili filtri e ordinamenti.
+Può infine modificare i propri dati personali dal suo profilo.
 
-\subsection{Nomediagramma}
-\immagine{./Diagrammi/nomediagramma}{didascalia diagramma...}
-...Descrizione del diagramma... 
+\subsection{Utente Business Amministratore}
+\immagine{./Diagrammi/Activity/attAmministratore}{Diagramma attività: Utente Business Amministratore}
+Il diagramma precedente illustra le funzionalità disponibili all'utente business amministratore.\\
+Quest'ultimo ha a disposizione anche tutte le funzionalità di un normale utente business, tuttavia queste ultime sono state omesse dal diagramma per evitare ridondanza e semplificare la lettura.
+L'utente amministratore può gestire i profili di tutti gli utenti, gestire gli indici disponibili e modificare o cancellare i document presenti nel database.
+
+\subsection{Utente Business Amministratore - Gestione indici}
+\immagine{./Diagrammi/Activity/GestioneIndici}{Diagramma attività: Gestione Indici}
+Il diagramma precedente illustra in dettaglio la gestione degli indici da parte degli Utenti Amministratori.\\
+La gestione degli indici offre due possibilità: creazione e cancellazione.
+Per creare un indice, l'amministratore seleziona una query tra l'enenco delle più utilizzate e ne fa un indice.
+Per l'eliminazione, l'amministratore seleziona un indice esistente e lo cancella dal sistema.
+
+\subsection{Utente Business Amministratore - Gestione document esterna}
+\immagine{./Diagrammi/Activity/attAmministratoreGDIndex}{Diagramma attività: Gestione Document esterna}
+Il diagramma precedente illustra in dettaglio la gestione dei document da parte degli Utenti Amministratori.\\
+L'amministratore può modificare o cancellare un document mediante i pulsanti di scelta rapida posizionati accanto al nome del document oppure aprire il document per visualizzarlo e modificarlo/cancellarlo dall'interno.
+
+
+\subsection{Utente Business Amministratore - Gestione document interna}
+\immagine{./Diagrammi/Activity/attAmministratoreGDIndexsub}{Diagramma attività: Gestione Document interna}
+Il diagramma precedente illustra in dettaglio la gestione dei document da parte degli Utenti Amministratori.\\
+In questo diagramma viene descritto il caso in cui il documento viene modificato, dopo essere stato aperto, dalla sua schermata di visualizzazione.
+
+\subsection{Utente Business Amministratore - Gestione utenti}
+\immagine{./Diagrammi/Activity/attAmministratoreGU}{Diagramma attività: Gestione utenti}
+Il diagramma precedente illustra la gestione degli utenti da parte degli Utenti Amministratori.\\
+L'amministratore può ordinale l'elenco utenti per una chiave o utilizzando un filto. Dopo aver selezionato un profilo utente, è libero di modificarne i dati personali, i permessi o di cancellarlo dal sistema.
+
+\subsection{Utente Sviluppatore - Gestione progetto}
+\immagine{./Diagrammi/Activity/attSviluppatore}{Diagramma attività: Gestione progetto}
+Il diagramma precedente illustra la gestione del progetto da parte di Utenti Sviluppatori.\\
+L'Utente Sviluppatore è libero di creare, clonare o cancellare un progetto. Una volta selezionato un progetto da gestire, è libero di avviare o fermare il server MaaP, modificare i template per le pagine web e modificare od inserire nuovi file DSL, oltre che a modificare altre impostazioni minori del server.
