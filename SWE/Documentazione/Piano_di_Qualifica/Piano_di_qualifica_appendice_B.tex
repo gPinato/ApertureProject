@@ -111,7 +111,7 @@ TI.Client.ControllerModelView & Viene verificato che le funzioni del ClientContr
 \end{longtable}
 \end{center}
 \subsection{Tracciamento}
-Di seguito verranno riportati in forma tabellare, descritta nella sezione 5.3.2 delle Norme di Progetto, i tracciamenti componente-test d'integrazione e test d'integrazione-componente.\\ 
+Di seguito verranno riportati in forma tabellare i tracciamenti componente-test d'integrazione e test d'integrazione-componente.\\ 
 \subsubsection{Tracciamento componente-test d'integrazione}
 \begin{center}
 \begin{longtable}{|p{7cm}|p{7cm}|}
@@ -171,6 +171,221 @@ TI.Client.ControllerModelView & Client::ControllerModelView\\
 %inserire i test
 \bottomrule
 \caption{Tabella tracciamento test d'integrazione-componente}
+\label{tab:changelog}
+\end{longtable}
+\end{center}
+
+\subsection{Test di validazione}
+In questa sezione vengono descritti i test di validazione, utili ad accertarsi che il prodotto realizzato sia conforme alle attese.
+Per ogni test viene descritta la serie di passi che un utente deve eseguire per validare la conformità ai requisiti ad esso associati.
+
+\subsubsection{TV 1 - Lato Utente Business}
+
+L’utente vuole verificare le funzionalità di visualizzazione di collection e document, per tanto gli è richiesto di:
+ 
+
+\begin{enumerate}
+\item Cliccare sul pulsante Collection;
+\item Selezionare la collection da visualizzare dall'apposito elenco;
+\begin{enumerate}
+\item Scorrere le pagine della collection fino a trovare il documento ricercato;
+\item Usare un filtro per ricercare un documento;
+\item Annullare il filtro applicato;
+\item Ordinare un campo, se abilitato, in ordine crescente o decrescente;
+\item Impostare un numero massimo di documenti da visualizzare;
+\end{enumerate}
+\item Selezionare il documento ricercato cliccando sul suo nome o su una chiave;
+\item Verificare che il documento venga visualizzato correttamente.
+\end{enumerate}
+
+\subsubsection{TV 2 - Lato Utente Business}
+L’utente vuole verificare il corretto funzionamento delle funzionalità di registrazione, login e gestione profilo.
+Si dovrà quindi seguire la seguente procedura di validazione:
+
+\begin{enumerate}
+\item Verificare di potersi registrare;
+\begin{enumerate}
+\item Cliccare sul pulsante di registrazione;
+\item Compilare il form di registrazione con dati validi;
+\item Confermare la registrazione mediante il link contenuto nella mail inviata automaticamente dal sistema;
+\end{enumerate}
+\item Verificare di poter recuperare la password in caso di dimenticanza;
+\begin{enumerate}
+\item Cliccare sul pulsante di recupero password;
+\item Inserire la email con cui si è registrati al sistema;
+\item Verificare che il sistema invii correttamente la mail per il recupero della password;
+\item Verificare che la nuova password fornita nella mail consenta l'accesso al sistema;
+\end{enumerate}
+\item Verificare di poter effettuare il login;
+\begin{enumerate}
+\item Cliccare sul pulsante di login;
+\item Inserire le credenziali precedentemente registrate;
+\item Confermare il login;
+\end{enumerate}
+\item Verificare che il sistema effettui correttamente il login;
+\item Verificare di poter modificare i propri dati utente;
+\begin{enumerate}
+\item Entrare nel proprio profilo utente;
+\item Cliccare sul pulsante di modifica;
+\item Verificare di poter modificare uno o più campi del profilo;
+\item Verificare di poter salvare le modifiche;
+\item Verificare di poter annullare le modifiche;
+\end{enumerate}
+\item Verificare di potersi disconnettere correttamente dal sistema;
+\begin{enumerate}
+\item Cliccare sul pulsante di logout;
+\item Verificare di non poter più accedere a pagine riservate ad utenti autenticati.
+\end{enumerate}
+\end{enumerate}
+
+\subsubsection{TV 3 - Lato Utente Business Amministratore}
+
+L’utente amministratore vuole verificare il corretto funzionamento della gestione dei profili utenti.
+Si dovrà quindi seguire la seguente procedura:
+
+\begin{enumerate}
+\item Effettuare il login con le proprie credenziali;
+\begin{itemize}
+\item Al primo accesso assoluto al sistema, utilizzare le credenziali di default fornite dal sistema stesso;
+\end{itemize}
+\item Cliccare sul pulsante di gestione profili utenti;
+\item Selezionare il profilo utente da modificare;
+\begin{enumerate}
+\item Scorrere le pagine della collection fino a trovare il profilo ricercato;
+\item Usare un filtro per ricercare un profilo;
+\item Annullare il filtro applicato;
+\item Ordinare un campo, se abilitato, in ordine crescente o decrescente;
+\item Impostare un numero massimo di profili da visualizzare;
+\end{enumerate}
+\item Verificare di poter modificare le informazioni del profilo utente;
+\begin{enumerate}
+\item Cliccare sul pulsante di modifica;
+\item Verificare di poter modificare uno o più campi del profilo;
+\item Verificare di poter salvare le modifiche;
+\item Verificare di poter annullare le modifiche;
+\end{enumerate}
+\item Verificare di poter modificare i permessi associati al profilo utente;
+\begin{enumerate}
+\item Cliccare sul pulsante di modifica;
+\item Verificare di poter modificare i permessi disponibili;
+\item Verificare di poter salvare le modifiche;
+\item Verificare di poter annullare le modifiche;
+\end{enumerate}
+\item Verificare di poter eliminare correttamente un utente;
+\begin{enumerate}
+\item Entrare nel profilo utente da eliminare;
+\item Cliccare sul pulsante di eliminazione;
+\item Confermare l'eliminazione;
+\item Verificare che le credenziali dell'utente cancellato non siano più presenti nel sistema;
+\end{enumerate}
+\item Verificare di poter creare un nuovo profilo utente;
+\begin{enumerate}
+\item Cliccare sul pulsante di creazione;
+\item Completare il form di registrazione con informazioni valide;
+\item Verificare che il profilo sia stato creato correttamente.
+\end{enumerate}
+\end{enumerate}
+
+
+\subsubsection{TV 4 - Lato Utente Business Amministratore}
+
+L’utente amministratore vuole verificare il corretto funzionamento della gestione dei document.
+Dovrà quindi seguire la seguente procedura:
+
+
+\begin{enumerate}
+\item Dopo essere entrato in una pagina collection, selezionare un document;
+\item Verificare di poter modificare un document;
+\begin{enumerate}
+\item Cliccare sul pulsante di modifica;
+\item Verificare di poter modificare i campi disponibili;
+\item Verificare di poter modificare le chiavi;
+\item Verificare di poter salvare le modifiche;
+\item Verificare di poter annullare le modifiche;
+\end{enumerate}
+\item Verificare di poter cancellare un document;
+\begin{enumerate}
+\item Selezionare il pulsante di cancellazione;
+\item Verificare che il document non sia più presente nel sistema;
+\end{enumerate}
+\end{enumerate}
+
+
+
+
+\subsubsection{TV 5 - Lato Utente Sviluppatore}
+
+L’utente sviluppatore vuole verificare il corretto funzionamento della gestione ed interpretazione del DSL.
+Dovrà quindi seguire la seguente procedura:
+
+\begin{enumerate}
+\item Scrivere un file DSL valido;
+\begin{enumerate}
+\item Specificare i campi da visualizzare;
+\item Specificare la provenienza dei dati;
+\begin{enumerate}
+\item Provenienti da query standard;
+\item Provenienti da query personalizzate;
+\item Provenienti da funzioni personalizzate;
+\item Provenienti da riferimenti esterni;
+\end{enumerate}
+\item Specificare eventuali etichette;
+\item Specificare eventuali campi ordinabili;
+\item Specificare eventuali campi chiave;
+\item Specificare il numero massimo di document per pagina;
+\end{enumerate}
+\item Caricare il file DSL nell'apposita cartella;
+\item Avviare il server MaaP;
+\item Effettuare il login;
+\item Entrare nella collection o nel document la cui pagina è descritta dal file DSL inserito e verificare la bontà della sua interpretazione.
+\end{enumerate}
+
+
+
+\subsubsection{TV 6 - Lato Utente Sviluppatore}
+
+L’utente sviluppatore vuole verificare il corretto funzionamento delle funzioni di gestione del progetto.
+Dovrà quindi seguire la seguente procedura:
+
+\begin{enumerate}
+\item Creare un nuovo progetto;
+\item Verificare che il nuovo progetto sia disponibile;
+\item Clonare un progetto;
+\item Verificare che il progetto clonato sia identico all’originale;
+\item Verificare di poter gestire il progetto;
+\begin{enumerate}
+\item Verificare di poter avviare, fermare o riavviare il server MaaP;
+\item Verificare di poter modificare i file di configurazione del progetto;
+\item Verificare di poter modificare o caricare nuovi file DSL;
+\item Verificare di poter modificare i template disponibili;
+\end{enumerate}
+\item Eliminare un progetto;
+\item Verificare che il progetto eliminato non sia più disponibile.
+\end{enumerate}
+
+\subsubsection{Tracciamento}
+Di seguito verranno riportati in forma tabellare i tracciamenti requisiti - test di validazione.\\
+\subsubsection{Tracciamento componente-test d'integrazione}
+\begin{center}
+\begin{longtable}{|p{7cm}|p{7cm}|}
+\toprule
+\textbf{Test} & \textbf{Requisiti}\\
+\midrule
+TV 1 & ROF10, ROF10.1, RDF10.2, RDF10.2.1, RDF10.2.1.1, RDF10.2.1.2, RDF10.2.2 RDF10.2.3,  ROF10.2.5.\\
+\midrule
+TV 2 & ROF7, ROF7.1, ROF7.2, ROF7.2.1, RDF8, RDF8.1, RDF8.2, RDF8.2.1, ROF9, ROF10.2.4, RPF10.3, ROF10.3.1, ROF10.3.1.1, ROF10.3.1.2, ROF10.3.1.3.\\
+\midrule
+TV 3 & ROF6, ROF10.3.1.4, ROF10.3.1.5, ROF10.3.2, ROF10.3.3.\\
+\midrule
+TV 4 &  RPF10.4, ROF10.5, ROF10.5.1, ROF10.5.2, ROF10.5.3\\
+\midrule
+TV 5 &  \\
+\midrule
+TV 6 & TI.Client\\
+
+%inserire i test
+\bottomrule
+\caption{Tabella tracciamento test di validazione - requisiti}
 \label{tab:changelog}
 \end{longtable}
 \end{center}
