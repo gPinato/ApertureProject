@@ -1,0 +1,31 @@
+Questo documento raccoglie tutti i termini che sono sconosciuti al lettore esterno o che potrebbero generare ambiguità. Per ciascun termine viene riportato sotto il nome una breve definizione che ne chiarisce il significato.
+Wikipedia:  http://www.wikipedia.org.
+OkPedia:http://www.okpedia.it.
+W3C: http://www.w3.org.
+Techterms:http://www.techterms.com.
+SO: http://www.iso.org/iso/home/about.htm.
+Francesco Ranzato: Appunti di programmazione oggetti, Edizione II.
+Slide dell'insegnamento Ingegneria del Software modulo.
+Ingegneria dei requisiti: http://www.math.unipd.it/~tullio/IS-1/2013.
+Slide dell'insegnamento Ingegneria del Software modulo B.
+Ingegneria dei requisiti: http://www.math.unipd.it/~rcardin/sweb.html.
+L'insieme di funzionalità, strumenti e contenuti messi a disposizione da un sito web o da qualsiasi altro tipo di applicazione ad un utente, per usufruire di determinati servizi che il sistema offre.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
