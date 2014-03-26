@@ -477,6 +477,7 @@ Classe che rappresenta i dati di sessione utente.
 Viene utilizzata memorizzare i dati di sessione del client.
 MaaP::Client::ControllerModelView::ControllerClient::ControllerAutenticazione.
 Relazione entrante debole, interazione con il controller dell'Autenticazione.
+
 I Design Pattern sono soluzioni a problemi ricorrenti. Adottare i Design Pattern semplifica l'attività di progettazione, rende l'architettura più manutenibile e favorisce il riutilizzo del codice.
 I design pattern possono essere suddivisi in.
 Design pattern architetturali: definiscono l'architettura dell'applicazione ad un livello più elevato.
@@ -1072,12 +1073,25 @@ Sono necessarie più varianti di un algoritmo.
 Un algoritmo usa una struttura dati che non dovrebbe essere resa nota ai client.
 Una classe definisce molti comportamenti che compaiono all'interno delle scelte condizionali multiple.
 
-
-
-
-
-
-
+Il diagramma precedente illustra le funzionalità disponibili all'utente business.
+Quest'ultimo, dopo aver effettuato il login, può scegliere se navigare il menu delle Collection o accedere direttamente ad una di esse, o ad un Document, mediante un link diretto.
+Nel caso decidesse di ricercare manualmente un documento sono disponibili filtri e ordinamenti.
+Può infine modificare i propri dati personali dal suo profilo.
+Il diagramma precedente illustra le funzionalità disponibili all'utente business amministratore.
+Quest'ultimo ha a disposizione anche tutte le funzionalità di un normale utente business, tuttavia queste ultime sono state omesse dal diagramma per evitare ridondanza e semplificare la lettura.
+L'utente amministratore può gestire i profili di tutti gli utenti, gestire gli indici disponibili e modificare o cancellare i Document presenti nel database.
+Il diagramma precedente illustra in dettaglio la gestione degli indici da parte degli Utenti Amministratori.
+La gestione degli indici offre due possibilità: creazione e cancellazione.
+Per creare un indice, l'amministratore seleziona una query tra l'elenco delle più utilizzate e ne fa un indice.
+Per l'eliminazione, l'amministratore seleziona un indice esistente e lo cancella dal sistema.
+Il diagramma precedente illustra in dettaglio la gestione dei Document da parte degli Utenti Amministratori.
+L'amministratore può modificare o cancellare un Document mediante i pulsanti di scelta rapida posizionati accanto al nome del Document oppure aprire il Document per visualizzarlo e modificarlo/cancellarlo dall'interno.
+Il diagramma precedente illustra in dettaglio la gestione dei Document da parte degli Utenti Amministratori.
+In questo diagramma viene descritto il caso in cui il documento viene modificato, dopo essere stato aperto, dalla sua schermata di visualizzazione.
+Il diagramma precedente illustra la gestione degli utenti da parte degli Utenti Amministratori.
+L'amministratore può ordinale l'elenco utenti per una chiave o utilizzando un filtro. Dopo aver selezionato un profilo utente, è libero di modificarne i dati personali, i permessi o di cancellarlo dal sistema.
+Il diagramma precedente illustra la gestione del progetto da parte di Utenti Sviluppatori.
+L'Utente Sviluppatore è libero di creare, clonare o cancellare un progetto. Una volta selezionato un progetto da gestire, è libero di avviare o fermare il server MaaP, modificare i template per le pagine web e modificare od inserire nuovi file DSL, oltre che a modificare altre impostazioni minori del server.
 
 
 
