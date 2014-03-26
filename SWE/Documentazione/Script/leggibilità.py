@@ -3,8 +3,8 @@ import os
 import sys
 
 # caption, 
-lista_comandi_ignorati=["}","\\emph{", "\\underline{", "\\textbf{", "\\numref{", "\\item", "\\url{", "\\textit{", "\\texttt{", "\\\\", "\\centerline{", "\\hline", "\\caption{", "\\centering", "\\large", "\\label{", "{", "\\newline", "\\opening", "\\closing", "\\mbox"]
-lista_comandi_custom = ["\\NomeGruppo{}", "\\Progetto{}","\\Prop{}", "\\Glossario{}","\LaTeX", "\\textquoteright{", "\\`{a}", "\\`{e}", "\\`{i}", "\\`{o}", "\\`{u}", "\\`{E}", "\\_{}", "\\_", "\\Prodotto"]
+lista_comandi_ignorati=["\Data","\Versione","\DataUltimaModifica","\gloss","\setcountersecnumdepth","\newcommand","\immagine","\grassetto","\paginaGlossario","\elemento","}","\\emph{", "\\underline{", "\\textbf{", "\\numref{", "\\item", "\\url{", "\\textit{", "\\texttt{", "\\\\", "\\centerline{", "\\hline", "\\caption{", "\\centering", "\\large", "\\label{", "{", "\\newline", "\\opening", "\\closing", "\\mbox"]
+lista_comandi_custom = ["\\DataUltimaModifica{}","\\Versione{}","\\Data{}","\\NomeGruppo{}", "\\Progetto{}","\\Prop{}", "\\Glossario{}","\LaTeX", "\\textquoteright{", "\\`{a}", "\\`{e}", "\\`{i}", "\\`{o}", "\\`{u}", "\\`{E}", "\\_{}", "\\_", "\\Prodotto"]
 lista_testi_custom = ["SevenTech", "3DMob: Grafica 3D su device mobili","Mentis s.r.l.","Al fine di evitare incomprensioni dovute a possibili ambiguità del linguaggio, dei termini e acronimi utilizzati nei documenti, viene allegato il glossario contenuto nel file Glossario_vX.Y.pdf. Saranno in esso definiti e descritti tutti i termini marcati da una sottolineatura nella documentazione fornita.","LaTex","'", "à", "è", "ì", "ò", "ù", "È", "_", "_", "Il prodotto denominato 3DMob ha lo scopo di fornire un \underline{applicativo} in grado di leggere e \underline{convertire} \underline{oggetti 3D} a partire dai \underline{formati} \underline{3DS} o \underline{OBJ} e relativo file \underline{MTL}, in un formato aderente allo standard \underline{JSON} compatibile con i \underline{device mobili}. Esso intende garantire che gli oggetti esportati siano immediatamente utilizzabili dalle \underline{librerie} \underline{OpenGL ES}."]
 
 def getCommand(stringa, start):
