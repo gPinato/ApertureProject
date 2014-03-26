@@ -1,0 +1,19 @@
+Risultati PDCA:
+
+Durante lo sviluppo del progetto si è sempre applicato il ciclo di Deming per cercare di migliorare la qualità dei processi. Questa attività ha portato al miglioramento di molteplici processi.
+Tra i più significativi si riporta:
+
+Il numero di persone per attività: 
+All'inizio della progettazione, le attività principali e maggiormente propedeutiche erano state assegnate a gruppi di quattro persone, con l'obiettivo di colmare velocemente il monte ore/persona e ridurre i tempi di completamento.Tuttavia si è notato come il lavoro procedesse più lentamente di quanto atteso e fossero presenti dei ritardi rispetto alle consegne. Nelle seguenti pianificazioni si è ridotto il numero di persone assegnate ad una singola attività cercando nel contempo di massimizzare il parallelismo. Nonostante questo abbia leggermente aumentato il tempo di completamento delle singole attività, i benefici portati dal lavoro concorrente di team più piccoli ha largamente sorpassato le perdite e comportato un avanzamento complessivo del progetto maggiore.
+
+Lo sviluppo dei documenti:
+All'inizio i documenti erano sviluppati utilizzando editor di testo come OpenOffice e in seguito, una volta completati, trasformati in LaTeX con una formattazione appropiata.
+In seguito si è visto come lo sviluppo dei documenti direttamente in LaTeX, nonostante sia più oneroso in termini di tempo durante la stesura, sia comunque più rapido e molto meno soggetto ad errori di trasposizione rispetto al primo metodo, riducendo quindi le ore/persona necessarie e gli errori contenuti nei documenti.
+
+
+
+
+
+
+
+
