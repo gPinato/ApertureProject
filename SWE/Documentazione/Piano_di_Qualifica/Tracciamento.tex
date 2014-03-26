@@ -995,12 +995,12 @@ ROF7
 \midrule
 ROF7.1
 & L'utente business deve inserire l'email per l'autenticazione
-& \\& MaaP::Server::Controller:: FrontController\\
+& MaaP::Server::Controller:: FrontController\\
 
 \midrule
 ROF7.2
 & L'utente business deve inserire la password per l'autenticazione
-& \\& MaaP::Server::Controller:: FrontController\\
+& MaaP::Server::Controller:: FrontController\\
 
 \midrule
 ROF7.2.1
@@ -1052,6 +1052,7 @@ ROF10
 & & MaaP::Client::View::Template:: AdminMainPageCollection\\
 & & MaaP::Client::View::Template:: UserMainPageCollection\\
 & & MaaP::Client::ControllerModelView:: ControllerClient::ControllerCollection\\
+& & MaaP::Client::ControllerModelView:: Scope::Collection\\
 
 \midrule
 ROF10.1
@@ -1063,6 +1064,7 @@ ROF10.1
 & & MaaP::Client::View::Template:: AdminMainPageDocument\\
 & & MaaP::Client::View::Template:: UserMainPageDocument\\
 & & MaaP::Client::ControllerModelView:: ControllerClient::ControllerDocument\\
+& & MaaP::Client::ControllerModelView:: Scope::Document\\
 
 \midrule
 ROF10.1.1
@@ -1074,6 +1076,7 @@ ROF10.1.1
 & & MaaP::Client::View::Template:: AdminMainPageDocument\\
 & & MaaP::Client::View::Template:: UserMainPageDocument\\
 & & MaaP::Client::ControllerModelView:: ControllerClient::ControllerDocument\\
+& & MaaP::Client::ControllerModelView:: Scope::Document\\
 
 \midrule
 ROF10.1.2
@@ -1098,6 +1101,7 @@ RDF10.2
 & & MaaP::Client::View::Template:: AdminMainPageCollection\\
 & & MaaP::Client::View::Template:: UserMainPageCollection\\
 & & MaaP::Client::ControllerModelView:: ControllerClient::ControllerCollection\\
+& & MaaP::Client::ControllerModelView:: Scope::Collection\\
 
 \midrule
 RDF10.2.1
@@ -1109,6 +1113,7 @@ RDF10.2.1
 & & MaaP::Client::View::Template:: AdminMainPageCollection\\
 & & MaaP::Client::View::Template:: UserMainPageCollection\\
 & & MaaP::Client::ControllerModelView:: ControllerClient::ControllerCollection\\
+& & MaaP::Client::ControllerModelView:: Scope::Collection\\
 
 \midrule
 RDF10.2.1.1
@@ -1120,6 +1125,7 @@ RDF10.2.1.1
 & & MaaP::Client::View::Template:: AdminMainPageCollection\\
 & & MaaP::Client::View::Template:: UserMainPageCollection\\
 & & MaaP::Client::ControllerModelView:: ControllerClient::ControllerCollection\\
+& & MaaP::Client::ControllerModelView:: Scope::Collection\\
 
 \midrule
 RDF10.2.1.2
@@ -1131,6 +1137,7 @@ RDF10.2.1.2
 & & MaaP::Client::View::Template:: AdminMainPageCollection\\
 & & MaaP::Client::View::Template:: UserMainPageCollection\\
 & & MaaP::Client::ControllerModelView:: ControllerClient::ControllerCollection\\
+& & MaaP::Client::ControllerModelView:: Scope::Collection\\
 
 \midrule
 RDF10.2.2
@@ -1142,6 +1149,7 @@ RDF10.2.2
 & & MaaP::Client::View::Template:: AdminMainPageCollection\\
 & & MaaP::Client::View::Template:: UserMainPageCollection\\
 & & MaaP::Client::ControllerModelView:: ControllerClient::ControllerCollection\\
+& & MaaP::Client::ControllerModelView:: Scope::Collection\\
 
 \midrule
 RDF10.2.3
@@ -1153,6 +1161,7 @@ RDF10.2.3
 & & MaaP::Client::View::Template:: AdminMainPageCollection\\
 & & MaaP::Client::View::Template:: UserMainPageCollection\\
 & & MaaP::Client::ControllerModelView:: ControllerClient::ControllerCollection\\
+& & MaaP::Client::ControllerModelView:: Scope::Collection\\
 
 \midrule
 ROF10.2.4
@@ -1171,6 +1180,7 @@ ROF10.2.4
 & & MaaP::Client::View::Template:: AdminProfile\\
 & & MaaP::Client::View::Template:: PasswordRecovery\\
 & & MaaP::Client::ControllerModelView:: ControllerClient::ControllerMenu\\
+& & MaaP::Client::ControllerModelView:: Scope::Menu\\
 
 \midrule
 ROF10.2.5
@@ -1198,6 +1208,7 @@ ROF10.3
 & & MaaP::Server::Controller:: FrontController\\
 & & MaaP::Client::View::Template:: UserProfile\\
 & & MaaP::Client::ControllerModelView:: ControllerClient::ControllerProfilo\\
+& & MaaP::Client::ControllerModelView:: Scope::Profilo\\
 
 \midrule
 ROF10.3.1
@@ -1211,12 +1222,14 @@ ROF10.3.1
 & & MaaP::Server::ModelServer::Database:: User\\
 & & MaaP::Client::View::Template:: UserProfile\\
 & & MaaP::Client::ControllerModelView:: ControllerClient::ControllerProfilo\\
+& & MaaP::Client::ControllerModelView:: Scope::Profilo\\
 
 \midrule
 ROF10.3.1.1
 & L'utente business autenticato deve poter modificare i propri dati utente
 & MaaP::Client::View::Template:: UserProfileEdit\\
 & & MaaP::Client::ControllerModelView:: ControllerClient::ControllerProfilo\\
+& & MaaP::Client::ControllerModelView:: Scope::Profilo\\
 
 \midrule
 ROF10.3.1.2
@@ -1230,6 +1243,7 @@ ROF10.3.1.2
 & & MaaP::Server::ModelServer::Database:: User\\
 & & MaaP::Client::View::Template:: UserProfileEdit\\
 & & MaaP::Client::ControllerModelView:: ControllerClient::ControllerProfilo\\
+& & MaaP::Client::ControllerModelView:: Scope::Profilo\\
 
 \midrule
 ROF10.3.1.3
@@ -1248,6 +1262,7 @@ ROF10.3.1.4
 & & MaaP::Server::ModelServer::Database:: DBFramework\\
 & & MaaP::Client::View::Template:: AdminProfile\\
 & & MaaP::Client::ControllerModelView:: ControllerClient::ControllerProfilo\\
+& & MaaP::Client::ControllerModelView:: Scope::Profilo\\
 
 \midrule
 ROF10.3.1.5
@@ -1260,6 +1275,7 @@ ROF10.3.1.5
 & & MaaP::Server::ModelServer::Database:: DBFramework\\
 & & MaaP::Client::View::Template:: AdminProfile\\
 & & MaaP::Client::ControllerModelView:: ControllerClient::ControllerProfilo\\
+& & MaaP::Client::ControllerModelView:: Scope::Profilo\\
 
 \midrule
 ROF10.3.2
@@ -1272,6 +1288,7 @@ ROF10.3.2
 & & MaaP::Server::ModelServer::Database:: DBFramework\\
 & & MaaP::Client::View::Template:: AdminProfile\\
 & & MaaP::Client::ControllerModelView:: ControllerClient::ControllerProfilo\\
+& & MaaP::Client::ControllerModelView:: Scope::Profilo\\
 
 \midrule
 ROF10.3.3
@@ -1284,6 +1301,7 @@ ROF10.3.3
 & & MaaP::Server::ModelServer::Database:: DBFramework\\
 & & MaaP::Client::View::Template:: AdminProfile\\
 & & MaaP::Client::ControllerModelView:: ControllerClient::ControllerProfilo\\
+& & MaaP::Client::ControllerModelView:: Scope::Profilo\\
 
 \midrule
 ROF10.4
@@ -1298,6 +1316,7 @@ ROF10.4
 & & MaaP::Client::View::Template:: AdminMainPageCollection\\
 & & MaaP::Client::View::Template:: AdminMainPageDocument\\
 & & MaaP::Client::ControllerModelView:: ControllerClient::ControllerCollection\\
+& & MaaP::Client::ControllerModelView:: Scope::Collection\\
 
 \midrule
 ROF10.5
@@ -1312,12 +1331,14 @@ ROF10.5
 & & MaaP::Client::View::Template:: AdminMainPageCollection\\
 & & MaaP::Client::View::Template:: AdminMainPageDocument\\
 & & MaaP::Client::ControllerModelView:: ControllerClient::ControllerCollection\\
+& & MaaP::Client::ControllerModelView:: Scope::Collection\\
 
 \midrule
 ROF10.5.1
 & L'utente business autenticato amministratore deve poter modificare i valori associati alla chiavi
 & MaaP::Client::View::Template:: MainPageDocumentEdit\\
 & & MaaP::Client::ControllerModelView:: ControllerClient::ControllerDocument\\
+& & MaaP::Client::ControllerModelView:: Scope::Document\\
 
 \midrule
 ROF10.5.2
@@ -1330,12 +1351,14 @@ ROF10.5.2
 & & MaaP::Server::ModelServer::Database:: DBAnalysis\\
 & & MaaP::Client::View::Template:: MainPageDocumentEdit\\
 & & MaaP::Client::ControllerModelView:: ControllerClient::ControllerDocument\\
+& & MaaP::Client::ControllerModelView:: Scope::Document\\
 
 \midrule
 ROF10.5.3
 & L'utente business autenticato amministratore deve poter annullare le modifiche apportate al Document
 & MaaP::Client::View::Template:: MainPageDocumentEdit\\
 & & MaaP::Client::ControllerModelView:: ControllerClient::ControllerDocument\\
+& & MaaP::Client::ControllerModelView:: Scope::Document\\
 
 \midrule
 ROF10.6
@@ -1351,6 +1374,7 @@ ROF10.6
 & & MaaP::Client::View::Template:: AdminMainPageCollection\\
 & & MaaP::Client::View::Template:: IndexPage\\
 & & MaaP::Client::ControllerModelView:: ControllerClient::ControllerIndici\\
+& & MaaP::Client::ControllerModelView:: Scope::Query\\
 
 \midrule
 ROF10.7
@@ -1391,6 +1415,7 @@ ROF10.7.1.1
 & L'utente business autenticato amministratore deve poter selezionare una query
 & MaaP::Client::View::Template:: IndexPage\\
 & & MaaP::Client::ControllerModelView:: ControllerClient::ControllerIndici\\
+& & MaaP::Client::ControllerModelView:: Scope::Query\\
 
 \midrule
 ROF10.7.1.2
@@ -1403,6 +1428,7 @@ ROF10.7.1.2
 & & MaaP::Server::Controller:: FrontController\\
 & & MaaP::Client::View::Template:: IndexPage\\
 & & MaaP::Client::ControllerModelView:: ControllerClient::ControllerIndici\\
+& & MaaP::Client::ControllerModelView:: Scope::Query\\
 
 \midrule
 ROF10.7.2
@@ -1455,7 +1481,7 @@ ROF10.7.3
 & & MaaP::Server::Controller:: FrontController\\
 & & MaaP::Client::View::Template:: IndexPage\\
 & & MaaP::Client::ControllerModelView:: ControllerClient::ControllerIndici\\
-
+& & MaaP::Client::ControllerModelView:: Scope::Query\\
 
 %FINE TABELLA TRACCIAMENTO REQUISITI COMPONENTI
 \bottomrule
