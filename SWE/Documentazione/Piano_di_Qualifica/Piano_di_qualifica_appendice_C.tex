@@ -110,7 +110,6 @@ Di seguito vengono riportati, per ogni documento, i valori dell'indice di Gulpea
 %aggiungere qui una midrule per aggiungere una nuova riga alla tabella
 
 \midrule
-\midrule
 \emph{Analisi dei Requisiti v2.2.0} & 55 & Superato \\
 \midrule
 \emph{Glossario v2.2.0} & 46 & Sufficiente\\
@@ -149,6 +148,7 @@ Di seguito vengono riportati i valori degli indici SV e BV calcolati durante il 
 \caption{BV e SV calcolati sui documenti durante la Progettazione Architetturale}
 \label{tab:changelog}
 \end{longtable}
+
 \subsubsubsection{Conclusioni}
 Lo SV è positivo, in quanto lo slack dedicato al documento Norme di Progetto ha permesso l'aggiunta di valore non pianificato, come l'aggiunta di sezioni.\\
 Il BV è positivo, e nonostante il fatto che si è dedicato più tempo alla progettazione, e quindi dedicandoci più budget; a causa di questo si è riuscito a risparmiare budget per le attività dedicate agli altri documenti, dedicando maggior budget per la Verifica della progettazione, che nella pianificazione non era adeguato, e togliendone da altre attività.
@@ -162,10 +162,9 @@ Di seguito vengono riportati, per ogni documento, i valori dell'indice di Gulpea
 %aggiungere qui una midrule per aggiungere una nuova riga alla tabella
 
 \midrule
-\midrule
 \emph{Analisi dei Requisiti v3.2.0} & 58 & Superato \\
 \midrule
-\emph{Glossario v3.2.0} &  &\\
+\emph{Glossario v3.2.0} &  & \\
 \midrule
 \emph{Norme di Progetto v3.2.0} & 53  & Superato\\
 \midrule
@@ -173,11 +172,101 @@ Di seguito vengono riportati, per ogni documento, i valori dell'indice di Gulpea
 \midrule
 \emph{Piano di Qualifica v3.2.0} & 48  & Sufficiente\\
 \midrule
-\emph{Specifica Tecnica v3.2.0} &  & \\
+\emph{Specifica Tecnica v3.2.0} & 41 & Sufficiente\\
 \bottomrule
 \caption{Esiti dell'indice di Gulpease calcolato sui documenti durante la Progettazione}
 \label{tab:changelog}
 \end{longtable}
+
+\subsubsubsection{Progettazione}
+Viene qui riportata una tabella riassuntiva che riporta il calcolo dei parametri di accoppiamento afferente ed efferente per i componenti individuati nella progettazione architetturale.
+
+\begin{longtable}{|p{11cm}|c|c|}
+\toprule
+\textbf{Componente} & \textbf{Afferente} & \textbf{Efferente} \\
+
+\midrule 
+MaaP::Server
+& 1 & 0\\
+
+\midrule 
+MaaP::Server::ModelServer
+& 3 & 0\\
+
+\midrule 
+MaaP::Server::ModelServer::DataManager 
+& 1 & 4\\
+
+\midrule
+MaaP::Server::ModelServer::DataManager::DatabaseAnalysisManager 
+& 1 & 7\\
+
+\midrule 
+MaaP::Server::ModelServer::DataManager::DatabaseUserManager 
+& 1 & 4\\
+
+
+\midrule 
+MaaP::Server::ModelServer::DataManager::IndexManager
+& 1 & 2\\
+
+
+\midrule 
+MaaP::Server::ModelServer::Database
+& 4 & 0\\
+
+
+\midrule 
+MaaP::Server::ModelServer::DSL
+& 1 & 0\\
+
+\midrule 
+MaaP::Server::Controller 
+& 1 & 4\\
+
+\midrule 
+MaaP::Client 
+& 0 & 1\\
+
+\midrule 
+MaaP::Client::View 
+& 0 & 6\\
+
+\midrule 
+MaaP::Client::View::Template
+& 0 & 6\\
+
+\midrule 
+MaaP::Client::ControllerModelView
+& 12 & 2\\
+
+\midrule 
+MaaP::Client::ControllerModelView::ControllerClient
+& 12 & 7\\
+
+\midrule 
+MaaP::Client::ControllerModelView::Scope
+& 5 & 0\\
+
+\midrule 
+MaaP::Client::ModelClient
+& 2 & 1\\
+
+\midrule 
+MaaP::Client::ModelClient::Services
+& 1 & 1\\
+
+\midrule 
+MaaP::Client::ModelClient::Model
+& 1 & 0\\
+
+
+\bottomrule
+\caption{Tabella accoppiamento componenti}
+\end{longtable}
+
+Come si può vedere dalla tabella, l'accoppiamento afferente risulta generalmente basso ad eccezione del componente ControllerModelView del package Client e relativo ControllerClient i quali hanno un valore relativamente alto. Questo delinea la criticità del componente in oggetto, che quindi andrà trattato con dovute cautele durante la generazione dei test e la loro esecuzione per ottenere un componente stabile più velocemente, prevenendo il rischio di regressione dovuto ad un alto accoppiamento.\\
+Per quanto riguarda l'accoppiamento efferente, anch'esso è relativamente basso ad eccezione dei componenti interni del package MaaP::Server::ModelServer::DataManager e del componente ControllerClient che per la loro natura intrinseca hanno un alto livello di accoppiamento dovendo interagire con diverse classi di package esterni.
 
 \subsection{Dettaglio dell'esito delle revisioni}
 Per ciascuna revisione alla quale si intende partecipare, il Committente avrà il compito di segnalare eventuali problematiche trovate, dando una valutazione globale dell'andamento del progetto e una descrizione per ciascun documento con correzioni e accorgimenti da apportare.

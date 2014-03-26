@@ -67,6 +67,10 @@ MaaP::Server
 & \\
 
 \midrule 
+MaaP::Server::ModelServer
+& \\
+
+\midrule 
 MaaP::Server::ModelServer::DataManager 
 & \\
 
@@ -276,6 +280,10 @@ MaaP::Server::ModelServer::Database::User
 \midrule 
 MaaP::Server::ModelServer::Database::Query
 & ROF10.6\\
+
+\midrule 
+MaaP::Server::ModelServer::DSL
+& \\
 
 \midrule 
 MaaP::Server::ModelServer::DSL::DSLParser
@@ -622,6 +630,7 @@ MaaP::Client::ModelClient::Model::SessionData
 \end{longtable}
 \end{center}
 
+\newpage
 \subsubsection{Tracciamento requisiti - componenti}
 \begin{center}
 \begin{longtable}{|c|p{0.25\linewidth}|p{0.5\linewidth}|}
@@ -1266,7 +1275,7 @@ ROF10.3.1.4
 
 \midrule
 ROF10.3.1.5
-& L'utente business autenticato deve poter modificare i permessi degli utenti business
+& L'utente business autenticato amministratore deve poter modificare i permessi degli utenti business
 & MaaP::Server::ModelServer::DataManager:: DatabaseUserManager::DatabaseUserManager\\
 & & MaaP::Server::ModelServer::DataManager:: DatabaseUserManager::DataRetrieverUsers\\
 & & MaaP::Server::ModelServer::DataManager:: IDatabaseManager\\
@@ -1484,7 +1493,5 @@ ROF10.7.3
 & & MaaP::Client::ControllerModelView:: Scope::Query\\
 
 %FINE TABELLA TRACCIAMENTO REQUISITI COMPONENTI
-\bottomrule
-\caption{Tracciamento requisiti - componenti}
 \end{longtable}
 \end{center} 
