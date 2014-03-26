@@ -33,7 +33,7 @@
 %inizio sommario del documento
 \begin{abstract}
 \begin{center}
-Questo documento si propone di presentare la Specifica tecnica e architetturale per la realizzazione del prodotto \textbf{MaaP}.
+Questo documento si propone di presentare la specifica tecnica e architetturale per la realizzazione del prodotto \Progetto{}.
 \end{center}
 \end{abstract}
 
@@ -51,7 +51,7 @@ Diario delle modifiche
 \midrule
 3.2.0 & 2014-02-xx & ... (RE) & Approvazione documento\\
 \midrule
-3.1.0 & 2014-02-xx & ... (VE) & Verifica documento\\
+3.1.0 & 2014-02-xx & ... (VR) & Verifica documento\\
 \midrule
 3.0.0 & 2014-03-20 & Giacomo Pinato (PR) & Diagrammi di sequenza\\
 \midrule
@@ -100,14 +100,14 @@ Il presente documento ha lo scopo di definire la progettazione ad alto livello d
 
 \subsubsection{Normativi}
 \begin{itemize}
-\item \grassetto{Analisi dei requisiti}: Analisi\_{}dei\_{}Requisiti\_{}v\versioneNormeDiProgetto{}.pdf
-\item Norme di Progetto: Norme\_{}di\_{}Progetto\_{}v\versioneNormeDiProgetto{}.pdf  (allegato alla presente documentazione)\\
+\item \grassetto{Analisi dei requisiti}: Analisi\_{}dei\_{}Requisiti\_{}v\versioneAnalisiDeiRequisiti{}.pdf
+\item \grassetto{Norme di Progetto}: Norme\_{}di\_{}Progetto\_{}v\versioneNormeDiProgetto{}.pdf  (allegato alla presente documentazione)\\
 \end{itemize}
 
 \subsubsection{Informativi}
 \begin{itemize}
-\item Learning Node: O'Reilly Shelley Powers
-\item AngularJS: O'Reilly Brad Green e Shyam Seshadri
+\item \grassetto{Learning Node}: O'Reilly Shelley Powers
+\item \grassetto{AngularJS}: O'Reilly Brad Green e Shyam Seshadri
 \item Software Engineering (8th edition), Ian Sommerville, Pearson Education | Addison-Wesley
 \item Design Patterns, E. Gamma, R. Helm, R. Johnson, J. Vlissides, Pearson Education | Addison-Wesley
 \item Dall'idea al codice con UML 2       L. Baresi, L. Lavazza, M. Pianciamore, Pearson Education
@@ -176,7 +176,7 @@ I seguenti diagrammi rappresentano l'architettura ad alto livello del framework,
 \subsubsubsection{Informazioni sul package}
 \immagine{./Diagrammi/Installer}{Diagramma delle classi relativo alla gestione del framework da parte dell'utente sviluppatore}
 \subsubsubsection{Descrizione}
-Descrizione...
+Namespace globale per lo strumento di installazione e gestione del framework. Contiene le classi che gestiscono l'installazione del framework nel sistema, l'inizializzazione e gestione dello stesso.
 
 \subsubsubsection{Classi}
 
@@ -855,7 +855,7 @@ Componente che contiene i template per la visualizzazione delle pagine web.
 	\grassetto{Nome}\\
 	MaaP::Client::View::Template::SignUp\\
 	\grassetto{Descrizione}\\
-	Classe che rappresenta il template per la pagina di registrazione.\\
+	Classe che rappresenta il template per la pagina di registrazione, presente solamente se nel file di configurazione è esplicitamente abilitata la funzionalità di registrazione utente.\\
 	\grassetto{Utilizzo}\\
 	Viene utilizzata per renderizzare la pagina web di registrazione utente.
 	\grassetto{Relazioni con altre classi}
@@ -1003,9 +1003,9 @@ Componente che contiene i template per la visualizzazione delle pagine web.
 	\grassetto{Nome}\\
 	MaaP::Client::View::Template::IndexPage\\
 	\grassetto{Descrizione}\\
-	Classe che rappresenta il template per la pagina di gestione degli indici.\\
+	Classe che rappresenta il template per la pagina di gestione degli indici, presente solo se nel file di configurazione è esplicitamente abilitato l'utilizzo degli indici.\\
 	\grassetto{Utilizzo}\\
-	Viene utilizzata per gestire la creazione e l'eliminazione degli indici.
+	Viene utilizzata per renderizzare la pagina che gestisce la creazione e l'eliminazione degli indici.
 	\grassetto{Relazioni con altre classi}
 	\begin{itemize}
 	\item\grassetto{MaaP::Client::ControllerModelView::ControllerClient::ControllerIndici}\\
@@ -1302,9 +1302,8 @@ Componente parte del ModelClient contenente i dati di sessione.
 \section{Diagrammi di attività}
 \input{./diagrammiAttivita.tex}
 
-\newpage
 \section{Diagrammi di sequenza}
-\subsection{Modifca della View}
+\subsection{Modifica della View}
 \immagine{./Diagrammi/sequence}{Diagramma sequenza: Modifica View}
 Il diagramma precedente illustra la sequenza di operazioni che avviene alla modifica della view da parte dell'utente.
 
