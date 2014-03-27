@@ -9,13 +9,13 @@ Tra i più significativi si riportano:
 \begin{itemize}
 
 
-\item Migliore politica di assegnazione delle attività: 
+\item Migliore politica di assegnazione delle attività:
 
 All'inizio della progettazione, le attività principali e maggiormente propedeutiche erano state assegnate a gruppi di quattro persone, con l'obiettivo di colmare velocemente il monte ore/persona e ridurre i tempi di completamento. Tuttavia si è notato come il lavoro procedesse più lentamente di quanto atteso e fossero presenti dei ritardi rispetto alle consegne. Nelle seguenti pianificazioni si è ridotto il numero di persone assegnate ad una singola attività cercando nel contempo di massimizzare il parallelismo. Nonostante questo abbia leggermente aumentato il tempo di completamento delle singole attività, i benefici portati dal lavoro concorrente di team più piccoli hanno largamente sorpassato gli svantaggi e comportato un maggior avanzamento complessivo del progetto.
 
 \item Migliore sviluppo dei documenti:
 
-All'inizio i documenti erano sviluppati utilizzando editor di testo come OpenOffice e in seguito, una volta completati, trasformati in \LaTeX\ con una formattazione appropiata.
+All'inizio i documenti erano sviluppati utilizzando \gloss{editor} di testo come OpenOffice e in seguito, una volta completati, trasformati in \LaTeX\ con una formattazione appropiata.
 In seguito si è visto come lo sviluppo dei documenti direttamente in \LaTeX, nonostante sia più oneroso in termini di tempo durante la stesura, sia comunque più rapido rispetto al primo metodo e, soprattutto, privo degli errori di trasposizione, riducendo quindi le ore/persona necessarie e gli errori contenuti nei documenti.
 
 \end{itemize}
@@ -120,7 +120,7 @@ Di seguito vengono riportati i valori degli indici SV e BV calcolati durante il 
 \end{longtable}
 \subsubsubsection{Conclusioni}
 Come si può notare dalla tabella, il BV è negativo, in quanto non sono state pianificate alcune attività correttive, ed è stato messo a budget il costo necessario per effettuare queste attività non previste.\\
-Lo SV invece è pari a zero, in quanto l'ampio slack di tempo pianificato è servito a coprire le correzioni non previste e di conseguenza non è stato prodotto niente di più rispetto a quanto pianificato. 
+Lo SV invece è pari a zero, in quanto l'ampio slack di tempo pianificato è servito a coprire le correzioni non previste e di conseguenza non è stato prodotto niente di più rispetto a quanto pianificato.
 \subsubsubsection{Documenti}
 Di seguito vengono riportati, per ogni documento, i valori dell'indice di Gulpease calcolati durante il periodo di tempo dedicato all'Analisi in Dettaglio.
 
@@ -171,7 +171,7 @@ Di seguito vengono riportati i valori degli indici SV e BV calcolati durante il 
 \end{longtable}
 
 \subsubsubsection{Conclusioni}
-Lo SV è positivo, in quanto lo slack dedicato al documento Norme di Progetto ha permesso l'aggiunta di valore non pianificato, come l'aggiunta di sezioni.\\
+Lo SV è positivo, in quanto lo slack dedicato al documento Norme di Progetto ha \gloss{permesso} l'aggiunta di valore non pianificato, come l'aggiunta di sezioni.\\
 Il BV è positivo, e nonostante il fatto che si è dedicato più tempo alla progettazione, e quindi dedicandoci più budget; a causa di questo si è riuscito a risparmiare budget per le attività dedicate agli altri documenti, dedicando maggior budget per la Verifica della progettazione, che nella pianificazione non era adeguato, e togliendone da altre attività.
 \subsubsubsection{Documenti}
 Di seguito vengono riportati, per ogni documento, i valori dell'indice di Gulpease calcolati durante il periodo di tempo dedicato alla Progettazione Architetturale.
@@ -206,78 +206,78 @@ Viene qui riportata una tabella riassuntiva che riporta il calcolo dei parametri
 \toprule
 \textbf{Componente} & \textbf{Afferente} & \textbf{Efferente} \\
 
-\midrule 
+\midrule
 MaaP::Server
 & 1 & 0\\
 
-\midrule 
+\midrule
 MaaP::Server::ModelServer
 & 3 & 0\\
 
-\midrule 
-MaaP::Server::ModelServer::DataManager 
+\midrule
+MaaP::Server::ModelServer::DataManager
 & 1 & 4\\
 
 \midrule
-MaaP::Server::ModelServer::DataManager::DatabaseAnalysisManager 
+MaaP::Server::ModelServer::DataManager::DatabaseAnalysisManager
 & 1 & 7\\
 
-\midrule 
-MaaP::Server::ModelServer::DataManager::DatabaseUserManager 
+\midrule
+MaaP::Server::ModelServer::DataManager::DatabaseUserManager
 & 1 & 4\\
 
 
-\midrule 
+\midrule
 MaaP::Server::ModelServer::DataManager::IndexManager
 & 1 & 2\\
 
 
-\midrule 
+\midrule
 MaaP::Server::ModelServer::Database
 & 4 & 0\\
 
 
-\midrule 
+\midrule
 MaaP::Server::ModelServer::DSL
 & 1 & 0\\
 
-\midrule 
-MaaP::Server::Controller 
+\midrule
+MaaP::Server::Controller
 & 1 & 4\\
 
-\midrule 
-MaaP::Client 
+\midrule
+MaaP::Client
 & 0 & 1\\
 
-\midrule 
-MaaP::Client::View 
+\midrule
+MaaP::Client::View
 & 0 & 6\\
 
-\midrule 
+\midrule
 MaaP::Client::View::Template
 & 0 & 6\\
 
-\midrule 
+\midrule
 MaaP::Client::ControllerModelView
 & 12 & 2\\
 
-\midrule 
+\midrule
 MaaP::Client::ControllerModelView::ControllerClient
 & 12 & 7\\
 
-\midrule 
+\midrule
 MaaP::Client::ControllerModelView::Scope
 & 5 & 0\\
 
-\midrule 
+\midrule
 MaaP::Client::ModelClient
 & 2 & 1\\
 
-\midrule 
+\midrule
 MaaP::Client::ModelClient::Services
 & 1 & 1\\
 
-\midrule 
+\midrule
 MaaP::Client::ModelClient::Model
 & 1 & 0\\
 
