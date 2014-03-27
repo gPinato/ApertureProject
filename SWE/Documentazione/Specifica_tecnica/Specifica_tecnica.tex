@@ -22,8 +22,8 @@
 \textbf{Stato del Documento} & Formale \\		          %CAMBIARE QUI
 \textbf{Uso del Documento} & Esterno \\			          %CAMBIARE QUI
 \textbf{Redazione} &  Pinato Giacomo, Mattia Sorgato\\	  %CAMBIARE QUI
-					& Michele Maso, Fabio Miotto\\
-					& Alessandro Benetti, Andrea Perin\\
+& Michele Maso, Fabio Miotto\\
+& Alessandro Benetti, Andrea Perin\\
 \textbf{Verifica} & Alberto Garbui, Alessandro Benetti\\  %ED ANCHE QUI!
 \textbf{Approvazione} & Michele Maso\\				      %CAMBIARE QUI
 \textbf{Distribuzione} & \parbox[t]{4cm}{\NomeGruppo{}\\Prof. Vardanega Tullio\\Prof. Cardin Riccardo\\ \Prop{} }\\
@@ -98,7 +98,7 @@ Diario delle modifiche
 \newpage
 \section{Introduzione}
 \subsection{Scopo del documento}
-Il presente documento ha lo scopo di definire la progettazione ad alto livello del progetto \textbf{MaaP}, a partire dai requisiti individuati durante l'Analisi. Verrà presentata l'architettura generale secondo la quale saranno organizzate le varie componenti software, i \gloss{Design Pattern} e le tecnologie utilizzate per poi descrivere più dettagliatamente le varie componenti e relative dipendenze.
+Il presente documento ha lo scopo di definire la progettazione ad alto livello del progetto \textbf{\gloss{MaaP}}, a partire dai requisiti individuati durante l'Analisi. Verrà presentata l'\gloss{architettura} generale secondo la quale saranno organizzate le varie componenti \gloss{software}, i \gloss{Design Pattern} e le tecnologie utilizzate per poi descrivere più dettagliatamente le varie componenti e relative dipendenze.
 
 \subsection{Scopo del prodotto}
 \Prodotto{}
@@ -125,31 +125,31 @@ Il presente documento ha lo scopo di definire la progettazione ad alto livello d
 
 \newpage
 \section{Tecnologie utilizzate}
-In questa sezione verranno elencate e descritte le tecnologie che si utilizzeranno durante lo sviluppo del progetto. In particolare la colonna portante del progetto sarà lo stack MEAN, ovvero MongoDB, Express, AngularJS e Node.js.
+In questa sezione verranno elencate e descritte le tecnologie che si utilizzeranno durante lo sviluppo del progetto. In particolare la colonna portante del progetto sarà lo \gloss{stack} \gloss{MEAN}, ovvero \gloss{MongoDB}, \gloss{Express}, \gloss{AngularJS} e \gloss{Node.js}.
 
 \subsection{MongoDB}
-Il database con il quale la nostra applicazione dovrà interagire è realizzato con MongoDB, come specificato nel capitolato. Questa tecnologia offre i seguenti vantaggi:
+Il \gloss{database} con il quale la nostra applicazione dovrà interagire è realizzato con MongoDB, come specificato nel capitolato. Questa tecnologia offre i seguenti vantaggi:
 \begin{itemize}
 \item Facile indicizzazione: Ogni campo in MongoDB può diventare un indice;
-\item Bilanciamento di carico: MongoDB scala orizzontalmente molto facilmente grazie all'utilizzo di Shard;
-\item Integrazione con Javascript: Query o altre funzioni scritte in Javascript possono essere eseguite direttamente dal database.
+\item Bilanciamento di carico: MongoDB \gloss{scala} orizzontalmente molto facilmente grazie all'utilizzo di \gloss{Shard};
+\item Integrazione con Javascript: \gloss{Query} o altre funzioni scritte in Javascript possono essere eseguite direttamente dal database.
 \end{itemize}
 
 \subsection{Javascript}
-Si è deciso di utilizzare Javascript in quanto è il linguaggio su cui si basano tutte le altre tecnologie che andremo ad utilizzare, e offre quindi una facile integrazione, oltre ad essere un ottimo linguaggio per applicazioni web e client side.
+Si è deciso di utilizzare Javascript in quanto è il linguaggio su cui si basano tutte le altre tecnologie che andremo ad utilizzare, e offre quindi una facile integrazione, oltre ad essere un ottimo linguaggio per applicazioni \gloss{web} e \gloss{client} side.
 
 \subsection{NodeJs}
 Si è deciso di utilizzare il linguaggio Node.js in quanto consigliato dal capitolato e adatto al progetto. Le sue caratteristiche più vantaggiose sono:
 \begin{itemize}
-\item Modello Event-driven: ovvero "programmazione ad eventi", che si basa su un concetto semplice: il flusso del programma non segue un corso specifico ma è guidato dalle azioni dell'utilizzatore;
-\item Modello asincrono: grazie a questa caratteristica è possibile ridurre al minimo i tempi di morti in quanto, nell'attesa del completamento di una operazione, si procede con altri flussi logici. 
+\item Modello \gloss{Event-driven}: ovvero "programmazione ad eventi", che si basa su un concetto semplice: il flusso del \gloss{programma} non segue un corso specifico ma è guidato dalle azioni dell'utilizzatore;
+\item Modello asincrono: grazie a questa caratteristica è possibile ridurre al minimo i tempi di morti in quanto, nell'attesa del completamento di una operazione, si procede con altri flussi logici.
 \item Grande scalabilità: Grazie al modo in cui è implementato, Node.js riesce ad essere largamente scalabile con minimo sforzo.
 \end{itemize}
 
 \subsection{JSON}
-Rappresenta il tipo di messaggi con cui client e server si scambiano informazioni. I vantaggi offerti sono:
+Rappresenta il tipo di messaggi con cui client e \gloss{server} si scambiano informazioni. I vantaggi offerti sono:
 \begin{itemize}
-\item Semplicità: i messaggi JSON sono più corti rispetto ad altri formati di interscambio, e vengono eseguiti più velocemente dal \gloss{parser}. JSON inoltre risulta più semplice e immediato rispetto ad esempio a XML.
+\item Semplicità: i messaggi \gloss{JSON} sono più corti rispetto ad altri formati di interscambio, e vengono eseguiti più velocemente dal \gloss{parser}. JSON inoltre risulta più semplice e immediato rispetto ad esempio a XML.
 \end{itemize}
 Svantaggi:
 \begin{itemize}
@@ -158,136 +158,136 @@ Svantaggi:
 
 \subsection{AngularJs}
 \begin{itemize}
-\item \gloss{Two Way Data-Binding}: Una delle caratteristiche principali di angular. Le modifiche apportate al model si rifletto direttamente sugli elementi del DOM, e le modifiche al DOM si ripercuotono automaticamente sul model. Questo alleggerisce tremendamente il codice necessario a controllare ad ascoltare e gestire il DOM, automatizzando il processo. E noi sappiamo che automatico è bene.
-\item Templates: I template HTML sono parsati dal browser nel DOM, il quale costituisce poi l'input per il compilatore Angular. Quest'ultimo poi crea il data binding tra il DOM e lo scope dei dati. Uno dei più grandi vantaggi di questa tecnica è che separa presentazione da implementazione, in quanto i template html possono modificati senza alterare il modo in cui sono inseriti i dati.
-\item Dependency Injection: Angular possiede nativamente una "dependency injection", che aiuta gli sviluppatori facilitando la creazione, la comprensione e il testing dell'applicazione.
-\item Directives: Le directives possono essere usate per definire tag HTML personalizzati che fungono da widget. Possono inoltre essere usate per "decorare" elementi con comportamenti personalizzati o per manipolare attributi del DOM. 
+\item \gloss{Two Way Data-Binding}: Una delle caratteristiche principali di angular. Le modifiche apportate al \gloss{model} si rifletto direttamente sugli elementi del \gloss{DOM}, e le modifiche al DOM si ripercuotono automaticamente sul model. Questo alleggerisce tremendamente il \gloss{codice} necessario a controllare ad ascoltare e gestire il DOM, automatizzando il \gloss{processo}. E noi sappiamo che automatico è bene.
+\item Templates: I \gloss{template} \gloss{HTML} sono parsati dal \gloss{browser} nel DOM, il quale costituisce poi l'\gloss{input} per il compilatore Angular. Quest'ultimo poi crea il data binding tra il DOM e lo \gloss{scope} dei dati. Uno dei più grandi vantaggi di questa tecnica è che separa presentazione da implementazione, in quanto i template html possono modificati senza alterare il modo in cui sono inseriti i dati.
+\item \gloss{Dependency Injection}: Angular possiede nativamente una "dependency injection", che aiuta gli sviluppatori facilitando la creazione, la comprensione e il \gloss{testing} dell'applicazione.
+\item \gloss{Directives}: Le directives possono essere usate per definire tag HTML personalizzati che fungono da \gloss{widget}. Possono inoltre essere usate per "decorare" elementi con comportamenti personalizzati o per manipolare attributi del DOM.
 
 \end{itemize}
 
 \subsection{HTML5}
-L'\gloss{HTML5} è un linguaggio di markup per la strutturazione delle pagine web.\\
+L'\gloss{HTML5} è un \gloss{linguaggio di markup} per la strutturazione delle \gloss{pagine web}.\\
 Nel progetto MaaP è stato scelto di utilizzare l'HTML5 perché introduce novità finalizzate soprattutto a migliorare il \gloss{disaccoppiamento} tra struttura, definita dal markup, caratteristiche di resa (tipo di carattere, colori, eccetera), definite dalle direttive di stile, e contenuti di una pagina web, definiti dal testo vero e proprio.\\
-Inoltre l'HTML5 prevede il supporto per la memorizzazione locale di grosse quantità di dati scaricati dal web browser, ideale per consentire l'utilizzo di applicazioni web e quindi per il framework MaaP.
+Inoltre l'HTML5 prevede il supporto per la memorizzazione locale di grosse quantità di dati scaricati dal web browser, ideale per consentire l'utilizzo di applicazioni web e quindi per il \gloss{framework} MaaP.
 
 \newpage
 \section{Descrizione architettura}
 \subsection{Metodo e formalismo di specifica}
-Si è deciso di procedere utilizzando un approccio Top-down per l'esposizione dell'architettura dell'applicazione, ovvero descrivendo inizialmente le componenti in generale per poi arrivare a trattarle al particolare.
-Si descriveranno i package e i componenti per poi dettagliare le singole classi, specificando per ciascuna di esse il tipo, l'obiettivo e la funzionalità. Poi si passerà ad illustrare degli esempi d'uso di Design Pattern (descritti approfonditamente nell'Appendice A) e le tecnologie utilizzate.
+Si è deciso di procedere utilizzando un approccio \gloss{Top-down} per l'esposizione dell'architettura dell'applicazione, ovvero descrivendo inizialmente le componenti in generale per poi arrivare a trattarle al particolare.
+Si descriveranno i \gloss{package} e i componenti per poi dettagliare le singole classi, specificando per ciascuna di esse il tipo, l'obiettivo e la funzionalità. Poi si passerà ad illustrare degli esempi d'uso di Design Pattern (descritti approfonditamente nell'\gloss{Appendice} A) e le tecnologie utilizzate.
 
 
 \subsection{Architettura generale}
-L'architettura del framework segue un modello di architettura in stile Client-server che prevede la suddivisione dell'applicazione  in due parti: la parte client composta dall'interfaccia utente (Client) e la parte server composta dalla business logic (Controller) e alla gestione dei dati persistenti (ModelServer). La parte Client segue il design pattern MVVM utilizzato da AngularJS ed è quindi suddivisa in Model, View, ViewModel.\\
+L'architettura del framework segue un modello di architettura in stile Client-server che prevede la suddivisione dell'applicazione  in due parti: la parte client composta dall'\gloss{interfaccia} \gloss{utente} (Client) e la parte server composta dalla \gloss{business} logic (Controller) e alla gestione dei dati persistenti (ModelServer). La parte Client segue il design pattern \gloss{MVVM} utilizzato da AngularJS ed è quindi suddivisa in Model, \gloss{View}, \gloss{ViewModel}.\\
 
 I seguenti diagrammi rappresentano l'architettura ad alto livello del framework, indicando i package e le relazioni che intercorrono tra questi.
 
 \subsubsection{MaaPCLI}
 \subsubsubsection{Informazioni sul package}
-\immagine{./Diagrammi/Installer}{Diagramma delle classi relativo alla gestione del framework da parte dell'utente sviluppatore}
+\immagine{./Diagrammi/Installer}{\gloss{Diagramma delle classi} relativo alla gestione del framework da parte dell'utente \gloss{sviluppatore}}
 \subsubsubsection{Descrizione}
-Namespace globale per lo strumento di installazione e gestione del framework. Contiene le classi che gestiscono l'installazione del framework nel sistema, l'inizializzazione e gestione dello stesso.
+\gloss{Namespace} globale per lo strumento di installazione e gestione del framework. Contiene le classi che gestiscono l'installazione del framework nel sistema, l'inizializzazione e gestione dello stesso.
 
 \subsubsubsection{Classi}
 
-	\subsubsubsubsubsection{CLI}
-	\grassetto{Nome}\\
-	MaaPCLI::CLI\\
-	\grassetto{Descrizione}\\
-	Classe che rappresenta l'interfaccia a riga di comando.\\
-	\grassetto{Utilizzo}\\
-	Viene utilizzata dall'utente sviluppatore per interagire con il framework.\\
-	\grassetto{Relazioni con altre classi}
-	\begin{itemize}
-	\item\grassetto{MaaPCLI::Installer}\\
-	Relazione uscente, contiene un riferimento ad un oggetto di tipo Installer per avviare l'installazione del framework;
-	\item\grassetto{MaaPCLI::ProjectFacade}\\
-	Relazione uscente, contiene un riferimento ad un oggetto di tipo ProjectFacade per creare un nuovo progetto, clonare uno esistente oppure eliminarlo;
-	\item\grassetto{MaaPCLI::InstanceManager}\\
-	Relazione uscente, contiene un riferimento ad un oggetto di tipo InstanceManager per istanziare una istanza di progetto MaaP precedentemente creato.
-	\end{itemize}
-	
-	\subsubsubsubsubsection{Installer}
-	\grassetto{Nome}\\
-	MaaPCLI::Installer\\
-	\grassetto{Descrizione}\\
-	Classe che rappresenta lo script di installazione del framework.\\
-	\grassetto{Utilizzo}\\
-	Viene utilizzata dall'utente sviluppatore per installare il framework e relative dipendenze nel sistema in uso.\\
-	\grassetto{Relazioni con altre classi}
-	\begin{itemize}
-	\item\grassetto{MaaPCLI::CLI}\\
-	Relazione entrante, interazione con l'interfaccia a riga di comando.
-	\end{itemize}
-	
-	\subsubsubsubsubsection{InstanceManager}
-	\grassetto{Nome}\\
-	MaaPCLI::InstanceManager\\
-	\grassetto{Descrizione}\\
-	Classe che rappresenta lo script per l'avvio di un'istanza di un progetto esistente.\\
-	\grassetto{Utilizzo}\\
-	Viene utilizzata dall'utente sviluppatore per avviare il server caricando un determinato progetto.\\
-	\grassetto{Relazioni con altre classi}
-	\begin{itemize}
-	\item\grassetto{MaaPCLI::CLI}\\
-	Relazione entrante, interazione con l'interfaccia a riga di comando.
-	\end{itemize}
-	
-	\subsubsubsubsubsection{ProjectFacade}
-	\grassetto{Nome}\\
-	MaaPCLI::ProjectFacade\\
-	\grassetto{Descrizione}\\
-	Classe che rappresenta la classe Facade nel design pattern Facade\\
-	\grassetto{Utilizzo}\\
-	Viene utilizzata dall'utente sviluppatore per interagire con il framework per la creazione di un nuovo progetto e/o per la clonazione, eliminazione di un progetto esistente.\\
-	\grassetto{Relazioni con altre classi}
-	\begin{itemize}
-	\item\grassetto{MaaPCLI::ProjectCreate}\\
-	Relazione uscente, contiene un riferimento ad un oggetto di tipo ProjectCreate per avviare la creazione di un nuovo progetto;
-	\item\grassetto{MaaPCLI::ProjectClone}\\
-	Relazione uscente, contiene un riferimento ad un oggetto di tipo ProjectClone per avviare la clonazione di un progetto esistente;
-	\item\grassetto{MaaPCLI::ProjectRemove}\\
-	Relazione uscente, contiene un riferimento ad un oggetto di tipo ProjectRemove per eliminare un progetto esistente;
-	\end{itemize}
-	
-	\subsubsubsubsubsection{ProjectCreate}
-	\grassetto{Nome}\\
-	MaaPCLI::ProjectCreate\\
-	\grassetto{Descrizione}\\
-	Classe che rappresenta una classe del design patter Facade.\\
-	\grassetto{Utilizzo}\\
-	Viene utilizzata dall'utente sviluppatore per avviare la creazione di un nuovo progetto.\\
-	\grassetto{Relazioni con altre classi}
-	\begin{itemize}
-	\item\grassetto{MaaPCLI::ProjectFacade}\\
-	Relazione entrante, interazione con la facciata ProjectFacade.
-	\end{itemize}
-	
-	\subsubsubsubsubsection{ProjectClone}
-	\grassetto{Nome}\\
-	MaaPCLI::ProjectClone\\
-	\grassetto{Descrizione}\\
-	Classe che rappresenta una classe del design patter Facade.\\
-	\grassetto{Utilizzo}\\
-	Viene utilizzata dall'utente sviluppatore per avviare la clonazione di un progetto esistente.\\
-	\grassetto{Relazioni con altre classi}
-	\begin{itemize}
-	\item\grassetto{MaaPCLI::ProjectFacade}\\
-	Relazione entrante, interazione con la facciata ProjectFacade.
-	\end{itemize}
-	
-	\subsubsubsubsubsection{ProjectRemove}
-	\grassetto{Nome}\\
-	MaaPCLI::ProjectRemove\\
-	\grassetto{Descrizione}\\
-	Classe che rappresenta una classe del design patter Facade.\\
-	\grassetto{Utilizzo}\\
-	Viene utilizzata dall'utente sviluppatore per eliminare un progetto esistente.\\
-	\grassetto{Relazioni con altre classi}
-	\begin{itemize}
-	\item\grassetto{MaaPCLI::ProjectFacade}\\
-	Relazione entrante, interazione con la facciata ProjectFacade.
-	\end{itemize}
+\subsubsubsubsubsection{CLI}
+\grassetto{Nome}\\
+MaaPCLI::CLI\\
+\grassetto{Descrizione}\\
+\gloss{Classe} che rappresenta l'interfaccia a riga di comando.\\
+\grassetto{Utilizzo}\\
+Viene utilizzata dall'\gloss{utente sviluppatore} per interagire con il framework.\\
+\grassetto{Relazioni con altre classi}
+\begin{itemize}
+\item\grassetto{MaaPCLI::Installer}\\
+Relazione uscente, contiene un riferimento ad un oggetto di tipo Installer per avviare l'installazione del framework;
+\item\grassetto{MaaPCLI::ProjectFacade}\\
+Relazione uscente, contiene un riferimento ad un oggetto di tipo ProjectFacade per creare un nuovo progetto, clonare uno esistente oppure eliminarlo;
+\item\grassetto{MaaPCLI::InstanceManager}\\
+Relazione uscente, contiene un riferimento ad un oggetto di tipo InstanceManager per istanziare una \gloss{istanza} di progetto MaaP precedentemente creato.
+\end{itemize}
+
+\subsubsubsubsubsection{Installer}
+\grassetto{Nome}\\
+MaaPCLI::Installer\\
+\grassetto{Descrizione}\\
+Classe che rappresenta lo \gloss{script} di installazione del framework.\\
+\grassetto{Utilizzo}\\
+Viene utilizzata dall'utente sviluppatore per installare il framework e relative dipendenze nel sistema in uso.\\
+\grassetto{Relazioni con altre classi}
+\begin{itemize}
+\item\grassetto{MaaPCLI::CLI}\\
+Relazione entrante, interazione con l'interfaccia a riga di comando.
+\end{itemize}
+
+\subsubsubsubsubsection{InstanceManager}
+\grassetto{Nome}\\
+MaaPCLI::InstanceManager\\
+\grassetto{Descrizione}\\
+Classe che rappresenta lo script per l'avvio di un'istanza di un progetto esistente.\\
+\grassetto{Utilizzo}\\
+Viene utilizzata dall'utente sviluppatore per avviare il server caricando un determinato progetto.\\
+\grassetto{Relazioni con altre classi}
+\begin{itemize}
+\item\grassetto{MaaPCLI::CLI}\\
+Relazione entrante, interazione con l'interfaccia a riga di comando.
+\end{itemize}
+
+\subsubsubsubsubsection{ProjectFacade}
+\grassetto{Nome}\\
+MaaPCLI::ProjectFacade\\
+\grassetto{Descrizione}\\
+Classe che rappresenta la classe \gloss{Facade} nel design pattern Facade\\
+\grassetto{Utilizzo}\\
+Viene utilizzata dall'utente sviluppatore per interagire con il framework per la creazione di un nuovo progetto e/o per la clonazione, eliminazione di un progetto esistente.\\
+\grassetto{Relazioni con altre classi}
+\begin{itemize}
+\item\grassetto{MaaPCLI::ProjectCreate}\\
+Relazione uscente, contiene un riferimento ad un oggetto di tipo ProjectCreate per avviare la creazione di un nuovo progetto;
+\item\grassetto{MaaPCLI::ProjectClone}\\
+Relazione uscente, contiene un riferimento ad un oggetto di tipo ProjectClone per avviare la clonazione di un progetto esistente;
+\item\grassetto{MaaPCLI::ProjectRemove}\\
+Relazione uscente, contiene un riferimento ad un oggetto di tipo ProjectRemove per eliminare un progetto esistente;
+\end{itemize}
+
+\subsubsubsubsubsection{ProjectCreate}
+\grassetto{Nome}\\
+MaaPCLI::ProjectCreate\\
+\grassetto{Descrizione}\\
+Classe che rappresenta una classe del design patter Facade.\\
+\grassetto{Utilizzo}\\
+Viene utilizzata dall'utente sviluppatore per avviare la creazione di un nuovo progetto.\\
+\grassetto{Relazioni con altre classi}
+\begin{itemize}
+\item\grassetto{MaaPCLI::ProjectFacade}\\
+Relazione entrante, interazione con la facciata ProjectFacade.
+\end{itemize}
+
+\subsubsubsubsubsection{ProjectClone}
+\grassetto{Nome}\\
+MaaPCLI::ProjectClone\\
+\grassetto{Descrizione}\\
+Classe che rappresenta una classe del design patter Facade.\\
+\grassetto{Utilizzo}\\
+Viene utilizzata dall'utente sviluppatore per avviare la clonazione di un progetto esistente.\\
+\grassetto{Relazioni con altre classi}
+\begin{itemize}
+\item\grassetto{MaaPCLI::ProjectFacade}\\
+Relazione entrante, interazione con la facciata ProjectFacade.
+\end{itemize}
+
+\subsubsubsubsubsection{ProjectRemove}
+\grassetto{Nome}\\
+MaaPCLI::ProjectRemove\\
+\grassetto{Descrizione}\\
+Classe che rappresenta una classe del design patter Facade.\\
+\grassetto{Utilizzo}\\
+Viene utilizzata dall'utente sviluppatore per eliminare un progetto esistente.\\
+\grassetto{Relazioni con altre classi}
+\begin{itemize}
+\item\grassetto{MaaPCLI::ProjectFacade}\\
+Relazione entrante, interazione con la facciata ProjectFacade.
+\end{itemize}
 
 \subsubsection{Package}
 \immagine{./Diagrammi/GeneralePackage}{Architettura generale del software - vista package}
@@ -299,13 +299,13 @@ Vengono inoltre presentati tutti i sotto-package così da facilitare la comprens
 Nel precedente diagramma è presente l'architettura ad alto livello del software e vengono indicate le classi fondamentali per rappresentare le relazioni dell'architettura Client-server. I diagrammi di sequenza relativi allo scambio di segnali, lo scopo ed il contesto di utilizzo sono presenti nella sezione ????.
 
 \subsubsubsection{Server}
-La parte Server è composta da due package: ModelServer per la gestione dei dati persistenti ed il Controller per la gestione della business logic.\\
+La parte Server è composta da due package: ModelServer per la gestione dei dati persistenti ed il \gloss{Controller} per la gestione della \gloss{business logic}.\\
 \subsubsubsubsection{ModelServer}
 \immagine{./Diagrammi/ModelServerClassi}{Diagramma delle classi del ModelServer}
 Nel ModelServer sono presenti oggetti che rappresentano:
 \begin{itemize}
 \item Il database di analisi e quello degli utenti;
-\item La gestione del file DSL e il suo parsing;
+\item La gestione del file \gloss{DSL} e il suo \gloss{parsing};
 \item La gestione dei dati richiesti dal controller.
 \end{itemize}
 Tutte le operazioni di gestione, modifica e recupero dei dati vengono messe a disposizione dal model. In tal modo il controller è responsabile solamente di gestire la logica dell'applicazione.
@@ -342,7 +342,7 @@ Namespace globale per il progetto. Le relazioni tra i package Server e Client id
 \subsubsection{Informazioni sul package}
 \immagine{./Diagrammi/ComponentiServer}{Componenti Server}
 \subsubsubsection{Descrizione}
-Package per il componente Server del modello di architettura Client-server.
+Package per il \gloss{componente} Server del modello di architettura Client-server.
 \subsubsubsection{Sotto-componenti}
 \begin{itemize}
 \item MaaP::Server::ModelServer
@@ -375,39 +375,39 @@ Componente parte del ModelServer per la gestione dei dati.
 \end{itemize}
 \subsubsubsection{Classi}
 
-	\subsubsubsubsection{JSonComposer}
-	\grassetto{Nome}\\
-	MaaP::Server::ModelServer::DataManager::JSonComposer\\
-	\grassetto{Descrizione}\\
-	Classe che costruisce un file JSON a partire dalla struttura di una Collection, o di un Document, e dai suoi dati.\\
-	\grassetto{Utilizzo}\\
-	Viene utilizzata dai DatabaseManager per costruire il file JSON da inviare al Controller.
+\subsubsubsubsection{JSonComposer}
+\grassetto{Nome}\\
+MaaP::Server::ModelServer::DataManager::JSonComposer\\
+\grassetto{Descrizione}\\
+Classe che costruisce un file JSON a partire dalla struttura di una \gloss{Collection}, o di un \gloss{Document}, e dai suoi dati.\\
+\grassetto{Utilizzo}\\
+Viene utilizzata dai DatabaseManager per costruire il file JSON da inviare al Controller.
 
-	\subsubsubsubsection{IDatabaseManager}
-	\grassetto{Nome}\\
-	MaaP::Server::ModelServer::DataManager::IDatabaseManager\\
-	\grassetto{Descrizione}\\
-	Interfaccia che rappresenta il gestore dei database. Contiene tutte le operazioni che si possono effettuare sul database e l'elaborazione dei dati recuperati da essi.\\
-	\grassetto{Utilizzo}\\
-	Viene utilizzata per la gestione delle richieste inoltrate dal Controller.\\
-	\grassetto{Classi che ereditano}
-	\begin{itemize}
-	\item MaaP::Server::ModelServer::DataManager::DatabaseAnalysisManager::DatabaseAnalysisManager;
-	\item MaaP::Server::ModelServer::DataManager::DatabaseUserManager::DatabaseUserManager.	
-	\end{itemize}
+\subsubsubsubsection{IDatabaseManager}
+\grassetto{Nome}\\
+MaaP::Server::ModelServer::DataManager::IDatabaseManager\\
+\grassetto{Descrizione}\\
+Interfaccia che rappresenta il gestore dei database. Contiene tutte le operazioni che si possono effettuare sul database e l'elaborazione dei dati recuperati da essi.\\
+\grassetto{Utilizzo}\\
+Viene utilizzata per la gestione delle richieste inoltrate dal Controller.\\
+\grassetto{Classi che ereditano}
+\begin{itemize}
+\item MaaP::Server::ModelServer::DataManager::DatabaseAnalysisManager::DatabaseAnalysisManager;
+\item MaaP::Server::ModelServer::DataManager::DatabaseUserManager::DatabaseUserManager.
+\end{itemize}
 
-	\subsubsubsubsection{IDataRetriever}
-	\grassetto{Nome}\\
-	MaaP::Server::ModelServer::DataManager::IDataRetriever\\
-	\grassetto{Descrizione}\\
-	Interfaccia attraverso cui i DatabaseManager dialogano con i batabase. Contiene le operazioni di lettura e scrittura nei database.\\
-	\grassetto{Utilizzo}\\
-	Viene utilizzata per recuperare e inserire dati, sui database, su richiesta dei DataManager.\\
-	\grassetto{Classi che ereditano}
-	\begin{itemize}
-	\item MaaP::Server::ModelServer::DataManager::DatabaseAnalysisManager::DataRetrieverAnalysis;
-	\item MaaP::Server::ModelServer::DataManager::DatabaseUserManager::DataRetrieverUsers.	
-	\end{itemize}
+\subsubsubsubsection{IDataRetriever}
+\grassetto{Nome}\\
+MaaP::Server::ModelServer::DataManager::IDataRetriever\\
+\grassetto{Descrizione}\\
+Interfaccia attraverso cui i DatabaseManager dialogano con i batabase. Contiene le operazioni di lettura e scrittura nei database.\\
+\grassetto{Utilizzo}\\
+Viene utilizzata per recuperare e inserire dati, sui database, su richiesta dei DataManager.\\
+\grassetto{Classi che ereditano}
+\begin{itemize}
+\item MaaP::Server::ModelServer::DataManager::DatabaseAnalysisManager::DataRetrieverAnalysis;
+\item MaaP::Server::ModelServer::DataManager::DatabaseUserManager::DataRetrieverUsers.
+\end{itemize}
 
 \subsubsubsection{MaaP::Server::ModelServer::DataManager::DatabaseAnalysisManager}
 \subsubsubsubsection{Informazioni sul package}
@@ -432,7 +432,7 @@ Viene utilizzata per la gestione delle richieste, relative al database di analis
 \item\grassetto{MaaP::Server::ModelServer::DataManager::JSonComposer}\\
 Relazione uscente, utilizza un riferimento a un oggetto di tipo JsonComposer per ottenere il JSON da spedire;
 \item\grassetto{MaaP::Server::ModelServer::DSL::CollectionData}\\
-Relazione uscente, utilizza un riferimento a un oggetto CollectionData che contiene la struttura di un file di descrizione;
+Relazione uscente, utilizza un riferimento a un oggetto CollectionData che contiene la struttura di un \gloss{file di descrizione};
 \item\grassetto{MaaP::Server::ModelServer::DataManager::DataAnalysisManager::DataRetrieverAnalysis}\\
 Relazione uscente, utilizza un riferimento a un oggetto DataRetrieverAnalysis per relazionarsi con il database di analisi;
 \item\grassetto{MaaP::Server::ModelServer::DataManager::IndexManager::IndexManager}\\
@@ -517,22 +517,22 @@ Relazione uscente, utilizza un riferimento a un oggetto di tipo MongooseDBFramew
 \subsubsubsubsection{Descrizione}
 Componente parte del DataManager per la creazione e gestione degli indici.
 \subsubsubsubsection{Classi}
-	\subsubsubsubsubsection{IndexManager}
-	\grassetto{Nome}\\
-	MaaP::Server::ModelServer::DataManager::IndexManager::IndexManager\\
-	\grassetto{Descrizione}\\
-	Classe che rappresenta il gestore degli indici. Contiene tutte le operazioni per la creazione degli indici.\\
-	\grassetto{Utilizzo}\\
-	Viene utilizzata per la creazione di indici personalizzati su richiesta del DatavaseAnalysisManager.\\
-	\grassetto{Relazioni con altre classi}
-	\begin{itemize}
-	\item\grassetto{MaaP::Server::ModelServer::DataManager::DatabaseAnalysisManager::DatabaseAnalysisManager}\\
-	Relazione entrante, interazione con il database;
-	\item\grassetto{MaaP::Server::ModelServer::DataManager::Database::MongooseDBAnalysis}\\
-	Relazione uscente, utilizza un riferimento ad un oggetto di tipo MongooseDBAnalysis per creare lo schema dei dati del database di analisi e per interagire con essi;
-	\item\grassetto{MaaP::Server::ModelServer::DataManager::Database::Query}\\
-	Relazione uscente debole, utilizza un riferimento ad un oggetto Query per il recupero delle query più utilizzate.
-	\end{itemize}
+\subsubsubsubsubsection{IndexManager}
+\grassetto{Nome}\\
+MaaP::Server::ModelServer::DataManager::IndexManager::IndexManager\\
+\grassetto{Descrizione}\\
+Classe che rappresenta il gestore degli indici. Contiene tutte le operazioni per la creazione degli indici.\\
+\grassetto{Utilizzo}\\
+Viene utilizzata per la creazione di indici personalizzati su richiesta del DatavaseAnalysisManager.\\
+\grassetto{Relazioni con altre classi}
+\begin{itemize}
+\item\grassetto{MaaP::Server::ModelServer::DataManager::DatabaseAnalysisManager::DatabaseAnalysisManager}\\
+Relazione entrante, interazione con il database;
+\item\grassetto{MaaP::Server::ModelServer::DataManager::Database::MongooseDBAnalysis}\\
+Relazione uscente, utilizza un riferimento ad un oggetto di tipo MongooseDBAnalysis per creare lo schema dei dati del database di analisi e per interagire con essi;
+\item\grassetto{MaaP::Server::ModelServer::DataManager::Database::Query}\\
+Relazione uscente debole, utilizza un riferimento ad un oggetto Query per il recupero delle query più utilizzate.
+\end{itemize}
 
 \subsubsection{MaaP::Server::ModelServer::Database}
 \subsubsubsection{Informazioni sul package}
@@ -541,122 +541,122 @@ Componente parte del DataManager per la creazione e gestione degli indici.
 Componente parte del ModelServer per la gestione dei dati.
 \subsubsubsection{Classi}
 
-	\subsubsubsubsection{MongooseDBAnalysis}
-	\grassetto{Nome}\\
-	MaaP::Server::ModelServer::Database::MongooseDBAnalysis\\
-	\grassetto{Descrizione}\\
-	Classe che rappresenta l'interfaccia di connessione con il database di analisi.\\
-	\grassetto{Utilizzo}\\
-	Viene utilizzata per interfacciarsi con il database di analisi fornendo uno schema adeguato.\\
-	\grassetto{Classi da cui eredita}
-	\begin{itemize}
-	\item MaaP::Server::ModelServer::Database::Mongoose;
-	\end{itemize}
-	\grassetto{Relazioni con altre classi}
-	\begin{itemize}
-	\item\grassetto{MaaP::Server::ModelServer::DataManager::DatabaseAnalysisManager::DataRetrieverAnalysis}\\
-	Relazione entrante, interazione con il database di analisi;
-	\item\grassetto{MaaP::Server::ModelServer::DataManager::IndexManager::IndexManager}\\
-	Relazione entrante, interazione con il database di analisi;
-	\item\grassetto{MaaP::Server::ModelServer::Database::DBAnalysis}\\
-	Relazione uscente debole, utilizza un riferimento al database di analisi a cui connettersi.
-	\end{itemize}
-		
-	\subsubsubsubsection{DBAnalysis}
-	\grassetto{Nome}\\
-	MaaP::Server::ModelServer::Database::DBAnalysis\\
-	\grassetto{Descrizione}\\
-	Classe che rappresenta il database di analisi.\\
-	\grassetto{Utilizzo}\\
-	Viene utilizzata per contenere i dati di analisi.\\
-	\grassetto{Relazioni con altre classi}
-	\begin{itemize}
-	\item\grassetto{MaaP::Server::ModelServer::Database::MongooseDBAnalysis}\\
-	Relazione entrante debole, interazione con il database di analisi.
-	\end{itemize}
-		
-	\subsubsubsubsection{Mongoose}
-	\grassetto{Nome}\\
-	MaaP::Server::ModelServer::Database::Mongoose\\
-	\grassetto{Descrizione}\\
-	Interfaccia che permette di dialogare con i database utilizzando Mongoose.\\
-	\grassetto{Utilizzo}\\
-	Viene utilizzata per interfacciarsi con i vari database.\\
-	\grassetto{Classi che ereditano}
-	\begin{itemize}
-	\item MaaP::Server::ModelServer::Database::MongooseDBAnalysis;
-	\item MaaP::Server::ModelServer::Database::MongooseDBFramework.	
-	\end{itemize}
-		
-	\subsubsubsubsection{MongooseDBFramework}
-	\grassetto{Nome}\\
-	MaaP::Server::ModelServer::Database::MongooseDBMongooseDBFramework\\
-	\grassetto{Descrizione}\\
-	Classe che rappresenta l'interfaccia di connessione con il database del framework.\\
-	\grassetto{Utilizzo}\\
-	Viene utilizzata per interfacciarsi con il database del framework fornendo uno schema adeguato.\\
-	\grassetto{Classi da cui eredita}
-	\begin{itemize}
-	\item MaaP::Server::ModelServer::Database::Mongoose;
-	\end{itemize}
-	\grassetto{Relazioni con altre classi}
-	\begin{itemize}
-	\item\grassetto{MaaP::Server::ModelServer::DataManager::DatabaseAnalysisManager::DataRetrieverAnalysis}\\
-	Relazione entrante, interazione con il database del framework;
-	\item\grassetto{MaaP::Server::ModelServer::DataManager::DatabaseUserManager::DataRetrieverUsers}\\
-	Relazione entrante, interazione con il database del framework;
-	\item\grassetto{MaaP::Server::ModelServer::Database::DBFramework}\\
-	Relazione uscente debole, utilizza un riferimento al database del framework a cui connettersi.
-	\end{itemize}
-	
-		
-	\subsubsubsubsection{DBFramework}
-	\grassetto{Nome}\\
-	MaaP::Server::ModelServer::Database::DBFramework\\
-	\grassetto{Descrizione}\\
-	Classe che rappresenta il database del framework.\\
-	\grassetto{Utilizzo}\\
-	Viene utilizzata per contenere i dati utente ed impostazioni varie del sistema.\\
-	\grassetto{Relazioni con altre classi}
-	\begin{itemize}
-	\item\grassetto{MaaP::Server::ModelServer::Database::User}\\
-	Relazione uscente, utilizza un riferimento ad un oggetto User per gestire i dati utente.
-	\item\grassetto{MaaP::Server::ModelServer::Database::Query}\\
-	Relazione uscente, utilizza un riferimento ad un oggetto Query per gestire la lista di query fin'ora effettuate dal sistema;
-	\item\grassetto{MaaP::Server::Controller::FrontController}\\
-	Relazione entrante, interazione con il database del framework;
-	\item\grassetto{MaaP::Server::Controller::Passport}\\
-	Relazione entrante debole, interazione con il database del framework.
-	\end{itemize}
-	
-	\subsubsubsubsection{User}
-	\grassetto{Nome}\\
-	MaaP::Server::ModelServer::Database::User\\
-	\grassetto{Descrizione}\\
-	Classe che rappresenta la parte contenuta nel database del framework relativa ai dati utenti.\\
-	\grassetto{Utilizzo}\\
-	Viene utilizzata per contenere i dati utente.\\
-	\grassetto{Relazioni con altre classi}
-	\begin{itemize}
-	\item\grassetto{MaaP::Server::ModelServer::Database::DBFramework}\\
-	Relazione entrante, interazione con i dati utente.
-	\end{itemize}
-	
-	\subsubsubsubsection{Query}
-	\grassetto{Nome}\\
-	MaaP::Server::ModelServer::Database::Query\\
-	\grassetto{Descrizione}\\
-	Classe che rappresenta la parte contenuta nel database del framework relativa alle query effettuate del sistema.\\
-	\grassetto{Utilizzo}\\
-	Viene utilizzata per contenere le query effettuate del sistema.\\
-	\grassetto{Relazioni con altre classi}
-	\begin{itemize}
-	\item\grassetto{MaaP::Server::ModelServer::Database::DBFramework}\\
-	Relazione entrante, interazione con le query effettuate del sistema.
-	\item\grassetto{MaaP::Server::ModelServer::DataManager::IndexManager::IndexManager}\\
-	Relazione entrante debole, interazione con le query effettuate del sistema.
-	\end{itemize}
-	
+\subsubsubsubsection{MongooseDBAnalysis}
+\grassetto{Nome}\\
+MaaP::Server::ModelServer::Database::MongooseDBAnalysis\\
+\grassetto{Descrizione}\\
+Classe che rappresenta l'interfaccia di connessione con il database di analisi.\\
+\grassetto{Utilizzo}\\
+Viene utilizzata per interfacciarsi con il database di analisi fornendo uno schema adeguato.\\
+\grassetto{Classi da cui eredita}
+\begin{itemize}
+\item MaaP::Server::ModelServer::Database::Mongoose;
+\end{itemize}
+\grassetto{Relazioni con altre classi}
+\begin{itemize}
+\item\grassetto{MaaP::Server::ModelServer::DataManager::DatabaseAnalysisManager::DataRetrieverAnalysis}\\
+Relazione entrante, interazione con il database di analisi;
+\item\grassetto{MaaP::Server::ModelServer::DataManager::IndexManager::IndexManager}\\
+Relazione entrante, interazione con il database di analisi;
+\item\grassetto{MaaP::Server::ModelServer::Database::DBAnalysis}\\
+Relazione uscente debole, utilizza un riferimento al database di analisi a cui connettersi.
+\end{itemize}
+
+\subsubsubsubsection{DBAnalysis}
+\grassetto{Nome}\\
+MaaP::Server::ModelServer::Database::DBAnalysis\\
+\grassetto{Descrizione}\\
+Classe che rappresenta il database di analisi.\\
+\grassetto{Utilizzo}\\
+Viene utilizzata per contenere i dati di analisi.\\
+\grassetto{Relazioni con altre classi}
+\begin{itemize}
+\item\grassetto{MaaP::Server::ModelServer::Database::MongooseDBAnalysis}\\
+Relazione entrante debole, interazione con il database di analisi.
+\end{itemize}
+
+\subsubsubsubsection{Mongoose}
+\grassetto{Nome}\\
+MaaP::Server::ModelServer::Database::Mongoose\\
+\grassetto{Descrizione}\\
+Interfaccia che permette di dialogare con i database utilizzando Mongoose.\\
+\grassetto{Utilizzo}\\
+Viene utilizzata per interfacciarsi con i vari database.\\
+\grassetto{Classi che ereditano}
+\begin{itemize}
+\item MaaP::Server::ModelServer::Database::MongooseDBAnalysis;
+\item MaaP::Server::ModelServer::Database::MongooseDBFramework.
+\end{itemize}
+
+\subsubsubsubsection{MongooseDBFramework}
+\grassetto{Nome}\\
+MaaP::Server::ModelServer::Database::MongooseDBMongooseDBFramework\\
+\grassetto{Descrizione}\\
+Classe che rappresenta l'interfaccia di connessione con il database del framework.\\
+\grassetto{Utilizzo}\\
+Viene utilizzata per interfacciarsi con il database del framework fornendo uno schema adeguato.\\
+\grassetto{Classi da cui eredita}
+\begin{itemize}
+\item MaaP::Server::ModelServer::Database::Mongoose;
+\end{itemize}
+\grassetto{Relazioni con altre classi}
+\begin{itemize}
+\item\grassetto{MaaP::Server::ModelServer::DataManager::DatabaseAnalysisManager::DataRetrieverAnalysis}\\
+Relazione entrante, interazione con il database del framework;
+\item\grassetto{MaaP::Server::ModelServer::DataManager::DatabaseUserManager::DataRetrieverUsers}\\
+Relazione entrante, interazione con il database del framework;
+\item\grassetto{MaaP::Server::ModelServer::Database::DBFramework}\\
+Relazione uscente debole, utilizza un riferimento al database del framework a cui connettersi.
+\end{itemize}
+
+
+\subsubsubsubsection{DBFramework}
+\grassetto{Nome}\\
+MaaP::Server::ModelServer::Database::DBFramework\\
+\grassetto{Descrizione}\\
+Classe che rappresenta il database del framework.\\
+\grassetto{Utilizzo}\\
+Viene utilizzata per contenere i dati utente ed impostazioni varie del sistema.\\
+\grassetto{Relazioni con altre classi}
+\begin{itemize}
+\item\grassetto{MaaP::Server::ModelServer::Database::User}\\
+Relazione uscente, utilizza un riferimento ad un oggetto \gloss{User} per gestire i dati utente.
+\item\grassetto{MaaP::Server::ModelServer::Database::Query}\\
+Relazione uscente, utilizza un riferimento ad un oggetto Query per gestire la lista di query fin'ora effettuate dal sistema;
+\item\grassetto{MaaP::Server::Controller::FrontController}\\
+Relazione entrante, interazione con il database del framework;
+\item\grassetto{MaaP::Server::Controller::Passport}\\
+Relazione entrante debole, interazione con il database del framework.
+\end{itemize}
+
+\subsubsubsubsection{User}
+\grassetto{Nome}\\
+MaaP::Server::ModelServer::Database::User\\
+\grassetto{Descrizione}\\
+Classe che rappresenta la parte contenuta nel database del framework relativa ai dati utenti.\\
+\grassetto{Utilizzo}\\
+Viene utilizzata per contenere i dati utente.\\
+\grassetto{Relazioni con altre classi}
+\begin{itemize}
+\item\grassetto{MaaP::Server::ModelServer::Database::DBFramework}\\
+Relazione entrante, interazione con i dati utente.
+\end{itemize}
+
+\subsubsubsubsection{Query}
+\grassetto{Nome}\\
+MaaP::Server::ModelServer::Database::Query\\
+\grassetto{Descrizione}\\
+Classe che rappresenta la parte contenuta nel database del framework relativa alle query effettuate del sistema.\\
+\grassetto{Utilizzo}\\
+Viene utilizzata per contenere le query effettuate del sistema.\\
+\grassetto{Relazioni con altre classi}
+\begin{itemize}
+\item\grassetto{MaaP::Server::ModelServer::Database::DBFramework}\\
+Relazione entrante, interazione con le query effettuate del sistema.
+\item\grassetto{MaaP::Server::ModelServer::DataManager::IndexManager::IndexManager}\\
+Relazione entrante debole, interazione con le query effettuate del sistema.
+\end{itemize}
+
 
 \subsubsection{MaaP::Server::ModelServer::DSL}
 \subsubsubsection{Informazioni sul package}
@@ -665,68 +665,68 @@ Componente parte del ModelServer per la gestione dei dati.
 Componente parte del ServerModel per la gestione dei file di descrizione.
 \subsubsubsection{Classi}
 
-	\subsubsubsubsection{ParserInterface}
-	\grassetto{Nome}\\
-	MaaP::Server::ModelServer::DSL::ParserInterface\\
-	\grassetto{Descrizione}\\
-	Interfaccia che rappresenta la componente interfaccia del design pattern strategy per il parser di un linguaggio DSL.\\
-	\grassetto{Utilizzo}\\
-	Viene utilizzata per la effettuare il parsing di un file di descrizione.\\
-	\grassetto{Classi che ereditano}
-	\begin{itemize}
-	\item MaaP::Server::ModelServer::DSL::DSLParser.
-	\end{itemize}
-		
-	\subsubsubsubsection{DSLParser}
-	\grassetto{Nome}\\
-	MaaP::Server::ModelServer::DSL::DSLParser\\
-	\grassetto{Descrizione}\\
-	Classe che rappresenta l'algoritmo per il parser DSL del design pattern strategy.\\
-	\grassetto{Utilizzo}\\
-	Viene utilizzata all'avvio del sistema per eseguire il parsing dei file di descrizione.
-	\grassetto{Classi da cui eredita}
-	\begin{itemize}
-	\item MaaP::Server::ModelServer::DSL::ParserInterface;
-	\end{itemize}
-	\grassetto{Relazioni con altre classi}
-	\begin{itemize}
-	\item\grassetto{MaaP::Server::ModelServer::DSL::DSLDescriptionFile}\\
-	Relazione uscente debole, utilizza un riferimento ad un oggetto DSLDescriptionFile per leggere il file di descrizione;
-	\end{itemize}
-		
-	\subsubsubsubsection{DSLManager}
-	\grassetto{Nome}\\
-	MaaP::Server::ModelServer::DSL::DSLManager\\
-	\grassetto{Descrizione}\\
-	Classe che rappresenta il gestore dei file di descrizione. Contiene tutte le operazioni per eseguire il parsing dei file di descrizione e per salvare il risultato su appositi file di tipo CollectionData\\
-	\grassetto{Utilizzo}\\
-	Viene utilizzata all'avvio del sistema per eseguire il parsing dei file di descrizione e salvare il risultato su file.
-	\grassetto{Classi da cui eredita}
-	\grassetto{Relazioni con altre classi}
-	\begin{itemize}
-	\item\grassetto{MaaP::Server::ModelServer::DSL::ParserInterface}\\
-	Relazione uscente, utilizza un riferimento ad un oggetto ParserInterface per eseguire il parsing del file di descrizione;
-	\item\grassetto{MaaP::Server::ModelServer::DSL::DSLDescriptionFile}\\
-	Relazione uscente, utilizza un riferimento ad un oggetto DSLDescriptionFile per leggere il file di descrizione;
-	\item\grassetto{MaaP::Server::ModelServer::DSL::CollectionData}\\
-	Relazione uscente, utilizza un riferimento ad un oggetto CollectionData per salvare i risultati dell'operazione di parsing.
-	\end{itemize}
-	
-	\subsubsubsubsection{CollectionData}
-	\grassetto{Nome}\\
-	MaaP::Server::ModelServer::DSL::CollectionData\\
-	\grassetto{Descrizione}\\
-	Classe che rappresenta il file contenente il risultato dell'operazione di parsing.\\
-	\grassetto{Utilizzo}\\
-	Viene utilizzata all'avvio del sistema per salvare il risultato dell'operazione di parsing del file di descrizione.
-	\grassetto{Relazioni con altre classi}
-	\begin{itemize}
-	\item\grassetto{MaaP::Server::ModelServer::DSL::DSLManager}\\
-	Relazione entrante, interazione con il file;
-	\item\grassetto{MaaP::Server::ModelServer::DataManager::DatabaseAnalysisManager::DatabaseAnalysisManager}\\
-	Relazione entrante, interazione con il file.
-	\end{itemize}
-	
+\subsubsubsubsection{ParserInterface}
+\grassetto{Nome}\\
+MaaP::Server::ModelServer::DSL::ParserInterface\\
+\grassetto{Descrizione}\\
+Interfaccia che rappresenta la componente interfaccia del design pattern \gloss{strategy} per il parser di un linguaggio DSL.\\
+\grassetto{Utilizzo}\\
+Viene utilizzata per la effettuare il parsing di un file di descrizione.\\
+\grassetto{Classi che ereditano}
+\begin{itemize}
+\item MaaP::Server::ModelServer::DSL::DSLParser.
+\end{itemize}
+
+\subsubsubsubsection{DSLParser}
+\grassetto{Nome}\\
+MaaP::Server::ModelServer::DSL::DSLParser\\
+\grassetto{Descrizione}\\
+Classe che rappresenta l'\gloss{algoritmo} per il parser DSL del design pattern strategy.\\
+\grassetto{Utilizzo}\\
+Viene utilizzata all'avvio del sistema per eseguire il parsing dei file di descrizione.
+\grassetto{Classi da cui eredita}
+\begin{itemize}
+\item MaaP::Server::ModelServer::DSL::ParserInterface;
+\end{itemize}
+\grassetto{Relazioni con altre classi}
+\begin{itemize}
+\item\grassetto{MaaP::Server::ModelServer::DSL::DSLDescriptionFile}\\
+Relazione uscente debole, utilizza un riferimento ad un oggetto DSLDescriptionFile per leggere il file di descrizione;
+\end{itemize}
+
+\subsubsubsubsection{DSLManager}
+\grassetto{Nome}\\
+MaaP::Server::ModelServer::DSL::DSLManager\\
+\grassetto{Descrizione}\\
+Classe che rappresenta il gestore dei file di descrizione. Contiene tutte le operazioni per eseguire il parsing dei file di descrizione e per salvare il risultato su appositi file di tipo CollectionData\\
+\grassetto{Utilizzo}\\
+Viene utilizzata all'avvio del sistema per eseguire il parsing dei file di descrizione e salvare il risultato su file.
+\grassetto{Classi da cui eredita}
+\grassetto{Relazioni con altre classi}
+\begin{itemize}
+\item\grassetto{MaaP::Server::ModelServer::DSL::ParserInterface}\\
+Relazione uscente, utilizza un riferimento ad un oggetto ParserInterface per eseguire il parsing del file di descrizione;
+\item\grassetto{MaaP::Server::ModelServer::DSL::DSLDescriptionFile}\\
+Relazione uscente, utilizza un riferimento ad un oggetto DSLDescriptionFile per leggere il file di descrizione;
+\item\grassetto{MaaP::Server::ModelServer::DSL::CollectionData}\\
+Relazione uscente, utilizza un riferimento ad un oggetto CollectionData per salvare i risultati dell'operazione di parsing.
+\end{itemize}
+
+\subsubsubsubsection{CollectionData}
+\grassetto{Nome}\\
+MaaP::Server::ModelServer::DSL::CollectionData\\
+\grassetto{Descrizione}\\
+Classe che rappresenta il file contenente il risultato dell'operazione di parsing.\\
+\grassetto{Utilizzo}\\
+Viene utilizzata all'avvio del sistema per salvare il risultato dell'operazione di parsing del file di descrizione.
+\grassetto{Relazioni con altre classi}
+\begin{itemize}
+\item\grassetto{MaaP::Server::ModelServer::DSL::DSLManager}\\
+Relazione entrante, interazione con il file;
+\item\grassetto{MaaP::Server::ModelServer::DataManager::DatabaseAnalysisManager::DatabaseAnalysisManager}\\
+Relazione entrante, interazione con il file.
+\end{itemize}
+
 
 \subsection{MaaP::Server::Controller}
 \subsubsection{Informazioni sul package}
@@ -735,88 +735,88 @@ Componente parte del ServerModel per la gestione dei file di descrizione.
 Package per il componente Controller del modello di architettura Client-server.
 \subsubsubsection{Classi}
 
-	\subsubsubsubsection{IPassport}
-	\grassetto{Nome}\\
-	MaaP::Server::Controller::IPassport\\
-	\grassetto{Descrizione}\\
-	Interfaccia che rappresenta il componente target del design pattern object adapter.\\
-	\grassetto{Utilizzo}\\
-	Viene utilizzata per gestire l'autenticazione utente.
-	\grassetto{Relazioni con altre classi}
-	\begin{itemize}
-	\item\grassetto{MaaP::Server::Controller::FrontController}\\
-	Relazione entrante, interazione con il gestore dell'autenticazione.
-	\end{itemize}
-	\grassetto{Classi che ereditano}
-	\begin{itemize}
-	\item MaaP::Server::Controller::PassportAdapter.
-	\end{itemize}
-	
-	\subsubsubsubsection{PassportAdapter}
-	\grassetto{Nome}\\
-	MaaP::Server::Controller::PassportAdapter\\
-	\grassetto{Descrizione}\\
-	Classe che rappresenta il componente adapter del design pattern object adapter.\\
-	\grassetto{Utilizzo}\\
-	Viene utilizzata per gestire l'autenticazione utente.
-	\grassetto{Classi da cui eredita}
-	\begin{itemize}
-	\item MaaP::Server::Controller::IPassport.
-	\end{itemize}
-	\grassetto{Relazioni con altre classi}
-	\begin{itemize}
-	\item\grassetto{MaaP::Server::Controller::Passport}\\
-	Relazione uscente, utilizza un riferimento ad un oggetto di tipo Passport per gestire l'autenticazione utente.
-	\end{itemize}
-	
-	\subsubsubsubsection{Passport}
-	\grassetto{Nome}\\
-	MaaP::Server::Controller::Passport\\
-	\grassetto{Descrizione}\\
-	Classe che rappresenta il componente adaptee del design patter object adapter.\\
-	\grassetto{Utilizzo}\\
-	Viene utilizzata per gestire l'autenticazione utente.
-	\grassetto{Relazioni con altre classi}
-	\begin{itemize}
-	\item\grassetto{MaaP::Server::ModelServer::Database::MongooseDBFramework}\\
-	Relazione uscente debole, utilizza un riferimento ad un oggetto MongooseDBFramework per accedere ai dati utente.
-	\end{itemize}
-	
-	\subsubsubsubsection{FrontController}
-	\grassetto{Nome}\\
-	MaaP::Server::Controller::FrontController\\
-	\grassetto{Descrizione}\\
-	Classe che rappresenta il componente controller del design patter Front Controller.\\
-	\grassetto{Utilizzo}\\
-	Viene utilizzata per gestire le richieste del client ed inoltrarle al dispatcher.
-	\grassetto{Relazioni con altre classi}
-	\begin{itemize}
-	\item\grassetto{MaaP::Server::Controller::IPassport}\\
-	Relazione uscente, contiene un riferimento ad un oggetto IPassport per gestire l'autenticazione utente;
-	\item\grassetto{MaaP::Server::Controller::Dispatcher}\\
-	Relazione uscente, contiene un riferimento ad un oggetto Dispatcher per smistare le richieste del client ai vari manager;
-	\item\grassetto{MaaP::Server::ModelServer::Database::MongooseDBFramework}\\
-	Relazione uscente, contiene un riferimento ad un oggetto MongooseDBFramework per inserire nuovi dati nel database del framework relativi a nuovi utenti;
-	\item\grassetto{MaaP::Client::ModelClient::Services::HTTP}\\
-	Relazione entrante debole, interazione con il servizio HTTP.
-	\end{itemize}
-	
-	\subsubsubsubsection{Dispatcher}
-	\grassetto{Nome}\\
-	MaaP::Server::Controller::Dispatcher\\
-	\grassetto{Descrizione}\\
-	Classe che rappresenta il componente dispatcher del design patter Front Controller.\\
-	\grassetto{Utilizzo}\\
-	Viene utilizzata per smistare le richieste del client ai vari gestori dei dati.
-	\grassetto{Relazioni con altre classi}
-	\begin{itemize}
-	\item\grassetto{MaaP::Server::Controller::FrontController}\\
-	Relazione entrante, interazione con il FrontController;
-	\item\grassetto{MaaP::Server::ModelServer::DataManager::DatabaseAnalysisManager::DatabaseAnalysisManager}\\
-	Relazione uscente, contiene un riferimento ad un oggetto DatabaseAnalysisManager per richiedere azioni relative ai dati di analisi;
-	\item\grassetto{MaaP::Server::ModelServer::DataManager::DatabaseUserManager::DatabaseUserManager}\\
-	Relazione uscente, contiene un riferimento ad un oggetto DatabaseUserManager per richiedere azioni relative ai dati utenti ed impostazioni di sistema.
-	\end{itemize}
+\subsubsubsubsection{IPassport}
+\grassetto{Nome}\\
+MaaP::Server::Controller::IPassport\\
+\grassetto{Descrizione}\\
+Interfaccia che rappresenta il componente target del design pattern object \gloss{adapter}.\\
+\grassetto{Utilizzo}\\
+Viene utilizzata per gestire l'autenticazione utente.
+\grassetto{Relazioni con altre classi}
+\begin{itemize}
+\item\grassetto{MaaP::Server::Controller::FrontController}\\
+Relazione entrante, interazione con il gestore dell'autenticazione.
+\end{itemize}
+\grassetto{Classi che ereditano}
+\begin{itemize}
+\item MaaP::Server::Controller::PassportAdapter.
+\end{itemize}
+
+\subsubsubsubsection{PassportAdapter}
+\grassetto{Nome}\\
+MaaP::Server::Controller::PassportAdapter\\
+\grassetto{Descrizione}\\
+Classe che rappresenta il componente adapter del design pattern object adapter.\\
+\grassetto{Utilizzo}\\
+Viene utilizzata per gestire l'autenticazione utente.
+\grassetto{Classi da cui eredita}
+\begin{itemize}
+\item MaaP::Server::Controller::IPassport.
+\end{itemize}
+\grassetto{Relazioni con altre classi}
+\begin{itemize}
+\item\grassetto{MaaP::Server::Controller::Passport}\\
+Relazione uscente, utilizza un riferimento ad un oggetto di tipo Passport per gestire l'autenticazione utente.
+\end{itemize}
+
+\subsubsubsubsection{Passport}
+\grassetto{Nome}\\
+MaaP::Server::Controller::Passport\\
+\grassetto{Descrizione}\\
+Classe che rappresenta il componente adaptee del design patter object adapter.\\
+\grassetto{Utilizzo}\\
+Viene utilizzata per gestire l'autenticazione utente.
+\grassetto{Relazioni con altre classi}
+\begin{itemize}
+\item\grassetto{MaaP::Server::ModelServer::Database::MongooseDBFramework}\\
+Relazione uscente debole, utilizza un riferimento ad un oggetto MongooseDBFramework per accedere ai dati utente.
+\end{itemize}
+
+\subsubsubsubsection{FrontController}
+\grassetto{Nome}\\
+MaaP::Server::Controller::FrontController\\
+\grassetto{Descrizione}\\
+Classe che rappresenta il componente controller del design patter Front Controller.\\
+\grassetto{Utilizzo}\\
+Viene utilizzata per gestire le richieste del client ed inoltrarle al dispatcher.
+\grassetto{Relazioni con altre classi}
+\begin{itemize}
+\item\grassetto{MaaP::Server::Controller::IPassport}\\
+Relazione uscente, contiene un riferimento ad un oggetto IPassport per gestire l'autenticazione utente;
+\item\grassetto{MaaP::Server::Controller::Dispatcher}\\
+Relazione uscente, contiene un riferimento ad un oggetto Dispatcher per smistare le richieste del client ai vari manager;
+\item\grassetto{MaaP::Server::ModelServer::Database::MongooseDBFramework}\\
+Relazione uscente, contiene un riferimento ad un oggetto MongooseDBFramework per inserire nuovi dati nel database del framework relativi a nuovi utenti;
+\item\grassetto{MaaP::Client::ModelClient::Services::HTTP}\\
+Relazione entrante debole, interazione con il \gloss{servizio} HTTP.
+\end{itemize}
+
+\subsubsubsubsection{Dispatcher}
+\grassetto{Nome}\\
+MaaP::Server::Controller::Dispatcher\\
+\grassetto{Descrizione}\\
+Classe che rappresenta il componente dispatcher del design patter Front Controller.\\
+\grassetto{Utilizzo}\\
+Viene utilizzata per smistare le richieste del client ai vari gestori dei dati.
+\grassetto{Relazioni con altre classi}
+\begin{itemize}
+\item\grassetto{MaaP::Server::Controller::FrontController}\\
+Relazione entrante, interazione con il FrontController;
+\item\grassetto{MaaP::Server::ModelServer::DataManager::DatabaseAnalysisManager::DatabaseAnalysisManager}\\
+Relazione uscente, contiene un riferimento ad un oggetto DatabaseAnalysisManager per richiedere azioni relative ai dati di analisi;
+\item\grassetto{MaaP::Server::ModelServer::DataManager::DatabaseUserManager::DatabaseUserManager}\\
+Relazione uscente, contiene un riferimento ad un oggetto DatabaseUserManager per richiedere azioni relative ai dati utenti ed impostazioni di sistema.
+\end{itemize}
 
 
 \subsection{MaaP::Client}
@@ -848,181 +848,181 @@ Componente view del design pattern MVVM.
 Componente che contiene i template per la visualizzazione delle pagine web.
 \subsubsubsection{Classi}
 
-	\subsubsubsubsection{SignIn}
-	\grassetto{Nome}\\
-	MaaP::Client::View::Template::SignIn\\
-	\grassetto{Descrizione}\\
-	Classe che rappresenta il template per la pagina di login.\\
-	\grassetto{Utilizzo}\\
-	Viene utilizzata per renderizzare la pagina web di login.\\
-	\grassetto{Relazioni con altre classi}
-	\begin{itemize}
-	\item\grassetto{MaaP::Client::ControllerModelView::ControllerClient::ControllerAutenticazione}\\
-	Relazione uscente, contiene un riferimento ad un oggetto ControllerAutenticazione per gestire il login utente.
-	\end{itemize}
-	
-	\subsubsubsubsection{SignUp}
-	\grassetto{Nome}\\
-	MaaP::Client::View::Template::SignUp\\
-	\grassetto{Descrizione}\\
-	Classe che rappresenta il template per la pagina di registrazione, presente solamente se nel file di configurazione è esplicitamente abilitata la funzionalità di registrazione utente.\\
-	\grassetto{Utilizzo}\\
-	Viene utilizzata per renderizzare la pagina web di registrazione utente.
-	\grassetto{Relazioni con altre classi}
-	\begin{itemize}
-	\item\grassetto{MaaP::Client::ControllerModelView::ControllerClient::ControllerAutenticazione}\\
-	Relazione uscente, contiene un riferimento ad un oggetto ControllerAutenticazione per gestire la registrazione di un nuovo utente.
-	\end{itemize}
+\subsubsubsubsection{SignIn}
+\grassetto{Nome}\\
+MaaP::Client::View::Template::SignIn\\
+\grassetto{Descrizione}\\
+Classe che rappresenta il template per la pagina di login.\\
+\grassetto{Utilizzo}\\
+Viene utilizzata per renderizzare la pagina web di login.\\
+\grassetto{Relazioni con altre classi}
+\begin{itemize}
+\item\grassetto{MaaP::Client::ControllerModelView::ControllerClient::ControllerAutenticazione}\\
+Relazione uscente, contiene un riferimento ad un oggetto ControllerAutenticazione per gestire il login utente.
+\end{itemize}
 
-	\subsubsubsubsection{AdminMainPageCollection}
-	\grassetto{Nome}\\
-	MaaP::Client::View::Template::AdminMainPageCollection\\
-	\grassetto{Descrizione}\\
-	Classe che rappresenta il template per la pagina di visualizzazione Collection per l'utente amministratore.\\
-	\grassetto{Utilizzo}\\
-	Viene utilizzata per renderizzare la pagina web di visualizzazione Collection per l'utente amministratore.\\
-	\grassetto{Relazioni con altre classi}
-	\begin{itemize}
-	\item\grassetto{MaaP::Client::ControllerModelView::ControllerClient::ControllerCollection}\\
-	Relazione uscente, contiene un riferimento ad un oggetto ControllerCollection per gestire la visualizzazione della pagina Collection;
-	\item\grassetto{MaaP::Client::ControllerModelView::ControllerClient::ControllerMenu}\\
-	Relazione uscente, contiene un riferimento ad un oggetto ControllerMenu per gestire la visualizzazione del menù.
-	\end{itemize}
-	
-	\subsubsubsubsection{UserMainPageCollection}
-	\grassetto{Nome}\\
-	MaaP::Client::View::Template::UserMainPageCollection\\
-	\grassetto{Descrizione}\\
-	Classe che rappresenta il template per la pagina di visualizzazione Collection per l'utente.\\
-	\grassetto{Utilizzo}\\
-	Viene utilizzata per renderizzare la pagina web di visualizzazione Collection per l'utente.\\
-	\grassetto{Relazioni con altre classi}
-	\begin{itemize}
-	\item\grassetto{MaaP::Client::ControllerModelView::ControllerClient::ControllerCollection}\\
-	Relazione uscente, contiene un riferimento ad un oggetto ControllerCollection per gestire la visualizzazione della pagina Collection;
-	\item\grassetto{MaaP::Client::ControllerModelView::ControllerClient::ControllerMenu}\\
-	Relazione uscente, contiene un riferimento ad un oggetto ControllerMenu per gestire la visualizzazione del menù.
-	\end{itemize}
-	
-	\subsubsubsubsection{AdminMainPageDocument}
-	\grassetto{Nome}\\
-	MaaP::Client::View::Template::AdminMainPageDocument\\
-	\grassetto{Descrizione}\\
-	Classe che rappresenta il template per la pagina di visualizzazione Document per l'utente amministratore.\\
-	\grassetto{Utilizzo}\\
-	Viene utilizzata per renderizzare la pagina web di visualizzazione del Document per l'utente amministratore.\\
-	\grassetto{Relazioni con altre classi}
-	\begin{itemize}
-	\item\grassetto{MaaP::Client::ControllerModelView::ControllerClient::ControllerDocument}\\
-	Relazione uscente, contiene un riferimento ad un oggetto ControllerDocument per gestire la visualizzazione della pagina Document;
-	\item\grassetto{MaaP::Client::ControllerModelView::ControllerClient::ControllerMenu}\\
-	Relazione uscente, contiene un riferimento ad un oggetto ControllerMenu per gestire la visualizzazione del menù.
-	\end{itemize}
-	
-	\subsubsubsubsection{UserMainPageDocument}
-	\grassetto{Nome}\\
-	MaaP::Client::View::Template::UserMainPageDocument\\
-	\grassetto{Descrizione}\\
-	Classe che rappresenta il template per la pagina di visualizzazione Document per l'utente.\\
-	\grassetto{Utilizzo}\\
-	Viene utilizzata per renderizzare la pagina web di visualizzazione del Document per l'utente.\\
-	\grassetto{Relazioni con altre classi}
-	\begin{itemize}
-	\item\grassetto{MaaP::Client::ControllerModelView::ControllerClient::ControllerDocument}\\
-	Relazione uscente, contiene un riferimento ad un oggetto ControllerDocument per gestire la visualizzazione della pagina Document;
-	\item\grassetto{MaaP::Client::ControllerModelView::ControllerClient::ControllerMenu}\\
-	Relazione uscente, contiene un riferimento ad un oggetto ControllerMenu per gestire la visualizzazione del menù.
-	\end{itemize}
-	
-	\subsubsubsubsection{MainPageDocumentEdit}
-	\grassetto{Nome}\\
-	MaaP::Client::View::Template::MainPageDocumentEdit\\
-	\grassetto{Descrizione}\\
-	Classe che rappresenta il template per la pagina di modifica dei Document.\\
-	\grassetto{Utilizzo}\\
-	Viene utilizzata per renderizzare la pagina web di modifica dei Document.\\
-	\grassetto{Relazioni con altre classi}
-	\begin{itemize}
-	\item\grassetto{MaaP::Client::ControllerModelView::ControllerClient::ControllerDocument}\\
-	Relazione uscente, contiene un riferimento ad un oggetto ControllerDocument per gestire la visualizzazione della pagina di modifica dei Document;
-	\item\grassetto{MaaP::Client::ControllerModelView::ControllerClient::ControllerMenu}\\
-	Relazione uscente, contiene un riferimento ad un oggetto ControllerMenu per gestire la visualizzazione del menù.
-	\end{itemize}
+\subsubsubsubsection{SignUp}
+\grassetto{Nome}\\
+MaaP::Client::View::Template::SignUp\\
+\grassetto{Descrizione}\\
+Classe che rappresenta il template per la pagina di \gloss{registrazione}, presente solamente se nel \gloss{file di configurazione} è esplicitamente abilitata la funzionalità di registrazione utente.\\
+\grassetto{Utilizzo}\\
+Viene utilizzata per renderizzare la pagina web di registrazione utente.
+\grassetto{Relazioni con altre classi}
+\begin{itemize}
+\item\grassetto{MaaP::Client::ControllerModelView::ControllerClient::ControllerAutenticazione}\\
+Relazione uscente, contiene un riferimento ad un oggetto ControllerAutenticazione per gestire la registrazione di un nuovo utente.
+\end{itemize}
 
-	\subsubsubsubsection{UserProfileEdit}
-	\grassetto{Nome}\\
-	MaaP::Client::View::Template::UserProfileEdit\\
-	\grassetto{Descrizione}\\
-	Classe che rappresenta il template per la pagina di modifica del profilo utente.\\
-	\grassetto{Utilizzo}\\
-	Viene utilizzata per renderizzare la pagina web di modifica del profilo utente.\\
-	\grassetto{Relazioni con altre classi}
-	\begin{itemize}
-	\item\grassetto{MaaP::Client::ControllerModelView::ControllerClient::ControllerProfilo}\\
-	Relazione uscente, contiene un riferimento ad un oggetto ControllerProfilo per gestire la visualizzazione della pagina di modifica del profilo utente;
-	\item\grassetto{MaaP::Client::ControllerModelView::ControllerClient::ControllerMenu}\\
-	Relazione uscente, contiene un riferimento ad un oggetto ControllerMenu per gestire la visualizzazione del menù.
-	\end{itemize}
-	
-	\subsubsubsubsection{UserProfile}
-	\grassetto{Nome}\\
-	MaaP::Client::View::Template::UserProfile\\
-	\grassetto{Descrizione}\\
-	Classe che rappresenta il template per la pagina di visualizzazione del profilo utente.\\
-	\grassetto{Utilizzo}\\
-	Viene utilizzata per renderizzare la pagina web di visualizzazione del profilo utente.\\
-	\grassetto{Relazioni con altre classi}
-	\begin{itemize}
-	\item\grassetto{MaaP::Client::ControllerModelView::ControllerClient::ControllerProfilo}\\
-	Relazione uscente, contiene un riferimento ad un oggetto ControllerProfilo per gestire la visualizzazione della pagina del profilo utente;
-	\item\grassetto{MaaP::Client::ControllerModelView::ControllerClient::ControllerMenu}\\
-	Relazione uscente, contiene un riferimento ad un oggetto ControllerMenu per gestire la visualizzazione del menù.
-	\end{itemize}
+\subsubsubsubsection{AdminMainPageCollection}
+\grassetto{Nome}\\
+MaaP::Client::View::Template::AdminMainPageCollection\\
+\grassetto{Descrizione}\\
+Classe che rappresenta il template per la pagina di visualizzazione Collection per l'utente \gloss{amministratore}.\\
+\grassetto{Utilizzo}\\
+Viene utilizzata per renderizzare la pagina web di visualizzazione Collection per l'utente amministratore.\\
+\grassetto{Relazioni con altre classi}
+\begin{itemize}
+\item\grassetto{MaaP::Client::ControllerModelView::ControllerClient::ControllerCollection}\\
+Relazione uscente, contiene un riferimento ad un oggetto ControllerCollection per gestire la visualizzazione della pagina Collection;
+\item\grassetto{MaaP::Client::ControllerModelView::ControllerClient::ControllerMenu}\\
+Relazione uscente, contiene un riferimento ad un oggetto ControllerMenu per gestire la visualizzazione del menù.
+\end{itemize}
 
-	\subsubsubsubsection{AdminProfile}
-	\grassetto{Nome}\\
-	MaaP::Client::View::Template::AdminProfile\\
-	\grassetto{Descrizione}\\
-	Classe che rappresenta il template per la pagina di visualizzazione del profilo utente amministratore.\\
-	\grassetto{Utilizzo}\\
-	Viene utilizzata per renderizzare la pagina web di visualizzazione del profilo utente amministratore.\\
-	\grassetto{Relazioni con altre classi}
-	\begin{itemize}
-	\item\grassetto{MaaP::Client::ControllerModelView::ControllerClient::ControllerProfilo}\\
-	Relazione uscente, contiene un riferimento ad un oggetto ControllerProfilo per gestire la visualizzazione della pagina del profilo utente amministratore;
-	\item\grassetto{MaaP::Client::ControllerModelView::ControllerClient::ControllerMenu}\\
-	Relazione uscente, contiene un riferimento ad un oggetto ControllerMenu per gestire la visualizzazione del menù.
-	\end{itemize}
-	
-	\subsubsubsubsection{PasswordRecovery}
-	\grassetto{Nome}\\
-	MaaP::Client::View::Template::UserProfile\\
-	\grassetto{Descrizione}\\
-	Classe che rappresenta il template per la pagina di recupero password.\\
-	\grassetto{Utilizzo}\\
-	Viene utilizzata per renderizzare la pagina web recupero password.
-	\grassetto{Relazioni con altre classi}
-	\begin{itemize}
-	\item\grassetto{MaaP::Client::ControllerModelView::ControllerClient::ControllerProfilo}\\
-	Relazione uscente, contiene un riferimento ad un oggetto ControllerProfilo per gestire la visualizzazione della pagina di recupero password;
-	\item\grassetto{MaaP::Client::ControllerModelView::ControllerClient::ControllerMenu}\\
-	Relazione uscente, contiene un riferimento ad un oggetto ControllerMenu per gestire la visualizzazione del menù.
-	\end{itemize}
-		
-	\subsubsubsubsection{IndexPage}
-	\grassetto{Nome}\\
-	MaaP::Client::View::Template::IndexPage\\
-	\grassetto{Descrizione}\\
-	Classe che rappresenta il template per la pagina di gestione degli indici, presente solo se nel file di configurazione è esplicitamente abilitato l'utilizzo degli indici.\\
-	\grassetto{Utilizzo}\\
-	Viene utilizzata per renderizzare la pagina che gestisce la creazione e l'eliminazione degli indici.
-	\grassetto{Relazioni con altre classi}
-	\begin{itemize}
-	\item\grassetto{MaaP::Client::ControllerModelView::ControllerClient::ControllerIndici}\\
-	Relazione uscente, contiene un riferimento ad un oggetto ControllerIndici per gestire la creazione e l'eliminazione degli indici;
-	\item\grassetto{MaaP::Client::ControllerModelView::ControllerClient::ControllerMenu}\\
-	Relazione uscente, contiene un riferimento ad un oggetto ControllerMenu per gestire la visualizzazione del menù.
-	\end{itemize}
+\subsubsubsubsection{UserMainPageCollection}
+\grassetto{Nome}\\
+MaaP::Client::View::Template::UserMainPageCollection\\
+\grassetto{Descrizione}\\
+Classe che rappresenta il template per la pagina di visualizzazione Collection per l'utente.\\
+\grassetto{Utilizzo}\\
+Viene utilizzata per renderizzare la pagina web di visualizzazione Collection per l'utente.\\
+\grassetto{Relazioni con altre classi}
+\begin{itemize}
+\item\grassetto{MaaP::Client::ControllerModelView::ControllerClient::ControllerCollection}\\
+Relazione uscente, contiene un riferimento ad un oggetto ControllerCollection per gestire la visualizzazione della pagina Collection;
+\item\grassetto{MaaP::Client::ControllerModelView::ControllerClient::ControllerMenu}\\
+Relazione uscente, contiene un riferimento ad un oggetto ControllerMenu per gestire la visualizzazione del menù.
+\end{itemize}
+
+\subsubsubsubsection{AdminMainPageDocument}
+\grassetto{Nome}\\
+MaaP::Client::View::Template::AdminMainPageDocument\\
+\grassetto{Descrizione}\\
+Classe che rappresenta il template per la pagina di visualizzazione Document per l'utente amministratore.\\
+\grassetto{Utilizzo}\\
+Viene utilizzata per renderizzare la pagina web di visualizzazione del Document per l'utente amministratore.\\
+\grassetto{Relazioni con altre classi}
+\begin{itemize}
+\item\grassetto{MaaP::Client::ControllerModelView::ControllerClient::ControllerDocument}\\
+Relazione uscente, contiene un riferimento ad un oggetto ControllerDocument per gestire la visualizzazione della pagina Document;
+\item\grassetto{MaaP::Client::ControllerModelView::ControllerClient::ControllerMenu}\\
+Relazione uscente, contiene un riferimento ad un oggetto ControllerMenu per gestire la visualizzazione del menù.
+\end{itemize}
+
+\subsubsubsubsection{UserMainPageDocument}
+\grassetto{Nome}\\
+MaaP::Client::View::Template::UserMainPageDocument\\
+\grassetto{Descrizione}\\
+Classe che rappresenta il template per la pagina di visualizzazione Document per l'utente.\\
+\grassetto{Utilizzo}\\
+Viene utilizzata per renderizzare la pagina web di visualizzazione del Document per l'utente.\\
+\grassetto{Relazioni con altre classi}
+\begin{itemize}
+\item\grassetto{MaaP::Client::ControllerModelView::ControllerClient::ControllerDocument}\\
+Relazione uscente, contiene un riferimento ad un oggetto ControllerDocument per gestire la visualizzazione della pagina Document;
+\item\grassetto{MaaP::Client::ControllerModelView::ControllerClient::ControllerMenu}\\
+Relazione uscente, contiene un riferimento ad un oggetto ControllerMenu per gestire la visualizzazione del menù.
+\end{itemize}
+
+\subsubsubsubsection{MainPageDocumentEdit}
+\grassetto{Nome}\\
+MaaP::Client::View::Template::MainPageDocumentEdit\\
+\grassetto{Descrizione}\\
+Classe che rappresenta il template per la pagina di modifica dei Document.\\
+\grassetto{Utilizzo}\\
+Viene utilizzata per renderizzare la pagina web di modifica dei Document.\\
+\grassetto{Relazioni con altre classi}
+\begin{itemize}
+\item\grassetto{MaaP::Client::ControllerModelView::ControllerClient::ControllerDocument}\\
+Relazione uscente, contiene un riferimento ad un oggetto ControllerDocument per gestire la visualizzazione della pagina di modifica dei Document;
+\item\grassetto{MaaP::Client::ControllerModelView::ControllerClient::ControllerMenu}\\
+Relazione uscente, contiene un riferimento ad un oggetto ControllerMenu per gestire la visualizzazione del menù.
+\end{itemize}
+
+\subsubsubsubsection{UserProfileEdit}
+\grassetto{Nome}\\
+MaaP::Client::View::Template::UserProfileEdit\\
+\grassetto{Descrizione}\\
+Classe che rappresenta il template per la pagina di modifica del \gloss{profilo} utente.\\
+\grassetto{Utilizzo}\\
+Viene utilizzata per renderizzare la pagina web di modifica del profilo utente.\\
+\grassetto{Relazioni con altre classi}
+\begin{itemize}
+\item\grassetto{MaaP::Client::ControllerModelView::ControllerClient::ControllerProfilo}\\
+Relazione uscente, contiene un riferimento ad un oggetto ControllerProfilo per gestire la visualizzazione della pagina di modifica del profilo utente;
+\item\grassetto{MaaP::Client::ControllerModelView::ControllerClient::ControllerMenu}\\
+Relazione uscente, contiene un riferimento ad un oggetto ControllerMenu per gestire la visualizzazione del menù.
+\end{itemize}
+
+\subsubsubsubsection{UserProfile}
+\grassetto{Nome}\\
+MaaP::Client::View::Template::UserProfile\\
+\grassetto{Descrizione}\\
+Classe che rappresenta il template per la pagina di visualizzazione del profilo utente.\\
+\grassetto{Utilizzo}\\
+Viene utilizzata per renderizzare la pagina web di visualizzazione del profilo utente.\\
+\grassetto{Relazioni con altre classi}
+\begin{itemize}
+\item\grassetto{MaaP::Client::ControllerModelView::ControllerClient::ControllerProfilo}\\
+Relazione uscente, contiene un riferimento ad un oggetto ControllerProfilo per gestire la visualizzazione della pagina del profilo utente;
+\item\grassetto{MaaP::Client::ControllerModelView::ControllerClient::ControllerMenu}\\
+Relazione uscente, contiene un riferimento ad un oggetto ControllerMenu per gestire la visualizzazione del menù.
+\end{itemize}
+
+\subsubsubsubsection{AdminProfile}
+\grassetto{Nome}\\
+MaaP::Client::View::Template::AdminProfile\\
+\grassetto{Descrizione}\\
+Classe che rappresenta il template per la pagina di visualizzazione del profilo utente amministratore.\\
+\grassetto{Utilizzo}\\
+Viene utilizzata per renderizzare la pagina web di visualizzazione del profilo utente amministratore.\\
+\grassetto{Relazioni con altre classi}
+\begin{itemize}
+\item\grassetto{MaaP::Client::ControllerModelView::ControllerClient::ControllerProfilo}\\
+Relazione uscente, contiene un riferimento ad un oggetto ControllerProfilo per gestire la visualizzazione della pagina del profilo utente amministratore;
+\item\grassetto{MaaP::Client::ControllerModelView::ControllerClient::ControllerMenu}\\
+Relazione uscente, contiene un riferimento ad un oggetto ControllerMenu per gestire la visualizzazione del menù.
+\end{itemize}
+
+\subsubsubsubsection{PasswordRecovery}
+\grassetto{Nome}\\
+MaaP::Client::View::Template::UserProfile\\
+\grassetto{Descrizione}\\
+Classe che rappresenta il template per la pagina di recupero \gloss{password}.\\
+\grassetto{Utilizzo}\\
+Viene utilizzata per renderizzare la pagina web recupero password.
+\grassetto{Relazioni con altre classi}
+\begin{itemize}
+\item\grassetto{MaaP::Client::ControllerModelView::ControllerClient::ControllerProfilo}\\
+Relazione uscente, contiene un riferimento ad un oggetto ControllerProfilo per gestire la visualizzazione della pagina di recupero password;
+\item\grassetto{MaaP::Client::ControllerModelView::ControllerClient::ControllerMenu}\\
+Relazione uscente, contiene un riferimento ad un oggetto ControllerMenu per gestire la visualizzazione del menù.
+\end{itemize}
+
+\subsubsubsubsection{IndexPage}
+\grassetto{Nome}\\
+MaaP::Client::View::Template::IndexPage\\
+\grassetto{Descrizione}\\
+Classe che rappresenta il template per la pagina di gestione degli indici, presente solo se nel file di configurazione è esplicitamente abilitato l'utilizzo degli indici.\\
+\grassetto{Utilizzo}\\
+Viene utilizzata per renderizzare la pagina che gestisce la creazione e l'eliminazione degli indici.
+\grassetto{Relazioni con altre classi}
+\begin{itemize}
+\item\grassetto{MaaP::Client::ControllerModelView::ControllerClient::ControllerIndici}\\
+Relazione uscente, contiene un riferimento ad un oggetto ControllerIndici per gestire la creazione e l'eliminazione degli indici;
+\item\grassetto{MaaP::Client::ControllerModelView::ControllerClient::ControllerMenu}\\
+Relazione uscente, contiene un riferimento ad un oggetto ControllerMenu per gestire la visualizzazione del menù.
+\end{itemize}
 
 \subsubsection{MaaP::Client::ControllerModelView}
 \subsubsubsection{Informazioni sul package}
@@ -1042,135 +1042,135 @@ Componente ModelView del design pattern MVVM.
 Componente parte del ControllerModelView contenente i vari controller.
 \subsubsubsubsection{Classi}
 
-	\subsubsubsubsubsection{ControllerAutenticazione}
-	\grassetto{Nome}\\
-	MaaP::Client::ControllerModelView::ControllerClient::ControllerAutenticazione\\
-	\grassetto{Descrizione}\\
-	Classe che rappresenta il controller per indirizzare le richieste di autenticazione e registrazione.\\
-	\grassetto{Utilizzo}\\
-	Viene utilizzata per la indirizzare le richieste di autenticazione e registrazione.\\
-	\grassetto{Relazioni con altre classi}
-	\begin{itemize}
-	\item\grassetto{MaaP::Client::ModelClient::Services::HTTP}\\
-	Relazione uscente debole, contiene un riferimento ad un oggetto HTTP per utilizzare il relativo servizio;
-	\item\grassetto{MaaP::Client::ModelClient::Model::SessionData}\\
-	Relazione uscente debole, contiene un riferimento ad un oggetto SessionData per utilizzare i dati di sessione;
-	\item\grassetto{MaaP::Client::View::Template::SignIn}\\
-	Relazione entrante, interazione con il template;
-	\item\grassetto{MaaP::Client::View::Template::SignUp}\\
-	Relazione entrante, interazione con il template.
-	\end{itemize}
-	
-	\subsubsubsubsubsection{ControllerCollection}
-	\grassetto{Nome}\\
-	MaaP::Client::ControllerModelView::ControllerClient::ControllerCollection\\
-	\grassetto{Descrizione}\\
-	Classe che rappresenta il controller per indirizzare le richieste di visualizzazione di una pagina Collection.\\
-	\grassetto{Utilizzo}\\
-	Viene utilizzata per indirizzare le richieste di visualizzazione di una pagina Collection.\\
-	\grassetto{Relazioni con altre classi}
-	\begin{itemize}
-	\item\grassetto{MaaP::Client::ModelClient::Services::HTTP}\\
-	Relazione uscente debole, contiene un riferimento ad un oggetto HTTP per utilizzare il relativo servizio;
-	\item\grassetto{MaaP::Client::ControllerModelView::Scope::Collection}\\
-	Relazione uscente debole, contiene un riferimento ad un oggetto Collection per accedere allo scope relativo ai dati di una Collection;
-	\item\grassetto{MaaP::Client::View::Template::AdminMainPageCollection}\\
-	Relazione entrante, interazione con il template;
-	\item\grassetto{MaaP::Client::View::Template::UserMainPageCollection}\\
-	Relazione entrante, interazione con il template.
-	\end{itemize}
-	
-	\subsubsubsubsubsection{ControllerDocument}
-	\grassetto{Nome}\\
-	MaaP::Client::ControllerModelView::ControllerClient::ControllerDocument\\
-	\grassetto{Descrizione}\\
-	Classe che rappresenta il controller per indirizzare le richieste di visualizzazione di una pagina Document.\\
-	\grassetto{Utilizzo}\\
-	Viene utilizzata per indirizzare le richieste di visualizzazione di una pagina Document.\\
-	\grassetto{Relazioni con altre classi}
-	\begin{itemize}
-	\item\grassetto{MaaP::Client::ModelClient::Services::HTTP}\\
-	Relazione uscente debole, contiene un riferimento ad un oggetto HTTP per utilizzare il relativo servizio;
-	\item\grassetto{MaaP::Client::ControllerModelView::Scope::Document}\\
-	Relazione uscente debole, contiene un riferimento ad un oggetto Document per accedere allo scope relativo ai dati di un Document;
-	\item\grassetto{MaaP::Client::View::Template::MainPageDocument}\\
-	Relazione entrante, interazione con il template;
-	\item\grassetto{MaaP::Client::View::Template::MainPageDocumentEdit}\\
-	Relazione entrante, interazione con il template.
-	\end{itemize}
-	
-	\subsubsubsubsubsection{ControllerProfilo}
-	\grassetto{Nome}\\
-	MaaP::Client::ControllerModelView::ControllerClient::ControllerProfilo\\
-	\grassetto{Descrizione}\\
-	Classe che rappresenta il controller per indirizzare le richieste di visualizzazione di una pagina profilo utente.\\
-	\grassetto{Utilizzo}\\
-	Viene utilizzata per indirizzare le richieste di visualizzazione di una pagina profilo utente.\\
-	\grassetto{Relazioni con altre classi}
-	\begin{itemize}
-	\item\grassetto{MaaP::Client::ModelClient::Services::HTTP}\\
-	Relazione uscente debole, contiene un riferimento ad un oggetto HTTP per utilizzare il relativo servizio;
-	\item\grassetto{MaaP::Client::ControllerModelView::Scope::Profilo}\\
-	Relazione uscente debole, contiene un riferimento ad un oggetto Profilo per accedere allo scope relativo ai dati del profilo;
-	\item\grassetto{MaaP::Client::View::Template::UserProfileEdit}\\
-	Relazione entrante, interazione con il template;
-	\item\grassetto{MaaP::Client::View::Template::UserProfile}\\
-	Relazione entrante, interazione con il template.
-	\item\grassetto{MaaP::Client::View::Template::AdminProfile}\\
-	Relazione entrante, interazione con il template.
-	\item\grassetto{MaaP::Client::View::Template::PasswordRecovery}\\
-	Relazione entrante, interazione con il template.
-	\end{itemize}
-	
-	\subsubsubsubsubsection{ControllerIndici}
-	\grassetto{Nome}\\
-	MaaP::Client::ControllerModelView::ControllerClient::ControllerIndici\\
-	\grassetto{Descrizione}\\
-	Classe che rappresenta il controller per gestire la creazione e l'eliminazione degli indici.\\
-	\grassetto{Utilizzo}\\
-	Viene utilizzata per creare un nuovo indice o elimiare un indice esistente.\\
-	\grassetto{Relazioni con altre classi}
-	\begin{itemize}
-	\item\grassetto{MaaP::Client::ModelClient::Services::HTTP}\\
-	Relazione uscente debole, contiene un riferimento ad un oggetto HTTP per utilizzare il relativo servizio;
-	\item\grassetto{MaaP::Client::ControllerModelView::Scope::Query}\\
-	Relazione uscente debole, contiene un riferimento ad un oggetto Query per accedere allo scope relativo ai dati relativi alle query;
-	\item\grassetto{MaaP::Client::View::Template::IndexPage}\\
-	Relazione entrante, interazione con il template.
-	\item\grassetto{MaaP::Client::View::Template::AdminMainPageCollection}\\
-	Relazione entrante, interazione con il template.
-	\end{itemize}
-	
-	\subsubsubsubsubsection{ControllerMenu}
-	\grassetto{Nome}\\
-	MaaP::Client::ControllerModelView::ControllerClient::ControllerMenu\\
-	\grassetto{Descrizione}\\
-	Classe che rappresenta il controller per indirizzare le richieste di visualizzazione della parte di pagina relativa al menù.\\
-	\grassetto{Utilizzo}\\
-	Viene utilizzata per indirizzare le richieste di visualizzazione della parte di pagina relativa al menù.\\
-	\grassetto{Relazioni con altre classi}
-	\begin{itemize}
-	\item\grassetto{MaaP::Client::ModelClient::Services::HTTP}\\
-	Relazione uscente debole, contiene un riferimento ad un oggetto HTTP per utilizzare il relativo servizio;
-	\item\grassetto{MaaP::Client::ControllerModelView::Scope::Menu}\\
-	Relazione uscente debole, contiene un riferimento ad un oggetto Menu per accedere allo scope relativo ai dati del menù;
-	\item\grassetto{MaaP::Client::View::Template::AdminMainPageCollection}\\
-	Relazione entrante, interazione con il template.
-	\item\grassetto{MaaP::Client::View::Template::UserMainPageCollection}\\
-	Relazione entrante, interazione con il template.
-	\item\grassetto{MaaP::Client::View::Template::MainPageDocument}\\
-	Relazione entrante, interazione con il template;
-	\item\grassetto{MaaP::Client::View::Template::MainPageDocumentEdit}\\
-	Relazione entrante, interazione con il template.
-	\item\grassetto{MaaP::Client::View::Template::UserProfileEdit}\\
-	Relazione entrante, interazione con il template.
-	\item\grassetto{MaaP::Client::View::Template::UserProfile}\\
-	Relazione entrante, interazione con il template.
-	\item\grassetto{MaaP::Client::View::Template::AdminProfile}\\
-	Relazione entrante, interazione con il template.
-	\item\grassetto{MaaP::Client::View::Template::PasswordRecovery}\\
-	Relazione entrante, interazione con il template.
-	\end{itemize}
+\subsubsubsubsubsection{ControllerAutenticazione}
+\grassetto{Nome}\\
+MaaP::Client::ControllerModelView::ControllerClient::ControllerAutenticazione\\
+\grassetto{Descrizione}\\
+Classe che rappresenta il controller per indirizzare le richieste di autenticazione e registrazione.\\
+\grassetto{Utilizzo}\\
+Viene utilizzata per la indirizzare le richieste di autenticazione e registrazione.\\
+\grassetto{Relazioni con altre classi}
+\begin{itemize}
+\item\grassetto{MaaP::Client::ModelClient::Services::HTTP}\\
+Relazione uscente debole, contiene un riferimento ad un oggetto HTTP per utilizzare il relativo servizio;
+\item\grassetto{MaaP::Client::ModelClient::Model::SessionData}\\
+Relazione uscente debole, contiene un riferimento ad un oggetto SessionData per utilizzare i dati di sessione;
+\item\grassetto{MaaP::Client::View::Template::SignIn}\\
+Relazione entrante, interazione con il template;
+\item\grassetto{MaaP::Client::View::Template::SignUp}\\
+Relazione entrante, interazione con il template.
+\end{itemize}
+
+\subsubsubsubsubsection{ControllerCollection}
+\grassetto{Nome}\\
+MaaP::Client::ControllerModelView::ControllerClient::ControllerCollection\\
+\grassetto{Descrizione}\\
+Classe che rappresenta il controller per indirizzare le richieste di visualizzazione di una pagina Collection.\\
+\grassetto{Utilizzo}\\
+Viene utilizzata per indirizzare le richieste di visualizzazione di una pagina Collection.\\
+\grassetto{Relazioni con altre classi}
+\begin{itemize}
+\item\grassetto{MaaP::Client::ModelClient::Services::HTTP}\\
+Relazione uscente debole, contiene un riferimento ad un oggetto HTTP per utilizzare il relativo servizio;
+\item\grassetto{MaaP::Client::ControllerModelView::Scope::Collection}\\
+Relazione uscente debole, contiene un riferimento ad un oggetto Collection per accedere allo scope relativo ai dati di una Collection;
+\item\grassetto{MaaP::Client::View::Template::AdminMainPageCollection}\\
+Relazione entrante, interazione con il template;
+\item\grassetto{MaaP::Client::View::Template::UserMainPageCollection}\\
+Relazione entrante, interazione con il template.
+\end{itemize}
+
+\subsubsubsubsubsection{ControllerDocument}
+\grassetto{Nome}\\
+MaaP::Client::ControllerModelView::ControllerClient::ControllerDocument\\
+\grassetto{Descrizione}\\
+Classe che rappresenta il controller per indirizzare le richieste di visualizzazione di una pagina Document.\\
+\grassetto{Utilizzo}\\
+Viene utilizzata per indirizzare le richieste di visualizzazione di una pagina Document.\\
+\grassetto{Relazioni con altre classi}
+\begin{itemize}
+\item\grassetto{MaaP::Client::ModelClient::Services::HTTP}\\
+Relazione uscente debole, contiene un riferimento ad un oggetto HTTP per utilizzare il relativo servizio;
+\item\grassetto{MaaP::Client::ControllerModelView::Scope::Document}\\
+Relazione uscente debole, contiene un riferimento ad un oggetto Document per accedere allo scope relativo ai dati di un Document;
+\item\grassetto{MaaP::Client::View::Template::MainPageDocument}\\
+Relazione entrante, interazione con il template;
+\item\grassetto{MaaP::Client::View::Template::MainPageDocumentEdit}\\
+Relazione entrante, interazione con il template.
+\end{itemize}
+
+\subsubsubsubsubsection{ControllerProfilo}
+\grassetto{Nome}\\
+MaaP::Client::ControllerModelView::ControllerClient::ControllerProfilo\\
+\grassetto{Descrizione}\\
+Classe che rappresenta il controller per indirizzare le richieste di visualizzazione di una pagina profilo utente.\\
+\grassetto{Utilizzo}\\
+Viene utilizzata per indirizzare le richieste di visualizzazione di una pagina profilo utente.\\
+\grassetto{Relazioni con altre classi}
+\begin{itemize}
+\item\grassetto{MaaP::Client::ModelClient::Services::HTTP}\\
+Relazione uscente debole, contiene un riferimento ad un oggetto HTTP per utilizzare il relativo servizio;
+\item\grassetto{MaaP::Client::ControllerModelView::Scope::Profilo}\\
+Relazione uscente debole, contiene un riferimento ad un oggetto Profilo per accedere allo scope relativo ai dati del profilo;
+\item\grassetto{MaaP::Client::View::Template::UserProfileEdit}\\
+Relazione entrante, interazione con il template;
+\item\grassetto{MaaP::Client::View::Template::UserProfile}\\
+Relazione entrante, interazione con il template.
+\item\grassetto{MaaP::Client::View::Template::AdminProfile}\\
+Relazione entrante, interazione con il template.
+\item\grassetto{MaaP::Client::View::Template::PasswordRecovery}\\
+Relazione entrante, interazione con il template.
+\end{itemize}
+
+\subsubsubsubsubsection{ControllerIndici}
+\grassetto{Nome}\\
+MaaP::Client::ControllerModelView::ControllerClient::ControllerIndici\\
+\grassetto{Descrizione}\\
+Classe che rappresenta il controller per gestire la creazione e l'eliminazione degli indici.\\
+\grassetto{Utilizzo}\\
+Viene utilizzata per creare un nuovo indice o elimiare un indice esistente.\\
+\grassetto{Relazioni con altre classi}
+\begin{itemize}
+\item\grassetto{MaaP::Client::ModelClient::Services::HTTP}\\
+Relazione uscente debole, contiene un riferimento ad un oggetto HTTP per utilizzare il relativo servizio;
+\item\grassetto{MaaP::Client::ControllerModelView::Scope::Query}\\
+Relazione uscente debole, contiene un riferimento ad un oggetto Query per accedere allo scope relativo ai dati relativi alle query;
+\item\grassetto{MaaP::Client::View::Template::IndexPage}\\
+Relazione entrante, interazione con il template.
+\item\grassetto{MaaP::Client::View::Template::AdminMainPageCollection}\\
+Relazione entrante, interazione con il template.
+\end{itemize}
+
+\subsubsubsubsubsection{ControllerMenu}
+\grassetto{Nome}\\
+MaaP::Client::ControllerModelView::ControllerClient::ControllerMenu\\
+\grassetto{Descrizione}\\
+Classe che rappresenta il controller per indirizzare le richieste di visualizzazione della parte di pagina relativa al menù.\\
+\grassetto{Utilizzo}\\
+Viene utilizzata per indirizzare le richieste di visualizzazione della parte di pagina relativa al menù.\\
+\grassetto{Relazioni con altre classi}
+\begin{itemize}
+\item\grassetto{MaaP::Client::ModelClient::Services::HTTP}\\
+Relazione uscente debole, contiene un riferimento ad un oggetto HTTP per utilizzare il relativo servizio;
+\item\grassetto{MaaP::Client::ControllerModelView::Scope::Menu}\\
+Relazione uscente debole, contiene un riferimento ad un oggetto Menu per accedere allo scope relativo ai dati del menù;
+\item\grassetto{MaaP::Client::View::Template::AdminMainPageCollection}\\
+Relazione entrante, interazione con il template.
+\item\grassetto{MaaP::Client::View::Template::UserMainPageCollection}\\
+Relazione entrante, interazione con il template.
+\item\grassetto{MaaP::Client::View::Template::MainPageDocument}\\
+Relazione entrante, interazione con il template;
+\item\grassetto{MaaP::Client::View::Template::MainPageDocumentEdit}\\
+Relazione entrante, interazione con il template.
+\item\grassetto{MaaP::Client::View::Template::UserProfileEdit}\\
+Relazione entrante, interazione con il template.
+\item\grassetto{MaaP::Client::View::Template::UserProfile}\\
+Relazione entrante, interazione con il template.
+\item\grassetto{MaaP::Client::View::Template::AdminProfile}\\
+Relazione entrante, interazione con il template.
+\item\grassetto{MaaP::Client::View::Template::PasswordRecovery}\\
+Relazione entrante, interazione con il template.
+\end{itemize}
 
 \subsubsubsection{MaaP::Client::ControllerModelView::Scope}
 \subsubsubsubsection{Informazioni sul package}
@@ -1179,71 +1179,71 @@ Componente parte del ControllerModelView contenente i vari controller.
 Componente parte del ControllerModelView contenente i dati per renderizzare i template.
 \subsubsubsubsection{Classi}
 
-	\subsubsubsubsubsection{Collection}
-	\grassetto{Nome}\\
-	MaaP::Client::ControllerModelView::Scope::Collection\\
-	\grassetto{Descrizione}\\
-	Classe che rappresenta i dati relativi alla Collection da visualizzare.\\
-	\grassetto{Utilizzo}\\
-	Viene utilizzata per memorizzare i dati relativi alla Collection da visualizzare i quali saranno sucessivamente visualizzati nella pagina web.\\
-	\grassetto{Relazioni con altre classi}
-	\begin{itemize}
-	\item\grassetto{MaaP::Client::ControllerModelView::ControllerClient::ControllerCollection}\\
-	Relazione entrante debole, interazione con il controller della Collection;
-	\end{itemize}
-	
-	\subsubsubsubsubsection{Query}
-	\grassetto{Nome}\\
-	MaaP::Client::ControllerModelView::Scope::Query\\
-	\grassetto{Descrizione}\\
-	Classe che rappresenta i dati relativi alle query più utilizzare.\\
-	\grassetto{Utilizzo}\\
-	Viene utilizzata per memorizzare i dati relativi alle query più utilizzate, le quali saranno sucessivamente visualizzate nella pagina web.\\
-	\grassetto{Relazioni con altre classi}
-	\begin{itemize}
-	\item\grassetto{MaaP::Client::ControllerModelView::ControllerClient::ControllerIndici}\\
-	Relazione entrante debole, interazione con il controller degli indici;
-	\end{itemize}
-	
-	\subsubsubsubsubsection{Document}
-	\grassetto{Nome}\\
-	MaaP::Client::ControllerModelView::Scope::Document\\
-	\grassetto{Descrizione}\\
-	Classe che rappresenta i dati relativi al Document da visualizzare.\\
-	\grassetto{Utilizzo}\\
-	Viene utilizzata per memorizzare i dati relativi al Document da visualizzare i quali saranno sucessivamente visualizzati nella pagina web.\\
-	\grassetto{Relazioni con altre classi}
-	\begin{itemize}
-	\item\grassetto{MaaP::Client::ControllerModelView::ControllerClient::ControllerDocument}\\
-	Relazione entrante debole, interazione con il controller del Document;
-	\end{itemize}
-	
-	\subsubsubsubsubsection{Profilo}
-	\grassetto{Nome}\\
-	MaaP::Client::ControllerModelView::Scope::Profilo\\
-	\grassetto{Descrizione}\\
-	Classe che rappresenta i dati relativi al profilo utente da visualizzare.\\
-	\grassetto{Utilizzo}\\
-	Viene utilizzata per memorizzare i dati relativi al profilo utente da visualizzare i quali saranno sucessivamente visualizzati nella pagina web.\\
-	\grassetto{Relazioni con altre classi}
-	\begin{itemize}
-	\item\grassetto{MaaP::Client::ControllerModelView::ControllerClient::ControllerProfilo}\\
-	Relazione entrante debole, interazione con il controller del profilo;
-	\end{itemize}
-	
-	\subsubsubsubsubsection{Menu}
-	\grassetto{Nome}\\
-	MaaP::Client::ControllerModelView::Scope::Menu\\
-	\grassetto{Descrizione}\\
-	Classe che rappresenta i dati relativi al menù da visualizzare.\\
-	\grassetto{Utilizzo}\\
-	Viene utilizzata per memorizzare i dati relativi al menù da visualizzare i quali saranno sucessivamente visualizzati nella pagina web.\\
-	\grassetto{Relazioni con altre classi}
-	\begin{itemize}
-	\item\grassetto{MaaP::Client::ControllerModelView::ControllerClient::ControllerMenu}\\
-	Relazione entrante debole, interazione con il controller del menù;
-	\end{itemize}
-	
+\subsubsubsubsubsection{Collection}
+\grassetto{Nome}\\
+MaaP::Client::ControllerModelView::Scope::Collection\\
+\grassetto{Descrizione}\\
+Classe che rappresenta i dati relativi alla Collection da visualizzare.\\
+\grassetto{Utilizzo}\\
+Viene utilizzata per memorizzare i dati relativi alla Collection da visualizzare i quali saranno sucessivamente visualizzati nella pagina web.\\
+\grassetto{Relazioni con altre classi}
+\begin{itemize}
+\item\grassetto{MaaP::Client::ControllerModelView::ControllerClient::ControllerCollection}\\
+Relazione entrante debole, interazione con il controller della Collection;
+\end{itemize}
+
+\subsubsubsubsubsection{Query}
+\grassetto{Nome}\\
+MaaP::Client::ControllerModelView::Scope::Query\\
+\grassetto{Descrizione}\\
+Classe che rappresenta i dati relativi alle query più utilizzare.\\
+\grassetto{Utilizzo}\\
+Viene utilizzata per memorizzare i dati relativi alle query più utilizzate, le quali saranno sucessivamente visualizzate nella pagina web.\\
+\grassetto{Relazioni con altre classi}
+\begin{itemize}
+\item\grassetto{MaaP::Client::ControllerModelView::ControllerClient::ControllerIndici}\\
+Relazione entrante debole, interazione con il controller degli indici;
+\end{itemize}
+
+\subsubsubsubsubsection{Document}
+\grassetto{Nome}\\
+MaaP::Client::ControllerModelView::Scope::Document\\
+\grassetto{Descrizione}\\
+Classe che rappresenta i dati relativi al Document da visualizzare.\\
+\grassetto{Utilizzo}\\
+Viene utilizzata per memorizzare i dati relativi al Document da visualizzare i quali saranno sucessivamente visualizzati nella pagina web.\\
+\grassetto{Relazioni con altre classi}
+\begin{itemize}
+\item\grassetto{MaaP::Client::ControllerModelView::ControllerClient::ControllerDocument}\\
+Relazione entrante debole, interazione con il controller del Document;
+\end{itemize}
+
+\subsubsubsubsubsection{Profilo}
+\grassetto{Nome}\\
+MaaP::Client::ControllerModelView::Scope::Profilo\\
+\grassetto{Descrizione}\\
+Classe che rappresenta i dati relativi al profilo utente da visualizzare.\\
+\grassetto{Utilizzo}\\
+Viene utilizzata per memorizzare i dati relativi al profilo utente da visualizzare i quali saranno sucessivamente visualizzati nella pagina web.\\
+\grassetto{Relazioni con altre classi}
+\begin{itemize}
+\item\grassetto{MaaP::Client::ControllerModelView::ControllerClient::ControllerProfilo}\\
+Relazione entrante debole, interazione con il controller del profilo;
+\end{itemize}
+
+\subsubsubsubsubsection{Menu}
+\grassetto{Nome}\\
+MaaP::Client::ControllerModelView::Scope::Menu\\
+\grassetto{Descrizione}\\
+Classe che rappresenta i dati relativi al menù da visualizzare.\\
+\grassetto{Utilizzo}\\
+Viene utilizzata per memorizzare i dati relativi al menù da visualizzare i quali saranno sucessivamente visualizzati nella pagina web.\\
+\grassetto{Relazioni con altre classi}
+\begin{itemize}
+\item\grassetto{MaaP::Client::ControllerModelView::ControllerClient::ControllerMenu}\\
+Relazione entrante debole, interazione con il controller del menù;
+\end{itemize}
+
 
 \subsubsection{MaaP::Client::ModelClient}
 \subsubsubsection{Informazioni sul package}
@@ -1263,28 +1263,28 @@ Componente Model del design pattern MVVM.
 Componente parte del ModelClient contenente i servizi per la comunicazione con il server.
 \subsubsubsubsection{Classi}
 
-	\subsubsubsubsubsection{HTTP}
-	\grassetto{Nome}\\
-	MaaP::Client::ModelClient::Services::HTTP\\
-	\grassetto{Descrizione}\\
-	Classe che rappresenta il servizio di comunicazione HTTP con il server.\\
-	\grassetto{Utilizzo}\\
-	Viene utilizzata per inviare richieste HTTP al server.\\
-	\grassetto{Relazioni con altre classi}
-	\begin{itemize}
-	\item\grassetto{MaaP::Client::ControllerModelView::ControllerClient::ControllerAutenticazione}\\
-	Relazione entrante debole, interazione con il controller dell'Autenticazione;
-	\item\grassetto{MaaP::Client::ControllerModelView::ControllerClient::ControllerCollection}\\
-	Relazione entrante debole, interazione con il controller della Collection;
-	\item\grassetto{MaaP::Client::ControllerModelView::ControllerClient::ControllerDocument}\\
-	Relazione entrante debole, interazione con il controller del Document;
-	\item\grassetto{MaaP::Client::ControllerModelView::ControllerClient::ControllerProfilo}\\
-	Relazione entrante debole, interazione con il controller del profilo;
-	\item\grassetto{MaaP::Client::ControllerModelView::ControllerClient::ControllerMenu}\\
-	Relazione entrante debole, interazione con il controller del menù;
-	\item\grassetto{MaaP::Controller::FrontController}\\
-	Relazione uscente debole, contiene un riferimento ad un oggetto di tipo FrontController per inviare richieste HTTP al server.
-	\end{itemize}
+\subsubsubsubsubsection{HTTP}
+\grassetto{Nome}\\
+MaaP::Client::ModelClient::Services::HTTP\\
+\grassetto{Descrizione}\\
+Classe che rappresenta il servizio di comunicazione HTTP con il server.\\
+\grassetto{Utilizzo}\\
+Viene utilizzata per inviare richieste HTTP al server.\\
+\grassetto{Relazioni con altre classi}
+\begin{itemize}
+\item\grassetto{MaaP::Client::ControllerModelView::ControllerClient::ControllerAutenticazione}\\
+Relazione entrante debole, interazione con il controller dell'Autenticazione;
+\item\grassetto{MaaP::Client::ControllerModelView::ControllerClient::ControllerCollection}\\
+Relazione entrante debole, interazione con il controller della Collection;
+\item\grassetto{MaaP::Client::ControllerModelView::ControllerClient::ControllerDocument}\\
+Relazione entrante debole, interazione con il controller del Document;
+\item\grassetto{MaaP::Client::ControllerModelView::ControllerClient::ControllerProfilo}\\
+Relazione entrante debole, interazione con il controller del profilo;
+\item\grassetto{MaaP::Client::ControllerModelView::ControllerClient::ControllerMenu}\\
+Relazione entrante debole, interazione con il controller del menù;
+\item\grassetto{MaaP::Controller::FrontController}\\
+Relazione uscente debole, contiene un riferimento ad un oggetto di tipo FrontController per inviare richieste HTTP al server.
+\end{itemize}
 
 \subsubsubsection{MaaP::Client::ModelClient::Model}
 \subsubsubsubsection{Informazioni sul package}
@@ -1293,18 +1293,18 @@ Componente parte del ModelClient contenente i servizi per la comunicazione con i
 Componente parte del ModelClient contenente i dati di sessione.
 \subsubsubsubsection{Classi}
 
-	\subsubsubsubsubsection{SessionData}
-	\grassetto{Nome}\\
-	MaaP::Client::ModelClient::Model::SessionData\\
-	\grassetto{Descrizione}\\
-	Classe che rappresenta i dati di sessione utente.\\
-	\grassetto{Utilizzo}\\
-	Viene utilizzata memorizzare i dati di sessione del client.\\
-	\grassetto{Relazioni con altre classi}
-	\begin{itemize}
-	\item\grassetto{MaaP::Client::ControllerModelView::ControllerClient::ControllerAutenticazione}\\
-	Relazione entrante debole, interazione con il controller dell'Autenticazione.
-	\end{itemize}
+\subsubsubsubsubsection{SessionData}
+\grassetto{Nome}\\
+MaaP::Client::ModelClient::Model::SessionData\\
+\grassetto{Descrizione}\\
+Classe che rappresenta i dati di sessione utente.\\
+\grassetto{Utilizzo}\\
+Viene utilizzata memorizzare i dati di sessione del client.\\
+\grassetto{Relazioni con altre classi}
+\begin{itemize}
+\item\grassetto{MaaP::Client::ControllerModelView::ControllerClient::ControllerAutenticazione}\\
+Relazione entrante debole, interazione con il controller dell'Autenticazione.
+\end{itemize}
 
 
 
@@ -1319,7 +1319,7 @@ Il diagramma precedente illustra la sequenza di operazioni che avviene alla modi
 
 \newpage
 \section{Design Pattern}
-I Design Pattern sono soluzioni a problemi ricorrenti. Adottare i Design Pattern semplifica l'attività di progettazione, rende l'architettura più manutenibile e favorisce il riutilizzo del codice.\\
+I Design Pattern sono soluzioni a problemi ricorrenti. Adottare i Design Pattern semplifica l'attività di progettazione, rende l'architettura più \gloss{manutenibile} e favorisce il riutilizzo del codice.\\
 I design pattern possono essere suddivisi in:
 
 \begin{itemize}
@@ -1335,23 +1335,23 @@ Nella realizzazione del progetto MaaP si è deciso di implementare i seguenti De
 \subsubsection{MVVM}
 \immagine{./Diagrammi/ComponentiClient}{Applicazione di MVVM in MaaP}
 \begin{itemize}
-\item \grassetto{Scopo:} Il pattern MVVM è stato scelto per separare la logica dell'applicazione lato client dalla rappresentazione grafica; 
+\item \grassetto{Scopo:} Il pattern MVVM è stato scelto per separare la logica dell'applicazione lato client dalla rappresentazione grafica;
 \item \grassetto{Utilizzo:} Nel progetto MaaP la scelta di utilizzare AngularJS come base di partenza per l'applicazione lato client ha implicitamente comportato l'utilizzo del design pattern MVVM perché proprio di AngularJS.
 \end{itemize}
 
 \subsection{Design Pattern creazionali}
 \subsubsection{Singleton}
-\immagine{./Diagrammi/DPSingleton}{Applicazione di Singleton in MaaP}
+\immagine{./Diagrammi/DPSingleton}{Applicazione di \gloss{Singleton} in MaaP}
 \begin{itemize}
-\item \grassetto{Scopo:} Viene usato il pattern Singleton per le classi che devono avere un'unica istanza durante l'esecuzione dell'applicazione; 
+\item \grassetto{Scopo:} Viene usato il pattern Singleton per le classi che devono avere un'unica istanza durante l'esecuzione dell'applicazione;
 \item \grassetto{Utilizzo:} Le classi che devono avere un'unica istanza sono i controller lato client.
 \end{itemize}
 
-\subsection{Design Pattern comportamentali} 
+\subsection{Design Pattern comportamentali}
 \subsubsection{Strategy}
 \immagine{./Diagrammi/DPStrategy}{Applicazione di Strategy in MaaP}
 \begin{itemize}
-\item \grassetto{Scopo:} Il pattern Strategy viene usato per isolare più algoritmi che svolgono la stessa funzione dal codice che esegue la funzione; 
+\item \grassetto{Scopo:} Il pattern Strategy viene usato per isolare più algoritmi che svolgono la stessa funzione dal codice che esegue la funzione;
 \item \grassetto{Utilizzo:} In MaaP è stato usato gestire inizialmente un singolo algoritmo di parsing del file di descrizione, ma permetterà in futuro di aggiungere nuovi algoritmi di parsing differenziati senza modificare le classi che ne fanno uso.\\
 La concrete strategy attualmente presente è: DSLParser.
 \end{itemize}
@@ -1360,14 +1360,14 @@ La concrete strategy attualmente presente è: DSLParser.
 \subsubsection{Adapter}
 \immagine{./Diagrammi/DPAdapter}{Applicazione di Adapter in MaaP}
 \begin{itemize}
-\item \grassetto{Scopo:} Il pattern Adapter viene utilizzato per adattare una classe riutilizzando un oggetto già esistente. Questo semplifica l'eventuale processo di sostituzione dell'oggetto esistente, creando un'interfaccia stabile per il resto dell'applicazione; 
+\item \grassetto{Scopo:} Il pattern Adapter viene utilizzato per adattare una classe riutilizzando un oggetto già esistente. Questo semplifica l'eventuale processo di sostituzione dell'oggetto esistente, creando un'interfaccia stabile per il resto dell'applicazione;
 \item \grassetto{Utilizzo:} In MaaP è stato usato per adattare la classe Passport nel Controller. PassportAdapter adatta Passport.
 \end{itemize}
 
 \subsubsection{Facade}
 \immagine{./Diagrammi/DPFacade}{Applicazione di Facade in MaaP}
 \begin{itemize}
-\item \grassetto{Scopo:} Il pattern Facade viene usato per fornire un'interfaccia unica a più classi; 
+\item \grassetto{Scopo:} Il pattern Facade viene usato per fornire un'interfaccia unica a più classi;
 \item \grassetto{Utilizzo:} In MaaP, ProjectFacade è una Facade che presenta un'interfaccia per tutti gli oggetti gestiscono la creazione e/o modifica di un progetto:\\
 \begin{itemize}
 \item ProjectCreate;
@@ -1379,11 +1379,11 @@ La concrete strategy attualmente presente è: DSLParser.
 \newpage
 \section{Stime di fattibilità e di bisogno di risorse}
 L'architettura definita precedentemente ha raggiunto un livello di dettaglio sufficiente per fornire una stima sulla fattibilità e di bisogno delle risorse.\\
-L'analisi dell'architettura progettata ha permesso di constatare che le tecnologie che si è scelto di adottare risultano sufficientemente adeguate per la realizzazione del prodotto e riescono a ricoprire le esigenze progettuali.\\
+L'analisi dell'architettura progettata ha \gloss{permesso} di constatare che le tecnologie che si è scelto di adottare risultano sufficientemente adeguate per la realizzazione del prodotto e riescono a ricoprire le esigenze progettuali.\\
 Gli strumenti scelti sono conosciuti dalla maggioranza dei componenti del gruppo che si impegneranno comunque ad approfondire le loro conoscenze inerenti all'utilizzo degli stessi.\\
 Gli strumenti utilizzati sono:
 \begin{itemize}
-\item \grassetto{NodeJS:} per la realizzazione dell'applicazione web lato server;
+\item \grassetto{NodeJS:} per la realizzazione dell'\gloss{applicazione web} lato server;
 \item \grassetto{AngularJS:} per la realizzazione dell'applicazione web lato client;
 \item \grassetto{Mongoose:} per la comunicazione con il database MongoDB;
 \item \grassetto{Express:} framework per NodeJS;
@@ -1397,7 +1397,7 @@ Gli strumenti utilizzati sono:
 \section{Descrizione Design Pattern} %A.0
 
 \subsection{Design Pattern architetturali}
-\subsubsection{MVVM} 
+\subsubsection{MVVM}
 \immagine{./Diagrammi/MVVM}{Diagramma del design pattern MVVM}
 \begin{itemize}
 \item \grassetto{Scopo:} Disaccoppiare le tre componenti seguenti:
@@ -1416,7 +1416,7 @@ Gli strumenti utilizzati sono:
 \end{itemize}
 
 \subsection{Design Pattern creazionali}
-\subsubsection{Singleton} 
+\subsubsection{Singleton}
 \immagine{./Diagrammi/SINGLETON}{Diagramma del design pattern Singleton}
 \begin{itemize}
 \item \grassetto{Scopo:} Assicurare che una classe abbia solo un'istanza e fornire un punto d'accesso globale a tale istanza;
@@ -1428,8 +1428,8 @@ Gli strumenti utilizzati sono:
 \end{itemize}
 \end{itemize}
 
-\subsection{Design Pattern strutturali} 
-\subsubsection{Adapter} 
+\subsection{Design Pattern strutturali}
+\subsubsection{Adapter}
 \immagine{./Diagrammi/ADAPTER}{Diagramma del design pattern Adapter}
 \begin{itemize}
 \item \grassetto{Scopo:} Convertire l'interfaccia di una classe in un'altra interfaccia richiesta dal client. Consente a classi diverse di operare insieme quando ciò non sarebbe altrimenti possibile a causa di interfacce incompatibili;
@@ -1442,30 +1442,30 @@ Gli strumenti utilizzati sono:
 \end{itemize}
 \end{itemize}
 
-\subsubsection{Facade} 
+\subsubsection{Facade}
 \immagine{./Diagrammi/FACADE}{Diagramma del design pattern Facade}
 \begin{itemize}
-\item \grassetto{Scopo:} Fornire un'interfaccia unificata per un insieme di interfacce presenti in un sottosistema. Definisce un'interfaccia di livello più alto che rende il sottosistema più semplice da utilizzare;
+\item \grassetto{Scopo:} Fornire un'interfaccia unificata per un insieme di interfacce presenti in un \gloss{sottosistema}. Definisce un'interfaccia di livello più alto che rende il sottosistema più semplice da utilizzare;
 \item \grassetto{Motivazione:} Suddividere un sistema in sottosistemi aiuta a ridurre la complessità. Un obbiettivo comune di progettazione è la minimizzazione delle comunicazioni e delle dipendenze fra i diversi sottosistemi. Un modo per raggiungere questo obbiettivo è introdurre un oggetto facade, che fornisce un'interfaccia unica e semplificata per accedere alle funzionalità offerte da un sottosistema;
 \item \grassetto{Applicabilità:} Il pattern Facade può essere utilizzato nei seguenti casi:
 \begin{itemize}
 \item Quando si vuole fornire un'interfaccia semplice a un sottosistema complesso poiché fornisce una vista semplice di base su un sottosistema che si rivela essere sufficiente per la maggior parte dei client;
-\item Nei casi in cui si cono molte dipendenze fra i client e le classi che implementano un'astrazione in quanto si disaccoppia il sottosistema dai client e dagli altri sistemi, promuovendo portabilità ed indipendenza dei sottosistemi;
+\item Nei casi in cui si cono molte dipendenze fra i client e le classi che implementano un'\gloss{astrazione} in quanto si disaccoppia il sottosistema dai client e dagli altri sistemi, promuovendo \gloss{portabilità} ed indipendenza dei sottosistemi;
 \item Quando si vogliono organizzare i sottosistemi in una struttura a livelli.
 \end{itemize}
 \end{itemize}
 
 \subsection{Design Pattern comportamentali} %A.4
-\subsubsection{Strategy} 
+\subsubsection{Strategy}
 \immagine{./Diagrammi/STRATEGY}{Diagramma del design pattern Strategy}
 \begin{itemize}
 \item \grassetto{Scopo:} Definire una famiglia di algoritmi, incapsularli e renderli intercambiabili. Permette agli algoritmi di variare indipendentemente dai client che ne fanno uso;
-\item \grassetto{Motivazione:} Esistono molti algoritmi per risolvere un problema. Codificare statisticamente ognuno di questi algoritmi nelle classi che ne fanno richiesta non è auspicabile per svariati motivi. Si possono evitare questi problemi definendo delle classi che incapsulano svariati algoritmi chiamati Strategy; 
+\item \grassetto{Motivazione:} Esistono molti algoritmi per risolvere un problema. Codificare statisticamente ognuno di questi algoritmi nelle classi che ne fanno richiesta non è auspicabile per svariati motivi. Si possono evitare questi problemi definendo delle classi che incapsulano svariati algoritmi chiamati Strategy;
 \item \grassetto{Applicabilità:} Il pattern Strategy può essere utilizzato nei seguenti casi:
 \begin{itemize}
 \item Molte classi correlate differiscono fra loro solo per il comportamento;
 \item Sono necessarie più varianti di un algoritmo;
-\item Un algoritmo usa una struttura dati che non dovrebbe essere resa nota ai client;
+\item Un algoritmo usa una \gloss{struttura dati} che non dovrebbe essere resa nota ai client;
 \item Una classe definisce molti comportamenti che compaiono all'interno delle scelte condizionali multiple.
 \end{itemize}
 \end{itemize}
