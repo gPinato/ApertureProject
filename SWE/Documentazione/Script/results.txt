@@ -7,10 +7,10 @@ header.tex: 76
 versioneDocumenti.tex: -26
 Norme_di_progetto.tex: 51
 Piano_di_progetto.tex: 49
-Piano_di_qualifica.tex: 43
+Piano_di_qualifica.tex: 46
 Piano_di_qualifica_appendice_A.tex: 44
-Piano_di_qualifica_appendice_B.tex: 40
-Piano_di_qualifica_appendice_C.tex: 41
+Piano_di_qualifica_appendice_B.tex: 62
+Piano_di_qualifica_appendice_C.tex: 43
 Tracciamento.tex: 100
 diagrammiAttivita.tex: 41
 Specifica_tecnica.tex: 49
