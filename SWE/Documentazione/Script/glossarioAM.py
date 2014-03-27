@@ -3,7 +3,7 @@ import os
 import sys
 
 #lista_documenti=["Analisi_dei_requisiti.tex", "refman.tex"]
-lista_documenti=["Analisi_dei_requisiti.tex"]
+lista_documenti=["Specifica_tecnica.tex"]
 
 def get_lista_termini():
     inp = open("..\\Glossario\\GlossarioAM.tex")
