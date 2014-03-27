@@ -326,8 +326,8 @@ I risultati sono compresi tra 0 e 100, dove il valore "100" indica la leggibilit
 L'indice prevede un intervallo di valori tra 0 e 100, dove 100 esprime la leggibilità massima.
 I nostri obiettivi per l'indice Gulpease sono i seguenti:
 \begin{itemize}
-\item \grassetto{Obiettivo ottimale}: [51--100];
-\item \grassetto{Obiettivo sufficiente}: [40--50].
+\item \grassetto{Obiettivo ottimale}: [50--100];
+\item \grassetto{Obiettivo sufficiente}: [40--100].
 \end{itemize}
 
 \subsubsection{Metriche software}
@@ -353,7 +353,7 @@ dove:
 \end{itemize}
 Degli obiettivi ragionevoli per questa metrica sono i seguenti:
 \begin{itemize}
-\item \grassetto{Obiettivo Sufficiente}: [11--15];
+\item \grassetto{Obiettivo Sufficiente}: [1--15];
 \item \grassetto{Obiettivo Ottimale}: [1--10]\footnote{Il valore 10 come massimo è stato calcolato da T.J.McCabe, inventore della metrica.}.
 \end{itemize}
 
@@ -363,7 +363,7 @@ Il numero di livelli di annidamento dei metodi rappresenta la quantità di richi
 Un elevato livello di annidamento definisce un'elevata complessità del codice e di altrettanta comprensione dello stesso.
 Gli obiettivi stimati per questa metrica sono:
 \begin{itemize}
-\item \grassetto{Obiettivo Sufficiente}: [4-6];
+\item \grassetto{Obiettivo Sufficiente}: [1-6];
 \item \grassetto{Obiettivo Ottimale}: [1-3].
 \end{itemize}
 
@@ -372,7 +372,7 @@ Gli obiettivi stimati per questa metrica sono:
 Il numero di attributi per \gloss{classe} esprime, appunto, la quantità di proprietà di una classe. Un elevato numero di attributi può denotare un'eccessiva dimensione della classe stessa, che potrebbe piuttosto essere suddivisa in classi più piccole, relazionate tra di loro.
 Gli obiettivi per questa metrica sono:
 \begin{itemize}
-\item \grassetto{Obiettivo Sufficiente}: [9-16];
+\item \grassetto{Obiettivo Sufficiente}: [0-16];
 \item \grassetto{Obiettivo Ottimale}: [3-8].
 \end{itemize}
 
@@ -381,7 +381,7 @@ Gli obiettivi per questa metrica sono:
 Un alto numero di parametri per metodo denota un'eccessiva complessità del metodo stesso, comportandone probabilmente un'ulteriore lunghezza non accettabile. E' buona norma scrivere dei metodi con pochi parametri, al fine di ottenere procedure specifiche e atomiche, di conseguenza facilmente assegnabili e verificabili.
 Degli obiettivi validi per questa metrica sono:
 \begin{itemize}
-\item \grassetto{Obiettivo Sufficiente}: [5-8];
+\item \grassetto{Obiettivo Sufficiente}: [0-8];
 \item \grassetto{Obiettivo Ottimale}: [0-4].
 \end{itemize}
 
@@ -422,7 +422,7 @@ $$I = Ce / (Ca + Ce)$$
 dove Ca è l'accoppiamento afferente e Ce l'accoppiamento efferente.
 Gli obiettivi forniti da \emph{best practice}\footnote{Range ricavati da \url{http://staff.unak.is/andy/StaticAnalysis0809/metrics/i.html}} sono i seguenti:
 \begin{itemize}
-\item \grassetto{Obiettivo Sufficiente}: [0.4 - 0.8];
+\item \grassetto{Obiettivo Sufficiente}: [0.0 - 0.8];
 \item \grassetto{Obiettivo Ottimale}: [0.0 - 0.3].
 \end{itemize}
 
@@ -431,8 +431,8 @@ Gli obiettivi forniti da \emph{best practice}\footnote{Range ricavati da \url{ht
 Questo fattore indica la percentuale di codice coperto durante l'esecuzione dei test. Più alta sarà la percentuale, minore sarà la possibilità di errori riscontrabili nell'esecuzione del software. Per abbassare questo questo indice sarà sufficiente scrivere metodi semplici che non necessitino di testing. Il valore ideale di 100\% indica che tutte le porzioni di codice sono testate da uno o più test.
 Gli obiettivi stimati per questa metrica sono:
 \begin{itemize}
-\item \grassetto{Obiettivo Sufficiente}: [42\% - 65\%];
-\item \grassetto{Obiettivo Ottimale}: [66\% - 100\%].
+\item \grassetto{Obiettivo Sufficiente}: [42\% - 100\%];
+\item \grassetto{Obiettivo Ottimale}: [65\% - 100\%].
 \end{itemize}
 
 
