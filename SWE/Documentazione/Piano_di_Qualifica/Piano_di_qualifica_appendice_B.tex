@@ -199,15 +199,15 @@ L’utente vuole verificare le funzionalità di visualizzazione di collection e 
 
 \begin{enumerate}
 \item Cliccare sul pulsante Collection;
-\item Selezionare la collection da visualizzare dall'apposito elenco;
+\item Selezionare la Collection da visualizzare dall'apposito elenco;
 \begin{enumerate}
-\item Scorrere le pagine della collection fino a trovare il documento ricercato;
+\item Scorrere le pagine della Collection fino a trovare il document ricercato;
 \item Usare un filtro per ricercare un documento;
 \item Annullare il filtro applicato;
-\item Ordinare un campo, se abilitato, in ordine crescente o decrescente;
+\item Ordinare una chiave, se abilitata, in ordine crescente o decrescente;
 \item Impostare un numero massimo di documenti da visualizzare;
 \end{enumerate}
-\item Selezionare il documento ricercato cliccando sul suo nome o su una chiave;
+\item Selezionare il documento ricercato cliccando sulla chiave selezionabile;
 \item Verificare che il documento venga visualizzato correttamente.
 \end{enumerate}
 
@@ -240,7 +240,7 @@ Si dovrà quindi seguire la seguente procedura di validazione:
 \begin{enumerate}
 \item Entrare nel proprio profilo utente;
 \item Cliccare sul pulsante di modifica;
-\item Verificare di poter modificare uno o più campi del profilo;
+\item Verificare di poter modificare una o più chiavi del profilo;
 \item Verificare di poter salvare le modifiche;
 \item Verificare di poter annullare le modifiche;
 \end{enumerate}
@@ -264,16 +264,16 @@ Si dovrà quindi seguire la seguente procedura:
 \item Cliccare sul pulsante di gestione profili utenti;
 \item Selezionare il profilo utente da modificare;
 \begin{enumerate}
-\item Scorrere le pagine della collection fino a trovare il profilo ricercato;
+\item Scorrere le pagine della Collection fino a trovare il profilo ricercato;
 \item Usare un filtro per ricercare un profilo;
 \item Annullare il filtro applicato;
-\item Ordinare un campo, se abilitato, in ordine crescente o decrescente;
+\item Ordinare una chiave, se abilitata, in ordine crescente o decrescente;
 \item Impostare un numero massimo di profili da visualizzare;
 \end{enumerate}
 \item Verificare di poter modificare le informazioni del profilo utente;
 \begin{enumerate}
 \item Cliccare sul pulsante di modifica;
-\item Verificare di poter modificare uno o più campi del profilo;
+\item Verificare di poter modificare una o più chiavi del profilo;
 \item Verificare di poter salvare le modifiche;
 \item Verificare di poter annullare le modifiche;
 \end{enumerate}
@@ -307,19 +307,18 @@ Dovrà quindi seguire la seguente procedura:
 
 
 \begin{enumerate}
-\item Dopo essere entrato in una pagina collection, selezionare un document;
-\item Verificare di poter modificare un document;
+\item Dopo essere entrato in una pagina Collection, selezionare un Document;
+\item Verificare di poter modificare un Document;
 \begin{enumerate}
 \item Cliccare sul pulsante di modifica;
-\item Verificare di poter modificare i campi disponibili;
-\item Verificare di poter modificare le chiavi;
+\item Verificare di poter modificare le chiavi disponibili;
 \item Verificare di poter salvare le modifiche;
 \item Verificare di poter annullare le modifiche;
 \end{enumerate}
-\item Verificare di poter cancellare un document;
+\item Verificare di poter cancellare un Document;
 \begin{enumerate}
 \item Selezionare il pulsante di cancellazione;
-\item Verificare che il document non sia più presente nel sistema;
+\item Verificare che il Document non sia più presente nel sistema;
 \end{enumerate}
 \end{enumerate}
 
@@ -347,13 +346,13 @@ Dovrà quindi seguire la seguente procedura:
 
 \subsubsection{TV 6 - Lato Utente Sviluppatore}
 
-L’utente sviluppatore vuole verificare il corretto funzionamento della gestione ed interpretazione del DSL.
+L’utente sviluppatore vuole verificare il corretto funzionamento della gestione ed interpretazione del DSL per la creazione di una pagina collection index.
 Dovrà quindi seguire la seguente procedura:
 
 \begin{enumerate}
 \item Scrivere un file DSL valido;
 \begin{enumerate}
-\item Specificare i campi da visualizzare;
+\item Specificare le chiavi da visualizzare;
 \item Specificare la provenienza dei dati;
 \begin{enumerate}
 \item Provenienti da query standard;
@@ -362,19 +361,44 @@ Dovrà quindi seguire la seguente procedura:
 \item Provenienti da riferimenti esterni;
 \end{enumerate}
 \item Specificare eventuali etichette;
-\item Specificare eventuali campi ordinabili;
-\item Specificare eventuali campi chiave;
+\item Specificare eventuali chiavi ordinabili;
 \item Specificare il numero massimo di document per pagina;
+\item Specificare il nome della Collection;
+\item Specificare la posizione della Collection nel menù;
 \end{enumerate}
 \item Caricare il file DSL nell'apposita cartella;
 \item Avviare il server MaaP;
 \item Effettuare il login;
-\item Entrare nella collection o nel document la cui pagina è descritta dal file DSL inserito e verificare la bontà della sua interpretazione.
+\item Entrare nella collection la cui pagina è descritta dal file DSL inserito e verificare la bontà della sua interpretazione.
 \end{enumerate}
 
 
-
 \subsubsection{TV 7 - Lato Utente Sviluppatore}
+
+L’utente sviluppatore vuole verificare il corretto funzionamento della gestione ed interpretazione del DSL per la creazione di una pagina document show.
+Dovrà quindi seguire la seguente procedura:
+
+\begin{enumerate}
+\item Scrivere un file DSL valido;
+\begin{enumerate}
+\item Specificare le chiavi da visualizzare;
+\item Specificare la provenienza dei dati;
+\begin{enumerate}
+\item Provenienti da query standard;
+\item Provenienti da query personalizzate;
+\item Provenienti da funzioni personalizzate;
+\item Provenienti da riferimenti esterni;
+\end{enumerate}
+\item Specificare eventuali etichette per le chiavi;
+\end{enumerate}
+\item Caricare il file DSL nell'apposita cartella;
+\item Avviare il server MaaP;
+\item Effettuare il login;
+\item Entrare nel document la cui pagina è descritta dal file DSL inserito e verificare la bontà della sua interpretazione.
+\end{enumerate}
+
+
+\subsubsection{TV 8 - Lato Utente Sviluppatore}
 
 L’utente sviluppatore vuole verificare il corretto funzionamento delle funzioni di gestione del progetto.
 Dovrà quindi seguire la seguente procedura:
@@ -388,6 +412,11 @@ Dovrà quindi seguire la seguente procedura:
 \begin{enumerate}
 \item Verificare di poter avviare, fermare o riavviare il server MaaP;
 \item Verificare di poter modificare i file di configurazione del progetto;
+\begin{itemize}
+\item Abilitare/disabilitare la registrazione;
+\item Abilitare/disabilitare la creazione di indici;
+\item Impostare la connessione al database di analisi;
+\end{itemize}
 \item Verificare di poter modificare o caricare nuovi file DSL;
 \item Verificare di poter modificare i template disponibili;
 \end{enumerate}
@@ -413,7 +442,11 @@ TV 4 &  RPF10.4, ROF10.5, ROF10.5.1, ROF10.5.2, ROF10.5.3\\
 \midrule
 TV 5 &  ROF10.6, ROF10.7, ROF10.7.1, ROF10.7.1.1, ROF10.7.1.2, ROF10.7.2, ROF10.7.2.1, ROF10.7.2.2, ROF10.7.3.\\
 \midrule
-TV 6 & TI.Client\\
+TV 6 & ROF3, ROF4, ROF4.1, ROF4.1.2, ROF4.1.2.1, ROF4.1.2.1.1, ROF4.1.2.1.2, ROF4.1.2.1.3, ROF4.1.2.1.4, ROF4.1.2.1.5, ROF4.1.2.2, ROF4.1.2.3, ROF4.2, ROF4.2.1, ROF4.2.1.1, ROF4.2.1.2, ROF4.2.2, ROF4.2.2.1, ROF4.2.2.2, ROF4.2.2.3, ROF4.2.2.4, ROF4.2.2.5, ROF4.2.2.6, ROF4.2.2.7, ROF4.3, ROF4.4.\\
+\midrule
+TV 7 & ROF4.1.3, ROF4.1.3.1, ROF4.1.3.1.1, ROF4.1.3.1.2, ROF4.1.3.1.3, ROF4.1.3.1.4, ROF4.1.3.1.5, ROF4.2.3, ROF4.2.3.1, ROF4.2.3.2, ROF4.3, ROF4.4.\\
+\midrule
+TV 8 & ROF5, ROF5.1, RDF5.3, ROF5.4, ROF5.5.\\
 
 %inserire i test
 \bottomrule
