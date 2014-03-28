@@ -51,7 +51,7 @@ L'utente business può inserire la password (UC2.1.2).
 \scenario
 {L'utente business può inserire l'email per la registrazione.}
 \post
-{Il sistema ha ottenuto il contenuto del testo inserito dall'utente business}
+{Il sistema ha ottenuto la mail inserita dall'utente business}
 
 \UCtitle
 {Caso d'uso UC2.1.2}
@@ -64,7 +64,7 @@ L'utente business può inserire la password (UC2.1.2).
 \scenario
 {L'utente business può inserire la password per la registrazione.}
 \post
-{Il sistema ha ottenuto il contenuto del testo inserito dall'utente business}
+{Il sistema ha ottenuto la password inserita dall'utente business}
 
 \UCtitle
 {Caso d'uso UC2.2}
@@ -94,7 +94,7 @@ L'utente business può inserire la password (UC2.2.2).
 \scenario
 {L'utente business può inserire l'email per l'autenticazione.}
 \post
-{Il sistema ha ottenuto il contenuto del testo inserito dall'utente business}
+{Il sistema ha ottenuto la mail inserita dall'utente business}
 
 \UCtitle
 {Caso d'uso UC2.2.2}
@@ -107,7 +107,7 @@ L'utente business può inserire la password (UC2.2.2).
 \scenario
 {L'utente business può inserire la password per l'autenticazione.}
 \post
-{Il sistema ha ottenuto il contenuto del testo inserito dall'utente business}
+{Il sistema ha ottenuto la password inserita dall'utente business}
 
 \UCtitle
 {Caso d'uso UC2.3}
@@ -119,7 +119,7 @@ L'utente business può inserire la password (UC2.2.2).
 {Un utente business registrato recupera la password dimenticata}
 {Il sistema  reputa l'utente business come registrato}
 \scenario
-{L'utente business inserire l'email (UC2.3.1).
+{L'utente business inserisce l'email (UC2.3.1).
 }
 \post
 {Il sistema ha fornito la password all'utente business}
@@ -135,7 +135,7 @@ L'utente business può inserire la password (UC2.2.2).
 \scenario
 {L'utente business può inserire l'email per il recupero password.}
 \post
-{Il sistema ha ottenuto il contenuto del testo inserito dall'utente business}
+{Il sistema ha ottenuto la mail inserita dall'utente business}
 
 
 \UCtitle
@@ -145,7 +145,7 @@ L'utente business può inserire la password (UC2.2.2).
 \UC
 {UC2.4}
 {Utente business autenticato, Utente business autenticato \gloss{amministratore}}
-{L’ utente business autenticato può effettuare diverse operazioni: visualizzare una pagina Document-Show, modificare la visualizzazione dei Document, visualizzare una diversa Collection, disconnettersi dal sistema, navigare tra le pagine della pagina Collection-Index correntemente visualizzata,  gestire il profilo. L'\gloss{utente business autenticato amministratore} potrà inoltre cancellare o modificare un Document}
+{L’ utente business autenticato può effettuare diverse operazioni: visualizzare una pagina Document-Show, modificare la visualizzazione dei Document, disconnettersi dal sistema, navigare tra le pagine della pagina Collection-Index correntemente visualizzata,  gestire il profilo, visualizzare le query più utilizate e creare indici su di esse. L'\gloss{utente business autenticato amministratore} potrà inoltre cancellare o modificare un Document}
 {Il sistema reputa l'utente business come autenticato e visualizza la Collection}
 \scenario{
 L'utente business autenticato può visualizzare pagine Document-Show (UC2.4.1);|
@@ -156,7 +156,7 @@ L'utente business autenticato può gestire il profilo (UC2.6);|
 L'utente business autenticato amministratore può cancellare un Document (UC2.4.4);|
 L'utente business autenticato amministratore può modificare un Document (UC2.4.5);|
 L'utente business autenticato amministratore può visualizzare le query più frequenti che il sistema gli propone (UC2.4.6);|
-L'utente business autenticato amministratore può creare degli indici sulle query più frequenti visualizzare (UC2.4.7).
+L'utente business autenticato amministratore può creare degli indici sulle query più frequentemente visualizzate (UC2.4.7).
 }
 \post
 {Il sistema ha ottenuto le informazioni sulle operazioni che l'utente business autenticato o l'utente business autenticato amministratore desidera eseguire}
@@ -208,7 +208,7 @@ L'utente business autenticato visualizza il Document relativo alla chiave selezi
 
 \UCtitle
 {Caso d'uso UC2.4.1.3}
-{Eliminazione Document}
+{Modifica Document}
 \UC
 {UC2.4.1}
 {Utente business autenticato}
@@ -217,7 +217,7 @@ L'utente business autenticato visualizza il Document relativo alla chiave selezi
 \scenario
 {L'utente business autenticato può modificare il Document che sta visualizzando.}
 \post
-{Il sistema permette all'utente di modificare il Document che sta visualizzando}
+{Il sistema ha modificato il Document visualizzato}
 
 \UCtitle
 {Caso d'uso UC2.4.2}
@@ -243,11 +243,11 @@ L'utente business autenticato può annullare un \gloss{filtro} applicato (UC2.4.
 \UC
 {UC2.4.2.1}
 {Utente business autenticato}
-{L'utente business autenticato può selezionare dei criteri per cambiare la visualizzazione della lista di Document: cambiare il numeri di Document da visualizzare per pagina o cambiare l'ordinamento dei Document secondo una chiave}
+{L'utente business autenticato può selezionare dei criteri per cambiare la visualizzazione della lista di Document: cambiare il numero di Document da visualizzare per pagina o cambiare l'ordinamento dei Document secondo una chiave}
 {Il sistema reputa l'utente business come autenticato e visualizza la Collection scelta}
 \scenario{
-L'utente business autenticato può cambiare il numero di Document da visualizzare per pagina (UC2.4.2.1.2);|
-L'utente business autenticato può cambiare l'ordinamento dei Document secondo una chiave (UC2.4.2.1.1).
+L'utente business autenticato può cambiare l'ordinamento dei Document secondo una chiave (UC2.4.2.1.1);|
+L'utente business autenticato può cambiare il numero di Document da visualizzare per pagina (UC2.4.2.1.2).
 }
 \post
 {Il sistema ha ottenuto le informazioni sulle operazioni che l'utente business autenticato desidera eseguire ed aggiorna la visualizzazione della pagina}
@@ -304,7 +304,7 @@ L'utente business autenticato può cambiare l'ordinamento dei Document secondo u
 \scenario
 {L'utente business autenticato può rimuovere un filtro.}
 \post
-{Il sistema aggiorna la visualizzazione della Collection allo stato precedente all'applicazione del filtro}
+{Il sistema aggiorna la visualizzazione della Collection allo stato precedente l'applicazione del filtro}
 
 
 \UCtitle

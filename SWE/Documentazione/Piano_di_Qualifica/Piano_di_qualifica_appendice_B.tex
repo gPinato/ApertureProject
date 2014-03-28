@@ -1,17 +1,17 @@
 \newpage
 
 \section{Pianificazione dei test}
-Di seguito verranno visualizzata delle tabelle, strutturate secondo la sezione 5.3.2 delle Norme di Progetto, che riportano tutti i test che si sono pianificati. \\
+Di seguito verranno visualizzate delle tabelle, strutturate secondo la sezione 5.3.2 delle Norme di Progetto, che riportano tutti i test che si sono pianificati. \\
 \subsection{Test di sistema}
-Di seguito verrà mostrata una tabella che riporta tutti i test di sistema pianificati, associati ai requisiti descritti nel documento Analisi dei Requisiti.\\
+Di seguito verrà mostrata la tabella che riporta tutti i test di sistema pianificati, associati ai requisiti descritti nel documento Analisi dei Requisiti.\\
 I test sono da intendere solo per requisiti ai quali è stato ragionevole associare un test.
 \subsubsection{Descrizione dei test di sistema}
 \begin{center}
 \begin{longtable}{|p{2cm}|p{7cm}|p{2cm}|p{2cm}|}
 \toprule
-\textbf{Test} & \textbf{Descrizione} & \textbf{Requisito} & \textbf{Stato}\\
+\textbf{Test} & \textbf{Descrizione} & \textbf{\gloss{Requisito}} & \textbf{Stato}\\
 \midrule
-TS1 & Viene verificato che il sistema MaaP generi correttamente lo scheletro necessario & ROF1 & D.E.\\
+TS1 & Viene verificato che il sistema \gloss{MaaP} generi correttamente lo scheletro necessario & ROF1 & D.E.\\
 \midrule
 TS1.1 & Viene verificato che il sistema MaaP installi correttamente le librerie necessarie & ROF1.1 & D.E.\\
 \midrule
@@ -19,17 +19,17 @@ TS1.2 & Viene verificato che il sistema MaaP generi correttamente i file necessa
 \midrule
 TS1.3 & Viene verificato che il sistema MaaP generi correttamente le directory necessarie & ROF1.3 & D.E.\\
 \midrule
-TS1.4 & Viene verificato che il sottosistema di autenticazione sia installato e configurato correttamente & ROF1.4 & D.E.\\
+TS1.4 & Viene verificato che il \gloss{sottosistema} di autenticazione sia installato e configurato correttamente & ROF1.4 & D.E.\\
 \midrule
-TS1.4.1 & Viene verificato che nel database degli utenti sia presente un profilo di amministrazione di default & ROF1.4.1 ROF6 & D.E.\\
+TS1.4.1 & Viene verificato che nel \gloss{database} degli utenti sia presente un \gloss{profilo} di amministrazione di \gloss{default} & ROF1.4.1 ROF6 & D.E.\\
 \midrule
 TS1.5 & Viene verificato che il sistema sia in grado di eliminare un progetto esistente & ROF1.5 & D.E.\\
 \midrule
 TS1.6 & Viene verificato che il sistema sia in grado di clonare un progetto esistente & ROF1.6 & D.E.\\
 \midrule
-TS4 & Viene verificato che il sistema crei correttamente le pagine web partendo dal loro file di descrizione & ROF4 & D.E.\\
+TS4 & Viene verificato che il sistema crei correttamente le \gloss{pagine \gloss{web}} partendo dal loro \gloss{file di descrizione} & ROF4 & D.E.\\
 \midrule
-TS5.1 & Viene verificato che la funzione di registrazione possa essere correttamente abilitata/disabilitata & RDF5.1 & D.E.\\
+TS5.1 & Viene verificato che la funzione di \gloss{registrazione} possa essere correttamente abilitata/disabilitata & RDF5.1 & D.E.\\
 \midrule
 TS5.4 & Viene verificato che il sistema possa utilizzare correttamente il database di analisi & ROF5.4 & D.E.\\
 \midrule
@@ -39,27 +39,27 @@ TS7 & Viene verificato che il sistema consenta all'utente registrato di potersi 
 \midrule
 TS8 & Viene verificato che il sistema consenta all'utente di potersi registrare & RDF 8.0 & D.E.\\
 \midrule
-TS9 & Viene verificato che il sistema consenta all'utente di recuperare la password  & ROF 9.0 & D.E\\
+TS9 & Viene verificato che il sistema consenta all'utente di recuperare la \gloss{password}  & ROF 9.0 & D.E\\
 \midrule
-TS10 & Viene verificato che il sistema apra e visualizzi correttamente le Collection e le Collection-Index & ROF10 & D.E.\\
+TS10 & Viene verificato che il sistema apra e visualizzi correttamente le \gloss{Collection} e le \gloss{Collection-Index} & ROF10 & D.E.\\
 \midrule
-TS10.1 & Viene verificato che il sistema visualizzi correttamente le pagine di Document-Show & ROF10.1 & D.E.\\
+TS10.1 & Viene verificato che il sistema visualizzi correttamente le pagine \gloss{Document-Show} & ROF10.1 & D.E.\\
 \midrule
 TS10.2.4 & Viene verificato che il sistema disconnetta correttamente un utente alla sua richiesta & ROF10.2.4 & D.E.\\
 \midrule
 TS10.3.1.1 & Viene verificato che un utente autenticato possa modificare i dati del suo profilo & ROF10.3.1.1 & D.E.\\
 \midrule
-TS10.3.1.2 & Viene verificato che le modifiche apportate al profilo di un utente business autenticaro siano consistenti & ROF10.3.1.2 & D.E.\\
+TS10.3.1.2 & Viene verificato che le modifiche apportate al profilo di un \gloss{utente business} autenticaro siano consistenti & ROF10.3.1.2 & D.E.\\
 \midrule
-TS10.3.2 & Viene verificato che la creazione di un nuovo utente da parte di un utente business autenticato amministratore avvenga correttamente & ROF10.3.2 & D.E.\\
+TS10.3.2 & Viene verificato che la creazione di un nuovo utente da parte di un \gloss{utente business autenticato} \gloss{amministratore} avvenga correttamente & ROF10.3.2 & D.E.\\
 \midrule
-TS10.3.3 & Viene verificata la corretta cancellazione di un utente da parte di un utente business autenticato amministratore & ROF10.3.3 & D.E.\\
+TS10.3.3 & Viene verificata la corretta cancellazione di un utente da parte di un \gloss{utente business autenticato amministratore} & ROF10.3.3 & D.E.\\
 \midrule
-TS10.4 & Viene verificato che l'utente business autenticato amministratore possa eliminare correttamente un Document & ROF10.4 & D.E.\\
+TS10.4 & Viene verificato che l'utente business autenticato amministratore possa eliminare correttamente un \gloss{Document} & ROF10.4 & D.E.\\
 \midrule
 TS10.5 & Viene verificato che l’utente business autenticato amministratore possa modificare correttamente un Document & ROF10.5 & D.E.\\
 \midrule
-TS10.6 & Viene verificata la corretta visualizzazione delle query più utilizzate & ROF10.6 & D.E.\\
+TS10.6 & Viene verificata la corretta visualizzazione delle \gloss{query} più utilizzate & ROF10.6 & D.E.\\
 \midrule
 TS10.7.1.2 & Viene verificata la corretta creazione degli indici di analisi & ROF10.7.1.2 & D.E.\\
 \midrule
@@ -67,18 +67,18 @@ TS10.7.2 & Viene verificata la corretta eliminazione degli indici di analisi & R
 \midrule
 TS10.7.3 & Viene verificata la corretta visualizzazione degli indici di analisi & ROF10.7.3 & D.E.\\
 \midrule
-TS17 & Viene verificato che le pagine web prodotte dal framework MaaP siano compatibili con la versione 30.0.x o superiore di Google Chrome & ROV17 & D.E.\\
+TS17 & Viene verificato che le pagine web prodotte dal \gloss{framework} MaaP siano compatibili con la versione 30.0.x o superiore di \gloss{Google} Chrome & ROV17 & D.E.\\
 \midrule
-TS18 & Viene verificato che le pagine web prodotte dal framework MaaP siano compatibili con la versione 24.x o superiore di Firefox & ROV18 & D.E.\\
+TS18 & Viene verificato che le pagine web prodotte dal framework MaaP siano compatibili con la versione 24.x o superiore di \gloss{Firefox} & ROV18 & D.E.\\
 \midrule
-TS19 & Viene verificato che il sistema accetti solo file di configurazione validi & ROV19 & D.E.\\
+TS19 & Viene verificato che il sistema accetti solo \gloss{file di configurazione} validi & ROV19 & D.E.\\
 \midrule
 TS26 & Viene verificato che il sistema di installazione del software funzioni correttamente & ROV26 & D.E.\\
 \midrule
-TS27 & Viene verificato che il deployment su Heroku avvenga con successo & ROV27 & D.E.\\
+TS27 & Viene verificato che il deployment su \gloss{Heroku} avvenga con successo & ROV27 & D.E.\\
 %inserire i test
 \bottomrule
-\caption{Tabella per test di sistema}
+\caption{Test di sistema}
 \label{tab:changelog}
 \end{longtable}
 \end{center}
@@ -87,17 +87,17 @@ TS27 & Viene verificato che il deployment su Heroku avvenga con successo & ROV27
 \subsubsection{Diagramma d'integrazione}
 \immagine{./integrazione}{Diagramma d'integrazione}
 
-Di seguito verrà mostrata una tabella che riporta tutti i test d'integrazione pianificati, associati alle componenti descritte nella progettazione ad alto livello.\\
+Di seguito verrà mostrata la tabella che riporta tutti i test d'integrazione pianificati, associati alle componenti descritte nella progettazione ad alto livello.\\
 \subsubsection{Descrizione dei test d'integrazione}
 \begin{center}
 \begin{longtable}{|p{5cm}|p{5cm}|p{5cm}|p{1cm}|}
 \toprule
 \textbf{Test} & \textbf{Descrizione} & \textbf{Componente} & \textbf{Stato}\\
 \midrule
-TI.MaaP & Test di integrazione finale tra client e server & MaaP & D.E.\\
+TI.MaaP & Test di integrazione finale tra \gloss{client} e \gloss{server} & MaaP & D.E.\\
 \midrule
 TI.Server & Verifica il corretto funzionamento delle componenti del server, quindi la corretta integrazione
-tra ModelServer e Controller del server. In particolare, viene verificato che le funzionalit\`{a} presenti nel
+tra ModelServer e \gloss{Controller} del server. In particolare, viene verificato che le funzionalit\`{a} presenti nel
 Controller debbano agire consistentemente sui dati del ModelServer. & Server & D.E.\\
 \midrule
 TI.Server.ModelServer & Verifica che tutte le operazioni di lettura, scrittura e interpretazione dei dati avvengano
@@ -110,21 +110,21 @@ TI.Server.ModelServer. DataManager & Verifica che le operazioni di recupero, ges
 \midrule
 TI.Client & Verifica che i dati ottenuti e forniti da e verso il client siano corretti e correttamente gestiti all'interno del client stesso. & Client & D.E.\\
 \midrule
-TI.Client.View-ControllerModelView & Verifica che i dati uscenti ed entranti la View siano gestiti correttamente dal ControllerModelView & Client::View & D.E.\\
+TI.Client.View-ControllerModelView & Verifica che i dati uscenti ed entranti la \gloss{View} siano gestiti correttamente dal ControllerModelView & Client::View & D.E.\\
 & & Client::ControllerModelView & \\
 \midrule
 TI.Client.ControllerModelView-ModelClient & Viene verificato che le funzionalit\`{a} del ControllerModelView agiscano correttamente sul ModelClient & Client::ControllerModelView & D.E.\\
 & & Client::ModelClient & \\
 \midrule
-TI.Client.ControllerModelView & Viene verificato che le funzioni del ClientController modifichino correttamente i dati presenti nello Scope & Client::ControllerModelView & D.E.\\
+TI.Client.ControllerModelView & Viene verificato che le funzioni del ClientController modifichino correttamente i dati presenti nello \gloss{Scope} & Client::ControllerModelView & D.E.\\
 %inserire i test
 \bottomrule
-\caption{Tabella per test d'integrazione}
+\caption{Test d'integrazione}
 \label{tab:changelog}
 \end{longtable}
 \end{center}
 \subsection{Tracciamento}
-Di seguito verranno riportati in forma tabellare i tracciamenti componente-test d'integrazione e test d'integrazione-componente.\\ 
+Di seguito verranno riportati in forma tabellare i tracciamenti componente-test d'integrazione e test d'integrazione-componente.\\
 \subsubsection{Tracciamento componente-test d'integrazione}
 \begin{center}
 \begin{longtable}{|p{7cm}|p{7cm}|}
@@ -150,7 +150,7 @@ Client::ControllerModelView & TI.Client.ControllerModelView TI.Client.View-Contr
 Client::ModelClient & TI.Client.ControllerModelView-ModelClient\\
 %inserire i test
 \bottomrule
-\caption{Tabella tracciamento componente-test d'integrazione}
+\caption{Tracciamento componente-test d'integrazione}
 \label{tab:changelog}
 \end{longtable}
 \end{center}
@@ -183,7 +183,7 @@ TI.Client.ControllerModelView-ModelClient & Client::ControllerModelView\\
 TI.Client.ControllerModelView & Client::ControllerModelView\\
 %inserire i test
 \bottomrule
-\caption{Tabella tracciamento test d'integrazione-componente}
+\caption{Tracciamento test d'integrazione-componente}
 \label{tab:changelog}
 \end{longtable}
 \end{center}
@@ -194,59 +194,59 @@ Per ogni test viene descritta la serie di passi che un utente deve eseguire per 
 
 \subsubsection{TV 1 - Lato Utente Business}
 
-L’utente vuole verificare le funzionalità di visualizzazione di collection e document, per tanto gli è richiesto di:
- 
+L’utente vuole verificare le funzionalità di visualizzazione di Collection e Document, per tanto gli è richiesto di:
+
 
 \begin{enumerate}
 \item Cliccare sul pulsante Collection;
 \item Selezionare la Collection da visualizzare dall'apposito elenco;
 \begin{enumerate}
 \item Scorrere le pagine della Collection fino a trovare il document ricercato;
-\item Usare un filtro per ricercare un documento;
+\item Usare un \gloss{filtro} per ricercare un Document;
 \item Annullare il filtro applicato;
-\item Ordinare una chiave, se abilitata, in ordine crescente o decrescente;
-\item Impostare un numero massimo di documenti da visualizzare;
+\item Ordinare una \gloss{chiave}, se abilitata, in ordine crescente o decrescente;
+\item Impostare un numero massimo di Document da visualizzare.
 \end{enumerate}
-\item Selezionare il documento ricercato cliccando sulla chiave selezionabile;
-\item Verificare che il documento venga visualizzato correttamente.
+\item Selezionare il Document ricercato cliccando sulla chiave selezionabile;
+\item Verificare che il Document venga visualizzato correttamente.
 \end{enumerate}
 
 \subsubsection{TV 2 - Lato Utente Business}
-L’utente vuole verificare il corretto funzionamento delle funzionalità di registrazione, login e gestione profilo.
-Si dovrà quindi seguire la seguente procedura di validazione:
+L’utente vuole verificare il corretto funzionamento delle funzionalità di registrazione, autenticazione e gestione profilo.
+Si dovrà quindi seguire la seguente \gloss{procedura} di validazione:
 
 \begin{enumerate}
 \item Verificare di potersi registrare;
 \begin{enumerate}
 \item Cliccare sul pulsante di registrazione;
-\item Compilare il form di registrazione con dati validi;
-\item Confermare la registrazione mediante il link contenuto nella mail inviata automaticamente dal sistema;
+\item Compilare il \gloss{form} di registrazione con dati validi;
+\item Confermare la registrazione mediante il \gloss{link} contenuto nella mail inviata automaticamente dal sistema.
 \end{enumerate}
 \item Verificare di poter recuperare la password in caso di dimenticanza;
 \begin{enumerate}
 \item Cliccare sul pulsante di recupero password;
-\item Inserire la email con cui si è registrati al sistema;
+\item Inserire la \gloss{email} con cui si è registrati al sistema;
 \item Verificare che il sistema invii correttamente la mail per il recupero della password;
-\item Verificare che la nuova password fornita nella mail consenta l'accesso al sistema;
+\item Verificare che la nuova password fornita nella mail consenta l'accesso al sistema.
 \end{enumerate}
-\item Verificare di poter effettuare il login;
+\item Verificare di poter effettuare l'autenticazione;
 \begin{enumerate}
-\item Cliccare sul pulsante di login;
+\item Cliccare sul pulsante di autenticazione;
 \item Inserire le credenziali precedentemente registrate;
-\item Confermare il login;
+\item Confermare l'autenticazione.
 \end{enumerate}
-\item Verificare che il sistema effettui correttamente il login;
+\item Verificare che il sistema effettui correttamente l' autenticazione;
 \item Verificare di poter modificare i propri dati utente;
 \begin{enumerate}
 \item Entrare nel proprio profilo utente;
 \item Cliccare sul pulsante di modifica;
 \item Verificare di poter modificare una o più chiavi del profilo;
 \item Verificare di poter salvare le modifiche;
-\item Verificare di poter annullare le modifiche;
+\item Verificare di poter annullare le modifiche.
 \end{enumerate}
 \item Verificare di potersi disconnettere correttamente dal sistema;
 \begin{enumerate}
-\item Cliccare sul pulsante di logout;
+\item Cliccare sul pulsante di disconnessione;
 \item Verificare di non poter più accedere a pagine riservate ad utenti autenticati.
 \end{enumerate}
 \end{enumerate}
@@ -257,10 +257,10 @@ L’utente amministratore vuole verificare il corretto funzionamento della gesti
 Si dovrà quindi seguire la seguente procedura:
 
 \begin{enumerate}
-\item Effettuare il login con le proprie credenziali;
-\begin{itemize}
-\item Al primo accesso assoluto al sistema, utilizzare le credenziali di default fornite dal sistema stesso;
-\end{itemize}
+\item Effettuare l'autenticazione con le proprie credenziali;
+\begin{enumerate}
+\item Al primo accesso assoluto al sistema, utilizzare le credenziali di default fornite dal sistema stesso.
+\end{enumerate}
 \item Cliccare sul pulsante di gestione profili utenti;
 \item Selezionare il profilo utente da modificare;
 \begin{enumerate}
@@ -268,28 +268,28 @@ Si dovrà quindi seguire la seguente procedura:
 \item Usare un filtro per ricercare un profilo;
 \item Annullare il filtro applicato;
 \item Ordinare una chiave, se abilitata, in ordine crescente o decrescente;
-\item Impostare un numero massimo di profili da visualizzare;
+\item Impostare un numero massimo di profili da visualizzare.
 \end{enumerate}
 \item Verificare di poter modificare le informazioni del profilo utente;
 \begin{enumerate}
 \item Cliccare sul pulsante di modifica;
 \item Verificare di poter modificare una o più chiavi del profilo;
 \item Verificare di poter salvare le modifiche;
-\item Verificare di poter annullare le modifiche;
+\item Verificare di poter annullare le modifiche.
 \end{enumerate}
 \item Verificare di poter modificare i permessi associati al profilo utente;
 \begin{enumerate}
 \item Cliccare sul pulsante di modifica;
 \item Verificare di poter modificare i permessi disponibili;
 \item Verificare di poter salvare le modifiche;
-\item Verificare di poter annullare le modifiche;
+\item Verificare di poter annullare le modifiche.
 \end{enumerate}
 \item Verificare di poter eliminare correttamente un utente;
 \begin{enumerate}
 \item Entrare nel profilo utente da eliminare;
 \item Cliccare sul pulsante di eliminazione;
 \item Confermare l'eliminazione;
-\item Verificare che le credenziali dell'utente cancellato non siano più presenti nel sistema;
+\item Verificare che le credenziali dell'utente cancellato non siano più presenti nel sistema.
 \end{enumerate}
 \item Verificare di poter creare un nuovo profilo utente;
 \begin{enumerate}
@@ -302,7 +302,7 @@ Si dovrà quindi seguire la seguente procedura:
 
 \subsubsection{TV 4 - Lato Utente Business Amministratore}
 
-L’utente amministratore vuole verificare il corretto funzionamento della gestione dei document.
+L’utente amministratore vuole verificare il corretto funzionamento della gestione dei Document.
 Dovrà quindi seguire la seguente procedura:
 
 
@@ -313,12 +313,12 @@ Dovrà quindi seguire la seguente procedura:
 \item Cliccare sul pulsante di modifica;
 \item Verificare di poter modificare le chiavi disponibili;
 \item Verificare di poter salvare le modifiche;
-\item Verificare di poter annullare le modifiche;
+\item Verificare di poter annullare le modifiche.
 \end{enumerate}
 \item Verificare di poter cancellare un Document;
 \begin{enumerate}
 \item Selezionare il pulsante di cancellazione;
-\item Verificare che il Document non sia più presente nel sistema;
+\item Verificare che il Document non sia più presente nel sistema.
 \end{enumerate}
 \end{enumerate}
 
@@ -334,7 +334,7 @@ Dovrà quindi seguire la seguente procedura:
 \item Cliccare sul pulsante di creazione indici;
 \item Selezionare una tra le query più utilizzate;
 \item Confermare la creazione;
-\item Verificar che l'indice sia stato creato correttamente;
+\item Verificar che l'indice sia stato creato correttamente.
 \end{enumerate}
 \item Verificare di poter eliminare un indice;
 \begin{enumerate}
@@ -346,7 +346,7 @@ Dovrà quindi seguire la seguente procedura:
 
 \subsubsection{TV 6 - Lato Utente Sviluppatore}
 
-L’utente sviluppatore vuole verificare il corretto funzionamento della gestione ed interpretazione del DSL per la creazione di una pagina collection index.
+L’utente sviluppatore vuole verificare il corretto funzionamento della gestione ed interpretazione del \gloss{DSL} per la creazione di una pagina Collection-Index.
 Dovrà quindi seguire la seguente procedura:
 
 \begin{enumerate}
@@ -358,24 +358,24 @@ Dovrà quindi seguire la seguente procedura:
 \item Provenienti da query standard;
 \item Provenienti da query personalizzate;
 \item Provenienti da funzioni personalizzate;
-\item Provenienti da riferimenti esterni;
+\item Provenienti da riferimenti esterni.
 \end{enumerate}
 \item Specificare eventuali etichette;
 \item Specificare eventuali chiavi ordinabili;
-\item Specificare il numero massimo di document per pagina;
+\item Specificare il numero massimo di Document per pagina;
 \item Specificare il nome della Collection;
-\item Specificare la posizione della Collection nel menù;
+\item Specificare la posizione della Collection nel menù.
 \end{enumerate}
 \item Caricare il file DSL nell'apposita cartella;
 \item Avviare il server MaaP;
-\item Effettuare il login;
-\item Entrare nella collection la cui pagina è descritta dal file DSL inserito e verificare la bontà della sua interpretazione.
+\item Effettuare l'autenticazione;
+\item Entrare nella Collection la cui pagina è descritta dal file DSL inserito e verificare la bontà della sua interpretazione.
 \end{enumerate}
 
 
 \subsubsection{TV 7 - Lato Utente Sviluppatore}
 
-L’utente sviluppatore vuole verificare il corretto funzionamento della gestione ed interpretazione del DSL per la creazione di una pagina document show.
+L’utente sviluppatore vuole verificare il corretto funzionamento della gestione ed interpretazione del DSL per la creazione di una pagina Document-Show.
 Dovrà quindi seguire la seguente procedura:
 
 \begin{enumerate}
@@ -387,13 +387,13 @@ Dovrà quindi seguire la seguente procedura:
 \item Provenienti da query standard;
 \item Provenienti da query personalizzate;
 \item Provenienti da funzioni personalizzate;
-\item Provenienti da riferimenti esterni;
+\item Provenienti da riferimenti esterni.
 \end{enumerate}
 \item Specificare eventuali etichette per le chiavi;
 \end{enumerate}
 \item Caricare il file DSL nell'apposita cartella;
 \item Avviare il server MaaP;
-\item Effettuare il login;
+\item Effettuare l'autenticazione;
 \item Entrare nel document la cui pagina è descritta dal file DSL inserito e verificare la bontà della sua interpretazione.
 \end{enumerate}
 
@@ -412,13 +412,13 @@ Dovrà quindi seguire la seguente procedura:
 \begin{enumerate}
 \item Verificare di poter avviare, fermare o riavviare il server MaaP;
 \item Verificare di poter modificare i file di configurazione del progetto;
-\begin{itemize}
+\begin{enumerate}
 \item Abilitare/disabilitare la registrazione;
 \item Abilitare/disabilitare la creazione di indici;
-\item Impostare la connessione al database di analisi;
-\end{itemize}
+\item Impostare la connessione al database di analisi.
+\end{enumerate}
 \item Verificare di poter modificare o caricare nuovi file DSL;
-\item Verificare di poter modificare i template disponibili;
+\item Verificare di poter modificare i \gloss{template} disponibili.
 \end{enumerate}
 \item Eliminare un progetto;
 \item Verificare che il progetto eliminato non sia più disponibile.
@@ -450,7 +450,7 @@ TV 8 & ROF5\\ &  ROF5.1\\ &  RDF5.3\\ &  ROF5.4\\ &  ROF5.5.\\
 
 %inserire i test
 \bottomrule
-\caption{Tabella tracciamento test di validazione - requisiti}
+\caption{Tracciamento test di validazione - requisiti}
 \label{tab:changelog}
 \end{longtable}
 \end{center}
