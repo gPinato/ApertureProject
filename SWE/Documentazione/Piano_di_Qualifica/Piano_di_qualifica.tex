@@ -241,14 +241,14 @@ Per raggiungere gli obiettivi di qualità prefissati sono necessarie risorse uma
 \label{3.1}
 Questa tipologia di analisi può essere applicata sia al codice che alla documentazione, dato che prevede l'utilizzo di tecniche generali per ogni tipo di prodotto del team.
 
-\subsubsubsection{Walkthrough}
+\paragraph{Walkthrough}
 
 Questa tecnica utilizza una scansione ampia e non mirata dell'oggetto in Verifica, data la mancanza di esperienza \gloss{best practice} del Verificatore.
 L'attuazione di questa tecnica di Analisi è quindi molto onerosa, per questo sarà nostro obiettivo renderla più parallelizzabile possibile, così da ridurre i costi di Verifica e per essere più efficace ed efficiente.
 Si comincia con una attività preliminare di lettura, seguita da una individuazione degli errori; poi si procede con la correzione degli stessi e con una successiva attività di lettura per controllare le modifiche apportate.
 Dopo ogni attività di Verifica tramite Walkthrough, sperabilmente avremo trovato la maggior parte degli errori, fornendoci una visione delle erroneità commesse, di conseguenza potremo raffinare l'Analisi e avvicinarci alla metodologia di Inspection.
 
-\subsubsubsection{Inspection}
+\paragraph{Inspection}
 \label{3.1.2}
 Questa tecnica è un'evoluzione del Walkthrough e applica una ricerca più mirata e specifica. È possibile utilizzare questa tecnica dopo aver acquisito dimestichezza con l'attività di Verifica, stilando una lista di controllo contenente i maggiori errori riscontrati applicando la tecnica di Walkthrough, quindi non sarà possibile utilizzarla fin da subito in quanto la lista inizialmente è vuota.
 E' obiettivo di una fase di Inspection la ricerca mirata di errori, aumentando l'efficienza della Verifica e riducendo i costi in termini di tempo e risorse.
@@ -285,7 +285,7 @@ Il processo di verifica, per essere chiarificatore, deve essere quantificabile. 
 \label{4.3}
 Sono stati scelti due indicatori che si basano sui costi e i tempi spesi per un processo come delle metriche ragionevoli per rendere i processi quantificabili. Tali indicatori sono descritti nel Piano di Progetto. Data la scarsa esperienza di cooperazione e di pianificazione delle attività del gruppo, gli obiettivi di questi indici fanno riferimento a convenzioni comuni.
 
-\subsubsubsection{Schedule Variance}
+\paragraph{Schedule Variance}
 \label{4.3.1}
 Indica se si è in linea, in anticipo o in ritardo rispetto alla schedulazione delle attività di progetto pianificate nella \gloss{baseline}. È un indicatore di efficacia e se il suo valore è $> 0$ allora il progetto sta avanzando con maggiore velocità rispetto a quanto pianificato. Viceversa se negativo.
 Gli obiettivi fissati sono:
@@ -294,7 +294,7 @@ Gli obiettivi fissati sono:
 \item \grassetto{Obiettivo Ottimale}: $ [\geq 0]. $
 \end{itemize}
 
-\subsubsubsection{Budget Variance}
+\paragraph{Budget Variance}
 \label{4.3.2}
 Indica se alla data corrente si è speso di più o di meno rispetto a quanto si era pianificato. Se tale valore è $>0$ allora il progetto sta consumando il proprio budget con minor velocità rispetto a quanto pianificato. Viceversa se negativo.
 \begin{itemize}
@@ -306,7 +306,7 @@ Indica se alla data corrente si è speso di più o di meno rispetto a quanto si 
 \label{4.1}
 Dopo aver vagliato diverse metriche di misurazione nell'ambito dei documenti, abbiamo scelto di utilizzare una \gloss{metrica} di complessità di leggibilità di un testo, tarata sulla lingua italiana. L'eccessiva variabilità nei metodi di analisi della sillabazione dei termini e la conseguente non predicibilità dei test basati sulla sillabazione, hanno portato a scartare diverse metriche internazionali. Inoltre non sono state trovate metriche (oltre all'indice Gulpease) specifiche della lingua italiana e con esito certo.
 
-\subsubsubsection{Indice Gulpease}
+\paragraph{Indice Gulpease}
 L'indice Gulpease è un indice di leggibilità del testo che basa il suo calcolo su componenti del testo enumerabili meccanicamente, così da rendere automatico il processo di Verifica. Consente di misurare la complessità dello stile di un documento.
 L'indice di Gulpease considera due variabili linguistiche: la lunghezza della parola e la lunghezza della frase rispetto al numero delle lettere.\\
 La formula per il suo calcolo è la seguente:
@@ -334,7 +334,7 @@ I nostri obiettivi per l'indice Gulpease sono i seguenti:
 \label{2.9.3}
 Di seguito verranno riportate delle metriche ritenute le più efficaci, per raggiungere obiettivi di qualità software. Visto che questa sezione riguarda la prossima attività di Codifica, ci potranno essere ulteriori aggiornamenti nelle prossime revisioni.
 
-\subsubsubsection{Complessità ciclomatica}
+\paragraph{Complessità ciclomatica}
 \label{4.2.1}
 La complessità ciclomatica è una metrica software applicabile singolarmente a funzioni, moduli, metodi e classi di un \gloss{programma}.
 Questa metrica è calcolata utilizzando il grafo di controllo di flusso del programma, ovvero i nodi del grafo rappresentano gruppi indivisibili di istruzioni, mentre gli archi connettono due nodi se il secondo gruppo di istruzioni può essere eseguito subito dopo il primo gruppo.
@@ -357,7 +357,7 @@ Degli obiettivi ragionevoli per questa metrica sono i seguenti:
 \item \grassetto{Obiettivo Ottimale}: [1--10]\footnote{Il valore 10 come massimo è stato calcolato da T.J.McCabe, inventore della metrica.}.
 \end{itemize}
 
-\subsubsubsection{Livelli di annidamento}
+\paragraph{Livelli di annidamento}
 \label{4.2.2}
 Il numero di livelli di annidamento dei metodi rappresenta la quantità di richiami di altri metodi all'interno di uno stesso \gloss{metodo}.
 Un elevato livello di annidamento definisce un'elevata complessità del codice e di altrettanta comprensione dello stesso.
@@ -367,7 +367,7 @@ Gli obiettivi stimati per questa metrica sono:
 \item \grassetto{Obiettivo Ottimale}: [1-3].
 \end{itemize}
 
-\subsubsubsection{Attributi per \gloss{classe}}
+\paragraph{Attributi per \gloss{classe}}
 \label{4.2.3}
 Il numero di attributi per classe esprime, appunto, la quantità di proprietà di una classe. Un elevato numero di attributi può denotare un'eccessiva dimensione della classe stessa, che potrebbe piuttosto essere suddivisa in classi più piccole, relazionate tra di loro.
 Gli obiettivi per questa metrica sono:
@@ -376,7 +376,7 @@ Gli obiettivi per questa metrica sono:
 \item \grassetto{Obiettivo Ottimale}: [3-8].
 \end{itemize}
 
-\subsubsubsection{Parametri per metodo}
+\paragraph{Parametri per metodo}
 \label{4.2.4}
 Un alto numero di parametri per metodo denota un'eccessiva complessità del metodo stesso, comportandone probabilmente un'ulteriore lunghezza non accettabile. E' buona norma scrivere dei metodi con pochi parametri, al fine di ottenere procedure specifiche e atomiche, di conseguenza facilmente assegnabili e verificabili.
 Degli obiettivi validi per questa metrica sono:
@@ -385,7 +385,7 @@ Degli obiettivi validi per questa metrica sono:
 \item \grassetto{Obiettivo Ottimale}: [0-4].
 \end{itemize}
 
-\subsubsubsection{Linee di codice per linee di commento}
+\paragraph{Linee di codice per linee di commento}
 \label{4.2.5}
 Questo numero indica il rapporto tra linee di codice e linee di commento, per avere un fattore di commenti all'interno di un'unità software. In generale, un alto grado di commento del codice porta ad una maggiore manutenibilità ed informazione per uno \gloss{sviluppatore}.
 Gli obiettivi stimati sono:
@@ -394,7 +394,7 @@ Gli obiettivi stimati sono:
 \item \grassetto{Obiettivo Ottimale}: [0.30]\footnote{Il valore di 0.30 è stato calcolato dal rapporto 22/78, derivato dalle medie di Ohloh \url{https://www.ohloh.net/p/firefox/factoids\#FactoidCommentsLow}}.
 \end{itemize}
 
-\subsubsubsection{Flusso di informazioni}
+\paragraph{Flusso di informazioni}
 \label{4.2.6}
 Valore che indica il flusso di informazioni passanti per un modulo.
 Con:
@@ -405,7 +405,7 @@ Con:
 il valore calcolato è:
 \begin{math}(lunghezza\:funzione)2 * Fan-in * Fan-out\end{math}
 
-\subsubsubsection{Accoppiamento}
+\paragraph{Accoppiamento}
 \label{4.2.7}
 Si divide in due categorie:
 \begin{itemize}
@@ -414,7 +414,7 @@ Un alto valore di accoppiamento in una singola classe del package influisce sull
 \item \grassetto{Accoppiamento efferente}: questo fattore indica l'accoppiamento contrario, ovvero il numero di classi interne al package che dipendono da classi esterne. Più questo indice è basso, più indipendente è il package stesso.
 \end{itemize}
 
-\subsubsubsection{Instabilità}
+\paragraph{Instabilità}
 \label{4.2.8}
 Il fattore di instabilità di un package indica la possibilità di modifica del package senza influire sulla stabilità del software ad esso dipendente.
 Questo indice è calcolato con la formula seguente:
@@ -426,7 +426,7 @@ Gli obiettivi forniti da \emph{best practice}\footnote{Range ricavati da \url{ht
 \item \grassetto{Obiettivo Ottimale}: [0.0 - 0.3].
 \end{itemize}
 
-\subsubsubsection{Copertura del codice}
+\paragraph{Copertura del codice}
 \label{4.2.9}
 Questo fattore indica la percentuale di codice coperto durante l'esecuzione dei test. Più alta sarà la percentuale, minore sarà la possibilità di errori riscontrabili nell'esecuzione del software. Per abbassare questo questo indice sarà sufficiente scrivere metodi semplici che non necessitino di testing. Il valore ideale di 100\% indica che tutte le porzioni di codice sono testate da uno o più test.
 Gli obiettivi stimati per questa metrica sono:
@@ -436,8 +436,9 @@ Gli obiettivi stimati per questa metrica sono:
 \end{itemize}
 
 
-
 \newpage
+
+
 \section{Gestione amministrativa della revisione}
 Di seguito verrà descritto come avviene, all'interno del gruppo, la comunicazione per la gestione di anomalie e per il trattamento delle discrepanze.
 \label{3.0}
