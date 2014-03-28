@@ -110,8 +110,9 @@ Il presente documento ha lo scopo di definire la progettazione ad alto livello d
 
 \subsubsection{Normativi}
 \begin{itemize}
-\item \grassetto{Analisi dei requisiti}: Analisi\_{}dei\_{}Requisiti\_{}v\versioneAnalisiDeiRequisiti{}.pdf
-\item \grassetto{Norme di Progetto}: Norme\_{}di\_{}Progetto\_{}v\versioneNormeDiProgetto{}.pdf  (allegato alla presente documentazione)\\
+\item \grassetto{Analisi dei requisiti}: \emph{Analisi\_{}dei\_{}Requisiti\_{}v\versioneAnalisiDeiRequisiti{}.pdf};
+\item \grassetto{Norme di Progetto}: \emph{Norme\_{}di\_{}Progetto\_{}v\versioneNormeDiProgetto{}.pdf}.\\
+\item \grassetto{Verbale}: \emph{Verbale\_esterno\_20140305\_v1.2.0.pdf}.\\
 \end{itemize}
 
 \subsubsection{Informativi}
@@ -138,8 +139,8 @@ Il \gloss{database} con il quale la nostra applicazione dovrà interagire è rea
 \subsection{Javascript}
 Si è deciso di utilizzare Javascript in quanto è il linguaggio su cui si basano tutte le altre tecnologie che andremo ad utilizzare, e offre quindi una facile integrazione, oltre ad essere un ottimo linguaggio per applicazioni \gloss{web} e \gloss{client} side.
 
-\subsection{NodeJs}
-Si è deciso di utilizzare il linguaggio Node.js in quanto consigliato dal capitolato e adatto al progetto. Le sue caratteristiche più vantaggiose sono:
+\subsection{Node.js}
+Si è deciso di utilizzare il framework Node.js in quanto richiesto nel capitolato e adatto al progetto. Le sue caratteristiche più vantaggiose sono:
 \begin{itemize}
 \item Modello \gloss{Event-driven}: ovvero "programmazione ad eventi", che si basa su un concetto semplice: il flusso del \gloss{programma} non segue un corso specifico ma è guidato dalle azioni dell'utilizzatore;
 \item Modello asincrono: grazie a questa caratteristica è possibile ridurre al minimo i tempi di morti in quanto, nell'attesa del completamento di una operazione, si procede con altri flussi logici.
@@ -156,19 +157,21 @@ Svantaggi:
 \item Restrittività: JSON è meno restrittivo rispetto ad XML, e questo può permettere di inserire errori nello scambio di messaggi.
 \end{itemize}
 
-\subsection{AngularJs}
+\subsection{AngularJS}
+AngularJS è un framework open-source scritto in Javascript e mantenuto da Google, adatto a sviluppare applicazioni web. Il suo obiettivo principale è fornire alle applicazioni web le funzionalità di MVC, in modo da rendere sia lo sviluppo che il test più semplici.
+Le sue caratteristiche più significative sono:
 \begin{itemize}
-\item \gloss{Two Way Data-Binding}: Una delle caratteristiche principali di angular. Le modifiche apportate al \gloss{model} si rifletto direttamente sugli elementi del \gloss{DOM}, e le modifiche al DOM si ripercuotono automaticamente sul model. Questo alleggerisce tremendamente il \gloss{codice} necessario a controllare ad ascoltare e gestire il DOM, automatizzando il \gloss{processo}. E noi sappiamo che automatico è bene.
-\item Templates: I \gloss{template} \gloss{HTML} sono parsati dal \gloss{browser} nel DOM, il quale costituisce poi l'\gloss{input} per il compilatore Angular. Quest'ultimo poi crea il data binding tra il DOM e lo \gloss{scope} dei dati. Uno dei più grandi vantaggi di questa tecnica è che separa presentazione da implementazione, in quanto i template html possono modificati senza alterare il modo in cui sono inseriti i dati.
-\item \gloss{Dependency Injection}: Angular possiede nativamente una "dependency injection", che aiuta gli sviluppatori facilitando la creazione, la comprensione e il \gloss{testing} dell'applicazione.
+\item \gloss{Two Way Data-Binding}: Una delle caratteristiche principali di AngularJS. Le modifiche apportate al \gloss{model} si rifletto direttamente sugli elementi del \gloss{DOM}, e le modifiche al DOM si ripercuotono automaticamente sul model. Questo alleggerisce molto il \gloss{codice} necessario a controllare e gestire il DOM, automatizzando il \gloss{processo}.
+\item Templates: I \gloss{template} \gloss{HTML} sono parsati dal \gloss{browser} nel DOM, il quale costituisce poi l'\gloss{input} per il compilatore AngularJS. Quest'ultimo poi crea il data binding tra il DOM e lo \gloss{scope} dei dati. Uno dei più grandi vantaggi di questa tecnica è che separa presentazione da implementazione, in quanto i template html possono modificati senza alterare il modo in cui sono inseriti i dati.
+\item \gloss{Dependency Injection}: AngularJS possiede nativamente una "dependency injection", che aiuta gli sviluppatori facilitando la creazione, la comprensione e il \gloss{testing} dell'applicazione.
 \item \gloss{Directives}: Le directives possono essere usate per definire tag HTML personalizzati che fungono da \gloss{widget}. Possono inoltre essere usate per "decorare" elementi con comportamenti personalizzati o per manipolare attributi del DOM.
 
 \end{itemize}
 
 \subsection{HTML5}
-L'\gloss{HTML5} è un \gloss{linguaggio di markup} per la strutturazione delle \gloss{pagine web}.\\
-Nel progetto MaaP è stato scelto di utilizzare l'HTML5 perché introduce novità finalizzate soprattutto a migliorare il \gloss{disaccoppiamento} tra struttura, definita dal markup, caratteristiche di resa (tipo di carattere, colori, eccetera), definite dalle direttive di stile, e contenuti di una pagina web, definiti dal testo vero e proprio.\\
-Inoltre l'HTML5 prevede il supporto per la memorizzazione locale di grosse quantità di dati scaricati dal web browser, ideale per consentire l'utilizzo di applicazioni web e quindi per il \gloss{framework} MaaP.
+\gloss{HTML5} è un \gloss{linguaggio di markup} per la strutturazione delle \gloss{pagine web}.\\
+Nel progetto MaaP è stato scelto di utilizzare HTML5 perché introduce novità finalizzate soprattutto a migliorare il \gloss{disaccoppiamento} tra struttura, definita dal markup, caratteristiche di resa (tipo di carattere, colori, eccetera), definite dalle direttive di stile, e contenuti di una pagina web, definiti dal testo vero e proprio.\\
+Inoltre HTML5 prevede il supporto per la memorizzazione locale di grosse quantità di dati scaricati dal web browser, ideale per consentire l'utilizzo di applicazioni web e quindi per il \gloss{framework} MaaP.
 
 \newpage
 \section{Descrizione architettura}
@@ -422,7 +425,7 @@ MaaP::Server::ModelServer::DataManager::DatabaseAnalysisManager::DatabaseAnalysi
 \grassetto{Descrizione}\\
 Classe che rappresenta il gestore dei database di analisi. Contiene tutte le operazioni che si possono effettuare sul database di analisi e l'elaborazione dei dati recuperati da essi.\\
 \grassetto{Utilizzo}\\
-Viene utilizzata per la gestione delle richieste, relative al database di analisi, inoltrate dal Controller.
+Viene utilizzata per la gestione delle richieste, relative al database di analisi, inoltrate dal Controller.\\
 \grassetto{Classi da cui eredita}
 \begin{itemize}
 \item MaaP::Server::ModelServer::DataManager::IDatabaseManager;
@@ -683,7 +686,7 @@ MaaP::Server::ModelServer::DSL::DSLParser\\
 \grassetto{Descrizione}\\
 Classe che rappresenta l'\gloss{algoritmo} per il parser DSL del design pattern strategy.\\
 \grassetto{Utilizzo}\\
-Viene utilizzata all'avvio del sistema per eseguire il parsing dei file di descrizione.
+Viene utilizzata all'avvio del sistema per eseguire il parsing dei file di descrizione.\\
 \grassetto{Classi da cui eredita}
 \begin{itemize}
 \item MaaP::Server::ModelServer::DSL::ParserInterface;
@@ -700,8 +703,7 @@ MaaP::Server::ModelServer::DSL::DSLManager\\
 \grassetto{Descrizione}\\
 Classe che rappresenta il gestore dei file di descrizione. Contiene tutte le operazioni per eseguire il parsing dei file di descrizione e per salvare il risultato su appositi file di tipo CollectionData\\
 \grassetto{Utilizzo}\\
-Viene utilizzata all'avvio del sistema per eseguire il parsing dei file di descrizione e salvare il risultato su file.
-\grassetto{Classi da cui eredita}
+Viene utilizzata all'avvio del sistema per eseguire il parsing dei file di descrizione e salvare il risultato su file.\\
 \grassetto{Relazioni con altre classi}
 \begin{itemize}
 \item\grassetto{MaaP::Server::ModelServer::DSL::ParserInterface}\\
@@ -718,7 +720,7 @@ MaaP::Server::ModelServer::DSL::CollectionData\\
 \grassetto{Descrizione}\\
 Classe che rappresenta il file contenente il risultato dell'operazione di parsing.\\
 \grassetto{Utilizzo}\\
-Viene utilizzata all'avvio del sistema per salvare il risultato dell'operazione di parsing del file di descrizione.
+Viene utilizzata all'avvio del sistema per salvare il risultato dell'operazione di parsing del file di descrizione.\\
 \grassetto{Relazioni con altre classi}
 \begin{itemize}
 \item\grassetto{MaaP::Server::ModelServer::DSL::DSLManager}\\
@@ -741,7 +743,7 @@ MaaP::Server::Controller::IPassport\\
 \grassetto{Descrizione}\\
 Interfaccia che rappresenta il componente target del design pattern object \gloss{adapter}.\\
 \grassetto{Utilizzo}\\
-Viene utilizzata per gestire l'autenticazione utente.
+Viene utilizzata per gestire l'autenticazione utente.\\
 \grassetto{Relazioni con altre classi}
 \begin{itemize}
 \item\grassetto{MaaP::Server::Controller::FrontController}\\
@@ -758,7 +760,7 @@ MaaP::Server::Controller::PassportAdapter\\
 \grassetto{Descrizione}\\
 Classe che rappresenta il componente adapter del design pattern object adapter.\\
 \grassetto{Utilizzo}\\
-Viene utilizzata per gestire l'autenticazione utente.
+Viene utilizzata per gestire l'autenticazione utente.\\
 \grassetto{Classi da cui eredita}
 \begin{itemize}
 \item MaaP::Server::Controller::IPassport.
@@ -775,7 +777,7 @@ MaaP::Server::Controller::Passport\\
 \grassetto{Descrizione}\\
 Classe che rappresenta il componente adaptee del design patter object adapter.\\
 \grassetto{Utilizzo}\\
-Viene utilizzata per gestire l'autenticazione utente.
+Viene utilizzata per gestire l'autenticazione utente.\\
 \grassetto{Relazioni con altre classi}
 \begin{itemize}
 \item\grassetto{MaaP::Server::ModelServer::Database::MongooseDBFramework}\\
@@ -788,7 +790,7 @@ MaaP::Server::Controller::FrontController\\
 \grassetto{Descrizione}\\
 Classe che rappresenta il componente controller del design patter Front Controller.\\
 \grassetto{Utilizzo}\\
-Viene utilizzata per gestire le richieste del client ed inoltrarle al dispatcher.
+Viene utilizzata per gestire le richieste del client ed inoltrarle al dispatcher.\\
 \grassetto{Relazioni con altre classi}
 \begin{itemize}
 \item\grassetto{MaaP::Server::Controller::IPassport}\\
@@ -807,7 +809,7 @@ MaaP::Server::Controller::Dispatcher\\
 \grassetto{Descrizione}\\
 Classe che rappresenta il componente dispatcher del design patter Front Controller.\\
 \grassetto{Utilizzo}\\
-Viene utilizzata per smistare le richieste del client ai vari gestori dei dati.
+Viene utilizzata per smistare le richieste del client ai vari gestori dei dati.\\
 \grassetto{Relazioni con altre classi}
 \begin{itemize}
 \item\grassetto{MaaP::Server::Controller::FrontController}\\
@@ -867,7 +869,7 @@ MaaP::Client::View::Template::SignUp\\
 \grassetto{Descrizione}\\
 Classe che rappresenta il template per la pagina di \gloss{registrazione}, presente solamente se nel \gloss{file di configurazione} è esplicitamente abilitata la funzionalità di registrazione utente.\\
 \grassetto{Utilizzo}\\
-Viene utilizzata per renderizzare la pagina web di registrazione utente.
+Viene utilizzata per renderizzare la pagina web di registrazione utente.\\
 \grassetto{Relazioni con altre classi}
 \begin{itemize}
 \item\grassetto{MaaP::Client::ControllerModelView::ControllerClient::ControllerAutenticazione}\\
@@ -1000,7 +1002,7 @@ MaaP::Client::View::Template::UserProfile\\
 \grassetto{Descrizione}\\
 Classe che rappresenta il template per la pagina di recupero \gloss{password}.\\
 \grassetto{Utilizzo}\\
-Viene utilizzata per renderizzare la pagina web recupero password.
+Viene utilizzata per renderizzare la pagina web recupero password.\\
 \grassetto{Relazioni con altre classi}
 \begin{itemize}
 \item\grassetto{MaaP::Client::ControllerModelView::ControllerClient::ControllerProfilo}\\
@@ -1015,7 +1017,7 @@ MaaP::Client::View::Template::IndexPage\\
 \grassetto{Descrizione}\\
 Classe che rappresenta il template per la pagina di gestione degli indici, presente solo se nel file di configurazione è esplicitamente abilitato l'utilizzo degli indici.\\
 \grassetto{Utilizzo}\\
-Viene utilizzata per renderizzare la pagina che gestisce la creazione e l'eliminazione degli indici.
+Viene utilizzata per renderizzare la pagina che gestisce la creazione e l'eliminazione degli indici.\\
 \grassetto{Relazioni con altre classi}
 \begin{itemize}
 \item\grassetto{MaaP::Client::ControllerModelView::ControllerClient::ControllerIndici}\\
