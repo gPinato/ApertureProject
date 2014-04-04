@@ -1,0 +1,42 @@
+https://mongolab.com  -  MongoDB as Service
+
+L'account è free, limitato a 500MB per ogni DB...
+
+Credenziali d'accesso all'account mongolab.com
+username: aperture
+password: aperture2mongo
+
+---------------------------------------------------------------------------------------------
+
+Ho creato i due database dove faremo i nostri test, per ora entrambi i database
+hanno un utente "admin" con accesso in lettura e scrittura ed un utente "user" con accesso
+solo in lettura.
+
+dbuser: admin
+dbpassword: apertureadmin
+
+dbuser: user
+dbpassword: apertureuser
+
+---------------------------------------------------------------------------------------------
+
+Links di accesso ai database
+
+DBAnalysis:
+ da shell: mongo ds045897.mongolab.com:45897/dbanalysis -u <dbuser> -p <dbpassword>
+ standard URI: mongodb://<dbuser>:<dbpassword>@ds045897.mongolab.com:45897/dbanalysis
+
+DBFramework:
+ da shell: mongo ds039017.mongolab.com:39017/dbframework -u <dbuser> -p <dbpassword>
+ standard URI: mongodb://<dbuser>:<dbpassword>@ds039017.mongolab.com:39017/dbframework
+
+
+---------------------------------------------------------------------------------------------
+
+Quindi se avete installato mongodb, per lavorare sul database di analisi da shell con utente admin basta che fate partire mongo con questi parametri:
+
+mongo ds045897.mongolab.com:45897/dbanalysis -u admin -p apertureadmin
+
+entrate e create qualche collection! :)
+
+---------------------------------------------------------------------------------------------
