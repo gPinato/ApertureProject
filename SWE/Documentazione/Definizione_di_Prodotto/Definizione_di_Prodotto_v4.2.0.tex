@@ -1,0 +1,128 @@
+
+%includo il file che contiene la versione dei documenti
+\input{../Logo&Header/versioneDocumenti.tex}
+
+\newcommand{\Versione}{\versioneDefinizioneDiProdotto{}} %Versione Finale
+\newcommand{\Data}{2014-04-04}				           	 %Data di creazione
+\newcommand{\DataUltimaModifica}{2014-03-24}
+\newcommand{\TipoDocumento}{Definizione di Prodotto}	 %tipo documento
+
+%includo il file header.tex (logo grande in prima pagina piu qualche altra regola)
+\input{../Logo&Header/header.tex}
+%\vspace{.05in}
+
+%informazioni documento
+\begin{center}
+%\section{Informazioni documento}
+\begin{tabular}{r|l}
+%\textbf{Nome} &\TipoDocumento \\
+\textbf{Versione} & \Versione{} \\
+\textbf{Data creazione} & \Data{} \\
+\textbf{Data ultima modifica} & \DataUltimaModifica{} \\
+\textbf{Stato del Documento} & Formale \\		          %CAMBIARE QUI
+\textbf{Uso del Documento} & Esterno \\			          %CAMBIARE QUI
+\textbf{Redazione} &  Pinato Giacomo, Mattia Sorgato\\	  %CAMBIARE QUI
+& Michele Maso, Fabio Miotto\\
+& Alessandro Benetti, Andrea Perin\\
+\textbf{Verifica} & Alberto Garbui, Alessandro Benetti\\  %ED ANCHE QUI!
+\textbf{Approvazione} & Michele Maso\\				      %CAMBIARE QUI
+\textbf{Distribuzione} & \parbox[t]{4cm}{\NomeGruppo{}\\Prof. Vardanega Tullio\\Prof. Cardin Riccardo\\ \Prop{} }\\
+\end{tabular}
+\end{center}
+
+\vspace{0.05in}
+
+%inizio sommario del documento
+\begin{abstract}
+\begin{center}
+Architettura di dettaglio dell'applicazione \Progetto{}.
+\end{center}
+\end{abstract}
+
+%\vspace{.4in}
+
+%seconda pagina, diario delle modifiche
+\newpage
+Diario delle modifiche
+\begin{center}
+\begin{longtable}{|c|c|c|p{0.5\linewidth}|}
+\toprule
+\textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Modifiche effettuate}\\
+
+%aggiungere qui una midrule per aggiungere una nuova riga alla tabella
+\midrule
+4.2.0 & 2014-05-24 & Michele Maso (RE) & Approvazione documento.\\
+\midrule
+4.1.1 & 2014-05-22 & Alessandro Benetti (VR) & Verifica documento.\\
+\midrule
+4.1.0 & 2014-05-20 & Alberto Garbui (VR) & Verifica documento.\\
+
+
+\midrule
+4.0.1 & 2014-04-04 & Alberto Garbui (PR) & Prima stesura del documento.\\
+
+\bottomrule
+\caption{Registro delle modifiche}
+\label{tab:changelog}
+
+\end{longtable}
+\end{center}
+
+%terza pagina Indice (viene aggiornato in automatico con due compilazioni)
+\newpage
+\tableofcontents
+
+%pagine successive hanno la lista di tabelle e lista delle figure
+%(vengono aggiornate in automatico)
+\newpage
+%\listoftables	%tabelle
+\listoffigures %elenco delle immagini
+
+%qui inizia la prima pagina ufficiale
+\newpage
+\section{Introduzione}
+\subsection{Scopo del documento}
+Il seguente documento ha lo scopo di definire nel dettaglio la struttura del sistema \gloss{MaaP}, approfondendo quanto già riportato nella Specifica Tecnica. Tale documento fornisce una struttura dettagliata e completa che viene utilizzata dai programmatori per le attività di codifica.
+
+\subsection{Scopo del prodotto}
+\Prodotto{}
+
+\subsection{Glossario}
+\Glossario{}
+
+\subsection{Riferimenti}
+
+\subsubsection{Normativi}
+\begin{itemize}
+\item \grassetto{Analisi dei requisiti}: \emph{Analisi\_{}dei\_{}Requisiti\_{}v\versioneAnalisiDeiRequisiti{}.pdf};
+\item \grassetto{Norme di Progetto}: \emph{Norme\_{}di\_{}Progetto\_{}v\versioneNormeDiProgetto{}.pdf};
+\item \grassetto{Specifica Tecnica}: \emph{Specifica\_{}Tecnica\_{}v\versioneNormeDiProgetto{}.pdf};
+\end{itemize}
+
+\subsubsection{Informativi}
+\begin{itemize}
+\item \grassetto{...}: ...
+\end{itemize}
+
+\newpage
+\section{Standard di progetto}
+
+
+\newpage
+\section{Specifica componenti}
+
+\newpage
+\section{Diagrammi di sequenza}
+
+
+%tracciamento in appendice? dont panic
+\newpage
+\section{Tracciamento}
+
+
+
+
+
+
+%FINE DOCUMENTO NON CANCELLARE
+\end{document}
