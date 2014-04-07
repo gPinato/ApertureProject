@@ -1,3 +1,4 @@
+% !TeX spellcheck = de_DE
 %includo il file che contiene la versione dei documenti
 \input{../Logo&Header/versioneDocumenti.tex}
 
@@ -117,9 +118,9 @@ Diario delle modifiche
 
 \newpage
 \section{Introduzione}
-\label{2.0}
+\label{1.0}
 \subsection{Scopo del documento}
-\label{2.1}
+\label{1.1}
 Il presente documento ha l'obiettivo di definire la pianificazione secondo la quale saranno scadenziati i lavori dal gruppo Aperture \gloss{Software} sul progetto \Progetto{}.
 Gli scopi del presente documento sono:
 \begin{itemize}
@@ -130,17 +131,17 @@ Gli scopi del presente documento sono:
 \end{itemize}
 
 \subsection{Scopo del prodotto}
-\label{2.2}
+\label{1.2}
 \Prodotto{}
 
 \subsection{Glossario}
-\label{2.3}
+\label{1.3}
 \Glossario{}
 
 \subsection{Riferimenti}
-\label{2.4}
+\label{1.4}
 \subsubsection{Normativi}
-\label{2.4.1}
+\label{1.4.1}
 \begin{itemize}
 \item \grassetto{Capitolato d'appalto C1:}\\ \url{http://www.math.unipd.it/~tullio/IS-1/2013/Progetto/C1.pdf};
 \item \grassetto{Organigramma e offerta tecnica-economica:}\\ \url{http://www.math.unipd.it/~tullio/IS-1/2013/Progetto/PD01b.html};
@@ -148,7 +149,7 @@ Gli scopi del presente documento sono:
 \end{itemize}
 
 \subsubsection{Informativi}
-\label{2.4.2}
+\label{1.4.2}
 \begin{itemize}
 \item \grassetto{Software Engineering} - Ian Sommerville - 9th Edition (2010):
 – Part 4: Software Management;
@@ -160,9 +161,10 @@ Gli scopi del presente documento sono:
 \url{http://it.wikipedia.org/wiki/Metriche_di_progetto}.
 \end{itemize}
 
+\section{Organizzazione del progetto}
 \subsection{Ciclo di vita}
 \label{2.5}
-Un modello di ciclo di vita descrive come i processi si relazionano tra loro nel tempo; ne esistono diversi, ma non per il numero e significato degli stati, ma diversi per le transizioni tra gli stati e le loro regole di attivazione.
+Un modello di ciclo di vita descrive come i processi si relazionano tra loro nel tempo. Ne esistono diversi, ma non per il numero e significato degli stati, ma diversi per le transizioni tra gli stati e le loro regole di attivazione.
 Come modello di ciclo di vita del prodotto software abbiamo deciso di utilizzare il modello incrementale perché, grazie alle sue caratteristiche, lo riteniamo più flessibile e idoneo a supportare il lavoro di gruppo. Il modello incrementale possiede queste caratteristiche: 
 \begin{itemize}
 \item Il problema viene scomposto in più sotto-problemi in modo da permettere una suddivisione più semplice delle risorse e dei tempi, in quanto tutte le risorse vengono utilizzate per un numero limitato di attività in un breve lasso di tempo. Questo rende più facile l'esecuzione dei test perché essi saranno più dettagliati e quindi più esaustivi;
@@ -183,6 +185,9 @@ Il modello quindi permette sia al Proponente che al Committente di vedere dei pr
 \item \grassetto{Revisione di Qualifica}: 2014-06-28;
 \item \grassetto{Revisione di Accettazione}: 2014-07-18.
 \end{itemize}
+
+\newpage
+\input{./sections/AnalisiDeiRischi.tex}
 
 \newpage
 \section{Pianificazione}
@@ -216,17 +221,57 @@ Ognuno dei seguenti intervalli del progetto è stato poi diviso in attività in 
 \newpage
 \input{./sections/ProspettoEconomico.tex}
 
-%parte finale, analisi dei rischi
-\newpage
-\input{./sections/AnalisiDeiRischi.tex}
-
 \newpage
 \input{./sections/Consuntivo.tex}
 
 \newpage
+
+\section{Meccanismi di controllo e rendicontazione}
+\subsection{Meccanismi di controllo}
+Nel creare l'\gloss{ambiente} di lavoro, si sono predisposti dei meccanismi per:
+\begin{itemize}
+\item Controllare l'andamento delle attività;
+\item Permettere un aggiornamento facilitato della pianificazione;
+\item Rendicontare le ore di lavoro spese nelle varie attività.
+\end{itemize}
+\subsubsection{Controllo eventuali ritardi}
+Per controllare l'andamento delle attività, si usa una struttura visiva basata su grafici, perchè rendono l'acquisizione dell'informazione più immediata, permettendo così una visione istantanea.
+\paragraph{Dettaglio attività}
+Il sistema di ticketing utilizzato, e descritto nelle Norme di Progetto, fornisce il diagramma di Gantt delle attività in maniera versatile. Il diagramma espone:
+\begin{itemize}
+\item Una copertura espressa in forma percentuale delle attività aperte;
+\item Il periodo di tempo dell'eventuale ritardo delle attività verrà evidenziato con un colore rosso, per richiamare l'attenzione;
+\item Il periodo di tempo speso per ciascuna attività verrà evidenziato con un colore verde.
+\end{itemize}
+\subsection{Avanzamento dei processi}
+\subsubsection{Controllo date}
+Verranno utilizzati dei calendari per gestire meglio la pianificazione.
+\paragraph{Calendario Attività}
+Il sistema di ticketing utilizzato e descritto nelle Norme di Progetto, crea automaticamente un calendario con date di inizio e fine delle attività.
+\paragraph{Calendario Componenti del team}
+Il gruppo ha a disposizione un calendario, come descritto nelle Norme di Progetto, per gestire i vari impegni personali di ogni componente del gruppo.
+\subsubsection{Controllo metriche di progetto}
+Vengono utilizzate delle metriche di progetto per quantificare nella maniera più oggettiva possibile la prestazione nello svolgimento del progetto da parte del gruppo, mediante la misurazione degli indicatori di cui è composto il progetto. L'uso più utilizzato delle metriche è quello di quantificare l'avanzamento del progetto rispetto al piano. Mediante le metriche si può:
+\begin{itemize}
+\item Individuare i problemi di budget/scheduling evitando che sfocino in criticità;
+\item Permette al team di concentrarsi sulla finalizzazione delle attività.
+\end{itemize}
+La \gloss{metrica} di processo Schedule Variance (SV) permette di:
+\begin{itemize}
+\item Identificare lo stato di avanzamento delle attività di progetto,  rispetto allo scheduling delle attività pianificate nella \gloss{baseline} corrispondente.
+\end{itemize}
+La metrica di processo Budget Variance (BV) permette di:
+\begin{itemize}
+\item Stabilire se il costo sostenuto è in linea con il budget stanziato.
+\end{itemize}
+Lo Schedule Variance è un indicatore di efficacia che interessa maggiormente il cliente. Se il valore di tale indicatore è $>{0}$ significa che il progetto ha prodotto di più rispetto a quello che era stato pianificato, se negativo viceversa.\\
+Il Budget Variance ha valore solo in ambito contabile e finanziario. Se il suo valore è $>{0}$ vuol dire che il progetto sta spendendo il budget a disposizione con velocità minore rispetto a quella pianificata, se negativo viceversa.
+
+La descrizione di tali metriche e i valori corrispondenti sono descritti nel \emph{Piano\_{}di\_{}Qualifica\_{}v\versioneNormeDiProgetto{}.pdf}.
+
+\newpage
 \appendix
 
-%\setcounter{secnumdepth}{0}
 \section{Organigramma}%1.0
 \label{1.0}
 \subsection{Redazione}%1.1
@@ -273,6 +318,7 @@ Benetti Alessandro & 2013-11-26 & \firma{./firme/benetti}\\
 \end{center}
 
 \newpage
+
 \subsection{Componenti}
 \label{1.4}
 \begin{center}
@@ -331,49 +377,10 @@ Programmatore & 15\\
 \end{longtable}
 \end{center}
 
-\section{Meccanismi di controllo e rendicontazione}
-\subsection{Meccanismi di controllo}
-Nel creare l'\gloss{ambiente} di lavoro, si sono predisposti dei meccanismi per:
-\begin{itemize}
-\item Controllare l'andamento delle attività;
-\item Permettere un aggiornamento facilitato della pianificazione;
-\item Rendicontare le ore di lavoro spese nelle varie attività.
-\end{itemize}
-\subsubsection{Controllo eventuali ritardi}
-Per controllare l'andamento delle attività, si usa una struttura visiva basata su grafici, perchè rendono l'acquisizione dell'informazione più immediata, permettendo così una visione istantanea.
-\subsubsubsection{Dettaglio attività}
-Il sistema di ticketing utilizzato, e descritto nelle Norme di Progetto, fornisce il diagramma di Gantt delle attività in maniera versatile. Il diagramma espone:
-\begin{itemize}
-\item Una copertura espressa in forma percentuale delle attività aperte;
-\item Il periodo di tempo dell'eventuale ritardo delle attività verrà evidenziato con un colore rosso, per richiamare l'attenzione;
-\item Il periodo di tempo speso per ciascuna attività verrà evidenziato con un colore verde.
-\end{itemize}
-\subsubsubsection{Avanzamento dei processi}
-\subsubsection{Controllo date}
-Verranno utilizzati dei calendari per gestire meglio la pianificazione.
-\subsubsubsection{Calendario Attività}
-Il sistema di ticketing utilizzato e descritto nelle Norme di Progetto, crea automaticamente un calendario con date di inizio e fine delle attività.
-\subsubsubsection{Calendario Componenti del team}
-Il gruppo ha a disposizione un calendario, come descritto nelle Norme di Progetto, per gestire i vari impegni personali di ogni componente del gruppo.
-\subsubsection{Controllo metriche di progetto}
-Vengono utilizzate delle metriche di progetto per quantificare nella maniera più oggettiva possibile la prestazione nello svolgimento del progetto da parte del gruppo, mediante la misurazione degli indicatori di cui è composto il progetto. L'uso più utilizzato delle metriche è quello di quantificare l'avanzamento del progetto rispetto al piano. Mediante le metriche si può:
-\begin{itemize}
-\item Individuare i problemi di budget/scheduling evitando che sfocino in criticità;
-\item Permette al team di concentrarsi sulla finalizzazione delle attività.
-\end{itemize}
-La \gloss{metrica} di processo Schedule Variance (SV) permette di:
-\begin{itemize}
-\item Identificare lo stato di avanzamento delle attività di progetto,  rispetto allo scheduling delle attività pianificate nella \gloss{baseline} corrispondente.
-\end{itemize}
-La metrica di processo Budget Variance (BV) permette di:
-\begin{itemize}
-\item Stabilire se il costo sostenuto è in linea con il budget stanziato.
-\end{itemize}
-Lo Schedule Variance è un indicatore di efficacia che interessa maggiormente il cliente. Se il valore di tale indicatore è $>{0}$ significa che il progetto ha prodotto di più rispetto a quello che era stato pianificato, se negativo viceversa.\\
-Il Budget Variance ha valore solo in ambito contabile e finanziario. Se il suo valore è $>{0}$ vuol dire che il progetto sta spendendo il budget a disposizione con velocità minore rispetto a quella pianificata, se negativo viceversa.
+\section{Modello incrementale}
+Tipo qui ci starebbe abbestia la trattazione teorica del modello incrementale. Sulla sezione del ciclo di vita ci
+va soltanto il perché l'abbiamo scelto e come lo utilizziamo, cioè quanti incrementi facciamo e che cosa sviluppiamo ad ogni incremento.
 
-La descrizione di tali metriche e i valori corrispondenti sono descritti nel \emph{Piano\_{}di\_{}Qualifica\_{}v\versioneNormeDiProgetto{}.pdf}.
-\subsection{Meccanismi di rendicontazione}
-Il sistema di ticketing utilizzato e descritto nelle Norme di Progetto, permette di rendicontare le ore di lavoro; in questo modo  si possono vedere le ore di lavoro in base all'attività svolta e in base al ruolo svolto.
+
 %FINE DOCUMENTO NON CANCELLARE
 \end{document}
