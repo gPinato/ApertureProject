@@ -57,25 +57,25 @@ Diario delle modifiche
 \midrule
 3.1.0 & 2014-03-20 & Alberto Garbui (VR) & Verifica documento.\\
 \midrule
-3.0.10 & 2014-03-17 & Alessandro Benetti (PR) & Stesura tracciamento.\\
+3.0.10 & 2014-03-17 & Alessandro Benetti (PT) & Stesura tracciamento.\\
 \midrule
-3.0.9 & 2014-03-14 & Giacomo Pinato (PR) & Diagrammi di sequenza.\\
+3.0.9 & 2014-03-14 & Giacomo Pinato (PT) & Diagrammi di sequenza.\\
 \midrule
-3.0.8 & 2014-03-13 & Giacomo Pinato (PR) & Diagrammi di attività.\\
+3.0.8 & 2014-03-13 & Giacomo Pinato (PT) & Diagrammi di attività.\\
 \midrule
-3.0.7 & 2014-03-04 & Andrea Perin (PR) & Descrizione design pattern.\\
+3.0.7 & 2014-03-04 & Andrea Perin (PT) & Descrizione design pattern.\\
 \midrule
-3.0.6 & 2014-02-18 & Michele Maso (PR) & Componenti e Classi.\\
+3.0.6 & 2014-02-18 & Michele Maso (PT) & Componenti e Classi.\\
 \midrule
-3.0.5 & 2014-02-12 & Fabio Miotto (PR) & Componenti e Classi.\\
+3.0.5 & 2014-02-12 & Fabio Miotto (PT) & Componenti e Classi.\\
 \midrule
-3.0.4 & 2014-02-05 & Mattia Sorgato (PR) & Descrizione Architettura.\\
+3.0.4 & 2014-02-05 & Mattia Sorgato (PT) & Descrizione Architettura.\\
 \midrule
-3.0.3 & 2014-01-29 & Giacomo Pinato (PR) & Tecnologie Utilizzate.\\
+3.0.3 & 2014-01-29 & Giacomo Pinato (PT) & Tecnologie Utilizzate.\\
 \midrule
 3.0.2 & 2014-01-27 & Fabio Miotto (AM) & Tecnologie Utilizzate.\\
 \midrule
-3.0.1 & 2014-01-24 & Giacomo Pinato (PR) & Prima stesura del documento.\\
+3.0.1 & 2014-01-24 & Giacomo Pinato (PT) & Prima stesura del documento.\\
 
 \bottomrule
 \caption{Registro delle modifiche}
@@ -162,11 +162,14 @@ AngularJS è un framework open-source scritto in Javascript e mantenuto da Googl
 Le sue caratteristiche più significative sono:
 \begin{itemize}
 \item \gloss{Two Way Data-Binding}: Una delle caratteristiche principali di AngularJS. Le modifiche apportate al \gloss{model} si rifletto direttamente sugli elementi del \gloss{DOM}, e le modifiche al DOM si ripercuotono automaticamente sul model. Questo alleggerisce molto il \gloss{codice} necessario a controllare e gestire il DOM, automatizzando il \gloss{processo}.
-\item Templates: I \gloss{template} \gloss{HTML} sono parsati dal \gloss{browser} nel DOM, il quale costituisce poi l'\gloss{input} per il compilatore AngularJS. Quest'ultimo poi crea il data binding tra il DOM e lo \gloss{scope} dei dati. Uno dei più grandi vantaggi di questa tecnica è che separa presentazione da implementazione, in quanto i template html possono modificati senza alterare il modo in cui sono inseriti i dati.
-\item \gloss{Dependency Injection}: AngularJS possiede nativamente una "dependency injection", che aiuta gli sviluppatori facilitando la creazione, la comprensione e il \gloss{testing} dell'applicazione.
+\item Templates: I \gloss{template} \gloss{HTML} sono compilati dal \gloss{browser} nel DOM, il quale costituisce poi l'\gloss{input} per il compilatore AngularJS. Quest'ultimo poi crea il data binding tra il DOM e lo \gloss{scope} dei dati. Uno dei più grandi vantaggi di questa tecnica è che separa presentazione da implementazione, in quanto i template html possono modificati senza alterare il modo in cui sono inseriti i dati.
+\item \gloss{Dependency Injection}: AngularJS dispone di uno strumento di dependence injection, che aiuta gli sviluppatori facilitando la creazione, la comprensione e il \gloss{testing} dell'applicazione.
 \item \gloss{Directives}: Le directives possono essere usate per definire tag HTML personalizzati che fungono da \gloss{widget}. Possono inoltre essere usate per "decorare" elementi con comportamenti personalizzati o per manipolare attributi del DOM.
 
 \end{itemize}
+
+\subsection{Passport}
+Passport è un \gloss{middleware} per Node.js estremamente flessibile e modulare, applicabile facilmente a qualsiasi applicazione web basata su \gloss{Express}. Esso fornisce tutte le funzionalità per implementare un sistema di autenticazione facile e sicuro mediante username e password, oppure mediante login preesistenti derivanti da sistemi di autenticazione per piattaforme social tipo Facebook, Twitter e molti altri.
 
 \subsection{HTML5}
 \gloss{HTML5} è un \gloss{linguaggio di markup} per la strutturazione delle \gloss{pagine web}.\\
@@ -300,7 +303,7 @@ Vengono inoltre presentati tutti i sotto-package così da facilitare la comprens
 \subsubsection{Classi}
 \immagine{./Diagrammi/GeneraleClassi}{Architettura generale del software}
 Nel precedente diagramma è presente l'architettura ad alto livello del software e vengono indicate le classi fondamentali per rappresentare le relazioni dell'architettura Client-server. I diagrammi di sequenza relativi allo scambio di segnali, lo scopo ed il contesto di utilizzo sono presenti nella sezione 6.
-
+\begin{comment}
 \subsubsubsection{Server}
 La parte Server è composta da due package: ModelServer per la gestione dei dati persistenti ed il \gloss{Controller} per la gestione della \gloss{business logic}.\\
 \subsubsubsubsection{ModelServer}
@@ -326,7 +329,7 @@ Nel Client sono presenti oggetti che rappresentano:
 \item Lo Scope per l'aggiornamento dei dati dei template;
 \item I Servizi utilizzati dai Controller.
 \end{itemize}
-
+\end{comment}
 \newpage
 \section{Componenti e Classi}
 
@@ -1335,7 +1338,7 @@ Nella realizzazione del progetto MaaP si è deciso di implementare i seguenti De
 
 \subsection{Design Pattern architetturali}
 \subsubsection{MVVM}
-\immagine{./Diagrammi/ComponentiClient}{Applicazione di MVVM in MaaP}
+%\immagine{./Diagrammi/ComponentiClient}{Applicazione di MVVM in MaaP}
 \begin{itemize}
 \item \grassetto{Scopo:} Il pattern MVVM è stato scelto per separare la logica dell'applicazione lato client dalla rappresentazione grafica;
 \item \grassetto{Utilizzo:} Nel progetto MaaP la scelta di utilizzare AngularJS come base di partenza per l'applicazione lato client ha implicitamente comportato l'utilizzo del design pattern MVVM perché proprio di AngularJS.
@@ -1393,6 +1396,8 @@ Gli strumenti utilizzati sono:
 \item \grassetto{PegJS:} generatore di parser javascript per il file di descrizione.
 \end{itemize}
 
+\section{Tracciamento}
+Il tracciamento componenti logiche - requisiti e viceversa è riportato nella sezione x.x.x del documento \emph{Piano\_{}di\_{}Qualifica\_{}v\versionePianoDiQualifica{}.pdf}.
 
 \newpage
 \appendix
