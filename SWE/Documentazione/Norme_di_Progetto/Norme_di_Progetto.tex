@@ -126,7 +126,7 @@ Ingegneria dei requisiti: \url{http://www.math.unipd.it/~tullio/IS-1/2013/};
 \end{itemize}
 
 \newpage
-\section{Comunicazioni}
+\section{Collaborazione}
 \label{3.0}
 
 \subsection{Comunicazioni interne}
@@ -137,7 +137,6 @@ Le comunicazioni interne sono divise in comunicazioni formali e informali, in ba
 Le comunicazioni interne formali appartengono all'area di organizzazione generale del gruppo. A questa categoria appartengono tutti gli avvisi di impegni collettivi del team, la segnalazione di imprevisti organizzativi o la convocazione di riunioni.
 
 \paragraph{Mailing List}
-\label{3.2.2}
 È stata creata una mailing list all'indirizzo \textbf{\url{aperture-team@googlegroups.com}}.
 Ogni \gloss{email} inviata a tale indirizzo verrà inoltrata alla email personale di ogni componente nel gruppo.
 La mailing list è collegata ad un gruppo su \gloss{Google} Groups, che permette di velocizzare le comunicazioni implementando una \gloss{simil-chat} tramite email distribuite; inoltre mantiene uno storico di qualsiasi comunicazione. Va usato quindi come strumento per discussioni e comunicazioni ufficiali.
@@ -155,7 +154,6 @@ Una mail usata per la comunicazione interna deve avere la seguente struttura:
 Le comunicazioni riguardanti dubbi o chiarimenti marginali o comunque non inerenti all'organizzazione del gruppo, vengono definiti informali. Per loro natura, queste comunicazioni devono essere veloci e non complesse, quindi abbiamo deciso di utilizzare strumenti immediati di comunicazione, quali le \gloss{chat}. In questo caso, un membro del gruppo esprime il dubbio come messaggio istantaneo, il quale sarà visibile da ogni altro componente.
 
 \paragraph{\gloss{Skype}}
-\label{3.2.1}
 Per facilitare le comunicazioni istantanee è stata creata su Skype una chat di gruppo dove sono presenti tutti i membri del team. Tale chat deve essere usata solo per conversazioni non ufficiali o per discussioni non importanti come lo scambio di articoli, consigli o comunicazioni non rilevanti.
 
 \paragraph{Gruppo \gloss{Facebook}}
@@ -215,14 +213,35 @@ Prima di richiedere un colloquio personale con il Proponente e/o Committente il 
 \label{3.4.2}
 I colloqui con i committenti di progetto possono essere richiesti dal Responsabile mediante la email ufficiale del team. Tutti i membri devono essere avvisati prima di richiedere un incontro con il Committente.
 
-
-
 \subsubsection{Svolgimento del colloquio}
 Al fine di ottimizzare l'estrapolazione delle informazioni derivanti dal colloquio, durante tutto lo svolgimento dello stesso dovrà essere registrata una traccia audio come supporto alla stesura del verbale.
 
 \subsubsection{Verbale}
 \label{3.4.3}
 Alla fine del colloquio verrà redatto un verbale, vedi sezione 2.3.3 di questo documento, che riassume gli argomenti trattati, le conclusioni, nonché le strategie che si sono delineate in concordanza col Committente/Proponente.
+
+\subsection{Repository e condivisione file}
+\subsubsection{Repository}
+Viene messo a disposizione un repository \gloss{Git} su \gloss{GitHub} per la gestione e il versionamento di codice e documenti tra i vari membri del gruppo.\\
+Il repository pubblico è disponibile all'indirizzo: \\
+\begin{center}
+\textbf{\url{https://github.com/ApertureSoftware/AperturePublic.git}.}
+\end{center}
+
+\paragraph{\gloss{Branch}}
+\label{4.4}
+Nel repository saranno disponibili vari branch per favorire lo sviluppo del codice da parte degli sviluppatori.
+
+\subparagraph{Master}
+\label{4.4.1}
+Il branch principale sarà chiamato master e conterrà l'ultima versione del software stabile rilasciata. Affinché una nuova versione possa essere caricata nel branch master, quest'ultima deve compilare senza errori o warning e deve aver superato tutti i test disegnati per verificarne la qualità.
+
+\subsection{Condivisione file}
+Per la condivisione informale di documenti e per il lavoro collaborativo si utilizza Google Drive, strumento online che permette di effettuare le operazioni descritte precedentemente. Per una maggiore descrizione, si rimanda alla sezione ??? di questo documento.
+
+\subparagraph{Secondari}
+\label{4.4.2}
+Gli sviluppatori possono richiedere la creazione di un branch secondario, provando nuove strategie di sviluppo senza alterare il branch master. Il Responsabile di Progetto è il responsabile dell'approvazione della richiesta.
 
 \newpage
 \section{Documentazione}
@@ -1166,28 +1185,6 @@ Si è scelto di adottare Jenkins per applicare l’integrazione continua allo sv
 Tale software permette di pianificare ed impostare la compilazione del codice e dei documenti. 
 Mette inoltre a disposizione un'interfaccia su cui è possibile visualizzare lo stato del codice prodotto. 
 Esso è infatti in grado di interagire con il software di versionamento e, se disponibile, con software per l’esecuzione di test sul codice prodotto.
-
-
-\subsubsection{Git}
-\label{4.3}
-Viene messo a disposizione un repository \gloss{Git} su \gloss{GitHub} per la gestione e il versionamento di codice e documenti tra i vari membri del gruppo.\\
-Il repository pubblico è disponibile all'indirizzo: \\
-\begin{center}
-\textbf{\url{https://github.com/ApertureSoftware/AperturePublic.git}.}
-\end{center}
-
-\paragraph{\gloss{Branch}}
-\label{4.4}
-Nel repository saranno disponibili vari branch per favorire lo sviluppo del codice da parte degli sviluppatori.
-
-\subparagraph{Master}
-\label{4.4.1}
-Il branch principale sarà chiamato master e conterrà l'ultima versione del software stabile rilasciata. Affinché una nuova versione possa essere caricata nel branch master, quest'ultima deve compilare senza errori o warning e deve aver superato tutti i test disegnati per verificarne la qualità.
-
-\subparagraph{Secondari}
-\label{4.4.2}
-Gli sviluppatori possono richiedere la creazione di un branch secondario, provando nuove strategie di sviluppo senza alterare il branch master. Il Responsabile di Progetto è il responsabile dell'approvazione della richiesta.
-
 
 
 \subsection{Protocolli per la gestione del progetto}
