@@ -303,11 +303,10 @@ int main(int argc, char* argv[])
 		IN.close();
 		cout<<"Fatto!"<<endl;
 		cout<<"-> inizio ricerca UC... "<<endl;
-		int k=getUC(buffer,length,0,&OUT);
-		while(k!=-1)
-		{
-			k=getUC(buffer,length,k,&OUT);
-		}
+		int k=0;
+		do{
+		 k=getUC(buffer,length,k,&OUT);
+		}while(k!=-1);
 			
 		delete buffer;
 		cout<<endl<<endl<<"-> carico UCMaaPsWeb... ";
@@ -319,10 +318,11 @@ int main(int argc, char* argv[])
 		IN1.close();
 		cout<<"Fatto!"<<endl;
 		cout<<"-> inizio ricerca UC... "<<endl;
-		k=getUC(buffer,length,0,&OUT);
-		while(k!=-1)
-			k=getUC(buffer,length,k,&OUT);
-			
+		k=0;
+		do{
+		 k=getUC(buffer,length,k,&OUT);
+		}while(k!=-1);
+						
 		delete buffer;
 		cout<<endl<<endl<<"-> carico UCMaaS... ";
 		IN2.seekg (0, IN2.end);
@@ -333,9 +333,10 @@ int main(int argc, char* argv[])
 		IN2.close();
 		cout<<"Fatto!"<<endl;
 		cout<<"-> inizio ricerca UC... "<<endl;
-		k=getUC(buffer,length,0,&OUT);
-		while(k!=-1)
-			k=getUC(buffer,length,k,&OUT);
+		k=0;
+		do{
+		 k=getUC(buffer,length,k,&OUT);
+		}while(k!=-1);
 			
 		//pulisco la memoria
 		delete buffer;
