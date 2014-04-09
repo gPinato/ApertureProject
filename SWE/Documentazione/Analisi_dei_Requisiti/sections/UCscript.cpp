@@ -213,8 +213,13 @@ int getUC(const char * buffer, int length, int start, ofstream * OUT)
 	}else{
 		*OUT<<'"'<<' '<<'"'<<';'; 
 	}
-	
 	*/
+	
+	//campi vuoti per scenario, scenarioAlt, inclusioni ed estensioni
+	*OUT<<'"'<<' '<<'"'<<';'; 
+	*OUT<<'"'<<' '<<'"'<<';'; 
+	*OUT<<'"'<<' '<<'"'<<';'; 
+	*OUT<<'"'<<' '<<'"'<<';'; 
 	
 	//cerco il prossimo comando \post
 	i=cercaStringa(buffer,length,i,"\\post",5);
@@ -230,6 +235,33 @@ int getUC(const char * buffer, int length, int start, ofstream * OUT)
 	
 	delete buffOUT; // :)
 	return i;
+}
+
+void creaRecord(const char * UC, 
+				const char * nome, 
+				const char * diagrammaAssociato, 
+				const char * attori, 
+				const char * scopo,
+				const char * pre,
+				const char * scenario,
+				const char * scenarioAlt,
+				const char * estensioni,
+				const char * inclusioni,
+				const char * post,				
+				ofstream * OUT)
+{
+	*OUT<<'"'<<UC<<'"'<<';'; 
+	*OUT<<'"'<<nome<<'"'<<';'; 
+	*OUT<<'"'<<diagrammaAssociato<<'"'<<';'; 
+	*OUT<<'"'<<attori<<'"'<<';'; 
+	*OUT<<'"'<<scopo<<'"'<<';';
+	*OUT<<'"'<<pre<<'"'<<';';
+	*OUT<<'"'<<scenario<<'"'<<';';
+	*OUT<<'"'<<scenarioAlt<<'"'<<';';
+	*OUT<<'"'<<estensioni<<'"'<<';';
+	*OUT<<'"'<<inclusioni<<'"'<<';';
+	*OUT<<'"'<<post<<'"'<<';'; 
+	*OUT<<'"'<<" "<<'"'<<endl; //immagine     		
 }
 
 int main(int argc, char* argv[])
@@ -256,6 +288,11 @@ int main(int argc, char* argv[])
 		if(!IN2)throw(3);
 		cout<<"Fatto!"<<endl;
 		
+		creaRecord("Capitolato"," "," "," "," "," "," "," "," "," "," ",&OUT);
+		creaRecord("Interna"," "," "," "," "," "," "," "," "," "," ",&OUT);
+		creaRecord("Verbale_2013_12_05"," "," "," "," "," "," "," "," "," "," ",&OUT);
+		creaRecord("Verbale_2014_01_20"," "," "," "," "," "," "," "," "," "," ",&OUT);
+		creaRecord("Verbale_2014_03_05"," "," "," "," "," "," "," "," "," "," ",&OUT);
 		
 		cout<<"-> carico UCMaaP... ";
 		IN.seekg (0, IN.end);

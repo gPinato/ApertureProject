@@ -97,7 +97,8 @@ int setUC(const char * buffer, char * outBuffer)
 {
 	int j=0,i=0;
 	
-	while(buffer[i]==' ')i++;
+	while(buffer[i]==' ')i++; //salto gli spazi
+	//if(buffer[i]=='\\')return i+1; //se trovo una barra esco
 
 	while(buffer[i] != '\n' && buffer[i] != '&' && buffer[i] != ' ' && !(buffer[i]=='\\' && buffer[i+1]=='\\'))
 	{	
@@ -153,22 +154,23 @@ int getREQ(const char * buffer, int length, int start, ofstream * OUT, ofstream 
 	i++;
 
 	i+=setText(&buffer[i],buffOUT); 					//fonte
-	cout<<buffOUT<<endl;
-	*OUT<<'"'<<buffOUT<<'"'<<';'; 
 	i++;
 	
-	*OUT<<'"'<<' '<<'"'<<';'; 						//incremento
-	
-	*OUT<<endl;
+	cout<<buffOUT<<endl;
+	*OUT<<'"'<<buffOUT<<'"'<<';'; 						//aggiungo la fonte su REQaccess.txt
+	*OUT2<<'"'<<Req<<'"'<<';';    						//anche la fonte va tracciata su REQUC.txt
+	*OUT2<<'"'<<buffOUT<<'"'<<endl;	
+		
+	*OUT<<'"'<<' '<<'"'<<endl; 						//incremento
 	
 	//preparo anche la tabella requisiti-casi d'uso associati
-	*OUT2<<'"'<<Req<<'"'<<';';    					//Rxxx
-	
 	i+=setUC(&buffer[i],buffOUT); 				//Caso d'uso associato
-	cout<<buffOUT<<endl;
-	*OUT2<<'"'<<buffOUT<<'"'<<';';  		
-	
-	*OUT2<<endl;
+	if(buffOUT[0]!='\0')
+	{
+		cout<<buffOUT<<endl;
+		*OUT2<<'"'<<Req<<'"'<<';';    					//Rxxx
+		*OUT2<<'"'<<buffOUT<<'"'<<endl;  	
+	}
 	
 	while(!(buffer[i]=='\\' && buffer[i+1]=='m') && !(buffer[i]=='%' && buffer[i+1]=='J' && buffer[i+2]=='K'))
 	{
@@ -178,8 +180,7 @@ int getREQ(const char * buffer, int length, int start, ofstream * OUT, ofstream 
 			*OUT2<<'"'<<Req<<'"'<<';';    					//Rxxx
 			i+=setUC(&buffer[i],buffOUT); 				//Caso d'uso associato
 			cout<<buffOUT<<endl;
-			*OUT2<<'"'<<buffOUT<<'"'<<';'; 
-			*OUT2<<endl;
+			*OUT2<<'"'<<buffOUT<<'"'<<endl;
 		}else{
 			i++;
 		}
