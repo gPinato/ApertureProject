@@ -119,6 +119,7 @@ Questo documento è volto a definire le norme che dovranno essere osservate da t
 \item \grassetto{Slide dell'insegnamento Ingegneria del Software modulo A}:\\
 Ingegneria dei requisiti: \url{http://www.math.unipd.it/~tullio/IS-1/2013/};
 \item \grassetto{Software Engineering - Ian Sommerville - 9th Edition (2010)};\\
+\item \grassetto{ISO/IEC 12207 Systems and software engineering};\\
 \item \grassetto{Standard ISO 8601} - Data elements and interchange formats: \url{http://it.wikipedia.org/wiki/ISO\_8601};
 \item \grassetto{Jenkins:} \url{http://en.wikipedia.org/wiki/Jenkins_(software)};
 \item \grassetto{Piano di Qualifica}: \emph{Piano\_di\_Qualifica\_v3.2.0};
@@ -327,37 +328,50 @@ L'intero progetto sarà sviluppato mediante processi, ovvero mediante un insieme
 In virtù del ciclo di vita scelto, molti di questi processi saranno ripetuti più volte durante l'intero arco di sviluppo.
 \immagine{./process}{I principali processi di sviluppo del progetto}
 
-%\subsection{Processi primari}
-%\paragraph{Acquisizione}
-%\paragraph{Supply}
-%\paragraph{Sviluppo}
-%\paragraph{Operation}
-%\paragraph{Mantenimento}
-%
-%\subsection{Processi di supporto}
-%\paragraph{Documentazione}
-%\paragraph{Gestione di configurazione}
-%\paragraph{Gestione della qualità}
-%\paragraph{Risoluzione dei problemi} %(?)
-%
-%\subsection{Processi organizzativi}
-%\paragraph{Gestione}
-%\paragraph{Infrastrutture}
-%\paragraph{Miglioramento}
-%\paragraph{Training}
+\subsection{Acquisizione}
+Lo scopo del processo di acquisizione è di ottenere la definizione di un prodotto o servizio che soddisfi le richieste espresse dall'acquirente.
+Questo processo inizia con l'identificazione delle necessità del cliente e termina con l'accettazione di quest'ultimo del progetto pianificato.
+\subsubsection{Processi componenti}
+Analisi dei requisit, verifica; Gestioen di rpogetto;
+\subsection{Supply}
+Lo scopo di questo processo è fornire un piano di gestione del progetto contente informazioni riguardanti la pianificazione delle attività, scadenze, milestone e tempi di consegna. Questo piano sarà poi seguito durante tutta la durata del progetto.
+\subsection{Sviluppo}
+Lo scopo di questo processo è definire, creare e testare il prodotto al fine di renderlo adatto ad essere rilasciato ai clienti.
+\subsubsection{Processi componenti}
+Codifica, Progettazione, Verifica;
+\subsection{Operation}
+\subsection{Mantenimento}
 
-\subsection{Processi primari}
-\subsubsection{Gestione di progetto}
+
+\section{Sottoprocessi}
+
+\subsection{Gestione di progetto}
 Questo processo comprende tutte le attività volte gestire la pianificazione, le risorse, i rischi e AGGIUNGERE
+è composto dalle seguneti attività:
+\subsubsection{Pianificazione}
+qua si pianifica shit
+\paragraph{Procedure}
+procedure shit
+\paragraph{Strumenti}
+sgtuemtni sthi;Pianificazione, Stesura Gantt, Analisi rischi;
+\subsubsection{Analisi rischi}
+qua si analizza shit
+\paragraph{Procedure}
+procedure shit
+\paragraph{Strumenti}
+sgtuemtni sthi;Pianificazione, Stesura Gantt, Analisi rischi;
 \subsubsection{Analisi dei requisiti}
 Questo processo comprende tutte le attività volte ad identificare, elaborare e catalogare i requisiti, impliciti e non, che il progetto possiede.
 Sarà ripetuto principalmente all'inizio dei lavori, per poi diventare sempre meno presente via via che i requisiti si consolidano e lo sviluppo procede verso la progettazione e la codifica.
 \subsubsection{Progettazione}
 Questo processo comprende tutte le attività volte a definire l'architettura software del progetto, ovvero la divisione del sistema in sottocomponenti, le interfacce per la loro interazione e i loro modelli di composizione. %definition by Dr.Tullio
+\paragraph{}
 \subsubsection{Codifica}
 Questo processo comprende tutte le attività volte alla realizzazione pratica dell'architettura definita precedentemente e all'implementazione delle sue componenti.
-\subsubsection{Verifica e validazione}
-Questo processo comprende tutte le attività volte a verificare che i processi precedentemente applicati non abbiano introdotto errori e che il prodotto finale sia coerente con il risultato atteso.
+\subsubsection{Verifica}
+Questo processo comprende tutte le attività volte a verificare che i processi precedentemente attuati non abbiano introdotto errori.
+\subsubsection{Validazione}
+Questo processo comprende tutte le attività volte a verificare che il prodotto risultante dall'uscita di tutti i processi sia il prodotto desiderato.
 
 \subsection{Processi di supporto}
 \subsubsection{Documentazione}
