@@ -323,7 +323,7 @@ necessarie per l'esecuzione delle prove di Verifica e Validazione. Le responsabi
 Redige il Manuale \gloss{Utente} e tutta la documentazione relativa al codice.
 
 \newpage
-\section{Processi}
+\section{Processi primari}
 L'intero progetto sarà sviluppato mediante processi, ovvero mediante un insieme di attività coDEFINIZIONE.
 In virtù del ciclo di vita scelto, molti di questi processi saranno ripetuti più volte durante l'intero arco di sviluppo.
 \immagine{./process}{I principali processi di sviluppo del progetto}
@@ -345,76 +345,334 @@ Codifica, Progettazione, Verifica;
 
 \section{Sottoprocessi}
 
+
+%TEMPLATE
+%\subsection{SOTTOPROCESSO}
+
+\subsubsection{ATTIVITA'}
+
+\paragraph{Procedure}
+
+\paragraph{Strumenti}
+
 \subsection{Gestione di progetto}
-Questo processo comprende tutte le attività volte gestire la pianificazione, le risorse, i rischi e AGGIUNGERE
-è composto dalle seguneti attività:
+Questo processo comprende tutte le attività volte gestire la pianificazione, le risorse, i rischi e i controlli sulle attività del progetto.
+Le responsabilità di gestione dell’intero progetto, dalla nascita alla conclusione, sono da attribuire al Responsabile di Progetto.
+
 \subsubsection{Pianificazione}
-qua si pianifica shit
+L'attività di pianificazione mira a fissare le scadenze e le milestone dei vadi processi che si andranno ad attuare al fine di poter controllare il carico di lavoro, la sua durata e poter meglio gestire le risorse.
 \paragraph{Procedure}
-procedure shit
+
+\subparagraph{Pianificazione delle attività}
+
+All'inizio di ciascuna delle fasi delineate nel \emph{Piano di Progetto v4.2.0}, il Responsabile di Progetto deve realizzare un \gloss{diagramma di \gloss{Gantt}} su \gloss{Redmine}, come descritto in sezione XXX di questo documento, per tracciare e gestire le attività dei processi utilizzati dal progetto.
+
+%ammaccabanane
+
+\subparagraph{Controllo dell'avanzamento}
+\label{}
+Dopo ogni sessione di lavoro di un componente o gruppo di componenti, gli stessi devono tracciare il loro lavoro modificando l'avanzamento dell'attività e registrando le ore/persona spese mediante il sistema offerto da Redmine.
+Dovranno inoltre modificare lo stato dell'attività in base al ruolo ricoperto e lo stato di avanzamento della stessa. 
+
+
 \paragraph{Strumenti}
-sgtuemtni sthi;Pianificazione, Stesura Gantt, Analisi rischi;
-\subsubsection{Analisi rischi}
-qua si analizza shit
+Diagramma di Gantt, Work Breakdown Structure.
+
+
+\subsubsection{Analisi e gestione dei rischi}
+Durante l'avanzamento del progetto il Responsabile  deve monitorare costantemente il verificarsi dei rischi descritti nel \emph{Piano di Progetto v4.2.0} così come la possibilità che l'avanzamento comporti nuovi rischi non previsti precedentemente.
+
+
 \paragraph{Procedure}
-procedure shit
+Nel caso in cui si identifichi un nuovo rischio, quest'ultimo deve essere inserito nell'apposita sezione del piano di progetto e deve essere elaborata una strategia per ridurre la probabilità di XXX e una per il controllo dei potenziali danni.
+Nel caso in cui uno dei rischi già individuati si verifichi, il Responsabile deve immediatamente attuare la strategia per il controllo dei danni precedentemente disegnata.
+
 \paragraph{Strumenti}
-sgtuemtni sthi;Pianificazione, Stesura Gantt, Analisi rischi;
-\subsubsection{Analisi dei requisiti}
+Redmine, Piano di Progetto.
+
+
+\subsubsection{Gestione delle risorse}
+Questa attività di prefigge di gestire al meglio le risorse assegnate a tutti gli altri processi ed attività in attuazione.
+\paragraph{Procedure}
+Per gestire le risorse umane assegnate ad ogni attività, il Responsabile deve sfruttare la struttura precedentemente creata su Redmine ed assegnare ogni attività ai membri del gruppo secondo il sistema di ticketing descritto nella sezione XXX.
+Dovrà inoltre controllare che il numero di risorse sia sempre adeguato all'attività in questione al fine di garantire il suo completamento entro i termini pianificati.
+
+\paragraph{Strumenti}
+Redmine.
+
+\subsection{Analisi dei requisiti}
 Questo processo comprende tutte le attività volte ad identificare, elaborare e catalogare i requisiti, impliciti e non, che il progetto possiede.
 Sarà ripetuto principalmente all'inizio dei lavori, per poi diventare sempre meno presente via via che i requisiti si consolidano e lo sviluppo procede verso la progettazione e la codifica.
-\subsubsection{Progettazione}
+
+
+\subsubsection{Identificazione dei Requisiti}
+Durante questa attività si cercheranno tutti i requisti, espliciti e non, che il cliente desidera, che il sistema necessita per un buon funzionamento e che sono necessari alla riuscita finale del progetto.
+
+\paragraph{Procedure}
+Le principali fonti di requisiti saranno:
+\begin{itemize}
+\item Colloqui con il committente;
+\item Capitolato;
+\item Casi d'uso individuati;
+\item Verbali derivanti da discussioni di gruppo.
+\end{itemize}
+Dopo aver analizzato e compreso la natura e le funzionalità del prodotto atteso, gli analisti dovranno elaborare dei casi d'uso che dimostrino le funzionalità disponibili e le loro relazioni.
+A partire da questi ultimi e dalle fonti sopra citate, dovranno individuare tutti i requisiti necessari a definire non ambiguamente funzionalità e vincoli necessari al procedimento del progetto.
+%non mi piace, cambiare 
+
+
+\paragraph{Strumenti}
+
+
+
+\subsubsection{Stesura casi d'uso}
+La stesura dei casi d'uso è un'attività utile ad comprendere più a fondo le funzionalità del sistema e per identificare requisiti impliciti.
+\paragraph{Procedure}
+
+Ciascun caso d'uso descritto dagli analisti dovrà rispettare la seguente notazione:
+\begin{center}
+\grassetto{UC[codice progressivo di livello]}
+\end{center}
+Ogni caso d'uso ha un \gloss{codice} univoco gerarchico.\\
+Il codice progressivo può includere diversi livelli di gerarchia separati da un punto.
+A ogni descrizione di caso d'uso viene riportato il numero del diagramma associato di cui fa parte, ovvero la rappresentazione del caso d'uso generale a cui esso appartiene.
+Ogni diagramma associato è scritto nella seguente forma:
+\begin{center}
+\grassetto{Figura[numero progressivo]:[codice univoco e nome del caso d'uso]}.
+\end{center}
+
+\paragraph{Strumenti}
+Astah.
+
+
+
+\subsubsection{Classificazione dei requisiti}
+Questa attività mira a classificare i requisiti in base alle loro caratteristiche.
+
+\paragraph{Procedure}
+Ogni requisito andrà catalogato secondo il seguente schema:
+
+\begin{center}
+\textbf{R[importanza][tipo][codice]}
+\end{center}
+dove:
+\begin{itemize}
+\item Importanza può assumere i seguenti valori:
+\begin{itemize}
+\item \grassetto{O:} \gloss{requisito} obbligatorio;
+\item \grassetto{D:} requisito desiderabile;
+\item \grassetto{F:} requisito facoltativo.
+\end{itemize}
+\item Tipo può assumere i seguenti valori:
+\begin{itemize}
+\item \grassetto{F:} funzionale;
+\item \grassetto{Q:} di qualità;
+\item \grassetto{P:} prestazionale;
+\item \grassetto{V:} vincolo.
+\end{itemize}
+\item Codice è il codice che identifica univocamente ogni requisito.
+\end{itemize}
+
+
+\paragraph{Strumenti}
+%ammaccabanane
+
+\subsubsection{Tracciamento}
+
+\paragraph{Procedure}
+
+
+\paragraph{Strumenti}
+
+
+
+
+\subsection{Progettazione}
 Questo processo comprende tutte le attività volte a definire l'architettura software del progetto, ovvero la divisione del sistema in sottocomponenti, le interfacce per la loro interazione e i loro modelli di composizione. %definition by Dr.Tullio
-\paragraph{}
+
+\subsubsection{Definizione architettura generale}
+
+\paragraph{Procedure}
+
+\paragraph{Strumenti}
+
+
+\subsubsection{Descrizione architettura di dettaglio}
+
+\paragraph{Procedure}
+
+\paragraph{Strumenti}
+
+
+\subsubsection{Stesura specifica tecnica}
+
+\paragraph{Procedure}
+
+\paragraph{Strumenti}
+
+\subsubsection{Progettazione test}
+
+\paragraph{Procedure}
+
+\paragraph{Strumenti}
+
+
+
+
+
 \subsubsection{Codifica}
 Questo processo comprende tutte le attività volte alla realizzazione pratica dell'architettura definita precedentemente e all'implementazione delle sue componenti.
-\subsubsection{Verifica}
+\subsection{Verifica}
 Questo processo comprende tutte le attività volte a verificare che i processi precedentemente attuati non abbiano introdotto errori.
-\subsubsection{Validazione}
+Per i documenti il processo di verifica viene istanziato nel momento in cui gli stessi passano dalla versione X.0.Z alla versione X.1.Z. 
+È sempre compito del responsabile assegnare ai Verificatori il ticket di verifica per il processo in questione.
+
+\subsubsection{Metriche per errori}
+Sono riportate delle metriche utili alla valutazione degli errori che si potranno riscontrare durante le attività di Verifica.
+\begin{center}
+\begin{longtable}{|c|c|c|p{0.5\linewidth}|}
+\toprule
+\textbf{Errore} & \textbf{Gravità} & \textbf{Priorità} \\
+
+%aggiungere qui una midrule per aggiungere una nuova riga alla tabella
+\midrule
+Indici Errati & Alta & Urgente\\
+\midrule
+Tracciamento errato & Media & Breve\\
+\midrule
+Errore di progettazione & Alta & Alta\\
+\midrule
+Errore ortografico o di formattazione & Bassa & Entro Milestone\\
+\midrule
+Valore Gulpease fuori norma & Bassa & Entro Milestone\\
+\midrule
+Violazione norme di codifica & Media & Breve\\
+
+\bottomrule
+\caption{Tabella errori}
+\label{tab:changelog}
+\end{longtable}
+\end{center}
+
+La gravità di un errore può essere:
+
+\begin{itemize}
+\item \grassetto{Bassa}: l'errore ha impatto minimo e su aspetti marginali;
+\item \grassetto{Media}: l'errore ha un impatto significativo e causa un ritardo o un aumento di costo considerevole;
+\item \grassetto{Alta}: l'errore rende il prodotto inutilizzabile e porta potenzialmente al fallimento del progetto.
+\end{itemize}
+
+I tempi di risoluzione possono essere:
+\begin{itemize}
+\item \grassetto{Entro milestone}: l'errore va corretto prima della milestone;
+\item \grassetto{Breve}: l'errore va corretto entro qualche giorno dalla sua scoperta;
+\item \grassetto{Urgente}: l'errore va corretto il prima possibile.
+\end{itemize}
+
+A seguito del riscontro di un errore il verificatore apre un ticket per la correzione dell'errore, come descritto in sezione XXX, e la persona responsabile dell'attività procederà nella correzione, chiudendo così il relativo ticket aperto.
+
+
+
+
+\subsubsection{Walkthrough}
+Questa attività prevede di scorrere l'intero documento alla ricerca di errori.
+\paragraph{Procedure}
+
+Partendo dall'inizio del documento, lo si legge fino alla fine segnalando ogni errore trovato e si registrano i più frequenti affinchè siano poi aggiunti alla Lista di Controllo.
+\paragraph{Strumenti}
+
+TeXstudio, GNU Aspell.
+
+\subsubsection{Inspection}
+Questa attività prevede di scorrere l'intero documento alla ricerca mirata di errori.
+\paragraph{Procedure}
+
+Partendo dall'inizio del documento, si controllano tutte le parti che più di frequente contengono errori, segnalando eventuali riscontri.
+\paragraph{Strumenti}
+
+Lista di Controllo, TeXstudio, GNU Aspell.
+
+
+\subsubsection{Analisi statica}
+L'analisi statica si basa sull'analisi del codice scritto e sul risultato di test eseguiti su di esso.
+
+\paragraph{Procedure}
+
+\paragraph{Strumenti}
+Eclipse Metrics ,JSHint ,Closure Compiler.
+
+\subsubsection{Analisi dinamica}
+L'analisi dinamica si basa sull'esecuzione del codice e sul risultato di test eseguiti a run time.
+\paragraph{Procedure}
+
+\paragraph{Strumenti}
+QUnit ,Jasmine ,Karma ,Protractor.
+%ammacca
+
+
+
+
+\subsection{Validazione}
 Questo processo comprende tutte le attività volte a verificare che il prodotto risultante dall'uscita di tutti i processi sia il prodotto desiderato.
 
-\subsection{Processi di supporto}
-\subsubsection{Documentazione}
+\section{Processi di supporto}
+
+
+\subsection{Documentazione}
 Questo processo di supporto comprende tutte le attività volte alla realizzazione della documentazione di supporto necessaria al progetto.
-\subsubsection{Gestione di configurazione}
+
+\subsubsection{Stesura dei documenti}
+La stesura della documentazione è un processo di supporto fondamentale per documentare progressi e risultati del lavoro del gruppo, fornire regole e procedure su come eseguire tale lavoro e fornire una documentazione precisa sul prodotto finale, sulle sue componenti e sulle sue modalità di utilizzo.
+\paragraph{Procedure}
+
+Durante la scrittura della documentazione i redattori dovranno strettamente attenersi a tutte le norme definite nell'appendice XXX %ammaccabanane
+
+
+\paragraph{Strumenti}
+\LaTeX\\,Astah, Script Gulpease.
+
+
+
+
+\subsection{Gestione di configurazione}
 Questo processo di supporto comprende tutte le attività volte a gestire l'evoluzione del progetto ed a tenere traccia di tutte le sue versioni e configurazioni.
 
 
-\section{Attività}
-\subsubsection{Gestione di progetto}
-\begin{itemize}
-\item Pianificazione;
-\item Analisi dei rischi;
-\item Gestione delle risorse.
-\end{itemize}
-\subsubsection{Analisi dei requisiti}
-\begin{itemize}
-\item Identificazione requisiti;
-\item Identificazione casi d'uso;
-\item Catalogazione requisiti;
-\item Tracciamento.
-\end{itemize}
-\subsubsection{Progettazione}
-\begin{itemize}
-\item Definizione architettura generale;
-\item Definizione sottocomponenti;
-\item 
-\end{itemize}
-\subsubsection{Codifica}
-\begin{itemize}
-\item Procoding.
-\end{itemize}
-\subsubsection{Verifica e validazione}
-\begin{itemize}
-\item testing.
-\end{itemize}
-
-\subsection{Processi di supporto}
-\subsubsection{Documentazione}
-Questo processo di supporto comprende tutte le attività volte alla realizzazione della documentazione di supporto necessaria al progetto.
-\subsubsection{Gestione di configurazione}
-Questo processo di supporto comprende tutte le attività volte a gestire l'evoluzione del progetto ed a tenere traccia di tutte le sue versioni e configurazioni.
-
+%\section{Attività}
+%\subsubsection{Gestione di progetto}
+%\begin{itemize}
+%\item Pianificazione;
+%\item Analisi dei rischi;
+%\item Gestione delle risorse.
+%\end{itemize}
+%\subsubsection{Analisi dei requisiti}
+%\begin{itemize}
+%\item Identificazione requisiti;
+%\item Identificazione casi d'uso;
+%\item Catalogazione requisiti;
+%\item Tracciamento.
+%\end{itemize}
+%\subsubsection{Progettazione}
+%\begin{itemize}
+%\item Definizione architettura generale;
+%\item Definizione sottocomponenti;
+%\item 
+%\end{itemize}
+%\subsubsection{Codifica}
+%\begin{itemize}
+%\item Procoding.
+%\end{itemize}
+%\subsubsection{Verifica e validazione}
+%\begin{itemize}
+%\item testing.
+%\end{itemize}
+%
+%\subsection{Processi di supporto}
+%\subsubsection{Documentazione}
+%Questo processo di supporto comprende tutte le attività volte alla realizzazione della documentazione di supporto necessaria al progetto.
+%\subsubsection{Gestione di configurazione}
+%Questo processo di supporto comprende tutte le attività volte a gestire l'evoluzione del progetto ed a tenere traccia di tutte le sue versioni e configurazioni.
+%
 
 
 \newpage
@@ -553,47 +811,11 @@ La stesura del documento denominato Analisi dei Requisiti è compito degli Anali
 In questo documento verranno trovati, analizzati e catalogati tutti i requisiti, impliciti e non, imposti dal progetto.
 
 \subsubsection{Scrittura casi d'uso}
-Ciascun caso d'uso descritto dagli Analisti dovrà rispettare la seguente notazione:
-\begin{center}
-\grassetto{UC[codice progressivo di livello]}
-\end{center}
-Ogni caso d'uso ha un \gloss{codice} univoco gerarchico.\\
-Il codice progressivo può includere diversi livelli di gerarchia separati da un punto.
-A ogni descrizione di caso d'uso viene riportato il numero del diagramma associato di cui fa parte, ovvero la rappresentazione del caso d'uso generale a cui esso appartiene.
-Ogni diagramma associato è scritto nella seguente forma:
-\begin{center}
-\grassetto{Figura[numero progressivo]:[codice univoco e nome del caso d'uso]}.
-\end{center}
 
-\subsubsection{Identificazione e classificazione dei requisiti}
-\label{7.1}
-È compito degli Analisti stilare una lista dei requisiti emersi dal capitolato e da eventuali riunioni con il Proponente. È inoltre loro compito identificare tutti quei requisiti impliciti che per loro natura non vengono specificati ma devono essere individuati e studiati. Tutti questi requisiti dovranno essere classificati per tipo e importanza, utilizzando la seguente codifica:
-\begin{center}
-\textbf{R[importanza][tipo][codice]}
-\end{center}
-dove:
-\begin{itemize}
-\item Importanza può assumere i seguenti valori:
-\begin{itemize}
-\item \grassetto{O:} \gloss{requisito} obbligatorio;
-\item \grassetto{D:} requisito desiderabile;
-\item \grassetto{F:} requisito facoltativo.
-\end{itemize}
-\item Tipo può assumere i seguenti valori:
-\begin{itemize}
-\item \grassetto{F:} funzionale;
-\item \grassetto{Q:} di qualità;
-\item \grassetto{P:} prestazionale;
-\item \grassetto{V:} vincolo.
-\end{itemize}
-\item Codice è il codice che identifica univocamente ogni requisito.
-\end{itemize}
 
-\subsubsection{Casi d’uso e UML}
-\label{7.2}
-Successivamente all'individuazione ed al tracciamento dei requisiti si procede all'analisi dei casi d'uso, denominati nelle sezioni seguenti anche come use case o con l'acronimo UC.
-Per realizzare i diagrammi \gloss{UML} dei casi d'uso è stato scelto Astah. Il software era stato consigliato dal Professor Cardin e soddisfa tutte le necessità del team.
-Tutti i diagrammi devono rispettare la specifica UML 2.0.
+
+
+
 
 \subsection{Progettazione}
 \label{}
@@ -897,7 +1119,7 @@ Sono riportate delle metriche utili alla valutazione degli errori che si potrann
 \midrule
 Indici Errati & Alta & Urgente\\
 \midrule
-Tracciamento errato & Media & Breve\\
+Tracciamento errato & Alta & Urgente\\
 \midrule
 Errore di progettazione & Alta & Alta\\
 \midrule
@@ -933,20 +1155,20 @@ Il compito del Verificatore, a seguito del riscontro di un errore, è il seguent
 \item \grassetto{Ticket:} il verificatore apre un ticket per la correzione dell'errore, come descritto in sezione 5.3.1, e la persona responsabile dell'attività procederà nella correzione, chiudendo così il relativo ticket aperto.
 \end{itemize}
 
-\subsubsection{Verifica dei documenti}
-\label{11.1}
-Il processo di verifica viene istanziato nel momento in cui l'output di un processo passa
-dalla versione X.0.Z alla versione in cui cambia la seconda cifra. È compito del responsabile assegnare ai Verificatori il ticket di verifica per il documento in questione.
-Per una corretta verifica del documento è necessario seguire il seguente schema:
-\begin{itemize}
-\item \grassetto{Controllo sintattico e del periodo:} utilizzando TeXstudio e GNU Aspell vengono evidenziati e corretti gli errori di grammatica più evidenti. Ciascun documento dovrà essere sottoposto ad un Walkthrough da parte dei Verificatori per individuare errori di \gloss{sintassi} e periodi di difficile comprensione;
-\item \grassetto{Rispetto delle norme:} i Verificatori devono effettuare Inspection per verificare che le norme di progetto siano state rispettate;
-\item \grassetto{Verifica termini da glossario:} mediante uno script automatizzato vengono marcate tutte le prime occorrenze di un termine del glossario;
-\item \grassetto{Calcolo indice Gulpease:} su ogni documento va verificato che l'indice di Gulpease, calcolato con l'apposito script, sia entro i limiti stabiliti del PdQ. Nel caso non fosse così bisognerà effettuare Walkthrough alla ricerca di frasi troppo lunghe o complesse;
-\item \grassetto{Miglioramento del processo:} nell'effettuare i processi di verifica, i Verificatori dovranno raccogliere gli errori riscontrati più frequentemente al fine di potenziare l'Inspection per poterla rendere più efficace;
-\item \grassetto{Segnalazione errori:} alla fine del processo di verifica, i Verificatori devono creare un ticket per ogni errore da riparare;
-\item \grassetto{Lista di controllo:} il Verificatore è tenuto a usare la lista di controllo per la tecnica Inspection, al fine di rimuovere gli errori tipici che essa contiene; la lista è disponibile nell'\gloss{appendice} A di questo documento.
-\end{itemize}
+%\subsubsection{Verifica dei documenti}
+%\label{11.1}
+%Il processo di verifica viene istanziato nel momento in cui l'output di un processo passa
+%dalla versione X.0.Z alla versione in cui cambia la seconda cifra. È compito del responsabile assegnare ai Verificatori il ticket di verifica per il documento in questione.
+%Per una corretta verifica del documento è necessario seguire il seguente schema:
+%\begin{itemize}
+%\item \grassetto{Controllo sintattico e del periodo:} utilizzando TeXstudio e GNU Aspell vengono evidenziati e corretti gli errori di grammatica più evidenti. Ciascun documento dovrà essere sottoposto ad un Walkthrough da parte dei Verificatori per individuare errori di \gloss{sintassi} e periodi di difficile comprensione;
+%\item \grassetto{Rispetto delle norme:} i Verificatori devono effettuare Inspection per verificare che le norme di progetto siano state rispettate;
+\grassetto{Verifica termini da glossario:} mediante uno script automatizzato vengono marcate tutte le prime occorrenze di un termine del glossario;
+\grassetto{Calcolo indice Gulpease:} su ogni documento va verificato che l'indice di Gulpease, calcolato con l'apposito script, sia entro i limiti stabiliti del PdQ. Nel caso non fosse così bisognerà effettuare Walkthrough alla ricerca di frasi troppo lunghe o complesse;
+%\item \grassetto{Miglioramento del processo:} nell'effettuare i processi di verifica, i Verificatori dovranno raccogliere gli errori riscontrati più frequentemente al fine di potenziare l'Inspection per poterla rendere più efficace;
+%\item \grassetto{Segnalazione errori:} alla fine del processo di verifica, i Verificatori devono creare un ticket per ogni errore da riparare;
+%\item \grassetto{Lista di controllo:} il Verificatore è tenuto a usare la lista di controllo per la tecnica Inspection, al fine di rimuovere gli errori tipici che essa contiene; la lista è disponibile nell'\gloss{appendice} A di questo documento.
+%\end{itemize}
 
 \subsubsection{Verifica diagrammi UML}
 Il Verificatore dovrà anche controllare i diagrammi UML che sono stati prodotti, in particolare:
