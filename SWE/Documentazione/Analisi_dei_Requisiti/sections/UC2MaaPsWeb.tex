@@ -619,7 +619,7 @@ L'utente business autenticato amministratore può eliminare un utente (UC2.6.2).
 \scenario{
 L'utente business autenticato può modificare i dati utente del proprio profilo (UC2.6.3.1);|
 L'utente business autenticato può salvare le modifiche (UC2.6.3.2);|
-L'utente business autenticato come amministratore può modificare i permessi degli utenti (UC2.6.3.4).
+L'utente business autenticato come amministratore può modificare i permessi degli utenti (UC2.6.3.3).
 }
 \post
 {Il sistema modifica i dati utente secondo le specifiche imposte dall'utente business autenticato}
@@ -634,6 +634,10 @@ L'utente business autenticato come amministratore può modificare i permessi deg
 {Il sistema reputa l'utente business come autenticato}
 \scenario
 {L'utente business autenticato può modificare i dati utente del proprio profilo.}
+\scenarioAlt
+{
+L'utente business autenticato può annullare le modifiche apportate (UC2.6.3.4).
+}
 \post
 {Il sistema ha ottenuto tutti i dati modificati del profilo utente}
 
@@ -651,7 +655,7 @@ L'utente business autenticato come amministratore può modificare i permessi deg
 {Il sistema aggiorna il profilo utente con i nuovi dati inseriti}
 
 \UCtitle
-{Caso d'uso UC2.6.3.4}
+{Caso d'uso UC2.6.3.3}
 {Modifica permessi utenti}
 \UC
 {UC2.6.3}
@@ -664,14 +668,14 @@ L'utente business autenticato come amministratore può modificare i permessi deg
 {Il sistema ha ottenuto i nuovi permessi da applicare al profilo utente}
 
 \UCtitle
-{Caso d'uso UC2.6.3.5}
+{Caso d'uso UC2.6.3.4}
 {Annulla modifiche}
 \UC
 {UC2.6.3}
-{Utente business autenticato, Utente business autenticato amministratore}
-{L'utente business autenticato e l'amministratore possono annullare le modifiche apportate}
-{Il sistema ha ottenuto i dati modificati del profilo utente; se si tratta di amministratore il sistema ottiene i dati modificati dei profili e/o dei dati relativi ai permessi dell'utente}
+{Utente business autenticato}
+{L'utente business autenticato può annullare le modifiche apportate}
+{Il sistema ha ottenuto i dati modificati del profilo utente}
 \scenario
-{L'utente business autenticato e l'amministratore possono annullare le modifiche apportate.}
+{L'utente business autenticato può annullare le modifiche apportate.}
 \post
 {Il sistema non considera le modifiche apportate}
