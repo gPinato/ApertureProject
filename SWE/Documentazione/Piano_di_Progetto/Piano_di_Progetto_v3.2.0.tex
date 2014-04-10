@@ -4,7 +4,7 @@
 
 \newcommand{\Versione}{\versionePianoDiProgetto{}}	%Versione Finale
 \newcommand{\Data}{2013-11-28}						%Data di creazione
-\newcommand{\DataUltimaModifica}{2014-03-28}
+\newcommand{\DataUltimaModifica}{2014-04-10}
 \newcommand{\TipoDocumento}{Piano di Progetto}		%tipo documento
 
 %includo il file header.tex (logo grande in prima pagina piu qualche altra regola)
@@ -55,6 +55,13 @@ Diario delle modifiche
 \textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Modifiche effettuate}\\
 
 %aggiungere qui una midrule per aggiungere una nuova riga alla tabella
+\midrule
+4.0.2 & 2014-04-10 & Mattia Sorgato (RE) & Aggiunta attualizzazione rischi.\\
+\midrule
+4.0.1 & 2014-04-09 & Mattia Sorgato (RE) & Aggiunta sezione risorse.\\
+\midrule
+4.0.0 & 2014-04-08 & Mattia Sorgato (RE) & Riorganizzazione documento.\\
+
 \midrule
 3.2.0 & 2014-03-28 & Michele Maso (RE) & Approvazione documento.\\
 \midrule
@@ -116,13 +123,15 @@ Diario delle modifiche
 
 %qui inizia la prima pagina ufficiale
 
+
 \newpage
+
+
 \section{Introduzione}
 \label{1.0}
 \subsection{Scopo del documento}
 \label{1.1}
-Il presente documento ha l'obiettivo di definire la pianificazione secondo la quale saranno scadenziati i lavori dal gruppo Aperture \gloss{Software} sul progetto \Progetto{}.
-Gli scopi del presente documento sono:
+Il presente documento ha l'obiettivo di definire la pianificazione secondo la quale saranno scadenziati i lavori dal gruppo Aperture \gloss{Software} sul progetto \Progetto{}. Gli scopi del presente documento sono:
 \begin{itemize}
 \item Presentare la pianificazione dei tempi e delle \gloss{attività};
 \item Preventivare l'utilizzo delle risorse;
@@ -161,20 +170,15 @@ Gli scopi del presente documento sono:
 \url{http://it.wikipedia.org/wiki/Metriche_di_progetto}.
 \end{itemize}
 
+
+\newpage
+
+				
 \section{Organizzazione del progetto}
-\subsection{Ciclo di vita}
+
+\subsection{Scelta del ciclo di vita}
 \label{2.5}
-Un modello di ciclo di vita descrive come i processi si relazionano tra loro nel tempo. Ne esistono diversi, ma non per il numero e significato degli stati, ma diversi per le transizioni tra gli stati e le loro regole di attivazione.
-Come modello di ciclo di vita del prodotto software abbiamo deciso di utilizzare il modello incrementale perché, grazie alle sue caratteristiche, lo riteniamo più flessibile e idoneo a supportare il lavoro di gruppo. Il modello incrementale possiede queste caratteristiche: 
-\begin{itemize}
-\item Il problema viene scomposto in più sotto-problemi in modo da permettere una suddivisione più semplice delle risorse e dei tempi, in quanto tutte le risorse vengono utilizzate per un numero limitato di attività in un breve lasso di tempo. Questo rende più facile l'esecuzione dei test perché essi saranno più dettagliati e quindi più esaustivi;
-\item I requisiti del progetto vengono trattati in base ad un ordine di priorità ottenuto ordinando i requisiti per la loro importanza strategica e quindi vengono svolti per primi quelli di maggiore criticità;
-\item Il rischio di fallimento viene ridotto in quanto ogni incremento consolida soltanto la sezione coinvolta;
-\item I rilasci del software sono multipli e successivi in quanto i primi rilasci saranno relativi ai requisiti di primaria importanza, in modo che tali requisiti subiscano il maggior numero di attività di verifica e risultino quindi più raffinati e migliorati, mentre negli ultimi rilasci si andrà ad aumentare il numero di funzionalità del prodotto e un miglioramento delle funzionalità già in essere.
-\end{itemize}
-
-Il modello quindi permette sia al Proponente che al Committente di vedere dei prototipi con le funzionalità di primaria importanza già implementate e di valutare il lavoro in corso d'opera, suggerendo eventuali correzioni e miglioramenti.
-
+Il nostro gruppo ha deciso di utilizzare il modello incrementale perché, grazie alle sue caratteristiche, lo riteniamo più flessibile e idoneo a supportare il lavoro di gruppo. Per informazioni relative al modello incrementale, consultare la sezione B dell'appendice.
 
 \subsection{Scadenze}
 \label{2.6}
@@ -187,8 +191,19 @@ Il modello quindi permette sia al Proponente che al Committente di vedere dei pr
 \end{itemize}
 
 \subsection{Incrementi}
+Applicando un modello incrementale, sono stati definiti quattro incrementi per rendere la progettazione e lo sviluppo più solidi e controllati. Gli incrementi rilasciati sono definiti come segue:
+\begin{itemize}
+\item Funzioni base minime (creazione di pagine e documenti, DSL di base);
+\item DSL completamente funzionante;
+\item Requisiti obbligatori completi;
+\item Requisiti opzionali completi.
+\end{itemize}
+Si è deciso di applicare questo modello anche per ottenere un feedback costante dal Proponente in base agli sviluppi del progetto. Infatti ogni incremento sarà consegnato al Proponente per comunicargli le ultime scelte progettuali e di sviluppo, per limitare gli errori ed essere più adeguati possibile ai requisiti voluti dal Proponente.
+
 
 \newpage
+
+
 \input{./sections/AnalisiDeiRischi.tex}
 
 
@@ -232,19 +247,6 @@ Essendo sia Eclipse che Nodeclipse strumenti open-source, il team non ha avuto d
 %Manca la parte front end di AngularJS, e non so che strumenti piazzarci. quindi bisognerà sviluppare questa sezione in seguito
 
 \subsubsection{Verifica}
-
-
-
-\newpage
-
-
-\section{Suddivisione del lavoro}
-
-
-\newpage
-
-
-\section{Calendario delle attività}
 
 
 \newpage
@@ -438,8 +440,15 @@ Programmatore & 15\\
 \end{center}
 
 \section{Modello incrementale}
-Tipo qui ci starebbe abbestia la trattazione teorica del modello incrementale. Sulla sezione del ciclo di vita ci
-va soltanto il perché l'abbiamo scelto e come lo utilizziamo, cioè quanti incrementi facciamo e che cosa sviluppiamo ad ogni incremento.
+Il modello incrementale è un modello di sviluppo caratterizzato dalla gestione di un progetto tramite incrementi. Ciò significa che ogni iterazione del processo di sviluppo avviene aggiungendo o specificando componenti rispetto all'iterazione precedente.\\
+Il modello incrementale possiede queste caratteristiche: 
+\begin{itemize}
+\item Il problema viene scomposto in più sotto-problemi in modo da permettere una suddivisione più semplice delle risorse e dei tempi, in quanto tutte le risorse vengono utilizzate per un numero limitato di attività in un breve lasso di tempo. Questo rende più facile l'esecuzione dei test perché essi saranno più dettagliati e quindi più esaustivi;
+\item I requisiti del progetto vengono trattati in base ad un ordine di priorità ottenuto ordinando i requisiti per la loro importanza strategica e quindi vengono svolti per primi quelli di maggiore criticità;
+\item Il rischio di fallimento viene ridotto in quanto ogni incremento consolida soltanto la sezione coinvolta;
+\item I rilasci del software sono multipli e successivi in quanto i primi rilasci saranno relativi ai requisiti di primaria importanza, in modo che tali requisiti subiscano il maggior numero di attività di verifica e risultino quindi più raffinati e migliorati, mentre negli ultimi rilasci si andrà ad aumentare il numero di funzionalità del prodotto e un miglioramento delle funzionalità già in essere.
+\end{itemize}
+Il modello quindi permette sia al Proponente che al Committente di vedere dei prototipi con le funzionalità di primaria importanza già implementate e di valutare il lavoro in corso d'opera, suggerendo eventuali correzioni e miglioramenti.
 
 
 %FINE DOCUMENTO NON CANCELLARE
