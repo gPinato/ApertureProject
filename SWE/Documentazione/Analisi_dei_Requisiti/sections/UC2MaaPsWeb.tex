@@ -15,9 +15,6 @@ L'utente business autenticato può aprire una Collection (UC2.4);|
 L'utente business autenticato può disconnettersi dal sistema (UC2.5);|
 L'utente business autenticato può gestire il profilo (UC2.6).
 }
-\scenarioAlt{
-Nel caso in cui le credenziali di accesso fornite dall'utente business non fossero corrette il sistema segnala il problema e ripresenta il \gloss{form} di autenticazione.
-}
 \post
 {Il sistema ha memorizzato le informazioni inserite dall'utente business per l'autenticazione o per il recupero password e le operazioni che l'utente business autenticato può effettuare}
 
@@ -36,6 +33,10 @@ Nel caso in cui le credenziali di accesso fornite dall'utente business non fosse
 {
 L'utente business può inserire l'\gloss{email} (UC2.1.1);|
 L'utente business può inserire la password (UC2.1.2).
+}
+\scenarioAlt
+{
+L'utente business può visualizzare un messaggio d'errore nel caso in cui i dati inseriti non fossero corretti (UC2.1.3).
 }
 \post
 {Il sistema ha creato un nuovo utente e reputa l'utente business autenticato}
@@ -67,6 +68,19 @@ L'utente business può inserire la password (UC2.1.2).
 {Il sistema ha ottenuto la password inserita dall'utente business}
 
 \UCtitle
+{Caso d'uso UC2.1.3}
+{Visualizzazione messaggio d'errore}
+\UC
+{UC2.1}
+{Utente business}
+{L'utente business può visualizzare un messaggio d'errore}
+{Il sistema ha ottenuto dei dati per la registrazione utente non corretti}
+\scenario
+{L'utente business può visualizzare un messaggio d'errore.}
+\post
+{Il sistema ha visualizzato un messaggio d'errore all'utente business}
+
+\UCtitle
 {Caso d'uso UC2.2}
 {Autenticazione}
 \UCimmagine{UC2.2}{UC2.2 Autenticazione}
@@ -79,6 +93,10 @@ L'utente business può inserire la password (UC2.1.2).
 {
 L'utente business può inserire l'email (UC2.2.1);|
 L'utente business può inserire la password (UC2.2.2).
+}
+\scenarioAlt
+{
+L'utente business può visualizzare un messaggio d'errore nel caso in cui i dati inseriti non fossero corretti (UC2.2.3).
 }
 \post
 {Il sistema reputa l'utente business come autenticato}
@@ -108,6 +126,19 @@ L'utente business può inserire la password (UC2.2.2).
 {L'utente business può inserire la password per l'autenticazione.}
 \post
 {Il sistema ha ottenuto la password inserita dall'utente business}
+
+\UCtitle
+{Caso d'uso UC2.2.3}
+{Visualizzazione messaggio d'errore}
+\UC
+{UC2.1}
+{Utente business}
+{L'utente business può visualizzare un messaggio d'errore}
+{Il sistema ha ottenuto dei dati per l'autenticazione utente non corretti}
+\scenario
+{L'utente business può visualizzare un messaggio d'errore.}
+\post
+{Il sistema ha visualizzato un messaggio d'errore all'utente business}
 
 \UCtitle
 {Caso d'uso UC2.3}
@@ -588,7 +619,6 @@ L'utente business autenticato amministratore può eliminare un utente (UC2.6.2).
 \scenario{
 L'utente business autenticato può modificare i dati utente del proprio profilo (UC2.6.3.1);|
 L'utente business autenticato può salvare le modifiche (UC2.6.3.2);|
-L'utente business autenticato come amministratore può modificare i dati utenti (UC2.6.3.3);|
 L'utente business autenticato come amministratore può modificare i permessi degli utenti (UC2.6.3.4).
 }
 \post
@@ -619,21 +649,6 @@ L'utente business autenticato come amministratore può modificare i permessi deg
 {L'utente business autenticato può salvare le modifiche apportate durante la modifica dei dati utente.}
 \post
 {Il sistema aggiorna il profilo utente con i nuovi dati inseriti}
-
-\UCtitle
-{Caso d'uso UC2.6.3.3}
-{Modifica dati utenti}
-\UC
-{UC2.6.3}
-{Utente business autenticato amministratore}
-{L'utente business autenticato come amministratore può modificare i dati degli utenti, ovvero email e password}
-{Il sistema reputa l'utente business autenticato come amministratore}
-\scenario
-{L'utente business autenticato come amministratore può modificare i dati degli utenti.}
-\estensioni
-{L'utente business autenticato può annullare le modifiche fin'ora apportate (UC2.6.3.5).}
-\post
-{Il sistema ha ottenuto tutti i dati modificati del profilo utente}
 
 \UCtitle
 {Caso d'uso UC2.6.3.4}
