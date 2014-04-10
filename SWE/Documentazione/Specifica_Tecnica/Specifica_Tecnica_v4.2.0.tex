@@ -58,10 +58,8 @@ Diario delle modifiche
 4.1.0 & 2014-xx-xx &   (VR) & Verifica documento.\\
 
 
-
 \midrule
 4.0.1 & 2014-04-09 &   (PT) & Effettuate correzioni segnalate dal Committente.\\
-
 
 
 \midrule
@@ -200,114 +198,12 @@ Si descriveranno i \gloss{package} e i componenti per poi dettagliare le singole
 \subsection{Architettura generale}
 L'architettura del framework segue un modello di architettura in stile Client-server che prevede la suddivisione dell'applicazione  in due parti: la parte client composta dall'\gloss{interfaccia} \gloss{utente} (Client) e la parte server composta dalla \gloss{business} logic (Controller) e alla gestione dei dati persistenti (ModelServer). La parte Client segue il design pattern \gloss{MVVM} utilizzato da AngularJS ed è quindi suddivisa in Model, \gloss{View}, \gloss{ViewModel}.\\
 
-I seguenti diagrammi rappresentano l'architettura ad alto livello del framework, indicando i package e le relazioni che intercorrono tra questi.
+%TODO***************************************** 
+%aggiungere ed approfondire come il prodotto si interfacci con i framework utilizzati.
 
-\subsubsection{MaaPCLI}
-\subsubsubsection{Informazioni sul package}
-\immagine{./Diagrammi/Installer}{\gloss{Diagramma delle classi} relativo alla gestione del framework da parte dell'utente \gloss{sviluppatore}}
-\subsubsubsection{Descrizione}
-\gloss{Namespace} globale per lo strumento di installazione e gestione del framework. Contiene le classi che gestiscono l'installazione del framework nel sistema, l'inizializzazione e gestione dello stesso.
 
-\subsubsubsection{Classi}
 
-\subsubsubsubsubsection{CLI}
-\grassetto{Nome}\\
-MaaPCLI::CLI\\
-\grassetto{Descrizione}\\
-\gloss{Classe} che rappresenta l'interfaccia a riga di comando.\\
-\grassetto{Utilizzo}\\
-Viene utilizzata dall'\gloss{utente sviluppatore} per interagire con il framework.\\
-\grassetto{Relazioni con altre classi}
-\begin{itemize}
-\item\grassetto{MaaPCLI::Installer}\\
-Relazione uscente, contiene un riferimento ad un oggetto di tipo Installer per avviare l'installazione del framework;
-\item\grassetto{MaaPCLI::ProjectFacade}\\
-Relazione uscente, contiene un riferimento ad un oggetto di tipo ProjectFacade per creare un nuovo progetto, clonare uno esistente oppure eliminarlo;
-\item\grassetto{MaaPCLI::InstanceManager}\\
-Relazione uscente, contiene un riferimento ad un oggetto di tipo InstanceManager per istanziare una \gloss{istanza} di progetto MaaP precedentemente creato.
-\end{itemize}
-
-\subsubsubsubsubsection{Installer}
-\grassetto{Nome}\\
-MaaPCLI::Installer\\
-\grassetto{Descrizione}\\
-Classe che rappresenta lo \gloss{script} di installazione del framework.\\
-\grassetto{Utilizzo}\\
-Viene utilizzata dall'utente sviluppatore per installare il framework e relative dipendenze nel sistema in uso.\\
-\grassetto{Relazioni con altre classi}
-\begin{itemize}
-\item\grassetto{MaaPCLI::CLI}\\
-Relazione entrante, interazione con l'interfaccia a riga di comando.
-\end{itemize}
-
-\subsubsubsubsubsection{InstanceManager}
-\grassetto{Nome}\\
-MaaPCLI::InstanceManager\\
-\grassetto{Descrizione}\\
-Classe che rappresenta lo script per l'avvio di un'istanza di un progetto esistente.\\
-\grassetto{Utilizzo}\\
-Viene utilizzata dall'utente sviluppatore per avviare il server caricando un determinato progetto.\\
-\grassetto{Relazioni con altre classi}
-\begin{itemize}
-\item\grassetto{MaaPCLI::CLI}\\
-Relazione entrante, interazione con l'interfaccia a riga di comando.
-\end{itemize}
-
-\subsubsubsubsubsection{ProjectFacade}
-\grassetto{Nome}\\
-MaaPCLI::ProjectFacade\\
-\grassetto{Descrizione}\\
-Classe che rappresenta la classe \gloss{Facade} nel design pattern Facade\\
-\grassetto{Utilizzo}\\
-Viene utilizzata dall'utente sviluppatore per interagire con il framework per la creazione di un nuovo progetto e/o per la clonazione, eliminazione di un progetto esistente.\\
-\grassetto{Relazioni con altre classi}
-\begin{itemize}
-\item\grassetto{MaaPCLI::ProjectCreate}\\
-Relazione uscente, contiene un riferimento ad un oggetto di tipo ProjectCreate per avviare la creazione di un nuovo progetto;
-\item\grassetto{MaaPCLI::ProjectClone}\\
-Relazione uscente, contiene un riferimento ad un oggetto di tipo ProjectClone per avviare la clonazione di un progetto esistente;
-\item\grassetto{MaaPCLI::ProjectRemove}\\
-Relazione uscente, contiene un riferimento ad un oggetto di tipo ProjectRemove per eliminare un progetto esistente;
-\end{itemize}
-
-\subsubsubsubsubsection{ProjectCreate}
-\grassetto{Nome}\\
-MaaPCLI::ProjectCreate\\
-\grassetto{Descrizione}\\
-Classe che rappresenta una classe del design patter Facade.\\
-\grassetto{Utilizzo}\\
-Viene utilizzata dall'utente sviluppatore per avviare la creazione di un nuovo progetto.\\
-\grassetto{Relazioni con altre classi}
-\begin{itemize}
-\item\grassetto{MaaPCLI::ProjectFacade}\\
-Relazione entrante, interazione con la facciata ProjectFacade.
-\end{itemize}
-
-\subsubsubsubsubsection{ProjectClone}
-\grassetto{Nome}\\
-MaaPCLI::ProjectClone\\
-\grassetto{Descrizione}\\
-Classe che rappresenta una classe del design patter Facade.\\
-\grassetto{Utilizzo}\\
-Viene utilizzata dall'utente sviluppatore per avviare la clonazione di un progetto esistente.\\
-\grassetto{Relazioni con altre classi}
-\begin{itemize}
-\item\grassetto{MaaPCLI::ProjectFacade}\\
-Relazione entrante, interazione con la facciata ProjectFacade.
-\end{itemize}
-
-\subsubsubsubsubsection{ProjectRemove}
-\grassetto{Nome}\\
-MaaPCLI::ProjectRemove\\
-\grassetto{Descrizione}\\
-Classe che rappresenta una classe del design patter Facade.\\
-\grassetto{Utilizzo}\\
-Viene utilizzata dall'utente sviluppatore per eliminare un progetto esistente.\\
-\grassetto{Relazioni con altre classi}
-\begin{itemize}
-\item\grassetto{MaaPCLI::ProjectFacade}\\
-Relazione entrante, interazione con la facciata ProjectFacade.
-\end{itemize}
+I seguenti diagrammi rappresentano l'architettura ad alto livello del framework, indicando i package, le classi e le relazioni che intercorrono tra queste.
 
 \subsubsection{Package}
 \immagine{./Diagrammi/GeneralePackage}{Architettura generale del software - vista package}
@@ -317,33 +213,9 @@ Vengono inoltre presentati tutti i sotto-package così da facilitare la comprens
 \subsubsection{Classi}
 \immagine{./Diagrammi/GeneraleClassi}{Architettura generale del software}
 Nel precedente diagramma è presente l'architettura ad alto livello del software e vengono indicate le classi fondamentali per rappresentare le relazioni dell'architettura Client-server. I diagrammi di sequenza relativi allo scambio di segnali, lo scopo ed il contesto di utilizzo sono presenti nella sezione 6.
-\begin{comment}
-\subsubsubsection{Server}
-La parte Server è composta da due package: ModelServer per la gestione dei dati persistenti ed il \gloss{Controller} per la gestione della \gloss{business logic}.\\
-\subsubsubsubsection{ModelServer}
-\immagine{./Diagrammi/ModelServerClassi}{Diagramma delle classi del ModelServer}
-Nel ModelServer sono presenti oggetti che rappresentano:
-\begin{itemize}
-\item Il database di analisi e quello degli utenti;
-\item La gestione del file \gloss{DSL} e il suo \gloss{parsing};
-\item La gestione dei dati richiesti dal controller.
-\end{itemize}
-Tutte le operazioni di gestione, modifica e recupero dei dati vengono messe a disposizione dal model. In tal modo il controller è responsabile solamente di gestire la logica dell'applicazione.
 
-\subsubsubsubsection{Controller}
-\immagine{./Diagrammi/ControllerClassi}{Diagramma delle classi del Controller}
-Il controller è responsabile dell'autenticazione delle richieste e del loro routing da Client a ModelServer e viceversa.
+%qui è stata RIMOSSA una SEZIONE di troppo...
 
-\subsubsubsection{Client}
-\immagine{./Diagrammi/ClientClassi}{Diagramma delle classi del Client}
-Nel Client sono presenti oggetti che rappresentano:
-\begin{itemize}
-\item I template per le pagine web;
-\item I Controller per la gestione dei template;
-\item Lo Scope per l'aggiornamento dei dati dei template;
-\item I Servizi utilizzati dai Controller.
-\end{itemize}
-\end{comment}
 \newpage
 \section{Componenti e Classi}
 
@@ -1325,6 +1197,115 @@ Viene utilizzata memorizzare i dati di sessione del client.\\
 Relazione entrante debole, interazione con il controller dell'Autenticazione.
 \end{itemize}
 
+\newpage
+\subsubsection{MaaPCLI}
+I seguenti diagrammi rappresentano l'architettura ad alto livello del sistema di gestione del framework denominato MaaPCLI, indicando i package, le classi e le relazioni che intercorrono tra queste.
+
+\subsubsubsection{Informazioni sul package}
+\immagine{./Diagrammi/Installer}{\gloss{Diagramma delle classi} relativo alla gestione del framework da parte dell'utente \gloss{sviluppatore}}
+\subsubsubsection{Descrizione}
+\gloss{Namespace} globale per lo strumento di installazione e gestione del framework. Contiene le classi che gestiscono l'installazione del framework nel sistema, l'inizializzazione e gestione dello stesso.
+
+\subsubsubsection{Classi}
+
+\subsubsubsubsubsection{CLI}
+\grassetto{Nome}\\
+MaaPCLI::CLI\\
+\grassetto{Descrizione}\\
+\gloss{Classe} che rappresenta l'interfaccia a riga di comando.\\
+\grassetto{Utilizzo}\\
+Viene utilizzata dall'\gloss{utente sviluppatore} per interagire con il framework.\\
+\grassetto{Relazioni con altre classi}
+\begin{itemize}
+\item\grassetto{MaaPCLI::Installer}\\
+Relazione uscente, contiene un riferimento ad un oggetto di tipo Installer per avviare l'installazione del framework;
+\item\grassetto{MaaPCLI::ProjectFacade}\\
+Relazione uscente, contiene un riferimento ad un oggetto di tipo ProjectFacade per creare un nuovo progetto, clonare uno esistente oppure eliminarlo;
+\item\grassetto{MaaPCLI::InstanceManager}\\
+Relazione uscente, contiene un riferimento ad un oggetto di tipo InstanceManager per istanziare una \gloss{istanza} di progetto MaaP precedentemente creato.
+\end{itemize}
+
+\subsubsubsubsubsection{Installer}
+\grassetto{Nome}\\
+MaaPCLI::Installer\\
+\grassetto{Descrizione}\\
+Classe che rappresenta lo \gloss{script} di installazione del framework.\\
+\grassetto{Utilizzo}\\
+Viene utilizzata dall'utente sviluppatore per installare il framework e relative dipendenze nel sistema in uso.\\
+\grassetto{Relazioni con altre classi}
+\begin{itemize}
+\item\grassetto{MaaPCLI::CLI}\\
+Relazione entrante, interazione con l'interfaccia a riga di comando.
+\end{itemize}
+
+\subsubsubsubsubsection{InstanceManager}
+\grassetto{Nome}\\
+MaaPCLI::InstanceManager\\
+\grassetto{Descrizione}\\
+Classe che rappresenta lo script per l'avvio di un'istanza di un progetto esistente.\\
+\grassetto{Utilizzo}\\
+Viene utilizzata dall'utente sviluppatore per avviare il server caricando un determinato progetto.\\
+\grassetto{Relazioni con altre classi}
+\begin{itemize}
+\item\grassetto{MaaPCLI::CLI}\\
+Relazione entrante, interazione con l'interfaccia a riga di comando.
+\end{itemize}
+
+\subsubsubsubsubsection{ProjectFacade}
+\grassetto{Nome}\\
+MaaPCLI::ProjectFacade\\
+\grassetto{Descrizione}\\
+Classe che rappresenta la classe \gloss{Facade} nel design pattern Facade\\
+\grassetto{Utilizzo}\\
+Viene utilizzata dall'utente sviluppatore per interagire con il framework per la creazione di un nuovo progetto e/o per la clonazione, eliminazione di un progetto esistente.\\
+\grassetto{Relazioni con altre classi}
+\begin{itemize}
+\item\grassetto{MaaPCLI::ProjectCreate}\\
+Relazione uscente, contiene un riferimento ad un oggetto di tipo ProjectCreate per avviare la creazione di un nuovo progetto;
+\item\grassetto{MaaPCLI::ProjectClone}\\
+Relazione uscente, contiene un riferimento ad un oggetto di tipo ProjectClone per avviare la clonazione di un progetto esistente;
+\item\grassetto{MaaPCLI::ProjectRemove}\\
+Relazione uscente, contiene un riferimento ad un oggetto di tipo ProjectRemove per eliminare un progetto esistente;
+\end{itemize}
+
+\subsubsubsubsubsection{ProjectCreate}
+\grassetto{Nome}\\
+MaaPCLI::ProjectCreate\\
+\grassetto{Descrizione}\\
+Classe che rappresenta una classe del design patter Facade.\\
+\grassetto{Utilizzo}\\
+Viene utilizzata dall'utente sviluppatore per avviare la creazione di un nuovo progetto.\\
+\grassetto{Relazioni con altre classi}
+\begin{itemize}
+\item\grassetto{MaaPCLI::ProjectFacade}\\
+Relazione entrante, interazione con la facciata ProjectFacade.
+\end{itemize}
+
+\subsubsubsubsubsection{ProjectClone}
+\grassetto{Nome}\\
+MaaPCLI::ProjectClone\\
+\grassetto{Descrizione}\\
+Classe che rappresenta una classe del design patter Facade.\\
+\grassetto{Utilizzo}\\
+Viene utilizzata dall'utente sviluppatore per avviare la clonazione di un progetto esistente.\\
+\grassetto{Relazioni con altre classi}
+\begin{itemize}
+\item\grassetto{MaaPCLI::ProjectFacade}\\
+Relazione entrante, interazione con la facciata ProjectFacade.
+\end{itemize}
+
+\subsubsubsubsubsection{ProjectRemove}
+\grassetto{Nome}\\
+MaaPCLI::ProjectRemove\\
+\grassetto{Descrizione}\\
+Classe che rappresenta una classe del design patter Facade.\\
+\grassetto{Utilizzo}\\
+Viene utilizzata dall'utente sviluppatore per eliminare un progetto esistente.\\
+\grassetto{Relazioni con altre classi}
+\begin{itemize}
+\item\grassetto{MaaPCLI::ProjectFacade}\\
+Relazione entrante, interazione con la facciata ProjectFacade.
+\end{itemize}
 
 
 \newpage
