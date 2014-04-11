@@ -23,7 +23,7 @@
 \textbf{Data ultima modifica} & \DataUltimaModifica{} \\
 \textbf{Stato del Documento} & Formale \\		%CAMBIARE QUI
 \textbf{Uso del Documento} & Interno \\			%CAMBIARE QUI
-\textbf{Redazione} & Alberto Garbui\\			%CAMBIARE QUI
+\textbf{Redazione} & Giacomo Pinato\\			%CAMBIARE QUI
 \textbf{Verifica} & Alessandro Benetti \\
 & Fabio Miotto\\			%ED ANCHE QUI!
 \textbf{Approvazione} & Fabio Miotto \\			%CAMBIARE QUI
@@ -52,6 +52,12 @@ Diario delle modifiche
 
 %aggiungere qui una midrule per aggiungere una nuova riga alla tabella
 \midrule
+4.0.3 & 2014-04-11 & Giacomo Pinato (RE) & Stesura sottoprocessi.\\
+\midrule
+4.0.2 & 2014-04-10 & Giacomo Pinato (RE) & Stesura processi primari.\\
+\midrule
+4.0.1 & 2014-04-10 & Giacomo Pinato (RE) & Riorganizzazione documento.\\
+\midrule
 3.2.0 & 2014-01-24 & Fabio Miotto (RE) & Approvazione documento.\\
 \midrule
 3.1.1 & 2014-01-23 & Alessandro Benetti (VE) & Verifica documento.\\
@@ -61,7 +67,6 @@ Diario delle modifiche
 3.0.2 & 2014-01-15 	& Alberto Garbui (AM) & Incremento documento.\\
 \midrule
 3.0.1 & 2014-01-13	& Alberto Garbui (AM) & Effettuate correzioni segnalate dal Committente.\\
-
 \midrule
 2.2.0 &	2014-01-04	& Alberto Garbui (RE) & Approvazione documento.\\
 \midrule
@@ -70,7 +75,6 @@ Diario delle modifiche
 2.0.2 & 2013-12-27 & Fabio Miotto (AM) & Sezione Progettazione, Riorganizzazione.\\
 \midrule
 2.0.1 & 2013-12-23 & Fabio Miotto (AM) & Modifica sezione Comunicazioni.\\
-
 \midrule
 1.2.0 & 2013-11-27 & Andrea Perin (RE) & Approvazione documento.\\
 \midrule
@@ -349,7 +353,7 @@ Codifica, Progettazione, Verifica;
 %TEMPLATE
 %\subsection{SOTTOPROCESSO}
 
-\subsubsection{ATTIVITA'}
+\subsubsection{ATTIVITA}
 
 \paragraph{Procedure}
 
@@ -361,30 +365,124 @@ Le responsabilità di gestione dell’intero progetto, dalla nascita alla conclu
 
 \subsubsection{Pianificazione}
 L'attività di pianificazione mira a fissare le scadenze e le milestone dei vadi processi che si andranno ad attuare al fine di poter controllare il carico di lavoro, la sua durata e poter meglio gestire le risorse.
-\paragraph{Procedure}
 
-\subparagraph{Pianificazione delle attività}
-
-All'inizio di ciascuna delle fasi delineate nel \emph{Piano di Progetto v4.2.0}, il Responsabile di Progetto deve realizzare un \gloss{diagramma di \gloss{Gantt}} su \gloss{Redmine}, come descritto in sezione XXX di questo documento, per tracciare e gestire le attività dei processi utilizzati dal progetto.
-
-%ammaccabanane
-
-\subparagraph{Controllo dell'avanzamento}
-\label{}
+\paragraph{Norme generali}
+All'inizio di ciascuna delle fasi delineate nel \emph{Piano di Progetto v4.2.0}, il Responsabile di Progetto deve realizzare un \gloss{diagramma di \gloss{Gantt}} su \gloss{Redmine}, come descritto in sezione \ref{1} di questo documento, per tracciare e gestire le attività dei processi utilizzati dal progetto.\\
 Dopo ogni sessione di lavoro di un componente o gruppo di componenti, gli stessi devono tracciare il loro lavoro modificando l'avanzamento dell'attività e registrando le ore/persona spese mediante il sistema offerto da Redmine.
-Dovranno inoltre modificare lo stato dell'attività in base al ruolo ricoperto e lo stato di avanzamento della stessa. 
+Dovranno inoltre modificare lo stato dell'attività in base al ruolo ricoperto e lo stato di avanzamento della stessa.\\
+Durante l'avanzamento del progetto il Responsabile  deve monitorare costantemente il verificarsi dei rischi descritti nel \emph{Piano di Progetto v4.2.0} così come la possibilità che l'avanzamento comporti nuovi rischi non previsti precedentemente.
+
+\subparagraph{Creazione dei ticket}
+I ticket possono essere creati da:
+\begin{itemize}
+\item Responsabile di Progetto: Crea i ticket per le macro fasi evidenziate durante la pianificazione;
+\item Responsabile di Sotto-progetto: Crea i ticket per i processi minori, non pianificati o di secondaria importanza;
+\item Verificatore: Crea i ticket per la segnalazione di errori rilevati durante i processi di verifica.
+\end{itemize}
+
+\subparagraph{Tipologie di ticket}
+
+Si possono aprire le seguenti tipologie di ticket:
+\begin{itemize}
+\item Ticket di pianificazione: Rappresentano attività di maggiore importanza. Sono organizzati gerarchicamente in base all'importanza dell'attività relativa;
+\item Ticket di realizzazione e controllo: Rappresentano ticket di realizzazione dei documenti e del loro successivo controllo;
+\item Ticket per la verifica: Rappresentano errori e problematiche riscontrate dai verificatori.
+%ammaccabanane
+\end{itemize}
+
+\subparagraph{Stati d'avanzamento}
+
+
+I possibili stati di avanzamento di un ticket sono i seguenti:
+\begin{itemize}
+\item \grassetto{Nuovo:} l'attività è stata creata ed è in attesa di essere assegnata;
+\item \grassetto{In Elaborazione:} l'attività è stata assegnata ed è in lavorazione;
+\item \grassetto{Chiuso:} la lavorazione è terminata.
+\end{itemize}
+
+
+\paragraph{Procedure}
+\label{2}
+\subparagraph{Realizzazione diagramma di Gantt}
+\label{1}
+Redmine genera automaticamente il diagramma di Gantt in base alle attività inserite.
+Per inserire una nuova attività si deve seguire la procedura illustrata nel sottoparagrafo successivo.
+
+\subparagraph{Ticket di pianificazione}
+\begin{itemize}
+\item Entrare nel progetto;
+\item Cliccare, nel menù in alto, sulla voce corrispondente a Nuova segnalazione;
+\item Nel menù a tendina con la voce Tracker selezionare \textit{Attività};
+\item Specificare un oggetto per il ticket, che corrisponde ad una breve sintesi dell'attività;
+\item Specificare una descrizione, che corrisponde ad una stesura dettagliata dell'attività;
+\item Specificare una priorità;
+\item Specificare a chi assegnare il ticket;
+\item Specificare la data di inizio;
+\item Specificare la data di scadenza;
+\item Specificare il tempo stimato.
+\end{itemize}
+
+\subparagraph{Ticket di realizzazione}
+\begin{itemize}
+\item Entrare nel progetto;
+\item Cliccare, nel menù in alto, sulla voce corrispondente a Nuova segnalazione;
+\item Nel menù a tendina con la voce Tracker selezionare \textit{Realizzazione};
+\item Specificare un oggetto per il ticket, che corrisponde ad una breve sintesi del compito;
+\item Specificare una descrizione, che corrisponde allo scopo specifico di quel ticket;
+\item Specificare una priorità;
+\item Specificare a chi assegnare il ticket;
+\item Specificare la data di inizio;
+\item Specificare la data di scadenza;
+\item Specificare il tempo stimato.
+\end{itemize}
+
+\subparagraph{Ticket di verifica}
+\label{ticket_verifica}
+\begin{itemize}
+\item Entrare nel progetto;
+\item Cliccare, nel menù in alto, sulla voce corrispondente a Nuova segnalazione;
+\item Nel menù a tendina con la voce Tracker selezionare \textit{Verifica};
+\item Specificare un oggetto per il ticket;
+\item Specificare una priorità;
+\item Specificare la data di inizio;
+\item Specificare la data di scadenza;
+\item Specificare il tempo stimato.
+\end{itemize}
+
+
+\subparagraph{Ticket di segnalazione errori}
+\label{ticket_bug}
+\begin{itemize}
+\item Entrare nel progetto;
+\item Cliccare, nel menù in alto, sulla voce corrispondente a Nuova segnalazione;
+\item Nel menù a tendina con la voce Tracker selezionare \textit{Bug};
+\item Specificare un oggetto per il ticket, che corrisponde ad una breve sintesi dell'errore;
+\item Specificare una descrizione, che corrisponde ad una stesura dettagliata dell'errore, e specificare anche la posizione dell'errore;
+\item Specificare una priorità;
+\item Specificare la data di inizio;
+\item Specificare la data di scadenza;
+\item Specificare il tempo stimato.
+\end{itemize}
+
+\subparagraph{Gestione dei cambiamenti}
+
+In caso di errori, in seguito alla notifica da parte del Verificatore tramite ticket, il responsabile di progetto dovrà assegnare la correzione mediante la procedura di
+ticketing descritta precedentemente.
+Al termine della correzione, sarà compito del responsabile di sotto-progetto accettare o respingere la modifica, e richiederne di conseguenza il rifacimento.
+Nel caso la correzione riguardi un’attività di codifica, sarà compito del responsabile di sotto-progetto programmare una nuova esecuzione dei test di unità e di integrazione correlati al modulo modificato.
+
 
 
 \paragraph{Strumenti}
-Diagramma di Gantt, Work Breakdown Structure.
+Diagramma di Gantt, Redmine, OpenProj.
 
 
 \subsubsection{Analisi e gestione dei rischi}
-Durante l'avanzamento del progetto il Responsabile  deve monitorare costantemente il verificarsi dei rischi descritti nel \emph{Piano di Progetto v4.2.0} così come la possibilità che l'avanzamento comporti nuovi rischi non previsti precedentemente.
+
 
 
 \paragraph{Procedure}
-Nel caso in cui si identifichi un nuovo rischio, quest'ultimo deve essere inserito nell'apposita sezione del piano di progetto e deve essere elaborata una strategia per ridurre la probabilità di XXX e una per il controllo dei potenziali danni.
+Nel caso in cui si identifichi un nuovo rischio, quest'ultimo deve essere inserito nell'apposita sezione del piano di progetto (XXX) e deve essere elaborata una strategia per ridurre la probabilità di XXX e una per il controllo dei potenziali danni.
 Nel caso in cui uno dei rischi già individuati si verifichi, il Responsabile deve immediatamente attuare la strategia per il controllo dei danni precedentemente disegnata.
 
 \paragraph{Strumenti}
@@ -394,7 +492,7 @@ Redmine, Piano di Progetto.
 \subsubsection{Gestione delle risorse}
 Questa attività di prefigge di gestire al meglio le risorse assegnate a tutti gli altri processi ed attività in attuazione.
 \paragraph{Procedure}
-Per gestire le risorse umane assegnate ad ogni attività, il Responsabile deve sfruttare la struttura precedentemente creata su Redmine ed assegnare ogni attività ai membri del gruppo secondo il sistema di ticketing descritto nella sezione XXX.
+Per gestire le risorse umane assegnate ad ogni attività, il Responsabile deve sfruttare la struttura precedentemente creata su Redmine ed assegnare ogni attività ai membri del gruppo secondo il sistema di ticketing descritto nella sezione \ref{2}.
 Dovrà inoltre controllare che il numero di risorse sia sempre adeguato all'attività in questione al fine di garantire il suo completamento entro i termini pianificati.
 
 \paragraph{Strumenti}
@@ -427,7 +525,8 @@ A partire da questi ultimi e dalle fonti sopra citate, dovranno individuare tutt
 
 \subsubsection{Stesura casi d'uso}
 La stesura dei casi d'uso è un'attività utile ad comprendere più a fondo le funzionalità del sistema e per identificare requisiti impliciti.
-\paragraph{Procedure}
+
+\paragraph{Norme generali}
 
 Ciascun caso d'uso descritto dagli analisti dovrà rispettare la seguente notazione:
 \begin{center}
@@ -440,6 +539,9 @@ Ogni diagramma associato è scritto nella seguente forma:
 \begin{center}
 \grassetto{Figura[numero progressivo]:[codice univoco e nome del caso d'uso]}.
 \end{center}
+
+\paragraph{Procedure}
+
 
 \paragraph{Strumenti}
 Astah.
@@ -472,6 +574,8 @@ dove:
 \end{itemize}
 \item Codice è il codice che identifica univocamente ogni requisito.
 \end{itemize}
+
+A seguito della catalogazione, il requisito deve essere inserito nello strumento di tracciamento automatico.
 
 
 \paragraph{Strumenti}
@@ -520,8 +624,75 @@ Questo processo comprende tutte le attività volte a definire l'architettura sof
 
 
 
-\subsubsection{Codifica}
+\subsection{Codifica}
 Questo processo comprende tutte le attività volte alla realizzazione pratica dell'architettura definita precedentemente e all'implementazione delle sue componenti.
+
+Gli sviluppatori dovranno attenersi alle comuni Coding Conventions, in particolare a quelle suggerite dal Prof. Crockford nel suo \gloss{sito web}.\footnote{http://javascript.crockford.com/code.html}\\
+
+\paragraph{Norme generali}
+\label{}
+I nomi di classi, metodi, variabili e funzioni dovranno essere in \gloss{camel case}, le parole componenti separate da underscore e scritte in inglese.
+La prima lettera dovrà essere minuscola, fatta eccezione per le classi che inizieranno sempre con lettera maiuscola.
+Nessun nome dovrà mai iniziare con un numero.
+
+La ricorsione deve essere implementata solo in caso di vera necessità, altrimenti va evitata. Nel caso in cui venga implementata si dovrà fornire una prova di corretta terminazione e un calcolo approssimato delle risorse richieste per la corretta esecuzione.\\
+La concorrenza dovrà essere per quanto possibile evitata. Nel caso questo non sia possibile si dovrà cercare di evitare la condivisione di risorse e serializzare il più possibile l'accesso alle risorse.
+
+\paragraph{Header dei file}
+
+Ogni file dovrà contenere un header strutturato come segue:
+\begin{itemize}
+\item \grassetto{File:} nome del file;
+\item \grassetto{Module:} modulo di appartenenza;
+\item \grassetto{Author:} autore;
+\item \grassetto{Created:} data di creazione;
+\item \grassetto{Version:} versione corrente;
+\item \grassetto{Description:} descrizione dettagliata del file;
+\item \grassetto{Modification History:} tabella dei cambiamenti effettuati sul file.
+\end{itemize}
+
+\paragraph{Documentazione dei metodi}
+
+Ogni metodo/funzione di codice dovrà essere preceduta da un commento contenente le seguenti informazioni:
+\begin{itemize}
+\item \grassetto{Name:} nome del metodo;
+\item \grassetto{Param:} lista del tipo dei parametri;
+\item \grassetto{Descr:} breve descrizione del comportamento del metodo;
+\item \grassetto{Return:} cosa ritorna la funzione.
+\end{itemize}
+
+\paragraph{Documentazione delle classi}
+
+Ogni classe deve essere preceduta da un commento contenente le seguenti informazioni:
+\begin{itemize}
+\item \grassetto{Name:} nome della classe;
+\item \grassetto{Descr:} breve descrizione della classe.
+\end{itemize}
+
+\paragraph{Versionamento del software}
+
+Nel versionare il software, le tre cifre di versionamento verranno modificate in base ai seguenti parametri:
+\begin{itemize}
+\item La prima cifra decimale verrà aumentata nel caso in cui vengano introdotti cambiamenti non retro compatibili al \gloss{framework}. Possono essere inclusi cambiamenti minori. Nel caso in cui la prima cifra venga aumentata la seconda e la terza ripartono da 0;
+\item La seconda cifra decimale verrà aumentata nel caso in cui vengano rilasciate nuove funzionalità retro compatibili. Deve necessariamente essere aumentata se una qualsiasi funzionalità pubblica del framework viene marcata deprecata. È possibile aumentare la seconda cifra anche in caso di rilascio di nuove funzionalità o miglioramenti sostanziali. Al cambiamento della seconda cifra la terza deve ripartire da 0;
+\item La terza cifra decimale verrà aumentata nel caso di correzione di errori o altri piccoli cambiamenti retro compatibili;
+\item La cifra X a 0 è riservata per lo sviluppo iniziale. Le versioni con X a 0 non sono da considerarsi stabili;
+\item La versione 1.0.0 definisce la prima versione stabile del framework che si andrà a sviluppare.
+\end{itemize}
+
+
+\paragraph{Procedure}
+
+\subparagraph{Generazione documentazione con Doxygen}
+\subparagraph{Generazione commenti automatici con SmartComments}
+\subparagraph{Utilizzo di Jenkins}
+
+
+
+\paragraph{Strumenti}
+
+Eclipse, Doxygen, SmartComments, Jenkins.
+
 \subsection{Verifica}
 Questo processo comprende tutte le attività volte a verificare che i processi precedentemente attuati non abbiano introdotto errori.
 Per i documenti il processo di verifica viene istanziato nel momento in cui gli stessi passano dalla versione X.0.Z alla versione X.1.Z. 
@@ -569,7 +740,7 @@ I tempi di risoluzione possono essere:
 \item \grassetto{Urgente}: l'errore va corretto il prima possibile.
 \end{itemize}
 
-A seguito del riscontro di un errore il verificatore apre un ticket per la correzione dell'errore, come descritto in sezione XXX, e la persona responsabile dell'attività procederà nella correzione, chiudendo così il relativo ticket aperto.
+A seguito del riscontro di un errore il verificatore apre un ticket per la correzione dell'errore, come descritto in sezione \ref{ticket_bug}, e la persona responsabile dell'attività procederà nella correzione, chiudendo così il relativo ticket aperto.
 
 
 
@@ -622,14 +793,185 @@ Questo processo comprende tutte le attività volte a verificare che il prodotto 
 Questo processo di supporto comprende tutte le attività volte alla realizzazione della documentazione di supporto necessaria al progetto.
 
 \subsubsection{Stesura dei documenti}
+
+\paragraph{Norme generali}
+
+
+Viene fornito un \gloss{template} in \LaTeX\ per la Realizzazione della documentazione, sia interna che esterna, che i membri del gruppo dovranno seguire nella stesura dei documenti.
+
+
+Ogni documento ha un \gloss{header} presente in ogni pagina che riporta logo e nome del gruppo sulla sinistra.
+
+Ogni documento ha un footer presente in ogni pagina che riporta il nome e la \gloss{versione} del documento a sinistra e il numero della pagina a destra.
+
+\subparagraph{Prima pagina}
+\label{5.2.3}
+La prima pagina di ogni documento deve riportare nel seguente ordine:
+\begin{itemize}
+\item Il logo esteso del gruppo;
+\item Il nome del progetto;
+\item Il nome del documento;
+\item Informazioni sul documento (versione, data creazione, data ultima modifica, stato del documento, uso del documento, i redattori del documento, i Verificatori, chi ha approvato il documento e la \gloss{distribuzione} del documento);
+\item Breve sommario del documento.
+\end{itemize}
+
+\subparagraph{Seconda pagina}
+\label{5.2.4}
+La seconda pagina deve riportare il diario delle modifiche apportate al documento dalla sua creazione fino alla versione corrente, strutturato nella seguente maniera:
+
+\begin{center}
+\begin{longtable}{|c|c|c|p{0.5\linewidth}|}
+\toprule
+\textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Modifiche effettuate}\\
+
+\bottomrule
+%\label{tab:changelog}
+\end{longtable}
+\end{center}
+Le modifiche dovranno essere ordinate cronologicamente dalla più recente alla meno recente.
+
+
+
+La terza pagina deve riportare l'indice del documento.
+
+
+Ogni tabella ed ogni immagine inserita deve essere descritta da una didascalia, in cui compare un numero identificativo incrementale per la tracciabilità.
+
+\subparagraph{Norme tipografiche e stili di testo}
+\label{5.4}
+Nella stesura della documentazione si dovranno seguire le seguenti indicazioni:
+\begin{itemize}
+\item I documenti dovranno essere grammaticalmente e sintatticamente corretti e scritti in modo fluido;
+\item L'elenco puntato termina con il punto e virgola oppure con il punto se è l'ultimo elemento;
+\item Un carattere di punteggiatura non deve mai seguire un carattere di spaziatura;
+\item Il testo racchiuso tra parentesi non deve aprirsi o chiudersi con un carattere di spaziatura e non deve terminare con un carattere di punteggiatura;
+\item Le lettere maiuscole vanno poste solo dopo il punto, il punto di domanda, il punto esclamativo e all'inizio di ogni elemento di un elenco puntato, oltre che dove previsto dalla lingua italiana. È inoltre utilizzata l'iniziale maiuscola nel nome del team, del progetto, dei documenti, dei ruoli di progetto, delle fasi di lavoro e nelle parole Proponente e Committente;
+\item Nel caso in cui ci si riferisca ad un documento, il titolo di quest'ultimo dovrà essere scritto in corsivo e si dovrà riportare la versione riferita;
+\item I ruoli di progetto (es. Analista) dovranno essere scritti con la lettera iniziale maiuscola;
+\item Gli acronimi dovranno essere scritti in lettere maiuscole;
+\item \`{E} preferibile usare la forma attiva a quella passiva;
+\item Quando possibile usare elenchi puntati invece che frasi;
+\item Usare termini specifici e segnare i termini del glossario in corsivo e con la G in pedice;
+\item Dividere i documenti in sezioni e sottosezioni titolate;
+\item Le date dovranno essere espresse nella forma AAAA-MM-GG secondo lo standard \gloss{ISO} 8601:2004;
+\item Le attività (es. Verifica) vanno scritte con la lettera iniziale maiuscola;
+\item Gli elenchi puntati con un primo livello di profondità sono formati da dei pallini neri pieni, tranne quando si deve elencare una sequenza numerata di istruzioni da fare in un ordine stabilito, allora in quel caso si usa un elenco numerato;
+\item Gli elenchi puntati con un secondo livello di profondità hanno un trattino.
+\end{itemize}
+
+\subparagraph{Sigle e abbreviazioni}
+\label{5.5}
+Le sigle e le abbreviazioni dovranno essere utilizzate solo in contesti in cui lo spazio è limitato come tabelle e diagrammi. Sono previste le seguenti abbreviazioni:
+\begin{itemize}
+\item AdR = Analisi dei Requisiti;
+\item GL = Glossario;
+\item NdP = Norme di Progetto;
+\item PdP = Piano di Progetto;
+\item PdQ = Piano di Qualifica;
+\item SdF = Studio di Fattibilità;
+\item ST = Specifica Tecnica;
+\item RA = Revisione di Accettazione;
+\item RP = Revisione di Progettazione;
+\item RQ = Revisione di Qualifica;
+\item RR = Revisione dei Requisiti;
+\item AS = Aperture Software;
+\item DP = \gloss{Design Pattern}.
+\end{itemize}
+Per i ruoli si useranno le seguenti abbreviazioni:
+\begin{itemize}
+\item AN=Analista;
+\item VR=Verificatore;
+\item RE=Responsabile;
+\item AM=Amministratore;
+\item PT=Progettista;
+\item PR=Programmatore.
+\end{itemize}
+
+\newpage
+\subparagraph{Versionamento}
+\label{6.0}
+Il \gloss{versionamento} verrà effettuato sia sul \gloss{codice} che sui documenti prodotti dal gruppo al fine di differenziare e rendere immediatamente riconoscibile la fase di sviluppo in cui ci si trova attualmente, mantenendo uno storico organizzato dei cambiamenti effettuati.\\
+Il numero di versionamento deve essere nella forma X.Y.Z, con X,Y e Z numeri interi non negativi. Tutti gli elementi devono salire numericamente di una unità alla volta.
+Ogni qualvolta che una versione viene rilasciata non può più essere effettuato alcun cambiamento ad essa. Ogni modifica sarà inserita nella versione successiva.
+
+
+Nel versionare i documenti, le tre cifre di versionamento verranno modificate in base alle seguenti regole:
+\begin{itemize}
+\item X: indica il numero di uscite formali del documento, diviso come segue:
+\begin{enumerate}
+\item Fase di Analisi, si estende fino alla Revisione dei Requisiti;
+\item Fase di Analisi in Dettaglio, si estende fino all'ingresso nella fase di Progettazione;
+\item Fase di Progettazione Architetturale, si estende fino alla Revisione di Progettazione;
+\item Fase di Progettazione di Dettaglio e Codifica,si estende fino alla Revisione di Qualifica;
+\item Fase di Verifica e Validazione, si estende fino alla Revisione di Accettazione e alla fine del progetto.
+\end{enumerate}
+\item Y: indica la fase di sviluppo del documento e varia come segue:
+\begin{enumerate}[start=0]
+\item Fase di stesura del documento, dove il documento è ancora modificabile;
+\item Fase di Verifica del documento, dove il documento è formalmente corretto, è modificabile e sta venendo controllato dal Verificatore;
+\item Documento ultimato e approvato.
+\end{enumerate}
+Sarà compito del Responsabile impostare la versione a X.1.0 nel momento in cui assegnerà il \gloss{ticket} di controllo ai Verificatori e impostare la versione a X.2.0 nel caso in cui il documento risulti approvato dagli stessi.
+\item Z: indica il numero di modifiche minori apportare al documento. Aumenta al termine di ogni sessione di lavoro sul documento. Non ha un limite massimo.
+\end{itemize}
+
+\subparagraph{Ciclo di vita}
+Ogni documento prodotto attraversa uno specifico percorso di vita, riassunto dai seguenti 4 stati:
+\begin{enumerate}
+\item \grassetto{Creazione: }viene creata la struttura base del documento senza alcun contenuto;
+\item \grassetto{Lavorazione in corso: }il contenuto del documento viene scritto, ed è soggetto a continue modifiche;
+\item \grassetto{Verifica: }il contenuto del documento viene completato e viene assegnato ai Verificatori che dovranno svolgere la verifica del documento;
+\item \grassetto{Approvazione: }per ogni documento che è stato verificato, il cui esito della Verifica è stato soddisfacente, viene inviato al Responsabile di Progetto, che lo approva. Passato questo ultimo stato, il documento si trova nello stato finale per quella specifica versione.
+\end{enumerate}
+
+Ciascun documento può trovarsi in uno stesso stato più volte: quando il documento approvato necessita di una revisione con il Committente, il documento ricomincia il \gloss{ciclo di vita} che al completamento porterà ad una nuova versione incrementata.
+\newpage
+
+
+\subparagraph{Norme stilistiche}
+\label{7.2}
+Di seguito vengono elencate le norme che dovranno essere seguite durante la stesura di una definizione:
+\begin{itemize}
+\item Reperire la definizione da una fonte autorevole, oppure ottenerla da più fonti;
+\item Non superare le 400 lettere per definizione;
+\item Preferibilmente, iniziare la definizione con un sostantivo;
+\item Non iniziare mai una definizione con `` \'E un ''.
+\end{itemize}
+
+\subparagraph{Marcatore termini}
+
+Il nostro gruppo si avvale di uno \gloss{script} automatico in linguaggio \gloss{Python} per la marcatura dei termini definiti nel Glossario. Questo strumento esegue una scansione di ogni documento basandosi sull'elenco dei termini nel Glossario e marca ogni termine (se presente) come descritto ad inizio paragrafo.
+
+%YHPERBANANAHAMMOCK
+
 La stesura della documentazione è un processo di supporto fondamentale per documentare progressi e risultati del lavoro del gruppo, fornire regole e procedure su come eseguire tale lavoro e fornire una documentazione precisa sul prodotto finale, sulle sue componenti e sulle sue modalità di utilizzo.
+
 \paragraph{Procedure}
 
-Durante la scrittura della documentazione i redattori dovranno strettamente attenersi a tutte le norme definite nell'appendice XXX %ammaccabanane
+\subparagraph{Inserimento termine di glossario}
+Ogniqualvolta un membro del gruppo incontra un termine di questo tipo, durante la stesura di qualsiasi documento, deve seguire la seguente \gloss{procedura}:
+\begin{enumerate}
+\item Controllare che il termine non sia già presente all'interno del Glossario;
+\item Nel caso non fosse presente, interrompere la stesura del documento corrente per inserire il termine nel Glossario;
+\item Collocare il termine rispettando l'ordine alfabetico delle definizioni;
+\item Dare una definizione chiara e concisa del termine;
+\item Nel caso in cui la definizione del termine corrente causi la definizione di altri termini, bisogna tenerne traccia e definirli in ordine;
+\item Aggiornare la tabella delle modifiche all'interno del documento Glossario, modificando conseguentemente il numero di versione del documento stesso.
+\end{enumerate}
+
+\subparagraph{Avanzamento di versione}
+Per procedere con l'avanzamento di versione di un documento, il Responsabile deve:
+\begin{enumerate}
+\item Assicurarsi che i lavori di stesura del documento siano stati ultimati;
+\item Aggiornare la versione del documento a X.1.0;
+\item Assegnare un ticket di verifica sul documento ad uno o più Verificatori secondo la procedura descritta in \ref{ticket_verifica};
+\item Nel caso in cui il verificatore approvi il lavoro, il responsabile aggiorna la versione a X.2.0 e il documento diventa definitivo;
+\item Nel caso in cui il verificatore rilevi degli errori, quest'ultimo aprirà dei ticket di errore come descritto in \ref{ticket_bug} e attenderà la loro risoluzione prima di ricominciare il processo di verifica;
+\end{enumerate}
 
 
 \paragraph{Strumenti}
-\LaTeX\\,Astah, Script Gulpease.
+TeXstudio,Astah.
 
 
 
@@ -707,23 +1049,23 @@ Quest’ultimo dovrà garantire un corretto sviluppo delle attività utilizzando
 
 \label{}
 
-\subsubsection{Gestione delle attività}
-\label{}
-
-\paragraph{Pianificazione delle attività}
-\label{}
-All'inizio di ciascuna delle fasi delineate nel \emph{Piano di Progetto v3.2.0}, il Responsabile di Progetto deve realizzare un \gloss{diagramma di \gloss{Gantt}} su \gloss{Redmine}, come descritto in sezione 6.1.1 di questo documento, per tracciare e gestire le attività dei processi utilizzati dal progetto.
-
-
-\paragraph{Controllo e assegnazione delle attività}
-Per coordinare e controllare le attività il Responsabile di Progetto deve sfruttare la struttura precedentemente creata su Redmine ed assegnare ogni attività ai membri del gruppo secondo il sistema di ticketing descritto nella sezione
-
-%ammaccabanane
-
-\subparagraph{Controllo dell'avanzamento}
-\label{}
-Dopo ogni sessione di lavoro di un componente o gruppo di componenti, gli stessi devono tracciare il loro lavoro modificando l'avanzamento dell'attività e registrando le ore/persona spese mediante il sistema offerto da Redmine.
-Dovranno inoltre modificare lo stato dell'attività in base al ruolo ricoperto e lo stato di avanzamento della stessa. 
+%\subsubsection{Gestione delle attività}
+%\label{}
+%
+%\paragraph{Pianificazione delle attività}
+%\label{}
+%All'inizio di ciascuna delle fasi delineate nel \emph{Piano di Progetto v3.2.0}, il Responsabile di Progetto deve realizzare un \gloss{diagramma di \gloss{Gantt}} su \gloss{Redmine}, come descritto in sezione 6.1.1 di questo documento, per tracciare e gestire le attività dei processi utilizzati dal progetto.
+%
+%
+%\paragraph{Controllo e assegnazione delle attività}
+%Per coordinare e controllare le attività il Responsabile di Progetto deve sfruttare la struttura precedentemente creata su Redmine ed assegnare ogni attività ai membri del gruppo secondo il sistema di ticketing descritto nella sezione
+%
+%%ammaccabanane
+%
+%\subparagraph{Controllo dell'avanzamento}
+%\label{}
+%Dopo ogni sessione di lavoro di un componente o gruppo di componenti, gli stessi devono tracciare il loro lavoro modificando l'avanzamento dell'attività e registrando le ore/persona spese mediante il sistema offerto da Redmine.
+%Dovranno inoltre modificare lo stato dell'attività in base al ruolo ricoperto e lo stato di avanzamento della stessa. 
 %
 %\paragraph{Stati d'avanzamento}
 %\label{}
@@ -804,17 +1146,6 @@ Nel caso la correzione riguardi un’attività di codifica, sarà compito del re
 %
 %\subparagraph{Ticket di Pianificazione delle attività}
 %Rappresentano le macro-attività di maggiore importanza e sono organizzate in una gerarchia con diversi livelli di importanza; vengono creati dal Responsabile di Progetto, il quale poi individua le sotto-attività da assegnare a chi di dovere.
-
-\subsection{Analisi dei requisiti}
-\label{6.1}
-La stesura del documento denominato Analisi dei Requisiti è compito degli Analisti.
-In questo documento verranno trovati, analizzati e catalogati tutti i requisiti, impliciti e non, imposti dal progetto.
-
-\subsubsection{Scrittura casi d'uso}
-
-
-
-
 
 
 \subsection{Progettazione}
@@ -1263,206 +1594,205 @@ Ogni classe deve essere preceduta da un commento contenente le seguenti informaz
 \end{itemize}
 
 %\subsection{Calcolo indice Gulpease}
-%Il calcolo dell'indice di Gulpease dovrà essere applicato dopo l'attività di verifica dello stesso documento, ma prima dell'approvazione. Il risultato di questo calcolo sarà un indice della qualità del documento. Se l'indice si discosterà in negativo dagli obiettivi del gruppo, si dovrà informare il Responsabile. Il Responsabile, successivamente, potrà decidere di chiedere una revisione dell'intero documento per alzare l'indice e portarlo a livelli ottimali, al fine di aumentarne la leggibilità.
-\section{Documentazione}
-\label{5.0}
+%%Il calcolo dell'indice di Gulpease dovrà essere applicato dopo l'attività di verifica dello stesso documento, ma prima dell'approvazione. Il risultato di questo calcolo sarà un indice della qualità del documento. Se l'indice si discosterà in negativo dagli obiettivi del gruppo, si dovrà informare il Responsabile. Il Responsabile, successivamente, potrà decidere di chiedere una revisione dell'intero documento per alzare l'indice e portarlo a livelli ottimali, al fine di aumentarne la leggibilità.
+%\section{Documentazione}
+%\label{5.0}
+%
+%\subsection{Template}
+%\label{5.1}
+%Viene fornito un \gloss{template} in \LaTeX\ per la Realizzazione della documentazione, sia interna che esterna, che i membri del gruppo dovranno seguire nella stesura dei documenti.
+%
+%\subsection{Struttura del documento}
+%\label{5.2}
+%
+%\subsubsection{Header}
+%\label{5.2.1}
+%Ogni documento ha un \gloss{header} presente in ogni pagina che riporta logo e nome del gruppo sulla sinistra.
+%
+%\subsubsection{Footer}
+%\label{5.2.2}
+%Ogni documento ha un footer presente in ogni pagina che riporta il nome e la \gloss{versione} del documento a sinistra e il numero della pagina a destra.
+%
+%\subsubsection{Prima pagina}
+%\label{5.2.3}
+%La prima pagina di ogni documento deve riportare nel seguente ordine:
+%\begin{itemize}
+%\item Il logo esteso del gruppo;
+%\item Il nome del progetto;
+%\item Il nome del documento;
+%\item Informazioni sul documento (versione, data creazione, data ultima modifica, stato del documento, uso del documento, i redattori del documento, i Verificatori, chi ha approvato il documento e la \gloss{distribuzione} del documento);
+%\item Breve sommario del documento.
+%\end{itemize}
+%
+%\subsubsection{Seconda pagina}
+%\label{5.2.4}
+%La seconda pagina deve riportare il diario delle modifiche apportate al documento dalla sua creazione fino alla versione corrente, strutturato nella seguente maniera:
+%
+%\begin{center}
+%\begin{longtable}{|c|c|c|p{0.5\linewidth}|}
+%\toprule
+%\textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Modifiche effettuate}\\
+%
+%\bottomrule
+%%\label{tab:changelog}
+%\end{longtable}
+%\end{center}
+%Le modifiche dovranno essere ordinate cronologicamente dalla più recente alla meno recente.
+%
+%
+%\subsubsection{Terza pagina}
+%\label{5.2.5}
+%La terza pagina deve riportare l'indice del documento.
+%
+%\subsection{Tabelle}
+%Ogni tabella inserita deve essere descritta da una didascalia, in cui compare un numero identificativo incrementale per la tracciabilità.
+%\subsection{Immagini}
+%Ogni immagine inserita deve essere descritta da una didascalia, in cui compare un numero identificativo incrementale per la tracciabilità.
+%
+%\subsection{Norme tipografiche e stili di testo}
+%\label{5.4}
+%Nella stesura della documentazione si dovranno seguire le seguenti indicazioni:
+%\begin{itemize}
+%\item I documenti dovranno essere grammaticalmente e sintatticamente corretti e scritti in modo fluido;
+%\item L'elenco puntato termina con il punto e virgola oppure con il punto se è l'ultimo elemento;
+%\item Un carattere di punteggiatura non deve mai seguire un carattere di spaziatura;
+%\item Il testo racchiuso tra parentesi non deve aprirsi o chiudersi con un carattere di spaziatura e non deve terminare con un carattere di punteggiatura;
+%\item Le lettere maiuscole vanno poste solo dopo il punto, il punto di domanda, il punto esclamativo e all'inizio di ogni elemento di un elenco puntato, oltre che dove previsto dalla lingua italiana. È inoltre utilizzata l'iniziale maiuscola nel nome del team, del progetto, dei documenti, dei ruoli di progetto, delle fasi di lavoro e nelle parole Proponente e Committente;
+%\item Nel caso in cui ci si riferisca ad un documento, il titolo di quest'ultimo dovrà essere scritto in corsivo e si dovrà riportare la versione riferita;
+%\item I ruoli di progetto (es. Analista) dovranno essere scritti con la lettera iniziale maiuscola;
+%\item Gli acronimi dovranno essere scritti in lettere maiuscole;
+%\item \`{E} preferibile usare la forma attiva a quella passiva;
+%\item Quando possibile usare elenchi puntati invece che frasi;
+%\item Usare termini specifici e segnare i termini del glossario in corsivo e con la G in pedice;
+%\item Dividere i documenti in sezioni e sottosezioni titolate;
+%\item Le date dovranno essere espresse nella forma AAAA-MM-GG secondo lo standard \gloss{ISO} 8601:2004;
+%\item Le attività (es. Verifica) vanno scritte con la lettera iniziale maiuscola;
+%\item Gli elenchi puntati con un primo livello di profondità sono formati da dei pallini neri pieni, tranne quando si deve elencare una sequenza numerata di istruzioni da fare in un ordine stabilito, allora in quel caso si usa un elenco numerato;
+%\item Gli elenchi puntati con un secondo livello di profondità hanno un trattino.
+%\end{itemize}
+%
+%\subsubsection{Sigle e abbreviazioni}
+%\label{5.5}
+%Le sigle e le abbreviazioni dovranno essere utilizzate solo in contesti in cui lo spazio è limitato come tabelle e diagrammi. Sono previste le seguenti abbreviazioni:
+%\begin{itemize}
+%\item AdR = Analisi dei Requisiti;
+%\item GL = Glossario;
+%\item NdP = Norme di Progetto;
+%\item PdP = Piano di Progetto;
+%\item PdQ = Piano di Qualifica;
+%\item SdF = Studio di Fattibilità;
+%\item ST = Specifica Tecnica;
+%\item RA = Revisione di Accettazione;
+%\item RP = Revisione di Progettazione;
+%\item RQ = Revisione di Qualifica;
+%\item RR = Revisione dei Requisiti;
+%\item AS = Aperture Software;
+%\item DP = \gloss{Design Pattern}.
+%\end{itemize}
+%Per i ruoli si useranno le seguenti abbreviazioni:
+%\begin{itemize}
+%\item AN=Analista;
+%\item VR=Verificatore;
+%\item RE=Responsabile;
+%\item AM=Amministratore;
+%\item PT=Progettista;
+%\item PR=Programmatore.
+%\end{itemize}
+%
+%\newpage
+%\subsection{Versionamento}
+%\label{6.0}
+%Il \gloss{versionamento} verrà effettuato sia sul \gloss{codice} che sui documenti prodotti dal gruppo al fine di differenziare e rendere immediatamente riconoscibile la fase di sviluppo in cui ci si trova attualmente, mantenendo uno storico organizzato dei cambiamenti effettuati.
+%
+%\subsubsection{Regole generali}
+%\label{6.1}
+%\begin{itemize}
+%\item Il numero di versionamento deve essere nella forma X.Y.Z, con X,Y e Z numeri interi non negativi. Tutti gli elementi devono salire numericamente di una unità alla volta;
+%\item Ogni qualvolta che una versione viene rilasciata non può più essere effettuato alcun cambiamento ad essa. Ogni modifica sarà inserita nella versione successiva.
+%\end{itemize}
+%
+%\subsubsection{Versionamento del software}
+%\label{6.2}
+%Nel versionare il software, le tre cifre di versionamento verranno modificate in base ai seguenti parametri:
+%\begin{itemize}
+%\item La prima cifra decimale verrà aumentata nel caso in cui vengano introdotti cambiamenti non retro compatibili al \gloss{framework}. Possono essere inclusi cambiamenti minori. Nel caso in cui la prima cifra venga aumentata la seconda e la terza ripartono da 0;
+%\item La seconda cifra decimale verrà aumentata nel caso in cui vengano rilasciate nuove funzionalità retro compatibili. Deve necessariamente essere aumentata se una qualsiasi funzionalità pubblica del framework viene marcata deprecata. È possibile aumentare la seconda cifra anche in caso di rilascio di nuove funzionalità o miglioramenti sostanziali. Al cambiamento della seconda cifra la terza deve ripartire da 0;
+%\item La terza cifra decimale verrà aumentata nel caso di correzione di errori o altri piccoli cambiamenti retro compatibili;
+%\item La cifra X a 0 è riservata per lo sviluppo iniziale. Le versioni con X a 0 non sono da considerarsi stabili;
+%\item La versione 1.0.0 definisce la prima versione stabile del framework che si andrà a sviluppare.
+%\end{itemize}
+%
+%\subsubsection{Versionamento dei documenti}
+%\label{6.3}
+%Nel versionare i documenti, le tre cifre di versionamento verranno modificate in base alle seguenti regole:
+%\begin{itemize}
+%\item X: indica il numero di uscite formali del documento, diviso come segue:
+%\begin{enumerate}
+%\item Fase di Analisi, si estende fino alla Revisione dei Requisiti;
+%\item Fase di Analisi in Dettaglio, si estende fino all'ingresso nella fase di Progettazione;
+%\item Fase di Progettazione Architetturale, si estende fino alla Revisione di Progettazione;
+%\item Fase di Progettazione di Dettaglio e Codifica,si estende fino alla Revisione di Qualifica;
+%\item Fase di Verifica e Validazione, si estende fino alla Revisione di Accettazione e alla fine del progetto.
+%\end{enumerate}
+%\item Y: indica la fase di sviluppo del documento e varia come segue:
+%\begin{enumerate}[start=0]
+%\item Fase di stesura del documento, dove il documento è ancora modificabile;
+%\item Fase di Verifica del documento, dove il documento è formalmente corretto, è modificabile e sta venendo controllato dal Verificatore;
+%\item Documento ultimato e approvato.
+%\end{enumerate}
+%Sarà compito del Responsabile impostare la versione a X.1.0 nel momento in cui assegnerà il \gloss{ticket} di controllo ai Verificatori e impostare la versione a X.2.0 nel caso in cui il documento risulti approvato dagli stessi.
+%\item Z: indica il numero di modifiche minori apportare al documento. Aumenta al termine di ogni sessione di lavoro sul documento. Non ha un limite massimo.
+%\end{itemize}
+%
+%\subsubsection{Ciclo di vita}
+%Ogni documento prodotto attraversa uno specifico percorso di vita, riassunto dai seguenti 4 stati:
+%\begin{enumerate}
+%\item \grassetto{Creazione: }viene creata la struttura base del documento senza alcun contenuto;
+%\item \grassetto{Lavorazione in corso: }il contenuto del documento viene scritto, ed è soggetto a continue modifiche;
+%\item \grassetto{Verifica: }il contenuto del documento viene completato e viene assegnato ai Verificatori che dovranno svolgere la verifica del documento;
+%\item \grassetto{Approvazione: }per ogni documento che è stato verificato, il cui esito della Verifica è stato soddisfacente, viene inviato al Responsabile di Progetto, che lo approva. Passato questo ultimo stato, il documento si trova nello stato finale per quella specifica versione.
+%\end{enumerate}
+%
+%Ciascun documento può trovarsi in uno stesso stato più volte: quando il documento approvato necessita di una revisione con il Committente, il documento ricomincia il \gloss{ciclo di vita} che al completamento porterà ad una nuova versione incrementata.
+%\newpage
+%
+%\subsection{Glossario}
+%\label{9.0}
+%Il documento Glossario contiene le definizioni di tutti i termini di difficile comprensione. La difficoltà di questi termini sta nella loro natura di essere termini tecnici o dall'uso non comune. \\
+%Per ogni temine definito nel Glossario, la sua prima occorrenza in ogni documento è marcata in corsivo e con una G in pedice. Ad esempio: \gloss{termine}.
+%
+%\subsubsection{Inserimento termine}
+%\label{7.1}
+%Ogniqualvolta un membro del gruppo incontra un termine di questo tipo, durante la stesura di qualsiasi documento, deve seguire la seguente \gloss{procedura}:
+%\begin{enumerate}
+%\item Controllare che il termine non sia già presente all'interno del Glossario;
+%\item Nel caso non fosse presente, interrompere la stesura del documento corrente per inserire il termine nel Glossario;
+%\item Collocare il termine rispettando l'ordine alfabetico delle definizioni;
+%\item Dare una definizione chiara e concisa del termine;
+%\item Nel caso in cui la definizione del termine corrente causi la definizione di altri termini, bisogna tenerne traccia e definirli in ordine;
+%\item Aggiornare la tabella delle modifiche all'interno del documento Glossario, modificando conseguentemente il numero di versione del documento stesso.
+%\end{enumerate}
+%
+%\subsubsection{Norme stilistiche}
+%\label{7.2}
+%Di seguito vengono elencate le norme che dovranno essere seguite durante la stesura di una definizione:
+%\begin{itemize}
+%\item Reperire la definizione da una fonte autorevole, oppure ottenerla da più fonti;
+%\item Non superare le 400 lettere per definizione;
+%\item Preferibilmente, iniziare la definizione con un sostantivo;
+%\item Non iniziare mai una definizione con `` \'E un ''.
+%\end{itemize}
+%
+%\subsubsection{Marcatore termini}
+%
+%Il nostro gruppo si avvale di uno \gloss{script} automatico in linguaggio \gloss{Python} per la marcatura dei termini definiti nel Glossario. Questo strumento esegue una scansione di ogni documento basandosi sull'elenco dei termini nel Glossario e marca ogni termine (se presente) come descritto ad inizio paragrafo.
 
-\subsection{Template}
-\label{5.1}
-Viene fornito un \gloss{template} in \LaTeX\ per la Realizzazione della documentazione, sia interna che esterna, che i membri del gruppo dovranno seguire nella stesura dei documenti.
-
-\subsection{Struttura del documento}
-\label{5.2}
-
-\subsubsection{Header}
-\label{5.2.1}
-Ogni documento ha un \gloss{header} presente in ogni pagina che riporta logo e nome del gruppo sulla sinistra.
-
-\subsubsection{Footer}
-\label{5.2.2}
-Ogni documento ha un footer presente in ogni pagina che riporta il nome e la \gloss{versione} del documento a sinistra e il numero della pagina a destra.
-
-\subsubsection{Prima pagina}
-\label{5.2.3}
-La prima pagina di ogni documento deve riportare nel seguente ordine:
-\begin{itemize}
-\item Il logo esteso del gruppo;
-\item Il nome del progetto;
-\item Il nome del documento;
-\item Informazioni sul documento (versione, data creazione, data ultima modifica, stato del documento, uso del documento, i redattori del documento, i Verificatori, chi ha approvato il documento e la \gloss{distribuzione} del documento);
-\item Breve sommario del documento.
-\end{itemize}
-
-\subsubsection{Seconda pagina}
-\label{5.2.4}
-La seconda pagina deve riportare il diario delle modifiche apportate al documento dalla sua creazione fino alla versione corrente, strutturato nella seguente maniera:
-
-\begin{center}
-\begin{longtable}{|c|c|c|p{0.5\linewidth}|}
-\toprule
-\textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Modifiche effettuate}\\
-
-\bottomrule
-%\label{tab:changelog}
-\end{longtable}
-\end{center}
-Le modifiche dovranno essere ordinate cronologicamente dalla più recente alla meno recente.
-
-
-\subsubsection{Terza pagina}
-\label{5.2.5}
-La terza pagina deve riportare l'indice del documento.
-
-\subsection{Tabelle}
-Ogni tabella inserita deve essere descritta da una didascalia, in cui compare un numero identificativo incrementale per la tracciabilità.
-\subsection{Immagini}
-Ogni immagine inserita deve essere descritta da una didascalia, in cui compare un numero identificativo incrementale per la tracciabilità.
-
-\subsection{Norme tipografiche e stili di testo}
-\label{5.4}
-Nella stesura della documentazione si dovranno seguire le seguenti indicazioni:
-\begin{itemize}
-\item I documenti dovranno essere grammaticalmente e sintatticamente corretti e scritti in modo fluido;
-\item L'elenco puntato termina con il punto e virgola oppure con il punto se è l'ultimo elemento;
-\item Un carattere di punteggiatura non deve mai seguire un carattere di spaziatura;
-\item Il testo racchiuso tra parentesi non deve aprirsi o chiudersi con un carattere di spaziatura e non deve terminare con un carattere di punteggiatura;
-\item Le lettere maiuscole vanno poste solo dopo il punto, il punto di domanda, il punto esclamativo e all'inizio di ogni elemento di un elenco puntato, oltre che dove previsto dalla lingua italiana. È inoltre utilizzata l'iniziale maiuscola nel nome del team, del progetto, dei documenti, dei ruoli di progetto, delle fasi di lavoro e nelle parole Proponente e Committente;
-\item Nel caso in cui ci si riferisca ad un documento, il titolo di quest'ultimo dovrà essere scritto in corsivo e si dovrà riportare la versione riferita;
-\item I ruoli di progetto (es. Analista) dovranno essere scritti con la lettera iniziale maiuscola;
-\item Gli acronimi dovranno essere scritti in lettere maiuscole;
-\item \`{E} preferibile usare la forma attiva a quella passiva;
-\item Quando possibile usare elenchi puntati invece che frasi;
-\item Usare termini specifici e segnare i termini del glossario in corsivo e con la G in pedice;
-\item Dividere i documenti in sezioni e sottosezioni titolate;
-\item Le date dovranno essere espresse nella forma AAAA-MM-GG secondo lo standard \gloss{ISO} 8601:2004;
-\item Le attività (es. Verifica) vanno scritte con la lettera iniziale maiuscola;
-\item Gli elenchi puntati con un primo livello di profondità sono formati da dei pallini neri pieni, tranne quando si deve elencare una sequenza numerata di istruzioni da fare in un ordine stabilito, allora in quel caso si usa un elenco numerato;
-\item Gli elenchi puntati con un secondo livello di profondità hanno un trattino.
-\end{itemize}
-
-\subsubsection{Sigle e abbreviazioni}
-\label{5.5}
-Le sigle e le abbreviazioni dovranno essere utilizzate solo in contesti in cui lo spazio è limitato come tabelle e diagrammi. Sono previste le seguenti abbreviazioni:
-\begin{itemize}
-\item AdR = Analisi dei Requisiti;
-\item GL = Glossario;
-\item NdP = Norme di Progetto;
-\item PdP = Piano di Progetto;
-\item PdQ = Piano di Qualifica;
-\item SdF = Studio di Fattibilità;
-\item ST = Specifica Tecnica;
-\item RA = Revisione di Accettazione;
-\item RP = Revisione di Progettazione;
-\item RQ = Revisione di Qualifica;
-\item RR = Revisione dei Requisiti;
-\item AS = Aperture Software;
-\item DP = \gloss{Design Pattern}.
-\end{itemize}
-Per i ruoli si useranno le seguenti abbreviazioni:
-\begin{itemize}
-\item AN=Analista;
-\item VR=Verificatore;
-\item RE=Responsabile;
-\item AM=Amministratore;
-\item PT=Progettista;
-\item PR=Programmatore.
-\end{itemize}
 
 \newpage
-\subsection{Versionamento}
-\label{6.0}
-Il \gloss{versionamento} verrà effettuato sia sul \gloss{codice} che sui documenti prodotti dal gruppo al fine di differenziare e rendere immediatamente riconoscibile la fase di sviluppo in cui ci si trova attualmente, mantenendo uno storico organizzato dei cambiamenti effettuati.
+\section{Descrizione degli strumenti di lavoro}
 
-\subsubsection{Regole generali}
-\label{6.1}
-\begin{itemize}
-\item Il numero di versionamento deve essere nella forma X.Y.Z, con X,Y e Z numeri interi non negativi. Tutti gli elementi devono salire numericamente di una unità alla volta;
-\item Ogni qualvolta che una versione viene rilasciata non può più essere effettuato alcun cambiamento ad essa. Ogni modifica sarà inserita nella versione successiva.
-\end{itemize}
-
-\subsubsection{Versionamento del software}
-\label{6.2}
-Nel versionare il software, le tre cifre di versionamento verranno modificate in base ai seguenti parametri:
-\begin{itemize}
-\item La prima cifra decimale verrà aumentata nel caso in cui vengano introdotti cambiamenti non retro compatibili al \gloss{framework}. Possono essere inclusi cambiamenti minori. Nel caso in cui la prima cifra venga aumentata la seconda e la terza ripartono da 0;
-\item La seconda cifra decimale verrà aumentata nel caso in cui vengano rilasciate nuove funzionalità retro compatibili. Deve necessariamente essere aumentata se una qualsiasi funzionalità pubblica del framework viene marcata deprecata. È possibile aumentare la seconda cifra anche in caso di rilascio di nuove funzionalità o miglioramenti sostanziali. Al cambiamento della seconda cifra la terza deve ripartire da 0;
-\item La terza cifra decimale verrà aumentata nel caso di correzione di errori o altri piccoli cambiamenti retro compatibili;
-\item La cifra X a 0 è riservata per lo sviluppo iniziale. Le versioni con X a 0 non sono da considerarsi stabili;
-\item La versione 1.0.0 definisce la prima versione stabile del framework che si andrà a sviluppare.
-\end{itemize}
-
-\subsubsection{Versionamento dei documenti}
-\label{6.3}
-Nel versionare i documenti, le tre cifre di versionamento verranno modificate in base alle seguenti regole:
-\begin{itemize}
-\item X: indica il numero di uscite formali del documento, diviso come segue:
-\begin{enumerate}
-\item Fase di Analisi, si estende fino alla Revisione dei Requisiti;
-\item Fase di Analisi in Dettaglio, si estende fino all'ingresso nella fase di Progettazione;
-\item Fase di Progettazione Architetturale, si estende fino alla Revisione di Progettazione;
-\item Fase di Progettazione di Dettaglio e Codifica,si estende fino alla Revisione di Qualifica;
-\item Fase di Verifica e Validazione, si estende fino alla Revisione di Accettazione e alla fine del progetto.
-\end{enumerate}
-\item Y: indica la fase di sviluppo del documento e varia come segue:
-\begin{enumerate}[start=0]
-\item Fase di stesura del documento, dove il documento è ancora modificabile;
-\item Fase di Verifica del documento, dove il documento è formalmente corretto, è modificabile e sta venendo controllato dal Verificatore;
-\item Documento ultimato e approvato.
-\end{enumerate}
-Sarà compito del Responsabile impostare la versione a X.1.0 nel momento in cui assegnerà il \gloss{ticket} di controllo ai Verificatori e impostare la versione a X.2.0 nel caso in cui il documento risulti approvato dagli stessi.
-\item Z: indica il numero di modifiche minori apportare al documento. Aumenta al termine di ogni sessione di lavoro sul documento. Non ha un limite massimo.
-\end{itemize}
-
-\subsubsection{Ciclo di vita}
-Ogni documento prodotto attraversa uno specifico percorso di vita, riassunto dai seguenti 4 stati:
-\begin{enumerate}
-\item \grassetto{Creazione: }viene creata la struttura base del documento senza alcun contenuto;
-\item \grassetto{Lavorazione in corso: }il contenuto del documento viene scritto, ed è soggetto a continue modifiche;
-\item \grassetto{Verifica: }il contenuto del documento viene completato e viene assegnato ai Verificatori che dovranno svolgere la verifica del documento;
-\item \grassetto{Approvazione: }per ogni documento che è stato verificato, il cui esito della Verifica è stato soddisfacente, viene inviato al Responsabile di Progetto, che lo approva. Passato questo ultimo stato, il documento si trova nello stato finale per quella specifica versione.
-\end{enumerate}
-
-Ciascun documento può trovarsi in uno stesso stato più volte: quando il documento approvato necessita di una revisione con il Committente, il documento ricomincia il \gloss{ciclo di vita} che al completamento porterà ad una nuova versione incrementata.
-\newpage
-
-\subsection{Glossario}
-\label{9.0}
-Il documento Glossario contiene le definizioni di tutti i termini di difficile comprensione. La difficoltà di questi termini sta nella loro natura di essere termini tecnici o dall'uso non comune. \\
-Per ogni temine definito nel Glossario, la sua prima occorrenza in ogni documento è marcata in corsivo e con una G in pedice. Ad esempio: \gloss{termine}.
-
-\subsubsection{Inserimento termine}
-\label{7.1}
-Ogniqualvolta un membro del gruppo incontra un termine di questo tipo, durante la stesura di qualsiasi documento, deve seguire la seguente \gloss{procedura}:
-\begin{enumerate}
-\item Controllare che il termine non sia già presente all'interno del Glossario;
-\item Nel caso non fosse presente, interrompere la stesura del documento corrente per inserire il termine nel Glossario;
-\item Collocare il termine rispettando l'ordine alfabetico delle definizioni;
-\item Dare una definizione chiara e concisa del termine;
-\item Nel caso in cui la definizione del termine corrente causi la definizione di altri termini, bisogna tenerne traccia e definirli in ordine;
-\item Aggiornare la tabella delle modifiche all'interno del documento Glossario, modificando conseguentemente il numero di versione del documento stesso.
-\end{enumerate}
-
-\subsubsection{Norme stilistiche}
-\label{7.2}
-Di seguito vengono elencate le norme che dovranno essere seguite durante la stesura di una definizione:
-\begin{itemize}
-\item Reperire la definizione da una fonte autorevole, oppure ottenerla da più fonti;
-\item Non superare le 400 lettere per definizione;
-\item Preferibilmente, iniziare la definizione con un sostantivo;
-\item Non iniziare mai una definizione con `` è un ''.
-\end{itemize}
-
-\subsubsection{Marcatore termini}
-\label{7.3}
-Il nostro gruppo si avvale di uno \gloss{script} automatico in linguaggio \gloss{Python} per la marcatura dei termini definiti nel Glossario. Questo strumento esegue una scansione di ogni documento basandosi sull'elenco dei termini nel Glossario e marca ogni termine (se presente) come descritto ad inizio paragrafo.
-
-
-\newpage
-\section{Ambiente e strumenti di lavoro}
-\label{4.0}
 
 \subsection{Coordinamento}
-\label{}
 
 \subsubsection{Redmine}
 \label{4.1}
@@ -1503,75 +1833,75 @@ Mette inoltre a disposizione un'interfaccia su cui è possibile visualizzare lo 
 Esso è infatti in grado di interagire con il software di versionamento e, se disponibile, con software per l’esecuzione di test sul codice prodotto.
 
 
-\subsection{Protocolli per la gestione del progetto}
+%\subsection{Protocolli per la gestione del progetto}
+%
+%Per lo sviluppo controllato dei documenti e del codice si è scelto di avvalesri del sistema di ticketing offerto da Redmine.
+%\subsubsection{Creazione di un nuovo progetto}
+%\begin{itemize}
+%\item Cliccare su Progetti, in alto a sinistra nella barra del menù;
+%\item Cliccare su Nuovo Progetto;
+%\item Assegnare un nome al progetto che si desidera creare;
+%\item Specificare un identificativo.
+%\end{itemize}
 
-Per lo sviluppo controllato dei documenti e del codice si è scelto di avvalesri del sistema di ticketing offerto da Redmine.
-\subsubsection{Creazione di un nuovo progetto}
-\begin{itemize}
-\item Cliccare su Progetti, in alto a sinistra nella barra del menù;
-\item Cliccare su Nuovo Progetto;
-\item Assegnare un nome al progetto che si desidera creare;
-\item Specificare un identificativo.
-\end{itemize}
+%\subsubsection{Ticket}
+%I ticket possono essere creati da:
+%\begin{itemize}
+%\item Responsabile di Progetto: Crea i ticket per le macro fasi evidenziate durante la pianificazione;
+%\item Responsabile di Sotto-progetto: Crea i ticket per i processi minori, non pianificati o di secondaria importanza;
+%\item Verificatore: Crea i ticket per la segnalazione di errori rilevati durante i processi di verifica.
+%\end{itemize}
+%
+%\subsubsection{Tipologie di ticket}
+%
+%Si possono aprire le seguenti tipologie di ticket:
+%\begin{itemize}
+%\item Ticket di pianificazione: Rappresentano attività di maggiore importanza. Sono organizzati gerarchicamente in base all'importanza dell'attività relativa;
+%\item Ticket di realizzazione e controllo: Rappresentano ticket di realizzazione dei documenti e del loro successivo controllo;
+%\item Ticket per la verifica: Rappresentano errori e problematiche riscontrate dai verificatori.
 
-\subsubsection{Ticket}
-I ticket possono essere creati da:
-\begin{itemize}
-\item Responsabile di Progetto: Crea i ticket per le macro fasi evidenziate durante la pianificazione;
-\item Responsabile di Sotto-progetto: Crea i ticket per i processi minori, non pianificati o di secondaria importanza;
-\item Verificatore: Crea i ticket per la segnalazione di errori rilevati durante i processi di verifica.
-\end{itemize}
-
-\subsubsection{Tipologie di ticket}
-
-Si possono aprire le seguenti tipologie di ticket:
-\begin{itemize}
-\item Ticket di pianificazione: Rappresentano attività di maggiore importanza. Sono organizzati gerarchicamente in base all'importanza dell'attività relativa;
-\item Ticket di realizzazione e controllo: Rappresentano ticket di realizzazione dei documenti e del loro successivo controllo;
-\item Ticket per la verifica: Rappresentano errori e problematiche riscontrate dai verificatori.
-
-\end{itemize}
-
-\paragraph{Ticket per pianificare attività}
-\begin{itemize}
-\item Entrare nel progetto;
-\item Cliccare, nel menù in alto, sulla voce corrispondente a Nuova segnalazione;
-\item Nel menù a tendina con la voce Tracker selezionare Attività;
-\item Specificare un oggetto per il ticket, che corrisponde ad una breve sintesi dell'attività;
-\item Specificare una descrizione, che corrisponde ad una stesura dettagliata dell'attività;
-\item Specificare una priorità;
-\item Specificare a chi assegnare il ticket;
-\item Specificare la data di inizio;
-\item Specificare la data di scadenza;
-\item Specificare il tempo stimato;
-\end{itemize}
-
-\subparagraph{Ticket di realizzazione e controllo}
-\begin{itemize}
-\item Entrare nel progetto;
-\item Cliccare, nel menù in alto, sulla voce corrispondente a Nuova segnalazione;
-\item Nel menù a tendina con la voce Tracker selezionare Realizzazione;
-\item Specificare un oggetto per il ticket, che corrisponde ad una breve sintesi;
-\item Specificare una descrizione, che corrisponde allo scopo specifico di quel ticket;
-\item Specificare una priorità;
-\item Specificare a chi assegnare il ticket;
-\item Specificare la data di inizio;
-\item Specificare la data di scadenza;
-\item Specificare il tempo stimato;
-\end{itemize}
-
-\subparagraph{Ticket per la verifica}
-\begin{itemize}
-\item Entrare nel progetto;
-\item Cliccare, nel menù in alto, sulla voce corrispondente a Nuova segnalazione;
-\item Nel menù a tendina con la voce Tracker selezionare Verifica;
-\item Specificare un oggetto per il ticket, che corrisponde ad una breve sintesi dell'errore;
-\item Specificare una descrizione, che corrisponde ad una stesura dettagliata dell'errore, e specificare anche la posizione dell'errore;
-\item Specificare una priorità;
-\item Specificare la data di inizio;
-\item Specificare la data di scadenza;
-\item Specificare il tempo stimato;
-\end{itemize}
+%\end{itemize}
+%
+%\paragraph{Ticket per pianificare attività}
+%\begin{itemize}
+%\item Entrare nel progetto;
+%\item Cliccare, nel menù in alto, sulla voce corrispondente a Nuova segnalazione;
+%\item Nel menù a tendina con la voce Tracker selezionare Attività;
+%\item Specificare un oggetto per il ticket, che corrisponde ad una breve sintesi dell'attività;
+%\item Specificare una descrizione, che corrisponde ad una stesura dettagliata dell'attività;
+%\item Specificare una priorità;
+%\item Specificare a chi assegnare il ticket;
+%\item Specificare la data di inizio;
+%\item Specificare la data di scadenza;
+%\item Specificare il tempo stimato;
+%\end{itemize}
+%
+%\subparagraph{Ticket di realizzazione e controllo}
+%\begin{itemize}
+%\item Entrare nel progetto;
+%\item Cliccare, nel menù in alto, sulla voce corrispondente a Nuova segnalazione;
+%\item Nel menù a tendina con la voce Tracker selezionare Realizzazione;
+%\item Specificare un oggetto per il ticket, che corrisponde ad una breve sintesi;
+%\item Specificare una descrizione, che corrisponde allo scopo specifico di quel ticket;
+%\item Specificare una priorità;
+%\item Specificare a chi assegnare il ticket;
+%\item Specificare la data di inizio;
+%\item Specificare la data di scadenza;
+%\item Specificare il tempo stimato;
+%\end{itemize}
+%
+%\subparagraph{Ticket per la verifica}
+%\begin{itemize}
+%\item Entrare nel progetto;
+%\item Cliccare, nel menù in alto, sulla voce corrispondente a Nuova segnalazione;
+%\item Nel menù a tendina con la voce Tracker selezionare Verifica;
+%\item Specificare un oggetto per il ticket, che corrisponde ad una breve sintesi dell'errore;
+%\item Specificare una descrizione, che corrisponde ad una stesura dettagliata dell'errore, e specificare anche la posizione dell'errore;
+%\item Specificare una priorità;
+%\item Specificare la data di inizio;
+%\item Specificare la data di scadenza;
+%\item Specificare il tempo stimato;
+%\end{itemize}
 
 
 
