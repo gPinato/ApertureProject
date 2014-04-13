@@ -1,6 +1,6 @@
 /*****************************************************\
 | TracciamentoScript - Alberto Garbui
-| v1.0 - 2014/04/12 - prima stesura incompleta
+| v1.0 - 2014/04/13 - prima versione ufficiale
 |
 | Script per la generazione del tracciamento in file latex
 | per il documento Analisi_dei_Requisiti partendo dai 
@@ -12,6 +12,9 @@
 #include<iostream>
 #include<fstream>
 using namespace std;
+
+//decommentare per rimuovere le funzionalità di debug...
+//#define DBUG
 
 void disclaimer(ofstream * OUT)
 {
@@ -74,11 +77,77 @@ void intestazioneTabellaFONTIREQ(ofstream * OUT)
 	*OUT<<"\\endlastfoot"<<endl<<endl;
 }
 
-int stampaMidrule(const char * buffer, ofstream * OUT)
+int getElements(const char * buffer, char * primo, char * secondo)
 {
-	int i=0;
+	int i,p=0,s=0;
 	
-	return i;
+	//resetto i buffer di risposta...
+	for(i=0;i<20;i++){primo[i]=0;secondo[i]=0;}
+	i=0;
+	
+	while(buffer[i]=='"')i++;
+	while(buffer[i]!='"')
+	{
+		if(buffer[i]=='_')primo[p++]='\\'; //disambiguo underscore con la barra
+		primo[p++]=buffer[i++];
+	}	
+	i+=3;
+	while(buffer[i]!='"')
+	{
+		if(buffer[i]=='_')secondo[s++]='\\'; //disambiguo underscore con la barra
+		secondo[s++]=buffer[i++];
+	}
+	
+	#ifdef DBUG
+		cout<<primo<<" "<<secondo<<endl;
+	#endif
+
+	if(buffer[i+1]=='\n' && buffer[i+2]=='"')return i+2; //se non trovo un doppio apice ho finito...
+	else return -1;
+}
+
+int startMidrule(const char * valore, ofstream * OUT)
+{
+	*OUT<<endl<<"\\midrule"<<endl;
+	*OUT<<valore<<endl;
+}
+
+int addMidrule(const char * valore, ofstream * OUT)
+{
+	*OUT<<"& "<<valore<<"\\\\"<<endl;
+}
+
+bool checkString(const char * primo, const char * secondo)
+{
+	int errors=0;
+	for(int i=0;i<20;i++)
+		if(primo[i]!=secondo[i])errors++;
+	return errors==0;
+}
+
+void stampaBuffer(const char * buffer, int length, ofstream * OUT)
+{
+	int index=0,indice=0;
+	char * primo = new char[20];
+	char * secondo = new char[20];
+	char * precedente = new char[20];
+	for(int i=0;i<20;i++)precedente[i]=0;
+	
+	while(indice<length && index!=-1)
+	{
+		index=getElements(&buffer[indice],primo,secondo);
+		if(index!=-1)indice+=index;		
+		if(!checkString(primo,precedente))
+		{
+			for(int i=0;i<20;i++)precedente[i]=primo[i]; //salvo primo
+			startMidrule(primo,OUT);			
+		}
+		addMidrule(secondo,OUT);			
+	}	
+	*OUT<<endl;
+	delete primo;
+	delete secondo;
+	delete precedente;
 }
 
 //main? :)
@@ -111,16 +180,13 @@ int main(int argc, char* argv[])
         char * buffer = new char [length];
 		IN.read (buffer,length);
 		IN.close();
-		cout<<"fatto!"<<endl;
-		
+		cout<<"fatto!"<<endl;		
 		cout<<"-> creo intestazione tabella Requisiti-Fonti... ";
 		disclaimer(&OUT);
 		intestazioneTabellaREQFONTI(&OUT);
 		cout<<"fatto!"<<endl;		
-		cout<<"-> riempio tabella Requisiti-Fonti... ";
-		
-		
-		
+		cout<<"-> riempio tabella Requisiti-Fonti... ";		
+		stampaBuffer(buffer,length,&OUT);		
 		cout<<"fatto!"<<endl;
 		cout<<"-> termino tabella Requisiti-Fonti... ";
 		fineTabella(&OUT);	
@@ -136,22 +202,19 @@ int main(int argc, char* argv[])
         char * buffer2 = new char [length];
 		IN2.read (buffer2,length);
 		IN2.close();
-		cout<<"fatto!"<<endl;
-		
+		cout<<"fatto!"<<endl;		
 		cout<<"-> creo intestazione tabella Fonti-Requisiti... ";
 		intestazioneTabellaFONTIREQ(&OUT);
 		cout<<"fatto!"<<endl;		
 		cout<<"-> riempio tabella Fonti-Requisiti... ";
-		
-		
-		
+		stampaBuffer(buffer2,length,&OUT);
 		cout<<"fatto!"<<endl;
 		cout<<"-> termino tabella Fonti-Requisiti... ";
 		fineTabella(&OUT);	
 		disclaimer(&OUT);
 		cout<<"fatto!"<<endl;
 		delete buffer2;
-			
+					
 	}
 	catch(int x)
 	{
