@@ -1,0 +1,26 @@
+\subsubsubsection{Server}
+La parte Server è composta da due package: ModelServer per la gestione dei dati persistenti ed il \gloss{Controller} per la gestione della \gloss{business logic}.\\
+\subsubsubsubsection{ModelServer}
+\immagine{./Diagrammi/ModelServerClassi}{Diagramma delle classi del ModelServer}
+Nel ModelServer sono presenti oggetti che rappresentano:
+\begin{itemize}
+\item Il database di analisi e quello degli utenti;
+\item La gestione del file \gloss{DSL} e il suo \gloss{parsing};
+\item La gestione dei dati richiesti dal controller.
+\end{itemize}
+Tutte le operazioni di gestione, modifica e recupero dei dati vengono messe a disposizione dal model. In tal modo il controller è responsabile solamente di gestire la logica dell'applicazione.
+
+\subsubsubsubsection{Controller}
+\immagine{./Diagrammi/ControllerClassi}{Diagramma delle classi del Controller}
+Il controller è responsabile dell'autenticazione delle richieste e del loro routing da Client a ModelServer e viceversa.
+
+\subsubsubsection{Client}
+\immagine{./Diagrammi/ClientClassi}{Diagramma delle classi del Client}
+Nel Client sono presenti oggetti che rappresentano:
+\begin{itemize}
+\item I template per le pagine web;
+\item I Controller per la gestione dei template;
+\item Lo Scope per l'aggiornamento dei dati dei template;
+\item I Servizi utilizzati dai Controller.
+\end{itemize}
+%\end{comment}

@@ -1,9 +1,11 @@
 /*****************************************************\
 | UCscript - Alberto Garbui
-| v1.2 - 2014/01/21
+| v1.2 - 2014/01/21 - prima versione
+| v1.3 - 2014/04/07 - minor bugfixes
 |
 | Script per il parsing del file tex dei casi d'uso e 
 | generazione file di testo da importare con Access.
+| Recupera i casi d'uso
 |
 \*****************************************************/
 #include<stdio.h>
@@ -11,7 +13,6 @@
 #include<iostream>
 #include<fstream>
 using namespace std;
-
 
 int cercaStringa(const char * buffer, int buffer_lenght, int start, const char * pattern, int pattern_lenght)
 {
@@ -42,19 +43,26 @@ int cercaStringa(const char * buffer, int buffer_lenght, int start, const char *
 	return result;
 }
 
+//prende il testo contenuto tra due parentesi grafe
 int setText(const char * buffer, char * outBuffer)
 {
 	int j=0,i=0;
 
+	//per sicurezza mi sposto dentro al campo delimitato dalla parentesi grafa
+	if(buffer[i]=='{')i++;
+	
 	while(buffer[i] != '}')
 	{
+		//se trovo una parola in glossario, rimuovo l'attributo \gloss{
 		if(buffer[i]=='\\' && buffer[i+1]=='g' && buffer[i+2]=='l' && buffer[i+3]=='o' && buffer[i+4]=='s')
 		{
+			//mi sposto al primo carattere utile
 			i+=7;
 			while(buffer[i] != '}')
-				outBuffer[j++] = buffer[i++];
+				outBuffer[j++] = buffer[i++];	//prendo la parola
 			i++;
 		}
+		
 		if(buffer[i] == '{'){i++;}
 		if(buffer[i] == '\n' || buffer[i] == ';'){outBuffer[j++]=' '; i++;}
 		if(buffer[i] != '}')
@@ -91,50 +99,88 @@ int getUC(const char * buffer, int length, int start, ofstream * OUT)
 {
 	char *buffOUT=new char[1000];
 	
-	int i=cercaStringa(buffer,length,start,"UCtitle\n",8);
+	int i=cercaStringa(buffer,length,start,"UCtitle",7);
 	if(i==-1)return i; //errore, non trovato
 	
-	i+=2; //salto "acapo" e "{"
+	//proseguo fino a trovare una parentesi grafa aperta
+	while(buffer[i]!='{')i++;
+	i++; //mi sposto al carattere successivo
+
+	//qui c'è qualcosa del tipo "Caso d'uso UCxxx"
+	//quindi scarto la prima parte del testo e prelevo solo il nome del caso 
+	//d'uso UCxxxx
+	while(buffer[i]!='U' && buffer[i+1]!='C')i++;
 	i+=setText(&buffer[i],buffOUT); //title
-	cout<<&buffOUT[10]<<endl;
-	*OUT<<'"'<<&buffOUT[10]<<'"'<<';';    //UCxxxx
+	cout<<buffOUT<<endl;
+	*OUT<<'"'<<buffOUT<<'"'<<';';    														//UCxxxx
 	
-	i+=2; //salto "acapo" e "{"
-	i+=setText(&buffer[i],buffOUT); //NOME
+	//proseguo fino a trovare una parentesi grafa aperta
+	while(buffer[i]!='{')i++;
+	i++; //mi sposto al carattere successivo
+	
+	i+=setText(&buffer[i],buffOUT); 														//NOME
 	cout<<buffOUT<<endl;
 	*OUT<<'"'<<buffOUT<<'"'<<';'; 
 	
-	i=cercaStringa(buffer,length,i,"\\UC\n",4);
+	i=cercaStringa(buffer,length,i,"\\UC",3);
 	if(i==-1)return i; //errore, non trovato
+	if(buffer[i]=='i')
+	{
+		//qui ho trovato il comando \UCimmagine{}
+		//TODO ****** prelevare i dati relativi all'immagine							//IMMAGINE
 	
-	i++;
+	
+		//cerco il prossimo comando \UC
+		i=cercaStringa(buffer,length,i,"\\UC",3);
+		if(i==-1)return i; //errore, non trovato
+	}
+	
+	//proseguo fino a trovare una parentesi grafa aperta
+	while(buffer[i]!='{')i++;
+	i++; //mi sposto al carattere successivo
+	
 	i+=setText(&buffer[i],buffOUT); //caso
 	cout<<buffOUT<<endl;
-	*OUT<<'"'<<buffOUT<<'"'<<';'; //DIAGRAMMA ASSOCIATO
+	*OUT<<'"'<<buffOUT<<'"'<<';'; 														//DIAGRAMMA ASSOCIATO
 	
-	i+=2; //salto "acapo" e "{"
-	i+=setText(&buffer[i],buffOUT); //attori
+	//proseguo fino a trovare una parentesi grafa aperta
+	while(buffer[i]!='{')i++;
+	i++; //mi sposto al carattere successivo
+	
+	i+=setText(&buffer[i],buffOUT); 													//attori
 	cout<<buffOUT<<endl;
 	*OUT<<'"'<<buffOUT<<'"'<<';'; 
 	
-	i+=2; //salto "acapo" e "{"
-	i+=setText(&buffer[i],buffOUT); //scopo
+	//proseguo fino a trovare una parentesi grafa aperta
+	while(buffer[i]!='{')i++;
+	i++; //mi sposto al carattere successivo
+	
+	i+=setText(&buffer[i],buffOUT); 													//scopo
 	cout<<buffOUT<<endl;
 	*OUT<<'"'<<buffOUT<<'"'<<';'; 
 	
-	i+=2; //salto "acapo" e "{"
-	i+=setText(&buffer[i],buffOUT); //pre
+	//proseguo fino a trovare una parentesi grafa aperta
+	while(buffer[i]!='{')i++;
+	i++; //mi sposto al carattere successivo
+	
+	i+=setText(&buffer[i],buffOUT); 													//pre
 	cout<<buffOUT<<endl;
 	*OUT<<'"'<<buffOUT<<'"'<<';'; 
 	
-	i+=12;
-	i+=setScenario(&buffer[i],buffOUT); //scenario
+	/*
+	//cerco il prossimo comando \scenario
+	i=cercaStringa(buffer,length,i,"\\scenario",9);
+	if(i==-1)return i; //errore, non trovato
+	if(buffer[i]=='A')
+	while(buffer[i]!='{')i++;
+	i++; //mi sposto al carattere successivo
+	
+	i+=setScenario(&buffer[i],buffOUT); 												//scenario
 	cout<<buffOUT<<endl;
 	*OUT<<'"'<<buffOUT<<'"'<<';'; 
 	
-	//QUI c'è scenario alternativo
+	while(buffer[i]!='\\')i++; //cerco il prossimo comando
 	
-	i++; //salto "acapo" 
 	if(buffer[i]=='\\' && buffer[i+1]=='s') //scenarioAlt
 	{
 		i+=14;
@@ -167,9 +213,21 @@ int getUC(const char * buffer, int length, int start, ofstream * OUT)
 	}else{
 		*OUT<<'"'<<' '<<'"'<<';'; 
 	}
+	*/
 	
-	i+=6;	
-	i+=setText(&buffer[i],buffOUT); //post
+	//campi vuoti per scenario, scenarioAlt, inclusioni ed estensioni
+	*OUT<<'"'<<' '<<'"'<<';'; 
+	*OUT<<'"'<<' '<<'"'<<';'; 
+	*OUT<<'"'<<' '<<'"'<<';'; 
+	*OUT<<'"'<<' '<<'"'<<';'; 
+	
+	//cerco il prossimo comando \post
+	i=cercaStringa(buffer,length,i,"\\post",5);
+	if(i==-1)return i; //errore, non trovato
+	while(buffer[i]!='{')i++;
+	i++; //mi sposto al carattere successivo
+	
+	i+=setText(&buffer[i],buffOUT); 																//post
 	cout<<buffOUT<<endl;	
 	*OUT<<'"'<<buffOUT<<'"'<<';'; 
 	
@@ -177,6 +235,33 @@ int getUC(const char * buffer, int length, int start, ofstream * OUT)
 	
 	delete buffOUT; // :)
 	return i;
+}
+
+void creaRecord(const char * UC, 
+				const char * nome, 
+				const char * diagrammaAssociato, 
+				const char * attori, 
+				const char * scopo,
+				const char * pre,
+				const char * scenario,
+				const char * scenarioAlt,
+				const char * estensioni,
+				const char * inclusioni,
+				const char * post,				
+				ofstream * OUT)
+{
+	*OUT<<'"'<<UC<<'"'<<';'; 
+	*OUT<<'"'<<nome<<'"'<<';'; 
+	*OUT<<'"'<<diagrammaAssociato<<'"'<<';'; 
+	*OUT<<'"'<<attori<<'"'<<';'; 
+	*OUT<<'"'<<scopo<<'"'<<';';
+	*OUT<<'"'<<pre<<'"'<<';';
+	*OUT<<'"'<<scenario<<'"'<<';';
+	*OUT<<'"'<<scenarioAlt<<'"'<<';';
+	*OUT<<'"'<<estensioni<<'"'<<';';
+	*OUT<<'"'<<inclusioni<<'"'<<';';
+	*OUT<<'"'<<post<<'"'<<';'; 
+	*OUT<<'"'<<" "<<'"'<<endl; //immagine     		
 }
 
 int main(int argc, char* argv[])
@@ -203,6 +288,11 @@ int main(int argc, char* argv[])
 		if(!IN2)throw(3);
 		cout<<"Fatto!"<<endl;
 		
+		creaRecord("Capitolato"," "," "," "," "," "," "," "," "," "," ",&OUT);
+		creaRecord("Interna"," "," "," "," "," "," "," "," "," "," ",&OUT);
+		creaRecord("Verbale_2013_12_05"," "," "," "," "," "," "," "," "," "," ",&OUT);
+		creaRecord("Verbale_2014_01_20"," "," "," "," "," "," "," "," "," "," ",&OUT);
+		creaRecord("Verbale_2014_03_05"," "," "," "," "," "," "," "," "," "," ",&OUT);
 		
 		cout<<"-> carico UCMaaP... ";
 		IN.seekg (0, IN.end);
@@ -213,9 +303,10 @@ int main(int argc, char* argv[])
 		IN.close();
 		cout<<"Fatto!"<<endl;
 		cout<<"-> inizio ricerca UC... "<<endl;
-		int k=getUC(buffer,length,0,&OUT);
-		while(k!=-1)
-			k=getUC(buffer,length,k,&OUT);
+		int k=0;
+		do{
+		 k=getUC(buffer,length,k,&OUT);
+		}while(k!=-1);
 			
 		delete buffer;
 		cout<<endl<<endl<<"-> carico UCMaaPsWeb... ";
@@ -227,10 +318,11 @@ int main(int argc, char* argv[])
 		IN1.close();
 		cout<<"Fatto!"<<endl;
 		cout<<"-> inizio ricerca UC... "<<endl;
-		k=getUC(buffer,length,0,&OUT);
-		while(k!=-1)
-			k=getUC(buffer,length,k,&OUT);
-			
+		k=0;
+		do{
+		 k=getUC(buffer,length,k,&OUT);
+		}while(k!=-1);
+						
 		delete buffer;
 		cout<<endl<<endl<<"-> carico UCMaaS... ";
 		IN2.seekg (0, IN2.end);
@@ -241,10 +333,13 @@ int main(int argc, char* argv[])
 		IN2.close();
 		cout<<"Fatto!"<<endl;
 		cout<<"-> inizio ricerca UC... "<<endl;
-		k=getUC(buffer,length,0,&OUT);
-		while(k!=-1)
-			k=getUC(buffer,length,k,&OUT);
-		
+		k=0;
+		do{
+		 k=getUC(buffer,length,k,&OUT);
+		}while(k!=-1);
+			
+		//pulisco la memoria
+		delete buffer;
 	}
 	catch(int x)
 	{
