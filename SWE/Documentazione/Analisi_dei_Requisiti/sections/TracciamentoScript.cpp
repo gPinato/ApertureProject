@@ -165,15 +165,15 @@ int main(int argc, char* argv[])
 		cout<<"|                                               |"<<endl;
 		cout<<"|***********************************************|"<<endl<<endl;
 		cout<<"-> apertura files... ";
-		ifstream IN("Tabella_CasiRequisiti_daAccess.txt");
-		ifstream IN2("Tabella_CasiRequisiti_daAccess.txt");
+		ifstream IN("Requisiti-Casi.txt");
+		ifstream IN2("Casi-Requisiti.txt");
 		ofstream OUT("tracciamentoRequisiti.tex"); 
 		if(!OUT)throw(0);
 		if(!IN)throw(1);
 		if(!IN2)throw(2);
 		cout<<"fatto!"<<endl;		
 		
-		cout<<"-> carico dati Tabella_CasiRequisiti_daAccess.txt... ";
+		cout<<"-> carico dati Requisiti-Casi.txt... ";
 		IN.seekg (0, IN.end);
 		int length = IN.tellg();
 		IN.seekg (0, IN.beg);
@@ -195,7 +195,7 @@ int main(int argc, char* argv[])
 		
 		//seconda tabella
 		
-		cout<<"-> carico Tabella_CasiRequisiti_daAccess.txt... ";
+		cout<<"-> carico Casi-Requisiti.txt... ";
 		IN2.seekg (0, IN2.end);
 		length = IN2.tellg();
 		IN2.seekg (0, IN2.beg);
@@ -221,8 +221,8 @@ int main(int argc, char* argv[])
 		switch(x)
 		{
 			case 0:cout<<"Errore nella scrittura del file di output tracciamentoRequisiti.tex! "<<endl;break;
-			case 1:cout<<"Errore nell'apertura del file Tabella_CasiRequisiti_daAccess.txt! "<<endl;break;
-			case 2:cout<<"Errore nell'apertura del file Tabella_CasiRequisiti_daAccess.txt! "<<endl;break;
+			case 1:cout<<"Errore nell'apertura del file Requisiti-Casi.txt! "<<endl;break;
+			case 2:cout<<"Errore nell'apertura del file Casi-Requisiti.txt! "<<endl;break;
 			default:cout<<"Errore! "<<x<<endl;break;
 		}
 	}
