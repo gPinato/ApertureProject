@@ -30,7 +30,7 @@ Per garantire che il processo di Verifica sia disciplinato, sistematico e quanti
 Per raggiungere gli obiettivi di qualità prefissati sono necessarie risorse umane e tecnologiche, suddivise rispettivamente in strumenti software e \gloss{hardware} utilizzati dai componenti del gruppo per effettuare Verifica su processi e prodotti. I ruoli maggiormente coinvolti nella responsabilità delle attività di Verifica e Validazione sono il Responsabile di Progetto e il Verificatore e i rispettivi compiti sono descritti dettagliatamente nelle Norme di Progetto. Per facilitare il lavoro dei Verificatori sono stati usati degli strumenti automatici che eseguono controlli sistematici sui prodotti generati. Questi strumenti sono descritti nelle Norme di Progetto.
 
 \subsection{Tecniche di analisi} %3.0
-Di seguito verrano elencate le tecniche di analisi che il gruppo adotterà durante lo svolgimento del progetto.
+Di seguito verranno elencate le tecniche di analisi che il gruppo adotterà durante lo svolgimento del progetto.
 
 \subsubsection{Analisi statica}
 \label{3.1}
@@ -75,188 +75,37 @@ Di seguito verranno visualizzate delle tabelle, strutturate secondo la sezione 5
 \subsection{Test di sistema}
 Di seguito verrà mostrata la tabella che riporta tutti i test di sistema pianificati, associati ai requisiti descritti nel documento Analisi dei Requisiti.\\
 I test sono da intendere solo per requisiti ai quali è stato ragionevole associare un test.
+
 \subsubsection{Descrizione dei test di sistema}
-\begin{center}
-\begin{longtable}{|p{2cm}|p{7cm}|p{2cm}|p{2cm}|}
-\toprule
-\textbf{Test} & \textbf{Descrizione} & \textbf{\gloss{Requisito}} & \textbf{Stato}\\
-\midrule
-TS1 & Viene verificato che il sistema \gloss{MaaP} generi correttamente lo scheletro necessario & ROF1 & D.E.\\
-\midrule
-TS1.1 & Viene verificato che il sistema MaaP installi correttamente le librerie necessarie & ROF1.1 & D.E.\\
-\midrule
-TS1.2 & Viene verificato che il sistema MaaP generi correttamente i file necessari & ROF1.2 & D.E.\\
-\midrule
-TS1.3 & Viene verificato che il sistema MaaP generi correttamente le directory necessarie & ROF1.3 & D.E.\\
-\midrule
-TS1.4 & Viene verificato che il \gloss{sottosistema} di autenticazione sia installato e configurato correttamente & ROF1.4 & D.E.\\
-\midrule
-TS1.4.1 & Viene verificato che nel \gloss{database} degli utenti sia presente un \gloss{profilo} di amministrazione di \gloss{default} & ROF1.4.1 ROF6 & D.E.\\
-\midrule
-TS1.5 & Viene verificato che il sistema sia in grado di eliminare un progetto esistente & ROF1.5 & D.E.\\
-\midrule
-TS1.6 & Viene verificato che il sistema sia in grado di clonare un progetto esistente & ROF1.6 & D.E.\\
-\midrule
-TS4 & Viene verificato che il sistema crei correttamente le \gloss{pagine web} partendo dal loro \gloss{file di descrizione} & ROF4 & D.E.\\
-\midrule
-TS5.1 & Viene verificato che la funzione di \gloss{registrazione} possa essere correttamente abilitata/disabilitata & RDF5.1 & D.E.\\
-\midrule
-TS5.4 & Viene verificato che il sistema possa utilizzare correttamente il database di analisi & ROF5.4 & D.E.\\
-\midrule
-TS5.5 & Viene verificato che la funzione di creazione indici possa essere correttamnte abilitata/disabilitata & ROF5.5 & D.E.\\
-\midrule
-TS7 & Viene verificato che il sistema consenta all'utente registrato di potersi autenticare & ROF 7.0 & D.E.\\
-\midrule
-TS8 & Viene verificato che il sistema consenta all'utente di potersi registrare & RDF 8.0 & D.E.\\
-\midrule
-TS9 & Viene verificato che il sistema consenta all'utente di recuperare la \gloss{password}  & ROF 9.0 & D.E\\
-\midrule
-TS10 & Viene verificato che il sistema apra e visualizzi correttamente le \gloss{Collection} e le \gloss{Collection-Index} & ROF10 & D.E.\\
-\midrule
-TS10.1 & Viene verificato che il sistema visualizzi correttamente le pagine \gloss{Document-Show} & ROF10.1 & D.E.\\
-\midrule
-TS10.2.4 & Viene verificato che il sistema disconnetta correttamente un utente alla sua richiesta & ROF10.2.4 & D.E.\\
-\midrule
-TS10.3.1.1 & Viene verificato che un utente autenticato possa modificare i dati del suo profilo & ROF10.3.1.1 & D.E.\\
-\midrule
-TS10.3.1.2 & Viene verificato che le modifiche apportate al profilo di un \gloss{utente business} autenticato siano consistenti & ROF10.3.1.2 & D.E.\\
-\midrule
-TS10.3.2 & Viene verificato che la creazione di un nuovo utente da parte di un \gloss{utente business autenticato} \gloss{amministratore} avvenga correttamente & ROF10.3.2 & D.E.\\
-\midrule
-TS10.3.3 & Viene verificata la corretta cancellazione di un utente da parte di un \gloss{utente business autenticato amministratore} & ROF10.3.3 & D.E.\\
-\midrule
-TS10.4 & Viene verificato che l'utente business autenticato amministratore possa eliminare correttamente un \gloss{Document} & ROF10.4 & D.E.\\
-\midrule
-TS10.5 & Viene verificato che l’utente business autenticato amministratore possa modificare correttamente un Document & ROF10.5 & D.E.\\
-\midrule
-TS10.6 & Viene verificata la corretta visualizzazione delle \gloss{query} più utilizzate & ROF10.6 & D.E.\\
-\midrule
-TS10.7.1.2 & Viene verificata la corretta creazione degli indici di analisi & ROF10.7.1.2 & D.E.\\
-\midrule
-TS10.7.2 & Viene verificata la corretta eliminazione degli indici di analisi & ROF10.7.2 & D.E.\\
-\midrule
-TS10.7.3 & Viene verificata la corretta visualizzazione degli indici di analisi & ROF10.7.3 & D.E.\\
-\midrule
-TS17 & Viene verificato che le pagine web prodotte dal \gloss{framework} MaaP siano compatibili con la versione 30.0.x o superiore di \gloss{Google Chrome} & ROV17 & D.E.\\
-\midrule
-TS18 & Viene verificato che le pagine web prodotte dal framework MaaP siano compatibili con la versione 24.x o superiore di \gloss{Firefox} & ROV18 & D.E.\\
-\midrule
-TS19 & Viene verificato che il sistema accetti solo \gloss{file di configurazione} validi & ROV19 & D.E.\\
-\midrule
-TS26 & Viene verificato che il sistema di installazione del software funzioni correttamente & ROV26 & D.E.\\
-\midrule
-TS27 & Viene verificato che il deployment su \gloss{Heroku} avvenga con successo & ROV27 & D.E.\\
-%inserire i test
-\bottomrule
-\caption{Test di sistema}
-\label{tab:changelog}
-\end{longtable}
-\end{center}
+%la seguente tabella è generata automaticamente dallo scriptTest che
+%prende i dati esportati dal database di Access e genera la tabella in latex
+\input{./DescrizioneTestSistema.tex}
+
 \subsection{Test d'integrazione}
 
 \subsubsection{Diagramma d'integrazione}
 \immagine{./integrazione}{Diagramma d'integrazione}
-
 Di seguito verrà mostrata la tabella che riporta tutti i test d'integrazione pianificati, associati alle componenti descritte nella progettazione ad alto livello.\\
+
 \subsubsection{Descrizione dei test d'integrazione}
-\begin{center}
-\begin{longtable}{|p{5cm}|p{5cm}|p{5cm}|p{1cm}|}
-\toprule
-\textbf{Test} & \textbf{Descrizione} & \textbf{Componente} & \textbf{Stato}\\
-\midrule
-TI.MaaP & Test di integrazione finale tra \gloss{client} e \gloss{server} & MaaP & D.E.\\
-\midrule
-TI.Server & Verifica il corretto funzionamento delle componenti del server, quindi la corretta integrazione
-tra ModelServer e \gloss{Controller} del server. In particolare, viene verificato che le funzionalit\`{a} presenti nel
-Controller debbano agire consistentemente sui dati del ModelServer. & Server & D.E.\\
-\midrule
-TI.Server.ModelServer & Verifica che tutte le operazioni di lettura, scrittura e interpretazione dei dati avvengano
-correttamente. & Server::ModelServer & D.E.\\
-\midrule
-TI.Server.ModelServer. DataManager-Database & Verifica che i gestori dei dati siano correttamente integrati ai database di riferimento. & Server::ModelServer::DataManager & D.E.\\
-& & Server::ModelServer::Database & \\
-\midrule
-TI.Server.ModelServer. DataManager & Verifica che le operazioni di recupero, gestione e scrittura dati nei database avvengano correttamente. & Server::ModelServer::DataManager & D.E.\\
-\midrule
-TI.Client & Verifica che i dati ottenuti e forniti da e verso il client siano corretti e correttamente gestiti all'interno del client stesso. & Client & D.E.\\
-\midrule
-TI.Client.View-ControllerModelView & Verifica che i dati uscenti ed entranti la \gloss{View} siano gestiti correttamente dal ControllerModelView & Client::View & D.E.\\
-& & Client::ControllerModelView & \\
-\midrule
-TI.Client.ControllerModelView-ModelClient & Viene verificato che le funzionalit\`{a} del ControllerModelView agiscano correttamente sul ModelClient & Client::ControllerModelView & D.E.\\
-& & Client::ModelClient & \\
-\midrule
-TI.Client.ControllerModelView & Viene verificato che le funzioni del ClientController modifichino correttamente i dati presenti nello \gloss{Scope} & Client::ControllerModelView & D.E.\\
-%inserire i test
-\bottomrule
-\caption{Test d'integrazione}
-\label{tab:changelog}
-\end{longtable}
-\end{center}
+%la seguente tabella è generata automaticamente dallo scriptTest che
+%prende i dati esportati dal database di Access e genera la tabella in latex
+\input{./DescrizioneTestIntegrazione.tex}
+
 \subsubsection{Tracciamento}
 Di seguito verranno riportati in forma tabellare i tracciamenti componente-test d'integrazione e test d'integrazione-componente.\\
+
 \paragraph{Tracciamento componente-test d'integrazione}
-\begin{center}
-\begin{longtable}{|p{7cm}|p{7cm}|}
-\toprule
-\textbf{Componente} & \textbf{Test}\\
-\midrule
-MaaP & TI.MaaP\\
-\midrule
-Server & TI.Server\\
-\midrule
-Server::ModelServer & TI.Server.ModelServer\\
-\midrule
-Server::ModelServer::DataManager & TI.Server.ModelServer.DataManager TI.Server.ModelServer.DataManager-Database\\
-\midrule
-Server::ModelServer::Database & TI.Server.ModelServer.DataManager-Database\\
-\midrule
-Client & TI.Client\\
-\midrule
-Client::View & TI.Client.View-ControllerModelView\\
-\midrule
-Client::ControllerModelView & TI.Client.ControllerModelView TI.Client.View-ControllerModelView TI.Client.ControllerModelView-ModelClient\\
-\midrule
-Client::ModelClient & TI.Client.ControllerModelView-ModelClient\\
-%inserire i test
-\bottomrule
-\caption{Tracciamento componente-test d'integrazione}
-\label{tab:changelog}
-\end{longtable}
-\end{center}
+%la seguente tabella è generata automaticamente dallo scriptTest che
+%prende i dati esportati dal database di Access e genera la tabella in latex
+\input{./TracciamentoCOMPTEST.tex}
+
 \vspace{5cm}
+
 \paragraph{Tracciamento test d'integrazione-componente}
-\begin{center}
-\begin{longtable}{|p{7cm}|p{7cm}|}
-\toprule
-\textbf{Test} & \textbf{Componente}\\
-\midrule
-TI.MaaP & MaaP\\
-\midrule
-TI.Server & Server\\
-\midrule
-TI.Server.ModelServer & Server::ModelServer\\
-\midrule
-TI.Server.ModelServer.DataManager-Database & Server::ModelServer::DataManager\\
-& Server::ModelServer::Database\\
-\midrule
-TI.Server.ModelServer.DataManager & Server::ModelServer::DataManager\\
-\midrule
-TI.Client & Client\\
-\midrule
-TI.Client.View-ControllerModelView & Client::View\\
-& Client::ControllerModelView\\
-\midrule
-TI.Client.ControllerModelView-ModelClient & Client::ControllerModelView\\
-& Client::ModelClient\\
-\midrule
-TI.Client.ControllerModelView & Client::ControllerModelView\\
-%inserire i test
-\bottomrule
-\caption{Tracciamento test d'integrazione-componente}
-\label{tab:changelog}
-\end{longtable}
-\end{center}
+%la seguente tabella è generata automaticamente dallo scriptTest che
+%prende i dati esportati dal database di Access e genera la tabella in latex
+\input{./TracciamentoTESTCOMP.tex}
 
 \subsection{Test di validazione}
 In questa sezione vengono descritti i test di validazione, utili ad accertarsi che il prodotto realizzato sia conforme alle attese.
@@ -282,7 +131,7 @@ L'utente vuole verificare le funzionalità di visualizzazione di Collection e Do
 \end{enumerate}
 
 \subsubsection{TV 2 - Lato Utente Business}
-L’utente vuole verificare il corretto funzionamento delle funzionalità di registrazione, autenticazione e gestione profilo.
+L'utente vuole verificare il corretto funzionamento delle funzionalità di registrazione, autenticazione e gestione profilo.
 Si dovrà quindi seguire la seguente \gloss{procedura} di validazione:
 
 \begin{enumerate}
@@ -470,7 +319,7 @@ Dovrà quindi seguire la seguente procedura:
 \item Creare un nuovo progetto;
 \item Verificare che il nuovo progetto sia disponibile;
 \item Clonare un progetto;
-\item Verificare che il progetto clonato sia identico all’originale;
+\item Verificare che il progetto clonato sia identico all'originale;
 \item Verificare di poter gestire un progetto;
 \begin{enumerate}
 \item Verificare di poter avviare, fermare o riavviare il server MaaP;
@@ -489,210 +338,14 @@ Dovrà quindi seguire la seguente procedura:
 
 \subsubsection{Tracciamento}
 Di seguito verranno riportati in forma tabellare i tracciamenti test di validazione - requisiti e l'inverso, ovvero requisiti - test di validazione.\\
-\paragraph{Tracciamento Test di Validazione - Requisiti}
-\begin{center}
-\begin{longtable}{|p{7cm}|p{7cm}|}
-\toprule
-\textbf{Test} & \textbf{Requisiti}\\
-\midrule
-TV 1 & ROF10\\ & ROF10.1\\ & RDF10.2\\ & RDF10.2.1\\ &  RDF10.2.1.1\\ &  RDF10.2.1.2\\ &  RDF10.2.2 \\ & RDF10.2.3\\ &   ROF10.2.5\\
-\midrule
-TV 2 & ROF7\\ &  ROF7.1\\ &  ROF7.2\\ &  ROF7.2.1\\ &  RDF8\\ &  RDF8.1\\ &  RDF8.2\\ &  RDF8.2.1\\ &  ROF9\\ &  ROF10.2.4\\ &  ROF10.3\\ &  ROF10.3.1\\ &  ROF10.3.1.1\\ &  ROF10.3.1.2\\ &  ROF10.3.1.3\\
-\midrule
-TV 3 & ROF6\\ &  ROF10.3.1.4\\ &  ROF10.3.2\\ &  ROF10.3.3\\
-\midrule
-TV 4 &  ROF10.4\\ &  ROF10.5\\ &  ROF10.5.1\\ &  ROF10.5.2\\ &  ROF10.5.3\\
-\midrule
-TV 5 &  ROF10.6\\ &  ROF10.7\\ &  ROF10.7.1\\ &  ROF10.7.1.1\\ &  ROF10.7.1.2\\ &  ROF10.7.2\\ &  ROF10.7.2.1\\ &  ROF10.7.2.2\\ &  ROF10.7.3\\
-\midrule
-TV 6 & ROF3\\ &  ROF4\\ &  ROF4.1\\ &  ROF4.1.2\\ &  ROF4.1.2.1\\ &  ROF4.1.2.1.1\\ &  ROF4.1.2.1.2\\ &  ROF4.1.2.1.3\\ &  ROF4.1.2.1.4\\ &  ROF4.1.2.1.5\\ &  ROF4.1.2.2\\ &  ROF4.1.2.3\\ &  ROF4.2\\ &  ROF4.2.1\\ &  ROF4.2.1.1\\ &  ROF4.2.1.2\\ &  ROF4.2.2\\ &  ROF4.2.2.1\\ &  ROF4.2.2.2\\ &  ROF4.2.2.3\\ &  ROF4.2.2.4\\ &  ROF4.2.2.5\\ &  ROF4.2.2.6\\ &  RFF4.2.2.7\\ &  ROF4.3\\ &  ROF4.4\\
-\midrule
-TV 7 & ROF4.1.3\\ &  ROF4.1.3.1\\ &  ROF4.1.3.1.1\\ &  ROF4.1.3.1.2\\ &  ROF4.1.3.1.3\\ &  ROF4.1.3.1.4\\ &  ROF4.1.3.1.5\\ &  ROF4.2.3\\ &  ROF4.2.3.1\\ &  ROF4.2.3.2\\ &  ROF4.3\\ &  ROF4.4\\
-\midrule
-TV 8 & ROF5\\ &  RDF5.1\\ &  RDF5.3\\ &  ROF5.4\\ &  ROF5.5\\
 
-%inserire i test
-\bottomrule
-\caption{Tracciamento Test di Validazione - Requisiti}
-\label{tab:changelog}
-\end{longtable}
-\end{center}
+\paragraph{Tracciamento Test di Validazione - Requisiti}
+%la seguente tabella è generata automaticamente dallo scriptTest che
+%prende i dati esportati dal database di Access e genera la tabella in latex
+\input{./TracciamentoTESTREQ.tex}
 
 \paragraph{Tracciamento Requisiti - Test di Validazione}
-\begin{center}
-\begin{longtable}{|p{7cm}|p{7cm}|}
-\toprule
-\textbf{Requisiti} & \textbf{Test}\\
-\midrule
-ROF3 & TV6\\
-\midrule
-ROF4 & TV6\\
-\midrule
-ROF4.1 & TV6\\
-\midrule
-ROF4.1.2 & TV6\\
-\midrule
-ROF4.1.2.1 & TV6\\
-\midrule
-ROF4.1.2.1.1 & TV6\\
-\midrule
-ROF4.1.2.1.2 & TV6\\
-\midrule
-ROF4.1.2.1.3 & TV6\\
-\midrule
-ROF4.1.2.1.4 & TV6\\
-\midrule
-ROF4.1.2.1.5 & TV6\\
-\midrule
-ROF4.1.2.2 & TV6\\
-\midrule
-ROF4.1.2.3 & TV6\\
-\midrule
-ROF4.1.3 & TV7\\
-\midrule
-ROF4.1.3.1 & TV7\\
-\midrule
-ROF4.1.3.1.1 & TV7\\
-\midrule
-ROF4.1.3.1.2 & TV7\\
-\midrule
-ROF4.1.3.1.3 & TV7\\
-\midrule
-ROF4.1.3.1.4 & TV7\\
-\midrule
-ROF4.1.3.1.5 & TV7\\
-\midrule
-ROF4.2 & TV6\\
-\midrule
-ROF4.2.1 & TV6\\
-\midrule
-ROF4.2.1.1 & TV6\\
-\midrule
-ROF4.2.1.2 & TV6\\
-\midrule
-ROF4.2.2 & TV6\\
-\midrule
-ROF4.2.2.1 & TV6\\
-\midrule
-ROF4.2.2.2 & TV6\\
-\midrule
-ROF4.2.2.3 & TV6\\
-\midrule
-ROF4.2.2.4 & TV6\\
-\midrule
-ROF4.2.2.5 & TV6\\
-\midrule
-ROF4.2.2.6 & TV6\\
-\midrule
-ROF4.2.2.7 & TV6\\
-\midrule
-ROF4.2.3 & TV7\\
-\midrule
-ROF4.2.3.1 & TV7\\
-\midrule
-ROF4.2.3.2 & TV7\\
-\midrule
-ROF4.3 & TV6\\ & TV7\\
-\midrule
-ROF4.4 & TV6\\ & TV7\\
-\midrule
-ROF5 & TV8\\
-\midrule
-ROF5.1 & TV8\\
-\midrule
-RDF5.3 & TV8\\
-\midrule
-ROF5.4 & TV8\\
-\midrule
-ROF5.5 & TV8\\
-\midrule
-ROF6 & TV3\\
-\midrule
-ROF7 & TV2\\
-\midrule
-ROF7.1 & TV2\\
-\midrule
-ROF7.2 & TV2\\
-\midrule
-ROF7.2.1 & TV2\\
-\midrule
-RDF8 & TV2\\
-\midrule
-RDF8.1 & TV2\\
-\midrule
-RDF8.2 & TV2\\
-\midrule
-RDF8.2.1 & TV2\\
-\midrule
-ROF9 & TV2\\
-\midrule
-ROF10 & TV1\\
-\midrule
-ROF10.1 & TV1\\
-\midrule
-RDF10.2 & TV1\\
-\midrule
-RDF10.2.1 & TV1\\
-\midrule
-RDF10.2.1.1 & TV1\\
-\midrule
-RDF10.2.1.2 & TV1\\
-\midrule
-RDF10.2.2 & TV1\\
-\midrule
-RDF10.2.3 & TV1\\
-\midrule
-ROF10.2.4 & TV2\\
-\midrule
-ROF10.2.5 & TV1\\
-\midrule
-ROF10.3 & TV2\\
-\midrule
-ROF10.3.1 & TV2\\
-\midrule
-ROF10.3.1.1 & TV2\\
-\midrule
-ROF10.3.1.2 & TV2\\
-\midrule
-ROF10.3.1.3 & TV2\\
-\midrule
-ROF10.3.1.4 & TV3\\
-\midrule
-ROF10.3.2 & TV3\\
-\midrule
-ROF10.3.3 & TV3\\
-\midrule
-ROF10.4 & TV4\\
-\midrule
-ROF10.5 & TV4\\
-\midrule
-ROF10.5.1 & TV4\\
-\midrule
-ROF10.5.2 & TV4\\
-\midrule
-ROF10.5.3 & TV4\\
-\midrule
-ROF10.6 & TV5\\
-\midrule
-ROF10.7 & TV5\\
-\midrule
-ROF10.7.1 & TV5\\
-\midrule
-ROF10.7.1.1 & TV5\\
-\midrule
-ROF10.7.1.2 & TV5\\
-\midrule
-ROF10.7.2 & TV5\\
-\midrule
-ROF10.7.2.1 & TV5\\
-\midrule
-ROF10.7.2.2 & TV5\\
-\midrule
-ROF10.7.3 & TV5\\
+%la seguente tabella è generata automaticamente dallo scriptTest che
+%prende i dati esportati dal database di Access e genera la tabella in latex
+\input{./TracciamentoREQTEST.tex}
 
-%inserire i test
-\bottomrule
-\caption{Tracciamento Requisiti - Test di Validazione}
-\label{tab:changelog}
-\end{longtable}
-\end{center}

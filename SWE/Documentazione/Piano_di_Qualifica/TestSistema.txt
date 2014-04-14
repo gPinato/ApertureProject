@@ -1,0 +1,76 @@
+"TS1";"Viene verificato che il sistema MaaP generi correttamente lo scheletro necessario
+correttamente lo scheletro necessario";"D.E."
+"TS1.1";"Viene verificato che il sistema MaaP installi correttamente le librerie necessarie
+correttamente le librerie necessarie";"D.E."
+"TS1.2";"Viene verificato che il sistema MaaP generi correttamente i file necessari
+correttamente i file necessari";"D.E."
+"TS1.3";"Viene verificato che il sistema MaaP generi correttamente le directory necessarie
+correttamente le directory necessarie";"D.E."
+"TS1.4";"Viene verificato che il sottosistema di autenticazione sia installato e configurato correttamente
+autenticazione sia installato e configurato
+correttamente";"D.E."
+"TS1.4.1";"Viene verificato che nel database degli utenti sia presente un profilo di amministrazione di dafault
+sia presente un profilo di amministrazione di
+default";"D.E."
+"TS1.5";"Viene verificato che il sistema sia in grado di eliminare un progetto esistente
+eliminare un progetto esistente";"D.E."
+"TS1.6";"Viene verificato che il sistema sia in grado di clonare un progetto esistente
+clonare un progetto esistente";"D.E."
+"TS10";"Viene verificato che il sistema apra e visualizzi correttamente le Collection e le Collection-Index
+correttamente le Collection e le Collection-
+Index";"D.E."
+"TS10.1";"Viene verificato che il sistema visualizzi correttamente le pagine Document-Show
+correttamente le pagine Document-Show";"D.E."
+"TS10.2.4";"Viene verificato che il sistema disconnetta correttamente un utente alla sua richiesta
+correttamente un utente alla sua richiesta";"D.E."
+"TS10.3.1.1";"Viene verificato che un utente autenticato possa modificare i dati del suo profilo
+possa modificare i dati del suo profilo";"D.E."
+"TS10.3.1.2";"Viene verificato che le modifiche apportate al profilo di un utente business autenticato siano consistenti
+al profilo di un utente business autenticato
+siano consistenti";"D.E."
+"TS10.3.2";"Viene verificato che la creazione di un nuovo utente da parte di un utente business autenticato amministratore avvenga correttamente
+vo utente da parte di un utente business autenticato amministratore avvenga
+correttamente";"D.E."
+"TS10.3.3";"Viene verificata la corretta cancellazione di un  utente da parte da parte di un utente business autenticato amministratore 
+un utente da parte di un utente business
+autenticato amministratore";"D.E."
+"TS10.4";"Viene verificato che l'utente business autenticato amministratore possa eliminare correttamente un Document
+correttamente un Document";"D.E."
+"TS10.5";"Viene verificato che l'utente business autenticato amministratore possa modificare correttamente un Document
+tenticato amministratore possa modificare
+correttamente un Document";"D.E."
+"TS10.6";"Viene verificata la corretta visualizzazione delle query più utilizzate
+delle query più utilizzate";"D.E."
+"TS10.7.1.2";"Viene verificata la corretta creazione degli indici di analisi
+indici di analisi";"D.E."
+"TS10.7.2";"Viene verificata la corretta eliminazione degli indici di analisi
+indici di analisi";"D.E."
+"TS10.7.3";"Viene verificata la corretta visualizzazione degli indici di analisi
+degli indici di analisi";"D.E."
+"TS17";"Viene verificato che le pagine web prodotte dal framework MaaP siano compatibili con la versione 30.0.x o superiore di Google Chrome
+dal framework MaaP siano compatibili con la
+versione 30.0.x o superiore di Google Chrome";"D.E."
+"TS18";"Viene verificato che le pagine web prodotte dal framework MaaP siano compatibili con la versione 24.x o superiore di Firefox
+dal framework MaaP siano compatibili con la
+versione 24.x o superiore di Firefox";"D.E."
+"TS19";"Viene verificato che il sistema accetti solo file di configurazione validi
+di configurazione validi";"D.E."
+"TS26";"Viene verificato che il sistema di installazione del software funzioni correttamente
+del software funzioni correttamente";"D.E."
+"TS27";"Viene verificato che il deployment su Heroku avvenga con successo
+avvenga con successo";"D.E."
+"TS4";"Viene verificato che il sistema crei correttamente le pagine web partendo dal loro file di descrizione
+mente le pagine web partendo dal loro file
+di descrizione";"D.E."
+"TS5.1";"Viene verificato che la funzione di registrazione possa essere correttamente abilitata/disabilitata
+ta/disabilitata";"D.E."
+"TS5.4";"Viene verificato che il sistema possa utilizzare correttamente il database di analisi
+correttamente il database di analisi";"D.E."
+"TS5.5";"Viene verificato che la funzione di creazione indici possa essere correttamnte abilitata/disabilitata
+ta/disabilitata";"D.E."
+"TS7";"Viene verificato che il sistema consenta all'utente registrato di potersi autenticare
+all'utente registrato di potersi autenticare";"D.E."
+"TS8";"Viene verificato che il sistema consenta all'utente di potersi registrare
+all'utente di potersi registrare";"D.E."
+"TS9";"Viene verificato che il sistema consenta all'utente di recuperare la password
+all'utente di recuperare la password";"D.E."

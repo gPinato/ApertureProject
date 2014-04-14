@@ -1,0 +1,34 @@
+\begin{center}
+\begin{longtable}{|p{5cm}|p{5cm}|p{5cm}|p{1cm}|}
+\toprule
+\textbf{Test} & \textbf{Descrizione} & \textbf{Componente} & \textbf{Stato}\\
+\midrule
+TI.MaaP & Test di integrazione finale tra \gloss{client} e \gloss{server} & MaaP & D.E.\\
+\midrule
+TI.Server & Verifica il corretto funzionamento delle componenti del server, quindi la corretta integrazione
+tra ModelServer e \gloss{Controller} del server. In particolare, viene verificato che le funzionalit\`{a} presenti nel
+Controller debbano agire consistentemente sui dati del ModelServer. & Server & D.E.\\
+\midrule
+TI.Server.ModelServer & Verifica che tutte le operazioni di lettura, scrittura e interpretazione dei dati avvengano
+correttamente. & Server::ModelServer & D.E.\\
+\midrule
+TI.Server.ModelServer. DataManager-Database & Verifica che i gestori dei dati siano correttamente integrati ai database di riferimento. & Server::ModelServer::DataManager & D.E.\\
+& & Server::ModelServer::Database & \\
+\midrule
+TI.Server.ModelServer. DataManager & Verifica che le operazioni di recupero, gestione e scrittura dati nei database avvengano correttamente. & Server::ModelServer::DataManager & D.E.\\
+\midrule
+TI.Client & Verifica che i dati ottenuti e forniti da e verso il client siano corretti e correttamente gestiti all'interno del client stesso. & Client & D.E.\\
+\midrule
+TI.Client.View-ControllerModelView & Verifica che i dati uscenti ed entranti la \gloss{View} siano gestiti correttamente dal ControllerModelView & Client::View & D.E.\\
+& & Client::ControllerModelView & \\
+\midrule
+TI.Client.ControllerModelView-ModelClient & Viene verificato che le funzionalit\`{a} del ControllerModelView agiscano correttamente sul ModelClient & Client::ControllerModelView & D.E.\\
+& & Client::ModelClient & \\
+\midrule
+TI.Client.ControllerModelView & Viene verificato che le funzioni del ClientController modifichino correttamente i dati presenti nello \gloss{Scope} & Client::ControllerModelView & D.E.\\
+%inserire i test
+\bottomrule
+\caption{Test d'integrazione}
+\label{tab:changelog}
+\end{longtable}
+\end{center}

@@ -1,0 +1,28 @@
+\begin{center}
+\begin{longtable}{|p{7cm}|p{7cm}|}
+\toprule
+\textbf{Componente} & \textbf{Test}\\
+\midrule
+MaaP & TI.MaaP\\
+\midrule
+Server & TI.Server\\
+\midrule
+Server::ModelServer & TI.Server.ModelServer\\
+\midrule
+Server::ModelServer::DataManager & TI.Server.ModelServer.DataManager TI.Server.ModelServer.DataManager-Database\\
+\midrule
+Server::ModelServer::Database & TI.Server.ModelServer.DataManager-Database\\
+\midrule
+Client & TI.Client\\
+\midrule
+Client::View & TI.Client.View-ControllerModelView\\
+\midrule
+Client::ControllerModelView & TI.Client.ControllerModelView TI.Client.View-ControllerModelView TI.Client.ControllerModelView-ModelClient\\
+\midrule
+Client::ModelClient & TI.Client.ControllerModelView-ModelClient\\
+%inserire i test
+\bottomrule
+\caption{Tracciamento componente-test d'integrazione}
+\label{tab:changelog}
+\end{longtable}
+\end{center}
