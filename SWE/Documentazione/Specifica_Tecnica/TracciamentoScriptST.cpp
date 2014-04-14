@@ -307,7 +307,8 @@ int main(int argc, char* argv[])
 		disclaimer(&OUT);
 		cout<<"fatto!"<<endl;
 		delete buffer2;
-					
+		
+		OUT.close();
 	}
 	catch(int x)
 	{
