@@ -200,7 +200,7 @@ Si è deciso di fissare come obiettivo il raggiungimento del terzo livello dello
 \item Pianificare dettagliatamente i processi utilizzando standard di riferimento;
 \item Pianificare le risorse da utilizare.
 \end{itemize}
-Sono state scelte due misure che si basano sui costi e i tempi spesi per un processo, per renderlo quantificabile. Tali misure sono:
+Sono state scelti due indici che si basano sui costi e i tempi spesi per un processo, per renderlo quantificabile. Tali indici sono:
 \begin{itemize}
 \item \grassetto{Schedule Variance(SV)}: vedi sezione ???;
 \item \grassetto{Budget Variance(BV)}: vedi sezione ???;
@@ -214,7 +214,7 @@ La qualità di prodotto può essere suddivisa in due categorie. La prima riguard
 Per cercare di realizzare e progettare un prodotto software, in accordo con specifiche e standard definiti, ed essere privo di non conformità o difetti, è necessario usare lo standard ISO/IEC 9126\footnote{vedi appendice, sezione A.3}, il quale redige e descrive obiettivi qualitativi e fornisce delle linee guida d'utilizzo di metriche al fine di tracciare il progresso nel miglioramento continuo di processo e prodotto. 
 Di seguito verranno elencati gli obiettivi software, basandosi sulle caratteristiche dello standard sopracitato. 
 \begin{itemize}
-\item \grassetto{Funzionalità}: il prodotto software deve soddisfare tuti i requisiti funzionali, tutti i reauisiti obbligatori trovati e di conseguenza fornire le funzionalità attese;
+\item \grassetto{Funzionalità}: il prodotto software deve soddisfare tuti i requisiti funzionali, tutti i requisiti obbligatori trovati e di conseguenza fornire le funzionalità attese;
 \begin{itemize}
 \item \grassetto{Strategia adottata}: Prodotto Funzionale(vedi sezione).
 \item \grassetto{Misura o metrica utilizzata}: Soddisfacimento requisiti funzionali e obbligatori(vedi sezione ???);
@@ -273,7 +273,7 @@ Il gruppo \NomeGruppo{} si è imposto di produrre documentazione di qualità, da
 \begin{itemize}
 \item \grassetto{Leggibilità}: si cercherà di produrre testo caratterizzato da una buona leggibilità.
 \begin{itemize}
-\item \grassetto{Strategia adottata}: Testo leggibile.
+\item \grassetto{Strategia adottata}: Testo leggibile(vedi sezione???).
 \item \grassetto{Misura o metrica utilizzata}: Indice di Gulpease(vedi sezione???);
 \end{itemize}
 \end{itemize} 
@@ -281,7 +281,8 @@ Il gruppo \NomeGruppo{} si è imposto di produrre documentazione di qualità, da
 \newpage
 
 \section{Strategie}
-Verranno di seguito riportate le strategie che il gruppo adotta per il raggiungimento della qualità. Alcune strategie fanno riferimento agli obiettivi riguardanti le metriche individuate, mentre altre strategie fanno riferimento agli obiettivi non quantificabili. Inoltre verranno fornite delle strategie di verifica.
+Verranno di seguito riportate le strategie che il gruppo adotta per il raggiungimento degli obiettivi. Alcune strategie fanno riferimento agli obiettivi riguardanti le metriche individuate, mentre altre strategie fanno riferimento agli obiettivi non quantificabili.
+Per quanto riguarda le strategie di verifica della qualità del prodotto, si utilizzerà l'analisi statica e l'analisi dinamica. Entrambe sono descritte in Appendice B, sezione B.5.
 
 \subsection{Prodotto Funzionale}
 Per quanto riguarda la funzionalità del prodotto, verrà prodotta una tabella di tracciamento che mostra tutti i requisiti obbligatori e i requisiti funzionali. Per il raggiungimento di questo obiettivo il prodotto finale dovrà soddisfare tutti i requisiti mostrati in tabella.
@@ -292,13 +293,16 @@ Per l'affidabilità del prodotto, si cercherà di scrivere del codice con il min
 \subsection{Prodotto Efficiente}
 
 \subsection{Prodotto Usabile}
-Per quanto riguarda l'usabilità del prodotto, si cercherà di realizzarlo pensando di farlo il più semplice possibile, ponendo maggiore attenzione all'interazione che esso avrà con chi lo usa. Inoltre il manuale utente che verrà rilasciato insieme al prodotto dovrà essere il più semplice possibile e di facile comprensione; inoltre dovrà avere un buon valore di indice di leggibilità.
+Per quanto riguarda l'usabilità del prodotto, si cercherà di realizzarlo pensando di farlo il più semplice possibile, ponendo maggiore attenzione all'interazione che esso avrà con chi lo usa. Inoltre il manuale utente che verrà rilasciato insieme al prodotto dovrà essere il più semplice possibile e di facile comprensione; esso dovrà avere un buon valore di indice di leggibilità.
 
 \subsection{Prodotto Manutenibile}
-Per quanto riguarda la manutenibilità del prodotto, ogni volta che verranno progettate delle componenti si procederà al calcolo dell'accoppiamento afferente ed efferente, cercando di rientrare nel valore ottimale corrispondente. Inoltre prima di effettuare un commit, ogni pezzo di codice scritto deve soddisfare le metriche individuate.
+Per quanto riguarda la manutenibilità del prodotto, ogni volta che verranno progettate delle componenti si procederà al calcolo dell'accoppiamento afferente ed efferente; dopodichè si procede al calcolo dell'instabilità cercando di rientrare nel valore ottimale corrispondente. Inoltre prima di effettuare un commit, ogni pezzo di codice scritto deve soddisfare le metriche individuate.
 
 \subsection{Prodotto Portabile}
-Per la portabilità del prodotto, verrà prodotta una tabella di tracciamento per identificare i requisiti prestazionali e di vincolo individuati nell'Analisi dei Requisiti. Per assicurarsi maggior portabilità dovranno essere soddisfatti queste tipologie di requisiti.
+Per la portabilità del prodotto, verrà prodotta una tabella di tracciamento. Questa serve per identificare i requisiti prestazionali e di vincolo individuati nell'Analisi dei Requisiti. Per assicurarsi maggior portabilità dovranno essere soddisfatte le tipologie di requisiti indicate.
+
+\subsection{Testo leggibile}
+Per cercare di ottenere un testo leggibile e che soddisfi l'indice a esso associato, il gruppo si impegna a scrivere testo contenente frasi corte ma significative. Inoltre dovranno essere usate parole di uso comune e non troppo lunghe.
 
 \subsection{Strategie aggiuntive}
 Verranno ora elencate le strategie che il gruppo utilizzerà per ottenere più qualità possibile.
@@ -309,10 +313,13 @@ Ogni volta che si realizza una classe si controlla il numero di attributi che es
 \subsubsection{Annidamento accettabile}
 Ogni volta che si realizza un metodo, si controlla se il numero di chiamate annidate rientra nei parametri prestabiliti.
 
+\subsubsection{Copertura del codice accettabile}
+Ogni volta che si realizza un metodo, esso deve essere il più semplice possibile, in modo tale che non necessiti di testing.
+
 \newpage
 
 \section{Misure e metriche}
-In base agli obiettivi di qualità descritti nella sezione ??? di questo documento, il gruppo ha individuato una serie di metriche e misure che permetteranno di rendere gli obiettivi quantificabili e di conseguenza verificabili. Come descritto in sezione ??? ogni metrica e ogni misura sarà accompagnata da un range di valori. Esse saranno divise per le categorie Processi, Software e Documentazione. 
+In base agli obiettivi di qualità descritti nella sezione ??? di questo documento, il gruppo ha individuato una serie di metriche e misure che permetteranno di rendere gli obiettivi quantificabili e di conseguenza verificabili. Come descritto in sezione ??? ogni metrica e ogni misura sarà accompagnata, dove possibile, da un range di valori. Esse saranno divise per le categorie Processi, Software e Documentazione. 
 
 \subsection{Processi}
 \subsubsection{Schedule Variance}
@@ -389,7 +396,7 @@ Fornisce un valore che indica il numero di pagine che un manuale utente deve ave
 
 \subsubsection{Accoppiamento afferente}
 Questo valore indica la quantità di classi esterne ad un \gloss{package} che dipendono da classi interne allo stesso.
-Un alto valore di accoppiamento in una singola classe del package influisce sull'accoppiamento dell'intero package. Questo fatto non è necessariamente un errore di progettazione, ma il package in esame può rappresentare un punto critico del software. Per contro, un package con basso fattore di accoppiamento può delineare una scarsa utilità del package stesso, che probabilmente andrebbe inglobato con altri package; è legato, insieme all'accoppiamento efferente, ad una metrica importante, ovvero l'instabilità.
+Un alto valore di accoppiamento in una singola classe del package influisce sull'accoppiamento dell'intero package. Questo fatto non è necessariamente un errore di progettazione, ma il package in esame può rappresentare un punto critico del software. Per contro, un package con basso fattore di accoppiamento può delineare una scarsa utilità del package stesso, che probabilmente andrebbe inglobato con altri package. Esso è legato, insieme all'accoppiamento efferente, ad una metrica importante, ovvero l'instabilità.
 
 \subsubsection{Accoppiamento efferente}
 Questo fattore indica l'accoppiamento contrario, ovvero il numero di classi interne al package che dipendono da classi esterne. Più questo indice è basso, più indipendente è il package stesso.
