@@ -196,12 +196,7 @@ Si descriveranno i \gloss{package} e i componenti per poi dettagliare le singole
 
 
 \subsection{Architettura generale}
-L'architettura del framework segue un modello di architettura in stile Client-server che prevede la suddivisione dell'applicazione  in due parti: la parte client composta dall'\gloss{interfaccia} \gloss{utente} (Client) e la parte server composta dalla \gloss{business} logic (Controller) e alla gestione dei dati persistenti (ModelServer). La parte Client segue il design pattern \gloss{MVVM} utilizzato da AngularJS ed è quindi suddivisa in Model, \gloss{View}, \gloss{ViewModel}.\\
-
-%TODO***************************************** 
-%aggiungere ed approfondire come il prodotto si interfacci con i framework utilizzati.
-
-
+L'architettura del framework segue un modello di architettura in stile Client-server che prevede la suddivisione dell'applicazione in due parti: la parte client composta dall'\gloss{interfaccia utente} (Client) e la parte server composta dalla \gloss{business} logic (Controller) e alla gestione dei dati persistenti (ModelServer). La parte Client segue il design pattern \gloss{MVVM} utilizzato da AngularJS ed è quindi suddivisa in Model, \gloss{View}, \gloss{ViewModel}.\\
 
 I seguenti diagrammi rappresentano l'architettura ad alto livello del framework, indicando i package, le classi e le relazioni che intercorrono tra queste.
 
@@ -212,9 +207,7 @@ Vengono inoltre presentati tutti i sotto-package così da facilitare la comprens
 
 \subsubsection{Classi}
 \immagine{./Diagrammi/GeneraleClassi}{Architettura generale del software}
-Nel precedente diagramma è presente l'architettura ad alto livello del software e vengono indicate le classi fondamentali per rappresentare le relazioni dell'architettura Client-server. I diagrammi di sequenza relativi allo scambio di segnali, lo scopo ed il contesto di utilizzo sono presenti nella sezione 6.
-
-%qui è stata RIMOSSA una SEZIONE di troppo...
+Nel precedente diagramma è presente l'architettura ad alto livello del software e vengono indicate le classi fondamentali per rappresentare le relazioni dell'architettura Client-server. I diagrammi di sequenza relativi allo scambio di segnali, lo scopo ed il contesto di utilizzo sono presenti nella sezione \ref{sequenza}.
 
 \newpage
 \section{Componenti e Classi}
@@ -261,7 +254,7 @@ Package ModelServer per il componente Server del modello di architettura Client-
 Componente parte del ModelServer per la gestione dei dati.
 \subsubsubsection{Sotto-componenti}
 \begin{itemize}
-\item MaaP::Server::ModelServer::DataManager::DataBaseAnalysisManager;
+\item MaaP::Server::ModelServer::DataManager::DatabaseAnalysisManager;
 \item MaaP::Server::ModelServer::DataManager::DatabaseUserManager;
 \item MaaP::Server::ModelServer::DataManager::IndexManager.
 \end{itemize}
@@ -292,7 +285,7 @@ Viene utilizzata per la gestione delle richieste inoltrate dal Controller.\\
 \grassetto{Nome}\\
 MaaP::Server::ModelServer::DataManager::IDataRetriever\\
 \grassetto{Descrizione}\\
-Interfaccia attraverso cui i DatabaseManager dialogano con i batabase. Contiene le operazioni di lettura e scrittura nei database.\\
+Interfaccia attraverso cui i DatabaseManager dialogano con i database. Contiene le operazioni di lettura e scrittura nei database.\\
 \grassetto{Utilizzo}\\
 Viene utilizzata per recuperare e inserire dati, sui database, su richiesta dei DataManager.\\
 \grassetto{Classi che ereditano}
@@ -359,7 +352,7 @@ Relazione uscente, utilizza un riferimento a un oggetto di tipo MongooseDBFramew
 \subsubsubsubsection{Informazioni sul package}
 \immagine{./Diagrammi/ComponentiDatabaseUserManager}{Componente MaaP::Server::ModelServer::DataManager::DatabaseUserManager}
 \subsubsubsubsection{Descrizione}
-Componente parte del DataManager per la gestione dei dati del database del framwork che comprende sia dati utente che impostazioni del sistema.
+Componente parte del DataManager per la gestione dei dati del database del framework che comprende sia dati utente che impostazioni del sistema.
 \subsubsubsubsection{Classi}
 
 \subsubsubsubsubsection{DatabaseUserManager}
@@ -415,7 +408,7 @@ MaaP::Server::ModelServer::DataManager::IndexManager::IndexManager\\
 \grassetto{Descrizione}\\
 Classe che rappresenta il gestore degli indici. Contiene tutte le operazioni per la creazione degli indici.\\
 \grassetto{Utilizzo}\\
-Viene utilizzata per la creazione di indici personalizzati su richiesta del DatavaseAnalysisManager.\\
+Viene utilizzata per la creazione di indici personalizzati su richiesta del DatabaseAnalysisManager.\\
 \grassetto{Relazioni con altre classi}
 \begin{itemize}
 \item\grassetto{MaaP::Server::ModelServer::DataManager::DatabaseAnalysisManager::DatabaseAnalysisManager}\\
@@ -482,7 +475,7 @@ Viene utilizzata per interfacciarsi con i vari database.\\
 
 \subsubsubsubsection{MongooseDBFramework}
 \grassetto{Nome}\\
-MaaP::Server::ModelServer::Database::MongooseDBMongooseDBFramework\\
+MaaP::Server::ModelServer::Database::MongooseDBFramework\\
 \grassetto{Descrizione}\\
 Classe che rappresenta l'interfaccia di connessione con il database del framework.\\
 \grassetto{Utilizzo}\\
@@ -664,7 +657,7 @@ Relazione uscente, utilizza un riferimento ad un oggetto di tipo Passport per ge
 \grassetto{Nome}\\
 MaaP::Server::Controller::Passport\\
 \grassetto{Descrizione}\\
-Classe che rappresenta il componente adaptee del design patter object adapter.\\
+Classe che rappresenta il componente adaptee del design pattern object adapter.\\
 \grassetto{Utilizzo}\\
 Viene utilizzata per gestire l'autenticazione utente.\\
 \grassetto{Relazioni con altre classi}
@@ -677,7 +670,7 @@ Relazione uscente debole, utilizza un riferimento ad un oggetto MongooseDBFramew
 \grassetto{Nome}\\
 MaaP::Server::Controller::FrontController\\
 \grassetto{Descrizione}\\
-Classe che rappresenta il componente controller del design patter Front Controller.\\
+Classe che rappresenta il componente controller del design pattern Front Controller.\\
 \grassetto{Utilizzo}\\
 Viene utilizzata per gestire le richieste del client ed inoltrarle al dispatcher.\\
 \grassetto{Relazioni con altre classi}
@@ -696,7 +689,7 @@ Relazione entrante debole, interazione con il \gloss{servizio} HTTP.
 \grassetto{Nome}\\
 MaaP::Server::Controller::Dispatcher\\
 \grassetto{Descrizione}\\
-Classe che rappresenta il componente dispatcher del design patter Front Controller.\\
+Classe che rappresenta il componente dispatcher del design pattern Front Controller.\\
 \grassetto{Utilizzo}\\
 Viene utilizzata per smistare le richieste del client ai vari gestori dei dati.\\
 \grassetto{Relazioni con altre classi}
@@ -1019,7 +1012,7 @@ MaaP::Client::ControllerModelView::ControllerClient::ControllerIndici\\
 \grassetto{Descrizione}\\
 Classe che rappresenta il controller per gestire la creazione e l'eliminazione degli indici.\\
 \grassetto{Utilizzo}\\
-Viene utilizzata per creare un nuovo indice o elimiare un indice esistente.\\
+Viene utilizzata per creare un nuovo indice o eliminare un indice esistente.\\
 \grassetto{Relazioni con altre classi}
 \begin{itemize}
 \item\grassetto{MaaP::Client::ModelClient::Services::HTTP}\\
@@ -1089,7 +1082,7 @@ MaaP::Client::ControllerModelView::Scope::Query\\
 \grassetto{Descrizione}\\
 Classe che rappresenta i dati relativi alle query più utilizzare.\\
 \grassetto{Utilizzo}\\
-Viene utilizzata per memorizzare i dati relativi alle query più utilizzate, le quali saranno sucessivamente visualizzate nella pagina web.\\
+Viene utilizzata per memorizzare i dati relativi alle query più utilizzate, le quali saranno successivamente visualizzate nella pagina web.\\
 \grassetto{Relazioni con altre classi}
 \begin{itemize}
 \item\grassetto{MaaP::Client::ControllerModelView::ControllerClient::ControllerIndici}\\
@@ -1102,7 +1095,7 @@ MaaP::Client::ControllerModelView::Scope::Document\\
 \grassetto{Descrizione}\\
 Classe che rappresenta i dati relativi al Document da visualizzare.\\
 \grassetto{Utilizzo}\\
-Viene utilizzata per memorizzare i dati relativi al Document da visualizzare i quali saranno sucessivamente visualizzati nella pagina web.\\
+Viene utilizzata per memorizzare i dati relativi al Document da visualizzare i quali saranno successivamente visualizzati nella pagina web.\\
 \grassetto{Relazioni con altre classi}
 \begin{itemize}
 \item\grassetto{MaaP::Client::ControllerModelView::ControllerClient::ControllerDocument}\\
@@ -1115,7 +1108,7 @@ MaaP::Client::ControllerModelView::Scope::Profilo\\
 \grassetto{Descrizione}\\
 Classe che rappresenta i dati relativi al profilo utente da visualizzare.\\
 \grassetto{Utilizzo}\\
-Viene utilizzata per memorizzare i dati relativi al profilo utente da visualizzare i quali saranno sucessivamente visualizzati nella pagina web.\\
+Viene utilizzata per memorizzare i dati relativi al profilo utente da visualizzare i quali saranno successivamente visualizzati nella pagina web.\\
 \grassetto{Relazioni con altre classi}
 \begin{itemize}
 \item\grassetto{MaaP::Client::ControllerModelView::ControllerClient::ControllerProfilo}\\
@@ -1128,7 +1121,7 @@ MaaP::Client::ControllerModelView::Scope::Menu\\
 \grassetto{Descrizione}\\
 Classe che rappresenta i dati relativi al menù da visualizzare.\\
 \grassetto{Utilizzo}\\
-Viene utilizzata per memorizzare i dati relativi al menù da visualizzare i quali saranno sucessivamente visualizzati nella pagina web.\\
+Viene utilizzata per memorizzare i dati relativi al menù da visualizzare i quali saranno successivamente visualizzati nella pagina web.\\
 \grassetto{Relazioni con altre classi}
 \begin{itemize}
 \item\grassetto{MaaP::Client::ControllerModelView::ControllerClient::ControllerMenu}\\
@@ -1272,7 +1265,7 @@ Relazione uscente, contiene un riferimento ad un oggetto di tipo ProjectRemove p
 \grassetto{Nome}\\
 MaaPCLI::ProjectCreate\\
 \grassetto{Descrizione}\\
-Classe che rappresenta una classe del design patter Facade.\\
+Classe che rappresenta una classe del design pattern Facade.\\
 \grassetto{Utilizzo}\\
 Viene utilizzata dall'utente sviluppatore per avviare la creazione di un nuovo progetto.\\
 \grassetto{Relazioni con altre classi}
@@ -1285,7 +1278,7 @@ Relazione entrante, interazione con la facciata ProjectFacade.
 \grassetto{Nome}\\
 MaaPCLI::ProjectClone\\
 \grassetto{Descrizione}\\
-Classe che rappresenta una classe del design patter Facade.\\
+Classe che rappresenta una classe del design pattern Facade.\\
 \grassetto{Utilizzo}\\
 Viene utilizzata dall'utente sviluppatore per avviare la clonazione di un progetto esistente.\\
 \grassetto{Relazioni con altre classi}
@@ -1298,7 +1291,7 @@ Relazione entrante, interazione con la facciata ProjectFacade.
 \grassetto{Nome}\\
 MaaPCLI::ProjectRemove\\
 \grassetto{Descrizione}\\
-Classe che rappresenta una classe del design patter Facade.\\
+Classe che rappresenta una classe del design pattern Facade.\\
 \grassetto{Utilizzo}\\
 Viene utilizzata dall'utente sviluppatore per eliminare un progetto esistente.\\
 \grassetto{Relazioni con altre classi}
@@ -1310,9 +1303,11 @@ Relazione entrante, interazione con la facciata ProjectFacade.
 
 \newpage
 \section{Diagrammi di attività}
+\label{attivita}
 \input{./diagrammiAttivita.tex}
 
 \section{Diagrammi di sequenza}
+\label{sequenza}
 \subsection{Modifica della View}
 \immagine{./Diagrammi/sequence}{Diagramma sequenza: Modifica View}
 Il diagramma precedente illustra la sequenza di operazioni che avviene alla modifica della view da parte dell'utente.
