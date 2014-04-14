@@ -1,192 +1,111 @@
 \newpage
 
+\section{Metodologie di verifica e tecniche di analisi}
+\subsection{Organizzazione} %2.1
+\label{2.4}
+Per ogni processo attuato ci sono delle attività di Verifica e per ogni processo realizzato viene verificata la qualità del processo stesso e la qualità dell'eventuale prodotto ottenuto da esso.
+Ogni periodo di tempo antecedente la consegna di revisione descritto nel Piano di Progetto, necessita di attività di Verifica:
+\begin{itemize}
+\item \grassetto{Analisi:} si seguono i metodi di Verifica descritti nelle Norme di Progetto sui documenti prodotti e i processi attuati. La messa in opera di tali tecniche è descritta nell'appendice sezione C.3.1;
+\item\grassetto{Analisi di Dettaglio:} si verificano i processi che determinano l'incremento dei documenti redatti per il precedente periodo di Analisi, e si verificano i prodotti generati dai relativi processi, seguendo le Norme di Progetto. La messa in opera di tale attività è descritta nell'appendice sezione C.3.2;
+\item\grassetto{Progettazione Architetturale:}  si verificano i processi che determinano l'incremento dei documenti redatti per il precedente periodo di Analisi in Dettaglio e si verificano i prodotti generati dai relativi processi; inoltre si verificano processi e prodotti per l'attività di Progettazione Architetturale, seguendo le Norme di Progetto. La messa in opera di tale attività è descritta nell'appendice sezione C.3.3.
+\item \grassetto{Progettazione di Dettaglio e Codifica}:
+\end{itemize}
+Questa sezione conterrà i riferimenti alle successive attività di Verifica, aggiornati dopo ogni fase di produzione e di \gloss{test} del prodotto.
+La stesura dei documenti è l'attività principale e costante nello svolgimento del progetto, mentre il processo di Verifica viene diviso in due attività.
+In ogni documento è presente un diario delle modifiche per mantenere una cronologia delle attività svolte e di chi le ha svolte.
+
+\subsection{Pianificazione strategica e temporale} %2.1
+\label{2.5}
+Avendo scadenze prefissate nel Piano di Progetto, dobbiamo garantire che le attività di Verifica di tutti i documenti e prodotti debbano essere sistematiche, disciplinate e quantificabili. Procedendo in questa maniera si correggono gli errori il prima possibile.
+La metodologia da seguire per l'individuazione e correzione degli errori è descritta nelle Norme di Progetto.
+Ogni attività di redazione di documenti e di scrittura del \gloss{codice} è stata preceduta da uno studio iniziale sull'impaginazione dei documenti e del contenuto degli stessi. Questo serve per minimizzare la possibilità di incorrere in errori di tipo concettuale e tecnico.
+
+\subsection{Responsabilità} %2.1
+\label{2.6}
+Per garantire che il processo di Verifica sia disciplinato, sistematico e quantificabile, bisogna attribuire responsabilità a specifici ruoli di progetto. I ruoli sono Responsabile di Progetto e Verificatore. I compiti di ciascun ruolo sono descritti nelle \emph{Norme\_di\_progetto\_v\versioneNormeDiProgetto{}.pdf}, rispettivamente nelle sezioni 4.1 e 4.5.
+
+\subsection{Risorse} %2.1
+\label{2.7}
+Per raggiungere gli obiettivi di qualità prefissati sono necessarie risorse umane e tecnologiche, suddivise rispettivamente in strumenti software e \gloss{hardware} utilizzati dai componenti del gruppo per effettuare Verifica su processi e prodotti. I ruoli maggiormente coinvolti nella responsabilità delle attività di Verifica e Validazione sono il Responsabile di Progetto e il Verificatore e i rispettivi compiti sono descritti dettagliatamente nelle Norme di Progetto. Per facilitare il lavoro dei Verificatori sono stati usati degli strumenti automatici che eseguono controlli sistematici sui prodotti generati. Questi strumenti sono descritti nelle Norme di Progetto.
+
+\subsection{Tecniche di analisi} %3.0
+Di seguito verranno elencate le tecniche di analisi che il gruppo adotterà durante lo svolgimento del progetto.
+
+\subsubsection{Analisi statica}
+\label{3.1}
+Questa tipologia di analisi può essere applicata sia al codice che alla documentazione, dato che prevede l'utilizzo di tecniche generali per ogni tipo di prodotto del team.\\
+Le tecniche di analisi statica sono:
+\begin{itemize}
+\item \grassetto{Walkthrough};
+\item \grassetto{Inspection};
+\end{itemize}
+
+\paragraph{Walkthrough}
+Questa tecnica utilizza una scansione ampia e non mirata dell'oggetto in verifica, data la mancanza di esperienza \gloss{best practice} del Verificatore.
+L'attuazione di questa tecnica di Analisi è quindi molto onerosa, per questo sarà nostro obiettivo renderla più parallelizzabile possibile, così da ridurre i costi di Verifica e per essere più efficace ed efficiente.
+Si comincia con una attività preliminare di lettura, seguita da una individuazione degli errori; poi si procede con la correzione degli stessi e con una successiva attività di lettura per controllare le modifiche apportate.
+Dopo ogni attività di Verifica tramite Walkthrough, sperabilmente avremo trovato la maggior parte degli errori, fornendoci una visione delle erroneità commesse, di conseguenza potremo raffinare l'Analisi e avvicinarci alla metodologia di Inspection.
+
+\paragraph{Inspection}
+Questa tecnica è un'evoluzione del Walkthrough e applica una ricerca più mirata e specifica. È possibile utilizzare questa tecnica dopo aver acquisito dimestichezza con l'attività di Verifica, stilando una lista di controllo contenente i maggiori errori riscontrati applicando la tecnica di Walkthrough, quindi non sarà possibile utilizzarla fin da subito in quanto la lista inizialmente è vuota. \`{E} obiettivo di una fase di Inspection la ricerca mirata di errori, aumentando l'efficienza della Verifica e riducendo i costi in termini di tempo e risorse.
+Durante l'utilizzo della tecnica di Inspection la lista verrà aggiornata; la lista risultante è in appendice A delle \emph{Norme\_di\_progetto\_v\versioneNormeDiProgetto{}.pdf}.
+
+\subsubsection{Analisi dinamica}
+\label{3.2}
+Questa particolare tipologia di Analisi si applica solamente ai prodotti software sviluppati dal team, mediante l'utilizzo di test progettati e scritti appositamente per verificare la correttezza dei prodotti e la loro effettiva validazione.
+Di seguito analizzeremo i 5 tipi di test attuati nelle varie parti del progetto:
+\begin{itemize}
+\item \grassetto{Test di unità}: attività di Verifica svolta su ogni singola unità software del sistema, mediante l'utilizzo di \gloss{stub}, \gloss{driver} e \gloss{logger}. Un'unità è la più piccola parte di lavoro che viene assegnata individualmente al \gloss{programmatore}, successivamente sarà prodotta e verificata singolarmente. Mediante tali test viene verificato il corretto funzionamento dei moduli di cui il sistema è composto, in modo da cancellare eventuali errori di implementazione commessi dai programmatori;
+\item \grassetto{Test di integrazione}: attività di Verifica che controlla la corretta integrazione di più unità software aggiunte in maniera incrementale, il cui scopo è analizzare che la combinazione delle unità software funzioni come attesa. Grazie a questo test si possono rilevare errori non riscontrabili nei test di unità e comportamenti inaspettati di componenti software già esistenti rilasciati da altri fornitori che non interagiscono correttamente tra di loro. Anche in questa attività, per poter simulare le unità nell'integrazione, vengono create unità fittizie specifiche, come stub e driver, in modo da replicare componenti non ancora sviluppate in modo da non falsare i test;
+\item \grassetto{Test di sistema}: questo test si propone di validare il prodotto, una volta che si è stabilita  la sua \gloss{versione} definitiva. Questo test verifica che la copertura dei requisiti obbligatori decisi nel periodo di tempo dedicato all'Analisi in Dettaglio sia completa;
+\item \grassetto{Test di regressione}: attività di Verifica che consiste nel ripetere i test già effettuati su una \gloss{componente}, ogni qualvolta quella componente venga modificata o aggiornata; un aiuto lo fornisce il \gloss{tracciamento} delle componenti che permette di scovare e ripetere in modo semplificato i test di unità, di regressione e possibilmente quelli di sistema che sono stati potenzialmente alterati dalla modifica;
+\item \grassetto{Test di accettazione}: test finale effettuato dal proponente del software, al cui superamento segue il rilascio del prodotto ultimato.
+\end{itemize}
+L'importanza di un test si attua nella sua automazione, in quanto riduce il tempo dedicato alla Verifica manuale del codice, certamente più onerosa. Per questo motivo la proprietà più importante di un test è la sua ripetibilità.
+Per fare in modo che un test abbia questa qualità, è fondamentale definire a priori certe caratteristiche, ovvero:
+\begin{itemize}
+\item \grassetto{\gloss{Ambiente}}: deve essere specificato l'insieme di componenti hardware e software su cui verrà eseguito il prodotto software, al fine di evitare problemi di incompatibilità e malfunzionamento;
+\item \grassetto{Variabili}: si deve conoscere e garantire la corretta struttura delle variabili in ingresso ai test, in modo da prevedere gli \gloss{output} attesi e verificare la loro correttezza;
+\item \grassetto{Procedure}: deve essere chiara la sequenza delle operazioni e la metodologia di applicazione dei test.
+\end{itemize}
+=======
 \section{Pianificazione dei test}
 Di seguito verranno visualizzate delle tabelle, strutturate secondo la sezione 5.4.2 delle  \emph{Norme\_di\_progetto\_v\versioneNormeDiProgetto{}.pdf}, che riportano tutti i test che si sono pianificati. \\
 \subsection{Test di sistema}
 Di seguito verrà mostrata la tabella che riporta tutti i test di sistema pianificati, associati ai requisiti descritti nel documento Analisi dei Requisiti.\\
 I test sono da intendere solo per requisiti ai quali è stato ragionevole associare un test.
+
 \subsubsection{Descrizione dei test di sistema}
-\begin{center}
-\begin{longtable}{|p{2cm}|p{7cm}|p{2cm}|p{2cm}|}
-\toprule
-\textbf{Test} & \textbf{Descrizione} & \textbf{\gloss{Requisito}} & \textbf{Stato}\\
-\midrule
-TS1 & Viene verificato che il sistema \gloss{MaaP} generi correttamente lo scheletro necessario & ROF1 & D.E.\\
-\midrule
-TS1.1 & Viene verificato che il sistema MaaP installi correttamente le librerie necessarie & ROF1.1 & D.E.\\
-\midrule
-TS1.2 & Viene verificato che il sistema MaaP generi correttamente i file necessari & ROF1.2 & D.E.\\
-\midrule
-TS1.3 & Viene verificato che il sistema MaaP generi correttamente le directory necessarie & ROF1.3 & D.E.\\
-\midrule
-TS1.4 & Viene verificato che il \gloss{sottosistema} di autenticazione sia installato e configurato correttamente & ROF1.4 & D.E.\\
-\midrule
-TS1.4.1 & Viene verificato che nel \gloss{database} degli utenti sia presente un \gloss{profilo} di amministrazione di \gloss{default} & ROF1.4.1 ROF6 & D.E.\\
-\midrule
-TS1.5 & Viene verificato che il sistema sia in grado di eliminare un progetto esistente & ROF1.5 & D.E.\\
-\midrule
-TS1.6 & Viene verificato che il sistema sia in grado di clonare un progetto esistente & ROF1.6 & D.E.\\
-\midrule
-TS4 & Viene verificato che il sistema crei correttamente le \gloss{pagine web} partendo dal loro \gloss{file di descrizione} & ROF4 & D.E.\\
-\midrule
-TS5.1 & Viene verificato che la funzione di \gloss{registrazione} possa essere correttamente abilitata/disabilitata & RDF5.1 & D.E.\\
-\midrule
-TS5.4 & Viene verificato che il sistema possa utilizzare correttamente il database di analisi & ROF5.4 & D.E.\\
-\midrule
-TS5.5 & Viene verificato che la funzione di creazione indici possa essere correttamnte abilitata/disabilitata & ROF5.5 & D.E.\\
-\midrule
-TS7 & Viene verificato che il sistema consenta all'utente registrato di potersi autenticare & ROF 7.0 & D.E.\\
-\midrule
-TS8 & Viene verificato che il sistema consenta all'utente di potersi registrare & RDF 8.0 & D.E.\\
-\midrule
-TS9 & Viene verificato che il sistema consenta all'utente di recuperare la \gloss{password}  & ROF 9.0 & D.E\\
-\midrule
-TS10 & Viene verificato che il sistema apra e visualizzi correttamente le \gloss{Collection} e le \gloss{Collection-Index} & ROF10 & D.E.\\
-\midrule
-TS10.1 & Viene verificato che il sistema visualizzi correttamente le pagine \gloss{Document-Show} & ROF10.1 & D.E.\\
-\midrule
-TS10.2.4 & Viene verificato che il sistema disconnetta correttamente un utente alla sua richiesta & ROF10.2.4 & D.E.\\
-\midrule
-TS10.3.1.1 & Viene verificato che un utente autenticato possa modificare i dati del suo profilo & ROF10.3.1.1 & D.E.\\
-\midrule
-TS10.3.1.2 & Viene verificato che le modifiche apportate al profilo di un \gloss{utente business} autenticato siano consistenti & ROF10.3.1.2 & D.E.\\
-\midrule
-TS10.3.2 & Viene verificato che la creazione di un nuovo utente da parte di un \gloss{utente business autenticato} \gloss{amministratore} avvenga correttamente & ROF10.3.2 & D.E.\\
-\midrule
-TS10.3.3 & Viene verificata la corretta cancellazione di un utente da parte di un \gloss{utente business autenticato amministratore} & ROF10.3.3 & D.E.\\
-\midrule
-TS10.4 & Viene verificato che l'utente business autenticato amministratore possa eliminare correttamente un \gloss{Document} & ROF10.4 & D.E.\\
-\midrule
-TS10.5 & Viene verificato che l’utente business autenticato amministratore possa modificare correttamente un Document & ROF10.5 & D.E.\\
-\midrule
-TS10.6 & Viene verificata la corretta visualizzazione delle \gloss{query} più utilizzate & ROF10.6 & D.E.\\
-\midrule
-TS10.7.1.2 & Viene verificata la corretta creazione degli indici di analisi & ROF10.7.1.2 & D.E.\\
-\midrule
-TS10.7.2 & Viene verificata la corretta eliminazione degli indici di analisi & ROF10.7.2 & D.E.\\
-\midrule
-TS10.7.3 & Viene verificata la corretta visualizzazione degli indici di analisi & ROF10.7.3 & D.E.\\
-\midrule
-TS17 & Viene verificato che le pagine web prodotte dal \gloss{framework} MaaP siano compatibili con la versione 30.0.x o superiore di \gloss{Google Chrome} & ROV17 & D.E.\\
-\midrule
-TS18 & Viene verificato che le pagine web prodotte dal framework MaaP siano compatibili con la versione 24.x o superiore di \gloss{Firefox} & ROV18 & D.E.\\
-\midrule
-TS19 & Viene verificato che il sistema accetti solo \gloss{file di configurazione} validi & ROV19 & D.E.\\
-\midrule
-TS26 & Viene verificato che il sistema di installazione del software funzioni correttamente & ROV26 & D.E.\\
-\midrule
-TS27 & Viene verificato che il deployment su \gloss{Heroku} avvenga con successo & ROV27 & D.E.\\
-%inserire i test
-\bottomrule
-\caption{Test di sistema}
-\label{tab:changelog}
-\end{longtable}
-\end{center}
+%la seguente tabella è generata automaticamente dallo scriptTest che
+%prende i dati esportati dal database di Access e genera la tabella in latex
+\input{./DescrizioneTestSistema.tex}
+
 \subsection{Test d'integrazione}
 
 \subsubsection{Diagramma d'integrazione}
 \immagine{./integrazione}{Diagramma d'integrazione}
-
 Di seguito verrà mostrata la tabella che riporta tutti i test d'integrazione pianificati, associati alle componenti descritte nella progettazione ad alto livello.\\
+
 \subsubsection{Descrizione dei test d'integrazione}
-\begin{center}
-\begin{longtable}{|p{5cm}|p{5cm}|p{5cm}|p{1cm}|}
-\toprule
-\textbf{Test} & \textbf{Descrizione} & \textbf{Componente} & \textbf{Stato}\\
-\midrule
-TI.MaaP & Test di integrazione finale tra \gloss{client} e \gloss{server} & MaaP & D.E.\\
-\midrule
-TI.Server & Verifica il corretto funzionamento delle componenti del server, quindi la corretta integrazione
-tra ModelServer e \gloss{Controller} del server. In particolare, viene verificato che le funzionalit\`{a} presenti nel
-Controller debbano agire consistentemente sui dati del ModelServer. & Server & D.E.\\
-\midrule
-TI.Server.ModelServer & Verifica che tutte le operazioni di lettura, scrittura e interpretazione dei dati avvengano
-correttamente. & Server::ModelServer & D.E.\\
-\midrule
-TI.Server.ModelServer. DataManager-Database & Verifica che i gestori dei dati siano correttamente integrati ai database di riferimento. & Server::ModelServer::DataManager & D.E.\\
-& & Server::ModelServer::Database & \\
-\midrule
-TI.Server.ModelServer. DataManager & Verifica che le operazioni di recupero, gestione e scrittura dati nei database avvengano correttamente. & Server::ModelServer::DataManager & D.E.\\
-\midrule
-TI.Client & Verifica che i dati ottenuti e forniti da e verso il client siano corretti e correttamente gestiti all'interno del client stesso. & Client & D.E.\\
-\midrule
-TI.Client.View-ControllerModelView & Verifica che i dati uscenti ed entranti la \gloss{View} siano gestiti correttamente dal ControllerModelView & Client::View & D.E.\\
-& & Client::ControllerModelView & \\
-\midrule
-TI.Client.ControllerModelView-ModelClient & Viene verificato che le funzionalit\`{a} del ControllerModelView agiscano correttamente sul ModelClient & Client::ControllerModelView & D.E.\\
-& & Client::ModelClient & \\
-\midrule
-TI.Client.ControllerModelView & Viene verificato che le funzioni del ClientController modifichino correttamente i dati presenti nello \gloss{Scope} & Client::ControllerModelView & D.E.\\
-%inserire i test
-\bottomrule
-\caption{Test d'integrazione}
-\label{tab:changelog}
-\end{longtable}
-\end{center}
+%la seguente tabella è generata automaticamente dallo scriptTest che
+%prende i dati esportati dal database di Access e genera la tabella in latex
+\input{./DescrizioneTestIntegrazione.tex}
+
 \subsubsection{Tracciamento}
 Di seguito verranno riportati in forma tabellare i tracciamenti componente-test d'integrazione e test d'integrazione-componente.\\
+
 \paragraph{Tracciamento componente-test d'integrazione}
-\begin{center}
-\begin{longtable}{|p{7cm}|p{7cm}|}
-\toprule
-\textbf{Componente} & \textbf{Test}\\
-\midrule
-MaaP & TI.MaaP\\
-\midrule
-Server & TI.Server\\
-\midrule
-Server::ModelServer & TI.Server.ModelServer\\
-\midrule
-Server::ModelServer::DataManager & TI.Server.ModelServer.DataManager TI.Server.ModelServer.DataManager-Database\\
-\midrule
-Server::ModelServer::Database & TI.Server.ModelServer.DataManager-Database\\
-\midrule
-Client & TI.Client\\
-\midrule
-Client::View & TI.Client.View-ControllerModelView\\
-\midrule
-Client::ControllerModelView & TI.Client.ControllerModelView TI.Client.View-ControllerModelView TI.Client.ControllerModelView-ModelClient\\
-\midrule
-Client::ModelClient & TI.Client.ControllerModelView-ModelClient\\
-%inserire i test
-\bottomrule
-\caption{Tracciamento componente-test d'integrazione}
-\label{tab:changelog}
-\end{longtable}
-\end{center}
+%la seguente tabella è generata automaticamente dallo scriptTest che
+%prende i dati esportati dal database di Access e genera la tabella in latex
+\input{./TracciamentoCOMPTEST.tex}
+
 \vspace{5cm}
+
 \paragraph{Tracciamento test d'integrazione-componente}
-\begin{center}
-\begin{longtable}{|p{7cm}|p{7cm}|}
-\toprule
-\textbf{Test} & \textbf{Componente}\\
-\midrule
-TI.MaaP & MaaP\\
-\midrule
-TI.Server & Server\\
-\midrule
-TI.Server.ModelServer & Server::ModelServer\\
-\midrule
-TI.Server.ModelServer.DataManager-Database & Server::ModelServer::DataManager\\
-& Server::ModelServer::Database\\
-\midrule
-TI.Server.ModelServer.DataManager & Server::ModelServer::DataManager\\
-\midrule
-TI.Client & Client\\
-\midrule
-TI.Client.View-ControllerModelView & Client::View\\
-& Client::ControllerModelView\\
-\midrule
-TI.Client.ControllerModelView-ModelClient & Client::ControllerModelView\\
-& Client::ModelClient\\
-\midrule
-TI.Client.ControllerModelView & Client::ControllerModelView\\
-%inserire i test
-\bottomrule
-\caption{Tracciamento test d'integrazione-componente}
-\label{tab:changelog}
-\end{longtable}
-\end{center}
+%la seguente tabella è generata automaticamente dallo scriptTest che
+%prende i dati esportati dal database di Access e genera la tabella in latex
+\input{./TracciamentoTESTCOMP.tex}
 
 \subsection{Test di validazione}
 In questa sezione vengono descritti i test di validazione, utili ad accertarsi che il prodotto realizzato sia conforme alle attese.
@@ -212,7 +131,7 @@ L'utente vuole verificare le funzionalità di visualizzazione di Collection e Do
 \end{enumerate}
 
 \subsubsection{TV 2 - Lato Utente Business}
-L’utente vuole verificare il corretto funzionamento delle funzionalità di registrazione, autenticazione e gestione profilo.
+L'utente vuole verificare il corretto funzionamento delle funzionalità di registrazione, autenticazione e gestione profilo.
 Si dovrà quindi seguire la seguente \gloss{procedura} di validazione:
 
 \begin{enumerate}
@@ -400,7 +319,7 @@ Dovrà quindi seguire la seguente procedura:
 \item Creare un nuovo progetto;
 \item Verificare che il nuovo progetto sia disponibile;
 \item Clonare un progetto;
-\item Verificare che il progetto clonato sia identico all’originale;
+\item Verificare che il progetto clonato sia identico all'originale;
 \item Verificare di poter gestire un progetto;
 \begin{enumerate}
 \item Verificare di poter avviare, fermare o riavviare il server MaaP;
@@ -419,210 +338,14 @@ Dovrà quindi seguire la seguente procedura:
 
 \subsubsection{Tracciamento}
 Di seguito verranno riportati in forma tabellare i tracciamenti test di validazione - requisiti e l'inverso, ovvero requisiti - test di validazione.\\
-\paragraph{Tracciamento Test di Validazione - Requisiti}
-\begin{center}
-\begin{longtable}{|p{7cm}|p{7cm}|}
-\toprule
-\textbf{Test} & \textbf{Requisiti}\\
-\midrule
-TV 1 & ROF10\\ & ROF10.1\\ & RDF10.2\\ & RDF10.2.1\\ &  RDF10.2.1.1\\ &  RDF10.2.1.2\\ &  RDF10.2.2 \\ & RDF10.2.3\\ &   ROF10.2.5\\
-\midrule
-TV 2 & ROF7\\ &  ROF7.1\\ &  ROF7.2\\ &  ROF7.2.1\\ &  RDF8\\ &  RDF8.1\\ &  RDF8.2\\ &  RDF8.2.1\\ &  ROF9\\ &  ROF10.2.4\\ &  ROF10.3\\ &  ROF10.3.1\\ &  ROF10.3.1.1\\ &  ROF10.3.1.2\\ &  ROF10.3.1.3\\
-\midrule
-TV 3 & ROF6\\ &  ROF10.3.1.4\\ &  ROF10.3.2\\ &  ROF10.3.3\\
-\midrule
-TV 4 &  ROF10.4\\ &  ROF10.5\\ &  ROF10.5.1\\ &  ROF10.5.2\\ &  ROF10.5.3\\
-\midrule
-TV 5 &  ROF10.6\\ &  ROF10.7\\ &  ROF10.7.1\\ &  ROF10.7.1.1\\ &  ROF10.7.1.2\\ &  ROF10.7.2\\ &  ROF10.7.2.1\\ &  ROF10.7.2.2\\ &  ROF10.7.3\\
-\midrule
-TV 6 & ROF3\\ &  ROF4\\ &  ROF4.1\\ &  ROF4.1.2\\ &  ROF4.1.2.1\\ &  ROF4.1.2.1.1\\ &  ROF4.1.2.1.2\\ &  ROF4.1.2.1.3\\ &  ROF4.1.2.1.4\\ &  ROF4.1.2.1.5\\ &  ROF4.1.2.2\\ &  ROF4.1.2.3\\ &  ROF4.2\\ &  ROF4.2.1\\ &  ROF4.2.1.1\\ &  ROF4.2.1.2\\ &  ROF4.2.2\\ &  ROF4.2.2.1\\ &  ROF4.2.2.2\\ &  ROF4.2.2.3\\ &  ROF4.2.2.4\\ &  ROF4.2.2.5\\ &  ROF4.2.2.6\\ &  RFF4.2.2.7\\ &  ROF4.3\\ &  ROF4.4\\
-\midrule
-TV 7 & ROF4.1.3\\ &  ROF4.1.3.1\\ &  ROF4.1.3.1.1\\ &  ROF4.1.3.1.2\\ &  ROF4.1.3.1.3\\ &  ROF4.1.3.1.4\\ &  ROF4.1.3.1.5\\ &  ROF4.2.3\\ &  ROF4.2.3.1\\ &  ROF4.2.3.2\\ &  ROF4.3\\ &  ROF4.4\\
-\midrule
-TV 8 & ROF5\\ &  RDF5.1\\ &  RDF5.3\\ &  ROF5.4\\ &  ROF5.5\\
 
-%inserire i test
-\bottomrule
-\caption{Tracciamento Test di Validazione - Requisiti}
-\label{tab:changelog}
-\end{longtable}
-\end{center}
+\paragraph{Tracciamento Test di Validazione - Requisiti}
+%la seguente tabella è generata automaticamente dallo scriptTest che
+%prende i dati esportati dal database di Access e genera la tabella in latex
+\input{./TracciamentoTESTREQ.tex}
 
 \paragraph{Tracciamento Requisiti - Test di Validazione}
-\begin{center}
-\begin{longtable}{|p{7cm}|p{7cm}|}
-\toprule
-\textbf{Requisiti} & \textbf{Test}\\
-\midrule
-ROF3 & TV6\\
-\midrule
-ROF4 & TV6\\
-\midrule
-ROF4.1 & TV6\\
-\midrule
-ROF4.1.2 & TV6\\
-\midrule
-ROF4.1.2.1 & TV6\\
-\midrule
-ROF4.1.2.1.1 & TV6\\
-\midrule
-ROF4.1.2.1.2 & TV6\\
-\midrule
-ROF4.1.2.1.3 & TV6\\
-\midrule
-ROF4.1.2.1.4 & TV6\\
-\midrule
-ROF4.1.2.1.5 & TV6\\
-\midrule
-ROF4.1.2.2 & TV6\\
-\midrule
-ROF4.1.2.3 & TV6\\
-\midrule
-ROF4.1.3 & TV7\\
-\midrule
-ROF4.1.3.1 & TV7\\
-\midrule
-ROF4.1.3.1.1 & TV7\\
-\midrule
-ROF4.1.3.1.2 & TV7\\
-\midrule
-ROF4.1.3.1.3 & TV7\\
-\midrule
-ROF4.1.3.1.4 & TV7\\
-\midrule
-ROF4.1.3.1.5 & TV7\\
-\midrule
-ROF4.2 & TV6\\
-\midrule
-ROF4.2.1 & TV6\\
-\midrule
-ROF4.2.1.1 & TV6\\
-\midrule
-ROF4.2.1.2 & TV6\\
-\midrule
-ROF4.2.2 & TV6\\
-\midrule
-ROF4.2.2.1 & TV6\\
-\midrule
-ROF4.2.2.2 & TV6\\
-\midrule
-ROF4.2.2.3 & TV6\\
-\midrule
-ROF4.2.2.4 & TV6\\
-\midrule
-ROF4.2.2.5 & TV6\\
-\midrule
-ROF4.2.2.6 & TV6\\
-\midrule
-ROF4.2.2.7 & TV6\\
-\midrule
-ROF4.2.3 & TV7\\
-\midrule
-ROF4.2.3.1 & TV7\\
-\midrule
-ROF4.2.3.2 & TV7\\
-\midrule
-ROF4.3 & TV6\\ & TV7\\
-\midrule
-ROF4.4 & TV6\\ & TV7\\
-\midrule
-ROF5 & TV8\\
-\midrule
-ROF5.1 & TV8\\
-\midrule
-RDF5.3 & TV8\\
-\midrule
-ROF5.4 & TV8\\
-\midrule
-ROF5.5 & TV8\\
-\midrule
-ROF6 & TV3\\
-\midrule
-ROF7 & TV2\\
-\midrule
-ROF7.1 & TV2\\
-\midrule
-ROF7.2 & TV2\\
-\midrule
-ROF7.2.1 & TV2\\
-\midrule
-RDF8 & TV2\\
-\midrule
-RDF8.1 & TV2\\
-\midrule
-RDF8.2 & TV2\\
-\midrule
-RDF8.2.1 & TV2\\
-\midrule
-ROF9 & TV2\\
-\midrule
-ROF10 & TV1\\
-\midrule
-ROF10.1 & TV1\\
-\midrule
-RDF10.2 & TV1\\
-\midrule
-RDF10.2.1 & TV1\\
-\midrule
-RDF10.2.1.1 & TV1\\
-\midrule
-RDF10.2.1.2 & TV1\\
-\midrule
-RDF10.2.2 & TV1\\
-\midrule
-RDF10.2.3 & TV1\\
-\midrule
-ROF10.2.4 & TV2\\
-\midrule
-ROF10.2.5 & TV1\\
-\midrule
-ROF10.3 & TV2\\
-\midrule
-ROF10.3.1 & TV2\\
-\midrule
-ROF10.3.1.1 & TV2\\
-\midrule
-ROF10.3.1.2 & TV2\\
-\midrule
-ROF10.3.1.3 & TV2\\
-\midrule
-ROF10.3.1.4 & TV3\\
-\midrule
-ROF10.3.2 & TV3\\
-\midrule
-ROF10.3.3 & TV3\\
-\midrule
-ROF10.4 & TV4\\
-\midrule
-ROF10.5 & TV4\\
-\midrule
-ROF10.5.1 & TV4\\
-\midrule
-ROF10.5.2 & TV4\\
-\midrule
-ROF10.5.3 & TV4\\
-\midrule
-ROF10.6 & TV5\\
-\midrule
-ROF10.7 & TV5\\
-\midrule
-ROF10.7.1 & TV5\\
-\midrule
-ROF10.7.1.1 & TV5\\
-\midrule
-ROF10.7.1.2 & TV5\\
-\midrule
-ROF10.7.2 & TV5\\
-\midrule
-ROF10.7.2.1 & TV5\\
-\midrule
-ROF10.7.2.2 & TV5\\
-\midrule
-ROF10.7.3 & TV5\\
+%la seguente tabella è generata automaticamente dallo scriptTest che
+%prende i dati esportati dal database di Access e genera la tabella in latex
+\input{./TracciamentoREQTEST.tex}
 
-%inserire i test
-\bottomrule
-\caption{Tracciamento Requisiti - Test di Validazione}
-\label{tab:changelog}
-\end{longtable}
-\end{center}
