@@ -41,7 +41,11 @@ void disclaimer(ofstream * OUT)
 {
 	time_t now = time(0);
 	char * dt = ctime(&now);
-	*OUT<<"%QUESTE TABELLE SONO STATE GENERATE AUTOMATICAMENTE DA TESTSCRIPT ["<<dt<<"]"<<endl<<endl;
+	char * data = new char[20];
+	int i=4;
+	for(;i<24;i++)data[i-4]=dt[i];
+	data[i-4]=0;
+	*OUT<<"%QUESTE TABELLE SONO STATE GENERATE AUTOMATICAMENTE DA TESTSCRIPT ["<<data<<"]"<<endl<<endl;
 }
 
 void intestazioneDescrizioneTestSistema(ofstream * OUT)
@@ -49,13 +53,30 @@ void intestazioneDescrizioneTestSistema(ofstream * OUT)
 	*OUT<<"\\begin{center}"<<endl;
 	*OUT<<"\\begin{longtable}{|p{2cm}|p{7cm}|p{2cm}|p{2cm}|}"<<endl;
 	*OUT<<"\\toprule"<<endl;
-	*OUT<<"\\textbf{Test} & \\textbf{Descrizione} & \\textbf{Requisito} & \\textbf{Stato}\\\\"<<endl;
+	*OUT<<"\\multicolumn{1}{|p{2cm}}{\\textbf{Test}}"<<endl;
+	*OUT<<"& \\multicolumn{1}{|p{7cm}}{\\textbf{Descrizione}}"<<endl;
+	*OUT<<"& \\multicolumn{1}{|p{2cm}}{\\textbf{Requisito}}"<<endl;
+	*OUT<<"& \\multicolumn{1}{|p{2cm}|}{\\textbf{Stato}}\\\\"<<endl;
+	*OUT<<"\\midrule"<<endl;
+	*OUT<<"\\endfirsthead"<<endl;
+	*OUT<<"\\multicolumn{2}{l}{\\footnotesize\\itshape\\tablename~\\thetable: continua dalla pagina precedente} \\\\"<<endl;
+	*OUT<<"\\toprule"<<endl;
+	*OUT<<"\\multicolumn{1}{|p{2cm}}{\\textbf{Test}}"<<endl;
+	*OUT<<"& \\multicolumn{1}{|p{7cm}}{\\textbf{Descrizione}}"<<endl;
+	*OUT<<"& \\multicolumn{1}{|p{2cm}}{\\textbf{Requisito}}"<<endl;
+	*OUT<<"& \\multicolumn{1}{|p{2cm}|}{\\textbf{Stato}}\\\\"<<endl;
+	*OUT<<"\\midrule"<<endl;
+	*OUT<<"\\endhead"<<endl;
+	*OUT<<"\\midrule"<<endl;
+	*OUT<<"\\multicolumn{2}{r}{\\footnotesize\\itshape\\tablename~\\thetable: continua nella prossima pagina} \\\\"<<endl;
+	*OUT<<"\\endfoot"<<endl;
+	*OUT<<"\\bottomrule"<<endl;
+	*OUT<<"\\caption{Test di sistema}"<<endl;
+	*OUT<<"\\endlastfoot"<<endl;
 }
 
 void fineDescrizioneTestSistema(ofstream * OUT)
 {
-	*OUT<<"\\bottomrule"<<endl;
-	*OUT<<"\\caption{Test di sistema}"<<endl;
 	*OUT<<"\\end{longtable}"<<endl;
 	*OUT<<"\\end{center}"<<endl;
 }
@@ -63,15 +84,32 @@ void fineDescrizioneTestSistema(ofstream * OUT)
 void intestazioneDescrizioneTestIntegrazione(ofstream * OUT)
 {
 	*OUT<<"\\begin{center}"<<endl;
-	*OUT<<"\\begin{longtable}{|p{5cm}|p{5cm}|p{5cm}|p{1cm}|}"<<endl;
+	*OUT<<"\\begin{longtable}{|p{4.5cm}|p{3cm}|p{5.5cm}|c|}"<<endl;
 	*OUT<<"\\toprule"<<endl;
-	*OUT<<"\\textbf{Test} & \\textbf{Descrizione} & \\textbf{Componente} & \\textbf{Stato}\\\\"<<endl;
+	*OUT<<"\\multicolumn{1}{|p{4.5cm}}{\\textbf{Test}}"<<endl;
+	*OUT<<"& \\multicolumn{1}{|p{3cm}}{\\textbf{Descrizione}}"<<endl;
+	*OUT<<"& \\multicolumn{1}{|p{5.5cm}}{\\textbf{Componente}}"<<endl;
+	*OUT<<"& \\multicolumn{1}{|c|}{\\textbf{Stato}}\\\\"<<endl;
+	*OUT<<"\\midrule"<<endl;
+	*OUT<<"\\endfirsthead"<<endl;
+	*OUT<<"\\multicolumn{2}{l}{\\footnotesize\\itshape\\tablename~\\thetable: continua dalla pagina precedente} \\\\"<<endl;
+	*OUT<<"\\toprule"<<endl;
+	*OUT<<"\\multicolumn{1}{|p{4.5cm}}{\\textbf{Test}}"<<endl;
+	*OUT<<"& \\multicolumn{1}{|p{3cm}}{\\textbf{Descrizione}}"<<endl;
+	*OUT<<"& \\multicolumn{1}{|p{5.5cm}}{\\textbf{Componente}}"<<endl;
+	*OUT<<"& \\multicolumn{1}{|c|}{\\textbf{Stato}}\\\\"<<endl;
+	*OUT<<"\\midrule"<<endl;
+	*OUT<<"\\endhead"<<endl;
+	*OUT<<"\\midrule"<<endl;
+	*OUT<<"\\multicolumn{2}{r}{\\footnotesize\\itshape\\tablename~\\thetable: continua nella prossima pagina} \\\\"<<endl;
+	*OUT<<"\\endfoot"<<endl;
+	*OUT<<"\\bottomrule"<<endl;
+	*OUT<<"\\caption{Test d'integrazione}"<<endl;
+	*OUT<<"\\endlastfoot"<<endl;
 }
 
 void fineDescrizioneTestIntegrazione(ofstream * OUT)
 {
-	*OUT<<"\\bottomrule"<<endl;
-	*OUT<<"\\caption{Test d'integrazione}"<<endl;
 	*OUT<<"\\end{longtable}"<<endl;
 	*OUT<<"\\end{center}"<<endl;
 }
@@ -113,13 +151,26 @@ void intestazioneTracciamentoREQTEST(ofstream * OUT)
 	*OUT<<"\\begin{center}"<<endl;
 	*OUT<<"\\begin{longtable}{|p{7cm}|p{7cm}|}"<<endl;
 	*OUT<<"\\toprule"<<endl;
-	*OUT<<"\\textbf{Requisiti} & \\textbf{Test}\\\\"<<endl;
+	*OUT<<"\\multicolumn{1}{|p{7cm}}{\\textbf{Requisiti}}"<<endl;
+	*OUT<<"& \\multicolumn{1}{|p{7cm}|}{\\textbf{Test}} \\\\"<<endl;
+	*OUT<<"\\midrule"<<endl;
+	*OUT<<"\\endfirsthead"<<endl;
+	*OUT<<"\\multicolumn{2}{l}{\\footnotesize\\itshape\\tablename~\\thetable: continua dalla pagina precedente} \\\\"<<endl;
+	*OUT<<"\\toprule"<<endl;
+	*OUT<<"\\multicolumn{1}{|p{7cm}}{\\textbf{Requisiti}}"<<endl;
+	*OUT<<"& \\multicolumn{1}{|p{7cm}|}{\\textbf{Test}} \\\\"<<endl;
+	*OUT<<"\\midrule"<<endl;
+	*OUT<<"\\endhead"<<endl;
+	*OUT<<"\\midrule"<<endl;
+	*OUT<<"\\multicolumn{2}{r}{\\footnotesize\\itshape\\tablename~\\thetable: continua nella prossima pagina} \\\\"<<endl;
+	*OUT<<"\\endfoot"<<endl;
+	*OUT<<"\\bottomrule"<<endl;
+	*OUT<<"\\caption{Tracciamento Requisiti - Test di validazione}"<<endl;
+	*OUT<<"\\endlastfoot"<<endl<<endl;
 }
 
 void fineTracciamentoREQTEST(ofstream * OUT)
 {
-	*OUT<<"\\bottomrule"<<endl;
-	*OUT<<"\\caption{Tracciamento Requisiti - Test di Validazione}"<<endl;
 	*OUT<<"\\end{longtable}"<<endl;
 	*OUT<<"\\end{center}"<<endl;
 }
@@ -129,13 +180,26 @@ void intestazioneTracciamentoTESTREQ(ofstream * OUT)
 	*OUT<<"\\begin{center}"<<endl;
 	*OUT<<"\\begin{longtable}{|p{7cm}|p{7cm}|}"<<endl;
 	*OUT<<"\\toprule"<<endl;
-	*OUT<<"\\textbf{Test} & \\textbf{Requisiti}\\\\"<<endl;
+	*OUT<<"\\multicolumn{1}{|p{7cm}}{\\textbf{Test}}"<<endl;
+	*OUT<<"& \\multicolumn{1}{|p{7cm}|}{\\textbf{Requisiti}} \\\\"<<endl;
+	*OUT<<"\\midrule"<<endl;
+	*OUT<<"\\endfirsthead"<<endl;
+	*OUT<<"\\multicolumn{2}{l}{\\footnotesize\\itshape\\tablename~\\thetable: continua dalla pagina precedente} \\\\"<<endl;
+	*OUT<<"\\toprule"<<endl;
+	*OUT<<"\\multicolumn{1}{|p{7cm}}{\\textbf{Test}}"<<endl;
+	*OUT<<"& \\multicolumn{1}{|p{7cm}|}{\\textbf{Requisiti}} \\\\"<<endl;
+	*OUT<<"\\midrule"<<endl;
+	*OUT<<"\\endhead"<<endl;
+	*OUT<<"\\midrule"<<endl;
+	*OUT<<"\\multicolumn{2}{r}{\\footnotesize\\itshape\\tablename~\\thetable: continua nella prossima pagina} \\\\"<<endl;
+	*OUT<<"\\endfoot"<<endl;
+	*OUT<<"\\bottomrule"<<endl;
+	*OUT<<"\\caption{Tracciamento Test di validazione - Requisiti}"<<endl;
+	*OUT<<"\\endlastfoot"<<endl<<endl;
 }
 
 void fineTracciamentoTESTREQ(ofstream * OUT)
 {
-	*OUT<<"\\bottomrule"<<endl;
-	*OUT<<"\\caption{Tracciamento Test di Validazione - Requisiti}"<<endl;
 	*OUT<<"\\end{longtable}"<<endl;
 	*OUT<<"\\end{center}"<<endl;
 }
@@ -302,16 +366,16 @@ int main(int argc, char* argv[])
 		do{
 			do{
 				cout<<endl<<endl;
-				cout<<"|***********************************************|"<<endl;
-				cout<<"|                                               |"<<endl;
-				cout<<"|        TestScript - Alberto Garbui            |"<<endl;
-				cout<<"|                                               |"<<endl;
-				cout<<"|     Script per generare i file latex del      |"<<endl;
-				cout<<"|         per il Piano di Qualifica             |"<<endl;
-				cout<<"|   utilizzando i file esportati con Access.    |"<<endl;
-				cout<<"|                                               |"<<endl;
-				cout<<"|***********************************************|"<<endl<<endl;
-				cout<<"Scegli..."<<endl;
+				cout<<"  |***********************************************|"<<endl;
+				cout<<"  |                                               |"<<endl;
+				cout<<"  |        TestScript - Alberto Garbui            |"<<endl;
+				cout<<"  |                                               |"<<endl;
+				cout<<"  |      Script per generare i file latex         |"<<endl;
+				cout<<"  |         per il Piano di Qualifica             |"<<endl;
+				cout<<"  |   utilizzando i file esportati con Access.    |"<<endl;
+				cout<<"  |                                               |"<<endl;
+				cout<<"  |***********************************************|"<<endl<<endl;
+				cout<<" Scegli..."<<endl;
 				cout<<"  1 - Genera "<<fileTS<<" (da "<<inputTS<<")"<<endl; //test sistema
 				cout<<"  2 - Genera "<<fileTI<<" (da "<<inputTI<<")"<<endl; //test integrazione
 				cout<<"  3 - Genera "<<fileCOMPTEST<<" (da "<<inputCOMPTEST<<")"<<endl; //tracciamento componenti-test
@@ -321,7 +385,7 @@ int main(int argc, char* argv[])
 				cout<<endl;
 				cout<<"  7 - Esegui tutte le precedenti operazioni"<<endl<<endl;
 				cout<<"  0 - Exit"<<endl<<endl;
-				cout<<"Comando: ";
+				cout<<" Comando: ";
 				cin>>risposta;
 				if(risposta<0 || risposta>7)
 					cout<<endl<<"Comando errato! riprova.";
@@ -527,7 +591,8 @@ int main(int argc, char* argv[])
 				
 				default: //hmmm
 				{
-					cout<<endl<<"SONO STATE ESEGUITE TUTTE LE OPERAZIONI! :)"<<endl<<endl;
+					if(risposta>=0 && risposta<=7)
+						cout<<endl<<"SONO STATE ESEGUITE TUTTE LE OPERAZIONI! :)"<<endl<<endl;
 				}		
 				
 			}//end switch

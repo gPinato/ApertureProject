@@ -11,6 +11,7 @@
 #include<stdlib.h>
 #include<iostream>
 #include<fstream>
+#include <ctime>
 using namespace std;
 
 //decommentare per rimuovere le funzionalità di debug...
@@ -20,7 +21,13 @@ using namespace std;
 
 void disclaimer(ofstream * OUT)
 {
-	*OUT<<"%QUESTE TABELLE SONO STATE GENERATE AUTOMATICAMENTE DALLO SCRIPT TRACCIAMENTOSCRIPTST"<<endl<<endl;
+	time_t now = time(0);
+	char * dt = ctime(&now);
+	char * data = new char[20];
+	int i=4;
+	for(;i<24;i++)data[i-4]=dt[i];
+	data[i-4]=0;
+	*OUT<<"%QUESTE TABELLE SONO STATE GENERATE AUTOMATICAMENTE DA TRACCIAMENTOSCRIPTST ["<<data<<"]"<<endl<<endl;
 }
 
 void intestazioneTabellaCOMPREQ(ofstream * OUT)
