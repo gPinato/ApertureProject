@@ -1,31 +1,49 @@
+%QUESTE TABELLE SONO STATE GENERATE AUTOMATICAMENTE DA TESTSCRIPT [Apr 15 12:17:31 2014]
+
 \begin{center}
 \begin{longtable}{|p{7cm}|p{7cm}|}
 \toprule
 \textbf{Test} & \textbf{Componente}\\
+
 \midrule
-TI.MaaP & MaaP\\
+TI.MaaP
+& MaaP\\
+
 \midrule
-TI.Server & Server\\
+TI.Server
+& MaaP::Server\\
+
 \midrule
-TI.Server.ModelServer & Server::ModelServer\\
+TI.Server.ModelServer
+& MaaP::Server::ModelServer\\
+& MaaP::Server::ModelServer::DataManager\\
+& MaaP::Server::ModelServer::Database\\
+& MaaP::Server::ModelServer::DataManager\\
+
 \midrule
-TI.Server.ModelServer.DataManager-Database & Server::ModelServer::DataManager\\
-& Server::ModelServer::Database\\
+TI.Client
+& MaaP::Client\\
+
 \midrule
-TI.Server.ModelServer.DataManager & Server::ModelServer::DataManager\\
+TI.Client.View-ControllerModelView
+& MaaP::Client::View\\
+
 \midrule
-TI.Client & Client\\
+TI.Client.ControllerModelView-ModelClient
+& MaaP::Client::ControllerModelView\\
+& MaaP::Client::ModelClient\\
+
 \midrule
-TI.Client.View-ControllerModelView & Client::View\\
-& Client::ControllerModelView\\
+TI.Client.View-ControllerModelView
+& MaaP::Client::ControllerModelView\\
+
 \midrule
-TI.Client.ControllerModelView-ModelClient & Client::ControllerModelView\\
-& Client::ModelClient\\
-\midrule
-TI.Client.ControllerModelView & Client::ControllerModelView\\
-%inserire i test
+TI.Client.ControllerModelView
+& MaaP::Client::ControllerModelView\\
+
 \bottomrule
 \caption{Tracciamento test d'integrazione-componente}
-\label{tab:changelog}
 \end{longtable}
 \end{center}
+%QUESTE TABELLE SONO STATE GENERATE AUTOMATICAMENTE DA TESTSCRIPT [Apr 15 12:17:31 2014]
+
