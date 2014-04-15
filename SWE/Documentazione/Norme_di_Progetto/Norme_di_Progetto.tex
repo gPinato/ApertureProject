@@ -51,7 +51,8 @@ Diario delle modifiche
 \textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Modifiche effettuate}\\
 
 %aggiungere qui una midrule per aggiungere una nuova riga alla tabella
-
+\midrule
+4.0.3 & 2014-04-15 & Giacomo Pinato (RE) & Stesura sottoprocessi.\\
 \midrule
 4.0.3 & 2014-04-14 & Giacomo Pinato (RE) & Stesura sottoprocessi.\\
 \midrule
@@ -773,20 +774,19 @@ La tabella dei test d'unità avrà la seguente forma:
 
 Ogni requisito deve essere tracciato al componente che lo soddisfa, ed ogni componente deve essere tracciato al requisito che ha imposto la sua realizzazione.
 
-\subparagraph{Tracciamento requisiti-componenti}
+\paragraph{Tracciamento requisiti-componenti}
 Di seguito verrà mostrata una tabella che rappresenta il tracciamento requisiti-componenti. \\
 La tabella avrà la seguente forma:
 \begin{itemize}
 \item \grassetto{Requisito: }specifica il requisito;
-\item \grassetto{Descrizione: }descrizione del requisito;
 \item \grassetto{Componenti: }specifica le componenti che soddisfano il requisito.
 \end{itemize}
 
-\subparagraph{Tracciamento componenti-requisiti}
+\paragraph{Tracciamento componenti-requisiti}
 Di seguito verrà mostrata una tabella che rappresenta il tracciamento componenti-requisiti. \\
 La tabella avrà la seguente forma:
 \begin{itemize}
-\item \grassetto{Componenti: }specifica la componente;
+\item \grassetto{Componente: }specifica la componente;
 \item \grassetto{Requisiti: }specifica i requisiti che vengono soddisfatti dalla componente.
 \end{itemize}
 
@@ -800,8 +800,8 @@ La tabella del tracciamento avrà la seguente forma:
 \paragraph{Tracciamento requisiti-classi}
 La tabella del tracciamento avrà la seguente forma:
 \begin{itemize}
-\item \grassetto{Requisiti: }specifica i requisiti;
-\item \grassetto{Classe: }specifica il nome della classe.
+\item \grassetto{Requisito: }specifica il requisito;
+\item \grassetto{Classi: }specifica i nomi della classi.
 \end{itemize}
 
 
@@ -978,7 +978,7 @@ Mocha.
 \paragraph{Procedure}
 
 \paragraph{Strumenti}
-https://github.com/angular/protractor
+Karma.
 
 \subsubsection{Testi di regressione}
 
@@ -987,18 +987,64 @@ https://github.com/angular/protractor
 \paragraph{Strumenti}
 
 \subsubsection{Statement e branch coverage}
+Statement e branch coverage sono delle metriche che consentono di sapere quanta percentuale di codice è stata testata.
+Lo statement coverage indica quante linee di codice sono state testate rispetto alla totalità, il branch coverage indica quanto rami logici sono stati testati rispetto a tutti quelli intraprendibili.
 
 \paragraph{Procedure}
-%npm install -g istanbul
-%istanbul cover _mocha -- -R spec
-%open coverage/lcov-report/index.html
+\subparagraph{Verificare copertura di un test}
+Per verificare la copertura di un test bisogna usare il seguente comando:\\
+\begin{center}
+\textit{istanbul cover mytest.js}\\
+\end{center}
+
+\subparagraph{Generare un report}
+Per generare un report della copertura del codice bisogna usare il seguente comando:\\
+
+\begin{center}
+\textit{istanbull report}\\
+\end{center}
+Sono disponibili i seguenti formati di output:
+\begin{itemize}
+\item html;
+\item lcovonly, produce un file lcov.info;
+\item lcov, produce html + lcov files. Questo è il formato di default;
+\item cobertura, produce un file xml contenente la copertura;
+\item text-summary, produce un resoconto testuale della copertura, tipicamente su console;
+\item text, produce una tabella di testo dettagliata con la copertura di ogni file.
+\end{itemize}
+
+\subparagraph{Verificare la copertura minima}
+Istanbull permette di impostare una soglia minima di copertura e di verificare automaticamente se tale soglia è rispettata.
+Per verificare la copertura attuale contro quella minima bisogna usare il seguente comando:\\
+\begin{center}
+\textit{istanbull check-coverage}\\
+\end{center}
+Il comando ritorna 1 se la copertura minima è rispettata, altrimenti ritorna 0.
+
+
 \paragraph{Strumenti}
-http://gotwarlost.github.io/istanbul/
+Istanbul.
 
 
 \subsubsection{Tracciamento}
 
 \paragraph{Norme generali}
+Devono essere generate le seguenti tabelle di tracciamento per i test effettuati:
+
+\paragraph{Tracciamento componente-test d'unità}
+La tabella per il tracciamento componente-test d'unità avrà la seguente forma:
+\begin{itemize}
+\item \grassetto{Unità: } il nome del componente associato al corrispondente test;
+\item \grassetto{Test: }codice univoco che identifica il test.
+\end{itemize}
+
+\paragraph{Tracciamento test d'unità-componente}
+La tabella per il tracciamento test d'unità-componente avrà la seguente forma:
+\begin{itemize}
+\item \grassetto{Test: }codice univoco che identifica il test;
+\item \grassetto{Unità: } il componente associato al corrispondente test.
+\end{itemize}
+
 
 
 \paragraph{Tracciamento componente-test d'integrazione}
@@ -1012,9 +1058,24 @@ La tabella per il tracciamento componente-test d'integrazione avrà la seguente 
 La tabella per il tracciamento test d'integrazione-componente avrà la seguente forma:
 \begin{itemize}
 \item \grassetto{Test: }codice univoco che identifica il test;
-\item \grassetto{Componente: } il componente associato al corrispondente test.
+\item \grassetto{Componenti: } i componenti associati al corrispondente test.
 \end{itemize}
 
+
+\paragraph{Tracciamento requisito-test di sistema}
+La tabella per il tracciamento requisito-test di sistema avrà la seguente forma:
+\begin{itemize}
+\item \grassetto{Requisito: } il codice del requisito soddisfatto dal test;
+\item \grassetto{Descrizione: } descrizione testuale del requisito.
+\item \grassetto{Test: }codice univoco che identifica il test.
+\end{itemize}
+
+\paragraph{Tracciamento test di sistema-requisiti}
+La tabella per il tracciamento test di sistema-requisiti avrà la seguente forma:
+\begin{itemize}
+\item \grassetto{Test: }codice univoco che identifica il test;
+\item \grassetto{Requisiti: } i requisiti associati al test.
+\end{itemize}
 
 \subsection{Validazione}
 Questo processo comprende tutte le attività volte a verificare che il prodotto risultante dall'uscita di tutti i processi sia il prodotto desiderato.
@@ -1292,7 +1353,7 @@ La sequenza di operazioni corretta per effettuare il merge del branch test nel b
 \item git push origin master.
 \end{itemize}
 
-\subparagraph{Gestione dei conflitti} nel caso si verifichino conflitti sarà necessario usare il comando \textit{git mergetool} e risolvere il conflitto tramite l'apposito tool.
+\subparagraph{Gestione dei conflitti} nel caso si verifichino conflitti sarà necessario usare il comando \textit{git mergetool} e risolvere il conflitto tramite l'apposito strumento.
 
 \paragraph{Strumenti}
 Git.
@@ -1310,7 +1371,7 @@ Di seguito verranno mostrati i seguenti tracciamenti:
 La tabella del tracciamento avrà la seguente forma:
 \begin{itemize}
 \item \grassetto{Modulo: }specifica il modulo;
-\item \grassetto{Test: }specifica il test.
+\item \grassetto{Test: }specifica i test.
 \end{itemize}
 
 
@@ -1392,6 +1453,8 @@ Script realizzato dal team per il calcolo automatico dell'indice di Gulpease.
 \subsubsection{Astah}
 Come strumento per rappresentare i diagrammi delle classi, diagrammi di sequenza e diagrammi di attività, è stato utilizzato il software di modellazione Astah. Questo strumento è stato consigliato dai docenti del corso di Ingegneria del Software, in quanto è gratuito, semplice da usare e adeguato alle nostre esigenze. Tutti i diagrammi seguono gli standard UML 2.0.
 
+\subsubsection{TeXstudio}
+TeXstudio è l'editor di \LaTeX consigliato per la scrittura della documentazione.
 
 \subsection{Strumenti per la codifica}
 \subsubsection{Eclipse}
@@ -1414,6 +1477,57 @@ Per semplificare e automatizzare il tracciamento dei requisiti è stato realizza
 \subsubsection{Tracciamento dei test}
 \label{}
 Per semplificare e automatizzare il tracciamento dei test è stato realizzato un database relazionale che associa ad ogni test la sua componente. È inoltre possibile effettuare la ricerca inversa e, partendo da un componente, vedere i test associati.
+
+\subsection{Strumenti per la verifica}
+
+\subsubsection{GNU Aspell}
+GNU Aspell è uno strumento Open Source per il controllo degli errori di scrittura. Sottolinea in rosso le parole non riconosciute e ne suggerisce una correzione.
+\subsubsection{Eclipse Metrics}
+Metrics è un plug in per Eclipse che consente di calcolare automaticamente una serie di metriche utili a sviluppare codice di qualità.
+Tra le principali metriche calcolabili sono presenti:
+\begin{enumerate}
+\item Linee di codice totali;
+\item Accoppiamento afferente;
+\item Accoppiamento efferente;
+\item Complessità ciclomatica;
+\item Numero di parametri per metodo;
+\item Indice di instabilità.
+\end{enumerate}
+
+\subsubsection{JSHint}
+JSHint è uno strumento open source di analisi statica per il riconoscimento di errori e di potenziali problemi nel codice Javascript. \'E inoltre utile per imporre l'utilizzo delle norme di codifica agli sviluppatori.
+
+\subsubsection{Closure Compiler}
+Closure Compiler è uno strumento sviluppato da Google per l'analisi e l'ottimizzazione del codice Javascript. Analizza il codice rimuovendo parti non necessarie e ottimizzando il codice, rendendolo più veloce ed efficiente.
+
+\subsubsection{Mocha}
+Mocha è un framework di test per  JavaScript basato su node.js. \'E estremamente ricco di funzionalità. Tra le principali ci sono:
+\begin{itemize}
+\item supporto ai browser;
+\item supporto ai testi asincroni e alle promises;
+\item mappa le eccezioni non catturate al test corretto;
+\item timeout dei test asincroni;
+\item Calcolo della durata dei test;
+\item evidenzia test lenti;
+\item Controllo del memory leak;
+\item Supporto al debugger di node.js.
+\end{itemize}
+
+\subsubsection{Karma}
+Karma è uno strumento per la semplificazione e la gestione dei test. Permette di automatizzare l'esecuzione di test, ti implementare test di sistema eseguendoli direttamente sul browser, XXX
+
+\subsubsection{Istanbul}
+\label{Instabull}
+Istanbul è uno strumento per il calcolo della copertura di codice Javascript. Le sue funzionalità principali sono:
+\begin{itemize}
+\item Tracciamento di statement, branch e function coverage;
+\item Indipendenza dal gestore dei test;
+\item Generazione di report in HTML, testo semplice e LCOV;
+\item Compatibilità con Mocha;
+\item Può essere usato come middleware quando si testano file Javascript su browser;
+\item Consente di impostare un limite minimo di copertura e di testare se tale limite è rispettato.
+\end{itemize}
+
 
 
 \section{Lista di Controllo}
