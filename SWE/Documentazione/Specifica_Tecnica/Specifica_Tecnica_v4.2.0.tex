@@ -57,9 +57,10 @@ Diario delle modifiche
 \midrule
 4.1.0 & 2014-xx-xx &   (VR) & Verifica documento.\\
 
-
 \midrule
-4.0.1 & 2014-04-09 &   (PT) & Effettuate correzioni segnalate dal Committente.\\
+4.0.2 & 2014-04-xx &   (PT) &  .\\
+\midrule
+4.0.1 & 2014-04-09 & Alberto Garbui (PT) & Effettuate correzioni segnalate dal Committente.\\
 
 
 \midrule
@@ -103,8 +104,8 @@ Diario delle modifiche
 %pagine successive hanno la lista di tabelle e lista delle figure
 %(vengono aggiornate in automatico)
 \newpage
-%\listoftables	%tabelle
-\listoffigures %elenco delle immagini
+\listoftables	%tabelle
+\listoffigures 	%elenco delle immagini
 
 %qui inizia la prima pagina ufficiale
 \newpage
@@ -148,6 +149,9 @@ Il \gloss{database} con il quale la nostra applicazione dovrà interagire è rea
 \item Integrazione con Javascript: \gloss{Query} o altre funzioni scritte in Javascript possono essere eseguite direttamente dal database.
 \end{itemize}
 
+\subsection{Mongoose}
+Mongoose è uno strumento di modellazione di dati provenienti da database MongoDB, sviluppato per lavorare in ambienti asincroni.
+
 \subsection{Javascript}
 Si è deciso di utilizzare Javascript in quanto è il linguaggio su cui si basano tutte le altre tecnologie che andremo ad utilizzare, e offre quindi una facile integrazione, oltre ad essere un ottimo linguaggio per applicazioni \gloss{web} e \gloss{client} side.
 
@@ -158,6 +162,9 @@ Si è deciso di utilizzare il framework Node.js in quanto richiesto nel capitola
 \item Modello asincrono: grazie a questa caratteristica è possibile ridurre al minimo i tempi di morti in quanto, nell'attesa del completamento di una operazione, si procede con altri flussi logici.
 \item Grande scalabilità: Grazie al modo in cui è implementato, Node.js riesce ad essere largamente scalabile con minimo sforzo.
 \end{itemize}
+
+\subsection{Express}
+Express è un framework minimale e flessibile per la creazione di applicazioni web basate su Node.js, contiene una varietà di funzioni sia per la creazione di applicazioni a singola pagina che multi-pagina oltre che applicazioni ibride.
 
 \subsection{JSON}
 Rappresenta il tipo di messaggi con cui client e \gloss{server} si scambiano informazioni. I vantaggi offerti sono:
@@ -177,7 +184,6 @@ Le sue caratteristiche più significative sono:
 \item Templates: I \gloss{template} \gloss{HTML} sono compilati dal \gloss{browser} nel DOM, il quale costituisce poi l'\gloss{input} per il compilatore AngularJS. Quest'ultimo poi crea il data binding tra il DOM e lo \gloss{scope} dei dati. Uno dei più grandi vantaggi di questa tecnica è che separa presentazione da implementazione, in quanto i template html possono modificati senza alterare il modo in cui sono inseriti i dati.
 \item \gloss{Dependency Injection}: AngularJS dispone di uno strumento di dependence injection, che aiuta gli sviluppatori facilitando la creazione, la comprensione e il \gloss{testing} dell'applicazione.
 \item \gloss{Directives}: Le directives possono essere usate per definire tag HTML personalizzati che fungono da \gloss{widget}. Possono inoltre essere usate per "decorare" elementi con comportamenti personalizzati o per manipolare attributi del DOM.
-
 \end{itemize}
 
 \subsection{Passport}
@@ -194,9 +200,12 @@ Inoltre HTML5 prevede il supporto per la memorizzazione locale di grosse quantit
 Si è deciso di procedere utilizzando un approccio \gloss{Top-down} per l'esposizione dell'architettura dell'applicazione, ovvero descrivendo inizialmente le componenti in generale per poi arrivare a trattarle al particolare.
 Si descriveranno i \gloss{package} e i componenti per poi dettagliare le singole classi, specificando per ciascuna di esse il tipo, l'obiettivo e la funzionalità. Poi si passerà ad illustrare degli esempi d'uso di Design Pattern (descritti approfonditamente nell'\gloss{Appendice} A) e le tecnologie utilizzate.
 
-
 \subsection{Architettura generale}
-L'architettura del framework segue un modello di architettura in stile Client-server che prevede la suddivisione dell'applicazione in due parti: la parte client composta dall'\gloss{interfaccia utente} (Client) e la parte server composta dalla \gloss{business} logic (Controller) e alla gestione dei dati persistenti (ModelServer). La parte Client segue il design pattern \gloss{MVVM} utilizzato da AngularJS ed è quindi suddivisa in Model, \gloss{View}, \gloss{ViewModel}.\\
+L'architettura del framework segue un modello di architettura in stile Client-Server che prevede la suddivisione dell'applicazione in due parti: la parte client composta dall'\gloss{interfaccia utente} (Client) e la parte server composta dalla \gloss{business} logic (Controller) e alla gestione dei dati persistenti (ModelServer).\\
+La parte Client segue il design pattern \gloss{MVVM} utilizzato da AngularJS che gestisce la parte frontend del progetto, esso accede ai dati attraverso chiamate AJAX utilizzando le API fornite dal server.\\
+La parte Server utilizza Node.js ed il framework Express per gestire tutte le richieste \gloss{REST} del client. Grazie all'utilizzo di Mongoose, l'applicativo lato server può interagire con il database MongoDB, recuperare i dati necessari e rispondere al client tramite oggetti JSON opportuni.\\ L'utilizzo del middleware Passport permette di gestire l'autenticazione utente, ottenendo così un'architettura di tipo \gloss{RESTlike}.\\
+Un esempio di stack MEAN che rispecchia le funzionalità base del framework MaaP è il seguente:
+\immagine{./mean}{Esempio di stack MEAN}
 
 I seguenti diagrammi rappresentano l'architettura ad alto livello del framework, indicando i package, le classi e le relazioni che intercorrono tra queste.
 
