@@ -1,0 +1,24 @@
+<!doctype html>
+<html ng-app="MaaP">
+<head>
+	
+	<title>MaaP test</title>
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script><!-- load jquery -->
+	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.0.8/angular.min.js"></script><!-- load angular -->
+	<script src="/controller/controllerAutenticazione.js"></script>
+
+</head>
+<body>
+	<div class="container" ng-controller="controllerAutenticazione">
+		<h1>Test dispatcher</h1>
+		<p>Seleziona il tipo di richiesta da inviare:</p>
+		<button type="submit" ng-click="inviaRequestGET1()">GET request</button>
+		<button type="submit" ng-click="inviaRequestGET2()">GET request JK</button>
+		<button type="submit" ng-click="inviaRequestGET3()">GET request pippo</button>
+		<h3>Info comando:</h3>
+		<p>{{reqResult}}</p>
+		<h3>Risposta:</h3>
+		<p>{{datiVari}}</p>		
+	</div>
+</body>
+</html>
