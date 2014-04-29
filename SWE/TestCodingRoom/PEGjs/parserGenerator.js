@@ -18,18 +18,18 @@ var parser = PEG.buildParser(grammaticaDSL, { 		//grammatica da utilizzare (stri
 parser = "module.exports = " + parser + ";";
 
 //ora lo salvo
-console.log("Salvo il parser generato su ./output/parser.maap...");
-fs.writeFileSync('./output/parser.maap', parser, 'utf-8', function (err) {
+console.log("Salvo il parser generato su ./output/parser.js...");
+fs.writeFileSync('./output/parser.js', parser, 'utf-8', function (err) {
 	if (err) {
-		console.log("Errore nel salvataggio di parser.maap!");
+		console.log("Errore nel salvataggio di parser.js!");
     } else {
-		console.log("Salvato parser.maap!");
+		console.log("Salvato parser.js!");
     }
 	}
 );
 
 //TEST di utilizzo del parser, carico il modulo esterno
-var parserTest = require('./output/parser.maap');
+var parserTest = require('./output/parser.js');
 //carico il file DSL da testare
 var DSLstring = fs.readFileSync('./input/dsl.maap').toString();
 
