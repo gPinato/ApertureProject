@@ -1,5 +1,5 @@
 index do
-column:nome
+column:"nome" prova
 show do
 row:cognome
 end

@@ -8,7 +8,7 @@ ind
 doc
   = string:"show do"LineTerminatorSequence+ {return "row";}
 indexdo
-  =column e:etichetta ris:token LineTerminatorSequence+
+  =column  SingleEscapeCharacter e:etichetta SingleEscapeCharacter WhiteSpace* ris:token LineTerminatorSequence+
   
 column
   =WhiteSpace* string: "column:" WhiteSpace*
@@ -46,3 +46,13 @@ LineTerminatorSequence "end of line"
   / "\r"
   / "\u2028"
   / "\u2029"
+  
+ SingleEscapeCharacter
+  = "'"
+  / '"'
+  / "\\"
+  / "b"  { return "\b";   }
+  / "f"  { return "\f";   }
+  / "n"  { return "\n";   }
+  / "r"  { return "\r";   }
+  / "t"  { return "\t";   }
