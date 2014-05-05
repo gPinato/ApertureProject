@@ -1,5 +1,11 @@
-index do
-column:"nome" prova
-show do
-row:cognome
-end
+Maap.register CollectioUtenti do
+
+	index do
+		column "ID", :id
+		column "Email", :email
+		column "Nome Utente", :name
+		column :sex
+		column "Numero di accessi", :loginCount, :sortable => true, :sortable=> lastLogin
+		show do
+		row:cognome
+	end

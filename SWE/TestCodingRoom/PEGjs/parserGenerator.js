@@ -3,7 +3,7 @@ var fs = require('fs');     //gestione filestreams
 var PEG = require('pegjs'); //pegjs ;)
 
 //carico la grammatica
-var grammaticaDSL = fs.readFileSync('./input/ProvaGrammatica.js').toString();
+var grammaticaDSL = fs.readFileSync('./input/grammatica.js').toString();
 
 //genero il parser con la grammatica
 console.log("Genero il parser dalla grammatica.js...");
