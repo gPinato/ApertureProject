@@ -8,7 +8,7 @@ collection(
         column(
 			label: "Nome",
 			name: "fullname",
-			transformation: function(val) {
+			transformation: function nome(val) {
 				return val+" junior";
 			}
 		)
