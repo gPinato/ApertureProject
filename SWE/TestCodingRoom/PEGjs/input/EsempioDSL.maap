@@ -1,0 +1,53 @@
+collection(   
+   label: etichetta,
+   name: nome,
+   position:posizione
+  )
+  index {
+        populate: [collection1,collection2], 
+        column(
+			label: "Nome",
+			name: "fullname",
+			transformation: function nome(val) {
+				return val+" junior";
+			}
+		)
+		column(label: "Prova",
+			name: "collection1.prova"
+			)
+		column(label: "Prova",
+			name: "collection2.prova"
+			)
+		
+		button(
+		    label: "Calculate",
+			name: "button1",
+			function: function() {
+				return "ciao";
+			}
+		)       
+		perpage: 20,
+		sortby: "age",
+		order: "asc",
+		query: {
+			age: { $lt: 20 }
+		}
+
+ }
+show{
+     row(label: "Prova",
+		name: "doc"
+			)
+     button(
+		    label: "Calculate",
+			name: "button1",
+			function: function() {
+				return "ciao";
+			}
+		)
+ }
+ //
+ 
+ 
+ 
+ 

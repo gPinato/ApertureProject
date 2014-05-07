@@ -1,0 +1,10 @@
+﻿{
+  "name"         : "MaaP",
+  "version"      : "1.0.0",
+  "description"  : "Test dispatcher",
+  "main"         : "server.js",
+  "author"       : "JK",
+  "dependencies" : {
+    "express"    : "~3.4.4"
+  }
+}

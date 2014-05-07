@@ -1,145 +1,4 @@
-start
-  = dsl
-dsl
-  =Collection Index
- 
- Collection
- =WhiteSpace* StringCollection WhiteSpace* RoundOpenPar WhiteSpace* LineTerminatorSequence*
- Label DuePunti WhiteSpace* Etichetta WhiteSpace* Virgola WhiteSpace* LineTerminatorSequence* 
- Name DuePunti WhiteSpace* Etichetta WhiteSpace* Virgola WhiteSpace* LineTerminatorSequence*
- Position DuePunti WhiteSpace* Etichetta WhiteSpace* LineTerminatorSequence*
- WhiteSpace* RoundClosePar WhiteSpace* LineTerminatorSequence*
- 
- Index
- =WhiteSpace* StringIndex WhiteSpace* CurlyOpenPar WhiteSpace* LineTerminatorSequence*
-  WhiteSpace* Populate?  WhiteSpace* ColumnOrButton* CurlyClosePar
- 
- 
- 
- 
- 
- 
- ColumnOrButton
- =Column/Button
- 
- 
- StringCollection
- ="collection"
-   /"Collection"
-   
- StringIndex
- ="index"
-   /"Index"
- 
-StringColumn
-="column"
-/"Column"
-
-StringButton
-="button"
-/"Button"
- 
-Column
-  =WhiteSpace* StringColumn WhiteSpace* RoundOpenPar WhiteSpace* LineTerminatorSequence* (Label DuePunti WhiteSpace* SingleEscapeCharacter Etichetta SingleEscapeCharacter WhiteSpace* Virgola)?
-   WhiteSpace* LineTerminatorSequence* Name DuePunti WhiteSpace* SingleEscapeCharacter Etichetta SingleEscapeCharacter WhiteSpace* LineTerminatorSequence* WhiteSpace* 
-   (Virgola LineTerminatorSequence* Transformation)? RoundClosePar
-
- Etichetta
-  = digits:[a-z/WhiteSpace? /A-Z]* {
-}
-  
-Token
-  =digits:[a-zA-Z]* {
-return digits.join("");
-}
-
-row
-  = WhiteSpace* stringa: "row:" WhiteSpace*
-
-
-WhiteSpace "WhiteSpace"
-  = "\t"
-  / "\v"
-  / "\f"
-  / " "
-  / "\u00A0"
-  / "\uFEFF"
- 
-
-LineTerminatorSequence "end of line"
-  = "\n" 
-  / "\r\n"
-  / "\r"
-  / "\u2028"
-  / "\u2029"
-  
- SingleEscapeCharacter
-  = "'"
-  / '"'
-  / "\\"
-  / "b"  { return "\b";   }
-  / "f"  { return "\f";   }
-  / "n"  { return "\n";   }
-  / "r"  { return "\r";   }
-  / "t"  { return "\t";   }
-
-Virgola
- = ","
-
-DuePunti
- = ":"
-
-Freccia
- = "=>"
- /"->"
-
-Trueofalse
- = "true"
- / "false"
- 
- RoundOpenPar
- ="("
- 
-  RoundClosePar
- =")"
- 
- CurlyOpenPar
- ="{"
- 
- CurlyClosePar
- ="}"
- 
- SquareOpenPar
- ="["
- 
- SquareClosePar
- ="]"
- 
- Label
- =WhiteSpace* "label"/"Label" WhiteSpace*
- 
- Name
- =WhiteSpace* "name"/"Name" WhiteSpace*
- 
-Position
-=WhiteSpace* "position"/"Position" WhiteSpace*
-
-Populate
-=WhiteSpace* "populate"/"Populate" WhiteSpace* DuePunti WhiteSpace* SquareOpenPar 
-(WhiteSpace* Token WhiteSpace* Virgola)* WhiteSpace* Token WhiteSpace* SquareClosePar WhiteSpace* Virgola LineTerminatorSequence*
-
-Transformation
-=WhiteSpace* "transformation"/"Transformation" WhiteSpace* DuePunti WhiteSpace* Javascript 
-
-
-    
-	
-	
-	
-
-	
-	
-	/*
+/*
  * JavaScript Grammar
  * ==================
  *
@@ -245,10 +104,7 @@ Transformation
   }
 }
 
-
-
-
-Javascript
+Start
   = __ program:Program __ { return program; }
 
 /* ----- A.1 Lexical Grammar ----- */
@@ -256,13 +112,14 @@ Javascript
 SourceCharacter
   = .
 
-WhiteSpace "WhiteSpace"
+WhiteSpace "whitespace"
   = "\t"
   / "\v"
   / "\f"
   / " "
   / "\u00A0"
   / "\uFEFF"
+  / Zs
 
 LineTerminator
   = [\n\r\u2028\u2029]
@@ -1503,8 +1360,3 @@ SourceElement
 /* ----- A.8 JSON ----- */
 
 /* Irrelevant. */
-
-
-
-
-

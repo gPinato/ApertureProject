@@ -6,7 +6,6 @@ bool isAuthenticatedAdmin(email);
 
 //FrontController
 
-
 //Dispatcher (da spartire nei vari datamanager)
 
 //DatabaseAnalysisManager
@@ -41,11 +40,26 @@ CollectionData parser(DSLdescriptionFile);
 //DSLManager
 
 
-//esempio router FrontController
+//esempio router front controller
 app.post('/register',  !isAuthenticated(email), createUser(email,password,0));        //registrazione utente normale
+
 app.post('/addUser',  isAuthenticatedAdmin(email), createUser(email,password,level)); //per l'amministratore
+app.post('/coll:ID', isAuthenticatedAdmin(email), viewCollection(ID)
 
 
+//dispatcher
+var dbusermanager = require('databaseusermanager');
+
+dispatch(req,x,y,z)
+{
+	switch(req[0])
+		case '/register':	dbusermanager.createUser(email,password,0){}
+		case yyy:  
+}
+
+//front controllerer
+var dispatcher = require('dispatcher');
+app.post('/register',  !isAuthenticated(email), dispatcher.dispatch(req));
 
 
 
