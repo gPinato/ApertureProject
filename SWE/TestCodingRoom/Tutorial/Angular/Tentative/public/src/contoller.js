@@ -7,6 +7,10 @@ function emailRouteConfig($routeProvider) {
             controller: ListController,
             templateUrl: 'list.html'
         }).
+        when('/shop', {
+            controller: ShoppingController,
+            templateUrl: 'shop.html'
+        }).
 // Notice that for the detail view, we specify a parameterized URL component
 // by placing a colon in front of the id
         when('/view/:id', {
@@ -44,4 +48,10 @@ function ListController($scope) {
 // find the right message object.
 function DetailController($scope, $routeParams) {
     $scope.message = messages[$routeParams.id];
+}
+
+function ShoppingController($scope, $http) {
+    $http.get('http://localhost:8080/req').success(function(data) {
+        $scope.items = data;
+    });
 }
