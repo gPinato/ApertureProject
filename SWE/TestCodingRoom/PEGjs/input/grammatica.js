@@ -20,7 +20,7 @@ dsl
  
  
  ColumnOrButton
- =Column/Button
+ =Column
  
  
  StringCollection
@@ -42,7 +42,7 @@ StringButton
 Column
   =WhiteSpace* StringColumn WhiteSpace* RoundOpenPar WhiteSpace* LineTerminatorSequence* (Label DuePunti WhiteSpace* SingleEscapeCharacter Etichetta SingleEscapeCharacter WhiteSpace* Virgola)?
    WhiteSpace* LineTerminatorSequence* Name DuePunti WhiteSpace* SingleEscapeCharacter Etichetta SingleEscapeCharacter WhiteSpace* LineTerminatorSequence* WhiteSpace* 
-   (Virgola LineTerminatorSequence* Transformation)? RoundClosePar
+   (Virgola LineTerminatorSequence* Transformation)? WhiteSpace* LineTerminatorSequence* WhiteSpace* RoundClosePar  WhiteSpace* LineTerminatorSequence* WhiteSpace*
 
  Etichetta
   = digits:[a-z/WhiteSpace? /A-Z]* {
@@ -116,20 +116,20 @@ Trueofalse
  ="]"
  
  Label
- =WhiteSpace* "label"/"Label" WhiteSpace*
+ =WhiteSpace* ("label"/"Label") WhiteSpace*
  
  Name
- =WhiteSpace* "name"/"Name" WhiteSpace*
+ =WhiteSpace* ("name"/"Name") WhiteSpace*
  
 Position
-=WhiteSpace* "position"/"Position" WhiteSpace*
+=WhiteSpace* (position"/"Position") WhiteSpace*
 
 Populate
-=WhiteSpace* "populate"/"Populate" WhiteSpace* DuePunti WhiteSpace* SquareOpenPar 
-(WhiteSpace* Token WhiteSpace* Virgola)* WhiteSpace* Token WhiteSpace* SquareClosePar WhiteSpace* Virgola LineTerminatorSequence*
+=WhiteSpace* ("populate"/"Populate") WhiteSpace* DuePunti WhiteSpace* SquareOpenPar 
+(WhiteSpace* Token WhiteSpace* Virgola)* WhiteSpace* Token WhiteSpace* SquareClosePar WhiteSpace* Virgola WhiteSpace* LineTerminatorSequence* WhiteSpace*
 
 Transformation
-=WhiteSpace* "transformation"/"Transformation" WhiteSpace* DuePunti WhiteSpace* Javascript 
+=WhiteSpace* ("transformation"/"Transformation") WhiteSpace* DuePunti WhiteSpace* Javascript 
 
 
     

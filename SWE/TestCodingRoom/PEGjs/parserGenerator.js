@@ -31,7 +31,7 @@ fs.writeFileSync('./output/parser.js', parser, 'utf-8', function (err) {
 //TEST di utilizzo del parser, carico il modulo esterno
 var parserTest = require('./output/parser.js');
 //carico il file DSL da testare
-var DSLstring = fs.readFileSync('./input/dsl.maap').toString();
+var DSLstring = fs.readFileSync('./input/provaDSL.maap').toString();
 
 //provo ad eseguire il parser sul dsl..
 console.log("Eseguo il parser su dsl.maap...");
