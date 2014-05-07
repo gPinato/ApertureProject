@@ -12,6 +12,10 @@ function emailRouteConfig($routeProvider,$locationProvider) {
             controller: ShoppingController,
             templateUrl: 'shop.html'
         }).
+        when('/send', {
+        controller: SenderController,
+        templateUrl: 'form.html'
+        }).
 // Notice that for the detail view, we specify a parameterized URL component
 // by placing a colon in front of the id
         when('/view/:id', {
@@ -52,6 +56,23 @@ function ListController($scope) {
     $scope.messages = messages;
 }
 
+function SenderController($scope, $http) {
+    $scope.message = 'Ammazzali tutti charlie';
+    $scope.addUser = function () {
+
+        var postData = {text:$scope.user.id};
+
+// The next line gets appended to the URL as params
+// so it would become a post request to /api/user?id=5
+
+        $http.post('/addshop', postData
+            ).success(function() {
+                $scope.message = 'Thanks, ' + $scope.user.id + ', we added you!';
+            }).error(function() {
+                $scope.message = 'Sorry, ' + $scope.user.id + ', we fucked up!';
+            });
+        };
+}
 
 function ShoppingController($scope, $http) {
     $http.get('http://localhost:8080/req').success(function(data) {
