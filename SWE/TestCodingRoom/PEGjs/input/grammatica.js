@@ -1,178 +1,3 @@
-start
-  = dsl
-dsl
-  =Collection Index
- 
- Collection
- =WhiteSpace* StringCollection WhiteSpace* RoundOpenPar WhiteSpace* LineTerminatorSequence*
- Label DuePunti WhiteSpace* Etichetta WhiteSpace* Virgola WhiteSpace* LineTerminatorSequence* 
- Name DuePunti WhiteSpace* Etichetta WhiteSpace* Virgola WhiteSpace* LineTerminatorSequence*
- Position DuePunti WhiteSpace* Etichetta WhiteSpace* LineTerminatorSequence*
- WhiteSpace* RoundClosePar WhiteSpace* LineTerminatorSequence*
- 
- Index
- =WhiteSpace* StringIndex WhiteSpace* CurlyOpenPar WhiteSpace* LineTerminatorSequence*
-  WhiteSpace* Populate?  WhiteSpace* ColumnOrButton* CurlyClosePar
- 
- 
- 
- 
- 
- 
- ColumnOrButton
- =Column/Button
- 
- 
- StringCollection
- ="collection"
-   /"Collection"
-   
- StringIndex
- ="index"
-   /"Index"
- 
-StringColumn
-="column"
-/"Column"
-
-StringButton
-="button"
-/"Button"
- 
-Column
-  =WhiteSpace* StringColumn WhiteSpace* RoundOpenPar WhiteSpace* LineTerminatorSequence* (Label DuePunti WhiteSpace* SingleEscapeCharacter Etichetta SingleEscapeCharacter WhiteSpace* Virgola)?
-   WhiteSpace* LineTerminatorSequence* Name DuePunti WhiteSpace* SingleEscapeCharacter Etichetta SingleEscapeCharacter WhiteSpace* LineTerminatorSequence* WhiteSpace* 
-   (Virgola LineTerminatorSequence* Transformation)? RoundClosePar
-
- Etichetta
-  = digits:[a-z/WhiteSpace? /A-Z]* {
-}
-  
-Token
-  =digits:[a-zA-Z]* {
-return digits.join("");
-}
-
-row
-  = WhiteSpace* stringa: "row:" WhiteSpace*
-
-
-WhiteSpace "WhiteSpace"
-  = "\t"
-  / "\v"
-  / "\f"
-  / " "
-  / "\u00A0"
-  / "\uFEFF"
- 
-
-LineTerminatorSequence "end of line"
-  = "\n" 
-  / "\r\n"
-  / "\r"
-  / "\u2028"
-  / "\u2029"
-  
- SingleEscapeCharacter
-  = "'"
-  / '"'
-  / "\\"
-  / "b"  { return "\b";   }
-  / "f"  { return "\f";   }
-  / "n"  { return "\n";   }
-  / "r"  { return "\r";   }
-  / "t"  { return "\t";   }
-
-Virgola
- = ","
-
-DuePunti
- = ":"
-
-Freccia
- = "=>"
- /"->"
-
-Trueofalse
- = "true"
- / "false"
- 
- RoundOpenPar
- ="("
- 
-  RoundClosePar
- =")"
- 
- CurlyOpenPar
- ="{"
- 
- CurlyClosePar
- ="}"
- 
- SquareOpenPar
- ="["
- 
- SquareClosePar
- ="]"
- 
- Label
- =WhiteSpace* "label"/"Label" WhiteSpace*
- 
- Name
- =WhiteSpace* "name"/"Name" WhiteSpace*
- 
-Position
-=WhiteSpace* "position"/"Position" WhiteSpace*
-
-Populate
-=WhiteSpace* "populate"/"Populate" WhiteSpace* DuePunti WhiteSpace* SquareOpenPar 
-(WhiteSpace* Token WhiteSpace* Virgola)* WhiteSpace* Token WhiteSpace* SquareClosePar WhiteSpace* Virgola LineTerminatorSequence*
-
-Transformation
-=WhiteSpace* "transformation"/"Transformation" WhiteSpace* DuePunti WhiteSpace* Javascript 
-
-
-    
-	
-	
-	
-
-	
-	
-	/*
- * JavaScript Grammar
- * ==================
- *
- * Based on grammar from ECMA-262, 5.1 Edition [1]. Generated parser builds a
- * syntax tree compatible with Mozilla SpiderMonkey Parser API [2]. Properties
- * and node types reflecting features not present in ECMA-262 are not included.
- *
- * Limitations:
- *
- *   * Non-BMP characters are completely ignored to avoid surrogate pair
- *     handling.
- *
- *   * One can create identifiers containing illegal characters using Unicode
- *     escape sequences. For example, "abcd\u0020efgh" is not a valid
- *     identifier, but it is accepted by the parser.
- *
- *   * Strict mode is not recognized. This means that within strict mode code,
- *     "implements", "interface", "let", "package", "private", "protected",
- *     "public", "static" and "yield" can be used as names. Many other
- *     restrictions and exceptions from Annex C are also not applied.
- *
- * All the limitations could be resolved, but the costs would likely outweigh
- * the benefits.
- *
- * Many thanks to inimino [3] for his grammar [4] which helped me to solve some
- * problems (such as automatic semicolon insertion) and also served to double
- * check that I converted the original grammar correctly.
- *
- * [1] http://www.ecma-international.org/publications/standards/Ecma-262.htm
- * [2] https://developer.mozilla.org/en-US/docs/SpiderMonkey/Parser_API
- * [3] http://inimino.org/~inimino/blog/
- * [4] http://boshi.inimino.org/3box/asof/1270029991384/PEG/ECMAScript_unified.peg
- */
 
 {
   var TYPES_TO_PROPERTY_NAMES = {
@@ -244,6 +69,176 @@ Transformation
     return value !== null ? value : [];
   }
 }
+
+
+
+start
+  = dsl
+dsl
+  =Collection Index
+ 
+ Collection
+ =WhiteSpace* StringCollection WhiteSpace* RoundOpenPar WhiteoLine
+ Label DuePunti WhiteSpace* Etichetta WhiteSpace* Virgola WhiteoLine
+ Name DuePunti WhiteSpace* Etichetta WhiteSpace* Virgola WhiteoLine
+ Position DuePunti WhiteSpace* Etichetta WhiteoLine
+ WhiteSpace* RoundClosePar WhiteoLine
+ 
+ Index
+ =WhiteSpace* StringIndex WhiteSpace* CurlyOpenPar WhiteoLine
+  WhiteSpace* Populate?  WhiteSpace* ColumnOrButton* CurlyClosePar
+ 
+ Column
+  =WhiteSpace* StringColumn WhiteSpace* RoundOpenPar WhiteoLine (Label DuePunti WhiteSpace* SingleEscapeCharacter Etichetta SingleEscapeCharacter WhiteSpace* Virgola)?
+   WhiteoLine Name DuePunti WhiteSpace* SingleEscapeCharacter Etichetta SingleEscapeCharacter WhiteoLine WhiteSpace* 
+   (Virgola LineTerminatorSequence* Transformation)? WhiteoLine WhiteSpace* RoundClosePar  WhiteoLine WhiteSpace*
+ 
+ Label
+ =WhiteSpace* ("label"/"Label") WhiteSpace*
+ 
+ Name
+ =WhiteSpace* ("name"/"Name") WhiteSpace*
+ 
+Position
+=WhiteSpace* ("position"/"Position") WhiteSpace*
+
+Populate
+=WhiteSpace* ("populate"/"Populate") WhiteSpace* DuePunti WhiteSpace* SquareOpenPar 
+(WhiteSpace* Token WhiteSpace* Virgola)* WhiteSpace* Token WhiteSpace* SquareClosePar WhiteSpace* Virgola WhiteoLine WhiteSpace*
+
+Transformation
+=WhiteSpace* ("transformation"/"Transformation") WhiteSpace* DuePunti WhiteSpace* Javascript
+ 
+ 
+WhiteoLine
+=(WhiteSpace/LineTerminatorSequence)*
+
+ ColumnOrButton
+ =Column
+ 
+ 
+ StringCollection
+ ="collection"
+   /"Collection"
+   
+ StringIndex
+ ="index"
+   /"Index"
+ 
+StringColumn
+="column"
+/"Column"
+
+StringButton
+="button"
+/"Button"
+ 
+ Etichetta
+  = digits:[a-z/WhiteSpace? / 0-9 /A-Z]* {
+}
+  
+Token
+  =digits:[a-z 0-9 A-Z]* {
+return digits.join("");
+}
+
+row
+  = WhiteSpace* stringa: "row:" WhiteSpace*
+
+
+WhiteSpace "WhiteSpace"
+  = "\t"
+  / "\v"
+  / "\f"
+  / " "
+  / "\u00A0"
+  / "\uFEFF"
+ 
+
+LineTerminatorSequence "end of line"
+  = "\n" 
+  / "\r\n"
+  / "\r"
+  / "\u2028"
+  / "\u2029"
+  
+ SingleEscapeCharacter
+  = "'"
+  / '"'
+  / "\\"
+  / "b"  { return "\b";   }
+  / "f"  { return "\f";   }
+  / "n"  { return "\n";   }
+  / "r"  { return "\r";   }
+  / "t"  { return "\t";   }
+
+Virgola
+ = ","
+
+DuePunti
+ = ":"
+
+Freccia
+ = "=>"
+ /"->"
+
+Trueofalse
+ = "true"
+ / "false"
+ 
+ RoundOpenPar
+ ="("
+ 
+  RoundClosePar
+ =")"
+ 
+ CurlyOpenPar
+ ="{"
+ 
+ CurlyClosePar
+ ="}"
+ 
+ SquareOpenPar
+ ="["
+ 
+ SquareClosePar
+ ="]"
+ 
+ 
+	/*
+ * JavaScript Grammar
+ * ==================
+ *
+ * Based on grammar from ECMA-262, 5.1 Edition [1]. Generated parser builds a
+ * syntax tree compatible with Mozilla SpiderMonkey Parser API [2]. Properties
+ * and node types reflecting features not present in ECMA-262 are not included.
+ *
+ * Limitations:
+ *
+ *   * Non-BMP characters are completely ignored to avoid surrogate pair
+ *     handling.
+ *
+ *   * One can create identifiers containing illegal characters using Unicode
+ *     escape sequences. For example, "abcd\u0020efgh" is not a valid
+ *     identifier, but it is accepted by the parser.
+ *
+ *   * Strict mode is not recognized. This means that within strict mode code,
+ *     "implements", "interface", "let", "package", "private", "protected",
+ *     "public", "static" and "yield" can be used as names. Many other
+ *     restrictions and exceptions from Annex C are also not applied.
+ *
+ * All the limitations could be resolved, but the costs would likely outweigh
+ * the benefits.
+ *
+ * Many thanks to inimino [3] for his grammar [4] which helped me to solve some
+ * problems (such as automatic semicolon insertion) and also served to double
+ * check that I converted the original grammar correctly.
+ *
+ * [1] http://www.ecma-international.org/publications/standards/Ecma-262.htm
+ * [2] https://developer.mozilla.org/en-US/docs/SpiderMonkey/Parser_API
+ * [3] http://inimino.org/~inimino/blog/
+ * [4] http://boshi.inimino.org/3box/asof/1270029991384/PEG/ECMAScript_unified.peg
+ */
 
 
 
@@ -1503,8 +1498,4 @@ SourceElement
 /* ----- A.8 JSON ----- */
 
 /* Irrelevant. */
-
-
-
-
-
+ 

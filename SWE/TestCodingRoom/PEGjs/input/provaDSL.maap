@@ -1,0 +1,15 @@
+collection(
+   label: etichetta,
+   name: nome,
+   position:posizione
+  )
+  index {
+        populate: [collection1,collection2],
+        column(
+			label: "Nome",
+			name: "fullname",
+			transformation: function nome(val) {
+				return val+" junior";
+			}
+		)
+ }
