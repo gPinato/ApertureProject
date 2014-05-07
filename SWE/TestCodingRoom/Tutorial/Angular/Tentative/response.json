@@ -16,6 +16,12 @@
         "title": "Pebbles",
         "description": "Just little rocks, really",
         "price": 6.95
+    },
+    {
+        "id": 3,
+        "title": "O mio dio",
+        "description": "Sono un genio e funziona",
+        "price": 69
     }
 
 ]

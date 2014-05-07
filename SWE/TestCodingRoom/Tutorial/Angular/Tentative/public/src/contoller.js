@@ -1,7 +1,8 @@
 // Create a module for our core AMail services
 var aMailServices = angular.module('AMail', []);
 // Set up our mappings between URLs, templates, and controllers
-function emailRouteConfig($routeProvider) {
+function emailRouteConfig($routeProvider,$locationProvider) {
+    $locationProvider.html5Mode(true);
     $routeProvider.
         when('/', {
             controller: ListController,
@@ -40,18 +41,19 @@ messages = [{
     date: 'Dec 6, 2013 20:35:02', recipients: ['greg@somecompany.com'],
     message: "Nobody panic, but my pet python is missing from her cage.She doesn't move too fast, so just call me if you see her."
 } ];
-// Publish our messages for the list template
-function ListController($scope) {
-    $scope.messages = messages;
-}
 // Get the message id from the route (parsed from the URL) and use it to
 // find the right message object.
 function DetailController($scope, $routeParams) {
     $scope.message = messages[$routeParams.id];
+
 }
+// Publish our messages for the list template
+function ListController($scope) {
+    $scope.messages = messages;
+}
+
 
 function ShoppingController($scope, $http) {
     $http.get('http://localhost:8080/req').success(function(data) {
         $scope.items = data;
-    });
-}
+    })};
