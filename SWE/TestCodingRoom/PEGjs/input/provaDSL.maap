@@ -1,9 +1,10 @@
-collection(   
+collection(
    label: etichetta,
    name: nome,
    position:posizione
   )
   index {
+        populate: [collection1,collection2],
         column(
 			label: "Nome",
 			name: "fullname",
@@ -12,4 +13,3 @@ collection(
 			}
 		)
  }
- 
