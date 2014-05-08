@@ -78,45 +78,93 @@ dsl
   =Collection Index
  
  Collection
- =WhiteSpace* StringCollection WhiteSpace* RoundOpenPar WhiteoLine
- Label DuePunti WhiteSpace* Etichetta WhiteSpace* Virgola WhiteoLine
- Name DuePunti WhiteSpace* Etichetta WhiteSpace* Virgola WhiteoLine
- Position DuePunti WhiteSpace* Etichetta WhiteoLine
- WhiteSpace* RoundClosePar WhiteoLine
+ =WhiteoLine StringCollection WhiteoLine RoundOpenPar WhiteoLine
+ Label DuePunti WhiteoLine Etichetta WhiteoLine Virgola WhiteoLine
+ Name DuePunti WhiteoLine Etichetta WhiteoLine Virgola WhiteoLine
+ Position DuePunti WhiteoLine Etichetta WhiteoLine
+ WhiteoLine RoundClosePar WhiteoLine
  
  Index
- =WhiteSpace* StringIndex WhiteSpace* CurlyOpenPar WhiteoLine
-  WhiteSpace* Populate?  WhiteSpace* ColumnOrButton* CurlyClosePar
+ =WhiteoLine StringIndex WhiteoLine CurlyOpenPar WhiteoLine
+  WhiteoLine Populate?  WhiteoLine ColumnOrButton* Features? CurlyClosePar WhiteoLine
  
  Column
-  =WhiteSpace* StringColumn WhiteSpace* RoundOpenPar WhiteoLine (Label DuePunti WhiteSpace* SingleEscapeCharacter Etichetta SingleEscapeCharacter WhiteSpace* Virgola)?
-   WhiteoLine Name DuePunti WhiteSpace* SingleEscapeCharacter Etichetta SingleEscapeCharacter WhiteoLine WhiteSpace* 
-   (Virgola LineTerminatorSequence* Transformation)? WhiteoLine WhiteSpace* RoundClosePar  WhiteoLine WhiteSpace*
+  =WhiteoLine StringColumn WhiteoLine RoundOpenPar WhiteoLine (Label DuePunti WhiteoLine SingleEscapeCharacter Etichetta SingleEscapeCharacter WhiteoLine Virgola)?
+   WhiteoLine Name DuePunti WhiteoLine SingleEscapeCharacter Etichetta SingleEscapeCharacter WhiteoLine WhiteoLine 
+   (Virgola LineTerminatorSequence* Transformation)? WhiteoLine WhiteoLine RoundClosePar WhiteoLine WhiteoLine
+
+ Button
+ =WhiteoLine StringButton WhiteoLine RoundOpenPar WhiteoLine (Label DuePunti WhiteoLine SingleEscapeCharacter Etichetta SingleEscapeCharacter WhiteoLine Virgola)?
+   WhiteoLine Name DuePunti WhiteoLine SingleEscapeCharacter Etichetta SingleEscapeCharacter WhiteoLine WhiteoLine 
+   Virgola LineTerminatorSequence* Function WhiteoLine WhiteoLine RoundClosePar WhiteoLine WhiteoLine
+
+Features
+=(Perpage? Sortby? Order? Query?)
+
+
+Perpage
+=WhiteoLine StringPerpage WhiteoLine DuePunti WhiteoLine Number WhiteoLine 
+Virgola WhiteoLine
+
+Sortby
+=WhiteoLine StringSortby WhiteoLine DuePunti WhiteoLine Etichetta WhiteoLine 
+Virgola WhiteoLine 
+
+Order
+=WhiteoLine StringOrder WhiteoLine DuePunti WhiteoLine OrderType WhiteoLine 
+Virgola WhiteoLine
+
+Query
+=WhiteoLine StringQuery WhiteoLine DuePunti WhiteoLine Javascript WhiteoLine
+
+StringPerpage
+=WhiteoLine ("Perpage"/"perpage") WhiteoLine
+
+StringSortby
+=WhiteoLine ("Sortby"/"sortby") WhiteoLine
+
+StringOrder
+=WhiteoLine ("Order"/"order") WhiteoLine
+
+StringQuery
+=WhiteoLine ("Query"/"query") WhiteoLine
  
  Label
- =WhiteSpace* ("label"/"Label") WhiteSpace*
+ =WhiteoLine ("label"/"Label") WhiteoLine
  
  Name
- =WhiteSpace* ("name"/"Name") WhiteSpace*
+ =WhiteoLine ("name"/"Name") WhiteoLine
  
 Position
-=WhiteSpace* ("position"/"Position") WhiteSpace*
+=WhiteoLine ("position"/"Position") WhiteoLine
+
+OrderType
+=WhiteoLine ("StringAsc"/"StringDesc") WhiteoLine
+
+StringAsc
+=WhiteoLine ("asc"/"Asc") WhiteoLine
+
+StringAsc
+=WhiteoLine ("desc"/"Desc") WhiteoLine
 
 Populate
-=WhiteSpace* ("populate"/"Populate") WhiteSpace* DuePunti WhiteSpace* SquareOpenPar 
-(WhiteSpace* Token WhiteSpace* Virgola)* WhiteSpace* Token WhiteSpace* SquareClosePar WhiteSpace* Virgola WhiteoLine WhiteSpace*
+=WhiteoLine ("populate"/"Populate") WhiteoLine DuePunti WhiteoLine SquareOpenPar 
+(WhiteoLine Token WhiteoLine Virgola)* WhiteoLine Token WhiteoLine SquareClosePar WhiteoLine Virgola WhiteoLine WhiteoLine
 
 Transformation
-=WhiteSpace* ("transformation"/"Transformation") WhiteSpace* DuePunti WhiteSpace* Javascript
+=WhiteoLine ("transformation"/"Transformation") WhiteoLine DuePunti 
+WhiteoLine Javascript
  
+Function
+=WhiteoLine ("function"/"Function") WhiteoLine DuePunti WhiteoLine Javascript
  
 WhiteoLine
 =(WhiteSpace/LineTerminatorSequence)*
 
  ColumnOrButton
- =Column
+ =Column/Button WhiteoLine WhiteoLine
  
- 
+
  StringCollection
  ="collection"
    /"Collection"
@@ -134,16 +182,19 @@ StringButton
 /"Button"
  
  Etichetta
-  = digits:[a-z/WhiteSpace? / 0-9 /A-Z]* {
+  = digits:[a-z/WhiteSpace? / 0-9 /./A-Z]* {
 }
   
+Number
+  =digits:[0-9]* {
+}
+
 Token
   =digits:[a-z 0-9 A-Z]* {
-return digits.join("");
 }
 
 row
-  = WhiteSpace* stringa: "row:" WhiteSpace*
+  = WhiteoLine stringa: "row:" WhiteoLine
 
 
 WhiteSpace "WhiteSpace"
