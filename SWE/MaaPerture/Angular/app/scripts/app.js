@@ -12,16 +12,25 @@ angular
     'ui.sortable',
     'LocalStorageModule'
   ])
-  .config(function ($routeProvider) {
-    $routeProvider
-      .when('/', {
-        templateUrl: 'views/main.html',
-        controller: 'MainCtrl'
-      })
-      .otherwise({
-        redirectTo: '/'
-      });
-  })
+    .config(function ($routeProvider,$locationProvider) {
+        $routeProvider
+            .when('/', {
+                templateUrl: 'views/main.html',
+                controller: 'MainCtrl'
+            })
+            .when('/collection', {
+                templateUrl: 'views/collection.html',
+                controller: 'ControllerColl'
+            })
+            .when('/view/:id', {
+                templateUrl: 'views/detail.html',
+                controller: 'detail'
+            })
+            .otherwise({
+                redirectTo: '/'
+            });
+        $locationProvider.html5Mode(true);
+    })
 
     /*
      * Preffiso di locasStorage impostato su ls per evitare interferenze
@@ -29,20 +38,3 @@ angular
   .config(['localStorageServiceProvider', function(localStorageServiceProvider){
         localStorageServiceProvider.setPrefix('ls');
    }]);
-    /*
-     * todos in localstore per non perderli nel refresh della pagina
-     */
-/*
-    .controller('MainCtrl', function ($scope,  localStorageService) {
-        var todosInStore = localStorageService.get('todos');
-
-        $scope.todos = todosInStore && todosInStore.split('\n') || [];
-
-        $scope.$watch('todos', function () {
-            localStorageService.add('todos', $scope.todos.join('\n'));
-        }, true);
-        $scope.addTodo = function () {
-            $scope.todos.push($scope.
-            $scope.
-        };
-    });*/
