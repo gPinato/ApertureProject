@@ -17,11 +17,16 @@ app.get('/req', function(req, res) {
     res.sendfile("response.json");
 });
 
-app.post('/addshop', function(sReq){
+app.post('/addshop', function(sReq,res){
 
-    var temp= sReq.body.text;
+    //var temp= sReq.body.text;
+    res.statusCode=200;
+    res.json({
+        message: "succes",
+        code : 200
+    });
     //var durr = sReq.body.param(asd);
-    console.log(temp);
+    //console.log(temp);
     //console.log("Unserialized request: " + sReq.body);
 /*
     var id = sReq.body.id,
