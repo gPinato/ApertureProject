@@ -62,20 +62,20 @@ module.exports = function (grunt) {
     },
 
     // The actual grunt server settings
-    connect: {
-      options: {
-        port: 9000,
-        // Change this to '0.0.0.0' to access the server from outside.
-        hostname: 'localhost',
-        livereload: 35729,
-        middleware: function (connect, options) {
-              var optBase = (typeof options.base === 'string') ? [options.base] : options.base;
-              return [require('connect-modrewrite')(['!(\\..+)$ / [L]'])].concat(
-                  optBase.map(function(path){ return connect.static(path); }));
-          }
+      connect: {
+          options: {
+              port: 9000,
+              // Change this to '0.0.0.0' to access the server from outside.
+              hostname: 'localhost',
+              livereload: 35729,
+              middleware: function (connect, options) {
+                  var optBase = (typeof options.base === 'string') ? [options.base] : options.base;
+                  return [require('connect-modrewrite')(['!(\\..+)$ / [L]'])].concat(
+                      optBase.map(function(path){ return connect.static(path); }));
+              }
 
 
-      },
+          },
       livereload: {
         options: {
           open: true,

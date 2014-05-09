@@ -3,8 +3,8 @@
  */
 'use strict';
 
-angular.module('angularyoApp').controller('ControllerColl', function ($scope,firstservice,  localStorageService) {
-    //var todosInStore = localStorageService.get('todos');
+angular.module('angularyoApp').controller('ControllerColl', function ($scope, firstservice, localStorageService) {
+    var todosInStore = localStorageService.get('todos');
 
     $scope.rows=firstservice.getProperty();
 
