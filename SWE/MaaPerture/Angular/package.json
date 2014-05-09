@@ -4,6 +4,7 @@
   "dependencies": {},
   "devDependencies": {
     "chai": "^1.9.1",
+    "connect-modrewrite": "^0.7.4",
     "grunt": "^0.4.4",
     "grunt-autoprefixer": "~0.4.0",
     "grunt-bower-install": "~1.0.0",

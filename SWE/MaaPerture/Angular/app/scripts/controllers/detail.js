@@ -3,8 +3,9 @@
  */
 'use strict';
 
-angular.module('angularyoApp').controller('detail', function ($scope, $routeParams) {
+angular.module('angularyoApp').controller('detail', function ($scope, firstservice, $routeParams) {
     //var todosInStore = localStorageService.get('todos');
+    var rows=firstservice.getProperty();
+    $scope.message =rows[$routeParams.id]
 
-    $scope.message = messages[$routeParams.id];
 });
