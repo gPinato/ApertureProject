@@ -32,7 +32,12 @@
   "dependencies": {
 	"commander": "2.2.0", 
 	"ncp": "0.5.1",
-	"express": "4.1.1"
+	"express": "4.1.1",
+	"path": "latest",
+	"serve-favicon": "latest",
+	"morgan": "latest",
+	"cookie-parser": "latest",
+	"body-parser": "latest"
   },
   "devDependencies": {
   

@@ -2,63 +2,72 @@
 'use strict';
 
 var express = require('express');
+var path = require('path');
+var favicon = require('serve-favicon');
+var logger = require('morgan');
+var cookieParser = require('cookie-parser');
+var bodyParser = require('body-parser');
+
 //var mongoose = require('mongoose')
 var DataManager = require('./modelServer/dataManager');
 //var DSL = require('./modelServer/DSL');
 //var DB = require('./modelServer/database');
+var FrontController = require('./controller/frontController');
 
 function serverInit(app){
 
-	if (app.config.verboseLog) {
-		app.use(express.logger());
-	}
-		
-	//app.use(express.methodOverride());
-	app.use(express.cookieParser("boomShakalaka!"));	
-	if (app.config.port && app.config.static) {
-		app.use(express.static(app.config.static));	// set the static files location 
-	}
-	app.use(express.bodyParser()); 				// pull information from html in POST
-	app.use(express.json());       				// to support JSON-encoded bodies
-	app.use(express.urlencoded()); 				// to support URL-encoded bodies
+	//app.set('views', path.join(__dirname, 'app/views'));
+	app.set('views', __dirname);
+	//app.set('view engine', 'html');
 
-	// frontController ======================================================================
-	app.get('/req', function(req, res) {
-		//res.sendfile(app.config.static + "/response.json");
-		res.sendfile("public/response.json");
+	//app.use(favicon(path.join(__dirname, 'public/favicon.ico')));
+	app.use(favicon('./public/favicon.ico'));
+	app.use(logger('dev'));
+	app.use(bodyParser.json());
+	app.use(bodyParser.urlencoded());
+	app.use(cookieParser());
+	app.use(express.static(path.join(__dirname, 'public')));
+	
+	// Make our db accessible to our router
+	// l'altro gruppo l'ha chiamata appInjector, 
+	// dovrebbe iniettare il riferiemnto al db dentro la richiesta
+	// cosi da poter accedere a db piu facilmente...
+	//app.use(function(req,res,next){
+	//	req.db = db;
+	//	next();
+	//});
+
+	app.use('/', FrontController);
+	
+	// catch 404 and forwarding to error handler
+	app.use(function(req, res, next) {
+		var err = new Error('Not Found');
+		err.status = 404;
+		next(err);
 	});
 
-	app.post('/addshop', function(sReq){
+	// error handlers
 
-		var temp= sReq.body.text;
-		//var durr = sReq.body.param(asd);
-		console.log(temp);
-		//console.log("Unserialized request: " + sReq.body);
-	/*
-		var id = sReq.body.id,
-			title = sReq.body.title,
-			des = sReq.body.description,
-			price = sReq.body.price;
-		/*
-		var data = JSON.parse();  //parse the JSON
-		data.employees.push({        //add the employee
-			firstName:"Mike",
-			lastName:"Rut",
-			time:"10:00 am",
-			email:"rut@bah.com",
-			phone:"800-888-8888",
-			image:"images/mike.jpg"
+	// development error handler
+	// will print stacktrace
+	if (app.get('env') === 'development') {
+		app.use(function(err, req, res, next) {
+			res.status(err.status || 500);
+			res.render('error', {
+				message: err.message,
+				error: err
+			});
 		});
-		txt = JSON.stringify(data);*/
+	}
 
-
-	});
-
-
-	app.all('/*', function(req, res,next) {
-		// Just send the index.html for other files to support HTML5Mode
-		res.sendfile('public/index.html');
-		//next.sendfile("response.json");
+	// production error handler
+	// no stacktraces leaked to user
+	app.use(function(err, req, res, next) {
+		res.status(err.status || 500);
+		res.render('error', {
+			message: err.message,
+			error: {}
+		});
 	});
 
 }
@@ -76,8 +85,9 @@ var startServer = function(config) {
 	console.log("starting nodeJS server...");
 	serverInit(app);	
 	
-	app.listen(config.port);	
-	console.log("[nome progetto] listening on port " + config.port + "... :)");		
+	app.set('port', process.env.PORT || 3000);
+	var server = app.listen(app.get('port'));
+	console.log("[nome progetto] listening on port " + server.address().port + "... :)");	
 };
 
 //export della funzione...

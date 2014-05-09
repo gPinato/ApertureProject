@@ -1,13 +1,14 @@
 //front controller
 'use strict';
 
-function init(app){
+var express = require('express');
+var dispatcher = express.Router();
 
-	app.get('/req', function(req, res) {
-		res.sendfile("response.json");
-	});
+dispatcher.get('/req', function(req, res) {
+	res.sendfile("response.json");
+});
 
-	app.post('/addshop', function(sReq){
+dispatcher.post('/addshop', function(sReq){
 
 		var temp= sReq.body.text;
 		//var durr = sReq.body.param(asd);
@@ -31,16 +32,14 @@ function init(app){
 		txt = JSON.stringify(data);*/
 
 
-	});
+});
 
-	app.all('/*', function(req, res,next) {
-		// Just send the index.html for other files to support HTML5Mode
-		res.sendfile('public/index.html');
-		//next.sendfile("response.json");
-	});
+dispatcher.all('/*', function(req, res,next) {
+	// Just send the index.html for other files to support HTML5Mode
+	res.sendfile('public/index.html');
+	//next.sendfile("response.json");
+});
 
-}
-
-//export della funzione...
-exports.init = init;
+//export del dispatcher...
+module.exports = dispatcher;
 

@@ -5,8 +5,8 @@
 
 var config = {
 	port: 3000,
-	static: __dirname + "/public",
-	dslPath: __dirname + "/dsl",
+	publicPath: __dirname + '/public',
+	dslPath:  __dirname + '/dsl',
 	
 	verboseLog: true,
 	
