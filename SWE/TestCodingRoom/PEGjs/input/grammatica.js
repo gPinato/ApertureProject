@@ -71,140 +71,167 @@
 }
 
 
-
-start
+//inizio lettura file DSL
+ start
   = dsl
-dsl
-  =Collection Index
+ dsl
+  =Collection Index Show
  
  Collection
- =WhiteoLine StringCollection WhiteoLine RoundOpenPar WhiteoLine
- Label DuePunti WhiteoLine Etichetta WhiteoLine Virgola WhiteoLine
- Name DuePunti WhiteoLine Etichetta WhiteoLine Virgola WhiteoLine
- Position DuePunti WhiteoLine Etichetta WhiteoLine
- WhiteoLine RoundClosePar WhiteoLine
+ =WhiteoLine Comm* StringCollection Comm* WhiteoLine 
+ RoundOpenPar Comm* WhiteoLine
+ StringLabel Comm* DuePunti Comm* SingleEscapeCharacter 
+ Etichetta SingleEscapeCharacter Comm* 
+ WhiteoLine Comm* Virgola Comm*
+ WhiteoLine
+ StringName Comm* DuePunti Comm* WhiteoLine SingleEscapeCharacter 
+ Etichetta SingleEscapeCharacter Comm*
+ WhiteoLine Virgola WhiteoLine
+ Comm* StringPosition Comm* DuePunti Comm* WhiteoLine SingleEscapeCharacter 
+ Etichetta SingleEscapeCharacter
+ WhiteoLine Comm* RoundClosePar Comm* WhiteoLine
+ 
+ Comm
+ =WhiteoLine "/*" WhiteoLine Commen WhiteoLine "*/" WhiteoLine
+
+Commen
+ =WhiteoLine [a-z/WhiteSpace? / 0-9 /./A-Z/+/-?^%&$£!~@]* WhiteoLine
  
  Index
- =WhiteoLine StringIndex WhiteoLine CurlyOpenPar WhiteoLine
-  WhiteoLine Populate?  WhiteoLine ColumnOrButton* Features? CurlyClosePar WhiteoLine
+ =Comm* WhiteoLine Comm* StringIndex Comm* WhiteoLine 
+ CurlyOpenPar WhiteoLine Comm*
+  WhiteoLine Populate? Comm* WhiteoLine Comm* ColumnOrButton* Comm* Features? Comm* CurlyClosePar Comm* WhiteoLine
+ 
+ Show
+ =Comm* WhiteoLine StringShow Comm* WhiteoLine CurlyOpenPar Comm* WhiteoLine RowOrButton* Comm* WhiteoLine Comm*
+ CurlyClosePar Comm* WhiteoLine Comm*
+ 
+ Row
+ =Comm* WhiteoLine StringRow Comm* WhiteoLine RoundOpenPar Comm* WhiteoLine (StringLabel Comm* DuePunti Comm* WhiteoLine SingleEscapeCharacter Etichetta SingleEscapeCharacter Comm* WhiteoLine Comm* Virgola Comm*)? Comm*
+  WhiteoLine Comm* StringName Comm* DuePunti Comm* WhiteoLine SingleEscapeCharacter Etichetta SingleEscapeCharacter Comm* WhiteoLine RoundClosePar Comm* WhiteoLine Comm*
  
  Column
-  =WhiteoLine StringColumn WhiteoLine RoundOpenPar WhiteoLine (Label DuePunti WhiteoLine SingleEscapeCharacter Etichetta SingleEscapeCharacter WhiteoLine Virgola)?
-   WhiteoLine Name DuePunti WhiteoLine SingleEscapeCharacter Etichetta SingleEscapeCharacter WhiteoLine WhiteoLine 
-   (Virgola LineTerminatorSequence* Transformation)? WhiteoLine WhiteoLine RoundClosePar WhiteoLine WhiteoLine
+ =Comm* WhiteoLine StringColumn Comm* WhiteoLine 
+ RoundOpenPar Comm* WhiteoLine (StringLabel Comm* DuePunti Comm* WhiteoLine Comm* SingleEscapeCharacter Etichetta SingleEscapeCharacter Comm* WhiteoLine Comm* Virgola Comm*)? Comm*
+  WhiteoLine Comm* StringName Comm* DuePunti Comm* WhiteoLine SingleEscapeCharacter Etichetta SingleEscapeCharacter Comm* WhiteoLine  Comm*
+  Comm* (Comm* Virgola Comm* LineTerminatorSequence* Transformation Comm*)? Comm* WhiteoLine  RoundClosePar Comm* WhiteoLine Comm*
 
  Button
- =WhiteoLine StringButton WhiteoLine RoundOpenPar WhiteoLine (Label DuePunti WhiteoLine SingleEscapeCharacter Etichetta SingleEscapeCharacter WhiteoLine Virgola)?
-   WhiteoLine Name DuePunti WhiteoLine SingleEscapeCharacter Etichetta SingleEscapeCharacter WhiteoLine WhiteoLine 
-   Virgola LineTerminatorSequence* Function WhiteoLine WhiteoLine RoundClosePar WhiteoLine WhiteoLine
+ =Comm* WhiteoLine StringButton Comm* WhiteoLine RoundOpenPar Comm* WhiteoLine (Comm* StringLabel Comm* DuePunti Comm* WhiteoLine SingleEscapeCharacter Etichetta SingleEscapeCharacter Comm* WhiteoLine Virgola Comm*)? Comm*
+  Comm* WhiteoLine StringName Comm* DuePunti Comm* WhiteoLine SingleEscapeCharacter Etichetta SingleEscapeCharacter Comm* WhiteoLine   Comm*
+  Virgola Comm* LineTerminatorSequence* Comm* Function Comm*  
+  WhiteoLine RoundClosePar Comm* WhiteoLine Comm*
 
-Features
-=(Perpage? Sortby? Order? Query?)
-
-
-Perpage
-=WhiteoLine StringPerpage WhiteoLine DuePunti WhiteoLine Number WhiteoLine 
-Virgola WhiteoLine
-
-Sortby
-=WhiteoLine StringSortby WhiteoLine DuePunti WhiteoLine Etichetta WhiteoLine 
-Virgola WhiteoLine 
-
-Order
-=WhiteoLine StringOrder WhiteoLine DuePunti WhiteoLine OrderType WhiteoLine 
-Virgola WhiteoLine
-
-Query
-=WhiteoLine StringQuery WhiteoLine DuePunti WhiteoLine Javascript WhiteoLine
-
-StringPerpage
-=WhiteoLine ("Perpage"/"perpage") WhiteoLine
-
-StringSortby
-=WhiteoLine ("Sortby"/"sortby") WhiteoLine
-
-StringOrder
-=WhiteoLine ("Order"/"order") WhiteoLine
-
-StringQuery
-=WhiteoLine ("Query"/"query") WhiteoLine
+ Populate
+ =Comm* WhiteoLine Comm* StringPopulate Comm* WhiteoLine 
+ DuePunti Comm* WhiteoLine SquareOpenPar  Comm*
+ (WhiteoLine Comm* SingleEscapeCharacter Token SingleEscapeCharacter Comm* WhiteoLine Virgola)* Comm* WhiteoLine SingleEscapeCharacter Token SingleEscapeCharacter Comm* WhiteoLine SquareClosePar WhiteoLine Comm* Virgola WhiteoLine 
+   
+ Features
+ =(Perpage? Sortby? Order? Query?)
  
- Label
- =WhiteoLine ("label"/"Label") WhiteoLine
+ Transformation
+ =Comm* WhiteoLine StringTransformation Comm* WhiteoLine DuePunti Comm* 
+ WhiteoLine Javascript Comm*
  
- Name
- =WhiteoLine ("name"/"Name") WhiteoLine
+ Function
+ =Comm* WhiteoLine StringFunction Comm* WhiteoLine DuePunti Comm* WhiteoLine Javascript Comm*
  
-Position
-=WhiteoLine ("position"/"Position") WhiteoLine
-
-OrderType
-=WhiteoLine ("StringAsc"/"StringDesc") WhiteoLine
-
-StringAsc
-=WhiteoLine ("asc"/"Asc") WhiteoLine
-
-StringAsc
-=WhiteoLine ("desc"/"Desc") WhiteoLine
-
-Populate
-=WhiteoLine ("populate"/"Populate") WhiteoLine DuePunti WhiteoLine SquareOpenPar 
-(WhiteoLine Token WhiteoLine Virgola)* WhiteoLine Token WhiteoLine SquareClosePar WhiteoLine Virgola WhiteoLine WhiteoLine
-
-Transformation
-=WhiteoLine ("transformation"/"Transformation") WhiteoLine DuePunti 
-WhiteoLine Javascript
- 
-Function
-=WhiteoLine ("function"/"Function") WhiteoLine DuePunti WhiteoLine Javascript
- 
-WhiteoLine
-=(WhiteSpace/LineTerminatorSequence)*
+ WhiteoLine
+ =(WhiteSpace/LineTerminatorSequence)*
 
  ColumnOrButton
- =Column/Button WhiteoLine WhiteoLine
+ =(Column/Button) WhiteoLine 
  
+ RowOrButton
+ =(Row/Button) WhiteoLine
 
+ Perpage
+ =Comm* WhiteoLine StringPerpage Comm* WhiteoLine DuePunti Comm* WhiteoLine SingleEscapeCharacter Number SingleEscapeCharacter Comm* WhiteoLine 
+ Comm* Virgola Comm* WhiteoLine Comm*
+
+ Sortby
+ =Comm* WhiteoLine StringSortby Comm* WhiteoLine DuePunti Comm* WhiteoLine SingleEscapeCharacter Etichetta SingleEscapeCharacter Comm* WhiteoLine Comm* 
+ Comm* Virgola Comm* WhiteoLine Comm*
+
+ Order
+ =Comm* WhiteoLine StringOrder Comm* WhiteoLine DuePunti Comm* WhiteoLine SingleEscapeCharacter OrderType  SingleEscapeCharacter Comm* WhiteoLine  Comm*
+ Comm* Virgola Comm* WhiteoLine Comm*
+
+ Query
+ =Comm* WhiteoLine StringQuery Comm* WhiteoLine Comm* DuePunti Comm* WhiteoLine Javascript Comm* WhiteoLine Comm*
+
+ //sezione String
+ 
+ StringPerpage
+ =WhiteoLine ("Perpage"/"perpage") WhiteoLine
+
+ StringSortby
+ =WhiteoLine ("Sortby"/"sortby") WhiteoLine
+
+ StringOrder
+ =WhiteoLine ("Order"/"order") WhiteoLine
+
+ StringQuery
+ =WhiteoLine ("Query"/"query") WhiteoLine
+ 
+ StringLabel
+ =WhiteoLine ("label"/"Label") WhiteoLine
+ 
+ StringName
+ =WhiteoLine ("name"/"Name") WhiteoLine
+ 
+ StringPosition
+ =WhiteoLine ("position"/"Position") WhiteoLine
+
+ OrderType
+ =WhiteoLine (StringAsc/StringDesc) WhiteoLine
+
+ StringAsc
+ =WhiteoLine ("asc"/"Asc") WhiteoLine
+
+ StringDesc
+ =WhiteoLine ("desc"/"Desc") WhiteoLine
+
+ StringTransformation
+ =WhiteoLine ("transformation"/"Transformation") WhiteoLine
+
+ StringFunction
+ =WhiteoLine ("function"/"Function") WhiteoLine
+ 
+ StringShow
+ =WhiteoLine ("show"/"Show") WhiteoLine
+ 
  StringCollection
- ="collection"
-   /"Collection"
+ =WhiteoLine ("collection"/"Collection") WhiteoLine
    
  StringIndex
- ="index"
-   /"Index"
+ =WhiteoLine ("index"/"Index") WhiteoLine
  
-StringColumn
-="column"
-/"Column"
+ StringColumn
+ =WhiteoLine ("column"/"Column") WhiteoLine
 
-StringButton
-="button"
-/"Button"
+ StringButton
+ =WhiteoLine ("button"/"Button") WhiteoLine
+
+ StringPopulate
+ =WhiteoLine ("populate"/"Populate") WhiteoLine
  
- Etichetta
-  = digits:[a-z/WhiteSpace? / 0-9 /./A-Z]* {
-}
-  
-Number
-  =digits:[0-9]* {
-}
+ StringRow
+  = WhiteoLine ("row"/"Row") WhiteoLine
 
-Token
-  =digits:[a-z 0-9 A-Z]* {
-}
-
-row
-  = WhiteoLine stringa: "row:" WhiteoLine
-
-
+ //definizione simboli
+ 
 WhiteSpace "WhiteSpace"
   = "\t"
   / "\v"
   / "\f"
-  / " "
+  / " "  
   / "\u00A0"
   / "\uFEFF"
  
+ /*Comment
+ = WhiteSpace* StartComment WhiteSpace* EtichettaComment WhiteSpace* EndComment WhiteSpace*/
 
 LineTerminatorSequence "end of line"
   = "\n" 
@@ -223,19 +250,29 @@ LineTerminatorSequence "end of line"
   / "r"  { return "\r";   }
   / "t"  { return "\t";   }
 
-Virgola
+  /*StartComment
+  ="/*"
+  
+  EndComment
+  ="*///"
+  
+  //EtichettaComment
+  //=//[a-zA-Z0-9\t\n ./<>?;:"'`!@#$%^&*()[]//{}_//|-,~]*
+  //=[a-zA-Z0-9\t\n ./<>?;:"'`!@#$%^&*()[{}_//|-,~]
+  /*="ciao"*/
+  //=(\/\*[\w\'\s\r\n\*]*\*\/)|(\/\/[\w\s\']*)|(\<![\-\-\s\w\>\/]*\>)
+  
+ Virgola
  = ","
 
-DuePunti
+ DuePunti
  = ":"
 
-Freccia
- = "=>"
- /"->"
+ Freccia
+ = ("=>"/"->")
 
-Trueofalse
- = "true"
- / "false"
+ Trueofalse
+ = ("true"/"false")
  
  RoundOpenPar
  ="("
@@ -255,7 +292,17 @@ Trueofalse
  SquareClosePar
  ="]"
  
- 
+ //definizione digits
+Etichetta
+  = WhiteoLine [a-z/WhiteSpace? / 0-9 /./A-Z]* WhiteoLine
+  
+ Number
+  =digits:[0-9]* {
+ }
+
+ Token
+  =digits:[a-z 0-9 A-Z]* {
+ } 
 	/*
  * JavaScript Grammar
  * ==================
