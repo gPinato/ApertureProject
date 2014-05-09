@@ -7,7 +7,7 @@
     "es5-shim": "~2.1.0",
     "jquery": "~1.11.0",
     "bootstrap-sass-official": "~3.1.0",
-    "angular-resource": "1.2.15",
+    "angular-resource": "~1.2.16",
     "angular-cookies": "1.2.15",
     "angular-sanitize": "1.2.15",
     "angular-route": "1.2.15",
@@ -19,5 +19,9 @@
     "angular-scenario": "1.2.15",
     "mocha": "~1.18.2",
     "chai": "~1.9.1"
+  },
+  "resolutions": {
+    "angular": "1.2.15",
+    "angular-resource": "1.2.15"
   }
 }

@@ -1,5 +1,6 @@
 {
   "name": "Maaperture",
+  "description":"Progetto MaaP sviluppato da Aperture Software",
   "version": "0.0.1",
   "dependencies": {},
   "devDependencies": {

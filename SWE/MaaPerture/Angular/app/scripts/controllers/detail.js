@@ -4,7 +4,7 @@
 'use strict';
 
 angular.module('angularyoApp').controller('detail', function ($scope,firstservice, $routeParams) {
-    $scope.rows=firstservice.getProperty();
-    $scope.message = $scope.rows[$routeParams.id]
+    var rows =firstservice.getProperty();
+    $scope.message = rows[$routeParams.id]
 
 });
