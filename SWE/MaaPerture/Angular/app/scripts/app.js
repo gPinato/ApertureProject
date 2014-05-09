@@ -28,7 +28,7 @@ angular
             .otherwise({
                 redirectTo: '/'
             });
-        /*$provide.factory('firstservice', function() {
+        $provide.factory('firstservice', function() {
             var rows= [{
                 id: 0, sender: 'jean@somecompany.com', subject: 'Hi there, old friend',
                 date: 'Dec 7, 2013 12:32:00', recipients: ['greg@somecompany.com'],
@@ -53,7 +53,7 @@ angular
                 setProperty: function(value) {
                     property = value;
                 }
-        }});*/
+        }});
         $locationProvider.html5Mode(true);
     })
 
