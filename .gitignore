@@ -31,6 +31,8 @@ SWE/Documentazione/Piano_di_Progetto/sections/PreRR.tex
 SWE/Documentazione/Piano_di_Progetto/sections/PreRR.tex
 SWE/Documentazione/Piano_di_Progetto/sections/PreRR.tex
 SWE/Documentazione/Piano_di_Progetto/sections/PreRR.tex
+SWE/MaaPerture/Angular/node_modules/*
+SWE/MaaPerture/Angular/.sass-cache/*
 
 *.gz(busy)
 *.exe
