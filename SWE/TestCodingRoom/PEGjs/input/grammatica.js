@@ -92,7 +92,10 @@
  WhiteoLine Comm* RoundClosePar Comm* WhiteoLine
  
  Comm
- =WhiteoLine "/*" WhiteoLine Etichetta WhiteoLine "*/" WhiteoLine
+ =WhiteoLine "/*" WhiteoLine Commen WhiteoLine "*/" WhiteoLine
+
+Commen
+ =WhiteoLine [a-z/WhiteSpace? / 0-9 /./A-Z/+/-?^%&$£!~@]* WhiteoLine
  
  Index
  =Comm* WhiteoLine Comm* StringIndex Comm* WhiteoLine 
