@@ -3,9 +3,9 @@
  * Moduli di angular da caricare per far girare il tutto
  */
 angular
-    .module('angularyoApp', [
+    .module('maaperture', [
         'ngCookies',
-        'angularyoApp.services',
+        'maaperture.services',
         'ngResource',
         'ngSanitize',
         'ngRoute',
@@ -21,11 +21,11 @@ angular
             })
             .when('/collection', {
                 templateUrl: 'views/collection.html',
-                controller: 'ControllerColl'
+                controller: 'CollectionCtrl'
             })
             .when('/view/:id', {
                 templateUrl: 'views/detail.html',
-                controller: 'detail'
+                controller: 'ElementCtrl'
             })
             .otherwise({
                 redirectTo: '/'

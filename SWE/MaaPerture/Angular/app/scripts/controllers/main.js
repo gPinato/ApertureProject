@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('angularyoApp').controller('MainCtrl', function ($scope,  localStorageService) {
+angular.module('maaperture').controller('MainCtrl', function ($scope,  localStorageService) {
         var todosInStore = localStorageService.get('todos');
 
        $scope.todos = todosInStore && todosInStore.split('\n') || [];

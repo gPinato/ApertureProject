@@ -18,7 +18,7 @@
     <link rel="stylesheet" href="styles/main.css">
     <!-- endbuild -->
 </head>
-<body ng-app="angularyoApp">
+<body ng-app="maaperture">
 <!--[if lt IE 7]>
 <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
 <![endif]-->
@@ -65,15 +65,15 @@
 <script src="bower_components/jquery-ui/ui/jquery-ui.js"></script>
 <script src="bower_components/angular-ui-sortable/sortable.js"></script>
 <script src="bower_components/angular-local-storage/angular-local-storage.js"></script>
-<script src="scripts/services/firstservice.js"></script>
 <!-- endbower -->
 <!-- endbuild -->
 
 <!-- build:js({.tmp,app}) scripts/scripts.js -->
 <script src="scripts/app.js"></script>
 <script src="scripts/controllers/main.js"></script>
-<script src="scripts/controllers/ControllerColl.js"></script>
-<script src="scripts/controllers/detail.js"></script>
+<script src="scripts/controllers/CollectionCtrl.js"></script>
+<script src="scripts/controllers/ElementCtrl.js"></script>
+<script src="scripts/services/CollectionDataService.js"></script>
 <!-- endbuild -->
 </body>
 </html>

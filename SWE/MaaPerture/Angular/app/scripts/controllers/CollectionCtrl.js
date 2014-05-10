@@ -3,10 +3,10 @@
  */
 'use strict';
 
-angular.module('angularyoApp').controller('ControllerColl', function ($scope, firstservice, localStorageService) {
+angular.module('maaperture').controller('CollectionCtrl', function ($scope, CollectionDataService, localStorageService) {
     var todosInStore = localStorageService.get('todos');
 
-    $scope.rows=firstservice.getProperty();
+    $scope.rows=CollectionDataService.getProperty();
 
 
     $scope.viewitem = function (index) {
