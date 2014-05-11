@@ -1,10 +1,10 @@
 /**
  * File: ElementCtrl_test;
  * Module: modulo di appartenenza;
- * Author: jack;
+ * Author: Giacomo pinato;
  * Created: 10/05/14;
- * Version: versione corrente;
- * Description: descrizione dettagliata del file;
+ * Version: 0.5;
+ * Description: Test del controller per la visualizzazione dei singoli elementi;
  * Modification History: tabella dei cambiamenti effettuati sul file.
  */
 'use strict';
@@ -34,13 +34,13 @@ describe('Controller: ElementCtrl', function () {
     });
 
     it('should extract an element', function () {
-        expect(scope.rows[0].id).to.equal(0);
-        expect(scope.rows[0].sender).to.equal('jean@somecompany.com');
+        expect(scope.rows[0].ID).to.equal(0);
+        expect(scope.rows[0].customer).to.equal('Gianni');
     });
     it('should extract the right element', function () {
 
-        expect(scope.element.id).to.equal(2);
-        expect(scope.element.sender).to.equal('bill@somecompany.com');
+        expect(scope.element.ID).to.equal(2);
+        expect(scope.element.customer).to.equal('Bonnie');
     });
 
 

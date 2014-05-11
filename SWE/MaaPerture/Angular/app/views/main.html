@@ -1,29 +1,59 @@
-<div class="container">
 
-    <h2>My todos</h2>
+<div class="row-fluid">
+    <div class="col-md-10">
+        <div class="panel panel-default">
+            <!-- Default panel contents -->
+            <div ng-model="rows" class="panel-heading">Collection index</div>
 
-    <!-- Todos input -->
-    <form role="form" ng-submit="addTodo()">
-        <div class="row">
-            <div class="input-group">
-                <input type="text" ng-model="todo" placeholder="What needs to be done?" class="form-control">
-        <span class="input-group-btn">
-          <input type="submit" class="btn btn-primary" value="Add">
-        </span>
-            </div>
+            <!-- Table -->
+
+            <table class="table">
+                <th>ID</th>
+                <th>Customer</th>
+                <th>Email</th>
+                <th colspan="2">Options</th>
+                <tr ng-repeat="row in rows | filter:search:strict" >
+                    <td><a href="/view/{{row.ID}}">{{row.ID}}</a></td>
+                    <td>{{row.customer}}</td>
+                    <td>{{row.email}}</td>
+                    <td><a href="/view/{{row.ID}}/edit">Edit</a></td>
+                    <td><a href="/view/{{row.ID}}/delete">Delete</a></td>
+                </tr>
+            </table>
         </div>
-    </form>
-    <p></p>
 
-    <!-- Todos list -->
-    <!-- Todos list -->
-    <div ui-sortable ng-model="todos">
-        <p class="input-group" ng-repeat="todo in todos" style="padding:5px 10px; cursor: move;">
-            <input type="text" ng-model="todo" class="form-control">
-    <span class="input-group-btn">
-      <button class="btn btn-danger" ng-click="removeTodo($index)" aria-label="Remove">X</button>
-    </span>
-        </p>
-        <p><a href="/collection"><button >Derpami</button></a></p>
+        <div>
+            <ul class="pagination">
+                <li><a href="#">&laquo;</a></li>
+                <li><a href="#">1</a></li>
+                <li><a href="#">2</a></li>
+                <li><a href="#">3</a></li>
+                <li><a href="#">4</a></li>
+                <li><a href="#">5</a></li>
+                <li><a href="#">&raquo;</a></li>
+            </ul>
+        </div>
+    </div>
+
+
+    <div class="col-md-2">
+        <div class="panel panel-default">
+            <div class="panel-body">
+        <form role="form">
+            <div class="form-group">
+                <label>Filter by name</label>
+                <input ng-model="search.customer" type="test" class="form-control" id="filtername" placeholder="Enter name">
+            </div>
+            <div class="form-group">
+                <label>ID</label>
+                <input  ng-model="search.ID" type="number" class="form-control" id="filterid" placeholder="ID">
+            </div>
+
+            <button type="submit" class="btn btn-default">Submit</button>
+            <button ng-click="search = undefined" class="btn btn-default">Reset</button>
+
+        </form>
+    </div>
+        </div>
     </div>
 </div>

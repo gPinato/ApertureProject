@@ -1,6 +1,6 @@
 {
-  "name": "MaaPerture",
-  "version": "0.0.1",
+  "name": "angularyo",
+  "version": "0.0.0",
   "dependencies": {
     "angular": "1.2.15",
     "json3": "~3.2.6",
