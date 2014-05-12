@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
 <head>
-    <title>Code coverage report for controllers/ElementCtrl.js</title>
+    <title>Code coverage report for services/ElementDataService.js</title>
     <meta charset="utf-8">
 
     <link rel="stylesheet" href="../prettify.css">
@@ -196,23 +196,23 @@
 </head>
 <body>
 <div class="header high">
-    <h1>Code coverage report for <span class="entity">controllers/ElementCtrl.js</span></h1>
+    <h1>Code coverage report for <span class="entity">services/ElementDataService.js</span></h1>
     <h2>
         
-        Statements: <span class="metric">100% <small>(2 / 2)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Statements: <span class="metric">100% <small>(5 / 5)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
         
         
         Branches: <span class="metric">100% <small>(0 / 0)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
         
         
-        Functions: <span class="metric">100% <small>(1 / 1)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Functions: <span class="metric">100% <small>(2 / 2)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
         
         
-        Lines: <span class="metric">100% <small>(2 / 2)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Lines: <span class="metric">100% <small>(5 / 5)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
         
         Ignored: <span class="metric"><span class="ignore-none">none</span></span> &nbsp;&nbsp;&nbsp;&nbsp;
     </h2>
-    <div class="path"><a href="../index.html">All files</a> &#187; <a href="index.html">controllers/</a> &#187; ElementCtrl.js</div>
+    <div class="path"><a href="../index.html">All files</a> &#187; <a href="index.html">services/</a> &#187; ElementDataService.js</div>
 </div>
 <div class="body">
 <pre><table class="coverage">
@@ -234,10 +234,26 @@
 16
 17
 18
-19</td><td class="line-coverage"><span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38</td><td class="line-coverage"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -250,25 +266,66 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3</span>
 <span class="cline-any cline-yes">3</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">/**
- * File: ElementCtrl;
+ * File: ElementDataService;
  * Module: modulo di appartenenza;
  * Author: jack;
- * Created: 10/05/14;
+ * Created: 11/05/14;
  * Version: versione corrente;
  * Description: descrizione dettagliata del file;
  * Modification History: tabella dei cambiamenti effettuati sul file.
  */
-/**
- * Created by jack on 09/05/14.
- */
-'use strict';
 &nbsp;
-angular.module('maaperture').controller('ElementCtrl', function ($scope,ElementDataService, $routeParams) {
 &nbsp;
-    $scope.document=ElementDataService.getDocument()[$routeParams.id];
+angular.module('services')
+    .factory('ElementDataService',function(){
+&nbsp;
+    var derp = ["Name","Address","Sex", "Email", "Created at","I Lack fantasy"];
+    var document= [{"ID":0,"data":{"customer": "Gianni Smartface",
+                              "Address":"Via dei Fagiani 22, Fagianopoli",
+                              "Sex":"never",
+                              "email": "gianni@definitelynotgoogle.com",
+                              "date":"15/12/2015",
+                              "Something":"something else"}},
+     {"ID":1,"data":{"customer": "Pinotto Turkleton",
+        "Address":"Via dei Fagiani 21, Fagianopoli",
+        "Sex":"never",
+        "email": "pinotto@definitelynotgoogle.com",
+        "date":"15/12/2005",
+        "Something":"something else"}}];
+&nbsp;
+    return {
+        getDocument: function () {
+            return document;
+        }
+&nbsp;
+&nbsp;
+    }
+&nbsp;
 &nbsp;
 });</pre></td></tr>
 </table></pre>
