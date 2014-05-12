@@ -80,7 +80,7 @@
  Collection
  =WhiteoLine Comm* StringCollection Comm* WhiteoLine 
  RoundOpenPar Comm* WhiteoLine
- StringLabel Comm* DuePunti Comm* SingleEscapeCharacter 
+ StringLabel Comm* DuePunti Comm* WhiteoLine SingleEscapeCharacter 
  Etichetta SingleEscapeCharacter Comm* 
  WhiteoLine Comm* Virgola Comm*
  WhiteoLine
