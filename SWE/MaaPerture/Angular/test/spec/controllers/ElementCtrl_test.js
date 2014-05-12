@@ -41,6 +41,8 @@ describe('Controller: ElementCtrl', function () {
 
         expect(scope.element.ID).to.equal(2);
         expect(scope.element.customer).to.equal('Bonnie');
+        expect(scope.element.orders[0].product_name).to.equal('Y-women VHS');
+
     });
 
 

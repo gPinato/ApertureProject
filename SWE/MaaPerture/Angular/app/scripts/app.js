@@ -2,10 +2,13 @@
 /*
  * Moduli di angular da caricare per far girare il tutto
  */
+
+angular.module('services', [ "ngResource"] );
+
 angular
     .module('maaperture', [
         'ngCookies',
-        'maaperture.services',
+        'services',
         'ngResource',
         'ngSanitize',
         'ngRoute',
@@ -24,7 +27,15 @@ angular
                 controller: 'CollectionCtrl'
             })
             .when('/view/:id', {
-                templateUrl: 'views/detail.html',
+                templateUrl: 'views/document.html',
+                controller: 'ElementCtrl'
+            })
+            .when('/element', {
+                templateUrl: 'views/orders.html',
+                controller: 'ElementCtrl'
+            })
+            .when('/orders', {
+                templateUrl: 'views/orders.html',
                 controller: 'ElementCtrl'
             })
             .otherwise({

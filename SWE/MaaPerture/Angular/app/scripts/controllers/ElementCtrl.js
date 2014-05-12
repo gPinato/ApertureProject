@@ -12,8 +12,8 @@
  */
 'use strict';
 
-angular.module('maaperture').controller('ElementCtrl', function ($scope,CollectionDataService, $routeParams) {
-    $scope.rows = CollectionDataService.getProperty();
-    $scope.element = $scope.rows[$routeParams.id]
+angular.module('maaperture').controller('ElementCtrl', function ($scope,ElementDataService, $routeParams) {
+
+    $scope.document=ElementDataService.getDocument()[$routeParams.id];
 
 });

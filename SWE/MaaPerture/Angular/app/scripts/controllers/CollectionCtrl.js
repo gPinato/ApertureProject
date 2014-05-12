@@ -7,9 +7,9 @@ angular.module('maaperture').controller('CollectionCtrl', function ($scope, Coll
     var todosInStore = localStorageService.get('todos');
 
     $scope.rows=CollectionDataService.getProperty();
+    $scope.labels=CollectionDataService.getLabels();
 
-
-    $scope.viewitem = function (index) {
-        $scope.todos.splice(index, 1);
-    };
+    $scope.canEdit= function(){
+        return true;
+    }
 });
