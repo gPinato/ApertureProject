@@ -33,6 +33,9 @@ SWE/Documentazione/Piano_di_Progetto/sections/PreRR.tex
 SWE/Documentazione/Piano_di_Progetto/sections/PreRR.tex
 SWE/MaaPerture/Angular/node_modules/*
 SWE/MaaPerture/Angular/.sass-cache/*
+SWE/maaperture/package_npm/node_modules/*
+SWE/maaperture/package_npm/maap_project/node_modules/*
+SWE/maaperture/package_npm/maap_project/app/bower_components/*
 
 *.gz(busy)
 *.exe
