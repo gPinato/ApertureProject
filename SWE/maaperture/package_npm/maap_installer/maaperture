@@ -19,8 +19,12 @@ function printHelpTitle() {
 	console.log('  --------------------------------------------------');
 }
 
-function setProjectName(project_name) {
-	//JSON.parse(fs.readFileSync(__dirname + '/../package.json', 'utf8')).version;
+function setProjectName(destination, project_name) {
+	var file = destination + '/package.json';
+	var packagejson = JSON.parse(fs.readFileSync(file, 'utf8').toString());
+	packagejson.name = project_name;
+	packagejson.description = project_name + ' created with Maaperture!';
+	fs.writeFile(file, JSON.stringify(packagejson, null, '\t'));
 }
 
 function initProject(project_name) {
@@ -31,11 +35,21 @@ function initProject(project_name) {
 	console.log(name + " - " + description);
 	console.log('');
 	console.log('generating a new empty project ' + project_name + ' into ' + destination + '...');
-	ncp(source, destination, function(err) {
+	var options = 
+    { 
+        clobber: true, 				//avoid2write existing files (false)
+        filter: function (src) {
+            //console.log(JSON.stringify(src));
+			//console.log(src);
+			return true;
+        }
+    };
+	ncp(source, destination, options, function(err) {
 		if(err) {
 			return console.error(err);
 		}
-		setProjectName(project_name);
+		console.log('setting project\'s name...');
+		setProjectName(destination, project_name);
 		console.log('well done!');
 		console.log('you are ready to install the dependencies and start the server');
 		console.log('with: "cd ' + project_name + ' && npm install && npm start"');
@@ -68,7 +82,7 @@ program.on('*', function(){
 program
 	.parse(process.argv);
 	
-if (process.argv.length === 2) {
+if (process.argv.length <= 2) {
 	printHelpTitle();
 	program.help();
 }
