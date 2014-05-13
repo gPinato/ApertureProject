@@ -1,1 +1,0 @@
-exports.app = app = {  env: 'development',  title: 'maaperture',  host: 'localhost',  port: 9000,  ssl: false}exports.session = {  secret: 'boomShakalaka!YO'}exports.static_assets = {  dir: __dirname + '/app',  views: __dirname + '/views',  dsl: __dirname + '/dsl',  max_age: 3600000 // one hour (60s * 60m * 1000ms)}
