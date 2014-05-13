@@ -1,0 +1,37 @@
+<div class="row-fluid">
+    <div class="col-md-10">
+        <div class="panel panel-default">
+            <!-- Default panel contents -->
+            <div ng-model="rows" class="panel-heading">Collection index</div>
+
+            <!-- Table -->
+
+            <table class="table">
+                <th>Customer ID</th>
+                <th>Customer Name</th>
+                <th>Order</th>
+                <th>Quantity</th>
+                <th>Date</th>
+                <th colspan="2">Options</th>
+                <tr ng-repeat="row in element.orders " >
+                    <td>{{element.ID}}</td>
+                    <td>{{element.customer}}</td>
+                    <td>{{row.product_name}}</td>
+                    <td>{{row.quantity}}</td>
+                    <td>{{row.date}}</td>
+                    <td><a href="/view/{{row.ID}}/edit">Edit</a></td>
+                    <td><a href="/view/{{row.ID}}/delete">Delete</a></td>
+                </tr>
+            </table>
+        </div>
+        </div>
+    </div>
+    </div>
+
+<!--
+
+{"ID":0, "customer": "Gianni",  "orders":[
+{"product_name": "vibroblade",  "quantity": 2, "date":20/12/2010},
+{"product_name": "dutch tape",  "quantity": 1, "date":20/12/2010},
+{"product_name": "Spiderman 2 blurei",  "quantity": 5, "date":10/12/2010},
+{"product_name": "Eating for dummies",  "quantity": 1, "date":20/11/2010}] },-->
