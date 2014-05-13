@@ -1,8 +1,8 @@
-collection  (   
+collection  {   
     label  :  "Nome"  , 
      name  :  "ggf"  , 
     position  :  "posizione" 
-   ) 
+   } 
   index { 
         populate :  ["collection1","collection2"], 
          column(

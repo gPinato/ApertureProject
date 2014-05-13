@@ -5,6 +5,17 @@
     MemberExpression: "object",
   };
 
+function prova(list){
+        s="";
+        for(j=0;j<list.length;j++){
+          for (i = 0; i < list[j].length; i++) {
+            if(list[i]!==" ")
+                s=s+list[j][i];
+         }
+}
+         return s;				
+  }
+
   function filledArray(count, value) {
     var result = new Array(count), i;
 
@@ -13,13 +24,6 @@
     }
 
     return result;
-  }
-   
-  function (Array [] list){
-        for (i = 0; i < list.length; i++) {
-            if(list[i]!==" ")
-                return list[i];
-         }				
   }
 
   function extractOptional(optional, index) {
@@ -80,7 +84,9 @@
 
 //inizio lettura file DSL
  start
-  = dsl
+  = "mona" {return prova([[" ","ciao1"," "],[" ","ciao2"," "]])}
+
+
  dsl
   =c:Collection i:Index Show {return {collection:c,index:i}}
 
@@ -133,8 +139,11 @@ Commen
 
  Populate
  =Comm* WhiteoLine Comm* StringPopulate Comm* WhiteoLine 
- DuePunti Comm* WhiteoLine SquareOpenPar  Comm*
- (WhiteoLine Comm* SingleEscapeCharacter  t3:Token SingleEscapeCharacter Comm* WhiteoLine Virgola) Comm* WhiteoLine SingleEscapeCharacter t2:Token SingleEscapeCharacter Comm* WhiteoLine SquareClosePar WhiteoLine Comm* Virgola WhiteoLine {return {populate :[t3,t2]}}
+ DuePunti Comm* WhiteoLine SquareOpenPar  Comm* prova
+  Comm* WhiteoLine SingleEscapeCharacter t2:Token SingleEscapeCharacter Comm* WhiteoLine SquareClosePar WhiteoLine Comm* Virgola WhiteoLine {return {populate:t2}}
+
+prova
+=(WhiteoLine Comm* SingleEscapeCharacter  t1:Token SingleEscapeCharacter Comm* WhiteoLine Virgola)* 
 
   
  Features
