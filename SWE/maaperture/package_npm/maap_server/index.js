@@ -2,6 +2,7 @@
 'use strict';
 
 var express = require('express');
+var fs = require('fs');
 var path = require('path');
 var favicon = require('serve-favicon');
 var logger = require('morgan');
@@ -16,17 +17,18 @@ var FrontController = require('./controller/frontController');
 
 function serverInit(app){
 
-	//app.set('views', path.join(__dirname, 'app/views'));
-	app.set('views', __dirname);
+	var config = app.config;
+	
+	app.set('views', config.static_assets.views);
 	//app.set('view engine', 'html');
 
-	//app.use(favicon(path.join(__dirname, 'public/favicon.ico')));
-	app.use(favicon('./public/favicon.ico'));
+	app.use(favicon(path.join(config.static_assets.dir, 'favicon.ico')));
 	app.use(logger('dev'));
 	app.use(bodyParser.json());
 	app.use(bodyParser.urlencoded());
 	app.use(cookieParser());
-	app.use(express.static(path.join(__dirname, 'public')));
+	app.use(express.static(config.static_assets.dir));
+	
 	
 	// Make our db accessible to our router
 	// l'altro gruppo l'ha chiamata appInjector, 
@@ -72,24 +74,29 @@ function serverInit(app){
 
 }
 
-var startServer = function(config) {
+var start = function(config) {
 
 	var app = express();
-	app.config = config;
-		
-	console.log("checking DSL...");
+	var protocol = config.app.ssl ? 'https' : 'http';
+	var port = process.env.PORT || config.app.port;
+	var app_url = protocol + '://' + config.app.host + ':' + port;
+	var env = process.env.NODE_ENV ? ('[' + process.env.NODE_ENV + ']') : '[development]'; 
 	
+	console.log('app init... ' + config.session.secret);
+			
 	DataManager.test1();
 	DataManager.test2();	
 	 
-	console.log("starting nodeJS server...");
-	serverInit(app);	
+	console.log('pippo app init...');
+	app.config = config;
+	serverInit(app);
 	
-	app.set('port', process.env.PORT || 3000);
+	console.log('starting server...');	
+	app.set('port', port);
 	var server = app.listen(app.get('port'));
-	console.log("[nome progetto] listening on port " + server.address().port + "... :)");	
+	console.log(config.app.title + ' listening at ' + app_url + ' ' + env);
 };
 
 //export della funzione...
-exports.start = startServer;
+exports.start = start;
 
