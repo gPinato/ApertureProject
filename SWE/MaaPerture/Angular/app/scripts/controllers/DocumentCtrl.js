@@ -13,6 +13,55 @@
 angular.module('maaperture').controller('DocumentCtrl', function ($scope,DocumentDataService,AuthService, $routeParams) {
     $scope.current_collection = { id: $routeParams.col_id };
     $scope.current_document = { id: $routeParams.doc_id };
-    $scope.document=DocumentDataService.getDocument()[$routeParams.doc_id];
+    //$scope.data = DocumentDataService.get({col_id:$routeParams.col_id,doc_id:$routeParams.doc_id });
+    DocumentDataService.query({col_id:$routeParams.col_id,doc_id:$routeParams.doc_id },
+        function success(data) {
+            $scope.data = data;
+        },
+        function err(error){
+            ErrorHandler.handle(error);
+        }
+    );
+
+    $scope.edit_document = function() {
+        DocumentService.update({
+                collectionId: $scope.current_collection,
+                documentId: $scope.current_document
+            },
+            $scope.editDocumentData,
+            function success() {
+                FlashMessage.future({ type: "success", title: "Success!", message: "Document has been updated." });
+                $location.path("/collections/"+$scope.collection.id+"/"+$scope.document.id);
+            },
+            function err(error) {
+                ErrorHandler.handle(error);
+            }
+        );
+    };
     $scope.canEdit = AuthService.canEdit();
 });
+
+/*
+* {
+ "label": [
+ "Name",
+ "Address",
+ "Sex",
+ "Email",
+ "Created at",
+ "I Lack fantasy"
+ ],
+ "data": [
+ {
+ "ID": 0,
+ "data": {
+ "customer": "Gianni Smartface",
+ "Address": "Via dei Fagiani 22, Fagianopoli",
+ "Sex": "never",
+ "email": "gianni@definitelynotgoogle.com",
+ "date": "15/12/2015",
+ "Something": "something else"
+ }
+ }
+ ]
+ }*/

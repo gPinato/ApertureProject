@@ -19,19 +19,23 @@ app.configure(function() {
 
 });
 
-app.get('/api/collection/:id', function(req, res){
-    res.sendfile('/home/jack/Desktop/Repository/SWE/MaaPerture/Angular/app/colprova'+req.params.id+'.json');
+app.get('/api/collection/:col_id', function(req, res){
+    res.sendfile('/home/jack/Desktop/Repository/SWE/MaaPerture/Angular/app/colprova'+req.params.col_id+'.json');
 });
-app.get('/api/document/:id', function(req, res){
-    res.sendfile('/home/jack/Desktop/Repository/SWE/MaaPerture/Angular/app/docprova.json');
+app.get('/api/collection/:col_id/:doc_id', function(req, res){
+    res.sendfile('/home/jack/Desktop/Repository/SWE/MaaPerture/Angular/app/docprova'+req.params.doc_id+'.json');
 });
-app.get('/api/document/:id/edit', function(req, res){
-    res.sendfile('/home/jack/Desktop/Repository/SWE/MaaPerture/Angular/app/docprova.json');
+app.get('/api/collection/:col_id/:doc_id/edit', function(req, res){
+    res.sendfile('/home/jack/Desktop/Repository/SWE/MaaPerture/Angular/app/docprova'+req.params.doc_id+'.json');
+});
+
+app.post('/api/collection/:col_id/:doc_id', function(req, res){
+    console.log(JSON.stringify(req.body));
 });
 
 
 app.get('*', function(req, res){
-    res.sendfile("index.html");
+    res.sendfile("/home/jack/Desktop/Repository/SWE/MaaPerture/Angular/app/index.html");
 });
 
 
