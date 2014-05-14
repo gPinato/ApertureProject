@@ -15,11 +15,21 @@
     return result;
   }
    
-  function (Array [] list){
-        for (i = 0; i < list.length; i++) {
-            if(list[i]!==" ")
-                return list[i];
-         }				
+
+function prova(token,list){
+        s=new Array();
+        z=0;
+        for(j=0;j<list.length;j++){
+          for (i = 0; i < list[j].length; i++) {
+            if(list[j][i]!==" " && list[j][i]!=='/"'){
+                s[z]=list[j][i];
+                z++;
+            } 
+         }
+
+}
+s[z]=token;
+         return s;				
   }
 
   function extractOptional(optional, index) {
@@ -101,10 +111,10 @@
  WhiteoLine Comm* CurlyClosePar Comm* WhiteoLine {return {label:l,name:n,position:p}}
  
  Comm
- =WhiteoLine "/*" WhiteoLine Commen WhiteoLine "*/" WhiteoLine
+ =WhiteoLine "/*" WhiteoLine Commen WhiteoLine "*/" WhiteoLine {return "";}
 
 Commen
- =WhiteoLine [a-z/WhiteSpace? / 0-9 /./A-Z/+/-?^%&$£!~@]* WhiteoLine
+ =WhiteoLine [a-z/WhiteSpace? / 0-9 /./A-Z/+/-?^%&$£!~@]* WhiteoLine {return "";}
  
  Index
  =Comm* WhiteoLine Comm* StringIndex Comm* WhiteoLine 
@@ -131,10 +141,11 @@ Commen
   Virgola Comm* LineTerminatorSequence* Comm* Function Comm*  
   WhiteoLine RoundClosePar Comm* WhiteoLine Comm*
 
+
  Populate
  =Comm* WhiteoLine Comm* StringPopulate Comm* WhiteoLine 
  DuePunti Comm* WhiteoLine SquareOpenPar  Comm*
- (WhiteoLine Comm* SingleEscapeCharacter  t3:Token SingleEscapeCharacter Comm* WhiteoLine Virgola) Comm* WhiteoLine SingleEscapeCharacter t2:Token SingleEscapeCharacter Comm* WhiteoLine SquareClosePar WhiteoLine Comm* Virgola WhiteoLine {return {populate :[t3,t2]}}
+ Parte1:(WhiteoLine SingleEscapeCharacter  Token  SingleEscapeCharacter WhiteoLine Virgola)* WhiteoLine SingleEscapeCharacter Parte2:(Token) SingleEscapeCharacter WhiteoLine SquareClosePar WhiteoLine Virgola WhiteoLine {return {populate:prova(Parte2,Parte1)};}
 
   
  Features
@@ -148,7 +159,7 @@ Commen
  =Comm* WhiteoLine StringFunction Comm* WhiteoLine DuePunti Comm* WhiteoLine Javascript Comm*
  
  WhiteoLine
- =(WhiteSpace/LineTerminatorSequence)*
+ =(WhiteSpace/LineTerminatorSequence)* {return " ";}
 
  ColumnOrButton
  =(Column/Button) WhiteoLine 
@@ -225,7 +236,7 @@ Commen
  =WhiteoLine ("button"/"Button") WhiteoLine
 
  StringPopulate
- =WhiteoLine ("populate"/"Populate") WhiteoLine
+ =WhiteoLine ("populate"/"Populate")
  
  StringRow
   = WhiteoLine ("row"/"Row") WhiteoLine
@@ -233,32 +244,29 @@ Commen
  //definizione simboli
  
 WhiteSpace "WhiteSpace"
-  = "\t"
-  / "\v"
-  / "\f"
-  / " "  
-  / "\u00A0"
-  / "\uFEFF" 
+  = "\t" {return " ";}
+  / "\v" {return " ";}
+  / "\f" {return " ";}
+  / " "   {return " ";}
+  / "\u00A0" {return " ";}
+  / "\uFEFF"  {return " ";}
+
  
  /*Comment
  = WhiteSpace* StartComment WhiteSpace* EtichettaComment WhiteSpace* EndComment WhiteSpace*/
 
 LineTerminatorSequence "end of line"
-  = "\n" 
-  / "\r\n"
-  / "\r"
-  / "\u2028"
-  / "\u2029"
+  = "\n"  {return " ";}
+  / "\r\n" {return " ";}
+  / "\r" {return " ";}
+  / "\u2028" {return " ";}
+  / "\u2029" {return " ";}
+
   
  SingleEscapeCharacter
-  = "'"
-  / '"' 
-  / "\\" 
-  / "b"  { return "\b";   }
-  / "f"  { return "\f";   }
-  / "n"  { return "\n";   }
-  / "r"  { return "\r";   }
-  / "t"  { return "\t";   }
+  = '"'  {return;}
+
+
 
   /*StartComment
   ="/*"
@@ -273,10 +281,10 @@ LineTerminatorSequence "end of line"
   //=(\/\*[\w\'\s\r\n\*]*\*\/)|(\/\/[\w\s\']*)|(\<![\-\-\s\w\>\/]*\>)
   
  Virgola
- = ","
+ = "," {return " ";}
 
  DuePunti
- = ":"
+ = ":" {return " ";}
 
  Freccia
  = ("=>"/"->")
@@ -285,22 +293,22 @@ LineTerminatorSequence "end of line"
  = ("true"/"false")
  
  RoundOpenPar
- ="("
+ ="(" {return " ";}
  
-  RoundClosePar
- =")"
+  RoundClosePar 
+ =")" {return " ";}
  
  CurlyOpenPar
- ="{"
+ ="{" {return " ";}
  
  CurlyClosePar
- ="}" 
+ ="}" {return " ";}
  
  SquareOpenPar
- ="["
+ ="[" {return " ";}
  
  SquareClosePar
- ="]" { return "dio cane";}
+ ="]" {return " ";}
  
  //definizione digits
 Etichetta
@@ -571,15 +579,15 @@ CharacterEscapeSequence
   / NonEscapeCharacter
 
 SingleEscapeCharacter
-  = "'"
-  / '"'
-  / "\\"
-  / "b"  { return "\b";   }
-  / "f"  { return "\f";   }
-  / "n"  { return "\n";   }
-  / "r"  { return "\r";   }
-  / "t"  { return "\t";   }
-  / "v"  { return "\x0B"; }   // IE does not recognize "\v".
+  = "'"  {return " ";}
+  / '"' {return " ";}
+  / "\\" {return " ";}
+  / "b"  {return " ";}
+  / "f"  {return " ";}
+  / "n"  {return " ";}
+  / "r"  {return " ";}
+  / "t"  {return " ";}
+  / "v" {return " ";}   // IE does not recognize "\v".
 
 NonEscapeCharacter
   = !(EscapeCharacter / LineTerminator) SourceCharacter { return text(); }
