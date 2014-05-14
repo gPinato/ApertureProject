@@ -19,27 +19,57 @@ angular
     .config(function ($routeProvider,$locationProvider,$provide) {
         $routeProvider
             .when('/', {
-                templateUrl: 'views/main.html',
-                controller: 'CollectionCtrl'
+                templateUrl: 'views/dashboard.html',
+                controller: 'MainCtrl'
             })
-            .when('/collection', {
+            .when('/collection/:col_id', {
                 templateUrl: 'views/collection.html',
                 controller: 'CollectionCtrl'
             })
-            .when('/view/:id', {
+            .when('/collection/:col_id/:doc_id', {
                 templateUrl: 'views/document.html',
-                controller: 'ElementCtrl'
+                controller: 'DocumentCtrl'
             })
-            .when('/element', {
-                templateUrl: 'views/orders.html',
-                controller: 'ElementCtrl'
+            .when('/collection/:col_id/:doc_id/edit', {
+                templateUrl: 'views/documentEdit.html',
+                controller: 'DocumentEditCtrl'
             })
-            .when('/orders', {
-                templateUrl: 'views/orders.html',
-                controller: 'ElementCtrl'
+            .when('/profile', {
+                templateUrl: 'views/documentEdit.html',
+                controller: 'DocumentEditCtrl'
             })
+            .when('/profile/edit', {
+                templateUrl: 'views/documentEdit.html',
+                controller: 'DocumentEditCtrl'
+            })
+            .when('/userprofiles', {
+                templateUrl: 'views/documentEdit.html',
+                controller: 'DocumentEditCtrl'
+            })
+            .when('/userprofiles/:prof_id', {
+                templateUrl: 'views/documentEdit.html',
+                controller: 'DocumentEditCtrl'
+            })
+            .when('/userprofiles/:prof_id/edit', {
+                templateUrl: 'views/documentEdit.html',
+                controller: 'DocumentEditCtrl'
+            })
+            .when('/login', {
+                templateUrl: 'views/login.html',
+                controller: 'DocumentEditCtrl'
+            })
+            .when('/logout', {
+                templateUrl: 'views/logout.html',
+                controller: 'DocumentEditCtrl'
+            })
+            .when('/register', {
+                templateUrl: 'views/register.html',
+                controller: 'DocumentEditCtrl'
+            })
+
+
             .otherwise({
-                redirectTo: '/'
+                redirectTo: '/404.html'
             });
 
 

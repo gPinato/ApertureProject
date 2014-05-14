@@ -1,0 +1,23 @@
+{
+    "label": [
+        "Name",
+        "Address",
+        "Sex",
+        "Email",
+        "Created at",
+        "I Lack fantasy"
+    ],
+    "data": [
+        {
+            "ID": 0,
+            "data": {
+                "customer": "Gianni Smartface",
+                "Address": "Via dei Fagiani 22, Fagianopoli",
+                "Sex": "never",
+                "email": "gianni@definitelynotgoogle.com",
+                "date": "15/12/2015",
+                "Something": "something else"
+            }
+        }
+    ]
+}

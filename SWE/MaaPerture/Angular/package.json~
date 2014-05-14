@@ -2,8 +2,7 @@
   "name": "Maaperture",
   "description":"Progetto MaaP sviluppato da Aperture Software",
   "version": "0.0.1",
-  "dependencies": {
-"express": "~3.4"},
+  "dependencies": {},
   "devDependencies": {
     "chai": "^1.9.1",
     "connect-modrewrite": "^0.7.4",

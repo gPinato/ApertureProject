@@ -2,17 +2,17 @@
     <div class="col-md-10">
         <div class="panel panel-default">
             <!-- Default panel contents -->
-            <div ng-model="rows" class="panel-heading">Document show</div>
+            <div ng-model="rows" class="panel-heading">Your pofile</div>
 
             <!-- Table -->
 
             <table class="table">
                 <th>Label</th>
                 <th>Value</th>
-                 <tr ng-repeat="(key,value) in document.data">
+                <tr ng-repeat="(key,value) in document.data">
                     <td>{{key}}</td>
                     <td>{{value}}</td>
-                 </tr>
+                </tr>
             </table>
 
         </div>

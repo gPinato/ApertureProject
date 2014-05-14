@@ -9,7 +9,7 @@
  */
 'use strict';
 
-describe('Controller: ElementCtrl', function () {
+describe('Controller: DocumentCtrl', function () {
 
     // load the controller's module
     beforeEach(module('maaperture'));
@@ -22,20 +22,21 @@ describe('Controller: ElementCtrl', function () {
     beforeEach(inject(function ($controller, $rootScope ) {
         scope = $rootScope.$new();
         routeParams ={};
-        routeParams.id=2;
-        MainCtrl = $controller('ElementCtrl', {
+        routeParams.col_id=0;
+        routeParams.doc_id=0;
+        MainCtrl = $controller('DocumentCtrl', {
             $scope: scope,
             $routeParams:routeParams
         });
     }));
 
     it('should load data from the services', function () {
-        expect(scope.rows.length).to.not.equal(0);
+        expect(scope.document.length).to.not.equal(0);
     });
 
     it('should extract an element', function () {
-        expect(scope.rows[0].ID).to.equal(0);
-        expect(scope.rows[0].customer).to.equal('Gianni');
+        expect(scope.document.ID).to.equal(routeParams.doc_id);
+        expect(scope.document.data.customer).to.equal('Gianni Smartface');
     });
     it('should extract the right element', function () {
 
