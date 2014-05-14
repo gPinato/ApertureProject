@@ -1,0 +1,53 @@
+/*gdf~*/ collection /*gdf*/ (   /*gdf*/
+   /*gdf*/ label /*gdf*/ : /*gdf*/ "Nome" /*gdf*/ , /*gdf*/
+    /*gdf*/ name /*gdf*/ : /*gdf*/ "ggf" /*gdf*/ , /*gdf*/
+   /*gdf*/ position /*gdf*/ : /*gdf*/ "posizione" /*gdf*/
+  /*gdf*/ ) /*gdf*/
+ /*gdf*/ index /*gdf*/{ /*gdf*/
+      /*gdf*/  populate /*gdf*/:  /*gdf*/[/*gdf*/"collection1"/*gdf*/,/*gdf*/"collection2"/*gdf*/]/*gdf*/,/*gdf*/ 
+        /*gdf*/ column/*gdf*/(/*gdf*/
+			/*gdf*/label/*gdf*/: /*gdf*/"Nome"/*gdf*/,/*gdf*/
+			/*gdf*/name/*gdf*/: /*gdf*/"fullname"/*gdf*/,/*gdf*/
+			/*gdf*/transformation/*gdf*/: /*gdf*/function nome(val) {
+				return val+" junior";
+			}/*gdf*/
+		/*gdf*/)/*gdf*/
+		column(label: "Prova",
+			name: "collection1.prova"
+			)
+		column(label: "Prova",
+			name: "collection2.prova"
+			)/*@*/
+		/*gdf*/
+		/*gdf*/ button/*gdf*/(/*gdf*/
+		    /*gdf*/label/*gdf*/:/*gdf*/ "Calculate"/*gdf*/,/*gdf*/
+			/*gdf*/name/*gdf*/: /*gdf*/"button1"/*gdf*/,/*gdf*/
+			/*gdf*/function/*gdf*/: function nome() {
+				return "ciao";
+			}/*gdf*/
+		/*gdf*/)  /*gdf*/     
+		/*gdf*/ perpage/*gdf*/: /*gdf*/"20"/*gdf*/,/*gdf*/
+		/*gdf*/sortby/*gdf*/:/*gdf*/ "age"/*gdf*/,/*gdf*/
+		/*gdf*/order/*gdf*/:/*gdf*/ "asc"/*gdf*/,/*gdf*/
+		/*gdf*/query/*gdf*/:/*gdf*/ {
+			age: { $lt: 20 }
+		}/*gdf*/
+/*gdf*/
+ }/*gdf*/
+/*gdf*/show/*gdf*/{/*gdf*/
+     /*gdf*/row/*gdf*/(/*gdf*/label/*gdf*/: /*gdf*/"Prova"/*gdf*/,/*gdf*/
+		/*gdf*/name/*gdf*/: /*gdf*/"doc"/*gdf*/
+			/*gdf*/)/*gdf*/
+     /*gdf*/button/*gdf*/(/*gdf*/
+		    /*gdf*/label/*gdf*/:/*gdf*/ "Calculate"/*gdf*/,/*gdf*/
+			/*gdf*/name/*gdf*/: /*gdf*/"button1"/*gdf*/,/*gdf*/
+			/*gdf*/function/*gdf*/:/*gdf*/ function nome() {
+				return "ciao";
+			}/*gdf*/
+		/*gdf*/)/*gdf*/
+ /*gdf*/}/*gdf*/
+ 
+ 
+ 
+ 
+ 

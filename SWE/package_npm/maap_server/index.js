@@ -11,7 +11,7 @@ var bodyParser = require('body-parser');
 
 //var mongoose = require('mongoose')
 var DataManager = require('./modelServer/dataManager');
-//var DSL = require('./modelServer/DSL');
+var DSL = require('./modelServer/DSL/DSLManager');
 //var DB = require('./modelServer/database');
 var FrontController = require('./controller/frontController');
 
@@ -76,27 +76,36 @@ function serverInit(app){
 
 var start = function(config) {
 
+	console.log('');
+	console.log('  --------------------------------------------------');
+	console.log('   ' + config.app.title);
+	console.log('');
+	console.log('   ' + config.app.description);
+	console.log('  --------------------------------------------------');
+	console.log('');
+	
 	var app = express();
+	app.config = config;
 	var protocol = config.app.ssl ? 'https' : 'http';
 	var port = process.env.PORT || config.app.port;
 	var app_url = protocol + '://' + config.app.host + ':' + port;
 	var env = process.env.NODE_ENV ? ('[' + process.env.NODE_ENV + ']') : '[development]'; 
 	
-	console.log('app init... ' + config.session.secret);
-			
+	console.log('checking dsl... ');
+	DSL.checkDSL(app);
+	
 	DataManager.test1();
 	DataManager.test2();	
-	 
-	console.log('pippo app init...');
-	app.config = config;
+	
+	console.log('');
+	console.log('app init...');
 	serverInit(app);
 	
 	console.log('starting server...');	
 	app.set('port', port);
 	var server = app.listen(app.get('port'));
-	console.log(config.app.title + ' listening at ' + app_url + ' ' + env);
+	console.log('well done! ' + config.app.title + ' listening at ' + app_url + ' ' + env);
 };
 
 //export della funzione...
 exports.start = start;
-

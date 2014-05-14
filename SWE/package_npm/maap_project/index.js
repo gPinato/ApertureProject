@@ -15,7 +15,7 @@ try {
     process.exit(1);
   } else {
     throw err;
-  }
+  }  
 }
 
 maaperture.start(config);

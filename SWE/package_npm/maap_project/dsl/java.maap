@@ -1,0 +1,4 @@
+function a(test) {
+	var a = a + 1 + test;
+	return a;
+}
