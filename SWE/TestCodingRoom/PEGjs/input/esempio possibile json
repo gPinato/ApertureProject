@@ -1,0 +1,20 @@
+{
+    "collection": {
+        "label": "Nome",
+        "name": "ggf",
+        "position": "posizione"
+    },
+    "index": [
+        {
+            "populate": [
+                "collection1",
+                "collection3",
+                "collection2"
+            ],
+            "column": {
+                "label": null,
+                "name": "fullname"
+            }
+        }
+    ]
+}

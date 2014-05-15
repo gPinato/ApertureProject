@@ -21,7 +21,7 @@ function prova(token,list){
         z=0;
         for(j=0;j<list.length;j++){
           for (i = 0; i < list[j].length; i++) {
-            if(list[j][i]!==" " && list[j][i]!=='/"'){
+            if(list[j][i]!==" "){
                 s[z]=list[j][i];
                 z++;
             } 
@@ -30,7 +30,45 @@ function prova(token,list){
 }
 s[z]=token;
          return s;				
-  }
+}
+
+function prova2(list){
+        var s="";
+          for (i = 0; i < list.length; i++) {
+            if(list[i]!==" " && list[i]!=="[]"){
+                s=s+list[i];
+
+            } 
+         }
+
+
+         return s;				
+}
+
+function trasforma(list){
+        var s=new Array();
+          for (i = 0; i < list.length; i++) {
+            if(list[i]!==null){
+                s[i]=list[i];
+
+            } 
+         }
+
+
+         return s;				
+}
+
+function stringaopzionale(etichetta){
+      if(etichetta!="column"){
+       return null;
+      }
+       else{return etichetta;}
+
+
+
+
+}
+
 
   function extractOptional(optional, index) {
     return optional ? optional[index] : null;
@@ -92,13 +130,13 @@ s[z]=token;
  start
   = dsl
  dsl
-  =c:Collection i:Index Show {return {collection:c,index:i}}
+  =c:Collection i:Index s:Show {return {collection:c,index:i,show:s}}
 
 
  
  Collection
  =WhiteoLine Comm* StringCollection Comm* WhiteoLine 
- c:CurlyOpenPar Comm* WhiteoLine
+ CurlyOpenPar Comm* WhiteoLine
  StringLabel Comm* DuePunti Comm* WhiteoLine SingleEscapeCharacter 
  l:Etichetta SingleEscapeCharacter Comm* 
  WhiteoLine Comm* Virgola Comm*
@@ -111,7 +149,7 @@ s[z]=token;
  WhiteoLine Comm* CurlyClosePar Comm* WhiteoLine {return {label:l,name:n,position:p}}
  
  Comm
- =WhiteoLine "/*" WhiteoLine Commen WhiteoLine "*/" WhiteoLine {return "";}
+ =WhiteoLine "/*" WhiteoLine Commen WhiteoLine "*/" WhiteoLine {return " ";}
 
 Commen
  =WhiteoLine [a-z/WhiteSpace? / 0-9 /./A-Z/+/-?^%&$£!~@]* WhiteoLine {return "";}
@@ -119,68 +157,78 @@ Commen
  Index
  =Comm* WhiteoLine Comm* StringIndex Comm* WhiteoLine 
  CurlyOpenPar WhiteoLine Comm*
-  WhiteoLine Populate? Comm* WhiteoLine Comm* ColumnOrButton* Comm* Features? Comm* CurlyClosePar Comm* WhiteoLine
+  WhiteoLine pp:Populate? Comm* WhiteoLine Comm* cob:ColumnOrButton* Comm* f:Features? Comm* CurlyClosePar Comm* WhiteoLine {return {populate:pp,columnebutton:cob}}
  
  Show
- =Comm* WhiteoLine StringShow Comm* WhiteoLine CurlyOpenPar Comm* WhiteoLine RowOrButton* Comm* WhiteoLine Comm*
- CurlyClosePar Comm* WhiteoLine Comm*
+ =Comm* WhiteoLine StringShow Comm* WhiteoLine CurlyOpenPar Comm* WhiteoLine rob:RowOrButton* Comm* WhiteoLine Comm*
+ CurlyClosePar Comm* WhiteoLine Comm* {return rob;}
  
  Row
- =Comm* WhiteoLine StringRow Comm* WhiteoLine RoundOpenPar Comm* WhiteoLine (StringLabel Comm* DuePunti Comm* WhiteoLine SingleEscapeCharacter Etichetta SingleEscapeCharacter Comm* WhiteoLine Comm* Virgola Comm*)? Comm*
-  WhiteoLine Comm* StringName Comm* DuePunti Comm* WhiteoLine SingleEscapeCharacter Etichetta SingleEscapeCharacter Comm* WhiteoLine RoundClosePar Comm* WhiteoLine Comm*
+ =Comm* WhiteoLine StringRow Comm* WhiteoLine RoundOpenPar Comm* WhiteoLine etichetta:(StringLabel Comm* DuePunti Comm* WhiteoLine SingleEscapeCharacter Etichetta SingleEscapeCharacter Comm* WhiteoLine Comm* Virgola Comm*)? Comm*
+  WhiteoLine Comm* StringName Comm* DuePunti Comm* WhiteoLine SingleEscapeCharacter n:Etichetta SingleEscapeCharacter Comm* WhiteoLine RoundClosePar Comm* WhiteoLine Comm*
+{return {row:{label:prova2(etichetta),name:n}}}
  
  Column
  =Comm* WhiteoLine StringColumn Comm* WhiteoLine 
- RoundOpenPar Comm* WhiteoLine (StringLabel Comm* DuePunti Comm* WhiteoLine Comm* SingleEscapeCharacter Etichetta SingleEscapeCharacter Comm* WhiteoLine Comm* Virgola Comm*)? Comm*
-  WhiteoLine Comm* StringName Comm* DuePunti Comm* WhiteoLine SingleEscapeCharacter Etichetta SingleEscapeCharacter Comm* WhiteoLine  Comm*
-  Comm* (Comm* Virgola Comm* LineTerminatorSequence* Transformation Comm*)? Comm* WhiteoLine  RoundClosePar Comm* WhiteoLine Comm*
+ RoundOpenPar Comm* WhiteoLine etichetta:(StringLabel Comm* DuePunti Comm* WhiteoLine Comm* SingleEscapeCharacter Etichetta SingleEscapeCharacter Comm* WhiteoLine Comm* Virgola Comm*)? Comm*
+  WhiteoLine Comm* StringName Comm* DuePunti Comm* WhiteoLine SingleEscapeCharacter n:Etichetta SingleEscapeCharacter Comm* WhiteoLine  Comm*
+  Comm* (Comm* Virgola Comm* LineTerminatorSequence* Transformation Comm*)? Comm* WhiteoLine  RoundClosePar Comm* WhiteoLine Comm* 
+{return {label:prova2(etichetta),name:n}}
 
  Button
- =Comm* WhiteoLine StringButton Comm* WhiteoLine RoundOpenPar Comm* WhiteoLine (Comm* StringLabel Comm* DuePunti Comm* WhiteoLine SingleEscapeCharacter Etichetta SingleEscapeCharacter Comm* WhiteoLine Virgola Comm*)? Comm*
-  Comm* WhiteoLine StringName Comm* DuePunti Comm* WhiteoLine SingleEscapeCharacter Etichetta SingleEscapeCharacter Comm* WhiteoLine   Comm*
-  Virgola Comm* LineTerminatorSequence* Comm* Function Comm*  
+ =Comm* WhiteoLine StringButton Comm* WhiteoLine RoundOpenPar Comm* WhiteoLine etichetta:(Comm* StringLabel Comm* DuePunti Comm* WhiteoLine SingleEscapeCharacter Etichetta SingleEscapeCharacter Comm* WhiteoLine Virgola Comm*)? Comm*
+  Comm* WhiteoLine StringName Comm* DuePunti Comm* WhiteoLine SingleEscapeCharacter n:Etichetta SingleEscapeCharacter Comm* WhiteoLine   Comm*
+  Virgola Comm* LineTerminatorSequence* Comm* f:Function Comm*  
   WhiteoLine RoundClosePar Comm* WhiteoLine Comm*
+{return {label:prova2(etichetta),name:n,function:""}}
 
 
  Populate
  =Comm* WhiteoLine Comm* StringPopulate Comm* WhiteoLine 
  DuePunti Comm* WhiteoLine SquareOpenPar  Comm*
- Parte1:(WhiteoLine SingleEscapeCharacter  Token  SingleEscapeCharacter WhiteoLine Virgola)* WhiteoLine SingleEscapeCharacter Parte2:(Token) SingleEscapeCharacter WhiteoLine SquareClosePar WhiteoLine Virgola WhiteoLine {return {populate:prova(Parte2,Parte1)};}
+ Parte1:(WhiteoLine SingleEscapeCharacter  Token  SingleEscapeCharacter WhiteoLine Virgola)* WhiteoLine SingleEscapeCharacter Parte2:(Token) SingleEscapeCharacter WhiteoLine SquareClosePar WhiteoLine Virgola WhiteoLine {return prova(Parte2,Parte1)}
 
   
  Features
- =(Perpage? Sortby? Order? Query?)
+ =(p:Perpage? s:Sortby? o:Order? q:Query?) {return {features:[p,s,o,q]};}
+
+ /*Features
+ =Parte1:(Perpage? Sortby?) Parte2:(Order? Query?) {return {features:prova(Parte1,Parte2)};}*/
  
  Transformation
  =Comm* WhiteoLine StringTransformation Comm* WhiteoLine DuePunti Comm* 
  WhiteoLine Javascript Comm*
  
  Function
- =Comm* WhiteoLine StringFunction Comm* WhiteoLine DuePunti Comm* WhiteoLine Javascript Comm*
+ =Comm* WhiteoLine StringFunction Comm* WhiteoLine DuePunti Comm* WhiteoLine j:Javascript Comm* {return j;}
  
  WhiteoLine
  =(WhiteSpace/LineTerminatorSequence)* {return " ";}
 
  ColumnOrButton
- =(Column/Button) WhiteoLine 
+ =Column //{return {column:c}}
+  /b:Button {return {button:b}}
+
  
  RowOrButton
- =(Row/Button) WhiteoLine
+ =Row/
+Button
+
 
  Perpage
- =Comm* WhiteoLine StringPerpage Comm* WhiteoLine DuePunti Comm* WhiteoLine SingleEscapeCharacter Number SingleEscapeCharacter Comm* WhiteoLine 
- Comm* Virgola Comm* WhiteoLine Comm*
+ =Comm* WhiteoLine StringPerpage Comm* WhiteoLine DuePunti Comm* WhiteoLine SingleEscapeCharacter n:Number SingleEscapeCharacter Comm* WhiteoLine 
+ Comm* Virgola Comm* WhiteoLine Comm* {return {perpage:n} ;}
 
  Sortby
- =Comm* WhiteoLine StringSortby Comm* WhiteoLine DuePunti Comm* WhiteoLine SingleEscapeCharacter Etichetta SingleEscapeCharacter Comm* WhiteoLine Comm* 
- Comm* Virgola Comm* WhiteoLine Comm*
+ =Comm* WhiteoLine StringSortby Comm* WhiteoLine DuePunti Comm* WhiteoLine SingleEscapeCharacter e:Etichetta SingleEscapeCharacter Comm* WhiteoLine Comm* 
+ Comm* Virgola Comm* WhiteoLine Comm* {return {sortby:e};}
 
  Order
- =Comm* WhiteoLine StringOrder Comm* WhiteoLine DuePunti Comm* WhiteoLine SingleEscapeCharacter OrderType  SingleEscapeCharacter Comm* WhiteoLine  Comm*
- Comm* Virgola Comm* WhiteoLine Comm*
+ =Comm* WhiteoLine StringOrder Comm* WhiteoLine DuePunti Comm* WhiteoLine SingleEscapeCharacter o:OrderType  SingleEscapeCharacter Comm* WhiteoLine  Comm*
+ Comm* Virgola Comm* WhiteoLine Comm* {return {order:o} ;}
 
  Query
- =Comm* WhiteoLine StringQuery Comm* WhiteoLine Comm* DuePunti Comm* WhiteoLine Javascript Comm* WhiteoLine Comm*
+ =Comm* WhiteoLine StringQuery Comm* WhiteoLine Comm* DuePunti Comm* WhiteoLine j:Javascript Comm* WhiteoLine Comm* {return j;}
 
  //sezione String
  
@@ -197,7 +245,7 @@ Commen
  =WhiteoLine ("Query"/"query") WhiteoLine
  
  StringLabel
- =WhiteoLine ("label"/"Label") WhiteoLine
+ =WhiteoLine ("label"/"Label") WhiteoLine{return " ";}
  
  StringName
  =WhiteoLine ("name"/"Name") WhiteoLine
@@ -206,13 +254,13 @@ Commen
  =WhiteoLine ("position"/"Position") WhiteoLine
 
  OrderType
- =WhiteoLine (StringAsc/StringDesc) WhiteoLine
+ =WhiteoLine s:(StringAsc/StringDesc) WhiteoLine {return s;}
 
  StringAsc
- =WhiteoLine ("asc"/"Asc") WhiteoLine
+ =WhiteoLine a:("asc"/"Asc") WhiteoLine {return a;}
 
  StringDesc
- =WhiteoLine ("desc"/"Desc") WhiteoLine
+ =WhiteoLine d:("desc"/"Desc") WhiteoLine {return d;}
 
  StringTransformation
  =WhiteoLine ("transformation"/"Transformation") WhiteoLine
@@ -315,8 +363,7 @@ Etichetta
   = WhiteoLine etichetta:[a-z/WhiteSpace? / 0-9 /./A-Z]* WhiteoLine { return etichetta.join(""); } 
   
  Number
-  =digits:[0-9]* {
- }
+  =digits:[0-9]+ { return parseInt(digits.join(""), 10); } 
 
  Token
   =WhiteoLine token:[a-z 0-9 A-Z]* WhiteoLine {return token.join("");}
@@ -385,17 +432,17 @@ LineTerminatorSequence "end of line"
   / "\u2029"
 
 Comment "comment"
-  = MultiLineComment
-  / SingleLineComment
+  = MultiLineComment {return " ";}
+  / SingleLineComment {return " ";}
 
 MultiLineComment
-  = "/*" (!"*/" SourceCharacter)* "*/"
+  = "/*" (!"*/" SourceCharacter)* "*/" {return " ";}
 
 MultiLineCommentNoLineTerminator
-  = "/*" (!("*/" / LineTerminator) SourceCharacter)* "*/"
+  = "/*" (!("*/" / LineTerminator) SourceCharacter)* "*/" {return " ";}
 
 SingleLineComment
-  = "//" (!LineTerminator SourceCharacter)*
+  = "//" (!LineTerminator SourceCharacter)* {return " ";}
 
 Identifier
   = !ReservedWord name:IdentifierName { return name; }
