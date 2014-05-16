@@ -9,11 +9,10 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
-//var mongoose = require('mongoose')
-var DataManager = require('./modelServer/dataManager');
+var controller = require('./controller');
+//var modelServer = require('./modelServer');
 var DSL = require('./modelServer/DSL/DSLManager');
-//var DB = require('./modelServer/database');
-var FrontController = require('./controller/frontController');
+var DB = require('./modelServer/database');
 
 function serverInit(app){
 
@@ -23,13 +22,15 @@ function serverInit(app){
 	//app.set('view engine', 'html');
 
 	app.use(favicon(path.join(config.static_assets.dir, 'favicon.ico')));
-	app.use(logger('dev'));
+	
+	if(config.app.env == 'development') {
+		app.use(logger('dev'));
+	}
 	app.use(bodyParser.json());
 	app.use(bodyParser.urlencoded());
 	app.use(cookieParser());
 	app.use(express.static(config.static_assets.dir));
-	
-	
+		
 	// Make our db accessible to our router
 	// l'altro gruppo l'ha chiamata appInjector, 
 	// dovrebbe iniettare il riferiemnto al db dentro la richiesta
@@ -39,7 +40,6 @@ function serverInit(app){
 	//	next();
 	//});
 
-	app.use('/', FrontController);
 	
 	// catch 404 and forwarding to error handler
 	app.use(function(req, res, next) {
@@ -72,6 +72,9 @@ function serverInit(app){
 		});
 	});
 
+	//inizializzo il controller (passport)
+	controller.init(app);
+	
 }
 
 var start = function(config) {
@@ -94,8 +97,9 @@ var start = function(config) {
 	console.log('checking dsl... ');
 	DSL.checkDSL(app);
 	
-	DataManager.test1();
-	DataManager.test2();	
+	console.log('');
+	console.log('databases init... ');
+	DB.init(app);
 	
 	console.log('');
 	console.log('app init...');
@@ -104,7 +108,9 @@ var start = function(config) {
 	console.log('starting server...');	
 	app.set('port', port);
 	var server = app.listen(app.get('port'));
+	console.log('');
 	console.log('well done! ' + config.app.title + ' listening at ' + app_url + ' ' + env);
+	console.log('');
 };
 
 //export della funzione...

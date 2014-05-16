@@ -48,7 +48,7 @@ var checkDSL = function(app) {
 			}
 			
 			//salvo su file
-			var saveFile = config.static_assets.dsl + '/result_' + i + '.json';
+			var saveFile = __dirname + '/collectionData/result_' + i + '.json';
 			console.log('saving ' + saveFile);
 			fs.writeFileSync(saveFile, result, 'utf-8', function (err) {
 					if (err) {
