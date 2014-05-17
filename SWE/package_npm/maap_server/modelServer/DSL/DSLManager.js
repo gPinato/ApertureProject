@@ -1,14 +1,12 @@
 //DSL manager
 // controlla la presenza di file dsl nell'apposita cartella definita
 //nel file di configurazione e cerca di eseguire il parser di ogni file
-// utilizzando DSLParser.js creato precedentemente con il tool "mpg"
-// successivamente controlla che il risultato sia in formato JSON valido
-// e salva il file result_x.js nella stessa cartella del dsl per ora..
-// todo: scegliere dove salvare il risultato (collectionData...)
+// utilizzando DSLParser.js che controlla la correttezza dei campi dati 
+// del dsl.
 
 var fs = require('fs'); 
 var path = require('path'); 
-var parser = require('./DSLParser');
+var DSLparser = require('./DSLParser');
 
 var checkDSL = function(app) {
 
@@ -23,19 +21,26 @@ var checkDSL = function(app) {
 		var extension = path.extname(file);
         if (stat && stat.isFile() && extension == '.maap') {
 			results.push(filePath);
-			console.log('found dsl: ' + file);
-			var DSLstring = fs.readFileSync(filePath).toString();
+			console.log('found dsl: ' + file);			
 			console.log('parsing ' + file + '...');
-		
-			//tento il parsing del file dsl
-			try {
-				var result = parser.parse(DSLstring);
-			} catch(err) {
-			  	console.error('parsing error!');
-				console.error('check your dsl file: ' + filePath);
-				throw err; 
+			
+			//provo a leggere il dsl
+			try{
+				DSL = require(filePath);
+			}catch(err){
+				console.error('parsing error!');
+				console.error('check your dsl file syntax: ' + file);
+				throw err;
 			}
 			
+			//ora uso DSLParser per controllare la correttezza dei dati nel DSL:
+			var result = DSLparser.parseDSL(DSL);
+
+			console.log('result: ' + result);
+			
+			//se corretto mi ritorna un JSON con tutti i campi dati corretti
+			
+			/*
 			console.log('errors checking...');
 			//test se il risultato è in formato JSON
 			result = JSON.stringify(result, null, '\t');
@@ -58,7 +63,7 @@ var checkDSL = function(app) {
 				}
 			);
 			
-			console.log("data saved!");
+			console.log("data saved!");*/
 						
 			i++;
 		}
