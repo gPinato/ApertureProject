@@ -10,11 +10,9 @@
             <table class="table">
                 <th>Label</th>
                 <th>Value</th>
-                <th>Debagh</th>
                 <tr ng-repeat="(key,value) in data.data">
                     <td>{{key}}</td>
-                    <td><input ng-model="toedit[$index]" placeholder="{{value}}"></input></td>
-                    <td>{{toedit[$index]}}</td>
+                    <td><input ng-model="toedit[$index]"></input></td>
                 </tr>
             </table>
 

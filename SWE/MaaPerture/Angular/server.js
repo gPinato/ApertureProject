@@ -68,6 +68,7 @@ app.get('/api/collection/:col_id/:doc_id/edit',auth, function(req, res){
 
 app.put('/api/collection/:col_id/:doc_id', function(req, res){
     console.log(JSON.stringify(req.body));
+    res.send(200);
 });
 
 app.get('/api/loggedin', function(req, res) {
@@ -84,18 +85,6 @@ app.get('*', function(req, res){
     res.sendfile("/home/jack/Desktop/Repository/SWE/MaaPerture/Angular/app/index.html");
 });
 
-
-
-function isLoggedIn(req, res, next)
-{
-    //controllo se l'utente � autenticato
-    //if (req.isAuthenticated())
-    if(1)
-        return next();
-
-    //altrimenti reindirizzo l'utente alla pagina principale
-    res.redirect('/');
-}
 
 // listen (start app with node server.js) ======================================
 app.listen(port);										//avvio il server

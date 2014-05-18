@@ -1,12 +1,19 @@
 /**
  * File: DocumentCtrl;
- * Module: modulo di appartenenza;
- * Author: jack;
+ * Module: app:controllers;
+ * Author: Giacomo Pinato;
  * Created: 10/05/14;
  * Version: versione corrente;
- * Description: descrizione dettagliata del file;
- * Modification History: tabella dei cambiamenti effettuati sul file.
+ * Description: Controller for the document view
+ * Modification History:
+ ==============================================
+ * Version | Changes
+ ==============================================
+ * 0.2 Added services support
+ * 0.1 File creation
+ ==============================================
  */
+
 
 'use strict';
 
@@ -20,46 +27,5 @@ angular.module('maaperture').controller('DocumentCtrl', function ($scope,Documen
         }
 
     );
-
-    $scope.edit_document = function() {
-        DocumentService.update({
-                collectionId: $scope.current_collection,
-                documentId: $scope.current_document
-            },
-            $scope.editDocumentData,
-            function success() {
-                FlashMessage.future({ type: "success", title: "Success!", message: "Document has been updated." });
-                $location.path("/collections/"+$scope.collection.id+"/"+$scope.document.id);
-            },
-            function err(error) {
-                ErrorHandler.handle(error);
-            }
-        );
-    };
     $scope.canEdit =true;
 });
-
-/*
-* {
- "label": [
- "Name",
- "Address",
- "Sex",
- "Email",
- "Created at",
- "I Lack fantasy"
- ],
- "data": [
- {
- "ID": 0,
- "data": {
- "customer": "Gianni Smartface",
- "Address": "Via dei Fagiani 22, Fagianopoli",
- "Sex": "never",
- "email": "gianni@definitelynotgoogle.com",
- "date": "15/12/2015",
- "Something": "something else"
- }
- }
- ]
- }*/

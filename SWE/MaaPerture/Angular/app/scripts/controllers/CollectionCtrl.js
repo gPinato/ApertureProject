@@ -1,5 +1,17 @@
 /**
- * Created by jack on 09/05/14.
+ * File: CollectionCtrl;
+ * Module: app:controllers;
+ * Author: Giacomo Pinato;
+ * Created: 10/05/14;
+ * Version: versione corrente;
+ * Description: Controller for the collection view
+ * Modification History:
+ ==============================================
+ * Version | Changes
+ ==============================================
+ * 0.2 Added services support
+ * 0.1 File creation
+ ==============================================
  */
 'use strict';
 

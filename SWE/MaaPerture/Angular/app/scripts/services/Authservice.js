@@ -1,11 +1,16 @@
 /**
  * File: Authservice;
  * Module: modulo di appartenenza;
- * Author: jack;
+ * Author: Giacomo Pinato;
  * Created: 12/05/14;
  * Version: versione corrente;
  * Description: descrizione dettagliata del file;
- * Modification History: tabella dei cambiamenti effettuati sul file.
+ * Modification History:
+ ==============================================
+ * Version | Changes
+ ==============================================
+ * 0.1 File creation
+ ==============================================
  */
 angular.module('services')
     .factory('AuthService',['$resource',function($resource) {
