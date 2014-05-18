@@ -13,14 +13,12 @@
 angular.module('maaperture').controller('DocumentCtrl', function ($scope,DocumentDataService,AuthService, $routeParams) {
     $scope.current_collection = { id: $routeParams.col_id };
     $scope.current_document = { id: $routeParams.doc_id };
-    //$scope.data = DocumentDataService.get({col_id:$routeParams.col_id,doc_id:$routeParams.doc_id });
+    //$scope.data = DocumentDataService.query({col_id:$routeParams.col_id,doc_id:$routeParams.doc_id });
     DocumentDataService.query({col_id:$routeParams.col_id,doc_id:$routeParams.doc_id },
         function success(data) {
             $scope.data = data;
-        },
-        function err(error){
-            ErrorHandler.handle(error);
         }
+
     );
 
     $scope.edit_document = function() {
@@ -38,7 +36,7 @@ angular.module('maaperture').controller('DocumentCtrl', function ($scope,Documen
             }
         );
     };
-    $scope.canEdit = AuthService.canEdit();
+    $scope.canEdit =true;
 });
 
 /*

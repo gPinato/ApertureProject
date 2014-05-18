@@ -8,13 +8,10 @@
  * Modification History: tabella dei cambiamenti effettuati sul file.
  */
 angular.module('services')
-    .factory('AuthService',function(){
-        var editor=true;
+    .factory('AuthService',['$resource',function($resource) {
+        return $resource('http://localhost:8080/api/login', {}, {
+            'login':  {method:'POST'}
+        });
+    }
+    ]);
 
-        return {
-            canEdit: function () {
-                return editor;
-            }
-        }
-
-    });

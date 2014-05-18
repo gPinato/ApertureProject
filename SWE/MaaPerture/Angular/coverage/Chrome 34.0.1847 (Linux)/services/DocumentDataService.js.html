@@ -195,20 +195,20 @@
     </style>
 </head>
 <body>
-<div class="header low">
+<div class="header medium">
     <h1>Code coverage report for <span class="entity">services/DocumentDataService.js</span></h1>
     <h2>
         
-        Statements: <span class="metric">20% <small>(1 / 5)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Statements: <span class="metric">50% <small>(1 / 2)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
         
         
         Branches: <span class="metric">100% <small>(0 / 0)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
         
         
-        Functions: <span class="metric">0% <small>(0 / 2)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Functions: <span class="metric">0% <small>(0 / 1)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
         
         
-        Lines: <span class="metric">20% <small>(1 / 5)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Lines: <span class="metric">50% <small>(1 / 2)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
         
         Ignored: <span class="metric"><span class="ignore-none">none</span></span> &nbsp;&nbsp;&nbsp;&nbsp;
     </h2>
@@ -252,7 +252,16 @@
 34
 35
 36
-37</td><td class="line-coverage"><span class="cline-any cline-neutral">&nbsp;</span>
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46</td><td class="line-coverage"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -264,8 +273,6 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -279,9 +286,20 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -299,37 +317,46 @@
  */
 &nbsp;
 angular.module('services')
-    .factory('DocumentDataService',<span class="fstat-no" title="function not covered" >function(){</span>
+    .factory('DocumentDataService',['$resource',<span class="fstat-no" title="function not covered" >function($resource){</span>
+<span class="cstat-no" title="statement not covered" >        return $resource ('http://localhost:8080/api/collection/:col_id/:doc_id',</span>
+            {col_id : '@col_id', doc_id:'@doc_id'},
+            {'query': {method:'GET'},
+             'update': {method:'PUT'},
+             'remove': {method:'DELETE'}});
 &nbsp;
-<span class="cstat-no" title="statement not covered" >        var derp = ["Name","Address","Sex", "Email", "Created at","I Lack fantasy"];</span>
-<span class="cstat-no" title="statement not covered" >        var document= [{"ID":0,"data":{"customer": "Gianni Smartface",</span>
-            "Address":"Via dei Fagiani 22, Fagianopoli",
-            "Sex":"never",
-            "email": "gianni@definitelynotgoogle.com",
-            "date":"15/12/2015",
-            "Something":"something else"}},
-            {"ID":1,"data":{"customer": "Pinotto Turkleton",
-                "Address":"Via dei Fagiani 21, Fagianopoli",
-                "Sex":"never",
-                "email": "pinotto@definitelynotgoogle.com",
-                "date":"15/12/2005",
-                "Something":"something else"}}];
-&nbsp;
-<span class="cstat-no" title="statement not covered" >        return {</span>
-            getDocument: <span class="fstat-no" title="function not covered" >function () {</span>
-<span class="cstat-no" title="statement not covered" >                return document;</span>
-            }
+        /*
+         labels = ["Name", "Email", "Created at"];
+         rows= [
+         {"ID":0,"data":{"customer": "Gianni",  "email": "gianni@definitelynotgoogle.com","date":"15/12/2010"}},
+         {"ID":1,"data":{"customer": "Pinotto",  "email": "Piotto@definitelynotgoogle.com","date":"10/12/2010"}},
+         {"ID":2,"data":{"customer": "Bonnie",  "email": "Bonnie@unicredit.com","date":"10/11/2010"}},
+         {"ID":3,"data":{"customer": "Clyde",  "email": "Clyde@unicredit.com","date":"12/12/2010"}}
+         ];
+         */
 &nbsp;
 &nbsp;
-        }
+    }]);
 &nbsp;
 &nbsp;
-    });</pre></td></tr>
+/*
+* var derp = ["Name","Address","Sex", "Email", "Created at","I Lack fantasy"];
+ var document= [{"ID":0,"data":{"customer": "Gianni Smartface",
+ "Address":"Via dei Fagiani 22, Fagianopoli",
+ "Sex":"never",
+ "email": "gianni@definitelynotgoogle.com",
+ "date":"15/12/2015",
+ "Something":"something else"}},
+ {"ID":1,"data":{"customer": "Pinotto Turkleton",
+ "Address":"Via dei Fagiani 21, Fagianopoli",
+ "Sex":"never",
+ "email": "pinotto@definitelynotgoogle.com",
+ "date":"15/12/2005",
+ "Something":"something else"}}];*/</pre></td></tr>
 </table></pre>
 
 </div>
 <div class="footer">
-    <div class="meta">Generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Tue May 13 2014 16:31:27 GMT+0200 (CEST)</div>
+    <div class="meta">Generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Fri May 16 2014 11:29:25 GMT+0200 (CEST)</div>
 </div>
 
 <script src="../prettify.js"></script>

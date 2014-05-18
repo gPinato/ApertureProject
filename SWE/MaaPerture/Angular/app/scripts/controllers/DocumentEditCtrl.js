@@ -10,7 +10,7 @@
 angular.module('maaperture').controller('DocumentEditCtrl', function ($scope,DocumentDataService,AuthService, $routeParams) {
     $scope.current_collection = { id: $routeParams.col_id };
     $scope.current_document = { id: $routeParams.doc_id };
-    $scope.canEdit = AuthService.canEdit();
+    $scope.canEdit = true;
     //$scope.data = DocumentDataService.get({col_id:$routeParams.col_id,doc_id:$routeParams.doc_id });
     $scope.toedit=[];
 
@@ -25,8 +25,8 @@ angular.module('maaperture').controller('DocumentEditCtrl', function ($scope,Doc
 
     $scope.edit_document = function() {
         DocumentDataService.update({
-                collectionId: $scope.current_collection,
-                documentId: $scope.current_document
+                col_id: $scope.current_collection,
+                doc_id: $scope.current_document
             },
             $scope.toedit,
             function success() {

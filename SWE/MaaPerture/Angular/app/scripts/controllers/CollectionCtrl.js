@@ -14,6 +14,6 @@ angular.module('maaperture').controller('CollectionCtrl', function ($scope, Coll
     $scope.current_collection = { id: $routeParams.col_id };
 
 
-    $scope.canEdit = AuthService.canEdit();
+    $scope.canEdit = true;
 
 });

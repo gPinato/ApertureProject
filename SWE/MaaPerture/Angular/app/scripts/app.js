@@ -16,7 +16,7 @@ angular
         'ui.sortable',
         'LocalStorageModule'
     ])
-    .config(function ($routeProvider,$locationProvider,$provide) {
+    .config(function ($routeProvider,$locationProvider,$provide,$httpProvider) {
         $routeProvider
             .when('/', {
                 templateUrl: 'views/dashboard.html',
@@ -42,21 +42,9 @@ angular
                 templateUrl: 'views/documentEdit.html',
                 controller: 'DocumentEditCtrl'
             })
-            .when('/userprofiles', {
-                templateUrl: 'views/documentEdit.html',
-                controller: 'DocumentEditCtrl'
-            })
-            .when('/userprofiles/:prof_id', {
-                templateUrl: 'views/documentEdit.html',
-                controller: 'DocumentEditCtrl'
-            })
-            .when('/userprofiles/:prof_id/edit', {
-                templateUrl: 'views/documentEdit.html',
-                controller: 'DocumentEditCtrl'
-            })
             .when('/login', {
                 templateUrl: 'views/login.html',
-                controller: 'DocumentEditCtrl'
+                controller: 'LoginCtrl'
             })
             .when('/logout', {
                 templateUrl: 'views/logout.html',
@@ -73,7 +61,24 @@ angular
             });
 
 
+
         $locationProvider.html5Mode(true);
+        //Force user to log
+
+        $httpProvider.responseInterceptors.push(function($q, $location) {
+            return function(promise) {
+                return promise.then(
+                    // Success: just return the response
+                    function(response){ return response; },
+                    // Error: check the error status to get only the 401
+                    function(response) {
+                        if (response.status === 401)
+                            $location.url('/login');
+                        return $q.reject(response);
+                    }
+                );
+            }
+        });
     })
 
     /*
@@ -82,4 +87,6 @@ angular
     .config(['localStorageServiceProvider', function(localStorageServiceProvider){
         localStorageServiceProvider.setPrefix('ls');
     }]);
+
+
 

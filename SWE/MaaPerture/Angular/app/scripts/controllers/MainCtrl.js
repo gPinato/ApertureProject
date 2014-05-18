@@ -7,3 +7,9 @@
  * Description: descrizione dettagliata del file;
  * Modification History: tabella dei cambiamenti effettuati sul file.
  */
+
+angular.module('maaperture').controller('MainCtrl', function ($scope, AuthService ) {
+
+    $scope.isAdmin=false;
+
+});
