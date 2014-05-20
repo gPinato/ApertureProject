@@ -52,7 +52,7 @@ angular
             })
             .when('/register', {
                 templateUrl: 'views/register.html',
-                controller: 'DocumentEditCtrl'
+                controller: 'RegisterCtrl'
             })
 
 

@@ -16,9 +16,10 @@
 angular.module('services')
     .factory('DocumentDataService',['$resource',function($resource){
         return $resource ('http://localhost:8080/api/collection/:col_id/:doc_id',
-            {col_id : '@col_id', doc_id:'@doc_id'},
-            {'query': {method:'GET'},
+            {col_id : '@col_id', doc_id:'@doc_id'},{
+             'query': {method:'GET'},
              'update': {method:'PUT'},
-             'remove': {method:'DELETE'}});
+             'remove': {method:'DELETE'}
+            });
 
     }]);

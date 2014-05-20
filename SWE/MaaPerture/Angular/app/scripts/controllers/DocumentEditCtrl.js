@@ -29,7 +29,7 @@ angular.module('maaperture').controller('DocumentEditCtrl', function ($scope,Doc
 
     };
 
-    DocumentDataService.query({col_id:$routeParams.col_id,doc_id:$routeParams.doc_id },
+    DocumentDataService.query({ col_id:$routeParams.col_id, doc_id:$routeParams.doc_id },
         function success(data) {
             $scope.data = data;
             init();

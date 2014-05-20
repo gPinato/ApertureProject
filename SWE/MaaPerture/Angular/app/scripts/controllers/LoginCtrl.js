@@ -23,10 +23,10 @@ angular.module('maaperture').controller('LoginCtrl', function ($scope,$location,
 
     $scope.login = function () {
         AuthService.login({}, $scope.credentials,
-           function(data, status) {
+           function success(data, status) {
                 $location.url('/');
             },
-           function(data, status) {
+           function error (data, status) {
             });
 
     };

@@ -60,9 +60,10 @@ describe('Controller: DocumentEditCtrl', function () {
         expect(scope).not.to.equal([]);
     });
 
+
     it('should return the correct answer', function(){
-        var MockCall = MockDocService.query();
-        expect(MockCall).to.deep.equal({
+        scope.data = MockDocService.query();
+        expect(scope.data).to.deep.equal({
 
             "customer": "Snoop Dogg",
             "Address": "Bitches boulevard, swagtown",
@@ -72,7 +73,18 @@ describe('Controller: DocumentEditCtrl', function () {
             "Something": "something else"
         });
 
+    });
 
+    it('should copy the data to the array', function(){
+        scope.$digest();
+        scope.data = MockDocService.query();
+        scope.$digest();
+        expect(scope.toedit).to.deep.equal(["Snoop Dogg",
+            "Bitches boulevard, swagtown",
+            "All the time",
+            "snoop@dogg.ganja",
+            "15/12/2015",
+            "something else"]);
     });
 
 
@@ -84,8 +96,5 @@ describe('Controller: DocumentEditCtrl', function () {
         expect(MockUpdate).to.deep.equal(["zero","uno"]);
 
     });
-
-
-
 
 });

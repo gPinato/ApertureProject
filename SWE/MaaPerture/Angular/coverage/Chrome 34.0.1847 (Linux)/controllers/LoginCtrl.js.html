@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
 <head>
-    <title>Code coverage report for controllers/CollectionCtrl.js</title>
+    <title>Code coverage report for controllers/LoginCtrl.js</title>
     <meta charset="utf-8">
 
     <link rel="stylesheet" href="../prettify.css">
@@ -196,23 +196,23 @@
 </head>
 <body>
 <div class="header medium">
-    <h1>Code coverage report for <span class="entity">controllers/CollectionCtrl.js</span></h1>
+    <h1>Code coverage report for <span class="entity">controllers/LoginCtrl.js</span></h1>
     <h2>
         
-        Statements: <span class="metric">66.67% <small>(4 / 6)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Statements: <span class="metric">60% <small>(3 / 5)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
         
         
         Branches: <span class="metric">100% <small>(0 / 0)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
         
         
-        Functions: <span class="metric">50% <small>(1 / 2)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Functions: <span class="metric">25% <small>(1 / 4)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
         
         
-        Lines: <span class="metric">66.67% <small>(4 / 6)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Lines: <span class="metric">60% <small>(3 / 5)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
         
         Ignored: <span class="metric"><span class="ignore-none">none</span></span> &nbsp;&nbsp;&nbsp;&nbsp;
     </h2>
-    <div class="path"><a href="../index.html">All files</a> &#187; <a href="index.html">controllers/</a> &#187; CollectionCtrl.js</div>
+    <div class="path"><a href="../index.html">All files</a> &#187; <a href="index.html">controllers/</a> &#187; LoginCtrl.js</div>
 </div>
 <div class="body">
 <pre><table class="coverage">
@@ -245,8 +245,13 @@
 27
 28
 29
-30</td><td class="line-coverage"><span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+30
+31
+32
+33
+34
+35
+36</td><td class="line-coverage"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -263,47 +268,60 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1</span>
-<span class="cline-any cline-yes">3</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">3</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">3</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">/**
- * File: CollectionCtrl;
- * Module: app:controllers;
+ * File: LoginCtrl;
+ * Module: modulo di appartenenza;
  * Author: Giacomo Pinato;
- * Created: 10/05/14;
+ * Created: 16/05/14;
  * Version: versione corrente;
- * Description: Controller for the collection view
+ * Description: descrizione dettagliata del file;
  * Modification History:
- ==============================================
+ * ==============================================
  * Version | Changes
  ==============================================
- * 0.2 Added services support
  * 0.1 File creation
  ==============================================
  */
 'use strict';
 &nbsp;
-angular.module('maaperture').controller('CollectionCtrl', function ($scope, CollectionDataService,AuthService, $routeParams) {
-    $scope.data = CollectionDataService.query({col_id:$routeParams.col_id},<span class="fstat-no" title="function not covered" >function() {</span>
-<span class="cstat-no" title="statement not covered" >        $scope.rows= $scope.data[1];</span>
-<span class="cstat-no" title="statement not covered" >        $scope.labels= $scope.data[0];</span>
-&nbsp;
-    });
-&nbsp;
-    $scope.current_collection = { id: $routeParams.col_id };
+angular.module('maaperture').controller('LoginCtrl', function ($scope,$location,AuthService) {
+    $scope.credentials = {
+        email: '',
+        password: ''
+    };
 &nbsp;
 &nbsp;
-    $scope.canEdit = true;
+    $scope.login = <span class="fstat-no" title="function not covered" >function () {</span>
+<span class="cstat-no" title="statement not covered" >        AuthService.login({}, $scope.credentials,</span>
+<span class="fstat-no" title="function not covered" >           function(data, status) {</span>
+<span class="cstat-no" title="statement not covered" >                $location.url('/');</span>
+            },
+<span class="fstat-no" title="function not covered" >           function(data, status) {</span>
+            });
 &nbsp;
-});</pre></td></tr>
+    };
+&nbsp;
+});
+&nbsp;
+&nbsp;</pre></td></tr>
 </table></pre>
 
 </div>

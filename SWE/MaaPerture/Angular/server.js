@@ -71,6 +71,11 @@ app.put('/api/collection/:col_id/:doc_id', function(req, res){
     res.send(200);
 });
 
+app.post('/api/signup', function(req, res){
+    console.log(JSON.stringify(req.body));
+    res.send(200);
+});
+
 app.get('/api/loggedin', function(req, res) {
     res.send(req.isAuthenticated() ? req.user : '0');
 });
