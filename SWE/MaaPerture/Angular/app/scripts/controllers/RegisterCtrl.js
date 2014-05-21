@@ -24,17 +24,17 @@ angular.module('maaperture').controller('RegisterCtrl', function ($scope,$locati
     $scope.submitted = false;
     $scope.signupForm = function() {
         if ($scope.signup_form.$valid) {
-               RegisterService.register({},
-                   $scope.credentials,
-                   function success() {
-                       //welcome to the maap
-                   },
-                   function err(error) {
-                   }
-               );
+            RegisterService.register({},
+                $scope.credentials,
+                function success() {
+                    //welcome to the maap
+                },
+                function err(error) {
+                }
+            );
         }
 
-     else {
+        else {
             $scope.signup_form.submitted = true;
         };
     }

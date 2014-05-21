@@ -24,7 +24,7 @@ angular.module('maaperture').controller('DocumentEditCtrl', function ($scope,Doc
     //Initialize "toedit" with the values of the json to edit.
     var init = function(){
         $.each( $scope.data.data, function( key, value ) {
-            $scope.toedit.push(value);
+            $scope.toedit.push("maap_system_unedited_value");
         });
 
     };

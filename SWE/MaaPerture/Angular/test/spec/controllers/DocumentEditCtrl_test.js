@@ -79,21 +79,19 @@ describe('Controller: DocumentEditCtrl', function () {
         scope.$digest();
         scope.data = MockDocService.query();
         scope.$digest();
-        expect(scope.toedit).to.deep.equal(["Snoop Dogg",
-            "Bitches boulevard, swagtown",
-            "All the time",
-            "snoop@dogg.ganja",
-            "15/12/2015",
-            "something else"]);
+        expect(scope.toedit).to.deep.equal([
+            "maap_system_unedited_value",
+            "maap_system_unedited_value",
+            "maap_system_unedited_value",
+            "maap_system_unedited_value",
+            "maap_system_unedited_value",
+            "maap_system_unedited_value"]);
     });
 
 
 
     it('should send the correct data to update', function(){
-        scope.toedit[0]="zero";
-        scope.toedit[1]="uno";
-        var MockUpdate = MockDocService.update(scope.toedit);
-        expect(MockUpdate).to.deep.equal(["zero","uno"]);
+       
 
     });
 
