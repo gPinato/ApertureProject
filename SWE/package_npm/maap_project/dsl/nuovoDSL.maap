@@ -24,7 +24,7 @@ collection = {
 			},
 			{	
 				label: 'etichetta colonna3',
-				name: 'nome3 db'			
+				name: 'nome3 db'		
 			},
 		],
 		button : [

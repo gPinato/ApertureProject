@@ -157,7 +157,7 @@ Commen
  Index
  =Comm* WhiteoLine Comm* StringIndex Comm* WhiteoLine 
  CurlyOpenPar WhiteoLine Comm*
-  WhiteoLine pp:Populate? Comm* WhiteoLine Comm* cob:ColumnOrButton* Comm* f:Features? Comm* CurlyClosePar Comm* WhiteoLine {return {populate:pp,columnebutton:cob}}
+  WhiteoLine pp:Populate? Comm* WhiteoLine Comm* cob:ColumnOrButton* Comm* f:Features? Comm* CurlyClosePar Comm* WhiteoLine {return {populate:pp,column:cob,features:f}}
  
  Show
  =Comm* WhiteoLine StringShow Comm* WhiteoLine CurlyOpenPar Comm* WhiteoLine rob:RowOrButton* Comm* WhiteoLine Comm*
@@ -190,10 +190,8 @@ Commen
 
   
  Features
- =(p:Perpage? s:Sortby? o:Order? q:Query?) {return {features:[p,s,o,q]};}
+ =(p:Perpage? s:Sortby? o:Order? q:Query*) {return {perpage:p,sortby:s,orderby:o,query:q}}
 
- /*Features
- =Parte1:(Perpage? Sortby?) Parte2:(Order? Query?) {return {features:prova(Parte1,Parte2)};}*/
  
  Transformation
  =Comm* WhiteoLine StringTransformation Comm* WhiteoLine DuePunti Comm* 
@@ -217,15 +215,15 @@ Button
 
  Perpage
  =Comm* WhiteoLine StringPerpage Comm* WhiteoLine DuePunti Comm* WhiteoLine SingleEscapeCharacter n:Number SingleEscapeCharacter Comm* WhiteoLine 
- Comm* Virgola Comm* WhiteoLine Comm* {return {perpage:n} ;}
+ Comm* Virgola Comm* WhiteoLine Comm* {return n ;}
 
  Sortby
  =Comm* WhiteoLine StringSortby Comm* WhiteoLine DuePunti Comm* WhiteoLine SingleEscapeCharacter e:Etichetta SingleEscapeCharacter Comm* WhiteoLine Comm* 
- Comm* Virgola Comm* WhiteoLine Comm* {return {sortby:e};}
+ Comm* Virgola Comm* WhiteoLine Comm* {return e;}
 
  Order
  =Comm* WhiteoLine StringOrder Comm* WhiteoLine DuePunti Comm* WhiteoLine SingleEscapeCharacter o:OrderType  SingleEscapeCharacter Comm* WhiteoLine  Comm*
- Comm* Virgola Comm* WhiteoLine Comm* {return {order:o} ;}
+ Comm* Virgola Comm* WhiteoLine Comm* {return o ;}
 
  Query
  =Comm* WhiteoLine StringQuery Comm* WhiteoLine Comm* DuePunti Comm* WhiteoLine j:Javascript Comm* WhiteoLine Comm* {return j;}
