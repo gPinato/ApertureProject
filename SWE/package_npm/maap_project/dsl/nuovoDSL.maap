@@ -1,16 +1,16 @@
 //maaperture collection example dsl
 
 collection = {
-	label: 'etichetta della collezione',
+	
 	name: 'nome della collezione nel db',
 	position: 3, //posizione nel menu, default -1
 	
 	index : {
 		populate: ['col1','col2'],
-		perpage: 20,
+		//perpage: 20,
 		sortby: 'age',
 		order: 'asc',
-		column : [
+		/*column : [
 			{
 				label: 'etichetta colonna1',
 				name: 'nome1 db',
@@ -26,7 +26,7 @@ collection = {
 				label: 'etichetta colonna3',
 				name: 'nome3 db'		
 			},
-		],
+		],*/
 		button : [
 			{
 				label: 'Calculate',
@@ -43,9 +43,11 @@ collection = {
 				}'
 			}		
 		],
-		query: {
-			age: '$lt: 20'
-		}
+		/*query: [
+		
+			{age: '$lt: 20'},
+			{jkmerda: '$gt: 50'}
+		]*/
 	}, //end index page
 	
 	show : {

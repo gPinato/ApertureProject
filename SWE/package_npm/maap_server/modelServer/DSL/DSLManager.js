@@ -40,7 +40,7 @@ var checkDSL = function(app) {
 			
 			//se corretto mi ritorna un JSON con tutti i campi dati corretti
 			
-			/*
+			
 			console.log('errors checking...');
 			//test se il risultato è in formato JSON
 			result = JSON.stringify(result, null, '\t');
@@ -63,7 +63,7 @@ var checkDSL = function(app) {
 				}
 			);
 			
-			console.log("data saved!");*/
+			console.log("data saved!");
 						
 			i++;
 		}

@@ -4,6 +4,65 @@
 
 var JSparser = require('./JavascriptParser');
 
+var dsltoken = [
+	{
+		"token" : "label",
+		"default" : null
+	},
+	{
+		"token" : "position",
+		"default" : -1
+	},
+	{
+		"token" : "perpage",
+		"default" : 22
+	},
+	{
+		"token" : "sortby",
+		"default" : "age"
+	},
+	{
+		"token" : "order",
+		"default" : "asc"
+	},
+	{
+		"token" : "column",
+		"default" : null
+	},
+	{
+		"token" : "transformation",
+		"default" : null
+	},
+	{
+		"token" : "function",
+		"default" : null
+	},
+	{
+		"token" : "query",
+		"default" : null
+	},
+	{
+		"token" : "row",
+		"default" : null
+	}
+];
+
+var addField=function(collection,field){      
+		var a=collection[field];
+		 if(a===undefined){
+			for(var i=0;i<dsltoken.length;i++){
+			if(dsltoken[i].token===field){
+			collection[field]=dsltoken[i].default;
+			}//if
+			}//for
+			return false;
+		}
+		else{
+			return true;
+		}
+		
+}
+
 var checkField=function(collection,field,root){      
 		try{
 		 var a=collection[field];
@@ -35,9 +94,11 @@ var IntValue=function(value,field){
 
 
 var parseDSL = function(DSLstring) {
+
  var functionbuttonindex=[];
   var transformationindex=[];
-	var JSONresult = {}
+  var JSONresult={};
+	JSONresult.collection=DSLstring.collection;
 	var collection = DSLstring.collection; 
 		if(checkField(collection,'index','collection'));
 	    if(checkField(collection.index,'column')){
@@ -109,6 +170,50 @@ var parseDSL = function(DSLstring) {
 		throw err; 
 	}
 	}//for
+	
+	
+	addField(collection,'label');
+	addField(collection,'position');
+	addField(collection.index,'populate');
+	addField(collection.index,'sortby');
+	addField(collection.index,'order');
+	addField(collection.index,'perpage');
+	if(collection.index.column!=undefined){
+	for(var i=0;i<collection.index.column.length;i++){
+	addField(collection.index.column[i],'label');
+	addField(collection.index.column[i],'transformation');
+	}
+	}
+	addField(collection.index,'column');
+	
+	if(collection.index.button!=undefined){
+	for(var i=0;i<collection.index.button.length;i++){
+	addField(collection.index.button[i],'label');
+	addField(collection.index.button[i],'function');
+	}
+	}
+	addField(collection.index,'button');
+	
+	addField(collection.index,'query');
+
+	if(collection.show.row!=undefined){
+	for(var i=0;i<collection.show.row.length;i++){
+	addField(collection.show.row[i],'label');
+	addField(collection.show.row[i],'transformation');
+	}
+	}
+	addField(collection.show,'row');
+	
+	if(collection.show.button!=undefined){
+	for(var i=0;i<collection.show.button.length;i++){
+	addField(collection.show.button[i],'label');
+	addField(collection.show.button[i],'function');
+	}
+	}
+	addField(collection.show,'button');
+
+	
+	
 	//ritorno il JSON con tutti i campi del DSL
 	return JSONresult;
 }
