@@ -9,11 +9,21 @@
             <table class="table">
                 <th>Label</th>
                 <th>Value</th>
-                 <tr ng-repeat="(key,value) in document.data">
+                 <tr ng-repeat="(key,value) in data.data">
                     <td>{{key}}</td>
                     <td>{{value}}</td>
                  </tr>
             </table>
+
+        </div>
+    </div>
+    <div class="col-md-2">
+        <div class="panel panel-default">
+            <!-- Default panel contents -->
+            <div ng-model="rows" class="panel-heading">Options</div>
+
+            <a href="/collection/{{current_collection.id}}/{{current_document.id}}/edit"  ng-show="canEdit" class="btn btn-danger"><i class="glyphicon glyphicon-pencil"></i> Edit</a>
+            <a href="#"  ng-show="canEdit" class="btn btn-warning"><i class="glyphicon glyphicon-trash"></i> Delete</a>
         </div>
     </div>
 </div>

@@ -8,6 +8,7 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+var session = require('express-session');
 
 var controller = require('./controller');
 //var modelServer = require('./modelServer');
@@ -29,6 +30,8 @@ function serverInit(app){
 	app.use(bodyParser.json());
 	app.use(bodyParser.urlencoded());
 	app.use(cookieParser());
+	app.use(session({ secret: 'keyboard cat', name: 'sid', cookie: { secure: true }}));
+	
 	app.use(express.static(config.static_assets.dir));
 		
 	// Make our db accessible to our router
@@ -42,7 +45,7 @@ function serverInit(app){
 
 	
 	// catch 404 and forwarding to error handler
-	app.use(function(req, res, next) {
+	/*app.use(function(req, res, next) {
 		var err = new Error('Not Found');
 		err.status = 404;
 		next(err);
@@ -71,8 +74,9 @@ function serverInit(app){
 			error: {}
 		});
 	});
+	*/
 
-	//inizializzo il controller (passport)
+	//inizializzo il controller
 	controller.init(app);
 	
 }
@@ -89,6 +93,8 @@ var start = function(config) {
 	
 	var app = express();
 	app.config = config;
+	
+	app.express = express;
 	var protocol = config.app.ssl ? 'https' : 'http';
 	var port = process.env.PORT || config.app.port;
 	var app_url = protocol + '://' + config.app.host + ':' + port;
