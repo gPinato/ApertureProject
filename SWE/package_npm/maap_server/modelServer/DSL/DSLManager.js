@@ -1,3 +1,19 @@
+/**
+ * File: DSLManager.js
+ * Module: maap_server::modelServer::DSL
+ * Author: Alberto Garbui
+ * Created: 10/05/14
+ * Version: 0.1
+ * Description: gestione file dsl
+ * Modification History:
+ ==============================================
+ * Version | Changes
+ ==============================================
+ * 0.1 File creation
+ ==============================================
+ */
+'use strict';
+
 //DSL manager
 // controlla la presenza di file dsl nell'apposita cartella definita
 //nel file di configurazione e cerca di eseguire il parser di ogni file
@@ -26,7 +42,7 @@ var checkDSL = function(app) {
 			
 			//provo a leggere il dsl
 			try{
-				DSL = require(filePath);
+				var DSL = require(filePath);
 			}catch(err){
 				console.error('parsing error!');
 				console.error('check your dsl file syntax: ' + file);

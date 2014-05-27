@@ -1,4 +1,18 @@
-//server starter ed inizializzazione
+/**
+ * File: index.js
+ * Module: maap_server
+ * Author: Alberto Garbui
+ * Created: 03/05/14
+ * Version: 0.2
+ * Description: inizializzazione del server ed avvio
+ * Modification History:
+ ==============================================
+ * Version | Changes
+ ==============================================
+ * 0.1 File creation
+ * 0.2 added serverInit
+ ==============================================
+ */
 'use strict';
 
 var express = require('express');
@@ -30,7 +44,7 @@ function serverInit(app){
 	app.use(bodyParser.json());
 	app.use(bodyParser.urlencoded());
 	app.use(cookieParser());
-	app.use(session({ secret: 'keyboard cat', name: 'sid', cookie: { secure: true }}));
+	app.use(session({ secret: 'keyboard cat' }));
 	
 	app.use(express.static(config.static_assets.dir));
 		

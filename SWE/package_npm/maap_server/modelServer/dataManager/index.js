@@ -1,4 +1,18 @@
-//Datamanager
+/**
+ * File: index.js
+ * Module: maap_server::modelServer::dataManager
+ * Author: Alberto Garbui
+ * Created: 03/05/14
+ * Version: 0.1
+ * Description: inizializzazione datamanager
+ * Modification History:
+ ==============================================
+ * Version | Changes
+ ==============================================
+ * 0.1 File creation
+ ==============================================
+ */
+'use strict';
 
 var test1 = function() {
 

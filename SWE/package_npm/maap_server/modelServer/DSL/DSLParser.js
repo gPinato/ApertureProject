@@ -1,6 +1,18 @@
-// qui ci va una funzione che controlla se tutti i campi dati 
-// del dsl sono coerenti (testo, valori numerici, funzioni javascript, etc..)
-// e ritorna un file JSON
+/**
+ * File: DSLParser.js
+ * Module: maap_server::modelServer::DSL
+ * Author: Fabio Miotto
+ * Created: 22/05/14
+ * Version: 0.1
+ * Description: parser del dsl
+ * Modification History:
+ ==============================================
+ * Version | Changes
+ ==============================================
+ * 0.1 File creation
+ ==============================================
+ */
+'use strict';
 
 var JSparser = require('./JavascriptParser');
 
