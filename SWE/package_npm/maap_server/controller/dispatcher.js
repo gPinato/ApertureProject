@@ -51,7 +51,7 @@ var dispatcherInit = function (app) {
 		res.send(req.isAuthenticated() ? req.user : '0');
 	});
 
-	dispatcher.post('/api/login', passport.passport.authenticate('local'), 
+	dispatcher.post('/api/login', passport.authenticate, 
 	function(req, res){
 		res.send(req.user);
 	});
