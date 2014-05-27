@@ -1,6 +1,5 @@
 {
 	"collection": {
-		"label": "etichetta della collezione",
 		"name": "nome della collezione nel db",
 		"position": 3,
 		"index": {
@@ -8,24 +7,8 @@
 				"col1",
 				"col2"
 			],
-			"perpage": 20,
 			"sortby": "age",
 			"order": "asc",
-			"column": [
-				{
-					"label": "etichetta colonna1",
-					"name": "nome1 db",
-					"transformation": "function nome(val) { \t\t\t\t\t\treturn val+\" junior\";\t\t\t\t\t\t\t\t}"
-				},
-				{
-					"label": "etichetta colonna2",
-					"name": "nome2 db"
-				},
-				{
-					"label": "etichetta colonna3",
-					"name": "nome3 db"
-				}
-			],
 			"button": [
 				{
 					"label": "Calculate",
@@ -38,9 +21,9 @@
 					"function": "function nome() {\t\t\t\t\t\treturn \"hello\";\t\t\t\t\t\t\t\t}"
 				}
 			],
-			"query": {
-				"age": "$lt: 20"
-			}
+			"perpage": 22,
+			"column": null,
+			"query": null
 		},
 		"show": {
 			"row": [
@@ -51,15 +34,18 @@
 				},
 				{
 					"label": "etichetta riga2",
-					"name": "nome2 db"
+					"name": "nome2 db",
+					"transformation": null
 				},
 				{
 					"label": "etichetta riga3",
-					"name": "nome3 db"
+					"name": "nome3 db",
+					"transformation": null
 				},
 				{
 					"label": "etichetta riga4",
-					"name": "nome3 db"
+					"name": "nome3 db",
+					"transformation": null
 				}
 			],
 			"button": [
@@ -74,6 +60,7 @@
 					"function": "function nome() {\t\t\t\t\t\treturn \"helloShow\";\t\t\t\t\t\t\t}"
 				}
 			]
-		}
+		},
+		"label": null
 	}
 }

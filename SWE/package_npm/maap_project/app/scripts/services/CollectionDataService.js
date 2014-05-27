@@ -14,7 +14,7 @@
  */
 angular.module('services')
     .factory('CollectionDataService',['$resource',function($resource){
-        return $resource ('http://localhost:8080/api/collection/:col_id',
+        return $resource ('http://localhost:9000/api/collection/:col_id',
             {col_id : '@col_id'});
 
     }]);
