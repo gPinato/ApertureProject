@@ -97,9 +97,19 @@ var parseDSL = function(DSLstring) {
 
  var functionbuttonindex=[];
   var transformationindex=[];
+<<<<<<< HEAD
+	var JSONresult = {}
+	
+		
+				
+	var collection = DSLstring.collection; 	 
+	JSONresult.collection = collection;
+	
+=======
   var JSONresult={};
 	JSONresult.collection=DSLstring.collection;
 	var collection = DSLstring.collection; 
+>>>>>>> 23265f001c1c3faeca7999b520d7e1852144e233
 		if(checkField(collection,'index','collection'));
 	    if(checkField(collection.index,'column')){
 	    var column=collection.index.column;

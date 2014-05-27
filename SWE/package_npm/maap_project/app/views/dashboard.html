@@ -8,18 +8,10 @@
             <!-- Table -->
 
             <table class="table">
-                <th>ID</th>
-                <th>Customer</th>
-                <th>Email</th>
-                <th colspan="2">Options</th>
-                <tr ng-repeat="row in rows | filter:search:strict" >
-                    <td><a href="/view/{{row.ID}}">{{row.ID}}</a></td>
-                    <td>{{row.customer}}</td>
-                    <td>{{row.email}}</td>
-                    ng-hide="checked"
-                    <td><a href="/view/{{row.ID}}/edit">Edit</a></td>
-                    <td><a href="/view/{{row.ID}}/delete">Delete</a></td>
-                </tr>
+                <th>Choose a collection</th>
+                <tr><td><a href="/collection/0"><button>Collection 0</button></a></td></tr>
+                <tr><td><a href="/collection/1"><button>Collection 1</button></a></td></tr>
+
             </table>
         </div>
 

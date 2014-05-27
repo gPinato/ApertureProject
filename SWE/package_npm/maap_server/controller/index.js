@@ -2,15 +2,14 @@
 'use strict';
 
 var FrontController = require('./frontController');
-var passport = require('./passport');
 
 exports.init = function(app){
 
 	console.log("inizializzazione controller...");
 	
-	app.use('/', FrontController);
+	//inizializzo il frontController
+	FrontController.init(app);
 	
-	//inizializzo passport
-	passport.init(app);	
+		
 }
 

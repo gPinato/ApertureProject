@@ -1,6 +1,6 @@
 
 <div class="row-fluid">
-    <div class="col-md-10">
+    <div class="col-xs-8 col-xs-offset-1">
         <div class="panel panel-default">
             <!-- Default panel contents -->
             <div ng-model="rows" class="panel-heading">Collection index</div>
@@ -8,43 +8,38 @@
             <!-- Table -->
 
             <table class="table">
-                <th ng-repeat="label in labels">{{label}}</th>
-                <th ng-hide="canEdit()">Options</th>
-                <th ng-show="canEdit()" colspan="3">Options</th>
-                <tr ng-repeat="row in rows | filter:search:strict" >
+                <th ng-click="columnSort($index)" ng-repeat="label in labels">{{label}} <span class="glyphicon glyphicon-sort"></span> </th>
+                <th ng-hide="canEdit">Options</th>
+                <th ng-show="canEdit" colspan="3">Options</th>
+                <tr ng-repeat="row in rows" >
                     <td ng-repeat="(key,value) in row.data">{{value}}</td>
-                    <td><a href="/view/{{row.ID}}">View</a></td>
-                    <td ng-show="canEdit()"><a href="/view/{{row.ID}}/edit">Edit</a></td>
-                    <td ng-show="canEdit()"><a href="/view/{{row.ID}}/delete">Delete</a></td>
+                    <td><a href="/collection/{{current_collection.id}}/{{row.ID}}" class="btn btn-info btn-sm"><i class="glyphicon glyphicon-ok"></i> View</a></td>
+                    <td ng-show="canEdit"><a href="/collection/{{current_collection.id}}/{{row.ID}}/edit" class="btn btn-danger btn-sm"><i class="glyphicon glyphicon-pencil"></i> Edit</a></td>
+                    <td ng-show="canEdit"><a href="#" class="btn btn-warning btn-sm"><i class="glyphicon glyphicon-trash"></i> Delete</a></td>
+
                 </tr>
             </table>
         </div>
 
         <div>
             <ul class="pagination">
-                <li><a href="#">&laquo;</a></li>
-                <li><a href="#">1</a></li>
-                <li><a href="#">2</a></li>
-                <li><a href="#">3</a></li>
-                <li><a href="#">4</a></li>
-                <li><a href="#">5</a></li>
-                <li><a href="#">&raquo;</a></li>
+                <li ng-click="previousPage()"><a href="">&laquo;</a></li>
+                <li ng-repeat="i in numerify(pages) track by $index " ng-click="toPage($index)"><a href="">{{$index+1}}</a></li>
+                <li ng-click="nextPage()"><a href="">&raquo;</a></li>
             </ul>
         </div>
     </div>
 
 
-    <div class="col-md-2">
+    <div class="col-xs-2 ">
         <div class="panel panel-default">
             <div class="panel-body">
                 <form role="form">
                     <div class="form-group">
                         <label>Filter by {{labels[0]}}</label>
-                        <input ng-model="search.{{labels[0]}}" type="test" class="form-control" id="filtername" placeholder="Enter name">
                     </div>
                     <div class="form-group">
                         <label>ID</label>
-                        <input  ng-model="search.ID" type="number" class="form-control" id="filterid" placeholder="ID">
                     </div>
 
                     <button type="submit" class="btn btn-default">Submit</button>
