@@ -4,14 +4,15 @@
         "Email",
         "Created at"
     ],
-    [{
-        "ID": 0,
-        "data": {
-            "customer": "Gina",
-            "email": "gina@pina.com",
-            "date": "15/12/2012"
-        }
-    },
+    [
+		{
+			"ID": 0,
+			"data": {
+				"customer": "Gina",
+				"email": "gina@pina.com",
+				"date": "15/12/2012"
+			}
+		},
         {
             "ID": 1,
             "data": {
@@ -35,5 +36,6 @@
                 "email": "thisisworking@icantbelieve.it",
                 "date": "12/12/2010"
             }
-        }]
+        }
+	]
 ]

@@ -1,0 +1,14 @@
+{
+    "teamSchema": {
+        "country": "String",
+        "GroupName": "String",
+        "Sex": "String",
+        "email": "String",
+        "date": "MongoDate",
+        "Something": "String"
+    },
+	"otherSchema": {
+        "Something": "String",
+        "SomethingElse": "String"
+    }
+}

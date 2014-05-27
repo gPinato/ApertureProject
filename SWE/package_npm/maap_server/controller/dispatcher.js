@@ -36,18 +36,18 @@ var dispatcherInit = function (app) {
 	dispatcher.get('/api/collection/:col_id/:doc_id/edit', passport.checkAuthenticated, function(req, res){
 		res.sendfile(path.join(config.static_assets.dir, 'docprova'+req.params.doc_id+'.json'));
 	});
-	
+
 	dispatcher.put('/api/collection/:col_id/:doc_id', function(req, res){
 		console.log(JSON.stringify(req.body));
 		res.send(200);
 	});
 
-	dispatcher.post('/api/signup', function(req, res){
+	dispatcher.post('/signup', function(req, res){
 		console.log(JSON.stringify(req.body));
 		res.send(200);
 	});
 
-	dispatcher.get('/api/loggedin', function(req, res) {
+	dispatcher.get('/loggedin', function(req, res) {
 		res.send(req.isAuthenticated() ? req.user : '0');
 	});
 
@@ -55,9 +55,6 @@ var dispatcherInit = function (app) {
 	function(req, res){
 		res.send(req.user);
 	});
-	
-	//dispatcher.post('api/login', passport.passport.authenticate('local', { successRedirect: '/',
-     //                                               failureRedirect: '/api/login' }));
 	
 	dispatcher.get('*', function(req, res){
 		res.sendfile(path.join(config.static_assets.dir, 'index.html'));
