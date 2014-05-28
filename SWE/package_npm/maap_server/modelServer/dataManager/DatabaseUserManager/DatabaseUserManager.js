@@ -13,3 +13,5 @@
  ==============================================
  */
 'use strict';
+
+var retriever = require('./DataRetrieverUsers');

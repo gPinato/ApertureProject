@@ -45,20 +45,16 @@ function serverInit(app){
 	app.use(bodyParser.json());
 	app.use(bodyParser.urlencoded());
 	app.use(cookieParser());
-	app.use(session({ secret: 'keyboard cat' }));
+	app.use(session({ secret: config.session.secret }));
 	
 	app.use(express.static(config.static_assets.dir));
 		
-	// Make our db accessible to our router
-	// l'altro gruppo l'ha chiamata appInjector, 
-	// dovrebbe iniettare il riferiemnto al db dentro la richiesta
-	// cosi da poter accedere a db piu facilmente...
+	//db e config injecting
 	app.use(function(req,res,next){
 		//req.db = db;
 		req.config = config;
 		next();
 	});
-
 	
 	// catch 404 and forwarding to error handler
 	/*app.use(function(req, res, next) {

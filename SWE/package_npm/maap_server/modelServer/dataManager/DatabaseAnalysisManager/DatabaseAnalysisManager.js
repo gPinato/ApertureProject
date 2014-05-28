@@ -15,6 +15,8 @@
 'use strict';
 
 var path = require('path');
+var retriever = require('./DataRetrieverAnalysis');
+var indexManager = require('../IndexManager/IndexManager');
 
 exports.inviaCOL  = function(req, res){
 	var config = req.config;
