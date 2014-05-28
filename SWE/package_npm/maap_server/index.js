@@ -51,7 +51,7 @@ function serverInit(app){
 		
 	//db e config injecting
 	app.use(function(req,res,next){
-		//req.db = db;
+		req.db = DB;
 		req.config = config;
 		next();
 	});
@@ -122,6 +122,7 @@ var start = function(config) {
 	console.log('');
 	console.log('well done! ' + config.app.title + ' listening at ' + app_url + ' ' + env);
 	console.log('');
+
 };
 
 //export della funzione...

@@ -17,10 +17,22 @@
 var path = require('path');
 var retriever = require('./DataRetrieverAnalysis');
 var indexManager = require('../IndexManager/IndexManager');
+var JSonComposer = require('../JSonComposer');
 
 exports.inviaCOL  = function(req, res){
 	var config = req.config;
-	res.sendfile(path.join(config.static_assets.dir,'colprova'+req.params.col_id+'.json'));
+	var collection_id = req.params.col_id;
+	var column = req.query.column;
+	var order = req.query.order;
+	var page = req.query.page;
+	if(collection_id==1)	//per la collection 1
+	{
+		//richiamo il json composer per generare un json statico , quindi passo 
+		//parametri a caso per ora...
+		res.send(JSonComposer.create('bla','bla','bla'));
+	}else{
+		res.sendfile(path.join(config.static_assets.dir,'colprova'+collection_id+'.json'));
+	}
 }
 
 exports.inviaDOC  = function(req, res){
