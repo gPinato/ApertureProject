@@ -1,10 +1,10 @@
 /**
  * File: index.js
- * Module: maap_server::controller
+ * Module: maap_server::modelServer::DSL
  * Author: Alberto Garbui
- * Created: 02/05/14
+ * Created: 20/05/14
  * Version: 0.1
- * Description: inizializzazione controller
+ * Description: inizializzazione DSL
  * Modification History:
  ==============================================
  * Version | Changes
@@ -14,13 +14,10 @@
  */
 'use strict';
 
-var FrontController = require('./FrontController');
+var DSL = require('./DSLManager');
 
-exports.init = function(app){
+exports.init = function(app) {
 
-	console.log("controller init...");
-	
-	//inizializzo il frontController
-	FrontController.init(app);	
-	
+	console.log('checking dsl... ');
+	DSL.checkDSL(app);
 }

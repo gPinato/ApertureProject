@@ -1,6 +1,6 @@
 /**
  * File: index.js
- * Module: maap_server::modelServer::dataManager
+ * Module: maap_server::ModelServer::DataManager
  * Author: Alberto Garbui
  * Created: 03/05/14
  * Version: 0.1

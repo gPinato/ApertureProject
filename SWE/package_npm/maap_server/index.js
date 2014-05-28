@@ -24,14 +24,15 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var session = require('express-session');
 
-var controller = require('./controller');
-//var modelServer = require('./modelServer');
-var DSL = require('./modelServer/DSL/DSLManager');
-var DB = require('./modelServer/database');
+var controller = require('./Controller');
+var DB = require('./ModelServer/Database');
+var DSL = require('./ModelServer/DSL');
 
 function serverInit(app){
 
 	var config = app.config;
+
+	console.log('app init...');
 	
 	app.set('views', config.static_assets.views);
 	//app.set('view engine', 'html');
@@ -52,10 +53,11 @@ function serverInit(app){
 	// l'altro gruppo l'ha chiamata appInjector, 
 	// dovrebbe iniettare il riferiemnto al db dentro la richiesta
 	// cosi da poter accedere a db piu facilmente...
-	//app.use(function(req,res,next){
-	//	req.db = db;
-	//	next();
-	//});
+	app.use(function(req,res,next){
+		//req.db = db;
+		req.config = config;
+		next();
+	});
 
 	
 	// catch 404 and forwarding to error handler
@@ -114,16 +116,9 @@ var start = function(config) {
 	var app_url = protocol + '://' + config.app.host + ':' + port;
 	var env = process.env.NODE_ENV ? ('[' + process.env.NODE_ENV + ']') : '[development]'; 
 	
-	console.log('checking dsl... ');
-	DSL.checkDSL(app);
-	
-	console.log('');
-	console.log('databases init... ');
-	DB.init(app);
-	
-	console.log('');
-	console.log('app init...');
-	serverInit(app);
+	DSL.init(app);		//inizializzo i DSL
+	DB.init(app);		//inizializzo i database
+	serverInit(app);	//inizializzo l'app express
 	
 	console.log('starting server...');	
 	app.set('port', port);

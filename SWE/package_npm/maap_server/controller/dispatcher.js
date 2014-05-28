@@ -1,6 +1,6 @@
 /**
  * File: dispatcher.js
- * Module: maap_server::controller
+ * Module: maap_server::Controller
  * Author: Alberto Garbui
  * Created: 03/05/14
  * Version: 0.1
@@ -14,8 +14,9 @@
  */
 'use strict';
 
-var passport = require("./passport");
+var passport = require("./Passport");
 var path = require('path');
+var datamanager = require('../ModelServer/DataManager/DatabaseAnalysisManager/DatabaseAnalysisManager');
 
 var dispatcherInit = function (app) {
 
@@ -25,17 +26,11 @@ var dispatcherInit = function (app) {
 	
 	var dispatcher = app.express.Router();
 	
-	dispatcher.get('/api/collection/:col_id', passport.checkAuthenticated, function(req, res){
-		res.sendfile(path.join(config.static_assets.dir,'colprova'+req.params.col_id+'.json'));
-	});
+	dispatcher.get('/api/collection/:col_id', passport.checkAuthenticated, datamanager.inviaCOL);
 	
-	dispatcher.get('/api/collection/:col_id/:doc_id', passport.checkAuthenticated, function(req, res){
-		res.sendfile(path.join(config.static_assets.dir, 'docprova'+req.params.doc_id+'.json'));
-	});
+	dispatcher.get('/api/collection/:col_id/:doc_id', passport.checkAuthenticated, datamanager.inviaDOC);
 	
-	dispatcher.get('/api/collection/:col_id/:doc_id/edit', passport.checkAuthenticated, function(req, res){
-		res.sendfile(path.join(config.static_assets.dir, 'docprova'+req.params.doc_id+'.json'));
-	});
+	dispatcher.get('/api/collection/:col_id/:doc_id/edit', passport.checkAuthenticated, datamanager.inviaDOC);
 
 	dispatcher.put('/api/collection/:col_id/:doc_id', function(req, res){
 		console.log(JSON.stringify(req.body));
