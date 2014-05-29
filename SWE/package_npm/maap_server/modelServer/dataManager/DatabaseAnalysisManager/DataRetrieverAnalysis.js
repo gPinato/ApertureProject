@@ -13,3 +13,23 @@
  ==============================================
  */
 'use strict';
+
+//per ora uso DBframework..
+var DB = require('../../Database/MongooseDBFramework');
+//ma poi sara' da cambiare con MongooseDBAnalysis che contiene lo schema delle 
+//collections definite dal dsl 
+
+exports.getDocumentsList = function(collection_name, column, order, page, callback) {
+
+	DB.users.find({}, '_id email password' ,function(err,documents){
+		if(err) { console.log('errore lettura documents!'); return done(err); }
+		if(!documents){
+			console.log('nessun document presente in questa collection');
+		}else{
+			console.log('ecco il risultato');
+			console.log(documents);
+			callback(documents);
+		}	
+	});
+	
+}
