@@ -60,5 +60,26 @@ exports.inviaCOL  = function(req, res){
 
 exports.inviaDOC  = function(req, res){
 	var config = req.config;
-	res.sendfile(path.join(config.static_assets.dir, 'docprova'+req.params.doc_id+'.json'));
+	var collection_id = req.params.col_id;
+	var document_id = req.params.doc_id;
+	
+	//qui leggo il dsl relativo alla collection in posizione collection_id
+	//eseguo la queri  usando column, order e page con il retriever
+	// 
+	var collection_name = 'auto';
+	
+	retriever.getDocumentsView(collection_name, document_id, function(data){
+	
+		console.log('datamanager:' + data);
+	
+		if(collection_id==1)	//per la collection 1
+		{
+			//richiamo il json composer per generare un json statico , quindi passo 
+			//parametri a caso per ora...
+			res.send(JSonComposer.createDoc('bla',data,'bla'));
+		}else{
+			res.sendfile(path.join(config.static_assets.dir, 'docprova'+document_id+'.json'));
+		}	
+	});	
+	
 }
