@@ -1,7 +1,7 @@
 //maaperture collection example dsl
 
 collection = {
-	
+	label: 'etichetta collection',
 	name: 'nome della collezione nel db',
 	position: 3, //posizione nel menu, default -1
 	
@@ -12,19 +12,22 @@ collection = {
 		order: 'asc',
 		/*column : [
 			{
-				label: 'etichetta colonna1',
-				name: 'nome1 db',
+				label: 'Identificativo',
+				name: '_id',
+				type: 'Number, min: 18, max:65',
 				transformation: 'function nome(val) { 	\
 					return val+" junior";				\
 				}'
 			},
 			{	
-				label: 'etichetta colonna2',
-				name: 'nome2 db'			
+				label: 'Data Avvio',
+				name: 'data',
+				type: 'Date, default: Date.now'
 			},
 			{	
 				label: 'etichetta colonna3',
-				name: 'nome3 db'		
+				name: 'nome3 db',
+				type: 'String'
 			},
 		],*/
 		button : [
@@ -55,21 +58,25 @@ collection = {
 			{
 				label: 'etichetta riga1',
 				name: 'nome1 db',
+				type: 'String',
 				transformation: 'function nome(val) {	\
 					return val+" junior";				\
 				}'
 			},
 			{	
 				label: 'etichetta riga2',
-				name: 'nome2 db'			
+				name: 'nome2 db',
+				type: 'String'
 			},
 			{	
 				label: 'etichetta riga3',
-				name: 'nome3 db'			
+				name: 'nome3 db',
+				type: 'String'
 			},
 			{	
 				label: 'etichetta riga4',
-				name: 'nome3 db'			
+				name: 'nome3 db',
+				type: 'String'
 			},
 		],
 		button : [
@@ -77,7 +84,7 @@ collection = {
 				label: 'CalculateShow',
 				name: 'button1show',
 				function: 'function nome() {	\
-					return "ciaoShow";			\
+					console.log('ciaoShow');	\
 				}'
 			},
 			{
