@@ -1,6 +1,7 @@
 {
 	"collection": {
-		"name": "nome della collezione nel db",
+		"label": "etichetta collection",
+		"name": "maapertureCollection",
 		"position": 3,
 		"index": {
 			"populate": [
@@ -30,21 +31,25 @@
 				{
 					"label": "etichetta riga1",
 					"name": "nome1 db",
+					"type": "String",
 					"transformation": "function nome(val) {\t\t\t\t\t\treturn val+\" junior\";\t\t\t\t\t\t\t\t}"
 				},
 				{
 					"label": "etichetta riga2",
 					"name": "nome2 db",
+					"type": "String",
 					"transformation": null
 				},
 				{
 					"label": "etichetta riga3",
 					"name": "nome3 db",
+					"type": "String",
 					"transformation": null
 				},
 				{
 					"label": "etichetta riga4",
 					"name": "nome3 db",
+					"type": "String",
 					"transformation": null
 				}
 			],
@@ -52,7 +57,7 @@
 				{
 					"label": "CalculateShow",
 					"name": "button1show",
-					"function": "function nome() {\t\t\t\t\t\treturn \"ciaoShow\";\t\t\t\t\t\t\t}"
+					"function": "function nome() {\t\t\t\t\t\tconsole.log(\"ciaoShow\");\t\t\t\t\t}"
 				},
 				{
 					"label": "Calculate2Show",
@@ -60,7 +65,6 @@
 					"function": "function nome() {\t\t\t\t\t\treturn \"helloShow\";\t\t\t\t\t\t\t}"
 				}
 			]
-		},
-		"label": null
+		}
 	}
 }

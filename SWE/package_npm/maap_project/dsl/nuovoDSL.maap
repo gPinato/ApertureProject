@@ -2,7 +2,7 @@
 
 collection = {
 	label: 'etichetta collection',
-	name: 'nome della collezione nel db',
+	name: 'maapertureCollection',
 	position: 3, //posizione nel menu, default -1
 	
 	index : {
@@ -84,7 +84,7 @@ collection = {
 				label: 'CalculateShow',
 				name: 'button1show',
 				function: 'function nome() {	\
-					console.log('ciaoShow');	\
+					console.log("ciaoShow");	\
 				}'
 			},
 			{

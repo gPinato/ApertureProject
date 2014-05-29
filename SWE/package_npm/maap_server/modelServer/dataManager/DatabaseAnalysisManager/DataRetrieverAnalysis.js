@@ -33,3 +33,19 @@ exports.getDocumentsList = function(collection_name, column, order, page, callba
 	});
 	
 }
+
+
+exports.getDocumentsView = function(collection_name, document_id, callback) {
+
+	DB.users.findOne({_id : document_id},function(err,documents){
+		if(err) { console.log('errore lettura documents!'); /*return done(err);*/ }
+		if(!documents){
+			console.log('nessun document presente in questa collection');
+		}else{
+			console.log('ecco il risultato');
+			console.log(documents);
+			callback(documents);
+		}	
+	});
+}
+	

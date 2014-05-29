@@ -27,9 +27,31 @@ var DSLparser = require('./DSLParser');
 var checkDSL = function(app) {
 
 	var config = app.config;
+	
+	//eseguo la pulizia della cartella collectionData
+	//dai files json ed i modelli
+	var collectionDataPath = __dirname + '/collectionData';
+	var list = fs.readdirSync(collectionDataPath);
+	list.forEach(function(file) {
+		var filePath = collectionDataPath + '/' + file;
+        var stat = fs.statSync(filePath);
+		var extension = path.extname(file);
+        if (stat && stat.isFile() && (extension == '.json' || extension == '.js')) {
+			fs.unlink(filePath, function (err) {
+				if (err){
+					console.log('errors while cleaning collectionData\'s file: ' + file);
+					throw err;
+				}
+				if(config.app.env == 'development') { //messaggio solo in fase di development
+					console.log('successfully deleted collectionData file: ' + file);
+				}
+			});
+		}
+	});
+			
+	//carica ogni file dsl e genera il file json dopo opportuni controlli
 	var results = [];
     var list = fs.readdirSync(config.static_assets.dsl);
-	var i = 0;
     list.forEach(function(file) {
 		
         var filePath = config.static_assets.dsl + '/' + file;
@@ -51,13 +73,13 @@ var checkDSL = function(app) {
 			
 			//ora uso DSLParser per controllare la correttezza dei dati nel DSL:
 			var result = DSLparser.parseDSL(DSL);
-
-			console.log('result: ' + result);
-			
+					
+			//carico il nome del file
+			var filename = result.collection.name;
+					
 			//se corretto mi ritorna un JSON con tutti i campi dati corretti
-			
-			
 			console.log('errors checking...');
+			
 			//test se il risultato è in formato JSON
 			result = JSON.stringify(result, null, '\t');
 			try {
@@ -67,22 +89,59 @@ var checkDSL = function(app) {
 				console.error('check maaperture dsl parser: DSLParser.js');
 				throw err; 
 			}
-			
+					
 			//salvo su file
-			var saveFile = __dirname + '/collectionData/result_' + i + '.json';
+			var saveFile = __dirname + '/collectionData/' + filename + '.json';
 			console.log('saving ' + saveFile);
 			fs.writeFileSync(saveFile, result, 'utf-8', function (err) {
 					if (err) {
-						console.log("error writing result file!");
+						console.error('error writing dsl\'s json file: ' + saveFile);
 						throw err;
 					} 
+					console.log(saveFile + ' saved!');
 				}
 			);
-			
-			console.log("data saved!");
 						
-			i++;
-		}
+			
+			//qui per lo stesso file viene generato lo schema per mongoose
+			
+			/* ESEMPIO DI SCHEMA:
+			var mongoose = require('mongoose');
+			exports.schema = new mongoose.Schema({
+				email: { 
+						type: String, 
+				},
+				password: {
+					type: String
+				}
+			});
+			*/
+			
+			//COMPLETARE QUI...
+			var schema = '//maaperture auto-generated mongoose schema:\n\n';
+			schema += 'var mongoose = require(\'mongoose\');\n';
+			schema += 'exports.schema = new mongoose.Schema({\n';
+			
+			var type = 'String';
+			schema += 'email: { type: ' + type + '},\n';
+			schema += 'password: { type: ' + type + '}\n';			
+			
+			
+			schema += '});\n'			
+			
+			//salvo su file
+			var saveFile = __dirname + '/collectionData/' + filename + '_schema.js';
+			console.log('saving ' + saveFile);
+			fs.writeFileSync(saveFile, schema, 'utf-8', function (err) {
+					if (err) {
+						console.error('error writing schema file: ' + saveFile);
+						throw err;
+					} 
+					console.log(saveFile + ' saved!');
+				}
+			);			
+			
+		}//end if
     });
 
 };
