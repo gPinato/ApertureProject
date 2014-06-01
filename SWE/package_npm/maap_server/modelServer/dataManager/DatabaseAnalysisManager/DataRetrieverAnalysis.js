@@ -35,7 +35,7 @@ exports.getDocumentsList = function(collection_name, column, order, page, callba
 }
 
 
-exports.getDocumentsView = function(collection_name, document_id, callback) {
+exports.getDocument = function(collection_name, document_id, callback) {
 
 	DB.users.findOne({_id : document_id},function(err,documents){
 		if(err) { console.log('errore lettura documents!'); /*return done(err);*/ }

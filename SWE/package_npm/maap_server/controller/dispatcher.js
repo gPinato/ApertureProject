@@ -26,11 +26,13 @@ var dispatcherInit = function (app) {
 	
 	var dispatcher = app.express.Router();
 	
-	dispatcher.get('/api/collection/:col_id', passport.checkAuthenticated, datamanager.inviaCOL);
+	dispatcher.get('/api/collection/list', passport.checkAuthenticated, datamanager.sendCollectionsList);
 	
-	dispatcher.get('/api/collection/:col_id/:doc_id', passport.checkAuthenticated, datamanager.inviaDOC);
+	dispatcher.get('/api/collection/:col_id', passport.checkAuthenticated, datamanager.sendCollection);
 	
-	dispatcher.get('/api/collection/:col_id/:doc_id/edit', passport.checkAuthenticated, datamanager.inviaDOC);
+	dispatcher.get('/api/collection/:col_id/:doc_id', passport.checkAuthenticated, datamanager.sendDocument);
+	
+	dispatcher.get('/api/collection/:col_id/:doc_id/edit', passport.checkAuthenticated, datamanager.sendDocument);
 
 	dispatcher.put('/api/collection/:col_id/:doc_id', function(req, res){
 		console.log(JSON.stringify(req.body));

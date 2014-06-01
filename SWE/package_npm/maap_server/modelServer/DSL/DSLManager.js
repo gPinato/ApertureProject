@@ -32,6 +32,8 @@ var checkDSL = function(app) {
 	//dai files json ed i modelli
 	var collectionDataPath = __dirname + '/collectionData';
 	var list = fs.readdirSync(collectionDataPath);
+	if(list.length > 0)
+		console.log('cleaning up collectionData files...');
 	list.forEach(function(file) {
 		var filePath = collectionDataPath + '/' + file;
         var stat = fs.statSync(filePath);

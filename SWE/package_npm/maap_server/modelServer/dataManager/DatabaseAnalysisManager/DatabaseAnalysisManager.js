@@ -22,7 +22,20 @@ var JSonComposer = require('../JSonComposer');
 
 var DB = require('../../Database/MongooseDBFramework');
 
-exports.inviaCOL  = function(req, res){
+exports.sendCollectionsList = function(req, res){
+
+	//ora la lista di collections e' statica ma andra' creata a partire 
+	//dai dsl definiti per questo progetto
+	var collectionsList = [];
+	collectionsList.push('cars');
+	collectionsList.push('models');
+	collectionsList.push('playBoySouthAfrica');
+	collectionsList.push('bennetsRulez');
+	collectionsList.push('testCollection');
+	res.send(JSonComposer.createCollectionsList(collectionsList));
+}
+
+exports.sendCollection  = function(req, res){
 	var config = req.config;
 	var collection_id = req.params.col_id;
 	var column = req.query.column;
@@ -41,18 +54,12 @@ exports.inviaCOL  = function(req, res){
 	
 		console.log('datamanager:' + data);
 	
-		if(collection_id==1)	//per la collection 1
-		{
-			//richiamo il json composer per generare un json statico , quindi passo 
-			//parametri a caso per ora...
-			res.send(JSonComposer.create('bla',data,'bla'));
-		}else{
-			res.sendfile(path.join(config.static_assets.dir,'colprova'+collection_id+'.json'));
-		}	
+		res.send(JSonComposer.createCollection('bla',data,'bla'));
+			
 	});	
 }
 
-exports.inviaDOC  = function(req, res){
+exports.sendDocument  = function(req, res){
 	var config = req.config;
 	var collection_id = req.params.col_id;
 	var document_id = req.params.doc_id;
@@ -62,18 +69,12 @@ exports.inviaDOC  = function(req, res){
 	// 
 	var collection_name = 'auto';
 	
-	retriever.getDocumentsView(collection_name, document_id, function(data){
+	retriever.getDocument(collection_name, document_id, function(data){
 	
 		console.log('datamanager:' + data);
 	
-		if(collection_id==1)	//per la collection 1
-		{
-			//richiamo il json composer per generare un json statico , quindi passo 
-			//parametri a caso per ora...
-			res.send(JSonComposer.createDoc('bla',data,'bla'));
-		}else{
-			res.sendfile(path.join(config.static_assets.dir, 'docprova'+document_id+'.json'));
-		}	
+		res.send(JSonComposer.createDocument('bla',data,'bla'));
+			
 	});	
 	
 }

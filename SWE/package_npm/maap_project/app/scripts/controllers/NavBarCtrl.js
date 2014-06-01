@@ -1,23 +1,24 @@
 /**
- * File: Authservice;
+ * File: NavBarCtrl;
  * Module: modulo di appartenenza;
- * Author: Giacomo Pinato;
- * Created: 12/05/14;
+ * Author: jack;
+ * Created: 01/06/14;
  * Version: versione corrente;
  * Description: descrizione dettagliata del file;
  * Modification History:
  ==============================================
  * Version | Changes
  ==============================================
- * 0.1 File creation
+ *
  ==============================================
  */
- 
-angular.module('services')
-    .factory('AuthService',['$resource',function($resource) {
-        return $resource('http://localhost:9000/api/login', {}, {
-            'login':  {method:'POST'}
-        });
-    }
-    ]);
 
+
+angular.module('maaperture').controller('NavBarCtrl', function ($scope, CollectionListService ) {
+    CollectionListService.get(
+        function success(data) {
+            $scope.list = data;
+        });
+    $scope.isAdmin=false;
+
+});

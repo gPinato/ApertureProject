@@ -12,6 +12,7 @@
  * 0.1 File creation
  ==============================================
  */
+ 
 angular.module('services')
     .factory('CollectionDataService',['$resource',function($resource){
         return $resource ('http://localhost:9000/api/collection/:col_id',

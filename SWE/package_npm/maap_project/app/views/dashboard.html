@@ -9,8 +9,8 @@
 
             <table class="table">
                 <th>Choose a collection</th>
-                <tr><td><a href="/collection/0"><button>Collection 0</button></a></td></tr>
-                <tr><td><a href="/collection/1"><button>Collection 1</button></a></td></tr>
+                <tr ng-repeat="element in list.data"><td><a href="/collection/{{element}}"><button>{{element}}</button></a></td></tr>
+
 
             </table>
         </div>

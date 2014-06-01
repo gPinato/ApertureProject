@@ -26,11 +26,11 @@
     <!-- endbuild -->
 </head>
 <body ng-app="maaperture">
-<div class="navbar navbar-default navbar-fixed-top">
+<div class="navbar navbar-default navbar-fixed-top" ng-controller="NavBarCtrl">
     <nav role="navigation">
         <div class="container-fluid">
             <!-- Brand and toggle get grouped for better mobile display -->
-            <div class="navbar-header">
+            <div class="navbar-header" >
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
                     <span class="sr-only">Toggle navigation</span>
                     <span class="icon-bar"></span>
@@ -47,13 +47,8 @@
                     <li class="dropdown">
                         <a  class="dropdown-toggle" data-toggle="dropdown">Collections <b class="caret"></b></a>
                         <ul class="dropdown-menu">
-                            <li><a href="/collection/0">Collection 0</a></li>
-                            <li><a href="/collection/1">Collectio 1</a></li>
-                            <li><a href="#">Collection 3</a></li>
-                            <li class="divider"></li>
-                            <li><a href="#">Separated link</a></li>
-                            <li class="divider"></li>
-                            <li><a href="#">One more separated link</a></li>
+							<li><a href="#">Collection w</a></li>
+                            <li ng-repeat="element in list.data"><a href="/collection/{{element}}">{{element}}</a></li>                         
                         </ul>
                     </li>
                 </ul>
@@ -131,14 +126,15 @@
 <script src="scripts/controllers/DocumentEditCtrl.js"></script>
 <script src="scripts/controllers/LoginCtrl.js"></script>
 <script src="scripts/controllers/RegisterCtrl.js"></script>
-
+<script src="scripts/controllers/DashboardCtrl.js"></script>
+<script src="scripts/controllers/NavBarCtrl.js"></script>
 <!-- load services -->
 
 <script src="scripts/services/DocumentDataService.js"></script>
 <script src="scripts/services/CollectionDataService.js"></script>
 <script src="scripts/services/Authservice.js"></script>
 <script src="scripts/services/RegisterService.js"></script>
-
+<script src="scripts/services/CollectionListService.js"></script>
 <!-- load directives -->
 
 <script src="scripts/directives/unique.js"></script>
