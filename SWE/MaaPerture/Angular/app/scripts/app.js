@@ -20,7 +20,7 @@ angular
         $routeProvider
             .when('/', {
                 templateUrl: 'views/dashboard.html',
-                controller: 'MainCtrl'
+                controller: 'DashboardCtrl'
             })
             .when('/collection/:col_id', {
                 templateUrl: 'views/collection.html',

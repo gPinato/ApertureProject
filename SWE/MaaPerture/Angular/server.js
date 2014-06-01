@@ -55,7 +55,9 @@ var auth = function(req, res, next){
     else next();
 }
 
-
+app.get('/api/collection/list', auth, function(req, res){
+    res.sendfile('/home/jack/Desktop/Repository/SWE/MaaPerture/Angular/app/available.json');
+});
 app.get('/api/collection/:col_id', auth, function(req, res){
     res.sendfile('/home/jack/Desktop/Repository/SWE/MaaPerture/Angular/app/colprova'+req.params.col_id+'.json');
 });
