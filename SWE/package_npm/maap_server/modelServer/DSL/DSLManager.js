@@ -23,6 +23,7 @@
 var fs = require('fs'); 
 var path = require('path'); 
 var DSLparser = require('./DSLParser');
+var schemaGenerator = require('./schemaGenerator');
 
 var checkDSL = function(app) {
 
@@ -83,9 +84,9 @@ var checkDSL = function(app) {
 			console.log('errors checking...');
 			
 			//test se il risultato è in formato JSON
-			result = JSON.stringify(result, null, '\t');
+			var stringResult = JSON.stringify(result, null, '\t');
 			try {
-				var risultatoJSON = JSON.parse(result);
+				var risultatoJSON = JSON.parse(stringResult);
 			} catch(err) {
 				console.error('parsing result error! [invalid_JSON]');
 				console.error('check maaperture dsl parser: DSLParser.js');
@@ -95,7 +96,7 @@ var checkDSL = function(app) {
 			//salvo su file
 			var saveFile = __dirname + '/collectionData/' + filename + '.json';
 			console.log('saving ' + saveFile);
-			fs.writeFileSync(saveFile, result, 'utf-8', function (err) {
+			fs.writeFileSync(saveFile, stringResult, 'utf-8', function (err) {
 					if (err) {
 						console.error('error writing dsl\'s json file: ' + saveFile);
 						throw err;
@@ -104,32 +105,8 @@ var checkDSL = function(app) {
 				}
 			);
 						
-			
-			//qui per lo stesso file viene generato lo schema per mongoose
-			
-			/* ESEMPIO DI SCHEMA:
-			var mongoose = require('mongoose');
-			exports.schema = new mongoose.Schema({
-				email: { 
-						type: String, 
-				},
-				password: {
-					type: String
-				}
-			});
-			*/
-			
-			//COMPLETARE QUI...
-			var schema = '//maaperture auto-generated mongoose schema:\n\n';
-			schema += 'var mongoose = require(\'mongoose\');\n';
-			schema += 'exports.schema = new mongoose.Schema({\n';
-			
-			var type = 'String';
-			schema += 'email: { type: ' + type + '},\n';
-			schema += 'password: { type: ' + type + '}\n';			
-			
-			
-			schema += '});\n'			
+			//genero lo schema
+			var schema = schemaGenerator.generate(result);
 			
 			//salvo su file
 			var saveFile = __dirname + '/collectionData/' + filename + '_schema.js';

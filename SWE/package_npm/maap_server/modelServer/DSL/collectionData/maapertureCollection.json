@@ -10,6 +10,26 @@
 			],
 			"sortby": "age",
 			"order": "asc",
+			"column": [
+				{
+					"label": "Identificativo",
+					"name": "_id",
+					"type": "Number, min: 18, max:65",
+					"transformation": "function nome(val) { \t\t\t\t\t\treturn val+\" junior\";\t\t\t\t\t\t\t\t}"
+				},
+				{
+					"label": "Data Avvio",
+					"name": "data_nascita",
+					"type": "Date, default: Date.now",
+					"transformation": null
+				},
+				{
+					"label": "etichetta colonna3",
+					"name": "nome3_db",
+					"type": "String",
+					"transformation": null
+				}
+			],
 			"button": [
 				{
 					"label": "Calculate",
@@ -23,32 +43,31 @@
 				}
 			],
 			"perpage": 22,
-			"column": null,
 			"query": null
 		},
 		"show": {
 			"row": [
 				{
 					"label": "etichetta riga1",
-					"name": "nome1 db",
+					"name": "nome1_db",
 					"type": "String",
 					"transformation": "function nome(val) {\t\t\t\t\t\treturn val+\" junior\";\t\t\t\t\t\t\t\t}"
 				},
 				{
 					"label": "etichetta riga2",
-					"name": "nome2 db",
+					"name": "nome2_db",
 					"type": "String",
 					"transformation": null
 				},
 				{
 					"label": "etichetta riga3",
-					"name": "nome3 db",
+					"name": "nome3_db",
 					"type": "String",
 					"transformation": null
 				},
 				{
 					"label": "etichetta riga4",
-					"name": "nome3 db",
+					"name": "nome3_db",
 					"type": "String",
 					"transformation": null
 				}

@@ -10,7 +10,7 @@ collection = {
 		//perpage: 20,
 		sortby: 'age',
 		order: 'asc',
-		/*column : [
+		column : [
 			{
 				label: 'Identificativo',
 				name: '_id',
@@ -21,15 +21,15 @@ collection = {
 			},
 			{	
 				label: 'Data Avvio',
-				name: 'data',
+				name: 'data_nascita',
 				type: 'Date, default: Date.now'
 			},
 			{	
 				label: 'etichetta colonna3',
-				name: 'nome3 db',
+				name: 'nome3_db',
 				type: 'String'
 			},
-		],*/
+		],
 		button : [
 			{
 				label: 'Calculate',
@@ -57,7 +57,7 @@ collection = {
 		row : [
 			{
 				label: 'etichetta riga1',
-				name: 'nome1 db',
+				name: 'nome1_db',
 				type: 'String',
 				transformation: 'function nome(val) {	\
 					return val+" junior";				\
@@ -65,17 +65,17 @@ collection = {
 			},
 			{	
 				label: 'etichetta riga2',
-				name: 'nome2 db',
+				name: 'nome2_db',
 				type: 'String'
 			},
 			{	
 				label: 'etichetta riga3',
-				name: 'nome3 db',
+				name: 'nome3_db',
 				type: 'String'
 			},
 			{	
 				label: 'etichetta riga4',
-				name: 'nome3 db',
+				name: 'nome3_db',
 				type: 'String'
 			},
 		],
