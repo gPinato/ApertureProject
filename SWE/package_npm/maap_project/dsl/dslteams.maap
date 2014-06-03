@@ -1,0 +1,67 @@
+collection = {
+	label: 'Squadre',
+	name: 'teams',
+	position: 3, //posizione nel menu, default -1
+	
+	index : {
+		//populate: ['col1','col2'],
+		//perpage: 20,
+		sortby: 'name',
+		order: 'asc',
+		column : [
+			{
+				label: 'NomeSquadra',
+				name: 'name',
+				type: 'String'
+			},
+			{	
+				label: 'NumeroGiocatori',
+				name: 'number_players',
+				type: 'Number, min: 23, max:35'
+			}
+		]
+		/*query: [
+		
+			{age: '$lt: 20'},
+			{jkmerda: '$gt: 50'}
+		]*/
+	}, //end index page
+	
+	show : {
+		row : [
+			{
+				label: 'NomeSquadra',
+				name: 'name',
+				type: 'String'
+			},
+			{	
+				label: 'NumeroGiocatori',
+				name: 'number_players',
+				type: 'Number, min: 23, max:35'
+			},
+			{	
+				label: 'NomeAllenatore',
+				name: 'coach.name',
+				type: 'String'
+			},
+			{	
+				label: 'CognomeAllenatore',
+				name: 'coach.surname,
+				type: 'String'
+			},
+			{	
+				label: 'EmailAllenatore',
+				name: 'coach.email,
+				type: 'String'
+			},
+			{	
+				label: 'EtaAllenatore',
+				name: 'coach.age,
+				type: 'Number, min: 18, max:70'
+			}
+		]
+	} //end show page
+	
+} //end collection	
+
+exports.collection = collection;

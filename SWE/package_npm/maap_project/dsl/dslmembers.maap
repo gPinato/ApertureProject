@@ -1,0 +1,78 @@
+collection = {
+	label: 'Membri',
+	name: 'members',
+	position: 3, //posizione nel menu, default -1
+	
+	index : {
+		//populate: ['col1','col2'],
+		//perpage: 20,
+		sortby: 'age',
+		order: 'asc',
+		column : [
+			{
+				label: 'NomeMembro',
+				name: 'name',
+				type: 'String'
+			},
+			{	
+				label: 'CognomeMembro',
+				name: 'surname',
+				type: 'String'
+			},
+			{	
+				label: 'emailMembro',
+				name: 'email',
+				type: 'String'
+			},
+			{	
+				label: 'etaMembro',
+				name: 'age',
+				type: 'Number, min: 18, max:35'
+			}
+		]
+		/*query: [
+		
+			{age: '$lt: 20'},
+			{jkmerda: '$gt: 50'}
+		]*/
+	}, //end index page
+	
+	show : {
+		row : [
+			{
+				label: 'NomeMembro',
+				name: 'name',
+				type: 'String'
+			},
+			{	
+				label: 'CognomeMembro',
+				name: 'surname',
+				type: 'String'
+			},
+			{	
+				label: 'emailMembro',
+				name: 'email',
+				type: 'String'
+			},
+			{	
+				label: 'etaMembro',
+				name: 'age',
+				type: 'Number, min: 18, max:35'
+			},
+			{	
+				label: 'InteressiMembro',
+				name: 'interest',
+				transformation: 'function interessi(interest) {\
+					var result=""; \
+					for(var i=0;i<interest.length;i++){ \
+						result+=interest[i]+", "; \
+					} \
+					return result;\
+				}'
+			}
+		]
+	} //end show page
+	
+} //end collection	
+
+exports.collection = collection;

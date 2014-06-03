@@ -94,7 +94,7 @@ collection = {
 					return "helloShow";			\
 				}'
 			}		
-		],
+		]
 	} //end show page
 	
 } //end collection	

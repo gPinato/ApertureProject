@@ -1,0 +1,9 @@
+{ "_id" : "509c35dd8fada716c89d0013", "nome" : "Pasta", "prezzo" : 1.50, "posizione" : { "reparto" : "Alimentari", "scaffale" : 3, "colonna" : 5}, "offerta" : "si" }
+{ "_id" : "509c35dd8fada716c89d0014", "nome" : "Riso", "prezzo" : 2.50, "posizione" : { "reparto" : "Alimentari", "scaffale" : 2, "colonna" : 5}, "offerta" : "si"}
+{ "_id" : "509c35dd8fada716c89d0015", "nome" : "Latte", "prezzo" : 0.50, "posizione" : { "reparto" : "Frigo", "scaffale" : 5, "colonna" : 1}, "offerta" : "no" }
+{ "_id" : "509c35dd8fada716c89d0016", "nome" : "Gelato", "prezzo" : 1.50, "posizione" : { "reparto" : "Surgelati", "scaffale" : 3, "colonna" : 5}, "offerta" : "no" }
+{ "_id" : "509c35dd8fada716c89d0017", "nome" : "Pizza", "prezzo" : 1.50, "posizione" : { "reparto" : "Surgelati", "scaffale" : 1, "colonna" : 1}, "offerta" : "si" }
+{ "_id" : "509c35dd8fada716c89d0018", "nome" : "Acqua", "prezzo" : 0.50, "posizione" : { "reparto" : "Bibite", "scaffale" : 1, "colonna" : 6}, "offerta" : "si" }
+{ "_id" : "509c35dd8fada716c89d0019", "nome" : "Birra", "prezzo" : 1.20, "posizione" : { "reparto" : "Bibite", "scaffale" : 1, "colonna" : 5}, "offerta" : "no" }
+
+

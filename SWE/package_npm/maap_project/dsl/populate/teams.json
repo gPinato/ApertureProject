@@ -1,0 +1,4 @@
+{ "_id" : "507c35dd8fada716c89d0013", "name" : "Milan", "number_players": 30, coach: { name: "Filippo", surname:"Inzaghi", email: "filippo@inzaghi.com",age: 37 } }
+{ "_id" : "507c35dd8fada716c89d0014", "name" : "Inter", "number_players": 32, coach: { name: "Walter", surname:"Mazzarri", email: "walter@mazzarri.com",age: 45 } }
+{ "_id" : "507c35dd8fada716c89d0015", "name" : "Padova", "number_players": 25, coach: { name: "Michele", surname:"Serena", email: "michele@serena.com",age: 44 } }
+{ "_id" : "507c35dd8fada716c89d0016", "name" : "Juventus", "number_players": 30, coach: { name: "Antonio", surname:"Conte", email: "antonio@conte.com",age: 42 } }
