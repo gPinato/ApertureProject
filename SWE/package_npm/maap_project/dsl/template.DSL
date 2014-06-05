@@ -6,8 +6,8 @@ collection = {
 	position: 3, //posizione nel menu, default -1
 	
 	index : {
-		populate: ['col1','col2'],
-		//perpage: 20,
+		populate: [{collection: 'nome_collection', key: 'chiave_document'}],
+		perpage: 20,
 		sortby: 'age',
 		order: 'asc',
 		column : [

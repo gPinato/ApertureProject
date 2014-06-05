@@ -4,48 +4,43 @@ collection = {
 	position: 3, //posizione nel menu, default -1
 	
 	index : {
-		//populate: ['col1','col2'],
 		perpage: 20,
-		sortby: 'name',
+		sortby: 'nome',
 		order: 'asc',
 		column : [
 			{
-				label: 'NomeProdotto',
+				label: 'Nome Prodotto',
 				name: 'nome',
 				type: 'String'
 			},
 			{	
-				label: 'PrezzoProdotto',
+				label: 'Prezzo Prodotto',
 				name: 'prezzo',
 				type: 'Number, min: 0.01, max:350'
 			},
 			{	
-				label: 'ProdottoOfferta',
+				label: 'Prodotto Offerta',
 				name: 'offerta',
 				type: 'String'
 			}
 		]
-		/*query: [
-		
-			{age: '$lt: 20'},
-			{jkmerda: '$gt: 50'}
-		]*/
 	}, //end index page
 	
 	show : {
+		populate: [{collection: 'positions', key: 'posizione'}],
 		row : [
 			{
-				label: 'NomeProdotto',
+				label: 'Nome Prodotto',
 				name: 'nome',
 				type: 'String'
 			},
 			{	
-				label: 'PrezzoProdotto',
+				label: 'Prezzo Prodotto',
 				name: 'prezzo',
 				type: 'Number, min: 0.01, max:350'
 			},
 			{	
-				label: 'ProdottoOfferta',
+				label: 'Prodotto Offerta',
 				name: 'offerta',
 				type: 'String'
 			},

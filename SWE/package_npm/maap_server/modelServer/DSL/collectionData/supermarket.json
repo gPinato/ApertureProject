@@ -5,23 +5,23 @@
 		"position": 3,
 		"index": {
 			"perpage": 20,
-			"sortby": "name",
+			"sortby": "nome",
 			"order": "asc",
 			"column": [
 				{
-					"label": "NomeProdotto",
+					"label": "Nome Prodotto",
 					"name": "nome",
 					"type": "String",
 					"transformation": null
 				},
 				{
-					"label": "PrezzoProdotto",
+					"label": "Prezzo Prodotto",
 					"name": "prezzo",
 					"type": "Number, min: 0.01, max:350",
 					"transformation": null
 				},
 				{
-					"label": "ProdottoOfferta",
+					"label": "Prodotto Offerta",
 					"name": "offerta",
 					"type": "String",
 					"transformation": null
@@ -30,21 +30,27 @@
 			"query": null
 		},
 		"show": {
+			"populate": [
+				{
+					"collection": "positions",
+					"key": "posizione"
+				}
+			],
 			"row": [
 				{
-					"label": "NomeProdotto",
+					"label": "Nome Prodotto",
 					"name": "nome",
 					"type": "String",
 					"transformation": null
 				},
 				{
-					"label": "PrezzoProdotto",
+					"label": "Prezzo Prodotto",
 					"name": "prezzo",
 					"type": "Number, min: 0.01, max:350",
 					"transformation": null
 				},
 				{
-					"label": "ProdottoOfferta",
+					"label": "Prodotto Offerta",
 					"name": "offerta",
 					"type": "String",
 					"transformation": null

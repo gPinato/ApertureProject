@@ -10,22 +10,22 @@ collection = {
 		order: 'asc',
 		column : [
 			{
-				label: 'NomeMembro',
+				label: 'Nome',
 				name: 'name',
 				type: 'String'
 			},
 			{	
-				label: 'CognomeMembro',
+				label: 'Cognome',
 				name: 'surname',
 				type: 'String'
 			},
 			{	
-				label: 'emailMembro',
+				label: 'email',
 				name: 'email',
 				type: 'String'
 			},
 			{	
-				label: 'etaMembro',
+				label: 'eta',
 				name: 'age',
 				type: 'Number, min: 18, max:35'
 			}
@@ -40,27 +40,27 @@ collection = {
 	show : {
 		row : [
 			{
-				label: 'NomeMembro',
+				label: 'Nome',
 				name: 'name',
 				type: 'String'
 			},
 			{	
-				label: 'CognomeMembro',
+				label: 'Cognome',
 				name: 'surname',
 				type: 'String'
 			},
 			{	
-				label: 'emailMembro',
+				label: 'email',
 				name: 'email',
 				type: 'String'
 			},
 			{	
-				label: 'etaMembro',
+				label: 'eta',
 				name: 'age',
 				type: 'Number, min: 18, max:35'
 			},
 			{	
-				label: 'InteressiMembro',
+				label: 'Interessi',
 				name: 'interest',
 				type: '[String]',
 				transformation: 'function interessi(interest){ \

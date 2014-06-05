@@ -9,25 +9,25 @@
 			"order": "asc",
 			"column": [
 				{
-					"label": "NomeMembro",
+					"label": "Nome",
 					"name": "name",
 					"type": "String",
 					"transformation": null
 				},
 				{
-					"label": "CognomeMembro",
+					"label": "Cognome",
 					"name": "surname",
 					"type": "String",
 					"transformation": null
 				},
 				{
-					"label": "emailMembro",
+					"label": "email",
 					"name": "email",
 					"type": "String",
 					"transformation": null
 				},
 				{
-					"label": "etaMembro",
+					"label": "eta",
 					"name": "age",
 					"type": "Number, min: 18, max:35",
 					"transformation": null
@@ -38,31 +38,31 @@
 		"show": {
 			"row": [
 				{
-					"label": "NomeMembro",
+					"label": "Nome",
 					"name": "name",
 					"type": "String",
 					"transformation": null
 				},
 				{
-					"label": "CognomeMembro",
+					"label": "Cognome",
 					"name": "surname",
 					"type": "String",
 					"transformation": null
 				},
 				{
-					"label": "emailMembro",
+					"label": "email",
 					"name": "email",
 					"type": "String",
 					"transformation": null
 				},
 				{
-					"label": "etaMembro",
+					"label": "eta",
 					"name": "age",
 					"type": "Number, min: 18, max:35",
 					"transformation": null
 				},
 				{
-					"label": "InteressiMembro",
+					"label": "Interessi",
 					"name": "interest",
 					"type": "[String]",
 					"transformation": "function interessi(interest){ \t\t\t\t\tvar result = \"\"; \t\t\t\t\tfor(var i=0; i<interest.length; i++){ \t\t\t\t\t\tresult += interest[i] + \", \";\t\t\t\t\t}\t\t\t\t\treturn result;\t\t\t\t}"

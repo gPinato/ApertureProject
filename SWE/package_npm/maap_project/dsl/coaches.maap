@@ -9,12 +9,12 @@ collection = {
 		order: 'asc',
 		column : [
 			{
-				label: 'NomeAllenatore',
+				label: 'Nome',
 				name: 'name',
 				type: 'String'
 			},
 			{	
-				label: 'CognomeAllenatore',
+				label: 'Cognome',
 				name: 'surname',
 				type: 'String'
 			}
@@ -29,22 +29,22 @@ collection = {
 	show : {
 		row : [
 			{
-				label: 'NomeAllenatore',
+				label: 'Nome',
 				name: 'name',
 				type: 'String'
 			},
 			{	
-				label: 'CognomeAllenatore',
+				label: 'Cognome',
 				name: 'surname',
 				type: 'String'
 			},
 			{	
-				label: 'EmailAllenatore',
+				label: 'Email',
 				name: 'email',
 				type: 'String'
 			},
 			{	
-				label: 'EtaAllenatore',
+				label: 'Eta',
 				name: 'age',
 				type: 'Number, min: 18, max:70'
 			}

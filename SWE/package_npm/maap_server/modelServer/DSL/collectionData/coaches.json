@@ -9,13 +9,13 @@
 			"order": "asc",
 			"column": [
 				{
-					"label": "NomeAllenatore",
+					"label": "Nome",
 					"name": "name",
 					"type": "String",
 					"transformation": null
 				},
 				{
-					"label": "CognomeAllenatore",
+					"label": "Cognome",
 					"name": "surname",
 					"type": "String",
 					"transformation": null
@@ -26,25 +26,25 @@
 		"show": {
 			"row": [
 				{
-					"label": "NomeAllenatore",
+					"label": "Nome",
 					"name": "name",
 					"type": "String",
 					"transformation": null
 				},
 				{
-					"label": "CognomeAllenatore",
+					"label": "Cognome",
 					"name": "surname",
 					"type": "String",
 					"transformation": null
 				},
 				{
-					"label": "EmailAllenatore",
+					"label": "Email",
 					"name": "email",
 					"type": "String",
 					"transformation": null
 				},
 				{
-					"label": "EtaAllenatore",
+					"label": "Eta",
 					"name": "age",
 					"type": "Number, min: 18, max:70",
 					"transformation": null

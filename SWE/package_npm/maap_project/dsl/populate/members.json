@@ -1,7 +1,7 @@
-{ "_id" : "508c35dd8fada716c89d0013", "name" : "Alberto", "surname" : "Garbui", "age": 25, email:"alberto.garbui@gmail.com", "interest": [ "Elettronica", "Bricolage"] }
-{ "_id" : "508c35dd8fada716c89d0014", "name" : "Andrea", "surname" : "Perin", "age": 24, email:"andrea.perin@gmail.com", "interest": [ "Computer"] }
-{ "_id" : "508c35dd8fada716c89d0015", "name" : "Alessandro", "surname" : "Benetti", "age": 30, email:"alessandro.benetti@gmail.com", "interest": [ "Norvegia", "Ingegneria del Software"] }
-{ "_id" : "508c35dd8fada716c89d0016", "name" : "Fabio", "surname" : "Miotto", "age": 23, email:"fabio.miotto@gmail.com", "interest": [ "Calcio", "JK"] }
-{ "_id" : "508c35dd8fada716c89d0017", "name" : "Giacomo", "surname" : "Pinato", "age": 23, email:"giacomo.pinato@gmail.com", "interest": [ "Musica"] }
-{ "_id" : "508c35dd8fada716c89d0018", "name" : "Mattia", "surname" : "Sorgato", "age": 23, email:"mattia.sorgato@gmail.com", "interest": [ "Giochi", "Manga"] }
-{ "_id" : "508c35dd8fada716c89d0019", "name" : "Michele", "surname" : "Maso", "age": 23, email:"michele.maso@gmail.com", "interest": [ "Soccer", "JK"] }
+{ "_id" : { "$oid" : "508c35dd8fada716c89d0013"}, "name" : "Alberto", "surname" : "Garbui", "age": 25, email:"alberto.garbui@gmail.com", "interest": [ "Elettronica", "Bricolage"] }
+{ "_id" : { "$oid" : "508c35dd8fada716c89d0014"}, "name" : "Andrea", "surname" : "Perin", "age": 24, email:"andrea.perin@gmail.com", "interest": [ "Computer"] }
+{ "_id" : { "$oid" : "508c35dd8fada716c89d0015"}, "name" : "Alessandro", "surname" : "Benetti", "age": 30, email:"alessandro.benetti@gmail.com", "interest": [ "Norvegia", "Ingegneria del Software"] }
+{ "_id" : { "$oid" : "508c35dd8fada716c89d0016"}, "name" : "Fabio", "surname" : "Miotto", "age": 23, email:"fabio.miotto@gmail.com", "interest": [ "Calcio", "JK"] }
+{ "_id" : { "$oid" : "508c35dd8fada716c89d0017"}, "name" : "Giacomo", "surname" : "Pinato", "age": 23, email:"giacomo.pinato@gmail.com", "interest": [ "Musica"] }
+{ "_id" : { "$oid" : "508c35dd8fada716c89d0018"}, "name" : "Mattia", "surname" : "Sorgato", "age": 23, email:"mattia.sorgato@gmail.com", "interest": [ "Giochi", "Manga"] }
+{ "_id" : { "$oid" : "508c35dd8fada716c89d0019"}, "name" : "Michele", "surname" : "Maso", "age": 23, email:"michele.maso@gmail.com", "interest": [ "Soccer", "JK"] }

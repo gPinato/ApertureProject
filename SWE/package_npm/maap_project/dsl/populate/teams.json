@@ -1,4 +1,4 @@
-{ "_id" : "507c35dd8fada716c89d0013", "name" : "Milan", "number_players": 30, "coach_id" : { "$oid" :"107c35dd8fada716c89d0013"}}
-{ "_id" : "507c35dd8fada716c89d0014", "name" : "Inter", "number_players": 32, "coach_id" : { "$oid" :"107c35dd8fada716c89d0014"}}
-{ "_id" : "507c35dd8fada716c89d0015", "name" : "Padova", "number_players": 25, "coach_id" : { "$oid" :"107c35dd8fada716c89d0015"}}
-{ "_id" : "507c35dd8fada716c89d0016", "name" : "Juventus", "number_players": 30, "coach_id" : { "$oid" :"107c35dd8fada716c89d0016"}}
+{ "_id" : { "$oid" : "507c35dd8fada716c89d0013"}, "name" : "Milan", "number_players": 30, "coach" : { "$oid" :"107c35dd8fada716c89d0013"}}
+{ "_id" : { "$oid" : "507c35dd8fada716c89d0014"}, "name" : "Inter", "number_players": 32, "coach" : { "$oid" :"107c35dd8fada716c89d0014"}}
+{ "_id" : { "$oid" : "507c35dd8fada716c89d0015"}, "name" : "Padova", "number_players": 25, "coach" : { "$oid" :"107c35dd8fada716c89d0015"}}
+{ "_id" : { "$oid" : "507c35dd8fada716c89d0016"}, "name" : "Juventus", "number_players": 30, "coach" : { "$oid" :"107c35dd8fada716c89d0016"}}

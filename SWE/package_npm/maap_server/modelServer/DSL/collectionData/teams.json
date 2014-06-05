@@ -7,7 +7,7 @@
 			"populate": [
 				{
 					"collection": "coaches",
-					"key": "coach_id"
+					"key": "coach"
 				}
 			],
 			"perpage": 2,
@@ -15,20 +15,20 @@
 			"order": "asc",
 			"column": [
 				{
-					"label": "NomeSquadra",
+					"label": "Nome Squadra",
 					"name": "name",
 					"type": "String",
 					"transformation": null
 				},
 				{
-					"label": "NumeroGiocatori",
+					"label": "Numero Giocatori",
 					"name": "number_players",
 					"type": "Number, min: 23, max:35",
 					"transformation": null
 				},
 				{
-					"label": "NomeAllenatore",
-					"name": "coach_id.name",
+					"label": "Nome Allenatore",
+					"name": "coach.name",
 					"type": "String",
 					"transformation": null
 				}
@@ -39,43 +39,43 @@
 			"populate": [
 				{
 					"collection": "coaches",
-					"key": "coach_id"
+					"key": "coach"
 				}
 			],
 			"row": [
 				{
-					"label": "NomeSquadra",
+					"label": "Nome Squadra",
 					"name": "name",
 					"type": "String",
 					"transformation": null
 				},
 				{
-					"label": "NumeroGiocatori",
+					"label": "Numero Giocatori",
 					"name": "number_players",
 					"type": "Number, min: 23, max:35",
 					"transformation": null
 				},
 				{
-					"label": "NomeAllenatore",
-					"name": "coach_id.name",
+					"label": "Nome Allenatore",
+					"name": "coach.name",
 					"type": "String",
 					"transformation": null
 				},
 				{
-					"label": "CognomeAllenatore",
-					"name": "coach_id.surname",
+					"label": "Cognome Allenatore",
+					"name": "coach.surname",
 					"type": "String",
 					"transformation": null
 				},
 				{
-					"label": "EmailAllenatore",
-					"name": "coach_id.email",
+					"label": "Email Allenatore",
+					"name": "coach.email",
 					"type": "String",
 					"transformation": null
 				},
 				{
-					"label": "EtaAllenatore",
-					"name": "coach_id.age",
+					"label": "Eta Allenatore",
+					"name": "coach.age",
 					"type": "Number, min: 18, max:70",
 					"transformation": null
 				}

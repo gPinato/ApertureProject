@@ -4,24 +4,24 @@ collection = {
 	position: 3, //posizione nel menu, default -1
 	
 	index : {
-		populate: [{collection: 'coaches', key: 'coach_id'}],
+		populate: [{collection: 'coaches', key: 'coach'}],
 		perpage: 2,
 		sortby: 'name',
 		order: 'asc',
 		column : [
 			{
-				label: 'NomeSquadra',
+				label: 'Nome Squadra',
 				name: 'name',
 				type: 'String'
 			},
 			{	
-				label: 'NumeroGiocatori',
+				label: 'Numero Giocatori',
 				name: 'number_players',
 				type: 'Number, min: 23, max:35'
 			},
 			{	
-				label: 'NomeAllenatore',
-				name: 'coach_id.name',
+				label: 'Nome Allenatore',
+				name: 'coach.name',
 				type: 'String'
 			}
 		]
@@ -33,36 +33,36 @@ collection = {
 	}, //end index page
 	
 	show : {
-		populate: [{collection: 'coaches', key: 'coach_id'}],
+		populate: [{collection: 'coaches', key: 'coach'}],
 		row : [
 			{
-				label: 'NomeSquadra',
+				label: 'Nome Squadra',
 				name: 'name',
 				type: 'String'
 			},
 			{	
-				label: 'NumeroGiocatori',
+				label: 'Numero Giocatori',
 				name: 'number_players',
 				type: 'Number, min: 23, max:35'
 			},
 			{	
-				label: 'NomeAllenatore',
-				name: 'coach_id.name',
+				label: 'Nome Allenatore',
+				name: 'coach.name',
 				type: 'String'
 			},
 			{	
-				label: 'CognomeAllenatore',
-				name: 'coach_id.surname',
+				label: 'Cognome Allenatore',
+				name: 'coach.surname',
 				type: 'String'
 			},
 			{	
-				label: 'EmailAllenatore',
-				name: 'coach_id.email',
+				label: 'Email Allenatore',
+				name: 'coach.email',
 				type: 'String'
 			},
 			{	
-				label: 'EtaAllenatore',
-				name: 'coach_id.age',
+				label: 'Eta Allenatore',
+				name: 'coach.age',
 				type: 'Number, min: 18, max:70'
 			}
 		]

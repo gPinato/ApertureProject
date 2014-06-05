@@ -65,7 +65,7 @@ exports.generate = function(dslJson) {
 				var composed_collection = getPopulatedCollection(collection.index.populate, name[0]);
 				
 				//controllo se è gia presente un file schema per quella collection
-				var composed_schema = require('./collectionData/' + composed_collection + '_schema.js');
+				/*var composed_schema = require('./collectionData/' + composed_collection + '_schema.js');
 				if(composed_schema != undefined)
 				{
 					//lo schema è già stato definito, quindi controllo e nel caso aggiungo 
@@ -74,7 +74,7 @@ exports.generate = function(dslJson) {
 				}else{
 					//lo schema NON è stato definito, quindi lo creo exnovo
 					
-				}
+				}*/
 			}	
 			
 			schemaElements = arrayAddElement({key: name[0], value: type}, schemaElements);
@@ -100,10 +100,10 @@ exports.generate = function(dslJson) {
 				//ora però devo aggiungere/creare lo schema del nome composto
 				var composed_name = name[1];
 				var composed_type = showRows[i].type;
-				var composed_collection = getPopulatedCollection(collection.index.populate, name[0]);
+				var composed_collection = getPopulatedCollection(collection.show.populate, name[0]);
 				
 				//controllo se è gia presente un file schema per quella collection
-				var composed_schema = require('./collectionData/' + composed_collection + '_schema.js');
+				/*var composed_schema = require('./collectionData/' + composed_collection + '_schema.js');
 				if(composed_schema != undefined)
 				{
 					//lo schema è già stato definito, quindi controllo e nel caso aggiungo 
@@ -112,7 +112,7 @@ exports.generate = function(dslJson) {
 				}else{
 					//lo schema NON è stato definito, quindi lo creo exnovo
 					
-				}
+				}*/
 			}	
 			
 			schemaElements = arrayAddElement({key: name[0], value: type}, schemaElements);
