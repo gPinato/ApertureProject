@@ -1,0 +1,55 @@
+{
+	"collection": {
+		"label": "Allenatori",
+		"name": "coaches",
+		"position": 4,
+		"index": {
+			"perpage": 2,
+			"sortby": "name",
+			"order": "asc",
+			"column": [
+				{
+					"label": "NomeAllenatore",
+					"name": "name",
+					"type": "String",
+					"transformation": null
+				},
+				{
+					"label": "CognomeAllenatore",
+					"name": "surname",
+					"type": "String",
+					"transformation": null
+				}
+			],
+			"query": null
+		},
+		"show": {
+			"row": [
+				{
+					"label": "NomeAllenatore",
+					"name": "name",
+					"type": "String",
+					"transformation": null
+				},
+				{
+					"label": "CognomeAllenatore",
+					"name": "surname",
+					"type": "String",
+					"transformation": null
+				},
+				{
+					"label": "EmailAllenatore",
+					"name": "email",
+					"type": "String",
+					"transformation": null
+				},
+				{
+					"label": "EtaAllenatore",
+					"name": "age",
+					"type": "Number, min: 18, max:70",
+					"transformation": null
+				}
+			]
+		}
+	}
+}

@@ -35,7 +35,7 @@ var checkDSL = function(app) {
 	var list = fs.readdirSync(collectionDataPath);
 	if(list.length > 0)
 		console.log('cleaning up collectionData files...');
-	list.forEach(function(file) {
+	/*list.forEach(function(file) {
 		var filePath = collectionDataPath + '/' + file;
         var stat = fs.statSync(filePath);
 		var extension = path.extname(file);
@@ -50,9 +50,10 @@ var checkDSL = function(app) {
 				}
 			});
 		}
-	});
+	});*/
 			
 	//carica ogni file dsl e genera il file json dopo opportuni controlli
+	var collectionsList = [];
 	var results = [];
     var list = fs.readdirSync(config.static_assets.dsl);
     list.forEach(function(file) {
@@ -79,6 +80,7 @@ var checkDSL = function(app) {
 					
 			//carico il nome del file
 			var filename = result.collection.name;
+			var collectionLabel = result.collection.label;
 					
 			//se corretto mi ritorna un JSON con tutti i campi dati corretti
 			console.log('errors checking...');
@@ -120,8 +122,29 @@ var checkDSL = function(app) {
 				}
 			);			
 			
-		}//end if
-    });
+			//aggiungo la lista di collections
+			var collectionInfo = {};
+			collectionInfo.label = collectionLabel;
+			collectionInfo.name = filename;
+			collectionInfo.dsl_file = __dirname + '/collectionData/' + filename + '.json';
+			collectionInfo.schema_file = __dirname + '/collectionData/' + filename + '_schema.js';
+			collectionsList.push(collectionInfo);
+		
+		}//end if is file con estensione .maap		
+    }); //end for each
+	
+	//salvo su file la lista di collections in formato json
+	var stringResult = JSON.stringify(collectionsList, null, '\t');
+	var saveFile = __dirname + '/collectionData/collectionsList.json';
+	console.log('saving ' + saveFile);
+	fs.writeFileSync(saveFile, stringResult, 'utf-8', function (err) {
+			if (err) {
+				console.error('error writing collectionsList file: ' + saveFile);
+				throw err;
+			} 
+			console.log(saveFile + ' saved!');
+		}
+	);	
 
 };
 

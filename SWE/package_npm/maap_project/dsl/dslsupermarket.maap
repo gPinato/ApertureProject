@@ -5,7 +5,7 @@ collection = {
 	
 	index : {
 		//populate: ['col1','col2'],
-		//perpage: 20,
+		perpage: 20,
 		sortby: 'name',
 		order: 'asc',
 		column : [
@@ -51,17 +51,17 @@ collection = {
 			},
 			{	
 				label: 'Reparto',
-				name: 'posizione.reparto,
+				name: 'posizione.reparto',
 				type: 'Number, min: 1, max:10'
 			},
 			{	
 				label: 'Scaffale',
-				name: 'posizione.scaffale,
+				name: 'posizione.scaffale',
 				type: 'Number, min: 1, max:100'
 			},
 			{	
 				label: 'Colonna',
-				name: 'posizione.colonna,
+				name: 'posizione.colonna',
 				type: 'Number, min: 18, max:70'
 			}
 		]

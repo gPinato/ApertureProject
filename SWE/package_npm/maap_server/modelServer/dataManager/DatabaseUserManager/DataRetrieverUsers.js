@@ -13,3 +13,18 @@
  ==============================================
  */
 'use strict';
+
+var DB = require('../../Database/MongooseDBFramework');
+
+exports.getUsersList = function(callback) {
+
+	DB.users.find({}, '_id email password' ,function(err,users){
+		if(err) { console.log('errore lettura users!'); return done(err); }
+		if(!users){
+			console.log('nessun utente presente');
+		}else{
+			callback(users);
+		}	
+	});
+	
+}

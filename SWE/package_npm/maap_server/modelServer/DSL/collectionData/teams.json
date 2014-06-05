@@ -1,0 +1,85 @@
+{
+	"collection": {
+		"label": "Squadre",
+		"name": "teams",
+		"position": 3,
+		"index": {
+			"populate": [
+				{
+					"collection": "coaches",
+					"key": "coach_id"
+				}
+			],
+			"perpage": 2,
+			"sortby": "name",
+			"order": "asc",
+			"column": [
+				{
+					"label": "NomeSquadra",
+					"name": "name",
+					"type": "String",
+					"transformation": null
+				},
+				{
+					"label": "NumeroGiocatori",
+					"name": "number_players",
+					"type": "Number, min: 23, max:35",
+					"transformation": null
+				},
+				{
+					"label": "NomeAllenatore",
+					"name": "coach_id.name",
+					"type": "String",
+					"transformation": null
+				}
+			],
+			"query": null
+		},
+		"show": {
+			"populate": [
+				{
+					"collection": "coaches",
+					"key": "coach_id"
+				}
+			],
+			"row": [
+				{
+					"label": "NomeSquadra",
+					"name": "name",
+					"type": "String",
+					"transformation": null
+				},
+				{
+					"label": "NumeroGiocatori",
+					"name": "number_players",
+					"type": "Number, min: 23, max:35",
+					"transformation": null
+				},
+				{
+					"label": "NomeAllenatore",
+					"name": "coach_id.name",
+					"type": "String",
+					"transformation": null
+				},
+				{
+					"label": "CognomeAllenatore",
+					"name": "coach_id.surname",
+					"type": "String",
+					"transformation": null
+				},
+				{
+					"label": "EmailAllenatore",
+					"name": "coach_id.email",
+					"type": "String",
+					"transformation": null
+				},
+				{
+					"label": "EtaAllenatore",
+					"name": "coach_id.age",
+					"type": "Number, min: 18, max:70",
+					"transformation": null
+				}
+			]
+		}
+	}
+}

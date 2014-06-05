@@ -52,17 +52,17 @@ collection = {
 			},
 			{	
 				label: 'CognomeAllenatore',
-				name: 'coach_id.surname,
+				name: 'coach_id.surname',
 				type: 'String'
 			},
 			{	
 				label: 'EmailAllenatore',
-				name: 'coach_id.email,
+				name: 'coach_id.email',
 				type: 'String'
 			},
 			{	
 				label: 'EtaAllenatore',
-				name: 'coach_id.age,
+				name: 'coach_id.age',
 				type: 'Number, min: 18, max:70'
 			}
 		]

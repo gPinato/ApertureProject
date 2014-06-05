@@ -1,0 +1,73 @@
+{
+	"collection": {
+		"label": "Membri",
+		"name": "members",
+		"position": 3,
+		"index": {
+			"perpage": 20,
+			"sortby": "age",
+			"order": "asc",
+			"column": [
+				{
+					"label": "NomeMembro",
+					"name": "name",
+					"type": "String",
+					"transformation": null
+				},
+				{
+					"label": "CognomeMembro",
+					"name": "surname",
+					"type": "String",
+					"transformation": null
+				},
+				{
+					"label": "emailMembro",
+					"name": "email",
+					"type": "String",
+					"transformation": null
+				},
+				{
+					"label": "etaMembro",
+					"name": "age",
+					"type": "Number, min: 18, max:35",
+					"transformation": null
+				}
+			],
+			"query": null
+		},
+		"show": {
+			"row": [
+				{
+					"label": "NomeMembro",
+					"name": "name",
+					"type": "String",
+					"transformation": null
+				},
+				{
+					"label": "CognomeMembro",
+					"name": "surname",
+					"type": "String",
+					"transformation": null
+				},
+				{
+					"label": "emailMembro",
+					"name": "email",
+					"type": "String",
+					"transformation": null
+				},
+				{
+					"label": "etaMembro",
+					"name": "age",
+					"type": "Number, min: 18, max:35",
+					"transformation": null
+				},
+				{
+					"label": "InteressiMembro",
+					"name": "interest",
+					"type": "[String]",
+					"transformation": "function interessi(interest){ \t\t\t\t\tvar result = \"\"; \t\t\t\t\tfor(var i=0; i<interest.length; i++){ \t\t\t\t\t\tresult += interest[i] + \", \";\t\t\t\t\t}\t\t\t\t\treturn result;\t\t\t\t}"
+				}
+			]
+		}
+	}
+}

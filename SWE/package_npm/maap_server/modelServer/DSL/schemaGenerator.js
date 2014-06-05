@@ -1,10 +1,10 @@
 /**
- * File: DSLManager.js
+ * File: schemaGenerator.js
  * Module: maap_server::modelServer::DSL
  * Author: Alberto Garbui
  * Created: 01/06/14
  * Version: 0.1
- * Description: gestione file dsl
+ * Description: generatore di schemi per mongoose
  * Modification History:
  ==============================================
  * Version | Changes
@@ -14,40 +14,72 @@
  */
 'use strict';
 
-//qui per lo stesso file viene generato lo schema per mongoose
-			
-/* ESEMPIO DI SCHEMA:
-var mongoose = require('mongoose');
-exports.schema = new mongoose.Schema({
-	email: { 
-			type: String, 
-	},
-	password: {
-		type: String
+var getPopulatedCollection = function(populateArray, key) {
+
+	for(var i=0; i<populateArray.length; i++) 
+	{
+		if(populateArray[i].key == key)
+			return populateArray[i].collection;
 	}
-});
-*/
+	return '';
+}
+
+var arrayAddElement = function(element, array) {
+	var trovato = false;
+	for(var i=0; i<array.length; i++)
+	{
+		if(array[i].key == element.key)
+			trovato = true;
+	}
+	if(!trovato)
+	{
+		array.push(element);
+	}
+	return array;
+}
 
 exports.generate = function(dslJson) {
 	
 	var collection = dslJson.collection;
 	
-	var schema = '//maaperture auto-generated mongoose schema:\n\n';
-	schema += 'var mongoose = require(\'mongoose\');\n\n';
-		
-	var indexColumns = collection.index.column;
+	//creo un array con coppie chiave/valore , scorro il DSL per trovare tutti i campi necessari
+	var schemaElements = [];
 	
+	var indexColumns = collection.index.column;
+		
 	if(indexColumns != undefined)
 	{
-		schema += 'exports.indexSchema = new mongoose.Schema({\n';
+		
 		for(var i=0; i<indexColumns.length; i++)
 		{
-			if(i != 0){schema += ',\n';}
-			var key = indexColumns[i].name;
+			var name = indexColumns[i].name.split('.');
 			var type = indexColumns[i].type;
-			schema += key + ': { type: ' + type + ' }';
-		}
-		schema += '\n});\n\n';
+			
+			if(name.length > 1 && collection.index.populate != undefined)	//nome composto con populate
+			{
+				type = 'ObjectId';	
+				
+				//ora però devo aggiungere/creare lo schema del nome composto
+				var composed_name = name[1];
+				var composed_type = indexColumns[i].type;
+				var composed_collection = getPopulatedCollection(collection.index.populate, name[0]);
+				
+				//controllo se è gia presente un file schema per quella collection
+				var composed_schema = require('./collectionData/' + composed_collection + '_schema.js');
+				if(composed_schema != undefined)
+				{
+					//lo schema è già stato definito, quindi controllo e nel caso aggiungo 
+					//l'elemento mancante
+					
+				}else{
+					//lo schema NON è stato definito, quindi lo creo exnovo
+					
+				}
+			}	
+			
+			schemaElements = arrayAddElement({key: name[0], value: type}, schemaElements);
+			
+		}//end for indexColumns
 	}
 	
 	
@@ -55,16 +87,52 @@ exports.generate = function(dslJson) {
 	
 	if(showRows != undefined)
 	{
-		schema += 'exports.showSchema = new mongoose.Schema({\n';
+		
 		for(var i=0; i<showRows.length; i++)
 		{
-			if(i != 0){schema += ',\n';}
-			var key = showRows[i].name;
+			var name = showRows[i].name.split('.');
 			var type = showRows[i].type;
-			schema += key + ': { type: ' + type + ' }';
-		}
-		schema += '\n});\n\n';
+			
+			if(name.length > 1 &&  collection.show.populate != undefined)	//nome composto con populate
+			{
+				type = 'ObjectId';	
+				
+				//ora però devo aggiungere/creare lo schema del nome composto
+				var composed_name = name[1];
+				var composed_type = showRows[i].type;
+				var composed_collection = getPopulatedCollection(collection.index.populate, name[0]);
+				
+				//controllo se è gia presente un file schema per quella collection
+				var composed_schema = require('./collectionData/' + composed_collection + '_schema.js');
+				if(composed_schema != undefined)
+				{
+					//lo schema è già stato definito, quindi controllo e nel caso aggiungo 
+					//l'elemento mancante
+					
+				}else{
+					//lo schema NON è stato definito, quindi lo creo exnovo
+					
+				}
+			}	
+			
+			schemaElements = arrayAddElement({key: name[0], value: type}, schemaElements);
+			
+		}//end for showRows
 	}
-
+	
+	//ora che schemaElements e' completo genero lo schema
+	var schema = '//maaperture auto-generated mongoose schema:\n\n';
+	schema += 'var mongoose = require(\'mongoose\');\n';	
+	schema += 'var ObjectId = mongoose.Schema.ObjectId;\n\n';
+	schema += 'exports.schema = new mongoose.Schema({\n';
+	for(var i=0; i<schemaElements.length; i++)
+	{
+		if(i != 0){schema += ',\n';}
+		var key = schemaElements[i].key;
+		var type = schemaElements[i].value;
+		schema += key + ': { type: ' + type + ' }';
+	}
+	schema += '\n});\n\n';
+	
 	return schema;
 }

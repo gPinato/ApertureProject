@@ -15,3 +15,18 @@
 'use strict';
 
 var retriever = require('./DataRetrieverUsers');
+
+//esempio richiesta lista di utenti registrati
+exports.userList  = function(req, res) {
+	var config = req.config;
+		
+	//NB. il recupero dei dati sul db è asincrono quindi uso una callback per eseguire
+	//il restante codice solamente quando ho la risposta dal db :)
+	retriever.getUsersList(function(users){
+	
+		console.log(users);
+	
+		//res.send(JSonComposer.createUsersList(users));
+			
+	});	
+}

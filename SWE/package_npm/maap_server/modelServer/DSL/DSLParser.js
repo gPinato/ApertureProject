@@ -129,11 +129,15 @@ var parseDSL = function(DSLstring) {
 		//if(intvalue)
 		
 		}//if
+		
 		var button=collection.index.button;
-		for(var i=0;i<button.length;i++){
-		         checkField(button[i],'name','button');
-				 functionbuttonindex[i]=collection.index.button[i].function;
+		if(button != undefined) {
+			for(var i=0;i<button.length;i++){
+					 checkField(button[i],'name','button');
+					 functionbuttonindex[i]=collection.index.button[i].function;
+			}
 		}
+		
 		if(checkField(collection.index,'perpage')){
 		
 		var a=IntValue(collection.index.perpage,'perpage');
@@ -147,17 +151,20 @@ var parseDSL = function(DSLstring) {
 	var show=DSLstring.collection;
 		if(checkField(collection,'show','collection'));
 	var button=collection.show.button;
+	if(button != undefined)
+	{
 		for(var i=0;i<button.length;i++){
 		         checkField(button[i],'name','button');
-				 functionbuttonshow[i]=collection.show.button[i].function;
+				 functionbuttonshow.push(collection.show.button[i].function);
 		}
+	}
 	if(checkField(collection.show,'row','show')){
 	    var row=collection.show.row;
 	    for(var i=0;i<row.length;i++){
 		         checkField(row[i],'name','column');
 				 if(collection.show.row[i].transformation===undefined){;}
 				 else{
-				 transformationshow[i]=collection.show.row[i].transformation;
+				 transformationshow.push(collection.show.row[i].transformation);
 				}//else
 		}//for
 	}
@@ -166,13 +173,15 @@ var parseDSL = function(DSLstring) {
 	var alltransformation=[];
 	alltransformation=transformationshow.concat(transformationindex);
 	var allfunctions=[];
-	allfunctions=functionbuttonshow.concat(functionbuttonindex);
+	if(button != undefined)
+	{
+		allfunctions=functionbuttonshow.concat(functionbuttonindex);
+	}
 	var all=[];
 	all=alltransformation.concat(allfunctions);//functionbuttonindex;//functionbuttonshow;
-	console.log('provo a controllare la correttezza della funzione javascript...');
+	console.log('testing javascript trasformation...');
 	for(var i=0;i<all.length;i++){
 	//tento il parsing del file javascript
-	console.log(all[i]);
 	
 	try {
 		var result = JSparser.parse(all[i]);
@@ -183,7 +192,6 @@ var parseDSL = function(DSLstring) {
 	}
 	}//for
 	
-	
 	addField(collection,'label');
 	addField(collection,'position');
 	addField(collection.index,'populate');
@@ -191,18 +199,18 @@ var parseDSL = function(DSLstring) {
 	addField(collection.index,'order');
 	addField(collection.index,'perpage');
 	if(collection.index.column!=undefined){
-	for(var i=0;i<collection.index.column.length;i++){
-	addField(collection.index.column[i],'label');
-	addField(collection.index.column[i],'transformation');
-	}
+		for(var i=0;i<collection.index.column.length;i++){
+			addField(collection.index.column[i],'label');
+			addField(collection.index.column[i],'transformation');
+		}
 	}
 	addField(collection.index,'column');
 	
 	if(collection.index.button!=undefined){
-	for(var i=0;i<collection.index.button.length;i++){
-	addField(collection.index.button[i],'label');
-	addField(collection.index.button[i],'function');
-	}
+		for(var i=0;i<collection.index.button.length;i++){
+			addField(collection.index.button[i],'label');
+			addField(collection.index.button[i],'function');
+		}
 	}
 	addField(collection.index,'button');
 	

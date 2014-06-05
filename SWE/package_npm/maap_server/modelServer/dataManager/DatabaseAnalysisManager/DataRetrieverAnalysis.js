@@ -15,37 +15,80 @@
 'use strict';
 
 //per ora uso DBframework..
-var DB = require('../../Database/MongooseDBFramework');
-//ma poi sara' da cambiare con MongooseDBAnalysis che contiene lo schema delle 
-//collections definite dal dsl 
+var DB = require('../../Database/MongooseDBAnalysis');
 
-exports.getDocumentsList = function(collection_name, column, order, page, callback) {
+var getModel = function(collection_name) {
+	var array = DB.model;
+	
+	for(var i=0; i<array.length; i++)
+	{
+		console.log(array[i].name);
+		if(array[i].name === collection_name)
+		{
+			return array[i].model;
+		}
+	}
+	return -1;
+}
 
-	DB.users.find({}, '_id email password' ,function(err,documents){
-		if(err) { console.log('errore lettura documents!'); return done(err); }
+var queryDB = function (model, where, select, orderbycolumn, typeorder, startskip, numberofrow, callback){
+	var options = {};
+	if(orderbycolumn != '' && typeorder != '')
+	{
+		var sort = {};
+		sort[orderbycolumn] = typeorder;
+		options.sort = sort;
+	}
+	if(numberofrow != '')
+	{
+		options.limit = numberofrow;
+	}
+	if(startskip != '')
+	{
+		options.skip = startskip;
+	}
+	model.find(where, select, options, function(err, documents){
+		if(err) { console.log('DataRetrieverAnalysis - query fallita!'); return; }
 		if(!documents){
 			console.log('nessun document presente in questa collection');
 		}else{
-			console.log('ecco il risultato');
-			console.log(documents);
 			callback(documents);
-		}	
+		}
+	});
+}
+
+exports.getDocumentsList = function(collection_name, column, order, page, callback) {
+
+	var model = getModel(collection_name);
+	
+	queryDB(model, 
+			{}, 		//where
+			{},			//select
+			column,		//colonna da ordinare
+			order,		//tipo ordinamento
+			0,			//inizio
+			4,			//nelementi
+			function(documents){
+				callback(documents);
 	});
 	
 }
 
-
 exports.getDocument = function(collection_name, document_id, callback) {
 
-	DB.users.findOne({_id : document_id},function(err,documents){
-		if(err) { console.log('errore lettura documents!'); /*return done(err);*/ }
-		if(!documents){
-			console.log('nessun document presente in questa collection');
-		}else{
-			console.log('ecco il risultato');
-			console.log(documents);
-			callback(documents);
-		}	
+	var model = getModel(collection_name);
+	
+	queryDB(model, 
+			{}, 		//where
+			{},							//select
+			'',							//colonna da ordinare
+			'',							//tipo ordinamento
+			0,							//inizio
+			4,							//nelementi
+			function(documents){
+				console.log('documentttttttttttttttttttttttttt');
+				console.log(documents);
+				callback(documents);
 	});
 }
 	

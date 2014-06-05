@@ -40,12 +40,12 @@ collection = {
 			},
 			{	
 				label: 'EmailAllenatore',
-				name: 'email,
+				name: 'email',
 				type: 'String'
 			},
 			{	
 				label: 'EtaAllenatore',
-				name: 'age,
+				name: 'age',
 				type: 'Number, min: 18, max:70'
 			}
 		]

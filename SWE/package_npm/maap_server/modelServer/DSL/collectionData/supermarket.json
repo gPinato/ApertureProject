@@ -1,0 +1,73 @@
+{
+	"collection": {
+		"label": "ProdottiSupermercato",
+		"name": "supermarket",
+		"position": 3,
+		"index": {
+			"perpage": 20,
+			"sortby": "name",
+			"order": "asc",
+			"column": [
+				{
+					"label": "NomeProdotto",
+					"name": "nome",
+					"type": "String",
+					"transformation": null
+				},
+				{
+					"label": "PrezzoProdotto",
+					"name": "prezzo",
+					"type": "Number, min: 0.01, max:350",
+					"transformation": null
+				},
+				{
+					"label": "ProdottoOfferta",
+					"name": "offerta",
+					"type": "String",
+					"transformation": null
+				}
+			],
+			"query": null
+		},
+		"show": {
+			"row": [
+				{
+					"label": "NomeProdotto",
+					"name": "nome",
+					"type": "String",
+					"transformation": null
+				},
+				{
+					"label": "PrezzoProdotto",
+					"name": "prezzo",
+					"type": "Number, min: 0.01, max:350",
+					"transformation": null
+				},
+				{
+					"label": "ProdottoOfferta",
+					"name": "offerta",
+					"type": "String",
+					"transformation": null
+				},
+				{
+					"label": "Reparto",
+					"name": "posizione.reparto",
+					"type": "Number, min: 1, max:10",
+					"transformation": null
+				},
+				{
+					"label": "Scaffale",
+					"name": "posizione.scaffale",
+					"type": "Number, min: 1, max:100",
+					"transformation": null
+				},
+				{
+					"label": "Colonna",
+					"name": "posizione.colonna",
+					"type": "Number, min: 18, max:70",
+					"transformation": null
+				}
+			]
+		}
+	}
+}

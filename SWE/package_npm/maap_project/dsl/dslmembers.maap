@@ -5,7 +5,7 @@ collection = {
 	
 	index : {
 		//populate: ['col1','col2'],
-		//perpage: 20,
+		perpage: 20,
 		sortby: 'age',
 		order: 'asc',
 		column : [
@@ -62,11 +62,12 @@ collection = {
 			{	
 				label: 'InteressiMembro',
 				name: 'interest',
-				transformation: 'function interessi(interest) {\
-					var result=""; \
-					for(var i=0;i<interest.length;i++){ \
-						result+=interest[i]+", "; \
-					} \
+				type: '[String]',
+				transformation: 'function interessi(interest){ \
+					var result = \"\"; \
+					for(var i=0; i<interest.length; i++){ \
+						result += interest[i] + \", \";\
+					}\
 					return result;\
 				}'
 			}
