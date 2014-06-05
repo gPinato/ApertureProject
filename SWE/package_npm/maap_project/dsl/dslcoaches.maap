@@ -1,0 +1,56 @@
+collection = {
+	label: 'Allenatori',
+	name: 'coaches',
+	position: 4, //posizione nel menu, default -1
+	
+	index : {
+		perpage: 2,
+		sortby: 'name',
+		order: 'asc',
+		column : [
+			{
+				label: 'NomeAllenatore',
+				name: 'name',
+				type: 'String'
+			},
+			{	
+				label: 'CognomeAllenatore',
+				name: 'surname',
+				type: 'String'
+			}
+		]
+		/*query: [
+		
+			{age: '$lt: 20'},
+			{jkmerda: '$gt: 50'}
+		]*/
+	}, //end index page
+	
+	show : {
+		row : [
+			{
+				label: 'NomeAllenatore',
+				name: 'name',
+				type: 'String'
+			},
+			{	
+				label: 'CognomeAllenatore',
+				name: 'surname',
+				type: 'String'
+			},
+			{	
+				label: 'EmailAllenatore',
+				name: 'email,
+				type: 'String'
+			},
+			{	
+				label: 'EtaAllenatore',
+				name: 'age,
+				type: 'Number, min: 18, max:70'
+			}
+		]
+	} //end show page
+	
+} //end collection	
+
+exports.collection = collection;
