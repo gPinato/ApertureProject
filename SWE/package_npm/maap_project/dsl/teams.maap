@@ -4,7 +4,7 @@ collection = {
 	position: 3, //posizione nel menu, default -1
 	
 	index : {
-		populate: [{collection: 'coaches', key: 'coach'}],
+		populate: [{collection: 'coaches', key: 'coach'},{collection: 'coaches', key: 'coach2'},{collection: 'supermarket', key: 'market'}],
 		perpage: 2,
 		sortby: 'name',
 		order: 'asc',
@@ -22,6 +22,16 @@ collection = {
 			{	
 				label: 'Nome Allenatore',
 				name: 'coach.name',
+				type: 'String'
+			},
+			{	
+				label: 'Tecnico',
+				name: 'coach2.name',
+				type: 'String'
+			},
+			{	
+				label: 'Alimentazione',
+				name: 'market.nome',
 				type: 'String'
 			}
 		]
