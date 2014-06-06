@@ -76,12 +76,9 @@ var extractfield = function extract(namecollection){
 					sortby, 								//colonna da ordinare
 					order,											//tipo ordinamento
 					0,												//partenza
-					perpage,
-					'name',
-						'coach',//numero elementi
+					perpage,												//numero elementi
 					function(dati){
-						
-						/*var result = {}						
+						var result = {}						
 						result.label = labelcolumns;
 						result.dati = dati;
 						//aggiungo l'id del campo
@@ -97,10 +94,10 @@ var extractfield = function extract(namecollection){
 							}
 							console.log("Array "+array);
 							populateFields[j].id =array;
-						}*/
-						console.log('dati grezzi:');
-						console.log(dati);						
-						/*result = populateQuery(result);						
+						}
+						/*console.log('dati grezzi:');
+						console.log(result);	*/					
+						result = populateQuery(result);						
 						/*console.log('dati aggiornati:');
 						console.log(result);*/
 						

@@ -1,4 +1,4 @@
-var provaquery=function query(model,where,select,orderbycolumn,typeorder,startskip,numberofrow,callback){
+var provaquery=function query(model,where,select,orderbycolumn,typeorder,startskip,numberofrow,populateField,populatePath,callback){
 	var options = {};
 	if(orderbycolumn!='' && typeorder !=''){
 	var sort={};
@@ -11,11 +11,31 @@ var provaquery=function query(model,where,select,orderbycolumn,typeorder,startsk
 	if(startskip!=''){
 	options.skip = startskip;
 	}
-	model.find(where, select, options, function(err,result){
+	var selectPopulate={};
+	selectPopulate[populateField]=1;
+	model
+	.find(where, select, options)
+	.populate({
+		path:populatePath,
+		select:selectPopulate
+	},{
+		path:'coachDue',
+		select:selectPopulate
+	}	
+	)
+	.lean()
+	.exec( function(err,result){
 		if(err)
 			console.log('query fallita');
 		else{
-				callback(result);
+			for(var i=0; i<result.length; i++)
+			{
+				var obj = result[i];
+				var newfield = obj[populatePath][populateField];
+				obj[populatePath] = newfield;
+			}
+			callback(result);
+			
 		}
 	});
 	
