@@ -57,7 +57,8 @@ exports.generate = function(dslJson) {
 			
 			if(name.length > 1 && collection.index.populate != undefined)	//nome composto con populate
 			{
-				type = 'ObjectId';	
+				var ref = collection.index.populate;
+				type = 'ObjectId, ref: \'coaches\'';	
 				
 				//ora però devo aggiungere/creare lo schema del nome composto
 				var composed_name = name[1];

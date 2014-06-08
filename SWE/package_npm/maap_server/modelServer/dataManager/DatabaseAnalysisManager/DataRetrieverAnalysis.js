@@ -47,14 +47,29 @@ var queryDB = function (model, where, select, orderbycolumn, typeorder, startski
 	{
 		options.skip = startskip;
 	}
-	model.find(where, select, options, function(err, documents){
+	model.find(where, select, options).populate('coach','name').lean().exec(function(err, documents){
 		if(err) { console.log('DataRetrieverAnalysis - query fallita!'); return; }
 		if(!documents){
 			console.log('nessun document presente in questa collection');
 		}else{
+			documents[0].coach = 'cippo';
+			documents[0].name = 'cippo2';
+			console.log(documents);
 			callback(documents);
 		}
 	});
+}
+
+exports.getCollectionsList = function() {
+	var collectionsList = require('../../DSL/collectionData/collectionsList.json');
+	
+	var collectionsArray = [];
+	for(var i=0; i<collectionsList.length; i++)
+	{
+		collectionsArray.push(collectionsList[i].name);
+		//collectionsArray.push(collectionsList[i].label); //bisogna inviare le labels e nomi 
+	}
+	return collectionsArray;
 }
 
 exports.getDocumentsList = function(collection_name, column, order, page, callback) {
@@ -69,7 +84,14 @@ exports.getDocumentsList = function(collection_name, column, order, page, callba
 			0,			//inizio
 			4,			//nelementi
 			function(documents){
-				callback(documents);
+				
+				var result = {};
+				
+				result.labels = ['ID', 'Squadra', 'giocatori', 'coach'];
+				result.documents = documents;
+				result.options = [];
+				
+				callback(result);
 	});
 	
 }
@@ -85,10 +107,13 @@ exports.getDocument = function(collection_name, document_id, callback) {
 			'',							//tipo ordinamento
 			0,							//inizio
 			4,							//nelementi
-			function(documents){
-				console.log('documentttttttttttttttttttttttttt');
-				console.log(documents);
-				callback(documents);
+			function(document_rows){
+				var result = {};
+				
+				result.labels = ['ID', 'Nome', 'Numero Giocatori'];
+				result.rows = document_rows;
+				result.options = [];
+				callback(result);
 	});
 }
 	

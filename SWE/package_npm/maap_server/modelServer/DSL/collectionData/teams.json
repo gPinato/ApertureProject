@@ -8,6 +8,14 @@
 				{
 					"collection": "coaches",
 					"key": "coach"
+				},
+				{
+					"collection": "coaches",
+					"key": "coach2"
+				},
+				{
+					"collection": "supermarket",
+					"key": "market"
 				}
 			],
 			"perpage": 2,
@@ -29,6 +37,18 @@
 				{
 					"label": "Nome Allenatore",
 					"name": "coach.name",
+					"type": "String",
+					"transformation": null
+				},
+				{
+					"label": "Tecnico",
+					"name": "coach2.name",
+					"type": "String",
+					"transformation": null
+				},
+				{
+					"label": "Alimentazione",
+					"name": "market.nome",
 					"type": "String",
 					"transformation": null
 				}

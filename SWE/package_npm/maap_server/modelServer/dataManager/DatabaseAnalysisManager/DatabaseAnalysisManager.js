@@ -18,20 +18,12 @@ var path = require('path');
 var retriever = require('./DataRetrieverAnalysis');
 var indexManager = require('../IndexManager/IndexManager');
 var JSonComposer = require('../JSonComposer');
-//var DB = require('../../Database/MongooseDBAnalysis');
 
 //invia al client la lista di collections definite dai vari dsl
 exports.sendCollectionsList = function(req, res) {
 
-	var collectionsList = require('../../DSL/collectionData/collectionsList.json');
-	
-	var collectionsArray = [];
-	for(var i=0; i<collectionsList.length; i++)
-	{
-		collectionsArray.push(collectionsList[i].name);
-		//collectionsArray.push(collectionsList[i].label); //bisogna inviare le labels e nomi 
-	}
-	res.send(JSonComposer.createCollectionsList(collectionsArray));
+	var collectionsList = retriever.getCollectionsList();
+	res.send(JSonComposer.createCollectionsList(collectionsList));
 	
 }
 
@@ -48,7 +40,10 @@ exports.sendCollection  = function(req, res) {
 	//il restante codice solamente quando ho la risposta dal db :)
 	retriever.getDocumentsList(collection_name, column, order, page, function(data){
 		
-		res.send(JSonComposer.createCollection('bla',data,'bla'));
+		res.send(JSonComposer.createCollection(	data.labels,	//etichette
+												data.documents,	//dati
+												data.options	//opzioni
+												));
 			
 	});	
 }
@@ -62,7 +57,10 @@ exports.sendDocument  = function(req, res){
 	
 	retriever.getDocument(collection_name, document_id, function(data){
 		
-		res.send(JSonComposer.createDocument('bla',data,'bla'));
+		res.send(JSonComposer.createDocument( 	data.labels,	//etichette
+												data.rows,		//dati
+												data.options	//opzioni
+											));
 			
 	});	
 	
