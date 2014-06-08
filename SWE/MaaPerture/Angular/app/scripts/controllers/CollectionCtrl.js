@@ -19,8 +19,9 @@
 angular.module('maaperture').controller('CollectionCtrl', function ($scope, CollectionDataService,AuthService, $routeParams) {
 
     var init= function (){
-        $scope.current_sorted_column=0;
-        $scope.current_sort="desc";
+        $scope.current_sorted_column = null;
+        $scope.column_original_name=[];
+        $scope.current_sort= null;
         $scope.current__page=0;
         $scope.canEdit = true; //DA CAMBIARE CON QUERY
         $scope.current_collection = { id: $routeParams.col_id };
@@ -32,7 +33,7 @@ angular.module('maaperture').controller('CollectionCtrl', function ($scope, Coll
         $scope.data = CollectionDataService.query({
             col_id:$routeParams.col_id,
             order: $scope.current_sort,
-            column: $scope.current_sorted_column,
+            column: $scope.column_original_name[$scope.current_sorted_column],
             page: $scope.current__page
 
         },function() {
@@ -40,6 +41,9 @@ angular.module('maaperture').controller('CollectionCtrl', function ($scope, Coll
             $scope.rows = $scope.data[1];
             //$scope.pages = $scope.data[3];
             $scope.pages = 4;
+            $.each( $scope.rows[0].data, function( key, value ) {
+                $scope.column_original_name.push(key);
+            });
         });
     }
 
