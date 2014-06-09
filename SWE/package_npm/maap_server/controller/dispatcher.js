@@ -32,10 +32,13 @@ var dispatcherInit = function (app) {
 	//dispatcher.get('/api/collection/:col_id', passport.checkAuthenticated, datamanager.sendCollection);
 	dispatcher.get('/api/collection/:col_id',  datamanager.sendCollection);
 	
-	dispatcher.get('/api/collection/:col_id/:doc_id', passport.checkAuthenticated, datamanager.sendDocument);
+	//dispatcher.get('/api/collection/:col_id/:doc_id', passport.checkAuthenticated, datamanager.sendDocument);
+	dispatcher.get('/api/collection/:col_id/:doc_id', datamanager.sendDocument);
 	
-	dispatcher.get('/api/collection/:col_id/:doc_id/edit', passport.checkAuthenticated, datamanager.sendDocument);
+	//dispatcher.get('/api/collection/:col_id/:doc_id/edit', passport.checkAuthenticated, datamanager.sendDocument);
+	dispatcher.get('/api/collection/:col_id/:doc_id/edit', datamanager.sendDocument);
 
+	//document edit
 	dispatcher.put('/api/collection/:col_id/:doc_id', function(req, res){
 		console.log(JSON.stringify(req.body));
 		res.send(200);
