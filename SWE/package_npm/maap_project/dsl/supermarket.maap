@@ -4,7 +4,7 @@ collection = {
 	position: 3, //posizione nel menu, default -1
 	
 	index : {
-		perpage: 20,
+		perpage: 5,
 		sortby: 'nome',
 		order: 'asc',
 		column : [

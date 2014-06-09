@@ -4,7 +4,7 @@
 		"name": "members",
 		"position": 3,
 		"index": {
-			"perpage": 20,
+			"perpage": 3,
 			"sortby": "age",
 			"order": "asc",
 			"column": [

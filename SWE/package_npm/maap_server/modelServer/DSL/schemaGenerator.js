@@ -121,7 +121,7 @@ exports.generate = function(dslJson) {
 	}
 	
 	//ora che schemaElements e' completo genero lo schema
-	var schema = '//maaperture auto-generated mongoose schema:\n\n';
+	var schema = '//maaperture auto-generated mongoose schema for collection \'' + collection.name + '\'\n\n';
 	schema += 'var mongoose = require(\'mongoose\');\n';	
 	schema += 'var ObjectId = mongoose.Schema.ObjectId;\n\n';
 	schema += 'exports.schema = new mongoose.Schema({\n';
@@ -132,7 +132,7 @@ exports.generate = function(dslJson) {
 		var type = schemaElements[i].value;
 		schema += key + ': { type: ' + type + ' }';
 	}
-	schema += '\n});\n\n';
+	schema += '\n}, { collection: \'' + collection.name + '\' });\n\n';
 	
 	return schema;
 }

@@ -4,7 +4,7 @@ collection = {
 	position: 3, //posizione nel menu, default -1
 	
 	index : {
-		populate: [{collection: 'coaches', key: 'coach'},{collection: 'coaches', key: 'coach2'},{collection: 'supermarkets', key: 'market'}],
+		populate: [{collection: 'coaches', key: 'coach'},{collection: 'coaches', key: 'coach2'},{collection: 'supermarket', key: 'market'}],
 		perpage: 2,
 		sortby: 'name',
 		order: 'asc',

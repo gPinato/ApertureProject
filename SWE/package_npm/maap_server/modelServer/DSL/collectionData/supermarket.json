@@ -4,7 +4,7 @@
 		"name": "supermarket",
 		"position": 3,
 		"index": {
-			"perpage": 20,
+			"perpage": 5,
 			"sortby": "nome",
 			"order": "asc",
 			"column": [

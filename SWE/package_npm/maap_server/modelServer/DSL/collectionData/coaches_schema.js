@@ -1,4 +1,4 @@
-//maaperture auto-generated mongoose schema:
+//maaperture auto-generated mongoose schema for collection 'coaches'
 
 var mongoose = require('mongoose');
 var ObjectId = mongoose.Schema.ObjectId;
@@ -8,5 +8,5 @@ name: { type: String },
 surname: { type: String },
 email: { type: String },
 age: { type: Number, min: 18, max:70 }
-});
+}, { collection: 'coaches' });
 

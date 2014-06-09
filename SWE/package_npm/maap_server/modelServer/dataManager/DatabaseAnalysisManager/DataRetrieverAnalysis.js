@@ -14,7 +14,6 @@
  */
 'use strict';
 
-//per ora uso DBframework..
 //var DB = require('../../Database/MongooseDBAnalysis');
 
 var getModel = function(collection_name) {
@@ -31,43 +30,79 @@ var getModel = function(collection_name) {
 	return -1;
 }
 
-var queryDBpopulate = function(model,where,select,orderbycolumn,typeorder,startskip,numberofrow,populateField,populatePath,callback){
+var queryDB = function(model,where,select,orderbycolumn,typeorder,startskip,numberofrow,populate,callback){
+	
 	var options = {};
 	if(orderbycolumn != '' && typeorder != ''){
 		var sort = {};
 		sort[orderbycolumn] = typeorder;
 		options.sort = sort;
 	}
-	if(numberofrow!=''){
+	if(numberofrow != ''){
 		options.limit = numberofrow;
 	}
 	if(startskip != ''){
 		options.skip = startskip;
 	}
+		
+	var query = model.find(where, select, options);
 	
-	var selectPopulate = {};
-	selectPopulate[populateField] = 1;
+	console.log(options);
 	
-	if(where == undefined)console.log('where undefined');
-	if(select == undefined)console.log('select undefined');
-	if(options == undefined)console.log('options undefined');
-	
-	//populate({path:populatePath,select:selectPopulate});
-	model.find(where, select, options).exec( function(err, result){
-		if(err){ console.log('DataRetrieverAnalysis - query fallita'); return;}
-		if(!result){
-			console.log('nessun document presente in questa collection');
-		}else{
-			/*for(var i=0; i<result.length; i++)
-			{
-				var obj = result[i];
-				var newfield = obj[populatePath][populateField];
-				obj[populatePath] = newfield;
-			}*/
-			callback(result);			
+	if(populate != [])
+	{
+		var populatePath = [];
+		var populateField = [];
+		
+		for(var i=0; i< populate.length; i++)
+		{
+			populatePath.push(populate[i].key);
+			populateField.push(populate[i].field);
 		}
-	});
-	
+
+		var selectPopulate = [];	
+		for(var i=0; i<populateField.length; i++)
+		{
+			selectPopulate[populateField[i]]=1;
+		}	
+		
+		for(var i=0; i<populatePath.length; i++)
+		{
+			query.populate({
+				path: populatePath[i],
+				select: selectPopulate[i]
+			})
+		}
+	}
+		
+	query.lean().exec( function(err,result){
+		if(err){console.log('query fallita'); return;}
+		if(!result){
+		console.log('nessun risultato') 
+		}else{
+			//se è stato specificato il populate, sostituisco i vari populate...
+			if(populate!=[])
+			{
+				for(var i=0; i<result.length; i++)
+				{
+					var obj = result[i];
+					for(var attributename in obj)
+					{
+						for(var j=0; j<populatePath.length; j++)
+						{
+							if(attributename == populatePath[j])
+							{
+								var newfield = obj[populatePath[j]][populateField[j]];
+								obj[populatePath[j]] = newfield;
+							}
+						}
+					}
+				}
+			}
+			callback(result);
+			
+		}
+	});	
 }
 
 exports.getCollectionsList = function() {
@@ -75,57 +110,78 @@ exports.getCollectionsList = function() {
 	return collectionsList;
 }
 
+var extractPopulate = function(populateArray, key) {
+	for(var i=0; i<populateArray.length; i++){
+		if(populateArray[i].key == key){
+			return getModel(populateArray[i].collection);
+		}
+	}
+	return '';
+}
+
 exports.getDocumentsList = function(collection_name, column, order, page, callback) {
 
 	var model = getModel(collection_name);
 	
-	var collection = require('../../DSL/collectionData/' + collection_name + '.json').collection;
+	var collection = require('../../DSL/collectionData/'+collection_name+'.json').collection;
 	var columns = collection.index.column;
-	var labels = [];
-	for(var i = 0; i<columns.length; i++) {
-		labels[i] = columns[i].label;
+	
+	var labels=[];
+	for(var i = 0; i<columns.length;i++){
+		labels[i]=columns[i].label;
+	}//for
+	
+	var fieldsquery = {};
+	
+	var populateFields = [];
+	for(var i=0; i<columns.length;i++){
+	     var name=columns[i].name.split('.');
+	    if(name.length>1){
+			var data={};
+			data.model=extractPopulate(collection.index.populate,name[0]);
+			data.field=name[1];
+			data.key=name[0];
+			populateFields.push(data);
+		}
+		fieldsquery[name[0]]=1; 
+	}//for
+	
+	if(column == undefined)
+	{
+		console.log('column indefinita');
+		var sortby = collection.index.sortby;
+		order = collection.index.order;
+	}else{
+		var sortby = column;
 	}
 	
-	//TODO decidere quando usare le impostazioni che arrivano dal client e quando 
-	//quelle definite nel dsl (la prima volta..)
-	//column = collection.index.sortby;
-	//order = collection.index.order;
-	
 	var perpage = collection.index.perpage;
-	
+	var start = perpage * page;
 	var query;
-	if(collection.index.query === null)
+	if(collection.index.query===null)
 		query = {};
 	else
 		query = collection.index.query;
 	
-	/*queryDBpopulate(	model, 
-						{},//query, 		//where
-						{},			//select
-						column,		//colonna da ordinare
-						order,		//tipo ordinamento
-						0,			//inizio
-						4,//perpage,	//nelementi
-						'name',		//populate field
-						'coach',	//populate path
-						function(documents){
-				
-							var result = {};
-				
-							result.labels = labels;
-							result.documents = documents;
-							result.options = [];
-						
-							callback(result);
-	});*/
+	var populateDSL = [{collection: 'coaches', key: 'coach'},{collection: 'coaches', key: 'coach2'},{collection: 'supermarkets', key: 'market'}];
 	
-	var result = {};
-	result.labels = labels;
-	result.documents = [];
-	result.documents[0] = {_id: '3di33e93e93', name: 'ciao', number_players: 33, coach_name: 'pop', coach2_name: 'io', market_nome: 's'};
-	result.documents[1] = {_id: '398e93d9d38', name: 'ciao', number_players: 33, coach_name: 'pop', coach2_name: 'io', market_nome: 's'};
-	callback(result);
-	
+	//TODO generare populate dal dsl piuttosto che qui statico...
+	var populate = [{field: 'name', key: 'coach'},{field: 'name', key: 'coach2'},{field: 'nome', key: 'market'}];
+		
+	queryDB(model,
+			query, 										//where
+			fieldsquery,								 //select 
+			sortby, 								//colonna da ordinare
+			order,											//tipo ordinamento
+			start,												//partenza
+			perpage,
+			populate,
+			function(dati){
+				var result = {}
+				result.labels = labels;		
+				result.documents = dati;
+				callback(result);
+			});
 }
 
 exports.getDocument = function(collection_name, document_id, callback) {
