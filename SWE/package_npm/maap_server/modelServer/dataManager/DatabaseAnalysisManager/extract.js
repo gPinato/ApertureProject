@@ -8,8 +8,12 @@
 	var schema = require('../../DSL/schemaprova.js');
 	var teamsSchema = schema.teamsSchema;
 	var teamsModel = db.model('teams', teamsSchema);
+	
 	var coachesSchema = schema.coachesSchema;
 	var coachesModel = db.model('coaches', coachesSchema);
+	
+	var marketSchema = schema.supermarketSchema;
+	var marketModel = db.model('supermarket', marketSchema);
 	
 	var populateFields=[];
 	
@@ -70,6 +74,11 @@ var extractfield = function extract(namecollection){
 		query = collection.index.query;
 	//console.log('name: '+namecollection);
 	
+	var populateDSL = [{collection: 'coaches', key: 'coach'},{collection: 'coaches', key: 'coach2'},{collection: 'supermarkets', key: 'market'}];
+	
+	var populate = [{field: 'name', key: 'coach'},{field: 'name', key: 'coach2'},{field: 'nome', key: 'market'}];
+	
+	
 	testquery.provaquery(teamsModel,
 					query, 										//where
 					fieldsquery,								 //select 
@@ -77,8 +86,7 @@ var extractfield = function extract(namecollection){
 					order,											//tipo ordinamento
 					0,												//partenza
 					perpage,
-					'name',
-						'coach',//numero elementi
+					populate,
 					function(dati){
 						
 						/*var result = {}						

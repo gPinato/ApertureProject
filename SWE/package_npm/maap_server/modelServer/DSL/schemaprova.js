@@ -17,9 +17,11 @@ email: { type: String },
 age: { type: Number, min: 18, max:70 }
 });
 
-exports.supermarketSchema = new mongoose.Schema({
+var supermarketSchema = new mongoose.Schema({
 nome: { type: String },
-prezzo: { type: Number, min: 0.01, max:350 },
+prezzo: { type: Number, min: 1, max:350 },
 offerta: { type: String },
 posizione: { type: ObjectId }
-});
+}, {collection: 'supermarket'});
+
+exports.supermarketSchema = supermarketSchema;
