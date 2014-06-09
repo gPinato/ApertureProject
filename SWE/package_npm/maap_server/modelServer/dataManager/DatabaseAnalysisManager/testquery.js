@@ -1,2 +1,2 @@
-var x = require('./extractusers');
+var x = require('./extractdelete');
 x.func();
