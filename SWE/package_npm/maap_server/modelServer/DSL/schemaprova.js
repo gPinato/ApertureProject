@@ -24,4 +24,10 @@ offerta: { type: String },
 posizione: { type: ObjectId }
 }, {collection: 'supermarket'});
 
+var usersSchema = new mongoose.Schema({
+email: { type: String },
+password: { type: String },
+}, {collection: 'users'});
+
 exports.supermarketSchema = supermarketSchema;
+exports.usersSchema = usersSchema;

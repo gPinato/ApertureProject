@@ -1,2 +1,2 @@
-var x = require('./extract');
-x.extractfield('teams');
+var x = require('./extractusers');
+x.func();
