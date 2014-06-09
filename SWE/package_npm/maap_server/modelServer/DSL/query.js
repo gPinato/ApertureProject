@@ -18,11 +18,7 @@ var provaquery=function query(model,where,select,orderbycolumn,typeorder,startsk
 	.populate({
 		path:populatePath,
 		select:selectPopulate
-	},{
-		path:'coachDue',
-		select:selectPopulate
-	}	
-	)
+	})
 	.lean()
 	.exec( function(err,result){
 		if(err)

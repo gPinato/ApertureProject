@@ -26,8 +26,10 @@ var dispatcherInit = function (app) {
 	
 	var dispatcher = app.express.Router();
 	
+	//dispatcher.get('/api/collection/list', passport.checkAuthenticated, datamanager.sendCollectionsList);
 	dispatcher.get('/api/collection/list', datamanager.sendCollectionsList);
 	
+	//dispatcher.get('/api/collection/:col_id', passport.checkAuthenticated, datamanager.sendCollection);
 	dispatcher.get('/api/collection/:col_id',  datamanager.sendCollection);
 	
 	dispatcher.get('/api/collection/:col_id/:doc_id', passport.checkAuthenticated, datamanager.sendDocument);

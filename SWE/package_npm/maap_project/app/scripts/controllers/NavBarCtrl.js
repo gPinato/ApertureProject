@@ -17,7 +17,8 @@
 angular.module('maaperture').controller('NavBarCtrl', function ($scope, CollectionListService ) {
     CollectionListService.get(
         function success(data) {
-            $scope.list = data;
+            $scope.labels = data.labels;
+            $scope.values = data.data;
         });
     $scope.isAdmin=false;
 

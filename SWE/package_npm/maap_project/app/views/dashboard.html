@@ -9,7 +9,7 @@
 
             <table class="table">
                 <th>Choose a collection</th>
-                <tr ng-repeat="element in list.data"><td><a href="/collection/{{element}}"><button>{{element}}</button></a></td></tr>
+                <tr ng-repeat="element in labels"><td><a href="/collection/{{values[$index]}}"><button>{{element}}</button></a></td></tr>
 
 
             </table>

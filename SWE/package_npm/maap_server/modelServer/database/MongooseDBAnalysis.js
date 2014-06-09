@@ -20,7 +20,6 @@ exports.init = function(app) {
 	
 	var config = app.config;
 	var db = app.db.data;
-	
 	var collectionsList = require('../DSL/collectionData/collectionsList.json');
 		
 	//per ogni collection definita tramite DSL

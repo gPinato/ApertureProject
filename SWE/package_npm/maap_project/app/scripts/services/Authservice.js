@@ -12,7 +12,6 @@
  * 0.1 File creation
  ==============================================
  */
- 
 angular.module('services')
     .factory('AuthService',['$resource',function($resource) {
         return $resource('http://localhost:9000/api/login', {}, {

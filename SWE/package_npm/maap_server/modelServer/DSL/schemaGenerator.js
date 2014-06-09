@@ -56,14 +56,13 @@ exports.generate = function(dslJson) {
 			var type = indexColumns[i].type;
 			
 			if(name.length > 1 && collection.index.populate != undefined)	//nome composto con populate
-			{
-				var ref = collection.index.populate;
-				type = 'ObjectId, ref: \'coaches\'';	
-				
+			{	
 				//ora però devo aggiungere/creare lo schema del nome composto
 				var composed_name = name[1];
 				var composed_type = indexColumns[i].type;
 				var composed_collection = getPopulatedCollection(collection.index.populate, name[0]);
+				
+				type = 'ObjectId, ref: \'' + composed_collection + '\'';
 				
 				//controllo se è gia presente un file schema per quella collection
 				/*var composed_schema = require('./collectionData/' + composed_collection + '_schema.js');
@@ -95,13 +94,13 @@ exports.generate = function(dslJson) {
 			var type = showRows[i].type;
 			
 			if(name.length > 1 &&  collection.show.populate != undefined)	//nome composto con populate
-			{
-				type = 'ObjectId';	
-				
+			{				
 				//ora però devo aggiungere/creare lo schema del nome composto
 				var composed_name = name[1];
 				var composed_type = showRows[i].type;
 				var composed_collection = getPopulatedCollection(collection.show.populate, name[0]);
+				
+				type = 'ObjectId, ref: \'' + composed_collection + '\'';
 				
 				//controllo se è gia presente un file schema per quella collection
 				/*var composed_schema = require('./collectionData/' + composed_collection + '_schema.js');

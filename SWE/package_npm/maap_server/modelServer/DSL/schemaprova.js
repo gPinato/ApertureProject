@@ -6,8 +6,8 @@ exports.teamsSchema = new mongoose.Schema({
 		name: {type: String},
 		number_players: {type: Number},
 		coach: { type: ObjectId , ref:'coaches' },
-		coachDue: { type: ObjectId , ref:'coaches' },
-		supermarket: { type: ObjectId , ref:'supermarket' }
+		coach2: { type: ObjectId , ref:'coaches' },
+		market: { type: ObjectId , ref:'supermarket' }
 });
 
 exports.coachesSchema = new mongoose.Schema({

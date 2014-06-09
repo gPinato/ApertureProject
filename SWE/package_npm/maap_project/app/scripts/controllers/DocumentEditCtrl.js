@@ -35,7 +35,6 @@ angular.module('maaperture').controller('DocumentEditCtrl', function ($scope,Doc
             init();
         },
         function err(error){
-            ErrorHandler.handle(error);
         }
     );
 
@@ -48,7 +47,6 @@ angular.module('maaperture').controller('DocumentEditCtrl', function ($scope,Doc
             function success() {
             },
             function err(error) {
-                ErrorHandler.handle(error);
             }
         );
     };

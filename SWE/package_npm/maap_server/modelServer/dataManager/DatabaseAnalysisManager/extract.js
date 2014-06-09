@@ -71,7 +71,7 @@ var extractfield = function extract(namecollection){
 	//console.log('name: '+namecollection);
 	
 	testquery.provaquery(teamsModel,
-					query, 											//where
+					query, 										//where
 					fieldsquery,								 //select 
 					sortby, 								//colonna da ordinare
 					order,											//tipo ordinamento
