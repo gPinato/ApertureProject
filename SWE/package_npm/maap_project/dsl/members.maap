@@ -1,7 +1,7 @@
 collection = {
 	label: 'Membri',
 	name: 'members',
-	position: 3, //posizione nel menu, default -1
+	position: -1, //posizione nel menu, default -1
 	
 	index : {
 		perpage: 3,

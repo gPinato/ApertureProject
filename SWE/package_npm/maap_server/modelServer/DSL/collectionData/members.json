@@ -2,7 +2,7 @@
 	"collection": {
 		"label": "Membri",
 		"name": "members",
-		"position": 3,
+		"position": -1,
 		"index": {
 			"perpage": 3,
 			"sortby": "age",

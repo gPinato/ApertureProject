@@ -186,9 +186,14 @@ var checkDSL = function(app) {
 			collectionInfo.dsl_file = __dirname + '/collectionData/' + filename + '.json';
 			collectionInfo.schema_file = __dirname + '/collectionData/' + filename + '_schema.js';
 			collectionsList.push(collectionInfo);
-		
+					
 		}//end if is file con estensione .maap		
     }); //end for each
+	
+	//ordino la lista delle collections
+	collectionsList.sort(function(a, b){
+		return a.position - b.position;
+	});
 	
 	//salvo su file la lista di collections in formato json
 	var stringResult = JSON.stringify(collectionsList, null, '\t');

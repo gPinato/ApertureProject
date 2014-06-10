@@ -2,7 +2,7 @@
 	"collection": {
 		"label": "Allenatori",
 		"name": "coaches",
-		"position": 4,
+		"position": 2,
 		"index": {
 			"perpage": 2,
 			"sortby": "name",
