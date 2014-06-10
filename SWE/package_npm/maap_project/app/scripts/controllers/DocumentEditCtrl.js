@@ -15,23 +15,23 @@
  */
 'use strict';
 angular.module('maaperture').controller('DocumentEditCtrl', function ($scope,DocumentDataService,AuthService, $routeParams) {
-    $scope.current_collection = { id: $routeParams.col_id };
-    $scope.current_document = { id: $routeParams.doc_id };
+    $scope.current_collection =  $routeParams.col_id ;
+    $scope.current_document = $routeParams.doc_id ;
     $scope.canEdit = true;
-    //$scope.data = DocumentDataService.get({col_id:$routeParams.col_id,doc_id:$routeParams.doc_id });
     $scope.toedit=[];
 
     //Initialize "toedit" with the values of the json to edit.
     var init = function(){
-        $.each( $scope.data.data, function( key, value ) {
-            $scope.toedit.push("maap_system_unedited_value");
+        $.each( $scope.data, function( key, value ) {
+            $scope.toedit.push(value);
         });
 
     };
 
     DocumentDataService.query({ col_id:$routeParams.col_id, doc_id:$routeParams.doc_id },
         function success(data) {
-            $scope.data = data;
+            $scope.data = data.data;
+            $scope.labels = data.label;
             init();
         },
         function err(error){

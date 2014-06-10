@@ -10,9 +10,9 @@
             <table class="table">
                 <th>Label</th>
                 <th>Value</th>
-                <tr ng-repeat="(key,value) in data.data">
-                    <td>{{key}}</td>
-                    <td><input ng-model="toedit[$index]"></input></td>
+                <tr ng-repeat="label in labels track by $index">
+                    <td>{{label}}</td>
+                    <td><input ng-model="toedit[$index]">{{value}}</input></td>
                 </tr>
             </table>
 

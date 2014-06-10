@@ -24,7 +24,7 @@ angular.module('maaperture').controller('CollectionCtrl', function ($scope, Coll
         $scope.current_sort= null;
         $scope.current__page=0;
         $scope.canEdit = true; //DA CAMBIARE CON QUERY
-        $scope.current_collection = { id: $routeParams.col_id };
+        $scope.current_collection = $routeParams.col_id;
         getData();
 
     };
