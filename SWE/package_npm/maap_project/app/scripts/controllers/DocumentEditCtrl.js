@@ -9,18 +9,20 @@
  ==============================================
  * Version | Changes
  ==============================================
+ * 0.3 Redesign of returned data
  * 0.2 Added services support
  * 0.1 File creation
  ==============================================
  */
+
 'use strict';
 angular.module('maaperture').controller('DocumentEditCtrl', function ($scope,DocumentDataService,AuthService, $routeParams) {
-    $scope.current_collection =  $routeParams.col_id ;
-    $scope.current_document = $routeParams.doc_id ;
+    $scope.current_collection = $routeParams.col_id ;
+    $scope.current_document = $routeParams.doc_id;
     $scope.canEdit = true;
     $scope.toedit=[];
 
-    //Initialize "toedit" with the values of the json to edit.
+    //Initialize "toedit" with the values of the input json.
     var init = function(){
         $.each( $scope.data, function( key, value ) {
             $scope.toedit.push(value);
@@ -30,20 +32,26 @@ angular.module('maaperture').controller('DocumentEditCtrl', function ($scope,Doc
 
     DocumentDataService.query({ col_id:$routeParams.col_id, doc_id:$routeParams.doc_id },
         function success(data) {
-            $scope.data = data.data;
             $scope.labels = data.label;
+            $scope.data = data.data;
             init();
         },
         function err(error){
         }
     );
 
+    //Called when the edited data must be sent to the server.
     $scope.edit_document = function() {
+        var new_data = {};
+        for (var i = 0; i < $scope.labels.length; i++) {
+            new_data[$scope.labels[i]] = $scope.toedit[i];
+        }
+        var json_data = JSON.stringify(new_data);
         DocumentDataService.update({
                 col_id: $scope.current_collection,
                 doc_id: $scope.current_document
             },
-            $scope.toedit,
+            json_data,
             function success() {
             },
             function err(error) {
