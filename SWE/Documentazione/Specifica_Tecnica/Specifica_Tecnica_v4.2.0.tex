@@ -130,19 +130,23 @@ Il presente documento ha lo scopo di definire la progettazione ad alto livello d
 
 \subsubsection{Informativi}
 \begin{itemize}
-\item \grassetto{Learning Node}: O'Reilly Shelley Powers
-\item \grassetto{AngularJS}: O'Reilly Brad Green e Shyam Seshadri
-\item Software Engineering (8th edition), Ian Sommerville, Pearson Education | Addison-Wesley
-\item Design Patterns, E. Gamma, R. Helm, R. Johnson, J. Vlissides, Pearson Education | Addison-Wesley
-\item Dall'idea al codice con UML 2       L. Baresi, L. Lavazza, M. Pianciamore, Pearson Education
+\item \grassetto{Learning Node}: O'Reilly Shelley Powers;
+\item \grassetto{AngularJS}: O'Reilly Brad Green e Shyam Seshadri;
+\item \grassetto{Software Engineering (8th edition)}: Ian Sommerville, Pearson Education | Addison-Wesley;
+\item \grassetto{Design Patterns}: E. Gamma, R. Helm, R. Johnson, J. Vlissides, Pearson Education | Addison-Wesley;
+\item \grassetto{Dall'idea al codice con UML 2}: L. Baresi, L. Lavazza, M. Pianciamore, Pearson Education.
 \end{itemize}
 
 \newpage
 \section{Tecnologie utilizzate}
-In questa sezione verranno elencate e descritte le tecnologie che si utilizzeranno durante lo sviluppo del progetto. In particolare la colonna portante del progetto sarà lo \gloss{stack} \gloss{MEAN}, ovvero \gloss{MongoDB}, \gloss{Express}, \gloss{AngularJS} e \gloss{Node.js}.
+In questa sezione verranno elencate e descritte le tecnologie che si utilizzeranno durante lo sviluppo del progetto. 
+In particolare la colonna portante del progetto sarà lo \gloss{stack} \gloss{MEAN}, ovvero \gloss{MongoDB}, \gloss{Express}, 
+\gloss{AngularJS} e \gloss{Node.js}.
 
 \subsection{MongoDB}
-Il \gloss{database} con il quale la nostra applicazione dovrà interagire è realizzato con MongoDB, come specificato nel capitolato. Questa tecnologia offre i seguenti vantaggi:
+Il \gloss{database} con il quale la nostra applicazione dovrà interagire è realizzato con MongoDB, come specificato nel capitolato. 
+MongoDB è la piattaforma di supporto per i database di MaaP. La scelta di Mongo è voluta anche per la sua facile integrazione con le
+tecnologie back end di Node.js, grazie ai relativi moduli. Questa tecnologia offre inoltre i seguenti vantaggi:
 \begin{itemize}
 \item Facile indicizzazione: Ogni campo in MongoDB può diventare un indice;
 \item Bilanciamento di carico: MongoDB \gloss{scala} orizzontalmente molto facilmente grazie all'utilizzo di \gloss{Shard};
@@ -151,12 +155,15 @@ Il \gloss{database} con il quale la nostra applicazione dovrà interagire è rea
 
 \subsection{Mongoose}
 Mongoose è uno strumento di modellazione di dati provenienti da database MongoDB, sviluppato per lavorare in ambienti asincroni.
+Questo modulo di Node.JS serve a dare uno schema definito ai dati provenienti dai database MongoDB di MaaP.
 
 \subsection{Javascript}
-Si è deciso di utilizzare Javascript in quanto è il linguaggio su cui si basano tutte le altre tecnologie che andremo ad utilizzare, e offre quindi una facile integrazione, oltre ad essere un ottimo linguaggio per applicazioni \gloss{web} e \gloss{client} side.
+Si è deciso di utilizzare Javascript in quanto è il linguaggio su cui si basano tutte le altre tecnologie che andremo ad utilizzare e 
+offre quindi una facile integrazione, oltre ad essere un ottimo linguaggio per applicazioni \gloss{web} e \gloss{client} side.
 
 \subsection{Node.js}
-Si è deciso di utilizzare il framework Node.js in quanto richiesto nel capitolato e adatto al progetto. Le sue caratteristiche più vantaggiose sono:
+Si è deciso di utilizzare il framework Node.js in quanto richiesto nel capitolato e adatto al progetto. 
+Le sue caratteristiche più vantaggiose sono:
 \begin{itemize}
 \item Modello \gloss{Event-driven}: ovvero "programmazione ad eventi", che si basa su un concetto semplice: il flusso del \gloss{programma} non segue un corso specifico ma è guidato dalle azioni dell'utilizzatore;
 \item Modello asincrono: grazie a questa caratteristica è possibile ridurre al minimo i tempi di morti in quanto, nell'attesa del completamento di una operazione, si procede con altri flussi logici.
@@ -164,7 +171,7 @@ Si è deciso di utilizzare il framework Node.js in quanto richiesto nel capitola
 \end{itemize}
 
 \subsection{Express}
-Express è un framework minimale e flessibile per la creazione di applicazioni web basate su Node.js, contiene una varietà di funzioni sia per la creazione di applicazioni a singola pagina che multi-pagina oltre che applicazioni ibride.
+Express è un framework minimale e flessibile per la creazione di applicazioni web basate su Node.js. Esso contiene una varietà di funzioni sia per la creazione di applicazioni a singola pagina che multi-pagina oltre che applicazioni ibride.
 
 \subsection{JSON}
 Rappresenta il tipo di messaggi con cui client e \gloss{server} si scambiano informazioni. I vantaggi offerti sono:
