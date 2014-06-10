@@ -1,7 +1,7 @@
 collection = {
 	label: 'ProdottiSupermercato',
 	name: 'supermarket',
-	position: 3, //posizione nel menu, default -1
+	position: 3,
 	
 	index : {
 		perpage: 5,
