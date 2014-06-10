@@ -14,11 +14,12 @@
  */
 
 angular.module('services')
-    .factory('DocumentDataService',['$resource',function($resource){
-        return $resource ('http://localhost:9000/api/collection/:col_id/:doc_id',
+    .factory('DocumentEditService',['$resource',function($resource){
+        return $resource ('http://localhost:9000/api/collection/:col_id/:doc_id/edit',
             {col_id : '@col_id', doc_id:'@doc_id'},{
-                'query': {method:'GET'}
-
+                'query': {method:'GET'},
+                'update': {method:'PUT'},
+                'remove': {method:'DELETE'}
             });
 
     }]);

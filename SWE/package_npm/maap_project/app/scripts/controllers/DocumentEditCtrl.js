@@ -16,25 +16,20 @@
  */
 
 'use strict';
-angular.module('maaperture').controller('DocumentEditCtrl', function ($scope,DocumentDataService,AuthService, $routeParams) {
+angular.module('maaperture').controller('DocumentEditCtrl', function ($scope,DocumentEditService,AuthService, $routeParams) {
     $scope.current_collection = $routeParams.col_id ;
     $scope.current_document = $routeParams.doc_id;
     $scope.canEdit = true;
     $scope.toedit=[];
 
-    //Initialize "toedit" with the values of the input json.
-    var init = function(){
-        $.each( $scope.data, function( key, value ) {
-            $scope.toedit.push(value);
-        });
 
-    };
-
-    DocumentDataService.query({ col_id:$routeParams.col_id, doc_id:$routeParams.doc_id },
+    DocumentEditService.query({ col_id:$routeParams.col_id, doc_id:$routeParams.doc_id },
         function success(data) {
             $scope.labels = data.label;
             $scope.data = data.data;
-            init();
+            $.each( $scope.data, function( key, value ) {
+                $scope.toedit.push(value);
+            });
         },
         function err(error){
         }
@@ -47,7 +42,7 @@ angular.module('maaperture').controller('DocumentEditCtrl', function ($scope,Doc
             new_data[$scope.labels[i]] = $scope.toedit[i];
         }
         var json_data = JSON.stringify(new_data);
-        DocumentDataService.update({
+        DocumentEditService.update({
                 col_id: $scope.current_collection,
                 doc_id: $scope.current_document
             },
@@ -59,4 +54,16 @@ angular.module('maaperture').controller('DocumentEditCtrl', function ($scope,Doc
         );
     };
 
+    $scope.delete_document = function() {
+        DocumentEditService.remove({
+                col_id: $scope.current_collection,
+                doc_id: $scope.current_document
+            },
+
+            function success() {
+            },
+            function err(error) {
+            }
+        );
+    };
 });

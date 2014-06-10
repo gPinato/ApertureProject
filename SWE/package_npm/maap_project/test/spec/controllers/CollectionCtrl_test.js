@@ -49,7 +49,6 @@ describe('Controller: CollectionCtrl', function () {
             }
         };
 
-        //spyOn(MockColService, 'query').andCallThrough();
         MockCall = MockColService.query();
 
         MainCtrl = $controller('CollectionCtrl', {
