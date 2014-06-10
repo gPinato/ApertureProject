@@ -7,7 +7,7 @@ collection = {
 		perpage: 5,
 		sortby: 'nome',
 		order: 'asc',
-		//populate: [{collection: 'positions', key: 'posizione'}],
+		populate: [{collection: 'positions', key: 'posizione'}],
 		column : [
 			{
 				label: 'Nome Prodotto',
@@ -23,12 +23,12 @@ collection = {
 				label: 'Prodotto Offerta',
 				name: 'offerta',
 				type: 'String'
-			}
-			/*{
+			},
+			{
 				label: 'RepartoJK',
 				name: 'posizione.reparto',
 				type: 'String'
-			}*/
+			}
 		],
 		query: {
 			offerta: 'si',

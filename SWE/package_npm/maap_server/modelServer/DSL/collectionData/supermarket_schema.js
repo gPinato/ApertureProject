@@ -3,6 +3,8 @@
 var mongoose = require('mongoose');
 var ObjectId = mongoose.Schema.ObjectId;
 
+exports.schemaName = 'supermarket';
+
 exports.schema = new mongoose.Schema({
 nome: { type: String },
 prezzo: { type: Number, min: 0.01, max:350 },

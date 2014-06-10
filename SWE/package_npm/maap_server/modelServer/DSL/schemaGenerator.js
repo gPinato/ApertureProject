@@ -13,6 +13,7 @@
  ==============================================
  */
 'use strict';
+var fs = require('fs'); 
 
 var getPopulatedCollection = function(populateArray, key) {
 
@@ -38,7 +39,7 @@ var arrayAddElement = function(element, array) {
 	return array;
 }
 
-exports.generate = function(dslJson) {
+var generate = function(config, dslJson) {
 	
 	var collection = dslJson.collection;
 	
@@ -64,17 +65,32 @@ exports.generate = function(dslJson) {
 				
 				type = 'ObjectId, ref: \'' + composed_collection + '\'';
 				
-				//controllo se è gia presente un file schema per quella collection
-				/*var composed_schema = require('./collectionData/' + composed_collection + '_schema.js');
-				if(composed_schema != undefined)
-				{
-					//lo schema è già stato definito, quindi controllo e nel caso aggiungo 
-					//l'elemento mancante
-					
-				}else{
+				try{
+					//controllo se è gia presente un file schema per quella collection
+					var composed_schema = require('./collectionData/' + composed_collection + '_schema.js');
+				}catch(err){
+					console.log('generator index not found ' + composed_collection + '_schema.js');
 					//lo schema NON è stato definito, quindi lo creo exnovo
-					
-				}*/
+					//genero lo schema
+					var filePath = config.static_assets.dsl + '/' + composed_collection + '.maap';
+     				try{
+						var DSL = require(filePath);
+						var schema = generate(config, DSL);
+					}catch(err){
+						//schema vuoto se non e' scritto un dsl
+						var schema = generate(config, {collection:{name: composed_collection,index:{},show:{}}} );
+					}
+					var saveFile = __dirname + '/collectionData/' + composed_collection + '_schema.js';
+					console.log('saving ' + saveFile);
+					fs.writeFileSync(saveFile, schema, 'utf-8', function (err) {
+							if (err) {
+								console.error('error writing schema file: ' + saveFile);
+								throw err;
+							} 
+							console.log(saveFile + ' saved!');
+						}
+					);		
+				}
 			}	
 			
 			schemaElements = arrayAddElement({key: name[0], value: type}, schemaElements);
@@ -103,16 +119,30 @@ exports.generate = function(dslJson) {
 				type = 'ObjectId, ref: \'' + composed_collection + '\'';
 				
 				//controllo se è gia presente un file schema per quella collection
-				/*var composed_schema = require('./collectionData/' + composed_collection + '_schema.js');
-				if(composed_schema != undefined)
-				{
-					//lo schema è già stato definito, quindi controllo e nel caso aggiungo 
-					//l'elemento mancante
-					
-				}else{
+				try{
+					var composed_schema = require('./collectionData/' + composed_collection + '_schema.js');		
+				}catch(err){
+					console.log('generator show not found ' + composed_collection + '_schema.js');
 					//lo schema NON è stato definito, quindi lo creo exnovo
-					
-				}*/
+					var filePath = config.static_assets.dsl + '/' + composed_collection + '.maap';
+					try{
+						var DSL = require(filePath);
+						var schema = generate(config, DSL);
+					}catch(err){
+						//schema vuoto se non e' scritto un dsl
+						var schema = generate(config, {collection:{name: composed_collection,index:{},show:{}}} );
+					}
+					var saveFile = __dirname + '/collectionData/' + composed_collection + '_schema.js';
+					console.log('saving ' + saveFile);
+					fs.writeFileSync(saveFile, schema, 'utf-8', function (err) {
+							if (err) {
+								console.error('error writing schema file: ' + saveFile);
+								throw err;
+							} 
+							console.log(saveFile + ' saved!');
+						}
+					);
+				}
 			}	
 			
 			schemaElements = arrayAddElement({key: name[0], value: type}, schemaElements);
@@ -124,6 +154,7 @@ exports.generate = function(dslJson) {
 	var schema = '//maaperture auto-generated mongoose schema for collection \'' + collection.name + '\'\n\n';
 	schema += 'var mongoose = require(\'mongoose\');\n';	
 	schema += 'var ObjectId = mongoose.Schema.ObjectId;\n\n';
+	schema += 'exports.schemaName = \'' + collection.name + '\';\n\n';
 	schema += 'exports.schema = new mongoose.Schema({\n';
 	for(var i=0; i<schemaElements.length; i++)
 	{
@@ -136,3 +167,5 @@ exports.generate = function(dslJson) {
 	
 	return schema;
 }
+
+exports.generate = generate;

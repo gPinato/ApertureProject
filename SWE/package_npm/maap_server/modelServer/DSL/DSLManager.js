@@ -156,20 +156,27 @@ var checkDSL = function(app) {
 				);
 			}
 						
-			//genero lo schema
-			var schema = schemaGenerator.generate(result);
-			
-			//salvo su file
-			var saveFile = __dirname + '/collectionData/' + filename + '_schema.js';
-			console.log('saving ' + saveFile);
-			fs.writeFileSync(saveFile, schema, 'utf-8', function (err) {
-					if (err) {
-						console.error('error writing schema file: ' + saveFile);
-						throw err;
-					} 
-					console.log(saveFile + ' saved!');
-				}
-			);			
+			//genero lo schema se necessario
+			try{
+				var schema = require('./collectionData/' + filename + '_schema.js');
+			}catch(err){
+				console.log('manager not found ' + filename + '_schema.js');
+				
+				//qui non trovo lo schema, quindi lo creo
+				var schema = schemaGenerator.generate(app.config, result);
+				
+				//salvo su file
+				var saveFile = __dirname + '/collectionData/' + filename + '_schema.js';
+				console.log('saving ' + saveFile);
+				fs.writeFileSync(saveFile, schema, 'utf-8', function (err) {
+						if (err) {
+							console.error('error writing schema file: ' + saveFile);
+							throw err;
+						} 
+						console.log(saveFile + ' saved!');
+					}
+				);		
+			}
 			
 			//aggiungo la lista di collections
 			var collectionInfo = {};
