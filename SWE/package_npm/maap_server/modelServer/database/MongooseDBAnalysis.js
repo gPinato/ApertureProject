@@ -26,8 +26,8 @@ exports.init = function(app) {
 	//definisco i modelli (devono essere generati automaticamente dal DSL automatici dal DSL parser...)
 
 	var modelArray = [];
-	
-	var collectionDataPath = 'D:/GitHub/ApertureProject/SWE/package_npm/maap_server/modelServer/DSL/collectionData'; //'../DSL/collectionData';
+
+	var collectionDataPath = __dirname + '/../DSL/collectionData';
 	var list = fs.readdirSync(collectionDataPath);
     list.forEach(function(file) {		
         var filePath = collectionDataPath + '/' + file;
