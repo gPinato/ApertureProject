@@ -1,4 +1,4 @@
-{ "_id" : { "$oid" : "510c35dd8fada716c89d0013"}, "email" : "aa@aa.com", "password" : "aa" }
-{ "_id" : { "$oid" : "510c35dd8fada716c89d0014"}, "email" : "bb@bb.com", "password" : "bb" }
-{ "_id" : { "$oid" : "510c35dd8fada716c89d0015"}, "email" : "cc@cc.com", "password" : "cc" }
-{ "_id" : { "$oid" : "510c35dd8fada716c89d0016"}, "email" : "dd@dd.com", "password" : "dd" }
+{ "_id" : { "$oid" : "510c35dd8fada716c89d0013"}, "email" : "aa@aa.com", "password" : "aa", "level": 0, "__v":0 }
+{ "_id" : { "$oid" : "510c35dd8fada716c89d0014"}, "email" : "bb@bb.com", "password" : "bb", "level": 1, "__v":0 }
+{ "_id" : { "$oid" : "510c35dd8fada716c89d0015"}, "email" : "cc@cc.com", "password" : "cc", "level": 0, "__v":0 }
+{ "_id" : { "$oid" : "510c35dd8fada716c89d0016"}, "email" : "dd@dd.com", "password" : "dd", "level": 1, "__v":0 }
