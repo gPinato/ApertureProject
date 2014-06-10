@@ -35,12 +35,10 @@ collection = {
 				name: 'market.nome',
 				type: 'String'
 			}
-		]
-		/*query: [
-		
-			{age: '$lt: 20'},
-			{jkmerda: '$gt: 50'}
-		]*/
+		],
+		query: {
+
+		}
 	}, //end index page
 	
 	show : {

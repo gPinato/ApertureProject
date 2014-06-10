@@ -47,8 +47,6 @@ var getDocuments = function(model, where, select, orderbycolumn, typeorder, star
 		
 	var query = model.find(where, select, options);
 	
-	console.log(options);
-	
 	if(populate != [])
 	{
 		var populatePath = [];
@@ -76,13 +74,11 @@ var getDocuments = function(model, where, select, orderbycolumn, typeorder, star
 	}
 		
 	query.lean().exec( function(err,result){
-		if(err){console.log('query fallita'); return;}
+		if(err){console.log('query fallita' + err); return;}
 		if(!result){
 		console.log('nessun risultato') 
 		}else{
-			//se è stato specificato il populate, sostituisco i vari populate...
-			console.log(result);
-			
+			//se è stato specificato il populate, sostituisco i vari populate...			
 			if(populate!=[])
 			{
 				for(var i=0; i<result.length; i++)
@@ -150,10 +146,8 @@ var applyTrasformations = function(type, documentsArray, dslArray) {
 				var document = documentsArray[j];
 				for(var attributename in document)
 				{
-					console.log(attributename);
 					if(attributename == fieldName)
 					{
-						console.log(document[attributename]);
 						document[attributename] = transformation(document[attributename]);
 					}
 				}
@@ -211,6 +205,8 @@ exports.getCollectionIndex = function(collection_name, column, order, page, call
 		query = {};
 	else
 		query = collection.index.query;
+		
+	//console.log(query);
 	
 	getDocuments(model,
 				query, 				//where

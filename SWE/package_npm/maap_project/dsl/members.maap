@@ -28,12 +28,10 @@ collection = {
 				name: 'age',
 				type: 'Number, min: 18, max:35'
 			}
-		]
-		/*query: [
-		
-			{age: '$lt: 20'},
-			{jkmerda: '$gt: 50'}
-		]*/
+		],
+		query: {
+			age: {$lt: 29}
+		}
 	}, //end index page
 	
 	show : {

@@ -27,7 +27,12 @@
 					"transformation": null
 				}
 			],
-			"query": null
+			"query": {
+				"offerta": "si",
+				"prezzo": {
+					"$lte": 1.5
+				}
+			}
 		},
 		"show": {
 			"populate": [

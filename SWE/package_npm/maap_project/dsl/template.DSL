@@ -46,11 +46,10 @@ collection = {
 				}'
 			}		
 		],
-		/*query: [
-		
-			{age: '$lt: 20'},
-			{jkmerda: '$gt: 50'}
-		]*/
+		query: {
+			age: {$lt: 20},
+			jkmerda: {$gt: 50}
+		}
 	}, //end index page
 	
 	show : {

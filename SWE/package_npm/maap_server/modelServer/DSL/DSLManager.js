@@ -96,6 +96,7 @@ var checkDSL = function(app) {
 			//carico il nome del file
 			var filename = result.collection.name;
 			var collectionLabel = result.collection.label;
+			var collectionPosition = result.collection.position;
 					
 			//se corretto mi ritorna un JSON con tutti i campi dati corretti
 			console.log('errors checking...');
@@ -174,6 +175,7 @@ var checkDSL = function(app) {
 			var collectionInfo = {};
 			collectionInfo.label = collectionLabel;
 			collectionInfo.name = filename;
+			collectionInfo.position = collectionPosition;
 			collectionInfo.dsl_file = __dirname + '/collectionData/' + filename + '.json';
 			collectionInfo.schema_file = __dirname + '/collectionData/' + filename + '_schema.js';
 			collectionsList.push(collectionInfo);

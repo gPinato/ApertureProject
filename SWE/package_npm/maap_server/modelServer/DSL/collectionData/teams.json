@@ -53,7 +53,7 @@
 					"transformation": null
 				}
 			],
-			"query": null
+			"query": {}
 		},
 		"show": {
 			"populate": [

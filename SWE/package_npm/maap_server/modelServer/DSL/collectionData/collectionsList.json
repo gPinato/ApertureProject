@@ -2,24 +2,28 @@
 	{
 		"label": "Allenatori",
 		"name": "coaches",
+		"position": 4,
 		"dsl_file": "D:\\GitHub\\ApertureProject\\SWE\\package_npm\\maap_server\\ModelServer\\DSL/collectionData/coaches.json",
 		"schema_file": "D:\\GitHub\\ApertureProject\\SWE\\package_npm\\maap_server\\ModelServer\\DSL/collectionData/coaches_schema.js"
 	},
 	{
 		"label": "Membri",
 		"name": "members",
+		"position": 3,
 		"dsl_file": "D:\\GitHub\\ApertureProject\\SWE\\package_npm\\maap_server\\ModelServer\\DSL/collectionData/members.json",
 		"schema_file": "D:\\GitHub\\ApertureProject\\SWE\\package_npm\\maap_server\\ModelServer\\DSL/collectionData/members_schema.js"
 	},
 	{
 		"label": "ProdottiSupermercato",
 		"name": "supermarket",
+		"position": 3,
 		"dsl_file": "D:\\GitHub\\ApertureProject\\SWE\\package_npm\\maap_server\\ModelServer\\DSL/collectionData/supermarket.json",
 		"schema_file": "D:\\GitHub\\ApertureProject\\SWE\\package_npm\\maap_server\\ModelServer\\DSL/collectionData/supermarket_schema.js"
 	},
 	{
 		"label": "Squadre",
 		"name": "teams",
+		"position": 3,
 		"dsl_file": "D:\\GitHub\\ApertureProject\\SWE\\package_npm\\maap_server\\ModelServer\\DSL/collectionData/teams.json",
 		"schema_file": "D:\\GitHub\\ApertureProject\\SWE\\package_npm\\maap_server\\ModelServer\\DSL/collectionData/teams_schema.js"
 	}

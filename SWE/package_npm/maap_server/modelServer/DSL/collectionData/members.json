@@ -33,7 +33,11 @@
 					"transformation": null
 				}
 			],
-			"query": null
+			"query": {
+				"age": {
+					"$lt": 29
+				}
+			}
 		},
 		"show": {
 			"row": [
