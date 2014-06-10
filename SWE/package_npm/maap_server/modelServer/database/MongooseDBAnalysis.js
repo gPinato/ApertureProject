@@ -27,7 +27,7 @@ exports.init = function(app) {
 
 	var modelArray = [];
 	
-	var collectionDataPath = 'C:/SWE/SWE/package_npm/maap_server/modelServer/DSL/collectionData'; //'../DSL/collectionData';
+	var collectionDataPath = 'D:/GitHub/ApertureProject/SWE/package_npm/maap_server/modelServer/DSL/collectionData'; //'../DSL/collectionData';
 	var list = fs.readdirSync(collectionDataPath);
     list.forEach(function(file) {		
         var filePath = collectionDataPath + '/' + file;
