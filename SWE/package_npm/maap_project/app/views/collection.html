@@ -13,8 +13,8 @@
                 <th ng-show="canEdit" colspan="3">Options</th>
                 <tr ng-repeat="row in rows" >
                     <td ng-repeat="(key,value) in row.data">{{value}}</td>
-                    <td><a href="/collection/{{current_collection.id}}/{{row.ID}}" class="btn btn-info btn-sm"><i class="glyphicon glyphicon-ok"></i> View</a></td>
-                    <td ng-show="canEdit"><a href="/collection/{{current_collection.id}}/{{row.ID}}/edit" class="btn btn-danger btn-sm"><i class="glyphicon glyphicon-pencil"></i> Edit</a></td>
+                    <td><a href="/collection/{{current_collection}}/{{row._id}}" class="btn btn-info btn-sm"><i class="glyphicon glyphicon-ok"></i> View</a></td>
+                    <td ng-show="canEdit"><a href="/collection/{{current_collection}}/{{row._id}}/edit" class="btn btn-danger btn-sm"><i class="glyphicon glyphicon-pencil"></i> Edit</a></td>
                     <td ng-show="canEdit"><a href="#" class="btn btn-warning btn-sm"><i class="glyphicon glyphicon-trash"></i> Delete</a></td>
 
                 </tr>
