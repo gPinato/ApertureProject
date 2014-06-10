@@ -104,6 +104,9 @@ var IntValue=function(value,field){
 	}	
 }//end function
 
+var transformationArray = {};
+transformationArray.index = [];
+transformationArray.show = [];
 
 var parseDSL = function(DSLstring) {
 
@@ -119,7 +122,13 @@ var parseDSL = function(DSLstring) {
 		         checkField(column[i],'name','column');
 				 if(collection.index.column[i].transformation===undefined){ ;}
 				else{
-					transformationindex[i]=collection.index.column[i].transformation;
+					var name = collection.index.column[i].name.split('.');
+					if(name.length > 1){name = name[1];}
+					else{name = name[0];}
+					transformationindex.push('var ' + name + '; ' + collection.index.column[i].transformation);
+					transformationArray['index'].push({	name: collection.index.column[i].name, 
+														transformation: collection.index.column[i].transformation
+													});
 				 }//else
 		}//for
 		}
@@ -161,10 +170,16 @@ var parseDSL = function(DSLstring) {
 	if(checkField(collection.show,'row','show')){
 	    var row=collection.show.row;
 	    for(var i=0;i<row.length;i++){
-		         checkField(row[i],'name','column');
-				 if(collection.show.row[i].transformation===undefined){;}
-				 else{
-				 transformationshow.push(collection.show.row[i].transformation);
+		        checkField(row[i],'name','column');
+				if(collection.show.row[i].transformation===undefined){;}
+				else{
+				var name = collection.show.row[i].name.split('.');
+				if(name.length > 1){name = name[1];}
+				else{name = name[0];}
+				transformationshow.push('var ' + name + '; ' + collection.show.row[i].transformation);
+				transformationArray['show'].push({	name: collection.show.row[i].name, 
+													transformation: collection.show.row[i].transformation
+												});
 				}//else
 		}//for
 	}
@@ -182,7 +197,7 @@ var parseDSL = function(DSLstring) {
 	console.log('testing javascript trasformation...');
 	for(var i=0;i<all.length;i++){
 	//tento il parsing del file javascript
-	
+	if(all[i] == undefined)continue;
 	try {
 		var result = JSparser.parse(all[i]);
 	} catch(err) {
@@ -238,4 +253,5 @@ var parseDSL = function(DSLstring) {
 	return JSONresult;
 }
 
+exports.transformations = transformationArray;
 exports.parseDSL = parseDSL;

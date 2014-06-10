@@ -25,6 +25,34 @@ var path = require('path');
 var DSLparser = require('./DSLParser');
 var schemaGenerator = require('./schemaGenerator');
 
+var generateFunction = function(transformation) {
+
+	//eseguo lo split del name per vedere se ci sono nomi composti
+	var name = transformation.name.split('.');
+	if(name.length>1) transformation.name = name[1];
+	
+	var result = '//maaperture auto-generated function for item \'' + transformation.name + '\':\n\n'
+	result += 'exports.transformation = function(' + transformation.name + ') {\n';
+	result += transformation.transformation + '\n';
+	result += 'return ' + transformation.name + ';\n}';
+	return result;
+}
+
+var deleteFolderRecursive = function(path) {
+  if( fs.existsSync(path) ) {
+    fs.readdirSync(path).forEach(function(file,index){
+      var curPath = path + "/" + file;
+      if(fs.lstatSync(curPath).isDirectory()) { // recurse
+        deleteFolderRecursive(curPath);
+      } else { // delete file
+        fs.unlinkSync(curPath);
+      }
+    });
+	//evito di eliminare la directory
+    //fs.rmdirSync(path);
+  }
+};
+
 var checkDSL = function(app) {
 
 	var config = app.config;
@@ -34,23 +62,10 @@ var checkDSL = function(app) {
 	var collectionDataPath = __dirname + '/collectionData';
 	var list = fs.readdirSync(collectionDataPath);
 	if(list.length > 0)
+	{
 		console.log('cleaning up collectionData files...');
-	/*list.forEach(function(file) {
-		var filePath = collectionDataPath + '/' + file;
-        var stat = fs.statSync(filePath);
-		var extension = path.extname(file);
-        if (stat && stat.isFile() && (extension == '.json' || extension == '.js')) {
-			fs.unlink(filePath, function (err) {
-				if (err){
-					console.log('errors while cleaning collectionData\'s file: ' + file);
-					throw err;
-				}
-				if(config.app.env == 'development') { //messaggio solo in fase di development
-					console.log('successfully deleted collectionData file: ' + file);
-				}
-			});
-		}
-	});*/
+		deleteFolderRecursive(collectionDataPath);
+	}
 			
 	//carica ogni file dsl e genera il file json dopo opportuni controlli
 	var collectionsList = [];
@@ -106,6 +121,39 @@ var checkDSL = function(app) {
 					console.log(saveFile + ' saved!');
 				}
 			);
+			
+			//genero i file delle funzioni/trasformazioni
+			var transformations = DSLparser.transformations;
+			var index = transformations.index;
+			var show = transformations.show;
+			
+			for(var j=0; j<index.length; j++)
+			{
+				var saveFile = __dirname + '/collectionData/' + 'transformation_index_' + index[j].name + '.js';
+				var stringResult = generateFunction(index[j]);
+				fs.writeFileSync(saveFile, stringResult, 'utf-8', function (err) {
+						if (err) {
+							console.error('error writing dsl\'s transformation file: ' + saveFile);
+							throw err;
+						} 
+						console.log(saveFile + ' saved!');
+					}
+				);
+			}
+						
+			for(var j=0; j<show.length; j++)
+			{
+				var stringResult = generateFunction(show[j]);
+				var saveFile = __dirname + '/collectionData/' + 'transformation_show_' + show[j].name + '.js';
+				fs.writeFileSync(saveFile, stringResult, 'utf-8', function (err) {
+						if (err) {
+							console.error('error writing dsl\'s transformation file: ' + saveFile);
+							throw err;
+						} 
+						console.log(saveFile + ' saved!');
+					}
+				);
+			}
 						
 			//genero lo schema
 			var schema = schemaGenerator.generate(result);

@@ -38,7 +38,7 @@
 					"label": "Nome Allenatore",
 					"name": "coach.name",
 					"type": "String",
-					"transformation": null
+					"transformation": "name = name + \" sfigato\";"
 				},
 				{
 					"label": "Tecnico",

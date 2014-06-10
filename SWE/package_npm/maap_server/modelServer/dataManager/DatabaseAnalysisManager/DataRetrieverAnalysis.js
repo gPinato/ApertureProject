@@ -101,7 +101,7 @@ var getDocuments = function(model, where, select, orderbycolumn, typeorder, star
 						}
 					}
 								
-					//pulisco i campi populate
+					//pulisco i campi populate complessi ora che ho estratto tutte le info
 					for(var attributename in obj)
 					{
 						for(var j=0; j<populatePath.length; j++)
@@ -133,6 +133,34 @@ var extractPopulate = function(populateArray, key) {
 		}
 	}
 	return '';
+}
+
+//applica le varie trasformazioni presenti nel dsl ai vari campi dei documents nell'array di documents
+var applyTrasformations = function(type, documentsArray, dslArray) {
+
+	for(var i=0; i<dslArray.length; i++)
+	{
+		if(dslArray[i].transformation != null)
+		{
+			var fieldName = dslArray[i].name;
+			var file = require('../../DSL/collectionData/transformation_' + type + '_' + fieldName + '.js');
+			var transformation = file.transformation;
+			for(var j=0; j<documentsArray.length; j++)
+			{
+				var document = documentsArray[j];
+				for(var attributename in document)
+				{
+					console.log(attributename);
+					if(attributename == fieldName)
+					{
+						console.log(document[attributename]);
+						document[attributename] = transformation(document[attributename]);
+					}
+				}
+			}
+		}	
+	}
+	return documentsArray;
 }
 
 exports.getCollectionIndex = function(collection_name, column, order, page, callback) {
@@ -195,7 +223,7 @@ exports.getCollectionIndex = function(collection_name, column, order, page, call
 				function(documents){
 					var result = {}
 					result.labels = labels;		
-					result.documents = documents;
+					result.documents = applyTrasformations('index', documents, collection.index.column);
 					callback(result);
 				});
 }
@@ -244,6 +272,7 @@ exports.getDocumentShow = function(collection_name, document_id, callback) {
 				function(documents){
 					var result = {}
 					result.labels = labels;		
+					documents = applyTrasformations('show', documents, collection.show.row);
 					result.rows = documents[0];
 					callback(result);
 				});

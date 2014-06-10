@@ -56,19 +56,20 @@ collection = {
 			{	
 				label: 'eta',
 				name: 'age',
-				type: 'Number, min: 18, max:35'
+				type: 'Number, min: 18, max:35',
+				transformation: 'age = age*2'
 			},
 			{	
 				label: 'Interessi',
 				name: 'interest',
 				type: '[String]',
-				transformation: 'function interessi(interest){ \
-					var result = \"\"; \
-					for(var i=0; i<interest.length; i++){ \
-						result += interest[i] + \", \";\
-					}\
-					return result;\
-				}'
+				transformation: 'var result = \"\" ; \
+								for(var i=0; i<interest.length; i++) \
+								{ \
+									if(i != 0){result += \", \"; } \
+									result += interest[i]; \
+								} \
+								interest = result;'							
 			}
 		]
 	} //end show page

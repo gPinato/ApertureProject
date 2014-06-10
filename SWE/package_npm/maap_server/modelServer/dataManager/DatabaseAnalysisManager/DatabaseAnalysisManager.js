@@ -42,7 +42,6 @@ exports.sendCollection  = function(req, res) {
 												data.documents,	//dati
 												data.options	//opzioni
 												));
-			
 	});	
 }
 
@@ -57,7 +56,6 @@ exports.sendDocument = function(req, res){
 												data.rows,		//dati
 												data.options	//opzioni
 											));
-			
 	});	
 	
 }
