@@ -1,7 +1,7 @@
 collection = {
 	label: 'Allenatori',
 	name: 'coaches',
-	position: 4, //posizione nel menu, default -1
+	position: 2, //posizione nel menu, default -1
 	
 	index : {
 		perpage: 2,
