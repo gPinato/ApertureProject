@@ -10,11 +10,11 @@ var func = function(){
 	var usersSchema = schema.usersSchema;
 	var usersModel = db.model('users', usersSchema);
 
-	var criteria = {_id:'510c35dd8fada716c89d0017'};
+	var criteria = new usersModel({email:'hh@hh.com', password:'hh'});
 	//var criteria = {email:'miotto@miotto'};
 	//var newvaluefield = {email:'maso@maso'};
 
-	var testquery = require('../../DSL/querydelete');
+	var testquery = require('../../DSL/queryinsert');
 	testquery.provaquery(usersModel, criteria,function(dati){
 						console.log('ecco qua:');
 						console.log(dati);						
