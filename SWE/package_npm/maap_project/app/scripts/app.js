@@ -54,6 +54,10 @@ angular
                 templateUrl: 'views/register.html',
                 controller: 'RegisterCtrl'
             })
+            .when('/404', {
+                templateUrl: 'views/404.html',
+                controller: 'RegisterCtrl'
+            })
 
 
             .otherwise({

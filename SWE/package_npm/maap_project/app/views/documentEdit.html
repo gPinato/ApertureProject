@@ -25,7 +25,7 @@
 
             <a  ng-click="edit_document()" ng-show="canEdit" class="btn btn-danger"><i class="glyphicon glyphicon-pencil"></i> Save</a>
             <a href="/collection/{{current_collection}}/{{current_document}}" ng-click="discard()" ng-show="canEdit" class="btn btn-warning"><i class="glyphicon glyphicon-trash"></i> Discard</a>
-            <a href="delete_document()"  ng-show="canEdit" class="btn btn-warning"><i class="glyphicon glyphicon-trash"></i> Delete</a>
+            <a href="" ng-click="delete_document()"  ng-show="canEdit" class="btn btn-warning"><i class="glyphicon glyphicon-trash"></i> Delete</a>
 
         </div>
     </div>

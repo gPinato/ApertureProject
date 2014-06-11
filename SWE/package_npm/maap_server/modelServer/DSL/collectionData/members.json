@@ -37,7 +37,8 @@
 				"age": {
 					"$lt": 40
 				}
-			}
+			},
+			"populate": null
 		},
 		"show": {
 			"row": [

@@ -66,9 +66,9 @@
                 <ul ng-show="isLoggedIn()" class="nav navbar-nav navbar-right">
                     <li ng-show="isAdmin"><a href="#">Manage Users</a></li>
                     <li><a href="#">Profile</a></li>
-                    <li><a href="#">Logout</a></li>
+                    <li ng-click="logout()"><a href="">Logout</a></li>
                     <li ng-hide="isLoggedIn()"><a href="/login">Sing in!</a></li>
-                    <li ng-show="singup_enabled" ng-hide="isLoggedIn()"><a href="/register">Sing up!</a></li>
+                    <li ng-show="singup_enabled" ><a href="/register">Sing up!</a></li>
                 </ul>
             </div><!-- /.navbar-collapse -->
         </div><!-- /.container-fluid -->
@@ -142,6 +142,7 @@
 <script src="scripts/services/Authservice.js"></script>
 <script src="scripts/services/RegisterService.js"></script>
 <script src="scripts/services/CollectionListService.js"></script>
+<script src="scripts/services/LogoutService.js"></script>
 
 <!-- load directives -->
 
