@@ -31,7 +31,7 @@ var dsltoken = [
 	},
 	{
 		"token" : "sortby",
-		"default" : "age"
+		"default" : "_id"
 	},
 	{
 		"token" : "order",
@@ -56,6 +56,10 @@ var dsltoken = [
 	{
 		"token" : "row",
 		"default" : null
+	},
+	{
+		"token" : "populate",
+		"default" : null
 	}
 ];
 
@@ -75,6 +79,14 @@ var addField=function(collection,field){
 		
 }
 
+var checkFieldThrow = function(collection,field,root){ 
+	var err = 'Campo obbligatorio: '+field+' non trovato in '+root;
+	
+	if(!checkField(collection,field,root)) 
+	 throw err;
+	 
+}
+
 var checkField=function(collection,field,root){      
 		try{
 		 var a=collection[field];
@@ -84,16 +96,38 @@ var checkField=function(collection,field,root){
 		return true;
 		}
 		catch(err){
-		     console.log('Campo obbligatorio: '+field+' non trovato in '+root);
+			 return false;
+		}	
+}
+
+var checkFieldContentThrow = function(collection,field,root){ 
+	var err = 'Campo obbligatorio: '+field+' non trovato in '+root+ ' o vuoto';
+	
+	if(!checkFieldContent(collection,field,root)) 
+	 throw err;
+	 
+}
+
+var checkFieldContent = function(collection,field,root){ 
+		try{
+		 var testField=collection[field];
+		 if(testField===undefined){
+			 throw field;
+		 }
+		if(testField==""){
+			throw field;
+		}
+		return true;
+		}
+		catch(err){
 			 return false;
 		}
-		
 }
+
 
 var IntValue=function(value,field){
 	try{
 		if (isNaN(value)) {
-			//console.log('This is not number');
 			throw field;
 		}
 		return true;
@@ -115,11 +149,35 @@ var parseDSL = function(DSLstring) {
   var JSONresult={};
 	JSONresult.collection=DSLstring.collection;
 	var collection = DSLstring.collection; 
-		if(checkField(collection,'index','collection'));
+		checkFieldThrow(collection,'index','collection');
+		var populate = collection.index.populate;
+		var populateFind = false;
+		if(populate != undefined){
+			populateFind = true;
+			for(var i=0;i<collection.index.populate.length;i++){
+				checkFieldContentThrow(collection.index.populate[i],'collection','populate');
+				checkFieldContentThrow(collection.index.populate[i],'key','populate');
+			}
+		}//if
 	    if(checkField(collection.index,'column')){
 	    var column=collection.index.column;
 	    for(var i=0;i<column.length;i++){
-		         checkField(column[i],'name','column');
+		         checkFieldThrow(column[i],'name','column');
+				 if(populateFind){
+						var name = collection.index.column[i].name.split('.');
+						if(name.length > 1){
+							name = name[0];
+							var nameSplitFind = false; 
+							for(var j=0;j<collection.index.populate.length;j++){
+								if(collection.index.populate[j].key == name)
+									nameSplitFind = true;
+							}
+							if(nameSplitFind == false){
+									var err = 'Campo '+name+' non presente nel populate ';
+									throw err;
+							}
+						}
+				 }
 				 if(collection.index.column[i].transformation===undefined){ ;}
 				else{
 					var name = collection.index.column[i].name.split('.');
@@ -142,7 +200,7 @@ var parseDSL = function(DSLstring) {
 		var button=collection.index.button;
 		if(button != undefined) {
 			for(var i=0;i<button.length;i++){
-					 checkField(button[i],'name','button');
+					 checkFieldThrow(button[i],'name','button');
 					 functionbuttonindex[i]=collection.index.button[i].function;
 			}
 		}
@@ -158,19 +216,19 @@ var parseDSL = function(DSLstring) {
 	var functionbuttonshow=[];
     var transformationshow=[];
 	var show=DSLstring.collection;
-		if(checkField(collection,'show','collection'));
+	checkFieldThrow(collection,'show','collection');
 	var button=collection.show.button;
 	if(button != undefined)
 	{
 		for(var i=0;i<button.length;i++){
-		         checkField(button[i],'name','button');
+		         checkFieldThrow(button[i],'name','button');
 				 functionbuttonshow.push(collection.show.button[i].function);
 		}
 	}
 	if(checkField(collection.show,'row','show')){
 	    var row=collection.show.row;
 	    for(var i=0;i<row.length;i++){
-		        checkField(row[i],'name','column');
+		        checkFieldThrow(row[i],'name','column');
 				if(collection.show.row[i].transformation===undefined){;}
 				else{
 				var name = collection.show.row[i].name.split('.');
@@ -183,8 +241,7 @@ var parseDSL = function(DSLstring) {
 				}//else
 		}//for
 	}
-		
-	//var allfunctions=functionbuttonshow+transformationshow+functionbuttonindex+transformationindex;
+
 	var alltransformation=[];
 	alltransformation=transformationshow.concat(transformationindex);
 	var allfunctions=[];
@@ -193,7 +250,7 @@ var parseDSL = function(DSLstring) {
 		allfunctions=functionbuttonshow.concat(functionbuttonindex);
 	}
 	var all=[];
-	all=alltransformation.concat(allfunctions);//functionbuttonindex;//functionbuttonshow;
+	all=alltransformation.concat(allfunctions);
 	console.log('testing javascript trasformation...');
 	for(var i=0;i<all.length;i++){
 	//tento il parsing del file javascript
