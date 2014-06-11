@@ -68,7 +68,7 @@
                     <li><a href="#">Profile</a></li>
                     <li ng-click="logout()"><a href="">Logout</a></li>
                     <li ng-hide="isLoggedIn()"><a href="/login">Sing in!</a></li>
-                    <li ng-show="singup_enabled" ><a href="/register">Sing up!</a></li>
+                    <li ng-show="singup_enabled && !isLoggedIn()" ><a href="/register">Sing up!</a></li>
                 </ul>
             </div><!-- /.navbar-collapse -->
         </div><!-- /.container-fluid -->
