@@ -15,6 +15,34 @@
 'use strict';
 
 var retriever = require('./DataRetrieverUsers');
+var DB = require('../../Database/MongooseDBFramework');
+
+//controlla che la mail non sia gia presente nel sistema durante la registrazione
+exports.checkMail = function(req, res) {
+
+	console.log('controllo mail' + req.body.field);
+	console.log(JSON.stringify(req.body));
+	
+	DB.users.count({
+        //email: req.body.field
+		email: 'ajk@ajk.com'
+    }, function (err, count) {
+        if (count === 0) {
+			console.log('nessuna mail presente');
+        } else {
+			console.log('utente gia presente');
+            //res.redirect("/register");
+        }
+    });	
+	
+	res.send(200);
+}
+
+exports.userSignup = function(req, res) {
+	console.log('registrazione utente');
+	console.log(JSON.stringify(req.body));
+	res.send(200);
+}
 
 //esempio richiesta lista di utenti registrati
 exports.userList  = function(req, res) {

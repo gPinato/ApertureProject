@@ -51,7 +51,7 @@ function serverInit(app){
 		
 	//db e config injecting
 	app.use(function(req,res,next){
-		req.db = DB;
+		//req.dbuser = DB;
 		req.config = config;
 		next();
 	});

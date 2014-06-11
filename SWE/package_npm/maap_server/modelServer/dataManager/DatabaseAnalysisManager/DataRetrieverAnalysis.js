@@ -160,68 +160,95 @@ var applyTrasformations = function(type, documentsArray, dslArray) {
 exports.getCollectionIndex = function(collection_name, column, order, page, callback) {
 
 	var model = getModel(collection_name);
-	var collection = require('../../DSL/collectionData/' + collection_name + '.json').collection;
-	var columns = collection.index.column;
+	try{
+		//provo a vedere se la collection e' presente
+		var collection = require('../../DSL/collectionData/' + collection_name + '.json').collection;
 	
-	//generazione array di labels
-	var labels = [];
-	for(var i=0; i<columns.length; i++){
-		if(columns[i].label != null)
-		{
-			labels[i] = columns[i].label;
-		}else{
-			labels[i] = columns[i].name;
-		}
-	}
-	
-	var select = {};
-	var populate = [];
-	//var populate = [{field: 'name', key: 'coach'},{field: 'name', key: 'coach2'},{field: 'nome', key: 'market'}];
-	for(var i=0; i<columns.length; i++){
-	    var name = columns[i].name.split('.');
-	    if(name.length > 1){
-			var data = {};
-			data.field = name[1];
-			data.key = name[0];
-			populate.push(data);
-		}
-		select[name[0]] = 1; 
-	}//for
-	
-	//se la colonna non e' specificata uso le impostazioni del DSL, altrimenti uso le impostazioni
-	//derivate dalla richiesta del client
-	if(column == undefined)
-	{
-		var sortby = collection.index.sortby;
-		order = collection.index.order;
-	}else{
-		var sortby = column;
-	}
-	
-	var perpage = collection.index.perpage;
-	var start = perpage * page;
-	var query;
-	if(collection.index.query == null)
-		query = {};
-	else
-		query = collection.index.query;
+		var columns = collection.index.column;
 		
-	//console.log(query);
-	
-	getDocuments(model,
-				query, 				//where
-				select,				//select 
-				sortby, 			//colonna da ordinare
-				order,				//tipo ordinamento
-				start,				//partenza
-				perpage,			//elementi per pagina
-				populate,			//populate
-				function(documents){
-					var result = {}
-					result.labels = labels;		
-					result.documents = applyTrasformations('index', documents, collection.index.column);
-					callback(result);
-				});
+		var labels = [];
+		var select = {};
+		var populate = [];
+			
+		if(columns != undefined)
+		{
+			//generazione array di labels
+			for(var i=0; i<columns.length; i++){
+				if(columns[i].label != null)
+				{
+					labels[i] = columns[i].label;
+				}else{
+					labels[i] = columns[i].name;
+				}
+			}
+		
+			for(var i=0; i<columns.length; i++){
+				var name = columns[i].name.split('.');
+				if(name.length > 1){
+					var data = {};
+					data.field = name[1];
+					data.key = name[0];
+					populate.push(data);
+				}
+				select[name[0]] = 1; 
+			}//for
+			
+		}
+		
+		//se la colonna non e' specificata uso le impostazioni del DSL, altrimenti uso le impostazioni
+		//derivate dalla richiesta del client
+		if(column == undefined)
+		{
+			var sortby = collection.index.sortby;
+			order = collection.index.order;
+		}else{
+			var sortby = column;
+		}
+		
+		var perpage = collection.index.perpage;
+		var start = perpage * page;
+		var query;
+		if(collection.index.query == null)
+			query = {};
+		else
+			query = collection.index.query;
+			
+		console.log(select);
+		
+		getDocuments(model,
+					query, 				//where
+					select,				//select 
+					sortby, 			//colonna da ordinare
+					order,				//tipo ordinamento
+					start,				//partenza
+					perpage,			//elementi per pagina
+					populate,			//populate
+					function(documents){
+						var result = {}
+						console.log(documents);
+						if(columns != undefined)
+						{
+							result.labels = labels;		
+							result.documents = applyTrasformations('index', documents, columns);
+						}else{	
+							//nel caso la column non sia definita
+							result.labels = [];
+							if(documents.length > 0)
+							{
+								for(var key in documents[0])
+								{
+									result.labels.push(key);
+								}
+							}
+							result.documents = documents;	//documents senza trasformazioni
+						}
+						callback(result);
+					});
+	}catch(err){
+		//se la collection non e' presente, rispondo con la lista vuota
+		console.log('err ' + err);
+		callback({});
+	}
 }
 
 exports.getDocumentShow = function(collection_name, document_id, callback) {
@@ -269,6 +296,56 @@ exports.getDocumentShow = function(collection_name, document_id, callback) {
 					var result = {}
 					result.labels = labels;		
 					documents = applyTrasformations('show', documents, collection.show.row);
+					result.rows = documents[0];
+					callback(result);
+				});
+}
+
+exports.getDocumentShowEdit = function(collection_name, document_id, callback) {
+
+	var model = getModel(collection_name);
+	var collection = require('../../DSL/collectionData/' + collection_name + '.json').collection;
+	var rows = collection.show.row;
+	
+	//generazione array di labels
+	var labels = [];
+	for(var i=0; i<rows.length; i++){
+		if(rows[i].name.split('.').length > 1) continue;
+		if(rows[i].label != null)
+		{
+			labels.push(rows[i].label);
+		}else{
+			labels.push(rows[i].name);
+		}
+	}
+	
+	var select = {};
+	var populate = [];
+	for(var i=0; i<rows.length; i++){
+	    var name = rows[i].name.split('.');
+	    if(name.length > 1){
+			var data = {};
+			data.field = name[1];
+			data.key = name[0];
+			populate.push(data);
+		}
+		select[name[0]] = 1; 
+	}//for
+	
+	var query = {};
+	query._id = document_id;
+	
+	getDocuments(model,
+				query, 				//where
+				select,				//select 
+				'', 				//colonna da ordinare
+				'',					//tipo ordinamento
+				0,					//partenza
+				'',					//elementi per pagina
+				'',					//populate
+				function(documents){
+					var result = {}
+					result.labels = labels;		
 					result.rows = documents[0];
 					callback(result);
 				});
