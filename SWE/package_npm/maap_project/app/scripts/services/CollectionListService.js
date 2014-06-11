@@ -14,8 +14,8 @@
  */
 
 angular.module('services')
-    .factory('CollectionListService',['$resource',function($resource){
-        return $resource ('http://localhost:9000/api/collection/list');
+    .factory('CollectionListService', ['$resource', function ($resource) {
+        return $resource('http://localhost:9000/api/collection/list');
 
     }]);
 

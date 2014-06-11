@@ -14,12 +14,12 @@
  */
 
 
-angular.module('maaperture').controller('DashboardCtrl', function ($scope, CollectionListService ) {
+angular.module('maaperture').controller('DashboardCtrl', function ($scope, CollectionListService) {
     CollectionListService.get(
         function success(data) {
             $scope.labels = data.labels;
             $scope.values = data.data;
         });
-    $scope.isAdmin=false;
+    $scope.isAdmin = false;
 
 });

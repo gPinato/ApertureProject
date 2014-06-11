@@ -13,8 +13,8 @@
  ==============================================
  */
 angular.module('services')
-    .factory('CollectionDataService',['$resource',function($resource){
-        return $resource ('http://localhost:9000/api/collection/:col_id',
-            {col_id : '@col_id'});
+    .factory('CollectionDataService', ['$resource', function ($resource) {
+        return $resource('http://localhost:9000/api/collection/:col_id',
+            {col_id: '@col_id'});
 
     }]);

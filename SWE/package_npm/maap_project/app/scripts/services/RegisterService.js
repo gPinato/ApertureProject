@@ -13,9 +13,9 @@
  ==============================================
  */
 angular.module('services')
-    .factory('RegisterService',['$resource',function($resource) {
+    .factory('RegisterService', ['$resource', function ($resource) {
         return $resource('http://localhost:9000/api/signup', {}, {
-            'register':  {method:'POST'}
+            'register': {method: 'POST'}
         });
     }
     ]);

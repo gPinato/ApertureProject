@@ -13,9 +13,9 @@
  ==============================================
  */
 angular.module('services')
-    .factory('LogoutService',['$resource',function($resource) {
+    .factory('LogoutService', ['$resource', function ($resource) {
         return $resource('http://localhost:9000/api/logout', {}, {
-            'logout':  {method:'GET'}
+            'logout': {method: 'GET'}
         });
     }
     ]);

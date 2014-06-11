@@ -14,25 +14,25 @@
  */
 
 
-angular.module('maaperture').controller('NavBarCtrl', function ($scope,LogoutService, CollectionListService ) {
+angular.module('maaperture').controller('NavBarCtrl', function ($scope, LogoutService, CollectionListService) {
     CollectionListService.get(
         function success(data) {
             $scope.labels = data.labels;
             $scope.values = data.data;
         });
 
-    $scope.logout= function(){
+    $scope.logout = function () {
         LogoutService.logout(),
-            function success (response){
+            function success(response) {
 
             },
-            function error (error){
+            function error(error) {
 
             };
     };
-    $scope.isAdmin=false;
+    $scope.isAdmin = false;
     $scope.singup_enabled = true;
-    $scope.isLoggedIn = function (){
+    $scope.isLoggedIn = function () {
         return true;
     };
 

@@ -14,15 +14,15 @@
  */
 
 
-angular.module('maaperture').controller('RegisterCtrl', function ($scope,$location,RegisterService) {
+angular.module('maaperture').controller('RegisterCtrl', function ($scope, $location, RegisterService) {
     $scope.credentials = {
         email: '',
         pwd1: '',
-        pwd2:''
+        pwd2: ''
     };
 
     $scope.submitted = false;
-    $scope.signupForm = function() {
+    $scope.signupForm = function () {
         if ($scope.signup_form.$valid) {
             RegisterService.register({},
                 $scope.credentials,
@@ -36,7 +36,8 @@ angular.module('maaperture').controller('RegisterCtrl', function ($scope,$locati
 
         else {
             $scope.signup_form.submitted = true;
-        };
+        }
+        ;
     }
 
 });

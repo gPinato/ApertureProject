@@ -17,16 +17,16 @@
 
 'use strict';
 
-angular.module('maaperture').controller('DocumentCtrl', function ($scope,$location,DocumentDataService,DocumentEditService,AuthService, $routeParams) {
-    $scope.current_collection =  $routeParams.col_id ;
-    $scope.current_document = $routeParams.doc_id ;
+angular.module('maaperture').controller('DocumentCtrl', function ($scope, $location, DocumentDataService, DocumentEditService, AuthService, $routeParams) {
+    $scope.current_collection = $routeParams.col_id;
+    $scope.current_document = $routeParams.doc_id;
     $scope.values = [];
-    $scope.canEdit =true;
+    $scope.canEdit = true;
 
-    DocumentDataService.query({col_id:$routeParams.col_id,doc_id:$routeParams.doc_id },
+    DocumentDataService.query({col_id: $routeParams.col_id, doc_id: $routeParams.doc_id },
         function success(response) {
             $scope.data = response.data;
-            $.each( $scope.data, function( key, value ) {
+            $.each($scope.data, function (key, value) {
                 $scope.values.push(value);
             });
             $scope.labels = response.label;
@@ -34,14 +34,14 @@ angular.module('maaperture').controller('DocumentCtrl', function ($scope,$locati
 
     );
 
-    $scope.delete_document = function() {
+    $scope.delete_document = function () {
         DocumentEditService.remove({
                 col_id: $scope.current_collection,
                 doc_id: $scope.current_document
             },
 
             function success() {
-                $location.path('/collection/'+$scope.current_collection);
+                $location.path('/collection/' + $scope.current_collection);
 
             },
             function err(error) {

@@ -13,9 +13,9 @@
  ==============================================
  */
 angular.module('services')
-    .factory('AuthService',['$resource',function($resource) {
+    .factory('AuthService', ['$resource', function ($resource) {
         return $resource('http://localhost:9000/api/login', {}, {
-            'login':  {method:'POST'}
+            'login': {method: 'POST'}
         });
     }
     ]);

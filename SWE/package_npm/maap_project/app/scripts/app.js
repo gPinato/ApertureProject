@@ -3,7 +3,7 @@
  * Moduli di angular da caricare per far girare il tutto
  */
 
-angular.module('services', [ "ngResource"] );
+angular.module('services', [ "ngResource"]);
 
 angular
     .module('maaperture', [
@@ -16,7 +16,7 @@ angular
         'ui.sortable',
         'LocalStorageModule'
     ])
-    .config(function ($routeProvider,$locationProvider,$provide,$httpProvider) {
+    .config(function ($routeProvider, $locationProvider, $provide, $httpProvider) {
         $routeProvider
             .when('/', {
                 templateUrl: 'views/dashboard.html',
@@ -65,17 +65,18 @@ angular
             });
 
 
-
         $locationProvider.html5Mode(true);
         //Force user to log
 
-        $httpProvider.responseInterceptors.push(function($q, $location) {
-            return function(promise) {
+        $httpProvider.responseInterceptors.push(function ($q, $location) {
+            return function (promise) {
                 return promise.then(
                     // Success: just return the response
-                    function(response){ return response; },
+                    function (response) {
+                        return response;
+                    },
                     // Error: check the error status to get only the 401
-                    function(response) {
+                    function (response) {
                         if (response.status === 401)
                             $location.url('/login');
                         return $q.reject(response);
@@ -88,7 +89,7 @@ angular
     /*
      * Preffiso di locasStorage impostato su ls per evitare interferenze
      */
-    .config(['localStorageServiceProvider', function(localStorageServiceProvider){
+    .config(['localStorageServiceProvider', function (localStorageServiceProvider) {
         localStorageServiceProvider.setPrefix('ls');
     }]);
 

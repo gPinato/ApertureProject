@@ -14,7 +14,7 @@
  */
 'use strict';
 
-angular.module('maaperture').controller('LoginCtrl', function ($scope,$location,AuthService) {
+angular.module('maaperture').controller('LoginCtrl', function ($scope, $location, AuthService) {
     $scope.credentials = {
         email: '',
         password: ''
@@ -23,10 +23,10 @@ angular.module('maaperture').controller('LoginCtrl', function ($scope,$location,
 
     $scope.login = function () {
         AuthService.login({}, $scope.credentials,
-           function success(data, status) {
+            function success(data, status) {
                 $location.url('/');
             },
-           function error (data, status) {
+            function error(data, status) {
             });
 
     };

@@ -14,10 +14,10 @@
  */
 
 angular.module('services')
-    .factory('DocumentDataService',['$resource',function($resource){
-        return $resource ('http://localhost:9000/api/collection/:col_id/:doc_id',
-            {col_id : '@col_id', doc_id:'@doc_id'},{
-                'query': {method:'GET'}
+    .factory('DocumentDataService', ['$resource', function ($resource) {
+        return $resource('http://localhost:9000/api/collection/:col_id/:doc_id',
+            {col_id: '@col_id', doc_id: '@doc_id'}, {
+                'query': {method: 'GET'}
 
             });
 
