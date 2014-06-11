@@ -27,7 +27,7 @@ exports.sendCollectionsList = function(req, res) {
 	
 }
 
-exports.sendCollection  = function(req, res) {
+var sendCollection  = function(req, res) {
 	var config = req.config;
 	var collection_name = req.params.col_id;
 	var column = req.query.column;
@@ -89,10 +89,13 @@ exports.updateDocument = function(req, res) {
 	
 	//console.log('_________docUPDATE____________');
 	//console.log(JSON.stringify(req.body));
-	retriever.updateDocument(collection_name, document_id, req.body, function(data){
-	
-		res.send(200);
-	
+	retriever.updateDocument(collection_name, document_id, req.body, function(success){
+		if(success)
+		{
+			res.send(200);
+		}else{
+			res.send(400);
+		}	
 	});
 
 }
@@ -103,12 +106,16 @@ exports.removeDocument = function(req, res) {
 	var document_id = req.params.doc_id;
 	
 	console.log('_________docREMOVE____________');
-	console.log(JSON.stringify(req.body));
-	retriever.removeDocument(collection_name, document_id, function(data){
-	
-		res.send(200);
-		//che fare qui?
-	
+	//console.log(JSON.stringify(req.body));
+	retriever.removeDocument(collection_name, document_id, function(success){
+		if(success)
+		{
+			res.send(200);
+		}else{
+			res.send(400);
+		}	
 	});
 	
 }
+
+exports.sendCollection = sendCollection;

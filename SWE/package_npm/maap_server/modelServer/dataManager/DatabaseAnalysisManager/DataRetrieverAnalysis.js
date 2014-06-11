@@ -14,8 +14,6 @@
  */
 'use strict';
 
-//var DB = require('../../Database/MongooseDBAnalysis');
-
 var getModel = function(collection_name) {
 	var DB = require('../../Database/MongooseDBAnalysis');
 	var array = DB.model;
@@ -425,12 +423,13 @@ exports.updateDocument = function(collection_name, document_id, newDocumentData,
 	
 	var query = model.update(criteria, {$set: newDocumentData}, options);
 	query.lean().exec( function(err, count){
-		if(err){console.log('document update fallito'); return;}
+		if(err){console.log('document update fallito: ' + err); return;}
 		if(count==0){
-			console.log('nessun risultato'); 
+			//console.log('nessun risultato'); 
+			callback(false);
 		}else{
-			//update avvenuto con successo, che fare ora?
-			callback();
+			//update avvenuto con successo
+			callback(true);
 		}
 	});
 }
@@ -443,15 +442,14 @@ exports.removeDocument = function(collection_name, document_id, callback) {
 	
 	var query = model.remove(criteria);
 	query.lean().exec( function(err, count){
-		if(err){console.log('rimozione document fallita'); return;}
+		if(err){console.log('rimozione document fallita: ' + err); return;}
 		if(count == 0) {
-			console.log('nessun risultato'); 
+			//console.log('niente da eliminare'); 
+			callback(false);
 		}else{
-			
-			//rimozione avvenuta con successo, che fare ora?
-			callback(count);
-			
-		}//else
+			//rimozione avvenuta con successo
+			callback(true);			
+		}
 	});
 
 }

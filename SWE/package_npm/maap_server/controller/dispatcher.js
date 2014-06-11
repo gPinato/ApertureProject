@@ -39,13 +39,12 @@ var dispatcherInit = function (app) {
 	//dispatcher.get('/api/collection/:col_id/:doc_id/edit', passport.checkAuthenticated, datamanager.sendDocumentEdit);
 	dispatcher.get('/api/collection/:col_id/:doc_id/edit', datamanager.sendDocumentEdit);
 	
-	//document edit ricezione dati per aggiornare il document...
 	//dispatcher.put('/api/collection/:col_id/:doc_id/edit', passport.checkAuthenticated, datamanager.updateDocument);
 	dispatcher.put('/api/collection/:col_id/:doc_id/edit', datamanager.updateDocument); 
 	
 	//dispatcher.delete('/api/collection/:col_id/:doc_id/edit', passport.checkAuthenticated, datamanager.removeDocument);
-	dispatcher.delete('/api/collection/:col_id/:doc_id/edit', datamanager.removeDocument);	
-
+	dispatcher.delete('/api/collection/:col_id/:doc_id/edit', datamanager.removeDocument);
+	
 	//dispatcher.post('/api/check/email', passport.checkNotAuthenticated, usermanager.checkMail);
 	dispatcher.post('/api/check/email', usermanager.checkMail);
 	

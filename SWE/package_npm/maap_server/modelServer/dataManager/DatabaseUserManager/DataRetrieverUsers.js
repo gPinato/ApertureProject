@@ -18,14 +18,7 @@ var DB = require('../../Database/MongooseDBFramework');
 
 exports.getUsersList = function(callback) {
 
-	DB.users.find({}, '_id email password' ,function(err,users){
-		if(err) { console.log('errore lettura users!'); return done(err); }
-		if(!users){
-			console.log('nessun utente presente');
-		}else{
-			callback(users);
-		}	
-	});
+	callback(false);
 	
 }
 
@@ -33,7 +26,7 @@ exports.addUser = function(email, password, level, callback) {
 	var criteria = new DB.users({email:email, password: password, level: level});
 	var query = criteria.save(function(err){
 		if(err){
-			console.log('err' + err);
+			console.log('impossibile aggiungere nuovo utente: ' + err);
 			callback(false);
 		}else{
 			console.log('registrazione ok');

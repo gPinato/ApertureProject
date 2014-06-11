@@ -21,7 +21,7 @@ var DB = require('../../Database/MongooseDBFramework');
 //controlla che la mail non sia gia presente nel sistema durante la registrazione
 exports.checkMail = function(req, res) {
 
-	console.log('controllo mail' + req.body.field);
+	console.log('controllo mail ' + req.body.field);
 	console.log(JSON.stringify(req.body));
 	
 	DB.users.count({
@@ -29,14 +29,12 @@ exports.checkMail = function(req, res) {
     }, function (err, count) {
         if (count === 0) {
 			console.log('nessuna mail presente');
-			//res.send(200);
+			res.send(400);
         } else {
 			console.log('utente gia presente');
-      
+			res.send(200);
         }
     });	
-	
-	res.send(500);
 }
 
 exports.userSignup = function(req, res) {
@@ -45,12 +43,12 @@ exports.userSignup = function(req, res) {
 	
 	var level = 0; //livello zero utente semplice
 	
-	retriever.addUser(req.body.email, req.body.pwd1, level, function(done){
-		if(done)
+	retriever.addUser(req.body.email, req.body.pwd1, level, function(success){
+		if(success)
 		{
 			res.send(200);
 		}else{
-			res.send(500);
+			res.send(400);
 		}	
 	});
 }
