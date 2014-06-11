@@ -21,5 +21,10 @@ angular.module('maaperture').controller('NavBarCtrl', function ($scope, Collecti
             $scope.values = data.data;
         });
     $scope.isAdmin=false;
+    $scope.singup_enabled = true;
+    $scope.isLoggedIn = function (){
+        return false;
+    };
+
 
 });

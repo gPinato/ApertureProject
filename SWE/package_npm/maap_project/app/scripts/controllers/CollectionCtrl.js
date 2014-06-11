@@ -18,7 +18,7 @@
 
 'use strict';
 
-angular.module('maaperture').controller('CollectionCtrl', function ($scope, CollectionDataService,AuthService, $routeParams) {
+angular.module('maaperture').controller('CollectionCtrl', function ($scope,$location, CollectionDataService,AuthService, $routeParams) {
 
     var init= function (){
         $scope.current_sorted_column = null;
@@ -35,6 +35,7 @@ angular.module('maaperture').controller('CollectionCtrl', function ($scope, Coll
 
 
     var getData = function () {
+
         CollectionDataService.query({
             col_id: $routeParams.col_id,
             order: $scope.current_sort,
@@ -60,8 +61,11 @@ angular.module('maaperture').controller('CollectionCtrl', function ($scope, Coll
 
             }
 
+            $scope.rows.splice(i,$scope.rows.length)
+
         },
             function err(error) {
+                $location.path("/404");
             }
         );
     };

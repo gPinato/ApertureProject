@@ -30,7 +30,7 @@ collection = {
 			}
 		],
 		query: {
-			age: {$lt: 29}
+			age: {$lt: 40}
 		}
 	}, //end index page
 	
