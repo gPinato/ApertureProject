@@ -21,6 +21,7 @@ angular.module('maaperture').controller('DocumentEditCtrl', function ($scope,Doc
     $scope.current_document = $routeParams.doc_id;
     $scope.canEdit = true;
     $scope.toedit=[];
+    $scope.original_keys = [];
 
 
     DocumentEditService.query({ col_id:$routeParams.col_id, doc_id:$routeParams.doc_id },
@@ -28,6 +29,7 @@ angular.module('maaperture').controller('DocumentEditCtrl', function ($scope,Doc
             $scope.labels = data.label;
             $scope.data = data.data;
             $.each( $scope.data, function( key, value ) {
+                $scope.original_keys.push(key);
                 $scope.toedit.push(value);
             });
         },
@@ -39,7 +41,7 @@ angular.module('maaperture').controller('DocumentEditCtrl', function ($scope,Doc
     $scope.edit_document = function() {
         var new_data = {};
         for (var i = 0; i < $scope.labels.length; i++) {
-            new_data[$scope.labels[i]] = $scope.toedit[i];
+            new_data[$scope.original_keys[i]] = $scope.toedit[i];
         }
         var json_data = JSON.stringify(new_data);
         DocumentEditService.update({

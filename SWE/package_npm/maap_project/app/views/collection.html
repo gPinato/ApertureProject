@@ -8,12 +8,12 @@
             <!-- Table -->
 
             <table class="table">
-                <th ng-click="columnSort($index)" ng-repeat="label in labels">{{label}} <span class="glyphicon glyphicon-sort"></span> </th>
+                <th ng-click="columnSort($index)" ng-repeat="label in labels"><a href="">{{label}}</a> <span  ng-show="current_sorted_column == $index"> <span ng-show="current_sort == 'asc'" class = "glyphicon glyphicon-arrow-up"> </span><span ng-show="current_sort == 'desc'" class = "glyphicon glyphicon-arrow-down"> </span></span></th>
                 <th ng-hide="canEdit">Options</th>
                 <th ng-show="canEdit" colspan="3">Options</th>
-                <tr ng-repeat="row in rows" >
-                    <td ng-repeat="(key,value) in row.data">{{value}}</td>
-                    <td><a href="/collection/{{current_collection}}/{{row._id}}" class="btn btn-info btn-sm"><i class="glyphicon glyphicon-ok"></i> View</a></td>
+                <tr ng-repeat="row in rows track by $index" >
+                    <td ng-repeat="value in row">{{value}}</td>
+                    <td><a href="/collection/{{current_collection}}/{{data[$index]._id}}" class="btn btn-info btn-sm"><i class="glyphicon glyphicon-ok"></i> View</a></td>
                     <td ng-show="canEdit"><a href="/collection/{{current_collection}}/{{row._id}}/edit" class="btn btn-danger btn-sm"><i class="glyphicon glyphicon-pencil"></i> Edit</a></td>
                     <td ng-show="canEdit"><a href="#" class="btn btn-warning btn-sm"><i class="glyphicon glyphicon-trash"></i> Delete</a></td>
 
