@@ -16,7 +16,7 @@
  */
 
 'use strict';
-angular.module('maaperture').controller('DocumentEditCtrl', function ($scope,DocumentEditService,AuthService, $routeParams) {
+angular.module('maaperture').controller('DocumentEditCtrl', function ($scope,$location,DocumentEditService,AuthService, $routeParams) {
     $scope.current_collection = $routeParams.col_id ;
     $scope.current_document = $routeParams.doc_id;
     $scope.canEdit = true;
@@ -50,6 +50,7 @@ angular.module('maaperture').controller('DocumentEditCtrl', function ($scope,Doc
             },
             json_data,
             function success() {
+                $location.path('/collection/'+$scope.current_collection+'/'+$scope.current_document);
             },
             function err(error) {
             }
@@ -63,6 +64,7 @@ angular.module('maaperture').controller('DocumentEditCtrl', function ($scope,Doc
             },
 
             function success() {
+                $location.path('/collection/'+$scope.current_collection);
             },
             function err(error) {
             }

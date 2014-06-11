@@ -18,7 +18,7 @@
 
 'use strict';
 
-angular.module('maaperture').controller('CollectionCtrl', function ($scope,$location, CollectionDataService,AuthService, $routeParams) {
+angular.module('maaperture').controller('CollectionCtrl', function ($scope,$route,$location,DocumentEditService, CollectionDataService,AuthService, $routeParams) {
 
     var init= function (){
         $scope.current_sorted_column = null;
@@ -112,6 +112,20 @@ angular.module('maaperture').controller('CollectionCtrl', function ($scope,$loca
             $scope.current_sort="asc";
             getData();
         }
-    }
+    };
+
+    $scope.delete_document = function(index) {
+        DocumentEditService.remove({
+                col_id: $scope.current_collection,
+                doc_id: index
+            },
+
+            function success() {
+                $location.path('/collection/'+$scope.current_collection);
+            },
+            function err(error) {
+            }
+        );
+    };
 
 });

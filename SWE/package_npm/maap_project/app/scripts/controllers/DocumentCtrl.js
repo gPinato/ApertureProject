@@ -17,7 +17,7 @@
 
 'use strict';
 
-angular.module('maaperture').controller('DocumentCtrl', function ($scope,DocumentDataService,DocumentEditService,AuthService, $routeParams) {
+angular.module('maaperture').controller('DocumentCtrl', function ($scope,$location,DocumentDataService,DocumentEditService,AuthService, $routeParams) {
     $scope.current_collection =  $routeParams.col_id ;
     $scope.current_document = $routeParams.doc_id ;
     $scope.values = [];
@@ -41,6 +41,8 @@ angular.module('maaperture').controller('DocumentCtrl', function ($scope,Documen
             },
 
             function success() {
+                $location.path('/collection/'+$scope.current_collection);
+
             },
             function err(error) {
             }
