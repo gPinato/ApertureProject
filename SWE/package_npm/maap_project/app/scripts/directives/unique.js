@@ -25,7 +25,7 @@ angular.module('maaperture').
                             $http({
                                 method: 'POST',
                                 url: '/api/check/' + attrs.ensureUnique,
-                                data: {'field': attrs.ensureUnique}
+                                data: {'field': c.$modelValue}
                             }).success(function(data, status, headers, cfg) {
                                 c.$setValidity('unique', data.isUnique);
                                 checking = null;
