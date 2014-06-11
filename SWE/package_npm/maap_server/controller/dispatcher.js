@@ -43,8 +43,8 @@ var dispatcherInit = function (app) {
 	//dispatcher.put('/api/collection/:col_id/:doc_id/edit', passport.checkAuthenticated, datamanager.updateDocument);
 	dispatcher.put('/api/collection/:col_id/:doc_id/edit', datamanager.updateDocument); 
 	
-	//dispatcher.delete('/api/collection/:col_id/:doc_id/edit', passport.checkAuthenticated, datamanager.deleteDocument); 
-	//dispatcher.delete('/api/collection/:col_id/:doc_id/edit', datamanager.deleteDocument(data)); 
+	//dispatcher.delete('/api/collection/:col_id/:doc_id/edit', passport.checkAuthenticated, datamanager.removeDocument);
+	dispatcher.delete('/api/collection/:col_id/:doc_id/edit', datamanager.removeDocument);	
 
 	//dispatcher.post('/api/check/email', passport.checkNotAuthenticated, usermanager.checkMail);
 	dispatcher.post('/api/check/email', usermanager.checkMail);
@@ -60,7 +60,7 @@ var dispatcherInit = function (app) {
 		res.send(req.user);
 	});
 	
-	dispatcher.post('/api/logout', passport.checkAuthenticated, passport.authenticate, function(req, res){
+	dispatcher.get('/api/logout', passport.checkAuthenticated, function(req, res){
 		req.logout();
 		res.redirect(path.join(config.static_assets.dir, 'index.html'));
 	});

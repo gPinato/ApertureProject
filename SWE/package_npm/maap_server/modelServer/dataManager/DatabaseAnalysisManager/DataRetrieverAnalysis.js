@@ -157,6 +157,20 @@ var applyTrasformations = function(type, documentsArray, dslArray) {
 	return documentsArray;
 }
 
+var sortDocumentsByLabels = function(documents, keys) {
+	var result = [];
+	for(var i=0; i<documents.length; i++)
+	{
+		var sortedDocument = {};
+		for(var j=0; j<keys.length; j++)
+		{
+			sortedDocument[keys[j]] = documents[i][keys[j]];
+		}
+		result.push(sortedDocument);
+	}	
+	return result;
+}
+
 exports.getCollectionIndex = function(collection_name, column, order, page, callback) {
 
 	var model = getModel(collection_name);
@@ -172,6 +186,7 @@ exports.getCollectionIndex = function(collection_name, column, order, page, call
 			
 		if(columns != undefined)
 		{
+			var keys = [];
 			//generazione array di labels
 			for(var i=0; i<columns.length; i++){
 				if(columns[i].label != null)
@@ -180,7 +195,9 @@ exports.getCollectionIndex = function(collection_name, column, order, page, call
 				}else{
 					labels[i] = columns[i].name;
 				}
+				keys[i] = columns[i].name;
 			}
+			keys.push('_id');
 		
 			for(var i=0; i<columns.length; i++){
 				var name = columns[i].name.split('.');
@@ -192,7 +209,7 @@ exports.getCollectionIndex = function(collection_name, column, order, page, call
 				}
 				select[name[0]] = 1; 
 			}//for
-			
+				
 		}
 		
 		//se la colonna non e' specificata uso le impostazioni del DSL, altrimenti uso le impostazioni
@@ -227,7 +244,8 @@ exports.getCollectionIndex = function(collection_name, column, order, page, call
 						var result = {};
 						if(columns != undefined)
 						{
-							result.labels = labels;		
+							result.labels = labels;	
+							documents = sortDocumentsByLabels(documents, keys);
 							result.documents = applyTrasformations('index', documents, columns);
 						}else{	
 							//nel caso la column non sia definita
@@ -263,6 +281,7 @@ exports.getDocumentShow = function(collection_name, document_id, callback) {
 	
 	if(rows != undefined)
 	{
+		var keys = [];
 		for(var i=0; i<rows.length; i++){
 			if(rows[i].label != null)
 			{
@@ -270,8 +289,90 @@ exports.getDocumentShow = function(collection_name, document_id, callback) {
 			}else{
 				labels[i] = rows[i].name;
 			}
+			keys[i] = rows[i].name;
 		}
+		keys.push('_id');
+		
+		for(var i=0; i<rows.length; i++){
+			var name = rows[i].name.split('.');
+			if(name.length > 1){
+				var data = {};
+				data.field = name[1];
+				data.key = name[0];
+				populate.push(data);
+			}
+			select[name[0]] = 1; 
+		}//for
+		
+	}
+	
+	var query = {};
+	query._id = document_id;
+	
+	getDocuments(model,
+				query, 				//where
+				select,				//select 
+				'', 				//colonna da ordinare
+				'',					//tipo ordinamento
+				0,					//partenza
+				'',					//elementi per pagina
+				populate,			//populate
+				function(documents){
+					var result = {};
+					if(rows != undefined)
+					{
+						result.labels = labels;	
+						documents = sortDocumentsByLabels(documents, keys);
+						documents = applyTrasformations('show', documents, rows);
+					}else{	
+						//nel caso la row non sia definita
+						result.labels = [];
+						for(var key in documents[0])
+						{
+							result.labels.push(key);
+						}
+					}
+					result.rows = documents[0];
+					callback(result);
+				});
+}
 
+exports.getDocumentShowEdit = function(collection_name, document_id, callback) {
+
+	var model = getModel(collection_name);
+	var collection = require('../../DSL/collectionData/' + collection_name + '.json').collection;
+	var rows = collection.show.row;
+	
+	if(rows != undefined)
+	{
+		//generazione array di labels
+		var labels = [];
+		var keys = [];
+		for(var i=0; i<rows.length; i++){
+			var composedName = rows[i].name.split('.');
+			if(composedName.length > 1)
+			{
+				//questo e' un campo composto, lo aggiungo solo
+				//una volta
+				if(keys.indexOf(composedName[0]) == -1)
+				{
+					keys.push(composedName[0]);
+					labels.push(composedName[0]);
+				}
+			}else{
+				if(rows[i].label != null)
+				{
+					labels.push(rows[i].label);
+				}else{
+					labels.push(rows[i].name);
+				}
+				keys.push(rows[i].name);
+			}
+		}
+		keys.push('_id');
+			
+		var select = {};
+		var populate = [];
 		for(var i=0; i<rows.length; i++){
 			var name = rows[i].name.split('.');
 			if(name.length > 1){
@@ -294,13 +395,13 @@ exports.getDocumentShow = function(collection_name, document_id, callback) {
 				'',					//tipo ordinamento
 				0,					//partenza
 				'',					//elementi per pagina
-				populate,			//populate
+				'',					//populate
 				function(documents){
-					var result = {};
+					var result = {}
 					if(rows != undefined)
 					{
-						result.labels = labels;		
-						documents = applyTrasformations('show', documents, rows);
+						result.labels = labels;	
+						documents = sortDocumentsByLabels(documents, keys);
 					}else{	
 						//nel caso la row non sia definita
 						result.labels = [];
@@ -309,56 +410,6 @@ exports.getDocumentShow = function(collection_name, document_id, callback) {
 							result.labels.push(key);
 						}
 					}
-					result.rows = documents[0];
-					callback(result);
-				});
-}
-
-exports.getDocumentShowEdit = function(collection_name, document_id, callback) {
-
-	var model = getModel(collection_name);
-	var collection = require('../../DSL/collectionData/' + collection_name + '.json').collection;
-	var rows = collection.show.row;
-	
-	//generazione array di labels
-	var labels = [];
-	for(var i=0; i<rows.length; i++){
-		if(rows[i].name.split('.').length > 1) continue;
-		if(rows[i].label != null)
-		{
-			labels.push(rows[i].label);
-		}else{
-			labels.push(rows[i].name);
-		}
-	}
-	
-	var select = {};
-	var populate = [];
-	for(var i=0; i<rows.length; i++){
-	    var name = rows[i].name.split('.');
-	    if(name.length > 1){
-			var data = {};
-			data.field = name[1];
-			data.key = name[0];
-			populate.push(data);
-		}
-		select[name[0]] = 1; 
-	}//for
-	
-	var query = {};
-	query._id = document_id;
-	
-	getDocuments(model,
-				query, 				//where
-				select,				//select 
-				'', 				//colonna da ordinare
-				'',					//tipo ordinamento
-				0,					//partenza
-				'',					//elementi per pagina
-				'',					//populate
-				function(documents){
-					var result = {}
-					result.labels = labels;		
 					result.rows = documents[0];
 					callback(result);
 				});
@@ -398,7 +449,7 @@ exports.removeDocument = function(collection_name, document_id, callback) {
 		}else{
 			
 			//rimozione avvenuta con successo, che fare ora?
-			callback();
+			callback(count);
 			
 		}//else
 	});

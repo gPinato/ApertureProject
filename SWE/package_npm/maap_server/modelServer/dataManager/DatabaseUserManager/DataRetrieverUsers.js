@@ -28,3 +28,16 @@ exports.getUsersList = function(callback) {
 	});
 	
 }
+
+exports.addUser = function(email, password, level, callback) {
+	var criteria = new DB.users({email:email, password: password, level: level});
+	var query = criteria.save(function(err){
+		if(err){
+			console.log('err' + err);
+			callback(false);
+		}else{
+			console.log('registrazione ok');
+			callback(true);
+		}
+	});
+}

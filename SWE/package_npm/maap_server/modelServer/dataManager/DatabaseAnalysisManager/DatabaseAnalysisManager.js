@@ -41,7 +41,6 @@ exports.sendCollection  = function(req, res) {
 		if(data.documents == undefined)
 		{
 			console.log('404');
-			//res.redirect(path.join(config.static_assets.dir, '404.html'));
 			res.send(404);
 		}else{
 			console.log('404ok');
@@ -87,17 +86,14 @@ exports.updateDocument = function(req, res) {
 	var config = req.config;
 	var collection_name = req.params.col_id;
 	var document_id = req.params.doc_id;
-	var newDocumentData = {};	//campi dati del document
 	
-	console.log('_________docUPDATE____________');
-	console.log(JSON.stringify(req.body));
-	res.send(200);
+	//console.log('_________docUPDATE____________');
+	//console.log(JSON.stringify(req.body));
+	retriever.updateDocument(collection_name, document_id, req.body, function(data){
 	
-	/*retriever.updateDocument(collection_name, document_id, newDocumentData, function(data){
+		res.send(200);
 	
-		//res.send();
-	
-	});*/
+	});
 
 }
 
@@ -108,13 +104,11 @@ exports.removeDocument = function(req, res) {
 	
 	console.log('_________docREMOVE____________');
 	console.log(JSON.stringify(req.body));
-	res.send(200);
-
-	/*retriever.removeDocument(collection_name, document_id, function(data){
+	retriever.removeDocument(collection_name, document_id, function(data){
 	
-		//res.send();
+		res.send(200);
 		//che fare qui?
 	
-	});*/
+	});
 	
 }

@@ -14,6 +14,7 @@
  */
 'use strict';
 
+var path = require('path');
 var retriever = require('./DataRetrieverUsers');
 var DB = require('../../Database/MongooseDBFramework');
 
@@ -28,18 +29,30 @@ exports.checkMail = function(req, res) {
     }, function (err, count) {
         if (count === 0) {
 			console.log('nessuna mail presente');
-			res.send(200);
+			//res.send(200);
         } else {
 			console.log('utente gia presente');
-            res.send(500);
+      
         }
     });	
+	
+	res.send(500);
 }
 
 exports.userSignup = function(req, res) {
 	console.log('registrazione utente');
 	console.log(JSON.stringify(req.body));
-	res.send(200);
+	
+	var level = 0; //livello zero utente semplice
+	
+	retriever.addUser(req.body.email, req.body.pwd1, level, function(done){
+		if(done)
+		{
+			res.send(200);
+		}else{
+			res.send(500);
+		}	
+	});
 }
 
 //esempio richiesta lista di utenti registrati
