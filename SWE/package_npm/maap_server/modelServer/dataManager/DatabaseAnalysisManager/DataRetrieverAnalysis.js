@@ -224,8 +224,7 @@ exports.getCollectionIndex = function(collection_name, column, order, page, call
 					perpage,			//elementi per pagina
 					populate,			//populate
 					function(documents){
-						var result = {}
-						console.log(documents);
+						var result = {};
 						if(columns != undefined)
 						{
 							result.labels = labels;		
@@ -259,27 +258,31 @@ exports.getDocumentShow = function(collection_name, document_id, callback) {
 	
 	//generazione array di labels
 	var labels = [];
-	for(var i=0; i<rows.length; i++){
-		if(rows[i].label != null)
-		{
-			labels[i] = rows[i].label;
-		}else{
-			labels[i] = rows[i].name;
-		}
-	}
-	
 	var select = {};
 	var populate = [];
-	for(var i=0; i<rows.length; i++){
-	    var name = rows[i].name.split('.');
-	    if(name.length > 1){
-			var data = {};
-			data.field = name[1];
-			data.key = name[0];
-			populate.push(data);
+	
+	if(rows != undefined)
+	{
+		for(var i=0; i<rows.length; i++){
+			if(rows[i].label != null)
+			{
+				labels[i] = rows[i].label;
+			}else{
+				labels[i] = rows[i].name;
+			}
 		}
-		select[name[0]] = 1; 
-	}//for
+
+		for(var i=0; i<rows.length; i++){
+			var name = rows[i].name.split('.');
+			if(name.length > 1){
+				var data = {};
+				data.field = name[1];
+				data.key = name[0];
+				populate.push(data);
+			}
+			select[name[0]] = 1; 
+		}//for
+	}
 	
 	var query = {};
 	query._id = document_id;
@@ -293,9 +296,19 @@ exports.getDocumentShow = function(collection_name, document_id, callback) {
 				'',					//elementi per pagina
 				populate,			//populate
 				function(documents){
-					var result = {}
-					result.labels = labels;		
-					documents = applyTrasformations('show', documents, collection.show.row);
+					var result = {};
+					if(rows != undefined)
+					{
+						result.labels = labels;		
+						documents = applyTrasformations('show', documents, rows);
+					}else{	
+						//nel caso la row non sia definita
+						result.labels = [];
+						for(var key in documents[0])
+						{
+							result.labels.push(key);
+						}
+					}
 					result.rows = documents[0];
 					callback(result);
 				});

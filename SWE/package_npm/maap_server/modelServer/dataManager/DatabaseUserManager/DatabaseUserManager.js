@@ -24,18 +24,16 @@ exports.checkMail = function(req, res) {
 	console.log(JSON.stringify(req.body));
 	
 	DB.users.count({
-        //email: req.body.field
-		email: 'ajk@ajk.com'
+  		email: req.body.field
     }, function (err, count) {
         if (count === 0) {
 			console.log('nessuna mail presente');
+			res.send(200);
         } else {
 			console.log('utente gia presente');
-            //res.redirect("/register");
+            res.send(500);
         }
     });	
-	
-	res.send(200);
 }
 
 exports.userSignup = function(req, res) {

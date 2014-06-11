@@ -37,19 +37,20 @@ var dispatcherInit = function (app) {
 	dispatcher.get('/api/collection/:col_id/:doc_id', datamanager.sendDocument);
 	
 	//dispatcher.get('/api/collection/:col_id/:doc_id/edit', passport.checkAuthenticated, datamanager.sendDocumentEdit);
-	dispatcher.get('/api/collection/:col_id/:doc_id/edit', datamanager.sendDocument);
+	dispatcher.get('/api/collection/:col_id/:doc_id/edit', datamanager.sendDocumentEdit);
 	
 	//document edit ricezione dati per aggiornare il document...
 	//dispatcher.put('/api/collection/:col_id/:doc_id/edit', passport.checkAuthenticated, datamanager.updateDocument);
 	dispatcher.put('/api/collection/:col_id/:doc_id/edit', datamanager.updateDocument); 
 	
-	//dispatcher.delete('/api/collection/:col_id/:doc_id/edit', datamanager.updateDocument); 
+	//dispatcher.delete('/api/collection/:col_id/:doc_id/edit', passport.checkAuthenticated, datamanager.deleteDocument); 
+	//dispatcher.delete('/api/collection/:col_id/:doc_id/edit', datamanager.deleteDocument(data)); 
 
 	//dispatcher.post('/api/check/email', passport.checkNotAuthenticated, usermanager.checkMail);
 	dispatcher.post('/api/check/email', usermanager.checkMail);
 	
-	//dispatcher.post('/api/signup', passport.checkNotAuthenticated, usermanager.userSignup);
-	dispatcher.post('/api/signup', usermanager.userSignup);
+	dispatcher.post('/api/signup', passport.checkNotAuthenticated, usermanager.userSignup);
+	//dispatcher.post('/api/signup', usermanager.userSignup);
 
 	dispatcher.get('/loggedin', function(req, res){
 		res.send(req.isAuthenticated() ? req.user : '0');

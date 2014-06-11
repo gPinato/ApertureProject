@@ -41,7 +41,8 @@ exports.sendCollection  = function(req, res) {
 		if(data.documents == undefined)
 		{
 			console.log('404');
-			res.redirect(path.join(config.static_assets.dir, '404.html'));
+			//res.redirect(path.join(config.static_assets.dir, '404.html'));
+			res.send(404);
 		}else{
 			console.log('404ok');
 			res.send(JSonComposer.createCollection(	data.labels,	//etichette
@@ -71,7 +72,7 @@ exports.sendDocumentEdit = function(req, res){
 	var config = req.config;
 	var collection_name = req.params.col_id;
 	var document_id = req.params.doc_id;
-	console.log('_____________________');
+	console.log('_________docEDIT____________');
 	retriever.getDocumentShowEdit(collection_name, document_id, function(data){
 		
 		res.send(JSonComposer.createDocument( 	data.labels,	//etichette
@@ -88,6 +89,7 @@ exports.updateDocument = function(req, res) {
 	var document_id = req.params.doc_id;
 	var newDocumentData = {};	//campi dati del document
 	
+	console.log('_________docUPDATE____________');
 	console.log(JSON.stringify(req.body));
 	res.send(200);
 	
@@ -104,6 +106,7 @@ exports.removeDocument = function(req, res) {
 	var collection_name = req.params.col_id;
 	var document_id = req.params.doc_id;
 	
+	console.log('_________docREMOVE____________');
 	console.log(JSON.stringify(req.body));
 	res.send(200);
 
