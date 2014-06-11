@@ -27,26 +27,26 @@ var dispatcherInit = function (app) {
 	
 	var dispatcher = app.express.Router();
 	
-	//dispatcher.get('/api/collection/list', passport.checkAuthenticated, datamanager.sendCollectionsList);
-	dispatcher.get('/api/collection/list', datamanager.sendCollectionsList);
+	dispatcher.get('/api/collection/list', passport.checkAuthenticated, datamanager.sendCollectionsList);
+	//dispatcher.get('/api/collection/list', datamanager.sendCollectionsList);
 	
-	//dispatcher.get('/api/collection/:col_id', passport.checkAuthenticated, datamanager.sendCollection);
-	dispatcher.get('/api/collection/:col_id',  datamanager.sendCollection);
+	dispatcher.get('/api/collection/:col_id', passport.checkAuthenticated, datamanager.sendCollection);
+	//dispatcher.get('/api/collection/:col_id',  datamanager.sendCollection);
 	
-	//dispatcher.get('/api/collection/:col_id/:doc_id', passport.checkAuthenticated, datamanager.sendDocument);
-	dispatcher.get('/api/collection/:col_id/:doc_id', datamanager.sendDocument);
+	dispatcher.get('/api/collection/:col_id/:doc_id', passport.checkAuthenticated, datamanager.sendDocument);
+	//dispatcher.get('/api/collection/:col_id/:doc_id', datamanager.sendDocument);
 	
-	//dispatcher.get('/api/collection/:col_id/:doc_id/edit', passport.checkAuthenticated, datamanager.sendDocumentEdit);
-	dispatcher.get('/api/collection/:col_id/:doc_id/edit', datamanager.sendDocumentEdit);
+	dispatcher.get('/api/collection/:col_id/:doc_id/edit', passport.checkAuthenticated, datamanager.sendDocumentEdit);
+	//dispatcher.get('/api/collection/:col_id/:doc_id/edit', datamanager.sendDocumentEdit);
 	
-	//dispatcher.put('/api/collection/:col_id/:doc_id/edit', passport.checkAuthenticated, datamanager.updateDocument);
-	dispatcher.put('/api/collection/:col_id/:doc_id/edit', datamanager.updateDocument); 
+	dispatcher.put('/api/collection/:col_id/:doc_id/edit', passport.checkAuthenticated, datamanager.updateDocument);
+	//dispatcher.put('/api/collection/:col_id/:doc_id/edit', datamanager.updateDocument); 
 	
-	//dispatcher.delete('/api/collection/:col_id/:doc_id/edit', passport.checkAuthenticated, datamanager.removeDocument);
-	dispatcher.delete('/api/collection/:col_id/:doc_id/edit', datamanager.removeDocument);
+	dispatcher.delete('/api/collection/:col_id/:doc_id/edit', passport.checkAuthenticated, datamanager.removeDocument);
+	//dispatcher.delete('/api/collection/:col_id/:doc_id/edit', datamanager.removeDocument);
 	
-	//dispatcher.post('/api/check/email', passport.checkNotAuthenticated, usermanager.checkMail);
-	dispatcher.post('/api/check/email', usermanager.checkMail);
+	dispatcher.post('/api/check/email', passport.checkNotAuthenticated, usermanager.checkMail);
+	//dispatcher.post('/api/check/email', usermanager.checkMail);
 	
 	dispatcher.post('/api/signup', passport.checkNotAuthenticated, usermanager.userSignup);
 	//dispatcher.post('/api/signup', usermanager.userSignup);
@@ -61,7 +61,7 @@ var dispatcherInit = function (app) {
 	
 	dispatcher.get('/api/logout', passport.checkAuthenticated, function(req, res){
 		req.logout();
-		res.redirect(path.join(config.static_assets.dir, 'index.html'));
+		res.send(200);
 	});
 	
 	dispatcher.get('*', function(req, res){

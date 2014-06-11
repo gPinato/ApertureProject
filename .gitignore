@@ -38,7 +38,7 @@ SWE/package_npm/maap_project/node_modules/*
 SWE/package_npm/maap_project/app/bower_components/*
 SWE/package_npm/node_modules/*
 SWE/MaaP-Steakholders/*
-SWE/package_npm/maap_server/modelServer/DSL/collectionData/*
+SWE/package_npm/maap_server/ModelServer/DSL/collectionData/*
 *.gz(busy)
 *.exe
 SWE/package_npm/maap_project/.idea/workspace.xml
