@@ -38,10 +38,17 @@ exports.sendCollection  = function(req, res) {
 	//il restante codice solamente quando ho la risposta dal db :)
 	retriever.getCollectionIndex(collection_name, column, order, page, function(data){
 		
-		res.send(JSonComposer.createCollection(	data.labels,	//etichette
-												data.documents,	//dati
-												data.options	//opzioni
-												));
+		if(data.documents == undefined)
+		{
+			console.log('404');
+			res.redirect(path.join(config.static_assets.dir, '404.html'));
+		}else{
+			console.log('404ok');
+			res.send(JSonComposer.createCollection(	data.labels,	//etichette
+													data.documents,	//dati
+													data.options	//opzioni
+												   ));
+		}
 	});	
 }
 
@@ -60,17 +67,35 @@ exports.sendDocument = function(req, res){
 	
 }
 
+exports.sendDocumentEdit = function(req, res){
+	var config = req.config;
+	var collection_name = req.params.col_id;
+	var document_id = req.params.doc_id;
+	console.log('_____________________');
+	retriever.getDocumentShowEdit(collection_name, document_id, function(data){
+		
+		res.send(JSonComposer.createDocument( 	data.labels,	//etichette
+												data.rows,		//dati
+												data.options	//opzioni
+											));
+	});	
+	
+}
+
 exports.updateDocument = function(req, res) {
 	var config = req.config;
 	var collection_name = req.params.col_id;
 	var document_id = req.params.doc_id;
 	var newDocumentData = {};	//campi dati del document
 	
-	retriever.updateDocument(collection_name, document_id, newDocumentData, function(data){
+	console.log(JSON.stringify(req.body));
+	res.send(200);
+	
+	/*retriever.updateDocument(collection_name, document_id, newDocumentData, function(data){
 	
 		//res.send();
 	
-	});
+	});*/
 
 }
 
@@ -78,12 +103,15 @@ exports.removeDocument = function(req, res) {
 	var config = req.config;
 	var collection_name = req.params.col_id;
 	var document_id = req.params.doc_id;
+	
+	console.log(JSON.stringify(req.body));
+	res.send(200);
 
-	retriever.removeDocument(collection_name, document_id, function(data){
+	/*retriever.removeDocument(collection_name, document_id, function(data){
 	
 		//res.send();
 		//che fare qui?
 	
-	});
+	});*/
 	
 }

@@ -17,6 +17,7 @@
 var passport = require("./Passport");
 var path = require('path');
 var datamanager = require('../ModelServer/DataManager/DatabaseAnalysisManager/DatabaseAnalysisManager');
+var usermanager = require('../ModelServer/DataManager/DatabaseUserManager/DatabaseUserManager');
 
 var dispatcherInit = function (app) {
 
@@ -35,27 +36,32 @@ var dispatcherInit = function (app) {
 	//dispatcher.get('/api/collection/:col_id/:doc_id', passport.checkAuthenticated, datamanager.sendDocument);
 	dispatcher.get('/api/collection/:col_id/:doc_id', datamanager.sendDocument);
 	
-	//dispatcher.get('/api/collection/:col_id/:doc_id/edit', passport.checkAuthenticated, datamanager.sendDocument);
+	//dispatcher.get('/api/collection/:col_id/:doc_id/edit', passport.checkAuthenticated, datamanager.sendDocumentEdit);
 	dispatcher.get('/api/collection/:col_id/:doc_id/edit', datamanager.sendDocument);
+	
+	//document edit ricezione dati per aggiornare il document...
+	//dispatcher.put('/api/collection/:col_id/:doc_id/edit', passport.checkAuthenticated, datamanager.updateDocument);
+	dispatcher.put('/api/collection/:col_id/:doc_id/edit', datamanager.updateDocument); 
+	
+	//dispatcher.delete('/api/collection/:col_id/:doc_id/edit', datamanager.updateDocument); 
 
-	//document edit
-	dispatcher.put('/api/collection/:col_id/:doc_id', function(req, res){
-		console.log(JSON.stringify(req.body));
-		res.send(200);
-	});
+	//dispatcher.post('/api/check/email', passport.checkNotAuthenticated, usermanager.checkMail);
+	dispatcher.post('/api/check/email', usermanager.checkMail);
+	
+	//dispatcher.post('/api/signup', passport.checkNotAuthenticated, usermanager.userSignup);
+	dispatcher.post('/api/signup', usermanager.userSignup);
 
-	dispatcher.post('/signup', function(req, res){
-		console.log(JSON.stringify(req.body));
-		res.send(200);
-	});
-
-	dispatcher.get('/loggedin', function(req, res) {
+	dispatcher.get('/loggedin', function(req, res){
 		res.send(req.isAuthenticated() ? req.user : '0');
 	});
 
-	dispatcher.post('/api/login', passport.authenticate, 
-	function(req, res){
+	dispatcher.post('/api/login', passport.checkNotAuthenticated, passport.authenticate, function(req, res){
 		res.send(req.user);
+	});
+	
+	dispatcher.post('/api/logout', passport.checkAuthenticated, passport.authenticate, function(req, res){
+		req.logout();
+		res.redirect(path.join(config.static_assets.dir, 'index.html'));
 	});
 	
 	dispatcher.get('*', function(req, res){
