@@ -14,6 +14,8 @@
  */
 'use strict';
 
+var indexManager = require('../IndexManager/IndexManager');
+
 var getModel = function(collection_name) {
 	var DB = require('../../Database/MongooseDBAnalysis');
 	var array = DB.model;

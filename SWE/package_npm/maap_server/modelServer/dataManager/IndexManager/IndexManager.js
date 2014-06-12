@@ -13,3 +13,39 @@
  ==============================================
  */
 'use strict';
+
+var getModel = function(collection_name) {
+	var DB = require('../../Database/MongooseDBAnalysis');
+	var array = DB.model;
+	
+	for(var i=0; i<array.length; i++)
+	{
+		if(array[i].name == collection_name)
+		{
+			return array[i].model;
+		}
+	}
+	return -1;
+}
+
+exports.addQuery = function(collection_name, select, callback) {
+	var DB = require('../../Database/MongooseDBFramework');
+
+}
+
+exports.getQueries = function(n_elements, callback) {
+	var DB = require('../../Database/MongooseDBFramework');
+
+}
+
+exports.createIndex = function(query_id, callback) {
+
+	var model = getModel('teams');
+	
+}
+
+exports.deleteIndex = function(index_id, callback) {
+
+
+	var model = getModel('teams');
+}
