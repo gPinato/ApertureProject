@@ -75,8 +75,23 @@ var getDocuments = function(model, where, select, orderbycolumn, typeorder, star
 		
 	query.lean().exec( function(err,result){
 		if(err){console.log('query fallita' + err); return;}
+		
+		//a questo punto la query ha avuto successo,
+		//controllo se la query e' stata eseguita su tutti 
+		if(select.length == 0)
+		{
+			//se sono stati selezionati tutti i campi, ora riempio la select per scrivere la query nel db
+			
+			
+		}
+		
+		//aggiungo la query con l'indexManager
+		indexManager.addQuery(model.modelName,  	//nome della collection
+							  select				//campi select
+							  );
+							  
 		if(!result){
-		console.log('nessun risultato') 
+			console.log('nessun risultato') 
 		}else{
 			console.log(result);
 			//se è stato specificato il populate, sostituisco i vari populate...			
@@ -371,8 +386,7 @@ exports.getDocumentShowEdit = function(collection_name, document_id, callback) {
 			var composedName = rows[i].name.split('.');
 			if(composedName.length > 1)
 			{
-				//questo e' un campo composto, lo aggiungo solo
-				//una volta
+				//questo e' un campo composto, lo aggiungo solo una volta
 				if(keys.indexOf(composedName[0]) == -1)
 				{
 					keys.push(composedName[0]);

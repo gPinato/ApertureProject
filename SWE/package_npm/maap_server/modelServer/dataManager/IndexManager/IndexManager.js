@@ -30,47 +30,65 @@ var getModel = function(collection_name) {
 
 exports.addQuery = function(collection_name, select) {
 	var queryModel = require('../../Database/MongooseDBFramework').query;
-	queryModel.find(collection_name, function(err,data){
+	var findQueries = queryModel.find({collection_name: collection_name});
+	findQueries.lean().exec(function(err,data){
 		if(err)
+		{
 			console.log('Impossibile recuperare lista query con la collection: '+collection_name);
-		else
-			if(data){
+		}else{
+			if(data.length == 0)
+			{
+				var criteria = new queryModel({collection_name:collection_name, select:select, counter: 1});
+				criteria.save(function(err){
+					if(err)
+					{
+						console.log('inserimento query fallito 1');
+					}
+				});
+			}else{
+				var contadata = 0;
 				for(var i = 0;i<data.length;i++){
 					if(data[i].select.length == select.length){
 						var countmatch = 0;
-						for(var j = 0;j<select.length;j++){
-							if(data[i].select[select[j]] != undefined)
+						for(var key in select){
+							if(data[i].select[key] != undefined)
+							{
 								countmatch++;		
+							}
 						}
-						if(contamatch == select.length){
-							var counter = data[i].counter++;
-							queryModel.update(select, {$set:{counter: counter}}).exec(function(err,count){
+						if(countmatch == Object.keys(select).length){
+							var counter = data[i].counter + 1;
+							var id2update = data[i]._id;
+							queryModel.update({_id: id2update}, {$set:{counter: counter}}).exec(function(err,count){
 								if(err){console.log('update counter fallito'); }
 								if(count==0){
 									console.log('impossibile aggiornare la query.'); 
 								}
 							});
-						}
-						else{
-							var criteria = new queryModel({collection_name:collection_name, select:select, counter: 0});
-							var query = criteria.save(function(err){
-								if(err)
-									console.log('inserimento query fallito');
-							});
+						}else{
+							contadata++;
 						}
 						
 					}
 				}//for
-			}//if
-			else{
-				var criteria = new queryModel({collection_name:collection_name, select:select, counter: 0});
-					var query = criteria.save(function(err){
+				
+				if(contadata == data.length)
+				{
+					//qui non ho fatto nessun update, quindi inserisco
+					var criteria = new queryModel({collection_name:collection_name, select:select, counter: 1});
+					criteria.save(function(err){
 						if(err)
-							console.log('inserimento query fallito');
+						{
+							console.log('inserimento query fallito 2');
+						}
 					});
-			}
-	
+				}
+			}//else	
+		}
 	});
+}
+
+exports.deleteQueries = function(callback) {
 
 }
 
