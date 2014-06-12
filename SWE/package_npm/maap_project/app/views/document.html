@@ -37,11 +37,8 @@
                 </form>
                 <ul ng-show="isLoggedIn()" class="nav navbar-nav navbar-right">
                     <li ng-show="isAdmin"><a href="#">Manage Users</a></li>
-                    <li ng-show="isLoggedIn()"><a href="#">Profile</a></li>
-                    <li ng-show="isLoggedIn()" ng-click="logout()"><a href="">Logout</a></li>
-                    <li ng-hide="isLoggedIn()" ng-click="logout()"><a href="">Logout</a></li>
-                    <li ng-hide="isLoggedIn()"><a href="/login">Sing in!</a></li>
-                    <li ng-show="singup_enabled && !isLoggedIn()" ><a href="/register">Sing up!</a></li>
+                    <li><a href="#">Profile</a></li>
+                    <li ng-click="logout()"><a href="">Logout</a></li>
                 </ul>
             </div><!-- /.navbar-collapse -->
         </div><!-- /.container-fluid -->
