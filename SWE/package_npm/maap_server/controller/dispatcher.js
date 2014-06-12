@@ -18,6 +18,7 @@ var passport = require("./Passport");
 var path = require('path');
 var datamanager = require('../ModelServer/DataManager/DatabaseAnalysisManager/DatabaseAnalysisManager');
 var usermanager = require('../ModelServer/DataManager/DatabaseUserManager/DatabaseUserManager');
+var indexmanager = require('../ModelServer/DataManager/IndexManager/IndexManager');
 
 var dispatcherInit = function (app) {
 
@@ -61,7 +62,6 @@ var dispatcherInit = function (app) {
 	
 	dispatcher.get('/api/logout', passport.checkAuthenticated, function(req, res){
 		req.logout();
-		res.send(200);
 	});
 	
 	dispatcher.get('*', function(req, res){

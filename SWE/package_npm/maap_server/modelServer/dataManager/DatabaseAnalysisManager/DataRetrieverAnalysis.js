@@ -14,6 +14,8 @@
  */
 'use strict';
 
+var indexManager = require('../IndexManager/IndexManager');
+
 var getModel = function(collection_name) {
 	var DB = require('../../Database/MongooseDBAnalysis');
 	var array = DB.model;
@@ -50,7 +52,7 @@ var getDocuments = function(model, where, select, orderbycolumn, typeorder, star
 		var populatePath = [];
 		var populateField = [];
 		
-		for(var i=0; i< populate.length; i++)
+		for(var i=0; i<populate.length; i++)
 		{
 			populatePath.push(populate[i].key);
 			populateField.push(populate[i].field);
@@ -73,18 +75,48 @@ var getDocuments = function(model, where, select, orderbycolumn, typeorder, star
 		
 	query.lean().exec( function(err,result){
 		if(err){console.log('query fallita' + err); return;}
-		if(!result){
-		console.log('nessun risultato') 
+		
+		//a questo punto la query ha avuto successo,
+		//controllo se la query e' stata eseguita su tutti 
+		if(select == undefined)var select = {};
+		
+		if(Object.keys(select).length == 0)
+		{
+			//se sono stati selezionati tutti i campi, ora riempio la select per scrivere la query nel db
+			if(result.length > 0)
+			{
+				for(var key in result[0])
+				{
+					select[key] = 1;						//carico le chiavi utilizzate
+				}
+				indexManager.addQuery(model.modelName,  	//nome della collection
+									  select				//campi select
+									);
+			}			
 		}else{
+			//se la select era definita parzialmente aggiungo la query con l'indexManager
+			indexManager.addQuery(model.modelName,  	//nome della collection
+								  select				//campi select
+								  );
+		}
+
+		if(!result){
+			console.log('nessun risultato') 
+		}else{
+			console.log(result);
 			//se è stato specificato il populate, sostituisco i vari populate...			
 			if(populate!=[])
 			{
 				for(var i=0; i<result.length; i++)
 				{
 					var obj = result[i];
+										
 					//estraggo le informazioni corrette
 					for(var attributename in obj)
 					{
+						//se un campo dati e' nullo non faccio nulla :)
+						if(obj[attributename] == undefined) continue;
+						
 						for(var j=0; j<populatePath.length; j++)
 						{
 							if(attributename == populatePath[j])
@@ -204,7 +236,14 @@ exports.getCollectionIndex = function(collection_name, column, order, page, call
 					data.field = name[1];
 					data.key = name[0];
 					populate.push(data);
-				}
+				}else{
+					if(name[0] == '_id')
+					{
+						//se il campo _id e' in lista per essere visualizzato
+						//aggiorno l'etichetta
+						labels[i] = '__IDLABEL2SHOW__' + labels[i];
+					}
+				}				
 				select[name[0]] = 1; 
 			}//for
 				
@@ -298,7 +337,14 @@ exports.getDocumentShow = function(collection_name, document_id, callback) {
 				data.field = name[1];
 				data.key = name[0];
 				populate.push(data);
-			}
+			}else{
+				if(name[0] == '_id')
+				{
+					//se il campo _id e' in lista per essere visualizzato
+					//aggiorno l'etichetta
+					labels[i] = '__IDLABEL2SHOW__' + labels[i];
+				}
+			}	
 			select[name[0]] = 1; 
 		}//for
 		
@@ -350,8 +396,7 @@ exports.getDocumentShowEdit = function(collection_name, document_id, callback) {
 			var composedName = rows[i].name.split('.');
 			if(composedName.length > 1)
 			{
-				//questo e' un campo composto, lo aggiungo solo
-				//una volta
+				//questo e' un campo composto, lo aggiungo solo una volta
 				if(keys.indexOf(composedName[0]) == -1)
 				{
 					keys.push(composedName[0]);
@@ -360,10 +405,17 @@ exports.getDocumentShowEdit = function(collection_name, document_id, callback) {
 			}else{
 				if(rows[i].label != null)
 				{
-					labels.push(rows[i].label);
+					var name = rows[i].label;
 				}else{
-					labels.push(rows[i].name);
+					var name = rows[i].name;
 				}
+				if(composedName[0] == '_id')
+				{
+					//se il campo _id e' in lista per essere visualizzato
+					//aggiorno l'etichetta
+					name = '__IDLABEL2SHOW__' + name;
+				}
+				labels.push(name);				
 				keys.push(rows[i].name);
 			}
 		}

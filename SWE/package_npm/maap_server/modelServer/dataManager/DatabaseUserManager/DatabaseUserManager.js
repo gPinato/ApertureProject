@@ -29,10 +29,10 @@ exports.checkMail = function(req, res) {
     }, function (err, count) {
         if (count === 0) {
 			console.log('nessuna mail presente');
-			res.send(400);
+			res.send(401);
         } else {
 			console.log('utente gia presente');
-			res.send(200);
+			res.send(304);
         }
     });	
 }
@@ -46,9 +46,9 @@ exports.userSignup = function(req, res) {
 	retriever.addUser(req.body.email, req.body.pwd1, level, function(success){
 		if(success)
 		{
-			res.send(200);
+			res.send(304);
 		}else{
-			res.send(400);
+			res.send(401);
 		}	
 	});
 }
