@@ -375,10 +375,17 @@ exports.getDocumentShowEdit = function(collection_name, document_id, callback) {
 			}else{
 				if(rows[i].label != null)
 				{
-					labels.push(rows[i].label);
+					var name = rows[i].label;
 				}else{
-					labels.push(rows[i].name);
+					var name = rows[i].name;
 				}
+				if(composedName[0] == '_id')
+				{
+					//se il campo _id e' in lista per essere visualizzato
+					//aggiorno l'etichetta
+					name = '__IDLABEL2SHOW__' + name;
+				}
+				labels.push(name);				
 				keys.push(rows[i].name);
 			}
 		}
