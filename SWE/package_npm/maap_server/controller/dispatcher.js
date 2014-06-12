@@ -61,7 +61,6 @@ var dispatcherInit = function (app) {
 	
 	dispatcher.get('/api/logout', passport.checkAuthenticated, function(req, res){
 		req.logout();
-		res.send(200);
 	});
 	
 	dispatcher.get('*', function(req, res){

@@ -40,10 +40,9 @@ var sendCollection  = function(req, res) {
 		
 		if(data.documents == undefined)
 		{
-			console.log('404');
+			console.log('sending 404...');
 			res.send(404);
 		}else{
-			console.log('404ok');
 			res.send(JSonComposer.createCollection(	data.labels,	//etichette
 													data.documents,	//dati
 													data.options	//opzioni
@@ -94,7 +93,7 @@ exports.updateDocument = function(req, res) {
 		{
 			res.send(200);
 		}else{
-			res.send(400);
+			res.send(401);
 		}	
 	});
 

@@ -24,6 +24,10 @@ collection = {
 	show : {
 		row : [
 			{
+				name: '_id',
+				type: 'ObjectId'
+			},
+			{
 				label: 'Nome',
 				name: 'name',
 				type: 'String'
@@ -48,4 +52,5 @@ collection = {
 	
 } //end collection	
 
+//exports collection [DO NOT REMOVE]
 exports.collection = collection;

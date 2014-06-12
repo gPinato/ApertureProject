@@ -50,7 +50,7 @@ var getDocuments = function(model, where, select, orderbycolumn, typeorder, star
 		var populatePath = [];
 		var populateField = [];
 		
-		for(var i=0; i< populate.length; i++)
+		for(var i=0; i<populate.length; i++)
 		{
 			populatePath.push(populate[i].key);
 			populateField.push(populate[i].field);
@@ -76,6 +76,7 @@ var getDocuments = function(model, where, select, orderbycolumn, typeorder, star
 		if(!result){
 		console.log('nessun risultato') 
 		}else{
+			console.log(result);
 			//se è stato specificato il populate, sostituisco i vari populate...			
 			if(populate!=[])
 			{
@@ -204,7 +205,14 @@ exports.getCollectionIndex = function(collection_name, column, order, page, call
 					data.field = name[1];
 					data.key = name[0];
 					populate.push(data);
-				}
+				}else{
+					if(name[0] == '_id')
+					{
+						//se il campo _id e' in lista per essere visualizzato
+						//aggiorno l'etichetta
+						labels[i] = '__IDLABEL2SHOW__' + labels[i];
+					}
+				}				
 				select[name[0]] = 1; 
 			}//for
 				
@@ -298,7 +306,14 @@ exports.getDocumentShow = function(collection_name, document_id, callback) {
 				data.field = name[1];
 				data.key = name[0];
 				populate.push(data);
-			}
+			}else{
+				if(name[0] == '_id')
+				{
+					//se il campo _id e' in lista per essere visualizzato
+					//aggiorno l'etichetta
+					labels[i] = '__IDLABEL2SHOW__' + labels[i];
+				}
+			}	
 			select[name[0]] = 1; 
 		}//for
 		
