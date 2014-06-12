@@ -29,7 +29,8 @@ var getModel = function(collection_name) {
 }
 
 exports.addQuery = function(collection_name, select, callback) {
-	var DB = require('../../Database/MongooseDBFramework');
+	var queryModel = require('../../Database/MongooseDBFramework').query;
+	
 
 }
 
