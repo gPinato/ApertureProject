@@ -55,13 +55,12 @@ angular
                 controller: 'RegisterCtrl'
             })
             .when('/404', {
-                templateUrl: 'views/404.html',
-                controller: 'RegisterCtrl'
+                templateUrl: 'views/404.html'
             })
 
 
             .otherwise({
-                redirectTo: '/404.html'
+                redirectTo: '/404'
             });
 
 

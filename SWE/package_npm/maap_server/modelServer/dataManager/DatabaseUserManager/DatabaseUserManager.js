@@ -13,7 +13,6 @@
  ==============================================
  */
 'use strict';
-
 var path = require('path');
 var retriever = require('./DataRetrieverUsers');
 var DB = require('../../Database/MongooseDBFramework');
@@ -29,10 +28,10 @@ exports.checkMail = function(req, res) {
     }, function (err, count) {
         if (count === 0) {
 			console.log('nessuna mail presente');
-			res.send(401);
+			res.send(304);
         } else {
 			console.log('utente gia presente');
-			res.send(304);
+			res.send(400);
         }
     });	
 }
@@ -41,14 +40,13 @@ exports.userSignup = function(req, res) {
 	console.log('registrazione utente');
 	console.log(JSON.stringify(req.body));
 	
-	var level = 0; //livello zero utente semplice
-	
+	var level = 0; //livello zero utente semplice	
 	retriever.addUser(req.body.email, req.body.pwd1, level, function(success){
 		if(success)
 		{
-			res.send(304);
+			res.send(200);
 		}else{
-			res.send(401);
+			res.send(400);
 		}	
 	});
 }

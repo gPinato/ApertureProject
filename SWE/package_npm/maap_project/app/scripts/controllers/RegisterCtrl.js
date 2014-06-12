@@ -29,6 +29,7 @@ angular.module('maaperture').controller('RegisterCtrl', function ($scope, $locat
                 $scope.credentials,
                 function success() {
                     //welcome to the maap
+                    $location.path("/");
                 },
                 function err(error) {
                 }
