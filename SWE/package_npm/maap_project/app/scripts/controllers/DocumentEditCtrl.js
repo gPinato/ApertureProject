@@ -34,6 +34,8 @@ angular.module('maaperture').controller('DocumentEditCtrl', function ($scope, $l
             });
         },
         function err(error) {
+            $location.path("/404");
+
         }
     );
 
