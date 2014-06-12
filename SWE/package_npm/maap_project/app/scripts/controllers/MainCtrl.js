@@ -8,6 +8,8 @@
  * Modification History: tabella dei cambiamenti effettuati sul file.
  */
 
+'use strict';
+
 angular.module('maaperture').controller('MainCtrl', function ($scope, AuthService) {
 
     $scope.isAdmin = false;

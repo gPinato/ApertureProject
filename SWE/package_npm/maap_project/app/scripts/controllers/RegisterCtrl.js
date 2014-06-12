@@ -13,6 +13,7 @@
  ==============================================
  */
 
+'use strict';
 
 angular.module('maaperture').controller('RegisterCtrl', function ($scope, $location, RegisterService) {
     $scope.credentials = {

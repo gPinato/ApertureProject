@@ -1,7 +1,7 @@
 /**
  * File: NavBarCtrl;
  * Module: modulo di appartenenza;
- * Author: jack;
+ * Author: Giacomo Pinato;
  * Created: 01/06/14;
  * Version: versione corrente;
  * Description: descrizione dettagliata del file;
@@ -9,10 +9,11 @@
  ==============================================
  * Version | Changes
  ==============================================
- *
+ * 0.1 File creation
  ==============================================
  */
 
+'use strict';
 
 angular.module('maaperture').controller('NavBarCtrl', function ($scope, LogoutService, CollectionListService) {
     CollectionListService.get(
@@ -24,7 +25,7 @@ angular.module('maaperture').controller('NavBarCtrl', function ($scope, LogoutSe
     $scope.logout = function () {
         LogoutService.logout(),
             function success(response) {
-
+                $location.path('/');
             },
             function error(error) {
 
@@ -32,9 +33,7 @@ angular.module('maaperture').controller('NavBarCtrl', function ($scope, LogoutSe
     };
     $scope.isAdmin = false;
     $scope.singup_enabled = true;
-    $scope.isLoggedIn = function () {
-        return true;
-    };
+
 
 
 });

@@ -14,7 +14,6 @@
  ==============================================
  */
 
-
 'use strict';
 
 angular.module('maaperture').controller('DocumentCtrl', function ($scope, $location, DocumentDataService, DocumentEditService, AuthService, $routeParams) {
