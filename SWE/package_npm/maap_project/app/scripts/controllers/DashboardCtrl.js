@@ -13,6 +13,7 @@
  ==============================================
  */
 
+'use strict';
 
 angular.module('maaperture').controller('DashboardCtrl', function ($scope, CollectionListService) {
     CollectionListService.get(
