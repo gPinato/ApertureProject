@@ -87,13 +87,44 @@ exports.addQuery = function(collection_name, select) {
 	});
 }
 
-exports.resetQueries = function(callback) {
 
+
+exports.resetQueries = function(req, res) {
+	var queryModel = require('../../Database/MongooseDBFramework').query;
+	var connection = require('../../Database/MongooseDBFramework').connection;
+	//console.log(queryModel.modelName);
+	connection.db.dropCollection(queryModel.modelName, function(err,data){
+		if(err){
+			console.log('Impossibile cancellare la collection '+queryModel.modelName);
+			res.send(400);
+		}
+		else{
+		console.log(data);
+		res.send(200);
+		}
+	});
 }
 
 exports.getQueries = function(n_elements, callback) {
 	var DB = require('../../Database/MongooseDBFramework');
-
+	var queryModel = require('../../Database/MongooseDBFramework').query;
+	var options = {};
+	options.skip = 0;
+	options.limit = n_elements;
+	options.sort = {counter:'desc'};
+	var query = queryModel.find({},{},options);
+	query.lean().exec(function(err,data){
+		if(err){
+			console.log('Impossibile ritornare le query');
+			return;
+		}
+		if(!data)
+			console.log('Non ci sono query da visualizzare');
+		else{
+			//console.log(data);
+			callback(data);
+		}
+	});
 }
 
 exports.getIndex = function(callback) {
@@ -102,14 +133,47 @@ exports.getIndex = function(callback) {
 	
 }
 
-exports.createIndex = function(query_id, callback) {
-
-	var model = getModel('teams');
-	
+exports.createIndex = function(query_id,  name_index, callback) {
+	//var query_id = '5399ad538beb2a5c22fbf900';
+	var DB = require('../../Database/MongooseDBFramework');
+	var queryModel = require('../../Database/MongooseDBFramework').query;
+	var where = {};
+	where['_id'] = query_id;
+	var select = {};
+	var query = queryModel.find(where,select);
+	query.lean().exec(function(err,data){
+		if(err){
+			console.log('Impossibile ritornare la query dell\' indice');
+			return;
+		}
+		if(!data)
+			console.log('Errore _id query cercata');
+		else{
+			//console.log(data);
+			var collection_name = data[0].collection_name;			
+			var fieldIndex = data[0].select;
+			var index = {};
+			for(var key in fieldIndex){
+				index[key] = 1;
+			}
+			//console.log(index);
+			var nameindex = {};
+			nameindex.name = name_index;
+			var collectionSchema = require('../../DSL/collectionData/'+collection_name+'_schema').schema;
+			collectionSchema.index(index,nameindex);
+			//console.log(collectionSchema);
+			var collectionModel = getModel(collection_name);
+			
+			collectionModel.ensureIndexes(function(err){
+				if(err)
+					console.log('Impossibile creare l\'indice');
+				callback(name_index);
+			});
+			
+		}
+	});
 }
 
-exports.deleteIndex = function(index_id, callback) {
+exports.deleteIndex = function(name_index, callback) {
 
-
-	var model = getModel('teams');
 }
