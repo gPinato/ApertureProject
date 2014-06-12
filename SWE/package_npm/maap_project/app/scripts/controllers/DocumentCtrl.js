@@ -29,6 +29,10 @@ angular.module('maaperture').controller('DocumentCtrl', function ($scope, $locat
                 $scope.values.push(value);
             });
             $scope.labels = response.label;
+        },
+        function error (err){
+            $location.path("/404");
+
         }
 
     );

@@ -53,6 +53,8 @@ angular.module('maaperture').controller('DocumentEditCtrl', function ($scope, $l
                 $location.path('/collection/' + $scope.current_collection + '/' + $scope.current_document);
             },
             function err(error) {
+                $location.path("/404");
+
             }
         );
     };
