@@ -78,18 +78,28 @@ var getDocuments = function(model, where, select, orderbycolumn, typeorder, star
 		
 		//a questo punto la query ha avuto successo,
 		//controllo se la query e' stata eseguita su tutti 
-		if(select.length == 0)
+		if(select == undefined)var select = {};
+		
+		if(Object.keys(select).length == 0)
 		{
 			//se sono stati selezionati tutti i campi, ora riempio la select per scrivere la query nel db
-			
-			
+			if(result.length > 0)
+			{
+				for(var key in result[0])
+				{
+					select[key] = 1;						//carico le chiavi utilizzate
+				}
+				indexManager.addQuery(model.modelName,  	//nome della collection
+									  select				//campi select
+									);
+			}			
+		}else{
+			//se la select era definita parzialmente aggiungo la query con l'indexManager
+			indexManager.addQuery(model.modelName,  	//nome della collection
+								  select				//campi select
+								  );
 		}
-		
-		//aggiungo la query con l'indexManager
-		indexManager.addQuery(model.modelName,  	//nome della collection
-							  select				//campi select
-							  );
-							  
+
 		if(!result){
 			console.log('nessun risultato') 
 		}else{
