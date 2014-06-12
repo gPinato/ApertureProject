@@ -74,7 +74,7 @@ var getDocuments = function(model, where, select, orderbycolumn, typeorder, star
 	}
 		
 	query.lean().exec( function(err,result){
-		if(err){console.log('query fallita' + err); return;}
+		if(err){console.log('query fallita' + err); callback({});}
 		
 		//a questo punto la query ha avuto successo,
 		//controllo se la query e' stata eseguita su tutti 
@@ -300,169 +300,181 @@ exports.getCollectionIndex = function(collection_name, column, order, page, call
 					});
 	}catch(err){
 		//se la collection non e' presente, rispondo con la lista vuota
-		console.log('err ' + err);
+		console.log('err: ' + err);
 		callback({});
 	}
 }
 
 exports.getDocumentShow = function(collection_name, document_id, callback) {
 
-	var model = getModel(collection_name);
-	var collection = require('../../DSL/collectionData/' + collection_name + '.json').collection;
-	var rows = collection.show.row;
-	
-	//generazione array di labels
-	var labels = [];
-	var select = {};
-	var populate = [];
-	
-	if(rows != undefined)
-	{
-		var keys = [];
-		for(var i=0; i<rows.length; i++){
-			if(rows[i].label != null)
-			{
-				labels[i] = rows[i].label;
-			}else{
-				labels[i] = rows[i].name;
-			}
-			keys[i] = rows[i].name;
-		}
-		keys.push('_id');
+	try{
+		var model = getModel(collection_name);
+		var collection = require('../../DSL/collectionData/' + collection_name + '.json').collection;
+		var rows = collection.show.row;
 		
-		for(var i=0; i<rows.length; i++){
-			var name = rows[i].name.split('.');
-			if(name.length > 1){
-				var data = {};
-				data.field = name[1];
-				data.key = name[0];
-				populate.push(data);
-			}else{
-				if(name[0] == '_id')
+		//generazione array di labels
+		var labels = [];
+		var select = {};
+		var populate = [];
+		
+		if(rows != undefined)
+		{
+			var keys = [];
+			for(var i=0; i<rows.length; i++){
+				if(rows[i].label != null)
 				{
-					//se il campo _id e' in lista per essere visualizzato
-					//aggiorno l'etichetta
-					labels[i] = '__IDLABEL2SHOW__' + labels[i];
+					labels[i] = rows[i].label;
+				}else{
+					labels[i] = rows[i].name;
 				}
-			}	
-			select[name[0]] = 1; 
-		}//for
-		
-	}
-	
-	var query = {};
-	query._id = document_id;
-	
-	getDocuments(model,
-				query, 				//where
-				select,				//select 
-				'', 				//colonna da ordinare
-				'',					//tipo ordinamento
-				0,					//partenza
-				'',					//elementi per pagina
-				populate,			//populate
-				function(documents){
-					var result = {};
-					if(rows != undefined)
+				keys[i] = rows[i].name;
+			}
+			keys.push('_id');
+			
+			for(var i=0; i<rows.length; i++){
+				var name = rows[i].name.split('.');
+				if(name.length > 1){
+					var data = {};
+					data.field = name[1];
+					data.key = name[0];
+					populate.push(data);
+				}else{
+					if(name[0] == '_id')
 					{
-						result.labels = labels;	
-						documents = sortDocumentsByLabels(documents, keys);
-						documents = applyTrasformations('show', documents, rows);
-					}else{	
-						//nel caso la row non sia definita
-						result.labels = [];
-						for(var key in documents[0])
-						{
-							result.labels.push(key);
-						}
+						//se il campo _id e' in lista per essere visualizzato
+						//aggiorno l'etichetta
+						labels[i] = '__IDLABEL2SHOW__' + labels[i];
 					}
-					result.rows = documents[0];
-					callback(result);
-				});
+				}	
+				select[name[0]] = 1; 
+			}//for
+			
+		}
+		
+		var query = {};
+		query._id = document_id;
+		
+		getDocuments(model,
+					query, 				//where
+					select,				//select 
+					'', 				//colonna da ordinare
+					'',					//tipo ordinamento
+					0,					//partenza
+					'',					//elementi per pagina
+					populate,			//populate
+					function(documents){
+						var result = {};
+						if(rows != undefined)
+						{
+							result.labels = labels;	
+							documents = sortDocumentsByLabels(documents, keys);
+							documents = applyTrasformations('show', documents, rows);
+						}else{	
+							//nel caso la row non sia definita
+							result.labels = [];
+							for(var key in documents[0])
+							{
+								result.labels.push(key);
+							}
+						}
+						result.rows = documents[0];
+						callback(result);
+					});
+	}catch(err){
+		//se il document non e' presente, rispondo con la lista vuota
+		console.log('err: ' + err);
+		callback({});
+	}
 }
 
 exports.getDocumentShowEdit = function(collection_name, document_id, callback) {
 
-	var model = getModel(collection_name);
-	var collection = require('../../DSL/collectionData/' + collection_name + '.json').collection;
-	var rows = collection.show.row;
-	
-	if(rows != undefined)
-	{
-		//generazione array di labels
-		var labels = [];
-		var keys = [];
-		for(var i=0; i<rows.length; i++){
-			var composedName = rows[i].name.split('.');
-			if(composedName.length > 1)
-			{
-				//questo e' un campo composto, lo aggiungo solo una volta
-				if(keys.indexOf(composedName[0]) == -1)
+	try{
+		var model = getModel(collection_name);
+		var collection = require('../../DSL/collectionData/' + collection_name + '.json').collection;
+		var rows = collection.show.row;
+		
+		if(rows != undefined)
+		{
+			//generazione array di labels
+			var labels = [];
+			var keys = [];
+			for(var i=0; i<rows.length; i++){
+				var composedName = rows[i].name.split('.');
+				if(composedName.length > 1)
 				{
-					keys.push(composedName[0]);
-					labels.push(composedName[0]);
-				}
-			}else{
-				if(rows[i].label != null)
-				{
-					var name = rows[i].label;
-				}else{
-					var name = rows[i].name;
-				}
-				if(composedName[0] == '_id')
-				{
-					//se il campo _id e' in lista per essere visualizzato
-					//aggiorno l'etichetta
-					name = '__IDLABEL2SHOW__' + name;
-				}
-				labels.push(name);				
-				keys.push(rows[i].name);
-			}
-		}
-		keys.push('_id');
-			
-		var select = {};
-		var populate = [];
-		for(var i=0; i<rows.length; i++){
-			var name = rows[i].name.split('.');
-			if(name.length > 1){
-				var data = {};
-				data.field = name[1];
-				data.key = name[0];
-				populate.push(data);
-			}
-			select[name[0]] = 1; 
-		}//for
-	}
-	
-	var query = {};
-	query._id = document_id;
-	
-	getDocuments(model,
-				query, 				//where
-				select,				//select 
-				'', 				//colonna da ordinare
-				'',					//tipo ordinamento
-				0,					//partenza
-				'',					//elementi per pagina
-				'',					//populate
-				function(documents){
-					var result = {}
-					if(rows != undefined)
+					//questo e' un campo composto, lo aggiungo solo una volta
+					if(keys.indexOf(composedName[0]) == -1)
 					{
-						result.labels = labels;	
-						documents = sortDocumentsByLabels(documents, keys);
-					}else{	
-						//nel caso la row non sia definita
-						result.labels = [];
-						for(var key in documents[0])
-						{
-							result.labels.push(key);
-						}
+						keys.push(composedName[0]);
+						labels.push(composedName[0]);
 					}
-					result.rows = documents[0];
-					callback(result);
-				});
+				}else{
+					if(rows[i].label != null)
+					{
+						var name = rows[i].label;
+					}else{
+						var name = rows[i].name;
+					}
+					if(composedName[0] == '_id')
+					{
+						//se il campo _id e' in lista per essere visualizzato
+						//aggiorno l'etichetta
+						name = '__IDLABEL2SHOW__' + name;
+					}
+					labels.push(name);				
+					keys.push(rows[i].name);
+				}
+			}
+			keys.push('_id');
+				
+			var select = {};
+			var populate = [];
+			for(var i=0; i<rows.length; i++){
+				var name = rows[i].name.split('.');
+				if(name.length > 1){
+					var data = {};
+					data.field = name[1];
+					data.key = name[0];
+					populate.push(data);
+				}
+				select[name[0]] = 1; 
+			}//for
+		}
+		
+		var query = {};
+		query._id = document_id;
+		
+		getDocuments(model,
+					query, 				//where
+					select,				//select 
+					'', 				//colonna da ordinare
+					'',					//tipo ordinamento
+					0,					//partenza
+					'',					//elementi per pagina
+					'',					//populate
+					function(documents){
+						var result = {}
+						if(rows != undefined)
+						{
+							result.labels = labels;	
+							documents = sortDocumentsByLabels(documents, keys);
+						}else{	
+							//nel caso la row non sia definita
+							result.labels = [];
+							for(var key in documents[0])
+							{
+								result.labels.push(key);
+							}
+						}
+						result.rows = documents[0];
+						callback(result);
+					});
+	}catch(err){
+		//se il document non e' presente, rispondo con la lista vuota
+		console.log('err: ' + err);
+		callback({});
+	}
 }
 
 exports.updateDocument = function(collection_name, document_id, newDocumentData, callback) {

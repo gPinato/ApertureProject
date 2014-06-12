@@ -13,7 +13,6 @@
  ==============================================
  */
 'use strict';
-
 var path = require('path');
 var retriever = require('./DataRetrieverAnalysis');
 var indexManager = require('../IndexManager/IndexManager');
@@ -58,10 +57,15 @@ exports.sendDocument = function(req, res){
 	
 	retriever.getDocumentShow(collection_name, document_id, function(data){
 		
-		res.send(JSonComposer.createDocument( 	data.labels,	//etichette
-												data.rows,		//dati
-												data.options	//opzioni
-											));
+		if(data.rows == undefined)
+		{
+			res.send(404);
+		}else{
+			res.send(JSonComposer.createDocument( 	data.labels,	//etichette
+													data.rows,		//dati
+													data.options	//opzioni
+												));
+		}
 	});	
 	
 }
@@ -73,10 +77,15 @@ exports.sendDocumentEdit = function(req, res){
 	console.log('_________docEDIT____________');
 	retriever.getDocumentShowEdit(collection_name, document_id, function(data){
 		
-		res.send(JSonComposer.createDocument( 	data.labels,	//etichette
-												data.rows,		//dati
-												data.options	//opzioni
-											));
+		if(data.rows == undefined)
+		{
+			res.send(404);
+		}else{
+			res.send(JSonComposer.createDocument( 	data.labels,	//etichette
+													data.rows,		//dati
+													data.options	//opzioni
+												));
+		}
 	});	
 	
 }
