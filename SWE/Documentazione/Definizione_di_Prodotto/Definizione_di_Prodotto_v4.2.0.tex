@@ -137,16 +137,52 @@ abbiamo adottato, le interazioni che il Client ha con il Server sono di tipo RES
 Package Server del Design Pattern Client-Server. 
 
 \subsection{Maap::Server::Controller}
-
+Package che gestisce il dialogo con il Client di Maap. 
 %metodi e blabla del Controller
 
 \subsection{Maap::Server::ModelServer}
+Package che racchiude i database, le loro operazioni di accesso e i file 
+DSL con i relativi interpreti.
 
 \subsection{Maap::Server::ModelServer::Database}
+%mmmm boh, qui c'e' il database Mongo e Mongoose?
 
 \subsection{Maap::Server::ModelServer::DataManager}
+Package che gestisce gli accessi ai database.
 
-\subsubsection{Maap::Server::ModelServer::DataManager::DatabaseAnalisysManager}
+\subsubsection{Maap::Server::ModelServer::DataManager::DatabaseAnalysisManager}
+Package che gestisce le query ai database di analisi. 
+
+\paragraph{Maap::Server::ModelServer::DataManager::DatabaseAnalysisManager::DatabaseAnalysisManager}
+
+\subparagraph{Descrizione}
+
+\subparagraph{Dipendendenze entranti}
+%da definire
+
+\subparagraph{Dipendenze uscenti}
+\begin{itemize}
+\item{path}
+\item{DataRetrieverAnalysis}
+\item{IndexManager}
+\item{JSonComposer}
+\end{itemize}
+
+\subparagraph{Attributi}
+%da definire
+
+\subparagraph{Metodi}
+\begin{itemize}
+\item{sendCollectionList:} invia al al client la lista delle varie Collection 
+definite dai DSL; 
+\item{sendCollection}
+\item{sendDocument}
+\item{sendDocumentEdit}
+\item{updateDocument}
+\item{removeDocument}
+\end{itemize}
+
+\paragraph{Maap::Server::ModelServer::DataManager::DatabaseAnalysisManager::DatabaseRetrieverAnalysis}
 
 \subsubsection{Maap::Server::ModelServer::DataManager::DatabaseUserManager}
 
