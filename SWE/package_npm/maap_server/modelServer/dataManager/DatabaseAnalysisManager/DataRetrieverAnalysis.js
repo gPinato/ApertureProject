@@ -83,9 +83,13 @@ var getDocuments = function(model, where, select, orderbycolumn, typeorder, star
 				for(var i=0; i<result.length; i++)
 				{
 					var obj = result[i];
+										
 					//estraggo le informazioni corrette
 					for(var attributename in obj)
 					{
+						//se un campo dati e' nullo non faccio nulla :)
+						if(obj[attributename] == undefined) continue;
+						
 						for(var j=0; j<populatePath.length; j++)
 						{
 							if(attributename == populatePath[j])
