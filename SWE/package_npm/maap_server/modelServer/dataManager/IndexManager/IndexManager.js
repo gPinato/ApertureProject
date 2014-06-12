@@ -68,7 +68,6 @@ exports.addQuery = function(collection_name, select) {
 						}else{
 							contadata++;
 						}
-						
 					}
 				}//for
 				
@@ -88,13 +87,19 @@ exports.addQuery = function(collection_name, select) {
 	});
 }
 
-exports.deleteQueries = function(callback) {
+exports.resetQueries = function(callback) {
 
 }
 
 exports.getQueries = function(n_elements, callback) {
 	var DB = require('../../Database/MongooseDBFramework');
 
+}
+
+exports.getIndex = function(callback) {
+
+	var model = getModel('teams');
+	
 }
 
 exports.createIndex = function(query_id, callback) {
