@@ -23,11 +23,15 @@ angular.module('maaperture').controller('DocumentEditCtrl', function ($scope, $l
     $scope.toedit = [];
     $scope.original_keys = [];
 
-
-    DocumentEditService.query({ col_id: $routeParams.col_id, doc_id: $routeParams.doc_id },
+    //Funzione per richiedere un documento al server.
+    //Passa come parametri la collection e il documento da ricevere
+    DocumentEditService.query({
+            col_id: $routeParams.col_id,
+            doc_id: $routeParams.doc_id },
         function success(data) {
             $scope.labels = data.label;
             $scope.data = data.data;
+            //inizializza un array con le chiavi originali e un array con i valori originali da modificare
             $.each($scope.data, function (key, value) {
                 $scope.original_keys.push(key);
                 $scope.toedit.push(value);
@@ -39,13 +43,16 @@ angular.module('maaperture').controller('DocumentEditCtrl', function ($scope, $l
         }
     );
 
-    //Called when the edited data must be sent to the server.
+    //Funzione per inviare al server il nuovo documento
     $scope.edit_document = function () {
         var new_data = {};
+        //Assembla il json da trasmettere.
         for (var i = 0; i < $scope.labels.length; i++) {
             new_data[$scope.original_keys[i]] = $scope.toedit[i];
         }
+        //trasforma l'oggetto new_data in JSON.
         var json_data = JSON.stringify(new_data);
+        //Trasmette al server il nuovo json
         DocumentEditService.update({
                 col_id: $scope.current_collection,
                 doc_id: $scope.current_document
@@ -60,7 +67,7 @@ angular.module('maaperture').controller('DocumentEditCtrl', function ($scope, $l
             }
         );
     };
-
+    //Funzione per richiedere la cancellazione di un documento
     $scope.delete_document = function () {
         DocumentEditService.remove({
                 col_id: $scope.current_collection,

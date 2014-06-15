@@ -20,7 +20,8 @@ angular.module('maaperture').controller('LoginCtrl', function ($scope,$route, $l
         password: ''
     };
 
-
+    //Funzione per il login.
+    //Richiede al server di validare le credenziali inserite.
     $scope.login = function () {
         AuthService.login({}, $scope.credentials,
             function success(data, status) {

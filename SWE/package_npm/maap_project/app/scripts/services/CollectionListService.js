@@ -12,6 +12,7 @@
  * 0.1 File creation
  ==============================================
  */
+'use strict';
 
 angular.module('services')
     .factory('CollectionListService', ['$resource', function ($resource) {

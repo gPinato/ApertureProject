@@ -20,6 +20,7 @@
 
 angular.module('maaperture').controller('CollectionCtrl', function ($scope, $route, $location, DocumentEditService, CollectionDataService, AuthService, $routeParams) {
 
+    //Funzione di inizializzazione del controller
     var init = function () {
         $scope.current_sorted_column = null;
         $scope.column_original_name = [];
@@ -32,7 +33,9 @@ angular.module('maaperture').controller('CollectionCtrl', function ($scope, $rou
 
     };
 
-
+    //Funzione di recupero dei dati dal server.
+    //In base ai parametri dello scope effettua una query sul server e recupera i dati
+    //da visualizzare
     var getData = function () {
 
         CollectionDataService.query({
@@ -46,21 +49,24 @@ angular.module('maaperture').controller('CollectionCtrl', function ($scope, $rou
                 $scope.data = response[1];
                 //$scope.pages = response[2];
                 $scope.pages = 4;
+
+                //Salva i nomi originali delle colonne per le query a database
                 $.each($scope.data[0].data, function (key, value) {
                     $scope.column_original_name.push(key);
                 });
 
 
                 for (var i = 0; i < Object.keys($scope.data).length; i++) {
-
+                    //Copia i valori da stampare in un array per mantenere l'ordine
+                    //Ogni riga viene salvata in un array contenuto nell'oggetto rows.
                     $scope.rows[i] = [];
                     $.each($scope.data[i].data, function (key, value) {
                         $scope.rows[i].push(value);
                     });
 
                 }
-
-                $scope.rows.splice(i, $scope.rows.length)
+                //Nel caso di aggiornamento dei dati rimuovo quelli vecchi.
+                $scope.rows.splice(i, $scope.rows.length);
 
             },
             function err(error) {
@@ -71,50 +77,51 @@ angular.module('maaperture').controller('CollectionCtrl', function ($scope, $rou
 
     init();
 
-
+    //funzione per stampare correttamente il numero di pagine
     $scope.numerify = function (num) {
         return new Array(num);
     };
-
+    //Torna alla pagina precedente
     $scope.previousPage = function () {
         if ($scope.current_page > 0)
             $scope.current_page--;
         getData();
     };
-
+    //Va alla pagina successiva
     $scope.nextPage = function () {
         if ($scope.current_page < $scope.pages - 1)
             $scope.current_page++;
         getData();
     };
-
+    //Va alla pagina $index
     $scope.toPage = function (index) {
         $scope.current_page = index;
         getData();
     };
-
+    //cambia ordinamento corrente, da asc a desc o viceversa
     var changeSort = function () {
-        if ($scope.current_sort == "desc") {
+        if ($scope.current_sort === "desc") {
             $scope.current_sort = "asc";
         }
         else {
-            $scope.current_sort = "desc"
+            $scope.current_sort = "desc";
         }
     };
-
-    $scope.columnSort = function ($index) {
-        //Determine if we must only change the sorting or the column to sort.
-        if ($index == $scope.current_sorted_column) {
+    //Ordina la colonna di posizione $index
+    $scope.columnSort = function (index) {
+        //Determina se cambiare solo ordinamento o anche colonna ordinata
+        if (index === $scope.current_sorted_column) {
             changeSort();
             getData();
         }
         else {
-            $scope.current_sorted_column = $index;
+            //cambia anche la colonna ordinata
+            $scope.current_sorted_column = index;
             $scope.current_sort = "asc";
             getData();
         }
     };
-
+    //funzione per cancellare il documento di indice index
     $scope.delete_document = function (index) {
         DocumentEditService.remove({
                 col_id: $scope.current_collection,

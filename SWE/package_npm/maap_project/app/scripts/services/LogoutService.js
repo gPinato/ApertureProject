@@ -12,6 +12,8 @@
  * 0.1 File creation
  ==============================================
  */
+'use strict';
+
 angular.module('services')
     .factory('LogoutService', ['$resource', function ($resource) {
         return $resource('http://localhost:9000/api/logout', {}, {
