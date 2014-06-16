@@ -4,7 +4,8 @@
  * Author: Giacomo Pinato;
  * Created: 13/05/14;
  * Version: versione corrente;
- * Description: descrizione dettagliata del file;
+ * Description: Factory che ritorna una $resource legata ad un
+ * 	particolare Document, modificabile;
  * Modification History:
  ==============================================
  * Version | Changes

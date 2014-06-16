@@ -221,14 +221,14 @@ Viene utilizzato come astrazione della risorsa Collection, su cui il CollectionC
 RESTful aggiungendo i parametri necessari. La risorsa fornita conterr\'{a} i Document ad essa correlati e quest'ultimi 
 verranno visualizzati in base alle opzioni della richiesta RESTful.
 
-\subparagraph{Funzionalità esportate}
+\subparagraph{Funzionalit\'{a} esportate}
 %qui ci andrebbe tipo uno screenshot del codice, devo ancora capire come esporre le informazioni del sorgente
 \emph{Dipendenze iniettate:}
 \begin{itemize}
  \item \$resource.
 \end{itemize}
 L'istruzione di ritorno crea una nuova \$resource che modella il comportamento della Collection 
-che verrà individuata tramite l'attributo \emph{col_id}.
+che verr\'{a} individuata tramite l'attributo \emph{col_id}.
 
 
 \paragraph{CollectionListService}
@@ -239,45 +239,15 @@ Modulo che espone un oggetto \$resource legato alla lista delle Collection dispo
 Viene creata una \$resource che modella ad alto livello la lista delle Collection disponibili,
 per essere utilizzata nel DashboardController.
 
-\subparagraph{Funzionalità esportate}
+\subparagraph{Funzionalit\'{a} esportate}
 \emph{Dipendenze iniettate:}
 \begin{itemize}
  \item \$resource.
 \end{itemize}
-L'istruzione di ritorno crea una \$resource che contiene la lista delle Collection disponibili, con 
-cui interagire tramite richieste RESTful.
 
 \paragraph{DocumentDataService}
-\subparagraph{Descrizione}
-Modulo che espone un oggetto \$resource legato ad un particolare Document.
-
-\subparagraph{Utilizzo}
-Questo servizio ritorna un oggetto \$resource legato ad un particolare Document, che verrà
-utilizzato dal DocumentController tramite richieste RESTful per visualizzarne gli attributi.
-
-\subparagraph{Funzionalità esportate}
-\begin{itemize}
- \item \$resource.
-\end{itemize}
-L'oggetto ritornato da questa Factory lega la \$resource ritornata al Document \emph{doc_id} della Collection
-\emph{col_id}. Inoltre, stabilisce che le richieste \emph{query} vengano effettuate tramite metodo GET. 
 
 \paragraph{DocumentEditservice}
-\subparagraph{Descrizione}
-Modulo che espone un oggetto \$resource legato ad un particolare Document modificabile.
-
-\subparagraph{Utilizzo}
-Questo servizio ritorna un oggetto \$resource legato ad un particolare Document, che verrà
-utilizzato dal DocumentEditController tramite richieste RESTful, sia per visualizzarne
-le informazioni, sia per modificarne le proprietà.
-
-\subparagraph{Funzionalità esportate}
-\begin{itemize}
- \item \$resource.
-\end{itemize}
-L'oggetto ritornato da questa Factory lega la \$resource ritornata al Document \emph{doc_id} della Collection
-\emph{col_id}. Inoltre, oltre alla visualizzazione, descrive che le richieste di \emph{update} vengono effettuate
-con richieste di \emph{PUT}, mentre le richieste di \emph{remove} useranno il metodo http \emph{DELETE}.
 
 
 \newpage
