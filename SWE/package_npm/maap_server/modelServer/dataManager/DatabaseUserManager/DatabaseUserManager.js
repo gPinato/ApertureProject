@@ -51,57 +51,80 @@ exports.userSignup = function(req, res) {
 	});
 };
 
-//esempio richiesta lista di utenti registrati
-exports.sendUserList  = function(req, res) {
-	var config = req.config;
-		
-	//NB. il recupero dei dati sul db è asincrono quindi uso una callback per eseguire
-	//il restante codice solamente quando ho la risposta dal db :)
-	retriever.getUsersList(function(users){
+//richiede la lista dei dati del proprio profilo utente
+exports.sendUserProfile = function(req, res) {
+	var email = req.session.passport.user.email;
+	retriever.getUserProfile(email, function(user){
+		res.send(JSonComposer.createUserProfile(user));
+	});
+};
+
+//richiede la lista dei dati del proprio profilo per editarlo
+exports.sendUserProfileEdit = function(req, res) {
+
+	retriever.getUserProfile(function(user){
+		res.send(JSonComposer.createUserProfile(user));
+	});		
+};
+
+//esegue l'aggiornamento dei dati del proprio profilo
+exports.updateUserProfile = function(req, res) {
+
+	console.log('update profile: ' + req.body);
 	
-		console.log(users);
-	
-		//res.send(JSonComposer.createUsersList(users));
-			
+	retriever.updateUserProfile(req.body, function(done){
+		if(done)
+		{
+			res.send(200);
+		}else{
+			res.send(400);
+		}
 	});	
 };
 
-exports.sendUserProfile = function(req, res) {
-
-
-};
-
-exports.sendUserProfileEdit = function(req, res) {
-
-
-};
-
-exports.updateUserProfile = function(req, res) {
-
-
-};
-
+//richiede la lista di utenti registrati
 exports.getUsersList = function(req, res) {
-
-
+	retriever.getUsersList(function(users){
+		res.send(JSonComposer.createUsersList(users));
+	});		
 };
 
+//richiede i dati di un utente per la visualizzazione
 exports.sendUser = function(req, res) {
-
-
+	retriever.getUserProfile(function(user){
+		res.send(JSonComposer.createUser(user));
+	});		
 };
 
+//richiede i dati di un utente per l'edit
 exports.sendUserEdit = function(req, res) {
-
-
+	retriever.getUserProfile(function(user){
+		res.send(JSonComposer.createUser(user));
+	});	
 };
 
+//esegue l'update dei dati di un utente da parte dell'admin
 exports.updateUser = function(req, res) {
-
-
+	console.log('update user from admin: ' + req.body);
+	retriever.updateUser(req.body, function(done){
+		if(done)
+		{
+			res.send(200);
+		}else{
+			res.send(400);
+		}
+	});	
 };
 
+//rimuove un utente
 exports.removeUser = function(req, res) {
-
-
+	console.log('admin is removing an user: ' + req.body);
+	retriever.removeUser(req.body, function(done){
+		if(done)
+		{
+			res.send(200);
+		}else{
+			res.send(400);
+		}
+	});	
 };

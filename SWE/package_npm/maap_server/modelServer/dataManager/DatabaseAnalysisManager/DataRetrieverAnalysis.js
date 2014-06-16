@@ -536,6 +536,5 @@ exports.removeDocument = function(collection_name, document_id, callback) {
 			callback(true);			
 		}
 	});
-
 }
 	
