@@ -28,53 +28,51 @@ var dispatcherInit = function (app) {
 	
 	var dispatcher = app.express.Router();
 	
+	//gestione collections e documents
 	dispatcher.get('/api/collection/list', passport.checkAuthenticated, datamanager.sendCollectionsList);
-	//dispatcher.get('/api/collection/list', datamanager.sendCollectionsList);
 	//dispatcher.get('/api/collection/list', passport.checkAuthenticated, indexmanager.createIndex);
-
 	dispatcher.get('/api/collection/:col_id', passport.checkAuthenticated, datamanager.sendCollection);
-	//dispatcher.get('/api/collection/:col_id',  datamanager.sendCollection);
-	
 	dispatcher.get('/api/collection/:col_id/:doc_id', passport.checkAuthenticated, datamanager.sendDocument);
-	//dispatcher.get('/api/collection/:col_id/:doc_id', datamanager.sendDocument);
+	dispatcher.get('/api/collection/:col_id/:doc_id/edit', passport.checkAuthenticatedAdmin, datamanager.sendDocumentEdit);
+	dispatcher.put('/api/collection/:col_id/:doc_id/edit', passport.checkAuthenticatedAdmin, datamanager.updateDocument);
+	dispatcher.delete('/api/collection/:col_id/:doc_id/edit', passport.checkAuthenticatedAdmin, datamanager.removeDocument);
+
+	//gestione profilo
+	dispatcher.get('/api/profile', passport.checkAuthenticated, usermanager.sendUserProfile);
+	dispatcher.get('/api/profile/edit', passport.checkAuthenticated, usermanager.sendUserProfileEdit);
+	dispatcher.put('/api/profile/edit', passport.checkAuthenticated, usermanager.updateUserProfile);
 	
-	dispatcher.get('/api/collection/:col_id/:doc_id/edit', passport.checkAuthenticated, datamanager.sendDocumentEdit);
-	//dispatcher.get('/api/collection/:col_id/:doc_id/edit', datamanager.sendDocumentEdit);
-	
-	dispatcher.put('/api/collection/:col_id/:doc_id/edit', passport.checkAuthenticated, datamanager.updateDocument);
-	//dispatcher.put('/api/collection/:col_id/:doc_id/edit', datamanager.updateDocument); 
-	
-	dispatcher.delete('/api/collection/:col_id/:doc_id/edit', passport.checkAuthenticated, datamanager.removeDocument);
-	//dispatcher.delete('/api/collection/:col_id/:doc_id/edit', datamanager.removeDocument);
+	//gestione utenti
+	dispatcher.get('/api/users/list', passport.checkAuthenticatedAdmin, usermanager.getUsersList);
+	dispatcher.get('/api/users/:user_id', passport.checkAuthenticatedAdmin, usermanager.sendUser);
+	dispatcher.get('/api/users/:user_id/edit', passport.checkAuthenticatedAdmin, usermanager.sendUserEdit);
+	dispatcher.put('/api/users/:user_id/edit', passport.checkAuthenticatedAdmin, usermanager.updateUser);
+	dispatcher.delete('/api/users/:user_id', passport.checkAuthenticatedAdmin, usermanager.removeUser);
 	
 	//gestione query piu utilizzate
-	dispatcher.get('/api/queries/list', passport.checkAuthenticated, datamanager.getTopQueries);
-	dispatcher.delete('/api/queries', passport.checkAuthenticated, datamanager.resetQueries);
+	dispatcher.get('/api/queries/list', passport.checkAuthenticatedAdmin, datamanager.getTopQueries);
+	dispatcher.delete('/api/queries', passport.checkAuthenticatedAdmin, datamanager.resetQueries);
 	
 	//gestione indici nel db di analisi
-	dispatcher.get('/api/indexes/list', passport.checkAuthenticated, datamanager.getIndexesList);
-	dispatcher.post('/api/indexes', passport.checkAuthenticated, datamanager.createIndex);
-	dispatcher.delete('/api/indexes/:index_name', passport.checkAuthenticated, datamanager.deleteIndex);
-		
-	dispatcher.post('/api/check/email', passport.checkNotAuthenticated, usermanager.checkMail);
-	//dispatcher.post('/api/check/email', usermanager.checkMail);
+	dispatcher.get('/api/indexes/list', passport.checkAuthenticatedAdmin, datamanager.getIndexesList);
+	dispatcher.post('/api/indexes', passport.checkAuthenticatedAdmin, datamanager.createIndex);
+	dispatcher.delete('/api/indexes/:index_name', passport.checkAuthenticatedAdmin, datamanager.deleteIndex);
 	
+	//gestione login
+	dispatcher.post('/api/check/email', passport.checkNotAuthenticated, usermanager.checkMail);	
 	dispatcher.post('/api/signup', passport.checkNotAuthenticated, usermanager.userSignup);
-	//dispatcher.post('/api/signup', usermanager.userSignup);
-
 	dispatcher.get('/loggedin', function(req, res){
 		res.send(req.isAuthenticated() ? req.user : '0');
 	});
-
 	dispatcher.post('/api/login', passport.checkNotAuthenticated, passport.authenticate, function(req, res){
 		res.send(req.user);
-	});
-	
+	});	
 	dispatcher.get('/api/logout', passport.checkAuthenticated, function(req, res){
 		req.logout();
 		res.send(200);
 	});
 	
+	//per tutte le altre richieste... c'e' sempre il dispatcher!	
 	dispatcher.get('*', function(req, res){
 		res.sendfile(path.join(config.static_assets.dir, 'index.html'));
 	});

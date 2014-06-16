@@ -22,7 +22,7 @@ exports.checkMail = function(req, res) {
 
 	console.log('controllo mail ' + req.body.field);
 	console.log(JSON.stringify(req.body));
-	
+	 
 	DB.users.count({
   		email: req.body.field
     }, function (err, count) {
@@ -34,7 +34,7 @@ exports.checkMail = function(req, res) {
 			res.send(400);
         }
     });	
-}
+};
 
 exports.userSignup = function(req, res) {
 	console.log('registrazione utente');
@@ -49,10 +49,10 @@ exports.userSignup = function(req, res) {
 			res.send(400);
 		}	
 	});
-}
+};
 
 //esempio richiesta lista di utenti registrati
-exports.userList  = function(req, res) {
+exports.sendUserList  = function(req, res) {
 	var config = req.config;
 		
 	//NB. il recupero dei dati sul db è asincrono quindi uso una callback per eseguire
@@ -64,4 +64,44 @@ exports.userList  = function(req, res) {
 		//res.send(JSonComposer.createUsersList(users));
 			
 	});	
-}
+};
+
+exports.sendUserProfile = function(req, res) {
+
+
+};
+
+exports.sendUserProfileEdit = function(req, res) {
+
+
+};
+
+exports.updateUserProfile = function(req, res) {
+
+
+};
+
+exports.getUsersList = function(req, res) {
+
+
+};
+
+exports.sendUser = function(req, res) {
+
+
+};
+
+exports.sendUserEdit = function(req, res) {
+
+
+};
+
+exports.updateUser = function(req, res) {
+
+
+};
+
+exports.removeUser = function(req, res) {
+
+
+};
