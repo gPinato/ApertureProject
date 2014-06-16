@@ -33,9 +33,10 @@ exports.addUser = function(email, password, level, callback) {
 //recupera il profilo di un utente
 exports.getUserProfile = function(email, callback) {
 	DB.users.findOne({ email: email },function(err,user){
-		if(err) { console.log('errore recupero user profile: ' + err); return; }
+		if(err) { console.log('errore recupero user profile: ' + err); callback({});}
 		if(!user){
 			console.log('no user!');
+			callback({});
 		}else{
 			callback(user);
 		}
@@ -57,7 +58,7 @@ exports.updateUserProfile = function(user, callback) {
 	
 	var query = model.update(criteria, {$set: newUserData}, options);
 	query.lean().exec( function(err, count){
-		if(err){console.log('update user profile fallito: ' + err); return;}
+		if(err){console.log('update user profile fallito: ' + err); callback(false);}
 		if(count==0){
 			//console.log('nessun risultato'); 
 			callback(false);
@@ -71,9 +72,10 @@ exports.updateUserProfile = function(user, callback) {
 //recupera la lista utenti
 exports.getUsersList = function(callback) {
 	DB.users.find({},function(err,users){
-		if(err) { console.log('errore recupero user list: ' + err); return; }
+		if(err) { console.log('errore recupero user list: ' + err); callback([]); }
 		if(!users){
 			console.log('no users!');
+			callback([]); 
 		}else{
 			callback(users);
 		}
@@ -81,7 +83,7 @@ exports.getUsersList = function(callback) {
 }; 
 
 //update user per administrator
-exports.updateUser = function(user, callback) {
+exports.updateUser = function(email, user, callback) {
 	var model = DB.users;
 	
 	var criteria = {};
@@ -90,13 +92,13 @@ exports.updateUser = function(user, callback) {
 	var options = {};
 	
 	var newUserData = {};
-	newUserData.email = user.email;
+	newUserData.email = email;
 	newUserData.password = user.password;
 	newUserData.level = user.level;
 	
 	var query = model.update(criteria, {$set: newUserData}, options);
 	query.lean().exec( function(err, count){
-		if(err){console.log('update user profile fallito: ' + err); return;}
+		if(err){console.log('update user profile fallito: ' + err); callback(false);}
 		if(count==0){
 			//console.log('nessun risultato'); 
 			callback(false);
@@ -107,15 +109,15 @@ exports.updateUser = function(user, callback) {
 	});
 }; 
 
-exports.removeUser = function(user) {
+exports.removeUser = function(email, callback) {
 	var model = DB.users;
 	
 	var criteria = {};
-	criteria._id = user.id;
+	criteria.email = email;
 		
 	var query = model.remove(criteria);
 	query.lean().exec( function(err, count){
-		if(err){console.log('rimozione user fallita: ' + err); return;}
+		if(err){console.log('rimozione user fallita: ' + err); callback(false);}
 		if(count == 0) {
 			callback(false);
 		}else{

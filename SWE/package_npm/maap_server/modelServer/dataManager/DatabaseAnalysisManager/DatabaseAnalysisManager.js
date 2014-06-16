@@ -153,7 +153,7 @@ exports.getTopQueries = function(req, res) {
 exports.getIndexesList = function(req, res) {
 
 	indexManager.getIndex(function(indexes){
-		res.send(JSonComposer.createIndexesList(queries));
+		res.send(JSonComposer.createIndexesList(indexes));
 	});	
 }
 
