@@ -267,36 +267,57 @@ exports.getCollectionIndex = function(collection_name, column, order, page, call
 		else
 			query = collection.index.query;
 			
-		console.log(select);
+		//la prima query usa start=0 e perpage='' per raccogliere tutti i documenti
+		//e calcolare il numero di pagine massimo da inviare al client
 		
 		getDocuments(model,
 					query, 				//where
 					select,				//select 
 					sortby, 			//colonna da ordinare
 					order,				//tipo ordinamento
-					start,				//partenza
-					perpage,			//elementi per pagina
+					0,					//partenza
+					'',					//elementi per pagina
 					populate,			//populate
 					function(documents){
 						var result = {};
-						if(columns != undefined)
-						{
-							result.labels = labels;	
-							documents = sortDocumentsByLabels(documents, keys);
-							result.documents = applyTrasformations('index', documents, columns);
-						}else{	
-							//nel caso la column non sia definita
-							result.labels = [];
-							if(documents.length > 0)
-							{
-								for(var key in documents[0])
-								{
-									result.labels.push(key);
-								}
-							}
-							result.documents = documents;	//documents senza trasformazioni
-						}
-						callback(result);
+						result.options = {};
+						result.options.pages = Math.floor(documents.length / perpage);
+						if((documents.length % perpage) > 0) result.options.pages++;
+												
+						//TODO ottimizzare questa parte per evitare la doppia query al DB ;)
+						
+						//questa seconda query bruttissima restringe i dati ai soli richiesti dal client
+						//in base al numero di pagina richiesto
+						getDocuments(model,
+									query, 				//where
+									select,				//select 
+									sortby, 			//colonna da ordinare
+									order,				//tipo ordinamento
+									start,				//partenza
+									perpage,			//elementi per pagina
+									populate,			//populate
+									function(documents){
+						
+										if(columns != undefined)
+										{
+											//qui columns del dsl e' definita
+											result.labels = labels;	
+											documents = sortDocumentsByLabels(documents, keys);
+											result.documents = applyTrasformations('index', documents, columns);
+										}else{	
+											//nel caso la column non sia definita
+											result.labels = [];
+											if(documents.length > 0)
+											{
+												for(var key in documents[0])
+												{
+													result.labels.push(key);
+												}
+											}
+											result.documents = documents;	//documents senza trasformazioni
+										}
+										callback(result);
+						});
 					});
 	}catch(err){
 		//se la collection non e' presente, rispondo con la lista vuota

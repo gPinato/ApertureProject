@@ -62,8 +62,7 @@ exports.sendDocument = function(req, res){
 			res.send(404);
 		}else{
 			res.send(JSonComposer.createDocument( 	data.labels,	//etichette
-													data.rows,		//dati
-													data.options	//opzioni
+													data.rows		//dati
 												));
 		}
 	});	

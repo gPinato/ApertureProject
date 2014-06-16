@@ -44,8 +44,8 @@ angular.module('maaperture').controller('CollectionCtrl', function ($scope, $rou
             }, function success(response) {
                 $scope.labels = response[0];
                 $scope.data = response[1];
-                //$scope.pages = response[2];
-                $scope.pages = 4;
+                $scope.pages = response[2].pages;
+                //$scope.pages = 4;
                 $.each($scope.data[0].data, function (key, value) {
                     $scope.column_original_name.push(key);
                 });
