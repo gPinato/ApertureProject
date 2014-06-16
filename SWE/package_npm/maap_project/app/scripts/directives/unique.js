@@ -13,6 +13,12 @@
  ==============================================
  */
 
+/*
+* Controlla che la mail inserita nel form di registrazione non sia già utilizzata
+* effettuando una chiamata al server ogni volta che si finisce di inserire un indirizzo email valido.
+* In caso lo sia invalida il form e non si può procedere con la registrazione.
+* */
+
 angular.module('maaperture').
     directive('ensureUnique', ['$http', '$timeout', function ($http, $timeout) {
         var checking = null;

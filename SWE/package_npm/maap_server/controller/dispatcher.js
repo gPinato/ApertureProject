@@ -21,7 +21,7 @@ var usermanager = require('../ModelServer/DataManager/DatabaseUserManager/Databa
 var indexmanager = require('../ModelServer/DataManager/IndexManager/IndexManager');
 
 var dispatcherInit = function (app) {
-
+	
 	//inizializzo passport
 	passport.init(app);
 	var config = app.config;
@@ -30,7 +30,8 @@ var dispatcherInit = function (app) {
 	
 	dispatcher.get('/api/collection/list', passport.checkAuthenticated, datamanager.sendCollectionsList);
 	//dispatcher.get('/api/collection/list', datamanager.sendCollectionsList);
-	
+	//dispatcher.get('/api/collection/list', passport.checkAuthenticated, indexmanager.createIndex);
+
 	dispatcher.get('/api/collection/:col_id', passport.checkAuthenticated, datamanager.sendCollection);
 	//dispatcher.get('/api/collection/:col_id',  datamanager.sendCollection);
 	

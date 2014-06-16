@@ -23,6 +23,8 @@ angular.module('maaperture').controller('RegisterCtrl', function ($scope, $locat
     };
 
     $scope.submitted = false;
+    //Funzione per inviare il form di registrazione al server.
+    //Invia soltanto se il client ritiene che il form sia compilato con dati validi.
     $scope.signupForm = function () {
         if ($scope.signup_form.$valid) {
             RegisterService.register({},
@@ -39,8 +41,8 @@ angular.module('maaperture').controller('RegisterCtrl', function ($scope, $locat
         else {
             $scope.signup_form.submitted = true;
         }
-        ;
-    }
+
+    };
 
 });
 

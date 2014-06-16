@@ -65,7 +65,9 @@ angular
 
 
         $locationProvider.html5Mode(true);
-        //Force user to log
+
+        //Intercetto ogni risposta dal server e verifico che l'utente sia autenticato prima di visualizzare qualsiasi
+        //informazione.
 
         $httpProvider.responseInterceptors.push(function ($q, $location) {
             return function (promise) {

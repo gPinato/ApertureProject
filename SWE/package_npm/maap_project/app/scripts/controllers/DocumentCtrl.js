@@ -22,12 +22,18 @@ angular.module('maaperture').controller('DocumentCtrl', function ($scope, $locat
     $scope.values = [];
     $scope.canEdit = true;
 
-    DocumentDataService.query({col_id: $routeParams.col_id, doc_id: $routeParams.doc_id },
+    //Funzione per richiedere un documento al server.
+    //Passa come parametri la collection e il documento da ricevere
+    DocumentDataService.query({
+            col_id: $routeParams.col_id,
+            doc_id: $routeParams.doc_id },
         function success(response) {
             $scope.data = response.data;
             $.each($scope.data, function (key, value) {
+                //salva i valori in un array per non perdere l'ordinamento
                 $scope.values.push(value);
             });
+            //Salva le etichette in un array
             $scope.labels = response.label;
         },
         function error (err){

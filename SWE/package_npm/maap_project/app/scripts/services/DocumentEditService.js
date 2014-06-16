@@ -13,6 +13,8 @@
  ==============================================
  */
 
+'use strict';
+
 angular.module('services')
     .factory('DocumentEditService', ['$resource', function ($resource) {
         return $resource('http://localhost:9000/api/collection/:col_id/:doc_id/edit',
