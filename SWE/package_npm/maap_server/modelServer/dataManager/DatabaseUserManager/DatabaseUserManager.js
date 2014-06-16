@@ -16,6 +16,7 @@
 var path = require('path');
 var retriever = require('./DataRetrieverUsers');
 var DB = require('../../Database/MongooseDBFramework');
+var JSonComposer = require('../JSonComposer');
 
 //controlla che la mail non sia gia presente nel sistema durante la registrazione
 exports.checkMail = function(req, res) {
@@ -61,8 +62,8 @@ exports.sendUserProfile = function(req, res) {
 
 //richiede la lista dei dati del proprio profilo per editarlo
 exports.sendUserProfileEdit = function(req, res) {
-
-	retriever.getUserProfile(function(user){
+	var email = req.session.passport.user.email;
+	retriever.getUserProfile(email, function(user){
 		res.send(JSonComposer.createUserProfile(user));
 	});		
 };
@@ -91,14 +92,16 @@ exports.getUsersList = function(req, res) {
 
 //richiede i dati di un utente per la visualizzazione
 exports.sendUser = function(req, res) {
-	retriever.getUserProfile(function(user){
+	var email = req.params.user_email;
+	retriever.getUserProfile(email, function(user){
 		res.send(JSonComposer.createUser(user));
 	});		
 };
 
 //richiede i dati di un utente per l'edit
 exports.sendUserEdit = function(req, res) {
-	retriever.getUserProfile(function(user){
+	var email = req.params.user_email;
+	retriever.getUserProfile(email, function(user){
 		res.send(JSonComposer.createUser(user));
 	});	
 };
@@ -106,7 +109,8 @@ exports.sendUserEdit = function(req, res) {
 //esegue l'update dei dati di un utente da parte dell'admin
 exports.updateUser = function(req, res) {
 	console.log('update user from admin: ' + req.body);
-	retriever.updateUser(req.body, function(done){
+	var email = req.params.user_email;
+	retriever.updateUser(email, req.body, function(done){
 		if(done)
 		{
 			res.send(200);
@@ -118,8 +122,9 @@ exports.updateUser = function(req, res) {
 
 //rimuove un utente
 exports.removeUser = function(req, res) {
-	console.log('admin is removing an user: ' + req.body);
-	retriever.removeUser(req.body, function(done){
+	console.log('admin is removing an user: ' + req.params.user_email);
+	var email = req.params.user_email;
+	retriever.removeUser(email, function(done){
 		if(done)
 		{
 			res.send(200);
