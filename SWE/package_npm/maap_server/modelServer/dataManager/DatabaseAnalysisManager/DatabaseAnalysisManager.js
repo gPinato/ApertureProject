@@ -125,4 +125,65 @@ exports.removeDocument = function(req, res) {
 	
 }
 
+//gestione query - indexManager:
+
+//elimina la lista di query
+exports.resetQueries = function(req, res) {
+
+	indexManager.resetQueries(function(done){
+		if(done)
+		{
+			res.send(200);
+		}else{
+			res.send(400);
+		}	
+	});
+}
+
+//risponde con la lista delle query piu' utilizzate
+exports.getTopQueries = function(req, res) {
+
+	indexManager.getQueries(10,				//numero di query da visualizzare (TOP 10)
+							function(queries){
+								res.send(JSonComposer.createQueriesList(queries));							
+							});
+}
+
+//risponde con la lista degli indici presenti nel database di analisi
+exports.getIndexesList = function(req, res) {
+
+	indexManager.getIndex(function(indexes){
+		res.send(JSonComposer.createIndexesList(queries));
+	});	
+}
+
+exports.createIndex = function(req, res) {
+
+	console.log(JSON.stringify(req.body));
+	
+	var query_id = req.body.query_id;
+	var index_name = req.body.indexName;
+	indexManager.createIndex(query_id, index_name, function(done){
+		if(done)
+		{
+			res.send(200);
+		}else{
+			res.send(400);
+		}		
+	});
+}
+
+exports.deleteIndex = function(req, res) {
+
+	var index_name = req.params.index_name;
+	indexManager.deleteIndex(index_name, function(done){
+		if(done)
+		{
+			res.send(200);
+		}else{
+			res.send(400);
+		}	
+	});
+}
+
 exports.sendCollection = sendCollection;

@@ -1,7 +1,7 @@
 /**
  * File: IndexManager.js
  * Module: maap_server::ModelServer::DataManager::IndexManager
- * Author: Alberto Garbui
+ * Author: Michele Maso + Fabio Miotto ;D
  * Created: 20/05/14
  * Version: 0.1
  * Description: gestione indici
@@ -87,20 +87,18 @@ exports.addQuery = function(collection_name, select) {
 	});
 }
 
-
-
-exports.resetQueries = function(req, res) {
+exports.resetQueries = function(callback) {
 	var queryModel = require('../../Database/MongooseDBFramework').query;
 	var connection = require('../../Database/MongooseDBFramework').connection;
 	//console.log(queryModel.modelName);
 	connection.db.dropCollection(queryModel.modelName, function(err,data){
 		if(err){
 			console.log('Impossibile cancellare la collection '+queryModel.modelName);
-			res.send(400);
+			callback(false);
 		}
 		else{
-		console.log(data);
-		res.send(200);
+			//console.log(data);
+			callback(true);
 		}
 	});
 }
@@ -116,11 +114,13 @@ exports.getQueries = function(n_elements, callback) {
 	query.lean().exec(function(err,data){
 		if(err){
 			console.log('Impossibile ritornare le query');
-			return;
+			callback({});
 		}
 		if(!data)
+		{
 			console.log('Non ci sono query da visualizzare');
-		else{
+			callback({});
+		}else{
 			//console.log(data);
 			callback(data);
 		}
@@ -130,6 +130,8 @@ exports.getQueries = function(n_elements, callback) {
 exports.getIndex = function(callback) {
 
 	var model = getModel('teams');
+	
+	callback({});	//momentaneamente restituisco la lista vuota
 	
 }
 
@@ -144,11 +146,13 @@ exports.createIndex = function(query_id,  name_index, callback) {
 	query.lean().exec(function(err,data){
 		if(err){
 			console.log('Impossibile ritornare la query dell\' indice');
-			return;
+			callback(false);
 		}
 		if(!data)
+		{
 			console.log('Errore _id query cercata');
-		else{
+			callback(false);
+		}else{
 			//console.log(data);
 			var collection_name = data[0].collection_name;			
 			var fieldIndex = data[0].select;
@@ -166,8 +170,13 @@ exports.createIndex = function(query_id,  name_index, callback) {
 			
 			collectionModel.ensureIndexes(function(err){
 				if(err)
+				{
 					console.log('Impossibile creare l\'indice');
-				callback(name_index);
+					callback(false);
+				}else{
+					//indice creato correttamente
+					callback(true);
+				}
 			});
 			
 		}
@@ -175,5 +184,5 @@ exports.createIndex = function(query_id,  name_index, callback) {
 }
 
 exports.deleteIndex = function(name_index, callback) {
-
+	
 }

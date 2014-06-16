@@ -47,6 +47,15 @@ var dispatcherInit = function (app) {
 	dispatcher.delete('/api/collection/:col_id/:doc_id/edit', passport.checkAuthenticated, datamanager.removeDocument);
 	//dispatcher.delete('/api/collection/:col_id/:doc_id/edit', datamanager.removeDocument);
 	
+	//gestione query piu utilizzate
+	dispatcher.get('/api/queries/list', passport.checkAuthenticated, datamanager.getTopQueries);
+	dispatcher.delete('/api/queries', passport.checkAuthenticated, datamanager.resetQueries);
+	
+	//gestione indici nel db di analisi
+	dispatcher.get('/api/indexes/list', passport.checkAuthenticated, datamanager.getIndexesList);
+	dispatcher.post('/api/indexes', passport.checkAuthenticated, datamanager.createIndex);
+	dispatcher.delete('/api/indexes/:index_name', passport.checkAuthenticated, datamanager.deleteIndex);
+		
 	dispatcher.post('/api/check/email', passport.checkNotAuthenticated, usermanager.checkMail);
 	//dispatcher.post('/api/check/email', usermanager.checkMail);
 	
