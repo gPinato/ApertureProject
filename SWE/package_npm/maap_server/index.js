@@ -45,7 +45,7 @@ function serverInit(app){
 	app.use(bodyParser.json());
 	app.use(bodyParser.urlencoded());
 	app.use(cookieParser());
-	app.use(session({ secret: config.session.secret }));
+	app.use(session({ secret: config.session.secret, cookie: { maxAge: config.session.max_age} }));
 	
 	app.use(express.static(config.static_assets.dir));
 		
