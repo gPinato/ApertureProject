@@ -1,10 +1,11 @@
 /**
  * File: CollectionListService;
- * Module: modulo di appartenenza;
- * Author: jack;
+ * Module: services;
+ * Author: Giacomo Pinato;
  * Created: 01/06/14;
  * Version: versione corrente;
- * Description: descrizione dettagliata del file;
+ * Description: Factory che ritorna una $resource legata alla 
+ * 	lista delle Collection disponibili;
  * Modification History:
  ==============================================
  * Version | Changes
