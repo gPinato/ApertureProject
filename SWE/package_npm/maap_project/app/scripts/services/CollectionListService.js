@@ -4,8 +4,8 @@
  * Author: Giacomo Pinato;
  * Created: 01/06/14;
  * Version: versione corrente;
- * Description: Factory che ritorna una $resource legata alla 
- * 	lista delle Collection disponibili;
+ * Description: Factory that returns a $resource
+ * 	bounded to the list of avaliable Collections;
  * Modification History:
  ==============================================
  * Version | Changes

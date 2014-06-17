@@ -57,7 +57,8 @@ Diario delle modifiche
 \midrule
 4.1.0 & 2014-05-20 & Alberto Garbui (VR) & Verifica documento.\\
 
-
+\midrule
+4.0.2 & 2014-XX-XX & Mattia Sorgato (PR) & Stesura dei servizi e dei controller del client\\
 \midrule
 4.0.1 & 2014-04-04 & Alberto Garbui (PR) & Prima stesura del documento.\\
 
@@ -113,19 +114,27 @@ Gli standard di progettazione architetturale sono definiti nella \emph{Specifica
 Gli standard di documentazione del codice sono specificati nel documento di 
 \emph{Norme\_{}di\_{}Progetto\_{}v\versioneNormeDiProgetto{}.pdf}, nella sezione XXXXXX.	%Cambia qui, altrimenti, bad juju at you.
 
-\subsection{Standard di denominazione di entit\'{a} e relazioni}
+\subsection{Standard di denominazione di entità e relazioni}
 
 \subsection{Standard di programmazione}
 Gli standard di programmazione sono specificati nel documento di 
 \emph{Norme\_{}di\_{}Progetto\_{}v\versioneNormeDiProgetto{}.pdf}, nella sezione XXXXXX.	%Cambia anche qui, con la sezione giusta.
+\subsubsection{Tipi in JavaScript}
+Essendo JavaScript un linguaggio non tipato, una variabile può assumere diversi tipi durante l'esecuzione
+di un codice. Infatti è possibile cambiare il tipo di un riferimento semplicemente assegnando un valore diverso ad
+una data variabile. \'{E} quindi ambiguo definire all'interno di un frammento di codice il tipo statico che una variabile
+possiede. Lo stesso vale per i valori ritornati da una funzione JavaScript, i quali possono essere addirittura funzioni.
 
 \subsection{Strumenti di lavoro}
 Gli strumenti di lavoro sono trattati nella sezione XXXXX del documento di					%idem con patate.
-Gli standard di documentazione del codice e le norme da applicare nelle attivita\'{a} 
+Gli standard di documentazione del codice e le norme da applicare nelle attività 
 di Codifica sono specificati nel documento di 
 \emph{Norme\_{}di\_{}Progetto\_{}v\versioneNormeDiProgetto{}.pdf}.
 
+
 \newpage
+
+
 \section{Specifica componenti}
 
 \subsection{MaaP}
@@ -202,12 +211,97 @@ definite dai DSL;
 \subsubsection{Maap::Client::ControllerModelView::ControllerClient}
 
 \paragraph{CollectionController}
+\subparagraph{Descrizione}
+Modulo che descrive il Controller della Collection view.
+
+\subparagraph{Utilizzo}
+Controller utilizzato da AngularJS per fornire e gestire i dati della Collection view.
+Fornisce l'inizializzazione di base della pagina ed esegue la mediazione tra la Collection view
+e le richieste di visualizzazione e modifica dei dati di una Collection.
+
+\subparagraph{Dipendendenze iniettate al controller}
+\begin{itemize}
+ \item \$scope;
+ \item \$route;
+ \item \$location;
+ \item \$routeParams;
+ \item DocumentEditService;
+ \item CollectionDataService;
+ \item AuthService.
+\end{itemize}
+
+\subparagraph{Funzionalità esportate}
+\begin{description}
+ \item[init()] \hfill \\
+ Funzione di inizializzazione del CollectionController. Imposta i valori iniziali delle variabili dello
+ \$scope associate alla Collection view ed esegue la funzione \emph{getData()}.
+ 
+ \item[getData()] \hfill \\
+ Richiama la richiesta RESTful \textit{query} sulla \$resource fornita dal CollectionDataService.
+ Con questa funzione vengono prelevati i dati legati alla Collection da visualizzare e vengono
+ passati alla Collection view tramite il binding con lo \$scope. \\
+ Se non vengono visualizzati risultati, ovvero se la Collection non esiste, avviene un redirect alla pagina
+ che mostra l'errore 404.
+ 
+ \item[\$scope.numerify(num)] \hfill \\
+ %BOH, Jack me la deve spiegare.
+ 
+ \item[\$scope.previousPage()] \hfill \\
+ Aggiunge allo \$scope la funzionalità di passaggio alla pagina di visualizzazione precedente alla corrente.
+ Diminuisce di 1 l'indicatore della pagina corrente e esegue una nuova richiesta al server per i dati corrispondenti
+ alla pagina precedente con \emph{getData()}.
+ 
+ \item[\$scope.nextPage()] \hfill \\
+ Aggiunge allo \$scope la funzionalità di passaggio alla pagina di visualizzazione successiva alla corrente.
+ Aumenta di 1 l'indicatore della pagina corrente e esegue una nuova richiesta al server per i dati corrispondenti
+ alla pagina successiva con \emph{getData()}.
+ 
+ \item[\$scope.toPage(index)] \hfill \\
+ Aggiunge allo \$scope la funzionalità di passaggio alla pagina di visualizzazione specificata dal parametro \emph{index}.
+ Aggiorna l'indicatore della pagina corrente settandolo all'indice passato per parametro alla funzione.
+ Successivamente esegue una richiesta al server per ottenere i dati per la nuova visualizzazione.
+ 
+ \item[changeSort()] \hfill \\
+ Cambia la variabile \$current_sort dello \$scope che regola l'ordine di visualizzazione dei Document, da discendente ad
+ ascendente e viceversa.
+ 
+ \item[\$scope.columnSort(index)] \hfill \\
+ Funzione che cambia l'ordinamento di visualizzazione di una colonna della Collection view. \\
+ Se la colonna in questione è una colonna diversa da quella che precedentemente deteneva l'ordinamento,
+ la variabile \emph{current_sorted_column} dello \$scope viene aggiornata, altrimenti la funzione cambia solamente
+ l'ordinamento della colonna.
+ 
+ \item[\$scope.deleteDocument(index)] \hfill \\
+ Funzione che elimina il Document identificato dall'indice \emph{index}. Effettua una richiesta REST di rimozione alla risorsa
+ pubblicizzata da DocumentEditService fornendo come argomenti l'identificativo della Collection correntemente visualizzata e l'indice
+ del Document da eliminare. \\
+ Se l'eliminazione ha successo viene lanciato l'aggiornamento della vista corrente con il Document eliminato, altrimenti si
+ richiama la callback di errore.
+ 
+ 
+\end{description}
+
 
 \paragraph{DashboardController}
+\subparagraph{Descrizione}
+
+\subparagraph{Utilizzo}
+
+\subparagraph{Funzionalità esportate}
 
 \paragraph{DocumentController}
+\subparagraph{Descrizione}
+
+\subparagraph{Utilizzo}
+
+\subparagraph{Funzionalità esportate}
 
 \paragraph{DocumentEditController}
+\subparagraph{Descrizione}
+
+\subparagraph{Utilizzo}
+
+\subparagraph{Funzionalità esportate}
 
 %mancano i controller del profilo e del login, mi pare che Jack
 %avesse detto di aspettare perche' non sono ancora pronti
@@ -267,6 +361,7 @@ Questo servizio ritorna un oggetto \$resource legato ad un particolare Document,
 utilizzato dal DocumentController tramite richieste RESTful per visualizzarne gli attributi.
 
 \subparagraph{Funzionalità esportate}
+\emph{Dipendenze iniettate:}
 \begin{itemize}
  \item \$resource.
 \end{itemize}
@@ -283,6 +378,7 @@ utilizzato dal DocumentEditController tramite richieste RESTful, sia per visuali
 le informazioni, sia per modificarne le proprietà.
 
 \subparagraph{Funzionalità esportate}
+\emph{Dipendendenze iniettate:}
 \begin{itemize}
  \item \$resource.
 \end{itemize}
