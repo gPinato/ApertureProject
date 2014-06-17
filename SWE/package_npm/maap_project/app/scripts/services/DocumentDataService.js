@@ -4,8 +4,8 @@
  * Author: Giacomo Pinato;
  * Created: 12/05/14;
  * Version: versione corrente;
- * Description: Factory che ritorna una $resource legata ad un singolo
- * Document;
+ * Description: Factory that returns a $resource 
+ * 	bounded to a specific Document;
  * Modification History:
  ==============================================
  * Version | Changes

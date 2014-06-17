@@ -64,7 +64,7 @@ exports.sendUserProfile = function(req, res) {
 exports.sendUserProfileEdit = function(req, res) {
 	var email = req.session.passport.user.email;
 	retriever.getUserProfile(email, function(user){
-		res.send(JSonComposer.createUserProfile(user));
+		res.send(JSonComposer.createUserProfileEdit(user));
 	});		
 };
 
