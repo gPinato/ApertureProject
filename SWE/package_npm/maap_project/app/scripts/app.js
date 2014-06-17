@@ -35,12 +35,24 @@ angular
                 controller: 'DocumentEditCtrl'
             })
             .when('/profile', {
-                templateUrl: 'views/documentEdit.html',
-                controller: 'DocumentEditCtrl'
+                templateUrl: 'views/userProfile.html',
+                controller: 'ProfileCtrl'
             })
             .when('/profile/edit', {
-                templateUrl: 'views/documentEdit.html',
-                controller: 'DocumentEditCtrl'
+                templateUrl: 'views/userEdit.html',
+                controller: 'ProfileEditCtrl'
+            })
+            .when('/users', {
+                templateUrl: 'views/userCollection.html',
+                controller: 'UsersCollectionCtrl'
+            })
+            .when('/users/:user_email', {
+                templateUrl: 'views/userProfile.html',
+                controller: 'UsersCtrl'
+            })
+            .when('/users/:user_email/edit', {
+                templateUrl: 'views/userEdit.html',
+                controller: 'UsersEditCtrl'
             })
             .when('/login', {
                 templateUrl: 'views/login.html',

@@ -47,7 +47,7 @@ var dispatcherInit = function (app) {
 	dispatcher.get('/api/users/:user_email', passport.checkAuthenticatedAdmin, usermanager.sendUser);
 	dispatcher.get('/api/users/:user_email/edit', passport.checkAuthenticatedAdmin, usermanager.sendUserEdit);
 	dispatcher.put('/api/users/:user_email/edit', passport.checkAuthenticatedAdmin, usermanager.updateUser);
-	dispatcher.delete('/api/users/:user_email', passport.checkAuthenticatedAdmin, usermanager.removeUser);
+	dispatcher.delete('/api/users/:user_email/edit', passport.checkAuthenticatedAdmin, usermanager.removeUser);
 	
 	//gestione query piu utilizzate
 	dispatcher.get('/api/queries/list', passport.checkAuthenticatedAdmin, datamanager.getTopQueries);

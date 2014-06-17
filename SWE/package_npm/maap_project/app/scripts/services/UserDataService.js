@@ -17,8 +17,8 @@
 
 angular.module('services')
     .factory('DocumentDataService', ['$resource', function ($resource) {
-        return $resource('http://localhost:9000/api/users/:user_id',
-            {user_id: '@user_id'}, {
+        return $resource('http://localhost:9000/api/users/:user_email',
+            {user_email: '@user_email'}, {
                 'query': {method: 'GET'}
 
             });

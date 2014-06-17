@@ -16,8 +16,8 @@
 
 angular.module('services')
     .factory('UserCollectionService', ['$resource', function ($resource) {
-        return $resource('http://localhost:9000/api/users/list',
-             {'query': {method: 'GET'}
+        return $resource('http://localhost:9000/api/users/list',{
+                 'query': {method: 'GET'}
             });
 
     }]);

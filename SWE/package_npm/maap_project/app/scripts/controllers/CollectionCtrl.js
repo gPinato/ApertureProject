@@ -82,14 +82,16 @@ angular.module('maaperture').controller('CollectionCtrl', function ($scope, $rou
     };
     //Torna alla pagina precedente
     $scope.previousPage = function () {
-        if ($scope.current_page > 0)
+        if ($scope.current_page > 0) {
             $scope.current_page--;
+        }
         getData();
     };
     //Va alla pagina successiva
     $scope.nextPage = function () {
-        if ($scope.current_page < $scope.pages - 1)
+        if ($scope.current_page < $scope.pages - 1) {
             $scope.current_page++;
+        }
         getData();
     };
     //Va alla pagina $index
