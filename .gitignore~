@@ -16,7 +16,6 @@ SWE/Documentazione/Piano_di_Qualifica/Piano_di_qualifica.toc
 *.asta.bak
 *.bak
 *.pdf
-*.js~
 SWE/package_npm/maap_project/coverage
 SWE/Documentazione/Piano_di_Progetto/Piano_di_progetto.pdf
 SWE/Documentazione/Piano_di_Progetto/Piano_di_progetto.pdf

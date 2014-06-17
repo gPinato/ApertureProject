@@ -56,9 +56,9 @@
             <table class="table">
                 <th>Label</th>
                 <th>Value</th>
-                <tr ng-repeat="(key,value) in document.data">
-                    <td>{{key}}</td>
-                    <td>{{value}}</td>
+                <tr ng-repeat="label in labels track by $index">
+                    <td>{{label}}</td>
+                    <td>{{original_data[$index]}}</td>
                 </tr>
             </table>
 
