@@ -1,5 +1,5 @@
 /**
- * File: DocumentEditCtrl;
+ * File: ProfileCtrl;
  * Module: mapp:controllers;
  * Author: Giacomo Pinato;
  * Created: 12/05/14;
@@ -9,23 +9,22 @@
  ==============================================
  * Version | Changes
  ==============================================
- * 0.3 Redesign of returned data
  * 0.2 Added services support
  * 0.1 File creation
  ==============================================
  */
 
 'use strict';
-angular.module('maaperture').controller('DocumentEditCtrl', function ($scope, $location, DocumentEditService, AuthService, $routeParams) {
-    $scope.current_collection = $routeParams.col_id;
-    $scope.current_document = $routeParams.doc_id;
-    $scope.canEdit = true;
+
+angular.module('maaperture').controller('ProfileCtrl', function ($scope, $location, ProfileDataService, ProfileEditService, AuthService, $routeParams) {
+
+
     $scope.original_data = [];
     $scope.original_keys = [];
 
     //Funzione per richiedere un documento al server.
     //Passa come parametri la collection e il documento da ricevere
-    DocumentEditService.query({
+    ProfileEditService.query({
             col_id: $routeParams.col_id,
             doc_id: $routeParams.doc_id },
         function success(data) {
@@ -53,7 +52,7 @@ angular.module('maaperture').controller('DocumentEditCtrl', function ($scope, $l
         //trasforma l'oggetto new_data in JSON.
         var json_data = JSON.stringify(new_data);
         //Trasmette al server il nuovo json
-        DocumentEditService.update({
+        ProfileEditService.update({
                 col_id: $scope.current_collection,
                 doc_id: $scope.current_document
             },
@@ -67,15 +66,15 @@ angular.module('maaperture').controller('DocumentEditCtrl', function ($scope, $l
             }
         );
     };
+
     //Funzione per richiedere la cancellazione di un documento
     $scope.delete_document = function () {
-        DocumentEditService.remove({
-                col_id: $scope.current_collection,
+        ProfileEditService.remove({
                 doc_id: $scope.current_document
             },
 
             function success() {
-                $location.path('/collection/' + $scope.current_collection);
+                $location.path('/users/list');
             },
             function err(error) {
             }

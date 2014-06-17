@@ -79,7 +79,7 @@ describe('Controller: DocumentEditCtrl', function () {
         scope.$digest();
         scope.data = MockDocService.query();
         scope.$digest();
-        expect(scope.toedit).to.deep.equal([
+        expect(scope.original_data).to.deep.equal([
             "maap_system_unedited_value",
             "maap_system_unedited_value",
             "maap_system_unedited_value",
