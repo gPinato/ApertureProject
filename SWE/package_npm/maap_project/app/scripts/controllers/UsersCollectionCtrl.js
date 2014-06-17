@@ -46,7 +46,7 @@ angular.module('maaperture').controller('UsersCollectionCtrl', function ($scope,
             }, function success(response) {
                 $scope.labels = response[0];
                 $scope.data = response[1];
-                $scope.pages = response[2].pages;
+                //$scope.pages = response[2].pages;
 
                 //Salva i nomi originali delle colonne per le query a database
                 $.each($scope.data[0].data, function (key, value) {
