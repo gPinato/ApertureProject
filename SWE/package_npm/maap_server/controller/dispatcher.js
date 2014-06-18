@@ -51,11 +51,11 @@ var dispatcherInit = function (app) {
 	
 	//gestione query piu utilizzate
 	dispatcher.get('/api/queries/list', passport.checkAuthenticatedAdmin, datamanager.getTopQueries);
-	dispatcher.delete('/api/queries', passport.checkAuthenticatedAdmin, datamanager.resetQueries);
+	dispatcher.delete('/api/queries/list', passport.checkAuthenticatedAdmin, datamanager.resetQueries);
 	
 	//gestione indici nel db di analisi
-	dispatcher.get('/api/indexes/list', passport.checkAuthenticatedAdmin, datamanager.getIndexesList);
-	dispatcher.post('/api/indexes', passport.checkAuthenticatedAdmin, datamanager.createIndex);
+	dispatcher.get('/api/indexes', passport.checkAuthenticatedAdmin, datamanager.getIndexesList);
+	dispatcher.put('/api/indexes', passport.checkAuthenticatedAdmin, datamanager.createIndex);
 	dispatcher.delete('/api/indexes/:index_name', passport.checkAuthenticatedAdmin, datamanager.deleteIndex);
 	
 	//gestione login
