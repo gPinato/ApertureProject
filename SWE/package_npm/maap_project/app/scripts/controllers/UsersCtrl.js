@@ -22,7 +22,6 @@ angular.module('maaperture').controller('UsersCtrl', function ($scope, $location
 
     $scope.current_document = $routeParams.user_email;
     $scope.values = [];
-    $scope.canEdit = true;
 
     //Funzione per richiedere un documento al server.
     //Passa come parametri la collection e il documento da ricevere

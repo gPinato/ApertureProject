@@ -18,7 +18,7 @@
 
 'use strict';
 
-angular.module('maaperture').controller('CollectionCtrl', function ($scope, $route, $location, DocumentEditService, CollectionDataService, AuthService, $routeParams) {
+angular.module('maaperture').controller('CollectionCtrl', function ($scope, $route, $location, DocumentEditService, CollectionDataService, $routeParams) {
 
     //Funzione di inizializzazione del controller
     var init = function () {

@@ -18,7 +18,7 @@
 
 'use strict';
 
-angular.module('maaperture').controller('QueryCtrl', function ($scope, $route, $location,QueryService,IndexService, AuthService, $routeParams) {
+angular.module('maaperture').controller('QueryCtrl', function ($scope, $route, $location,QueryService,IndexService) {
 
     //Funzione di inizializzazione del controller
     var init = function () {
@@ -26,8 +26,6 @@ angular.module('maaperture').controller('QueryCtrl', function ($scope, $route, $
         $scope.column_original_name = [];
         $scope.current_sort = null;
         $scope.current_page = 0;
-        $scope.canEdit = true; //DA CAMBIARE CON QUERY
-        $scope.current_collection = $routeParams.col_id;
         $scope.rows = [];
         getData();
 
@@ -138,12 +136,11 @@ angular.module('maaperture').controller('QueryCtrl', function ($scope, $route, $
     //funzione per cancellare il documento di indice index
     $scope.delete_document = function (index) {
         QueryService.remove({
-                col_id: $scope.current_collection,
-                doc_id: index
+                index: index
             },
 
             function success() {
-                $location.path('/collection/' + $scope.current_collection);
+                $location.path('/queries/');
             },
             function err(error) {
             }

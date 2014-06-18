@@ -18,7 +18,7 @@
 
 'use strict';
 
-angular.module('maaperture').controller('UsersCollectionCtrl', function ($scope, $route, $location, UserCollectionService, UserEditService, AuthService, $routeParams) {
+angular.module('maaperture').controller('UsersCollectionCtrl', function ($scope, $route, $location, UserCollectionService, UserEditService) {
 
     //Funzione di inizializzazione del controller
     var init = function () {
@@ -26,8 +26,6 @@ angular.module('maaperture').controller('UsersCollectionCtrl', function ($scope,
         $scope.column_original_name = [];
         $scope.current_sort = null;
         $scope.current_page = 0;
-        $scope.canEdit = true; //DA CAMBIARE CON QUERY
-        $scope.current_collection = $routeParams.col_id;
         $scope.rows = [];
         getData();
 

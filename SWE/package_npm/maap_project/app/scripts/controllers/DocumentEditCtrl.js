@@ -16,7 +16,7 @@
  */
 
 'use strict';
-angular.module('maaperture').controller('DocumentEditCtrl', function ($scope, $location, DocumentEditService, AuthService, $routeParams) {
+angular.module('maaperture').controller('DocumentEditCtrl', function ($scope, $location, DocumentEditService, $routeParams) {
     $scope.current_collection = $routeParams.col_id;
     $scope.current_document = $routeParams.doc_id;
     $scope.canEdit = true;

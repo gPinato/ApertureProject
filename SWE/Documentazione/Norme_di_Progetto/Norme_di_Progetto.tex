@@ -679,30 +679,23 @@ I Progettisti devono descrivere l'architettura di basso livello del sistema e de
 
 
 \paragraph{Norme generali}
-\subparagraph{Definizione delle classi e dei moduli}
+
+\subparagraph{Definizione dei moduli}
 \label{}
 
 \begin{itemize}
-\item \grassetto{Nome: }specifica il nome della classe/modulo, in cui tra parantesi si mette se è astratta oppure no;
-\item \grassetto{Package: } Identifica il package di cui la classe/modulo fa parte;
-\item \grassetto{Descrizione: }descrive in maniera testuale la funzionalità della classe/modulo;
+\item \grassetto{Nome: }specifica il nome del modulo;
+\item \grassetto{Package: } Identifica la gerarchia di package di cui il modulo fa parte. La gerarchia dovrà essere espressa dal package più grande al più piccolo, separando i nomi con \og  \fg{::};
+\item \grassetto{Descrizione: }descrive in maniera testuale la funzionalità del modulo;
 \item \grassetto{Attributi: }Gli attributi della classe sono indicati con l’indicazione dell’accessibilità dell’attributo secondo quanto previsto da UML 2.4, seguita dal nome di colore verde e dalla descrizione dello stesso.
-\item \grassetto{Metodi: }I metodi della classe/modulo sono indicati di colore blu, con l’indicazione dell’accessibilità del metodo secondo quanto previsto da UML 2.4, seguita dal nome del metodo e  dai suoi parametri tra parentesi tonde.
+\item \grassetto{Metodi: }I metodi del modulo sono indicati di colore blu e sono seguiti dai loro parametri tra parentesi tonde.
 Vengono infine descritti il metodo  la lista degli argomenti;
-\item \grassetto{Parametri: } I parametri del metodo, racchiusi da parentesi tonde, devono essere riportati con il nome, seguito dai due punti e dal tipo del parametro, ad esempio: + myMe
-thod(myParam : Type1, myOtherParam : Type2*);
 \end{itemize}
 
 \subparagraph{Definizione dei metodi}
-Ogni \gloss{metodo} progettato deve essere riportato all'interno della Definizione di Prodotto. I metodi verranno modellati secondo la seguente struttura:
+Ogni metodo progettato deve essere riportato all'interno della Definizione di Prodotto. I metodi verranno modellati secondo la seguente struttura:
 \begin{itemize}
 \item \grassetto{Nome: }identifica il nome del metodo;
-\item \grassetto{Accesso: }identifica il livello di visibilità del metodo. L'accesso può essere:
-\begin{itemize}
-\item \grassetto{Private: }il metodo è visibile solo all'interno della classe;
-\item \grassetto{Protected: }il metodo è visibile all'interno del package;
-\item \grassetto{Public: }il metodo è visibile ovunque.
-\end{itemize}
 \item \grassetto{Descrizione: }è una descrizione testuale del metodo;
 \item \grassetto{Tipo di ritorno (eventuale): }specifica il tipo di ritorno del metodo;
 \item \grassetto{Parametri in ingresso: }specifica i parametri in ingresso; i parametri hanno la seguente forma:
@@ -718,13 +711,6 @@ Ogni \gloss{metodo} progettato deve essere riportato all'interno della Definizio
 Ogni \gloss{attributo} progettato deve essere riportato all'interno della Definizione di Prodotto. Gli attributi verranno modellati secondo la seguente struttura:
 \begin{itemize}
 \item \grassetto{Nome: }identifica il nome dell'attributo;
-\item \grassetto{Accesso: }identifica il livello di visibilità dell'attributo. L'accesso può essere:
-\begin{itemize}
-\item \grassetto{Private: }l'attributo è visibile solo all'interno della classe;
-\item \grassetto{Protected: }l'attributo è visibile all'interno del package;
-\item \grassetto{Public: }l'attributo è visibile ovunque.
-\end{itemize}
-\item \grassetto{Tipo: }identifica il tipo dell'attributo;
 \item \grassetto{Descrizione: }è una descrizione testuale dell'attributo.
 \end{itemize}
 
@@ -896,13 +882,7 @@ Ogni metodo/funzione di codice dovrà essere preceduta da un commento contenente
 \item \grassetto{Return:} cosa ritorna la funzione.
 \end{itemize}
 
-\paragraph{Documentazione delle classi}
 
-Ogni classe/modulo deve essere preceduta da un commento contenente le seguenti informazioni:
-\begin{itemize}
-\item \grassetto{Name:} nome della classe/modulo;
-\item \grassetto{Descr:} breve descrizione della classe/modulo.
-\end{itemize}
 
 \paragraph{Versionamento del software}
 
@@ -1357,30 +1337,7 @@ Al termine della lavorazione di un documento, prima che esso venga passato ai ve
 \paragraph{Strumenti}
 TeXstudio,Astah, script glossario, script Gulpease;
 
-\subsubsection{Stesura Analisi dei Requisiti}
-La stesura dell'Analisi dei Requisiti è compito degli Analisti.
-Questo documento è frutto del sottoprocesso di analisi dei requisiti, pertanto, dovrà contenere tutti i requisiti e i casi d'uso individuati, propriamente catalogati, oltre al tracciamento completo tra il requisito e la sua fonte.
-Le norme riguardanti il sottoprocesso di analisi possono essere trovate a \ref{processo_analisi}.
 
-
-\paragraph{Strumenti}
-TeXstudio, Astah.
-
-\subsubsection{Stesura Specifica Tecnica}
-La stesura della Specifica Tecnica è compito dei Progettisti.
-Questo documento contiene la descrizione dei componenti del prodotto, la loro organizzazione, la loro composizione e il loro scopo, così come progettato durante il sottoprocesso di progettazione architetturale.
-Le norme riguardanti il processo di progettazione architetturale possono essere trovate a \ref{prog_arch}.
-
-\paragraph{Strumenti}
-TeXstudio, Astah.
-
-\subsubsection{Stesura Descrizione di Prodotto}
-La stesura della Descrizione di Prodotto è compito dei Progettisti.
-Questo documento è frutto del sottoprocesso di Progettazione di dettaglio. Contiene la descrizione dei componenti del prodotto, la loro organizzazione, la loro composizione e il loro scopo.
-Le norme riguardanti il processo di progettazione in dettaglio possono essere trovate a \ref{prog_dettaglio}.
-
-\paragraph{Strumenti}
-TeXstudio, Astah.
 
 \subsection{Gestione di configurazione}
 Questo processo di supporto comprende tutte le attività volte a gestire l'evoluzione del progetto ed a tenere traccia di tutte le sue versioni e configurazioni.

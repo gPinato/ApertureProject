@@ -17,9 +17,8 @@
 
 'use strict';
 
-angular.module('maaperture').controller('UserEditCtrl', function ($scope, $location, UserEditService, AuthService, $routeParams) {
+angular.module('maaperture').controller('UserEditCtrl', function ($scope, $location, UserEditService, $routeParams) {
     $scope.current_document = $routeParams.user_email;
-    $scope.canEdit = true;
     $scope.original_data = [];
     $scope.original_keys = [];
 

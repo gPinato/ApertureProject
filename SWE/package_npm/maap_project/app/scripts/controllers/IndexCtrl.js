@@ -69,10 +69,6 @@ angular.module('maaperture').controller('IndexCtrl', function ($scope, $route, $
     init();
 
 
-    $scope.createIndex = function(id){
-
-
-    };
     //funzione per stampare correttamente il numero di pagine
     $scope.numerify = function (num) {
         return new Array(num);
