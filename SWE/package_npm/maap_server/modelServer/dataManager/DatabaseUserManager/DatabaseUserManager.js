@@ -54,17 +54,19 @@ exports.userSignup = function(req, res) {
 
 //richiede la lista dei dati del proprio profilo utente
 exports.sendUserProfile = function(req, res) {
-	var email = req.session.passport.user.email;
-	retriever.getUserProfile(email, function(user){
+	var user_id = req.session.passport.user._id;
+	retriever.getUserProfile(user_id, function(user){
 		res.send(JSonComposer.createUserProfile(user));
 	});
 };
 
+//req.session.passport.user        contiene _id, email, password, level
+
 //richiede la lista dei dati del proprio profilo per editarlo
 exports.sendUserProfileEdit = function(req, res) {
-	var email = req.session.passport.user.email;
+	var user_id = req.session.passport.user._id;
 	console.log(JSON.stringify(req.session.passport.user));
-	retriever.getUserProfile(email, function(user){
+	retriever.getUserProfile(user_id, function(user){
 		res.send(JSonComposer.createUserProfileEdit(user));
 	});		
 };
@@ -72,9 +74,8 @@ exports.sendUserProfileEdit = function(req, res) {
 //esegue l'aggiornamento dei dati del proprio profilo
 exports.updateUserProfile = function(req, res) {
 
-	console.log('update profile: ' + JSON.stringify(req.body));
-	
-	retriever.updateUserProfile(req.body, function(done){
+	console.log('update profile: ' + JSON.stringify(req.body));	
+	retriever.updateUserProfile(req, function(done){
 		if(done)
 		{
 			res.send(200);
@@ -86,16 +87,24 @@ exports.updateUserProfile = function(req, res) {
 
 //richiede la lista di utenti registrati
 exports.getUsersList = function(req, res) {
-	retriever.getUsersList(function(users){
-		res.send(JSonComposer.createUsersList(users));
+	console.log('get user list: ' + JSON.stringify(req.query));	
+	
+	//imposto i vari parametri con valori di default se nn presenti
+	var page = req.query.page || 0;
+	var column = req.query.column || '_id';
+	var order = req.query.order || 'asc';
+	var perpage = req.config.adminConfig.usersPerPage || 22;
+	
+	retriever.getUsersList(column, order, page, perpage, function(users){
+		res.send(JSonComposer.createUsersList(users.data, users.options));
 	});		
 };
 
 //richiede i dati di un utente per la visualizzazione
 exports.sendUser = function(req, res) {
 	console.log('getUserAdmin: ' + JSON.stringify(req.params));
-	var email = req.params.user_email;
-	retriever.getUserProfile(email, function(user){
+	var user_id = req.params.user_id;
+	retriever.getUserProfile(user_id, function(user){
 		res.send(JSonComposer.createUser(user));
 	});		
 };
@@ -103,8 +112,8 @@ exports.sendUser = function(req, res) {
 //richiede i dati di un utente per l'edit
 exports.sendUserEdit = function(req, res) {
 	console.log('getUserEditAdmin: ' + JSON.stringify(req.params));
-	var email = req.params.user_email;
-	retriever.getUserProfile(email, function(user){
+	var user_id = req.params.user_id;
+	retriever.getUserProfile(user_id, function(user){
 		res.send(JSonComposer.createUser(user));
 	});	
 };

@@ -88,7 +88,7 @@ function serverInit(app){
 	});
 	*/
 
-	//inizializzo il controller
+	//inizializzo le componenti del controller
 	controller.init(app);
 	
 }

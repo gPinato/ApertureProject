@@ -103,27 +103,43 @@ exports.resetQueries = function(callback) {
 	});
 }
 
-exports.getQueries = function(n_elements, callback) {
+exports.getQueries = function(page, perpage, n_elements, callback) {
 	var DB = require('../../Database/MongooseDBFramework');
 	var queryModel = require('../../Database/MongooseDBFramework').query;
 	var options = {};
-	options.skip = 0;
-	options.limit = n_elements;
+	
+	options.skip = page * perpage;
+	options.limit = perpage;
 	options.sort = {counter:'desc'};
-	var query = queryModel.find({},{},options);
-	query.lean().exec(function(err,data){
-		if(err){
-			console.log('Impossibile ritornare le query');
-			callback({});
-		}
-		if(!data)
-		{
-			console.log('Non ci sono query da visualizzare');
-			callback({});
+	
+	var result = {};
+	result.data = [];
+	result.options = {};
+	
+	queryModel.find({}, function(err, queries){
+		if(err) { console.log('errore recupero query list: ' + err); callback(result); }
+		if(!queries){
+			console.log('no queries!');
+			callback(result);
 		}else{
-			//console.log(data);
-			callback(data);
-		}
+			result.options.pages = Math.floor(queries.length / perpage);
+			if((queries.length % perpage) > 0) result.options.pages++;
+			
+			var query = queryModel.find({},{},options);
+			query.lean().exec(function(err,data){
+				if(err){
+					console.log('Impossibile ritornare le query');
+					callback(result);
+				}
+				if(!data)
+				{
+					console.log('Non ci sono query da visualizzare');
+				}else{
+					result.data = data;
+				}
+				callback(result);
+			});
+		}		
 	});
 }
 

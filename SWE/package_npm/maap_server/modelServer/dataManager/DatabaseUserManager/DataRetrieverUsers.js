@@ -31,8 +31,8 @@ exports.addUser = function(email, password, level, callback) {
 };
 
 //recupera il profilo di un utente
-var getUserProfile = function(email, callback) {
-	DB.users.findOne({ email: email },function(err,user){
+var getUserProfile = function(user_id, callback) {
+	DB.users.findOne({ _id: user_id },function(err,user){
 		if(err) { console.log('errore recupero user profile: ' + err); callback({});}
 		if(!user){
 			console.log('no user!');
@@ -45,23 +45,23 @@ var getUserProfile = function(email, callback) {
 exports.getUserProfile = getUserProfile;
 
 //aggiorna profilo utente
-exports.updateUserProfile = function(user, callback) {
+exports.updateUserProfile = function(req, callback) {
 	var model = DB.users;
 	
 	var criteria = {};
-	criteria._id = user._id;
+	criteria._id = req.session.passport.user._id;
 		
 	var options = {};
 	
 	var newUserData = {};
-	newUserData.email = user.email;
-	newUserData.password = user.password;
+	newUserData.email = req.user.email;
+	newUserData.password = req.user.password;
 	
 	//recupero dei vecchi dati utenti
 	//var oldEmail = req.session.passport.user.email;
 	var oldPassword = req.session.passport.user.password;
 	
-	if(oldPassword == user.oldPassword)
+	if(oldPassword == req.user.oldPassword)
 	{
 		var query = model.update(criteria, {$set: newUserData}, options);
 		query.lean().exec( function(err, count){
@@ -81,14 +81,41 @@ exports.updateUserProfile = function(user, callback) {
 }; 
 
 //recupera la lista utenti
-exports.getUsersList = function(callback) {
-	DB.users.find({},function(err,users){
-		if(err) { console.log('errore recupero user list: ' + err); callback([]); }
+exports.getUsersList = function(column, order, page, perpage, callback) {
+
+	var options = {};
+	var sort = {};
+	sort[column] = order;
+	options.sort = sort;
+	options.limit = perpage;
+	options.skip = page * options.limit;
+
+	var result = {};
+	result.options = {};
+	result.options.pages = 1;
+	result.data = [];
+	
+	DB.users.find({}, function(err, users){
+		if(err) { console.log('errore user list count: ' + err); callback(result); }
 		if(!users){
 			console.log('no users!');
-			callback([]); 
+			callback(result); 
 		}else{
-			callback(users);
+			//calcolo il numero di pagine
+			result.options.pages = Math.floor(users.length / perpage);
+			if((users.length % perpage) > 0) result.options.pages++;
+			
+			var query = DB.users.find({}, {}, options);	
+			query.lean().exec( function(err,users){
+				if(err) { console.log('errore recupero user list: ' + err); callback(result); }
+				if(!users){
+					console.log('no users!');
+					callback(result); 
+				}else{
+					result.data = users;
+					callback(result);
+				}
+			});			
 		}
 	});
 }; 

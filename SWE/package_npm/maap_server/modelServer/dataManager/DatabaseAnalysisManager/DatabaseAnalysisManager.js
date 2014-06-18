@@ -143,9 +143,14 @@ exports.resetQueries = function(req, res) {
 //risponde con la lista delle query piu' utilizzate
 exports.getTopQueries = function(req, res) {
 
-	indexManager.getQueries(10,				//numero di query da visualizzare (TOP 10)
+	var queriesPerPage = req.config.adminConfig.queriesPerPage || 20;
+	var numberOfQueries2show = req.config.adminConfig.queriesToShow || 10;
+	
+	indexManager.getQueries(req.query.page,			//numero di pagina
+							queriesPerPage,			//numero di query per pagina
+							numberOfQueries2show,	//numero di query da visualizzare
 							function(queries){
-								res.send(JSonComposer.createQueriesList(queries));							
+								res.send(JSonComposer.createQueriesList(queries.data, queries.options));							
 							});
 }
 
