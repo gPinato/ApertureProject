@@ -262,13 +262,13 @@ e le richieste di visualizzazione e modifica dei dati di una Collection.
  Successivamente esegue una richiesta al server per ottenere i dati per la nuova visualizzazione.
  
  \item[changeSort()] \hfill \\
- Cambia la variabile \$current_sort dello \$scope che regola l'ordine di visualizzazione dei Document, da discendente ad
+ Cambia la variabile \$current\_sort dello \$scope che regola l'ordine di visualizzazione dei Document, da discendente ad
  ascendente e viceversa.
  
  \item[\$scope.columnSort(index)] \hfill \\
  Funzione che cambia l'ordinamento di visualizzazione di una colonna della Collection view. \\
  Se la colonna in questione è una colonna diversa da quella che precedentemente deteneva l'ordinamento,
- la variabile \emph{current_sorted_column} dello \$scope viene aggiornata, altrimenti la funzione cambia solamente
+ la variabile \emph{current\_sorted\_column} dello \$scope viene aggiornata, altrimenti la funzione cambia solamente
  l'ordinamento della colonna.
  
  \item[\$scope.deleteDocument(index)] \hfill \\
@@ -322,9 +322,7 @@ e le richieste di visualizzazione e modifica dei dati di una Collection.
 Modulo che espone un oggetto \$resource legato ad una particolare Collection. 
 
 \subparagraph{Utilizzo}
-Viene utilizzato come astrazione della risorsa Collection, su cui il CollectionController invocherà delle richieste 
-RESTful aggiungendo i parametri necessari. La risorsa fornita conterr\'{a} i Document ad essa correlati e quest'ultimi 
-verranno visualizzati in base alle opzioni della richiesta RESTful.
+Viene utilizzato come astrazione della risorsa Collection, su cui il CollectionController invocherà delle richieste  RESTful aggiungendo i parametri necessari. La risorsa fornita conterr\'{a} i Document ad essa correlati e quest'ultimi verranno visualizzati in base alle opzioni della richiesta RESTful.
 
 \subparagraph{Funzionalità esportate}
 %qui ci andrebbe tipo uno screenshot del codice, devo ancora capire come esporre le informazioni del sorgente
@@ -332,8 +330,7 @@ verranno visualizzati in base alle opzioni della richiesta RESTful.
 \begin{itemize}
  \item \$resource.
 \end{itemize}
-L'istruzione di ritorno crea una nuova \$resource che modella il comportamento della Collection 
-che verrà individuata tramite l'attributo \emph{col_id}.
+L'istruzione di ritorno crea una nuova \$resource che modella il comportamento della Collection che verrà individuata tramite l'attributo \emph{col\_id}.
 
 
 \paragraph{CollectionListService}
@@ -365,8 +362,8 @@ utilizzato dal DocumentController tramite richieste RESTful per visualizzarne gl
 \begin{itemize}
  \item \$resource.
 \end{itemize}
-L'oggetto ritornato da questa Factory lega la \$resource ritornata al Document \emph{doc_id} della Collection
-\emph{col_id}. Inoltre, stabilisce che le richieste \emph{query} vengano effettuate tramite metodo GET. 
+L'oggetto ritornato da questa Factory lega la \$resource ritornata al Document \emph{doc\_id} della Collection
+\emph{col\_id}. Inoltre, stabilisce che le richieste \emph{query} vengano effettuate tramite metodo GET. 
 
 \paragraph{DocumentEditservice}
 \subparagraph{Descrizione}
@@ -382,8 +379,8 @@ le informazioni, sia per modificarne le proprietà.
 \begin{itemize}
  \item \$resource.
 \end{itemize}
-L'oggetto ritornato da questa Factory lega la \$resource ritornata al Document \emph{doc_id} della Collection
-\emph{col_id}. Inoltre, oltre alla visualizzazione, descrive che le richieste di \emph{update} vengono effettuate
+L'oggetto ritornato da questa Factory lega la \$resource ritornata al Document \emph{doc\_id} della Collection
+\emph{col\_id}. Inoltre, oltre alla visualizzazione, descrive che le richieste di \emph{update} vengono effettuate
 con richieste di \emph{PUT}, mentre le richieste di \emph{remove} useranno il metodo http \emph{DELETE}.
 
 
