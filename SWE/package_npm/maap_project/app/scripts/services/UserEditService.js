@@ -17,8 +17,8 @@
 
 angular.module('services')
     .factory('UserEditService', ['$resource', function ($resource) {
-        return $resource('http://localhost:9000/api/users/:user_email/edit',
-            {user_email: '@user_email'}, {
+        return $resource('http://localhost:9000/api/users/:user_id/edit',
+            {user_id: '@user_id'}, {
                 'query': {method: 'GET'},
                 'update': {method: 'PUT'},
                 'remove': {method: 'DELETE'}

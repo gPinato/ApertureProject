@@ -54,6 +54,10 @@ angular
                 templateUrl: 'views/userEdit.html',
                 controller: 'UsersEditCtrl'
             })
+            .when('/queries', {
+                templateUrl: 'views/queryCollection.html',
+                controller: 'QueryCtrl'
+            })
             .when('/login', {
                 templateUrl: 'views/login.html',
                 controller: 'LoginCtrl'
