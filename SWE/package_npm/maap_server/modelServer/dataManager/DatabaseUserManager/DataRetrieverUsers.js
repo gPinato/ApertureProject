@@ -31,7 +31,7 @@ exports.addUser = function(email, password, level, callback) {
 };
 
 //recupera il profilo di un utente
-exports.getUserProfile = function(email, callback) {
+var getUserProfile = function(email, callback) {
 	DB.users.findOne({ email: email },function(err,user){
 		if(err) { console.log('errore recupero user profile: ' + err); callback({});}
 		if(!user){
@@ -42,13 +42,14 @@ exports.getUserProfile = function(email, callback) {
 		}
 	});
 }; 
+exports.getUserProfile = getUserProfile;
 
 //aggiorna profilo utente
 exports.updateUserProfile = function(user, callback) {
 	var model = DB.users;
 	
 	var criteria = {};
-	criteria._id = user.id;
+	criteria._id = user._id;
 		
 	var options = {};
 	
@@ -56,17 +57,27 @@ exports.updateUserProfile = function(user, callback) {
 	newUserData.email = user.email;
 	newUserData.password = user.password;
 	
-	var query = model.update(criteria, {$set: newUserData}, options);
-	query.lean().exec( function(err, count){
-		if(err){console.log('update user profile fallito: ' + err); callback(false);}
-		if(count==0){
-			//console.log('nessun risultato'); 
-			callback(false);
-		}else{
-			//update avvenuto con successo
-			callback(true);
-		}
-	});
+	//recupero dei vecchi dati utenti
+	//var oldEmail = req.session.passport.user.email;
+	var oldPassword = req.session.passport.user.password;
+	
+	if(oldPassword == user.oldPassword)
+	{
+		var query = model.update(criteria, {$set: newUserData}, options);
+		query.lean().exec( function(err, count){
+			if(err){console.log('update user profile fallito: ' + err); callback(false);}
+			if(count == 0){
+				//console.log('nessun risultato'); 
+				callback(false);
+			}else{
+				//update avvenuto con successo
+				callback(true);
+			}
+		});
+	}else{
+		//la vecchia password non corrisponde
+		callback(false);
+	}
 }; 
 
 //recupera la lista utenti
@@ -83,7 +94,11 @@ exports.getUsersList = function(callback) {
 }; 
 
 //update user per administrator
-exports.updateUser = function(email, user, callback) {
+exports.updateUser = function(req, callback) {
+
+	var email = req.params.user_email;
+	var user = req.body;
+	
 	var model = DB.users;
 	
 	var criteria = {};
