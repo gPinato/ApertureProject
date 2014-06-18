@@ -63,6 +63,7 @@ exports.sendUserProfile = function(req, res) {
 //richiede la lista dei dati del proprio profilo per editarlo
 exports.sendUserProfileEdit = function(req, res) {
 	var email = req.session.passport.user.email;
+	console.log(JSON.stringify(req.session.passport.user));
 	retriever.getUserProfile(email, function(user){
 		res.send(JSonComposer.createUserProfileEdit(user));
 	});		
@@ -71,7 +72,7 @@ exports.sendUserProfileEdit = function(req, res) {
 //esegue l'aggiornamento dei dati del proprio profilo
 exports.updateUserProfile = function(req, res) {
 
-	console.log('update profile: ' + req.body);
+	console.log('update profile: ' + JSON.stringify(req.body));
 	
 	retriever.updateUserProfile(req.body, function(done){
 		if(done)
@@ -92,6 +93,7 @@ exports.getUsersList = function(req, res) {
 
 //richiede i dati di un utente per la visualizzazione
 exports.sendUser = function(req, res) {
+	console.log('getUserAdmin: ' + JSON.stringify(req.params));
 	var email = req.params.user_email;
 	retriever.getUserProfile(email, function(user){
 		res.send(JSonComposer.createUser(user));
@@ -100,6 +102,7 @@ exports.sendUser = function(req, res) {
 
 //richiede i dati di un utente per l'edit
 exports.sendUserEdit = function(req, res) {
+	console.log('getUserEditAdmin: ' + JSON.stringify(req.params));
 	var email = req.params.user_email;
 	retriever.getUserProfile(email, function(user){
 		res.send(JSonComposer.createUser(user));
@@ -108,9 +111,8 @@ exports.sendUserEdit = function(req, res) {
 
 //esegue l'update dei dati di un utente da parte dell'admin
 exports.updateUser = function(req, res) {
-	console.log('update user from admin: ' + req.body);
-	var email = req.params.user_email;
-	retriever.updateUser(email, req.body, function(done){
+	console.log('update user from admin: ' + JSON.stringify(req));
+	retriever.updateUser(req, function(done){
 		if(done)
 		{
 			res.send(200);

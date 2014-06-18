@@ -93,6 +93,27 @@ function serverInit(app){
 	
 }
 
+//imposta i vari parametri di connessione dei servizi lato client: ssl, host, porta
+var setClientServices = function(app) {
+
+	var config = app.config;
+	var servicesPath = config.static_assets.dir + '/scripts/services';
+	var servicesURL = config;
+	console.log('setting up services with: ' + servicesURL + '...');	
+    var list = fs.readdirSync(servicesPath);
+    list.forEach(function(file) {
+		
+        var filePath = servicesPath + '/' + file;
+        var stat = fs.statSync(filePath);
+		var extension = path.extname(file);
+        if (stat && stat.isFile() && extension == '.js') {
+			console.log('setting up service: ' + file);			
+			
+		}
+	});
+}
+
+//avvia il server 
 var start = function(config) {
 
 	console.log('');
