@@ -134,255 +134,526 @@ di Codifica sono specificati nel documento di
 
 \newpage
 
-
-\section{Specifica componenti}
-
-\subsection{MaaP}
+\section{Namespace MaaP}
 %qui ci va la figura della vista generale dei package
 Namespace generale del progetto. In accordo con il design pattern architetturale Client-Server che 
 abbiamo adottato, le interazioni che il Client ha con il Server sono di tipo REST-like.
 
-\subsection{Maap::Server}
+\section{Specifica componenti Maap::Server}
+
 Package Server del Design Pattern Client-Server. 
 
-\subsection{Maap::Server::Controller}
+\subsection{::Controller}
 Package che gestisce il dialogo con il Client di Maap. 
-%metodi e blabla del Controller
+\subsubsection{@dispatcher}
+\subsubsection{@frontController}
+\subsubsection{@index}
+\subsubsection{@passport}
 
-\subsection{Maap::Server::ModelServer}
+\subsection{::ModelServer}
 Package che racchiude i database, le loro operazioni di accesso e i file 
 DSL con i relativi interpreti.
 
-\subsection{Maap::Server::ModelServer::Database}
-%mmmm boh, qui c'e' il database Mongo e Mongoose?
+\subsubsection{::Database}
+\paragraph{@index}
+\begin{description}
+ \item[Descrizione] \hfill \\
 
-\subsection{Maap::Server::ModelServer::DataManager}
+ \item[Dipendendenze entranti] \hfill \\
+ 
+ \item[Dipendenze uscenti] \hfill \\
+ 
+ \item[Attributi] \hfill \\
+ 
+ \item[Metodi] \hfill \\
+\end{description}
+
+\paragraph{@MongooseDBAnalysis}
+\begin{description}
+ \item[Descrizione] \hfill \\
+
+ \item[Dipendendenze entranti] \hfill \\
+ 
+ \item[Dipendenze uscenti] \hfill \\
+ 
+ \item[Attributi] \hfill \\
+ 
+ \item[Metodi] \hfill \\
+\end{description}
+
+\paragraph{@MongooseDBFramework}
+\begin{description}
+ \item[Descrizione] \hfill \\
+
+ \item[Dipendendenze entranti] \hfill \\
+ 
+ \item[Dipendenze uscenti] \hfill \\
+ 
+ \item[Attributi] \hfill \\
+ 
+ \item[Metodi] \hfill \\
+\end{description}
+
+\subsubsection{::DataManager}
 Package che gestisce gli accessi ai database.
 
-\subsubsection{Maap::Server::ModelServer::DataManager::DatabaseAnalysisManager}
+\paragraph{::DatabaseAnalysisManager}
 Package che gestisce le query ai database di analisi. 
 
-\paragraph{Maap::Server::ModelServer::DataManager::DatabaseAnalysisManager::DatabaseAnalysisManager}
+\subparagraph{@DatabaseAnalysisManager}
 
-\subparagraph{Descrizione}
-
-\subparagraph{Dipendendenze entranti}
-%da definire
-
-\subparagraph{Dipendenze uscenti}
-\begin{itemize}
-\item{path}
-\item{DataRetrieverAnalysis}
-\item{IndexManager}
-\item{JSonComposer}
-\end{itemize}
-
-\subparagraph{Attributi}
-%da definire
-
-\subparagraph{Metodi}
-\begin{itemize}
-\item{sendCollectionList:} invia al al client la lista delle varie Collection 
-definite dai DSL; 
-\item{sendCollection}
-\item{sendDocument}
-\item{sendDocumentEdit}
-\item{updateDocument}
-\item{removeDocument}
-\end{itemize}
-
-\paragraph{Maap::Server::ModelServer::DataManager::DatabaseAnalysisManager::DatabaseRetrieverAnalysis}
-
-\subsubsection{Maap::Server::ModelServer::DataManager::DatabaseUserManager}
-
-\subsubsection{Maap::Server::ModelServer::DataManager::IndexManager}
-
-\subsection{Maap::Server::ModelServer::DSL}
-
-\subsection{Maap::Client}
-
-\subsection{Maap::Client::View}
-
-\subsubsection{Maap::Client::View::Template}
-%qui ci va la trattazione dei vari template html di AngularJS
-
-\subsection{Maap::Client::ControllerModelView}
-
-\subsubsection{Maap::Client::ControllerModelView::ControllerClient}
-
-\paragraph{CollectionController}
-\subparagraph{Descrizione}
-Modulo che descrive il Controller della Collection view.
-
-\subparagraph{Utilizzo}
-Controller utilizzato da AngularJS per fornire e gestire i dati della Collection view.
-Fornisce l'inizializzazione di base della pagina ed esegue la mediazione tra la Collection view
-e le richieste di visualizzazione e modifica dei dati di una Collection.
-
-\subparagraph{Dipendendenze iniettate al controller}
-\begin{itemize}
- \item \$scope;
- \item \$route;
- \item \$location;
- \item \$routeParams;
- \item DocumentEditService;
- \item CollectionDataService;
- \item AuthService.
-\end{itemize}
-
-\subparagraph{Funzionalità esportate}
 \begin{description}
- \item[init()] \hfill \\
- Funzione di inizializzazione del CollectionController. Imposta i valori iniziali delle variabili dello
- \$scope associate alla Collection view ed esegue la funzione \emph{getData()}.
+ \item[Descrizione] \hfill \\
+
+ \item[Dipendendenze entranti] \hfill \\
  
- \item[getData()] \hfill \\
- Richiama la richiesta RESTful \textit{query} sulla \$resource fornita dal CollectionDataService.
- Con questa funzione vengono prelevati i dati legati alla Collection da visualizzare e vengono
- passati alla Collection view tramite il binding con lo \$scope. \\
- Se non vengono visualizzati risultati, ovvero se la Collection non esiste, avviene un redirect alla pagina
- che mostra l'errore 404.
+ \item[Dipendenze uscenti] \hfill \\
  
- \item[\$scope.numerify(num)] \hfill \\
- %BOH, Jack me la deve spiegare.
+ \begin{itemize}
+ \item{path}
+ \item{DataRetrieverAnalysis}
+ \item{IndexManager}
+ \item{JSonComposer}
+ \end{itemize}
  
- \item[\$scope.previousPage()] \hfill \\
- Aggiunge allo \$scope la funzionalità di passaggio alla pagina di visualizzazione precedente alla corrente.
- Diminuisce di 1 l'indicatore della pagina corrente e esegue una nuova richiesta al server per i dati corrispondenti
- alla pagina precedente con \emph{getData()}.
+ \item[Attributi] \hfill \\
  
- \item[\$scope.nextPage()] \hfill \\
- Aggiunge allo \$scope la funzionalità di passaggio alla pagina di visualizzazione successiva alla corrente.
- Aumenta di 1 l'indicatore della pagina corrente e esegue una nuova richiesta al server per i dati corrispondenti
- alla pagina successiva con \emph{getData()}.
- 
- \item[\$scope.toPage(index)] \hfill \\
- Aggiunge allo \$scope la funzionalità di passaggio alla pagina di visualizzazione specificata dal parametro \emph{index}.
- Aggiorna l'indicatore della pagina corrente settandolo all'indice passato per parametro alla funzione.
- Successivamente esegue una richiesta al server per ottenere i dati per la nuova visualizzazione.
- 
- \item[changeSort()] \hfill \\
- Cambia la variabile \$current\_sort dello \$scope che regola l'ordine di visualizzazione dei Document, da discendente ad
- ascendente e viceversa.
- 
- \item[\$scope.columnSort(index)] \hfill \\
- Funzione che cambia l'ordinamento di visualizzazione di una colonna della Collection view. \\
- Se la colonna in questione è una colonna diversa da quella che precedentemente deteneva l'ordinamento,
- la variabile \emph{current\_sorted\_column} dello \$scope viene aggiornata, altrimenti la funzione cambia solamente
- l'ordinamento della colonna.
- 
- \item[\$scope.deleteDocument(index)] \hfill \\
- Funzione che elimina il Document identificato dall'indice \emph{index}. Effettua una richiesta REST di rimozione alla risorsa
- pubblicizzata da DocumentEditService fornendo come argomenti l'identificativo della Collection correntemente visualizzata e l'indice
- del Document da eliminare. \\
- Se l'eliminazione ha successo viene lanciato l'aggiornamento della vista corrente con il Document eliminato, altrimenti si
- richiama la callback di errore.
- 
+ \item[Metodi] \hfill \\
+ \begin{itemize}
+ \item{sendCollectionList:} invia al al client la lista delle varie Collection 
+ definite dai DSL; 
+ \item{sendCollection}
+ \item{sendDocument}
+ \item{sendDocumentEdit}
+ \item{updateDocument}
+ \item{removeDocument}
+ \end{itemize}
  
 \end{description}
 
 
-\paragraph{DashboardController}
-\subparagraph{Descrizione}
+\subparagraph{@DataRetrieverAnalysis}
 
-\subparagraph{Utilizzo}
+\paragraph{::DatabaseUserManager}
+\subparagraph{@DatabaseUserManager}
+\subparagraph{@DataRetrieverUsers}
 
-\subparagraph{Funzionalità esportate}
+\paragraph{::IndexManager}
+\subparagraph{@IndexManager}
 
-\paragraph{DocumentController}
-\subparagraph{Descrizione}
+\paragraph{@JsonComposer}
 
-\subparagraph{Utilizzo}
+\subsubsection{::DSL}
+\subparagraph{@DSLManager}
+\subparagraph{@DSLParser}
+\subparagraph{@index}
+\subparagraph{@JavascriptParser}
+\subparagraph{@schemaGenerator}
 
-\subparagraph{Funzionalità esportate}
+\section{Specifica componenti Maap::Client}
 
-\paragraph{DocumentEditController}
-\subparagraph{Descrizione}
+\subsection{::View}
 
-\subparagraph{Utilizzo}
+\subsubsection{::Template}
+%qui ci va la trattazione dei vari template html di AngularJS
 
-\subparagraph{Funzionalità esportate}
+\subsection{::ControllerModelView}
 
-%mancano i controller del profilo e del login, mi pare che Jack
-%avesse detto di aspettare perche' non sono ancora pronti
+\subsubsection{::ControllerClient}
 
-\subsubsection{Maap::Client::ControllerModelView::Scope}
+\paragraph{@CollectionController}
+\begin{description}
+ \item[Descrizione] \hfill \\
+ Modulo che descrive il Controller della Collection view.
+ 
+ \item[Utilizzo] \hfill \\
+ Controller utilizzato da AngularJS per fornire e gestire i dati della Collection view.
+ Fornisce l'inizializzazione di base della pagina ed esegue la mediazione tra la Collection view
+ e le richieste di visualizzazione e modifica dei dati di una Collection.
+ 
+ \item[Dipendendenze iniettate al controller] \hfill \\
+ \begin{itemize}
+  \item \$scope;
+  \item \$route;
+  \item \$location;
+  \item \$routeParams;
+  \item DocumentEditService;
+  \item CollectionDataService;
+  \item AuthService.
+ \end{itemize}
+ 
+ \item[Funzionalità esportate] \hfill \\
+ \begin{description}
+  \item[init()] \hfill \\
+  Funzione di inizializzazione del CollectionController. Imposta i valori iniziali delle variabili dello
+  \$scope associate alla Collection view ed esegue la funzione \emph{getData()}.
+  
+  \item[getData()] \hfill \\
+  Richiama la richiesta RESTful \textit{query} sulla \$resource fornita dal CollectionDataService.
+  Con questa funzione vengono prelevati i dati legati alla Collection da visualizzare e vengono
+  passati alla Collection view tramite il binding con lo \$scope. \\
+  Se non vengono visualizzati risultati, ovvero se la Collection non esiste, avviene un redirect alla pagina
+  che mostra l'errore 404.
+  
+  \item[\$scope.numerify(num)] \hfill \\
+  %BOH, Jack me la deve spiegare.
+  
+  \item[\$scope.previousPage()] \hfill \\
+  Aggiunge allo \$scope la funzionalità di passaggio alla pagina di visualizzazione precedente alla corrente.
+  Diminuisce di 1 l'indicatore della pagina corrente e esegue una nuova richiesta al server per i dati corrispondenti
+  alla pagina precedente con \emph{getData()}.
+  
+  \item[\$scope.nextPage()] \hfill \\
+  Aggiunge allo \$scope la funzionalità di passaggio alla pagina di visualizzazione successiva alla corrente.
+  Aumenta di 1 l'indicatore della pagina corrente e esegue una nuova richiesta al server per i dati corrispondenti
+  alla pagina successiva con \emph{getData()}.
+  
+  \item[\$scope.toPage(index)] \hfill \\
+  Aggiunge allo \$scope la funzionalità di passaggio alla pagina di visualizzazione specificata dal parametro \emph{index}.
+  Aggiorna l'indicatore della pagina corrente settandolo all'indice passato per parametro alla funzione.
+  Successivamente esegue una richiesta al server per ottenere i dati per la nuova visualizzazione.
+  
+  \item[changeSort()] \hfill \\
+  Cambia la variabile \$current\_sort dello \$scope che regola l'ordine di visualizzazione dei Document, da discendente ad
+  ascendente e viceversa.
+  
+  \item[\$scope.columnSort(index)] \hfill \\
+  Funzione che cambia l'ordinamento di visualizzazione di una colonna della Collection view. \\
+  Se la colonna in questione è una colonna diversa da quella che precedentemente deteneva l'ordinamento,
+  la variabile \emph{current\_sorted\_column} dello \$scope viene aggiornata, altrimenti la funzione cambia solamente
+  l'ordinamento della colonna.
+  
+  \item[\$scope.deleteDocument(index)] \hfill \\
+  Funzione che elimina il Document identificato dall'indice \emph{index}. Effettua una richiesta REST di rimozione alla risorsa
+  pubblicizzata da DocumentEditService fornendo come argomenti l'identificativo della Collection correntemente visualizzata e l'indice
+  del Document da eliminare. \\
+  Se l'eliminazione ha successo viene lanciato l'aggiornamento della vista corrente con il Document eliminato, altrimenti si
+  richiama la callback di errore.
+  
+ \end{description}
+\end{description}
 
-\subsubsection{Maap::Client::ControllerModelView::Directives}
+\paragraph{@DashboardController}
+\begin{description}
+ \item[Descrizione] \hfill \\
+ 
+ \item[Utilizzo] \hfill \\
+  
+ \item[Funzionalità esportate] \hfill \\
+ 
+\end{description}
 
-\subsection{Maap::Client::ModelClient}
+\paragraph{@CollectionController}
+\begin{description}
+ \item[Descrizione] \hfill \\
+ 
+ \item[Utilizzo] \hfill \\
+  
+ \item[Funzionalità esportate] \hfill \\
+ 
+\end{description}
 
-\subsubsection{Maap::Client::ModelClient::Model}
+\paragraph{@DocumentController}
+\begin{description}
+ \item[Descrizione] \hfill \\
+ 
+ \item[Utilizzo] \hfill \\
+  
+ \item[Funzionalità esportate] \hfill \\
+ 
+\end{description}
+
+\paragraph{@DocumentEditController}
+\begin{description}
+ \item[Descrizione] \hfill \\
+ 
+ \item[Utilizzo] \hfill \\
+  
+ \item[Funzionalità esportate] \hfill \\
+ 
+\end{description}
+
+\paragraph{@IndexController}
+\begin{description}
+ \item[Descrizione] \hfill \\
+ 
+ \item[Utilizzo] \hfill \\
+  
+ \item[Funzionalità esportate] \hfill \\
+ 
+\end{description}
+
+\paragraph{@LoginController}
+\begin{description}
+ \item[Descrizione] \hfill \\
+ 
+ \item[Utilizzo] \hfill \\
+  
+ \item[Funzionalità esportate] \hfill \\
+ 
+\end{description}
+
+\paragraph{@NavBarController}
+\begin{description}
+ \item[Descrizione] \hfill \\
+ 
+ \item[Utilizzo] \hfill \\
+  
+ \item[Funzionalità esportate] \hfill \\
+ 
+\end{description}
+
+\paragraph{@ProfileController}
+\begin{description}
+ \item[Descrizione] \hfill \\
+ 
+ \item[Utilizzo] \hfill \\
+  
+ \item[Funzionalità esportate] \hfill \\
+ 
+\end{description}
+
+\paragraph{@ProfileEditController}
+\begin{description}
+ \item[Descrizione] \hfill \\
+ 
+ \item[Utilizzo] \hfill \\
+  
+ \item[Funzionalità esportate] \hfill \\
+ 
+\end{description}
+
+\paragraph{@QueryController}
+\begin{description}
+ \item[Descrizione] \hfill \\
+ 
+ \item[Utilizzo] \hfill \\
+  
+ \item[Funzionalità esportate] \hfill \\
+ 
+\end{description}
+
+\paragraph{@RegisterController}
+\begin{description}
+ \item[Descrizione] \hfill \\
+ 
+ \item[Utilizzo] \hfill \\
+  
+ \item[Funzionalità esportate] \hfill \\
+ 
+\end{description}
+
+\paragraph{@UsersCollectionController}
+\begin{description}
+ \item[Descrizione] \hfill \\
+ 
+ \item[Utilizzo] \hfill \\
+  
+ \item[Funzionalità esportate] \hfill \\
+ 
+\end{description}
+
+\paragraph{@UsersController}
+\begin{description}
+ \item[Descrizione] \hfill \\
+ 
+ \item[Utilizzo] \hfill \\
+  
+ \item[Funzionalità esportate] \hfill \\
+ 
+\end{description}
+
+\paragraph{@UsersEditController}
+\begin{description}
+ \item[Descrizione] \hfill \\
+ 
+ \item[Utilizzo] \hfill \\
+  
+ \item[Funzionalità esportate] \hfill \\
+ 
+\end{description}
+
+\subsubsection{::Scope}
+
+\subsubsection{::Directives}
+
+\subsection{::ModelClient}
+
+\subsubsection{::Model}
 %il Model nel Client c'e' ancora? perche' a quanto pare non serve nemmeno.
 
-\subsubsection{Maap::Client::ModelClient::Services}
+\subsubsection{::Services}
+\paragraph{@AuthService}
+\begin{description}
+ \item[Descrizione] \hfill \\
+ 
+ \item[Utilizzo] \hfill \\
+  
+ \item[Funzionalità esportate] \hfill \\
+ 
+\end{description}
 
-\paragraph{CollectionDataService}
-\subparagraph{Descrizione}
-Modulo che espone un oggetto \$resource legato ad una particolare Collection. 
+\paragraph{@CollectionDataService}
+\begin{description}
+ \item[Descrizione] \hfill \\
+ Modulo che espone un oggetto \$resource legato ad una particolare Collection. 
+ 
+ \item[Utilizzo] \hfill \\
+ Viene utilizzato come astrazione della risorsa Collection, su cui il CollectionController invocherà delle richieste  RESTful aggiungendo i parametri necessari. La risorsa fornita conterr\'{a} i Document ad essa correlati e quest'ultimi verranno visualizzati in base alle opzioni della richiesta RESTful.
+ 
+ \item[Funzionalità esportate] \hfill \\
+ %qui ci andrebbe tipo uno screenshot del codice, devo ancora capire come esporre le informazioni del sorgente
+ \emph{Dipendenze iniettate:}
+ \begin{itemize}
+  \item \$resource.
+ \end{itemize}
+ L'istruzione di ritorno crea una nuova \$resource che modella il comportamento della Collection che verrà individuata tramite l'attributo \emph{col\_id}.
+\end{description}
 
-\subparagraph{Utilizzo}
-Viene utilizzato come astrazione della risorsa Collection, su cui il CollectionController invocherà delle richieste  RESTful aggiungendo i parametri necessari. La risorsa fornita conterr\'{a} i Document ad essa correlati e quest'ultimi verranno visualizzati in base alle opzioni della richiesta RESTful.
+\paragraph{@CollectionListService}
+\begin{description}
+ \item[Descrizione] \hfill \\
+ Modulo che espone un oggetto \$resource legato alla lista delle Collection disponibili.
+ 
+ \item[Utilizzo] \hfill \\
+ Viene creata una \$resource che modella ad alto livello la lista delle Collection disponibili, per essere utilizzata nel DashboardController.
+ 
+ \item[Funzionalità esportate] \hfill \\
+ \emph{Dipendenze iniettate:}
+ \begin{itemize}
+  \item \$resource.
+ \end{itemize}
+ L'istruzione di ritorno crea una \$resource che contiene la lista delle Collection disponibili, con 
+ cui interagire tramite richieste RESTful.
+ 
+\end{description}
 
-\subparagraph{Funzionalità esportate}
-%qui ci andrebbe tipo uno screenshot del codice, devo ancora capire come esporre le informazioni del sorgente
-\emph{Dipendenze iniettate:}
-\begin{itemize}
- \item \$resource.
-\end{itemize}
-L'istruzione di ritorno crea una nuova \$resource che modella il comportamento della Collection che verrà individuata tramite l'attributo \emph{col\_id}.
+\paragraph{@DocumentDataService}
+\begin{description}
+ \item[Descrizione] \hfill \\
+ Modulo che espone un oggetto \$resource legato ad un particolare Document.
+ 
+ \item[Utilizzo] \hfill \\
+ Questo servizio ritorna un oggetto \$resource legato ad un particolare Document, che verrà  utilizzato dal DocumentController tramite richieste RESTful per visualizzarne gli attributi.
+ 
+ \item[Funzionalità esportate] \hfill \\
+ \emph{Dipendenze iniettate:}
+ \begin{itemize}
+  \item \$resource.
+ \end{itemize}
+ L'oggetto ritornato da questa Factory lega la \$resource ritornata al Document \emph{doc\_id} della Collection
+ \emph{col\_id}. Inoltre, stabilisce che le richieste \emph{query} vengano effettuate tramite metodo GET. 
+ 
+\end{description}
 
+\paragraph{@DocumentEditservice}
+\begin{description}
+ \item[Descrizione] \hfill \\
+ Modulo che espone un oggetto \$resource legato ad un particolare Document modificabile.
+ 
+ \item[Utilizzo] \hfill \\
+ Questo servizio ritorna un oggetto \$resource legato ad un particolare Document, che verrà  utilizzato dal DocumentEditController tramite richieste RESTful, sia per visualizzarne  le informazioni, sia per modificarne le proprietà.
+ 
+ \item[Funzionalità esportate] \hfill \\
+ \emph{Dipendendenze iniettate:}
+ \begin{itemize}
+  \item \$resource.
+ \end{itemize}
+ L'oggetto ritornato da questa Factory lega la \$resource ritornata al Document \emph{doc\_id} della Collection
+ \emph{col\_id}. Inoltre, oltre alla visualizzazione, descrive che le richieste di \emph{update} vengono effettuate
+ con richieste di \emph{PUT}, mentre le richieste di \emph{remove} useranno il metodo http \emph{DELETE}.
+ 
+\end{description}
 
-\paragraph{CollectionListService}
-\subparagraph{Descrizione}
-Modulo che espone un oggetto \$resource legato alla lista delle Collection disponibili. 
+\paragraph{@IndexService}
+\begin{description}
+ \item[Descrizione] \hfill \\
+ 
+ \item[Utilizzo] \hfill \\
+  
+ \item[Funzionalità esportate] \hfill \\
+ 
+\end{description}
 
-\subparagraph{Utilizzo}
-Viene creata una \$resource che modella ad alto livello la lista delle Collection disponibili,
-per essere utilizzata nel DashboardController.
+\paragraph{@LogoutService}
+\begin{description}
+ \item[Descrizione] \hfill \\
+ 
+ \item[Utilizzo] \hfill \\
+  
+ \item[Funzionalità esportate] \hfill \\
+ 
+\end{description}
 
-\subparagraph{Funzionalità esportate}
-\emph{Dipendenze iniettate:}
-\begin{itemize}
- \item \$resource.
-\end{itemize}
-L'istruzione di ritorno crea una \$resource che contiene la lista delle Collection disponibili, con 
-cui interagire tramite richieste RESTful.
+\paragraph{@ProfileDataService}
+\begin{description}
+ \item[Descrizione] \hfill \\
+ 
+ \item[Utilizzo] \hfill \\
+  
+ \item[Funzionalità esportate] \hfill \\
+ 
+\end{description}
 
-\paragraph{DocumentDataService}
-\subparagraph{Descrizione}
-Modulo che espone un oggetto \$resource legato ad un particolare Document.
+\paragraph{@ProfileEditService}
+\begin{description}
+ \item[Descrizione] \hfill \\
+ 
+ \item[Utilizzo] \hfill \\
+  
+ \item[Funzionalità esportate] \hfill \\
+ 
+\end{description}
 
-\subparagraph{Utilizzo}
-Questo servizio ritorna un oggetto \$resource legato ad un particolare Document, che verrà
-utilizzato dal DocumentController tramite richieste RESTful per visualizzarne gli attributi.
+\paragraph{@QueryService}
+\begin{description}
+ \item[Descrizione] \hfill \\
+ 
+ \item[Utilizzo] \hfill \\
+  
+ \item[Funzionalità esportate] \hfill \\
+ 
+\end{description}
 
-\subparagraph{Funzionalità esportate}
-\emph{Dipendenze iniettate:}
-\begin{itemize}
- \item \$resource.
-\end{itemize}
-L'oggetto ritornato da questa Factory lega la \$resource ritornata al Document \emph{doc\_id} della Collection
-\emph{col\_id}. Inoltre, stabilisce che le richieste \emph{query} vengano effettuate tramite metodo GET. 
+\paragraph{@RegisterService}
+\begin{description}
+ \item[Descrizione] \hfill \\
+ 
+ \item[Utilizzo] \hfill \\
+  
+ \item[Funzionalità esportate] \hfill \\
+ 
+\end{description}
 
-\paragraph{DocumentEditservice}
-\subparagraph{Descrizione}
-Modulo che espone un oggetto \$resource legato ad un particolare Document modificabile.
+\paragraph{@UserCollectionService}
+\begin{description}
+ \item[Descrizione] \hfill \\
+ 
+ \item[Utilizzo] \hfill \\
+  
+ \item[Funzionalità esportate] \hfill \\
+ 
+\end{description}
 
-\subparagraph{Utilizzo}
-Questo servizio ritorna un oggetto \$resource legato ad un particolare Document, che verrà
-utilizzato dal DocumentEditController tramite richieste RESTful, sia per visualizzarne
-le informazioni, sia per modificarne le proprietà.
+\paragraph{@UserDataService}
+\begin{description}
+ \item[Descrizione] \hfill \\
+ 
+ \item[Utilizzo] \hfill \\
+  
+ \item[Funzionalità esportate] \hfill \\
+ 
+\end{description}
 
-\subparagraph{Funzionalità esportate}
-\emph{Dipendendenze iniettate:}
-\begin{itemize}
- \item \$resource.
-\end{itemize}
-L'oggetto ritornato da questa Factory lega la \$resource ritornata al Document \emph{doc\_id} della Collection
-\emph{col\_id}. Inoltre, oltre alla visualizzazione, descrive che le richieste di \emph{update} vengono effettuate
-con richieste di \emph{PUT}, mentre le richieste di \emph{remove} useranno il metodo http \emph{DELETE}.
-
+\paragraph{@UserEditService}
+\begin{description}
+ \item[Descrizione] \hfill \\
+ 
+ \item[Utilizzo] \hfill \\
+  
+ \item[Funzionalità esportate] \hfill \\
+ 
+\end{description}
 
 \newpage
 \section{Diagrammi di sequenza}
