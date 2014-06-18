@@ -1,5 +1,5 @@
 /**
- * File: UsersCollectionCtrl;
+ * File: QueryCtrl;
  * Module: app:controllers;
  * Author: Giacomo Pinato;
  * Created: 10/05/14;
@@ -18,7 +18,7 @@
 
 'use strict';
 
-angular.module('maaperture').controller('UsersCollectionCtrl', function ($scope, $route, $location, UserCollectionService, UserEditService, AuthService, $routeParams) {
+angular.module('maaperture').controller('QueryCtrl', function ($scope, $route, $location,QueryService, AuthService, $routeParams) {
 
     //Funzione di inizializzazione del controller
     var init = function () {
@@ -36,9 +36,11 @@ angular.module('maaperture').controller('UsersCollectionCtrl', function ($scope,
     //Funzione di recupero dei dati dal server.
     //In base ai parametri dello scope effettua una query sul server e recupera i dati
     //da visualizzare
+
     var getData = function () {
 
-        UserCollectionService.query({
+        QueryService.query({
+                col_id: $routeParams.col_id,
                 order: $scope.current_sort,
                 column: $scope.column_original_name[$scope.current_sorted_column],
                 page: $scope.current_page
@@ -75,6 +77,11 @@ angular.module('maaperture').controller('UsersCollectionCtrl', function ($scope,
 
     init();
 
+
+    $scope.createIndex = function(id){
+
+
+    };
     //funzione per stampare correttamente il numero di pagine
     $scope.numerify = function (num) {
         return new Array(num);
@@ -122,13 +129,14 @@ angular.module('maaperture').controller('UsersCollectionCtrl', function ($scope,
         }
     };
     //funzione per cancellare il documento di indice index
-    $scope.delete_document = function (id) {
-        UserEditService.remove({
-                user_id: id
+    $scope.delete_document = function (index) {
+        QueryService.remove({
+                col_id: $scope.current_collection,
+                doc_id: index
             },
 
             function success() {
-                $location.path('/users/');
+                $location.path('/collection/' + $scope.current_collection);
             },
             function err(error) {
             }

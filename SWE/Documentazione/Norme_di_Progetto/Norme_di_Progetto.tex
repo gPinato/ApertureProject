@@ -647,7 +647,7 @@ Ogni componente progettato deve essere riportato all'interno della Specifica Tec
 
 Ogni modulo o classe progettata deve essere riportata all'interno della Specifica Tecnica secondo lo schema definito nei formalismi di specifica, nel documento Specifica Tecnica. La classe verrà modellata secondo la seguente struttura:
 \begin{itemize}
-\item \grassetto{Nome: }specifica il nome del  modulo/classe, in cui tra parantesi si mette se è astratta oppure no; il nome di ciascuna classe deve essere scritto secondo la seguente notazione: E1::E2::E3::E4::E5;la struttura è la seguente:
+\item \grassetto{Nome: }specifica il nome del  modulo/classe, in cui tra parantesi si mette se è astratta oppure no; il nome deve essere scritto secondo la seguente notazione: E1::E2::E3::E4::E5;la struttura è la seguente:
 \begin{itemize}
 \item \grassetto{E1: }è il nome della componente generale, ovvero il namespace globale;
 \item \grassetto{E2: }è il sotto-componente di E1;
@@ -659,14 +659,6 @@ Ogni modulo o classe progettata deve essere riportata all'interno della Specific
 \item \grassetto{Utilizzo: }descrizione testuale di come viene utilizzata la classe/modulo;
 \item \grassetto{Relazioni con altre classi: }viene specificato se la classe/modulo corrente ha relazioni con delle classi di altri componenti;
 \item \grassetto{Classe da cui eredita (superclasse): }specifica se la classe eredita da altre classi; si usa la seguente notazione: E1::E2::E3::E4::E5; la struttura è così formata:
-\begin{itemize}
-\item \grassetto{E1: }è il nome del namespace globale;
-\item \grassetto{E2: }package utilizzato;
-\item \grassetto{E3 (eventuale): }componente generico del package E2;
-\item \grassetto{E4 (eventuale): }componente generico del sotto-package E3;
-\item \grassetto{E5: }nome della classe.
-\end{itemize}
-\item \grassetto{Classi che ereditano (sottoclassi)}: specifica se la classe viene ereditata da altre classi; si usa la seguente notazione: E1::E2::E3::E4::E5; la struttura è così formata:
 \begin{itemize}
 \item \grassetto{E1: }è il nome del namespace globale;
 \item \grassetto{E2: }package utilizzato;
@@ -697,13 +689,8 @@ I Progettisti devono descrivere l'architettura di basso livello del sistema e de
 \item \grassetto{Attributi: }Gli attributi della classe sono indicati con l’indicazione dell’accessibilità dell’attributo secondo quanto previsto da UML 2.4, seguita dal nome di colore verde e dalla descrizione dello stesso.
 \item \grassetto{Metodi: }I metodi della classe/modulo sono indicati di colore blu, con l’indicazione dell’accessibilità del metodo secondo quanto previsto da UML 2.4, seguita dal nome del metodo e  dai suoi parametri tra parentesi tonde.
 Vengono infine descritti il metodo  la lista degli argomenti;
-\item \grassetto{Parametri: } I parametri del metodo, racchiusi da parentesi tonde, devono essere riportati conil nome, seguito dai due punti e dal tipo del parametro, ad esempio: + myMe
+\item \grassetto{Parametri: } I parametri del metodo, racchiusi da parentesi tonde, devono essere riportati con il nome, seguito dai due punti e dal tipo del parametro, ad esempio: + myMe
 thod(myParam : Type1, myOtherParam : Type2*);
-\item \grassetto{Argomenti: }Gli argomenti riportati per esteso devono essere riportati con la direzione tra
-parentesi quadre, il nome seguito dai due punti e dal tipo dell’argomento, ad
-esempio: [in] myParam : myType*. Segue infine la descrizione dell’argomento;
-
-\item \grassetto{Classe da cui eredita (superclasse): }specifica se la classe eredita da altre classi.
 \end{itemize}
 
 \subparagraph{Definizione dei metodi}
@@ -750,7 +737,7 @@ Si dovranno inoltre definire i campi delle classi necessari al corretto funziona
 \subsubsection{Progettazione test}
 \label{prog_test}
 \paragraph{Norme generali}
-\subparagraph{Progettazione testi di sistema}
+\subparagraph{Progettazione test di sistema}
 La tabella dei test di sistema avrà la seguente forma:
 \begin{itemize}
 \item \grassetto{Test: }codice univoco che identifica il test. Per i test di sistema inizierà con TS;
@@ -760,7 +747,7 @@ La tabella dei test di sistema avrà la seguente forma:
 \end{itemize}
 
 
-\subparagraph{Progettazione testi di integrazione}
+\subparagraph{Progettazione test di integrazione}
 La tabella dei test d'integrazione avrà la seguente forma:
 \begin{itemize}
 \item \grassetto{Test: }codice univoco che identifica il test. Per i test d'integrazione inizierà con TI;
@@ -769,7 +756,7 @@ La tabella dei test d'integrazione avrà la seguente forma:
 \item \grassetto{Stato: }lo stato in questo caso sarà uguale per tutti, ovvero D.E (da eseguire), in quanto i test verranno eseguiti più avanti.
 \end{itemize}
 
-\subparagraph{Progettazione testi di unità}
+\subparagraph{Progettazione test di unità}
 La tabella dei test d'unità avrà la seguente forma:
 \begin{itemize}
 \item \grassetto{Test: }codice univoco che identifica il test. Per i test di unità inizierà con TU;
@@ -1432,13 +1419,13 @@ Gli sviluppatori possono richiedere la creazione di un branch secondario, provan
 \subparagraph{Sincronizzare il repository}
 Per copiare il locale il contenuto del repository bisogna eseguire il comando \textit{git pull} nella cartella che contiene il repository locale.
 \subparagraph{Salvare una modifica in locale}
-Con il comando git add \textit{nome\_file} si aggiunge un file al commit corrente. Usando il comando \textit{git commit -m “Messaggio di commit ”} si salvano le modifiche effettuate ai file.
+Con il comando git add \textit{nome\_file} si aggiunge un file a quelli soggetti a controllo di versione. Usando il comando \textit{git commit -m “Messaggio di commit ”} si salvano le modifiche effettuate ai file.
 \subparagraph{Inviare le modifiche al repository remoto}
 Per inviare le modifiche al repository remoto si deve usare il comando \textit{git push}.
 
 \subparagraph{Effettuare il merge tra due branch}
 \label{merge}
-La sequenza di operazioni corretta per effettuare il merge del branch test nel branch master è la sequente:
+La sequenza di operazioni corretta per effettuare il merge del branch \og  \fg{test} nel branch master è la sequente:
 \begin{itemize}
 \item git checkout master;
 \item git pull origin master;
@@ -1573,7 +1560,7 @@ Mocha è un framework di test per  JavaScript basato su node.js. \'E estremament
 \end{itemize}
 
 \subsubsection{Karma}
-Karma è uno strumento per la semplificazione e la gestione dei test. Permette di eseguire test direttamente sul browser ed \'E perfettamente integrabile con AngularJS, il che lo rende ideale per i test sul client.
+Karma è uno strumento per l'esecuzione dei test direttamente sul browser ed \'E perfettamente integrabile con AngularJS, il che lo rende ideale per i test sul client.
 
 
 \subsubsection{Istanbul}
@@ -1584,7 +1571,6 @@ Istanbul è uno strumento per il calcolo della copertura di codice Javascript. L
 \item Indipendenza dal gestore dei test;
 \item Generazione di report in HTML, testo semplice e LCOV;
 \item Compatibilità con Mocha;
-\item Può essere usato come middleware quando si testano file Javascript su browser;
 \item Consente di impostare un limite minimo di copertura e di testare se tale limite è rispettato.
 \end{itemize}
 

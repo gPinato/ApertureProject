@@ -15,10 +15,12 @@
 
 'use strict';
 angular.module('maaperture').controller('ProfileEditCtrl', function ($scope, $location, ProfileEditService) {
-
+    $scope.oldPassword = null;
+    $scope.newPassword1 = null;
+    $scope.newPassowrd2 = null;
     $scope.original_data = [];
     $scope.original_keys = [];
-
+    $scope.valid = null;
     //Funzione per richiedere un profilo al server.
     ProfileEditService.query({
            },
@@ -59,6 +61,8 @@ angular.module('maaperture').controller('ProfileEditCtrl', function ($scope, $lo
 
             }
         );
+
+
     };
     //Funzione per richiedere la cancellazione del profilo
     $scope.delete_document = function () {

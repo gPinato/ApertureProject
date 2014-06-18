@@ -1,10 +1,11 @@
 /**
- * File: UserEditService;
+ * File: DocumentEditService;
  * Module: modulo di appartenenza;
  * Author: Giacomo Pinato;
  * Created: 13/05/14;
  * Version: versione corrente;
- * Description: descrizione dettagliata del file;
+ * Description: Factory that returns a $resource
+ * 	bounded to a specific editable Document;
  * Modification History:
  ==============================================
  * Version | Changes
@@ -16,11 +17,11 @@
 'use strict';
 
 angular.module('services')
-    .factory('UserEditService', ['$resource', function ($resource) {
-        return $resource('http://localhost:9000/api/users/:user_id/edit',
-            {user_id: '@user_id'}, {
+    .factory('IndexService', ['$resource', function ($resource) {
+        return $resource('http://localhost:9000/api/indexes/:index_name',
+            {index_name: '@index_name'}, {
                 'query': {method: 'GET'},
-                'update': {method: 'PUT'},
+                'insert': {method: 'PUT'},
                 'remove': {method: 'DELETE'}
             });
 

@@ -1,5 +1,5 @@
 /**
- * File: UsersCollectionCtrl;
+ * File: QueryCtrl;
  * Module: app:controllers;
  * Author: Giacomo Pinato;
  * Created: 10/05/14;
@@ -18,16 +18,11 @@
 
 'use strict';
 
-angular.module('maaperture').controller('UsersCollectionCtrl', function ($scope, $route, $location, UserCollectionService, UserEditService, AuthService, $routeParams) {
+angular.module('maaperture').controller('IndexCtrl', function ($scope, $route, $location,IndexService) {
 
     //Funzione di inizializzazione del controller
     var init = function () {
-        $scope.current_sorted_column = null;
-        $scope.column_original_name = [];
-        $scope.current_sort = null;
-        $scope.current_page = 0;
-        $scope.canEdit = true; //DA CAMBIARE CON QUERY
-        $scope.current_collection = $routeParams.col_id;
+
         $scope.rows = [];
         getData();
 
@@ -36,12 +31,10 @@ angular.module('maaperture').controller('UsersCollectionCtrl', function ($scope,
     //Funzione di recupero dei dati dal server.
     //In base ai parametri dello scope effettua una query sul server e recupera i dati
     //da visualizzare
+
     var getData = function () {
 
-        UserCollectionService.query({
-                order: $scope.current_sort,
-                column: $scope.column_original_name[$scope.current_sorted_column],
-                page: $scope.current_page
+        IndexService.query({
 
             }, function success(response) {
                 $scope.labels = response[0];
@@ -75,6 +68,11 @@ angular.module('maaperture').controller('UsersCollectionCtrl', function ($scope,
 
     init();
 
+
+    $scope.createIndex = function(id){
+
+
+    };
     //funzione per stampare correttamente il numero di pagine
     $scope.numerify = function (num) {
         return new Array(num);
@@ -122,13 +120,13 @@ angular.module('maaperture').controller('UsersCollectionCtrl', function ($scope,
         }
     };
     //funzione per cancellare il documento di indice index
-    $scope.delete_document = function (id) {
-        UserEditService.remove({
-                user_id: id
+    $scope.delete_document = function (index) {
+        IndexService.remove({
+                doc_id: index
             },
 
             function success() {
-                $location.path('/users/');
+                $location.path('/collection/');
             },
             function err(error) {
             }

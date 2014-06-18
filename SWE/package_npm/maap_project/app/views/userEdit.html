@@ -60,8 +60,17 @@
                 <tr ng-repeat="label in labels track by $index">
                     <td>{{label}}</td>
                     <td><input ng-model="original_data[$index]"> </td>
-                </tr>
-                </tr>
+
+                <tr>
+                <td>Password</td>
+                <td><input ng-model="oldPassword" placeholder="Insert old password here"> </td>
+                <td><input ng-model="newPassword1" placeholder="Insert new password"> </td>
+                <td><input ng-model="newPassword2" placeholder="Repeat new password"> </td>
+                <td><span ng-show="newPassword1 == newPassword2" class="glyphicon glyphicon-ok"> Passwords match!</span></td>
+                <td><span ng-show="newPassword1 != newPassword2" class="glyphicon glyphicon-remove">Passwords don't match!</span></td>
+
+            </tr>
+
             </table>
 
         </div>

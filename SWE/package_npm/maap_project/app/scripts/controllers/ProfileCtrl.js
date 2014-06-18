@@ -15,15 +15,14 @@
 
 'use strict';
 
-angular.module('maaperture').controller('ProfileCtrl', function ($scope, $location, ProfileEditService) {
-
+angular.module('maaperture').controller('ProfileCtrl', function ($scope, $location, ProfileDataService, ProfileEditService) {
 
     $scope.original_data = [];
     $scope.original_keys = [];
 
     //Funzione per richiedere il profilo al server.
 
-    ProfileEditService.query({
+    ProfileDataService.query({
              },
         function success(data) {
             $scope.labels = data.label;

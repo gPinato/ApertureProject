@@ -17,8 +17,8 @@
 
 angular.module('services')
     .factory('ProfileEditService', ['$resource', function ($resource) {
-        return $resource('http://localhost:9000/api/profile/edit',
-            {col_id: '@col_id', doc_id: '@doc_id'}, {
+        return $resource('http://localhost:9000/api/profile/edit',{},
+             {
                 'query': {method: 'GET'},
                 'update': {method: 'PUT'},
                 'remove': {method: 'DELETE'}
