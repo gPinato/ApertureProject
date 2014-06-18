@@ -14,7 +14,7 @@
  */
 'use strict';
 
-angular.module('maaperture').controller('LoginCtrl', function ($scope,$route, $location, AuthService) {
+angular.module('maaperture').controller('LoginCtrl', function ($scope,$route,$cookieStore, $location, AuthService) {
     $scope.credentials = {
         email: '',
         password: ''
@@ -25,6 +25,7 @@ angular.module('maaperture').controller('LoginCtrl', function ($scope,$route, $l
     $scope.login = function () {
         AuthService.login({}, $scope.credentials,
             function success(data, status) {
+                $cookieStore.put("isAdmin",true);
                 $location.path('/');
                 $route.reload();
 

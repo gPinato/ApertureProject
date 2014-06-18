@@ -15,21 +15,29 @@
 
 'use strict';
 
-angular.module('maaperture').controller('NavBarCtrl', function ($scope,$location, LogoutService, CollectionListService) {
-    $scope.isAdmin = false;
+angular.module('maaperture').controller('NavBarCtrl', function ($scope,$cookieStore,$location,$route, LogoutService, CollectionListService) {
+    $scope.isAdmin = $cookieStore.get("isAdmin");
     $scope.singup_enabled = true;
 
     //Funzione per richiedere al server la lista di collection presenti.
+
     CollectionListService.get(
         function success(data) {
             $scope.labels = data.labels;
             $scope.values = data.data;
+            $location.refresh();
         });
+
     //Funzione per effettuare il logout.
     $scope.logout = function () {
+        $location.path('/login');
+        $route.reload();
         LogoutService.logout(),
+
             function success(response) {
-                $location.path('/');
+                $cookieStore.put("loggedIn", false);
+                $scope.isLoggedIn = false;
+
             },
             function error(error) {
 

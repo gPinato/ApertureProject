@@ -18,8 +18,8 @@
 
 angular.module('services')
     .factory('IndexService', ['$resource', function ($resource) {
-        return $resource('http://localhost:9000/api/indexes/:index_name',
-            {index_name: '@index_name'}, {
+        return $resource('http://localhost:9000/api/indexes/',
+            {}, {
                 'query': {method: 'GET'},
                 'insert': {method: 'PUT'},
                 'remove': {method: 'DELETE'}

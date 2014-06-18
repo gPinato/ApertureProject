@@ -18,7 +18,7 @@
 
 'use strict';
 
-angular.module('maaperture').controller('QueryCtrl', function ($scope, $route, $location,QueryService, AuthService, $routeParams) {
+angular.module('maaperture').controller('QueryCtrl', function ($scope, $route, $location,QueryService,IndexService, AuthService, $routeParams) {
 
     //Funzione di inizializzazione del controller
     var init = function () {
@@ -40,10 +40,7 @@ angular.module('maaperture').controller('QueryCtrl', function ($scope, $route, $
     var getData = function () {
 
         QueryService.query({
-                col_id: $routeParams.col_id,
-                order: $scope.current_sort,
-                column: $scope.column_original_name[$scope.current_sorted_column],
-                page: $scope.current_page
+
 
             }, function success(response) {
                 $scope.labels = response[0];
@@ -79,6 +76,16 @@ angular.module('maaperture').controller('QueryCtrl', function ($scope, $route, $
 
 
     $scope.createIndex = function(id){
+        IndexService.insert({},
+            id,
+            function success(response) {
+                alert("indice creato!");
+
+            },
+            function(error){
+                alert("error");
+            }
+        );
 
 
     };

@@ -23,6 +23,5 @@ angular.module('maaperture').controller('DashboardCtrl', function ($scope, Colle
             $scope.labels = data.labels;
             $scope.values = data.data;
         });
-    $scope.isAdmin = false;
 
 });
