@@ -1,0 +1,1 @@
+'use strict';	var index = 1;describe("server starter", function() {    it("server init deve essere definito", function() {        expect(index).toBeDefined();    });});
