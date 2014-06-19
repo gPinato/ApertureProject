@@ -279,7 +279,7 @@ login.html & Pagina per il login\\
 \midrule
 navbar.html & Barra di navigazione superiore, inclusa nella maggior parte delle pagine\\
  \midrule
-queryCollection.html & Pagina per la visualizzazione delle query piu utilizzate (admin)\\
+queryCollection.html & Pagina per la visualizzazione delle query pi\'{u} utilizzate (admin)\\
  \midrule
 register.html & Pagina per la registrazione\\
  \midrule
@@ -323,7 +323,7 @@ userProfile & Pagina per la visualizzazione del profilo utente (user) / di un ut
  \item \$scope.column \textunderscore original \textunderscore name;
  \item \$scope.current \textunderscore sort;
  \item \$scope.current \textunderscore page;
- \item \$scope.current \textunderscore collection;
+ \item \$scope.current\textunderscore collection;
  \item \$scope.rows;
  \end{itemize}
  
@@ -423,17 +423,17 @@ Fornisce un immediato elenco delle collection disponibili.
  
  \item[Attributi]\hfill \\
  \begin{itemize}
- \item  \$scope.current \textunderscore collection;
- \item  \$scope.current \textunderscore document;
+ \item  \$scope.current\textunderscore collection;
+ \item  \$scope.current\textunderscore document;
  \item  \$scope.values;
  \end{itemize}
  
  \item[Funzionalità esportate] \hfill \\
  \begin{description}
   \item[DocumentDataService.query] \hfill \\
-  Funzione che richiede al server il documento identificato da current \textunderscore collection e current \textunderscore document.
+  Funzione che richiede al server il documento identificato da current\textunderscore collection e current\textunderscore document.
   L'oggetto ritornato dal server viene poi ricopiato in array per mantenere l'ordinamento e semplificare la gestione.
-  \item[delete \textunderscore document()] \hfill \\
+  \item[delete\textunderscore document()] \hfill \\
   Funzione che cancella dal server il documento attualmente visualizzato.
  \end{description}
 \end{description}
@@ -457,21 +457,21 @@ Fornisce un immediato elenco delle collection disponibili.
  
  \item[Attributi]\hfill \\
  \begin{itemize}
- \item  \$scope.current \textunderscore collection;
-    \item  \$scope.current \textunderscore document;
-    \item  \$scope.original \textunderscore data;
-    \item  \$scope.original \textunderscore keys;
+ \item  \$scope.current\textunderscore collection;
+    \item  \$scope.current\textunderscore document;
+    \item  \$scope.original\textunderscore data;
+    \item  \$scope.original\textunderscore keys;
  \end{itemize}
  
  \item[Funzionalità esportate] \hfill \\
  \begin{description}
   \item[DocumentEditService.query] \hfill \\
-  Funzione che richiede al server il documento identificato da current \textunderscore collection e current \textunderscore document.
+  Funzione che richiede al server il documento identificato da current\textunderscore collection e current\textunderscore document.
   L'oggetto ritornato dal server viene poi ricopiato in array per mantenere l'ordinamento e semplificare la gestione.
-  \item[edit \textunderscore document()] \hfill \\
+  \item[edit\textunderscore document()] \hfill \\
   Funzione che invia al server il documento modificato nel client.
-  Assembla un JSON a partire da original \textunderscore keys e original \textunderscore data. Quest'ultima variabile nel frattempo è stata modificata con i nuovi valori del documento.
-  \item[delete \textunderscore document()] \hfill \\
+  Assembla un JSON a partire da original\textunderscore keys e original\textunderscore data. Quest'ultima variabile nel frattempo è stata modificata con i nuovi valori del documento.
+  \item[delete\textunderscore document()] \hfill \\
   Funzione che cancella dal server il documento attualmente visualizzato.
  \end{description}
 \end{description}
@@ -570,7 +570,7 @@ Fornisce un immediato elenco delle collection disponibili.
  \item[Attributi]\hfill \\
  \begin{itemize}
  \item  \$scope.isAdmin;
- \item \$scope.signup \textunderscore enabled;
+ \item \$scope.signup\textunderscore enabled;
  \end{itemize}
  
  \item[Funzionalità esportate] \hfill \\
@@ -640,8 +640,8 @@ Fornisce un immediato elenco delle collection disponibili.
  
  \item[Attributi]\hfill \\
  \begin{itemize}
- \item \$scope.original \textunderscore data;
- \item \$scope.original \textunderscore keys;
+ \item \$scope.original\textunderscore data;
+ \item \$scope.original\textunderscore keys;
 
  \end{itemize}
  
@@ -652,7 +652,7 @@ Fornisce un immediato elenco delle collection disponibili.
   Con questa funzione vengono prelevati i dati legati al profilo utente e caricati sullo scope.
 	Se non vengono visualizzati risultati, ovvero se il profilo non esiste, avviene un redirect alla pagina
   che mostra l'errore 404. 
-  	\item[delete \textunderscore document()] \hfill \\
+  	\item[delete\textunderscore document()] \hfill \\
   Richiama la richiesta RESTful \textit{remove} sulla \$resource fornita da ProfileEditService.
   Con questa funzione viene cancellato dal server il profilo dell'utente corrente.
  \end{description}
@@ -679,8 +679,8 @@ Fornisce un immediato elenco delle collection disponibili.
  \item  \$scope.oldPassword;
  \item  \$scope.newPassword1;
  \item  \$scope.newPassowrd2;
- \item  \$scope.original \textunderscore data;
- \item \$scope.original \textunderscore keys;
+ \item  \$scope.original\textunderscore data;
+ \item \$scope.original\textunderscore keys;
  \item \$scope.valid.
  \end{itemize}
  
@@ -691,10 +691,10 @@ Fornisce un immediato elenco delle collection disponibili.
   Con questa funzione vengono prelevati i dati legati al profilo utente e caricati sullo scope.
 	Se non vengono visualizzati risultati, ovvero se il profilo non esiste, avviene un redirect alla pagina
   che mostra l'errore 404. 
-  \item[edit \textunderscore document()] \hfill \\
+  \item[edit\textunderscore document()] \hfill \\
   Funzione che invia al server il profilo modificato nel client.
-  Assembla un JSON a partire da original \textunderscore keys e original \textunderscore data. Quest'ultima variabile nel frattempo è stata modificata con i nuovi valori del documento.
-  \item[delete \textunderscore document()] \hfill \\
+  Assembla un JSON a partire da original\textunderscore keys e original\textunderscore data. Quest'ultima variabile nel frattempo è stata modificata con i nuovi valori del documento.
+  \item[delete\textunderscore document()] \hfill \\
   Funzione che cancella dal server il profilo attualmente visualizzato.
  \end{description}
 \end{description}
@@ -719,11 +719,11 @@ Fornisce un immediato elenco delle collection disponibili.
  
  \item[Attributi]\hfill \\
  \begin{itemize}
- \item \$scope.current \textunderscore sorted \textunderscore column;
- \item \$scope.column \textunderscore original \textunderscore name;
- \item \$scope.current \textunderscore sort;
- \item \$scope.current \textunderscore page;
- \item \$scope.current \textunderscore collection;
+ \item \$scope.current\textunderscore sorted\textunderscore column;
+ \item \$scope.column\textunderscore original\textunderscore name;
+ \item \$scope.current\textunderscore sort;
+ \item \$scope.current\textunderscore page;
+ \item \$scope.current\textunderscore collection;
  \item \$scope.rows;
  \end{itemize}
  
@@ -834,11 +834,11 @@ Fornisce un immediato elenco delle collection disponibili.
  
  \item[Attributi]\hfill \\
  \begin{itemize}
- \item \$scope.current \textunderscore sorted \textunderscore column;
- \item \$scope.column \textunderscore original \textunderscore name;
- \item \$scope.current \textunderscore sort;
- \item \$scope.current \textunderscore page;
- \item \$scope.current \textunderscore collection;
+ \item \$scope.current\textunderscore sorted\textunderscore column;
+ \item \$scope.column\textunderscore original\textunderscore name;
+ \item \$scope.current\textunderscore sort;
+ \item \$scope.current\textunderscore page;
+ \item \$scope.current\textunderscore collection;
  \item \$scope.rows;
  \end{itemize}
  
@@ -874,7 +874,7 @@ Fornisce un immediato elenco delle collection disponibili.
   Successivamente esegue una richiesta al server per ottenere i dati per la nuova visualizzazione.
   
   \item[changeSort()] \hfill \\
-  Cambia la variabile \$current\ \textunderscore sort dello \$scope che regola l'ordine di visualizzazione dei Document, da discendente ad
+  Cambia la variabile \$current\\textunderscore sort dello \$scope che regola l'ordine di visualizzazione dei Document, da discendente ad
   ascendente e viceversa.
   
   \item[\$scope.columnSort(index)] \hfill \\
@@ -904,16 +904,16 @@ Fornisce un immediato elenco delle collection disponibili.
  \item[Dipendendenze iniettate al controller] \hfill \\
  \begin{itemize}
   \item \$scope;
-  \item \$location
+  \item \$location;
+  \item \$routeParams;
   \item UserDataService;
-  \item UserEditService;
-  \item \$routeParams.
+  \item UserEditService.
   
  \end{itemize}
  
  \item[Attributi]\hfill \\
  \begin{itemize}
-  \item \$scope.current \textunderscore document;
+  \item \$scope.current\textunderscore document;
   \item  \$scope.values;
  \end{itemize}
  
@@ -954,9 +954,9 @@ Fornisce un immediato elenco delle collection disponibili.
  
  \item[Attributi]\hfill \\
  \begin{itemize}
-    \item  \$scope.current \textunderscore document;
-    \item  \$scope.original \textunderscore data;
-    \item  \$scope.original \textunderscore keys;
+    \item  \$scope.current\textunderscore document;
+    \item  \$scope.original\textunderscore data;
+    \item  \$scope.original\textunderscore keys;
  \end{itemize}
  
  \item[Funzionalità esportate] \hfill \\
@@ -967,10 +967,10 @@ Fornisce un immediato elenco delle collection disponibili.
   passati alla Collection view tramite il binding con lo \$scope. \\
   Se non vengono visualizzati risultati, ovvero se la Collection non esiste, avviene un redirect alla pagina
   che mostra l'errore 404.
-  \item[edit \textunderscore document()] \hfill \\
+  \item[edit\textunderscore document()] \hfill \\
   Funzione che invia al server il documento modificato nel client.
-  Assembla un JSON a partire da original \textunderscore keys e original \textunderscore data. Quest'ultima variabile nel frattempo è stata modificata con i nuovi valori del documento.
-  \item[delete \textunderscore document()] \hfill \\
+  Assembla un JSON a partire da original\textunderscore keys e original\textunderscore data. Quest'ultima variabile nel frattempo è stata modificata con i nuovi valori del documento.
+  \item[delete\textunderscore document()] \hfill \\
  Funzione che elimina il profilo identificato dall'indice \emph{index}. Effettua una richiesta REST di rimozione alla risorsa
   pubblicizzata da UserEditService fornendo come argomenti l'identificativo della Collection correntemente visualizzata e l'indice
   del Document da eliminare. \\
@@ -987,7 +987,7 @@ Fornisce un immediato elenco delle collection disponibili.
 
 \subsubsection{::Model}
 %il Model nel Client c'e' ancora? perche' a quanto pare non serve nemmeno.
-
+No non esiste
 \subsubsection{::Services}
 \paragraph{@AuthService}
 \begin{description}
