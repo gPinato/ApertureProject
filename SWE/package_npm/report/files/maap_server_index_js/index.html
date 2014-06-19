@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Plato - maap_server\index.js</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <!--[if lt IE 9]>
+  <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+
+  <link href="../../assets/css/vendor/morris.css" rel="stylesheet">
+  <link href="../../assets/css/vendor/bootstrap.css" rel="stylesheet">
+  <link href="../../assets/css/vendor/font-awesome.css" rel="stylesheet">
+  <link href="../../assets/css/vendor/font-awesome-ie7.css" rel="stylesheet">
+  <link href="../../assets/css/vendor/codemirror.css" rel="stylesheet">
+  <link href="../../assets/css/plato.css" rel="stylesheet">
+  <link href="../../assets/css/plato-file.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+<div class="navbar navbar-fixed-top">
+  <div class="container">
+    <a class="navbar-brand" href="http://github.com/es-analysis/plato">Plato on Github</a>
+    <ul class="nav navbar-nav">
+      <li>
+        <a href="../../index.html">Report Home</a>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<div class="jumbotron">
+  <div class="container">
+    <h1>maap_server\index.js</h1>
+  </div>
+</div>
+
+<div class="container aggregate-stats">
+  <div class="row">
+    <div class="col-md-6">
+      <h2 class="header">Maintainability <a href="http://blogs.msdn.com/b/codeanalysis/archive/2007/11/20/maintainability-index-range-and-meaning.aspx"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="A value between 0 and 100 that represents the relative ease of maintaining the code. A high value means better maintainability." data-original-title="Maintainability Index"  data-container="body"></i></a></h2>
+      <p class="stat">61.34</p>
+    </div>
+    <div class="col-md-6">
+      <h2 class="header">Lines of code <i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Source Lines of Code / Logical Lines of Code" data-original-title="SLOC/LSLOC" data-container="body"></i></h2>
+      <p class="stat">137</p>
+    </div>
+  </div>
+  <div class="row historical">
+    <div class="col-md-6">
+      <p id="chart_historical_maint" class="chart"></p>
+    </div>
+    <div class="col-md-6">
+      <p id="chart_historical_sloc" class="chart"></p>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      <h2 class="header">Difficulty  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="The difficulty measure is related to the difficulty of the program to write or understand." data-original-title="Difficulty" data-container="body"></i></a></h2>
+      <p class="stat">16.81</p>
+    </div>
+    <div class="col-md-6">
+      <h2 class="header">Estimated Errors  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Halstead's delivered bugs is an estimate for the number of errors in the implementation." data-original-title="Delivered Bugs" data-container="body"></i></a></h2>
+      <p class="stat">1.14</p>
+    </div>
+  </div>
+</div>
+
+<div class="container charts">
+  <div class="row">
+    <h2 class="header">Function weight</h2>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      <h3 class="chart-header">By Complexity <a href="http://en.wikipedia.org/wiki/Cyclomatic_complexity"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="This metric counts the number of distinct paths through a block of code. Lower values are better." data-original-title="Cyclomatic Complexity" data-container="body"></i></a></h3>
+      <div id="fn-by-complexity" class="stat"></div>
+    </div>
+    <div class="col-md-6">
+      <h3 class="chart-header">By SLOC  <i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Source Lines of Code / Logical Lines of Code" data-original-title="SLOC/LSLOC" data-container="body"></i></h3>
+      <div id="fn-by-sloc" class="stat"></div>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row">
+    <textarea id="file-source" class="col-md-12">/**
+ * File: index.js
+ * Module: maap_server
+ * Author: Alberto Garbui
+ * Created: 03/05/14
+ * Version: 0.2
+ * Description: inizializzazione del server ed avvio
+ * Modification History:
+ ==============================================
+ * Version | Changes
+ ==============================================
+ * 0.1 File creation
+ * 0.2 added serverInit
+ ==============================================
+ */
+&#039;use strict&#039;;
+
+var express = require(&#039;express&#039;);
+var fs = require(&#039;fs&#039;);
+var path = require(&#039;path&#039;);
+var favicon = require(&#039;serve-favicon&#039;);
+var logger = require(&#039;morgan&#039;);
+var cookieParser = require(&#039;cookie-parser&#039;);
+var bodyParser = require(&#039;body-parser&#039;);
+var session = require(&#039;express-session&#039;);
+
+var controller = require(&#039;./Controller&#039;);
+var DB = require(&#039;./ModelServer/Database&#039;);
+var DSL = require(&#039;./ModelServer/DSL&#039;);
+
+function serverInit(app){
+
+	var config = app.config;
+
+	console.log(&#039;app init...&#039;);
+	
+	app.set(&#039;views&#039;, config.static_assets.views);
+	//app.set(&#039;view engine&#039;, &#039;html&#039;);
+
+	app.use(favicon(path.join(config.static_assets.dir, &#039;favicon.ico&#039;)));
+	
+	if(config.app.env == &#039;development&#039;) {
+		app.use(logger(&#039;dev&#039;));
+	}
+	app.use(bodyParser.json());
+	app.use(bodyParser.urlencoded());
+	app.use(cookieParser());
+	app.use(session({ secret: config.session.secret, cookie: { maxAge: config.session.max_age} }));
+	
+	app.use(express.static(config.static_assets.dir));
+		
+	//db e config injecting
+	app.use(function(req,res,next){
+		//req.dbuser = DB;
+		req.config = config;
+		next();
+	});
+	
+	// catch 404 and forwarding to error handler
+	/*app.use(function(req, res, next) {
+		var err = new Error(&#039;Not Found&#039;);
+		err.status = 404;
+		next(err);
+	});
+
+	// error handlers
+
+	// development error handler
+	// will print stacktrace
+	if (app.get(&#039;env&#039;) === &#039;development&#039;) {
+		app.use(function(err, req, res, next) {
+			res.status(err.status || 500);
+			res.render(&#039;error&#039;, {
+				message: err.message,
+				error: err
+			});
+		});
+	}
+
+	// production error handler
+	// no stacktraces leaked to user
+	app.use(function(err, req, res, next) {
+		res.status(err.status || 500);
+		res.render(&#039;error&#039;, {
+			message: err.message,
+			error: {}
+		});
+	});
+	*/
+
+	//inizializzo le componenti del controller
+	controller.init(app);
+	
+}
+
+//imposta i vari parametri di connessione dei servizi lato client: ssl, host, porta
+var setClientServices = function(app) {
+
+	var config = app.config;
+	var servicesPath = config.static_assets.dir + &#039;/scripts/services&#039;;
+	var servicesURL = config;
+	console.log(&#039;setting up services with: &#039; + servicesURL + &#039;...&#039;);	
+    var list = fs.readdirSync(servicesPath);
+    list.forEach(function(file) {
+		
+        var filePath = servicesPath + &#039;/&#039; + file;
+        var stat = fs.statSync(filePath);
+		var extension = path.extname(file);
+        if (stat &amp;&amp; stat.isFile() &amp;&amp; extension == &#039;.js&#039;) {
+			console.log(&#039;setting up service: &#039; + file);			
+			
+		}
+	});
+}
+
+//avvia il server 
+var start = function(config) {
+
+	console.log(&#039;&#039;);
+	console.log(&#039;  --------------------------------------------------&#039;);
+	console.log(&#039;   &#039; + config.app.title);
+	console.log(&#039;&#039;);
+	console.log(&#039;   &#039; + config.app.description);
+	console.log(&#039;  --------------------------------------------------&#039;);
+	console.log(&#039;&#039;);
+	
+	var app = express();
+	app.config = config;
+	
+	app.express = express;
+	var protocol = config.app.ssl ? &#039;https&#039; : &#039;http&#039;;
+	var port = process.env.PORT || config.app.port;
+	var app_url = protocol + &#039;://&#039; + config.app.host + &#039;:&#039; + port;
+	var env = process.env.NODE_ENV ? (&#039;[&#039; + process.env.NODE_ENV + &#039;]&#039;) : &#039;[development]&#039;; 
+	
+	DSL.init(app);		//inizializzo i DSL
+	DB.init(app);		//inizializzo i database
+	serverInit(app);	//inizializzo l&#039;app express
+	
+	console.log(&#039;starting server...&#039;);	
+	app.set(&#039;port&#039;, port);
+	var server = app.listen(app.get(&#039;port&#039;));
+	console.log(&#039;&#039;);
+	console.log(&#039;well done! &#039; + config.app.title + &#039; listening at &#039; + app_url + &#039; &#039; + env);
+	console.log(&#039;&#039;);
+
+};
+
+//export della funzione...
+exports.start = start;
+
+exports.p = 1;</textarea>
+  </div>
+</div>
+
+<footer class="footer">
+  <div class="container">
+    <p>.</p>
+  </div>
+</footer>
+
+<script type="text/html" id="complexity-popover-template">
+  <div class="complexity-notice">
+    Complexity : {{ complexity.cyclomatic }} <br>
+    Length : {{ complexity.halstead.length }} <br>
+    Difficulty : {{ complexity.halstead.difficulty.toFixed(2) }} <br>
+    Est # bugs : {{ complexity.halstead.bugs.toFixed(2) }}<br>
+  </div>
+</script>
+
+<script type="text/javascript" src="../../assets/scripts/bundles/core-bundle.js"></script>
+<script type="text/javascript" src="../../assets/scripts/bundles/codemirror.js"></script>
+<script type="text/javascript" src="../../assets/scripts/codemirror.markpopovertext.js"></script>
+<script type="text/javascript" src="report.js"></script>
+<script type="text/javascript" src="report.history.js"></script>
+<script type="text/javascript" src="../../assets/scripts/plato-file.js"></script>
+</body>
+</html>

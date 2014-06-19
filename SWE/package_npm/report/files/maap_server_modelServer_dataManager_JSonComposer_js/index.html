@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Plato - maap_server\modelServer\dataManager\JSonComposer.js</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <!--[if lt IE 9]>
+  <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+
+  <link href="../../assets/css/vendor/morris.css" rel="stylesheet">
+  <link href="../../assets/css/vendor/bootstrap.css" rel="stylesheet">
+  <link href="../../assets/css/vendor/font-awesome.css" rel="stylesheet">
+  <link href="../../assets/css/vendor/font-awesome-ie7.css" rel="stylesheet">
+  <link href="../../assets/css/vendor/codemirror.css" rel="stylesheet">
+  <link href="../../assets/css/plato.css" rel="stylesheet">
+  <link href="../../assets/css/plato-file.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+<div class="navbar navbar-fixed-top">
+  <div class="container">
+    <a class="navbar-brand" href="http://github.com/es-analysis/plato">Plato on Github</a>
+    <ul class="nav navbar-nav">
+      <li>
+        <a href="../../index.html">Report Home</a>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<div class="jumbotron">
+  <div class="container">
+    <h1>maap_server\modelServer\dataManager\JSonComposer.js</h1>
+  </div>
+</div>
+
+<div class="container aggregate-stats">
+  <div class="row">
+    <div class="col-md-6">
+      <h2 class="header">Maintainability <a href="http://blogs.msdn.com/b/codeanalysis/archive/2007/11/20/maintainability-index-range-and-meaning.aspx"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="A value between 0 and 100 that represents the relative ease of maintaining the code. A high value means better maintainability." data-original-title="Maintainability Index"  data-container="body"></i></a></h2>
+      <p class="stat">54.58</p>
+    </div>
+    <div class="col-md-6">
+      <h2 class="header">Lines of code <i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Source Lines of Code / Logical Lines of Code" data-original-title="SLOC/LSLOC" data-container="body"></i></h2>
+      <p class="stat">292</p>
+    </div>
+  </div>
+  <div class="row historical">
+    <div class="col-md-6">
+      <p id="chart_historical_maint" class="chart"></p>
+    </div>
+    <div class="col-md-6">
+      <p id="chart_historical_sloc" class="chart"></p>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      <h2 class="header">Difficulty  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="The difficulty measure is related to the difficulty of the program to write or understand." data-original-title="Difficulty" data-container="body"></i></a></h2>
+      <p class="stat">71.11</p>
+    </div>
+    <div class="col-md-6">
+      <h2 class="header">Estimated Errors  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Halstead's delivered bugs is an estimate for the number of errors in the implementation." data-original-title="Delivered Bugs" data-container="body"></i></a></h2>
+      <p class="stat">2.41</p>
+    </div>
+  </div>
+</div>
+
+<div class="container charts">
+  <div class="row">
+    <h2 class="header">Function weight</h2>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      <h3 class="chart-header">By Complexity <a href="http://en.wikipedia.org/wiki/Cyclomatic_complexity"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="This metric counts the number of distinct paths through a block of code. Lower values are better." data-original-title="Cyclomatic Complexity" data-container="body"></i></a></h3>
+      <div id="fn-by-complexity" class="stat"></div>
+    </div>
+    <div class="col-md-6">
+      <h3 class="chart-header">By SLOC  <i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Source Lines of Code / Logical Lines of Code" data-original-title="SLOC/LSLOC" data-container="body"></i></h3>
+      <div id="fn-by-sloc" class="stat"></div>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row">
+    <textarea id="file-source" class="col-md-12">/** * File: JSonComposer.js * Module: maap_server::ModelServer::DataManager * Author: Alberto Garbui * Created: 04/05/14 * Version: 0.1 * Description: JSON composer... * Modification History: ============================================== * Version | Changes ============================================== * 0.1 File creation ============================================== */&#039;use strict&#039;;exports.createCollectionsList = function(collectionsList) {	var collectionsLabels = [];	var collectionsNames = [];	var collectionsPositions = [];	for(var i=0; i&lt;collectionsList.length; i++)	{		collectionsLabels.push(collectionsList[i].label);		collectionsNames.push(collectionsList[i].name); 		collectionsPositions.push(collectionsList[i].position);	}		//carico la lista di collections su data		var json =  {};	json.labels = collectionsLabels;	json.data = collectionsNames;	json.positions = collectionsPositions;			var jsonString = JSON.stringify(json);		return jsonString;}var checkLabels = function(labelsArray) {	for(var i=0; i&lt;labelsArray.length; i++)	{		if(labelsArray[i].indexOf(&#039;__IDLABEL2SHOW__&#039;) == 0 || labelsArray[i] == &#039;_id&#039;)			return true;	}	return false;}exports.createCollection = function(labels,data,config) {	var dataArray = [];	var idLabelIsPresent = checkLabels(labels);		for(var i=0; i&lt;data.length; i++) {		var obj = data[i];		var dataBlock = {}						//creo un blocco dati		dataBlock._id = obj._id;				//ID del document, sempre presente		dataBlock.data = {};				for(var attributename in obj){		console.log(attributename + &#039;: &#039; + obj[attributename]);			if(attributename != &#039;_id&#039; )			{				dataBlock.data[attributename] = obj[attributename]; //carico l&#039;attributo			}else{				if(idLabelIsPresent)				{					for(var j=0; j&lt;labels.length; j++)					{						//pulisco l&#039;etichetta						if(labels[j].indexOf(&#039;__IDLABEL2SHOW__&#039;) == 0)							labels[j] = labels[j].substr(16);					}					dataBlock.data[attributename] = obj[attributename];				}			}		}			console.log(dataBlock);			dataArray.push(dataBlock);	}		//creo il json principale: un array di labels, data e config	var json = [];	json.push(labels);	json.push(dataArray);	json.push(config);		console.log(&#039;JSONcomposerCOL:&#039;);	console.log(json);		var jsonString = JSON.stringify(json);	return jsonString;};exports.createDocument = function(labels,data) {	//creo il json principale: un array di labels, e data 	var json = {};	json.label = labels;	json.data = {};		var idLabelIsPresent = checkLabels(labels);			for(var attributename in data)	{		if(attributename != &#039;_id&#039; )		{			json.data[attributename] = data[attributename]; //carico l&#039;attributo		}else{			if(idLabelIsPresent)			{				for(var j=0; j&lt;labels.length; j++)				{					//pulisco l&#039;etichetta					if(labels[j].indexOf(&#039;__IDLABEL2SHOW__&#039;) == 0)						labels[j] = labels[j].substr(16);				}				json.data[attributename] = data[attributename];			}		}	}		console.log(&#039;JSONcomposerDOC:&#039;);	console.log(json);		var jsonString = JSON.stringify(json);	return jsonString;};exports.createQueriesList = function(queries, config){	//creo il json principale: un array di labels, e data 	var labels = [];	var data = [];		//carico le etichette	labels.push(&#039;Collection Name&#039;);	labels.push(&#039;Selected fields&#039;);			for(var i=0; i&lt;queries.length; i++)	{		var dataBlock = {};		dataBlock._id = queries[i]._id;		var selectedFields = &#039;&#039;;		var select = queries[i].select;		for(var key in select)		{			selectedFields += key + &#039;, &#039;;		}		dataBlock.data = {name: queries[i].collection_name, fields: selectedFields};		data.push(dataBlock);		console.log(JSON.stringify(queries[i]));	}					var json = [];	json.push(labels);	json.push(data);	json.push(config);		console.log(&#039;JSONcomposerQUERIES:&#039;);	console.log(json);		var jsonString = JSON.stringify(json);	return jsonString;};exports.createIndexesList = function(indexes){	//creo il json principale: un array di labels, e data 	var json = {};	json.label = [];	json.data = [];		//carico le etichette	json.label.push(&#039;Collection Name&#039;);	json.label.push(&#039;Selected fields&#039;);			for(var i=0; i&lt;indexes.length; i++)	{		var dataBlock = {};		dataBlock.collection_name = indexes[i].collection_name;		dataBlock.select = JSON.stringify(indexes[i].select);		json.data.push(dataBlock);	}			console.log(&#039;JSONcomposerINDEXES:&#039;);	console.log(json);		var jsonString = JSON.stringify(json);	return jsonString;};exports.createUserProfile = function(user){	//creo il json principale: un array di labels, e data 	var json = {};	json.label = [];	json.data = {};		//carico le etichette	json.label.push(&#039;Email&#039;);	json.label.push(&#039;Level&#039;);	json.data[&#039;email&#039;] = user.email;		if(user.level == 0)	{		json.data[&#039;level&#039;] = &#039;user&#039;;	}else{		json.data[&#039;level&#039;] = &#039;administrator&#039;;	}			console.log(&#039;JSONcomposerUserProfile:&#039;);	console.log(json);		var jsonString = JSON.stringify(json);	return jsonString;};exports.createUserProfileEdit = function(user){	//creo il json principale: un array di labels, e data 	var json = {};	json.label = [];	json.data = {};		//carico le etichette e la mail	json.label.push(&#039;Email&#039;);	json.data[&#039;email&#039;] = user.email;				console.log(&#039;JSONcomposerUserProfileEdit:&#039;);	console.log(json);		var jsonString = JSON.stringify(json);	return jsonString;};exports.createUsersList = function(users, config){	//creo il json principale: un array di labels, e data 	var labels = [];	var data = [];			//carico le etichette	labels.push(&#039;ID&#039;);	labels.push(&#039;Email&#039;);	labels.push(&#039;Level&#039;);			for(var i=0; i&lt;users.length; i++)	{		var dataBlock = {};		dataBlock._id = users[i]._id;		dataBlock.data = {};		dataBlock.data._id = users[i]._id;		dataBlock.data.email = users[i].email;		if(users[i].level == 0)		{			dataBlock.data.level = &#039;user&#039;;		}else{			dataBlock.data.level = &#039;administrator&#039;;		}		console.log(dataBlock);		data.push(dataBlock);	}			var json = [];	json.push(labels);	json.push(data);	json.push(config);		console.log(&#039;JSONcomposerUSERLIST:&#039;);	console.log(json);		var jsonString = JSON.stringify(json);	return jsonString;};//per l&#039;adminexports.createUser = function(user){	//creo il json principale: un array di labels, e data 	var json = {};	json.label = [];	json.data = {};		//carico le etichette	json.label.push(&#039;ID&#039;);	json.label.push(&#039;Email&#039;);	json.label.push(&#039;Level&#039;);	json.data.id = user._id;	json.data.email = user.email;		if(user.level == 0)	{		json.data.level = &#039;user&#039;;	}else{		json.data.level = &#039;administrator&#039;;	}		console.log(&#039;JSONcomposerUserForAdmins:&#039;);	console.log(json);		var jsonString = JSON.stringify(json);	return jsonString;};</textarea>
+  </div>
+</div>
+
+<footer class="footer">
+  <div class="container">
+    <p>.</p>
+  </div>
+</footer>
+
+<script type="text/html" id="complexity-popover-template">
+  <div class="complexity-notice">
+    Complexity : {{ complexity.cyclomatic }} <br>
+    Length : {{ complexity.halstead.length }} <br>
+    Difficulty : {{ complexity.halstead.difficulty.toFixed(2) }} <br>
+    Est # bugs : {{ complexity.halstead.bugs.toFixed(2) }}<br>
+  </div>
+</script>
+
+<script type="text/javascript" src="../../assets/scripts/bundles/core-bundle.js"></script>
+<script type="text/javascript" src="../../assets/scripts/bundles/codemirror.js"></script>
+<script type="text/javascript" src="../../assets/scripts/codemirror.markpopovertext.js"></script>
+<script type="text/javascript" src="report.js"></script>
+<script type="text/javascript" src="report.history.js"></script>
+<script type="text/javascript" src="../../assets/scripts/plato-file.js"></script>
+</body>
+</html>

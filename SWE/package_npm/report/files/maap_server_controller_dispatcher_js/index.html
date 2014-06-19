@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Plato - maap_server\controller\dispatcher.js</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <!--[if lt IE 9]>
+  <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+
+  <link href="../../assets/css/vendor/morris.css" rel="stylesheet">
+  <link href="../../assets/css/vendor/bootstrap.css" rel="stylesheet">
+  <link href="../../assets/css/vendor/font-awesome.css" rel="stylesheet">
+  <link href="../../assets/css/vendor/font-awesome-ie7.css" rel="stylesheet">
+  <link href="../../assets/css/vendor/codemirror.css" rel="stylesheet">
+  <link href="../../assets/css/plato.css" rel="stylesheet">
+  <link href="../../assets/css/plato-file.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+<div class="navbar navbar-fixed-top">
+  <div class="container">
+    <a class="navbar-brand" href="http://github.com/es-analysis/plato">Plato on Github</a>
+    <ul class="nav navbar-nav">
+      <li>
+        <a href="../../index.html">Report Home</a>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<div class="jumbotron">
+  <div class="container">
+    <h1>maap_server\controller\dispatcher.js</h1>
+  </div>
+</div>
+
+<div class="container aggregate-stats">
+  <div class="row">
+    <div class="col-md-6">
+      <h2 class="header">Maintainability <a href="http://blogs.msdn.com/b/codeanalysis/archive/2007/11/20/maintainability-index-range-and-meaning.aspx"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="A value between 0 and 100 that represents the relative ease of maintaining the code. A high value means better maintainability." data-original-title="Maintainability Index"  data-container="body"></i></a></h2>
+      <p class="stat">65.57</p>
+    </div>
+    <div class="col-md-6">
+      <h2 class="header">Lines of code <i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Source Lines of Code / Logical Lines of Code" data-original-title="SLOC/LSLOC" data-container="body"></i></h2>
+      <p class="stat">69</p>
+    </div>
+  </div>
+  <div class="row historical">
+    <div class="col-md-6">
+      <p id="chart_historical_maint" class="chart"></p>
+    </div>
+    <div class="col-md-6">
+      <p id="chart_historical_sloc" class="chart"></p>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      <h2 class="header">Difficulty  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="The difficulty measure is related to the difficulty of the program to write or understand." data-original-title="Difficulty" data-container="body"></i></a></h2>
+      <p class="stat">10.11</p>
+    </div>
+    <div class="col-md-6">
+      <h2 class="header">Estimated Errors  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Halstead's delivered bugs is an estimate for the number of errors in the implementation." data-original-title="Delivered Bugs" data-container="body"></i></a></h2>
+      <p class="stat">0.82</p>
+    </div>
+  </div>
+</div>
+
+<div class="container charts">
+  <div class="row">
+    <h2 class="header">Function weight</h2>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      <h3 class="chart-header">By Complexity <a href="http://en.wikipedia.org/wiki/Cyclomatic_complexity"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="This metric counts the number of distinct paths through a block of code. Lower values are better." data-original-title="Cyclomatic Complexity" data-container="body"></i></a></h3>
+      <div id="fn-by-complexity" class="stat"></div>
+    </div>
+    <div class="col-md-6">
+      <h3 class="chart-header">By SLOC  <i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Source Lines of Code / Logical Lines of Code" data-original-title="SLOC/LSLOC" data-container="body"></i></h3>
+      <div id="fn-by-sloc" class="stat"></div>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row">
+    <textarea id="file-source" class="col-md-12">/**
+ * File: dispatcher.js
+ * Module: maap_server::Controller
+ * Author: Alberto Garbui
+ * Created: 03/05/14
+ * Version: 0.1
+ * Description: inizializzazione dispatcher
+ * Modification History:
+ ==============================================
+ * Version | Changes
+ ==============================================
+ * 0.1 File creation
+ ==============================================
+ */
+&#039;use strict&#039;;
+
+var passport = require(&quot;./Passport&quot;);
+var path = require(&#039;path&#039;);
+var datamanager = require(&#039;../ModelServer/DataManager/DatabaseAnalysisManager/DatabaseAnalysisManager&#039;);
+var usermanager = require(&#039;../ModelServer/DataManager/DatabaseUserManager/DatabaseUserManager&#039;);
+var indexmanager = require(&#039;../ModelServer/DataManager/IndexManager/IndexManager&#039;);
+
+var dispatcherInit = function (app) {
+	
+	//inizializzo passport
+	passport.init(app);
+	var config = app.config;
+	
+	var dispatcher = app.express.Router();
+	
+	//gestione collections e documents
+	dispatcher.get(&#039;/api/collection/list&#039;, passport.checkAuthenticated, datamanager.sendCollectionsList);
+	//dispatcher.get(&#039;/api/collection/list&#039;, passport.checkAuthenticated, indexmanager.createIndex);
+	dispatcher.get(&#039;/api/collection/:col_id&#039;, passport.checkAuthenticated, datamanager.sendCollection);
+	dispatcher.get(&#039;/api/collection/:col_id/:doc_id&#039;, passport.checkAuthenticated, datamanager.sendDocument);
+	dispatcher.get(&#039;/api/collection/:col_id/:doc_id/edit&#039;, passport.checkAuthenticatedAdmin, datamanager.sendDocumentEdit);
+	dispatcher.put(&#039;/api/collection/:col_id/:doc_id/edit&#039;, passport.checkAuthenticatedAdmin, datamanager.updateDocument);
+	dispatcher.delete(&#039;/api/collection/:col_id/:doc_id/edit&#039;, passport.checkAuthenticatedAdmin, datamanager.removeDocument);
+
+	//gestione profilo
+	dispatcher.get(&#039;/api/profile&#039;, passport.checkAuthenticated, usermanager.sendUserProfile);
+	dispatcher.get(&#039;/api/profile/edit&#039;, passport.checkAuthenticated, usermanager.sendUserProfileEdit);
+	dispatcher.put(&#039;/api/profile/edit&#039;, passport.checkAuthenticated, usermanager.updateUserProfile);
+	
+	//gestione utenti
+	dispatcher.get(&#039;/api/users/list&#039;, passport.checkAuthenticatedAdmin, usermanager.getUsersList);
+	dispatcher.get(&#039;/api/users/:user_id&#039;, passport.checkAuthenticatedAdmin, usermanager.sendUser);
+	dispatcher.get(&#039;/api/users/:user_id/edit&#039;, passport.checkAuthenticatedAdmin, usermanager.sendUserEdit);
+	dispatcher.put(&#039;/api/users/:user_id/edit&#039;, passport.checkAuthenticatedAdmin, usermanager.updateUser);
+	dispatcher.delete(&#039;/api/users/:user_id/edit&#039;, passport.checkAuthenticatedAdmin, usermanager.removeUser);
+	
+	//gestione query piu utilizzate
+	dispatcher.get(&#039;/api/queries/list&#039;, passport.checkAuthenticatedAdmin, datamanager.getTopQueries);
+	dispatcher.delete(&#039;/api/queries/list&#039;, passport.checkAuthenticatedAdmin, datamanager.resetQueries);
+	
+	//gestione indici nel db di analisi
+	dispatcher.get(&#039;/api/indexes&#039;, passport.checkAuthenticatedAdmin, datamanager.getIndexesList);
+	dispatcher.put(&#039;/api/indexes&#039;, passport.checkAuthenticatedAdmin, datamanager.createIndex);
+	dispatcher.delete(&#039;/api/indexes/:index_name&#039;, passport.checkAuthenticatedAdmin, datamanager.deleteIndex);
+	
+	//gestione login
+	dispatcher.post(&#039;/api/check/email&#039;, passport.checkNotAuthenticated, usermanager.checkMail);	
+	dispatcher.post(&#039;/api/signup&#039;, passport.checkNotAuthenticated, usermanager.userSignup);
+	dispatcher.get(&#039;/loggedin&#039;, function(req, res){
+		res.send(req.isAuthenticated() ? req.user : &#039;0&#039;);
+	});
+	dispatcher.post(&#039;/api/login&#039;, passport.checkNotAuthenticated, passport.authenticate, function(req, res){
+		res.send(req.user);
+	});	
+	dispatcher.get(&#039;/api/logout&#039;, passport.checkAuthenticated, function(req, res){
+		req.logout();
+		res.send(200);
+	});
+	
+	//per tutte le altre richieste... c&#039;e&#039; sempre il dispatcher!	
+	dispatcher.get(&#039;*&#039;, function(req, res){
+		res.sendfile(path.join(config.static_assets.dir, &#039;index.html&#039;));
+	});
+
+	return dispatcher;
+}
+
+exports.init = dispatcherInit;</textarea>
+  </div>
+</div>
+
+<footer class="footer">
+  <div class="container">
+    <p>.</p>
+  </div>
+</footer>
+
+<script type="text/html" id="complexity-popover-template">
+  <div class="complexity-notice">
+    Complexity : {{ complexity.cyclomatic }} <br>
+    Length : {{ complexity.halstead.length }} <br>
+    Difficulty : {{ complexity.halstead.difficulty.toFixed(2) }} <br>
+    Est # bugs : {{ complexity.halstead.bugs.toFixed(2) }}<br>
+  </div>
+</script>
+
+<script type="text/javascript" src="../../assets/scripts/bundles/core-bundle.js"></script>
+<script type="text/javascript" src="../../assets/scripts/bundles/codemirror.js"></script>
+<script type="text/javascript" src="../../assets/scripts/codemirror.markpopovertext.js"></script>
+<script type="text/javascript" src="report.js"></script>
+<script type="text/javascript" src="report.history.js"></script>
+<script type="text/javascript" src="../../assets/scripts/plato-file.js"></script>
+</body>
+</html>

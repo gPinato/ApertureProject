@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Plato - maap_server\modelServer\DSL\schemaGenerator.js</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <!--[if lt IE 9]>
+  <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+
+  <link href="../../assets/css/vendor/morris.css" rel="stylesheet">
+  <link href="../../assets/css/vendor/bootstrap.css" rel="stylesheet">
+  <link href="../../assets/css/vendor/font-awesome.css" rel="stylesheet">
+  <link href="../../assets/css/vendor/font-awesome-ie7.css" rel="stylesheet">
+  <link href="../../assets/css/vendor/codemirror.css" rel="stylesheet">
+  <link href="../../assets/css/plato.css" rel="stylesheet">
+  <link href="../../assets/css/plato-file.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+<div class="navbar navbar-fixed-top">
+  <div class="container">
+    <a class="navbar-brand" href="http://github.com/es-analysis/plato">Plato on Github</a>
+    <ul class="nav navbar-nav">
+      <li>
+        <a href="../../index.html">Report Home</a>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<div class="jumbotron">
+  <div class="container">
+    <h1>maap_server\modelServer\DSL\schemaGenerator.js</h1>
+  </div>
+</div>
+
+<div class="container aggregate-stats">
+  <div class="row">
+    <div class="col-md-6">
+      <h2 class="header">Maintainability <a href="http://blogs.msdn.com/b/codeanalysis/archive/2007/11/20/maintainability-index-range-and-meaning.aspx"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="A value between 0 and 100 that represents the relative ease of maintaining the code. A high value means better maintainability." data-original-title="Maintainability Index"  data-container="body"></i></a></h2>
+      <p class="stat">51.19</p>
+    </div>
+    <div class="col-md-6">
+      <h2 class="header">Lines of code <i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Source Lines of Code / Logical Lines of Code" data-original-title="SLOC/LSLOC" data-container="body"></i></h2>
+      <p class="stat">157</p>
+    </div>
+  </div>
+  <div class="row historical">
+    <div class="col-md-6">
+      <p id="chart_historical_maint" class="chart"></p>
+    </div>
+    <div class="col-md-6">
+      <p id="chart_historical_sloc" class="chart"></p>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      <h2 class="header">Difficulty  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="The difficulty measure is related to the difficulty of the program to write or understand." data-original-title="Difficulty" data-container="body"></i></a></h2>
+      <p class="stat">47.16</p>
+    </div>
+    <div class="col-md-6">
+      <h2 class="header">Estimated Errors  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Halstead's delivered bugs is an estimate for the number of errors in the implementation." data-original-title="Delivered Bugs" data-container="body"></i></a></h2>
+      <p class="stat">1.43</p>
+    </div>
+  </div>
+</div>
+
+<div class="container charts">
+  <div class="row">
+    <h2 class="header">Function weight</h2>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      <h3 class="chart-header">By Complexity <a href="http://en.wikipedia.org/wiki/Cyclomatic_complexity"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="This metric counts the number of distinct paths through a block of code. Lower values are better." data-original-title="Cyclomatic Complexity" data-container="body"></i></a></h3>
+      <div id="fn-by-complexity" class="stat"></div>
+    </div>
+    <div class="col-md-6">
+      <h3 class="chart-header">By SLOC  <i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Source Lines of Code / Logical Lines of Code" data-original-title="SLOC/LSLOC" data-container="body"></i></h3>
+      <div id="fn-by-sloc" class="stat"></div>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row">
+    <textarea id="file-source" class="col-md-12">/**
+ * File: schemaGenerator.js
+ * Module: maap_server::modelServer::DSL
+ * Author: Alberto Garbui
+ * Created: 01/06/14
+ * Version: 0.1
+ * Description: generatore di schemi per mongoose
+ * Modification History:
+ ==============================================
+ * Version | Changes
+ ==============================================
+ * 0.1 File creation
+ ==============================================
+ */
+&#039;use strict&#039;;
+var fs = require(&#039;fs&#039;); 
+
+var getPopulatedCollection = function(populateArray, key) {
+
+	for(var i=0; i&lt;populateArray.length; i++) 
+	{
+		if(populateArray[i].key == key)
+			return populateArray[i].collection;
+	}
+	return &#039;&#039;;
+}
+
+var arrayAddElement = function(element, array) {
+	var trovato = false;
+	for(var i=0; i&lt;array.length; i++)
+	{
+		if(array[i].key == element.key)
+			trovato = true;
+	}
+	if(!trovato)
+	{
+		array.push(element);
+	}
+	return array;
+}
+
+var generate = function(config, dslJson) {
+	
+	var collection = dslJson.collection;
+	
+	//creo un array con coppie chiave/valore , scorro il DSL per trovare tutti i campi necessari
+	var schemaElements = [];
+	
+	var indexColumns = collection.index.column;
+		
+	if(indexColumns != undefined)
+	{
+		
+		for(var i=0; i&lt;indexColumns.length; i++)
+		{
+			var name = indexColumns[i].name.split(&#039;.&#039;);
+			var type = indexColumns[i].type;
+			
+			if(name.length &gt; 1 &amp;&amp; collection.index.populate != undefined)	//nome composto con populate
+			{	
+				//ora per� devo aggiungere/creare lo schema del nome composto
+				var composed_name = name[1];
+				var composed_type = indexColumns[i].type;
+				var composed_collection = getPopulatedCollection(collection.index.populate, name[0]);
+				
+				type = &#039;ObjectId, ref: \&#039;&#039; + composed_collection + &#039;\&#039;&#039;;
+				
+				try{
+					//controllo se � gia presente un file schema per quella collection
+					var composed_schema = require(&#039;./collectionData/&#039; + composed_collection + &#039;_schema.js&#039;);
+				}catch(err){
+					console.log(&#039;generator index not found &#039; + composed_collection + &#039;_schema.js&#039;);
+					//lo schema NON � stato definito, quindi lo creo exnovo
+					//genero lo schema
+					var filePath = config.static_assets.dsl + &#039;/&#039; + composed_collection + &#039;.maap&#039;;
+     				try{
+						var DSL = require(filePath);
+						var schema = generate(config, DSL);
+					}catch(err){
+						//schema vuoto se non e&#039; scritto un dsl
+						var schema = generate(config, {collection:{name: composed_collection,index:{},show:{}}} );
+					}
+					var saveFile = __dirname + &#039;/collectionData/&#039; + composed_collection + &#039;_schema.js&#039;;
+					console.log(&#039;saving &#039; + saveFile);
+					fs.writeFileSync(saveFile, schema, &#039;utf-8&#039;, function (err) {
+							if (err) {
+								console.error(&#039;error writing schema file: &#039; + saveFile);
+								throw err;
+							} 
+							console.log(saveFile + &#039; saved!&#039;);
+						}
+					);		
+				}
+			}	
+			
+			schemaElements = arrayAddElement({key: name[0], value: type}, schemaElements);
+			
+		}//end for indexColumns
+	}
+	
+	
+	var showRows = collection.show.row;
+	
+	if(showRows != undefined)
+	{
+		
+		for(var i=0; i&lt;showRows.length; i++)
+		{
+			var name = showRows[i].name.split(&#039;.&#039;);
+			var type = showRows[i].type;
+			
+			if(name.length &gt; 1 &amp;&amp;  collection.show.populate != undefined)	//nome composto con populate
+			{				
+				//ora per� devo aggiungere/creare lo schema del nome composto
+				var composed_name = name[1];
+				var composed_type = showRows[i].type;
+				var composed_collection = getPopulatedCollection(collection.show.populate, name[0]);
+				
+				type = &#039;ObjectId, ref: \&#039;&#039; + composed_collection + &#039;\&#039;&#039;;
+				
+				//controllo se � gia presente un file schema per quella collection
+				try{
+					var composed_schema = require(&#039;./collectionData/&#039; + composed_collection + &#039;_schema.js&#039;);		
+				}catch(err){
+					console.log(&#039;generator show not found &#039; + composed_collection + &#039;_schema.js&#039;);
+					//lo schema NON � stato definito, quindi lo creo exnovo
+					var filePath = config.static_assets.dsl + &#039;/&#039; + composed_collection + &#039;.maap&#039;;
+					try{
+						var DSL = require(filePath);
+						var schema = generate(config, DSL);
+					}catch(err){
+						//schema vuoto se non e&#039; scritto un dsl
+						var schema = generate(config, {collection:{name: composed_collection,index:{},show:{}}} );
+					}
+					var saveFile = __dirname + &#039;/collectionData/&#039; + composed_collection + &#039;_schema.js&#039;;
+					console.log(&#039;saving &#039; + saveFile);
+					fs.writeFileSync(saveFile, schema, &#039;utf-8&#039;, function (err) {
+							if (err) {
+								console.error(&#039;error writing schema file: &#039; + saveFile);
+								throw err;
+							} 
+							console.log(saveFile + &#039; saved!&#039;);
+						}
+					);
+				}
+			}	
+			
+			schemaElements = arrayAddElement({key: name[0], value: type}, schemaElements);
+			
+		}//end for showRows
+	}
+	
+	//ora che schemaElements e&#039; completo genero lo schema
+	var schema = &#039;//maaperture auto-generated mongoose schema for collection \&#039;&#039; + collection.name + &#039;\&#039;\n\n&#039;;
+	schema += &#039;var mongoose = require(\&#039;mongoose\&#039;);\n&#039;;	
+	schema += &#039;var ObjectId = mongoose.Schema.ObjectId;\n\n&#039;;
+	schema += &#039;exports.schemaName = \&#039;&#039; + collection.name + &#039;\&#039;;\n\n&#039;;
+	schema += &#039;exports.schema = new mongoose.Schema({\n&#039;;
+	for(var i=0; i&lt;schemaElements.length; i++)
+	{
+		if(i != 0){schema += &#039;,\n&#039;;}
+		var key = schemaElements[i].key;
+		var type = schemaElements[i].value;
+		schema += key + &#039;: { type: &#039; + type + &#039; }&#039;;
+	}
+	schema += &#039;\n}, { collection: \&#039;&#039; + collection.name + &#039;\&#039; });\n\n&#039;;
+	
+	return schema;
+}
+
+exports.generate = generate;</textarea>
+  </div>
+</div>
+
+<footer class="footer">
+  <div class="container">
+    <p>.</p>
+  </div>
+</footer>
+
+<script type="text/html" id="complexity-popover-template">
+  <div class="complexity-notice">
+    Complexity : {{ complexity.cyclomatic }} <br>
+    Length : {{ complexity.halstead.length }} <br>
+    Difficulty : {{ complexity.halstead.difficulty.toFixed(2) }} <br>
+    Est # bugs : {{ complexity.halstead.bugs.toFixed(2) }}<br>
+  </div>
+</script>
+
+<script type="text/javascript" src="../../assets/scripts/bundles/core-bundle.js"></script>
+<script type="text/javascript" src="../../assets/scripts/bundles/codemirror.js"></script>
+<script type="text/javascript" src="../../assets/scripts/codemirror.markpopovertext.js"></script>
+<script type="text/javascript" src="report.js"></script>
+<script type="text/javascript" src="report.history.js"></script>
+<script type="text/javascript" src="../../assets/scripts/plato-file.js"></script>
+</body>
+</html>

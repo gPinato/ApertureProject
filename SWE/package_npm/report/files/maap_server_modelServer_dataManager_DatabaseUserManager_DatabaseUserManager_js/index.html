@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Plato - maap_server\modelServer\dataManager\DatabaseUserManager\DatabaseUserManager.js</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <!--[if lt IE 9]>
+  <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+
+  <link href="../../assets/css/vendor/morris.css" rel="stylesheet">
+  <link href="../../assets/css/vendor/bootstrap.css" rel="stylesheet">
+  <link href="../../assets/css/vendor/font-awesome.css" rel="stylesheet">
+  <link href="../../assets/css/vendor/font-awesome-ie7.css" rel="stylesheet">
+  <link href="../../assets/css/vendor/codemirror.css" rel="stylesheet">
+  <link href="../../assets/css/plato.css" rel="stylesheet">
+  <link href="../../assets/css/plato-file.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+<div class="navbar navbar-fixed-top">
+  <div class="container">
+    <a class="navbar-brand" href="http://github.com/es-analysis/plato">Plato on Github</a>
+    <ul class="nav navbar-nav">
+      <li>
+        <a href="../../index.html">Report Home</a>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<div class="jumbotron">
+  <div class="container">
+    <h1>maap_server\modelServer\dataManager\DatabaseUserManager\DatabaseUserManager.js</h1>
+  </div>
+</div>
+
+<div class="container aggregate-stats">
+  <div class="row">
+    <div class="col-md-6">
+      <h2 class="header">Maintainability <a href="http://blogs.msdn.com/b/codeanalysis/archive/2007/11/20/maintainability-index-range-and-meaning.aspx"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="A value between 0 and 100 that represents the relative ease of maintaining the code. A high value means better maintainability." data-original-title="Maintainability Index"  data-container="body"></i></a></h2>
+      <p class="stat">77.89</p>
+    </div>
+    <div class="col-md-6">
+      <h2 class="header">Lines of code <i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Source Lines of Code / Logical Lines of Code" data-original-title="SLOC/LSLOC" data-container="body"></i></h2>
+      <p class="stat">132</p>
+    </div>
+  </div>
+  <div class="row historical">
+    <div class="col-md-6">
+      <p id="chart_historical_maint" class="chart"></p>
+    </div>
+    <div class="col-md-6">
+      <p id="chart_historical_sloc" class="chart"></p>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      <h2 class="header">Difficulty  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="The difficulty measure is related to the difficulty of the program to write or understand." data-original-title="Difficulty" data-container="body"></i></a></h2>
+      <p class="stat">23.85</p>
+    </div>
+    <div class="col-md-6">
+      <h2 class="header">Estimated Errors  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Halstead's delivered bugs is an estimate for the number of errors in the implementation." data-original-title="Delivered Bugs" data-container="body"></i></a></h2>
+      <p class="stat">1.21</p>
+    </div>
+  </div>
+</div>
+
+<div class="container charts">
+  <div class="row">
+    <h2 class="header">Function weight</h2>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      <h3 class="chart-header">By Complexity <a href="http://en.wikipedia.org/wiki/Cyclomatic_complexity"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="This metric counts the number of distinct paths through a block of code. Lower values are better." data-original-title="Cyclomatic Complexity" data-container="body"></i></a></h3>
+      <div id="fn-by-complexity" class="stat"></div>
+    </div>
+    <div class="col-md-6">
+      <h3 class="chart-header">By SLOC  <i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Source Lines of Code / Logical Lines of Code" data-original-title="SLOC/LSLOC" data-container="body"></i></h3>
+      <div id="fn-by-sloc" class="stat"></div>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row">
+    <textarea id="file-source" class="col-md-12">/**
+ * File: DatabaseUserManager.js
+ * Module: maap_server::ModelServer::DataManager::DatabaseUserManager
+ * Author: Alberto Garbui
+ * Created: 20/05/14
+ * Version: 0.1
+ * Description: gestione dati dal database degli utenti
+ * Modification History:
+ ==============================================
+ * Version | Changes
+ ==============================================
+ * 0.1 File creation
+ ==============================================
+ */
+&#039;use strict&#039;;
+var path = require(&#039;path&#039;);
+var retriever = require(&#039;./DataRetrieverUsers&#039;);
+var DB = require(&#039;../../Database/MongooseDBFramework&#039;);
+var JSonComposer = require(&#039;../JSonComposer&#039;);
+
+//controlla che la mail non sia gia presente nel sistema durante la registrazione
+exports.checkMail = function(req, res) {
+
+	console.log(&#039;controllo mail &#039; + req.body.field);
+	console.log(JSON.stringify(req.body));
+	 
+	DB.users.count({
+  		email: req.body.field
+    }, function (err, count) {
+        if (count === 0) {
+			console.log(&#039;nessuna mail presente&#039;);
+			res.send(304);
+        } else {
+			console.log(&#039;utente gia presente&#039;);
+			res.send(400);
+        }
+    });	
+};
+
+exports.userSignup = function(req, res) {
+	console.log(&#039;registrazione utente&#039;);
+	console.log(JSON.stringify(req.body));
+	
+	var level = 0; //livello zero utente semplice	
+	retriever.addUser(req.body.email, req.body.pwd1, level, function(success){
+		if(success)
+		{
+			res.send(200);
+		}else{
+			res.send(400);
+		}	
+	});
+};
+
+//richiede la lista dei dati del proprio profilo utente
+exports.sendUserProfile = function(req, res) {
+	var user_id = req.session.passport.user._id;
+	retriever.getUserProfile(user_id, function(user){
+		res.send(JSonComposer.createUserProfile(user));
+	});
+};
+
+//req.session.passport.user        contiene _id, email, password, level
+
+//richiede la lista dei dati del proprio profilo per editarlo
+exports.sendUserProfileEdit = function(req, res) {
+	var user_id = req.session.passport.user._id;
+	console.log(JSON.stringify(req.session.passport.user));
+	retriever.getUserProfile(user_id, function(user){
+		res.send(JSonComposer.createUserProfileEdit(user));
+	});		
+};
+
+//esegue l&#039;aggiornamento dei dati del proprio profilo
+exports.updateUserProfile = function(req, res) {
+
+	console.log(&#039;update profile: &#039; + JSON.stringify(req.body));	
+	retriever.updateUserProfile(req, function(done){
+		if(done)
+		{
+			res.send(200);
+		}else{
+			res.send(400);
+		}
+	});	
+};
+
+//richiede la lista di utenti registrati
+exports.getUsersList = function(req, res) {
+	console.log(&#039;get user list: &#039; + JSON.stringify(req.query));	
+	
+	//imposto i vari parametri con valori di default se nn presenti
+	var page = req.query.page || 0;
+	var column = req.query.column || &#039;_id&#039;;
+	var order = req.query.order || &#039;asc&#039;;
+	var perpage = req.config.adminConfig.usersPerPage || 22;
+	
+	retriever.getUsersList(column, order, page, perpage, function(users){
+		res.send(JSonComposer.createUsersList(users.data, users.options));
+	});		
+};
+
+//richiede i dati di un utente per la visualizzazione
+exports.sendUser = function(req, res) {
+	console.log(&#039;getUserAdmin: &#039; + JSON.stringify(req.params));
+	var user_id = req.params.user_id;
+	retriever.getUserProfile(user_id, function(user){
+		res.send(JSonComposer.createUser(user));
+	});		
+};
+
+//richiede i dati di un utente per l&#039;edit
+exports.sendUserEdit = function(req, res) {
+	console.log(&#039;getUserEditAdmin: &#039; + JSON.stringify(req.params));
+	var user_id = req.params.user_id;
+	retriever.getUserProfile(user_id, function(user){
+		res.send(JSonComposer.createUser(user));
+	});	
+};
+
+//esegue l&#039;update dei dati di un utente da parte dell&#039;admin
+exports.updateUser = function(req, res) {
+	console.log(&#039;update user from admin: &#039; + JSON.stringify(req));
+	retriever.updateUser(req, function(done){
+		if(done)
+		{
+			res.send(200);
+		}else{
+			res.send(400);
+		}
+	});	
+};
+
+//rimuove un utente
+exports.removeUser = function(req, res) {
+	console.log(&#039;admin is removing an user: &#039; + req.params.user_email);
+	var email = req.params.user_email;
+	retriever.removeUser(email, function(done){
+		if(done)
+		{
+			res.send(200);
+		}else{
+			res.send(400);
+		}
+	});	
+};</textarea>
+  </div>
+</div>
+
+<footer class="footer">
+  <div class="container">
+    <p>.</p>
+  </div>
+</footer>
+
+<script type="text/html" id="complexity-popover-template">
+  <div class="complexity-notice">
+    Complexity : {{ complexity.cyclomatic }} <br>
+    Length : {{ complexity.halstead.length }} <br>
+    Difficulty : {{ complexity.halstead.difficulty.toFixed(2) }} <br>
+    Est # bugs : {{ complexity.halstead.bugs.toFixed(2) }}<br>
+  </div>
+</script>
+
+<script type="text/javascript" src="../../assets/scripts/bundles/core-bundle.js"></script>
+<script type="text/javascript" src="../../assets/scripts/bundles/codemirror.js"></script>
+<script type="text/javascript" src="../../assets/scripts/codemirror.markpopovertext.js"></script>
+<script type="text/javascript" src="report.js"></script>
+<script type="text/javascript" src="report.history.js"></script>
+<script type="text/javascript" src="../../assets/scripts/plato-file.js"></script>
+</body>
+</html>

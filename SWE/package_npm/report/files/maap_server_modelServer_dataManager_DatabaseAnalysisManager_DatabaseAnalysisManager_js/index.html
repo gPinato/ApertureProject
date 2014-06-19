@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Plato - maap_server\modelServer\dataManager\DatabaseAnalysisManager\DatabaseAnalysisManager.js</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <!--[if lt IE 9]>
+  <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+
+  <link href="../../assets/css/vendor/morris.css" rel="stylesheet">
+  <link href="../../assets/css/vendor/bootstrap.css" rel="stylesheet">
+  <link href="../../assets/css/vendor/font-awesome.css" rel="stylesheet">
+  <link href="../../assets/css/vendor/font-awesome-ie7.css" rel="stylesheet">
+  <link href="../../assets/css/vendor/codemirror.css" rel="stylesheet">
+  <link href="../../assets/css/plato.css" rel="stylesheet">
+  <link href="../../assets/css/plato-file.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+<div class="navbar navbar-fixed-top">
+  <div class="container">
+    <a class="navbar-brand" href="http://github.com/es-analysis/plato">Plato on Github</a>
+    <ul class="nav navbar-nav">
+      <li>
+        <a href="../../index.html">Report Home</a>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<div class="jumbotron">
+  <div class="container">
+    <h1>maap_server\modelServer\dataManager\DatabaseAnalysisManager\DatabaseAnalysisManager.js</h1>
+  </div>
+</div>
+
+<div class="container aggregate-stats">
+  <div class="row">
+    <div class="col-md-6">
+      <h2 class="header">Maintainability <a href="http://blogs.msdn.com/b/codeanalysis/archive/2007/11/20/maintainability-index-range-and-meaning.aspx"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="A value between 0 and 100 that represents the relative ease of maintaining the code. A high value means better maintainability." data-original-title="Maintainability Index"  data-container="body"></i></a></h2>
+      <p class="stat">76.50</p>
+    </div>
+    <div class="col-md-6">
+      <h2 class="header">Lines of code <i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Source Lines of Code / Logical Lines of Code" data-original-title="SLOC/LSLOC" data-container="body"></i></h2>
+      <p class="stat">180</p>
+    </div>
+  </div>
+  <div class="row historical">
+    <div class="col-md-6">
+      <p id="chart_historical_maint" class="chart"></p>
+    </div>
+    <div class="col-md-6">
+      <p id="chart_historical_sloc" class="chart"></p>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      <h2 class="header">Difficulty  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="The difficulty measure is related to the difficulty of the program to write or understand." data-original-title="Difficulty" data-container="body"></i></a></h2>
+      <p class="stat">19.14</p>
+    </div>
+    <div class="col-md-6">
+      <h2 class="header">Estimated Errors  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Halstead's delivered bugs is an estimate for the number of errors in the implementation." data-original-title="Delivered Bugs" data-container="body"></i></a></h2>
+      <p class="stat">1.29</p>
+    </div>
+  </div>
+</div>
+
+<div class="container charts">
+  <div class="row">
+    <h2 class="header">Function weight</h2>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      <h3 class="chart-header">By Complexity <a href="http://en.wikipedia.org/wiki/Cyclomatic_complexity"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="This metric counts the number of distinct paths through a block of code. Lower values are better." data-original-title="Cyclomatic Complexity" data-container="body"></i></a></h3>
+      <div id="fn-by-complexity" class="stat"></div>
+    </div>
+    <div class="col-md-6">
+      <h3 class="chart-header">By SLOC  <i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Source Lines of Code / Logical Lines of Code" data-original-title="SLOC/LSLOC" data-container="body"></i></h3>
+      <div id="fn-by-sloc" class="stat"></div>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row">
+    <textarea id="file-source" class="col-md-12">/**
+ * File: DatabaseAnalysisManager.js
+ * Module: maap_server::ModelServer::DataManager::DatabaseAnalysisManager
+ * Author: Alberto Garbui
+ * Created: 20/05/14
+ * Version: 0.1
+ * Description: gestione dati dal database di analisi
+ * Modification History:
+ ==============================================
+ * Version | Changes
+ ==============================================
+ * 0.1 File creation
+ ==============================================
+ */
+&#039;use strict&#039;;
+var path = require(&#039;path&#039;);
+var retriever = require(&#039;./DataRetrieverAnalysis&#039;);
+var indexManager = require(&#039;../IndexManager/IndexManager&#039;);
+var JSonComposer = require(&#039;../JSonComposer&#039;);
+
+//invia al client la lista di collections definite dai vari dsl
+exports.sendCollectionsList = function(req, res) {
+
+	var collectionsList = retriever.getCollectionsList();
+	res.send(JSonComposer.createCollectionsList(collectionsList));
+	
+}
+
+var sendCollection  = function(req, res) {
+	var config = req.config;
+	var collection_name = req.params.col_id;
+	var column = req.query.column;
+	var order = req.query.order;
+	var page = req.query.page;
+		
+	//NB. il recupero dei dati sul db � asincrono quindi uso una callback per eseguire
+	//il restante codice solamente quando ho la risposta dal db :)
+	retriever.getCollectionIndex(collection_name, column, order, page, function(data){
+		
+		if(data.documents == undefined)
+		{
+			console.log(&#039;sending 404...&#039;);
+			res.send(404);
+		}else{
+			res.send(JSonComposer.createCollection(	data.labels,	//etichette
+													data.documents,	//dati
+													data.options	//opzioni
+												   ));
+		}
+	});	
+}
+
+exports.sendDocument = function(req, res){
+	var config = req.config;
+	var collection_name = req.params.col_id;
+	var document_id = req.params.doc_id;
+	
+	retriever.getDocumentShow(collection_name, document_id, function(data){
+		
+		if(data.rows == undefined)
+		{
+			res.send(404);
+		}else{
+			res.send(JSonComposer.createDocument( 	data.labels,	//etichette
+													data.rows		//dati
+												));
+		}
+	});	
+	
+}
+
+exports.sendDocumentEdit = function(req, res){
+	var config = req.config;
+	var collection_name = req.params.col_id;
+	var document_id = req.params.doc_id;
+	console.log(&#039;_________docEDIT____________&#039;);
+	retriever.getDocumentShowEdit(collection_name, document_id, function(data){
+		
+		if(data.rows == undefined)
+		{
+			res.send(404);
+		}else{
+			res.send(JSonComposer.createDocument( 	data.labels,	//etichette
+													data.rows,		//dati
+													data.options	//opzioni
+												));
+		}
+	});	
+	
+}
+
+exports.updateDocument = function(req, res) {
+	var config = req.config;
+	var collection_name = req.params.col_id;
+	var document_id = req.params.doc_id;
+	
+	//console.log(&#039;_________docUPDATE____________&#039;);
+	//console.log(JSON.stringify(req.body));
+	retriever.updateDocument(collection_name, document_id, req.body, function(success){
+		if(success)
+		{
+			res.send(200);
+		}else{
+			res.send(401);
+		}	
+	});
+
+}
+
+exports.removeDocument = function(req, res) {
+	var config = req.config;
+	var collection_name = req.params.col_id;
+	var document_id = req.params.doc_id;
+	
+	console.log(&#039;_________docREMOVE____________&#039;);
+	//console.log(JSON.stringify(req.body));
+	retriever.removeDocument(collection_name, document_id, function(success){
+		if(success)
+		{
+			res.send(200);
+		}else{
+			res.send(400);
+		}	
+	});
+	
+}
+
+//gestione query - indexManager:
+
+//elimina la lista di query
+exports.resetQueries = function(req, res) {
+
+	indexManager.resetQueries(function(done){
+		if(done)
+		{
+			res.send(200);
+		}else{
+			res.send(400);
+		}	
+	});
+}
+
+//risponde con la lista delle query piu&#039; utilizzate
+exports.getTopQueries = function(req, res) {
+
+	var queriesPerPage = req.config.adminConfig.queriesPerPage || 20;
+	var numberOfQueries2show = req.config.adminConfig.queriesToShow || 10;
+	
+	indexManager.getQueries(req.query.page,			//numero di pagina
+							queriesPerPage,			//numero di query per pagina
+							numberOfQueries2show,	//numero di query da visualizzare
+							function(queries){
+								res.send(JSonComposer.createQueriesList(queries.data, queries.options));							
+							});
+}
+
+//risponde con la lista degli indici presenti nel database di analisi
+exports.getIndexesList = function(req, res) {
+
+	indexManager.getIndex(function(indexes){
+		res.send(JSonComposer.createIndexesList(indexes));
+	});	
+}
+
+exports.createIndex = function(req, res) {
+
+	console.log(JSON.stringify(req.body));
+	
+	var query_id = req.body.query_id;
+	var index_name = req.body.indexName;
+	indexManager.createIndex(query_id, index_name, function(done){
+		if(done)
+		{
+			res.send(200);
+		}else{
+			res.send(400);
+		}		
+	});
+}
+
+exports.deleteIndex = function(req, res) {
+
+	var index_name = req.params.index_name;
+	indexManager.deleteIndex(index_name, function(done){
+		if(done)
+		{
+			res.send(200);
+		}else{
+			res.send(400);
+		}	
+	});
+}
+
+exports.sendCollection = sendCollection;</textarea>
+  </div>
+</div>
+
+<footer class="footer">
+  <div class="container">
+    <p>.</p>
+  </div>
+</footer>
+
+<script type="text/html" id="complexity-popover-template">
+  <div class="complexity-notice">
+    Complexity : {{ complexity.cyclomatic }} <br>
+    Length : {{ complexity.halstead.length }} <br>
+    Difficulty : {{ complexity.halstead.difficulty.toFixed(2) }} <br>
+    Est # bugs : {{ complexity.halstead.bugs.toFixed(2) }}<br>
+  </div>
+</script>
+
+<script type="text/javascript" src="../../assets/scripts/bundles/core-bundle.js"></script>
+<script type="text/javascript" src="../../assets/scripts/bundles/codemirror.js"></script>
+<script type="text/javascript" src="../../assets/scripts/codemirror.markpopovertext.js"></script>
+<script type="text/javascript" src="report.js"></script>
+<script type="text/javascript" src="report.history.js"></script>
+<script type="text/javascript" src="../../assets/scripts/plato-file.js"></script>
+</body>
+</html>

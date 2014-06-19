@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Plato - maap_server\modelServer\dataManager\DatabaseAnalysisManager\DataRetrieverAnalysis.js</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <!--[if lt IE 9]>
+  <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+
+  <link href="../../assets/css/vendor/morris.css" rel="stylesheet">
+  <link href="../../assets/css/vendor/bootstrap.css" rel="stylesheet">
+  <link href="../../assets/css/vendor/font-awesome.css" rel="stylesheet">
+  <link href="../../assets/css/vendor/font-awesome-ie7.css" rel="stylesheet">
+  <link href="../../assets/css/vendor/codemirror.css" rel="stylesheet">
+  <link href="../../assets/css/plato.css" rel="stylesheet">
+  <link href="../../assets/css/plato-file.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+<div class="navbar navbar-fixed-top">
+  <div class="container">
+    <a class="navbar-brand" href="http://github.com/es-analysis/plato">Plato on Github</a>
+    <ul class="nav navbar-nav">
+      <li>
+        <a href="../../index.html">Report Home</a>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<div class="jumbotron">
+  <div class="container">
+    <h1>maap_server\modelServer\dataManager\DatabaseAnalysisManager\DataRetrieverAnalysis.js</h1>
+  </div>
+</div>
+
+<div class="container aggregate-stats">
+  <div class="row">
+    <div class="col-md-6">
+      <h2 class="header">Maintainability <a href="http://blogs.msdn.com/b/codeanalysis/archive/2007/11/20/maintainability-index-range-and-meaning.aspx"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="A value between 0 and 100 that represents the relative ease of maintaining the code. A high value means better maintainability." data-original-title="Maintainability Index"  data-container="body"></i></a></h2>
+      <p class="stat">54.83</p>
+    </div>
+    <div class="col-md-6">
+      <h2 class="header">Lines of code <i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Source Lines of Code / Logical Lines of Code" data-original-title="SLOC/LSLOC" data-container="body"></i></h2>
+      <p class="stat">525</p>
+    </div>
+  </div>
+  <div class="row historical">
+    <div class="col-md-6">
+      <p id="chart_historical_maint" class="chart"></p>
+    </div>
+    <div class="col-md-6">
+      <p id="chart_historical_sloc" class="chart"></p>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      <h2 class="header">Difficulty  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="The difficulty measure is related to the difficulty of the program to write or understand." data-original-title="Difficulty" data-container="body"></i></a></h2>
+      <p class="stat">106.08</p>
+    </div>
+    <div class="col-md-6">
+      <h2 class="header">Estimated Errors  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Halstead's delivered bugs is an estimate for the number of errors in the implementation." data-original-title="Delivered Bugs" data-container="body"></i></a></h2>
+      <p class="stat">4.23</p>
+    </div>
+  </div>
+</div>
+
+<div class="container charts">
+  <div class="row">
+    <h2 class="header">Function weight</h2>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      <h3 class="chart-header">By Complexity <a href="http://en.wikipedia.org/wiki/Cyclomatic_complexity"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="This metric counts the number of distinct paths through a block of code. Lower values are better." data-original-title="Cyclomatic Complexity" data-container="body"></i></a></h3>
+      <div id="fn-by-complexity" class="stat"></div>
+    </div>
+    <div class="col-md-6">
+      <h3 class="chart-header">By SLOC  <i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Source Lines of Code / Logical Lines of Code" data-original-title="SLOC/LSLOC" data-container="body"></i></h3>
+      <div id="fn-by-sloc" class="stat"></div>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row">
+    <textarea id="file-source" class="col-md-12">/**
+ * File: DataRetrieverAnalysis.js
+ * Module: maap_server::ModelServer::DataManager::DatabaseAnalysisManager
+ * Author: Alberto Garbui
+ * Created: 20/05/14
+ * Version: 0.1
+ * Description: recupero dati dal database di analisi
+ * Modification History:
+ ==============================================
+ * Version | Changes
+ ==============================================
+ * 0.1 File creation
+ ==============================================
+ */
+&#039;use strict&#039;;
+
+var indexManager = require(&#039;../IndexManager/IndexManager&#039;);
+
+var getModel = function(collection_name) {
+	var DB = require(&#039;../../Database/MongooseDBAnalysis&#039;);
+	var array = DB.model;
+	
+	for(var i=0; i&lt;array.length; i++)
+	{
+		if(array[i].name == collection_name)
+		{
+			return array[i].model;
+		}
+	}
+	return -1;
+}
+
+var getDocuments = function(model, where, select, orderbycolumn, typeorder, startskip, numberofrow, populate, callback){
+	
+	var options = {};
+	if(orderbycolumn != &#039;&#039; &amp;&amp; typeorder != &#039;&#039;){
+		var sort = {};
+		sort[orderbycolumn] = typeorder;
+		options.sort = sort;
+	}
+	if(numberofrow != &#039;&#039;){
+		options.limit = numberofrow;
+	}
+	if(startskip != &#039;&#039;){
+		options.skip = startskip;
+	}
+		
+	var query = model.find(where, select, options);
+	
+	if(populate != [])
+	{
+		var populatePath = [];
+		var populateField = [];
+		
+		for(var i=0; i&lt;populate.length; i++)
+		{
+			populatePath.push(populate[i].key);
+			populateField.push(populate[i].field);
+		}
+
+		var selectPopulate = [];	
+		for(var i=0; i&lt;populateField.length; i++)
+		{
+			selectPopulate[populateField[i]]=1;
+		}	
+		
+		for(var i=0; i&lt;populatePath.length; i++)
+		{
+			query.populate({
+				path: populatePath[i],
+				select: selectPopulate[i]
+			})
+		}
+	}
+		
+	query.lean().exec( function(err,result){
+		if(err){console.log(&#039;query fallita&#039; + err); callback({});}
+		
+		//a questo punto la query ha avuto successo,
+		//controllo se la query e&#039; stata eseguita su tutti 
+		if(select == undefined)var select = {};
+		
+		if(Object.keys(select).length == 0)
+		{
+			//se sono stati selezionati tutti i campi, ora riempio la select per scrivere la query nel db
+			if(result.length &gt; 0)
+			{
+				for(var key in result[0])
+				{
+					select[key] = 1;						//carico le chiavi utilizzate
+				}
+				indexManager.addQuery(model.modelName,  	//nome della collection
+									  select				//campi select
+									);
+			}			
+		}else{
+			//se la select era definita parzialmente aggiungo la query con l&#039;indexManager
+			indexManager.addQuery(model.modelName,  	//nome della collection
+								  select				//campi select
+								  );
+		}
+
+		if(!result){
+			console.log(&#039;nessun risultato&#039;) 
+		}else{
+			console.log(result);
+			//se � stato specificato il populate, sostituisco i vari populate...			
+			if(populate!=[])
+			{
+				for(var i=0; i&lt;result.length; i++)
+				{
+					var obj = result[i];
+										
+					//estraggo le informazioni corrette
+					for(var attributename in obj)
+					{
+						//se un campo dati e&#039; nullo non faccio nulla :)
+						if(obj[attributename] == undefined) continue;
+						
+						for(var j=0; j&lt;populatePath.length; j++)
+						{
+							if(attributename == populatePath[j])
+							{
+								var newfield = obj[populatePath[j]][populateField[j]];
+								obj[populatePath[j] + &#039;.&#039; + populateField[j]] = newfield;
+							}
+						}
+					}
+								
+					//pulisco i campi populate complessi ora che ho estratto tutte le info
+					for(var attributename in obj)
+					{
+						for(var j=0; j&lt;populatePath.length; j++)
+						{
+							if(attributename == populatePath[j])
+							{
+								delete obj[populatePath[j]];
+							}
+						}
+					}
+
+				}
+			}
+			callback(result);
+			
+		}
+	});	
+}
+
+exports.getCollectionsList = function() {
+	var collectionsList = require(&#039;../../DSL/collectionData/collectionsList.json&#039;);
+	return collectionsList;
+}
+
+var extractPopulate = function(populateArray, key) {
+	for(var i=0; i&lt;populateArray.length; i++){
+		if(populateArray[i].key == key){
+			return getModel(populateArray[i].collection);
+		}
+	}
+	return &#039;&#039;;
+}
+
+//applica le varie trasformazioni presenti nel dsl ai vari campi dei documents nell&#039;array di documents
+var applyTrasformations = function(type, documentsArray, dslArray) {
+
+	for(var i=0; i&lt;dslArray.length; i++)
+	{
+		if(dslArray[i].transformation != null)
+		{
+			var fieldName = dslArray[i].name;
+			var file = require(&#039;../../DSL/collectionData/transformation_&#039; + type + &#039;_&#039; + fieldName + &#039;.js&#039;);
+			var transformation = file.transformation;
+			for(var j=0; j&lt;documentsArray.length; j++)
+			{
+				var document = documentsArray[j];
+				for(var attributename in document)
+				{
+					if(attributename == fieldName)
+					{
+						document[attributename] = transformation(document[attributename]);
+					}
+				}
+			}
+		}	
+	}
+	return documentsArray;
+}
+
+var sortDocumentsByLabels = function(documents, keys) {
+	var result = [];
+	for(var i=0; i&lt;documents.length; i++)
+	{
+		var sortedDocument = {};
+		for(var j=0; j&lt;keys.length; j++)
+		{
+			sortedDocument[keys[j]] = documents[i][keys[j]];
+		}
+		result.push(sortedDocument);
+	}	
+	return result;
+}
+
+exports.getCollectionIndex = function(collection_name, column, order, page, callback) {
+
+	var model = getModel(collection_name);
+	try{
+		//provo a vedere se la collection e&#039; presente
+		var collection = require(&#039;../../DSL/collectionData/&#039; + collection_name + &#039;.json&#039;).collection;
+	
+		var columns = collection.index.column;
+		
+		var labels = [];
+		var select = {};
+		var populate = [];
+			
+		if(columns != undefined)
+		{
+			var keys = [];
+			//generazione array di labels
+			for(var i=0; i&lt;columns.length; i++){
+				if(columns[i].label != null)
+				{
+					labels[i] = columns[i].label;
+				}else{
+					labels[i] = columns[i].name;
+				}
+				keys[i] = columns[i].name;
+			}
+			keys.push(&#039;_id&#039;);
+		
+			for(var i=0; i&lt;columns.length; i++){
+				var name = columns[i].name.split(&#039;.&#039;);
+				if(name.length &gt; 1){
+					var data = {};
+					data.field = name[1];
+					data.key = name[0];
+					populate.push(data);
+				}else{
+					if(name[0] == &#039;_id&#039;)
+					{
+						//se il campo _id e&#039; in lista per essere visualizzato
+						//aggiorno l&#039;etichetta
+						labels[i] = &#039;__IDLABEL2SHOW__&#039; + labels[i];
+					}
+				}				
+				select[name[0]] = 1; 
+			}//for
+				
+		}
+		
+		//se la colonna non e&#039; specificata uso le impostazioni del DSL, altrimenti uso le impostazioni
+		//derivate dalla richiesta del client
+		if(column == undefined)
+		{
+			var sortby = collection.index.sortby;
+			order = collection.index.order;
+		}else{
+			var sortby = column;
+		}
+		
+		var perpage = collection.index.perpage;
+		var start = perpage * page;
+		var query;
+		if(collection.index.query == null)
+			query = {};
+		else
+			query = collection.index.query;
+			
+		//la prima query usa start=0 e perpage=&#039;&#039; per raccogliere tutti i documenti
+		//e calcolare il numero di pagine massimo da inviare al client
+		
+		getDocuments(model,
+					query, 				//where
+					select,				//select 
+					sortby, 			//colonna da ordinare
+					order,				//tipo ordinamento
+					0,					//partenza
+					&#039;&#039;,					//elementi per pagina
+					populate,			//populate
+					function(documents){
+						var result = {};
+						result.options = {};
+						result.options.pages = Math.floor(documents.length / perpage);
+						if((documents.length % perpage) &gt; 0) result.options.pages++;
+												
+						//TODO ottimizzare questa parte per evitare la doppia query al DB ;)
+						
+						//questa seconda query bruttissima restringe i dati ai soli richiesti dal client
+						//in base al numero di pagina richiesto
+						getDocuments(model,
+									query, 				//where
+									select,				//select 
+									sortby, 			//colonna da ordinare
+									order,				//tipo ordinamento
+									start,				//partenza
+									perpage,			//elementi per pagina
+									populate,			//populate
+									function(documents){
+						
+										if(columns != undefined)
+										{
+											//qui columns del dsl e&#039; definita
+											result.labels = labels;	
+											documents = sortDocumentsByLabels(documents, keys);
+											result.documents = applyTrasformations(&#039;index&#039;, documents, columns);
+										}else{	
+											//nel caso la column non sia definita
+											result.labels = [];
+											if(documents.length &gt; 0)
+											{
+												for(var key in documents[0])
+												{
+													result.labels.push(key);
+												}
+											}
+											result.documents = documents;	//documents senza trasformazioni
+										}
+										callback(result);
+						});
+					});
+	}catch(err){
+		//se la collection non e&#039; presente, rispondo con la lista vuota
+		console.log(&#039;err: &#039; + err);
+		callback({});
+	}
+}
+
+exports.getDocumentShow = function(collection_name, document_id, callback) {
+
+	try{
+		var model = getModel(collection_name);
+		var collection = require(&#039;../../DSL/collectionData/&#039; + collection_name + &#039;.json&#039;).collection;
+		var rows = collection.show.row;
+		
+		//generazione array di labels
+		var labels = [];
+		var select = {};
+		var populate = [];
+		
+		if(rows != undefined)
+		{
+			var keys = [];
+			for(var i=0; i&lt;rows.length; i++){
+				if(rows[i].label != null)
+				{
+					labels[i] = rows[i].label;
+				}else{
+					labels[i] = rows[i].name;
+				}
+				keys[i] = rows[i].name;
+			}
+			keys.push(&#039;_id&#039;);
+			
+			for(var i=0; i&lt;rows.length; i++){
+				var name = rows[i].name.split(&#039;.&#039;);
+				if(name.length &gt; 1){
+					var data = {};
+					data.field = name[1];
+					data.key = name[0];
+					populate.push(data);
+				}else{
+					if(name[0] == &#039;_id&#039;)
+					{
+						//se il campo _id e&#039; in lista per essere visualizzato
+						//aggiorno l&#039;etichetta
+						labels[i] = &#039;__IDLABEL2SHOW__&#039; + labels[i];
+					}
+				}	
+				select[name[0]] = 1; 
+			}//for
+			
+		}
+		
+		var query = {};
+		query._id = document_id;
+		
+		getDocuments(model,
+					query, 				//where
+					select,				//select 
+					&#039;&#039;, 				//colonna da ordinare
+					&#039;&#039;,					//tipo ordinamento
+					0,					//partenza
+					&#039;&#039;,					//elementi per pagina
+					populate,			//populate
+					function(documents){
+						var result = {};
+						if(rows != undefined)
+						{
+							result.labels = labels;	
+							documents = sortDocumentsByLabels(documents, keys);
+							documents = applyTrasformations(&#039;show&#039;, documents, rows);
+						}else{	
+							//nel caso la row non sia definita
+							result.labels = [];
+							for(var key in documents[0])
+							{
+								result.labels.push(key);
+							}
+						}
+						result.rows = documents[0];
+						callback(result);
+					});
+	}catch(err){
+		//se il document non e&#039; presente, rispondo con la lista vuota
+		console.log(&#039;err: &#039; + err);
+		callback({});
+	}
+}
+
+exports.getDocumentShowEdit = function(collection_name, document_id, callback) {
+
+	try{
+		var model = getModel(collection_name);
+		var collection = require(&#039;../../DSL/collectionData/&#039; + collection_name + &#039;.json&#039;).collection;
+		var rows = collection.show.row;
+		
+		if(rows != undefined)
+		{
+			//generazione array di labels
+			var labels = [];
+			var keys = [];
+			for(var i=0; i&lt;rows.length; i++){
+				var composedName = rows[i].name.split(&#039;.&#039;);
+				if(composedName.length &gt; 1)
+				{
+					//questo e&#039; un campo composto, lo aggiungo solo una volta
+					if(keys.indexOf(composedName[0]) == -1)
+					{
+						keys.push(composedName[0]);
+						labels.push(composedName[0]);
+					}
+				}else{
+					if(rows[i].label != null)
+					{
+						var name = rows[i].label;
+					}else{
+						var name = rows[i].name;
+					}
+					if(composedName[0] == &#039;_id&#039;)
+					{
+						//se il campo _id e&#039; in lista per essere visualizzato
+						//aggiorno l&#039;etichetta
+						name = &#039;__IDLABEL2SHOW__&#039; + name;
+					}
+					labels.push(name);				
+					keys.push(rows[i].name);
+				}
+			}
+			keys.push(&#039;_id&#039;);
+				
+			var select = {};
+			var populate = [];
+			for(var i=0; i&lt;rows.length; i++){
+				var name = rows[i].name.split(&#039;.&#039;);
+				if(name.length &gt; 1){
+					var data = {};
+					data.field = name[1];
+					data.key = name[0];
+					populate.push(data);
+				}
+				select[name[0]] = 1; 
+			}//for
+		}
+		
+		var query = {};
+		query._id = document_id;
+		
+		getDocuments(model,
+					query, 				//where
+					select,				//select 
+					&#039;&#039;, 				//colonna da ordinare
+					&#039;&#039;,					//tipo ordinamento
+					0,					//partenza
+					&#039;&#039;,					//elementi per pagina
+					&#039;&#039;,					//populate
+					function(documents){
+						var result = {}
+						if(rows != undefined)
+						{
+							result.labels = labels;	
+							documents = sortDocumentsByLabels(documents, keys);
+						}else{	
+							//nel caso la row non sia definita
+							result.labels = [];
+							for(var key in documents[0])
+							{
+								result.labels.push(key);
+							}
+						}
+						result.rows = documents[0];
+						callback(result);
+					});
+	}catch(err){
+		//se il document non e&#039; presente, rispondo con la lista vuota
+		console.log(&#039;err: &#039; + err);
+		callback({});
+	}
+}
+
+exports.updateDocument = function(collection_name, document_id, newDocumentData, callback) {
+	var model = getModel(collection_name);
+	
+	var criteria = {};
+	criteria._id = document_id;
+		
+	var options = {};
+	
+	var query = model.update(criteria, {$set: newDocumentData}, options);
+	query.lean().exec( function(err, count){
+		if(err){console.log(&#039;document update fallito: &#039; + err); return;}
+		if(count==0){
+			//console.log(&#039;nessun risultato&#039;); 
+			callback(false);
+		}else{
+			//update avvenuto con successo
+			callback(true);
+		}
+	});
+}
+
+exports.removeDocument = function(collection_name, document_id, callback) {
+	var criteria = {};
+	criteria._id = document_id;
+	
+	var model = getModel(collection_name);
+	
+	var query = model.remove(criteria);
+	query.lean().exec( function(err, count){
+		if(err){console.log(&#039;rimozione document fallita: &#039; + err); return;}
+		if(count == 0) {
+			//console.log(&#039;niente da eliminare&#039;); 
+			callback(false);
+		}else{
+			//rimozione avvenuta con successo
+			callback(true);			
+		}
+	});
+}</textarea>
+  </div>
+</div>
+
+<footer class="footer">
+  <div class="container">
+    <p>.</p>
+  </div>
+</footer>
+
+<script type="text/html" id="complexity-popover-template">
+  <div class="complexity-notice">
+    Complexity : {{ complexity.cyclomatic }} <br>
+    Length : {{ complexity.halstead.length }} <br>
+    Difficulty : {{ complexity.halstead.difficulty.toFixed(2) }} <br>
+    Est # bugs : {{ complexity.halstead.bugs.toFixed(2) }}<br>
+  </div>
+</script>
+
+<script type="text/javascript" src="../../assets/scripts/bundles/core-bundle.js"></script>
+<script type="text/javascript" src="../../assets/scripts/bundles/codemirror.js"></script>
+<script type="text/javascript" src="../../assets/scripts/codemirror.markpopovertext.js"></script>
+<script type="text/javascript" src="report.js"></script>
+<script type="text/javascript" src="report.history.js"></script>
+<script type="text/javascript" src="../../assets/scripts/plato-file.js"></script>
+</body>
+</html>
