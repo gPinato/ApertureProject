@@ -1,0 +1,1 @@
+var index = require("../maap_server/index.js");var chai = require('chai');var should = chai.should();var assert = chai.assert;var expect = chai.expect;describe("maap_server", function() {    it("index js deve avere start definito", function() {		assert(index.start != undefined);    });});
