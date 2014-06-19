@@ -84,7 +84,9 @@ Diario delle modifiche
 \newpage
 \section{Introduzione}
 \subsection{Scopo del documento}
-Il seguente documento ha lo scopo di definire nel dettaglio la struttura del sistema \gloss{MaaP}, approfondendo quanto già riportato nella Specifica Tecnica. Tale documento fornisce una struttura dettagliata e completa che viene utilizzata dai \emph{Programmatori} per le attività di codifica.
+Il seguente documento ha lo scopo di definire nel dettaglio la struttura del sistema \gloss{MaaP}, approfondendo quanto già riportato 
+nella Specifica Tecnica. Tale documento fornisce una struttura dettagliata e completa che viene utilizzata dai \emph{Programmatori} per le 
+attività di codifica.
 
 \subsection{Scopo del prodotto}
 \Prodotto{}
@@ -317,7 +319,7 @@ userProfile & Pagina per la visualizzazione del profilo utente (user) / di un ut
   \item CollectionDataService;
  \end{itemize}
  
- \item[Attributi]\hfill \\
+ \item[Attributi] \hfill \\
  \begin{itemize}
  \item \$scope.current\textunderscore sorted \textunderscore column;
  \item \$scope.column \textunderscore original \textunderscore name;
@@ -341,7 +343,8 @@ userProfile & Pagina per la visualizzazione del profilo utente (user) / di un ut
   che mostra l'errore 404.
   
   \item[\$scope.numerify(num)] \hfill \\
-  Funzione ausiliaria che crea un array di dimensione   {num} che verrà poi usato dalla directive   {ng-repeat} di angular per la creazione del numero di 
+  Funzione ausiliaria che crea un array di dimensione   {num} che verrà poi usato dalla directive   {ng-repeat} di angular per la creazione 
+  del numero di 
   pagine disponibili.
   
   \item[\$scope.previousPage()] \hfill \\
@@ -421,7 +424,7 @@ Fornisce un immediato elenco delle collection disponibili.
   
  \end{itemize}
  
- \item[Attributi]\hfill \\
+ \item[Attributi] \hfill \\
  \begin{itemize}
  \item  \$scope.current\textunderscore collection;
  \item  \$scope.current\textunderscore document;
@@ -455,7 +458,7 @@ Fornisce un immediato elenco delle collection disponibili.
   
  \end{itemize}
  
- \item[Attributi]\hfill \\
+ \item[Attributi] \hfill \\
  \begin{itemize}
  \item  \$scope.current\textunderscore collection;
     \item  \$scope.current\textunderscore document;
@@ -470,7 +473,8 @@ Fornisce un immediato elenco delle collection disponibili.
   L'oggetto ritornato dal server viene poi ricopiato in array per mantenere l'ordinamento e semplificare la gestione.
   \item[edit\textunderscore document()] \hfill \\
   Funzione che invia al server il documento modificato nel client.
-  Assembla un JSON a partire da original\textunderscore keys e original\textunderscore data. Quest'ultima variabile nel frattempo è stata modificata con i nuovi valori del documento.
+  Assembla un JSON a partire da original\textunderscore keys e original\textunderscore data. Quest'ultima variabile nel frattempo è stata 
+  modificata con i nuovi valori del documento.
   \item[delete\textunderscore document()] \hfill \\
   Funzione che cancella dal server il documento attualmente visualizzato.
  \end{description}
@@ -493,7 +497,7 @@ Fornisce un immediato elenco delle collection disponibili.
   \item IndexService;
  \end{itemize}
  
- \item[Attributi]\hfill \\
+ \item[Attributi] \hfill \\
  \begin{itemize}
  \item \$scope.rows;
  \end{itemize}
@@ -512,7 +516,8 @@ Fornisce un immediato elenco delle collection disponibili.
   che mostra l'errore 404.
   
   \item[\$scope.numerify(num)] \hfill \\
-   Funzione ausiliaria che crea un array di dimensione   {num} che verrà poi usato dalla directive ng-repeat di angular per la creazione del numero di pagine  disponibili.
+   Funzione ausiliaria che crea un array di dimensione   {num} che verrà poi usato dalla directive ng-repeat di angular per la creazione del 
+   numero di pagine  disponibili.
   
   \item[\$scope.previousPage()] \hfill \\
   Aggiunge allo \$scope la funzionalità di passaggio alla pagina di visualizzazione precedente alla corrente.
@@ -567,7 +572,7 @@ Fornisce un immediato elenco delle collection disponibili.
   
  \end{itemize}
  
- \item[Attributi]\hfill \\
+ \item[Attributi] \hfill \\
  \begin{itemize}
  \item  \$scope.isAdmin;
  \item \$scope.signup\textunderscore enabled;
@@ -602,7 +607,7 @@ Fornisce un immediato elenco delle collection disponibili.
   
  \end{itemize}
  
- \item[Attributi]\hfill \\
+ \item[Attributi] \hfill \\
  \begin{itemize}
  \item  \$scope.credentials;
 
@@ -638,7 +643,7 @@ Fornisce un immediato elenco delle collection disponibili.
   
  \end{itemize}
  
- \item[Attributi]\hfill \\
+ \item[Attributi] \hfill \\
  \begin{itemize}
  \item \$scope.original\textunderscore data;
  \item \$scope.original\textunderscore keys;
@@ -674,7 +679,7 @@ Fornisce un immediato elenco delle collection disponibili.
   
  \end{itemize}
  
- \item[Attributi]\hfill \\
+ \item[Attributi] \hfill \\
  \begin{itemize}
  \item  \$scope.oldPassword;
  \item  \$scope.newPassword1;
@@ -693,7 +698,8 @@ Fornisce un immediato elenco delle collection disponibili.
   che mostra l'errore 404. 
   \item[edit\textunderscore document()] \hfill \\
   Funzione che invia al server il profilo modificato nel client.
-  Assembla un JSON a partire da original\textunderscore keys e original\textunderscore data. Quest'ultima variabile nel frattempo è stata modificata con i nuovi valori del documento.
+  Assembla un JSON a partire da original\textunderscore keys e original\textunderscore data. Quest'ultima variabile nel frattempo è stata 
+  modificata con i nuovi valori del documento.
   \item[delete\textunderscore document()] \hfill \\
   Funzione che cancella dal server il profilo attualmente visualizzato.
  \end{description}
@@ -717,7 +723,7 @@ Fornisce un immediato elenco delle collection disponibili.
   \item IndexService;
  \end{itemize}
  
- \item[Attributi]\hfill \\
+ \item[Attributi] \hfill \\
  \begin{itemize}
  \item \$scope.current\textunderscore sorted\textunderscore column;
  \item \$scope.column\textunderscore original\textunderscore name;
@@ -744,7 +750,8 @@ Fornisce un immediato elenco delle collection disponibili.
   Funzione ausiliaria che crea un indice a partire da una delle query presenti nella collection delle query.
   
   \item[\$scope.numerify(num)] \hfill \\
-  Funzione ausiliaria che crea un array di dimensione num che verrà poi usato dalla directive   ng-repeat di angular per la creazione del numero di pagine  disponibili.
+  Funzione ausiliaria che crea un array di dimensione num che verrà poi usato dalla directive   ng-repeat di angular per la creazione del 
+  numero di pagine  disponibili.
   
   \item[\$scope.previousPage()] \hfill \\
   Aggiunge allo \$scope la funzionalità di passaggio alla pagina di visualizzazione precedente alla corrente.
@@ -797,7 +804,7 @@ Fornisce un immediato elenco delle collection disponibili.
   
  \end{itemize}
  
- \item[Attributi]\hfill \\
+ \item[Attributi] \hfill \\
  \begin{itemize}
  \item  \$scope.credentials;
  \end{itemize}
@@ -805,7 +812,8 @@ Fornisce un immediato elenco delle collection disponibili.
  \item[Funzionalità esportate] \hfill \\
  \begin{description}
   \item[ signupForm()] \hfill \\
-  Nel caso in cui il form di registrazione sia compilato con dati validi, richiama la richiesta RESTful \textit{query} sulla \$resource fornita da RegisterService.
+  Nel caso in cui il form di registrazione sia compilato con dati validi, richiama la richiesta RESTful \textit{query} sulla \$resource 
+  fornita da RegisterService.
   Con questa funzione viene creato un nuovo utente sul server in base ai dati inseriti.
  
   
@@ -832,7 +840,7 @@ Fornisce un immediato elenco delle collection disponibili.
   \item UserEditService;
  \end{itemize}
  
- \item[Attributi]\hfill \\
+ \item[Attributi] \hfill \\
  \begin{itemize}
  \item \$scope.current\textunderscore sorted\textunderscore column;
  \item \$scope.column\textunderscore original\textunderscore name;
@@ -856,7 +864,8 @@ Fornisce un immediato elenco delle collection disponibili.
   che mostra l'errore 404.
   
   \item[\$scope.numerify(num)] \hfill \\
-  Funzione ausiliaria che crea un array di dimensione   {num} che verrà poi usato dalla directive   {ng-repeat} di angular per la creazione del numero di pagine  disponibili.
+  Funzione ausiliaria che crea un array di dimensione   {num} che verrà poi usato dalla directive   {ng-repeat} di angular per la creazione 
+  del numero di pagine  disponibili.
   
   \item[\$scope.previousPage()] \hfill \\
   Aggiunge allo \$scope la funzionalità di passaggio alla pagina di visualizzazione precedente alla corrente.
@@ -911,7 +920,7 @@ Fornisce un immediato elenco delle collection disponibili.
   
  \end{itemize}
  
- \item[Attributi]\hfill \\
+ \item[Attributi] \hfill \\
  \begin{itemize}
   \item \$scope.current\textunderscore document;
   \item  \$scope.values;
@@ -952,7 +961,7 @@ Fornisce un immediato elenco delle collection disponibili.
   
  \end{itemize}
  
- \item[Attributi]\hfill \\
+ \item[Attributi] \hfill \\
  \begin{itemize}
     \item  \$scope.current\textunderscore document;
     \item  \$scope.original\textunderscore data;
@@ -969,7 +978,8 @@ Fornisce un immediato elenco delle collection disponibili.
   che mostra l'errore 404.
   \item[edit\textunderscore document()] \hfill \\
   Funzione che invia al server il documento modificato nel client.
-  Assembla un JSON a partire da original\textunderscore keys e original\textunderscore data. Quest'ultima variabile nel frattempo è stata modificata con i nuovi valori del documento.
+  Assembla un JSON a partire da original\textunderscore keys e original\textunderscore data. Quest'ultima variabile nel frattempo è stata 
+  modificata con i nuovi valori del documento.
   \item[delete\textunderscore document()] \hfill \\
  Funzione che elimina il profilo identificato dall'indice \emph{index}. Effettua una richiesta REST di rimozione alla risorsa
   pubblicizzata da UserEditService fornendo come argomenti l'identificativo della Collection correntemente visualizzata e l'indice
@@ -992,11 +1002,18 @@ No non esiste
 \paragraph{@AuthService}
 \begin{description}
  \item[Descrizione] \hfill \\
- 
+ Modulo che espone un oggetto \$resource legato all'autenticazaione utente.
  \item[Utilizzo] \hfill \\
-  
+ Viene utilizzato per astrarre il processo di verifica delle credenziali eseguito dal server. Questo modulo esegue una richiesta alle
+ API del server per stabilire se le credenziali inserite dall'utente sono valide all'autenticazione. Il modulo ritorna una \$resource
+ per rendere più semplice ed immediato il dialogo tra il Client e il sistema di autenticazione. \\
+ La \$resource esportata da questo modulo viene utilizzata nel LoginCtrl per verificare le credenziali inserite lato Client.
  \item[Funzionalità esportate] \hfill \\
- 
+ \emph{Dipendenze iniettate:}
+ \begin{itemize}
+  \item \$resource.
+ \end{itemize}
+ L'istruzione di ritorno crea una nuova \$resource che espone il metodo \textit{login} che verrà invocato dal LoginCtrl.
 \end{description}
 
 \paragraph{@CollectionDataService}
@@ -1005,7 +1022,9 @@ No non esiste
  Modulo che espone un oggetto \$resource legato ad una particolare Collection. 
  
  \item[Utilizzo] \hfill \\
- Viene utilizzato come astrazione della risorsa Collection, su cui il CollectionController invocherà delle richieste  RESTful aggiungendo i parametri necessari. La risorsa fornita conterr\'{a} i Document ad essa correlati e quest'ultimi verranno visualizzati in base alle opzioni della richiesta RESTful.
+ Viene utilizzato come astrazione della risorsa Collection, su cui il CollectionController invocherà delle richieste RESTful aggiungendo 
+ i parametri necessari. La risorsa fornita conterr\'{a} i Document ad essa correlati e quest'ultimi verranno visualizzati in base alle 
+ opzioni della richiesta RESTful.
  
  \item[Funzionalità esportate] \hfill \\
  %qui ci andrebbe tipo uno screenshot del codice, devo ancora capire come esporre le informazioni del sorgente
@@ -1013,7 +1032,8 @@ No non esiste
  \begin{itemize}
   \item \$resource.
  \end{itemize}
- L'istruzione di ritorno crea una nuova \$resource che modella il comportamento della Collection che verrà individuata tramite l'attributo \emph{col\_id}.
+ L'istruzione di ritorno crea una nuova \$resource che modella il comportamento della Collection che verrà individuata tramite l'attributo 
+ \emph{col\_id}.
 \end{description}
 
 \paragraph{@CollectionListService}
@@ -1040,7 +1060,8 @@ No non esiste
  Modulo che espone un oggetto \$resource legato ad un particolare Document.
  
  \item[Utilizzo] \hfill \\
- Questo servizio ritorna un oggetto \$resource legato ad un particolare Document, che verrà  utilizzato dal DocumentController tramite richieste RESTful per visualizzarne gli attributi.
+ Questo servizio ritorna un oggetto \$resource legato ad un particolare Document, che verrà  utilizzato dal DocumentController tramite 
+ richieste RESTful per visualizzarne gli attributi.
  
  \item[Funzionalità esportate] \hfill \\
  \emph{Dipendenze iniettate:}
@@ -1058,7 +1079,8 @@ No non esiste
  Modulo che espone un oggetto \$resource legato ad un particolare Document modificabile.
  
  \item[Utilizzo] \hfill \\
- Questo servizio ritorna un oggetto \$resource legato ad un particolare Document, che verrà  utilizzato dal DocumentEditController tramite richieste RESTful, sia per visualizzarne  le informazioni, sia per modificarne le proprietà.
+ Questo servizio ritorna un oggetto \$resource legato ad un particolare Document, che verrà  utilizzato dal DocumentEditController tramite 
+ richieste RESTful, sia per visualizzarne  le informazioni, sia per modificarne le proprietà.
  
  \item[Funzionalità esportate] \hfill \\
  \emph{Dipendendenze iniettate:}
@@ -1074,51 +1096,86 @@ No non esiste
 \paragraph{@IndexService}
 \begin{description}
  \item[Descrizione] \hfill \\
- 
+ Modulo che pubblicizza una \$resource legata ad un indice.
  \item[Utilizzo] \hfill \\
-  
+ Questo servizio ritorna una \$resource legata ad un indice fornito dal server, per essere utilizzata dall'IndexCtrl per gestire i vari 
+ indici visualizzati nel Client. Il presente modulo viene inoltre iniettato nel QueryCtrl per creare un nuovo indice a partire da una 
+ query data. Questa risorsa esportata è dotata di tre metodi di accesso e modifica dei dati dell'indice, ovvero
+ \textit{query}, \textit{insert} e \textit{remove}.
  \item[Funzionalità esportate] \hfill \\
- 
+ \emph{Dipendendenze iniettate:}
+ \begin{itemize}
+  \item \$resource.
+ \end{itemize}
+ La \$resource esportata fornisce all'IndexCtrl del Client una modo diretto per interagire con un indice fornito dal server. Questa 
+ risorsa dispone di un metodo \textit{query} per eseguire una GET RESTful per ottenere una lista degli indici presenti sul Server.
+ Il metodo \textit{insert} crea un nuovo indice a partire da una delle query più utilizzate. \textit{remove} invece rimuove un indice
+ dalla lista degli indici presenti sul server.
 \end{description}
 
 \paragraph{@LogoutService}
 \begin{description}
  \item[Descrizione] \hfill \\
- 
+ Modulo che fornisce la \$resource legata al servizio di logout di un utente autenticato del Client.
  \item[Utilizzo] \hfill \\
-  
+  Questo servizio fornisce un'astrazione del metodo di logout eseguito dal server. La \$resource esportata dal servizio viene utilizzata
+  nel NavBarCtrl per effettuare il logout di un autente autenticato, tramite il metodo pubblicizzato \textit{logout}. 
  \item[Funzionalità esportate] \hfill \\
- 
+ \emph{Dipendendenze iniettate:}
+ \begin{itemize}
+  \item \$resource.
+ \end{itemize}
+ La risorsa ritornata dal modulo astrae la connessione con il server quando si effettua il logout dal sistema. La funzione \textit{logout} 
+ associata alla \$resource ritornata esegue una richiesta RESTful GET al Server per disconnettere l'utente che ha richiesto l'operazione.
 \end{description}
 
 \paragraph{@ProfileDataService}
 \begin{description}
  \item[Descrizione] \hfill \\
- 
+ Il servizio ritorna una \$resource legata ad un particolare profilo utente presente nel Server.
  \item[Utilizzo] \hfill \\
-  
+ La risorsa ritornata da questo modulo viene utilizzata dal ProfileCtrl per dialogare con le informazioni associate ad un singolo utente.
+ Il metodo \textit{query} associato alla risorsa serve per ottenere i dati associati al profilo utente associato.
  \item[Funzionalità esportate] \hfill \\
- 
+ \emph{Dipendendenze iniettate:}
+ \begin{itemize}
+  \item \$resource.
+ \end{itemize}
+ La funzione \textit{query} esegue una richiesta GET RESTful al server per ottenere le informazioni di un utente. Tali informazioni vengono 
+ poi passate al ProfileController per essere fornite in visualizzazione al Client che le ha richieste.
 \end{description}
 
 \paragraph{@ProfileEditService}
 \begin{description}
  \item[Descrizione] \hfill \\
- 
+ Il servizio ritorna una \$resource modificabile legata ad un particolare profilo utente presente nel Server.
  \item[Utilizzo] \hfill \\
-  
+ La risorsa ritornata da questo modulo viene utilizzata dal ProfileEditCtrl per dialogare con le informazioni associate ad un singolo utente.
+ Il modulo espone tre metodi: \textit{query}, \textit{update} e \textit{remove}.
  \item[Funzionalità esportate] \hfill \\
- 
+ \emph{Dipendendenze iniettate:}
+ \begin{itemize}
+  \item \$resource.
+ \end{itemize}
+ La funzione \textit{query} esegue una richiesta GET RESTful al server per ottenere le informazioni di un utente. \textit{update} invia 
+ nuove informazioni al Server che andranno a sovrascrivere quelle già presenti per aggiornarle. Il metodo \textit{remove} invece richiede al 
+ Server di eseguire l'eliminazione di un dato profilo utente. Lato Server viene effettuato un controllo per verificare se l'utente che 
+ ha richiesto l'eliminazione ha le credenziali per eliminare u utente. Nel caso in cui il controllo abbia esito positivo, il profilo
+ viene eliminato dal Server.
 \end{description}
 
 \paragraph{@QueryService}
 \begin{description}
  \item[Descrizione] \hfill \\
- 
+ %questa è strana perché ritorna solo la $resource e non dichiara metodi di dialogo con il server.
+ %però ora devo scappare, riprendo da qui appena possibilie.
  \item[Utilizzo] \hfill \\
   
  \item[Funzionalità esportate] \hfill \\
- 
+ \emph{Dipendendenze iniettate:}
+ \begin{itemize}
+  \item \$resource.
+ \end{itemize}
 \end{description}
 
 \paragraph{@RegisterService}
@@ -1128,7 +1185,10 @@ No non esiste
  \item[Utilizzo] \hfill \\
   
  \item[Funzionalità esportate] \hfill \\
- 
+ \emph{Dipendendenze iniettate:}
+ \begin{itemize}
+  \item \$resource.
+ \end{itemize}
 \end{description}
 
 \paragraph{@UserCollectionService}
@@ -1138,7 +1198,10 @@ No non esiste
  \item[Utilizzo] \hfill \\
   
  \item[Funzionalità esportate] \hfill \\
- 
+ \emph{Dipendendenze iniettate:}
+ \begin{itemize}
+  \item \$resource.
+ \end{itemize}
 \end{description}
 
 \paragraph{@UserDataService}
@@ -1148,7 +1211,10 @@ No non esiste
  \item[Utilizzo] \hfill \\
   
  \item[Funzionalità esportate] \hfill \\
- 
+ \emph{Dipendendenze iniettate:}
+ \begin{itemize}
+  \item \$resource.
+ \end{itemize}
 \end{description}
 
 \paragraph{@UserEditService}
@@ -1158,7 +1224,10 @@ No non esiste
  \item[Utilizzo] \hfill \\
   
  \item[Funzionalità esportate] \hfill \\
- 
+ \emph{Dipendendenze iniettate:}
+ \begin{itemize}
+  \item \$resource.
+ \end{itemize}
 \end{description}
 
 \newpage
