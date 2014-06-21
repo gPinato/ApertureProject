@@ -1151,7 +1151,7 @@ No non esiste
  Il servizio ritorna una \$resource modificabile legata ad un particolare profilo utente presente nel Server.
  \item[Utilizzo] \hfill \\
  La risorsa ritornata da questo modulo viene utilizzata dal ProfileEditCtrl per dialogare con le informazioni associate ad un singolo utente.
- Il modulo espone tre metodi: \textit{query}, \textit{update} e \textit{remove}.
+ Alla risorsa ritornata vengono associati tre metodi: \textit{query}, \textit{update} e \textit{remove}.
  \item[Funzionalità esportate] \hfill \\
  \emph{Dipendendenze iniettate:}
  \begin{itemize}
@@ -1167,36 +1167,45 @@ No non esiste
 \paragraph{@QueryService}
 \begin{description}
  \item[Descrizione] \hfill \\
- %questa è strana perché ritorna solo la $resource e non dichiara metodi di dialogo con il server.
- %però ora devo scappare, riprendo da qui appena possibilie.
+ Modulo che esporta una \$resource legata ad una query effettuabile sul database di analisi.
  \item[Utilizzo] \hfill \\
-  
+ La risorsa ritornata da questo servizio viene utilizzata nel QueryCtrl. Il suddetto controller utilizza la risorsa per richiedere l'esecuzione 
+ di una query al Server inviando come argomenti i dati presenti nello \$scope in quel momento. \\
+ Il modulo associa alla risorsa ritornata le funzioni \textit{query} e \textit{remove}.
  \item[Funzionalità esportate] \hfill \\
  \emph{Dipendendenze iniettate:}
  \begin{itemize}
   \item \$resource.
  \end{itemize}
+ La funzione \textit{query} esegue una richiesta GET REST al Server per richiedere l'esecuzione di una query sui dati del database di analisi. 
+ I parametri su cui effettuare la query sono inviati dal Client sulla base delle condizioni immesse dall'utente e memorizzate nello \$scope.
+ La funzione \textit{remove}, invece, richiede al Server l'eliminazione del Document individuato dall'indice \textit{index} presente nello \$scope. 
 \end{description}
 
 \paragraph{@RegisterService}
 \begin{description}
  \item[Descrizione] \hfill \\
- 
+ Servizio che ritorna una \$resource legata ad un profilo utente intento ad effettuare la registrazione. 
  \item[Utilizzo] \hfill \\
-  
+ La risorsa ritornata da questo servizio viene utilizzata come tramite tra il Client e il Server per gestire la registrazione di un nuovo utente. 
+ La risorsa viene utilizzata dal RegisterCtrl per richiedere la registrazione di un nuovo utente. Viene infatti esposto il metodo \textit{register} 
+ che consente di inviare una richiesta di registrazione al Server con le credenziali inserite nell'apposito form del Client. 
  \item[Funzionalità esportate] \hfill \\
  \emph{Dipendendenze iniettate:}
  \begin{itemize}
   \item \$resource.
  \end{itemize}
+ La funzione \textit{register} esportata con la risorsa esegue una richiesta POST REST al Server inviando con essa le credenziali dell'utente 
+ attualmente presenti nello \$scope.
 \end{description}
 
 \paragraph{@UserCollectionService}
 \begin{description}
  \item[Descrizione] \hfill \\
- 
+ %Servizio che fornisce una \$resource legata alla lista delle Collection degli utenti. 
+ %è davvero così?? ci sono più collection di utenti?
  \item[Utilizzo] \hfill \\
-  
+ 
  \item[Funzionalità esportate] \hfill \\
  \emph{Dipendendenze iniettate:}
  \begin{itemize}
@@ -1207,27 +1216,38 @@ No non esiste
 \paragraph{@UserDataService}
 \begin{description}
  \item[Descrizione] \hfill \\
- 
+ Servizio che fornisce una \$resource legata ad un particolare utente registrato al sistema.
  \item[Utilizzo] \hfill \\
-  
+ Questa risorsa viene utilizzata nello UserCtrl per richiedere al Server le informazioni associate ad un utente. Ogni utente è identificato dalla 
+propria email e questo campo viene passato dal Client per individuare un singolo utente, se presente, nel Server. La risorsa viene esportata 
+con il metodo \textit{query}, per ottenere i dati voluti.
  \item[Funzionalità esportate] \hfill \\
  \emph{Dipendendenze iniettate:}
  \begin{itemize}
   \item \$resource.
  \end{itemize}
+ Il metodo \textit{query} esegue una richiesta GET REST al Server richiedendo le informazioni di un utente specifico, identificato da un indirizzo email 
+ univoco, inviato dal Client come argomento della richiesta.
 \end{description}
 
+
+%momento, perché in questo modulo vedo delle discrepanze: nel Servizio si parla di user_id e nel Controller associato di user_mail. Ora non so 
+%a chi dare retta e devo scappare.
 \paragraph{@UserEditService}
 \begin{description}
  \item[Descrizione] \hfill \\
- 
+ Servizio che fornisce una \$resource legata ad un particolare utente con campi modificabili registrato al sistema.
  \item[Utilizzo] \hfill \\
-  
+  %Questa risorsa viene utilizzata nello UserEditCtrl per richiedere al Server le informazioni associate ad un utente. L'argomento della richiesta al 
+  %Server è, dualmente allo UserDataService, l'indirizzo email dell'utente. Le funzioni esportate con la \$resource sono: \textit{query}, \textit{update} e 
+  \textit{remove}.
  \item[Funzionalità esportate] \hfill \\
  \emph{Dipendendenze iniettate:}
  \begin{itemize}
   \item \$resource.
  \end{itemize}
+  %L'oggetto ritornato da questo servizio lega la \$resource ritornata all'utente di email \emph{}. Inoltre, oltre alla visualizzazione, descrive che le richieste di \emph{update} vengono effettuate
+ %con richieste di \emph{PUT}, mentre le richieste di \emph{remove} useranno il metodo http \emph{DELETE}.
 \end{description}
 
 \newpage
