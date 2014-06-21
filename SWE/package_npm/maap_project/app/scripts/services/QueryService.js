@@ -17,7 +17,10 @@
 
 angular.module('services')
     .factory('QueryService', ['$resource', function ($resource) {
-        return $resource('http://localhost:9000/api/queries/list');
+        return $resource('http://localhost:9000/api/queries/list', {}, {
+			'query': {method: 'GET'},
+			'remove': {method: 'DELETE'}
+			});
 
     }]);
 
