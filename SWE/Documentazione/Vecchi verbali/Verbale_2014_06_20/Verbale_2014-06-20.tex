@@ -52,7 +52,7 @@ Diario delle modifiche
 \midrule
 1.2.0 & 2014-XX-XX & XXXX XXXXX (XX) & Approvazione documento \\	%cambiare qui
 \midrule
-1.1.0 & 2014-XX-XX & XXXX XXXXX (XX) & Verifica documento \\		%e qui
+1.1.0 & 2014-06-22 & Giacomo Pinato (VE) & Verifica documento \\		%e qui
 \midrule
 1.0.1 & 2014-06-20 & Mattia Sorgato (PR) & Stesura documento \\
 
@@ -85,7 +85,6 @@ Diario delle modifiche
 \begin{itemize}
 \item Maso Michele;
 \item Miotto Fabio;
-\item Garbui Alberto;
 \item Sorgato Mattia;
 \item Perin Andrea;
 \item Pinato Giacomo;
@@ -95,39 +94,37 @@ Diario delle modifiche
 \item Ertola Milo;
 \item Maccagnan Alessandro;
 \end{itemize}
-\item \grassetto{Motivazioni riunione}: aggiornamenti successivi alla milestone di giugno.
+\item \grassetto{Punti all'ordine del giorno}: Controllo dell'avanzamento dei lavori e suggerimenti del proponente.
 \end{itemize}
 
 \newpage
-\section{Conseguenze dell'incontro}
+\section{Resoconto e delibere}
 \label{2}
 
 \subsection{Cambiamento della modalità di modifica dei dati di un Document}
 Il Proponente Alessandro Maccagnan, dopo aver provato il framework MaaP realizzato dal gruppo SteakHolders, 
 ha consigliato di cambiare la modalità di modifica dei Document.
-Da lato utente sviluppatore, ci ha fatto notare che è molto più immediato poter modificare un intero documento 
-JSON e tutti i suoi campi, piuttosto che modificare i campi di una form. 
-L'utente sviluppatore ha quindi piena responsabilità delle modifiche che virtualmente può apportare ai vari Document, 
-ma d'altro canto l'accesso e la modifica degli attributi del Document sono molto più rapidi e diretti.
+Da lato utente sviluppatore, ci ha fatto notare che è molto più semplice ed immediato permettere di modificare un intero documento 
+JSON e tutti i suoi campi, piuttosto che gestire le modifiche attraverso i campi di un form. 
+La responsabilità di effettuare modifiche coerenti viene quindi lasciata interamente all'utente finale, che contemporaneamente beneficia di un grado di libertà molto maggiore.
 Questo fatto porta una modifica parziale del Template di modifica di un Document, il quale ora dovrà visualizzare una singola
 area di testo invece che più celle. Inoltre verrà modificato anche il DocumentEditCtrl che dovrà fornire un parser per stabilire 
-se il JSON modificato sia ancora un JSON valido.
+se il JSON sia ancora valido dopo le modifiche.
 
 \subsection{Creazione Indici da riga di comando}
-%Qui dovete darmi una mano perché non ho capito bene cosa ha detto. Parlava di togliere il bottone della creazione indici
-%e di creare l'indice da riga di comando?
+Il proponente ha suggerito di introdurre la possibilità di mostrare all'utente la query associata al pulsante di creazione di un indice, in modo tale da poterla inserire manualmente sul server ed ottenere il medesimo effetto.
 
 \subsection{Cambiamento visualizzazione degli Array}
-Gli Array contenuti nei Document sono più efficacemente visualizzati dall'utente se l'Array stesso viene visualizzato verticalmente,
+Gli array contenuti nei Document sono più efficacemente visualizzati dall'utente se vengono visualizzati verticalmente
 anziché orizzontalmente.
 
 \subsection{La barra di ricerca delle Collection}
-La barra di ricerca nella pagina di visualizzazione delle Collection deve solamente ricercare le Collection con il nome ricercato.
+La barra di ricerca nella pagina di visualizzazione delle Collection deve ricercare le Collection il cui nome contiene la stringa ricercata.
 Opzionalmente, la ricerca deve ricercare anche nel primo livello dei Document contenuti nelle varie Collection. 
 
 \subsection{Prestare attenzione alla gestione di Document con etichette differenti}
-Ci è stato fatto notare di prestare attenzione al caso in cui ci siano dei Document nella stessa Collection con delle etichette 
-differenti. Questo è un caso particolare, ma la sua analisi contribuisce a rendere più stabile il framework.
+\'{E} stato suggerito al gruppo di prestare attenzione al caso in cui ci siano dei Document nella stessa Collection con delle etichette 
+differenti o mancanti. Questo è un caso particolare, ma la sua analisi contribuisce a rendere più stabile il framework.
 
 %FINE DOCUMENTO NON CANCELLARE
 \end{document}
