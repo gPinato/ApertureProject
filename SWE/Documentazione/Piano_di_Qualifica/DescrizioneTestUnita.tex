@@ -2,10 +2,11 @@
 Sono qui riportate le tabelle per i testi di unit\'{a}  riguardanti il client.
 Le funzionalit\'{a} dettagliate sono descritte nella Definizione di Prodotto 4.2.0.
 \begin{center}
-\begin{longtable}{|p{2cm}|p{7cm}|p{2cm}|}
+\begin{longtable}{|p{2cm}|p{7cm}|p{7cm}|p{2cm}|}
 \toprule
 \multicolumn{1}{|p{2cm}}{\textbf{Test}}
 & \multicolumn{1}{|p{7cm}}{\textbf{Descrizione}}
+& \multicolumn{1}{|p{7cm}}{\textbf{Funzioni testate}}
 & \multicolumn{1}{|p{2cm}|}{\textbf{Stato}}\\
 \midrule
 \endfirsthead
@@ -13,6 +14,7 @@ Le funzionalit\'{a} dettagliate sono descritte nella Definizione di Prodotto 4.2
 \toprule
 \multicolumn{1}{|p{2cm}}{\textbf{Test}}
 & \multicolumn{1}{|p{7cm}}{\textbf{Descrizione}}
+& \multicolumn{1}{|p{7cm}}{\textbf{Funzioni testate}}
 & \multicolumn{1}{|p{2cm}|}{\textbf{Stato}}\\
 \midrule
 \endhead
@@ -26,30 +28,55 @@ Le funzionalit\'{a} dettagliate sono descritte nella Definizione di Prodotto 4.2
 \midrule
 TU1
 & Vengono verificate tutte le funzionalità rese disponibili dal Collection Controller.
+& init()\\
+& getData()\\
+& numerify(num)\\
+& previousPage()\\
+& nextPage()\\
+& toPage(index)\\
+& changeSort()\\
+& columnSort(index)\\
+& delete\_ document(index)\\
 & D.E.\\
 
 
 \midrule
 TU2
 & Vengono verificate tutte le funzionalità rese disponibili dal Dashoboard Controller.
+& CollectionListService.get
 & D.E.\\
 
 
 \midrule
 TU3
 & Vengono verificate tutte le funzionalità rese disponibili dal Document Controller.
+& DocumentDataService.query\\
+& delete\_ document(index)\\
+
 & D.E.\\
 
 
 \midrule
 TU4
 & Vengono verificate tutte le funzionalità rese disponibili dal DocumentEdit Controller.
+& DocumentEditService.query\\
+& edit\_ document(index)\\
+& delete\_ document(index)\\
 & D.E.\\
 
 
 \midrule
 TU5
 & Vengono verificate tutte le funzionalità rese disponibili dal Index Controller.
+& init()\\
+& getData()\\
+& numerify(num)\\
+& previousPage()\\
+& nextPage()\\
+& toPage(index)\\
+& changeSort()\\
+& columnSort(index)\\
+& delete\_ document(index)\\
 & D.E.\\
 
 
@@ -57,51 +84,85 @@ TU5
 \midrule
 TU6
 & Vengono verificate tutte le funzionalità rese disponibili dal Login Controller.
+& AuthService.login\\
 & D.E.\\
 
 
 \midrule
 TU7
 & Vengono verificate tutte le funzionalità rese disponibili dal NavBar Controller.
+& CollectionListService.get\\
+& logout()\\
 & D.E.\\
 
 
 \midrule
 TU8
 & Vengono verificate tutte le funzionalità rese disponibili dal Profile Controller.
+& ProfileDataService.query\\
+& delete\_ document(index)\\
 & D.E.\\
 
 \midrule
 TU9
 & Vengono verificate tutte le funzionalità rese disponibili dal ProfileEdit Controller.
+& ProfileEditService.query\\
+& edit\_ document(index)\\
+& delete\_ document(index)\\
 & D.E.\\
 
 
 \midrule
 TU10
 & Vengono verificate tutte le funzionalità rese disponibili dal Query Controller.
+& QueryService.query\\
+& createIndex(id)\\
+& numerify(num)\\
+& previousPage()\\
+& nextPage()\\
+& toPage(index)\\
+& changeSort()\\
+& columnSort(index)\\
+& delete\_ document(index)\\
 & D.E.\\
 
 
 \midrule
 TU11
 & Vengono verificate tutte le funzionalità rese disponibili dal Register Controller.
+& signupForm\\
 & D.E.\\
 
 
 \midrule
 TU12
 & Vengono verificate tutte le funzionalità rese disponibili dal UserCollection Controller.
+& init()\\
+& getData()\\
+& numerify(num)\\
+& previousPage()\\
+& nextPage()\\
+& toPage(index)\\
+& changeSort()\\
+& columnSort(index)\\
+& delete\_ document(index)\\
 & D.E.\\
 
 \midrule
 TU13
 & Vengono verificate tutte le funzionalità rese disponibili dal UserController Controller.
+& UserDataService.query\\
+& delete\_ document(index)\\
+
 & D.E.\\
 
 \midrule
 TU14
 & Vengono verificate tutte le funzionalità rese disponibili dal UserEdit Controller.
+& UserEditService.query\\
+& edit\_ document(index)\\
+& delete\_ document(index)\\
+
 & D.E.\\
 
 
