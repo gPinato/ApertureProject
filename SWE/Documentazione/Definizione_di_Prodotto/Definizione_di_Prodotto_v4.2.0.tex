@@ -155,7 +155,10 @@ Package che gestisce il dialogo con il Client di Maap.
  \item[Descrizione] \hfill \\
 Modulo di inizializzazione della componente Server utilizzata per la trasmissione dei dati al Client. \\
 Il modulo \textit{dispatcher} gestisce tutte le richieste effettuate dal Client al Server, effettuando le dovute redirezioni e le chiamate per ottenere i dati dai database nel Server. Le richieste che pervengono al 
-\textit{dispatcher} sono di tipo REST, a cui il modulo stesso risponde con 
+\textit{dispatcher} sono di tipo REST, a cui il modulo stesso risponde con il JSON della risorsa richiesta. 
+Questo avviene solamente se l'utente che ha richiesto la risorsa è registrato ed autenticato, prima di 
+effettuare la richiesta, e che abbia i dovuti permessi per effettuare la richiesta. Infatti, prima di eseguire ogni richiesta di accesso ai dati del Server, il \textit{dispatcher} esegue una chiamata al modulo \textit{passport} per verificare l'autenticazione del richiedente e per distinguere gli utenti standard dagli utenti amministratori. \\
+Per ultima cosa, il \textit{dispatcher} gestisce eventuali richieste di risorse inesistenti o errate reindirizzando il chiamante alla pagina iniziale del Client AngularJS.
  \item[Dipendendenze entranti] \hfill \\
  \begin{itemize}
  \item @passport;
@@ -165,14 +168,36 @@ Il modulo \textit{dispatcher} gestisce tutte le richieste effettuate dal Client 
  \item @IndexManager.
  \end{itemize}
  
- \item[Dipendenze uscenti] \hfill \\
+ %\item[Dipendenze uscenti] \hfill \\	questo tipo di item lo commento perché è parecchio macchinoso
+ %										e soprattutto LUNGO da fare.
  
  %\item[Attributi] \hfill \\
  
  \item[Metodi] \hfill \\
+ \begin{description}
+ \item[Gestione Collection e Document] \hfill \\
+ \begin{itemize}
+ %\item get('/api/collection/list', passport.checkAuthenticated, datamanager.sendCollectionsList);
+ %\item get('/api/collection/:col_id', passport.checkAuthenticated, datamanager.sendCollection);
+ %\item get('/api/collection/:col_id/:doc_id', passport.checkAuthenticated, datamanager.sendDocument);
+ %\item get('/api/collection/:col_id/:doc_id/edit', passport.checkAuthenticatedAdmin, datamanager.sendDocumentEdit);
+ %\item put('/api/collection/:col_id/:doc_id/edit', passport.checkAuthenticatedAdmin, datamanager.updateDocument);
+ %\item delete('/api/collection/:col_id/:doc_id/edit', passport.checkAuthenticatedAdmin, datamanager.removeDocument);
+ %sto bestemmiando allegramente con le signature dei metodi: sono troppo lunghe! devo inventarmi qualcosa.
+ \end{itemize}
+ \item[Gestione Profilo Utente] \hfill \\
+ \item[Gestione Utenti] \hfill \\
+ \item[Gestione Query più utilizzate] \hfill \\
+ \item[Gestione Indici nel Database di analisi] \hfill \\
+ \item[Gestione Login] \hfill \\
+ \item[Gestione richieste illecite] \hfill \\
+ \end{description}
 \end{description}
+
 \subsubsection{@frontController}
+
 \subsubsection{@index}
+
 \subsubsection{@passport}
 
 \subsection{::ModelServer}
