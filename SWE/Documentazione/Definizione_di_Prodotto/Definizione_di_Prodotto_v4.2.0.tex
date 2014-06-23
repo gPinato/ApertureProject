@@ -149,10 +149,65 @@ Package Server del Design Pattern Client-Server.
 \subsection{::Controller}
 Package che gestisce il dialogo con il Client di Maap. 
 \subsubsection{@dispatcher}
-\subsubsection{@frontController}
-\subsubsection{@index}
-\subsubsection{@passport}
+ \item[Descrizione] \hfill \\
+Controller che si occupa del routig delle richieste del client. 
+ \item[Dipendendenze iniettate al controller] \hfill \\
+  \begin{itemize}
+   \item app;
+  \end{itemize}
 
+ \item[Funzionalità esportate] \hfill \\
+ \begin{description}
+  \item[init()] \hfill \\
+  Funzione di inizializzazione del dispatcher. Inizializza passport, e gestisce le varie richieste del client utilizzando le funzioni \emph{get()}, \emph{put()}, \emph{delete()} del router di express.
+  \end{description}
+
+\subsubsection{@frontController}
+ \item[Descrizione] \hfill \\
+Controller che si occupa dell' inizializzazione del dispatcher reindirizzando ad esso le richieste del server.
+ \item[Dipendendenze iniettate al controller] \hfill \\
+  \begin{itemize}
+   \item app;
+  \end{itemize}
+ 
+ \item[Funzionalità esportate] \hfill \\
+ \begin{description}
+  \item[init()] \hfill \\
+  Funzione di inizializzazione del frontController. Inizializza il Dispatcher e reindirizza ad esso le richieste del client.
+  \end{description}
+
+\subsubsection{@index}
+ \item[Descrizione] \hfill \\
+ Controller che si occupa dell' inizializzazione del frontController.
+ \item[Dipendendenze iniettate al controller] \hfill \\
+   \begin{itemize}
+    \item app;
+   \end{itemize}
+  \item[Funzionalità esportate] \hfill \\
+  \begin{description}
+   \item[init()] \hfill \\
+   Funzione di inizializzazione di index. Inizializza il frontController.
+   \end{description}
+\subsubsection{@passport}
+ \item[Descrizione] \hfill \\
+Controller che si occupa dell' inizializzazione e gestione del modulo passort per le autenticazioni.
+\item[Dipendendenze iniettate al controller] \hfill \\
+  \begin{itemize}
+   \item app;
+  \end{itemize}
+   \item[Funzionalità esportate] \hfill \\
+    \begin{description}
+     \item[authenticate()] \hfill \\
+     Imposta il metodo di autenticazione, nel nostro caso come local;
+     \item[init()] \hfill \\
+     Inizializza il controller passport, inizializzando e avviando la sessione del modulo passport e definisce le strategie di autenticazione;
+     \item[checkAuthenticatedAdmin()] \hfill \\
+     Verifica che la richiesta proveniente dal client sia autenticata e che il livello dell'utente sia 1;
+     \item[checkAuthenticated()] \hfill \\
+     Verifica che la richiesta proveniente dal client sia autenticata;
+     \item[checkNotAuthenticated()] \hfill \\
+     Verifica che la richiesta proveniente dal client non sia autenticata;
+     \end{description}
 \subsection{::ModelServer}
 Package che racchiude i database, le loro operazioni di accesso e i file 
 DSL con i relativi interpreti.
@@ -223,8 +278,7 @@ Package che gestisce le query ai database di analisi.
  
  \item[Metodi] \hfill \\
  \begin{itemize}
- \item{sendCollectionList:} invia al al client la lista delle varie Collection 
- definite dai DSL; 
+ \item{sendCollectionList:} invia al al client la lista delle varie Collection definite dai DSL; 
  \item{sendCollection}
  \item{sendDocument}
  \item{sendDocumentEdit}
