@@ -56,9 +56,12 @@ Diario delle modifiche
 4.1.1 & 2014-05-22 & Alessandro Benetti (VR) & Verifica documento.\\
 \midrule
 4.1.0 & 2014-05-20 & Alberto Garbui (VR) & Verifica documento.\\
-
 \midrule
-4.0.2 & 2014-XX-XX & Mattia Sorgato (PR) & Stesura dei servizi e dei controller del client\\
+4.0.3 & 2014-XX-XX & Mattia Sorgato (PR) & Stesura controller del Server\\
+\midrule
+4.0.2 & 2014-XX-XX & Giacomo Pinato (PR) & Stesura dei controller\\
+\midrule
+4.0.2 & 2014-XX-XX & Mattia Sorgato (PR) & Stesura dei servizi e dei controller del Client\\
 \midrule
 4.0.1 & 2014-04-04 & Alberto Garbui (PR) & Prima stesura del documento.\\
 
@@ -83,7 +86,9 @@ Diario delle modifiche
 \newpage
 \section{Introduzione}
 \subsection{Scopo del documento}
-Il seguente documento ha lo scopo di definire nel dettaglio la struttura del sistema \gloss{MaaP}, approfondendo quanto già riportato nella Specifica Tecnica. Tale documento fornisce una struttura dettagliata e completa che viene utilizzata dai \emph{Programmatori} per le attività di codifica.
+Il seguente documento ha lo scopo di definire nel dettaglio la struttura del sistema \gloss{MaaP}, approfondendo quanto già riportato 
+nella Specifica Tecnica. Tale documento fornisce una struttura dettagliata e completa che viene utilizzata dai \emph{Programmatori} per le 
+attività di codifica.
 
 \subsection{Scopo del prodotto}
 \Prodotto{}
@@ -134,248 +139,1152 @@ di Codifica sono specificati nel documento di
 
 \newpage
 
-
-\section{Specifica componenti}
-
-\subsection{MaaP}
+\section{Namespace MaaP}
 %qui ci va la figura della vista generale dei package
 Namespace generale del progetto. In accordo con il design pattern architetturale Client-Server che 
 abbiamo adottato, le interazioni che il Client ha con il Server sono di tipo REST-like.
 
-\subsection{Maap::Server}
+\section{Specifica componenti Maap::Server}
+
 Package Server del Design Pattern Client-Server. 
 
-\subsection{Maap::Server::Controller}
+\subsection{::Controller}
 Package che gestisce il dialogo con il Client di Maap. 
-%metodi e blabla del Controller
+\subsubsection{@dispatcher}
+\begin{description}
+ \item[Descrizione] \hfill \\
+Modulo di inizializzazione della componente Server utilizzata per la trasmissione dei dati al Client. \\
+Il modulo \textit{dispatcher} gestisce tutte le richieste effettuate dal Client al Server, effettuando le dovute redirezioni e le chiamate per ottenere i dati dai database nel Server. Le richieste che pervengono al 
+\textit{dispatcher} sono di tipo REST, a cui il modulo stesso risponde con il JSON della risorsa richiesta. 
+Questo avviene solamente se l'utente che ha richiesto la risorsa è registrato ed autenticato, prima di 
+effettuare la richiesta, e che abbia i dovuti permessi per effettuare la richiesta. Infatti, prima di eseguire ogni richiesta di accesso ai dati del Server, il \textit{dispatcher} esegue una chiamata al modulo \textit{passport} per verificare l'autenticazione del richiedente e per distinguere gli utenti standard dagli utenti amministratori. \\
+Per ultima cosa, il \textit{dispatcher} gestisce eventuali richieste di risorse inesistenti o errate reindirizzando il chiamante alla pagina iniziale del Client AngularJS.
+ \item[Dipendendenze entranti] \hfill \\
+ \begin{itemize}
+ \item @passport;
+ \item path;
+ \item @DatabaseAnalysisManager;
+ \item @DatabaseUserManager
+ \item @IndexManager.
+ \end{itemize}
+ 
+ %\item[Dipendenze uscenti] \hfill \\	questo tipo di item lo commento perché è parecchio macchinoso
+ %										e soprattutto LUNGO da fare.
+ 
+ %\item[Attributi] \hfill \\
+ 
+ \item[Metodi] \hfill \\
+ \begin{description}
+ \item[Gestione Collection e Document] \hfill \\
+ \begin{itemize}
+ %\item get('/api/collection/list', passport.checkAuthenticated, datamanager.sendCollectionsList);
+ %\item get('/api/collection/:col_id', passport.checkAuthenticated, datamanager.sendCollection);
+ %\item get('/api/collection/:col_id/:doc_id', passport.checkAuthenticated, datamanager.sendDocument);
+ %\item get('/api/collection/:col_id/:doc_id/edit', passport.checkAuthenticatedAdmin, datamanager.sendDocumentEdit);
+ %\item put('/api/collection/:col_id/:doc_id/edit', passport.checkAuthenticatedAdmin, datamanager.updateDocument);
+ %\item delete('/api/collection/:col_id/:doc_id/edit', passport.checkAuthenticatedAdmin, datamanager.removeDocument);
+ %sto bestemmiando allegramente con le signature dei metodi: sono troppo lunghe! devo inventarmi qualcosa.
+ \end{itemize}
+ \item[Gestione Profilo Utente] \hfill \\
+ \item[Gestione Utenti] \hfill \\
+ \item[Gestione Query più utilizzate] \hfill \\
+ \item[Gestione Indici nel Database di analisi] \hfill \\
+ \item[Gestione Login] \hfill \\
+ \item[Gestione richieste illecite] \hfill \\
+ \end{description}
+\end{description}
 
-\subsection{Maap::Server::ModelServer}
+\subsubsection{@frontController}
+
+\subsubsection{@index}
+
+\subsubsection{@passport}
+
+\subsection{::ModelServer}
 Package che racchiude i database, le loro operazioni di accesso e i file 
 DSL con i relativi interpreti.
 
-\subsection{Maap::Server::ModelServer::Database}
-%mmmm boh, qui c'e' il database Mongo e Mongoose?
+\subsubsection{::Database}
+\paragraph{@index}
 
-\subsection{Maap::Server::ModelServer::DataManager}
+\paragraph{@MongooseDBAnalysis}
+\begin{description}
+ \item[Descrizione] \hfill \\
+
+ \item[Dipendendenze entranti] \hfill \\
+ 
+ \item[Dipendenze uscenti] \hfill \\
+ 
+ \item[Attributi] \hfill \\
+ 
+ \item[Metodi] \hfill \\
+\end{description}
+
+\paragraph{@MongooseDBFramework}
+\begin{description}
+ \item[Descrizione] \hfill \\
+
+ \item[Dipendendenze entranti] \hfill \\
+ 
+ \item[Dipendenze uscenti] \hfill \\
+ 
+ \item[Attributi] \hfill \\
+ 
+ \item[Metodi] \hfill \\
+\end{description}
+
+\subsubsection{::DataManager}
 Package che gestisce gli accessi ai database.
 
-\subsubsection{Maap::Server::ModelServer::DataManager::DatabaseAnalysisManager}
+\paragraph{::DatabaseAnalysisManager}
 Package che gestisce le query ai database di analisi. 
 
-\paragraph{Maap::Server::ModelServer::DataManager::DatabaseAnalysisManager::DatabaseAnalysisManager}
+\subparagraph{@DatabaseAnalysisManager}
 
-\subparagraph{Descrizione}
-
-\subparagraph{Dipendendenze entranti}
-%da definire
-
-\subparagraph{Dipendenze uscenti}
-\begin{itemize}
-\item{path}
-\item{DataRetrieverAnalysis}
-\item{IndexManager}
-\item{JSonComposer}
-\end{itemize}
-
-\subparagraph{Attributi}
-%da definire
-
-\subparagraph{Metodi}
-\begin{itemize}
-\item{sendCollectionList:} invia al al client la lista delle varie Collection 
-definite dai DSL; 
-\item{sendCollection}
-\item{sendDocument}
-\item{sendDocumentEdit}
-\item{updateDocument}
-\item{removeDocument}
-\end{itemize}
-
-\paragraph{Maap::Server::ModelServer::DataManager::DatabaseAnalysisManager::DatabaseRetrieverAnalysis}
-
-\subsubsection{Maap::Server::ModelServer::DataManager::DatabaseUserManager}
-
-\subsubsection{Maap::Server::ModelServer::DataManager::IndexManager}
-
-\subsection{Maap::Server::ModelServer::DSL}
-
-\subsection{Maap::Client}
-
-\subsection{Maap::Client::View}
-
-\subsubsection{Maap::Client::View::Template}
-%qui ci va la trattazione dei vari template html di AngularJS
-
-\subsection{Maap::Client::ControllerModelView}
-
-\subsubsection{Maap::Client::ControllerModelView::ControllerClient}
-
-\paragraph{CollectionController}
-\subparagraph{Descrizione}
-Modulo che descrive il Controller della Collection view.
-
-\subparagraph{Utilizzo}
-Controller utilizzato da AngularJS per fornire e gestire i dati della Collection view.
-Fornisce l'inizializzazione di base della pagina ed esegue la mediazione tra la Collection view
-e le richieste di visualizzazione e modifica dei dati di una Collection.
-
-\subparagraph{Dipendendenze iniettate al controller}
-\begin{itemize}
- \item \$scope;
- \item \$route;
- \item \$location;
- \item \$routeParams;
- \item DocumentEditService;
- \item CollectionDataService;
- \item AuthService.
-\end{itemize}
-
-\subparagraph{Funzionalità esportate}
 \begin{description}
- \item[init()] \hfill \\
- Funzione di inizializzazione del CollectionController. Imposta i valori iniziali delle variabili dello
- \$scope associate alla Collection view ed esegue la funzione \emph{getData()}.
+ \item[Descrizione] \hfill \\
+
+ \item[Dipendendenze entranti] \hfill \\
  
- \item[getData()] \hfill \\
- Richiama la richiesta RESTful \textit{query} sulla \$resource fornita dal CollectionDataService.
- Con questa funzione vengono prelevati i dati legati alla Collection da visualizzare e vengono
- passati alla Collection view tramite il binding con lo \$scope. \\
- Se non vengono visualizzati risultati, ovvero se la Collection non esiste, avviene un redirect alla pagina
- che mostra l'errore 404.
+ \item[Dipendenze uscenti] \hfill \\
  
- \item[\$scope.numerify(num)] \hfill \\
- %BOH, Jack me la deve spiegare.
+ \begin{itemize}
+ \item{path}
+ \item{DataRetrieverAnalysis}
+ \item{IndexManager}
+ \item{JSonComposer}
+ \end{itemize}
  
- \item[\$scope.previousPage()] \hfill \\
- Aggiunge allo \$scope la funzionalità di passaggio alla pagina di visualizzazione precedente alla corrente.
- Diminuisce di 1 l'indicatore della pagina corrente e esegue una nuova richiesta al server per i dati corrispondenti
- alla pagina precedente con \emph{getData()}.
+ \item[Attributi] \hfill \\
  
- \item[\$scope.nextPage()] \hfill \\
- Aggiunge allo \$scope la funzionalità di passaggio alla pagina di visualizzazione successiva alla corrente.
- Aumenta di 1 l'indicatore della pagina corrente e esegue una nuova richiesta al server per i dati corrispondenti
- alla pagina successiva con \emph{getData()}.
- 
- \item[\$scope.toPage(index)] \hfill \\
- Aggiunge allo \$scope la funzionalità di passaggio alla pagina di visualizzazione specificata dal parametro \emph{index}.
- Aggiorna l'indicatore della pagina corrente settandolo all'indice passato per parametro alla funzione.
- Successivamente esegue una richiesta al server per ottenere i dati per la nuova visualizzazione.
- 
- \item[changeSort()] \hfill \\
- Cambia la variabile \$current_sort dello \$scope che regola l'ordine di visualizzazione dei Document, da discendente ad
- ascendente e viceversa.
- 
- \item[\$scope.columnSort(index)] \hfill \\
- Funzione che cambia l'ordinamento di visualizzazione di una colonna della Collection view. 
- 
+ \item[Metodi] \hfill \\
+ \begin{itemize}
+ \item{sendCollectionList:} invia al al client la lista delle varie Collection 
+ definite dai DSL; 
+ \item{sendCollection}
+ \item{sendDocument}
+ \item{sendDocumentEdit}
+ \item{updateDocument}
+ \item{removeDocument}
+ \end{itemize}
  
 \end{description}
 
 
-\paragraph{DashboardController}
-\subparagraph{Descrizione}
+\subparagraph{@DataRetrieverAnalysis}
 
-\subparagraph{Utilizzo}
+\paragraph{::DatabaseUserManager}
+\subparagraph{@DatabaseUserManager}
+\subparagraph{@DataRetrieverUsers}
 
-\subparagraph{Funzionalità esportate}
+\paragraph{::IndexManager}
+\subparagraph{@IndexManager}
 
-\paragraph{DocumentController}
-\subparagraph{Descrizione}
+\paragraph{@JsonComposer}
 
-\subparagraph{Utilizzo}
+\subsubsection{::DSL}
+\subparagraph{@DSLManager}
+\subparagraph{@DSLParser}
+\subparagraph{@index}
+\subparagraph{@JavascriptParser}
+\subparagraph{@schemaGenerator}
 
-\subparagraph{Funzionalità esportate}
+\section{Specifica componenti Maap::Client}
 
-\paragraph{DocumentEditController}
-\subparagraph{Descrizione}
+\subsection{::View}
 
-\subparagraph{Utilizzo}
+\subsubsection{::Template}
+I template utilizzati da AngularJs per la generazione delle pagine sono i seguenti:
 
-\subparagraph{Funzionalità esportate}
+\begin{center}
+\begin{longtable}{|c|c|c|p{0.5\linewidth}|}
+\toprule
+\textbf{Template} & \textbf{Pagina} \\
 
-%mancano i controller del profilo e del login, mi pare che Jack
-%avesse detto di aspettare perche' non sono ancora pronti
+%aggiungere qui una midrule per aggiungere una nuova riga alla tabella
+\midrule
+collection.html & Pagina contenente i documenti di una determinata collection\\
+\midrule
+dashboard.html & Pagina principale visualizzata dopo il login\\
+ \midrule
+document.html & Pagina per la visualizzazione di un singolo document\\
+ \midrule
+documentEdit.html &  Pagina per la modifica di un singolo document\\
+ \midrule
+indexCollection & Pagina per la visualizzazione degli indici creati (admin)\\
+ \midrule
+login.html & Pagina per il login\\
+\midrule
+navbar.html & Barra di navigazione superiore, inclusa nella maggior parte delle pagine\\
+ \midrule
+queryCollection.html & Pagina per la visualizzazione delle query pi\'{u} utilizzate (admin)\\
+ \midrule
+register.html & Pagina per la registrazione\\
+ \midrule
+userCollection.html & Pagina per la visualizzazione della collection degli utenti maap (admin)\\
+ \midrule
+userEdit.html & Pagina per la modifica del profilo dell'utente (user) / di un utente (admin)\\
+ \midrule
+userProfile & Pagina per la visualizzazione del profilo utente (user) / di un utente (admin)\\
+ 
+\end{longtable}
+\end{center}
 
-\subsubsection{Maap::Client::ControllerModelView::Scope}
 
-\subsubsection{Maap::Client::ControllerModelView::Directives}
+\subsection{::ControllerModelView}
 
-\subsection{Maap::Client::ModelClient}
+\subsubsection{::ControllerClient}
 
-\subsubsection{Maap::Client::ModelClient::Model}
+\paragraph{@CollectionController}
+\begin{description}
+ \item[Descrizione] \hfill \\
+ Modulo che descrive il Controller della Collection view.
+ 
+ \item[Utilizzo] \hfill \\
+ Controller utilizzato da AngularJS per fornire e gestire i dati della Collection view.
+ Fornisce l'inizializzazione di base della pagina ed esegue la mediazione tra la Collection view
+ e le richieste di visualizzazione e modifica dei dati di una Collection.
+ 
+ \item[Dipendendenze iniettate al controller] \hfill \\
+ \begin{itemize}
+  \item \$scope;
+  \item \$route;
+  \item \$location;
+  \item \$routeParams;
+  \item DocumentEditService;
+  \item CollectionDataService;
+ \end{itemize}
+ 
+ \item[Attributi] \hfill \\
+ \begin{itemize}
+ \item \$scope.current\textunderscore sorted \textunderscore column;
+ \item \$scope.column \textunderscore original \textunderscore name;
+ \item \$scope.current \textunderscore sort;
+ \item \$scope.current \textunderscore page;
+ \item \$scope.current\textunderscore collection;
+ \item \$scope.rows;
+ \end{itemize}
+ 
+ \item[Funzionalità esportate] \hfill \\
+ \begin{description}
+  \item[init()] \hfill \\
+  Funzione di inizializzazione del CollectionController. Imposta i valori iniziali delle variabili dello
+  \$scope associate alla Collection view ed esegue la funzione \emph{getData()}.
+  
+  \item[getData()] \hfill \\
+  Richiama la richiesta RESTful \textit{query} sulla \$resource fornita dal CollectionDataService.
+  Con questa funzione vengono prelevati i dati legati alla Collection da visualizzare e vengono
+  passati alla Collection view tramite il binding con lo \$scope. \\
+  Se non vengono visualizzati risultati, ovvero se la Collection non esiste, avviene un redirect alla pagina
+  che mostra l'errore 404.
+  
+  \item[\$scope.numerify(num)] \hfill \\
+  Funzione ausiliaria che crea un array di dimensione   {num} che verrà poi usato dalla directive   {ng-repeat} di angular per la creazione 
+  del numero di 
+  pagine disponibili.
+  
+  \item[\$scope.previousPage()] \hfill \\
+  Aggiunge allo \$scope la funzionalità di passaggio alla pagina di visualizzazione precedente alla corrente.
+  Diminuisce di 1 l'indicatore della pagina corrente e esegue una nuova richiesta al server per i dati corrispondenti
+  alla pagina precedente con \emph{getData()}.
+  
+  \item[\$scope.nextPage()] \hfill \\
+  Aggiunge allo \$scope la funzionalità di passaggio alla pagina di visualizzazione successiva alla corrente.
+  Aumenta di 1 l'indicatore della pagina corrente e esegue una nuova richiesta al server per i dati corrispondenti
+  alla pagina successiva con \emph{getData()}.
+  
+  \item[\$scope.toPage(index)] \hfill \\
+  Aggiunge allo \$scope la funzionalità di passaggio alla pagina di visualizzazione specificata dal parametro \emph{index}.
+  Aggiorna l'indicatore della pagina corrente settandolo all'indice passato per parametro alla funzione.
+  Successivamente esegue una richiesta al server per ottenere i dati per la nuova visualizzazione.
+  
+  \item[changeSort()] \hfill \\
+  Cambia la variabile \$current\_sort dello \$scope che regola l'ordine di visualizzazione dei Document, da discendente ad
+  ascendente e viceversa.
+  
+  \item[\$scope.columnSort(index)] \hfill \\
+  Funzione che cambia l'ordinamento di visualizzazione di una colonna della Collection view. \\
+  Se la colonna in questione è una colonna diversa da quella che precedentemente ordinata,
+  la variabile \emph{current\_sorted\_column} dello \$scope viene aggiornata, altrimenti la funzione cambia solamente
+  l'ordinamento della colonna.
+  
+  \item[\$scope.deleteDocument(index)] \hfill \\
+  Funzione che elimina il Document identificato dall'indice \emph{index}. Effettua una richiesta REST di rimozione alla risorsa
+  pubblicizzata da DocumentEditService fornendo come argomenti l'identificativo della Collection correntemente visualizzata e l'indice
+  del Document da eliminare. \\
+  Se l'eliminazione ha successo viene lanciato l'aggiornamento della vista corrente con il Document eliminato, altrimenti si
+  richiama la callback di errore.
+  
+ \end{description}
+\end{description}
+
+\paragraph{@DashboardController}
+\begin{description}
+ \item[Descrizione] \hfill \\
+ Modulo che descrive il Controller della Dashboard.
+ 
+ \item[Utilizzo] \hfill \\
+ Controller utilizzato da AngularJS per fornire e gestire i dati della dashboard.
+Fornisce un immediato elenco delle collection disponibili.
+ 
+ \item[Dipendendenze iniettate al controller] \hfill \\
+ \begin{itemize}
+  \item \$scope;
+  \item CollectionListService;
+  
+ \end{itemize}
+ 
+ \item[Funzionalità esportate] \hfill \\
+ \begin{description}
+  \item[CollectionListService.get] \hfill \\
+  Funzione che richiede al server l'elenco delle collection disponibli e le inserisce nello scope.
+  
+ \end{description}
+\end{description}
+
+\paragraph{@DocumentController}
+\begin{description}
+ \item[Descrizione] \hfill \\
+ Modulo che descrive il Controller della pagina di visualizzazione di un documento.
+ 
+ \item[Utilizzo] \hfill \\
+ Controller utilizzato da AngularJS per fornire e gestire i dati durante la visualizzazione di un document.
+ 
+ \item[Dipendendenze iniettate al controller] \hfill \\
+ \begin{itemize}
+  \item \$scope;
+  \item \$location
+  \item DocumentDataService;
+  \item DocumentEditService;
+  \item \$routeParams.
+  
+ \end{itemize}
+ 
+ \item[Attributi] \hfill \\
+ \begin{itemize}
+ \item  \$scope.current\textunderscore collection;
+ \item  \$scope.current\textunderscore document;
+ \item  \$scope.values;
+ \end{itemize}
+ 
+ \item[Funzionalità esportate] \hfill \\
+ \begin{description}
+  \item[DocumentDataService.query] \hfill \\
+  Funzione che richiede al server il documento identificato da current\textunderscore collection e current\textunderscore document.
+  L'oggetto ritornato dal server viene poi ricopiato in array per mantenere l'ordinamento e semplificare la gestione.
+  \item[delete\textunderscore document()] \hfill \\
+  Funzione che cancella dal server il documento attualmente visualizzato.
+ \end{description}
+\end{description}
+
+\paragraph{@DocumentEditController}
+\begin{description}
+ \item[Descrizione] \hfill \\
+ Modulo che descrive il Controller della pagina di modifica di un documento.
+ 
+ \item[Utilizzo] \hfill \\
+ Controller utilizzato da AngularJS per fornire e gestire i dati durante la modifica di un document.
+ 
+ \item[Dipendendenze iniettate al controller] \hfill \\
+ \begin{itemize}
+  \item \$scope;
+  \item \$location
+  \item DocumentEditService;
+  \item \$routeParams.
+  
+ \end{itemize}
+ 
+ \item[Attributi] \hfill \\
+ \begin{itemize}
+ \item  \$scope.current\textunderscore collection;
+    \item  \$scope.current\textunderscore document;
+    \item  \$scope.original\textunderscore data;
+    \item  \$scope.original\textunderscore keys;
+ \end{itemize}
+ 
+ \item[Funzionalità esportate] \hfill \\
+ \begin{description}
+  \item[DocumentEditService.query] \hfill \\
+  Funzione che richiede al server il documento identificato da current\textunderscore collection e current\textunderscore document.
+  L'oggetto ritornato dal server viene poi ricopiato in array per mantenere l'ordinamento e semplificare la gestione.
+  \item[edit\textunderscore document()] \hfill \\
+  Funzione che invia al server il documento modificato nel client.
+  Assembla un JSON a partire da original\textunderscore keys e original\textunderscore data. Quest'ultima variabile nel frattempo è stata 
+  modificata con i nuovi valori del documento.
+  \item[delete\textunderscore document()] \hfill \\
+  Funzione che cancella dal server il documento attualmente visualizzato.
+ \end{description}
+\end{description}
+
+\paragraph{@IndexController}
+\begin{description}
+ \item[Descrizione] \hfill \\
+ Modulo che descrive il Controller della pagina di gestione degli indici.
+ 
+ \item[Utilizzo] \hfill \\
+ Controller utilizzato da AngularJS per fornire e gestire i dati degli indici.
+
+ 
+ \item[Dipendendenze iniettate al controller] \hfill \\
+ \begin{itemize}
+  \item \$scope;
+  \item \$route;
+  \item \$location;
+  \item IndexService;
+ \end{itemize}
+ 
+ \item[Attributi] \hfill \\
+ \begin{itemize}
+ \item \$scope.rows;
+ \end{itemize}
+ 
+ \item[Funzionalità esportate] \hfill \\
+ \begin{description}
+  \item[init()] \hfill \\
+  Funzione di inizializzazione del CollectionController. Imposta i valori iniziali delle variabili dello
+  \$scope associate alla Collection view ed esegue la funzione \emph{getData()}.
+  
+  \item[getData()] \hfill \\
+  Richiama la richiesta RESTful \textit{query} sulla \$resource fornita da IndexService.
+  Con questa funzione vengono prelevati i dati legati agli indici da visualizzare e vengono
+  passati alla  view tramite il binding con lo \$scope. \\
+  Se non vengono visualizzati risultati, ovvero se la Collection non esiste, avviene un redirect alla pagina
+  che mostra l'errore 404.
+  
+  \item[\$scope.numerify(num)] \hfill \\
+   Funzione ausiliaria che crea un array di dimensione   {num} che verrà poi usato dalla directive ng-repeat di angular per la creazione del 
+   numero di pagine  disponibili.
+  
+  \item[\$scope.previousPage()] \hfill \\
+  Aggiunge allo \$scope la funzionalità di passaggio alla pagina di visualizzazione precedente alla corrente.
+  Diminuisce di 1 l'indicatore della pagina corrente e esegue una nuova richiesta al server per i dati corrispondenti
+  alla pagina precedente con \emph{getData()}.
+  
+  \item[\$scope.nextPage()] \hfill \\
+  Aggiunge allo \$scope la funzionalità di passaggio alla pagina di visualizzazione successiva alla corrente.
+  Aumenta di 1 l'indicatore della pagina corrente e esegue una nuova richiesta al server per i dati corrispondenti
+  alla pagina successiva con \emph{getData()}.
+  
+  \item[\$scope.toPage(index)] \hfill \\
+  Aggiunge allo \$scope la funzionalità di passaggio alla pagina di visualizzazione specificata dal parametro \emph{index}.
+  Aggiorna l'indicatore della pagina corrente settandolo all'indice passato per parametro alla funzione.
+  Successivamente esegue una richiesta al server per ottenere i dati per la nuova visualizzazione.
+  
+  \item[changeSort()] \hfill \\
+  Cambia la variabile \$current\_sort dello \$scope che regola l'ordine di visualizzazione dei Document, da discendente ad
+  ascendente e viceversa.
+  
+  \item[\$scope.columnSort(index)] \hfill \\
+  Funzione che cambia l'ordinamento di visualizzazione di una colonna della Collection view. \\
+  Se la colonna in questione è una colonna diversa da quella che precedentemente ordinata,
+  la variabile \emph{current\_sorted\_column} dello \$scope viene aggiornata, altrimenti la funzione cambia solamente
+  l'ordinamento della colonna.
+  
+  \item[\$scope.deleteDocument(index)] \hfill \\
+  Funzione che elimina l'indice identificato dall'indice \emph{index}. Effettua una richiesta REST di rimozione alla risorsa
+  pubblicizzata da IndexService fornendo come argomenti l'indice passato come argomento. \\
+  Se l'eliminazione ha successo viene lanciato l'aggiornamento della vista corrente con il Document eliminato, altrimenti si
+  richiama la callback di errore.
+  
+ \end{description}
+\end{description}
+
+
+\paragraph{@LoginController}
+\begin{description}
+ \item[Descrizione] \hfill \\
+ Modulo che descrive il Controller della pagina di login.
+ 
+ \item[Utilizzo] \hfill \\
+ Controller utilizzato da AngularJS per fornire e gestire i dati durante l'autenticazione.
+ 
+ \item[Dipendendenze iniettate al controller] \hfill \\
+ \begin{itemize}
+  \item \$scope;
+  \item \$route;
+  \item \$cookieStore;
+  \item \$location;
+  \item AuthService;
+  
+ \end{itemize}
+ 
+ \item[Attributi] \hfill \\
+ \begin{itemize}
+ \item  \$scope.isAdmin;
+ \item \$scope.signup\textunderscore enabled;
+ \end{itemize}
+ 
+ \item[Funzionalità esportate] \hfill \\
+ \begin{description}
+  \item[ CollectionListService.get] \hfill \\
+  Richiama la richiesta RESTful \textit{query} sulla \$resource fornita da CollectionListService.
+  Con questa funzione viene prelevato l'elenco delle collection disponibili.-
+  Se l'utente ha inserito dati corretti, esso viene autenticato e reindirizzato alla dashboard, altrimenti viene mostrato un errore.
+ 
+  
+ \end{description}
+\end{description}
+
+\paragraph{@NavBarController}
+\begin{description}
+ \item[Descrizione] \hfill \\
+ Modulo che descrive il Controller della barra di navigazione superiore.
+ 
+ \item[Utilizzo] \hfill \\
+ 
+ \item[Dipendendenze iniettate al controller] \hfill \\
+ \begin{itemize}
+  \item \$scope;
+  \item \$route;
+  \item \$cookieStore;
+  \item \$location;
+  \item LogoutService;
+  \item CollectionListService.
+  
+ \end{itemize}
+ 
+ \item[Attributi] \hfill \\
+ \begin{itemize}
+ \item  \$scope.credentials;
+
+ \end{itemize}
+ 
+ \item[Funzionalità esportate] \hfill \\
+ \begin{description}
+  \item[login()] \hfill \\
+  Richiama la richiesta RESTful \textit{query} sulla \$resource fornita da AuthService.
+  Con questa funzione vengono prelevati i dati legati al form di login e trasmessi al server per l'autenticazione.
+	Se non vengono visualizzati risultati, ovvero se la Collection non esiste, avviene un redirect alla pagina
+  che mostra l'errore 404. 
+  	\item[logout()] \hfill \\
+  Richiama la richiesta RESTful \textit{logout} sulla \$resource fornita da LogoutService.
+  Con questa funzione viene distrutta la sessione riguardante l'utente presente sul server e si viene poi disconnessi.
+  che mostra l'errore 404. 
+ \end{description}
+\end{description}
+
+\paragraph{@ProfileController}
+\begin{description}
+ \item[Descrizione] \hfill \\
+ Modulo che descrive il Controller della pagina di gestione del profilo.
+ 
+ \item[Utilizzo] \hfill \\
+ 
+ \item[Dipendendenze iniettate al controller] \hfill \\
+ \begin{itemize}
+  \item \$scope;
+  \item \$location;
+  \item ProfileDataService;
+  \item ProfileEditService;
+  
+ \end{itemize}
+ 
+ \item[Attributi] \hfill \\
+ \begin{itemize}
+ \item \$scope.original\textunderscore data;
+ \item \$scope.original\textunderscore keys;
+
+ \end{itemize}
+ 
+ \item[Funzionalità esportate] \hfill \\
+ \begin{description}
+  \item[ProfileDataService.query] \hfill \\
+  Richiama la richiesta RESTful \textit{query} sulla \$resource fornita da ProfileDataService.
+  Con questa funzione vengono prelevati i dati legati al profilo utente e caricati sullo scope.
+	Se non vengono visualizzati risultati, ovvero se il profilo non esiste, avviene un redirect alla pagina
+  che mostra l'errore 404. 
+  	\item[delete\textunderscore document()] \hfill \\
+  Richiama la richiesta RESTful \textit{remove} sulla \$resource fornita da ProfileEditService.
+  Con questa funzione viene cancellato dal server il profilo dell'utente corrente.
+ \end{description}
+\end{description}
+
+\paragraph{@ProfileEditController}
+\begin{description}
+ \item[Descrizione] \hfill \\
+ Modulo che descrive il Controller della pagina di modifica di un documento.
+ 
+ \item[Utilizzo] \hfill \\
+ Controller utilizzato da AngularJS per fornire e gestire i dati durante la modifica di un document.
+ 
+ \item[Dipendendenze iniettate al controller] \hfill \\
+ \begin{itemize}
+  \item \$scope;
+  \item \$location
+  \item ProfileEditService;
+  
+ \end{itemize}
+ 
+ \item[Attributi] \hfill \\
+ \begin{itemize}
+ \item  \$scope.oldPassword;
+ \item  \$scope.newPassword1;
+ \item  \$scope.newPassowrd2;
+ \item  \$scope.original\textunderscore data;
+ \item \$scope.original\textunderscore keys;
+ \item \$scope.valid.
+ \end{itemize}
+ 
+ \item[Funzionalità esportate] \hfill \\
+ \begin{description}
+  \item[ProfileEditService.query] \hfill \\
+   Richiama la richiesta RESTful \textit{query} sulla \$resource fornita da ProfileEditService.
+  Con questa funzione vengono prelevati i dati legati al profilo utente e caricati sullo scope.
+	Se non vengono visualizzati risultati, ovvero se il profilo non esiste, avviene un redirect alla pagina
+  che mostra l'errore 404. 
+  \item[edit\textunderscore document()] \hfill \\
+  Funzione che invia al server il profilo modificato nel client.
+  Assembla un JSON a partire da original\textunderscore keys e original\textunderscore data. Quest'ultima variabile nel frattempo è stata 
+  modificata con i nuovi valori del documento.
+  \item[delete\textunderscore document()] \hfill \\
+  Funzione che cancella dal server il profilo attualmente visualizzato.
+ \end{description}
+\end{description}
+
+\paragraph{@QueryController}
+\begin{description}
+ \item[Descrizione] \hfill \\
+ Modulo che descrive il Controller della pagina di gestione delle query.
+ 
+ \item[Utilizzo] \hfill \\
+ Controller utilizzato da AngularJS per fornire e gestire i dati della pagina di gestione delle query.
+ 
+ 
+ \item[Dipendendenze iniettate al controller] \hfill \\
+ \begin{itemize}
+  \item \$scope;
+  \item \$route;
+  \item \$location;
+  \item QueryService;
+  \item IndexService;
+ \end{itemize}
+ 
+ \item[Attributi] \hfill \\
+ \begin{itemize}
+ \item \$scope.current\textunderscore sorted\textunderscore column;
+ \item \$scope.column\textunderscore original\textunderscore name;
+ \item \$scope.current\textunderscore sort;
+ \item \$scope.current\textunderscore page;
+ \item \$scope.current\textunderscore collection;
+ \item \$scope.rows;
+ \end{itemize}
+ 
+ \item[Funzionalità esportate] \hfill \\
+ \begin{description}
+  \item[init()] \hfill \\
+  Funzione di inizializzazione del CollectionController. Imposta i valori iniziali delle variabili dello
+  \$scope associate alla Collection view ed esegue la funzione \emph{getData()}.
+  
+  \item[getData()] \hfill \\
+  Richiama la richiesta RESTful \textit{query} sulla \$resource fornita dal QueryService.
+  Con questa funzione vengono prelevati i dati legati alla Collection da visualizzare e vengono
+  passati alla Collection view tramite il binding con lo \$scope. \\
+  Se non vengono visualizzati risultati, ovvero se la Collection non esiste, avviene un redirect alla pagina
+  che mostra l'errore 404.
+  
+    \item[\$scope.createIndex(id)] \hfill \\
+  Funzione ausiliaria che crea un indice a partire da una delle query presenti nella collection delle query.
+  
+  \item[\$scope.numerify(num)] \hfill \\
+  Funzione ausiliaria che crea un array di dimensione num che verrà poi usato dalla directive   ng-repeat di angular per la creazione del 
+  numero di pagine  disponibili.
+  
+  \item[\$scope.previousPage()] \hfill \\
+  Aggiunge allo \$scope la funzionalità di passaggio alla pagina di visualizzazione precedente alla corrente.
+  Diminuisce di 1 l'indicatore della pagina corrente e esegue una nuova richiesta al server per i dati corrispondenti
+  alla pagina precedente con \emph{getData()}.
+  
+  \item[\$scope.nextPage()] \hfill \\
+  Aggiunge allo \$scope la funzionalità di passaggio alla pagina di visualizzazione successiva alla corrente.
+  Aumenta di 1 l'indicatore della pagina corrente e esegue una nuova richiesta al server per i dati corrispondenti
+  alla pagina successiva con \emph{getData()}.
+  
+  \item[\$scope.toPage(index)] \hfill \\
+  Aggiunge allo \$scope la funzionalità di passaggio alla pagina di visualizzazione specificata dal parametro \emph{index}.
+  Aggiorna l'indicatore della pagina corrente settandolo all'indice passato per parametro alla funzione.
+  Successivamente esegue una richiesta al server per ottenere i dati per la nuova visualizzazione.
+  
+  \item[changeSort()] \hfill \\
+  Cambia la variabile \$current\_sort dello \$scope che regola l'ordine di visualizzazione dei Document, da discendente ad
+  ascendente e viceversa.
+  
+  \item[\$scope.columnSort(index)] \hfill \\
+  Funzione che cambia l'ordinamento di visualizzazione di una colonna della Collection view. \\
+  Se la colonna in questione è una colonna diversa da quella che precedentemente ordinata,
+  la variabile \emph{current\_sorted\_column} dello \$scope viene aggiornata, altrimenti la funzione cambia solamente
+  l'ordinamento della colonna.
+  
+  \item[\$scope.deleteDocument(index)] \hfill \\
+  Funzione che elimina il Document identificato dall'indice \emph{index}. Effettua una richiesta REST di rimozione alla risorsa
+  pubblicizzata da DocumentEditService fornendo come argomenti l'identificativo della Collection correntemente visualizzata e l'indice
+  del Document da eliminare. \\
+  Se l'eliminazione ha successo viene lanciato l'aggiornamento della vista corrente con il Document eliminato, altrimenti si
+  richiama la callback di errore.
+  
+ \end{description}
+\end{description}
+
+\paragraph{@RegisterController}
+\begin{description}
+ \item[Descrizione] \hfill \\
+ Modulo che descrive il Controller della pagina di registrazione.
+ 
+ \item[Utilizzo] \hfill \\
+ Controller utilizzato da AngularJS per fornire e gestire i dati durante la registrazione.
+ 
+ \item[Dipendendenze iniettate al controller] \hfill \\
+ \begin{itemize}
+  \item \$scope;
+  \item \$location;
+  \item RegisterService;
+  
+ \end{itemize}
+ 
+ \item[Attributi] \hfill \\
+ \begin{itemize}
+ \item  \$scope.credentials;
+ \end{itemize}
+ 
+ \item[Funzionalità esportate] \hfill \\
+ \begin{description}
+  \item[ signupForm()] \hfill \\
+  Nel caso in cui il form di registrazione sia compilato con dati validi, richiama la richiesta RESTful \textit{query} sulla \$resource 
+  fornita da RegisterService.
+  Con questa funzione viene creato un nuovo utente sul server in base ai dati inseriti.
+ 
+  
+ \end{description}
+\end{description}
+
+
+\paragraph{@UsersCollectionController}
+\begin{description}
+ \item[Descrizione] \hfill \\
+ Modulo che descrive il Controller della Collection degli user.
+ 
+ \item[Utilizzo] \hfill \\
+ Controller utilizzato da AngularJS per fornire e gestire i dati della Collection degli user.
+ Fornisce l'inizializzazione di base della pagina ed esegue la mediazione tra la Collection view
+ e le richieste di visualizzazione e modifica dei dati di una Collection.
+ 
+ \item[Dipendendenze iniettate al controller] \hfill \\
+ \begin{itemize}
+  \item \$scope;
+  \item \$route;
+  \item \$location;
+  \item UserCollectionService;
+  \item UserEditService;
+ \end{itemize}
+ 
+ \item[Attributi] \hfill \\
+ \begin{itemize}
+ \item \$scope.current\textunderscore sorted\textunderscore column;
+ \item \$scope.column\textunderscore original\textunderscore name;
+ \item \$scope.current\textunderscore sort;
+ \item \$scope.current\textunderscore page;
+ \item \$scope.current\textunderscore collection;
+ \item \$scope.rows;
+ \end{itemize}
+ 
+ \item[Funzionalità esportate] \hfill \\
+ \begin{description}
+  \item[init()] \hfill \\
+  Funzione di inizializzazione del CollectionController. Imposta i valori iniziali delle variabili dello
+  \$scope associate alla Collection view ed esegue la funzione \emph{getData()}.
+  
+  \item[getData()] \hfill \\
+  Richiama la richiesta RESTful \textit{query} sulla \$resource fornita da UserCollectionService.
+  Con questa funzione vengono prelevati i dati legati alla Collection da visualizzare e vengono
+  passati alla Collection view tramite il binding con lo \$scope. \\
+  Se non vengono visualizzati risultati, ovvero se la Collection non esiste, avviene un redirect alla pagina
+  che mostra l'errore 404.
+  
+  \item[\$scope.numerify(num)] \hfill \\
+  Funzione ausiliaria che crea un array di dimensione   {num} che verrà poi usato dalla directive   {ng-repeat} di angular per la creazione 
+  del numero di pagine  disponibili.
+  
+  \item[\$scope.previousPage()] \hfill \\
+  Aggiunge allo \$scope la funzionalità di passaggio alla pagina di visualizzazione precedente alla corrente.
+  Diminuisce di 1 l'indicatore della pagina corrente e esegue una nuova richiesta al server per i dati corrispondenti
+  alla pagina precedente con \emph{getData()}.
+  
+  \item[\$scope.nextPage()] \hfill \\
+  Aggiunge allo \$scope la funzionalità di passaggio alla pagina di visualizzazione successiva alla corrente.
+  Aumenta di 1 l'indicatore della pagina corrente e esegue una nuova richiesta al server per i dati corrispondenti
+  alla pagina successiva con \emph{getData()}.
+  
+  \item[\$scope.toPage(index)] \hfill \\
+  Aggiunge allo \$scope la funzionalità di passaggio alla pagina di visualizzazione specificata dal parametro \emph{index}.
+  Aggiorna l'indicatore della pagina corrente settandolo all'indice passato per parametro alla funzione.
+  Successivamente esegue una richiesta al server per ottenere i dati per la nuova visualizzazione.
+  
+  \item[changeSort()] \hfill \\
+  Cambia la variabile \$current\\textunderscore sort dello \$scope che regola l'ordine di visualizzazione dei Document, da discendente ad
+  ascendente e viceversa.
+  
+  \item[\$scope.columnSort(index)] \hfill \\
+  Funzione che cambia l'ordinamento di visualizzazione di una colonna della Collection view. \\
+  Se la colonna in questione è una colonna diversa da quella che precedentemente ordinata,
+  la variabile \emph{current\_sorted\_column} dello \$scope viene aggiornata, altrimenti la funzione cambia solamente
+  l'ordinamento della colonna.
+  
+  \item[\$scope.deleteDocument(index)] \hfill \\
+  Funzione che elimina il profilo identificato dall'indice \emph{index}. Effettua una richiesta REST di rimozione alla risorsa
+  pubblicizzata da UserEditService fornendo come argomenti l'identificativo della Collection correntemente visualizzata e l'indice
+  del Document da eliminare. \\
+  Se l'eliminazione ha successo viene lanciato l'aggiornamento della vista corrente con il Document eliminato, altrimenti si
+  richiama la callback di errore.
+  
+ \end{description}
+\end{description}
+
+\paragraph{@UsersController}
+\begin{description}
+ \item[Descrizione] \hfill \\
+ Modulo che descrive il Controller della pagina di visualizzazione di un profilo utente da parte di un amministratore.
+ 
+ \item[Utilizzo] \hfill \\
+ Controller utilizzato da AngularJS per fornire e gestire i dati durante la visualizzazione di un document.
+ 
+ \item[Dipendendenze iniettate al controller] \hfill \\
+ \begin{itemize}
+  \item \$scope;
+  \item \$location;
+  \item \$routeParams;
+  \item UserDataService;
+  \item UserEditService.
+  
+ \end{itemize}
+ 
+ \item[Attributi] \hfill \\
+ \begin{itemize}
+  \item \$scope.current\textunderscore document;
+  \item  \$scope.values;
+ \end{itemize}
+ 
+ \item[Funzionalità esportate] \hfill \\
+ \begin{description}
+  \item[UserDataService.query] \hfill \\
+  Richiama la richiesta RESTful \textit{query} sulla \$resource fornita da UserDataService.
+  Con questa funzione vengono prelevati i dati legati alla Collection da visualizzare e vengono
+  passati alla Collection view tramite il binding con lo \$scope. \\
+  Se non vengono visualizzati risultati, ovvero se la Collection non esiste, avviene un redirect alla pagina
+  che mostra l'errore 404.
+  
+  \item[\$scope.deleteDocument(index)] \hfill \\
+  Funzione che elimina il profilo identificato dall'indice \emph{index}. Effettua una richiesta REST di rimozione alla risorsa
+  pubblicizzata da UserEditService fornendo come argomenti l'identificativo della Collection correntemente visualizzata e l'indice
+  del Document da eliminare. \\
+  Se l'eliminazione ha successo viene lanciato l'aggiornamento della vista corrente con il Document eliminato, altrimenti si
+  richiama la callback di errore.
+ \end{description}
+\end{description}
+
+\paragraph{@UsersEditController}
+\begin{description}
+ \item[Descrizione] \hfill \\
+ Modulo che descrive il Controller della pagina di modifica di un documento.
+ 
+ \item[Utilizzo] \hfill \\
+ Controller utilizzato da AngularJS per fornire e gestire i dati durante la modifica di un document.
+ 
+ \item[Dipendendenze iniettate al controller] \hfill \\
+ \begin{itemize}
+  \item \$scope;
+  \item \$location
+  \item UserEditService;
+  \item \$routeParams.
+  
+ \end{itemize}
+ 
+ \item[Attributi] \hfill \\
+ \begin{itemize}
+    \item  \$scope.current\textunderscore document;
+    \item  \$scope.original\textunderscore data;
+    \item  \$scope.original\textunderscore keys;
+ \end{itemize}
+ 
+ \item[Funzionalità esportate] \hfill \\
+ \begin{description}
+  \item[UserEditService.query] \hfill \\
+ Richiama la richiesta RESTful \textit{query} sulla \$resource fornita da UserEditService.
+  Con questa funzione vengono prelevati i dati legati alla Collection da visualizzare e vengono
+  passati alla Collection view tramite il binding con lo \$scope. \\
+  Se non vengono visualizzati risultati, ovvero se la Collection non esiste, avviene un redirect alla pagina
+  che mostra l'errore 404.
+  \item[edit\textunderscore document()] \hfill \\
+  Funzione che invia al server il documento modificato nel client.
+  Assembla un JSON a partire da original\textunderscore keys e original\textunderscore data. Quest'ultima variabile nel frattempo è stata 
+  modificata con i nuovi valori del documento.
+  \item[delete\textunderscore document()] \hfill \\
+ Funzione che elimina il profilo identificato dall'indice \emph{index}. Effettua una richiesta REST di rimozione alla risorsa
+  pubblicizzata da UserEditService fornendo come argomenti l'identificativo della Collection correntemente visualizzata e l'indice
+  del Document da eliminare. \\
+  Se l'eliminazione ha successo viene lanciato l'aggiornamento della vista corrente con il Document eliminato, altrimenti si
+  richiama la callback di errore.
+ \end{description}
+\end{description}
+
+\subsubsection{::Scope}
+
+\subsubsection{::Directives}
+
+\subsection{::ModelClient}
+
+\subsubsection{::Model}
 %il Model nel Client c'e' ancora? perche' a quanto pare non serve nemmeno.
+No non esiste
+\subsubsection{::Services}
+\paragraph{@AuthService}
+\begin{description}
+ \item[Descrizione] \hfill \\
+ Modulo che espone un oggetto \$resource legato all'autenticazaione utente.
+ \item[Utilizzo] \hfill \\
+ Viene utilizzato per astrarre il processo di verifica delle credenziali eseguito dal server. Questo modulo esegue una richiesta alle
+ API del server per stabilire se le credenziali inserite dall'utente sono valide all'autenticazione. Il modulo ritorna una \$resource
+ per rendere più semplice ed immediato il dialogo tra il Client e il sistema di autenticazione. \\
+ La \$resource esportata da questo modulo viene utilizzata nel LoginCtrl per verificare le credenziali inserite lato Client.
+ \item[Funzionalità esportate] \hfill \\
+ \emph{Dipendenze iniettate:}
+ \begin{itemize}
+  \item \$resource.
+ \end{itemize}
+ L'istruzione di ritorno crea una nuova \$resource che espone il metodo \textit{login} che verrà invocato dal LoginCtrl.
+\end{description}
 
-\subsubsection{Maap::Client::ModelClient::Services}
+\paragraph{@CollectionDataService}
+\begin{description}
+ \item[Descrizione] \hfill \\
+ Modulo che espone un oggetto \$resource legato ad una particolare Collection. 
+ 
+ \item[Utilizzo] \hfill \\
+ Viene utilizzato come astrazione della risorsa Collection, su cui il CollectionController invocherà delle richieste RESTful aggiungendo 
+ i parametri necessari. La risorsa fornita conterr\'{a} i Document ad essa correlati e quest'ultimi verranno visualizzati in base alle 
+ opzioni della richiesta RESTful.
+ 
+ \item[Funzionalità esportate] \hfill \\
+ %qui ci andrebbe tipo uno screenshot del codice, devo ancora capire come esporre le informazioni del sorgente
+ \emph{Dipendenze iniettate:}
+ \begin{itemize}
+  \item \$resource.
+ \end{itemize}
+ L'istruzione di ritorno crea una nuova \$resource che modella il comportamento della Collection che verrà individuata tramite l'attributo 
+ \emph{col\_id}.
+\end{description}
 
-\paragraph{CollectionDataService}
-\subparagraph{Descrizione}
-Modulo che espone un oggetto \$resource legato ad una particolare Collection. 
+\paragraph{@CollectionListService}
+\begin{description}
+ \item[Descrizione] \hfill \\
+ Modulo che espone un oggetto \$resource legato alla lista delle Collection disponibili.
+ 
+ \item[Utilizzo] \hfill \\
+ Viene creata una \$resource che modella ad alto livello la lista delle Collection disponibili, per essere utilizzata nel DashboardController.
+ 
+ \item[Funzionalità esportate] \hfill \\
+ \emph{Dipendenze iniettate:}
+ \begin{itemize}
+  \item \$resource.
+ \end{itemize}
+ L'istruzione di ritorno crea una \$resource che contiene la lista delle Collection disponibili, con 
+ cui interagire tramite richieste RESTful.
+ 
+\end{description}
 
-\subparagraph{Utilizzo}
-Viene utilizzato come astrazione della risorsa Collection, su cui il CollectionController invocherà delle richieste 
-RESTful aggiungendo i parametri necessari. La risorsa fornita conterr\'{a} i Document ad essa correlati e quest'ultimi 
-verranno visualizzati in base alle opzioni della richiesta RESTful.
+\paragraph{@DocumentDataService}
+\begin{description}
+ \item[Descrizione] \hfill \\
+ Modulo che espone un oggetto \$resource legato ad un particolare Document.
+ 
+ \item[Utilizzo] \hfill \\
+ Questo servizio ritorna un oggetto \$resource legato ad un particolare Document, che verrà  utilizzato dal DocumentController tramite 
+ richieste RESTful per visualizzarne gli attributi.
+ 
+ \item[Funzionalità esportate] \hfill \\
+ \emph{Dipendenze iniettate:}
+ \begin{itemize}
+  \item \$resource.
+ \end{itemize}
+ L'oggetto ritornato da questa Factory lega la \$resource ritornata al Document \emph{doc\_id} della Collection
+ \emph{col\_id}. Inoltre, stabilisce che le richieste \emph{query} vengano effettuate tramite metodo GET. 
+ 
+\end{description}
 
-\subparagraph{Funzionalità esportate}
-%qui ci andrebbe tipo uno screenshot del codice, devo ancora capire come esporre le informazioni del sorgente
-\emph{Dipendenze iniettate:}
-\begin{itemize}
- \item \$resource.
-\end{itemize}
-L'istruzione di ritorno crea una nuova \$resource che modella il comportamento della Collection 
-che verrà individuata tramite l'attributo \emph{col_id}.
+\paragraph{@DocumentEditservice}
+\begin{description}
+ \item[Descrizione] \hfill \\
+ Modulo che espone un oggetto \$resource legato ad un particolare Document modificabile.
+ 
+ \item[Utilizzo] \hfill \\
+ Questo servizio ritorna un oggetto \$resource legato ad un particolare Document, che verrà  utilizzato dal DocumentEditController tramite 
+ richieste RESTful, sia per visualizzarne  le informazioni, sia per modificarne le proprietà.
+ 
+ \item[Funzionalità esportate] \hfill \\
+ \emph{Dipendendenze iniettate:}
+ \begin{itemize}
+  \item \$resource.
+ \end{itemize}
+ L'oggetto ritornato da questa Factory lega la \$resource ritornata al Document \emph{doc\_id} della Collection
+ \emph{col\_id}. Inoltre, oltre alla visualizzazione, descrive che le richieste di \emph{update} vengono effettuate
+ con richieste di \emph{PUT}, mentre le richieste di \emph{remove} useranno il metodo http \emph{DELETE}.
+ 
+\end{description}
 
+\paragraph{@IndexService}
+\begin{description}
+ \item[Descrizione] \hfill \\
+ Modulo che pubblicizza una \$resource legata ad un indice.
+ \item[Utilizzo] \hfill \\
+ Questo servizio ritorna una \$resource legata ad un indice fornito dal server, per essere utilizzata dall'IndexCtrl per gestire i vari 
+ indici visualizzati nel Client. Il presente modulo viene inoltre iniettato nel QueryCtrl per creare un nuovo indice a partire da una 
+ query data. Questa risorsa esportata è dotata di tre metodi di accesso e modifica dei dati dell'indice, ovvero
+ \textit{query}, \textit{insert} e \textit{remove}.
+ \item[Funzionalità esportate] \hfill \\
+ \emph{Dipendendenze iniettate:}
+ \begin{itemize}
+  \item \$resource.
+ \end{itemize}
+ La \$resource esportata fornisce all'IndexCtrl del Client una modo diretto per interagire con un indice fornito dal server. Questa 
+ risorsa dispone di un metodo \textit{query} per eseguire una GET RESTful per ottenere una lista degli indici presenti sul Server.
+ Il metodo \textit{insert} crea un nuovo indice a partire da una delle query più utilizzate. \textit{remove} invece rimuove un indice
+ dalla lista degli indici presenti sul server.
+\end{description}
 
-\paragraph{CollectionListService}
-\subparagraph{Descrizione}
-Modulo che espone un oggetto \$resource legato alla lista delle Collection disponibili. 
+\paragraph{@LogoutService}
+\begin{description}
+ \item[Descrizione] \hfill \\
+ Modulo che fornisce la \$resource legata al servizio di logout di un utente autenticato del Client.
+ \item[Utilizzo] \hfill \\
+  Questo servizio fornisce un'astrazione del metodo di logout eseguito dal server. La \$resource esportata dal servizio viene utilizzata
+  nel NavBarCtrl per effettuare il logout di un autente autenticato, tramite il metodo pubblicizzato \textit{logout}. 
+ \item[Funzionalità esportate] \hfill \\
+ \emph{Dipendendenze iniettate:}
+ \begin{itemize}
+  \item \$resource.
+ \end{itemize}
+ La risorsa ritornata dal modulo astrae la connessione con il server quando si effettua il logout dal sistema. La funzione \textit{logout} 
+ associata alla \$resource ritornata esegue una richiesta RESTful GET al Server per disconnettere l'utente che ha richiesto l'operazione.
+\end{description}
 
-\subparagraph{Utilizzo}
-Viene creata una \$resource che modella ad alto livello la lista delle Collection disponibili,
-per essere utilizzata nel DashboardController.
+\paragraph{@ProfileDataService}
+\begin{description}
+ \item[Descrizione] \hfill \\
+ Il servizio ritorna una \$resource legata ad un particolare profilo utente presente nel Server.
+ \item[Utilizzo] \hfill \\
+ La risorsa ritornata da questo modulo viene utilizzata dal ProfileCtrl per dialogare con le informazioni associate ad un singolo utente.
+ Il metodo \textit{query} associato alla risorsa serve per ottenere i dati associati al profilo utente associato.
+ \item[Funzionalità esportate] \hfill \\
+ \emph{Dipendendenze iniettate:}
+ \begin{itemize}
+  \item \$resource.
+ \end{itemize}
+ La funzione \textit{query} esegue una richiesta GET RESTful al server per ottenere le informazioni di un utente. Tali informazioni vengono 
+ poi passate al ProfileController per essere fornite in visualizzazione al Client che le ha richieste.
+\end{description}
 
-\subparagraph{Funzionalità esportate}
-\emph{Dipendenze iniettate:}
-\begin{itemize}
- \item \$resource.
-\end{itemize}
-L'istruzione di ritorno crea una \$resource che contiene la lista delle Collection disponibili, con 
-cui interagire tramite richieste RESTful.
+\paragraph{@ProfileEditService}
+\begin{description}
+ \item[Descrizione] \hfill \\
+ Il servizio ritorna una \$resource modificabile legata ad un particolare profilo utente presente nel Server.
+ \item[Utilizzo] \hfill \\
+ La risorsa ritornata da questo modulo viene utilizzata dal ProfileEditCtrl per dialogare con le informazioni associate ad un singolo utente.
+ Alla risorsa ritornata vengono associati tre metodi: \textit{query}, \textit{update} e \textit{remove}.
+ \item[Funzionalità esportate] \hfill \\
+ \emph{Dipendendenze iniettate:}
+ \begin{itemize}
+  \item \$resource.
+ \end{itemize}
+ La funzione \textit{query} esegue una richiesta GET RESTful al server per ottenere le informazioni di un utente. \textit{update} invia 
+ nuove informazioni al Server che andranno a sovrascrivere quelle già presenti per aggiornarle. Il metodo \textit{remove} invece richiede al 
+ Server di eseguire l'eliminazione di un dato profilo utente. Lato Server viene effettuato un controllo per verificare se l'utente che 
+ ha richiesto l'eliminazione ha le credenziali per eliminare u utente. Nel caso in cui il controllo abbia esito positivo, il profilo
+ viene eliminato dal Server.
+\end{description}
 
-\paragraph{DocumentDataService}
-\subparagraph{Descrizione}
-Modulo che espone un oggetto \$resource legato ad un particolare Document.
+\paragraph{@QueryService}
+\begin{description}
+ \item[Descrizione] \hfill \\
+ Modulo che esporta una \$resource legata ad una query effettuabile sul database di analisi.
+ \item[Utilizzo] \hfill \\
+ La risorsa ritornata da questo servizio viene utilizzata nel QueryCtrl. Il suddetto controller utilizza la risorsa per richiedere l'esecuzione 
+ di una query al Server inviando come argomenti i dati presenti nello \$scope in quel momento. \\
+ Il modulo associa alla risorsa ritornata le funzioni \textit{query} e \textit{remove}.
+ \item[Funzionalità esportate] \hfill \\
+ \emph{Dipendendenze iniettate:}
+ \begin{itemize}
+  \item \$resource.
+ \end{itemize}
+ La funzione \textit{query} esegue una richiesta GET REST al Server per richiedere l'esecuzione di una query sui dati del database di analisi. 
+ I parametri su cui effettuare la query sono inviati dal Client sulla base delle condizioni immesse dall'utente e memorizzate nello \$scope.
+ La funzione \textit{remove}, invece, richiede al Server l'eliminazione del Document individuato dall'indice \textit{index} presente nello \$scope. 
+\end{description}
 
-\subparagraph{Utilizzo}
-Questo servizio ritorna un oggetto \$resource legato ad un particolare Document, che verrà
-utilizzato dal DocumentController tramite richieste RESTful per visualizzarne gli attributi.
+\paragraph{@RegisterService}
+\begin{description}
+ \item[Descrizione] \hfill \\
+ Servizio che ritorna una \$resource legata ad un profilo utente intento ad effettuare la registrazione. 
+ \item[Utilizzo] \hfill \\
+ La risorsa ritornata da questo servizio viene utilizzata come tramite tra il Client e il Server per gestire la registrazione di un nuovo utente. 
+ La risorsa viene utilizzata dal RegisterCtrl per richiedere la registrazione di un nuovo utente. Viene infatti esposto il metodo \textit{register} 
+ che consente di inviare una richiesta di registrazione al Server con le credenziali inserite nell'apposito form del Client. 
+ \item[Funzionalità esportate] \hfill \\
+ \emph{Dipendendenze iniettate:}
+ \begin{itemize}
+  \item \$resource.
+ \end{itemize}
+ La funzione \textit{register} esportata con la risorsa esegue una richiesta POST REST al Server inviando con essa le credenziali dell'utente 
+ attualmente presenti nello \$scope.
+\end{description}
 
-\subparagraph{Funzionalità esportate}
-\emph{Dipendenze iniettate:}
-\begin{itemize}
- \item \$resource.
-\end{itemize}
-L'oggetto ritornato da questa Factory lega la \$resource ritornata al Document \emph{doc_id} della Collection
-\emph{col_id}. Inoltre, stabilisce che le richieste \emph{query} vengano effettuate tramite metodo GET. 
+\paragraph{@UserCollectionService}
+\begin{description}
+ \item[Descrizione] \hfill \\
+ Servizio che fornisce una \$resource legata alla lista degli utenti ordinari non amministratori.  
+ \item[Utilizzo] \hfill \\
+ La risorsa messa a disposizione dallo UserCollectionService contiene la lista di tutti gli utenti 
+ del sistema. Questa \$resource viene utilizzata dallo UsersCollectionController per visualizzare 
+ correttamente tutti gli utenti del sistema ed organizzarli nell'apposita vista. Il modulo esporta 
+ con la \$resource il metodo \textit{query}. 
+ \item[Funzionalità esportate] \hfill \\
+ \emph{Dipendendenze iniettate:}
+ \begin{itemize}
+  \item \$resource.
+ \end{itemize}
+ La funzione \textit{query} effettua una richiesta REST GET al Server per ottenere la lista degli 
+ utenti.
+\end{description}
 
-\paragraph{DocumentEditservice}
-\subparagraph{Descrizione}
-Modulo che espone un oggetto \$resource legato ad un particolare Document modificabile.
+\paragraph{@UserDataService}
+\begin{description}
+ \item[Descrizione] \hfill \\
+ Servizio che fornisce una \$resource legata ad un particolare utente non amministratore registrato al sistema.
+ \item[Utilizzo] \hfill \\
+ Questa risorsa viene utilizzata nello UserCtrl per richiedere al Server le informazioni associate ad un utente. Ogni utente è identificato dal proprio \textit{id} e questo campo viene passato dal Client per individuare un singolo utente, se presente, nel Server. La risorsa viene esportata 
+con il metodo \textit{query}, per ottenere i dati voluti.
+ \item[Funzionalità esportate] \hfill \\
+ \emph{Dipendendenze iniettate:}
+ \begin{itemize}
+  \item \$resource.
+ \end{itemize}
+ Il metodo \textit{query} esegue una richiesta GET REST al Server richiedendo le informazioni di un utente specifico, individuato da un identificativo univoco, inviato dal Client come argomento della richiesta.
+\end{description}
 
-\subparagraph{Utilizzo}
-Questo servizio ritorna un oggetto \$resource legato ad un particolare Document, che verrà
-utilizzato dal DocumentEditController tramite richieste RESTful, sia per visualizzarne
-le informazioni, sia per modificarne le proprietà.
-
-\subparagraph{Funzionalità esportate}
-\emph{Dipendendenze iniettate:}
-\begin{itemize}
- \item \$resource.
-\end{itemize}
-L'oggetto ritornato da questa Factory lega la \$resource ritornata al Document \emph{doc_id} della Collection
-\emph{col_id}. Inoltre, oltre alla visualizzazione, descrive che le richieste di \emph{update} vengono effettuate
-con richieste di \emph{PUT}, mentre le richieste di \emph{remove} useranno il metodo http \emph{DELETE}.
-
+\paragraph{@UserEditService}
+\begin{description}
+ \item[Descrizione] \hfill \\
+ Servizio che fornisce una \$resource legata ad un particolare utente con campi modificabili registrato al sistema.
+ \item[Utilizzo] \hfill \\
+  Questa risorsa viene utilizzata nello UserEditCtrl per richiedere al Server le informazioni associate ad un utente. L'argomento della richiesta al 
+  Server è l dell'utente. Le funzioni esportate con la \$resource sono: \textit{query}, \textit{update} e 
+  \textit{remove}.
+ \item[Funzionalità esportate] \hfill \\
+ \emph{Dipendendenze iniettate:}
+ \begin{itemize}
+  \item \$resource.
+ \end{itemize}
+  L'oggetto ritornato da questo servizio lega la \$resource ritornata all'utente con il campo 
+  \textit{id} uguale a quello utilizzato per la ricerca. Inoltre, oltre alla visualizzazione espressa tramite il metodo \textit{query} realizzato con una richiesta GET RESTful, descrive che le richieste di \emph{update} vengano effettuate
+ con richieste di \emph{PUT}, mentre le richieste di \emph{remove} useranno il metodo http \emph{DELETE}.
+\end{description}
 
 \newpage
 \section{Diagrammi di sequenza}

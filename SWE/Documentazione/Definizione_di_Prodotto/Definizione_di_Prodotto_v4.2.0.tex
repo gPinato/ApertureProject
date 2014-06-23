@@ -184,6 +184,7 @@ Per ultima cosa, il \textit{dispatcher} gestisce eventuali richieste di risorse 
  %\item put('/api/collection/:col_id/:doc_id/edit', passport.checkAuthenticatedAdmin, datamanager.updateDocument);
  %\item delete('/api/collection/:col_id/:doc_id/edit', passport.checkAuthenticatedAdmin, datamanager.removeDocument);
  %sto bestemmiando allegramente con le signature dei metodi: sono troppo lunghe! devo inventarmi qualcosa.
+ %probabilmente bisognerà fare una tabella, domani ne parlo con Andrea.
  \end{itemize}
  \item[Gestione Profilo Utente] \hfill \\
  \item[Gestione Utenti] \hfill \\
@@ -194,7 +195,24 @@ Per ultima cosa, il \textit{dispatcher} gestisce eventuali richieste di risorse 
  \end{description}
 \end{description}
 
-\subsubsection{@frontController}
+\subsubsection{@frontController}		%da rivedere
+\begin{description}
+ \item[Descrizione] \hfill \\
+ Il frontController è l'interfaccia di connessione tra il Server ed il Client. 
+ \item[Dipendendenze entranti] \hfill \\
+ \begin{itemize}
+ \item @dispatcher.
+ \end{itemize}
+ %\item[Dipendenze uscenti] \hfill \\
+ 
+ %\item[Attributi] \hfill \\
+ 
+ \item[Metodi] \hfill \\
+ \begin{itemize}
+ \item[initFrontController] \hfill \\
+ \'{E} la funzione di inizializzazione del frontController ed indica l'utilizzo del modulo \textit{dispatcher} per gestire le richieste del Client.
+ \end{itemize}
+\end{description}
 
 \subsubsection{@index}
 
