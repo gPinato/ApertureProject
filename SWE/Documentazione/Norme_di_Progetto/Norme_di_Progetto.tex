@@ -312,7 +312,7 @@ Redige il Manuale Utente e tutta la documentazione relativa al codice.
 \section{Processi}
 L'intero progetto sarà sviluppato mediante processi, ovvero mediante un insieme di attività coerenti e coese.
 In virtù del ciclo di vita scelto, molti di questi processi saranno ripetuti più volte durante l'intero arco di sviluppo.
-\immagine{./process}{I principali processi di sviluppo del progetto}
+\immagine{./process}{I principali processi descritti in ISO/IEC 12207}
 
 \subsection{Acquisizione}
 Lo scopo del processo di acquisizione è quello di ottenere la definizione di un prodotto o servizio che soddisfi le richieste espresse dall'acquirente.
@@ -685,7 +685,7 @@ I Progettisti devono descrivere l'architettura di basso livello del sistema e de
 
 \begin{itemize}
 \item \grassetto{Nome: }specifica il nome del modulo;
-\item \grassetto{Package: } Identifica la gerarchia di package di cui il modulo fa parte. La gerarchia dovrà essere espressa dal package più grande al più piccolo, separando i nomi con \og  \fg{::};
+\item \grassetto{Package: } Identifica la gerarchia di package di cui il modulo fa parte. La gerarchia dovrà essere espressa dal package più grande al più piccolo, separando i nomi con :: ;
 \item \grassetto{Descrizione: }descrive in maniera testuale la funzionalità del modulo;
 \item \grassetto{Attributi: }Gli attributi della classe sono indicati con l’indicazione dell’accessibilità dell’attributo secondo quanto previsto da UML 2.4, seguita dal nome di colore verde e dalla descrizione dello stesso.
 \item \grassetto{Metodi: }I metodi del modulo sono indicati di colore blu e sono seguiti dai loro parametri tra parentesi tonde.
@@ -696,29 +696,17 @@ Vengono infine descritti il metodo  la lista degli argomenti;
 Ogni metodo progettato deve essere riportato all'interno della Definizione di Prodotto. I metodi verranno modellati secondo la seguente struttura:
 \begin{itemize}
 \item \grassetto{Nome: }identifica il nome del metodo;
+\item \grassetto{Parametri in ingresso: }specifica i parametri in ingresso. I parametri devono essere inclusi nel nome del metodo nello stesso ordine in cui si presentano nel codice; 
 \item \grassetto{Descrizione: }è una descrizione testuale del metodo;
 \item \grassetto{Tipo di ritorno (eventuale): }specifica il tipo di ritorno del metodo;
-\item \grassetto{Parametri in ingresso: }specifica i parametri in ingresso; i parametri hanno la seguente forma:
-\begin{itemize}
-\item \grassetto{Nome: }specifica il nome del parametro;
-\item \grassetto{Tipo: }specifica il tipo del parametro.
-\end{itemize}
+
 \item \grassetto{Note (eventuali): }specifica eventuali note del metodo.
-\end{itemize}
-
-
-\subparagraph{Definizione degli attributi}
-Ogni \gloss{attributo} progettato deve essere riportato all'interno della Definizione di Prodotto. Gli attributi verranno modellati secondo la seguente struttura:
-\begin{itemize}
-\item \grassetto{Nome: }identifica il nome dell'attributo;
-\item \grassetto{Descrizione: }è una descrizione testuale dell'attributo.
 \end{itemize}
 
 
 \paragraph{Procedure}
 Si dovrà per prima cosa identificare chiaramente tutte le responsabilità di ogni singola classe/modulo, definendo con un alto livello di astrazione tutti i suoi metodi.
 Quando si sarà sicuri che tutti i metodi sono correttamente integrati e assegnati alla classe/modulo corretta, si dovranno delineare i parametri di tali metodi e i loro tipi di ritorno.
-Si dovranno inoltre definire i campi delle classi necessari al corretto funzionamento, insieme al loro grado di accesso.
 
 \subsubsection{Progettazione test}
 \label{prog_test}
@@ -768,8 +756,8 @@ Per progettare un test d'integrazione si deve:
 \begin{itemize}
 \item Identificare due o più componenti che interagiscono tra loro.
 \item Identificare come questi componenti interagiscono e per quale obiettivo;
-\item XXX
-\item Inserire il test in ApertureTrace;
+\item Disegnare un test che verifica il corretto funzionamento dell'integrazione;
+\item Inserire il test in ApertureTrace.
 \end{itemize}
 
 \subparagraph{Test di sistema}
@@ -778,7 +766,7 @@ Per progettare un test di sistema si deve:
 \item Identificare una serie di requisiti funzionali che concorrono alla realizzazione di una singola funzionalità;
 \item Disegnare un insieme di passi che vadano ad utilizzare tutte le sotto-funzionalità descritte dai requisiti.
 \item Definire il risultato atteso per ogni singolo passo;
-\item Inserire il test in ApertureTrace;
+\item Inserire il test in ApertureTrace.
 \end{itemize}
 
 \subsubsection{Tracciamento}
@@ -1024,27 +1012,6 @@ I test verranno eseguiti e la copertura generata automaticamente.
 \paragraph{Strumenti}
 Mocha, Istanbul, Karma
 
-\subsubsection{Test integrazione}
-
-
-
-\paragraph{Procedure}
-
-\paragraph{Strumenti}
-Mocha.
-
-\subsubsection{Test di sistema}
-
-\paragraph{Procedure}
-
-\paragraph{Strumenti}
-Karma.
-
-\subsubsection{Testi di regressione}
-
-\paragraph{Procedure}
-
-\paragraph{Strumenti}
 
 \subsubsection{Statement e branch coverage}
 Statement e branch coverage sono delle metriche che consentono di sapere quanta percentuale di codice è stata testata.
@@ -1138,9 +1105,6 @@ La tabella per il tracciamento test di sistema-requisiti avrà la seguente forma
 \item \grassetto{Requisiti: } i requisiti associati al test.
 \end{itemize}
 
-\subsection{Validazione}
-Questa attività comprende tutte i compiti volti a verificare che il prodotto risultante dall'uscita di tutti i processi sia il prodotto desiderato.
- 
 
 \subsection{Documentazione}
 Questo processo di supporto comprende tutte le attività volte alla realizzazione della documentazione di supporto necessaria al progetto.
@@ -1382,7 +1346,7 @@ Per inviare le modifiche al repository remoto si deve usare il comando \textit{g
 
 \subparagraph{Effettuare il merge tra due branch}
 \label{merge}
-La sequenza di operazioni corretta per effettuare il merge del branch \og  \fg{test} nel branch master è la sequente:
+La sequenza di operazioni corretta per effettuare il merge del branch test nel branch master è la sequente:
 \begin{itemize}
 \item git checkout master;
 \item git pull origin master;
