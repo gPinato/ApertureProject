@@ -24,6 +24,8 @@ var getPopulatedCollection = function(populateArray, key) {
 	}
 	return '';
 }
+//for unit test
+exports.getPopulatedCollection = getPopulatedCollection;
 
 var arrayAddElement = function(element, array) {
 	var trovato = false;
@@ -38,6 +40,8 @@ var arrayAddElement = function(element, array) {
 	}
 	return array;
 }
+//for unit test
+exports.arrayAddElement = arrayAddElement;
 
 var generate = function(config, dslJson) {
 	
