@@ -57,9 +57,11 @@ Diario delle modifiche
 \midrule
 4.1.0 & 2014-05-20 & Alberto Garbui (VR) & Verifica documento.\\
 \midrule
+4.0.3 & 2014-XX-XX & Mattia Sorgato (PR) & Stesura controller del Server\\
+\midrule
 4.0.2 & 2014-XX-XX & Giacomo Pinato (PR) & Stesura dei controller\\
 \midrule
-4.0.2 & 2014-XX-XX & Mattia Sorgato (PR) & Stesura dei servizi e dei controller del client\\
+4.0.2 & 2014-XX-XX & Mattia Sorgato (PR) & Stesura dei servizi e dei controller del Client\\
 \midrule
 4.0.1 & 2014-04-04 & Alberto Garbui (PR) & Prima stesura del documento.\\
 
@@ -149,6 +151,26 @@ Package Server del Design Pattern Client-Server.
 \subsection{::Controller}
 Package che gestisce il dialogo con il Client di Maap. 
 \subsubsection{@dispatcher}
+\begin{description}
+ \item[Descrizione] \hfill \\
+Modulo di inizializzazione della componente Server utilizzata per la trasmissione dei dati al Client. \\
+Il modulo \textit{dispatcher} gestisce tutte le richieste effettuate dal Client al Server, effettuando le dovute redirezioni e le chiamate per ottenere i dati dai database nel Server. Le richieste che pervengono al 
+\textit{dispatcher} sono di tipo REST, a cui il modulo stesso risponde con 
+ \item[Dipendendenze entranti] \hfill \\
+ \begin{itemize}
+ \item @passport;
+ \item path;
+ \item @DatabaseAnalysisManager;
+ \item @DatabaseUserManager
+ \item @IndexManager.
+ \end{itemize}
+ 
+ \item[Dipendenze uscenti] \hfill \\
+ 
+ %\item[Attributi] \hfill \\
+ 
+ \item[Metodi] \hfill \\
+\end{description}
 \subsubsection{@frontController}
 \subsubsection{@index}
 \subsubsection{@passport}
@@ -159,17 +181,6 @@ DSL con i relativi interpreti.
 
 \subsubsection{::Database}
 \paragraph{@index}
-\begin{description}
- \item[Descrizione] \hfill \\
-
- \item[Dipendendenze entranti] \hfill \\
- 
- \item[Dipendenze uscenti] \hfill \\
- 
- \item[Attributi] \hfill \\
- 
- \item[Metodi] \hfill \\
-\end{description}
 
 \paragraph{@MongooseDBAnalysis}
 \begin{description}
