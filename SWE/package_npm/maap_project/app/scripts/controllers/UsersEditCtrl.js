@@ -18,14 +18,14 @@
 'use strict';
 
 angular.module('maaperture').controller('UserEditCtrl', function ($scope, $location, UserEditService, $routeParams) {
-    $scope.current_document = $routeParams.user_email;
+    $scope.current_document = $routeParams.user_id;
     $scope.original_data = [];
     $scope.original_keys = [];
 
     //Funzione per richiedere un documento al server.
     //Passa come parametri la collection e il documento da ricevere
     UserEditService.query({
-            user_email: $routeParams.user_email },
+            user_id: $routeParams.user_id },
         function success(data) {
             $scope.labels = data.label;
             $scope.data = data.data;
@@ -51,7 +51,7 @@ angular.module('maaperture').controller('UserEditCtrl', function ($scope, $locat
         var json_data = JSON.stringify(new_data);
         //Trasmette al server il nuovo json
         UserEditService.update({
-                user_email: $scope.current_document
+                user_id: $scope.current_document
             },
             json_data,
             function success() {
@@ -66,7 +66,7 @@ angular.module('maaperture').controller('UserEditCtrl', function ($scope, $locat
     //Funzione per richiedere la cancellazione di un documento
     $scope.delete_document = function () {
         UserEditService.remove({
-                user_email: $scope.current_document
+                user_id: $scope.current_document
             },
 
             function success() {

@@ -17,8 +17,8 @@
 
 angular.module('services')
     .factory('UserDataService', ['$resource', function ($resource) {
-        return $resource('http://localhost:9000/api/users/:user_email',
-            {user_email: '@user_email'}, {
+        return $resource('http://localhost:9000/api/users/:user_id',
+            {user_email: '@user_id'}, {
                 'query': {method: 'GET'}
 
             });

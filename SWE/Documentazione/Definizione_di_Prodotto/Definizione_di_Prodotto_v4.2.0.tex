@@ -1202,52 +1202,52 @@ No non esiste
 \paragraph{@UserCollectionService}
 \begin{description}
  \item[Descrizione] \hfill \\
- %Servizio che fornisce una \$resource legata alla lista delle Collection degli utenti. 
- %è davvero così?? ci sono più collection di utenti?
+ Servizio che fornisce una \$resource legata alla lista degli utenti ordinari non amministratori.  
  \item[Utilizzo] \hfill \\
- 
+ La risorsa messa a disposizione dallo UserCollectionService contiene la lista di tutti gli utenti 
+ del sistema. Questa \$resource viene utilizzata dallo UsersCollectionController per visualizzare 
+ correttamente tutti gli utenti del sistema ed organizzarli nell'apposita vista. Il modulo esporta 
+ con la \$resource il metodo \textit{query}. 
  \item[Funzionalità esportate] \hfill \\
  \emph{Dipendendenze iniettate:}
  \begin{itemize}
   \item \$resource.
  \end{itemize}
+ La funzione \textit{query} effettua una richiesta REST GET al Server per ottenere la lista degli 
+ utenti.
 \end{description}
 
 \paragraph{@UserDataService}
 \begin{description}
  \item[Descrizione] \hfill \\
- Servizio che fornisce una \$resource legata ad un particolare utente registrato al sistema.
+ Servizio che fornisce una \$resource legata ad un particolare utente non amministratore registrato al sistema.
  \item[Utilizzo] \hfill \\
- Questa risorsa viene utilizzata nello UserCtrl per richiedere al Server le informazioni associate ad un utente. Ogni utente è identificato dalla 
-propria email e questo campo viene passato dal Client per individuare un singolo utente, se presente, nel Server. La risorsa viene esportata 
+ Questa risorsa viene utilizzata nello UserCtrl per richiedere al Server le informazioni associate ad un utente. Ogni utente è identificato dal proprio \textit{id} e questo campo viene passato dal Client per individuare un singolo utente, se presente, nel Server. La risorsa viene esportata 
 con il metodo \textit{query}, per ottenere i dati voluti.
  \item[Funzionalità esportate] \hfill \\
  \emph{Dipendendenze iniettate:}
  \begin{itemize}
   \item \$resource.
  \end{itemize}
- Il metodo \textit{query} esegue una richiesta GET REST al Server richiedendo le informazioni di un utente specifico, identificato da un indirizzo email 
- univoco, inviato dal Client come argomento della richiesta.
+ Il metodo \textit{query} esegue una richiesta GET REST al Server richiedendo le informazioni di un utente specifico, individuato da un identificativo univoco, inviato dal Client come argomento della richiesta.
 \end{description}
 
-
-%momento, perché in questo modulo vedo delle discrepanze: nel Servizio si parla di user_id e nel Controller associato di user_mail. Ora non so 
-%a chi dare retta e devo scappare.
 \paragraph{@UserEditService}
 \begin{description}
  \item[Descrizione] \hfill \\
  Servizio che fornisce una \$resource legata ad un particolare utente con campi modificabili registrato al sistema.
  \item[Utilizzo] \hfill \\
-  %Questa risorsa viene utilizzata nello UserEditCtrl per richiedere al Server le informazioni associate ad un utente. L'argomento della richiesta al 
-  %Server è, dualmente allo UserDataService, l'indirizzo email dell'utente. Le funzioni esportate con la \$resource sono: \textit{query}, \textit{update} e 
+  Questa risorsa viene utilizzata nello UserEditCtrl per richiedere al Server le informazioni associate ad un utente. L'argomento della richiesta al 
+  Server è l dell'utente. Le funzioni esportate con la \$resource sono: \textit{query}, \textit{update} e 
   \textit{remove}.
  \item[Funzionalità esportate] \hfill \\
  \emph{Dipendendenze iniettate:}
  \begin{itemize}
   \item \$resource.
  \end{itemize}
-  %L'oggetto ritornato da questo servizio lega la \$resource ritornata all'utente di email \emph{}. Inoltre, oltre alla visualizzazione, descrive che le richieste di \emph{update} vengono effettuate
- %con richieste di \emph{PUT}, mentre le richieste di \emph{remove} useranno il metodo http \emph{DELETE}.
+  L'oggetto ritornato da questo servizio lega la \$resource ritornata all'utente con il campo 
+  \textit{id} uguale a quello utilizzato per la ricerca. Inoltre, oltre alla visualizzazione espressa tramite il metodo \textit{query} realizzato con una richiesta GET RESTful, descrive che le richieste di \emph{update} vengano effettuate
+ con richieste di \emph{PUT}, mentre le richieste di \emph{remove} useranno il metodo http \emph{DELETE}.
 \end{description}
 
 \newpage

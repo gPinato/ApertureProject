@@ -20,13 +20,13 @@
 
 angular.module('maaperture').controller('UsersCtrl', function ($scope, $location, UserDataService, UserEditService, $routeParams) {
 
-    $scope.current_document = $routeParams.user_email;
+    $scope.current_document = $routeParams.user_id;
     $scope.values = [];
 
     //Funzione per richiedere un documento al server.
     //Passa come parametri la collection e il documento da ricevere
     UserDataService.query({
-            user_email: $routeParams.user_email },
+            user_id: $routeParams.user_id },
         function success(response) {
             $scope.data = response.data;
             $.each($scope.data, function (key, value) {
@@ -45,7 +45,7 @@ angular.module('maaperture').controller('UsersCtrl', function ($scope, $location
 
     $scope.delete_document = function () {
         UserEditService.remove({
-                user_email: $scope.current_document
+                user_id: $scope.current_document
             },
 
             function success() {
