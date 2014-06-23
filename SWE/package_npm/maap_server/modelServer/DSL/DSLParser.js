@@ -63,69 +63,77 @@ var dsltoken = [
 	}
 ];
 
-var addField=function(collection,field){      
-		var a=collection[field];
-		 if(a===undefined){
-			for(var i=0;i<dsltoken.length;i++){
-			if(dsltoken[i].token===field){
-			collection[field]=dsltoken[i].default;
+var addField = function(collection, field) {   
+   
+	var a = collection[field];
+	if(a == undefined){
+		for(var i=0; i<dsltoken.length; i++){
+			if(dsltoken[i].token == field){
+				collection[field] = dsltoken[i].default;
 			}//if
-			}//for
-			return false;
-		}
-		else{
-			return true;
-		}
-		
-}
-
-var checkFieldThrow = function(collection,field,root){ 
-	var err = 'Campo obbligatorio: '+field+' non trovato in '+root;
-	
-	if(!checkField(collection,field,root)) 
-	 throw err;
-	 
-}
-
-var checkField=function(collection,field,root){      
-		try{
-		 var a=collection[field];
-		 if(a===undefined){
-			 throw field;
-		}
+		}//for
+		return false;
+	}
+	else{
 		return true;
-		}
-		catch(err){
-			 return false;
-		}	
+	}		
 }
+//for unit test
+exports.addField = addField;
 
-var checkFieldContentThrow = function(collection,field,root){ 
-	var err = 'Campo obbligatorio: '+field+' non trovato in '+root+ ' o vuoto';
+var checkFieldThrow = function(collection, field, root){ 
+	var err = 'Campo obbligatorio: ' + field + ' non trovato in ' + root;
 	
-	if(!checkFieldContent(collection,field,root)) 
-	 throw err;
-	 
+	if(!checkField(collection,field)) 
+		throw err;
 }
+//for unit test
+exports.checkFieldThrow = checkFieldThrow;
 
-var checkFieldContent = function(collection,field,root){ 
-		try{
-		 var testField=collection[field];
-		 if(testField===undefined){
-			 throw field;
-		 }
-		if(testField==""){
+var checkField = function(collection, field){      
+	try{
+		var a = collection[field];
+		if(a === undefined){
 			throw field;
 		}
 		return true;
-		}
-		catch(err){
-			 return false;
-		}
+	}
+	catch(err){
+		 return false;
+	}	
 }
+//for unit test
+exports.checkField = checkField;
 
+var checkFieldContentThrow = function(collection, field, root){ 
+	var err = 'Campo obbligatorio: ' + field + ' non trovato in ' + root +  ' o vuoto';
+	
+	if(!checkFieldContent(collection,field)) 
+	 throw err;
+	 
+}
+//for unit test
+exports.checkFieldContentThrow = checkFieldContentThrow;
 
-var IntValue=function(value,field){
+var checkFieldContent = function(collection, field){ 
+	try{
+		var testField = collection[field];
+		if(testField === undefined){
+			throw field;
+		}
+		if(testField == ""){
+			throw field;
+		}
+		return true;
+	}
+	catch(err){
+		return false;
+	}
+}
+//for unit test
+exports.checkFieldContent = checkFieldContent;
+
+var IntValue = function(value, field){
 	try{
 		if (isNaN(value)) {
 			throw field;
@@ -133,10 +141,12 @@ var IntValue=function(value,field){
 		return true;
 	}
 	catch(field){
-		    console.log('Il valore del campo '+field+ ' non e\' un numero');
+		    console.log('Il valore [' + value + '] del campo ' + field + ' non e\' un numero');
 			return false;
 	}	
 }//end function
+//for unit test
+exports.IntValue = IntValue;
 
 var transformationArray = {};
 transformationArray.index = [];
