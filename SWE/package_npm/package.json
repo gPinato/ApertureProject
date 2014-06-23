@@ -62,7 +62,8 @@
     "should": "~4.0.x",
 	"chai": "1.9.x",
 	"plato": "1.0.x",
-	"complexity-report": "1.0.x"
+	"complexity-report": "1.0.x",
+	"rewire": "2.0.x"
   },
   "engines": {
     "node": "0.10.x"
