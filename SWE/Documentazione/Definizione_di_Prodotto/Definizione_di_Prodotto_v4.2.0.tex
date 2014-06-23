@@ -400,12 +400,12 @@ userProfile & Pagina per la visualizzazione del profilo utente (user) / di un ut
   pagine disponibili.
   
   \item[\$scope.previousPage()] \hfill \\
-  Aggiunge allo \$scope la funzionalità di passaggio alla pagina di visualizzazione precedente alla corrente.
+  Aggiunge allo \$scope la funzionalità di passaggio dalla pagina di visualizzazione corrente alla precedente.
   Diminuisce di 1 l'indicatore della pagina corrente e esegue una nuova richiesta al server per i dati corrispondenti
   alla pagina precedente con \emph{getData()}.
   
   \item[\$scope.nextPage()] \hfill \\
-  Aggiunge allo \$scope la funzionalità di passaggio alla pagina di visualizzazione successiva alla corrente.
+  Aggiunge allo \$scope la funzionalità di passaggio dalla pagina di visualizzazione corrente alla successiva.
   Aumenta di 1 l'indicatore della pagina corrente e esegue una nuova richiesta al server per i dati corrispondenti
   alla pagina successiva con \emph{getData()}.
   
@@ -634,7 +634,7 @@ Fornisce un immediato elenco delle collection disponibili.
  \begin{description}
   \item[ CollectionListService.get] \hfill \\
   Richiama la richiesta RESTful \textit{query} sulla \$resource fornita da CollectionListService.
-  Con questa funzione viene prelevato l'elenco delle collection disponibili.-
+  Con questa funzione viene prelevato l'elenco delle collection disponibili.
   Se l'utente ha inserito dati corretti, esso viene autenticato e reindirizzato alla dashboard, altrimenti viene mostrato un errore.
  
   
