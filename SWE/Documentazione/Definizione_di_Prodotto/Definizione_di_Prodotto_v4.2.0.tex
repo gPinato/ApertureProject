@@ -216,40 +216,38 @@ DSL con i relativi interpreti.
 \paragraph{@index}
 \begin{description}
  \item[Descrizione] \hfill \\
-
+ Si occupa dell'inizializzazione dei database degli utenti e di analisi. Crea l'amministratore di default di Maap.
  \item[Dipendendenze entranti] \hfill \\
- 
- \item[Dipendenze uscenti] \hfill \\
- 
- \item[Attributi] \hfill \\
- 
- \item[Metodi] \hfill \\
+   \begin{itemize}
+
+   \end{itemize}
+ \item[Funzionalità esportate] \hfill \\
+ \begin{description}
+ \item[init()] \hfill \\
+ Si occupa dell'inizializzazione dei database. Inizializza lo userDBManager, aggiunge l'amministratore di default del sistema e inizializza il dataDBManager.
+ \end{description}
 \end{description}
 
 \paragraph{@MongooseDBAnalysis}
 \begin{description}
  \item[Descrizione] \hfill \\
-
- \item[Dipendendenze entranti] \hfill \\
- 
- \item[Dipendenze uscenti] \hfill \\
- 
- \item[Attributi] \hfill \\
- 
- \item[Metodi] \hfill \\
+ Si occupa dell'inizializzazione dei modelli di Mongoose.
+\item[Funzionalità esportate] \hfill \\
+ \begin{description}
+ \item[init()] \hfill \\
+ Legge la cartella contenente le collectionData dei DSL e per ogni file inizializza il modello di mongoose come elemento dell'array modelArray che poi esposta con il nome di model.
+ \end{description}
 \end{description}
 
 \paragraph{@MongooseDBFramework}
 \begin{description}
  \item[Descrizione] \hfill \\
-
- \item[Dipendendenze entranti] \hfill \\
- 
- \item[Dipendenze uscenti] \hfill \\
- 
- \item[Attributi] \hfill \\
- 
- \item[Metodi] \hfill \\
+ Si occupa dell'inizializzazione dei modelli di Mongoose.
+\item[Funzionalità esportate] \hfill \\
+ \begin{description}
+ \item[init()] \hfill \\
+ Si occupa di creare gli schemi di Mongoose per la collection utenti e la collection query, esporta tali modelli come users e query e la connessione al database come connection.
+ \end{description}
 \end{description}
 
 \subsubsection{::DataManager}
