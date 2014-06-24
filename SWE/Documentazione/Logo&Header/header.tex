@@ -31,6 +31,7 @@
 \usepackage{titlesec}
 \usepackage{indentfirst}
 \usepackage{lipsum,titletoc}
+\usepackage{scrextend}
 
 %\setcounter{secnumdepth}{4}
 
@@ -124,6 +125,16 @@
 \newcommand{\NomeGruppo}{Aperture Software}
 \newcommand{\Progetto}{MaaP: MongoDB as an admin Platform}
 \newcommand{\Prop}{CoffeeStrap}
+
+%definizione del nuovo environment per avere definizioni su più righe
+\newenvironment{mldescription}{%
+  \begin{addmargin}[2em]{1em}
+    \setlength{\parindent}{-1em}%
+    \newcommand*{\mlitem}[1]{\par\textbf{##1}\quad}\indent
+}{%
+  \end{addmargin}
+  \medskip
+}
 
 %definizione tecnologie
 \newcommand{\Node}{Node.js}
