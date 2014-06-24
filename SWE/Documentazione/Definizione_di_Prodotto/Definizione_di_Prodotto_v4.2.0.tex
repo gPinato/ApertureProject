@@ -130,6 +130,14 @@ di un codice. Infatti è possibile cambiare il tipo di un riferimento sempliceme
 una data variabile. \'{E} quindi ambiguo definire all'interno di un frammento di codice il tipo statico che una variabile
 possiede. Lo stesso vale per i valori ritornati da una funzione JavaScript, i quali possono essere addirittura funzioni.
 
+
+
+%Prefaction: ricordarsi di mettere negli Standard di Programmzione che, per Angular, le variabili nelle
+%QueryString sono precedute da i ":".
+
+
+
+
 \subsection{Strumenti di lavoro}
 Gli strumenti di lavoro sono trattati nella sezione XXXXX del documento di					%idem con patate.
 Gli standard di documentazione del codice e le norme da applicare nelle attività 
@@ -151,6 +159,7 @@ Package Server del Design Pattern Client-Server.
 \subsection{::Controller}
 Package che gestisce il dialogo con il Client di Maap. 
 \subsubsection{@dispatcher}
+
 \begin{description}
  \item[Descrizione] \hfill \\
 Modulo di inizializzazione della componente Server utilizzata per la trasmissione dei dati al Client. \\
@@ -164,7 +173,7 @@ Per ultima cosa, il \textit{dispatcher} gestisce eventuali richieste di risorse 
  \item @passport;
  \item path;
  \item @DatabaseAnalysisManager;
- \item @DatabaseUserManager
+ \item @DatabaseUserManager;
  \item @IndexManager.
  \end{itemize}
  
@@ -176,79 +185,177 @@ Per ultima cosa, il \textit{dispatcher} gestisce eventuali richieste di risorse 
  \item[Metodi] \hfill \\
  \begin{description}
  \item[Gestione Collection e Document] \hfill \\
- \begin{itemize}
- %\item get('/api/collection/list', passport.checkAuthenticated, datamanager.sendCollectionsList);
- %\item get('/api/collection/:col_id', passport.checkAuthenticated, datamanager.sendCollection);
- %\item get('/api/collection/:col_id/:doc_id', passport.checkAuthenticated, datamanager.sendDocument);
- %\item get('/api/collection/:col_id/:doc_id/edit', passport.checkAuthenticatedAdmin, datamanager.sendDocumentEdit);
- %\item put('/api/collection/:col_id/:doc_id/edit', passport.checkAuthenticatedAdmin, datamanager.updateDocument);
- %\item delete('/api/collection/:col_id/:doc_id/edit', passport.checkAuthenticatedAdmin, datamanager.removeDocument);
- %sto bestemmiando allegramente con le signature dei metodi: sono troppo lunghe! devo inventarmi qualcosa.
- %probabilmente bisognerà fare una tabella, domani ne parlo con Andrea.
- \end{itemize}
+ \begin{description}
+  \item[get('/api/collection/list', passport.checkAuthenticated, \\datamanager.sendCollectionsList);]\hfill \\
+  Intercetta la richiesta di generare l'elenco delle Collection per visualizzarlo, verificando che essa sia autenticata e richiama il metodo sendCollectionsList del \textit{@datamanager}.
+  \item[get('/api/collection/:col\_id', passport.checkAuthenticated, \\datamanager.sendCollection);]\hfill \\   Intercetta la richiesta di generare l'elenco dei Document all'interno di una Collection specificata con :col\_id. Verifica che essa sia autenticata e richiama il metodo sendDocument del \textit{@datamanager}.
+  \item[get('/api/collection/:col\_id/:doc\_id', passport.checkAuthenticated,\\datamanager.sendDocument);]\hfill \\
+  Intercetta la richiesta di generare i dati di un Document specificato con :doc\_id all'interno della Collection specificata con :col\_id per visualizzarli. Verifica che essa sia autenticata e richiama il metodo sendDocument del \textit{@datamanager}.
+  \item[get('/api/collection/:col\_id/:doc\_id/edit', passport.checkAuthenticatedAdmin, \\datamanager.sendDocumentEdit);]\hfill \\
+   Intercetta la richiesta di generare i dati di un Document specificato con :doc\_id all'interno della Collection specificata con :col\_id per modificarli. Verifica che essa sia autenticata e richiama il metodo sendDocumentEdit del \textit{@datamanager}.
+  \item[put('/api/collection/:col\_id/:doc\_id/edit', passport.checkAuthenticatedAdmin, \\datamanager.updateDocument);]\hfill \\
+  Intercetta la richiesta di modificare i dati di un Document specificato con :doc\_id all'interno della Collection specificata con :col\_id. Verifica che essa sia autenticata come amministratore e richiama il metodo updateDocument del \textit{@datamanager}.
+  \item[delete('/api/collection/:col\_id/:doc\_id/edit', passport.checkAuthenticatedAdmin, \\datamanager.removeDocument);]\hfill \\
+  Intercetta la richiesta di cancellare un Document specificato con :doc\_id all'interno della Collection specificata con :col\_id. Verifica che essa sia autenticata come amministratore e richiama il metodo removeDocument del \textit{@datamanager}.
+ \end{description}
  \item[Gestione Profilo Utente] \hfill \\
+ \begin{description}
+   \item[dispatcher.get('/api/profile', passport.checkAuthenticated, \\usermanager.sendUserProfile);]\hfill \\
+    Intercetta la richiesta di generare i dati del profilo utente per visualizzarli, verificando che essa sia autenticata e richiama il metodo sendUserProfile del \textit{@usermanager}.
+   \item[dispatcher.get('/api/profile/edit', passport.checkAuthenticated, \\usermanager.sendUserProfileEdit);]\hfill \\
+   Intercetta la richiesta di generare i dati del profilo utente per modificarli, verificando che essa sia autenticata e richiama il metodo sendUserProfileEdit del \textit{@usermanager}.
+   \item[dispatcher.put('/api/profile/edit', passport.checkAuthenticated, \\usermanager.updateUserProfile);]\hfill \\
+   Intercetta la richiesta di modificare i dati del profilo utente, verificando che essa sia autenticata e richiama il metodo updateUserProfile del \textit{@usermanager}.
+ \end{description}  
  \item[Gestione Utenti] \hfill \\
+  \begin{description}
+    \item[dispatcher.get('/api/users/list', passport.checkAuthenticatedAdmin,\\usermanager.getUsersList);]\hfill \\
+	 Intercetta la richiesta di generare l'elenco degli Utenti per visualizzarlo, verificando che essa sia autenticata come ammistratore e richiama il metodo getUsersListionsList del \textit{@usermanager}.
+	\item[dispatcher.get('/api/users/:user\_id', passport.checkAuthenticatedAdmin,\\usermanager.sendUser);]\hfill \\
+	Intercetta la richiesta di generare i dati di un Utente specificato con :user\_id per visualizzarli. Verifica che essa sia autenticata come amministratore e richiama il metodo sendUser del \textit{@usermanager}.
+    \item[dispatcher.get('/api/users/:user\_id/edit', passport.checkAuthenticatedAdmin, \\usermanager.sendUserEdit);]\hfill \\
+    Intercetta la richiesta di generare i dati di un Utente specificato per con :user\_id per modificarli. Verifica che essa sia autenticata come amministratore e richiama il metodo sendUserEdit del \textit{@usermanager}.
+    \item[dispatcher.put('/api/users/:user\_id/edit', passport.checkAuthenticatedAdmin,\\usermanager.updateUser);]\hfill \\
+    Intercetta la richiesta di modificare i dati di un Utente specificato per con :user\_id. Verifica che essa sia autenticata come amministratore e richiama il metodo updateUser del \textit{@usermanager}.
+    \item[dispatcher.delete('/api/users/:user\_id/edit', passport.checkAuthenticatedAdmin,\\usermanager.removeUser);]\hfill \\
+    Intercetta la richiesta di eliminare un Utente specificato per con :user\_id. Verifica che essa sia autenticata come amministratore e richiama il metodo removeUser del \textit{@usermanager}.
+  \end{description}    
  \item[Gestione Query più utilizzate] \hfill \\
+ \begin{description}
+    \item[dispatcher.get('/api/queries/list', passport.checkAuthenticatedAdmin,\\datamanager.getTopQueries);]\hfill \\
+    Intercetta la richiesta di generare l'elenco delle query più utilizzate. Verifica che essa sia autenticata come amministratore e richiama il metodo getTopQueries del \textit{@datamanager}.
+    \item[dispatcher.delete('/api/queries/list', passport.checkAuthenticatedAdmin,\\datamanager.resetQueries);]\hfill \\
+    Intercetta la richiesta di eliminare tutte le query più utilizzate. Verifica che essa sia autenticata come amministratore e richiama il metodo resetQueries del \textit{@datamanager}.
+ \end{description}  
  \item[Gestione Indici nel Database di analisi] \hfill \\
+  \begin{description}
+    \item[dispatcher.get('/api/indexes', passport.checkAuthenticatedAdmin,\\datamanager.getIndexesList);]\hfill \\
+    Intercetta la richiesta di generare l'elenco degli indici esistenti sul database di analisi. Verifica che essa sia autenticata come amministratore e richiama il metodo getIndexesList del \textit{@datamanager}.
+    \item[dispatcher.put('/api/indexes', passport.checkAuthenticatedAdmin,\\datamanager.createIndex);]\hfill \\
+    Intercetta la richiesta di inserire un indice nel database di analisi. Verifica che essa sia autenticata come amministratore e richiama il metodo createIndex del \textit{@datamanager}.
+    \item[dispatcher.delete('/api/indexes/:index\_name', passport.checkAuthenticatedAdmin,\\datamanager.deleteIndex);]\hfill \\
+     Intercetta la richiesta di cancellare un indice dal database di analisi. Verifica che essa sia autenticata come amministratore e richiama il metodo deleteIndex del \textit{@datamanager}.
+ \end{description} 
  \item[Gestione Login] \hfill \\
- \item[Gestione richieste illecite] \hfill \\
+ \begin{description}
+ \item[post('/api/check/email', passport.checkNotAuthenticated, usermanager.checkMail);]
+ Gestisce la richiesta di controllo della presenza di una particolare email già registrata al sistema. La condizione per richiedere questa informazione è che l'utente non sia autenticato, da qui la chiamata alla funzione \textit{passport.checkNotAuthenticated}. Nel caso la chiamata alla precedente funzione abbia successo, viene richiamato il metodo \textit{checkMail} di \textit{@DatabaseAnalysisManager}.
+ \item[post('/api/signup', passport.checkNotAuthenticated, usermanager.userSignup);]
+ Gestisce la richiesta di registrazione da parte di un utente non autenticato. Se l'utente associato alla richiesta non è autenticato, viene richiamato il metodo \textit{userSignup} di \textit{@DatabaseAnalysisManager}.
+ \item[get('/loggedin', function(req, res) {	res.send(req.isAuthenticated() ? req.user : '0'); });]
+ Gestisce la richiesta di controllo dell'avvenuta autenticazione di un utente. Viene richiamato sul richiedente il metodo locale \textit{isAuthenticated()}. Se l'utente è autenticato, gli vengono inviate le proprie informazioni associate, altrimenti viene ritornato 0.
+ \item[post('/api/login', passport.checkNotAuthenticated, passport.authenticate, function(req, res) { res.send(req.user); });]
+ Gestisce le richieste di autenticazione al Server. L'utente che richiede questa operazione non deve essere autenticato ma deve essere presente nel database degli utenti presente nel Server. Nel caso di risposta affermativa ad entrambe le precedenti condizioni, viene creata una nuova sessione per l'utente richiedente.
+ \item[get('/api/logout', passport.checkAuthenticated, function(req, res) { req.logout(); res.send(200); });]
+ Gestisce le richieste di disconnessione dal sistema. Per effettuare questa operazione, l'utente deve essere autenticato. In caso affermativo, viene richiesto il \textit{logout()} del richiedente.
+ \end{description}
+
+
+\item[Gestione richieste illecite] \hfill \\
+ \begin{description}
+ \item[get('*', function(req, res) {	res.sendfile(path.join(config.static\_assets.dir, 'index.html')); });]
+ La presente funzione gestisce ogni richiesta di pagina o file che il Server non possiede. L'argomento "*" della funzione \textit{get} consente di gestire tutte le richieste che non sono state servite dalle precedenti funzioni del \textit{@dispatcher}. Questa funzione viene richiamata soltanto quando non le funzioni precedenti non sono state chiamate.
+ \end{description}
+
+
+
+\item[Inizializzazione] \hfill \\
+ \begin{description}
+  \item[init():] \hfill \\ 
+  accetta app (l'applicazione di \textit{Express}) come parametro, si occupa dell'inizializzazione del \textit{dispatcher}. 
  \end{description}
 \end{description}
 
-\subsubsection{@frontController}		%da rivedere
+\subsubsection{@frontController}
 \begin{description}
  \item[Descrizione] \hfill \\
- Il frontController è l'interfaccia di connessione tra il Server ed il Client. 
+ Il frontController è l'interfaccia di connessione tra il Server ed il Client. Si occupa dell' inizializzazione del dispatcher reindirizzando ad esso le richieste del Client.
  \item[Dipendendenze entranti] \hfill \\
  \begin{itemize}
  \item @dispatcher.
  \end{itemize}
- %\item[Dipendenze uscenti] \hfill \\
- 
- %\item[Attributi] \hfill \\
- 
  \item[Metodi] \hfill \\
- \begin{itemize}
- \item[initFrontController] \hfill \\
- \'{E} la funzione di inizializzazione del frontController ed indica l'utilizzo del modulo \textit{dispatcher} per gestire le richieste del Client.
- \end{itemize}
+  \begin{description}
+    \item[initFrontController()]\hfill \\
+  	\'{E} la funzione di inizializzazione del frontController ed indica di reindirizzare le richieste del Client al \textit{@dispatcher} per gestirle. Accetta  app (l'applicazione di Express) come parametro.
+  \end{description}
 \end{description}
 
 \subsubsection{@index}
+\begin{description}
+ \item[Descrizione] \hfill \\
+  Controller che si occupa dell' inizializzazione del frontController.
+ \item[Dipendendenze entranti] \hfill \\
+ \begin{itemize}
+ \item @frontController.
+ \end{itemize}
+ \item[Metodi] \hfill \\
+  \begin{description}
+    \item[initFrontController()]\hfill \\
+  	\'{E} la funzione di inizializzazione dell'index, si occupa di inizializzare il \textit{@frontController}. Accetta  app (l'applicazione di Express) come parametro.
+  \end{description}
+\end{description}
 
 \subsubsection{@passport}
-
+ \item[Descrizione] \hfill \\
+Controller che si occupa dell' inizializzazione e gestione del modulo passort per le autenticazioni.
+\item[Dipendendenze entranti] \hfill \\
+  \begin{itemize}
+   \item app;
+  \end{itemize}
+   \item[Funzionalità esportate] \hfill \\
+    \begin{description}
+     \item[authenticate()] \hfill \\
+     Imposta il metodo di autenticazione, nel nostro caso come local;
+     \item[init()] \hfill \\
+     Inizializza il controller passport, inizializzando e avviando la sessione del modulo passport e definisce le strategie di autenticazione;
+     \item[checkAuthenticatedAdmin()] \hfill \\
+     Verifica che la richiesta proveniente dal client sia autenticata e che il livello dell'utente sia 1;
+     \item[checkAuthenticated()] \hfill \\
+     Verifica che la richiesta proveniente dal client sia autenticata;
+     \item[checkNotAuthenticated()] \hfill \\
+     Verifica che la richiesta proveniente dal client non sia autenticata;
+     \end{description}
 \subsection{::ModelServer}
 Package che racchiude i database, le loro operazioni di accesso e i file 
 DSL con i relativi interpreti.
 
 \subsubsection{::Database}
 \paragraph{@index}
+\begin{description}
+ \item[Descrizione] \hfill \\
+ Si occupa dell'inizializzazione dei database degli utenti e di analisi. Crea l'amministratore di default di Maap.
+ \item[Dipendendenze entranti] \hfill \\
+   \begin{itemize}
+
+   \end{itemize}
+ \item[Funzionalità esportate] \hfill \\
+ \begin{description}
+ \item[init()] \hfill \\
+ Si occupa dell'inizializzazione dei database. Inizializza lo userDBManager, aggiunge l'amministratore di default del sistema e inizializza il dataDBManager.
+ \end{description}
+\end{description}
 
 \paragraph{@MongooseDBAnalysis}
 \begin{description}
  \item[Descrizione] \hfill \\
-
- \item[Dipendendenze entranti] \hfill \\
- 
- \item[Dipendenze uscenti] \hfill \\
- 
- \item[Attributi] \hfill \\
- 
- \item[Metodi] \hfill \\
+ Si occupa dell'inizializzazione dei modelli di Mongoose.
+\item[Funzionalità esportate] \hfill \\
+ \begin{description}
+ \item[init()] \hfill \\
+ Legge la cartella contenente le collectionData dei DSL e per ogni file inizializza il modello di mongoose come elemento dell'array modelArray che poi esposta con il nome di model.
+ \end{description}
 \end{description}
 
 \paragraph{@MongooseDBFramework}
 \begin{description}
  \item[Descrizione] \hfill \\
-
- \item[Dipendendenze entranti] \hfill \\
- 
- \item[Dipendenze uscenti] \hfill \\
- 
- \item[Attributi] \hfill \\
- 
- \item[Metodi] \hfill \\
+ Si occupa dell'inizializzazione dei modelli di Mongoose.
+\item[Funzionalità esportate] \hfill \\
+ \begin{description}
+ \item[init()] \hfill \\
+ Si occupa di creare gli schemi di Mongoose per la collection utenti e la collection query, esporta tali modelli come users e query e la connessione al database come connection.
+ \end{description}
 \end{description}
 
 \subsubsection{::DataManager}
@@ -277,8 +384,7 @@ Package che gestisce le query ai database di analisi.
  
  \item[Metodi] \hfill \\
  \begin{itemize}
- \item{sendCollectionList:} invia al al client la lista delle varie Collection 
- definite dai DSL; 
+ \item{sendCollectionList:} invia al al client la lista delle varie Collection definite dai DSL; 
  \item{sendCollection}
  \item{sendDocument}
  \item{sendDocumentEdit}
@@ -402,12 +508,12 @@ userProfile & Pagina per la visualizzazione del profilo utente (user) / di un ut
   pagine disponibili.
   
   \item[\$scope.previousPage()] \hfill \\
-  Aggiunge allo \$scope la funzionalità di passaggio alla pagina di visualizzazione precedente alla corrente.
+  Aggiunge allo \$scope la funzionalità di passaggio dalla pagina di visualizzazione corrente alla precedente.
   Diminuisce di 1 l'indicatore della pagina corrente e esegue una nuova richiesta al server per i dati corrispondenti
   alla pagina precedente con \emph{getData()}.
   
   \item[\$scope.nextPage()] \hfill \\
-  Aggiunge allo \$scope la funzionalità di passaggio alla pagina di visualizzazione successiva alla corrente.
+  Aggiunge allo \$scope la funzionalità di passaggio dalla pagina di visualizzazione corrente alla successiva.
   Aumenta di 1 l'indicatore della pagina corrente e esegue una nuova richiesta al server per i dati corrispondenti
   alla pagina successiva con \emph{getData()}.
   
@@ -636,7 +742,7 @@ Fornisce un immediato elenco delle collection disponibili.
  \begin{description}
   \item[ CollectionListService.get] \hfill \\
   Richiama la richiesta RESTful \textit{query} sulla \$resource fornita da CollectionListService.
-  Con questa funzione viene prelevato l'elenco delle collection disponibili.-
+  Con questa funzione viene prelevato l'elenco delle collection disponibili.
   Se l'utente ha inserito dati corretti, esso viene autenticato e reindirizzato alla dashboard, altrimenti viene mostrato un errore.
  
   
