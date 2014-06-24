@@ -1,6 +1,6 @@
 /**
  * File: dispatcher.js
- * Module: maap_server::Controller
+ * Module: maap_server::controller
  * Author: Alberto Garbui
  * Created: 03/05/14
  * Version: 0.1
