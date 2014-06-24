@@ -231,13 +231,13 @@ Per ultima cosa, il \textit{dispatcher} gestisce eventuali richieste di risorse 
  \item[Gestione Login] \hfill \\
  \item[Gestione richieste illecite] \hfill \\
  \item[Inizializzazione] \hfill \\
- \begin{itemize}
- 	\item init(): accetta app (l'applicazione di Express) come parametro, si occupa dell'inizializzazione del \textit{dispatcher}. 
- \end{itemize}
- \end{description}
+  \begin{description}
+ 	    \item[init()]\hfill \\
+ 	    Accetta app (l'applicazione di Express) come parametro, si occupa dell'inizializzazione del \textit{dispatcher}. 
+  \end{description}
 \end{description}
 
-\subsubsection{@frontController}		%da rivedere
+\subsubsection{@frontController}
 \begin{description}
  \item[Descrizione] \hfill \\
  Il frontController è l'interfaccia di connessione tra il Server ed il Client. Si occupa dell' inizializzazione del dispatcher reindirizzando ad esso le richieste del Client.
@@ -245,30 +245,28 @@ Per ultima cosa, il \textit{dispatcher} gestisce eventuali richieste di risorse 
  \begin{itemize}
  \item @dispatcher.
  \end{itemize}
- %\item[Dipendenze uscenti] \hfill \\
- 
- %\item[Attributi] \hfill \\
- 
  \item[Metodi] \hfill \\
- \begin{itemize}
- \item[initFrontController] \hfill \\
- \'{E} la funzione di inizializzazione del frontController ed indica l'utilizzo del modulo \textit{dispatcher} per gestire le richieste del Client.
- \end{itemize}
+  \begin{description}
+    \item[initFrontController()]\hfill \\
+  	\'{E} la funzione di inizializzazione del frontController ed indica di reindirizzare le richieste del Client al \textit{@dispatcher} per gestirle. Accetta  app (l'applicazione di Express) come parametro.
+  \end{description}
 \end{description}
 
 \subsubsection{@index}
+\begin{description}
  \item[Descrizione] \hfill \\
- Controller che si occupa dell' inizializzazione del frontController.
- \item[Dipendendenze iniettate al controller] \hfill \\
-   \begin{itemize}
-    \item app;
-   \end{itemize}
-  \item[Funzionalità esportate] \hfill \\
+  Controller che si occupa dell' inizializzazione del frontController.
+ \item[Dipendendenze entranti] \hfill \\
+ \begin{itemize}
+ \item @frontController.
+ \end{itemize}
+ \item[Metodi] \hfill \\
   \begin{description}
-   \item[init()] \hfill \\
-   Funzione di inizializzazione di index. Inizializza il frontController.
+    \item[initFrontController()]\hfill \\
+  	\'{E} la funzione di inizializzazione dell'index, si occupa di inizializzare il \textit{@frontController}. Accetta  app (l'applicazione di Express) come parametro.
   \end{description}
-   
+\end{description}
+
 \subsubsection{@passport}
  \item[Descrizione] \hfill \\
 Controller che si occupa dell' inizializzazione e gestione del modulo passort per le autenticazioni.
