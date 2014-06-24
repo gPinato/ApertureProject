@@ -257,12 +257,10 @@ Per ultima cosa, il \textit{dispatcher} gestisce eventuali richieste di risorse 
  La presente funzione gestisce ogni richiesta di pagina o file che il Server non possiede. L'argomento "*" della funzione \textit{get} consente di gestire tutte le richieste che non sono state servite dalle precedenti funzioni del \textit{@dispatcher}. Questa funzione viene richiamata soltanto quando non le funzioni precedenti non sono state chiamate.
  \end{description}
 
-
-
 \item[Inizializzazione] \hfill \\
  \begin{description}
-  \item[init():] \hfill \\ 
-  accetta app (l'applicazione di \textit{Express}) come parametro, si occupa dell'inizializzazione del \textit{dispatcher}. 
+  \item[dispatcherInit():] \hfill \\ 
+  accetta app (l'applicazione di \textit{Express}) come parametro, si occupa dell'inizializzazione del \textit{dispatcher}. Viene esportato come init();
  \end{description}
 \end{description}
 
@@ -277,7 +275,7 @@ Per ultima cosa, il \textit{dispatcher} gestisce eventuali richieste di risorse 
  \item[Metodi] \hfill \\
   \begin{description}
     \item[initFrontController()]\hfill \\
-  	\'{E} la funzione di inizializzazione del frontController ed indica di reindirizzare le richieste del Client al \textit{@dispatcher} per gestirle. Accetta  app (l'applicazione di Express) come parametro.
+  	\'{E} la funzione di inizializzazione del frontController ed indica di reindirizzare le richieste del Client al \textit{@dispatcher} per gestirle. Accetta  app (l'applicazione di Express) come parametro. Viene esportato come init().
   \end{description}
 \end{description}
 
@@ -291,7 +289,7 @@ Per ultima cosa, il \textit{dispatcher} gestisce eventuali richieste di risorse 
  \end{itemize}
  \item[Metodi] \hfill \\
   \begin{description}
-    \item[initFrontController()]\hfill \\
+    \item[init()]\hfill \\
   	\'{E} la funzione di inizializzazione dell'index, si occupa di inizializzare il \textit{@frontController}. Accetta  app (l'applicazione di Express) come parametro.
   \end{description}
 \end{description}
@@ -301,20 +299,22 @@ Per ultima cosa, il \textit{dispatcher} gestisce eventuali richieste di risorse 
 Controller che si occupa dell' inizializzazione e gestione del modulo passort per le autenticazioni.
 \item[Dipendendenze entranti] \hfill \\
   \begin{itemize}
-   \item app;
+   \item passport;
+   \item passport-local.Strategy;
+   \item @MongooseDBFramework.
   \end{itemize}
-   \item[Funzionalità esportate] \hfill \\
+   \item[Metodi] \hfill \\
     \begin{description}
      \item[authenticate()] \hfill \\
-     Imposta il metodo di autenticazione, nel nostro caso come local;
-     \item[init()] \hfill \\
-     Inizializza il controller passport, inizializzando e avviando la sessione del modulo passport e definisce le strategie di autenticazione;
+     Imposta il metodo di autenticazione, nel nostro caso come local.
+     \item[initPassport()] \hfill \\
+     Inizializza il controller passport, inizializzando e avviando la sessione del modulo passport e definisce le strategie di autenticazione; Accetta app (l'applicazione di Express) come parametro.
      \item[checkAuthenticatedAdmin()] \hfill \\
-     Verifica che la richiesta proveniente dal client sia autenticata e che il livello dell'utente sia 1;
+     Verifica che la richiesta proveniente dal client sia autenticata e che il livello dell'utente sia 1. Accetta req (la richiesta del Client), res (la risposta al Client) e next (cosa invocare nel caso di successo) come parametri.
      \item[checkAuthenticated()] \hfill \\
-     Verifica che la richiesta proveniente dal client sia autenticata;
+     Verifica che la richiesta proveniente dal client sia autenticata. Accetta req (la richiesta del Client), res (la risposta al Client) e next (cosa invocare nel caso di successo) come parametri.
      \item[checkNotAuthenticated()] \hfill \\
-     Verifica che la richiesta proveniente dal client non sia autenticata;
+     Verifica che la richiesta proveniente dal client non sia autenticata Accetta req (la richiesta del Client), res (la risposta al Client) e next (cosa invocare nel caso di successo) come parametri.
      \end{description}
 \subsection{::ModelServer}
 Package che racchiude i database, le loro operazioni di accesso e i file 
@@ -327,12 +327,17 @@ DSL con i relativi interpreti.
  Si occupa dell'inizializzazione dei database degli utenti e di analisi. Crea l'amministratore di default di Maap.
  \item[Dipendendenze entranti] \hfill \\
    \begin{itemize}
-
+   \item mongoose;
+   \item @MongooseDBAnalysis;
+   \item @MongooseDBFramework;
+   \item @DataRetrieverUsers.
    \end{itemize}
- \item[Funzionalità esportate] \hfill \\
+ \item[Metodi] \hfill \\
  \begin{description}
- \item[init()] \hfill \\
- Si occupa dell'inizializzazione dei database. Inizializza lo userDBManager, aggiunge l'amministratore di default del sistema e inizializza il dataDBManager.
+ \item[initDB()] \hfill \\
+ Si occupa dell'inizializzazione dei database. Effettua la connessione al database utenti e a quello di analisi.Inizializza lo userDBManager, invoca addAdminDefault e inizializza il \textit{@dataDBManager}. Accetta app (l'applicazione di Express) come parametro. Viene esportata come init().
+  \item[addAdminDefault()] \hfill \\
+  Si occupa dell'aggiunta dell'amministratore di default nel database degli utenti. Accetta config (i parametri di configurazione del progetto) e userDB (la connessione a database degli utenti)come parametri.
  \end{description}
 \end{description}
 
@@ -340,10 +345,16 @@ DSL con i relativi interpreti.
 \begin{description}
  \item[Descrizione] \hfill \\
  Si occupa dell'inizializzazione dei modelli di Mongoose.
-\item[Funzionalità esportate] \hfill \\
+ \item[Dipendendenze entranti] \hfill \\
+    \begin{itemize}
+    \item fs;
+    \item path;
+    \item mongoose.
+    \end{itemize}
+\item[Metodi] \hfill \\
  \begin{description}
  \item[init()] \hfill \\
- Legge la cartella contenente le collectionData dei DSL e per ogni file inizializza il modello di mongoose come elemento dell'array modelArray che poi esposta con il nome di model.
+ Legge la cartella contenente le collectionData dei DSL e per ogni file inizializza il modello di mongoose come elemento dell'array modelArray che poi esposta come model. Accetta app (l'applicazione di Express) come parametro.
  \end{description}
 \end{description}
 
@@ -351,10 +362,14 @@ DSL con i relativi interpreti.
 \begin{description}
  \item[Descrizione] \hfill \\
  Si occupa dell'inizializzazione dei modelli di Mongoose.
+  \item[Dipendendenze entranti] \hfill \\
+  \begin{itemize}
+  \item mongoose.
+  \end{itemize}
 \item[Funzionalità esportate] \hfill \\
  \begin{description}
  \item[init()] \hfill \\
- Si occupa di creare gli schemi di Mongoose per la collection utenti e la collection query, esporta tali modelli come users e query e la connessione al database come connection.
+ Si occupa di creare gli schemi di Mongoose per la collection utenti e la collection query, esporta tali modelli come users e query e la connessione al database come connection. Accetta app (l'applicazione di Express) come parametro.
  \end{description}
 \end{description}
 
