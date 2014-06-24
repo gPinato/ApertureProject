@@ -387,7 +387,7 @@ Package che gestisce le query ai database di analisi.
 
 \begin{description}
  \item[Descrizione] \hfill \\
-Modulo del ModelServer che si occupa di interpretare e indirizzare le richieste da e al database di analisi. 
+Modulo del ModelServer che si occupa di interpretare i dati richiesti e spediti da e al database di analisi. 
 Prepara le query da effettuare e contatta il \textit{@DataRetrieverAnalysis} per ottenere i dati voluti.
  \item[Dipendendenze] \hfill
  \begin{itemize}
@@ -419,7 +419,8 @@ Prepara le query da effettuare e contatta il \textit{@DataRetrieverAnalysis} per
 \subparagraph{@DataRetrieverAnalysis}
 \begin{description}
 \item[Descrizione] \hfill 
-
+Modulo che dialoga con il database di analisi per mezzo dell'infrastruttura Mongoose. Utilizza i file derivati dall'interpretazione del 
+linguaggio DSL per richiedere e inviare i dati che l'utente sviluppatore decide di visualizzare e modificare.
 \item[Dipendenze] \hfill 
 \begin{itemize}
 \item @IndexManager.
@@ -483,11 +484,12 @@ Prepara le query da effettuare e contatta il \textit{@DataRetrieverAnalysis} per
 					Array di chiavi di un Document.
 				\end{description}
 			\item[Descrizione] \hfill
-			Ordina le coppie chiave-valore dei Document presenti nell'array \textit{documents} secondo 					l'ordine stabilito nell'array di chiavi \textit{keys}.
+			Ordina le coppie chiave-valore dei Document presenti nell'array \textit{documents} secondo 
+			l'ordine stabilito nell'array di chiavi \textit{keys}.
 		\end{description}			
 	
 	\mlitem{getCollectionIndex(collection\_name, column, order, page, callback)} \hfill 
-			\begin{description}
+		\begin{description}
 			\item[Parametri] \hfill
 				\begin{description}
 					\item[collection\_name] \hfill
@@ -497,6 +499,7 @@ Prepara le query da effettuare e contatta il \textit{@DataRetrieverAnalysis} per
 					\item[order] \hfill
 					\item[page] \hfill
 					\item[callback] \hfill
+					Funzione da richiamare al termine della funzione \textit{getCollectionIndex}.
 				\end{description}
 			\item[Dipendenza] \hfill
 				\begin{itemize}
@@ -505,8 +508,24 @@ Prepara le query da effettuare e contatta il \textit{@DataRetrieverAnalysis} per
 			\item[Descrizione] \hfill
 		\end{description}
 	
-	\mlitem{} \hfill 
-	\mlitem{} \hfill 
+	\mlitem{getDocumentShow(collection\_name, document\_id, callback)} \hfill
+		\begin{description}
+			\item[Parametri] \hfill
+				\begin{description}
+					\item[collection\_name] \hfill
+					\item[document\_id] \hfill
+					\item[callback] \hfill
+					Funzione da richiamare al termine della funzione \textit{getDocumentShow}.
+				\end{description}
+			\item[Dipendenza] \hfill
+				\begin{itemize}
+					\item
+				\end{itemize}
+			\item[Descrizione] \hfill
+		\end{description}
+	\mlitem{getDocumentShowEdit(collection\_name, document\_id, callback)} \hfill
+	
+	
 	\mlitem{updateDocument(collection\_name, document\_id, newDocumentData, callback)} \hfill 
 		\begin{description}
 			\item[Parametri] \hfill
@@ -524,20 +543,28 @@ Prepara le query da effettuare e contatta il \textit{@DataRetrieverAnalysis} per
 					Funzione da richiamare al termine della modifica del Document.
 				\end{description}
 			\item[Descrizione] \hfill
-			
+			Richiede il modello della Collection nominata \textit{collection\_name}. Successivamente richiama
+			il metodo \textit{update} sul modello della Collection scelta per aggiornare il Document identificato 
+			con \textit{document\_id} con le nuove informazioni di \textit{newDocumentData}. Al termine di questa 
+			operazione, viene chiamata la \textit{callback}.
 		\end{description}
 	
 	\mlitem{removeDocument(collection\_name, document\_id, callback)} \hfill 
 		\begin{description}
 			\item[Parametri] \hfill
 				\begin{description}
-					\item[•] \hfill
+					\item[collection\_name] \hfill
+					Stringa contenente il nome della Collection contenente il Document da eliminare.
+					\item[document\_id] \hfill
+					Id del Document da eliminare.
+					\item[callback] \hfill
+					Funzione da richiamare al termine dell'eliminazione del Document.
 				\end{description}
-			\item[Dipendenza] \hfill
-				\begin{itemize}
-					\item
-				\end{itemize}
 			\item[Descrizione] \hfill
+			Richiede il modello della Collection nominata \textit{collection\_name}. Successivamente richiama
+			il metodo \textit{remove} sul modello della Collection scelta per rimuovere il Document identificato 
+			con \textit{document\_id}. Al termine di questa 
+			operazione, viene chiamata la \textit{callback}.
 		\end{description}
 		
 \end{mldescription}
