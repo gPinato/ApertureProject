@@ -179,17 +179,55 @@ Per ultima cosa, il \textit{dispatcher} gestisce eventuali richieste di risorse 
  \item[Gestione Collection e Document] \hfill \\
  \begin{description}
   \item[get('/api/collection/list', passport.checkAuthenticated, datamanager.sendCollectionsList);]\hfill \\
-  Intercetta la richiesta di generare l'elenco delle Collection verificando che essa sia autenticata e richiama il metodo sendCollectionsList del modulo datamanager.
-  \item[get('/api/collection/:col\_id', passport.checkAuthenticated, datamanager.sendCollection);]\hfill \\   Intercetta la richiesta di generare l'elenco dei Document all'interno di una Collection. 
+  Intercetta la richiesta di generare l'elenco delle Collection per visualizzarlo, verificando che essa sia autenticata e richiama il metodo sendCollectionsList del \textit{@datamanager}.
+  \item[get('/api/collection/:col\_id', passport.checkAuthenticated, datamanager.sendCollection);]\hfill \\   Intercetta la richiesta di generare l'elenco dei Document all'interno di una Collection specificata con :col\_id. Verifica che essa sia autenticata e richiama il metodo sendDocument del \textit{@datamanager}.
   \item[get('/api/collection/:col\_id/:doc\_id', passport.checkAuthenticated, datamanager.sendDocument);]\hfill \\
+  Intercetta la richiesta di generare i dati di un Document specificato con :doc\_id all'interno della Collection specificata con :col\_id per visualizzarli. Verifica che essa sia autenticata e richiama il metodo sendDocument del \textit{@datamanager}.
   \item[get('/api/collection/:col\_id/:doc\_id/edit', passport.checkAuthenticatedAdmin, \\datamanager.sendDocumentEdit);]\hfill \\
+   Intercetta la richiesta di generare i dati di un Document specificato con :doc\_id all'interno della Collection specificata con :col\_id per modificarli. Verifica che essa sia autenticata e richiama il metodo sendDocumentEdit del \textit{@datamanager}.
   \item[put('/api/collection/:col\_id/:doc\_id/edit', passport.checkAuthenticatedAdmin, \\datamanager.updateDocument);]\hfill \\
+  Intercetta la richiesta di modificare i dati di un Document specificato con :doc\_id all'interno della Collection specificata con :col\_id. Verifica che essa sia autenticata come amministratore e richiama il metodo updateDocument del \textit{@datamanager}.
   \item[delete('/api/collection/:col\_id/:doc\_id/edit', passport.checkAuthenticatedAdmin, \\datamanager.removeDocument);]\hfill \\
+  Intercetta la richiesta di cancellare un Document specificato con :doc\_id all'interno della Collection specificata con :col\_id. Verifica che essa sia autenticata come amministratore e richiama il metodo removeDocument del \textit{@datamanager}.
  \end{description}
  \item[Gestione Profilo Utente] \hfill \\
+ \begin{description}
+   \item[dispatcher.get('/api/profile', passport.checkAuthenticated, \\usermanager.sendUserProfile);]\hfill \\
+    Intercetta la richiesta di generare i dati del profilo utente per visualizzarli, verificando che essa sia autenticata e richiama il metodo sendUserProfile del \textit{@usermanager}.
+   \item[dispatcher.get('/api/profile/edit', passport.checkAuthenticated, \\usermanager.sendUserProfileEdit);]\hfill \\
+   Intercetta la richiesta di generare i dati del profilo utente per modificarli, verificando che essa sia autenticata e richiama il metodo sendUserProfileEdit del \textit{@usermanager}.
+   \item[dispatcher.put('/api/profile/edit', passport.checkAuthenticated, \\usermanager.updateUserProfile);]\hfill \\
+   Intercetta la richiesta di modificare i dati del profilo utente, verificando che essa sia autenticata e richiama il metodo updateUserProfile del \textit{@usermanager}.
+ \end{description}  
  \item[Gestione Utenti] \hfill \\
+  \begin{description}
+    \item[dispatcher.get('/api/users/list', passport.checkAuthenticatedAdmin,\\usermanager.getUsersList);]\hfill \\
+	 Intercetta la richiesta di generare l'elenco degli Utenti per visualizzarlo, verificando che essa sia autenticata come ammistratore e richiama il metodo getUsersListionsList del \textit{@usermanager}.
+	\item[dispatcher.get('/api/users/:user\_id', passport.checkAuthenticatedAdmin,\\usermanager.sendUser);]\hfill \\
+	Intercetta la richiesta di generare i dati di un Utente specificato con :user\_id per visualizzarli. Verifica che essa sia autenticata come amministratore e richiama il metodo sendUser del \textit{@usermanager}.
+    \item[dispatcher.get('/api/users/:user\_id/edit', passport.checkAuthenticatedAdmin, \\usermanager.sendUserEdit);]\hfill \\
+    Intercetta la richiesta di generare i dati di un Utente specificato per con :user\_id per modificarli. Verifica che essa sia autenticata come amministratore e richiama il metodo sendUserEdit del \textit{@usermanager}.
+    \item[dispatcher.put('/api/users/:user\_id/edit', passport.checkAuthenticatedAdmin,\\usermanager.updateUser);]\hfill \\
+    Intercetta la richiesta di modificare i dati di un Utente specificato per con :user\_id. Verifica che essa sia autenticata come amministratore e richiama il metodo updateUser del \textit{@usermanager}.
+    \item[dispatcher.delete('/api/users/:user\_id/edit', passport.checkAuthenticatedAdmin,\\usermanager.removeUser);]\hfill \\
+    Intercetta la richiesta di eliminare un Utente specificato per con :user\_id. Verifica che essa sia autenticata come amministratore e richiama il metodo removeUser del \textit{@usermanager}.
+  \end{description}    
  \item[Gestione Query più utilizzate] \hfill \\
+ \begin{description}
+    \item[dispatcher.get('/api/queries/list', passport.checkAuthenticatedAdmin,\\datamanager.getTopQueries);]\hfill \\
+    Intercetta la richiesta di generare l'elenco delle query più utilizzate. Verifica che essa sia autenticata come amministratore e richiama il metodo getTopQueries del \textit{@datamanager}.
+    \item[dispatcher.delete('/api/queries/list', passport.checkAuthenticatedAdmin,\\datamanager.resetQueries);]\hfill \\
+    Intercetta la richiesta di eliminare tutte le query più utilizzate. Verifica che essa sia autenticata come amministratore e richiama il metodo resetQueries del \textit{@datamanager}.
+ \end{description}  
  \item[Gestione Indici nel Database di analisi] \hfill \\
+  \begin{description}
+    \item[dispatcher.get('/api/indexes', passport.checkAuthenticatedAdmin,\\datamanager.getIndexesList);]\hfill \\
+    Intercetta la richiesta di generare l'elenco degli indici esistenti sul database di analisi. Verifica che essa sia autenticata come amministratore e richiama il metodo getIndexesList del \textit{@datamanager}.
+    \item[dispatcher.put('/api/indexes', passport.checkAuthenticatedAdmin,\\datamanager.createIndex);]\hfill \\
+    Intercetta la richiesta di inserire un indice nel database di analisi. Verifica che essa sia autenticata come amministratore e richiama il metodo createIndex del \textit{@datamanager}.
+    \item[dispatcher.delete('/api/indexes/:index\_name', passport.checkAuthenticatedAdmin,\\datamanager.deleteIndex);]\hfill \\
+     Intercetta la richiesta di cancellare un indice dal database di analisi. Verifica che essa sia autenticata come amministratore e richiama il metodo deleteIndex del \textit{@datamanager}.
+ \end{description} 
  \item[Gestione Login] \hfill \\
  \item[Gestione richieste illecite] \hfill \\
  \item[Inizializzazione] \hfill \\
