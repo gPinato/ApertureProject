@@ -400,12 +400,17 @@ Prepara le query da effettuare e contatta il \textit{@DataRetrieverAnalysis} per
  \item[Metodi] \hfill
  \begin{description}
  \item[sendCollectionList] \hfill \\
- %invia al al client la lista delle varie Collection definite dai DSL; 
+ Richiede al \textit{@DataRetrieverAnalysis} l'elenco delle Collection e richiama il metodo di creazione dell'oggetto Collection del \textit{@JSonComposer}. Infine ritorna l'oggetto CollectionList ottenuto.
  \item[sendCollection] \hfill \\
+ Esegue una chiamata asincrona al \textit{@DataRetrieverAnalysis} per ottenere una particolare Collection. Nel caso la Collection esista, viene richiamato il metodo \textit{createCollection} di \textit{@JSonComposer} per inviare al richiedente l'oggetto Collection desiderato. In caso la Collection non esista nel Server, viene ritornato il codice di errore \textit{http} 404 al Client.
  \item[sendDocument] \hfill \\
+ Esegue una chiamata asincrona al \textit{@DataRetrieverAnalysis} per ottenere un particolare Document. Nel caso il Document esista, viene richiamato il metodo \textit{createDocument} di \textit{@JSonComposer} per inviare al richiedente l'oggetto Document desiderato. In caso il Document non esista nel Server, viene ritornato il codice di errore \textit{http} 404 al Client.
  \item[sendDocumentEdit] \hfill \\
+ Esegue una chiamata asincrona al \textit{@DataRetrieverAnalysis} per ottenere un particolare Document modificabile. Nel caso il Document esista, viene richiamato il metodo \textit{createDocument} di \textit{@JSonComposer} per inviare al richiedente l'oggetto Document desiderato. In caso il Document non esista nel Server, viene ritornato il codice di errore \textit{http} 404 al Client.
  \item[updateDocument] \hfill \\
+ Esegue una chiamata asincrona al metodo \textit{updateDocument} di \textit{@DataRetrieverAnalysis} per modificare un Document esistente nel Server. Nel caso la modifica effettuata dal \textit{@DataRetrieverAnalysis} vada a buon fine, viene ritornato al Client un codice \textit{http} di successo "200", altrimenti viene mandato il codice di errore \textit{http} 404.
  \item[removeDocument] \hfill \\
+ Esegue una chiamata asincrona al metodo \textit{removeDocument} di \textit{@DataRetrieverAnalysis} per modificare un Document esistente nel Server. Nel caso la rimozione effettuata dal \textit{@DataRetrieverAnalysis} vada a buon fine, viene ritornato al Client un codice \textit{http} di successo "200", altrimenti viene mandato il codice di errore \textit{http} 404.
  \end{description}
  
 \end{description}
@@ -424,10 +429,92 @@ Prepara le query da effettuare e contatta il \textit{@DataRetrieverAnalysis} per
 
 \subsubsection{::DSL}
 \subparagraph{@DSLManager}
+\begin{description}
+ \item[Descrizione] \hfill \\
+  Modulo del ModelServer che si occupa controllare la presenza dei file dsl nell'apposita cartella definita nel file di configurazione e invoca il parser dei DSL.
+ \item[Dipendendenze] \hfill \\
+ \begin{itemize}
+ \item{fs};
+  \item{path};
+  \item{@DSLParser};
+  \item{@schemaGenerator}.
+ \end{itemize}
+  
+ \item[Metodi] \hfill \\
+ \begin{description}
+ \item[generateFunction] \hfill \\ 
+ \item[deleteFolderRecursive] \hfill \\
+ \item[checkDSL] \hfill \\
+ \end{description}
+ 
+\end{description}
 \subparagraph{@DSLParser}
+\begin{description}
+ \item[Descrizione] \hfill \\
+  Modulo del ModelServer che si occupa effettuare il parsing di un DSL.
+ \item[Dipendendenze] \hfill \\
+ \begin{itemize}
+  \item{@JavascriptParser}.
+ \end{itemize}
+  
+ \item[Metodi] \hfill \\
+ \begin{description}
+ \item[addField] \hfill \\ 
+ \item[checkFieldThrow] \hfill \\ 
+ \item[checkField] \hfill \\ 
+ \item[checkFieldContentThrow] \hfill \\ 
+ \item[checkFieldContent] \hfill \\ 
+ \item[IntValue] \hfill \\
+ \item[parseDSL] \hfill \\
+ \end{description}
+ 
+\end{description}
 \subparagraph{@index}
+\begin{description}
+ \item[Descrizione] \hfill \\
+  Modulo che si occupa dell'inizializzazione del \textit{@DSLManager}.
+ \item[Dipendendenze] \hfill \\
+ \begin{itemize}
+  \item{@DSLManager}.
+ \end{itemize}
+  
+ \item[Metodi] \hfill \\
+ \begin{description}
+ \item[init] \hfill \\ 
+
+ \end{description}
+ 
+\end{description}
 \subparagraph{@JavascriptParser}
+\begin{description}
+ \item[Descrizione] \hfill \\
+  Modulo che effettua il parsing.
+  
+ \item[Metodi] \hfill \\
+ \begin{description}
+ \item[peg\$subclass] \hfill \\ 
+ \item[SyntaxError] \hfill \\
+ \item[parse] \hfill \\
+ \end{description}
+ 
+\end{description}
 \subparagraph{@schemaGenerator}
+\begin{description}
+ \item[Descrizione] \hfill \\
+  Modulo che si occupa dell'inizializzazione del \textit{@DSLManager}.
+ \item[Dipendendenze] \hfill \\
+ \begin{itemize}
+  \item{fs}.
+ \end{itemize}
+  
+ \item[Metodi] \hfill \\
+ \begin{description}
+ \item[getPopulatedCollection] \hfill \\ 
+ \item[arrayAddElement] \hfill \\ 
+ \item[generate] \hfill \\ 
+ \end{description}
+ 
+\end{description}
 
 \section{Specifica componenti Maap::Client}
 
