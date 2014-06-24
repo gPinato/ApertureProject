@@ -152,15 +152,6 @@ exports.getCollectionsList = function() {
 	return collectionsList;
 }
 
-var extractPopulate = function(populateArray, key) {
-	for(var i=0; i<populateArray.length; i++){
-		if(populateArray[i].key == key){
-			return getModel(populateArray[i].collection);
-		}
-	}
-	return '';
-}
-
 //applica le varie trasformazioni presenti nel dsl ai vari campi dei documents nell'array di documents
 var applyTrasformations = function(type, documentsArray, dslArray) {
 
@@ -537,4 +528,8 @@ exports.removeDocument = function(collection_name, document_id, callback) {
 		}
 	});
 }
-	
+
+exports.getModel=getModel;	
+exports.sortDocumentsByLabels = sortDocumentsByLabels;
+exports.getDocuments = getDocuments;
+exports.applyTrasformations = applyTrasformations;

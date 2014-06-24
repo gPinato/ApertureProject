@@ -57,9 +57,11 @@ Diario delle modifiche
 \midrule
 4.1.0 & 2014-05-20 & Alberto Garbui (VR) & Verifica documento.\\
 \midrule
+4.0.3 & 2014-XX-XX & Mattia Sorgato (PR) & Stesura controller del Server\\
+\midrule
 4.0.2 & 2014-XX-XX & Giacomo Pinato (PR) & Stesura dei controller\\
 \midrule
-4.0.2 & 2014-XX-XX & Mattia Sorgato (PR) & Stesura dei servizi e dei controller del client\\
+4.0.2 & 2014-XX-XX & Mattia Sorgato (PR) & Stesura dei servizi e dei controller del Client\\
 \midrule
 4.0.1 & 2014-04-04 & Alberto Garbui (PR) & Prima stesura del documento.\\
 
@@ -149,32 +151,69 @@ Package Server del Design Pattern Client-Server.
 \subsection{::Controller}
 Package che gestisce il dialogo con il Client di Maap. 
 \subsubsection{@dispatcher}
- \item[Descrizione] \hfill \\
-Controller che si occupa del routig delle richieste del client. 
- \item[Dipendendenze iniettate al controller] \hfill \\
-  \begin{itemize}
-   \item app;
-  \end{itemize}
 
- \item[Funzionalità esportate] \hfill \\
- \begin{description}
-  \item[init()] \hfill \\
-  Funzione di inizializzazione del dispatcher. Inizializza passport, e gestisce le varie richieste del client utilizzando le funzioni \emph{get()}, \emph{put()}, \emph{delete()} del router di express.
-  \end{description}
-
-\subsubsection{@frontController}
+\begin{description}
  \item[Descrizione] \hfill \\
-Controller che si occupa dell' inizializzazione del dispatcher reindirizzando ad esso le richieste del server.
- \item[Dipendendenze iniettate al controller] \hfill \\
-  \begin{itemize}
-   \item app;
-  \end{itemize}
+Modulo di inizializzazione della componente Server utilizzata per la trasmissione dei dati al Client. \\
+Il modulo \textit{dispatcher} gestisce tutte le richieste effettuate dal Client al Server, effettuando le dovute redirezioni e le chiamate per ottenere i dati dai database nel Server. Le richieste che pervengono al 
+\textit{dispatcher} sono di tipo REST, a cui il modulo stesso risponde con il JSON della risorsa richiesta. 
+Questo avviene solamente se l'utente che ha richiesto la risorsa è registrato ed autenticato, prima di 
+effettuare la richiesta, e che abbia i dovuti permessi per effettuare la richiesta. Infatti, prima di eseguire ogni richiesta di accesso ai dati del Server, il \textit{dispatcher} esegue una chiamata al modulo \textit{passport} per verificare l'autenticazione del richiedente e per distinguere gli utenti standard dagli utenti amministratori. \\
+Per ultima cosa, il \textit{dispatcher} gestisce eventuali richieste di risorse inesistenti o errate reindirizzando il chiamante alla pagina iniziale del Client AngularJS.
+ \item[Dipendendenze entranti] \hfill \\
+ \begin{itemize}
+ \item @passport;
+ \item path;
+ \item @DatabaseAnalysisManager;
+ \item @DatabaseUserManager
+ \item @IndexManager.
+ \end{itemize}
  
- \item[Funzionalità esportate] \hfill \\
+ %\item[Dipendenze uscenti] \hfill \\	questo tipo di item lo commento perché è parecchio macchinoso
+ %										e soprattutto LUNGO da fare.
+ 
+ %\item[Attributi] \hfill \\
+ 
+ \item[Metodi] \hfill \\
  \begin{description}
-  \item[init()] \hfill \\
-  Funzione di inizializzazione del frontController. Inizializza il Dispatcher e reindirizza ad esso le richieste del client.
-  \end{description}
+ \item[Gestione Collection e Document] \hfill \\
+ \begin{itemize}
+ %\item get('/api/collection/list', passport.checkAuthenticated, datamanager.sendCollectionsList);
+ %\item get('/api/collection/:col_id', passport.checkAuthenticated, datamanager.sendCollection);
+ %\item get('/api/collection/:col_id/:doc_id', passport.checkAuthenticated, datamanager.sendDocument);
+ %\item get('/api/collection/:col_id/:doc_id/edit', passport.checkAuthenticatedAdmin, datamanager.sendDocumentEdit);
+ %\item put('/api/collection/:col_id/:doc_id/edit', passport.checkAuthenticatedAdmin, datamanager.updateDocument);
+ %\item delete('/api/collection/:col_id/:doc_id/edit', passport.checkAuthenticatedAdmin, datamanager.removeDocument);
+ %sto bestemmiando allegramente con le signature dei metodi: sono troppo lunghe! devo inventarmi qualcosa.
+ %probabilmente bisognerà fare una tabella, domani ne parlo con Andrea.
+ \end{itemize}
+ \item[Gestione Profilo Utente] \hfill \\
+ \item[Gestione Utenti] \hfill \\
+ \item[Gestione Query più utilizzate] \hfill \\
+ \item[Gestione Indici nel Database di analisi] \hfill \\
+ \item[Gestione Login] \hfill \\
+ \item[Gestione richieste illecite] \hfill \\
+ \end{description}
+\end{description}
+
+\subsubsection{@frontController}		%da rivedere
+\begin{description}
+ \item[Descrizione] \hfill \\
+ Il frontController è l'interfaccia di connessione tra il Server ed il Client. Si occupa dell' inizializzazione del dispatcher reindirizzando ad esso le richieste del Client.
+ \item[Dipendendenze entranti] \hfill \\
+ \begin{itemize}
+ \item @dispatcher.
+ \end{itemize}
+ %\item[Dipendenze uscenti] \hfill \\
+ 
+ %\item[Attributi] \hfill \\
+ 
+ \item[Metodi] \hfill \\
+ \begin{itemize}
+ \item[initFrontController] \hfill \\
+ \'{E} la funzione di inizializzazione del frontController ed indica l'utilizzo del modulo \textit{dispatcher} per gestire le richieste del Client.
+ \end{itemize}
+\end{description}
 
 \subsubsection{@index}
  \item[Descrizione] \hfill \\
@@ -187,7 +226,8 @@ Controller che si occupa dell' inizializzazione del dispatcher reindirizzando ad
   \begin{description}
    \item[init()] \hfill \\
    Funzione di inizializzazione di index. Inizializza il frontController.
-   \end{description}
+  \end{description}
+   
 \subsubsection{@passport}
  \item[Descrizione] \hfill \\
 Controller che si occupa dell' inizializzazione e gestione del modulo passort per le autenticazioni.
