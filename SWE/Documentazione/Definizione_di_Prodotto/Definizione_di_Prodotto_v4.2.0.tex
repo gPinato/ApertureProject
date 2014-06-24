@@ -396,7 +396,9 @@ Prepara le query da effettuare e contatta il \textit{@DataRetrieverAnalysis} per
   \item @IndexManager;
   \item @JSonComposer.
  \end{itemize}
-  
+ 
+ %aggiungere tutti i req e res 
+ 
  \item[Metodi] \hfill
  \begin{description}
  \item[sendCollectionList] \hfill \\
@@ -572,7 +574,109 @@ linguaggio DSL per richiedere e inviare i dati che l'utente sviluppatore decide 
 \end{description}
 
 \paragraph{::DatabaseUserManager}
+Package che gestisce gli accessi al database utenti.
+
 \subparagraph{@DatabaseUserManager}
+\begin{description}
+ \item[Descrizione] \hfill \\
+Modulo del ModelServer che si occupa di interpretare i dati richiesti e spediti da e al database utenti. 
+Prepara le query da effettuare e contatta il \textit{@DataRetrieverUsers} per ottenere i dati voluti. 
+Inoltre dialoga direttamente con \textit{@MongooseDBFramework} per l'esecuzione di test durante la registrazione. 
+ \item[Dipendendenze] \hfill
+ \begin{itemize}
+  \item path;
+  \item @DataRetrieverUsers;
+  \item @MongooseDBFramework;
+  \item @JSonComposer.
+ \end{itemize}
+  
+ \item[Metodi] \hfill
+  \begin{description}
+    \item[checkMail(req, res)] \hfill
+      \begin{description}
+	\item[Parametri] \hfill
+	  \begin{description}
+	    \item[req]
+	    Oggetto contenente i parametri e le informazioni del Client richiedente.
+	    \item[res]
+	    Oggetto duale a \textit{req} su cui invocare i metodi per inviare informazioni al Client richiedente.
+	  \end{description}
+	\item[Descrizione]
+	Effettua un controllo di presenza nel database utenti della email specificata dal Client. In caso di presenza, 
+	viene inviato al client un errore \textit{http} 400. In caso contrario, viene segnalato all'utente la mancanza 
+	di un indirizzo email già registrato e viene inviato il codice \textit{http} 304.
+      \end{description}
+    \item[userSignup(req, res)] \hfill
+      \begin{description}
+	\item[Parametri] \hfill
+	  \begin{description}
+	    \item[req]
+	    Oggetto contenente i parametri e le informazioni del Client richiedente.
+	    \item[res]
+	    Oggetto duale a \textit{req} su cui invocare i metodi per inviare informazioni al Client richiedente.
+	  \end{description}
+	\item[Descrizione]
+	Richiama il metodo \textit{addUser} di \textit{@DataRetrieverUsers} per registrare un nuovo utente al sistema. 
+	Vengono passati al metodo \textit{addUser} le credenziali contenute nell'oggetto \textit{req}. In caso di avvenuto 
+	inserimento, viene inviato al Client il codice di conferma \textit{http} 200. In caso contrario, viene inviato il 
+	codice di errore \textit{http} 404.
+      \end{description}
+    
+    \item[sendUserProfile(req, res)] \hfill
+      \begin{description}
+	\item[Parametri] \hfill
+	  \begin{description}
+	    \item[req]
+	    Oggetto contenente i parametri e le informazioni del Client richiedente.
+	    \item[res]
+	    Oggetto duale a \textit{req} su cui invocare i metodi per inviare informazioni al Client richiedente.
+	  \end{description}
+	\item[Descrizione]
+	Richiama il metodo \textit{getUserProfile} di \textit{@DataRetrieverUsers} per ottenere l'oggetto utente 
+	sulla base dei parametri inviati da \textit{req}. Successivamente invia a \textit{res} il JSON dell'utente 
+	creato tramite il metodo \textit{createUserProfile} di \textit{JsonComposer}.
+      \end{description}
+      
+    \item[sendUserProfileEdit(req, res)] \hfill
+      \begin{description}
+	\item[Parametri] \hfill
+	  \begin{description}
+	    \item[req]
+	    Oggetto contenente i parametri e le informazioni del Client richiedente.
+	    \item[res]
+	    Oggetto duale a \textit{req} su cui invocare i metodi per inviare informazioni al Client richiedente.
+	  \end{description}
+	\item[Descrizione]
+	Richiama il metodo \textit{getUserProfile} di \textit{@DataRetrieverUsers} per ottenere l'oggetto utente 
+	sulla base dei parametri inviati da \textit{req}. Successivamente invia a \textit{res} il JSON dell'utente 
+	creato tramite il metodo \textit{createUserProfileEdit} di \textit{JsonComposer}.
+      \end{description}
+      
+    \item[updateUserProfile(req, res)] \hfill
+      \begin{description}
+	\item[Parametri] \hfill
+	  \begin{description}
+	    \item[req]
+	    Oggetto contenente i parametri e le informazioni del Client richiedente.
+	    \item[res]
+	    Oggetto duale a \textit{req} su cui invocare i metodi per inviare informazioni al Client richiedente.
+	  \end{description}
+	\item[Descrizione]
+	Richiama il metodo \textit{updateUserProfile} di \textit{@DataRetrieverUsers} passando come parametro 
+	il richiedente \textit{req} del Client. Ritorna al Client un codice \textit{http} 200 in caso di riuscita, 
+	un codice 400 altrimenti.
+      \end{description}
+      
+    \item[(req, res)] \hfill
+    \item[(req, res)] \hfill
+    \item[(req, res)] \hfill
+    \item[(req, res)] \hfill
+    \item[(req, res)] \hfill
+ \end{description}
+ 
+\end{description}
+
+
 \subparagraph{@DataRetrieverUsers}
 
 \paragraph{::IndexManager}

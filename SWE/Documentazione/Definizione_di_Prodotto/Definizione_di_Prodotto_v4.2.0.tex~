@@ -387,7 +387,7 @@ Package che gestisce le query ai database di analisi.
 
 \begin{description}
  \item[Descrizione] \hfill \\
-Modulo del ModelServer che si occupa di interpretare e indirizzare le richieste da e al database di analisi. 
+Modulo del ModelServer che si occupa di interpretare i dati richiesti e spediti da e al database di analisi. 
 Prepara le query da effettuare e contatta il \textit{@DataRetrieverAnalysis} per ottenere i dati voluti.
  \item[Dipendendenze] \hfill
  \begin{itemize}
@@ -396,7 +396,9 @@ Prepara le query da effettuare e contatta il \textit{@DataRetrieverAnalysis} per
   \item @IndexManager;
   \item @JSonComposer.
  \end{itemize}
-  
+ 
+ %aggiungere tutti i req e res 
+ 
  \item[Metodi] \hfill
  \begin{description}
  \item[sendCollectionList] \hfill \\
@@ -419,7 +421,8 @@ Prepara le query da effettuare e contatta il \textit{@DataRetrieverAnalysis} per
 \subparagraph{@DataRetrieverAnalysis}
 \begin{description}
 \item[Descrizione] \hfill 
-
+Modulo che dialoga con il database di analisi per mezzo dell'infrastruttura Mongoose. Utilizza i file derivati dall'interpretazione del 
+linguaggio DSL per richiedere e inviare i dati che l'utente sviluppatore decide di visualizzare e modificare.
 \item[Dipendenze] \hfill 
 \begin{itemize}
 \item @IndexManager.
@@ -483,11 +486,12 @@ Prepara le query da effettuare e contatta il \textit{@DataRetrieverAnalysis} per
 					Array di chiavi di un Document.
 				\end{description}
 			\item[Descrizione] \hfill
-			Ordina le coppie chiave-valore dei Document presenti nell'array \textit{documents} secondo 					l'ordine stabilito nell'array di chiavi \textit{keys}.
+			Ordina le coppie chiave-valore dei Document presenti nell'array \textit{documents} secondo 
+			l'ordine stabilito nell'array di chiavi \textit{keys}.
 		\end{description}			
 	
 	\mlitem{getCollectionIndex(collection\_name, column, order, page, callback)} \hfill 
-			\begin{description}
+		\begin{description}
 			\item[Parametri] \hfill
 				\begin{description}
 					\item[collection\_name] \hfill
@@ -497,6 +501,7 @@ Prepara le query da effettuare e contatta il \textit{@DataRetrieverAnalysis} per
 					\item[order] \hfill
 					\item[page] \hfill
 					\item[callback] \hfill
+					Funzione da richiamare al termine della funzione \textit{getCollectionIndex}.
 				\end{description}
 			\item[Dipendenza] \hfill
 				\begin{itemize}
@@ -505,8 +510,24 @@ Prepara le query da effettuare e contatta il \textit{@DataRetrieverAnalysis} per
 			\item[Descrizione] \hfill
 		\end{description}
 	
-	\mlitem{} \hfill 
-	\mlitem{} \hfill 
+	\mlitem{getDocumentShow(collection\_name, document\_id, callback)} \hfill
+		\begin{description}
+			\item[Parametri] \hfill
+				\begin{description}
+					\item[collection\_name] \hfill
+					\item[document\_id] \hfill
+					\item[callback] \hfill
+					Funzione da richiamare al termine della funzione \textit{getDocumentShow}.
+				\end{description}
+			\item[Dipendenza] \hfill
+				\begin{itemize}
+					\item
+				\end{itemize}
+			\item[Descrizione] \hfill
+		\end{description}
+	\mlitem{getDocumentShowEdit(collection\_name, document\_id, callback)} \hfill
+	
+	
 	\mlitem{updateDocument(collection\_name, document\_id, newDocumentData, callback)} \hfill 
 		\begin{description}
 			\item[Parametri] \hfill
@@ -524,20 +545,28 @@ Prepara le query da effettuare e contatta il \textit{@DataRetrieverAnalysis} per
 					Funzione da richiamare al termine della modifica del Document.
 				\end{description}
 			\item[Descrizione] \hfill
-			
+			Richiede il modello della Collection nominata \textit{collection\_name}. Successivamente richiama
+			il metodo \textit{update} sul modello della Collection scelta per aggiornare il Document identificato 
+			con \textit{document\_id} con le nuove informazioni di \textit{newDocumentData}. Al termine di questa 
+			operazione, viene chiamata la \textit{callback}.
 		\end{description}
 	
 	\mlitem{removeDocument(collection\_name, document\_id, callback)} \hfill 
 		\begin{description}
 			\item[Parametri] \hfill
 				\begin{description}
-					\item[•] \hfill
+					\item[collection\_name] \hfill
+					Stringa contenente il nome della Collection contenente il Document da eliminare.
+					\item[document\_id] \hfill
+					Id del Document da eliminare.
+					\item[callback] \hfill
+					Funzione da richiamare al termine dell'eliminazione del Document.
 				\end{description}
-			\item[Dipendenza] \hfill
-				\begin{itemize}
-					\item
-				\end{itemize}
 			\item[Descrizione] \hfill
+			Richiede il modello della Collection nominata \textit{collection\_name}. Successivamente richiama
+			il metodo \textit{remove} sul modello della Collection scelta per rimuovere il Document identificato 
+			con \textit{document\_id}. Al termine di questa 
+			operazione, viene chiamata la \textit{callback}.
 		\end{description}
 		
 \end{mldescription}
@@ -545,7 +574,93 @@ Prepara le query da effettuare e contatta il \textit{@DataRetrieverAnalysis} per
 \end{description}
 
 \paragraph{::DatabaseUserManager}
+Package che gestisce gli accessi al database utenti.
+
 \subparagraph{@DatabaseUserManager}
+\begin{description}
+ \item[Descrizione] \hfill \\
+Modulo del ModelServer che si occupa di interpretare i dati richiesti e spediti da e al database utenti. 
+Prepara le query da effettuare e contatta il \textit{@DataRetrieverUsers} per ottenere i dati voluti. 
+Inoltre dialoga direttamente con \textit{@MongooseDBFramework} per l'esecuzione di test durante la registrazione. 
+ \item[Dipendendenze] \hfill
+ \begin{itemize}
+  \item path;
+  \item @DataRetrieverUsers;
+  \item @MongooseDBFramework;
+  \item @JSonComposer.
+ \end{itemize}
+  
+ \item[Metodi] \hfill
+  \begin{description}
+    \item[checkMail(req, res)] \hfill
+      \begin{description}
+	\item[Parametri] \hfill
+	  \begin{description}
+	    \item[req]
+	    Oggetto contenente i parametri e le informazioni del Client richiedente.
+	    \item[res]
+	    Oggetto duale a \textit{req} su cui invocare i metodi per inviare informazioni al Client richiedente.
+	  \end{description}
+	\item[Descrizione]
+	Effettua un controllo di presenza nel database utenti della email specificata dal Client. In caso di presenza, 
+	viene inviato al client un errore \textit{http} 400. In caso contrario, viene segnalato all'utente la mancanza 
+	di un indirizzo email già registrato e viene inviato il codice \textit{http} 304.
+      \end{description}
+    \item[userSignup(req, res)] \hfill
+      \begin{description}
+	\item[Parametri] \hfill
+	  \begin{description}
+	    \item[req]
+	    Oggetto contenente i parametri e le informazioni del Client richiedente.
+	    \item[res]
+	    Oggetto duale a \textit{req} su cui invocare i metodi per inviare informazioni al Client richiedente.
+	  \end{description}
+	\item[Descrizione]
+	Richiama il metodo \textit{addUser} di \textit{@DataRetrieverUsers} per registrare un nuovo utente al sistema. 
+	Vengono passati al metodo \textit{addUser} le credenziali contenute nell'oggetto \textit{req}. In caso di avvenuto 
+	inserimento, viene inviato al Client il codice di conferma \textit{http} 200. In caso contrario, viene inviato il 
+	codice di errore \textit{http} 404.
+      \end{description}
+    
+    \item[sendUserProfile(req, res)] \hfill
+      \begin{description}
+	\item[Parametri] \hfill
+	  \begin{description}
+	    \item[req]
+	    Oggetto contenente i parametri e le informazioni del Client richiedente.
+	    \item[res]
+	    Oggetto duale a \textit{req} su cui invocare i metodi per inviare informazioni al Client richiedente.
+	  \end{description}
+	\item[Descrizione]
+	Richiama il metodo \textit{getUserProfile} di \textit{@DataRetrieverUsers} per ottenere l'oggetto utente 
+	sulla base dei parametri inviati da \textit{req}. Successivamente invia a \textit{res} il JSON dell'utente 
+	creato tramite il metodo \textit{createUserProfile} di \textit{JsonComposer}.
+    
+    \item[sendUserProfileEdit(req, res)] \hfill
+      \begin{description}
+	\item[Parametri] \hfill
+	  \begin{description}
+	    \item[req]
+	    Oggetto contenente i parametri e le informazioni del Client richiedente.
+	    \item[res]
+	    Oggetto duale a \textit{req} su cui invocare i metodi per inviare informazioni al Client richiedente.
+	  \end{description}
+	\item[Descrizione]
+	Richiama il metodo \textit{getUserProfile} di \textit{@DataRetrieverUsers} per ottenere l'oggetto utente 
+	sulla base dei parametri inviati da \textit{req}. Successivamente invia a \textit{res} il JSON dell'utente 
+	creato tramite il metodo \textit{createUserProfileEdit} di \textit{JsonComposer}.
+    
+    \item[(req, res)] \hfill
+    \item[(req, res)] \hfill
+    \item[(req, res)] \hfill
+    \item[(req, res)] \hfill
+    \item[(req, res)] \hfill
+    \item[(req, res)] \hfill
+ \end{description}
+ 
+\end{description}
+
+
 \subparagraph{@DataRetrieverUsers}
 
 \paragraph{::IndexManager}
