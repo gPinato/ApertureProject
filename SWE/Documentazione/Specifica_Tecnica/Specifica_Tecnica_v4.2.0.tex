@@ -735,194 +735,184 @@ Package per il componente Client del modello di architettura Client-server.
 \subsubsubsection{Informazioni sul package}
 \immagine{./Diagrammi/ComponentiView}{Componente MaaP::Client::View}
 \subsubsubsection{Descrizione}
-Componente view del design pattern MVVM.
-\subsubsubsection{Sotto-componenti}
-\begin{itemize}
-\item MaaP::Client::Template.
-\end{itemize}
-
-\subsubsubsection{MaaP::Client::View::Template}
-\subsubsubsection{Informazioni sul package}
-\immagine{./Diagrammi/ComponentiTemplate}{Componente MaaP::Client::View::Template}
-\subsubsubsection{Descrizione}
 Componente che contiene i template per la visualizzazione delle pagine web.
-\subsubsubsection{Classi}
 
-\subsubsubsubsection{SignIn}
+\subsubsubsubsection{404}
 \grassetto{Nome}\\
-MaaP::Client::View::Template::SignIn\\
+MaaP::Client::View::404\\
 \grassetto{Descrizione}\\
-Classe che rappresenta il template per la pagina di login.\\
+Classe che rappresenta il template per la pagina d'errore.\\
 \grassetto{Utilizzo}\\
-Viene utilizzata per renderizzare la pagina web di login.\\
+Viene utilizzata per renderizzare la pagina web d'errore 404.\\
+
+\subsubsubsubsection{collection}
+\grassetto{Nome}\\
+MaaP::Client::View::collection\\
+\grassetto{Descrizione}\\
+Classe che rappresenta il template per la parte della pagina destinata alla visualizzazione di una collection.\\
+\grassetto{Utilizzo}\\
+Viene utilizzata per visualizzare una serie di document di una determinata collection.\\
 \grassetto{Relazioni con altre classi}
 \begin{itemize}
-\item\grassetto{MaaP::Client::ControllerModelView::ControllerClient::ControllerAutenticazione}\\
-Relazione uscente, contiene un riferimento ad un oggetto ControllerAutenticazione per gestire il login utente.
+\item\grassetto{MaaP::Client::ControllerModelView::ControllerClient::CollectionCtrl}\\
+Relazione uscente, contiene un riferimento ad un oggetto CollectionCtrl per gestire la creazione della pagina collection-index.
 \end{itemize}
 
-\subsubsubsubsection{SignUp}
+\subsubsubsubsection{dashboard}
 \grassetto{Nome}\\
-MaaP::Client::View::Template::SignUp\\
+MaaP::Client::View::dashboard\\
 \grassetto{Descrizione}\\
-Classe che rappresenta il template per la pagina di \gloss{registrazione}, presente solamente se nel \gloss{file di configurazione} è esplicitamente abilitata la funzionalità di registrazione utente.\\
+Classe che rappresenta il template per la parte della pagina destinata alla visualizzazione della dashboard.\\
 \grassetto{Utilizzo}\\
-Viene utilizzata per renderizzare la pagina web di registrazione utente.\\
+Viene utilizzata per visualizzare una serie di collection presenti nel progetto.\\
 \grassetto{Relazioni con altre classi}
 \begin{itemize}
-\item\grassetto{MaaP::Client::ControllerModelView::ControllerClient::ControllerAutenticazione}\\
-Relazione uscente, contiene un riferimento ad un oggetto ControllerAutenticazione per gestire la registrazione di un nuovo utente.
+\item\grassetto{MaaP::Client::ControllerModelView::ControllerClient::DashboardCtrl}\\
+Relazione uscente, contiene un riferimento ad un oggetto DashboardCtrl per gestire la creazione della dashboard.
 \end{itemize}
 
-\subsubsubsubsection{AdminMainPageCollection}
+\subsubsubsubsection{document}
 \grassetto{Nome}\\
-MaaP::Client::View::Template::AdminMainPageCollection\\
+MaaP::Client::View::document\\
 \grassetto{Descrizione}\\
-Classe che rappresenta il template per la pagina di visualizzazione Collection per l'utente \gloss{amministratore}.\\
+Classe che rappresenta il template per la parte della pagina destinata alla visualizzazione di un document.\\
 \grassetto{Utilizzo}\\
-Viene utilizzata per renderizzare la pagina web di visualizzazione Collection per l'utente amministratore.\\
+Viene utilizzata per visualizzare la serie di dati che compongono un document.\\
 \grassetto{Relazioni con altre classi}
 \begin{itemize}
-\item\grassetto{MaaP::Client::ControllerModelView::ControllerClient::ControllerCollection}\\
-Relazione uscente, contiene un riferimento ad un oggetto ControllerCollection per gestire la visualizzazione della pagina Collection;
-\item\grassetto{MaaP::Client::ControllerModelView::ControllerClient::ControllerMenu}\\
-Relazione uscente, contiene un riferimento ad un oggetto ControllerMenu per gestire la visualizzazione del menù.
+\item\grassetto{MaaP::Client::ControllerModelView::ControllerClient::DocumentCtrl}\\
+Relazione uscente, contiene un riferimento ad un oggetto DocumentCtrl per gestire la creazione della pagina document-show.
 \end{itemize}
 
-\subsubsubsubsection{UserMainPageCollection}
+\subsubsubsubsection{documentEdit}
 \grassetto{Nome}\\
-MaaP::Client::View::Template::UserMainPageCollection\\
+MaaP::Client::View::documentEdit\\
 \grassetto{Descrizione}\\
-Classe che rappresenta il template per la pagina di visualizzazione Collection per l'utente.\\
+Classe che rappresenta il template per la parte della pagina destinata alla modifica di un document.\\
 \grassetto{Utilizzo}\\
-Viene utilizzata per renderizzare la pagina web di visualizzazione Collection per l'utente.\\
+Viene utilizzata per visualizzare la serie di dati che compongono un document per la successiva modifica.\\
 \grassetto{Relazioni con altre classi}
 \begin{itemize}
-\item\grassetto{MaaP::Client::ControllerModelView::ControllerClient::ControllerCollection}\\
-Relazione uscente, contiene un riferimento ad un oggetto ControllerCollection per gestire la visualizzazione della pagina Collection;
-\item\grassetto{MaaP::Client::ControllerModelView::ControllerClient::ControllerMenu}\\
-Relazione uscente, contiene un riferimento ad un oggetto ControllerMenu per gestire la visualizzazione del menù.
+\item\grassetto{MaaP::Client::ControllerModelView::ControllerClient::DocumentEditCtrl}\\
+Relazione uscente, contiene un riferimento ad un oggetto DocumentEditCtrl per gestire la creazione della pagina di modifica di un document.
 \end{itemize}
 
-\subsubsubsubsection{AdminMainPageDocument}
+\subsubsubsubsection{indexCollection}
 \grassetto{Nome}\\
-MaaP::Client::View::Template::AdminMainPageDocument\\
+MaaP::Client::View::indexCollection\\
 \grassetto{Descrizione}\\
-Classe che rappresenta il template per la pagina di visualizzazione Document per l'utente amministratore.\\
+Classe che rappresenta il template per la parte della pagina destinata alla visualizzazione degli indici.\\
 \grassetto{Utilizzo}\\
-Viene utilizzata per renderizzare la pagina web di visualizzazione del Document per l'utente amministratore.\\
+Viene utilizzata per visualizzare la serie di indici attualmente presenti nel database di analisi.\\
 \grassetto{Relazioni con altre classi}
 \begin{itemize}
-\item\grassetto{MaaP::Client::ControllerModelView::ControllerClient::ControllerDocument}\\
-Relazione uscente, contiene un riferimento ad un oggetto ControllerDocument per gestire la visualizzazione della pagina Document;
-\item\grassetto{MaaP::Client::ControllerModelView::ControllerClient::ControllerMenu}\\
-Relazione uscente, contiene un riferimento ad un oggetto ControllerMenu per gestire la visualizzazione del menù.
+\item\grassetto{MaaP::Client::ControllerModelView::ControllerClient::IndexCtrl}\\
+Relazione uscente, contiene un riferimento ad un oggetto IndextCtrl per gestire la creazione della pagina di visualizzazione degli indici.
 \end{itemize}
 
-\subsubsubsubsection{UserMainPageDocument}
+\subsubsubsubsection{login}
 \grassetto{Nome}\\
-MaaP::Client::View::Template::UserMainPageDocument\\
+MaaP::Client::View::login\\
 \grassetto{Descrizione}\\
-Classe che rappresenta il template per la pagina di visualizzazione Document per l'utente.\\
+Classe che rappresenta il template per la parte della pagina destinata al login.\\
 \grassetto{Utilizzo}\\
-Viene utilizzata per renderizzare la pagina web di visualizzazione del Document per l'utente.\\
+Viene utilizzata per visualizzare la pagina di login.\\
 \grassetto{Relazioni con altre classi}
 \begin{itemize}
-\item\grassetto{MaaP::Client::ControllerModelView::ControllerClient::ControllerDocument}\\
-Relazione uscente, contiene un riferimento ad un oggetto ControllerDocument per gestire la visualizzazione della pagina Document;
-\item\grassetto{MaaP::Client::ControllerModelView::ControllerClient::ControllerMenu}\\
-Relazione uscente, contiene un riferimento ad un oggetto ControllerMenu per gestire la visualizzazione del menù.
+\item\grassetto{MaaP::Client::ControllerModelView::ControllerClient::LoginCtrl}\\
+Relazione uscente, contiene un riferimento ad un oggetto LoginCtrl per gestire la creazione della pagina di login.
 \end{itemize}
 
-\subsubsubsubsection{MainPageDocumentEdit}
+\subsubsubsubsection{logout}
 \grassetto{Nome}\\
-MaaP::Client::View::Template::MainPageDocumentEdit\\
+MaaP::Client::View::logout\\
 \grassetto{Descrizione}\\
-Classe che rappresenta il template per la pagina di modifica dei Document.\\
+Classe che rappresenta il template per la parte della pagina destinata al logout.\\
 \grassetto{Utilizzo}\\
-Viene utilizzata per renderizzare la pagina web di modifica dei Document.\\
+Viene utilizzata per visualizzare la pagina di logout.\\
+
+\subsubsubsubsection{Navbar}
+\grassetto{Nome}\\
+MaaP::Client::View::Navbar\\
+\grassetto{Descrizione}\\
+Classe che rappresenta il template per la parte della pagina che visualizza la barra di navigazione.\\
+\grassetto{Utilizzo}\\
+Viene utilizzata per visualizzare la barra di navigazione.\\
 \grassetto{Relazioni con altre classi}
 \begin{itemize}
-\item\grassetto{MaaP::Client::ControllerModelView::ControllerClient::ControllerDocument}\\
-Relazione uscente, contiene un riferimento ad un oggetto ControllerDocument per gestire la visualizzazione della pagina di modifica dei Document;
-\item\grassetto{MaaP::Client::ControllerModelView::ControllerClient::ControllerMenu}\\
-Relazione uscente, contiene un riferimento ad un oggetto ControllerMenu per gestire la visualizzazione del menù.
+\item\grassetto{MaaP::Client::ControllerModelView::ControllerClient::NavBarCtrl}\\
+Relazione uscente, contiene un riferimento ad un oggetto NavBarCtrl per gestire la creazione della barra di navigazione del sito.
 \end{itemize}
 
-\subsubsubsubsection{UserProfileEdit}
+\subsubsubsubsection{queryCollection}
 \grassetto{Nome}\\
-MaaP::Client::View::Template::UserProfileEdit\\
+MaaP::Client::View::queryCollection\\
 \grassetto{Descrizione}\\
-Classe che rappresenta il template per la pagina di modifica del \gloss{profilo} utente.\\
+Classe che rappresenta il template per la parte della pagina che visualizza la lista delle query più utilizzate.\\
 \grassetto{Utilizzo}\\
-Viene utilizzata per renderizzare la pagina web di modifica del profilo utente.\\
+Viene utilizzata per visualizzare le query più utilizzate.\\
 \grassetto{Relazioni con altre classi}
 \begin{itemize}
-\item\grassetto{MaaP::Client::ControllerModelView::ControllerClient::ControllerProfilo}\\
-Relazione uscente, contiene un riferimento ad un oggetto ControllerProfilo per gestire la visualizzazione della pagina di modifica del profilo utente;
-\item\grassetto{MaaP::Client::ControllerModelView::ControllerClient::ControllerMenu}\\
-Relazione uscente, contiene un riferimento ad un oggetto ControllerMenu per gestire la visualizzazione del menù.
+\item\grassetto{MaaP::Client::ControllerModelView::ControllerClient::QueryCtrl}\\
+Relazione uscente, contiene un riferimento ad un oggetto QueryCtrl per gestire la creazione della pagina delle query più utilizzate.
 \end{itemize}
 
-\subsubsubsubsection{UserProfile}
+\subsubsubsubsection{register}
 \grassetto{Nome}\\
-MaaP::Client::View::Template::UserProfile\\
+MaaP::Client::View::register\\
 \grassetto{Descrizione}\\
-Classe che rappresenta il template per la pagina di visualizzazione del profilo utente.\\
+Classe che rappresenta il template per la parte della pagina di registrazione utente.\\
 \grassetto{Utilizzo}\\
-Viene utilizzata per renderizzare la pagina web di visualizzazione del profilo utente.\\
+Viene utilizzata per visualizzare il form di registrazione utente.\\
 \grassetto{Relazioni con altre classi}
 \begin{itemize}
-\item\grassetto{MaaP::Client::ControllerModelView::ControllerClient::ControllerProfilo}\\
-Relazione uscente, contiene un riferimento ad un oggetto ControllerProfilo per gestire la visualizzazione della pagina del profilo utente;
-\item\grassetto{MaaP::Client::ControllerModelView::ControllerClient::ControllerMenu}\\
-Relazione uscente, contiene un riferimento ad un oggetto ControllerMenu per gestire la visualizzazione del menù.
+\item\grassetto{MaaP::Client::ControllerModelView::ControllerClient::RegisterCtrl}\\
+Relazione uscente, contiene un riferimento ad un oggetto RegisterCtrl per gestire la registrazione di un nuovo utente.
 \end{itemize}
 
-\subsubsubsubsection{AdminProfile}
+\subsubsubsubsection{userCollection}
 \grassetto{Nome}\\
-MaaP::Client::View::Template::AdminProfile\\
+MaaP::Client::View::userCollection\\
 \grassetto{Descrizione}\\
-Classe che rappresenta il template per la pagina di visualizzazione del profilo utente amministratore.\\
+Classe che rappresenta il template per la parte della pagina che visualizza la lista degli utenti registrati nel sistema.\\
 \grassetto{Utilizzo}\\
-Viene utilizzata per renderizzare la pagina web di visualizzazione del profilo utente amministratore.\\
+Viene utilizzata per visualizzare la pagina contenente la lista degli utenti registrati nel sistema per l'utente amministratore.\\
 \grassetto{Relazioni con altre classi}
 \begin{itemize}
-\item\grassetto{MaaP::Client::ControllerModelView::ControllerClient::ControllerProfilo}\\
-Relazione uscente, contiene un riferimento ad un oggetto ControllerProfilo per gestire la visualizzazione della pagina del profilo utente amministratore;
-\item\grassetto{MaaP::Client::ControllerModelView::ControllerClient::ControllerMenu}\\
-Relazione uscente, contiene un riferimento ad un oggetto ControllerMenu per gestire la visualizzazione del menù.
+\item\grassetto{MaaP::Client::ControllerModelView::ControllerClient::UsersCollectionCtrl}\\
+Relazione uscente, contiene un riferimento ad un oggetto UsersCollectionCtrl per gestire la creazione della lista di utenti registrati nel sistema.
 \end{itemize}
 
-\subsubsubsubsection{PasswordRecovery}
+\subsubsubsubsection{userEdit}
 \grassetto{Nome}\\
-MaaP::Client::View::Template::UserProfile\\
+MaaP::Client::View::userEdit\\
 \grassetto{Descrizione}\\
-Classe che rappresenta il template per la pagina di recupero \gloss{password}.\\
+Classe che rappresenta il template per la parte della pagina che modifica il profilo utente.\\
 \grassetto{Utilizzo}\\
-Viene utilizzata per renderizzare la pagina web recupero password.\\
+Viene utilizzata per visualizzare il form di modifica del profilo utente.\\
 \grassetto{Relazioni con altre classi}
 \begin{itemize}
-\item\grassetto{MaaP::Client::ControllerModelView::ControllerClient::ControllerProfilo}\\
-Relazione uscente, contiene un riferimento ad un oggetto ControllerProfilo per gestire la visualizzazione della pagina di recupero password;
-\item\grassetto{MaaP::Client::ControllerModelView::ControllerClient::ControllerMenu}\\
-Relazione uscente, contiene un riferimento ad un oggetto ControllerMenu per gestire la visualizzazione del menù.
+\item\grassetto{MaaP::Client::ControllerModelView::ControllerClient::UserEditCtrl}\\
+Relazione uscente, contiene un riferimento ad un oggetto UserEditCtrl per gestire la modifica di un profilo utente da parte di un utente amministratore.
+\item\grassetto{MaaP::Client::ControllerModelView::ControllerClient::ProfileEditCtrl}\\
+Relazione uscente, contiene un riferimento ad un oggetto ProfileEditCtrl per gestire la modifica del proprio profilo utente.
 \end{itemize}
 
-\subsubsubsubsection{IndexPage}
+\subsubsubsubsection{userProfile}
 \grassetto{Nome}\\
-MaaP::Client::View::Template::IndexPage\\
+MaaP::Client::View::userProfile\\
 \grassetto{Descrizione}\\
-Classe che rappresenta il template per la pagina di gestione degli indici, presente solo se nel file di configurazione è esplicitamente abilitato l'utilizzo degli indici.\\
+Classe che rappresenta il template per la parte della pagina che visualizza il profilo utente.\\
 \grassetto{Utilizzo}\\
-Viene utilizzata per renderizzare la pagina che gestisce la creazione e l'eliminazione degli indici.\\
+Viene utilizzata per visualizzare i dati del profilo utente.\\
 \grassetto{Relazioni con altre classi}
 \begin{itemize}
-\item\grassetto{MaaP::Client::ControllerModelView::ControllerClient::ControllerIndici}\\
-Relazione uscente, contiene un riferimento ad un oggetto ControllerIndici per gestire la creazione e l'eliminazione degli indici;
-\item\grassetto{MaaP::Client::ControllerModelView::ControllerClient::ControllerMenu}\\
-Relazione uscente, contiene un riferimento ad un oggetto ControllerMenu per gestire la visualizzazione del menù.
+\item\grassetto{MaaP::Client::ControllerModelView::ControllerClient::UserCtrl}\\
+Relazione uscente, contiene un riferimento ad un oggetto UserCtrl per gestire la visualizzazione di un profilo utente da parte di un utente amministratore.
+\item\grassetto{MaaP::Client::ControllerModelView::ControllerClient::ProfileCtrl}\\
+Relazione uscente, contiene un riferimento ad un oggetto ProfileCtrl per gestire la visualizzazione del proprio profilo utente.
 \end{itemize}
+
 
 \subsubsection{MaaP::Client::ControllerModelView}
 \subsubsubsection{Informazioni sul package}
@@ -932,7 +922,6 @@ Componente ModelView del design pattern MVVM.
 \subsubsubsection{Sotto-componenti}
 \begin{itemize}
 \item MaaP::Client::ControllerModelView::ControllerClient;
-\item MaaP::Client::ControllerModelView::Scope.
 \end{itemize}
 
 \subsubsubsection{MaaP::Client::ControllerModelView::ControllerClient}
@@ -961,188 +950,19 @@ Relazione entrante, interazione con il template;
 Relazione entrante, interazione con il template.
 \end{itemize}
 
-\subsubsubsubsubsection{ControllerCollection}
-\grassetto{Nome}\\
-MaaP::Client::ControllerModelView::ControllerClient::ControllerCollection\\
-\grassetto{Descrizione}\\
-Classe che rappresenta il controller per indirizzare le richieste di visualizzazione di una pagina Collection.\\
-\grassetto{Utilizzo}\\
-Viene utilizzata per indirizzare le richieste di visualizzazione di una pagina Collection.\\
-\grassetto{Relazioni con altre classi}
-\begin{itemize}
-\item\grassetto{MaaP::Client::ModelClient::Services::HTTP}\\
-Relazione uscente debole, contiene un riferimento ad un oggetto HTTP per utilizzare il relativo servizio;
-\item\grassetto{MaaP::Client::ControllerModelView::Scope::Collection}\\
-Relazione uscente debole, contiene un riferimento ad un oggetto Collection per accedere allo scope relativo ai dati di una Collection;
-\item\grassetto{MaaP::Client::View::Template::AdminMainPageCollection}\\
-Relazione entrante, interazione con il template;
-\item\grassetto{MaaP::Client::View::Template::UserMainPageCollection}\\
-Relazione entrante, interazione con il template.
-\end{itemize}
 
-\subsubsubsubsubsection{ControllerDocument}
-\grassetto{Nome}\\
-MaaP::Client::ControllerModelView::ControllerClient::ControllerDocument\\
-\grassetto{Descrizione}\\
-Classe che rappresenta il controller per indirizzare le richieste di visualizzazione di una pagina Document.\\
-\grassetto{Utilizzo}\\
-Viene utilizzata per indirizzare le richieste di visualizzazione di una pagina Document.\\
-\grassetto{Relazioni con altre classi}
-\begin{itemize}
-\item\grassetto{MaaP::Client::ModelClient::Services::HTTP}\\
-Relazione uscente debole, contiene un riferimento ad un oggetto HTTP per utilizzare il relativo servizio;
-\item\grassetto{MaaP::Client::ControllerModelView::Scope::Document}\\
-Relazione uscente debole, contiene un riferimento ad un oggetto Document per accedere allo scope relativo ai dati di un Document;
-\item\grassetto{MaaP::Client::View::Template::MainPageDocument}\\
-Relazione entrante, interazione con il template;
-\item\grassetto{MaaP::Client::View::Template::MainPageDocumentEdit}\\
-Relazione entrante, interazione con il template.
-\end{itemize}
 
-\subsubsubsubsubsection{ControllerProfilo}
-\grassetto{Nome}\\
-MaaP::Client::ControllerModelView::ControllerClient::ControllerProfilo\\
-\grassetto{Descrizione}\\
-Classe che rappresenta il controller per indirizzare le richieste di visualizzazione di una pagina profilo utente.\\
-\grassetto{Utilizzo}\\
-Viene utilizzata per indirizzare le richieste di visualizzazione di una pagina profilo utente.\\
-\grassetto{Relazioni con altre classi}
-\begin{itemize}
-\item\grassetto{MaaP::Client::ModelClient::Services::HTTP}\\
-Relazione uscente debole, contiene un riferimento ad un oggetto HTTP per utilizzare il relativo servizio;
-\item\grassetto{MaaP::Client::ControllerModelView::Scope::Profilo}\\
-Relazione uscente debole, contiene un riferimento ad un oggetto Profilo per accedere allo scope relativo ai dati del profilo;
-\item\grassetto{MaaP::Client::View::Template::UserProfileEdit}\\
-Relazione entrante, interazione con il template;
-\item\grassetto{MaaP::Client::View::Template::UserProfile}\\
-Relazione entrante, interazione con il template.
-\item\grassetto{MaaP::Client::View::Template::AdminProfile}\\
-Relazione entrante, interazione con il template.
-\item\grassetto{MaaP::Client::View::Template::PasswordRecovery}\\
-Relazione entrante, interazione con il template.
-\end{itemize}
 
-\subsubsubsubsubsection{ControllerIndici}
-\grassetto{Nome}\\
-MaaP::Client::ControllerModelView::ControllerClient::ControllerIndici\\
-\grassetto{Descrizione}\\
-Classe che rappresenta il controller per gestire la creazione e l'eliminazione degli indici.\\
-\grassetto{Utilizzo}\\
-Viene utilizzata per creare un nuovo indice o eliminare un indice esistente.\\
-\grassetto{Relazioni con altre classi}
-\begin{itemize}
-\item\grassetto{MaaP::Client::ModelClient::Services::HTTP}\\
-Relazione uscente debole, contiene un riferimento ad un oggetto HTTP per utilizzare il relativo servizio;
-\item\grassetto{MaaP::Client::ControllerModelView::Scope::Query}\\
-Relazione uscente debole, contiene un riferimento ad un oggetto Query per accedere allo scope relativo ai dati relativi alle query;
-\item\grassetto{MaaP::Client::View::Template::IndexPage}\\
-Relazione entrante, interazione con il template.
-\item\grassetto{MaaP::Client::View::Template::AdminMainPageCollection}\\
-Relazione entrante, interazione con il template.
-\end{itemize}
 
-\subsubsubsubsubsection{ControllerMenu}
-\grassetto{Nome}\\
-MaaP::Client::ControllerModelView::ControllerClient::ControllerMenu\\
-\grassetto{Descrizione}\\
-Classe che rappresenta il controller per indirizzare le richieste di visualizzazione della parte di pagina relativa al menù.\\
-\grassetto{Utilizzo}\\
-Viene utilizzata per indirizzare le richieste di visualizzazione della parte di pagina relativa al menù.\\
-\grassetto{Relazioni con altre classi}
-\begin{itemize}
-\item\grassetto{MaaP::Client::ModelClient::Services::HTTP}\\
-Relazione uscente debole, contiene un riferimento ad un oggetto HTTP per utilizzare il relativo servizio;
-\item\grassetto{MaaP::Client::ControllerModelView::Scope::Menu}\\
-Relazione uscente debole, contiene un riferimento ad un oggetto Menu per accedere allo scope relativo ai dati del menù;
-\item\grassetto{MaaP::Client::View::Template::AdminMainPageCollection}\\
-Relazione entrante, interazione con il template.
-\item\grassetto{MaaP::Client::View::Template::UserMainPageCollection}\\
-Relazione entrante, interazione con il template.
-\item\grassetto{MaaP::Client::View::Template::MainPageDocument}\\
-Relazione entrante, interazione con il template;
-\item\grassetto{MaaP::Client::View::Template::MainPageDocumentEdit}\\
-Relazione entrante, interazione con il template.
-\item\grassetto{MaaP::Client::View::Template::UserProfileEdit}\\
-Relazione entrante, interazione con il template.
-\item\grassetto{MaaP::Client::View::Template::UserProfile}\\
-Relazione entrante, interazione con il template.
-\item\grassetto{MaaP::Client::View::Template::AdminProfile}\\
-Relazione entrante, interazione con il template.
-\item\grassetto{MaaP::Client::View::Template::PasswordRecovery}\\
-Relazione entrante, interazione con il template.
-\end{itemize}
 
-\subsubsubsection{MaaP::Client::ControllerModelView::Scope}
-\subsubsubsubsection{Informazioni sul package}
-\immagine{./Diagrammi/ComponentiScope}{Componente MaaP::Client::ControllerModelView::Scope}
-\subsubsubsubsection{Descrizione}
-Componente parte del ControllerModelView contenente i dati per renderizzare i template.
-\subsubsubsubsection{Classi}
 
-\subsubsubsubsubsection{Collection}
-\grassetto{Nome}\\
-MaaP::Client::ControllerModelView::Scope::Collection\\
-\grassetto{Descrizione}\\
-Classe che rappresenta i dati relativi alla Collection da visualizzare.\\
-\grassetto{Utilizzo}\\
-Viene utilizzata per memorizzare i dati relativi alla Collection da visualizzare i quali saranno sucessivamente visualizzati nella pagina web.\\
-\grassetto{Relazioni con altre classi}
-\begin{itemize}
-\item\grassetto{MaaP::Client::ControllerModelView::ControllerClient::ControllerCollection}\\
-Relazione entrante debole, interazione con il controller della Collection;
-\end{itemize}
 
-\subsubsubsubsubsection{Query}
-\grassetto{Nome}\\
-MaaP::Client::ControllerModelView::Scope::Query\\
-\grassetto{Descrizione}\\
-Classe che rappresenta i dati relativi alle query più utilizzare.\\
-\grassetto{Utilizzo}\\
-Viene utilizzata per memorizzare i dati relativi alle query più utilizzate, le quali saranno successivamente visualizzate nella pagina web.\\
-\grassetto{Relazioni con altre classi}
-\begin{itemize}
-\item\grassetto{MaaP::Client::ControllerModelView::ControllerClient::ControllerIndici}\\
-Relazione entrante debole, interazione con il controller degli indici;
-\end{itemize}
 
-\subsubsubsubsubsection{Document}
-\grassetto{Nome}\\
-MaaP::Client::ControllerModelView::Scope::Document\\
-\grassetto{Descrizione}\\
-Classe che rappresenta i dati relativi al Document da visualizzare.\\
-\grassetto{Utilizzo}\\
-Viene utilizzata per memorizzare i dati relativi al Document da visualizzare i quali saranno successivamente visualizzati nella pagina web.\\
-\grassetto{Relazioni con altre classi}
-\begin{itemize}
-\item\grassetto{MaaP::Client::ControllerModelView::ControllerClient::ControllerDocument}\\
-Relazione entrante debole, interazione con il controller del Document;
-\end{itemize}
 
-\subsubsubsubsubsection{Profilo}
-\grassetto{Nome}\\
-MaaP::Client::ControllerModelView::Scope::Profilo\\
-\grassetto{Descrizione}\\
-Classe che rappresenta i dati relativi al profilo utente da visualizzare.\\
-\grassetto{Utilizzo}\\
-Viene utilizzata per memorizzare i dati relativi al profilo utente da visualizzare i quali saranno successivamente visualizzati nella pagina web.\\
-\grassetto{Relazioni con altre classi}
-\begin{itemize}
-\item\grassetto{MaaP::Client::ControllerModelView::ControllerClient::ControllerProfilo}\\
-Relazione entrante debole, interazione con il controller del profilo;
-\end{itemize}
 
-\subsubsubsubsubsection{Menu}
-\grassetto{Nome}\\
-MaaP::Client::ControllerModelView::Scope::Menu\\
-\grassetto{Descrizione}\\
-Classe che rappresenta i dati relativi al menù da visualizzare.\\
-\grassetto{Utilizzo}\\
-Viene utilizzata per memorizzare i dati relativi al menù da visualizzare i quali saranno successivamente visualizzati nella pagina web.\\
-\grassetto{Relazioni con altre classi}
-\begin{itemize}
-\item\grassetto{MaaP::Client::ControllerModelView::ControllerClient::ControllerMenu}\\
-Relazione entrante debole, interazione con il controller del menù;
-\end{itemize}
+
+
+
 
 
 \subsubsection{MaaP::Client::ModelClient}
@@ -1153,6 +973,7 @@ Componente Model del design pattern MVVM.
 \subsubsubsection{Sotto-componenti}
 \begin{itemize}
 \item MaaP::Client::ModelClient::Services;
+\item MaaP::Client::ModelClient::Directives;
 \item MaaP::Client::ModelClient::Model.
 \end{itemize}
 
@@ -1163,27 +984,231 @@ Componente Model del design pattern MVVM.
 Componente parte del ModelClient contenente i servizi per la comunicazione con il server.
 \subsubsubsubsection{Classi}
 
-\subsubsubsubsubsection{HTTP}
+\subsubsubsubsubsection{Authservice}
 \grassetto{Nome}\\
-MaaP::Client::ModelClient::Services::HTTP\\
+MaaP::Client::ModelClient::Services::Authservice\\
 \grassetto{Descrizione}\\
-Classe che rappresenta il servizio di comunicazione HTTP con il server.\\
+Classe che rappresenta il servizio di gestione dell'autenticazione utente.\\
 \grassetto{Utilizzo}\\
-Viene utilizzata per inviare richieste HTTP al server.\\
+Viene utilizzata per inviare richieste di autenticazione e deautenticazione al server.\\
 \grassetto{Relazioni con altre classi}
 \begin{itemize}
-\item\grassetto{MaaP::Client::ControllerModelView::ControllerClient::ControllerAutenticazione}\\
-Relazione entrante debole, interazione con il controller dell'Autenticazione;
-\item\grassetto{MaaP::Client::ControllerModelView::ControllerClient::ControllerCollection}\\
-Relazione entrante debole, interazione con il controller della Collection;
-\item\grassetto{MaaP::Client::ControllerModelView::ControllerClient::ControllerDocument}\\
-Relazione entrante debole, interazione con il controller del Document;
-\item\grassetto{MaaP::Client::ControllerModelView::ControllerClient::ControllerProfilo}\\
+\item\grassetto{MaaP::Client::ControllerModelView::ControllerClient::LoginCtrl}\\
+Relazione entrante debole, interazione con il controller del login;
+\end{itemize}
+
+\subsubsubsubsubsection{CollectionDataService}
+\grassetto{Nome}\\
+MaaP::Client::ModelClient::Services::CollectionDataService\\
+\grassetto{Descrizione}\\
+Classe che rappresenta il servizio di gestione delle richieste dei dati di una collection.\\
+\grassetto{Utilizzo}\\
+Viene utilizzata per richiedere i dati di una determinata collection al server.\\
+\grassetto{Relazioni con altre classi}
+\begin{itemize}
+\item\grassetto{MaaP::Client::ControllerModelView::ControllerClient::CollectionCtrl}\\
+Relazione entrante debole, interazione con il controller delle collections;
+\end{itemize}
+
+\subsubsubsubsubsection{CollectionListService}
+\grassetto{Nome}\\
+MaaP::Client::ModelClient::Services::CollectionListService\\
+\grassetto{Descrizione}\\
+Classe che rappresenta il servizio di gestione delle richieste dei dati delle collections presenti nel sistema.\\
+\grassetto{Utilizzo}\\
+Viene utilizzata per richiedere al server la lista delle collections presenti nel sistema.\\
+\grassetto{Relazioni con altre classi}
+\begin{itemize}
+\item\grassetto{MaaP::Client::ControllerModelView::ControllerClient::DashboardCtrl}\\
+Relazione entrante debole, interazione con il controller della dashboard;
+\item\grassetto{MaaP::Client::ControllerModelView::ControllerClient::NavBarCtrl}\\
+Relazione entrante debole, interazione con il controller della barra di navigazione;
+\end{itemize}
+
+\subsubsubsubsubsection{DocumentDataService}
+\grassetto{Nome}\\
+MaaP::Client::ModelClient::Services::DocumentDataService\\
+\grassetto{Descrizione}\\
+Classe che rappresenta il servizio di gestione delle richieste dei dati dei documents presenti nel sistema.\\
+\grassetto{Utilizzo}\\
+Viene utilizzata per richiedere al server i dati relativi ad uno specifico document.\\
+\grassetto{Relazioni con altre classi}
+\begin{itemize}
+\item\grassetto{MaaP::Client::ControllerModelView::ControllerClient::DocumentCtrl}\\
+Relazione entrante debole, interazione con il controller dei document;
+\end{itemize}
+
+\subsubsubsubsubsection{DocumentEditService}
+\grassetto{Nome}\\
+MaaP::Client::ModelClient::Services::DocumentEditService\\
+\grassetto{Descrizione}\\
+Classe che rappresenta il servizio di gestione delle richieste dei dati dei documents presenti nel sistema.\\
+\grassetto{Utilizzo}\\
+Viene utilizzata per richiedere al server i dati relativi ad uno specifico document da modificare.\\
+\grassetto{Relazioni con altre classi}
+\begin{itemize}
+\item\grassetto{MaaP::Client::ControllerModelView::ControllerClient::DocumentCtrl}\\
+Relazione entrante debole, interazione con il controller dei document;
+\item\grassetto{MaaP::Client::ControllerModelView::ControllerClient::DocumentEditCtrl}\\
+Relazione entrante debole, interazione con il controller di modifica dei document;
+\item\grassetto{MaaP::Client::ControllerModelView::ControllerClient::CollectionCtrl}\\
+Relazione entrante debole, interazione con il controller delle collections;
+\end{itemize}
+
+\subsubsubsubsubsection{IndexService}
+\grassetto{Nome}\\
+MaaP::Client::ModelClient::Services::IndexService\\
+\grassetto{Descrizione}\\
+Classe che rappresenta il servizio di gestione delle richieste dei dati degli indici presenti nel database di analisi.\\
+\grassetto{Utilizzo}\\
+Viene utilizzata per richiedere al server i dati relativi agli indici presenti nel database di analisi.\\
+\grassetto{Relazioni con altre classi}
+\begin{itemize}
+\item\grassetto{MaaP::Client::ControllerModelView::ControllerClient::IndexCtrl}\\
+Relazione entrante debole, interazione con il controller degli indici;
+\item\grassetto{MaaP::Client::ControllerModelView::ControllerClient::QueryCtrl}\\
+Relazione entrante debole, interazione con il controller delle query;
+\end{itemize}
+
+\subsubsubsubsubsection{LogoutService}
+\grassetto{Nome}\\
+MaaP::Client::ModelClient::Services::LogoutService\\
+\grassetto{Descrizione}\\
+Classe che rappresenta il servizio di gestione delle richieste di logout.\\
+\grassetto{Utilizzo}\\
+Viene utilizzata per richiedere al server di effettuare il logout.\\
+\grassetto{Relazioni con altre classi}
+\begin{itemize}
+\item\grassetto{MaaP::Client::ControllerModelView::ControllerClient:NavBarCtrl}\\
+Relazione entrante debole, interazione con il controller della barra di navigazione;
+\end{itemize}
+
+\subsubsubsubsubsection{ProfileDataService}
+\grassetto{Nome}\\
+MaaP::Client::ModelClient::Services::ProfileDataService\\
+\grassetto{Descrizione}\\
+Classe che rappresenta il servizio di gestione delle richieste dei dati del profilo utente.\\
+\grassetto{Utilizzo}\\
+Viene utilizzata per richiedere al server i dati relativi ad uno specifico profilo utente.\\
+\grassetto{Relazioni con altre classi}
+\begin{itemize}
+\item\grassetto{MaaP::Client::ControllerModelView::ControllerClient::ProfileCtrl}\\
 Relazione entrante debole, interazione con il controller del profilo;
-\item\grassetto{MaaP::Client::ControllerModelView::ControllerClient::ControllerMenu}\\
-Relazione entrante debole, interazione con il controller del menù;
-\item\grassetto{MaaP::Controller::FrontController}\\
-Relazione uscente debole, contiene un riferimento ad un oggetto di tipo FrontController per inviare richieste HTTP al server.
+\end{itemize}
+
+\subsubsubsubsubsection{ProfileEditService}
+\grassetto{Nome}\\
+MaaP::Client::ModelClient::Services::ProfileEditService\\
+\grassetto{Descrizione}\\
+Classe che rappresenta il servizio di gestione delle richieste dei dati del profilo utente da modificare.\\
+\grassetto{Utilizzo}\\
+Viene utilizzata per richiedere al server i dati relativi ad uno specifico profilo utente da modificare.\\
+\grassetto{Relazioni con altre classi}
+\begin{itemize}
+\item\grassetto{MaaP::Client::ControllerModelView::ControllerClient::ProfileCtrl}\\
+Relazione entrante debole, interazione con il controller del profilo;
+\item\grassetto{MaaP::Client::ControllerModelView::ControllerClient::ProfileEditCtrl}\\
+Relazione entrante debole, interazione con il controller della modifica del profilo;
+\end{itemize}
+
+\subsubsubsubsubsection{QueryService}
+\grassetto{Nome}\\
+MaaP::Client::ModelClient::Services::QueryService\\
+\grassetto{Descrizione}\\
+Classe che rappresenta il servizio di gestione delle richieste dei dati delle query.\\
+\grassetto{Utilizzo}\\
+Viene utilizzata per richiedere al server i dati relativi alle query più utilizzate.\\
+\grassetto{Relazioni con altre classi}
+\begin{itemize}
+\item\grassetto{MaaP::Client::ControllerModelView::ControllerClient::QueryCtrl}\\
+Relazione entrante debole, interazione con il controller delle query;
+\end{itemize}
+
+\subsubsubsubsubsection{RegisterService}
+\grassetto{Nome}\\
+MaaP::Client::ModelClient::Services::RegisterService\\
+\grassetto{Descrizione}\\
+Classe che rappresenta il servizio di gestione delle richieste di registrazione utente.\\
+\grassetto{Utilizzo}\\
+Viene utilizzata per richiedere al server la registrazione di un nuovo utente.\\
+\grassetto{Relazioni con altre classi}
+\begin{itemize}
+\item\grassetto{MaaP::Client::ControllerModelView::ControllerClient::RegisterCtrl}\\
+Relazione entrante debole, interazione con il controller della registrazione;
+\end{itemize}
+
+\subsubsubsubsubsection{UserCollectionService}
+\grassetto{Nome}\\
+MaaP::Client::ModelClient::Services::UserCollectionService\\
+\grassetto{Descrizione}\\
+Classe che rappresenta il servizio di gestione delle richieste dei dati utenti presenti nel sistema.\\
+\grassetto{Utilizzo}\\
+Viene utilizzata per richiedere al server i dati relativi a tutti i profili utenti registrati nel sistema.\\
+\grassetto{Relazioni con altre classi}
+\begin{itemize}
+\item\grassetto{MaaP::Client::ControllerModelView::ControllerClient::UsersCollectionCtrl}\\
+Relazione entrante debole, interazione con il controller della collection utenti;
+\end{itemize}
+
+\subsubsubsubsubsection{UserDataService}
+\grassetto{Nome}\\
+MaaP::Client::ModelClient::Services::UserDataService\\
+\grassetto{Descrizione}\\
+Classe che rappresenta il servizio di gestione delle richieste dei dati del profilo utente.\\
+\grassetto{Utilizzo}\\
+Viene utilizzata per richiedere al server i dati relativi ad uno specifico profilo utente da parte di un utente amministratore.\\
+\grassetto{Relazioni con altre classi}
+\begin{itemize}
+\item\grassetto{MaaP::Client::ControllerModelView::ControllerClient::UsersCtrl}\\
+Relazione entrante debole, interazione con il controller degli utenti;
+\end{itemize}
+
+\subsubsubsubsubsection{UserEditService}
+\grassetto{Nome}\\
+MaaP::Client::ModelClient::Services::UserEditService\\
+\grassetto{Descrizione}\\
+Classe che rappresenta il servizio di gestione delle richieste di modifica dei dati del profilo utente.\\
+\grassetto{Utilizzo}\\
+Viene utilizzata per richiedere al server la modifica dei dati relativi ad uno specifico profilo utente da parte di un utente amministratore.\\
+\grassetto{Relazioni con altre classi}
+\begin{itemize}
+\item\grassetto{MaaP::Client::ControllerModelView::ControllerClient::UserCtrl}\\
+Relazione entrante debole, interazione con il controller del profilo;
+\item\grassetto{MaaP::Client::ControllerModelView::ControllerClient::UserEditCtrl}\\
+Relazione entrante debole, interazione con il controller di modifica del profilo;
+\end{itemize}
+
+\subsubsubsection{MaaP::Client::ModelClient::Directives}
+\subsubsubsubsection{Informazioni sul package}
+\immagine{./Diagrammi/ComponentiDirectives}{Componente MaaP::Client::ModelClient::Directives}
+\subsubsubsubsection{Descrizione}
+Componente parte del ModelClient contenente le direttive per la comunicazione con il server.
+\subsubsubsubsection{Classi}
+
+\subsubsubsubsubsection{password\_check}
+\grassetto{Nome}\\
+MaaP::Client::ModelClient::Directives::password\_check\\
+\grassetto{Descrizione}\\
+Classe che rappresenta la direttiva per il controllo password doppia.\\
+\grassetto{Utilizzo}\\
+Viene utilizzata per controllare che le due passwords inserite dall'utente coincidano.\\
+\grassetto{Relazioni con altre classi}
+\begin{itemize}
+\item\grassetto{MaaP::Client::ControllerModelView::ControllerClient::LoginCtrl}\\
+Relazione entrante debole, interazione con il controller del login;
+\end{itemize}
+
+\subsubsubsubsubsection{unique}
+\grassetto{Nome}\\
+MaaP::Client::ModelClient::Directives::unique\\
+\grassetto{Descrizione}\\
+Classe che rappresenta la direttiva per controllare l'unicità della mail\\
+\grassetto{Utilizzo}\\
+Viene utilizzata per controllare l'unicità della mail inserita dall'utente in fase di registrazione.\\
+\grassetto{Relazioni con altre classi}
+\begin{itemize}
+\item\grassetto{MaaP::Client::ControllerModelView::ControllerClient::LoginCtrl}\\
+Relazione entrante debole, interazione con il controller del login;
 \end{itemize}
 
 \subsubsubsection{MaaP::Client::ModelClient::Model}

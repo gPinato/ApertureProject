@@ -1,6 +1,6 @@
 /**
  * File: IndexManager.js
- * Module: maap_server::ModelServer::DataManager::IndexManager
+ * Module: maap_server::modelServer::dataManager::IndexManager
  * Author: Michele Maso + Fabio Miotto ;D
  * Created: 20/05/14
  * Version: 0.1

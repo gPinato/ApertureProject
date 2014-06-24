@@ -1,6 +1,6 @@
 /**
  * File: DatabaseAnalysisManager.js
- * Module: maap_server::ModelServer::DataManager::DatabaseAnalysisManager
+ * Module: maap_server::modelServer::dataManager::DatabaseAnalysisManager
  * Author: Alberto Garbui
  * Created: 20/05/14
  * Version: 0.1
