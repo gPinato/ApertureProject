@@ -130,6 +130,14 @@ di un codice. Infatti è possibile cambiare il tipo di un riferimento sempliceme
 una data variabile. \'{E} quindi ambiguo definire all'interno di un frammento di codice il tipo statico che una variabile
 possiede. Lo stesso vale per i valori ritornati da una funzione JavaScript, i quali possono essere addirittura funzioni.
 
+
+
+%Prefaction: ricordarsi di mettere negli Standard di Programmzione che, per Angular, le variabili nelle
+%QueryString sono precedute da i ":".
+
+
+
+
 \subsection{Strumenti di lavoro}
 Gli strumenti di lavoro sono trattati nella sezione XXXXX del documento di					%idem con patate.
 Gli standard di documentazione del codice e le norme da applicare nelle attività 
@@ -178,10 +186,10 @@ Per ultima cosa, il \textit{dispatcher} gestisce eventuali richieste di risorse 
  \begin{description}
  \item[Gestione Collection e Document] \hfill \\
  \begin{description}
-  \item[get('/api/collection/list', passport.checkAuthenticated, datamanager.sendCollectionsList);]\hfill \\
+  \item[get('/api/collection/list', passport.checkAuthenticated, \\datamanager.sendCollectionsList);]\hfill \\
   Intercetta la richiesta di generare l'elenco delle Collection per visualizzarlo, verificando che essa sia autenticata e richiama il metodo sendCollectionsList del \textit{@datamanager}.
-  \item[get('/api/collection/:col\_id', passport.checkAuthenticated, datamanager.sendCollection);]\hfill \\   Intercetta la richiesta di generare l'elenco dei Document all'interno di una Collection specificata con :col\_id. Verifica che essa sia autenticata e richiama il metodo sendDocument del \textit{@datamanager}.
-  \item[get('/api/collection/:col\_id/:doc\_id', passport.checkAuthenticated, datamanager.sendDocument);]\hfill \\
+  \item[get('/api/collection/:col\_id', passport.checkAuthenticated, \\datamanager.sendCollection);]\hfill \\   Intercetta la richiesta di generare l'elenco dei Document all'interno di una Collection specificata con :col\_id. Verifica che essa sia autenticata e richiama il metodo sendDocument del \textit{@datamanager}.
+  \item[get('/api/collection/:col\_id/:doc\_id', passport.checkAuthenticated,\\datamanager.sendDocument);]\hfill \\
   Intercetta la richiesta di generare i dati di un Document specificato con :doc\_id all'interno della Collection specificata con :col\_id per visualizzarli. Verifica che essa sia autenticata e richiama il metodo sendDocument del \textit{@datamanager}.
   \item[get('/api/collection/:col\_id/:doc\_id/edit', passport.checkAuthenticatedAdmin, \\datamanager.sendDocumentEdit);]\hfill \\
    Intercetta la richiesta di generare i dati di un Document specificato con :doc\_id all'interno della Collection specificata con :col\_id per modificarli. Verifica che essa sia autenticata e richiama il metodo sendDocumentEdit del \textit{@datamanager}.
@@ -229,12 +237,33 @@ Per ultima cosa, il \textit{dispatcher} gestisce eventuali richieste di risorse 
      Intercetta la richiesta di cancellare un indice dal database di analisi. Verifica che essa sia autenticata come amministratore e richiama il metodo deleteIndex del \textit{@datamanager}.
  \end{description} 
  \item[Gestione Login] \hfill \\
- \item[Gestione richieste illecite] \hfill \\
- \item[Inizializzazione] \hfill \\
-  \begin{description}
- 	    \item[init()]\hfill \\
- 	    Accetta app (l'applicazione di Express) come parametro, si occupa dell'inizializzazione del \textit{dispatcher}. 
-  \end{description}
+ \begin{description}
+ \item[post('/api/check/email', passport.checkNotAuthenticated, usermanager.checkMail);]
+ Gestisce la richiesta di controllo della presenza di una particolare email già registrata al sistema. La condizione per richiedere questa informazione è che l'utente non sia autenticato, da qui la chiamata alla funzione \textit{passport.checkNotAuthenticated}. Nel caso la chiamata alla precedente funzione abbia successo, viene richiamato il metodo \textit{checkMail} di \textit{@DatabaseAnalysisManager}.
+ \item[post('/api/signup', passport.checkNotAuthenticated, usermanager.userSignup);]
+ Gestisce la richiesta di registrazione da parte di un utente non autenticato. Se l'utente associato alla richiesta non è autenticato, viene richiamato il metodo \textit{userSignup} di \textit{@DatabaseAnalysisManager}.
+ \item[get('/loggedin', function(req, res) {	res.send(req.isAuthenticated() ? req.user : '0'); });]
+ Gestisce la richiesta di controllo dell'avvenuta autenticazione di un utente. Viene richiamato sul richiedente il metodo locale \textit{isAuthenticated()}. Se l'utente è autenticato, gli vengono inviate le proprie informazioni associate, altrimenti viene ritornato 0.
+ \item[post('/api/login', passport.checkNotAuthenticated, passport.authenticate, function(req, res) { res.send(req.user); });]
+ Gestisce le richieste di autenticazione al Server. L'utente che richiede questa operazione non deve essere autenticato ma deve essere presente nel database degli utenti presente nel Server. Nel caso di risposta affermativa ad entrambe le precedenti condizioni, viene creata una nuova sessione per l'utente richiedente.
+ \item[get('/api/logout', passport.checkAuthenticated, function(req, res) { req.logout(); res.send(200); });]
+ Gestisce le richieste di disconnessione dal sistema. Per effettuare questa operazione, l'utente deve essere autenticato. In caso affermativo, viene richiesto il \textit{logout()} del richiedente.
+ \end{description}
+
+
+\item[Gestione richieste illecite] \hfill \\
+ \begin{description}
+ \item[get('*', function(req, res) {	res.sendfile(path.join(config.static\_assets.dir, 'index.html')); });]
+ La presente funzione gestisce ogni richiesta di pagina o file che il Server non possiede. L'argomento "*" della funzione \textit{get} consente di gestire tutte le richieste che non sono state servite dalle precedenti funzioni del \textit{@dispatcher}. Questa funzione viene richiamata soltanto quando non le funzioni precedenti non sono state chiamate.
+ \end{description}
+
+
+
+\item[Inizializzazione] \hfill \\
+ \begin{description}
+  \item[init():] \hfill \\ 
+  accetta app (l'applicazione di \textit{Express}) come parametro, si occupa dell'inizializzazione del \textit{dispatcher}. 
+ \end{description}
 \end{description}
 
 \subsubsection{@frontController}
