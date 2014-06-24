@@ -39,5 +39,3 @@ describe("Test generateFunction: ", function() {
     });
 
 });
-
-
