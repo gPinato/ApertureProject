@@ -37,6 +37,8 @@ var generateFunction = function(transformation) {
 	result += 'return ' + transformation.name + ';\n}';
 	return result;
 }
+//for unit test
+exports.generateFunction = generateFunction;
 
 var deleteFolderRecursive = function(path) {
   if( fs.existsSync(path) ) {
