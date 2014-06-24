@@ -177,14 +177,15 @@ Per ultima cosa, il \textit{dispatcher} gestisce eventuali richieste di risorse 
  \item[Metodi] \hfill \\
  \begin{description}
  \item[Gestione Collection e Document] \hfill \\
- \begin{itemize}
-  \item get('/api/collection/list', passport.checkAuthenticated, datamanager.sendCollectionsList);
-  \item get('/api/collection/:col\_id', passport.checkAuthenticated, datamanager.sendCollection);
-  \item get('/api/collection/:col\_id/:doc\_id', passport.checkAuthenticated, datamanager.sendDocument);
-  \item get('/api/collection/:col\_id/:doc\_id/edit', passport.checkAuthenticatedAdmin, datamanager.sendDocumentEdit);
-  \item put('/api/collection/:col\_id/:doc\_id/edit', passport.checkAuthenticatedAdmin, datamanager.updateDocument);
-  \item delete('/api/collection/:col\_id/:doc\_id/edit', passport.checkAuthenticatedAdmin, datamanager.removeDocument);
- \end{itemize}
+ \begin{description}
+  \item[get('/api/collection/list', passport.checkAuthenticated, datamanager.sendCollectionsList);]\hfill \\
+  Intercetta la richiesta di generare l'elenco delle Collection verificando che essa sia autenticata e richiama il metodo sendCollectionsList del modulo datamanager.
+  \item[get('/api/collection/:col\_id', passport.checkAuthenticated, datamanager.sendCollection);]\hfill \\   Intercetta la richiesta di generare l'elenco dei Document all'interno di una Collection. 
+  \item[get('/api/collection/:col\_id/:doc\_id', passport.checkAuthenticated, datamanager.sendDocument);]\hfill \\
+  \item[get('/api/collection/:col\_id/:doc\_id/edit', passport.checkAuthenticatedAdmin, \\datamanager.sendDocumentEdit);]\hfill \\
+  \item[put('/api/collection/:col\_id/:doc\_id/edit', passport.checkAuthenticatedAdmin, \\datamanager.updateDocument);]\hfill \\
+  \item[delete('/api/collection/:col\_id/:doc\_id/edit', passport.checkAuthenticatedAdmin, \\datamanager.removeDocument);]\hfill \\
+ \end{description}
  \item[Gestione Profilo Utente] \hfill \\
  \item[Gestione Utenti] \hfill \\
  \item[Gestione Query più utilizzate] \hfill \\
