@@ -165,7 +165,7 @@ Per ultima cosa, il \textit{dispatcher} gestisce eventuali richieste di risorse 
  \item @passport;
  \item path;
  \item @DatabaseAnalysisManager;
- \item @DatabaseUserManager
+ \item @DatabaseUserManager;
  \item @IndexManager.
  \end{itemize}
  
@@ -178,14 +178,12 @@ Per ultima cosa, il \textit{dispatcher} gestisce eventuali richieste di risorse 
  \begin{description}
  \item[Gestione Collection e Document] \hfill \\
  \begin{itemize}
- %\item get('/api/collection/list', passport.checkAuthenticated, datamanager.sendCollectionsList);
- %\item get('/api/collection/:col_id', passport.checkAuthenticated, datamanager.sendCollection);
- %\item get('/api/collection/:col_id/:doc_id', passport.checkAuthenticated, datamanager.sendDocument);
- %\item get('/api/collection/:col_id/:doc_id/edit', passport.checkAuthenticatedAdmin, datamanager.sendDocumentEdit);
- %\item put('/api/collection/:col_id/:doc_id/edit', passport.checkAuthenticatedAdmin, datamanager.updateDocument);
- %\item delete('/api/collection/:col_id/:doc_id/edit', passport.checkAuthenticatedAdmin, datamanager.removeDocument);
- %sto bestemmiando allegramente con le signature dei metodi: sono troppo lunghe! devo inventarmi qualcosa.
- %probabilmente bisognerà fare una tabella, domani ne parlo con Andrea.
+  \item get('/api/collection/list', passport.checkAuthenticated, datamanager.sendCollectionsList);
+  \item get('/api/collection/:col\_id', passport.checkAuthenticated, datamanager.sendCollection);
+  \item get('/api/collection/:col\_id/:doc\_id', passport.checkAuthenticated, datamanager.sendDocument);
+  \item get('/api/collection/:col\_id/:doc\_id/edit', passport.checkAuthenticatedAdmin, datamanager.sendDocumentEdit);
+  \item put('/api/collection/:col\_id/:doc\_id/edit', passport.checkAuthenticatedAdmin, datamanager.updateDocument);
+  \item delete('/api/collection/:col\_id/:doc\_id/edit', passport.checkAuthenticatedAdmin, datamanager.removeDocument);
  \end{itemize}
  \item[Gestione Profilo Utente] \hfill \\
  \item[Gestione Utenti] \hfill \\
@@ -193,6 +191,10 @@ Per ultima cosa, il \textit{dispatcher} gestisce eventuali richieste di risorse 
  \item[Gestione Indici nel Database di analisi] \hfill \\
  \item[Gestione Login] \hfill \\
  \item[Gestione richieste illecite] \hfill \\
+ \item[Inizializzazione] \hfill \\
+ \begin{itemize}
+ 	\item init(): accetta app (l'applicazione di Express) come parametro, si occupa dell'inizializzazione del \textit{dispatcher}. 
+ \end{itemize}
  \end{description}
 \end{description}
 
@@ -231,7 +233,7 @@ Per ultima cosa, il \textit{dispatcher} gestisce eventuali richieste di risorse 
 \subsubsection{@passport}
  \item[Descrizione] \hfill \\
 Controller che si occupa dell' inizializzazione e gestione del modulo passort per le autenticazioni.
-\item[Dipendendenze iniettate al controller] \hfill \\
+\item[Dipendendenze entranti] \hfill \\
   \begin{itemize}
    \item app;
   \end{itemize}
