@@ -1,6 +1,6 @@
 /**
  * File: DatabaseUserManager.js
- * Module: maap_server::ModelServer::DataManager::DatabaseUserManager
+ * Module: maap_server::modelServer::dataManager::DatabaseUserManager
  * Author: Alberto Garbui
  * Created: 20/05/14
  * Version: 0.1
