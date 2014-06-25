@@ -380,7 +380,7 @@ DSL con i relativi interpreti.
 \subsubsection{::DataManager}
 Package che gestisce gli accessi ai database.
 
-\paragraph{::DatabaseAnalysisManager} \hfill \\
+\paragraph{::DatabaseAnalysisManager} \hfill 
 Package che gestisce le query ai database di analisi. 
 
 \subparagraph{@DatabaseAnalysisManager}
@@ -566,9 +566,7 @@ linguaggio DSL per richiedere e inviare i dati che l'utente sviluppatore decide 
 				\end{description}
 			\item[Descrizione] \hfill
 			Richiede il modello della Collection nominata \textit{collection\_name}. Successivamente richiama
-			il metodo \textit{update} sul modello della Collection scelta per aggiornare il Document identificato 
-			con \textit{document\_id} con le nuove informazioni di \textit{newDocumentData}. Al termine di questa 
-			operazione, viene chiamata la \textit{callback}.
+			il metodo \textit{update} sul modello della Collection scelta per aggiornare il Document identificato con \textit{document\_id} con le nuove informazioni di \textit{newDocumentData}. Al termine di questa operazione, viene chiamata la \textit{callback}.
 		\end{description}
 	
 	\mlitem{removeDocument(collection\_name, document\_id, callback)} \hfill 
@@ -583,10 +581,8 @@ linguaggio DSL per richiedere e inviare i dati che l'utente sviluppatore decide 
 					Funzione da richiamare al termine dell'eliminazione del Document.
 				\end{description}
 			\item[Descrizione] \hfill
-			Richiede il modello della Collection nominata \textit{collection\_name}. Successivamente richiama
-			il metodo \textit{remove} sul modello della Collection scelta per rimuovere il Document identificato 
-			con \textit{document\_id}. Al termine di questa 
-			operazione, viene chiamata la \textit{callback}.
+Richiede il modello della Collection nominata \textit{collection\_name}. Successivamente richiama
+il metodo \textit{remove} sul modello della Collection scelta per rimuovere il Document identificato con \textit{document\_id}. Al termine di questa 	operazione, viene chiamata la \textit{callback}.
 		\end{description}
 		
 \end{mldescription}
@@ -683,8 +679,7 @@ Inoltre dialoga direttamente con \textit{@MongooseDBFramework} per l'esecuzione 
 	  \end{description}
 	\item[Descrizione]
 	Richiama il metodo \textit{updateUserProfile} di \textit{@DataRetrieverUsers} passando come parametro 
-	il richiedente \textit{req} del Client. Ritorna al Client un codice \textit{http} 200 in caso di riuscita, 
-	un codice 400 altrimenti.
+	il richiedente \textit{req} del Client. Ritorna al Client un codice \textit{http} 200 in caso di riuscita, un codice 400 altrimenti.
       \end{description}
       
     \item[getUsersList(req, res)] \hfill
@@ -825,30 +820,44 @@ Inoltre dialoga direttamente con \textit{@MongooseDBFramework} per l'esecuzione 
  				\item[Parametri] \hfill
  					\begin{description}
  						\item[column] \hfill
+ 							Stringa contenente il nome della colonna su cui ordinare gli utenti.
  						\item[order] \hfill
+ 							Stringa che specifica l'ordinamento ascendente o discendente degli utenti.
  						\item[page] \hfill
+ 							Numero intero che specifica il numero della pagina di utenti da visualizzare.
  						\item[perpage] \hfill
+ 							Numero intero che specifica la quantità di utenti da visualizzare per pagina.
  						\item[callback] \hfill
+ 							Funzione da richiamare alla fine dell'ottenimento dei profili utente.
  					\end{description}
  				\item[Descrizione]
+ 				Viene innanzitutto importata l'intera lista degli utenti del sistema. Successivamente, se il risultato della query è vuoto, viene richiamata la funzione \textit{callback} come argomento un oggetto vuoto. Altrimenti, viene processata l'intera lista al fine di invocare la \textit{callback} specificando come argomento l'insieme di Document desiderato. I Document saranno quelli che corrispondono alla pagina \textit{page} correntemente richiesta con l'ordinamento \textit{order} desiderato sulla colonna scelta \textit{column}.
  			\end{description}
  			
  		\mlitem{updateUser(req, callback)} \hfill
  			\begin{description}
  				\item[Parametri] \hfill
  					\begin{description}
- 						\item[•]
+ 						\item[req] 
+ 							Oggetto contenente i parametri e le informazioni del Client richiedente.
+ 						\item[callback]
+ 							Funzione da richiamare alla fine dell'aggiornamento del profilo utente.
  					\end{description}
  				\item[Descrizione]
+ 				Vengono estratti i dati da aggiornare dal richiedente \textit{req} inerenti all'utente da aggiornare. Successivamente viene effettuata la query di aggiornamento sul modello del database utenti estratto. Infine viene richiamata la funzione \textit{callback} con argomento \textbf{true} se l'aggiornamento è andato a buon fine, l'argomento è \textbf{false} altrimenti.
  			\end{description}
  			
  		\mlitem{removeUser(email, callback)} \hfill
  			\begin{description}
  				\item[Parametri] \hfill
  					\begin{description}
- 						\item[•]
+ 						\item[email]
+ 							Stringa contenente l'indirizzo email dell'utente che si desidera eliminare dal database.
+ 						\item[callback]
+ 							Funzione da richiamare alla fine dell'eliminazione del profilo utente.
  					\end{description}
  				\item[Descrizione]
+ 				Viene estratto il modello degli utenti su cui verrà invocato il metodo \textit{remove} per eliminare l'utente con campo email uguale al parametro \textit{email} passato alla funzione. Al termine della query di eliminazione, viene richiamata la funzione \textit{callback} con argomento \textbf{true} se l'aggiornamento è andato a buon fine, l'argomento è \textbf{false} altrimenti.
  			\end{description}
  			
  	\end{mldescription}
@@ -871,14 +880,40 @@ Inoltre dialoga direttamente con \textit{@MongooseDBFramework} per l'esecuzione 
   \item{path};
   \item{@DSLParser};
   \item{@schemaGenerator}.
- \end{itemize}
-  
+ \end{itemize} 
  \item[Metodi] \hfill \\
- \begin{description}
- \item[generateFunction] \hfill \\ 
- \item[deleteFolderRecursive] \hfill \\
- \item[checkDSL] \hfill \\
- \end{description}
+ \begin{mldescription}
+ \mlitem[generateFunction] \hfill \\
+  	\begin{description}
+   		\item[Parametri] \hfill
+   			\begin{description}
+   				\item[transformation]
+   				Oggetto che contiene il nome della trasformazione e il codice della trasformazione da eseguire.
+   			\end{description}
+   		\item[Descrizione]
+   		Si occupa di generare le funzioni javascript per gestire le trasformazioni dei dati definite nel DSL.
+   	\end{description}
+ \mlitem[deleteFolderRecursive] \hfill \\
+   	\begin{description}
+    		\item[Parametri] \hfill
+    			\begin{description}
+    				\item[path]
+    				Percorso della cartella da svuotare.
+    			\end{description}
+    		\item[Descrizione]
+    		Si occupa di cancellare i file e le cartelle all'interno della cartella path specificata.
+    	\end{description}
+ \mlitem[checkDSL] \hfill \\  	
+ 	\begin{description}
+    		\item[Parametri] \hfill
+    			\begin{description}
+    				\item[app]
+    				Oggetto contenente l'applicazione di Express.
+    			\end{description}
+    		\item[Descrizione]
+    		Si occupa di verificare la correttezza del DSL scritto, verificando che tale file contenga un codice corretto sintatticamente e attraverso l'uso del \textit{@DSLparser} esegui il parsing vero e proprio. Controlla che il risulatato del parsing sia in formato JSON, lo salva su file e utilizza il metodo generateFunction per creare le funzioni di trasformazione. Se non esiste, si occupa di generare lo schema mongoose della collection specificata nel file DSL.
+    \end{description}
+ \end{mldescription}
  
 \end{description}
 \subparagraph{@DSLParser}
@@ -891,15 +926,87 @@ Inoltre dialoga direttamente con \textit{@MongooseDBFramework} per l'esecuzione 
  \end{itemize}
   
  \item[Metodi] \hfill \\
+ \begin{mldescription}
+ \mlitem[addField] \hfill \\ 
  \begin{description}
- \item[addField] \hfill \\ 
- \item[checkFieldThrow] \hfill \\ 
- \item[checkField] \hfill \\ 
- \item[checkFieldContentThrow] \hfill \\ 
- \item[checkFieldContent] \hfill \\ 
- \item[IntValue] \hfill \\
- \item[parseDSL] \hfill \\
- \end{description}
+     		\item[Parametri] \hfill
+     			\begin{description}
+     				\item[collection]
+     				Array della struttura del JSON;
+     				\item[field]
+     				Campo da aggiungere alla struttura del JSON.
+     			\end{description}
+     		\item[Descrizione]
+     		Inizializza il campo field nell'array della struttura del JSON, dove tali campo è definito nella struttura di default del JSON, con il valore di defalt.
+ \mlitem[checkFieldThrow] \hfill \\
+ \begin{description}
+     		\item[Parametri] \hfill
+     			\begin{description}
+     				\item[collection]
+     				Array della struttura del JSON;
+     				\item[field]
+     				Campo da verificare nella struttura del JSON;
+     				\item[root]
+     				E' il nome della sezione in cui deve essere definito il campo.
+     			\end{description}
+     		\item[Descrizione]
+     		Chiama il metodo checkField e se tale metodo ritorna false allora lancia un eccezione. Questo metodo serve per verificare che il campo  sia definito. 
+ \mlitem[checkField] \hfill \\ 
+ \begin{description}
+     		\item[Parametri] \hfill
+     			\begin{description}
+     				\item[collection]
+     			     Array della struttura del JSON;
+     			    \item[field]
+     			     Campo da verificare nella struttura del JSON.
+     			\end{description}
+     		\item[Descrizione]
+     		Verifica se un campo è definito, se lo è ritorna true, altrimenti false.
+ \mlitem[checkFieldContentThrow] \hfill \\ 
+ \begin{description}
+     		\item[Parametri] \hfill
+     			\begin{description}
+     				\item[collection]
+     				 Array della struttura del JSON;
+     				\item[field]
+     				 Campo da verificare nella struttura del JSON;
+     				\item[root]
+     				 E' il nome della sezione in cui deve essere definito il campo.
+     			\end{description}
+     		\item[Descrizione]
+     		Serve per verificare che il campo sia definito e non vuoto. Utilizza il metodo checkFieldContent e se tale metodo ritorna false lancia un eccezione.
+ \mlitem[checkFieldContent] \hfill \\ 
+ \begin{description}
+     		\item[Parametri] \hfill
+     			\begin{description}
+     				\item[collection]
+     				 Array della struttura del JSON;
+       			    \item[field]
+       			     Campo da verificare nella struttura del JSON.
+     			\end{description}
+     		\item[Descrizione]
+     		Verifica se un campo è definito e non vuoto, se lo è ritorna true, altrimenti false.
+ \mlitem[IntValue] \hfill \\
+ \begin{description}
+     		\item[Parametri] \hfill
+     			\begin{description}
+     				\item[value]
+     				 Valore del campo;
+     				\item[field]
+     				 Campo da verificare nella struttura del JSON.
+     			\end{description}
+     		\item[Descrizione]
+     		Verifica che il valore sia numerico, se non lo è lancia un eccezione.
+ \mlitem[parseDSL] \hfill \\
+ \begin{description}
+     		\item[Parametri] \hfill
+     			\begin{description}
+     				\item[DSLstring]
+     				Contenuto del file maap di configurazione.
+     			\end{description}
+     		\item[Descrizione]
+     		Si occupa di effettuare il parsing del DSL trasformandolo in JSON. Per effettuare il parsing verifica che i campi obbligatori siano definiti e non vuoti, che i campi il cui contenuto deve essere un numero lo sia e che la sintassi delle funzioni di trasformazione dei campi sia valida utilizzando il parser \textit{@JavascriptParser}.
+ \end{mldescription}
  
 \end{description}
 \subparagraph{@index}
@@ -921,14 +1028,8 @@ Inoltre dialoga direttamente con \textit{@MongooseDBFramework} per l'esecuzione 
 \subparagraph{@JavascriptParser}
 \begin{description}
  \item[Descrizione] \hfill \\
-  Modulo che effettua il parsing.
+  Modulo che effettua il parsing del javascript. Tale modulo non è stato scritto da noi ma generato con PEG.js. Si consulti il manuale di PEG.js per ulteriori dettagli.
   
- \item[Metodi] \hfill \\
- \begin{description}
- \item[peg\$subclass] \hfill \\ 
- \item[SyntaxError] \hfill \\
- \item[parse] \hfill \\
- \end{description}
  
 \end{description}
 \subparagraph{@schemaGenerator}
