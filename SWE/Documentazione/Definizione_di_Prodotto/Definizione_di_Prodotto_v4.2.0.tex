@@ -57,6 +57,8 @@ Diario delle modifiche
 \midrule
 4.1.0 & 2014-05-20 & Alberto Garbui (VR) & Verifica documento.\\
 \midrule
+4.0.4 & 2014-XX-XX & Mattia Sorgato (PR) & Stesura Datamanager.\\
+\midrule
 4.0.3 & 2014-XX-XX & Mattia Sorgato (PR) & Stesura controller del Server\\
 \midrule
 4.0.2 & 2014-XX-XX & Giacomo Pinato (PR) & Stesura dei controller\\
@@ -258,7 +260,7 @@ Per ultima cosa, il \textit{dispatcher} gestisce eventuali richieste di risorse 
 
 \item[Inizializzazione] \hfill
  \begin{description}
-  \item[dispatcherInit():] \hfill \\ 
+  \item[dispatcherInit(app):] \hfill \\ 
   accetta app (l'applicazione di \textit{Express}) come parametro, si occupa dell'inizializzazione del \textit{dispatcher}. Viene esportato come init();
  \end{description}
 \end{description}
@@ -275,7 +277,7 @@ Per ultima cosa, il \textit{dispatcher} gestisce eventuali richieste di risorse 
  \end{itemize}
  \item[Metodi] \hfill
   \begin{description}
-    \item[initFrontController()] \hfill \\
+    \item[initFrontController(app)] \hfill \\
   	\`{E} la funzione di inizializzazione del frontController ed indica di reindirizzare le richieste del Client al \textit{@dispatcher} per gestirle. Accetta  app (l'applicazione di Express) come parametro. Viene esportato come init().
   \end{description}
 \end{description}
@@ -290,7 +292,7 @@ Per ultima cosa, il \textit{dispatcher} gestisce eventuali richieste di risorse 
  \end{itemize}
  \item[Metodi] \hfill
   \begin{description}
-    \item[init()]\hfill \\
+    \item[init(app)]\hfill \\
   	\`{E} la funzione di inizializzazione dell'index, si occupa di inizializzare il \textit{@frontController}. Accetta  app (l'applicazione di Express) come parametro.
   \end{description}
 \end{description}
@@ -309,7 +311,7 @@ Controller che si occupa dell' inizializzazione e gestione del modulo passort pe
     \begin{description}
      \item[authenticate()] \hfill \\
      Imposta il metodo di autenticazione, nel nostro caso come local.
-     \item[initPassport()] \hfill \\
+     \item[initPassport(app)] \hfill \\
      Inizializza il controller passport, inizializzando e avviando la sessione del modulo passport e definisce le strategie di autenticazione; Accetta app (l'applicazione di Express) come parametro.
      \item[checkAuthenticatedAdmin()] \hfill \\
      Verifica che la richiesta proveniente dal client sia autenticata e che il livello dell'utente sia 1. Accetta req (la richiesta del Client), res (la risposta al Client) e next (cosa invocare nel caso di successo) come parametri.
@@ -338,7 +340,7 @@ DSL con i relativi interpreti.
    \end{itemize}
  \item[Metodi] \hfill
  \begin{description}
- \item[initDB()] \hfill \\
+ \item[initDB(app)] \hfill \\
  Si occupa dell'inizializzazione dei database. Effettua la connessione al database utenti e a quello di analisi.Inizializza lo userDBManager, invoca addAdminDefault e inizializza il \textit{@dataDBManager}. Accetta app (l'applicazione di Express) come parametro. Viene esportata come init().
   \item[addAdminDefault()] \hfill \\
   Si occupa dell'aggiunta dell'amministratore di default nel database degli utenti. Accetta config (i parametri di configurazione del progetto) e userDB (la connessione a database degli utenti)come parametri.
@@ -357,7 +359,7 @@ DSL con i relativi interpreti.
     \end{itemize}
 \item[Metodi] \hfill
  \begin{description}
- \item[init()] \hfill \\
+ \item[init(app)] \hfill \\
  Legge la cartella contenente le collectionData dei DSL e per ogni file inizializza il modello di mongoose come elemento dell'array modelArray che poi esposta come model. Accetta app (l'applicazione di Express) come parametro.
  \end{description}
 \end{description}
@@ -372,7 +374,7 @@ DSL con i relativi interpreti.
   \end{itemize}
 \item[Metodi] \hfill
  \begin{description}
- \item[init()] \hfill \\
+ \item[init(app)] \hfill \\
  Si occupa di creare gli schemi di Mongoose per la collection utenti e la collection query, esporta tali modelli come users e query e la connessione al database come connection. Accetta app (l'applicazione di Express) come parametro.
  \end{description}
 \end{description}
@@ -589,7 +591,7 @@ il metodo \textit{remove} sul modello della Collection scelta per rimuovere il D
 
 \end{description}
 
-\paragraph{::DatabaseUserManager} 
+\paragraph{::DatabaseUserManager}
 Package che gestisce gli accessi al database utenti.
 
 \subparagraph{@DatabaseUserManager}
@@ -865,7 +867,117 @@ Inoltre dialoga direttamente con \textit{@MongooseDBFramework} per l'esecuzione 
 
 
 \paragraph{::IndexManager}
+Package realizzato per creare e gestire gli indici utilizzati nel database di analisi.
 \subparagraph{@IndexManager}
+\begin{description}
+ \item[Descrizione]
+ Modulo del ModelServer che si occupa di creare e gestire gli indici utilizzati nel database di analisi. 
+ \item[Metodi]
+  \begin{mldescription}
+   \mlitem{getModel(collection\_name}
+	\begin{description}
+	 \item[Parametri]
+	  \begin{description}
+	   \item[collection\_name]
+	   Stringa contenente il nome della Collection di cui ottenere il modello.
+	  \end{description}
+	 \item[Dipendenza]
+	  \begin{itemize}
+	   \item @MongooseDBAnalysis.
+	  \end{itemize}
+	 \item[Descrizione]
+	 Richiede al modulo \textit{@MongooseDBAnalysis} il modello della Collection di nome \textit{collection\_name}. Se la Collection è presente, la funzione \textit{getModel} ritorna il suo modello, altrimenti ritorna -1.
+	\end{description}	    
+    
+   \mlitem{addQuery(collection\_name, select)}
+    \begin{description}
+	 \item[Parametri]
+	  \begin{description}
+	   \item[collection\_name]
+	   Stringa contenente il nome della Collection su cui è stata effettuata la query.
+	   \item[select]
+	   Array contenente i campi visualizzati della Collection.
+	  \end{description}
+	 \item[Dipendenza]
+	  \begin{itemize}
+	   \item @MongooseDBFramework.query.
+	  \end{itemize}
+	 \item[Descrizione]
+	 Viene richiesto l'insieme delle query effettuate sul database di analisi precedentemente alla query corrente. Successivamente, se la query è stata eseguita per la prima volta, viene inserita nell'insieme delle query effettuate. Se invece la query è stata già eseguita, il suo contatore viene incrementato.
+	\end{description}	    
+    
+   \mlitem{resetQueries(callback)}
+    \begin{description}
+	 \item[Parametri]
+	  \begin{description}
+	   \item[callback]
+	   Funzione da richiamare alla fine della funzione \textit{resetQuery}.
+	  \end{description}
+	 \item[Dipendenze]
+	  \begin{itemize}
+	   \item @MongooseDBFramework.query;
+	   \item @MongooseDBFramework.connection.
+	  \end{itemize}
+	 \item[Descrizione]
+	 Richiede il modello della Collection delle query, su cui poi viene applicato il metodo \textit{dropCollection} che resetta la Collection delle query nel database.
+	\end{description}	    
+    
+   \mlitem{getQueries(page, perpage, n\_elements, callback)}
+    \begin{description}
+	 \item[Parametri]
+	  \begin{description}
+	   \item[page]
+	   Numero intero che indica la pagina delle query da visualizzare.
+	   \item[perpage]
+	   Numero intero che indica il numero di query da visualizzare per pagina.
+	   \item[n\_elements]
+	   Numero intero che indica il numero di query totali da visualizzare.
+	   \item[callback]
+	   Funzione da richiamare alla fine della funzione \textit{getQueries}.
+	  \end{description}
+	 \item[Dipendenza]
+	  \begin{itemize}
+	   \item @MongooseDBFramework;	   
+	   \item @MongooseDBFramework.query.
+	  \end{itemize}
+	 \item[Descrizione]
+	 Richiede l'intera Collection delle query al database di analisi. Calcola il sottoinsieme di query da visualizzare tenendo conto dell'indicatore della pagina da visualizzare e dagli elementi da visualizzare per pagina. Esegue quindi una nuova query per ottenere l'insieme delle query che rispettano suddetti parametri. Se avviene un errore o se non esistono query che rispettano i parametri scelti, viene passato alla \textit{callback} un oggetto vuoto. Se invece la ricerca ha avuto esito positivo, viene richiamata la \textit{callback} passando come parametro l'insieme delle query che soddisfano i requisiti. 
+	\end{description}	    
+    
+   %\mlitem{getIndex(callback)}
+    %\begin{description}
+	 %\item[Parametri]			MOMENTANEAMENTE FUORI USO
+	 %\item[Dipendenza]
+	 %\item[Descrizione]
+	%\end{description}	    
+    
+   \mlitem{createIndex(query\_id,  name\_index, callback)}
+    \begin{description}
+	 \item[Parametri]
+	  \begin{description}
+	   \item[query\_id]
+	   Id identificativo della query da associare all'indice da creare.
+	   \item[name\_index]
+	   Stringa contenente il nome dell'indice da creare.
+	   \item[callback]
+	   Funzione da richiamare alla fine della creazione dell'indice.
+	  \end{description}
+	 \item[Dipendenza]
+	  \begin{itemize}
+	   \item @MongooseDBFramework;	   
+	   \item @MongooseDBFramework.query.
+	  \end{itemize}
+	 \item[Descrizione]
+	 
+	 
+	%QUIIIIIIIIIIIIIIIIIIIIIIIIIIIIII	 
+	 
+	 
+	 
+	\end{description}	    
+    
+  \end{mldescription}
+\end{description}
 
 \paragraph{@JsonComposer}
 
@@ -883,7 +995,7 @@ Inoltre dialoga direttamente con \textit{@MongooseDBFramework} per l'esecuzione 
  \end{itemize} 
  \item[Metodi] \hfill \\
  \begin{mldescription}
- \mlitem[generateFunction] \hfill \\
+ \mlitem{generateFunction(transformation)} \hfill \\
   	\begin{description}
    		\item[Parametri] \hfill
    			\begin{description}
@@ -893,7 +1005,7 @@ Inoltre dialoga direttamente con \textit{@MongooseDBFramework} per l'esecuzione 
    		\item[Descrizione]
    		Si occupa di generare le funzioni javascript per gestire le trasformazioni dei dati definite nel DSL.
    	\end{description}
- \mlitem[deleteFolderRecursive] \hfill \\
+ \mlitem{deleteFolderRecursive(path)} \hfill \\
    	\begin{description}
     		\item[Parametri] \hfill
     			\begin{description}
@@ -903,7 +1015,7 @@ Inoltre dialoga direttamente con \textit{@MongooseDBFramework} per l'esecuzione 
     		\item[Descrizione]
     		Si occupa di cancellare i file e le cartelle all'interno della cartella path specificata.
     	\end{description}
- \mlitem[checkDSL] \hfill \\  	
+ \mlitem{checkDSL(app)} \hfill \\  	
  	\begin{description}
     		\item[Parametri] \hfill
     			\begin{description}
@@ -927,77 +1039,84 @@ Inoltre dialoga direttamente con \textit{@MongooseDBFramework} per l'esecuzione 
   
  \item[Metodi] \hfill \\
  \begin{mldescription}
- \mlitem[addField] \hfill \\ 
+ \mlitem{addField(collection,field)} \hfill \\ 
  \begin{description}
      		\item[Parametri] \hfill
      			\begin{description}
      				\item[collection]
-     				Array della struttura del JSON;
+     				Array della struttura del JSON.
      				\item[field]
      				Campo da aggiungere alla struttura del JSON.
      			\end{description}
      		\item[Descrizione]
      		Inizializza il campo field nell'array della struttura del JSON, dove tali campo è definito nella struttura di default del JSON, con il valore di defalt.
- \mlitem[checkFieldThrow] \hfill \\
+ \end{description}
+ \mlitem{checkFieldThrow((collection,field,root)}\hfill \\
  \begin{description}
      		\item[Parametri] \hfill
      			\begin{description}
      				\item[collection]
-     				Array della struttura del JSON;
+     				Array della struttura del JSON.
      				\item[field]
-     				Campo da verificare nella struttura del JSON;
+     				Campo da verificare nella struttura del JSON.
      				\item[root]
      				E' il nome della sezione in cui deve essere definito il campo.
      			\end{description}
      		\item[Descrizione]
      		Chiama il metodo checkField e se tale metodo ritorna false allora lancia un eccezione. Questo metodo serve per verificare che il campo  sia definito. 
- \mlitem[checkField] \hfill \\ 
+  \end{description}
+ \mlitem{checkField(collection,field)} \hfill \\ 
  \begin{description}
      		\item[Parametri] \hfill
      			\begin{description}
      				\item[collection]
-     			     Array della struttura del JSON;
+     			     Array della struttura del JSON.
      			    \item[field]
      			     Campo da verificare nella struttura del JSON.
      			\end{description}
      		\item[Descrizione]
      		Verifica se un campo è definito, se lo è ritorna true, altrimenti false.
- \mlitem[checkFieldContentThrow] \hfill \\ 
+  \end{description}
+ \mlitem{checkFieldContentThrow(collection,field,root)} \hfill \\ 
  \begin{description}
      		\item[Parametri] \hfill
      			\begin{description}
      				\item[collection]
-     				 Array della struttura del JSON;
+     				 Array della struttura del JSON.
      				\item[field]
-     				 Campo da verificare nella struttura del JSON;
+     				 Campo da verificare nella struttura del JSON.
      				\item[root]
      				 E' il nome della sezione in cui deve essere definito il campo.
      			\end{description}
      		\item[Descrizione]
      		Serve per verificare che il campo sia definito e non vuoto. Utilizza il metodo checkFieldContent e se tale metodo ritorna false lancia un eccezione.
- \mlitem[checkFieldContent] \hfill \\ 
+  \end{description}
+ \mlitem{checkFieldContent(collection,field)} \hfill \\ 
  \begin{description}
      		\item[Parametri] \hfill
      			\begin{description}
      				\item[collection]
-     				 Array della struttura del JSON;
+     				 Array della struttura del JSON.
        			    \item[field]
        			     Campo da verificare nella struttura del JSON.
      			\end{description}
      		\item[Descrizione]
      		Verifica se un campo è definito e non vuoto, se lo è ritorna true, altrimenti false.
- \mlitem[IntValue] \hfill \\
+  \end{description}
+ \mlitem{IntValue(value,field)} \hfill \\
+
  \begin{description}
      		\item[Parametri] \hfill
      			\begin{description}
      				\item[value]
-     				 Valore del campo;
+     				 Valore del campo.
      				\item[field]
      				 Campo da verificare nella struttura del JSON.
      			\end{description}
      		\item[Descrizione]
      		Verifica che il valore sia numerico, se non lo è lancia un eccezione.
- \mlitem[parseDSL] \hfill \\
+   \end{description}
+ \mlitem{parseDSL(DSLstring)} \hfill \\
  \begin{description}
      		\item[Parametri] \hfill
      			\begin{description}
@@ -1006,6 +1125,7 @@ Inoltre dialoga direttamente con \textit{@MongooseDBFramework} per l'esecuzione 
      			\end{description}
      		\item[Descrizione]
      		Si occupa di effettuare il parsing del DSL trasformandolo in JSON. Per effettuare il parsing verifica che i campi obbligatori siano definiti e non vuoti, che i campi il cui contenuto deve essere un numero lo sia e che la sintassi delle funzioni di trasformazione dei campi sia valida utilizzando il parser \textit{@JavascriptParser}.
+   \end{description}
  \end{mldescription}
  
 \end{description}
@@ -1019,10 +1139,18 @@ Inoltre dialoga direttamente con \textit{@MongooseDBFramework} per l'esecuzione 
  \end{itemize}
   
  \item[Metodi] \hfill \\
+ \begin{mldescription}
+\mlitem{init(app)} \hfill \\
  \begin{description}
- \item[init] \hfill \\ 
-
- \end{description}
+     		\item[Parametri] \hfill
+     			\begin{description}
+     				\item[app]
+     				Oggetto contenente l'applicazione di Express.
+     			\end{description}
+     		\item[Descrizione]
+     		Si occupa di invocare il metodo checkDSL di \textit{@DSLManager}.
+   \end{description}
+ \end{mldescription}
  
 \end{description}
 \subparagraph{@JavascriptParser}
@@ -1042,11 +1170,44 @@ Inoltre dialoga direttamente con \textit{@MongooseDBFramework} per l'esecuzione 
  \end{itemize}
   
  \item[Metodi] \hfill \\
+ \begin{mldescription}
+ \mlitem{getPopulatedCollection(populateArray, key)} \hfill \\ 
  \begin{description}
- \item[getPopulatedCollection] \hfill \\ 
- \item[arrayAddElement] \hfill \\ 
- \item[generate] \hfill \\ 
- \end{description}
+      		\item[Parametri] \hfill
+      			\begin{description}
+      				\item[populateArray]
+      				Array di oggetti contenenti la Collection su cui effettuare il populate e la chiave di riferimento.
+      				\item[key]
+      				Chiave da ricercare.
+      			\end{description}
+      		\item[Descrizione]
+      		Verifica che sia presente all'interno di un array di oggetti un elemento con chiave uguale al parametro key, se la trova ritorna la Collection corrispondente.
+    \end{description}
+ \mlitem{arrayAddElement(element, array)} \hfill \\ 
+ \begin{description}
+      		\item[Parametri] \hfill
+      			\begin{description}
+      				\item[element]
+      				Oggetto da aggiungere all'array.
+      			   	\item[array]
+      			   	Array su cui aggiungere l'elemento.
+      			\end{description}
+      			Verifica che l'oggetto non sia presente all'interno dell'array e se non lo trova lo aggiunge.
+      		\item[Descrizione]
+    \end{description}
+ \mlitem{generate(config, dslJson)} \hfill \\ 
+ \begin{description}
+      		\item[Parametri] \hfill
+      			\begin{description}
+      				\item[config]
+      				Contiene la configurazione dell'ambiente maap.
+      				\item[dslJson]
+      				Contiene il JSON del parsing del DSL.
+      			\end{description}
+      		\item[Descrizione]
+      		%da fare
+    \end{description}
+ \end{mldescription}
  
 \end{description}
 \section{Specifica componenti Maap::Client}
@@ -1086,6 +1247,7 @@ userCollection.html & Pagina per la visualizzazione della collection degli utent
 userEdit.html & Pagina per la modifica del profilo dell'utente (user) / di un utente (admin)\\
  \midrule
 userProfile & Pagina per la visualizzazione del profilo utente (user) / di un utente (admin)\\
+ \bottomrule
  
 \end{longtable}
 \end{center}
