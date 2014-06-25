@@ -890,7 +890,7 @@ Package realizzato per creare e gestire gli indici utilizzati nel database di an
  \end{itemize} 
  \item[Metodi] \hfill \\
  \begin{mldescription}
- \mlitem[generateFunction] \hfill \\
+ \mlitem{generateFunction(transformation)} \hfill \\
   	\begin{description}
    		\item[Parametri] \hfill
    			\begin{description}
@@ -900,7 +900,7 @@ Package realizzato per creare e gestire gli indici utilizzati nel database di an
    		\item[Descrizione]
    		Si occupa di generare le funzioni javascript per gestire le trasformazioni dei dati definite nel DSL.
    	\end{description}
- \mlitem[deleteFolderRecursive] \hfill \\
+ \mlitem{deleteFolderRecursive(path)} \hfill \\
    	\begin{description}
     		\item[Parametri] \hfill
     			\begin{description}
@@ -910,7 +910,7 @@ Package realizzato per creare e gestire gli indici utilizzati nel database di an
     		\item[Descrizione]
     		Si occupa di cancellare i file e le cartelle all'interno della cartella path specificata.
     	\end{description}
- \mlitem[checkDSL] \hfill \\  	
+ \mlitem{checkDSL(app)} \hfill \\  	
  	\begin{description}
     		\item[Parametri] \hfill
     			\begin{description}
@@ -934,84 +934,84 @@ Package realizzato per creare e gestire gli indici utilizzati nel database di an
   
  \item[Metodi] \hfill \\
  \begin{mldescription}
- \mlitem[addField] \hfill \\ 
+ \mlitem{addField(collection,field)} \hfill \\ 
  \begin{description}
      		\item[Parametri] \hfill
      			\begin{description}
      				\item[collection]
-     				Array della struttura del JSON;
+     				Array della struttura del JSON.
      				\item[field]
      				Campo da aggiungere alla struttura del JSON.
      			\end{description}
      		\item[Descrizione]
      		Inizializza il campo field nell'array della struttura del JSON, dove tali campo è definito nella struttura di default del JSON, con il valore di defalt.
  \end{description}
- \mlitem[checkFieldThrow] \hfill \\
+ \mlitem{checkFieldThrow((collection,field,root)}\hfill \\
  \begin{description}
      		\item[Parametri] \hfill
      			\begin{description}
      				\item[collection]
-     				Array della struttura del JSON;
+     				Array della struttura del JSON.
      				\item[field]
-     				Campo da verificare nella struttura del JSON;
+     				Campo da verificare nella struttura del JSON.
      				\item[root]
      				E' il nome della sezione in cui deve essere definito il campo.
      			\end{description}
      		\item[Descrizione]
      		Chiama il metodo checkField e se tale metodo ritorna false allora lancia un eccezione. Questo metodo serve per verificare che il campo  sia definito. 
   \end{description}
- \mlitem[checkField] \hfill \\ 
+ \mlitem{checkField(collection,field)} \hfill \\ 
  \begin{description}
      		\item[Parametri] \hfill
      			\begin{description}
      				\item[collection]
-     			     Array della struttura del JSON;
+     			     Array della struttura del JSON.
      			    \item[field]
      			     Campo da verificare nella struttura del JSON.
      			\end{description}
      		\item[Descrizione]
      		Verifica se un campo è definito, se lo è ritorna true, altrimenti false.
   \end{description}
- \mlitem[checkFieldContentThrow] \hfill \\ 
+ \mlitem{checkFieldContentThrow(collection,field,root)} \hfill \\ 
  \begin{description}
      		\item[Parametri] \hfill
      			\begin{description}
      				\item[collection]
-     				 Array della struttura del JSON;
+     				 Array della struttura del JSON.
      				\item[field]
-     				 Campo da verificare nella struttura del JSON;
+     				 Campo da verificare nella struttura del JSON.
      				\item[root]
      				 E' il nome della sezione in cui deve essere definito il campo.
      			\end{description}
      		\item[Descrizione]
      		Serve per verificare che il campo sia definito e non vuoto. Utilizza il metodo checkFieldContent e se tale metodo ritorna false lancia un eccezione.
   \end{description}
- \mlitem[checkFieldContent] \hfill \\ 
+ \mlitem{checkFieldContent(collection,field)} \hfill \\ 
  \begin{description}
      		\item[Parametri] \hfill
      			\begin{description}
      				\item[collection]
-     				 Array della struttura del JSON;
+     				 Array della struttura del JSON.
        			    \item[field]
        			     Campo da verificare nella struttura del JSON.
      			\end{description}
      		\item[Descrizione]
      		Verifica se un campo è definito e non vuoto, se lo è ritorna true, altrimenti false.
   \end{description}
- \mlitem[IntValue] \hfill \\
+ \mlitem{IntValue(value,field)} \hfill \\
 
  \begin{description}
      		\item[Parametri] \hfill
      			\begin{description}
      				\item[value]
-     				 Valore del campo;
+     				 Valore del campo.
      				\item[field]
      				 Campo da verificare nella struttura del JSON.
      			\end{description}
      		\item[Descrizione]
      		Verifica che il valore sia numerico, se non lo è lancia un eccezione.
    \end{description}
- \mlitem[parseDSL] \hfill \\
+ \mlitem{parseDSL(DSLstring)} \hfill \\
  \begin{description}
      		\item[Parametri] \hfill
      			\begin{description}
@@ -1034,10 +1034,18 @@ Package realizzato per creare e gestire gli indici utilizzati nel database di an
  \end{itemize}
   
  \item[Metodi] \hfill \\
+ \begin{mldescription}
+\mlitem{init(app)} \hfill \\
  \begin{description}
- \item[init] \hfill \\ 
-
- \end{description}
+     		\item[Parametri] \hfill
+     			\begin{description}
+     				\item[app]
+     				Oggetto contenente l'applicazione di Express.
+     			\end{description}
+     		\item[Descrizione]
+     		Si occupa di invocare il metodo checkDSL di \textit{@DSLManager}.
+   \end{description}
+ \end{mldescription}
  
 \end{description}
 \subparagraph{@JavascriptParser}
@@ -1057,11 +1065,44 @@ Package realizzato per creare e gestire gli indici utilizzati nel database di an
  \end{itemize}
   
  \item[Metodi] \hfill \\
+ \begin{mldescription}
+ \mlitem{getPopulatedCollection(populateArray, key)} \hfill \\ 
  \begin{description}
- \item[getPopulatedCollection] \hfill \\ 
- \item[arrayAddElement] \hfill \\ 
- \item[generate] \hfill \\ 
- \end{description}
+      		\item[Parametri] \hfill
+      			\begin{description}
+      				\item[populateArray]
+      				Array di oggetti contenenti la Collection su cui effettuare il populate e la chiave di riferimento.
+      				\item[key]
+      				Chiave da ricercare.
+      			\end{description}
+      		\item[Descrizione]
+      		Verifica che sia presente all'interno di un array di oggetti un elemento con chiave uguale al parametro key, se la trova ritorna la Collection corrispondente.
+    \end{description}
+ \mlitem{arrayAddElement(element, array)} \hfill \\ 
+ \begin{description}
+      		\item[Parametri] \hfill
+      			\begin{description}
+      				\item[element]
+      				Oggetto da aggiungere all'array.
+      			   	\item[array]
+      			   	Array su cui aggiungere l'elemento.
+      			\end{description}
+      			Verifica che l'oggetto non sia presente all'interno dell'array e se non lo trova lo aggiunge.
+      		\item[Descrizione]
+    \end{description}
+ \mlitem{generate(config, dslJson)} \hfill \\ 
+ \begin{description}
+      		\item[Parametri] \hfill
+      			\begin{description}
+      				\item[config]
+      				
+      				\item[dslJson]
+      				
+      			\end{description}
+      		\item[Descrizione]
+      		
+    \end{description}
+ \end{mldescription}
  
 \end{description}
 \section{Specifica componenti Maap::Client}
