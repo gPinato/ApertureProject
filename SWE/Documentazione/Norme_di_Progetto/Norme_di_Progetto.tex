@@ -843,6 +843,7 @@ Questa attività comprende tutte i compiti volti alla realizzazione pratica dell
 \subsubsection{Norme generali}
 \label{}
 Gli sviluppatori dovranno attenersi alle comuni Coding Conventions, in particolare a quelle suggerite dal Prof. Crockford nel suo sito web.\footnote{http://javascript.crockford.com/code.html}\\
+Dovranno inoltre attenersi a tutte le strategie che assicurano la qualita di processo definite nel Piano di Qualifica v.4.2.0 sezione 3. 
 I nomi di classi, metodi, variabili e funzioni dovranno essere in \gloss{camel case}, le parole componenti separate da underscore e scritte in inglese.
 La prima lettera dovrà essere minuscola, fatta eccezione per le classi che inizieranno sempre con lettera maiuscola.
 Nessun nome dovrà mai iniziare con un numero.
@@ -894,11 +895,16 @@ Per installare sul proprio computer l'ambiente di lavoro completo si deve:
 \item Assicurarsi di avere MongoDB installato localmente. Il file di installazione è disponibile sul sito ufficiale;
 \item Assicurarsi di avere node.js installato localmente.  Il file di installazione è disponibile sul sito ufficiale;
 \item Aggiornare la propria copia del repository locale all'ultimo commit;
-%\item Entrare nella cartella package_npm;
-\item Da terminale, digitare il comando \glqq npm install\grqq.%JK metti a posto
+\item Entrare nella cartella package_npm;
+\item Digitare sul terminale "npm install";
+\item Digitare su terminale "npm link" per creare un link fittizio.
+\item Entrare dentro la cartella "maap_project";
+\item Digitare sul terminale "npm link maaperture";
+\item Digitare sul terminale "npm install";
+
 \end{itemize}
 
-Una volta completato il processo tutti gli strumenti di lavoro saranno disponibili e configurati correttamente.
+Una volta completato il processo il framework maaperture sarà disponibile e configurato correttamente.
 
 
 \subsubsection{Scrittura dei test}
