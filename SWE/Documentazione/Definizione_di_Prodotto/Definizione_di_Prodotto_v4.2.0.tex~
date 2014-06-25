@@ -635,7 +635,8 @@ Inoltre dialoga direttamente con \textit{@MongooseDBFramework} per l'esecuzione 
 	Richiama il metodo \textit{getUserProfile} di \textit{@DataRetrieverUsers} per ottenere l'oggetto utente 
 	sulla base dei parametri inviati da \textit{req}. Successivamente invia a \textit{res} il JSON dell'utente 
 	creato tramite il metodo \textit{createUserProfile} di \textit{JsonComposer}.
-    
+      \end{description}
+      
     \item[sendUserProfileEdit(req, res)] \hfill
       \begin{description}
 	\item[Parametri] \hfill
@@ -649,8 +650,23 @@ Inoltre dialoga direttamente con \textit{@MongooseDBFramework} per l'esecuzione 
 	Richiama il metodo \textit{getUserProfile} di \textit{@DataRetrieverUsers} per ottenere l'oggetto utente 
 	sulla base dei parametri inviati da \textit{req}. Successivamente invia a \textit{res} il JSON dell'utente 
 	creato tramite il metodo \textit{createUserProfileEdit} di \textit{JsonComposer}.
-    
-    \item[(req, res)] \hfill
+      \end{description}
+      
+    \item[updateUserProfile(req, res)] \hfill
+      \begin{description}
+	\item[Parametri] \hfill
+	  \begin{description}
+	    \item[req]
+	    Oggetto contenente i parametri e le informazioni del Client richiedente.
+	    \item[res]
+	    Oggetto duale a \textit{req} su cui invocare i metodi per inviare informazioni al Client richiedente.
+	  \end{description}
+	\item[Descrizione]
+	Richiama il metodo \textit{updateUserProfile} di \textit{@DataRetrieverUsers} passando come parametro 
+	il richiedente \textit{req} del Client. Ritorna al Client un codice \textit{http} 200 in caso di riuscita, 
+	un codice 400 altrimenti.
+      \end{description}
+      
     \item[(req, res)] \hfill
     \item[(req, res)] \hfill
     \item[(req, res)] \hfill
