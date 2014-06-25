@@ -931,39 +931,233 @@ Componente ModelView del design pattern MVVM.
 Componente parte del ControllerModelView contenente i vari controller.
 \subsubsubsubsection{Classi}
 
-\subsubsubsubsubsection{ControllerAutenticazione}
+\subsubsubsubsubsection{CollectionCtrl}
 \grassetto{Nome}\\
-MaaP::Client::ControllerModelView::ControllerClient::ControllerAutenticazione\\
+MaaP::Client::ControllerModelView::ControllerClient::CollectionCtrl\\
 \grassetto{Descrizione}\\
-Classe che rappresenta il controller per indirizzare le richieste di autenticazione e registrazione.\\
+Classe che rappresenta il controller per indirizzare le richieste di visualizzazione di una collection.\\
 \grassetto{Utilizzo}\\
-Viene utilizzata per la indirizzare le richieste di autenticazione e registrazione.\\
+Viene utilizzata per la indirizzare le richieste di visualizzazione di una collection.\\
 \grassetto{Relazioni con altre classi}
 \begin{itemize}
-\item\grassetto{MaaP::Client::ModelClient::Services::HTTP}\\
-Relazione uscente debole, contiene un riferimento ad un oggetto HTTP per utilizzare il relativo servizio;
-\item\grassetto{MaaP::Client::ModelClient::Model::SessionData}\\
-Relazione uscente debole, contiene un riferimento ad un oggetto SessionData per utilizzare i dati di sessione;
-\item\grassetto{MaaP::Client::View::Template::SignIn}\\
-Relazione entrante, interazione con il template;
-\item\grassetto{MaaP::Client::View::Template::SignUp}\\
+\item\grassetto{MaaP::Client::ModelClient::Services::CollectionDataService}\\
+Relazione uscente debole, contiene un riferimento ad un oggetto CollectionDataService per utilizzare il relativo servizio;
+\item\grassetto{MaaP::Client::ModelClient::Services::DocumentEditService}\\
+Relazione uscente debole, contiene un riferimento ad un oggetto DocumentEditService per utilizzare il relativo servizio;
+\item\grassetto{MaaP::Client::View::collection}\\
 Relazione entrante, interazione con il template.
 \end{itemize}
 
+\subsubsubsubsubsection{DashboardCtrl}
+\grassetto{Nome}\\
+MaaP::Client::ControllerModelView::ControllerClient::DashboardCtrl\\
+\grassetto{Descrizione}\\
+Classe che rappresenta il controller per indirizzare le richieste di visualizzazione della dashboard.\\
+\grassetto{Utilizzo}\\
+Viene utilizzata per la indirizzare le richieste di visualizzazione della dashboard.\\
+\grassetto{Relazioni con altre classi}
+\begin{itemize}
+\item\grassetto{MaaP::Client::ModelClient::Services::CollectionListService}\\
+Relazione uscente debole, contiene un riferimento ad un oggetto CollectionListService per utilizzare il relativo servizio;
+\item\grassetto{MaaP::Client::View::dashboard}\\
+Relazione entrante, interazione con il template.
+\end{itemize}
 
+\subsubsubsubsubsection{DocumentCtrl}
+\grassetto{Nome}\\
+MaaP::Client::ControllerModelView::ControllerClient::DocumentCtrl\\
+\grassetto{Descrizione}\\
+Classe che rappresenta il controller per indirizzare le richieste di visualizzazione di un document.\\
+\grassetto{Utilizzo}\\
+Viene utilizzata per la indirizzare le richieste di visualizzazione della pagina document-show.\\
+\grassetto{Relazioni con altre classi}
+\begin{itemize}
+\item\grassetto{MaaP::Client::ModelClient::Services::DocumentDataService}\\
+Relazione uscente debole, contiene un riferimento ad un oggetto DocumentDataService per utilizzare il relativo servizio;
+\item\grassetto{MaaP::Client::ModelClient::Services::DocumentEditService}\\
+Relazione uscente debole, contiene un riferimento ad un oggetto DocumentEditService per utilizzare il relativo servizio;
+\item\grassetto{MaaP::Client::View::document}\\
+Relazione entrante, interazione con il template.
+\end{itemize}
 
+\subsubsubsubsubsection{DocumentEditCtrl}
+\grassetto{Nome}\\
+MaaP::Client::ControllerModelView::ControllerClient::DocumentEditCtrl\\
+\grassetto{Descrizione}\\
+Classe che rappresenta il controller per indirizzare le richieste di visualizzazione e modifica di un document.\\
+\grassetto{Utilizzo}\\
+Viene utilizzata per la indirizzare le richieste di visualizzazione di una pagina di document-edit.\\
+\grassetto{Relazioni con altre classi}
+\begin{itemize}
+\item\grassetto{MaaP::Client::ModelClient::Services::DocumentEditService}\\
+Relazione uscente debole, contiene un riferimento ad un oggetto DocumentEditService per utilizzare il relativo servizio;
+\item\grassetto{MaaP::Client::View::documentEdit}\\
+Relazione entrante, interazione con il template.
+\end{itemize}
 
+\subsubsubsubsubsection{IndexCtrl}
+\grassetto{Nome}\\
+MaaP::Client::ControllerModelView::ControllerClient::IndexCtrl\\
+\grassetto{Descrizione}\\
+Classe che rappresenta il controller per indirizzare le richieste visualizzazione degli indici.\\
+\grassetto{Utilizzo}\\
+Viene utilizzata per la indirizzare le richieste di visualizzazione degli indici presenti nel database di analisi.\\
+\grassetto{Relazioni con altre classi}
+\begin{itemize}
+\item\grassetto{MaaP::Client::ModelClient::Services::IndexService}\\
+Relazione uscente debole, contiene un riferimento ad un oggetto IndexService per utilizzare il relativo servizio;
+\item\grassetto{MaaP::Client::View::indexCollection}\\
+Relazione entrante, interazione con il template.
+\end{itemize}
 
+\subsubsubsubsubsection{LoginCtrl}
+\grassetto{Nome}\\
+MaaP::Client::ControllerModelView::ControllerClient::LoginCtrl\\
+\grassetto{Descrizione}\\
+Classe che rappresenta il controller per indirizzare le richieste visualizzazione del form di login.\\
+\grassetto{Utilizzo}\\
+Viene utilizzata per la indirizzare le richieste di visualizzazione della pagina di login.\\
+\grassetto{Relazioni con altre classi}
+\begin{itemize}
+\item\grassetto{MaaP::Client::ModelClient::Services::Authservice}\\
+Relazione uscente debole, contiene un riferimento ad un oggetto Authservice per utilizzare il relativo servizio;
+\item\grassetto{MaaP::Client::ModelClient::Directives::password\_check}\\
+Relazione uscente debole, contiene un riferimento ad un oggetto password\_check per utilizzare il relativo servizio;
+\item\grassetto{MaaP::Client::ModelClient::Directives::unique}\\
+Relazione uscente debole, contiene un riferimento ad un oggetto unique per utilizzare il relativo servizio;
+\item\grassetto{MaaP::Client::View::login}\\
+Relazione entrante, interazione con il template.
+\end{itemize}
 
+\subsubsubsubsubsection{NavBarCtrl}
+\grassetto{Nome}\\
+MaaP::Client::ControllerModelView::ControllerClient::NavBarCtrl\\
+\grassetto{Descrizione}\\
+Classe che rappresenta il controller per indirizzare le richieste visualizzazione della barra di navigazione.\\
+\grassetto{Utilizzo}\\
+Viene utilizzata per la indirizzare le richieste di visualizzazione della barra di navigazione nelle pagine del progetto.\\
+\grassetto{Relazioni con altre classi}
+\begin{itemize}
+\item\grassetto{MaaP::Client::ModelClient::Services::CollectionListService}\\
+Relazione uscente debole, contiene un riferimento ad un oggetto CollectionListService per utilizzare il relativo servizio;
+\item\grassetto{MaaP::Client::ModelClient::Services::LogoutService}\\
+Relazione uscente debole, contiene un riferimento ad un oggetto LogoutService per utilizzare il relativo servizio;
+\item\grassetto{MaaP::Client::View::Navbar}\\
+Relazione entrante, interazione con il template.
+\end{itemize}
 
+\subsubsubsubsubsection{QueryCtrl}
+\grassetto{Nome}\\
+MaaP::Client::ControllerModelView::ControllerClient::QueryCtrl\\
+\grassetto{Descrizione}\\
+Classe che rappresenta il controller per indirizzare le richieste visualizzazione delle query.\\
+\grassetto{Utilizzo}\\
+Viene utilizzata per la indirizzare le richieste di visualizzazione della pagina contenente la lista delle query più utilizzate.\\
+\grassetto{Relazioni con altre classi}
+\begin{itemize}
+\item\grassetto{MaaP::Client::ModelClient::Services::QuerytService}\\
+Relazione uscente debole, contiene un riferimento ad un oggetto QueryService per utilizzare il relativo servizio;
+\item\grassetto{MaaP::Client::ModelClient::Services::IndexService}\\
+Relazione uscente debole, contiene un riferimento ad un oggetto IndexService per utilizzare il relativo servizio;
+\item\grassetto{MaaP::Client::View::queryCollection}\\
+Relazione entrante, interazione con il template.
+\end{itemize}
 
+\subsubsubsubsubsection{RegisterCtrl}
+\grassetto{Nome}\\
+MaaP::Client::ControllerModelView::ControllerClient::RegisterCtrl\\
+\grassetto{Descrizione}\\
+Classe che rappresenta il controller per indirizzare le richieste di registrazione.\\
+\grassetto{Utilizzo}\\
+Viene utilizzata per la indirizzare le richieste di registrazione di un nuovo utente.\\
+\grassetto{Relazioni con altre classi}
+\begin{itemize}
+\item\grassetto{MaaP::Client::ModelClient::Services::RegisterService}\\
+Relazione uscente debole, contiene un riferimento ad un oggetto RegisterService per utilizzare il relativo servizio;
+\item\grassetto{MaaP::Client::View::register}\\
+Relazione entrante, interazione con il template.
+\end{itemize}
 
+\subsubsubsubsubsection{UsersCollectionCtrl}
+\grassetto{Nome}\\
+MaaP::Client::ControllerModelView::ControllerClient::UsersCollectionCtrl\\
+\grassetto{Descrizione}\\
+Classe che rappresenta il controller per indirizzare le richieste visualizzazione degli utenti.\\
+\grassetto{Utilizzo}\\
+Viene utilizzata per la indirizzare le richieste di visualizzazione della pagina contenente la lista degli utenti registrati nel sistema.\\
+\grassetto{Relazioni con altre classi}
+\begin{itemize}
+\item\grassetto{MaaP::Client::ModelClient::Services::UserCollectionService}\\
+Relazione uscente debole, contiene un riferimento ad un oggetto UserCollectionService per utilizzare il relativo servizio;
+\item\grassetto{MaaP::Client::ModelClient::Services::UserEditService}\\
+Relazione uscente debole, contiene un riferimento ad un oggetto UserEditService per utilizzare il relativo servizio;
+\item\grassetto{MaaP::Client::View::userCollection}\\
+Relazione entrante, interazione con il template.
+\end{itemize}
 
+\subsubsubsubsubsection{ProfileEditCtrl}
+\grassetto{Nome}\\
+MaaP::Client::ControllerModelView::ControllerClient::ProfileEditCtrl\\
+\grassetto{Descrizione}\\
+Classe che rappresenta il controller per indirizzare le richieste di modifica dei dati di un profilo utente.\\
+\grassetto{Utilizzo}\\
+Viene utilizzata per la indirizzare le richieste di modifica dei dati di un profilo utente.\\
+\grassetto{Relazioni con altre classi}
+\begin{itemize}
+\item\grassetto{MaaP::Client::ModelClient::Services::ProfileEditService}\\
+Relazione uscente debole, contiene un riferimento ad un oggetto QueryService per utilizzare il relativo servizio;
+\item\grassetto{MaaP::Client::View::userEdit}\\
+Relazione entrante, interazione con il template.
+\end{itemize}
 
+\subsubsubsubsubsection{ProfileCtrl}
+\grassetto{Nome}\\
+MaaP::Client::ControllerModelView::ControllerClient::ProfileCtrl\\
+\grassetto{Descrizione}\\
+Classe che rappresenta il controller per indirizzare le richieste visualizzazione di un profilo utente.\\
+\grassetto{Utilizzo}\\
+Viene utilizzata per la indirizzare le richieste di visualizzazione dei dati di un profilo utente.\\
+\grassetto{Relazioni con altre classi}
+\begin{itemize}
+\item\grassetto{MaaP::Client::ModelClient::Services::ProfileDataService}\\
+Relazione uscente debole, contiene un riferimento ad un oggetto ProfileDataService per utilizzare il relativo servizio;
+\item\grassetto{MaaP::Client::ModelClient::Services::ProfileEditService}\\
+Relazione uscente debole, contiene un riferimento ad un oggetto ProfileEditService per utilizzare il relativo servizio;
+\item\grassetto{MaaP::Client::View::userProfile}\\
+Relazione entrante, interazione con il template.
+\end{itemize}
 
+\subsubsubsubsubsection{UserEditCtrl}
+\grassetto{Nome}\\
+MaaP::Client::ControllerModelView::ControllerClient::UserEditCtrl\\
+\grassetto{Descrizione}\\
+Classe che rappresenta il controller per indirizzare le richieste di modifica dei dati di un utente.\\
+\grassetto{Utilizzo}\\
+Viene utilizzata per la indirizzare le richieste di modifica dei dati di un utente da parte di un amministratore.\\
+\grassetto{Relazioni con altre classi}
+\begin{itemize}
+\item\grassetto{MaaP::Client::ModelClient::Services::UserEditService}\\
+Relazione uscente debole, contiene un riferimento ad un oggetto UserEditService per utilizzare il relativo servizio;
+\item\grassetto{MaaP::Client::View::userEdit}\\
+Relazione entrante, interazione con il template.
+\end{itemize}
 
-
-
+\subsubsubsubsubsection{UserCtrl}
+\grassetto{Nome}\\
+MaaP::Client::ControllerModelView::ControllerClient::UserCtrl\\
+\grassetto{Descrizione}\\
+Classe che rappresenta il controller per indirizzare le richieste di visualizzazione dei dati di un utente.\\
+\grassetto{Utilizzo}\\
+Viene utilizzata per la indirizzare le richieste di visualizzazione dei dati di un utente da parte di un amministratore.\\
+\grassetto{Relazioni con altre classi}
+\begin{itemize}
+\item\grassetto{MaaP::Client::ModelClient::Services::UserDataService}\\
+Relazione uscente debole, contiene un riferimento ad un oggetto UserDataService per utilizzare il relativo servizio;
+\item\grassetto{MaaP::Client::ModelClient::Services::UserEditService}\\
+Relazione uscente debole, contiene un riferimento ad un oggetto UserEditService per utilizzare il relativo servizio;
+\item\grassetto{MaaP::Client::View::userProfile}\\
+Relazione entrante, interazione con il template.
+\end{itemize}
 
 \subsubsection{MaaP::Client::ModelClient}
 \subsubsubsection{Informazioni sul package}
@@ -983,6 +1177,45 @@ Componente Model del design pattern MVVM.
 \subsubsubsubsection{Descrizione}
 Componente parte del ModelClient contenente i servizi per la comunicazione con il server.
 \subsubsubsubsection{Classi}
+
+\subsubsubsubsubsection{HTTP}
+\grassetto{Nome}\\
+MaaP::Client::ModelClient::Services::HTTP\\
+\grassetto{Descrizione}\\
+Classe che rappresenta il servizio di comunicazione HTTP con il server.\\
+\grassetto{Utilizzo}\\
+Viene utilizzata per inviare richieste HTTP al server.\\
+\grassetto{Relazioni con altre classi}
+\begin{itemize}
+\item\grassetto{MaaP::Client::ModelClient::Services::Authservice}\\
+Relazione entrante debole, interazione con il servizio di autenticazione;
+\item\grassetto{MaaP::Client::ModelClient::Services::CollectionDataService}\\
+Relazione entrante debole, interazione con il servizio CollectionData;
+\item\grassetto{MaaP::Client::ModelClient::Services::CollectionListService}\\
+Relazione entrante debole, interazione con il servizio CollectionList;
+\item\grassetto{MaaP::Client::ModelClient::Services::DocumentDataService}\\
+Relazione entrante debole, interazione con il servizio DocumentData;
+\item\grassetto{MaaP::Client::ModelClient::Services::DocumentEditService}\\
+Relazione entrante debole, interazione con il servizio DocumentEdit;
+\item\grassetto{MaaP::Client::ModelClient::Services::IndexService}\\
+Relazione entrante debole, interazione con il servizio degli indici;
+\item\grassetto{MaaP::Client::ModelClient::Services::LogoutService}\\
+Relazione entrante debole, interazione con il servizio di logout;
+\item\grassetto{MaaP::Client::ModelClient::Services::ProfileDataService}\\
+Relazione entrante debole, interazione con il servizio ProfileData;
+\item\grassetto{MaaP::Client::ModelClient::Services::ProfileEditService}\\
+Relazione entrante debole, interazione con il servizio ProfileEdit;
+\item\grassetto{MaaP::Client::ModelClient::Services::QueryService}\\
+Relazione entrante debole, interazione con il servizio delle query;
+\item\grassetto{MaaP::Client::ModelClient::Services::RegisterService}\\
+Relazione entrante debole, interazione con il servizio di registrazione;
+\item\grassetto{MaaP::Client::ModelClient::Services::UserCollectionService}\\
+Relazione entrante debole, interazione con il servizio UserCollection;
+\item\grassetto{MaaP::Client::ModelClient::Services::UserDataService}\\
+Relazione entrante debole, interazione con il servizio UserData;
+\item\grassetto{MaaP::Client::ModelClient::Services::UserEditService}\\
+Relazione entrante debole, interazione con il servizio UserEdit.
+\end{itemize}
 
 \subsubsubsubsubsection{Authservice}
 \grassetto{Nome}\\
@@ -1180,7 +1413,7 @@ Relazione entrante debole, interazione con il controller di modifica del profilo
 
 \subsubsubsection{MaaP::Client::ModelClient::Directives}
 \subsubsubsubsection{Informazioni sul package}
-\immagine{./Diagrammi/ComponentiDirectives}{Componente MaaP::Client::ModelClient::Directives}
+%\immagine{./Diagrammi/ComponentiDirectives}{Componente MaaP::Client::ModelClient::Directives}
 \subsubsubsubsection{Descrizione}
 Componente parte del ModelClient contenente le direttive per la comunicazione con il server.
 \subsubsubsubsection{Classi}
@@ -1451,19 +1684,6 @@ In questa sezione verranno tracciati i componenti con i requisiti. Per semplicit
 \item Quando si vuole trattare un gruppo di oggetti come un oggetto singolo;
 \item Quando si vuole disaccoppiare View e Model instaurando un \gloss{protocollo di sottoscrizione} e notifica tra loro;
 \item Quando si vogliono agganciare più View ad un Model per fornire più rappresentazioni del Model stesso.
-\end{itemize}
-\end{itemize}
-
-\subsection{Design Pattern creazionali}
-\subsubsection{Singleton}
-\immagine{./Diagrammi/SINGLETON}{Diagramma del design pattern Singleton}
-\begin{itemize}
-\item \grassetto{Scopo:} Assicurare che una classe abbia solo un'istanza e fornire un punto d'accesso globale a tale istanza;
-\item \grassetto{Motivazione:} L'uso di questo design pattern è importante poter assicurare che per alcune classi esista una sola istanza. Per far ciò la classe stessa ha la responsabilità di creare le proprie istanze, assicurare che nessun'altra istanza possa essere creata e fornire un modo semplice per accedere all'istanza;
-\item \grassetto{Applicabilità:} Il pattern Singleton può essere utilizzato nei seguenti casi:
-\begin{itemize}
-\item Quando deve esistere esattamente un'istanza di una classe e tale istanza deve essere resa accessibile ai client attraverso un punto di accesso noto a tutti gli utilizzatori;
-\item Quando l'unica istanza deve poter essere estesa attraverso la definizione di sottoclassi e i client devono essere in grado di utilizzare le istanze estese senza dover modificare il proprio codice.
 \end{itemize}
 \end{itemize}
 

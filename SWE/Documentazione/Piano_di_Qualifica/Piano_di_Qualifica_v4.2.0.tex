@@ -193,8 +193,8 @@ Il presente documento descriverà le qualità desiderate che il software dovrà 
 In questa sezione verranno mostrati gli obietti di qualità che il gruppo si è imposto per la realizzazione del prodotto \Progetto{}. \\
 Tali obiettivi saranno poi seguiti da:
 \begin{itemize}
-\item \grassetto{Strategia}: procedimento tramite il quale si raggiunge l'obiettivo prefissato. La descrizione completa della strategia sarà possibile consultarla in sezione ???.
-\item \grassetto{Metrica o Misura}: ove possibile, sarà specificata una metrica o una misura per rendere l'obiettivo quantificabile; successivamente in sezione ??? sarà fornita una descrizione di ogni metrica e di ogni misura, specificando anche:
+\item \grassetto{Strategia}: procedimento tramite il quale si raggiunge l'obiettivo prefissato. L'elenco completo delle strategie e la descrizione di ciascuna, sarà possibile consultarlo in sezione 3 di questo documento.
+\item \grassetto{Metrica o Misura}: ove possibile, sarà specificata una metrica o una misura per rendere l'obiettivo quantificabile; successivamente in sezione 4 di questo documento sarà fornita una descrizione di ogni metrica e di ogni misura, specificando anche, dove possibile:
 \begin{itemize}
 \item \grassetto{Obiettivo Sufficiente}: range stabilito come minimo accettabile, sotto il quale ogni unità o documento non verrà accettato come completo;
 \item \grassetto{Obiettivo Ottimale}: range consigliato e da usare come riferimento, dal quale è necessario scostarsi il meno possibile.
@@ -212,8 +212,8 @@ Si è deciso di fissare come obiettivo il raggiungimento del terzo livello dello
 \end{itemize}
 Sono state scelti due indici che si basano sui costi e i tempi spesi per un processo, per renderlo quantificabile. Tali indici sono:
 \begin{itemize}
-\item \grassetto{Schedule Variance(SV)}: vedi sezione ???;
-\item \grassetto{Budget Variance(BV)}: vedi sezione ???;
+\item \grassetto{Schedule Variance(SV)}: vedi sezione 4.1.1 di questo documento;
+\item \grassetto{Budget Variance(BV)}: vedi sezione 4.1.2 di questo documento;
 \end{itemize} 
 Data la scarsa esperienza di cooperazione e di pianificazione delle attività del gruppo, gli obiettivi di questi indici fanno riferimento a convenzioni comuni.
 
@@ -226,54 +226,54 @@ Di seguito verranno elencati gli obiettivi software, basandosi sulle caratterist
 \begin{itemize}
 \item \grassetto{Funzionalità}: il prodotto software deve soddisfare tutti i requisiti funzionali obbligatori, tutti i requisiti obbligatori trovati e di conseguenza fornire le funzionalità attese;
 \begin{itemize}
-\item \grassetto{Strategia adottata}: Prodotto Funzionale(vedi sezione).
-\item \grassetto{Misura o metrica utilizzata}: Soddisfacimento requisiti funzionali e obbligatori(vedi sezione ???);
+\item \grassetto{Strategia adottata}: Prodotto Funzionale(vedi sezione 3.1 di questo documento).
+\item \grassetto{Misura o metrica utilizzata}: Soddisfacimento requisiti funzionali obbligatori e requisiti obbligatori(vedi sezione 4.2.1 di questo documento);
 \end{itemize}
 \item \grassetto{Affidabilità}: il prodotto software dovrà essere in grado di funzionare anche in condizioni non ottimali; ad esempio non devono essere prodotti risultati non corretti e la gestione degli errori deve essere trattata in maniera ottimale; verrà misurata la quantità di esecuzioni andate a buon fine.
 \begin{itemize}
-\item \grassetto{Strategia adottata}: Prodotto Affidabile(vedi sezione ???).
+\item \grassetto{Strategia adottata}: Prodotto Affidabile(vedi sezione 3.2 di questo documento).
 \item \grassetto{Misura o metrica utilizzata}:
 \begin{itemize}
-\item Complessità Ciclomatica(vedi sezione ???);
-\item Linee di codice per funzione(vedi sezione ???);
-\item Numero di messaggi di errore(vedi sezione ???);
-\item Numero di esecuzioni andate a buon fine(vedi sezione ???).
+\item Complessità Ciclomatica(vedi sezione 4.2.2 di questo documento);
+\item Linee di codice per metodo(vedi sezione 4.2.3 di questo documento);
+\item Numero di messaggi di errore(vedi sezione ???) MI SA CHE E' DA TOGLIERE;
+\item Numero di esecuzioni andate a buon fine(vedi sezione 4.2.5 di questo documento).
 \end{itemize}
 \end{itemize}
-\item \grassetto{Efficienza}: il prodotto software deve consumare le risorse in maniera adeguata e ridurre al minimo i tempi di attesa o i tempi di risposta per un qualsiasi risultato;
+\item \grassetto{Efficienza}: il prodotto software deve consumare le risorse in maniera adeguata e ridurre al minimo i tempi di attesa o i tempi di risposta per un qualsiasi risultato; DA TOGLIERE SE NON CI SONO IDEE
 \begin{itemize}
-\item \grassetto{Strategia adottata}: 
-\item \grassetto{Misura o metrica utilizzata}:
+\item \grassetto{Strategia adottata}: TOGLIERE
+\item \grassetto{Misura o metrica utilizzata}: TOGLIERE
 \end{itemize}
 \item \grassetto{Usabilità}: essendo legata al soggetto utente, non è facilmente verificabile e misurabile in modo meccanico. Il prodotto dovrà essere comprensibile e facilmente apprendibile;
 \begin{itemize}
-\item \grassetto{Strategia adottata}: Prodotto Usabile(vedi sezione???).
+\item \grassetto{Strategia adottata}: Prodotto Usabile(vedi sezione 3.4 di questo documento).
 \item \grassetto{Misura o metrica utilizzata}:
 \begin{itemize}
-\item Lunghezza manuale utente(vedi sezione ???);
-\item Numero di messaggi di errore(vedi sezione ???);
+\item Lunghezza manuale utente(vedi sezione 4.2.6 di questo documento); VEDERE SE E' DA TOGLIERE
+\item Numero di messaggi di errore(vedi sezione ???);DA TOGLIERE
 \end{itemize} 
 \end{itemize}
 \item \grassetto{Manutenibilità}: deriva da una buona progettazione architetturale, ma soprattutto da un basso accoppiamento delle componenti;
 \begin{itemize}
-\item \grassetto{Strategia adottata}: Prodotto Manutenibile (vedi sezione ???).
+\item \grassetto{Strategia adottata}: Prodotto Manutenibile (vedi sezione 3.5 di questo documento).
 \item \grassetto{Misura o metrica utilizzata}:
 \begin{itemize}
-\item Accoppiamento efferente ed afferente(vedi sezione ???);
-\item Complessità ciclomatica(vedi sezione ???);
-\item Lunghezza manuale utente(vedi sezione ???);
-\item Parametri per metodo(vedi sezione ???);
-\item Linee massimo di codice per metodo(vedi sezione ???).
+\item Accoppiamento efferente ed afferente(vedi sezione 4.2.7 e 4.2.8 di questo documento);
+\item Complessità ciclomatica(vedi sezione 4.2.2 di questo documento);
+\item Lunghezza manuale utente(vedi sezione 4.2.6 di questo documento);
+\item Parametri per metodo(vedi sezione 4.2.10 di questo documento);
+\item Linee di codice per metodo(vedi sezione 4.2.3 di questo documento).
 \end{itemize}
 \end{itemize}
 \item \grassetto{Portabilità}: il prodotto software deve essere portabile sotto i vincoli imposti nell'Analisi dei Requisiti
 \begin{itemize}
-\item \grassetto{Strategia adottata}: Prodotto Portabile(vedi sezione???).
+\item \grassetto{Strategia adottata}: Prodotto Portabile(vedi sezione 3.6 di questo documento).
 \item \grassetto{Misura o metrica utilizzata}:
 \begin{itemize}
-\item Parametri per metodo;
-\item Soddisfacimento requisiti prestazionali e di vincolo(vedi sezione???);
-\item Linee massimo di codice(vedi sezione ???);
+\item Parametri per metodo(vedi sezione 4.2.10 di questo documento);
+\item Soddisfacimento requisiti prestazionali e di vincolo(vedi sezione???); DA TOGLIERE
+\item Linee di codice per metodo(vedi sezione 4.2.3 di questo documento);
 \end{itemize}
 \end{itemize}
 \end{itemize} 
@@ -300,7 +300,7 @@ Per quanto riguarda la funzionalità del prodotto, verrà prodotta una tabella d
 \subsection{Prodotto Affidabile}
 Per l'affidabilità del prodotto, si cercherà di scrivere del codice con il minor numero possibile di rami logici. Se questo non risulta possibile, bisogna dividere in più metodi. Prima di effettuare un commit bisogna assicurarsi che quanto scritto fino a quel momento rientri nei range stabiliti delle metriche utilizzate.
 
-\subsection{Prodotto Efficiente}
+\subsection{Prodotto Efficiente} DA TOGLIERE
 
 \subsection{Prodotto Usabile}
 Per quanto riguarda l'usabilità del prodotto, si cercherà di realizzarlo pensando di farlo il più semplice possibile, ponendo maggiore attenzione all'interazione che esso avrà con chi lo usa. Inoltre il manuale utente che verrà rilasciato insieme al prodotto dovrà essere il più semplice possibile e di facile comprensione; esso dovrà avere un buon valore di indice di leggibilità.
@@ -317,9 +317,6 @@ Per cercare di ottenere un testo leggibile e che soddisfi l'indice a esso associ
 \subsection{Strategie aggiuntive}
 Verranno ora elencate le strategie che il gruppo utilizzerà per ottenere più qualità possibile.
 
-\subsubsection{Classe accettabile}
-Ogni volta che si realizza una classe si controlla il numero di attributi che essa contiene, cercando di soddisfare l'obiettivo ottimale della metrica corrispondente.
-
 \subsubsection{Annidamento accettabile}
 Ogni volta che si realizza un metodo, si controlla se il numero di chiamate annidate rientra nei parametri prestabiliti.
 
@@ -329,7 +326,7 @@ Ogni volta che si realizza un metodo, esso deve essere il più semplice possibil
 \newpage
 
 \section{Misure e metriche}
-In base agli obiettivi di qualità descritti nella sezione ??? di questo documento, il gruppo ha individuato una serie di metriche e misure che permetteranno di rendere gli obiettivi quantificabili e di conseguenza verificabili. Come descritto in sezione ??? ogni metrica e ogni misura sarà accompagnata, dove possibile, da un range di valori. Esse saranno divise per le categorie Processi, Software e Documentazione. 
+In base agli obiettivi di qualità descritti nella sezione 2 di questo documento, il gruppo ha individuato una serie di metriche e misure che permetteranno di rendere gli obiettivi quantificabili e di conseguenza verificabili. Come descritto sempre in tale, ogni metrica e ogni misura sarà accompagnata, dove possibile, da un range di valori. Esse saranno divise per le categorie Processi, Software e Documentazione. 
 
 \subsection{Processi}
 \subsubsection{Schedule Variance}
@@ -385,7 +382,7 @@ Degli obiettivi ragionevoli per questa metrica sono i seguenti:
 \item \grassetto{Obiettivo Ottimale}:[10]
 \end{itemize}
 
-\subsubsection{Numero messaggi di errore}
+\subsubsection{Numero messaggi di errore} DAT TOGLIERE
 \begin{itemize}
 \item \grassetto{Obiettivo Sufficiente}:[]
 \item \grassetto{Obiettivo Ottimale}:[]
@@ -444,7 +441,7 @@ Gli obiettivi stimati per questa metrica sono:
 \item \grassetto{Obiettivo Ottimale}: [1--3].
 \end{itemize}
 
-\subsubsection{Attributi per \gloss{classe}}
+\subsubsection{Attributi per \gloss{classe}}DA TOGLIERE
 \label{4.2.3}
 Il numero di attributi per classe esprime, appunto, la quantità di proprietà di una classe. Un elevato numero di attributi può denotare un'eccessiva dimensione della classe stessa, che potrebbe piuttosto essere suddivisa in classi più piccole, relazionate tra di loro.
 Gli obiettivi per questa metrica sono:
@@ -462,7 +459,7 @@ Gli obiettivi stimati sono:
 \item \grassetto{Obiettivo Ottimale}: [0.26--0.30]\footnote{Il valore di 0.30 è stato calcolato dal rapporto 22/78, derivato dalle medie di Ohloh \url{https://www.ohloh.net/p/firefox/factoids\#FactoidCommentsLow}}.
 \end{itemize}
 
-\subsubsection{Flusso di informazioni}
+\subsubsection{Flusso di informazioni}DA TOGLIERE
 \label{4.2.6}
 Valore che indica il flusso di informazioni passanti per un modulo.
 Con:
@@ -533,6 +530,7 @@ Per garantire il controllo di qualità si utilizza:
 \input{./Piano_di_qualifica_appendice_B.tex}
 \input{./Piano_di_qualifica_appendice_C.tex}
 \input{./Piano_di_qualifica_appendice_D.tex}
+\input{./Piano_di_qualifica_appendice_E.tex}
 
 %FINE DOCUMENTO NON CANCELLARE
 \end{document}
