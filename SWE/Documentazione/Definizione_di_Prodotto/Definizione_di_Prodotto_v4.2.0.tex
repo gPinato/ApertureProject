@@ -870,8 +870,59 @@ Package realizzato per creare e gestire gli indici utilizzati nel database di an
 \begin{description}
  \item[Descrizione]
  Modulo del ModelServer che si occupa di creare e gestire gli indici utilizzati nel database di analisi. 
- \item[Dipendenze]
  \item[Metodi]
+  \begin{mldescription}
+   \mlitem{getModel(collection\_name}
+	\begin{description}
+	 \item[Parametri]
+	  \begin{description}
+	   \item[collection\_name]
+	   Stringa contenente il nome della Collection di cui ottenere il modello.
+	  \end{description}
+	 \item[Dipendenza]
+	  \begin{itemize}
+	   \item @MongooseDBAnalysis.
+	  \end{itemize}
+	 \item[Descrizione]
+	 
+	\end{description}	    
+    
+   \mlitem{addQuery(collection\_name, select)}
+    \begin{description}
+	 \item[Parametri]
+	 \item[Dipendenza]
+	 \item[Descrizione]
+	\end{description}	    
+    
+   \mlitem{resetQueries(callback)}
+    \begin{description}
+	 \item[Parametri]
+	 \item[Dipendenza]
+	 \item[Descrizione]
+	\end{description}	    
+    
+   \mlitem{getQueries(page, perpage, n\_elements, callback)}
+    \begin{description}
+	 \item[Parametri]
+	 \item[Dipendenza]
+	 \item[Descrizione]
+	\end{description}	    
+    
+   \mlitem{getIndex(callback)}
+    \begin{description}
+	 \item[Parametri]
+	 \item[Dipendenza]
+	 \item[Descrizione]
+	\end{description}	    
+    
+   \mlitem{createIndex(query\_id,  name\_index, callback)}
+    \begin{description}
+	 \item[Parametri]
+	 \item[Dipendenza]
+	 \item[Descrizione]
+	\end{description}	    
+    
+  \end{mldescription}
 \end{description}
 
 \paragraph{@JsonComposer}
