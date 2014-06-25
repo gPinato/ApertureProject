@@ -968,11 +968,7 @@ Package realizzato per creare e gestire gli indici utilizzati nel database di an
 	   \item @MongooseDBFramework.query.
 	  \end{itemize}
 	 \item[Descrizione]
-	 
-	 
-	%QUIIIIIIIIIIIIIIIIIIIIIIIIIIIIII	 
-	 
-	 
+	 %devo farmelo spiegare meglio da JK, ci ho capito metà. 
 	 
 	\end{description}	    
     
@@ -980,6 +976,122 @@ Package realizzato per creare e gestire gli indici utilizzati nel database di an
 \end{description}
 
 \paragraph{@JsonComposer}
+\begin{description}
+ \item[Descrizione] \hfill \\
+ Modulo che si occupa della preparazione e della formattazione degli oggetti JSON inviati dal Server al Client.
+ 
+ \item[Metodi] \hfill
+ \begin{mldescription}
+  \mlitem{createCollectionsList(collectionsList)} \hfill \\
+   \begin{description}
+    \item[Parametri]
+     \begin{description}
+      \item[collectionsList]
+      Array di Collection.
+     \end{description}
+    \item[Descrizione]
+    La funzione riceve come parametro un Array di Collection, crea e ritorna l'oggetto JSON rappresentante l'insieme delle Collection.
+   \end{description}
+  
+  \mlitem{checkLabels(labelsArray)} \hfill \\
+   \begin{description}
+    \item[Parametri]
+     \begin{description}
+      \item[labelsArray]
+      Array di etichette di una Collection.
+     \end{description}
+    \item[Descrizione]
+    Scorre l'Array di label e ritorna \textit{true} se fra essi è presente il campo \textit{\_id} o il flag \textit{\_\_IDLABEL2SHOW\_\_}, ritorna \textit{false} altrimenti.
+   \end{description}
+   
+  \mlitem{createCollection(labels, data, config)} \hfill \\
+   \begin{description}
+    \item[Parametri]
+     \begin{description}
+      \item[labels]
+      Array contenente l'elenco delle etichette della Collection da creare.
+      \item[data]
+      
+      %da far vedere
+      
+      \item[config]
+      
+     \end{description}
+    \item[Descrizione]
+   \end{description}
+   
+   \mlitem{createDocument(labels, data)} \hfill \\
+   \begin{description}
+    \item[Parametri]
+     \begin{description}
+      \item[labels]
+      \item[data]
+     \end{description}
+    \item[Descrizione]
+   \end{description}
+   
+   \mlitem{createQueriesList(queries, config)} \hfill \\
+   \begin{description}
+    \item[Parametri]
+     \begin{description}
+      \item[queries]
+      \item[config]
+     \end{description}
+    \item[Descrizione]
+   \end{description}
+   
+   \mlitem{createIndexesList(indexes)} \hfill \\
+   \begin{description}
+    \item[Parametri]
+     \begin{description}
+      \item[indexes]
+     \end{description}
+    \item[Descrizione]
+   \end{description}
+   
+   \mlitem{createUserProfile(user)} \hfill \\
+   \begin{description}
+    \item[Parametri]
+     \begin{description}
+      \item[user]
+     \end{description}
+    \item[Descrizione]
+   \end{description}
+   
+   \mlitem{createUserProfileEdit(user)} \hfill \\
+   \begin{description}
+    \item[Parametri]
+     \begin{description}
+      \item[user]
+     \end{description}
+    \item[Descrizione]
+   \end{description}
+   
+   \mlitem{createUsersList(users, config)} \hfill \\
+   \begin{description}
+    \item[Parametri]
+     \begin{description}
+      \item[users]
+      \item[config]
+     \end{description}
+    \item[Descrizione]
+   \end{description}
+   
+   \mlitem{createUser(user)} \hfill \\
+   \begin{description}
+    \item[Parametri]
+     \begin{description}
+      \item[user]
+     \end{description}
+    \item[Descrizione]
+   \end{description}
+   
+   
+   
+ \end{mldescription}
+ 
+ 
+\end{description}
 
 \subsubsection{::DSL}
 \subparagraph{@DSLManager}
