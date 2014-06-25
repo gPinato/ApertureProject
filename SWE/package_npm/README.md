@@ -10,10 +10,6 @@ Install from npm:
 
 	npm install -g maaperture
 	
-Install from local package_npm:
-
-	npm install . -g
-
 Usage: 
 	
 	maaperture <command> [options]

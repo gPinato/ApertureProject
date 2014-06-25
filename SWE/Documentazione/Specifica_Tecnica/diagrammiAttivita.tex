@@ -1,17 +1,26 @@
 %TEMPLATE PER DIAGRAMMA ATTIVITA' o sequenza
 
 \subsection{Utente Business}
-\immagine{./Diagrammi/Activity/attUtenteBusiness}{Diagramma \gloss{attività}: Utente Business}
+\immagine{./Diagrammi/Activity/activityUtenteBusiness}{Diagramma \gloss{attività}: Utente Business}
 Il diagramma precedente illustra le funzionalità disponibili all'\gloss{utente business}.\\
-Quest'ultimo, dopo aver effettuato il login, può scegliere se navigare il menu delle Collection o accedere direttamente ad una di esse, o ad un Document, mediante un \gloss{link} diretto.
-Nel caso decidesse di ricercare manualmente un documento sono disponibili filtri e ordinamenti.
-Può infine modificare i propri dati personali dal suo profilo.
+Quest'ultimo può recuperare la password e/o effettuare il login. Se l'operazione di login ha avuto successo può scegliere se gestire il profilo, aprire una collection o effettuare il logout.
+
+\immagine{./Diagrammi/Activity/activityAperturaCollection}{Diagramma sub-\gloss{attività}: Utente Business - Apertura Collection}
+Nel diagramma precedente è possibile osservare le attività che un utente business può eseguire per aprire una collection, dalla selezione della collection tramite menù all'inserimento del nome della collection nella barra degli indirizzi.
+Una volta scelta la collection da visualizzare l'utente business può cambiare la visualizzazione della collection impostando o annullando filtri sui dati, ordinando i dati per una determinata chiave o navigare tra le pagine della collection.
+Selezionando un document della collection attualmente visualizzata lo può aprire.
+
+\immagine{./Diagrammi/Activity/activityProfiloUtente}{Diagramma sub-\gloss{attività}: Utente Business - Profilo Utente}
+Il diagramma precedente illustra le attività di gestione del profilo utente da parte dell'utente business il quale può visualizzare i dati del proprio profilo, può modificarli e successivamente salvarli permanentemente o annullare le modifiche fin'ora apportate.
 
 \subsection{Utente Business Amministratore}
-\immagine{./Diagrammi/Activity/attAmministratore}{Diagramma attività: Utente Business Amministratore}
+\immagine{./Diagrammi/Activity/activityUtenteBusinessAmministratore}{Diagramma attività: Utente Business Amministratore}
 Il diagramma precedente illustra le funzionalità disponibili all'utente business amministratore.\\
 Quest'ultimo ha a disposizione anche tutte le funzionalità di un normale utente business, tuttavia queste ultime sono state omesse dal diagramma per evitare ridondanza e semplificare la lettura.
 L'utente amministratore può gestire i profili di tutti gli utenti, gestire gli indici disponibili e modificare o cancellare i Document presenti nel database.
+
+\immagine{./Diagrammi/Activity/activityModificaUtente}{Diagramma sub-attività: Utente Business Amministratore - Modifica utente}
+Nel diagramma precedente è possibile osservare le attività dell'utente business amministratore per gestire gli utenti registrati nel sistema. Esso può visualizzare i dati degli utenti registrati nel sistema, eliminare un utente, modificare i dati utente e/o i permessi, salvare le modifiche in modo permanente o annullare le modifiche fin'ora apportate.
 
 \subsection{Utente Business Amministratore - Gestione indici}
 \immagine{./Diagrammi/Activity/GestioneIndici}{Diagramma attività: Gestione Indici}
@@ -25,7 +34,6 @@ Per l'eliminazione, l'amministratore seleziona un indice esistente e lo cancella
 Il diagramma precedente illustra in dettaglio la gestione dei Document da parte degli Utenti Amministratori.\\
 L'amministratore può modificare o cancellare un Document mediante i pulsanti di scelta rapida posizionati accanto al nome del Document oppure aprire il Document per visualizzarlo e modificarlo/cancellarlo dall'interno.
 
-
 \subsection{Utente Business Amministratore - Gestione Document interna}
 \immagine{./Diagrammi/Activity/attAmministratoreGDIndexsub}{Diagramma attività: Gestione Document interna}
 Il diagramma precedente illustra in dettaglio la gestione dei Document da parte degli Utenti Amministratori.\\
@@ -36,7 +44,14 @@ In questo diagramma viene descritto il caso in cui il documento viene modificato
 Il diagramma precedente illustra la gestione degli utenti da parte degli Utenti Amministratori.\\
 L'amministratore può ordinale l'elenco utenti per una \gloss{chiave} o utilizzando un \gloss{filtro}. Dopo aver selezionato un profilo utente, è libero di modificarne i dati personali, i permessi o di cancellarlo dal sistema.
 
-\subsection{Utente Sviluppatore - Gestione progetto}
-\immagine{./Diagrammi/Activity/attSviluppatore}{Diagramma attività: Gestione progetto}
+\subsection{Utente Sviluppatore}
+\immagine{./Diagrammi/Activity/activitySviluppatore}{Diagramma attività: Utente sviluppatore}
 Il diagramma precedente illustra la gestione del progetto da parte di Utenti Sviluppatori.\\
-L'Utente Sviluppatore è libero di creare, clonare o cancellare un progetto. Una volta selezionato un progetto da gestire, è libero di avviare o fermare il server MaaP, modificare i template per le pagine web e modificare od inserire nuovi file DSL, oltre che a modificare altre impostazioni minori del server.
+L'Utente Sviluppatore può gestire un progetto ed i file DSL.
+
+\immagine{./Diagrammi/Activity/activityCartellaProgetti}{Diagramma attività: Utente sviluppatore - Gestione progetto}
+Il diagramma precedente illustra le sotto attività dell'utente sviluppatore per la gestione del progetto. Esso può  creare, clonare o cancellare un progetto.
+
+\immagine{./Diagrammi/Activity/activityGestioneDSL}{Diagramma attività: Utente sviluppatore - Gestione DSL}
+Il diagramma precedente illustra le sotto attività dell'utente sviluppatore. Una volta selezionato un progetto da gestire, è libero di avviare o fermare il server MaaP, modificare i template per le pagine web e modificare od inserire nuovi file DSL, oltre che a modificare altre impostazioni minori del server come i files di configurazione del progetto.
+
