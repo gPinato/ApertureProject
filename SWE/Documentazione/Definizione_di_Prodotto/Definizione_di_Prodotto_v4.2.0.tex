@@ -996,6 +996,7 @@ Package realizzato per creare e gestire gli indici utilizzati nel database di an
      			\end{description}
      		\item[Descrizione]
      		Inizializza il campo field nell'array della struttura del JSON, dove tali campo è definito nella struttura di default del JSON, con il valore di defalt.
+ \end{description}
  \mlitem[checkFieldThrow] \hfill \\
  \begin{description}
      		\item[Parametri] \hfill
@@ -1009,6 +1010,7 @@ Package realizzato per creare e gestire gli indici utilizzati nel database di an
      			\end{description}
      		\item[Descrizione]
      		Chiama il metodo checkField e se tale metodo ritorna false allora lancia un eccezione. Questo metodo serve per verificare che il campo  sia definito. 
+  \end{description}
  \mlitem[checkField] \hfill \\ 
  \begin{description}
      		\item[Parametri] \hfill
@@ -1020,6 +1022,7 @@ Package realizzato per creare e gestire gli indici utilizzati nel database di an
      			\end{description}
      		\item[Descrizione]
      		Verifica se un campo è definito, se lo è ritorna true, altrimenti false.
+  \end{description}
  \mlitem[checkFieldContentThrow] \hfill \\ 
  \begin{description}
      		\item[Parametri] \hfill
@@ -1033,6 +1036,7 @@ Package realizzato per creare e gestire gli indici utilizzati nel database di an
      			\end{description}
      		\item[Descrizione]
      		Serve per verificare che il campo sia definito e non vuoto. Utilizza il metodo checkFieldContent e se tale metodo ritorna false lancia un eccezione.
+  \end{description}
  \mlitem[checkFieldContent] \hfill \\ 
  \begin{description}
      		\item[Parametri] \hfill
@@ -1044,7 +1048,9 @@ Package realizzato per creare e gestire gli indici utilizzati nel database di an
      			\end{description}
      		\item[Descrizione]
      		Verifica se un campo è definito e non vuoto, se lo è ritorna true, altrimenti false.
+  \end{description}
  \mlitem[IntValue] \hfill \\
+
  \begin{description}
      		\item[Parametri] \hfill
      			\begin{description}
@@ -1055,6 +1061,7 @@ Package realizzato per creare e gestire gli indici utilizzati nel database di an
      			\end{description}
      		\item[Descrizione]
      		Verifica che il valore sia numerico, se non lo è lancia un eccezione.
+   \end{description}
  \mlitem[parseDSL] \hfill \\
  \begin{description}
      		\item[Parametri] \hfill
@@ -1064,6 +1071,7 @@ Package realizzato per creare e gestire gli indici utilizzati nel database di an
      			\end{description}
      		\item[Descrizione]
      		Si occupa di effettuare il parsing del DSL trasformandolo in JSON. Per effettuare il parsing verifica che i campi obbligatori siano definiti e non vuoti, che i campi il cui contenuto deve essere un numero lo sia e che la sintassi delle funzioni di trasformazione dei campi sia valida utilizzando il parser \textit{@JavascriptParser}.
+   \end{description}
  \end{mldescription}
  
 \end{description}
