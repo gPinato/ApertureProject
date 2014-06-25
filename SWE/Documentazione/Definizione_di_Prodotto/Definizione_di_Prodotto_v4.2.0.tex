@@ -57,6 +57,8 @@ Diario delle modifiche
 \midrule
 4.1.0 & 2014-05-20 & Alberto Garbui (VR) & Verifica documento.\\
 \midrule
+4.0.4 & 2014-XX-XX & Mattia Sorgato (PR) & Stesura Datamanager.\\
+\midrule
 4.0.3 & 2014-XX-XX & Mattia Sorgato (PR) & Stesura controller del Server\\
 \midrule
 4.0.2 & 2014-XX-XX & Giacomo Pinato (PR) & Stesura dei controller\\
@@ -870,8 +872,111 @@ Package realizzato per creare e gestire gli indici utilizzati nel database di an
 \begin{description}
  \item[Descrizione]
  Modulo del ModelServer che si occupa di creare e gestire gli indici utilizzati nel database di analisi. 
- \item[Dipendenze]
  \item[Metodi]
+  \begin{mldescription}
+   \mlitem{getModel(collection\_name}
+	\begin{description}
+	 \item[Parametri]
+	  \begin{description}
+	   \item[collection\_name]
+	   Stringa contenente il nome della Collection di cui ottenere il modello.
+	  \end{description}
+	 \item[Dipendenza]
+	  \begin{itemize}
+	   \item @MongooseDBAnalysis.
+	  \end{itemize}
+	 \item[Descrizione]
+	 Richiede al modulo \textit{@MongooseDBAnalysis} il modello della Collection di nome \textit{collection\_name}. Se la Collection è presente, la funzione \textit{getModel} ritorna il suo modello, altrimenti ritorna -1.
+	\end{description}	    
+    
+   \mlitem{addQuery(collection\_name, select)}
+    \begin{description}
+	 \item[Parametri]
+	  \begin{description}
+	   \item[collection\_name]
+	   Stringa contenente il nome della Collection su cui è stata effettuata la query.
+	   \item[select]
+	   Array contenente i campi visualizzati della Collection.
+	  \end{description}
+	 \item[Dipendenza]
+	  \begin{itemize}
+	   \item @MongooseDBFramework.query.
+	  \end{itemize}
+	 \item[Descrizione]
+	 Viene richiesto l'insieme delle query effettuate sul database di analisi precedentemente alla query corrente. Successivamente, se la query è stata eseguita per la prima volta, viene inserita nell'insieme delle query effettuate. Se invece la query è stata già eseguita, il suo contatore viene incrementato.
+	\end{description}	    
+    
+   \mlitem{resetQueries(callback)}
+    \begin{description}
+	 \item[Parametri]
+	  \begin{description}
+	   \item[callback]
+	   Funzione da richiamare alla fine della funzione \textit{resetQuery}.
+	  \end{description}
+	 \item[Dipendenze]
+	  \begin{itemize}
+	   \item @MongooseDBFramework.query;
+	   \item @MongooseDBFramework.connection.
+	  \end{itemize}
+	 \item[Descrizione]
+	 Richiede il modello della Collection delle query, su cui poi viene applicato il metodo \textit{dropCollection} che resetta la Collection delle query nel database.
+	\end{description}	    
+    
+   \mlitem{getQueries(page, perpage, n\_elements, callback)}
+    \begin{description}
+	 \item[Parametri]
+	  \begin{description}
+	   \item[page]
+	   Numero intero che indica la pagina delle query da visualizzare.
+	   \item[perpage]
+	   Numero intero che indica il numero di query da visualizzare per pagina.
+	   \item[n\_elements]
+	   Numero intero che indica il numero di query totali da visualizzare.
+	   \item[callback]
+	   Funzione da richiamare alla fine della funzione \textit{getQueries}.
+	  \end{description}
+	 \item[Dipendenza]
+	  \begin{itemize}
+	   \item @MongooseDBFramework;	   
+	   \item @MongooseDBFramework.query.
+	  \end{itemize}
+	 \item[Descrizione]
+	 Richiede l'intera Collection delle query al database di analisi. Calcola il sottoinsieme di query da visualizzare tenendo conto dell'indicatore della pagina da visualizzare e dagli elementi da visualizzare per pagina. Esegue quindi una nuova query per ottenere l'insieme delle query che rispettano suddetti parametri. Se avviene un errore o se non esistono query che rispettano i parametri scelti, viene passato alla \textit{callback} un oggetto vuoto. Se invece la ricerca ha avuto esito positivo, viene richiamata la \textit{callback} passando come parametro l'insieme delle query che soddisfano i requisiti. 
+	\end{description}	    
+    
+   %\mlitem{getIndex(callback)}
+    %\begin{description}
+	 %\item[Parametri]			MOMENTANEAMENTE FUORI USO
+	 %\item[Dipendenza]
+	 %\item[Descrizione]
+	%\end{description}	    
+    
+   \mlitem{createIndex(query\_id,  name\_index, callback)}
+    \begin{description}
+	 \item[Parametri]
+	  \begin{description}
+	   \item[query\_id]
+	   Id identificativo della query da associare all'indice da creare.
+	   \item[name\_index]
+	   Stringa contenente il nome dell'indice da creare.
+	   \item[callback]
+	   Funzione da richiamare alla fine della creazione dell'indice.
+	  \end{description}
+	 \item[Dipendenza]
+	  \begin{itemize}
+	   \item @MongooseDBFramework;	   
+	   \item @MongooseDBFramework.query.
+	  \end{itemize}
+	 \item[Descrizione]
+	 
+	 
+	%QUIIIIIIIIIIIIIIIIIIIIIIIIIIIIII	 
+	 
+	 
+	 
+	\end{description}	    
+    
+  \end{mldescription}
 \end{description}
 
 \paragraph{@JsonComposer}
@@ -1142,6 +1247,7 @@ userCollection.html & Pagina per la visualizzazione della collection degli utent
 userEdit.html & Pagina per la modifica del profilo dell'utente (user) / di un utente (admin)\\
  \midrule
 userProfile & Pagina per la visualizzazione del profilo utente (user) / di un utente (admin)\\
+ \bottomrule
  
 \end{longtable}
 \end{center}
