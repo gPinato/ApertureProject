@@ -7,7 +7,7 @@
 \newcommand{\TipoDocumento}{Verbale esterno 2014-06-20}		%tipo documento
 
 %includo il file header.tex (logo grande in prima pagina piu qualche altra regola)
-\input{../../Logo&Header/header.tex}
+\input{../Logo&Header/header.tex}
 
 %\vspace{.05in}
 
@@ -22,8 +22,8 @@
 \textbf{Stato del Documento} & Formale \\		%CAMBIARE QUI
 \textbf{Uso del Documento} & Esterno \\			%CAMBIARE QUI
 \textbf{Redazione} & Mattia Sorgato \\				%CAMBIARE QUI
-\textbf{Verifica} & XXXXXX XXXXXXX \\		%ED ANCHE QUI!
-\textbf{Approvazione} & XXXXXX XXXXXX \\		%CAMBIARE QUI
+\textbf{Verifica} & Giacomo Pinato \\		%ED ANCHE QUI!
+\textbf{Approvazione} & Mattia Sorgato \\		%CAMBIARE QUI
 \textbf{Distribuzione} & \parbox[t]{4cm}{\NomeGruppo{} \\Prof. Tullio Vardanega \\ Prof. Riccardo Cardin \\ \Prop{} }\\
 \end{tabular}
 \end{center}
@@ -50,7 +50,7 @@ Diario delle modifiche
 %aggiungere qui una midrule per aggiungere una nuova riga alla tabella
 
 \midrule
-1.2.0 & 2014-XX-XX & XXXX XXXXX (XX) & Approvazione documento \\	%cambiare qui
+1.2.0 & 2014-XX-XX & Mattia Sorgato (RE) & Approvazione documento \\	%cambiare qui
 \midrule
 1.1.0 & 2014-06-22 & Giacomo Pinato (VE) & Verifica documento \\		%e qui
 \midrule
@@ -108,8 +108,7 @@ Da lato utente sviluppatore, ci ha fatto notare che è molto più semplice ed im
 JSON e tutti i suoi campi, piuttosto che gestire le modifiche attraverso i campi di un form. 
 La responsabilità di effettuare modifiche coerenti viene quindi lasciata interamente all'utente finale, che contemporaneamente beneficia di un grado di libertà molto maggiore.
 Questo fatto porta una modifica parziale del Template di modifica di un Document, il quale ora dovrà visualizzare una singola
-area di testo invece che più celle. Inoltre verrà modificato anche il DocumentEditCtrl che dovrà fornire un parser per stabilire 
-se il JSON sia ancora valido dopo le modifiche.
+area di testo invece che più celle. Inoltre verrà modificato anche il DocumentEditCtrl che dovrà fornire un parser per stabilire se il JSON sia ancora valido dopo le modifiche.
 
 \subsection{Creazione Indici da riga di comando}
 Il proponente ha suggerito di introdurre la possibilità di mostrare all'utente la query associata al pulsante di creazione di un indice, in modo tale da poterla inserire manualmente sul server ed ottenere il medesimo effetto.

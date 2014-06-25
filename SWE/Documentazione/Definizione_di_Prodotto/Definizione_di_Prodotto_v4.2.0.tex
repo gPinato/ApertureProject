@@ -380,11 +380,10 @@ DSL con i relativi interpreti.
 \subsubsection{::DataManager}
 Package che gestisce gli accessi ai database.
 
-\paragraph{::DatabaseAnalysisManager}
+\paragraph{::DatabaseAnalysisManager} \hfill \\
 Package che gestisce le query ai database di analisi. 
 
 \subparagraph{@DatabaseAnalysisManager}
-
 \begin{description}
  \item[Descrizione] \hfill \\
 Modulo del ModelServer che si occupa di interpretare i dati richiesti e spediti da e al database di analisi. 
@@ -434,14 +433,14 @@ linguaggio DSL per richiedere e inviare i dati che l'utente sviluppatore decide 
 		\begin{description}
 			\item[Parametri] \hfill
 				\begin{description}
-					\item[collection\_name] \hfill
+					\item[collection\_name] \hfill \\
 					Stringa contenente il nome della Collection da ricercare nel database di analisi.
 				\end{description}
-			\item[Dipendenza] \hfill
+			\item[Dipendenza] \hfill 
 				\begin{itemize}
 					\item @MongooseDBAnalysis.
 				\end{itemize}
-			\item[Descrizione] \hfill
+			\item[Descrizione] \hfill \\
 			Ricerca nei modelli del database di analisi la Collection di nome \textit{collection\_name}.
 			Se essa è presente, ne ritorna il modello, altrimenti ritorna l'intero "-1".
 		\end{description}
@@ -454,26 +453,28 @@ linguaggio DSL per richiedere e inviare i dati che l'utente sviluppatore decide 
 			\item[Dipendenza] \hfill
 				\begin{itemize}
 					\item DSL/collectionData/collectionsList.json.
-					
-					%questo e' da vedere. importo un JSON che e' generato dal DSL. come faccio a distiguerlo
-					%dagli altri moduli o package??					
-					
-					
 				\end{itemize}
 			\item[Descrizione] \hfill
 			Ritorna la lista delle Collection visibili dopo l'interpretazione del DSL. 
 		\end{description}
 		
-	
-	%applyTransformations devo farmelo spiegare, perche' non l'ho capito.
 	\mlitem{applyTransformations(type, documentsArray, dslArray)} \hfill 
 		\begin{description}
 			\item[Parametri] \hfill
 				\begin{description}
 					\item[type] \hfill
+						Stringa contenente il tipo di visualizzazione dei Document presenti in 										\textit{documentsArray}.
 					\item[documentsArray] \hfill
+						Array di Document a cui applicare le trasformazioni.
 					\item[dslArray] \hfill
-				\end{description}										
+						Array di DSL legati alla Collection contenente i Document di \textit{documentsArray}.
+				\end{description}
+			\item[Dipendenza] \hfill
+				\begin{itemize}
+					\item file dinamico contenente le trasformazioni di una Collection.
+				\end{itemize}
+			\item[Descrizione] \hfill		
+			Scorre l'Array di DSL fino a trovare una trasformazione da applicare a uno o più dati dei Document. Se esiste almeno una trasformazione da applicare, la applica ad ogni Document contenuto nel \textit{documentsArray}.							
 		\end{description}
 		
 	\mlitem{sortDocumentsByLabels(documents, keys)} \hfill 
@@ -497,9 +498,11 @@ linguaggio DSL per richiedere e inviare i dati che l'utente sviluppatore decide 
 					\item[collection\_name] \hfill
 					Stringa contenente il nome della Collection.
 					\item[column] \hfill
-					
+						Stringa contenente il nome della colonna da utilizzare per ordinare i Document.
 					\item[order] \hfill
+						Stringa contenente l'ordinamento da applicare ai Document, ascendente o discendente.
 					\item[page] \hfill
+						Numero intero che definisce il numero della pagina di Document da visualizzare.
 					\item[callback] \hfill
 					Funzione da richiamare al termine della funzione \textit{getCollectionIndex}.
 				\end{description}
@@ -515,20 +518,40 @@ linguaggio DSL per richiedere e inviare i dati che l'utente sviluppatore decide 
 			\item[Parametri] \hfill
 				\begin{description}
 					\item[collection\_name] \hfill
+						Stringa contenente il nome della Collection di cui fa parte il Document identificato 							con \textit{document\_id}.
 					\item[document\_id] \hfill
+						Id che identifica un singolo Document all'interno della Collection di nome 									\textit{collection\_name}.
 					\item[callback] \hfill
-					Funzione da richiamare al termine della funzione \textit{getDocumentShow}.
+						Funzione da richiamare al termine della funzione \textit{getDocumentShow}.
 				\end{description}
 			\item[Dipendenza] \hfill
 				\begin{itemize}
-					\item
+					\item JSON generato dall'inerpretazione del DSL della Collection di nome 										\textit{collection\_name}.
 				\end{itemize}
 			\item[Descrizione] \hfill
+			Richiede il modello della Collection \textit{collection\_name} e il file DSL associato. Viene controllato se l'output del DSL applica delle modifiche alla visualizzazione standard. Se ciò avviene, vengono impostate le etichette del JSON da inviare al Client come specificato nel file DSL. Inoltre vengono interpretate eventuali istruzioni di \textit{populate} da applicare prima di effettuare la query. Infine, nel caso la query abbia successo, viene richiamata la funzione \textit{callback} con argomento il JSON ottenuto dalla query. Se invece la query non è andata a buon fine, viene chiamata la \textit{callback} con argomento vuoto.
 		\end{description}
+	
 	\mlitem{getDocumentShowEdit(collection\_name, document\_id, callback)} \hfill
+		\begin{description}
+			\item[Parametri] \hfill
+				\begin{description}
+					\item[collection\_name] \hfill
+						Stringa contenente il nome della Collection di cui fa parte il Document identificato 							con \textit{document\_id}.
+					\item[document\_id] \hfill
+						Id che identifica un singolo Document all'interno della Collection di nome 									\textit{collection\_name}.
+					\item[callback] \hfill
+						Funzione da richiamare al termine della funzione \textit{getDocumentShowEdit}.
+				\end{description}
+			\item[Dipendenza] \hfill
+				\begin{itemize}
+					\item JSON generato dall'inerpretazione del DSL della Collection di nome 										\textit{collection\_name}.
+				\end{itemize}
+			\item[Descrizione] \hfill
+			Richiede il modello della Collection \textit{collection\_name} e il file DSL associato. Viene controllato se l'output del DSL applica delle modifiche alla visualizzazione standard. Se ciò avviene, vengono impostate le etichette del JSON da inviare al Client come specificato nel file DSL. I campi compositi del database di analisi vengono processati e viene inviato solamente il campo \textit{id} dei campi compositi. Inoltre vengono interpretate eventuali istruzioni di \textit{populate} da applicare prima di effettuare la query. Infine, nel caso la query abbia successo, viene richiamata la funzione \textit{callback} con argomento il JSON ottenuto dalla query. Se invece la query non è andata a buon fine, viene chiamata la \textit{callback} con argomento vuoto.
+		\end{description}
 	
-	
-	\mlitem{updateDocument(collection\_name, document\_id, newDocumentData, callback)} \hfill 
+	\mlitem{updateDocument(collection\_name, document\_id, newDocumentData, callback)} 
 		\begin{description}
 			\item[Parametri] \hfill
 				\begin{description}
@@ -537,10 +560,7 @@ linguaggio DSL per richiedere e inviare i dati che l'utente sviluppatore decide 
 					\item[document\_id] \hfill
 					Id del Document da modificare.
 					\item[newDocumentData] \hfill
-					JSON contenente i campi da modificare nel Document desiderato.
-					
-%DA CONTROLLARE, NON VORREI AVER SCRITTO UNA CAPPELLA					
-					
+					JSON contenente i campi da modificare nel Document desiderato.					
 					\item[callback] \hfill
 					Funzione da richiamare al termine della modifica del Document.
 				\end{description}
@@ -573,7 +593,7 @@ linguaggio DSL per richiedere e inviare i dati che l'utente sviluppatore decide 
 
 \end{description}
 
-\paragraph{::DatabaseUserManager}
+\paragraph{::DatabaseUserManager} 
 Package che gestisce gli accessi al database utenti.
 
 \subparagraph{@DatabaseUserManager}
@@ -748,6 +768,92 @@ Inoltre dialoga direttamente con \textit{@MongooseDBFramework} per l'esecuzione 
 
 
 \subparagraph{@DataRetrieverUsers}
+\begin{description}
+ \item[Descrizione] \hfill \\
+ Modulo che dialoga direttamente con \textit{@MongooseDBFramework} per effettuare le query di visualizzazione e modifica dei dati contenuti nel database degli utenti.
+ \item[Dipendenze] \hfill \\
+ 	\begin{itemize}
+ 		\item @MongooseDBFramework.
+ 	\end{itemize}
+ \item[Metodi] \hfill \\
+ 	\begin{mldescription}
+ 		\mlitem{addUser(email, password, level, callback)} \hfill
+ 			\begin{description}
+ 				\item[Parametri] \hfill
+ 					\begin{description}
+ 						\item[email]
+ 							Stringa contenente l'indirizzo email del nuovo utente.
+ 						\item[password]
+ 							Stringa contenente la password del nuovo utente.
+ 						\item[level]
+ 							Numero intero che identifica il livello di permesso di un utente. Il numero 0 								identifica un utente standard, 1 individua un utente admin. 
+ 						\item[callback]
+ 							Funzione da richiamare alla fine dell'inserimento.
+ 					\end{description}
+ 				\item[Descrizione]
+ 				La funzione inserisce un nuovo utente nel database utenti del sistema. Alla fine 								dell'inserimento, se non sono sollevati errori richiama la funzione \textit{callback} 						assegnando come parametro \textbf{true}, altrimenti assegna il parametro \textbf{false}.
+ 			\end{description}
+ 			
+ 		\mlitem{getUserProfile(user\_id, callback)} \hfill
+ 			\begin{description}
+ 				\item[Parametri] \hfill
+ 					\begin{description}
+ 						\item[user\_id]
+ 							Id univoco di un utente registrato al sistema.
+ 						\item[callback]
+ 							Funzione da richiamare alla fine dell'ottenimento del profilo utente.
+ 					\end{description}
+ 				\item[Descrizione]
+ 					Viene ricercato nel database utenti un utente registrato con id uguale a 										\textit{user\_id}. Nel caso venga trovato, viene richiamata la funzione \textit{callback} 					passando come parametro l'utente trovato, altrimenti viene chiamata con un oggetto vuoto.
+ 			\end{description}
+ 			
+ 		\mlitem{updateUserProfile(req, callback)} \hfill
+ 			\begin{description}
+ 				\item[Parametri] \hfill
+ 					\begin{description}
+ 						\item[req]
+ 							Oggetto contenente i parametri e le informazioni del Client richiedente.
+ 						\item[callback]
+ 							Funzione da richiamare alla fine dell'aggiornamento del profilo utente.
+ 					\end{description}
+ 				\item[Descrizione]
+ 					Vengono estratti i dati da aggiornare dall'oggetto \textit{req} del richiedente. 								Successivamente viene effettuata una query di aggiornamento sul database degli utenti con  					i dati forniti da \textit{req}. In caso l'aggiornamento dei dati avvenga con successo, 						viene chiamata la funzione \textit{callback} con argomento \textbf{true}, altrimenti 							viene chiamata con argomento \textbf{false}.  
+ 			\end{description}
+ 			
+ 		\mlitem{getUsersList(column, order, page, perpage, callback)} \hfill
+ 			\begin{description}
+ 				\item[Parametri] \hfill
+ 					\begin{description}
+ 						\item[column] \hfill
+ 						\item[order] \hfill
+ 						\item[page] \hfill
+ 						\item[perpage] \hfill
+ 						\item[callback] \hfill
+ 					\end{description}
+ 				\item[Descrizione]
+ 			\end{description}
+ 			
+ 		\mlitem{updateUser(req, callback)} \hfill
+ 			\begin{description}
+ 				\item[Parametri] \hfill
+ 					\begin{description}
+ 						\item[•]
+ 					\end{description}
+ 				\item[Descrizione]
+ 			\end{description}
+ 			
+ 		\mlitem{removeUser(email, callback)} \hfill
+ 			\begin{description}
+ 				\item[Parametri] \hfill
+ 					\begin{description}
+ 						\item[•]
+ 					\end{description}
+ 				\item[Descrizione]
+ 			\end{description}
+ 			
+ 	\end{mldescription}
+\end{description}
+
 
 \paragraph{::IndexManager}
 \subparagraph{@IndexManager}
@@ -756,11 +862,92 @@ Inoltre dialoga direttamente con \textit{@MongooseDBFramework} per l'esecuzione 
 
 \subsubsection{::DSL}
 \subparagraph{@DSLManager}
+\begin{description}
+ \item[Descrizione] \hfill \\
+  Modulo del ModelServer che si occupa controllare la presenza dei file dsl nell'apposita cartella definita nel file di configurazione e invoca il parser dei DSL.
+ \item[Dipendendenze] \hfill \\
+ \begin{itemize}
+ \item{fs};
+  \item{path};
+  \item{@DSLParser};
+  \item{@schemaGenerator}.
+ \end{itemize}
+  
+ \item[Metodi] \hfill \\
+ \begin{description}
+ \item[generateFunction] \hfill \\ 
+ \item[deleteFolderRecursive] \hfill \\
+ \item[checkDSL] \hfill \\
+ \end{description}
+ 
+\end{description}
 \subparagraph{@DSLParser}
+\begin{description}
+ \item[Descrizione] \hfill \\
+  Modulo del ModelServer che si occupa effettuare il parsing di un DSL.
+ \item[Dipendendenze] \hfill \\
+ \begin{itemize}
+  \item{@JavascriptParser}.
+ \end{itemize}
+  
+ \item[Metodi] \hfill \\
+ \begin{description}
+ \item[addField] \hfill \\ 
+ \item[checkFieldThrow] \hfill \\ 
+ \item[checkField] \hfill \\ 
+ \item[checkFieldContentThrow] \hfill \\ 
+ \item[checkFieldContent] \hfill \\ 
+ \item[IntValue] \hfill \\
+ \item[parseDSL] \hfill \\
+ \end{description}
+ 
+\end{description}
 \subparagraph{@index}
-\subparagraph{@JavascriptParser}
-\subparagraph{@schemaGenerator}
+\begin{description}
+ \item[Descrizione] \hfill \\
+  Modulo che si occupa dell'inizializzazione del \textit{@DSLManager}.
+ \item[Dipendendenze] \hfill \\
+ \begin{itemize}
+  \item{@DSLManager}.
+ \end{itemize}
+  
+ \item[Metodi] \hfill \\
+ \begin{description}
+ \item[init] \hfill \\ 
 
+ \end{description}
+ 
+\end{description}
+\subparagraph{@JavascriptParser}
+\begin{description}
+ \item[Descrizione] \hfill \\
+  Modulo che effettua il parsing.
+  
+ \item[Metodi] \hfill \\
+ \begin{description}
+ \item[peg\$subclass] \hfill \\ 
+ \item[SyntaxError] \hfill \\
+ \item[parse] \hfill \\
+ \end{description}
+ 
+\end{description}
+\subparagraph{@schemaGenerator}
+\begin{description}
+ \item[Descrizione] \hfill \\
+  Modulo che si occupa dell'inizializzazione del \textit{@DSLManager}.
+ \item[Dipendendenze] \hfill \\
+ \begin{itemize}
+  \item{fs}.
+ \end{itemize}
+  
+ \item[Metodi] \hfill \\
+ \begin{description}
+ \item[getPopulatedCollection] \hfill \\ 
+ \item[arrayAddElement] \hfill \\ 
+ \item[generate] \hfill \\ 
+ \end{description}
+ 
+\end{description}
 \section{Specifica componenti Maap::Client}
 
 \subsection{::View}
