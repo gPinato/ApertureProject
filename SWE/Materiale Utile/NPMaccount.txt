@@ -1,0 +1,10 @@
+username: aperture
+pass: aperture2npm
+
+
+//usage
+
+- controllare di essere l'utente "aperture" con il comando "npm whoami"
+- aggiornare la versione di maaperture in package.json
+- pubblicare con "npm publish"
+- in caso di cazzate, togliere tutto con "npm unpublish"

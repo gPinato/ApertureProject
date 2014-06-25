@@ -1,1 +1,6 @@
 *.bat
+report
+node_modules
+maap_project/node_modules
+maap_project/app/bower_components
+maap_server/.idea
