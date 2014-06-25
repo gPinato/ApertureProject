@@ -75,7 +75,6 @@ Diario delle modifiche
 %(vengono aggiornate in automatico)
 \newpage
 %\listoftables	%tabelle
-\listoffigures %elenco delle immagini
 
 %qui inizia la prima pagina ufficiale
 \newpage
@@ -84,27 +83,18 @@ Diario delle modifiche
 This document wants to be a reference guide for a developer user. \\
 This will guide you through the installation, cofiguration and maintenance of the MaaP framework.
 
-\subsection{Scopo del prodotto}
-\Prodotto{}
-
-\subsection{Glossario}
-\Glossario{}
-
-\subsection{Riferimenti}
-
-\subsubsection{Normativi}
-
-
-\subsubsection{Informativi}
-
-
 \newpage
 \section{MaaP}
 Hello and welcome to MaaPerture User Manual.
 In this manual we'll go through all the stuff you need to do to get MaaPerture up and running in no time, while also taking a look at some more advanced features.
 
+\section{Prerequirements}
+The only thing you need before installing MaaPerture is node.js.
+You can download the latest version of node.js from the official website
+\begin{center}
+http://nodejs.org/
+\end{center}
 
-\newpage
 \section{Quick Start}
 The quickest way to get MaaPerture is to get it directly from npm using
 \begin{center}
@@ -133,13 +123,8 @@ npm start
 
 and your server will be up and running!
 
-\newpage
-\section{Pre requirements}
-The only thing you need before installing MaaPerture is node.js.
-You can download the latest version of node.js from the official website
-\begin{center}
-http://nodejs.org/
-\end{center}
+
+
 
 \newpage
 \section{Configuration file}
@@ -170,7 +155,7 @@ exports.adminConfig = {
 }
 \end{verbatim}
 
-This second snippet contains setting about the web pages that the framework will generate such as 
+This second snippet contains setting about the web pages that the framework will generate such as the number of users profile displayed per page in the users collection, the number of queries per page on the queries collection, the total queries to show and the indexes per page on the indexes collection.
 
 \begin{verbatim}
 exports.session = {
@@ -224,10 +209,10 @@ The only command available on MaaPerture for now is create, which is the command
 \label{options}
 The following options are available:
 \begin{itemize}
-\item -h, --help                  output usage information
-\item -V, --version               output the version number
-\item -N, --name <project\_ name>   specify the project's name
-\item -O, --output [output\_ path]  specify the output path [./]
+\item -h, --help    :              output usage information
+\item -V, --version  :             output the version number
+\item -N, --name [project\_ name] :  specify the project's name
+\item -O, --output [output\_ path] : specify the output path [./]
 \end{itemize}
 
 %FINE DOCUMENTO NON CANCELLARE
