@@ -862,11 +862,92 @@ Inoltre dialoga direttamente con \textit{@MongooseDBFramework} per l'esecuzione 
 
 \subsubsection{::DSL}
 \subparagraph{@DSLManager}
+\begin{description}
+ \item[Descrizione] \hfill \\
+  Modulo del ModelServer che si occupa controllare la presenza dei file dsl nell'apposita cartella definita nel file di configurazione e invoca il parser dei DSL.
+ \item[Dipendendenze] \hfill \\
+ \begin{itemize}
+ \item{fs};
+  \item{path};
+  \item{@DSLParser};
+  \item{@schemaGenerator}.
+ \end{itemize}
+  
+ \item[Metodi] \hfill \\
+ \begin{description}
+ \item[generateFunction] \hfill \\ 
+ \item[deleteFolderRecursive] \hfill \\
+ \item[checkDSL] \hfill \\
+ \end{description}
+ 
+\end{description}
 \subparagraph{@DSLParser}
+\begin{description}
+ \item[Descrizione] \hfill \\
+  Modulo del ModelServer che si occupa effettuare il parsing di un DSL.
+ \item[Dipendendenze] \hfill \\
+ \begin{itemize}
+  \item{@JavascriptParser}.
+ \end{itemize}
+  
+ \item[Metodi] \hfill \\
+ \begin{description}
+ \item[addField] \hfill \\ 
+ \item[checkFieldThrow] \hfill \\ 
+ \item[checkField] \hfill \\ 
+ \item[checkFieldContentThrow] \hfill \\ 
+ \item[checkFieldContent] \hfill \\ 
+ \item[IntValue] \hfill \\
+ \item[parseDSL] \hfill \\
+ \end{description}
+ 
+\end{description}
 \subparagraph{@index}
-\subparagraph{@JavascriptParser}
-\subparagraph{@schemaGenerator}
+\begin{description}
+ \item[Descrizione] \hfill \\
+  Modulo che si occupa dell'inizializzazione del \textit{@DSLManager}.
+ \item[Dipendendenze] \hfill \\
+ \begin{itemize}
+  \item{@DSLManager}.
+ \end{itemize}
+  
+ \item[Metodi] \hfill \\
+ \begin{description}
+ \item[init] \hfill \\ 
 
+ \end{description}
+ 
+\end{description}
+\subparagraph{@JavascriptParser}
+\begin{description}
+ \item[Descrizione] \hfill \\
+  Modulo che effettua il parsing.
+  
+ \item[Metodi] \hfill \\
+ \begin{description}
+ \item[peg\$subclass] \hfill \\ 
+ \item[SyntaxError] \hfill \\
+ \item[parse] \hfill \\
+ \end{description}
+ 
+\end{description}
+\subparagraph{@schemaGenerator}
+\begin{description}
+ \item[Descrizione] \hfill \\
+  Modulo che si occupa dell'inizializzazione del \textit{@DSLManager}.
+ \item[Dipendendenze] \hfill \\
+ \begin{itemize}
+  \item{fs}.
+ \end{itemize}
+  
+ \item[Metodi] \hfill \\
+ \begin{description}
+ \item[getPopulatedCollection] \hfill \\ 
+ \item[arrayAddElement] \hfill \\ 
+ \item[generate] \hfill \\ 
+ \end{description}
+ 
+\end{description}
 \section{Specifica componenti Maap::Client}
 
 \subsection{::View}
