@@ -4,7 +4,7 @@ L'account è free, limitato a 500MB per ogni DB...
 
 Credenziali d'accesso all'account mongolab.com
 username: aperture
-password: aperture2mongo
+password: maaperture2mongo
 
 ---------------------------------------------------------------------------------------------
 
