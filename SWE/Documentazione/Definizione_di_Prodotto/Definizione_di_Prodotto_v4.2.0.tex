@@ -260,7 +260,7 @@ Per ultima cosa, il \textit{dispatcher} gestisce eventuali richieste di risorse 
 
 \item[Inizializzazione] \hfill
  \begin{description}
-  \item[dispatcherInit():] \hfill \\ 
+  \item[dispatcherInit(app):] \hfill \\ 
   accetta app (l'applicazione di \textit{Express}) come parametro, si occupa dell'inizializzazione del \textit{dispatcher}. Viene esportato come init();
  \end{description}
 \end{description}
@@ -277,7 +277,7 @@ Per ultima cosa, il \textit{dispatcher} gestisce eventuali richieste di risorse 
  \end{itemize}
  \item[Metodi] \hfill
   \begin{description}
-    \item[initFrontController()] \hfill \\
+    \item[initFrontController(app)] \hfill \\
   	\`{E} la funzione di inizializzazione del frontController ed indica di reindirizzare le richieste del Client al \textit{@dispatcher} per gestirle. Accetta  app (l'applicazione di Express) come parametro. Viene esportato come init().
   \end{description}
 \end{description}
@@ -292,7 +292,7 @@ Per ultima cosa, il \textit{dispatcher} gestisce eventuali richieste di risorse 
  \end{itemize}
  \item[Metodi] \hfill
   \begin{description}
-    \item[init()]\hfill \\
+    \item[init(app)]\hfill \\
   	\`{E} la funzione di inizializzazione dell'index, si occupa di inizializzare il \textit{@frontController}. Accetta  app (l'applicazione di Express) come parametro.
   \end{description}
 \end{description}
@@ -311,7 +311,7 @@ Controller che si occupa dell' inizializzazione e gestione del modulo passort pe
     \begin{description}
      \item[authenticate()] \hfill \\
      Imposta il metodo di autenticazione, nel nostro caso come local.
-     \item[initPassport()] \hfill \\
+     \item[initPassport(app)] \hfill \\
      Inizializza il controller passport, inizializzando e avviando la sessione del modulo passport e definisce le strategie di autenticazione; Accetta app (l'applicazione di Express) come parametro.
      \item[checkAuthenticatedAdmin()] \hfill \\
      Verifica che la richiesta proveniente dal client sia autenticata e che il livello dell'utente sia 1. Accetta req (la richiesta del Client), res (la risposta al Client) e next (cosa invocare nel caso di successo) come parametri.
@@ -340,7 +340,7 @@ DSL con i relativi interpreti.
    \end{itemize}
  \item[Metodi] \hfill
  \begin{description}
- \item[initDB()] \hfill \\
+ \item[initDB(app)] \hfill \\
  Si occupa dell'inizializzazione dei database. Effettua la connessione al database utenti e a quello di analisi.Inizializza lo userDBManager, invoca addAdminDefault e inizializza il \textit{@dataDBManager}. Accetta app (l'applicazione di Express) come parametro. Viene esportata come init().
   \item[addAdminDefault()] \hfill \\
   Si occupa dell'aggiunta dell'amministratore di default nel database degli utenti. Accetta config (i parametri di configurazione del progetto) e userDB (la connessione a database degli utenti)come parametri.
@@ -359,7 +359,7 @@ DSL con i relativi interpreti.
     \end{itemize}
 \item[Metodi] \hfill
  \begin{description}
- \item[init()] \hfill \\
+ \item[init(app)] \hfill \\
  Legge la cartella contenente le collectionData dei DSL e per ogni file inizializza il modello di mongoose come elemento dell'array modelArray che poi esposta come model. Accetta app (l'applicazione di Express) come parametro.
  \end{description}
 \end{description}
@@ -374,7 +374,7 @@ DSL con i relativi interpreti.
   \end{itemize}
 \item[Metodi] \hfill
  \begin{description}
- \item[init()] \hfill \\
+ \item[init(app)] \hfill \\
  Si occupa di creare gli schemi di Mongoose per la collection utenti e la collection query, esporta tali modelli come users e query e la connessione al database come connection. Accetta app (l'applicazione di Express) come parametro.
  \end{description}
 \end{description}
@@ -591,7 +591,7 @@ il metodo \textit{remove} sul modello della Collection scelta per rimuovere il D
 
 \end{description}
 
-\paragraph{::DatabaseUserManager} \\
+\paragraph{::DatabaseUserManager}
 Package che gestisce gli accessi al database utenti.
 
 \subparagraph{@DatabaseUserManager}
@@ -1200,12 +1200,12 @@ Package realizzato per creare e gestire gli indici utilizzati nel database di an
       		\item[Parametri] \hfill
       			\begin{description}
       				\item[config]
-      				
+      				Contiene la configurazione dell'ambiente maap.
       				\item[dslJson]
-      				
+      				Contiene il JSON del parsing del DSL.
       			\end{description}
       		\item[Descrizione]
-      		
+      		%da fare
     \end{description}
  \end{mldescription}
  
