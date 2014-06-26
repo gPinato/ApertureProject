@@ -47,8 +47,7 @@ collection = {
 			}		
 		],
 		query: {
-			age: {$lt: 20},
-			jkmerda: {$gt: 50}
+			age: {$lt: 20}
 		}
 	}, //end index page
 	
