@@ -278,7 +278,15 @@ Per ultima cosa, il \textit{dispatcher} gestisce eventuali richieste di risorse 
  \item[Metodi] \hfill
   \begin{description}
     \item[initFrontController(app)] \hfill \\
-  	\`{E} la funzione di inizializzazione del frontController ed indica di reindirizzare le richieste del Client al \textit{@dispatcher} per gestirle. Accetta  app (l'applicazione di Express) come parametro. Viene esportato come init().
+    \begin{description}
+       		\item[Parametri] \hfill
+       			\begin{description}
+       				\item[app]
+       				.Oggetto contenente l'applicazione di Express.
+       			\end{description}
+       		\item[Descrizione]
+       		\'{E} la funzione di inizializzazione del frontController ed indica di reindirizzare le richieste del Client al \textit{@dispatcher} per gestirle. Viene esportato come init().
+   \end{description}
   \end{description}
 \end{description}
 
@@ -293,7 +301,16 @@ Per ultima cosa, il \textit{dispatcher} gestisce eventuali richieste di risorse 
  \item[Metodi] \hfill
   \begin{description}
     \item[init(app)]\hfill \\
-  	\`{E} la funzione di inizializzazione dell'index, si occupa di inizializzare il \textit{@frontController}. Accetta  app (l'applicazione di Express) come parametro.
+    \begin{description}
+           		\item[Parametri] \hfill
+           			\begin{description}
+           				\item[app]
+           				Oggetto contenente l'applicazione di Express.
+           			\end{description}
+           		\item[Descrizione]
+           		\'{E} la funzione di inizializzazione dell'index, si occupa di inizializzare il \textit{@frontController}.
+       \end{description}
+  	
   \end{description}
 \end{description}
 
@@ -310,16 +327,65 @@ Controller che si occupa dell' inizializzazione e gestione del modulo passort pe
    \item[Metodi] \hfill
     \begin{description}
      \item[authenticate()] \hfill \\
-     Imposta il metodo di autenticazione, nel nostro caso come local.
+      \begin{description}
+                     		\item[Descrizione]
+                     	Imposta il metodo di autenticazione, nel nostro caso come local.
+                 \end{description}
+     
      \item[initPassport(app)] \hfill \\
-     Inizializza il controller passport, inizializzando e avviando la sessione del modulo passport e definisce le strategie di autenticazione; Accetta app (l'applicazione di Express) come parametro.
-     \item[checkAuthenticatedAdmin()] \hfill \\
-     Verifica che la richiesta proveniente dal client sia autenticata e che il livello dell'utente sia 1. Accetta req (la richiesta del Client), res (la risposta al Client) e next (cosa invocare nel caso di successo) come parametri.
-     \item[checkAuthenticated()] \hfill \\
-     Verifica che la richiesta proveniente dal client sia autenticata. Accetta req (la richiesta del Client), res (la risposta al Client) e next (cosa invocare nel caso di successo) come parametri.
-     \item[checkNotAuthenticated()] \hfill \\
-     Verifica che la richiesta proveniente dal client non sia autenticata Accetta req (la richiesta del Client), res (la risposta al Client) e next (cosa invocare nel caso di successo) come parametri.
-     \end{description}
+     \begin{description}
+                		\item[Parametri] \hfill
+                			\begin{description}
+                				\item[app]
+                				Oggetto contenente l'applicazione di Express.
+                			\end{description}
+                		\item[Descrizione]
+                		Inizializza il controller passport, inizializzando e avviando la sessione del modulo passport e definisce le strategie di autenticazione.
+            \end{description}
+     \item[checkAuthenticatedAdmin(req, res, next)] \hfill \\
+          \begin{description}
+                     		\item[Parametri] \hfill
+                     			\begin{description}
+                     				\item[req]
+                     				La richiesta del Client.
+                     				\item[res]
+                     				La risposta al Client.
+                     				\item[next]
+                     				Funzione da invocare nel caso di successo.
+                     			\end{description}
+                     		\item[Descrizione]
+                     		 Verifica che la richiesta proveniente dal client sia autenticata e che il livello dell'utente sia 1. 
+                 \end{description}
+     \item[checkAuthenticated(req, res, next)] \hfill \\
+     \begin{description}
+                          		\item[Parametri] \hfill
+                          			\begin{description}
+                          				\item[req]
+                          				La richiesta del Client.
+                          				\item[res]
+                          				La risposta al Client.
+                          				\item[next]
+                          				Funzione da invocare nel caso di successo.
+                          			\end{description}
+                          		\item[Descrizione]
+                          		Verifica che la richiesta proveniente dal client sia autenticata.
+                      \end{description}
+     
+     \item[checkNotAuthenticated(req, res, next)] \hfill \\
+     \begin{description}
+                               		\item[Parametri] \hfill
+                               			\begin{description}
+                               				\item[req]
+                               				La richiesta del Client.
+                               				\item[res]
+                               				La risposta al Client.
+                               				\item[next]
+                               				Funzione da invocare nel caso di successo.
+                               			\end{description}
+                               		\item[Descrizione]
+                               		Verifica che la richiesta proveniente dal client non sia autenticataa.
+                           \end{description}
+      \end{description}
 \end{description}
 
 \subsection{::ModelServer}
@@ -341,9 +407,28 @@ DSL con i relativi interpreti.
  \item[Metodi] \hfill
  \begin{description}
  \item[initDB(app)] \hfill \\
- Si occupa dell'inizializzazione dei database. Effettua la connessione al database utenti e a quello di analisi.Inizializza lo userDBManager, invoca addAdminDefault e inizializza il \textit{@dataDBManager}. Accetta app (l'applicazione di Express) come parametro. Viene esportata come init().
-  \item[addAdminDefault()] \hfill \\
-  Si occupa dell'aggiunta dell'amministratore di default nel database degli utenti. Accetta config (i parametri di configurazione del progetto) e userDB (la connessione a database degli utenti)come parametri.
+ \begin{description}
+    		\item[Parametri] \hfill
+    			\begin{description}
+    				\item[app]
+    				Oggetto contenente l'applicazione di Express.
+    			\end{description}
+    		\item[Descrizione]
+    		Si occupa dell'inizializzazione dei database. Effettua la connessione al database utenti e a quello di analisi.Inizializza lo userDBManager, invoca addAdminDefault e inizializza il \textit{@dataDBManager}. Viene esportata come init().
+    	\end{description}
+  \item[addAdminDefault(config, userDB))] \hfill \\
+  \begin{description}
+      		\item[Parametri] \hfill
+      			\begin{description}
+      				\item[config]
+      				Oggetto contenente l'applicazione di Express.
+      				\item[userDB]
+      				Connessione a database degli utenti.
+      			\end{description}
+      		\item[Descrizione]
+      		Si occupa dell'aggiunta dell'amministratore di default nel database degli utenti.
+      	\end{description}
+  
  \end{description}
 \end{description}
 
@@ -360,7 +445,16 @@ DSL con i relativi interpreti.
 \item[Metodi] \hfill
  \begin{description}
  \item[init(app)] \hfill \\
- Legge la cartella contenente le collectionData dei DSL e per ogni file inizializza il modello di mongoose come elemento dell'array modelArray che poi esposta come model. Accetta app (l'applicazione di Express) come parametro.
+ \begin{description}
+     		\item[Parametri] \hfill
+     			\begin{description}
+     				\item[app]
+     				Oggetto contenente l'applicazione di Express.
+     			\end{description}
+     		\item[Descrizione]
+     		 Legge la cartella contenente le collectionData dei DSL e per ogni file inizializza il modello di mongoose come elemento dell'array modelArray che poi esposta come model.
+     	\end{description}
+
  \end{description}
 \end{description}
 
@@ -375,7 +469,15 @@ DSL con i relativi interpreti.
 \item[Metodi] \hfill
  \begin{description}
  \item[init(app)] \hfill \\
- Si occupa di creare gli schemi di Mongoose per la collection utenti e la collection query, esporta tali modelli come users e query e la connessione al database come connection. Accetta app (l'applicazione di Express) come parametro.
+\begin{description}
+     		\item[Parametri] \hfill
+     			\begin{description}
+     				\item[app]
+     				Oggetto contenente l'applicazione di Express.
+     			\end{description}
+     		\item[Descrizione]
+     		  Si occupa di creare gli schemi di Mongoose per la collection utenti e la collection query, esporta tali modelli come users e query e la connessione al database come connection.
+     	\end{description}
  \end{description}
 \end{description}
 
@@ -1186,7 +1288,7 @@ Package realizzato per creare e gestire gli indici utilizzati nel database di an
      				\item[field]
      				Campo da verificare nella struttura del JSON.
      				\item[root]
-     				E' il nome della sezione in cui deve essere definito il campo.
+     				\`{E} il nome della sezione in cui deve essere definito il campo.
      			\end{description}
      		\item[Descrizione]
      		Chiama il metodo checkField e se tale metodo ritorna false allora lancia un eccezione. Questo metodo serve per verificare che il campo  sia definito. 
@@ -1212,7 +1314,7 @@ Package realizzato per creare e gestire gli indici utilizzati nel database di an
      				\item[field]
      				 Campo da verificare nella struttura del JSON.
      				\item[root]
-     				 E' il nome della sezione in cui deve essere definito il campo.
+     				 \`{E} il nome della sezione in cui deve essere definito il campo.
      			\end{description}
      		\item[Descrizione]
      		Serve per verificare che il campo sia definito e non vuoto. Utilizza il metodo checkFieldContent e se tale metodo ritorna false lancia un eccezione.
