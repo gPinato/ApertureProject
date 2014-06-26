@@ -531,23 +531,66 @@ Per ultima cosa, il \textit{dispatcher} gestisce eventuali richieste di risorse 
  \end{description}
  
  \mlitem{post('/api/login', passport.checkNotAuthenticated, passport.authenticate, function(req, res) \{ res.send(req.user); \})}
+ \begin{description}
+  \item[Parametri] \hfill
+   \begin{mldescription}
+    \mlitem{'/api/login'}
+    Stringa contenente l'indirizzo della API da richiamare.
+    \mlitem{passport.checkNotAuthenticated}
+    Funzione di \textit{@passport} che verifica che l'utente non sia autenticato.
+    \mlitem{passport.authenticate}
+    Funzione di \textit{@passport} che esegue l'autenticazione.
+    \mlitem{function(req, res) \{ res.send(req.user); \}}
+    Funzione anonima che manda al richiedente la risposta contenente il suo campo \textit{user}.
+   \end{mldescription}
+  \item[Descrizione] \hfill \\
  Gestisce le richieste di autenticazione al Server. L'utente che richiede questa operazione non deve essere autenticato ma deve essere presente nel database degli utenti presente nel Server. Nel caso di risposta affermativa ad entrambe le precedenti condizioni, viene creata una nuova sessione per l'utente richiedente.
+ \end{description}
  
- \mlitem{get('/api/logout', passport.checkAuthenticated, function(req, res) { req.logout(); res.send(200); });}
+ \mlitem{get('/api/logout', passport.checkAuthenticated, function(req, res) \{ req.logout(); res.send(200); \})}
+ \begin{description}
+  \item[Parametri] \hfill
+   \begin{mldescription}
+    \mlitem{'/api/logout'}
+    Stringa contenente l'indirizzo della API da richiamare.
+    \mlitem{passport.checkAuthenticated}
+    Funzione di \textit{@passport} che verifica che l'utente sia autenticato.
+    \mlitem{function(req, res) \{ req.logout(); res.send(200); \}}
+    Funzione anonima che effettua la disconnessione del richiedente \textit{req} e manda al Client il codice \textit{http} 200.
+   \end{mldescription}
+  \item[Descrizione] \hfill \\
  Gestisce le richieste di disconnessione dal sistema. Per effettuare questa operazione, l'utente deve essere autenticato. In caso affermativo, viene richiesto il \textit{logout()} del richiedente.
+ \end{description}
  
  \end{mldescription}
 
 \item[Gestione richieste illecite]
  \begin{mldescription}
- \mlitem{get('*', function(req, res) \{ res.sendfile(path.join(config.static\_assets.dir, 'index.html')); \});}
+ \mlitem{get('*', function(req, res) \{ res.sendfile(path.join(config.static\_assets.dir, 'index.html')); \})}
+ \begin{description}
+  \item[Parametri] \hfill
+   \begin{mldescription}
+    \mlitem{'*'}
+    Stringa contentente l'indirizzo delle API da richiamare. In questo caso, l'idirizzo è una stringa qualsiasi.
+    \mlitem{function(req, res) \{ res.sendfile(path.join(config.static\_assets.dir, 'index.html')); \}}
+    Funzione anonima che reindirizza il richiedente alla pagina iniziale della view del Client.
+   \end{mldescription}
+  \item[Descrizione]
  La presente funzione gestisce ogni richiesta di pagina o file che il Server non possiede. L'argomento "*" della funzione \textit{get} consente di gestire tutte le richieste che non sono state servite dalle precedenti funzioni del \textit{@dispatcher}. Questa funzione viene richiamata soltanto quando non le funzioni precedenti non sono state chiamate.
  \end{mldescription}
 
 \item[Inizializzazione] \hfill
  \begin{description}
-  \item[dispatcherInit(app):] \hfill \\ 
-  accetta app (l'applicazione di \textit{Express}) come parametro, si occupa dell'inizializzazione del \textit{dispatcher}. Viene esportato come init();
+  \item[dispatcherInit(app)]
+  \begin{description}
+   \item[Parametri]
+    \begin{description}
+     \item[app] \hfill \\
+     Applicazione di \textit{Express}.
+    \end{description}
+   \item[Descrizione] \hfill \\
+   Si occupa dell'inizializzazione del \textit{@dispatcher}. Viene esportato come init().
+  \end{description}
  \end{description}
 \end{description}
 \end{description}
@@ -556,7 +599,7 @@ Per ultima cosa, il \textit{dispatcher} gestisce eventuali richieste di risorse 
 \subsubsection{@frontController}
 \begin{description}
  \item[Descrizione] \hfill \\
- Il frontController è l'interfaccia di connessione tra il Server ed il Client. Si occupa dell' inizializzazione del dispatcher reindirizzando ad esso le richieste del Client.
+ Il frontController è l'interfaccia di connessione tra il Server ed il Client. Si occupa dell'inizializzazione del \textit{@dispatcher} reindirizzando ad esso le richieste del Client.
  \item[Dipendendenze] \hfill
  \begin{itemize}
  \item @dispatcher.
@@ -568,10 +611,10 @@ Per ultima cosa, il \textit{dispatcher} gestisce eventuali richieste di risorse 
        		\item[Parametri] \hfill
        			\begin{description}
        				\item[app] \hfill \\
-       				Oggetto contenente l'applicazione di Express.
+       				Oggetto contenente l'applicazione di \textit{Express}.
        			\end{description}
        		\item[Descrizione] \hfill \\
-       		\`{E} la funzione di inizializzazione del frontController ed indica di reindirizzare le richieste del Client al \textit{@dispatcher} per gestirle. Viene esportato come init().
+       		\`{E} la funzione di inizializzazione del \textit{@frontController} ed indica di reindirizzare le richieste del Client al \textit{@dispatcher} per gestirle. Viene esportato come init().
    \end{description}
   \end{description}
 \end{description}
@@ -579,7 +622,7 @@ Per ultima cosa, il \textit{dispatcher} gestisce eventuali richieste di risorse 
 \subsubsection{@index}
 \begin{description}
  \item[Descrizione] \hfill \\
-  Controller che si occupa dell'inizializzazione del frontController.
+  Controller che si occupa dell'inizializzazione del \textit{@frontController}.
  \item[Dipendendenze] \hfill
  \begin{itemize}
  \item @frontController.
@@ -591,10 +634,10 @@ Per ultima cosa, il \textit{dispatcher} gestisce eventuali richieste di risorse 
            		\item[Parametri] \hfill
            			\begin{description}
            				\item[app] \hfill \\
-           				Oggetto contenente l'applicazione di Express.
+           				Oggetto contenente l'applicazione di \textit{Express}.
            			\end{description}
            		\item[Descrizione] \hfill \\
-           		\`{E} la funzione di inizializzazione dell'index, si occupa di inizializzare il \textit{@frontController}.
+           		\`{E} la funzione di inizializzazione dell'\textit{@index}, si occupa di inizializzare il \textit{@frontController}.
        \end{description}
   	
   \end{description}
@@ -623,10 +666,10 @@ Controller che si occupa dell'inizializzazione e gestione del modulo passort per
           \item[Parametri] \hfill
           \begin{description}
            \item[app] \hfill \\
-           Oggetto contenente l'applicazione di Express.
+           Oggetto contenente l'applicazione di \textit{Express}.
           \end{description}
           \item[Descrizione] \hfill \\
-          Inizializza il controller passport, inizializzando e avviando la sessione del modulo passport e definisce le strategie di autenticazione.
+          Inizializza il controller \textit{@passport}, inizializzando e avviando la sessione del modulo \textit{@passport} e definisce le strategie di autenticazione.
             \end{description}
             
      \item[checkAuthenticatedAdmin(req, res, next)] \hfill \\
@@ -677,14 +720,13 @@ Controller che si occupa dell'inizializzazione e gestione del modulo passort per
 \end{description}
 
 \subsection{::ModelServer}
-Package che racchiude i database, le loro operazioni di accesso e i file 
-DSL con i relativi interpreti.
+Package che racchiude i database, le loro operazioni di accesso e i file DSL con i relativi interpreti.
 
 \subsubsection{::Database}
 \paragraph{@index}
 \begin{description}
  \item[Descrizione] \hfill \\
- Si occupa dell'inizializzazione dei database degli utenti e di analisi. Crea l'amministratore di default di Maap.
+ Si occupa dell'inizializzazione dei database degli utenti e di analisi. Crea l'amministratore di default di \textit{MaaP}.
  \item[Dipendendenze] \hfill
    \begin{itemize}
    \item mongoose;
@@ -699,10 +741,10 @@ DSL con i relativi interpreti.
     		\item[Parametri] \hfill
     			\begin{description}
     				\item[app] \hfill \\
-    				Oggetto contenente l'applicazione di Express.
+    				Oggetto contenente l'applicazione di \textit{Express}.
     			\end{description}
     		\item[Descrizione] \hfill \\
-    		Si occupa dell'inizializzazione dei database. Effettua la connessione al database utenti e a quello di analisi.Inizializza lo userDBManager, invoca addAdminDefault e inizializza il \textit{@dataDBManager}. Viene esportata come init().
+    		Si occupa dell'inizializzazione dei database. Effettua la connessione al database utenti e a quello di analisi. Inizializza lo userDBManager, invoca addAdminDefault e inizializza il \textit{@dataDBManager}. Viene esportata come init().
     	\end{description}
   \item[addAdminDefault(config, userDB))] \hfill \\
   \begin{description}
@@ -723,7 +765,7 @@ DSL con i relativi interpreti.
 \paragraph{@MongooseDBAnalysis}
 \begin{description}
  \item[Descrizione] \hfill \\
- Si occupa dell'inizializzazione dei modelli di Mongoose.
+ Si occupa dell'inizializzazione dei modelli di \textit{Mongoose}.
  \item[Dipendendenze] \hfill
     \begin{itemize}
     \item fs;
@@ -737,10 +779,10 @@ DSL con i relativi interpreti.
      		\item[Parametri] \hfill
      			\begin{description}
      				\item[app] \hfill \\
-     				Oggetto contenente l'applicazione di Express.
+     				Oggetto contenente l'applicazione di \textit{Express}.
      			\end{description}
      		\item[Descrizione] \hfill \\
-     		 Legge la cartella contenente le collectionData dei DSL e per ogni file inizializza il modello di mongoose come elemento dell'array modelArray che poi esposta come model.
+     		 Legge la cartella contenente le \textit{collectionData} dei DSL e per ogni file inizializza il modello di \textit{Mongoose} come elemento dell'Array \textit{modelArray} che poi esporta come model.
      	\end{description}
 
  \end{description}
@@ -749,7 +791,7 @@ DSL con i relativi interpreti.
 \paragraph{@MongooseDBFramework}
 \begin{description}
  \item[Descrizione] \hfill \\
- Si occupa dell'inizializzazione dei modelli di Mongoose.
+ Si occupa dell'inizializzazione dei modelli di \textit{Mongoose}.
   \item[Dipendendenze] \hfill
   \begin{itemize}
   \item mongoose.
@@ -761,10 +803,10 @@ DSL con i relativi interpreti.
      		\item[Parametri] \hfill
      			\begin{description}
      				\item[app] \hfill \\
-     				Oggetto contenente l'applicazione di Express.
+     				Oggetto contenente l'applicazione di \textit{Express}.
      			\end{description}
      		\item[Descrizione] \hfill \\
-     		  Si occupa di creare gli schemi di Mongoose per la collection utenti e la collection query, esporta tali modelli come users e query e la connessione al database come connection.
+     		  Si occupa di creare gli schemi di \textit{Mongoose} per la Collection utenti e la Collection query, esporta tali modelli come users e query e la connessione al database come connection.
      	\end{description}
  \end{description}
 \end{description}
@@ -792,27 +834,93 @@ Prepara le query da effettuare e contatta il \textit{@DataRetrieverAnalysis} per
  
  \item[Metodi] \hfill
  \begin{description}
- \item[sendCollectionList] \hfill \\
+ \item[sendCollectionList(req, res)] \hfill \\
+ \begin{description}
+ \item[Parametri] \hfill
+  \begin{description}
+   \item[req] \hfill \\
+   Oggetto contenente i parametri e le informazioni del Client richiedente.
+   \item[res] \hfill \\
+   Oggetto duale a \textit{req} su cui invocare i metodi per inviare informazioni al Client richiedente.
+  \end{description}
+ \item[Descrizione] \hfill \\
  Richiede al \textit{@DataRetrieverAnalysis} l'elenco delle Collection e richiama il metodo di creazione dell'oggetto Collection del \textit{@JSonComposer}. Infine ritorna l'oggetto CollectionList ottenuto.
- \item[sendCollection] \hfill \\
+ \end{description}
+ 
+ \item[sendCollection(req, res)] \hfill \\
+ \begin{description}
+ \item[Parametri] \hfill
+  \begin{description}
+   \item[req] \hfill \\
+   Oggetto contenente i parametri e le informazioni del Client richiedente.
+   \item[res] \hfill \\
+   Oggetto duale a \textit{req} su cui invocare i metodi per inviare informazioni al Client richiedente.
+  \end{description}
+ \item[Descrizione] \hfill \\
  Esegue una chiamata asincrona al \textit{@DataRetrieverAnalysis} per ottenere una particolare Collection. Nel caso la Collection esista, viene richiamato il metodo \textit{createCollection} di \textit{@JSonComposer} per inviare al richiedente l'oggetto Collection desiderato. In caso la Collection non esista nel Server, viene ritornato il codice di errore \textit{http} 404 al Client.
- \item[sendDocument] \hfill \\
+ \end{description}
+ 
+ \item[sendDocument(req, res)] \hfill \\
+ \begin{description}
+ \item[Parametri] \hfill
+  \begin{description}
+   \item[req] \hfill \\
+   Oggetto contenente i parametri e le informazioni del Client richiedente.
+   \item[res] \hfill \\
+   Oggetto duale a \textit{req} su cui invocare i metodi per inviare informazioni al Client richiedente.
+  \end{description}
+ \item[Descrizione] \hfill \\
  Esegue una chiamata asincrona al \textit{@DataRetrieverAnalysis} per ottenere un particolare Document. Nel caso il Document esista, viene richiamato il metodo \textit{createDocument} di \textit{@JSonComposer} per inviare al richiedente l'oggetto Document desiderato. In caso il Document non esista nel Server, viene ritornato il codice di errore \textit{http} 404 al Client.
- \item[sendDocumentEdit] \hfill \\
+ \end{description}
+ 
+ \item[sendDocumentEdit(req, res)] \hfill \\
+ \begin{description}
+ \item[Parametri] \hfill
+  \begin{description}
+   \item[req] \hfill \\
+   Oggetto contenente i parametri e le informazioni del Client richiedente.
+   \item[res] \hfill \\
+   Oggetto duale a \textit{req} su cui invocare i metodi per inviare informazioni al Client richiedente.
+  \end{description}
+ \item[Descrizione] \hfill \\
  Esegue una chiamata asincrona al \textit{@DataRetrieverAnalysis} per ottenere un particolare Document modificabile. Nel caso il Document esista, viene richiamato il metodo \textit{createDocument} di \textit{@JSonComposer} per inviare al richiedente l'oggetto Document desiderato. In caso il Document non esista nel Server, viene ritornato il codice di errore \textit{http} 404 al Client.
- \item[updateDocument] \hfill \\
+ \end{description}
+ 
+ \item[updateDocument(req, res)] \hfill \\
+ \begin{description}
+ \item[Parametri] \hfill
+  \begin{description}
+   \item[req] \hfill \\
+   Oggetto contenente i parametri e le informazioni del Client richiedente.
+   \item[res] \hfill \\
+   Oggetto duale a \textit{req} su cui invocare i metodi per inviare informazioni al Client richiedente.
+  \end{description}
+ \item[Descrizione] \hfill \\
  Esegue una chiamata asincrona al metodo \textit{updateDocument} di \textit{@DataRetrieverAnalysis} per modificare un Document esistente nel Server. Nel caso la modifica effettuata dal \textit{@DataRetrieverAnalysis} vada a buon fine, viene ritornato al Client un codice \textit{http} di successo "200", altrimenti viene mandato il codice di errore \textit{http} 404.
- \item[removeDocument] \hfill \\
+ \end{description}
+ 
+ \item[removeDocument(req, res)] \hfill \\
+ \begin{description}
+ \item[Parametri] \hfill
+  \begin{description}
+   \item[req] \hfill \\
+   Oggetto contenente i parametri e le informazioni del Client richiedente.
+   \item[res] \hfill \\
+   Oggetto duale a \textit{req} su cui invocare i metodi per inviare informazioni al Client richiedente.
+  \end{description}
+ \item[Descrizione] \hfill \\
  Esegue una chiamata asincrona al metodo \textit{removeDocument} di \textit{@DataRetrieverAnalysis} per modificare un Document esistente nel Server. Nel caso la rimozione effettuata dal \textit{@DataRetrieverAnalysis} vada a buon fine, viene ritornato al Client un codice \textit{http} di successo "200", altrimenti viene mandato il codice di errore \textit{http} 404.
  \end{description}
  
-\end{description}
+ \end{description}
+ 
+\end{description} %forse è in più.
 
 
 \subparagraph{@DataRetrieverAnalysis}
 \begin{description}
 \item[Descrizione] \hfill \\
-Modulo che dialoga con il database di analisi per mezzo dell'infrastruttura Mongoose. Utilizza i file derivati dall'interpretazione del 
+Modulo che dialoga con il database di analisi per mezzo dell'infrastruttura \textit{Mongoose}. Utilizza i file derivati dall'interpretazione del 
 linguaggio DSL per richiedere e inviare i dati che l'utente sviluppatore decide di visualizzare e modificare.
 \item[Dipendenze] \hfill 
 \begin{itemize}
@@ -893,7 +1001,7 @@ Se essa è presente, ne ritorna il modello, altrimenti ritorna l'intero "-1".
 					Array di chiavi di un Document.
 				\end{description}
 			\item[Descrizione] \hfill \\
-			Ordina le coppie chiave-valore dei Document presenti nell'array \textit{documents} secondo 
+			Ordina le coppie chiave-valore dei Document presenti nell'Array \textit{documents} secondo 
 			l'ordine stabilito nell'array di chiavi \textit{keys}.
 		\end{description}			
 	
@@ -1498,7 +1606,7 @@ Package realizzato per creare e gestire gli indici utilizzati nel database di an
 \subparagraph{@DSLManager}
 \begin{description}
  \item[Descrizione] \hfill \\
-  Modulo del ModelServer che si occupa controllare la presenza dei file dsl nell'apposita cartella definita nel file di configurazione e invoca il parser dei DSL.
+  Modulo del \textit{ModelServer} che si occupa controllare la presenza dei file DSL nell'apposita cartella definita nel file di configurazione e invoca il parser dei DSL.
  \item[Dipendendenze] \hfill \\
  \begin{itemize}
  \item{fs};
@@ -1516,7 +1624,7 @@ Package realizzato per creare e gestire gli indici utilizzati nel database di an
    				Oggetto che contiene il nome della trasformazione e il codice della trasformazione da eseguire.
    			\end{description}
    		\item[Descrizione]
-   		Si occupa di generare le funzioni javascript per gestire le trasformazioni dei dati definite nel DSL.
+   		Si occupa di generare le funzioni JavaScript per gestire le trasformazioni dei dati definite nel DSL.
    	\end{description}
  \mlitem{deleteFolderRecursive(path)} \hfill \\
    	\begin{description}
@@ -1526,17 +1634,17 @@ Package realizzato per creare e gestire gli indici utilizzati nel database di an
     				Percorso della cartella da svuotare.
     			\end{description}
     		\item[Descrizione]
-    		Si occupa di cancellare i file e le cartelle all'interno della cartella path specificata.
+    		Si occupa di cancellare i file e le cartelle all'interno della cartella \textit{path} specificata.
     	\end{description}
  \mlitem{checkDSL(app)} \hfill \\  	
  	\begin{description}
     		\item[Parametri] \hfill
     			\begin{description}
     				\item[app]
-    				Oggetto contenente l'applicazione di Express.
+    				Oggetto contenente l'applicazione di \textit{Express}.
     			\end{description}
     		\item[Descrizione]
-    		Si occupa di verificare la correttezza del DSL scritto, verificando che tale file contenga un codice corretto sintatticamente e attraverso l'uso del \textit{@DSLparser} esegui il parsing vero e proprio. Controlla che il risulatato del parsing sia in formato JSON, lo salva su file e utilizza il metodo generateFunction per creare le funzioni di trasformazione. Se non esiste, si occupa di generare lo schema mongoose della collection specificata nel file DSL.
+    		Si occupa di verificare la correttezza del DSL scritto, verificando che tale file contenga un codice corretto sintatticamente e attraverso l'uso del \textit{@DSLparser} esegui il parsing vero e proprio. Controlla che il risulatato del parsing sia in formato JSON, lo salva su file e utilizza il metodo \textit{generateFunction} per creare le funzioni di trasformazione. Se non esiste, si occupa di generare lo schema \textit{Mongoose} della Collection specificata nel file DSL.
     \end{description}
  \end{mldescription}
  
@@ -1562,7 +1670,7 @@ Package realizzato per creare e gestire gli indici utilizzati nel database di an
      				Campo da aggiungere alla struttura del JSON.
      			\end{description}
      		\item[Descrizione]
-     		Inizializza il campo field nell'array della struttura del JSON, dove tali campo è definito nella struttura di default del JSON, con il valore di defalt.
+     		Inizializza il campo field nell'Array della struttura del JSON, dove tale campo è definito nella struttura di default del JSON, con il valore di defalt.
  \end{description}
  \mlitem{checkFieldThrow((collection,field,root)}\hfill \\
  \begin{description}
@@ -1576,7 +1684,7 @@ Package realizzato per creare e gestire gli indici utilizzati nel database di an
      				\`{E} il nome della sezione in cui deve essere definito il campo.
      			\end{description}
      		\item[Descrizione]
-     		Chiama il metodo checkField e se tale metodo ritorna false allora lancia un eccezione. Questo metodo serve per verificare che il campo  sia definito. 
+     		Chiama il metodo \textit{checkField} e se tale metodo ritorna \textbf{false} allora lancia un eccezione. Questo metodo serve per verificare che il campo sia definito. 
   \end{description}
  \mlitem{checkField(collection,field)} \hfill \\ 
  \begin{description}
@@ -1588,7 +1696,7 @@ Package realizzato per creare e gestire gli indici utilizzati nel database di an
      			     Campo da verificare nella struttura del JSON.
      			\end{description}
      		\item[Descrizione]
-     		Verifica se un campo è definito, se lo è ritorna true, altrimenti false.
+     		Verifica se un campo è definito, se lo è ritorna \textbf{true}, altrimenti false.
   \end{description}
  \mlitem{checkFieldContentThrow(collection,field,root)} \hfill \\ 
  \begin{description}
@@ -1602,7 +1710,7 @@ Package realizzato per creare e gestire gli indici utilizzati nel database di an
      				 \`{E} il nome della sezione in cui deve essere definito il campo.
      			\end{description}
      		\item[Descrizione]
-     		Serve per verificare che il campo sia definito e non vuoto. Utilizza il metodo checkFieldContent e se tale metodo ritorna false lancia un eccezione.
+     		Serve per verificare che il campo sia definito e non vuoto. Utilizza il metodo \textit{checkFieldContent} e se tale metodo ritorna false lancia un eccezione.
   \end{description}
  \mlitem{checkFieldContent(collection,field)} \hfill \\ 
  \begin{description}
@@ -1616,8 +1724,8 @@ Package realizzato per creare e gestire gli indici utilizzati nel database di an
      		\item[Descrizione]
      		Verifica se un campo è definito e non vuoto, se lo è ritorna true, altrimenti false.
   \end{description}
+  
  \mlitem{IntValue(value,field)} \hfill \\
-
  \begin{description}
      		\item[Parametri] \hfill
      			\begin{description}
@@ -1658,10 +1766,10 @@ Package realizzato per creare e gestire gli indici utilizzati nel database di an
      		\item[Parametri] \hfill
      			\begin{description}
      				\item[app]
-     				Oggetto contenente l'applicazione di Express.
+     				Oggetto contenente l'applicazione di \textit{Express}.
      			\end{description}
      		\item[Descrizione]
-     		Si occupa di invocare il metodo checkDSL di \textit{@DSLManager}.
+     		Si occupa di invocare il metodo \textit{checkDSL} di \textit{@DSLManager}.
    \end{description}
  \end{mldescription}
  
@@ -1669,7 +1777,7 @@ Package realizzato per creare e gestire gli indici utilizzati nel database di an
 \subparagraph{@JavascriptParser}
 \begin{description}
  \item[Descrizione] \hfill \\
-  Modulo che effettua il parsing del javascript. Tale modulo non è stato scritto da noi ma generato con PEG.js. Si consulti il manuale di PEG.js per ulteriori dettagli.
+  Modulo che effettua il parsing del codice JavaScript. Tale modulo non è stato scritto da noi ma generato con PEG.js. Si consulti il manuale di PEG.js per ulteriori dettagli.
   
  
 \end{description}
@@ -1694,7 +1802,7 @@ Package realizzato per creare e gestire gli indici utilizzati nel database di an
       				Chiave da ricercare.
       			\end{description}
       		\item[Descrizione]
-      		Verifica che sia presente all'interno di un array di oggetti un elemento con chiave uguale al parametro key, se la trova ritorna la Collection corrispondente.
+      		Verifica che sia presente all'interno di un array di oggetti un elemento con chiave uguale al parametro \textit{key}, se la trova ritorna la Collection corrispondente.
     \end{description}
  \mlitem{arrayAddElement(element, array)} \hfill \\ 
  \begin{description}
@@ -1705,7 +1813,7 @@ Package realizzato per creare e gestire gli indici utilizzati nel database di an
       			   	\item[array]
       			   	Array su cui aggiungere l'elemento.
       			\end{description}
-      			Verifica che l'oggetto non sia presente all'interno dell'array e se non lo trova lo aggiunge.
+      			Verifica che l'oggetto non sia presente all'interno dell'Array e se non lo trova lo aggiunge.
       		\item[Descrizione]
     \end{description}
  \mlitem{generate(config, dslJson)} \hfill \\ 
@@ -1713,12 +1821,16 @@ Package realizzato per creare e gestire gli indici utilizzati nel database di an
       		\item[Parametri] \hfill
       			\begin{description}
       				\item[config]
-      				Contiene la configurazione dell'ambiente maap.
+      				Contiene la configurazione dell'ambiente \textit{MaaP}.
       				\item[dslJson]
       				Contiene il JSON del parsing del DSL.
       			\end{description}
       		\item[Descrizione]
-      		%da fare
+      		
+      		
+      		%da fare <----------------------
+      		
+      		
     \end{description}
  \end{mldescription}
  
@@ -1815,8 +1927,7 @@ userProfile & Pagina per la visualizzazione del profilo utente (user) / di un ut
   
   \item[\$scope.numerify(num)] \hfill \\
   Funzione ausiliaria che crea un array di dimensione   {num} che verrà poi usato dalla directive   {ng-repeat} di angular per la creazione 
-  del numero di 
-  pagine disponibili.
+  del numero di   pagine disponibili.
   
   \item[\$scope.previousPage()] \hfill \\
   Aggiunge allo \$scope la funzionalità di passaggio dalla pagina di visualizzazione corrente alla precedente.
