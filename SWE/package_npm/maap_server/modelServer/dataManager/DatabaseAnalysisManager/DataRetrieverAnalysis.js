@@ -30,22 +30,23 @@ var getModel = function(collection_name) {
 	return -1;
 }
 
-var getDocuments = function(model, where, select, orderbycolumn, typeorder, startskip, numberofrow, populate, callback){
-	
+
+var getDocuments = function(model, querySettings, populate, callback){
+		
 	var options = {};
-	if(orderbycolumn != '' && typeorder != ''){
+	if(querySettings.orderbycolumn != '' && querySettings.typeorder != ''){
 		var sort = {};
-		sort[orderbycolumn] = typeorder;
+		sort[querySettings.orderbycolumn] = querySettings.typeorder;
 		options.sort = sort;
 	}
-	if(numberofrow != ''){
-		options.limit = numberofrow;
+	if(querySettings.numberofrow != ''){
+		options.limit = querySettings.numberofrow;
 	}
-	if(startskip != ''){
-		options.skip = startskip;
+	if(querySettings.startskip != ''){
+		options.skip = querySettings.startskip;
 	}
 		
-	var query = model.find(where, select, options);
+	var query = model.find(querySettings.where, querySettings.select, options);
 	
 	if(populate != [])
 	{
@@ -78,25 +79,25 @@ var getDocuments = function(model, where, select, orderbycolumn, typeorder, star
 		
 		//a questo punto la query ha avuto successo,
 		//controllo se la query e' stata eseguita su tutti 
-		if(select == undefined)var select = {};
+		if(querySettings.select == undefined)querySettings.select = {};
 		
-		if(Object.keys(select).length == 0)
+		if(Object.keys(querySettings.select).length == 0)
 		{
 			//se sono stati selezionati tutti i campi, ora riempio la select per scrivere la query nel db
 			if(result.length > 0)
 			{
 				for(var key in result[0])
 				{
-					select[key] = 1;						//carico le chiavi utilizzate
+					querySettings.select[key] = 1;						//carico le chiavi utilizzate
 				}
 				indexManager.addQuery(model.modelName,  	//nome della collection
-									  select				//campi select
+									  querySettings.select	//campi select
 									);
 			}			
 		}else{
 			//se la select era definita parzialmente aggiungo la query con l'indexManager
 			indexManager.addQuery(model.modelName,  	//nome della collection
-								  select				//campi select
+								  querySettings.select	//campi select
 								  );
 		}
 
@@ -261,13 +262,16 @@ exports.getCollectionIndex = function(collection_name, column, order, page, call
 		//la prima query usa start=0 e perpage='' per raccogliere tutti i documenti
 		//e calcolare il numero di pagine massimo da inviare al client
 		
+		var querySettings = {};
+		querySettings.where = query; 
+		querySettings.select = select;
+		querySettings.orderbycolumn = sortby;
+		querySettings.typeorder = order;
+		querySettings.startskip = 0;
+		querySettings.numberofrow = '';
+	
 		getDocuments(model,
-					query, 				//where
-					select,				//select 
-					sortby, 			//colonna da ordinare
-					order,				//tipo ordinamento
-					0,					//partenza
-					'',					//elementi per pagina
+					querySettings,		//settings
 					populate,			//populate
 					function(documents){
 						var result = {};
@@ -279,13 +283,16 @@ exports.getCollectionIndex = function(collection_name, column, order, page, call
 						
 						//questa seconda query bruttissima restringe i dati ai soli richiesti dal client
 						//in base al numero di pagina richiesto
+						var querySettings = {};
+						querySettings.where = query; 
+						querySettings.select = select;
+						querySettings.orderbycolumn = sortby;
+						querySettings.typeorder = order;
+						querySettings.startskip = start;
+						querySettings.numberofrow = perpage;
+		
 						getDocuments(model,
-									query, 				//where
-									select,				//select 
-									sortby, 			//colonna da ordinare
-									order,				//tipo ordinamento
-									start,				//partenza
-									perpage,			//elementi per pagina
+									querySettings,
 									populate,			//populate
 									function(documents){
 						
@@ -366,13 +373,16 @@ exports.getDocumentShow = function(collection_name, document_id, callback) {
 		var query = {};
 		query._id = document_id;
 		
+		var querySettings = {};
+		querySettings.where = query; 
+		querySettings.select = select;
+		querySettings.orderbycolumn = '';
+		querySettings.typeorder = '';
+		querySettings.startskip = 0;
+		querySettings.numberofrow = '';
+		
 		getDocuments(model,
-					query, 				//where
-					select,				//select 
-					'', 				//colonna da ordinare
-					'',					//tipo ordinamento
-					0,					//partenza
-					'',					//elementi per pagina
+					querySettings,
 					populate,			//populate
 					function(documents){
 						var result = {};
@@ -457,13 +467,16 @@ exports.getDocumentShowEdit = function(collection_name, document_id, callback) {
 		var query = {};
 		query._id = document_id;
 		
+		var querySettings = {};
+		querySettings.where = query; 
+		querySettings.select = select;
+		querySettings.orderbycolumn = '';
+		querySettings.typeorder = '';
+		querySettings.startskip = 0;
+		querySettings.numberofrow = '';
+		
 		getDocuments(model,
-					query, 				//where
-					select,				//select 
-					'', 				//colonna da ordinare
-					'',					//tipo ordinamento
-					0,					//partenza
-					'',					//elementi per pagina
+					querySettings,
 					'',					//populate
 					function(documents){
 						var result = {}
