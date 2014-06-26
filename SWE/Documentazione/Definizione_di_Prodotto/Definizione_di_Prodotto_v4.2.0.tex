@@ -1011,13 +1011,12 @@ Package realizzato per creare e gestire gli indici utilizzati nel database di an
       \item[labels]
       Array contenente l'elenco delle etichette della Collection da creare.
       \item[data]
-      
-      %da far vedere
-      
+      Array contenente i dati sensibili della Collection.      
       \item[config]
-      
+      Oggetto contenente impostazioni di configurazione.      
      \end{description}
     \item[Descrizione]
+    Scorre l'intero Array di dati della Collection e salva i suoi elementi in un Array locale. Esegue un controllo sull'Array di label per identificare la presenza dell'etichetta \textit{\_\_IDLABEL2SHOW\_\_}, la quale definisce di far visualizzare il campo \textit{\_id} nel Client. Dopo aver formattato correttamente gli elementi della Collection, ritorna il JSON corrispondente, aggiungendo l'oggetto \textit{config} contenente le configurazioni dell'oggetto utili al Client.
    \end{description}
    
    \mlitem{createDocument(labels, data)} \hfill \\
@@ -1025,9 +1024,12 @@ Package realizzato per creare e gestire gli indici utilizzati nel database di an
     \item[Parametri]
      \begin{description}
       \item[labels]
+      Array contenente l'elenco delle etichette del Document da creare.
       \item[data]
+      Array contenente i dati sensibili del Document da creare.
      \end{description}
     \item[Descrizione]
+    Scorre l'intero Array di dati del Document e salva i suoi elementi in un Array locale. Esegue un controllo sull'Array di label per identificare la presenza dell'etichetta \textit{\_\_IDLABEL2SHOW\_\_}, la quale definisce di far visualizzare il campo \textit{\_id} nel Client. Dopo aver formattato correttamente gli elementi del Document, ritorna il JSON corrispondente.
    \end{description}
    
    \mlitem{createQueriesList(queries, config)} \hfill \\
@@ -1035,9 +1037,12 @@ Package realizzato per creare e gestire gli indici utilizzati nel database di an
     \item[Parametri]
      \begin{description}
       \item[queries]
+      Array contenente l'insieme delle query da creare.
       \item[config]
+      Oggetto contenente impostazioni di configurazione.
      \end{description}
     \item[Descrizione]
+    Viene creato localmente l'Array contenente le etichette dell'oggetto "lista di query". Viene successivamente scorso l'Array delle query e vengono copiati localmente i loro campi sensibili, per poi essere formattati correttamente. Infine viene realizzato e ritornato il JSON corrispondente, aggiungendo l'oggetto contenente le impostazioni di configurazione della lista di query.
    \end{description}
    
    \mlitem{createIndexesList(indexes)} \hfill \\
@@ -1045,8 +1050,10 @@ Package realizzato per creare e gestire gli indici utilizzati nel database di an
     \item[Parametri]
      \begin{description}
       \item[indexes]
+      Array contenente l'insieme di indici da creare.
      \end{description}
     \item[Descrizione]
+    Viene creato localmente l'Array contenente le etichette dell'oggetto "lista di indici". Viene successivamente scorso l'Array degli indici e vengono copiati localmente i loro campi sensibili, per poi essere formattati correttamente. Infine viene realizzato e ritornato il JSON corrispondente.
    \end{description}
    
    \mlitem{createUserProfile(user)} \hfill \\
@@ -1054,8 +1061,10 @@ Package realizzato per creare e gestire gli indici utilizzati nel database di an
     \item[Parametri]
      \begin{description}
       \item[user]
+      Oggetto contenente i campi email e livello di accesso di un utente.
      \end{description}
     \item[Descrizione]
+    Viene interpretato il campo numerico \textit{level} e convertito nella stringa corrispondente al livello di accesso dell'utente da creare. Viene infine ritornato il JSON corrispondente.
    \end{description}
    
    \mlitem{createUserProfileEdit(user)} \hfill \\
@@ -1063,8 +1072,10 @@ Package realizzato per creare e gestire gli indici utilizzati nel database di an
     \item[Parametri]
      \begin{description}
       \item[user]
+      Oggetto contenente il campo email di un utente.
      \end{description}
     \item[Descrizione]
+    Viene ritornato il JSON di un utente modificabile formattato correttamente.
    \end{description}
    
    \mlitem{createUsersList(users, config)} \hfill \\
@@ -1072,9 +1083,12 @@ Package realizzato per creare e gestire gli indici utilizzati nel database di an
     \item[Parametri]
      \begin{description}
       \item[users]
+      Array di oggetti "utente".
       \item[config]
+      Oggetto contenente impostazioni di configurazione.
      \end{description}
     \item[Descrizione]
+    Viene creato localmente l'Array delle etichette della lista utenti. Successivamente viene copiato in un Array locale ogni utente e il campo \textit{level} di ognuno viene interpretato e convertito nella stringa corrispondente. Infine viene assemblato il JSON della lista utenti e viene aggiunto l'oggetto contenente le impostazioni di configurazione della lista.
    \end{description}
    
    \mlitem{createUser(user)} \hfill \\
@@ -1082,14 +1096,13 @@ Package realizzato per creare e gestire gli indici utilizzati nel database di an
     \item[Parametri]
      \begin{description}
       \item[user]
+      Oggetto contenente i campi id, email e livello di accesso di un utente.
      \end{description}
     \item[Descrizione]
+    Viene creato localmente lo scheletro dell'oggetto utente. Viene poi interpretato l'intero contenuto nel campo \textit{level} dell'oggetto \textit{user}. Viene poi ritornato il JSON dell'utente formattato correttamente.
    \end{description}
    
-   
-   
  \end{mldescription}
- 
  
 \end{description}
 
