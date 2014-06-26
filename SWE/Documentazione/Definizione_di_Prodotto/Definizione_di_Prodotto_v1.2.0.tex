@@ -547,11 +547,25 @@ linguaggio DSL per richiedere e inviare i dati che l'utente sviluppatore decide 
 				\end{itemize}
 			\item[Descrizione] \hfill \\
 			Ricerca nei modelli del database di analisi la Collection di nome \textit{collection\_name}.
-			Se essa è presente, ne ritorna il modello, altrimenti ritorna l'intero "-1".
+Se essa è presente, ne ritorna il modello, altrimenti ritorna l'intero "-1".
 		\end{description}
 
-	\mlitem{getDocuments(model, where, select, orderbycolumn, typeorder, startskip, numberofrow, populate, callback)} \hfill
-%prego Iddio che questo metodo venga modificato, altrimenti c'e' da spararsi. fatemi sapere.	
+	\mlitem{getDocuments(model, querySettings, populate, callback)} \hfill
+		\begin{description}
+			\item[Parametri] \hfill
+			\begin{description}
+				\item[model] \hfill \\
+				Modello della Collection di cui importare i Document.
+				\item[querySettings] \hfill \\
+				Oggetto contenente i parametri della query di ricerca dei Document.
+				\item[populate] \hfill \\
+				Oggetto contenente le funzioni populate specificate nel DSL della Collection.
+				\item[callback] \hfill \\
+				Funzione da richiamare al termine della funzione \textit{getDocuments}.
+			\end{description}
+			\item[Descrizione] \hfill \\
+			Viene effettuata una query sul modello \textit{model} passato come argomento alla funzione. Si utilizzano come opzioni di ricerca i campi dell'oggetto \textit{querySettings}. Viene in questo modo creato un oggetto locale che verrà passato all fine dell'esecuzione della funzione alla \textit{callback} come argomento. Se non pervengono risultati dalla query, l'oggetto passato sarà vuoto. Nel caso il risultato della query non sia nullo, viene poi effettuata l'operazione di popolamento specificata dal parametro \textit{populate}. Infine viene richiamata la \textit{callback} passando come argomento l'oggetto locale contenente il risulatato della query e del populate.
+		\end{description}			
 	 
 	\mlitem{getCollectionsList()} \hfill 
 		\begin{description}
@@ -616,12 +630,7 @@ linguaggio DSL per richiedere e inviare i dati che l'utente sviluppatore decide 
 					\item Oggetto dinamico derivante dall'analisi del file DSL associato alla Collection di nome \textit{collection\_name}.
 				\end{itemize}
 			\item[Descrizione] \hfill \\
-			
-			
-			
-%CHIEDIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII			
-
-
+Viene richiesto il modello della Collection di nome \textit{collection\_name}. Successivamente vengono costruiti gli Array delle etichette e dei dati della Collection. Il nome delle varie etichette viene stabilito dal file DSL associato alla Collection, altrimenti viene preso il nome di default della colonna. A questo punto viene eseguito un controllo per stabilire se il campo \{\_id} dei vari Document della Collection deve essere visibile nella visualizzazione. Viene eseguita una query nel database di analisi per ottenere tutti i Document che rispettano i parametri. Viene poi eseguita un'ulteriore query per creare localmente l'oggetto Collection con il numero di pagine specificato nel file DSL della Collection e per ottenere i Document identificati dalla pagina di visualizzazione richiesta dal Client. Se le query hanno portato ad un risultato positivo, viene richiamata la funzione \textit{callback} con argomento il JSON creato localmente. Altrimenti la \textit{callback} viene richiamata con argomento vuoto.
 			
 		\end{description}
 	
