@@ -280,11 +280,11 @@ Per ultima cosa, il \textit{dispatcher} gestisce eventuali richieste di risorse 
     \begin{description}
        		\item[Parametri] \hfill
        			\begin{description}
-       				\item[app]
+       				\item[app] \hfill \\
        				.Oggetto contenente l'applicazione di Express.
        			\end{description}
-       		\item[Descrizione]
-       		\'{E} la funzione di inizializzazione del frontController ed indica di reindirizzare le richieste del Client al \textit{@dispatcher} per gestirle. Viene esportato come init().
+       		\item[Descrizione] \hfill \\
+       		\`{E} la funzione di inizializzazione del frontController ed indica di reindirizzare le richieste del Client al \textit{@dispatcher} per gestirle. Viene esportato come init().
    \end{description}
   \end{description}
 \end{description}
@@ -292,7 +292,7 @@ Per ultima cosa, il \textit{dispatcher} gestisce eventuali richieste di risorse 
 \subsubsection{@index}
 \begin{description}
  \item[Descrizione] \hfill \\
-  Controller che si occupa dell' inizializzazione del frontController.
+  Controller che si occupa dell'inizializzazione del frontController.
  \item[Dipendendenze] \hfill
  \begin{itemize}
  \item @frontController.
@@ -303,11 +303,11 @@ Per ultima cosa, il \textit{dispatcher} gestisce eventuali richieste di risorse 
     \begin{description}
            		\item[Parametri] \hfill
            			\begin{description}
-           				\item[app]
+           				\item[app] \hfill \\
            				Oggetto contenente l'applicazione di Express.
            			\end{description}
-           		\item[Descrizione]
-           		\'{E} la funzione di inizializzazione dell'index, si occupa di inizializzare il \textit{@frontController}.
+           		\item[Descrizione] \hfill \\
+           		\`{E} la funzione di inizializzazione dell'index, si occupa di inizializzare il \textit{@frontController}.
        \end{description}
   	
   \end{description}
@@ -316,7 +316,7 @@ Per ultima cosa, il \textit{dispatcher} gestisce eventuali richieste di risorse 
 \subsubsection{@passport}
 \begin{description}
  \item[Descrizione] \hfill \\
-Controller che si occupa dell' inizializzazione e gestione del modulo passort per le autenticazioni.
+Controller che si occupa dell'inizializzazione e gestione del modulo passort per le autenticazioni.
 \item[Dipendendenze] \hfill
   \begin{itemize}
    \item passport;
@@ -327,64 +327,66 @@ Controller che si occupa dell' inizializzazione e gestione del modulo passort pe
     \begin{description}
      \item[authenticate()] \hfill \\
       \begin{description}
-                     		\item[Descrizione]
-                     	Imposta il metodo di autenticazione, nel nostro caso come local.
-                 \end{description}
+        \item[Descrizione] \hfill \\
+          Imposta il metodo di autenticazione, nel nostro caso come local.
+      \end{description}
      
      \item[initPassport(app)] \hfill \\
      \begin{description}
-                		\item[Parametri] \hfill
-                			\begin{description}
-                				\item[app]
-                				Oggetto contenente l'applicazione di Express.
-                			\end{description}
-                		\item[Descrizione]
-                		Inizializza il controller passport, inizializzando e avviando la sessione del modulo passport e definisce le strategie di autenticazione.
+          \item[Parametri] \hfill
+          \begin{description}
+           \item[app] \hfill \\
+           Oggetto contenente l'applicazione di Express.
+          \end{description}
+          \item[Descrizione] \hfill \\
+          Inizializza il controller passport, inizializzando e avviando la sessione del modulo passport e definisce le strategie di autenticazione.
             \end{description}
+            
      \item[checkAuthenticatedAdmin(req, res, next)] \hfill \\
           \begin{description}
-                     		\item[Parametri] \hfill
-                     			\begin{description}
-                     				\item[req]
-                     				La richiesta del Client.
-                     				\item[res]
-                     				La risposta al Client.
-                     				\item[next]
-                     				Funzione da invocare nel caso di successo.
-                     			\end{description}
-                     		\item[Descrizione]
-                     		 Verifica che la richiesta proveniente dal client sia autenticata e che il livello dell'utente sia 1. 
-                 \end{description}
+            \item[Parametri] \hfill
+            \begin{description}
+             \item[req] \hfill \\
+	         Oggetto contenente i parametri e le informazioni del Client richiedente.
+	         \item[res] \hfill \\
+	         Oggetto duale a \textit{req} su cui invocare i metodi per inviare informazioni al Client richiedente.
+             \item[next] \hfill \\
+             Funzione da invocare nel caso di successo.
+            \end{description}
+            \item[Descrizione] \hfill \\
+            Verifica che la richiesta proveniente dal client sia autenticata e che il livello dell'utente sia 1. 
+         \end{description}
      \item[checkAuthenticated(req, res, next)] \hfill \\
      \begin{description}
-                          		\item[Parametri] \hfill
-                          			\begin{description}
-                          				\item[req]
-                          				La richiesta del Client.
-                          				\item[res]
-                          				La risposta al Client.
-                          				\item[next]
-                          				Funzione da invocare nel caso di successo.
-                          			\end{description}
-                          		\item[Descrizione]
-                          		Verifica che la richiesta proveniente dal client sia autenticata.
-                      \end{description}
+      \item[Parametri] \hfill
+      \begin{description}
+       \item[req] \hfill \\
+	    Oggetto contenente i parametri e le informazioni del Client richiedente.
+	    \item[res] \hfill \\
+	    Oggetto duale a \textit{req} su cui invocare i metodi per inviare informazioni al Client richiedente.
+        La risposta al Client.
+       \item[next] \hfill \\
+        Funzione da invocare nel caso di successo.
+      \end{description}
+      \item[Descrizione] \hfill \\
+      Verifica che la richiesta proveniente dal client sia autenticata.
+     \end{description}
      
      \item[checkNotAuthenticated(req, res, next)] \hfill \\
      \begin{description}
-                               		\item[Parametri] \hfill
-                               			\begin{description}
-                               				\item[req]
-                               				La richiesta del Client.
-                               				\item[res]
-                               				La risposta al Client.
-                               				\item[next]
-                               				Funzione da invocare nel caso di successo.
-                               			\end{description}
-                               		\item[Descrizione]
-                               		Verifica che la richiesta proveniente dal client non sia autenticataa.
-                           \end{description}
+      \item[Parametri] \hfill
+      \begin{description}
+       \item[req] \hfill \\
+	    Oggetto contenente i parametri e le informazioni del Client richiedente.
+	   \item[res] \hfill \\
+	    Oggetto duale a \textit{req} su cui invocare i metodi per inviare informazioni al Client richiedente.
+       \item[next] \hfill \\
+        Funzione da invocare nel caso di successo.
       \end{description}
+      \item[Descrizione] \hfill \\
+      Verifica che la richiesta proveniente dal client non sia autenticataa.
+     \end{description}
+  \end{description}
 \end{description}
 
 \subsection{::ModelServer}
@@ -409,22 +411,22 @@ DSL con i relativi interpreti.
  \begin{description}
     		\item[Parametri] \hfill
     			\begin{description}
-    				\item[app]
+    				\item[app] \hfill \\
     				Oggetto contenente l'applicazione di Express.
     			\end{description}
-    		\item[Descrizione]
+    		\item[Descrizione] \hfill \\
     		Si occupa dell'inizializzazione dei database. Effettua la connessione al database utenti e a quello di analisi.Inizializza lo userDBManager, invoca addAdminDefault e inizializza il \textit{@dataDBManager}. Viene esportata come init().
     	\end{description}
   \item[addAdminDefault(config, userDB))] \hfill \\
   \begin{description}
       		\item[Parametri] \hfill
       			\begin{description}
-      				\item[config]
+      				\item[config] \hfill \\
       				Oggetto contenente l'applicazione di Express.
-      				\item[userDB]
+      				\item[userDB] \hfill \\
       				Connessione a database degli utenti.
       			\end{description}
-      		\item[Descrizione]
+      		\item[Descrizione] \hfill \\
       		Si occupa dell'aggiunta dell'amministratore di default nel database degli utenti.
       	\end{description}
   
@@ -447,10 +449,10 @@ DSL con i relativi interpreti.
  \begin{description}
      		\item[Parametri] \hfill
      			\begin{description}
-     				\item[app]
+     				\item[app] \hfill \\
      				Oggetto contenente l'applicazione di Express.
      			\end{description}
-     		\item[Descrizione]
+     		\item[Descrizione] \hfill \\
      		 Legge la cartella contenente le collectionData dei DSL e per ogni file inizializza il modello di mongoose come elemento dell'array modelArray che poi esposta come model.
      	\end{description}
 
@@ -471,10 +473,10 @@ DSL con i relativi interpreti.
 \begin{description}
      		\item[Parametri] \hfill
      			\begin{description}
-     				\item[app]
+     				\item[app] \hfill \\
      				Oggetto contenente l'applicazione di Express.
      			\end{description}
-     		\item[Descrizione]
+     		\item[Descrizione] \hfill \\
      		  Si occupa di creare gli schemi di Mongoose per la collection utenti e la collection query, esporta tali modelli come users e query e la connessione al database come connection.
      	\end{description}
  \end{description}
@@ -539,7 +541,7 @@ linguaggio DSL per richiedere e inviare i dati che l'utente sviluppatore decide 
 					\item[collection\_name] \hfill \\
 					Stringa contenente il nome della Collection da ricercare nel database di analisi.
 				\end{description}
-			\item[Dipendenza] \hfill 
+			\item[Dipendenza] \hfill
 				\begin{itemize}
 					\item @MongooseDBAnalysis.
 				\end{itemize}
@@ -572,7 +574,7 @@ linguaggio DSL per richiedere e inviare i dati che l'utente sviluppatore decide 
 					\item[dslArray] \hfill \\
 						Array di DSL legati alla Collection contenente i Document di \textit{documentsArray}.
 				\end{description}
-			\item[Dipendenza] \hfill
+			\item[Dipendenza] \hfill 
 				\begin{itemize}
 					\item file dinamico contenente le trasformazioni di una Collection.
 				\end{itemize}
