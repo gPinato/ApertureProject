@@ -1819,8 +1819,8 @@ Package realizzato per creare e gestire gli indici utilizzati nel database di an
       			   	\item[array]
       			   	Array su cui aggiungere l'elemento.
       			\end{description}
-      			Verifica che l'oggetto non sia presente all'interno dell'Array e se non lo trova lo aggiunge.
       		\item[Descrizione]
+      		Verifica che l'oggetto non sia presente all'interno dell'Array e se non lo trova lo aggiunge.
     \end{description}
  \mlitem{generate(config, dslJson)} \hfill
  \begin{description}
@@ -1897,7 +1897,7 @@ userProfile & Pagina per la visualizzazione del profilo utente (user) / di un ut
  Fornisce l'inizializzazione di base della pagina ed esegue la mediazione tra la Collection view
  e le richieste di visualizzazione e modifica dei dati di una Collection.
  
- \item[Dipendendenze iniettate al controller] \hfill \\
+ \item[Dipendendenze iniettate al controller] \hfill
  \begin{itemize}
   \item \$scope;
   \item \$route;
@@ -1907,7 +1907,7 @@ userProfile & Pagina per la visualizzazione del profilo utente (user) / di un ut
   \item CollectionDataService;
  \end{itemize}
  
- \item[Attributi] \hfill \\
+ \item[Attributi] \hfill
  \begin{itemize}
  \item \$scope.current\textunderscore sorted \textunderscore column;
  \item \$scope.column \textunderscore original \textunderscore name;
@@ -1917,54 +1917,89 @@ userProfile & Pagina per la visualizzazione del profilo utente (user) / di un ut
  \item \$scope.rows;
  \end{itemize}
  
- \item[Funzionalità esportate] \hfill \\
+ \item[Funzionalità esportate] \hfill
  \begin{description}
-  \item[init()] \hfill \\
+  \item[init()] \hfill
+  	\begin{description}
+  		\item[Descrizione] \hfill \\
   Funzione di inizializzazione del CollectionController. Imposta i valori iniziali delle variabili dello
   \$scope associate alla Collection view ed esegue la funzione \emph{getData()}.
-  
-  \item[getData()] \hfill \\
+  	\end{description}
+  	
+  \item[getData()] \hfill 
+  \begin{description}
+  		\item[Descrizione] \hfill \\
   Richiama la richiesta RESTful \textit{query} sulla \$resource fornita dal CollectionDataService.
   Con questa funzione vengono prelevati i dati legati alla Collection da visualizzare e vengono
   passati alla Collection view tramite il binding con lo \$scope. \\
   Se non vengono visualizzati risultati, ovvero se la Collection non esiste, avviene un redirect alla pagina
   che mostra l'errore 404.
+  \end{description}
   
-  \item[\$scope.numerify(num)] \hfill \\
+  \item[\$scope.numerify(num)] \hfill 
+  \begin{description}
+  	\item[Parametro] \hfill
+  	\begin{description}
+  		\item[num] \hfill \\
+  		Intero rappresentante il numero di pagine da visualizzare.
+	\end{description}  		
+  	\item[Descrizione] \hfill \\
   Funzione ausiliaria che crea un array di dimensione   {num} che verrà poi usato dalla directive   {ng-repeat} di angular per la creazione 
   del numero di   pagine disponibili.
+  \end{description}
   
-  \item[\$scope.previousPage()] \hfill \\
-  Aggiunge allo \$scope la funzionalità di passaggio dalla pagina di visualizzazione corrente alla precedente.
-  Diminuisce di 1 l'indicatore della pagina corrente e esegue una nuova richiesta al server per i dati corrispondenti
-  alla pagina precedente con \emph{getData()}.
+  \item[\$scope.previousPage()] \hfill 
+  \begin{description}
+  		\item[Descrizione] \hfill \\
+  Aggiunge allo \$scope la funzionalità di passaggio dalla pagina di visualizzazione corrente alla precedente. Diminuisce di 1 l'indicatore della pagina corrente e esegue una nuova richiesta al server per i dati corrispondenti alla pagina precedente con \emph{getData()}.
+  \end{description}
   
-  \item[\$scope.nextPage()] \hfill \\
-  Aggiunge allo \$scope la funzionalità di passaggio dalla pagina di visualizzazione corrente alla successiva.
-  Aumenta di 1 l'indicatore della pagina corrente e esegue una nuova richiesta al server per i dati corrispondenti
-  alla pagina successiva con \emph{getData()}.
+  \item[\$scope.nextPage()] \hfill
+  \begin{description}
+  		\item[Descrizione] \hfill \\
+  Aggiunge allo \$scope la funzionalità di passaggio dalla pagina di visualizzazione corrente alla successiva. Aumenta di 1 l'indicatore della pagina corrente e esegue una nuova richiesta al server per i dati corrispondenti alla pagina successiva con \emph{getData()}.
+  \end{description}
   
-  \item[\$scope.toPage(index)] \hfill \\
-  Aggiunge allo \$scope la funzionalità di passaggio alla pagina di visualizzazione specificata dal parametro \emph{index}.
-  Aggiorna l'indicatore della pagina corrente settandolo all'indice passato per parametro alla funzione.
-  Successivamente esegue una richiesta al server per ottenere i dati per la nuova visualizzazione.
+  \item[\$scope.toPage(index)] \hfill
+  \begin{description}
+  	\item[Parametro] \hfill
+  	\begin{description}
+  		\item[index] \hfill \\
+  		Numero intero che definisce il numero della pagina da visualizzare.
+  	\end{description}
+  	\item[Descrizione] \hfill \\
+  Aggiunge allo \$scope la funzionalità di passaggio alla pagina di visualizzazione specificata dal parametro \emph{index}. Aggiorna l'indicatore della pagina corrente settandolo all'indice passato per parametro alla funzione. Successivamente esegue una richiesta al server per ottenere i dati per la nuova visualizzazione.
+  \end{description}
   
-  \item[changeSort()] \hfill \\
-  Cambia la variabile \$current\_sort dello \$scope che regola l'ordine di visualizzazione dei Document, da discendente ad
-  ascendente e viceversa.
+  \item[changeSort()] \hfill 
+  \begin{description}
+  	\item[Descrizione] \hfill \\
+  Cambia la variabile \$current\_sort dello \$scope che regola l'ordine di visualizzazione dei Document, da discendente ad ascendente e viceversa.
+  \end{description}
   
-  \item[\$scope.columnSort(index)] \hfill \\
+  \item[\$scope.columnSort(index)] \hfill
+  \begin{description}
+  	\item[Parametro] \hfill
+  	\begin{description}
+  		\item[index] \hfill \\
+  		Numero intero che definisce il numero della colonna a cui applicare l'ordinamento.
+  	\end{description}
+  	\item[Descrizione] \hfill \\
   Funzione che cambia l'ordinamento di visualizzazione di una colonna della Collection view. \\
-  Se la colonna in questione è una colonna diversa da quella che precedentemente ordinata,
-  la variabile \emph{current\_sorted\_column} dello \$scope viene aggiornata, altrimenti la funzione cambia solamente
-  l'ordinamento della colonna.
+  Se la colonna in questione è una colonna diversa da quella che precedentemente ordinata, la variabile \emph{current\_sorted\_column} dello \$scope viene aggiornata, altrimenti la funzione cambia solamente l'ordinamento della colonna.
+  \end{description}
   
-  \item[\$scope.deleteDocument(index)] \hfill \\
-  Funzione che elimina il Document identificato dall'indice \emph{index}. Effettua una richiesta REST di rimozione alla risorsa
-  pubblicizzata da DocumentEditService fornendo come argomenti l'identificativo della Collection correntemente visualizzata e l'indice
-  del Document da eliminare. \\
-  Se l'eliminazione ha successo viene lanciato l'aggiornamento della vista corrente con il Document eliminato, altrimenti si
-  richiama la callback di errore.
+  \item[\$scope.deleteDocument(index)] \hfill 
+  \begin{description}
+  	\item[Parametro] \hfill
+  	\begin{description}
+  		\item[index] \hfill \\
+  		Numero intero che definisce il numero del Document da eliminare.
+  	\end{description}
+  	\item[Descizione] \hfill \\
+  Funzione che elimina il Document identificato dall'indice \emph{index}. Effettua una richiesta REST di rimozione alla risorsa pubblicizzata da DocumentEditService fornendo come argomenti l'identificativo della Collection correntemente visualizzata e l'indice del Document da eliminare. \\
+  Se l'eliminazione ha successo viene lanciato l'aggiornamento della vista corrente con il Document eliminato, altrimenti si richiama la callback di errore.
+  \end{description}
   
  \end{description}
 \end{description}
@@ -1978,19 +2013,31 @@ userProfile & Pagina per la visualizzazione del profilo utente (user) / di un ut
  Controller utilizzato da AngularJS per fornire e gestire i dati della dashboard.
 Fornisce un immediato elenco delle collection disponibili.
  
- \item[Dipendendenze iniettate al controller] \hfill \\
+ \item[Dipendendenze iniettate al controller] \hfill
  \begin{itemize}
   \item \$scope;
   \item CollectionListService;
-  
  \end{itemize}
  
- \item[Funzionalità esportate] \hfill \\
- \begin{description}
-  \item[CollectionListService.get] \hfill \\
-  Funzione che richiede al server l'elenco delle collection disponibli e le inserisce nello scope.
-  
- \end{description}
+ \item[Funzionalità esportate]
+ \begin{mldescription}
+  \mlitem{CollectionListService.get(function success(data) \{
+            \$scope.labels = data.labels;
+            \$scope.values = data.data;
+        \})}
+  \begin{description}
+  	\item[Parametro]
+  		\begin{mldescription}
+  			\mlitem{function success(data) \{
+            \$scope.labels = data.labels;
+            \$scope.values = data.data;
+        \}} \hfill \\
+        Funzione callback da richiamare al termine dell'ottenimento dei dati dal \textit{@CollectionListService}.
+  		\end{mldescription}
+  	\item[Descrizione] \hfill \\
+    Funzione che richiede al server l'elenco delle collection disponibli e le inserisce nello scope.
+  \end{description}
+ \end{mldescription}
 \end{description}
 
 \paragraph{@DocumentController}
@@ -2001,17 +2048,16 @@ Fornisce un immediato elenco delle collection disponibili.
  \item[Utilizzo] \hfill \\
  Controller utilizzato da AngularJS per fornire e gestire i dati durante la visualizzazione di un document.
  
- \item[Dipendendenze iniettate al controller] \hfill \\
+ \item[Dipendendenze iniettate al controller] \hfill
  \begin{itemize}
   \item \$scope;
   \item \$location
   \item DocumentDataService;
   \item DocumentEditService;
   \item \$routeParams.
-  
  \end{itemize}
  
- \item[Attributi] \hfill \\
+ \item[Attributi] \hfill
  \begin{itemize}
  \item  \$scope.current\textunderscore collection;
  \item  \$scope.current\textunderscore document;
