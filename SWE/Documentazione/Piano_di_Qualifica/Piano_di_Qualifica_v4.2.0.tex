@@ -283,7 +283,7 @@ Di seguito verranno elencati gli obiettivi software, basandosi sulle caratterist
 \end{itemize} 
 
 \subsubsection{Obiettivi qualità documentazione}
-Il gruppo \NomeGruppo{} si è imposto di produrre documentazione di qualità, data la scarsa inesperienza nel produrre documenti di questo tipo. Proprio per questo motivo è stato introdotto il seguente obiettivo:
+Il gruppo \NomeGruppo{} si è imposto di produrre documentazione di qualità, nonostante la scarsa inesperienza nel produrre documenti di questo tipo. Proprio per questo motivo è stato introdotto il seguente obiettivo:
 \begin{itemize}
 \item \grassetto{Leggibilità}: si cercherà di produrre testo caratterizzato da una buona leggibilità.
 \begin{itemize}
@@ -328,7 +328,7 @@ Ogni volta che si realizza un metodo, esso deve essere il più semplice possibil
 \newpage
 
 \section{Misure e metriche}
-In base agli obiettivi di qualità descritti nella sezione 2 di questo documento, il gruppo ha individuato una serie di metriche e misure che permetteranno di rendere gli obiettivi quantificabili e di conseguenza verificabili. Come descritto sempre in tale, ogni metrica e ogni misura sarà accompagnata, dove possibile, da un range di valori. Esse saranno divise per le categorie Processi, Software e Documentazione. 
+In base agli obiettivi di qualità descritti nella sezione 2 di questo documento, il gruppo ha individuato una serie di metriche e misure che permetteranno di rendere gli obiettivi quantificabili e di conseguenza verificabili. Come descritto sempre in tale sezione, ogni metrica e ogni misura sarà accompagnata, dove possibile, da un range di valori. Esse saranno divise per le categorie Processi, Software e Documentazione. 
 
 \subsection{Processi}
 \subsubsection{Schedule Variance}
@@ -391,7 +391,7 @@ Degli obiettivi ragionevoli per questa metrica sono i seguenti:
 \end{itemize}
 
 \subsubsection{Lunghezza manuale utente}
-Fornisce un valore che indica il numero di pagine che un manuale utente deve avere.
+Fornisce un valore che indica il numero di pagine che un manuale utente deve avere. I valori per questi obietti verranno forniti nella prossima revisione, in quanto non è stato completato il Manuale Utente per questa revisione.
 \begin{itemize}
 \item \grassetto{Obiettivo Sufficiente}:[]
 \item \grassetto{Obiettivo Ottimale}:[]
@@ -446,20 +446,9 @@ Gli obiettivi stimati sono:
 \item \grassetto{Obiettivo Ottimale}: [0.26--0.30]\footnote{Il valore di 0.30 è stato calcolato dal rapporto 22/78, derivato dalle medie di Ohloh \url{https://www.ohloh.net/p/firefox/factoids\#FactoidCommentsLow}}.
 \end{itemize}
 
-\subsubsection{Flusso di informazioni}%DA TOGLIERE
-\label{4.2.6}
-Valore che indica il flusso di informazioni passanti per un modulo.
-Con:
-\begin{itemize}
-\item \grassetto{Fan-in}: numero di moduli che passano informazioni al modulo in esame;
-\item \grassetto{Fan-out}: numero di moduli a cui il modulo in esame passa informazioni.
-\end{itemize}
-il valore calcolato è:
-\begin{math}(lunghezza\:funzione)2 * Fan-in * Fan-out\end{math}
-
 \subsubsection{Copertura del codice}
 \label{4.2.9}
-Questo fattore indica la percentuale di codice coperto durante l'esecuzione dei test. Più alta sarà la percentuale, minore sarà la possibilità di errori riscontrabili nell'esecuzione del software. Per abbassare questo questo indice sarà sufficiente scrivere metodi semplici che non necessitino di testing. Il valore ideale di 100\% indica che tutte le porzioni di codice sono testate da uno o più test.
+Questo fattore indica la percentuale di codice coperto durante l'esecuzione dei test. Più alta sarà la percentuale, minore sarà la possibilità di errori riscontrabili nell'esecuzione del software. Per abbassare questo indice sarà sufficiente scrivere metodi semplici che non necessitino di testing. Il valore ideale di 100\% indica che tutte le porzioni di codice sono testate da uno o più test.
 Gli obiettivi stimati per questa metrica sono:
 \begin{itemize}
 \item \grassetto{Obiettivo Sufficiente}: [42\%--65\%];
@@ -470,7 +459,7 @@ Gli obiettivi stimati per questa metrica sono:
 
 \subsubsection{Indice Gulpease}
 L'indice Gulpease è un indice di leggibilità del testo che basa il suo calcolo su componenti del testo enumerabili meccanicamente, così da rendere automatico il processo di Verifica. Consente di misurare la complessità dello stile di un documento.
-L'indice di Gulpease considera due variabili linguistiche: la lunghezza della parola e la lunghezza della frase rispetto al numero delle lettere.\\
+L'indice di Gulpease considera due variabili linguistiche: la lunghezza della parola e la lunghezza della frase rispetto al numero di lettere.\\
 La formula per il suo calcolo è la seguente:
 \\
 \begin{center}
