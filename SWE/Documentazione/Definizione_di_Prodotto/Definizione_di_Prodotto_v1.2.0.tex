@@ -110,6 +110,9 @@ attività di codifica.
 \subsubsection{Informativi}
 \begin{itemize}
 \item \grassetto{AngularJS API}: \url{https://docs.angularjs.org/api};
+\item \grassetto{MongooseJS API}: \url{http://mongoosejs.com/docs/api.html};
+\item \grassetto{MongoDB API per Node.js}: \url{http://mongodb.github.io/node-mongodb-native/};
+\item \grassetto{Node.js API}: \url{http://nodejs.org/api/}.
 \end{itemize}
 
 \newpage
@@ -139,14 +142,14 @@ possiede. Lo stesso vale per i valori ritornati da una funzione JavaScript, i qu
 
 
 
-
 \subsection{Strumenti di lavoro}
-Gli strumenti di lavoro sono trattati nella sezione XXXXX del documento di					%idem con patate.
+Gli strumenti di lavoro sono trattati nella sezione XXXXX del documento di	%idem con patate.
 Gli standard di documentazione del codice e le norme da applicare nelle attività 
 di Codifica sono specificati nel documento di \emph{Norme\_{}di\_{}Progetto\_{}v\versioneNormeDiProgetto{}.pdf}.
 
 
 \newpage
+
 
 \section{Namespace MaaP}
 %qui ci va la figura della vista generale dei package
@@ -183,7 +186,7 @@ Per ultima cosa, il \textit{dispatcher} gestisce eventuali richieste di risorse 
  \begin{description}
  \item[Gestione Collection e Document]
  \begin{mldescription}
-  \mlitem{get('/api/collection/list', passport.checkAuthenticated, \\datamanager.sendCollectionsList)} \hfill \\
+  \mlitem{get('/api/collection/list', passport.checkAuthenticated, \\datamanager.sendCollectionsList)} \hfill
   \begin{description}
    \item[Parametri] \hfill 
     \begin{description}
@@ -198,7 +201,7 @@ Per ultima cosa, il \textit{dispatcher} gestisce eventuali richieste di risorse 
    Intercetta la richiesta di generare l'elenco delle Collection per visualizzarlo, verificando che essa sia autenticata e richiama il metodo \textit{sendCollectionsList} del \textit{@datamanager}.
   \end{description}
   
-  \mlitem{get('/api/collection/:col\_id', passport.checkAuthenticated, \\datamanager.sendCollection)}\hfill \\   
+  \mlitem{get('/api/collection/:col\_id', passport.checkAuthenticated, \\datamanager.sendCollection)}\hfill 
   \begin{description}
    \item[Parametri] \hfill 
     \begin{description}
@@ -213,7 +216,7 @@ Per ultima cosa, il \textit{dispatcher} gestisce eventuali richieste di risorse 
   Intercetta la richiesta di generare l'elenco dei Document all'interno di una Collection specificata con \textit{:col\_id}. Verifica che essa sia autenticata e richiama il metodo \textit{sendDocument} del \textit{@datamanager}.
   \end{description}
   
-  \mlitem{get('/api/collection/:col\_id/:doc\_id', passport.checkAuthenticated,\\datamanager.sendDocument)} \hfill \\
+  \mlitem{get('/api/collection/:col\_id/:doc\_id', passport.checkAuthenticated,\\datamanager.sendDocument)} \hfill 
   \begin{description}
    \item[Parametri] \hfill 
     \begin{description}
@@ -228,7 +231,7 @@ Per ultima cosa, il \textit{dispatcher} gestisce eventuali richieste di risorse 
   Intercetta la richiesta di generare i dati di un Document specificato con \textit{:doc\_id} all'interno della Collection specificata con :col\_id per visualizzarli. Verifica che essa sia autenticata e richiama il metodo \textit{sendDocument} del \textit{@datamanager}.
   \end{description}
   
-  \mlitem{get('/api/collection/:col\_id/:doc\_id/edit', passport.checkAuthenticatedAdmin, \\datamanager.sendDocumentEdit)} \hfill \\
+  \mlitem{get('/api/collection/:col\_id/:doc\_id/edit', passport.checkAuthenticatedAdmin, \\datamanager.sendDocumentEdit)} \hfill 
   \begin{description}
    \item[Parametri] \hfill 
     \begin{description}
@@ -243,7 +246,7 @@ Per ultima cosa, il \textit{dispatcher} gestisce eventuali richieste di risorse 
   Intercetta la richiesta di generare i dati di un Document specificato con \textit{:doc\_id} all'interno della Collection specificata con :col\_id per modificarli. Verifica che essa sia autenticata e richiama il metodo \textit{sendDocumentEdit} del \textit{@datamanager}.
   \end{description}
   
-  \mlitem{put('/api/collection/:col\_id/:doc\_id/edit', passport.checkAuthenticatedAdmin, \\datamanager.updateDocument)} \hfill \\
+  \mlitem{put('/api/collection/:col\_id/:doc\_id/edit', passport.checkAuthenticatedAdmin, \\datamanager.updateDocument)} \hfill 
   \begin{description}
    \item[Parametri] \hfill 
     \begin{description}
@@ -258,7 +261,7 @@ Per ultima cosa, il \textit{dispatcher} gestisce eventuali richieste di risorse 
   Intercetta la richiesta di modificare i dati di un Document specificato con \textit{:doc\_id} all'interno della Collection specificata con :col\_id. Verifica che essa sia autenticata come amministratore e richiama il metodo \textit{updateDocument} del \textit{@datamanager}.
   \end{description}
   
-  \mlitem{delete('/api/collection/:col\_id/:doc\_id/edit', passport.checkAuthenticatedAdmin, \\datamanager.removeDocument)} \hfill \\
+  \mlitem{delete('/api/collection/:col\_id/:doc\_id/edit', passport.checkAuthenticatedAdmin, \\datamanager.removeDocument)} \hfill 
   \begin{description}
    \item[Parametri] \hfill 
     \begin{description}
@@ -277,7 +280,7 @@ Per ultima cosa, il \textit{dispatcher} gestisce eventuali richieste di risorse 
  
  \item[Gestione Profilo Utente]
  \begin{mldescription}
-   \mlitem{get('/api/profile', passport.checkAuthenticated, \\usermanager.sendUserProfile)}\hfill \\
+   \mlitem{get('/api/profile', passport.checkAuthenticated, \\usermanager.sendUserProfile)}\hfill 
    \begin{description}
     \item[Parametri] \hfill
      \begin{description}
@@ -292,7 +295,7 @@ Per ultima cosa, il \textit{dispatcher} gestisce eventuali richieste di risorse 
     Intercetta la richiesta di generare i dati del profilo utente per visualizzarli, verificando che essa sia autenticata e richiama il metodo \textit{sendUserProfile} del \textit{@usermanager}.
     \end{description}
     
-   \mlitem{get('/api/profile/edit', passport.checkAuthenticated, \\usermanager.sendUserProfileEdit)} \hfill \\
+   \mlitem{get('/api/profile/edit', passport.checkAuthenticated, \\usermanager.sendUserProfileEdit)} \hfill 
    \begin{description}
     \item[Parametri] \hfill
      \begin{description}
@@ -307,7 +310,7 @@ Per ultima cosa, il \textit{dispatcher} gestisce eventuali richieste di risorse 
    Intercetta la richiesta di generare i dati del profilo utente per modificarli, verificando che essa sia autenticata e richiama il metodo \textit{sendUserProfileEdit} del \textit{@usermanager}.
    \end{description} 
    
-   \mlitem{put('/api/profile/edit', passport.checkAuthenticated, \\usermanager.updateUserProfile)} \hfill \\
+   \mlitem{put('/api/profile/edit', passport.checkAuthenticated, \\usermanager.updateUserProfile)} \hfill 
    \begin{description}
     \item[Parametri] \hfill
      \begin{description}
@@ -326,7 +329,7 @@ Per ultima cosa, il \textit{dispatcher} gestisce eventuali richieste di risorse 
  
  \item[Gestione Utenti] 
   \begin{mldescription}
-    \mlitem{get('/api/users/list', passport.checkAuthenticatedAdmin,\\usermanager.getUsersList)} \hfill \\
+    \mlitem{get('/api/users/list', passport.checkAuthenticatedAdmin,\\usermanager.getUsersList)} \hfill 
     \begin{description}
     \item[Parametri] \hfill
      \begin{description}
@@ -341,7 +344,7 @@ Per ultima cosa, il \textit{dispatcher} gestisce eventuali richieste di risorse 
     Intercetta la richiesta di generare l'elenco degli Utenti per visualizzarlo, verificando che essa sia autenticata come ammistratore e richiama il metodo \textit{getUsersListionsList} del \textit{@usermanager}.
     \end{description} 
     
-    \mlitem{get('/api/users/:user\_id', passport.checkAuthenticatedAdmin,\\usermanager.sendUser)} \hfill \\
+    \mlitem{get('/api/users/:user\_id', passport.checkAuthenticatedAdmin,\\usermanager.sendUser)} \hfill
     \begin{description}
     \item[Parametri] \hfill
      \begin{description}
@@ -356,7 +359,7 @@ Per ultima cosa, il \textit{dispatcher} gestisce eventuali richieste di risorse 
     Intercetta la richiesta di generare i dati di un Utente specificato con :user\_id per visualizzarli. Verifica che essa sia autenticata come amministratore e richiama il metodo \textit{sendUser} del \textit{@usermanager}.
     \end{description} 
     
-    \mlitem{get('/api/users/:user\_id/edit', passport.checkAuthenticatedAdmin, \\usermanager.sendUserEdit)} \hfill \\
+    \mlitem{get('/api/users/:user\_id/edit', passport.checkAuthenticatedAdmin, \\usermanager.sendUserEdit)} \hfill 
     \begin{description}
     \item[Parametri] \hfill
      \begin{description}
@@ -371,7 +374,7 @@ Per ultima cosa, il \textit{dispatcher} gestisce eventuali richieste di risorse 
     Intercetta la richiesta di generare i dati di un Utente specificato per con :user\_id per modificarli. Verifica che essa sia autenticata come amministratore e richiama il metodo \textit{sendUserEdit} del \textit{@usermanager}.
     \end{description} 
     
-    \mlitem{put('/api/users/:user\_id/edit', passport.checkAuthenticatedAdmin,\\usermanager.updateUser)} \hfill \\
+    \mlitem{put('/api/users/:user\_id/edit', passport.checkAuthenticatedAdmin,\\usermanager.updateUser)} \hfill 
     \begin{description}
     \item[Parametri] \hfill
      \begin{description}
@@ -386,7 +389,7 @@ Per ultima cosa, il \textit{dispatcher} gestisce eventuali richieste di risorse 
     Intercetta la richiesta di modificare i dati di un Utente specificato per con :user\_id. Verifica che essa sia autenticata come amministratore e richiama il metodo \textit{updateUser} del \textit{@usermanager}.
     \end{description}
     
-    \mlitem{delete('/api/users/:user\_id/edit', passport.checkAuthenticatedAdmin,\\usermanager.removeUser)} \hfill \\
+    \mlitem{delete('/api/users/:user\_id/edit', passport.checkAuthenticatedAdmin,\\usermanager.removeUser)} \hfill 
     \begin{description}
     \item[Parametri] \hfill
      \begin{description}
@@ -405,7 +408,7 @@ Per ultima cosa, il \textit{dispatcher} gestisce eventuali richieste di risorse 
  
  \item[Gestione Query più utilizzate]
  \begin{mldescription}
-    \mlitem{get('/api/queries/list', passport.checkAuthenticatedAdmin,\\datamanager.getTopQueries)} \hfill \\
+    \mlitem{get('/api/queries/list', passport.checkAuthenticatedAdmin,\\datamanager.getTopQueries)} \hfill 
     \begin{description}
     \item[Parametri] \hfill
      \begin{description}
@@ -420,7 +423,7 @@ Per ultima cosa, il \textit{dispatcher} gestisce eventuali richieste di risorse 
     Intercetta la richiesta di generare l'elenco delle query più utilizzate. Verifica che essa sia autenticata come amministratore e richiama il metodo \textit{getTopQueries} del \textit{@datamanager}.
     \end{description}
     
-    \mlitem{delete('/api/queries/list', passport.checkAuthenticatedAdmin,\\datamanager.resetQueries)} \hfill \\
+    \mlitem{delete('/api/queries/list', passport.checkAuthenticatedAdmin,\\datamanager.resetQueries)} \hfill 
     \begin{description}
     \item[Parametri] \hfill
      \begin{description}
@@ -439,7 +442,7 @@ Per ultima cosa, il \textit{dispatcher} gestisce eventuali richieste di risorse 
  
  \item[Gestione Indici nel Database di analisi]
   \begin{mldescription}
-    \mlitem{get('/api/indexes', passport.checkAuthenticatedAdmin,\\datamanager.getIndexesList)} \hfill \\
+    \mlitem{get('/api/indexes', passport.checkAuthenticatedAdmin,\\datamanager.getIndexesList)} \hfill 
     \begin{description}
     \item[Parametri] \hfill
      \begin{description}
@@ -454,7 +457,7 @@ Per ultima cosa, il \textit{dispatcher} gestisce eventuali richieste di risorse 
     Intercetta la richiesta di generare l'elenco degli indici esistenti sul database di analisi. Verifica che essa sia autenticata come amministratore e richiama il metodo \textit{getIndexesList} del \textit{@datamanager}.
     \end{description}
     
-    \mlitem{put('/api/indexes', passport.checkAuthenticatedAdmin,\\datamanager.createIndex)} \hfill \\
+    \mlitem{put('/api/indexes', passport.checkAuthenticatedAdmin,\\datamanager.createIndex)} \hfill 
     \begin{description}
     \item[Parametri] \hfill
      \begin{description}
@@ -469,7 +472,7 @@ Per ultima cosa, il \textit{dispatcher} gestisce eventuali richieste di risorse 
     Intercetta la richiesta di inserire un indice nel database di analisi. Verifica che essa sia autenticata come amministratore e richiama il metodo \textit{createIndex} del \textit{@datamanager}.
     \end{description}
     
-    \mlitem{delete('/api/indexes/:index\_name', passport.checkAuthenticatedAdmin,\\datamanager.deleteIndex)} \hfill \\
+    \mlitem{delete('/api/indexes/:index\_name', passport.checkAuthenticatedAdmin,\\datamanager.deleteIndex)} \hfill 
  \begin{description}
     \item[Parametri] \hfill
      \begin{description}
@@ -520,7 +523,7 @@ Per ultima cosa, il \textit{dispatcher} gestisce eventuali richieste di risorse 
  
  \mlitem{get('/loggedin', function(req, res) \{ res.send(req.isAuthenticated() ? req.user : '0'); \})}
  \begin{description}
-  \item[Parametri] \hfill
+  \item[Parametri]
    \begin{mldescription}
     \mlitem{'/loggedin'} \hfill \\
     Stringa contenente l'indirizzo della API da richiamare.
@@ -533,7 +536,7 @@ Per ultima cosa, il \textit{dispatcher} gestisce eventuali richieste di risorse 
  
  \mlitem{post('/api/login', passport.checkNotAuthenticated, passport.authenticate, function(req, res) \{ res.send(req.user); \})}
  \begin{description}
-  \item[Parametri] \hfill
+  \item[Parametri]
    \begin{mldescription}
     \mlitem{'/api/login'} \hfill \\
     Stringa contenente l'indirizzo della API da richiamare.
@@ -550,7 +553,7 @@ Per ultima cosa, il \textit{dispatcher} gestisce eventuali richieste di risorse 
  
  \mlitem{get('/api/logout', passport.checkAuthenticated, function(req, res) \{ req.logout(); res.send(200); \})}
  \begin{description}
-  \item[Parametri] \hfill
+  \item[Parametri]
    \begin{mldescription}
     \mlitem{'/api/logout'} \hfill \\
     Stringa contenente l'indirizzo della API da richiamare.
@@ -569,7 +572,7 @@ Per ultima cosa, il \textit{dispatcher} gestisce eventuali richieste di risorse 
  \begin{mldescription}
  \mlitem{get('*', function(req, res) \{ res.sendfile(path.join(config.static\_assets.dir, 'index.html')); \})}
  \begin{description}
-  \item[Parametri] \hfill
+  \item[Parametri]
    \begin{mldescription}
     \mlitem{'*'} \hfill \\
     Stringa contentente l'indirizzo delle API da richiamare. In questo caso, l'idirizzo è una stringa qualsiasi.
@@ -583,9 +586,9 @@ Per ultima cosa, il \textit{dispatcher} gestisce eventuali richieste di risorse 
 
 \item[Inizializzazione] \hfill
  \begin{description}
-  \item[dispatcherInit(app)]
+  \item[dispatcherInit(app)] \hfill 
   \begin{description}
-   \item[Parametri]
+   \item[Parametri] \hfill 
     \begin{description}
      \item[app] \hfill \\
      Applicazione di \textit{Express}.
@@ -609,7 +612,7 @@ Per ultima cosa, il \textit{dispatcher} gestisce eventuali richieste di risorse 
  \end{itemize}
  \item[Metodi] \hfill
   \begin{description}
-    \item[initFrontController(app)] \hfill \\
+    \item[initFrontController(app)] \hfill 
     \begin{description}
        		\item[Parametri] \hfill
        			\begin{description}
@@ -632,7 +635,7 @@ Per ultima cosa, il \textit{dispatcher} gestisce eventuali richieste di risorse 
  \end{itemize}
  \item[Metodi] \hfill
   \begin{description}
-    \item[init(app)]\hfill \\
+    \item[init(app)]\hfill 
     \begin{description}
            		\item[Parametri] \hfill
            			\begin{description}
@@ -658,13 +661,13 @@ Controller che si occupa dell'inizializzazione e gestione del modulo passort per
   \end{itemize}
    \item[Metodi] \hfill
     \begin{description}
-     \item[authenticate()] \hfill \\
+     \item[authenticate()] \hfill 
       \begin{description}
         \item[Descrizione] \hfill \\
           Imposta il metodo di autenticazione, nel nostro caso come local.
       \end{description}
      
-     \item[initPassport(app)] \hfill \\
+     \item[initPassport(app)] \hfill 
      \begin{description}
           \item[Parametri] \hfill
           \begin{description}
@@ -675,7 +678,7 @@ Controller che si occupa dell'inizializzazione e gestione del modulo passort per
           Inizializza il controller \textit{@passport}, inizializzando e avviando la sessione del modulo \textit{@passport} e definisce le strategie di autenticazione.
             \end{description}
             
-     \item[checkAuthenticatedAdmin(req, res, next)] \hfill \\
+     \item[checkAuthenticatedAdmin(req, res, next)] \hfill 
           \begin{description}
             \item[Parametri] \hfill
             \begin{description}
@@ -689,7 +692,7 @@ Controller che si occupa dell'inizializzazione e gestione del modulo passort per
             \item[Descrizione] \hfill \\
             Verifica che la richiesta proveniente dal client sia autenticata e che il livello dell'utente sia 1. 
          \end{description}
-     \item[checkAuthenticated(req, res, next)] \hfill \\
+     \item[checkAuthenticated(req, res, next)] \hfill 
      \begin{description}
       \item[Parametri] \hfill
       \begin{description}
@@ -705,7 +708,7 @@ Controller che si occupa dell'inizializzazione e gestione del modulo passort per
       Verifica che la richiesta proveniente dal client sia autenticata.
      \end{description}
      
-     \item[checkNotAuthenticated(req, res, next)] \hfill \\
+     \item[checkNotAuthenticated(req, res, next)] \hfill 
      \begin{description}
       \item[Parametri] \hfill
       \begin{description}
@@ -739,7 +742,7 @@ Package che racchiude i database, le loro operazioni di accesso e i file DSL con
    \end{itemize}
  \item[Metodi] \hfill
  \begin{description}
- \item[initDB(app)] \hfill \\
+ \item[initDB(app)] \hfill 
  \begin{description}
     		\item[Parametri] \hfill
     			\begin{description}
@@ -749,7 +752,7 @@ Package che racchiude i database, le loro operazioni di accesso e i file DSL con
     		\item[Descrizione] \hfill \\
     		Si occupa dell'inizializzazione dei database. Effettua la connessione al database utenti e a quello di analisi. Inizializza lo userDBManager, invoca addAdminDefault e inizializza il \textit{@dataDBManager}. Viene esportata come init().
     	\end{description}
-  \item[addAdminDefault(config, userDB))] \hfill \\
+  \item[addAdminDefault(config, userDB))] \hfill 
   \begin{description}
       		\item[Parametri] \hfill
       			\begin{description}
@@ -777,7 +780,7 @@ Package che racchiude i database, le loro operazioni di accesso e i file DSL con
     \end{itemize}
 \item[Metodi] \hfill
  \begin{description}
- \item[init(app)] \hfill \\
+ \item[init(app)] \hfill 
  \begin{description}
      		\item[Parametri] \hfill
      			\begin{description}
@@ -801,7 +804,7 @@ Package che racchiude i database, le loro operazioni di accesso e i file DSL con
   \end{itemize}
 \item[Metodi] \hfill
  \begin{description}
- \item[init(app)] \hfill \\
+ \item[init(app)] \hfill 
 \begin{description}
      		\item[Parametri] \hfill
      			\begin{description}
@@ -837,7 +840,7 @@ Prepara le query da effettuare e contatta il \textit{@DataRetrieverAnalysis} per
  
  \item[Metodi] \hfill
  \begin{description}
- \item[sendCollectionList(req, res)] \hfill \\
+ \item[sendCollectionList(req, res)] \hfill 
  \begin{description}
  \item[Parametri] \hfill
   \begin{description}
@@ -850,7 +853,7 @@ Prepara le query da effettuare e contatta il \textit{@DataRetrieverAnalysis} per
  Richiede al \textit{@DataRetrieverAnalysis} l'elenco delle Collection e richiama il metodo di creazione dell'oggetto Collection del \textit{@JSonComposer}. Infine ritorna l'oggetto CollectionList ottenuto.
  \end{description}
  
- \item[sendCollection(req, res)] \hfill \\
+ \item[sendCollection(req, res)] \hfill 
  \begin{description}
  \item[Parametri] \hfill
   \begin{description}
@@ -863,7 +866,7 @@ Prepara le query da effettuare e contatta il \textit{@DataRetrieverAnalysis} per
  Esegue una chiamata asincrona al \textit{@DataRetrieverAnalysis} per ottenere una particolare Collection. Nel caso la Collection esista, viene richiamato il metodo \textit{createCollection} di \textit{@JSonComposer} per inviare al richiedente l'oggetto Collection desiderato. In caso la Collection non esista nel Server, viene ritornato il codice di errore \textit{http} 404 al Client.
  \end{description}
  
- \item[sendDocument(req, res)] \hfill \\
+ \item[sendDocument(req, res)] \hfill 
  \begin{description}
  \item[Parametri] \hfill
   \begin{description}
@@ -876,7 +879,7 @@ Prepara le query da effettuare e contatta il \textit{@DataRetrieverAnalysis} per
  Esegue una chiamata asincrona al \textit{@DataRetrieverAnalysis} per ottenere un particolare Document. Nel caso il Document esista, viene richiamato il metodo \textit{createDocument} di \textit{@JSonComposer} per inviare al richiedente l'oggetto Document desiderato. In caso il Document non esista nel Server, viene ritornato il codice di errore \textit{http} 404 al Client.
  \end{description}
  
- \item[sendDocumentEdit(req, res)] \hfill \\
+ \item[sendDocumentEdit(req, res)] \hfill 
  \begin{description}
  \item[Parametri] \hfill
   \begin{description}
@@ -889,7 +892,7 @@ Prepara le query da effettuare e contatta il \textit{@DataRetrieverAnalysis} per
  Esegue una chiamata asincrona al \textit{@DataRetrieverAnalysis} per ottenere un particolare Document modificabile. Nel caso il Document esista, viene richiamato il metodo \textit{createDocument} di \textit{@JSonComposer} per inviare al richiedente l'oggetto Document desiderato. In caso il Document non esista nel Server, viene ritornato il codice di errore \textit{http} 404 al Client.
  \end{description}
  
- \item[updateDocument(req, res)] \hfill \\
+ \item[updateDocument(req, res)] \hfill 
  \begin{description}
  \item[Parametri] \hfill
   \begin{description}
@@ -902,7 +905,7 @@ Prepara le query da effettuare e contatta il \textit{@DataRetrieverAnalysis} per
  Esegue una chiamata asincrona al metodo \textit{updateDocument} di \textit{@DataRetrieverAnalysis} per modificare un Document esistente nel Server. Nel caso la modifica effettuata dal \textit{@DataRetrieverAnalysis} vada a buon fine, viene ritornato al Client un codice \textit{http} di successo "200", altrimenti viene mandato il codice di errore \textit{http} 404.
  \end{description}
  
- \item[removeDocument(req, res)] \hfill \\
+ \item[removeDocument(req, res)] \hfill 
  \begin{description}
  \item[Parametri] \hfill
   \begin{description}
@@ -1070,7 +1073,7 @@ Viene richiesto il modello della Collection di nome \textit{collection\_name}. S
 			Richiede il modello della Collection \textit{collection\_name} e il file DSL associato. Viene controllato se l'output del DSL applica delle modifiche alla visualizzazione standard. Se ciò avviene, vengono impostate le etichette del JSON da inviare al Client come specificato nel file DSL. I campi compositi del database di analisi vengono processati e viene inviato solamente il campo \textit{id} dei campi compositi. Inoltre vengono interpretate eventuali istruzioni di \textit{populate} da applicare prima di effettuare la query. Infine, nel caso la query abbia successo, viene richiamata la funzione \textit{callback} con argomento il JSON ottenuto dalla query. Se invece la query non è andata a buon fine, viene chiamata la \textit{callback} con argomento vuoto.
 		\end{description}
 	
-	\mlitem{updateDocument(collection\_name, document\_id, newDocumentData, callback)} 
+	\mlitem{updateDocument(collection\_name, document\_id, newDocumentData, callback)} \hfill
 		\begin{description}
 			\item[Parametri] \hfill
 				\begin{description}
@@ -1266,11 +1269,11 @@ Inoltre dialoga direttamente con \textit{@MongooseDBFramework} per l'esecuzione 
 \begin{description}
  \item[Descrizione] \hfill \\
  Modulo che dialoga direttamente con \textit{@MongooseDBFramework} per effettuare le query di visualizzazione e modifica dei dati contenuti nel database degli utenti.
- \item[Dipendenze] \hfill \\
+ \item[Dipendenze] \hfill 
  	\begin{itemize}
  		\item @MongooseDBFramework.
  	\end{itemize}
- \item[Metodi] \hfill \\
+ \item[Metodi] \hfill 
  	\begin{mldescription}
  		\mlitem{addUser(email, password, level, callback)} \hfill
  			\begin{description}
@@ -1364,22 +1367,22 @@ Inoltre dialoga direttamente con \textit{@MongooseDBFramework} per l'esecuzione 
 \end{description}
 
 
-\paragraph{::IndexManager}
+\paragraph{::IndexManager} \hfill \\
 Package realizzato per creare e gestire gli indici utilizzati nel database di analisi.
-\subparagraph{@IndexManager}
+\subparagraph{@IndexManager} \hfill
 \begin{description}
- \item[Descrizione]
+ \item[Descrizione] \hfill \\
  Modulo del ModelServer che si occupa di creare e gestire gli indici utilizzati nel database di analisi. 
  \item[Metodi]
   \begin{mldescription}
-   \mlitem{getModel(collection\_name}
+   \mlitem{getModel(collection\_name)}
 	\begin{description}
-	 \item[Parametri]
+	 \item[Parametri] \hfill
 	  \begin{description}
 	   \item[collection\_name] \hfill \\
 	   Stringa contenente il nome della Collection di cui ottenere il modello.
 	  \end{description}
-	 \item[Dipendenza]
+	 \item[Dipendenza] \hfill
 	  \begin{itemize}
 	   \item @MongooseDBAnalysis.
 	  \end{itemize}
@@ -1389,14 +1392,14 @@ Package realizzato per creare e gestire gli indici utilizzati nel database di an
     
    \mlitem{addQuery(collection\_name, select)}
     \begin{description}
-	 \item[Parametri]
+	 \item[Parametri] \hfill
 	  \begin{description}
 	   \item[collection\_name] \hfill \\
 	   Stringa contenente il nome della Collection su cui è stata effettuata la query.
 	   \item[select] \hfill \\
 	   Array contenente i campi visualizzati della Collection.
 	  \end{description}
-	 \item[Dipendenza]
+	 \item[Dipendenza] \hfill
 	  \begin{itemize}
 	   \item @MongooseDBFramework.query.
 	  \end{itemize}
@@ -1406,12 +1409,12 @@ Package realizzato per creare e gestire gli indici utilizzati nel database di an
     
    \mlitem{resetQueries(callback)}
     \begin{description}
-	 \item[Parametri]
+	 \item[Parametri] \hfill
 	  \begin{description}
 	   \item[callback] \hfill \\
 	   Funzione da richiamare alla fine della funzione \textit{resetQuery}.
 	  \end{description}
-	 \item[Dipendenze]
+	 \item[Dipendenze] \hfill
 	  \begin{itemize}
 	   \item @MongooseDBFramework.query;
 	   \item @MongooseDBFramework.connection.
@@ -1422,7 +1425,7 @@ Package realizzato per creare e gestire gli indici utilizzati nel database di an
     
    \mlitem{getQueries(page, perpage, n\_elements, callback)}
     \begin{description}
-	 \item[Parametri]
+	 \item[Parametri] \hfill
 	  \begin{description}
 	   \item[page] \hfill \\
 	   Numero intero che indica la pagina delle query da visualizzare.
@@ -1433,7 +1436,7 @@ Package realizzato per creare e gestire gli indici utilizzati nel database di an
 	   \item[callback] \hfill \\
 	   Funzione da richiamare alla fine della funzione \textit{getQueries}.
 	  \end{description}
-	 \item[Dipendenza]
+	 \item[Dipendenze] \hfill
 	  \begin{itemize}
 	   \item @MongooseDBFramework;	   
 	   \item @MongooseDBFramework.query.
@@ -1460,7 +1463,7 @@ Package realizzato per creare e gestire gli indici utilizzati nel database di an
 	   \item[callback] \hfill \\
 	   Funzione da richiamare alla fine della creazione dell'indice.
 	  \end{description}
-	 \item[Dipendenza]
+	 \item[Dipendenze] \hfill
 	  \begin{itemize}
 	   \item @MongooseDBFramework;	   
 	   \item @MongooseDBFramework.query.
@@ -1479,11 +1482,11 @@ Package realizzato per creare e gestire gli indici utilizzati nel database di an
  \item[Descrizione] \hfill \\
  Modulo che si occupa della preparazione e della formattazione degli oggetti JSON inviati dal Server al Client.
  
- \item[Metodi] \hfill
+ \item[Metodi]
  \begin{mldescription}
-  \mlitem{createCollectionsList(collectionsList)} \hfill \\
+  \mlitem{createCollectionsList(collectionsList)} \hfill
    \begin{description}
-    \item[Parametri]
+    \item[Parametri] \hfill
      \begin{description}
       \item[collectionsList] \hfill \\
       Array di Collection.
@@ -1492,7 +1495,7 @@ Package realizzato per creare e gestire gli indici utilizzati nel database di an
     La funzione riceve come parametro un Array di Collection, crea e ritorna l'oggetto JSON rappresentante l'insieme delle Collection.
    \end{description}
   
-  \mlitem{checkLabels(labelsArray)} \hfill \\
+  \mlitem{checkLabels(labelsArray)} \hfill
    \begin{description}
     \item[Parametri]
      \begin{description}
@@ -1503,7 +1506,7 @@ Package realizzato per creare e gestire gli indici utilizzati nel database di an
     Scorre l'Array di label e ritorna \textit{true} se fra essi è presente il campo \textit{\_id} o il flag \textit{\_\_IDLABEL2SHOW\_\_}, ritorna \textit{false} altrimenti.
    \end{description}
    
-  \mlitem{createCollection(labels, data, config)} \hfill \\
+  \mlitem{createCollection(labels, data, config)} \hfill
    \begin{description}
     \item[Parametri]
      \begin{description}
@@ -1518,7 +1521,7 @@ Package realizzato per creare e gestire gli indici utilizzati nel database di an
     Scorre l'intero Array di dati della Collection e salva i suoi elementi in un Array locale. Esegue un controllo sull'Array di label per identificare la presenza dell'etichetta \textit{\_\_IDLABEL2SHOW\_\_}, la quale definisce di far visualizzare il campo \textit{\_id} nel Client. Dopo aver formattato correttamente gli elementi della Collection, ritorna il JSON corrispondente, aggiungendo l'oggetto \textit{config} contenente le configurazioni dell'oggetto utili al Client.
    \end{description}
    
-   \mlitem{createDocument(labels, data)} \hfill \\
+   \mlitem{createDocument(labels, data)} \hfill
    \begin{description}
     \item[Parametri]
      \begin{description}
@@ -1531,7 +1534,7 @@ Package realizzato per creare e gestire gli indici utilizzati nel database di an
     Scorre l'intero Array di dati del Document e salva i suoi elementi in un Array locale. Esegue un controllo sull'Array di label per identificare la presenza dell'etichetta \textit{\_\_IDLABEL2SHOW\_\_}, la quale definisce di far visualizzare il campo \textit{\_id} nel Client. Dopo aver formattato correttamente gli elementi del Document, ritorna il JSON corrispondente.
    \end{description}
    
-   \mlitem{createQueriesList(queries, config)} \hfill \\
+   \mlitem{createQueriesList(queries, config)} \hfill
    \begin{description}
     \item[Parametri]
      \begin{description}
@@ -1544,7 +1547,7 @@ Package realizzato per creare e gestire gli indici utilizzati nel database di an
     Viene creato localmente l'Array contenente le etichette dell'oggetto "lista di query". Viene successivamente scorso l'Array delle query e vengono copiati localmente i loro campi sensibili, per poi essere formattati correttamente. Infine viene realizzato e ritornato il JSON corrispondente, aggiungendo l'oggetto contenente le impostazioni di configurazione della lista di query.
    \end{description}
    
-   \mlitem{createIndexesList(indexes)} \hfill \\
+   \mlitem{createIndexesList(indexes)} \hfill
    \begin{description}
     \item[Parametri]
      \begin{description}
@@ -1555,7 +1558,7 @@ Package realizzato per creare e gestire gli indici utilizzati nel database di an
     Viene creato localmente l'Array contenente le etichette dell'oggetto "lista di indici". Viene successivamente scorso l'Array degli indici e vengono copiati localmente i loro campi sensibili, per poi essere formattati correttamente. Infine viene realizzato e ritornato il JSON corrispondente.
    \end{description}
    
-   \mlitem{createUserProfile(user)} \hfill \\
+   \mlitem{createUserProfile(user)} \hfill
    \begin{description}
     \item[Parametri]
      \begin{description}
@@ -1566,7 +1569,7 @@ Package realizzato per creare e gestire gli indici utilizzati nel database di an
     Viene interpretato il campo numerico \textit{level} e convertito nella stringa corrispondente al livello di accesso dell'utente da creare. Viene infine ritornato il JSON corrispondente.
    \end{description}
    
-   \mlitem{createUserProfileEdit(user)} \hfill \\
+   \mlitem{createUserProfileEdit(user)} \hfill
    \begin{description}
     \item[Parametri]
      \begin{description}
@@ -1577,7 +1580,7 @@ Package realizzato per creare e gestire gli indici utilizzati nel database di an
     Viene ritornato il JSON di un utente modificabile formattato correttamente.
    \end{description}
    
-   \mlitem{createUsersList(users, config)} \hfill \\
+   \mlitem{createUsersList(users, config)} \hfill
    \begin{description}
     \item[Parametri]
      \begin{description}
@@ -1590,7 +1593,7 @@ Package realizzato per creare e gestire gli indici utilizzati nel database di an
     Viene creato localmente l'Array delle etichette della lista utenti. Successivamente viene copiato in un Array locale ogni utente e il campo \textit{level} di ognuno viene interpretato e convertito nella stringa corrispondente. Infine viene assemblato il JSON della lista utenti e viene aggiunto l'oggetto contenente le impostazioni di configurazione della lista.
    \end{description}
    
-   \mlitem{createUser(user)} \hfill \\
+   \mlitem{createUser(user)} \hfill
    \begin{description}
     \item[Parametri]
      \begin{description}
@@ -1610,16 +1613,16 @@ Package realizzato per creare e gestire gli indici utilizzati nel database di an
 \begin{description}
  \item[Descrizione] \hfill \\
   Modulo del \textit{ModelServer} che si occupa controllare la presenza dei file DSL nell'apposita cartella definita nel file di configurazione e invoca il parser dei DSL.
- \item[Dipendendenze] \hfill \\
+ \item[Dipendendenze] \hfill 
  \begin{itemize}
  \item{fs};
   \item{path};
   \item{@DSLParser};
   \item{@schemaGenerator}.
  \end{itemize} 
- \item[Metodi] \hfill \\
+ \item[Metodi]
  \begin{mldescription}
- \mlitem{generateFunction(transformation)} \hfill \\
+ \mlitem{generateFunction(transformation)} \hfill 
   	\begin{description}
    		\item[Parametri] \hfill
    			\begin{description}
@@ -1629,7 +1632,7 @@ Package realizzato per creare e gestire gli indici utilizzati nel database di an
    		\item[Descrizione]
    		Si occupa di generare le funzioni JavaScript per gestire le trasformazioni dei dati definite nel DSL.
    	\end{description}
- \mlitem{deleteFolderRecursive(path)} \hfill \\
+ \mlitem{deleteFolderRecursive(path)} \hfill 
    	\begin{description}
     		\item[Parametri] \hfill
     			\begin{description}
@@ -1639,7 +1642,7 @@ Package realizzato per creare e gestire gli indici utilizzati nel database di an
     		\item[Descrizione]
     		Si occupa di cancellare i file e le cartelle all'interno della cartella \textit{path} specificata.
     	\end{description}
- \mlitem{checkDSL(app)} \hfill \\  	
+ \mlitem{checkDSL(app)} \hfill 
  	\begin{description}
     		\item[Parametri] \hfill
     			\begin{description}
@@ -1656,14 +1659,14 @@ Package realizzato per creare e gestire gli indici utilizzati nel database di an
 \begin{description}
  \item[Descrizione] \hfill \\
   Modulo del ModelServer che si occupa effettuare il parsing di un DSL.
- \item[Dipendendenze] \hfill \\
+ \item[Dipendendenze] \hfill
  \begin{itemize}
   \item{@JavascriptParser}.
  \end{itemize}
   
- \item[Metodi] \hfill \\
+ \item[Metodi] \hfill 
  \begin{mldescription}
- \mlitem{addField(collection,field)} \hfill \\ 
+ \mlitem{addField(collection,field)} \hfill 
  \begin{description}
      		\item[Parametri] \hfill
      			\begin{description}
@@ -1675,7 +1678,7 @@ Package realizzato per creare e gestire gli indici utilizzati nel database di an
      		\item[Descrizione]
      		Inizializza il campo field nell'Array della struttura del JSON, dove tale campo è definito nella struttura di default del JSON, con il valore di defalt.
  \end{description}
- \mlitem{checkFieldThrow((collection,field,root)}\hfill \\
+ \mlitem{checkFieldThrow((collection,field,root)}\hfill 
  \begin{description}
      		\item[Parametri] \hfill
      			\begin{description}
@@ -1689,7 +1692,7 @@ Package realizzato per creare e gestire gli indici utilizzati nel database di an
      		\item[Descrizione]
      		Chiama il metodo \textit{checkField} e se tale metodo ritorna \textbf{false} allora lancia un eccezione. Questo metodo serve per verificare che il campo sia definito. 
   \end{description}
- \mlitem{checkField(collection,field)} \hfill \\ 
+ \mlitem{checkField(collection,field)} \hfill 
  \begin{description}
      		\item[Parametri] \hfill
      			\begin{description}
@@ -1701,7 +1704,7 @@ Package realizzato per creare e gestire gli indici utilizzati nel database di an
      		\item[Descrizione]
      		Verifica se un campo è definito, se lo è ritorna \textbf{true}, altrimenti false.
   \end{description}
- \mlitem{checkFieldContentThrow(collection,field,root)} \hfill \\ 
+ \mlitem{checkFieldContentThrow(collection,field,root)} \hfill
  \begin{description}
      		\item[Parametri] \hfill
      			\begin{description}
@@ -1715,7 +1718,7 @@ Package realizzato per creare e gestire gli indici utilizzati nel database di an
      		\item[Descrizione]
      		Serve per verificare che il campo sia definito e non vuoto. Utilizza il metodo \textit{checkFieldContent} e se tale metodo ritorna false lancia un eccezione.
   \end{description}
- \mlitem{checkFieldContent(collection,field)} \hfill \\ 
+ \mlitem{checkFieldContent(collection,field)} \hfill 
  \begin{description}
      		\item[Parametri] \hfill
      			\begin{description}
@@ -1728,7 +1731,7 @@ Package realizzato per creare e gestire gli indici utilizzati nel database di an
      		Verifica se un campo è definito e non vuoto, se lo è ritorna true, altrimenti false.
   \end{description}
   
- \mlitem{IntValue(value,field)} \hfill \\
+ \mlitem{IntValue(value,field)} \hfill
  \begin{description}
      		\item[Parametri] \hfill
      			\begin{description}
@@ -1740,7 +1743,7 @@ Package realizzato per creare e gestire gli indici utilizzati nel database di an
      		\item[Descrizione]
      		Verifica che il valore sia numerico, se non lo è lancia un eccezione.
    \end{description}
- \mlitem{parseDSL(DSLstring)} \hfill \\
+ \mlitem{parseDSL(DSLstring)} \hfill
  \begin{description}
      		\item[Parametri] \hfill
      			\begin{description}
@@ -1757,14 +1760,14 @@ Package realizzato per creare e gestire gli indici utilizzati nel database di an
 \begin{description}
  \item[Descrizione] \hfill \\
   Modulo che si occupa dell'inizializzazione del \textit{@DSLManager}.
- \item[Dipendendenze] \hfill \\
+ \item[Dipendendenze] \hfill
  \begin{itemize}
   \item{@DSLManager}.
  \end{itemize}
   
- \item[Metodi] \hfill \\
+ \item[Metodi] \hfill
  \begin{mldescription}
-\mlitem{init(app)} \hfill \\
+\mlitem{init(app)} \hfill
  \begin{description}
      		\item[Parametri] \hfill
      			\begin{description}
@@ -1788,14 +1791,14 @@ Package realizzato per creare e gestire gli indici utilizzati nel database di an
 \begin{description}
  \item[Descrizione] \hfill \\
   Modulo che si occupa dell'inizializzazione del \textit{@DSLManager}.
- \item[Dipendendenze] \hfill \\
+ \item[Dipendendenza] \hfill
  \begin{itemize}
   \item{fs}.
  \end{itemize}
   
  \item[Metodi] \hfill \\
  \begin{mldescription}
- \mlitem{getPopulatedCollection(populateArray, key)} \hfill \\ 
+ \mlitem{getPopulatedCollection(populateArray, key)} \hfill
  \begin{description}
       		\item[Parametri] \hfill
       			\begin{description}
@@ -1807,7 +1810,7 @@ Package realizzato per creare e gestire gli indici utilizzati nel database di an
       		\item[Descrizione]
       		Verifica che sia presente all'interno di un array di oggetti un elemento con chiave uguale al parametro \textit{key}, se la trova ritorna la Collection corrispondente.
     \end{description}
- \mlitem{arrayAddElement(element, array)} \hfill \\ 
+ \mlitem{arrayAddElement(element, array)} \hfill
  \begin{description}
       		\item[Parametri] \hfill
       			\begin{description}
@@ -1819,7 +1822,7 @@ Package realizzato per creare e gestire gli indici utilizzati nel database di an
       			Verifica che l'oggetto non sia presente all'interno dell'Array e se non lo trova lo aggiunge.
       		\item[Descrizione]
     \end{description}
- \mlitem{generate(config, dslJson)} \hfill \\ 
+ \mlitem{generate(config, dslJson)} \hfill
  \begin{description}
       		\item[Parametri] \hfill
       			\begin{description}
