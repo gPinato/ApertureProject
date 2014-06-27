@@ -1,0 +1,269 @@
+\begin{center}
+\begin{longtable}{|p{12cm}|p{2cm}|}
+\toprule
+\multicolumn{1}{|p{12cm}}{\textbf{Componente}}
+& \multicolumn{1}{|p{2cm}}{\textbf{Test}}\\
+\midrule
+\endfirsthead
+\multicolumn{2}{l}{\footnotesize\itshape\tablename~\thetable: continua dalla pagina precedente} \\
+\toprule
+\multicolumn{1}{|p{12cm}}{\textbf{Componente}}
+& \multicolumn{1}{|p{2cm}}{\textbf{Test}}\\
+\midrule
+\endhead
+\midrule
+\multicolumn{2}{r}{\footnotesize\itshape\tablename~\thetable: continua nella prossima pagina} \\
+\endfoot
+\bottomrule
+\caption{Tracciamento componente-test unit\'{a} parte server}
+\endlastfoot
+
+\midrule
+maap\_server::controller::dispatcher:: dispatcherInit() & TU40\\
+
+\midrule
+maap\_server::controller::frontController:: initFrontController() & TU41\\
+
+
+\midrule
+maap\_server::controller::index:: init() & TU42\\
+
+\midrule
+maap\_server::controller::passport:: initPassport() & TU43\\
+
+\midrule
+maap\_server::controller::passport:: checkAuthenticatedAdmin() & TU43\\
+
+\midrule
+maap\_server::controller::passport:: checkAuthenticated() & TU43\\
+
+\midrule
+maap\_server::controller::passport:: checkNotAuthenticated() & TU43\\
+
+\midrule
+maap\_server::modelServer::database:: index::addAdminDefault() & TU44\\
+
+\midrule
+maap\_server::modelServer::database:: index::initDB() & TU44\\
+
+\midrule
+maap\_server::modelServer::database:: MongooseDBAnalysis::init() & TU45\\
+
+
+\midrule
+maap\_server::modelServer::database:: MongooseDBFramework::init() & TU46\\
+
+
+\midrule
+maap\_server::modelServer::dataManager:: DatabaseAnalysisManager::DatabaseAnalysisManager:: sendCollectionsList() & TU47\\
+
+\midrule
+maap\_server::modelServer::dataManager:: DatabaseAnalysisManager::DatabaseAnalysisManager:: sendCollection() & TU47\\
+
+\midrule
+maap\_server::modelServer::dataManager:: DatabaseAnalysisManager::DatabaseAnalysisManager:: sendDocument() & TU47\\
+
+\midrule
+maap\_server::modelServer::dataManager:: DatabaseAnalysisManager::DatabaseAnalysisManager:: sendDocumentEdit() & TU47\\
+
+\midrule
+maap\_server::modelServer::dataManager:: DatabaseAnalysisManager::DatabaseAnalysisManager:: updateDocument() & TU47\\
+
+\midrule
+maap\_server::modelServer::dataManager:: DatabaseAnalysisManager::DatabaseAnalysisManager:: removeDocument() & TU47\\
+
+\midrule
+maap\_server::modelServer::dataManager:: DatabaseAnalysisManager::DatabaseAnalysisManager:: resetQueries() & TU47\\
+
+\midrule
+maap\_server::modelServer::dataManager:: DatabaseAnalysisManager::DatabaseAnalysisManager:: getTopQueries() & TU47\\
+
+\midrule
+maap\_server::modelServer::dataManager:: DatabaseAnalysisManager::DatabaseAnalysisManager:: getIndexesList() & TU47\\
+
+\midrule
+maap\_server::modelServer::dataManager:: DatabaseAnalysisManager::DatabaseAnalysisManager:: createIndex() & TU47\\
+
+\midrule
+maap\_server::modelServer::dataManager:: DatabaseAnalysisManager::DatabaseAnalysisManager:: deleteIndex() & TU47\\
+
+\midrule
+maap\_server::modelServer::dataManager:: DatabaseAnalysisManager::DataRetrieverAnalysis:: getModel() & TU48\\
+
+\midrule
+maap\_server::modelServer::dataManager:: DatabaseAnalysisManager::DataRetrieverAnalysis:: getDocuments() & TU48\\
+
+\midrule
+maap\_server::modelServer::dataManager:: DatabaseAnalysisManager::DataRetrieverAnalysis:: getCollectionsList() & TU48\\
+
+\midrule
+maap\_server::modelServer::dataManager:: DatabaseAnalysisManager::DataRetrieverAnalysis:: applyTrasformations() & TU48\\
+
+\midrule
+maap\_server::modelServer::dataManager:: DatabaseAnalysisManager::DataRetrieverAnalysis:: sortDocumentsByLabels() & TU48\\
+
+\midrule
+maap\_server::modelServer::dataManager:: DatabaseAnalysisManager::DataRetrieverAnalysis:: getCollectionIndex() & TU48\\
+
+\midrule
+maap\_server::modelServer::dataManager:: DatabaseAnalysisManager::DataRetrieverAnalysis:: getDocumentShow() & TU48\\
+
+\midrule
+maap\_server::modelServer::dataManager:: DatabaseAnalysisManager::DataRetrieverAnalysis:: getDocumentShowEdit() & TU48\\
+
+\midrule
+maap\_server::modelServer::dataManager:: DatabaseAnalysisManager::DataRetrieverAnalysis:: updateDocument() & TU48\\
+
+\midrule
+maap\_server::modelServer::dataManager:: DatabaseAnalysisManager::DataRetrieverAnalysis:: removeDocument() & TU48\\
+
+
+\midrule
+maap\_server::modelServer::dataManager:: DatabaseUserManager::DatabaseUserManager:: checkMail() & TU49\\
+
+\midrule
+maap\_server::modelServer::dataManager:: DatabaseUserManager::DatabaseUserManager:: userSignup() & TU49\\
+
+\midrule
+maap\_server::modelServer::dataManager:: DatabaseUserManager::DatabaseUserManager:: sendUserProfile() & TU49\\
+
+\midrule
+maap\_server::modelServer::dataManager:: DatabaseUserManager::DatabaseUserManager:: sendUserProfileEdit() & TU49\\
+
+\midrule
+maap\_server::modelServer::dataManager:: DatabaseUserManager::DatabaseUserManager:: updateUserProfile() & TU49\\
+
+\midrule
+maap\_server::modelServer::dataManager:: DatabaseUserManager::DatabaseUserManager:: getUsersList() & TU49\\
+
+\midrule
+maap\_server::modelServer::dataManager:: DatabaseUserManager::DatabaseUserManager:: sendUser() & TU49\\
+
+\midrule
+maap\_server::modelServer::dataManager:: DatabaseUserManager::DatabaseUserManager:: sendUserEdit() & TU49\\
+
+\midrule
+maap\_server::modelServer::dataManager:: DatabaseUserManager::DatabaseUserManager:: updateUser() & TU49\\
+
+\midrule
+maap\_server::modelServer::dataManager:: DatabaseUserManager::DatabaseUserManager:: removeUser() & TU49\\
+
+\midrule
+maap\_server::modelServer::dataManager:: DatabaseUserManager::DataRetrieverUsers:: addUser() & TU50\\
+
+\midrule
+maap\_server::modelServer::dataManager:: DatabaseUserManager::DataRetrieverUsers:: getUserProfile() & TU50\\
+
+\midrule
+maap\_server::modelServer::dataManager:: DatabaseUserManager::DataRetrieverUsers::updateUserProfile() & TU50\\
+
+\midrule
+maap\_server::modelServer::dataManager:: DatabaseUserManager::DataRetrieverUsers::getUsersList() & TU50\\
+
+\midrule
+maap\_server::modelServer::dataManager:: DatabaseUserManager::DataRetrieverUsers::updateUser() & TU50\\
+
+\midrule
+maap\_server::modelServer::dataManager:: DatabaseUserManager::DataRetrieverUsers::removeUser() & TU50\\
+
+
+\midrule
+maap\_server::modelServer::dataManager:: IndexManager::IndexManager:: getModel() & TU51\\
+
+\midrule
+maap\_server::modelServer::dataManager:: IndexManager::IndexManager:: addQuery() & TU51\\
+
+\midrule
+maap\_server::modelServer::dataManager:: IndexManager::IndexManager:: resetQueries() & TU51\\
+
+\midrule
+maap\_server::modelServer::dataManager:: IndexManager::IndexManager:: getQueries() & TU51\\
+
+\midrule
+maap\_server::modelServer::dataManager:: IndexManager::IndexManager:: getIndex() & TU51\\
+
+\midrule
+maap\_server::modelServer::dataManager:: IndexManager::IndexManager:: createIndex() & TU51\\
+
+\midrule
+maap\_server::modelServer::dataManager:: IndexManager::IndexManager:: createIndex() & TU51\\
+
+\midrule
+maap\_server::modelServer::dataManager:: JSonComposer:: createCollectionsList() & TU52\\
+
+\midrule
+maap\_server::modelServer::dataManager:: JSonComposer:: checkLabels() & TU52\\
+
+\midrule
+maap\_server::modelServer::dataManager:: JSonComposer:: createCollection() & TU52\\
+
+\midrule
+maap\_server::modelServer::dataManager:: JSonComposer:: createDocument() & TU52\\
+
+\midrule
+maap\_server::modelServer::dataManager:: JSonComposer:: createQueriesList() & TU52\\
+
+\midrule
+maap\_server::modelServer::dataManager:: JSonComposer:: createIndexesList() & TU52\\
+
+\midrule
+maap\_server::modelServer::dataManager:: JSonComposer:: createUserProfile() & TU52\\
+
+\midrule
+maap\_server::modelServer::dataManager:: JSonComposer:: createUserProfileEdit() & TU52\\
+
+\midrule
+maap\_server::modelServer::dataManager:: JSonComposer:: createUsersList() & TU52\\
+
+\midrule
+maap\_server::modelServer::dataManager:: JSonComposer:: createUser() & TU52\\
+
+\midrule
+maap\_server::modelServer::dataManager:: JSonComposer:: createUser() & TU52\\
+
+\midrule
+maap\_server::modelServer::DSL::DSLManager:: generateFunction() & TU53\\
+
+\midrule
+maap\_server::modelServer::DSL::DSLManager:: deleteFolderRecursive() & TU53\\
+
+\midrule
+maap\_server::modelServer::DSL::DSLManager:: checkDSL() & TU53\\
+
+\midrule
+maap\_server::modelServer::DSL::DSLParser:: addField() & TU54\\
+
+\midrule
+maap\_server::modelServer::DSL::DSLParser:: checkFieldThrow() & TU54\\
+
+\midrule
+maap\_server::modelServer::DSL::DSLParser:: checkField() & TU54\\
+
+\midrule
+maap\_server::modelServer::DSL::DSLParser:: checkFieldContentThrow() & TU54\\
+
+\midrule
+maap\_server::modelServer::DSL::DSLParser:: checkFieldContent() & TU54\\
+
+\midrule
+maap\_server::modelServer::DSL::DSLParser:: IntValue() & TU54\\
+
+\midrule
+maap\_server::modelServer::DSL::DSLParser:: parseDSL() & TU54\\
+
+\midrule
+maap\_server::modelServer::DSL::index:: init() & TU55\\
+
+\midrule
+maap\_server::modelServer::DSL::schemaGenerator:: getPopulatedCollection() & TU56\\
+
+\midrule
+maap\_server::modelServer::DSL::schemaGenerator:: arrayAddElement() & TU56\\
+
+\midrule
+maap\_server::modelServer::DSL::schemaGenerator:: generate() & TU56\\
+
+
+\end{longtable}
+\end{center}
+
