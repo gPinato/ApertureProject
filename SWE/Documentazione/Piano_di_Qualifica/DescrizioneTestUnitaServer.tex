@@ -26,38 +26,37 @@ Le funzionalit\'{a} dettagliate sono descritte nella Definizione di Prodotto v.\
 \endlastfoot
 
 \midrule
-TU1
+TU40
 & Il test verifica che il dispatcher reindirizzi in modo corretto le richieste ricevute dal client.
 & maap\_server::controller::dispatcher:: dispatcherInit()
 & D.E.\\
 
-
 \midrule
-TU2
+TU41
 & Il test verifica che il dispatcher venga inizializzato in maniera corretta.
 & maap\_server::controller::frontController:: initFrontController()
 & D.E.\\
 
 \midrule
-TU3
+TU42
 & Il test verifica che il front controller venga inizializzato in maniera corretta.
 & maap\_server::controller::index:: init()
 & D.E.\\
 
 \midrule
-TU4
+TU43
 & Il test verifica che il modulo passport, utilizzato per la gestione dell'autenticazione, venga inizializzato in maniera corretta e che l'utente sia correttamente autenticato.
 & maap\_server::controller::passport:: initPassport()
-& D.E.\\
+& superato.\\
 & & maap\_server::controller::passport:: checkAuthenticatedAdmin()
-& D.E.\\
+& superato.\\
 & & maap\_server::controller::passport:: checkAuthenticated()
-& D.E.\\
+& superato.\\
 & & maap\_server::controller::passport:: checkNotAuthenticated()
-& D.E.\\
+& superato.\\
 
 \midrule
-TU5
+TU44
 & Il test verifica che la connessione al database di analisi e al database degli utenti avvenga in maniera corretta; inoltre viene verificato che venga aggiunto un utente di default all'avvio del sistema.
 & maap\_server::modelServer::database:: index::addAdminDefault()
 & D.E.\\
@@ -65,19 +64,19 @@ TU5
 & D.E.\\
 
 \midrule
-TU6
+TU45
 & Il test verifica che per ogni collection definita tramite DSL esita lo schema corrispondente, e successivamente lo rende disponibile.
 & maap\_server::modelServer::database:: MongooseDBAnalysis::init()
 & D.E.\\
 
 \midrule
-TU7
+TU46
 & Il test verifica che vengano costruiti in maniera corretta gli schemi del database per l'utente e per le query; successivamente verranno creati i modelli per questi schemi e resi disponibili.
 & maap\_server::modelServer::database:: MongooseDBFramework::init()
 & D.E.\\
 
 \midrule
-TU8
+TU47
 & Il test verifica che la gestione dei dati nel database di analisi avvenga in maniera corretta. In particolare viene controllato che le collection restituite siano quelle presenti nel database, che un document possa venir modificato o rimosso. Si verifica che le query possano essere cancellate o mostrate le più utilizzate; inoltre viene verificato anche il comportamento per la creazione, rimozione o restituzione di indici.
 & maap\_server::modelServer:: dataManager:: DatabaseAnalysisManager::DatabaseAnalysisManager:: sendCollectionsList()
 & D.E.\\
@@ -103,7 +102,7 @@ TU8
 & D.E.\\
 
 \midrule
-TU9
+TU48
 & Il test verifica che dato un nome di una collection venga restituito il modello corrispondente; dopodichè vengono verificati i document restituiti dalla query effettuata sul database in base alle azioni compiute dall'utente. Si controlla che le trasformazioni specificate nel file DSL vengano applicate correttamente.
 Inoltre viene verificato che la richiesta di visualizzare una collection con dei document avvenga in maniera corretta, in base alle scelte effettuate dall'utente.
 Viene testato anche il comportamento riguardante la modifica di un document e la sua eventuale rimozione.
@@ -129,7 +128,7 @@ Viene testato anche il comportamento riguardante la modifica di un document e la
 & D.E.\\
 
 \midrule
-TU10
+TU49
 & Il test verifica la gestione di utente; in particolare viene verificata la mail dell'utente, la possibilità di effettuare la registrazione o di modificare i dati del profilo. Inoltre viene controllata la visualizzazione degli utenti quando richiesta e la possibilità di rimuovere un utente dal database.
 &  maap\_server::modelServer:: dataManager:: DatabaseUserManager::DatabaseUserManager:: checkMail()
 & D.E.\\
@@ -153,7 +152,7 @@ TU10
 & D.E.\\
 
 \midrule
-TU11
+TU50
 & Il test verifica che il recupero dei dati utente dal database avvenga in maniera corretta; in particolare verranno verificate le funzionalità di aggiunta utente, visualizzazione dati profilo, modifica utente e rimozione utente.
 &  maap\_server::modelServer:: dataManager:: DatabaseUserManager::DataRetrieverUsers:: addUser()
 & D.E.\\
@@ -169,7 +168,7 @@ TU11
 & D.E.\\
 
 \midrule
-TU12
+TU51
 & Il test verifica che le query efettuate sul database avvengano in maniera corretta. Inoltre vengono controllate le funzionalità riguardanti la creazione di indici.
 &  maap\_server::modelServer:: dataManager:: IndexManager::IndexManager:: getModel()
 & D.E.\\
@@ -187,79 +186,75 @@ TU12
 & D.E.\\
 
 \midrule
-TU13
+TU52
 & Il test verifica che il JSON creato corrisponde alle richieste ricevute.
 &  maap\_server::modelServer:: dataManager:: JSonComposer:: createCollectionsList()
-& D.E.\\
+& superato\\
 & & maap\_server::modelServer:: dataManager:: JSonComposer:: checkLabels()
-& D.E.\\
+& superato\\
 & & maap\_server::modelServer:: dataManager:: JSonComposer:: createCollection()
-& D.E.\\
+& superato\\
 & & maap\_server::modelServer:: dataManager:: JSonComposer:: createDocument()
-& D.E.\\
+& superato\\
 & & maap\_server::modelServer:: dataManager:: JSonComposer:: createQueriesList()
-& D.E.\\
+& superato\\
 & & maap\_server::modelServer:: dataManager:: JSonComposer:: createIndexesList()
-& D.E.\\
+& superato\\
 & & maap\_server::modelServer:: dataManager:: JSonComposer:: createUserProfile()
-& D.E.\\
+& superato\\
 & & maap\_server::modelServer:: dataManager:: JSonComposer:: createUserProfileEdit()
-& D.E.\\
+& superato\\
 & & maap\_server::modelServer:: dataManager:: JSonComposer:: createUsersList()
-& D.E.\\
+& superato\\
 & & maap\_server::modelServer:: dataManager:: JSonComposer:: createUser()
-& D.E.\\
+& superato\\
 & & maap\_server::modelServer:: dataManager:: JSonComposer:: createUser()
-& D.E.\\
+& superato\\
 
 \midrule
-TU14
+TU53
 & Il test verifica che esistono dei file DSL presenti in uno spazio apposito, e viene eseguito il parser su di essi.
 &  maap\_server::modelServer:: DSL:: DSLManager:: generateFunction()
-& D.E.\\
+& superato\\
 & & maap\_server::modelServer:: DSL:: DSLManager:: deleteFolderRecursive()
 & D.E.\\
 & & maap\_server::modelServer:: DSL:: DSLManager:: checkDSL()
-& D.E.\\
+& superato\\
 
 \midrule
-TU15
+TU54
 & Il test verifica che il parser di un file DSL venga effettuato in maniera corretta; vengono eseguiti i controlli sui campi scritti nel DSL per verificarne il contenuto.
 &  maap\_server::modelServer:: DSL:: DSLParser:: addField()
-& D.E.\\
+& superato\\
 & & maap\_server::modelServer:: DSL:: DSLParser:: checkFieldThrow()
-& D.E.\\
+& superato\\
 & & maap\_server::modelServer:: DSL:: DSLParser:: checkField()
-& D.E.\\
+& superato\\
 & & maap\_server::modelServer:: DSL:: DSLParser:: checkFieldContentThrow()
-& D.E.\\
+& superato\\
 & & maap\_server::modelServer:: DSL:: DSLParser:: checkFieldContent()
-& D.E.\\
+& superato\\
 & & maap\_server::modelServer:: DSL:: DSLParser:: IntValue()
-& D.E.\\
+& superato\\
 & & maap\_server::modelServer:: DSL:: DSLParser:: parseDSL()
-& D.E.\\
+& superato\\
 
 \midrule
-TU16
+TU55
 & Il test verifica che il controllo sui file DSL parta all'avvio del server.
 &  maap\_server::modelServer:: DSL:: index:: init()
-& D.E.\\
+& superato\\
 
 \midrule
-TU17
+TU56
 & Il test verifica che vengono creati gli schemi giusti per le collection scritte nel DSL; inoltre viene effettuato un controllo se gli schemi sono già presenti.
 &  maap\_server::modelServer:: DSL:: schemaGenerator:: getPopulatedCollection()
-& D.E.\\
+& superato\\
 & & maap\_server::modelServer:: DSL:: schemaGenerator:: arrayAddElement()
-& D.E.\\
+& superato\\
 & & maap\_server::modelServer:: DSL:: schemaGenerator:: generate()
-& D.E.\\
-
-
-
-
-
+& superato\\
 
 \end{longtable}
 \end{center}
+
