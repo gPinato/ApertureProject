@@ -53,7 +53,6 @@ Diario delle modifiche
 1.2.0 & 2014-06-23 & Mattia Sorgato (RE) & Approvazione documento.\\
 \midrule
 1.1.0 & 2014-06-23 & Alberto Garbui (VR) & Verifica documento.\\
-
 \midrule
 1.0.4 & 2014-06-20 & Mattia Sorgato (PR) & Stesura manuale.\\
 \midrule
@@ -84,7 +83,7 @@ Diario delle modifiche
 \section{Introduction}
 \subsection{Document purpose}
 This document wants to be a reference guide for a developer user. \\
-This will guide you through the installation, cofiguration and maintenance of the MaaP framework.
+This will guide you through the installation, configuration and maintenance of the MaaP framework.
 
 \newpage
 \section{MaaP}
@@ -206,7 +205,7 @@ The DSL is one of the most crucial part of MaaPerture.\\
 Our DSL allows you to describe how you want your data to be displayed to the end user, so the better you can master it the more you'll get from our framework.
 You can define any number of columns, name them as you want, populate them directly from your database or by an elaborate query, sort them and much more.\\
 
-We'll go through each and every available feature  in the next paragraph and to do this we'll analize an example of DSL file.\\
+We'll go through each and every available feature  in the next paragraph and to do this we'll analyze an example of DSL file.\\
 
 \begin{lstlisting}
 collection = {
@@ -322,7 +321,7 @@ collection = {
 \end{lstlisting}
 
 The label field is where you specify what's the name you want displayed on the web pages.\\
-With MaaPerture you can rename almost everything you wnt without every worrying about mismatches, we'll handle all the dirty job.
+With MaaPerture you can rename almost everything you want without every worrying about mismatches, we'll handle all the dirty job.
 If you don't specify any label the original name will be used instead.\\
 The name field specify what collection on your database you want to use as the source of your data, and lastly the position field specify the position you want this collection to be on the navigation bar menu of the browser.\\
 If you don't specify any values MaaPerture will sort things by himself.\\
@@ -365,6 +364,11 @@ The column keyword marks the beginning of the columns definition.
 For each column you can specify a label, the source field from the database and it's type.
 You can also specify some restrictions on the values, such as min and max.\\
 
+The populate keyword allows you to define an array of collections from which you can get additional data.\\
+For example, if you're creating a DSL for the Team collection and you want to also use data from the Coaches one, you simply need to use "populate: [{collection: 'coaches', key: 'coach'}]".\\
+You can them use coach.name and get the name of your football team coach next to the name of your team.
+
+
 Another thing you can do is use a javascript function to transform data from your database before it get sent to the client.
 This is done using the transformation keyword. In this case we add " junior" to every name displayed.\\
 You can write whatever you want with javascript, but bear in mind that the responsibility to keep the data coherent is on your shoulder and yours only.
@@ -377,14 +381,7 @@ query: {
 			age: {$lt: 20}
 		}
 \end{lstlisting}
-JK Non so dimmi tu
-L'utente può definire delle query per restringere ulteriormente la selezione dei dati specificati in index-columns
-
-Per quanto riguarda il campo populate, è un array di oggetti che specifica il nome di collections esterne su cui si vogliono prelevare ulteriori dati.
-Ad esempio se stiamo descrivendo la collection Teams, dentro columns possiamo definire colonne presenti nei documenti della collection teams, come nome\_squadra, numero\_giocatori.
-Se però vogliamo aggiungere una colonna con il nome del coach dobbiamo prima usare populate sulla collection "coaches" per poter pescare i dati..
-Quindi si definisce populate [{collection: 'coaches', key: 'coach' }]
-e poi nelle colonne si può usare "coach.name" che va a prendere il nome del coach nella collection "coaches".
+You can use queries to further restrict the data you display in the columns. In this case we select only the people younger that 20.
 
 
 And at last we see how you can describe the view for your documents.\\
@@ -422,7 +419,7 @@ show : {
 
 
 The keyword show starts the document section of the DSL file.\\
-The show sections offers the same funciontality availabe on the index section, so there's nothing we haven't already seen.
+The show sections offers the same functionality available on the index section, so there's nothing we haven't already seen.
 
 
 \section{Commands and options}
