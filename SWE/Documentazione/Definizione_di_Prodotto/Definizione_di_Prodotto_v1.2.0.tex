@@ -159,6 +159,7 @@ Package Server del Design Pattern Client-Server.
 
 \subsection{::Controller}
 Package che gestisce il dialogo con il Client di MaaP. 
+
 \subsubsection{@dispatcher}
 
 \begin{description}
@@ -521,9 +522,9 @@ Per ultima cosa, il \textit{dispatcher} gestisce eventuali richieste di risorse 
  \begin{description}
   \item[Parametri] \hfill
    \begin{mldescription}
-    \mlitem{'/loggedin'}
+    \mlitem{'/loggedin'} \hfill \\
     Stringa contenente l'indirizzo della API da richiamare.
-    \mlitem{function(req, res) \{ res.send(req.isAuthenticated() ? req.user : '0'); \}}
+    \mlitem{function(req, res) \{ res.send(req.isAuthenticated() ? req.user : '0'); \}} \hfill \\
     Funzione anonima che richiama il metodo isAuthenticated sul richiedente. Se il metodo ritorna valore booleano \textbf{true}, viene ritornato al richiedente il proprio campo \textit{user}, altrimenti ritorna 0.
    \end{mldescription}
   \item[Descrizione] \hfill \\
@@ -534,13 +535,13 @@ Per ultima cosa, il \textit{dispatcher} gestisce eventuali richieste di risorse 
  \begin{description}
   \item[Parametri] \hfill
    \begin{mldescription}
-    \mlitem{'/api/login'}
+    \mlitem{'/api/login'} \hfill \\
     Stringa contenente l'indirizzo della API da richiamare.
-    \mlitem{passport.checkNotAuthenticated}
+    \mlitem{passport.checkNotAuthenticated} \hfill \\
     Funzione di \textit{@passport} che verifica che l'utente non sia autenticato.
-    \mlitem{passport.authenticate}
+    \mlitem{passport.authenticate} \hfill \\
     Funzione di \textit{@passport} che esegue l'autenticazione.
-    \mlitem{function(req, res) \{ res.send(req.user); \}}
+    \mlitem{function(req, res) \{ res.send(req.user); \}} \hfill \\
     Funzione anonima che manda al richiedente la risposta contenente il suo campo \textit{user}.
    \end{mldescription}
   \item[Descrizione] \hfill \\
@@ -551,11 +552,11 @@ Per ultima cosa, il \textit{dispatcher} gestisce eventuali richieste di risorse 
  \begin{description}
   \item[Parametri] \hfill
    \begin{mldescription}
-    \mlitem{'/api/logout'}
+    \mlitem{'/api/logout'} \hfill \\
     Stringa contenente l'indirizzo della API da richiamare.
-    \mlitem{passport.checkAuthenticated}
+    \mlitem{passport.checkAuthenticated} \hfill \\
     Funzione di \textit{@passport} che verifica che l'utente sia autenticato.
-    \mlitem{function(req, res) \{ req.logout(); res.send(200); \}}
+    \mlitem{function(req, res) \{ req.logout(); res.send(200); \}} \hfill \\
     Funzione anonima che effettua la disconnessione del richiedente \textit{req} e manda al Client il codice \textit{http} 200.
    \end{mldescription}
   \item[Descrizione] \hfill \\
@@ -570,13 +571,14 @@ Per ultima cosa, il \textit{dispatcher} gestisce eventuali richieste di risorse 
  \begin{description}
   \item[Parametri] \hfill
    \begin{mldescription}
-    \mlitem{'*'}
+    \mlitem{'*'} \hfill \\
     Stringa contentente l'indirizzo delle API da richiamare. In questo caso, l'idirizzo è una stringa qualsiasi.
-    \mlitem{function(req, res) \{ res.sendfile(path.join(config.static\_assets.dir, 'index.html')); \}}
+    \mlitem{function(req, res) \{ res.sendfile(path.join(config.static\_assets.dir, 'index.html')); \}} \hfill \\
     Funzione anonima che reindirizza il richiedente alla pagina iniziale della view del Client.
    \end{mldescription}
   \item[Descrizione]
  La presente funzione gestisce ogni richiesta di pagina o file che il Server non possiede. L'argomento "*" della funzione \textit{get} consente di gestire tutte le richieste che non sono state servite dalle precedenti funzioni del \textit{@dispatcher}. Questa funzione viene richiamata soltanto quando non le funzioni precedenti non sono state chiamate.
+ \end{description} 
  \end{mldescription}
 
 \item[Inizializzazione] \hfill
@@ -594,6 +596,7 @@ Per ultima cosa, il \textit{dispatcher} gestisce eventuali richieste di risorse 
  \end{description}
 \end{description}
 \end{description}
+
 
 
 \subsubsection{@frontController}
@@ -1826,7 +1829,7 @@ Package realizzato per creare e gestire gli indici utilizzati nel database di an
       				Contiene il JSON del parsing del DSL.
       			\end{description}
       		\item[Descrizione]
-      		Si occupa di generare lo schema della collection per mongoose partendo dai tipi di dati specificati dall'utente nel DSL.
+      		Si occupa di generare lo schema della Collection per mongoose partendo dai tipi di dati specificati dall'utente nel DSL.
       		
       		
       		
