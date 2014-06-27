@@ -3,8 +3,8 @@
 \input{../Logo&Header/versioneDocumenti.tex}
 
 \newcommand{\Versione}{\versioneManualeUtente{}} %Versione Finale
-\newcommand{\Data}{2014-04-04}				     %Data di creazione
-\newcommand{\DataUltimaModifica}{2014-03-24}
+\newcommand{\Data}{2014-06-16}				     %Data di creazione
+\newcommand{\DataUltimaModifica}{2014-06-23}
 \newcommand{\TipoDocumento}{User Manual}	 	%tipo documento
 
 %includo il file header.tex (logo grande in prima pagina piu qualche altra regola)
@@ -21,9 +21,10 @@
 \textbf{Data ultima modifica} & \DataUltimaModifica{} \\
 \textbf{Stato del Documento} & Formale \\		          %CAMBIARE QUI
 \textbf{Uso del Documento} & Esterno \\			          %CAMBIARE QUI
-\textbf{Redazione} &  Pinato Giacomo\\
-\textbf{Verifica} & XXXXXXXXXXX\\  %ED ANCHE QUI!
-\textbf{Approvazione} & XXXXXXXXXXX\\				      %CAMBIARE QUI
+\textbf{Redazione} &  Pinato Giacomo, Andrea Perin\\
+& Alessandro Benetti, Mattia Sorgato\\
+\textbf{Verifica} & Alberto Garbui\\  %ED ANCHE QUI!
+\textbf{Approvazione} & Mattia Sorgato\\				      %CAMBIARE QUI
 \textbf{Distribuzione} & \parbox[t]{4cm}{\NomeGruppo{}\\Prof. Vardanega Tullio\\Prof. Cardin Riccardo\\ \Prop{} }\\
 \end{tabular}
 \end{center}
@@ -49,17 +50,18 @@ Diario delle modifiche
 
 %aggiungere qui una midrule per aggiungere una nuova riga alla tabella
 \midrule
-4.2.0 & 2014-05-24 & Michele Maso (RE) & Approvazione documento.\\
+1.2.0 & 2014-06-23 & Mattia Sorgato (RE) & Approvazione documento.\\
 \midrule
-4.1.1 & 2014-05-22 & Alessandro Benetti (VR) & Verifica documento.\\
+1.1.0 & 2014-06-23 & Alberto Garbui (VR) & Verifica documento.\\
+
 \midrule
-4.1.0 & 2014-05-20 & Alberto Garbui (VR) & Verifica documento.\\
+1.0.4 & 2014-06-20 & Mattia Sorgato (PR) & Stesura manuale.\\
 \midrule
-4.0.1 & 2014-06-02 & Giacomo Pinato (PR) & Stesura manuale.\\
+1.0.3 & 2014-06-18 & Giacomo Pinato (PR) & Stesura manuale.\\
 \midrule
-4.0.1 & 2014-06-01 & Giacomo Pinato (PR) & Stesura manuale.\\
+1.0.2 & 2014-06-17 & Andrea Perin (PT) & Stesura manuale.\\
 \midrule
-4.0.1 & 2014-06-01 & Alberto Garbui (PR) & Prima stesura del documento.\\
+1.0.1 & 2014-06-16 & Alessandro Benetti (AM) & Prima stesura del documento.\\
 
 \bottomrule
 \caption{Registro delle modifiche}
@@ -376,6 +378,13 @@ query: {
 		}
 \end{lstlisting}
 JK Non so dimmi tu
+L'utente può definire delle query per restringere ulteriormente la selezione dei dati specificati in index-columns
+
+Per quanto riguarda il campo populate, è un array di oggetti che specifica il nome di collections esterne su cui si vogliono prelevare ulteriori dati.
+Ad esempio se stiamo descrivendo la collection Teams, dentro columns possiamo definire colonne presenti nei documenti della collection teams, come nome\_squadra, numero\_giocatori.
+Se però vogliamo aggiungere una colonna con il nome del coach dobbiamo prima usare populate sulla collection "coaches" per poter pescare i dati..
+Quindi si definisce populate [{collection: 'coaches', key: 'coach' }]
+e poi nelle colonne si può usare "coach.name" che va a prendere il nome del coach nella collection "coaches".
 
 
 And at last we see how you can describe the view for your documents.\\

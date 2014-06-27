@@ -3,20 +3,20 @@ Sono qui riportate le tabelle per i testi di unit\'{a}  riguardanti il client.
 Le funzionalit\'{a} dettagliate sono descritte nella Definizione di Prodotto v.\versioneDefinizioneDiProdotto{}.
 
 \begin{center}
-\begin{longtable}{|p{2cm}|p{7cm}|p{7cm}|p{2cm}|}
+\begin{longtable}{|p{1cm}|p{5cm}|p{6cm}|p{1cm}|}
 \toprule
-\multicolumn{1}{|p{2cm}}{\textbf{Test}}
-& \multicolumn{1}{|p{7cm}}{\textbf{Descrizione}}
-& \multicolumn{1}{|p{7cm}}{\textbf{Funzioni testate}}
-& \multicolumn{1}{|p{2cm}|}{\textbf{Stato}}\\
+\multicolumn{1}{|p{1cm}}{\textbf{Test}}
+& \multicolumn{1}{|p{5cm}}{\textbf{Descrizione}}
+& \multicolumn{1}{|p{6cm}}{\textbf{Funzioni testate}}
+& \multicolumn{1}{|p{1cm}|}{\textbf{Stato}}\\
 \midrule
 \endfirsthead
 \multicolumn{2}{l}{\footnotesize\itshape\tablename~\thetable: continua dalla pagina precedente} \\
 \toprule
-\multicolumn{1}{|p{2cm}}{\textbf{Test}}
-& \multicolumn{1}{|p{7cm}}{\textbf{Descrizione}}
-& \multicolumn{1}{|p{7cm}}{\textbf{Funzioni testate}}
-& \multicolumn{1}{|p{2cm}|}{\textbf{Stato}}\\
+\multicolumn{1}{|p{1cm}}{\textbf{Test}}
+& \multicolumn{1}{|p{5cm}}{\textbf{Descrizione}}
+& \multicolumn{1}{|p{6cm}}{\textbf{Funzioni testate}}
+& \multicolumn{1}{|p{1cm}|}{\textbf{Stato}}\\
 \midrule
 \endhead
 \midrule
@@ -31,14 +31,14 @@ TU1
 & Vengono verificate tutte le funzionalità rese disponibili dal Collection Controller.
 & init()
 & D.E.\\
-& &  getData()\\
-& &  numerify(num)\\
-& & previousPage()\\
-& & nextPage()\\
-& & toPage(index)\\
-& & changeSort()\\
-& & columnSort(index)\\
-& & delete\_ document(index)\\
+& &  getData() &\\
+& &  numerify(num) &\\
+& & previousPage() &\\
+& & nextPage() &\\
+& & toPage(index) &\\
+& & changeSort() &\\
+& & columnSort(index) &\\
+& & delete\_ document(index) &\\
 
 
 
@@ -54,7 +54,7 @@ TU3
 & Vengono verificate tutte le funzionalità rese disponibili dal Document Controller.
 & DocumentDataService.query
 & D.E.\\
-& & delete\_ document(index)\\
+& & delete\_ document(index) &\\
 
 
 
@@ -64,8 +64,8 @@ TU4
 & Vengono verificate tutte le funzionalità rese disponibili dal DocumentEdit Controller.
 & DocumentEditService.query
 & D.E.\\
-& & edit\_ document(index)\\
-& & delete\_ document(index)\\
+& & edit\_ document(index) &\\
+& & delete\_ document(index) &\\
 
 
 
@@ -88,7 +88,7 @@ TU5
 \midrule
 TU6
 & Vengono verificate tutte le funzionalità rese disponibili dal Login Controller.
-& AuthService.login\\
+& AuthService.login
 & D.E.\\
 
 
@@ -97,7 +97,7 @@ TU7
 & Vengono verificate tutte le funzionalità rese disponibili dal NavBar Controller.
 & CollectionListService.get
 & D.E.\\
-& & logout()\\
+& & logout() &\\
 
 
 
@@ -106,7 +106,7 @@ TU8
 & Vengono verificate tutte le funzionalità rese disponibili dal Profile Controller.
 & ProfileDataService.query
 & D.E.\\
-& & delete\_ document(index)\\
+& & delete\_ document(index) &\\
 
 
 \midrule
@@ -115,8 +115,8 @@ TU9
 & ProfileEditService.query
 & D.E.\\
 
-& & edit\_ document(index)\\
-& & delete\_ document(index)\\
+& & edit\_ document(index) &\\
+& & delete\_ document(index) &\\
 
 
 \midrule
@@ -124,21 +124,21 @@ TU10
 & Vengono verificate tutte le funzionalità rese disponibili dal Query Controller.
 & QueryService.query
 & D.E.\\
-& & createIndex(id)\\
-& & numerify(num)\\
-& & previousPage()\\
-& & nextPage()\\
-& & toPage(index)\\
-& & changeSort()\\
-& & columnSort(index)\\
-& & delete\_ document(index)\\
+& & createIndex(id) &\\
+& & numerify(num) &\\
+& & previousPage() &\\
+& & nextPage() &\\
+& & toPage(index) &\\
+& & changeSort() &\\
+& & columnSort(index) &\\
+& & delete\_ document(index) &\\
 
 
 
 \midrule
 TU11
 & Vengono verificate tutte le funzionalità rese disponibili dal Register Controller.
-& signupForm\\
+& signupForm
 & D.E.\\
 
 
@@ -147,14 +147,14 @@ TU12
 & Vengono verificate tutte le funzionalità rese disponibili dal UserCollection Controller.
 & init()
 & D.E.\\
-& & getData()\\
-& & numerify(num)\\
-& & previousPage()\\
-& & nextPage()\\
-& & toPage(index)\\
-& & changeSort()\\
-& & columnSort(index)\\
-& & delete\_ document(index)\\
+& & getData() &\\
+& & numerify(num) &\\
+& & previousPage() &\\
+& & nextPage() &\\
+& & toPage(index) &\\
+& & changeSort() &\\
+& & columnSort(index) &\\
+& & delete\_ document(index) &\\
 
 
 \midrule
@@ -162,7 +162,7 @@ TU13
 & Vengono verificate tutte le funzionalità rese disponibili dal UserController Controller.
 & UserDataService.query
 & D.E.\\
-& & delete\_ document(index)\\
+& & delete\_ document(index) &\\
 
 
 
@@ -171,8 +171,8 @@ TU14
 & Vengono verificate tutte le funzionalità rese disponibili dal UserEdit Controller.
 & UserEditService.query
 & D.E.\\
-& & edit\_ document(index)\\
-& & delete\_ document(index)\\
+& & edit\_ document(index) &\\
+& & delete\_ document(index) &\\
 
 
 
