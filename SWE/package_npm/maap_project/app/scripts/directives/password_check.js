@@ -12,7 +12,7 @@
  *
  ==============================================
  */
-
+'use strict';
 /*
 * Controlla se le due password inserite nel form di registrazione sono identiche.
 * Se non lo sono invalida il form e non si può fare la registrazione.

@@ -1932,8 +1932,7 @@ userProfile & Pagina per la visualizzazione del profilo utente (user) / di un ut
   Richiama la richiesta RESTful \textit{query} sulla \$resource fornita dal CollectionDataService.
   Con questa funzione vengono prelevati i dati legati alla Collection da visualizzare e vengono
   passati alla Collection view tramite il binding con lo \$scope. \\
-  Se non vengono visualizzati risultati, ovvero se la Collection non esiste, avviene un redirect alla pagina
-  che mostra l'errore 404.
+  
   \end{description}
   
   \item[\$scope.numerify(num)] \hfill 
@@ -2021,19 +2020,8 @@ Fornisce un immediato elenco delle collection disponibili.
  
  \item[Funzionalità]
  \begin{mldescription}
-  \mlitem{CollectionListService.get(function success(data) \{
-            \$scope.labels = data.labels;
-            \$scope.values = data.data;
-        \})}
+  \mlitem{CollectionListService.get()}
   \begin{description}
-  	\item[Parametro]
-  		\begin{mldescription}
-  			\mlitem{function success(data) \{
-            \$scope.labels = data.labels;
-            \$scope.values = data.data;
-        \}} \hfill \\
-        Funzione callback da richiamare al termine dell'ottenimento dei dati dal \textit{@CollectionListService}.
-  		\end{mldescription}
   	\item[Descrizione] \hfill \\
     Funzione che richiede al server l'elenco delle collection disponibli e le inserisce nello scope.
   \end{description}
@@ -2057,6 +2045,7 @@ Fornisce un immediato elenco delle collection disponibili.
   \item \$routeParams.
  \end{itemize}
  
+ 
  \item[Attributi] \hfill
  \begin{itemize}
  \item  \$scope.current\textunderscore collection;
@@ -2065,16 +2054,40 @@ Fornisce un immediato elenco delle collection disponibili.
  \end{itemize}
  
  \item[Funzionalità] \hfill
- \begin{description}
-  \item[DocumentDataService.query] \hfill \\
-  Funzione che richiede al server il documento identificato da current\textunderscore collection e current\textunderscore document.
-  L'oggetto ritornato dal server viene poi ricopiato in array per mantenere l'ordinamento e semplificare la gestione.
-  \item[delete\textunderscore document()] \hfill
+ \begin{mldescription}
+  \mlitem{DocumentDataService.query()}
   \begin{description}
+  	\item[Parametro]
+  		\begin{mldescription}
+  			\mlitem  \$scope.current\textunderscore collection;
+            \mlitem  \$scope.current\textunderscore document;
+        
+        Parametri che identificano la collection e il document da visualizzare.
+  		\end{mldescription}
+  	\begin{description}
   	\item[Descrizione] \hfill \\
-  	Funzione che cancella dal server il documento attualmente visualizzato.
+	Funzione che richiede al server il document da visualizzare.
+	\end{description}
   \end{description}
- \end{description}
+ \end{mldescription}
+
+\begin{mldescription}
+  \mlitem{delete\_document()}
+  \begin{description}
+  	\item[Parametro]
+  		\begin{mldescription}
+  			\mlitem  \$scope.current\textunderscore collection;
+            \mlitem  \$scope.current\textunderscore document;
+        \}} \hfill \\
+        Parametri che identificano la collection e il document da cancellare.
+  		\end{mldescription}
+ 	\begin{description} 	
+  	\item[Descrizione] \hfill \\
+    Funzione che richiede al server la cancellazione di un document.
+    \end{description}
+
+  \end{description}
+ \end{mldescription}
 \end{description}
 
 \paragraph{@DocumentEditController}
@@ -2104,20 +2117,56 @@ Fornisce un immediato elenco delle collection disponibili.
  
  \item[Funzionalità] \hfill \\
  \begin{description}
-  \item[DocumentEditService.query] \hfill \\
-  Funzione che richiede al server il documento identificato da current\textunderscore collection e current\textunderscore document.
-  L'oggetto ritornato dal server viene poi ricopiato in array per mantenere l'ordinamento e semplificare la gestione.
-  \item[edit\textunderscore document()] \hfill \\
-  Funzione che invia al server il documento modificato nel client.
-  Assembla un JSON a partire da original\textunderscore keys e original\textunderscore data. Quest'ultima variabile nel frattempo è stata 
-  modificata con i nuovi valori del documento.
-  \item[delete\textunderscore document()] \hfill 
-  \begin{description}
-	\item[Descrizione] \hfill \\
-	Funzione che cancella dal server il documento attualmente visualizzato.  
+  \item[DocumentEditService.query()] \hfill \\
+   \begin{description}
+  	\item[Parametro]
+  		\begin{mldescription}
+  			\mlitem  \$scope.current\textunderscore collection;
+            \mlitem  \$scope.current\textunderscore document;
+       
+        Parametri che identificano la collection e il document da modificare.
+  		\end{mldescription}
+  	\begin{description}
+  	\item[Descrizione] \hfill \\
+	Funzione che richiede al server il document da modificare.
+	\end{description}
   \end{description}
- \end{description}
-\end{description}
+ 
+ 
+   \item[edit\_document()] \hfill \\
+   \begin{description}
+  	\item[Parametro]
+  		\begin{mldescription}
+  			\mlitem  \$scope.current\textunderscore collection;
+            \mlitem  \$scope.current\textunderscore document;
+        
+        Parametri che identificano la collection e il document da sovrascrivere.
+  		\end{mldescription}
+  	\begin{description}
+  	\item[Descrizione] \hfill \\
+	Funzione che richiede al server di sovrascrivere il document identificato dai parametri con quello modificato dall'utente.
+	\end{description}
+  \end{description}
+
+  
+  
+  
+  
+  \item[delete\textunderscore document()] \hfill 
+   \begin{description}
+  	\item[Parametro]
+  		\begin{mldescription}
+  			\mlitem  \$scope.current\textunderscore collection;
+            \mlitem  \$scope.current\textunderscore document;
+      
+        Parametri che identificano la collection e il document da cancellare.
+  		\end{mldescription}
+  	\begin{description}
+  	\item[Descrizione] \hfill \\
+    Funzione che richiede al server la cancellazione di un document.
+	\end{description}
+  \end{description}
+ \end{mldescription}
 
 \paragraph{@IndexController}
 \begin{description}
@@ -2140,13 +2189,13 @@ Fornisce un immediato elenco delle collection disponibili.
  \begin{itemize}
  \item \$scope.rows;
  \end{itemize}
- 
+ \hfill \\
  \item[Funzionalità] \hfill 
  \begin{description}
   \item[init()] \hfill 
   	\begin{description}
   		\item[Descrizione] \hfill \\
-  		Funzione di inizializzazione del CollectionController. Imposta i valori iniziali delle variabili dello \$scope associate alla Collection view ed esegue la funzione \emph{getData()}.
+  		Funzione di inizializzazione dell'Index Controller. Imposta i valori iniziali delle variabili dello \$scope  ed esegue la funzione \emph{getData()}.
   	\end{description}
   
   \item[getData()] \hfill 
@@ -2154,8 +2203,6 @@ Fornisce un immediato elenco delle collection disponibili.
   	\item[Descrizione] \hfill \\
   	Richiama la richiesta RESTful \textit{query} sulla \$resource fornita da IndexService.
   Con questa funzione vengono prelevati i dati legati agli indici da visualizzare e vengono passati alla  view tramite il binding con lo \$scope. \\
-  Se non vengono visualizzati risultati, ovvero se la Collection non esiste, avviene un redirect alla pagina
-  che mostra l'errore 404.
   \end{description}
   
   \item[\$scope.numerify(num)] \hfill 
@@ -2181,25 +2228,50 @@ Fornisce un immediato elenco delle collection disponibili.
   alla pagina successiva con \emph{getData()}.
   
   \item[\$scope.toPage(index)] \hfill \\
-  Aggiunge allo \$scope la funzionalità di passaggio alla pagina di visualizzazione specificata dal parametro \emph{index}.
+  \begin{description}
+  	\item[Parametro] \hfill
+  	\begin{description}
+  		\item index. \hfill \\
+  		Numero intero che specifica il numero di pagine da visualizzare.
+  	\end{description}
+  	\item[Descrizione] \hfill \\
+  	Aggiunge allo \$scope la funzionalità di passaggio alla pagina di visualizzazione specificata dal parametro \emph{index}.
   Aggiorna l'indicatore della pagina corrente settandolo all'indice passato per parametro alla funzione.
   Successivamente esegue una richiesta al server per ottenere i dati per la nuova visualizzazione.
+  \end{description}
+  
   
   \item[changeSort()] \hfill \\
-  Cambia la variabile \$current\_sort dello \$scope che regola l'ordine di visualizzazione dei Document, da discendente ad
-  ascendente e viceversa.
+  Cambia la variabile \$current\_sort dello \$scope che regola l'ordine di visualizzazione dei Document, da discendente ad ascendente e viceversa.
   
   \item[\$scope.columnSort(index)] \hfill \\
-  Funzione che cambia l'ordinamento di visualizzazione di una colonna della Collection view. \\
+  \begin{description}
+  	\item[Parametro] \hfill
+  	\begin{description}
+  		\item index. \hfill \\
+  		Numero intero che specifica il numero di pagine da visualizzare.
+  	\end{description}
+  	\item[Descrizione] \hfill \\
+  	  Funzione che cambia l'ordinamento di visualizzazione di una colonna della Collection view. \\
   Se la colonna in questione è una colonna diversa da quella che precedentemente ordinata,
   la variabile \emph{current\_sorted\_column} dello \$scope viene aggiornata, altrimenti la funzione cambia solamente
   l'ordinamento della colonna.
+  \end{description}
+
   
   \item[\$scope.deleteDocument(index)] \hfill \\
-  Funzione che elimina l'indice identificato dall'indice \emph{index}. Effettua una richiesta REST di rimozione alla risorsa
+  \begin{description}
+  	\item[Parametro] \hfill
+  	\begin{description}
+  		\item index. \hfill \\
+  		Numero intero che specifica il numero di pagine da visualizzare.
+  	\end{description}
+  	\item[Descrizione] \hfill \\
+  	  Funzione che elimina l'indice identificato dall'indice \emph{index}. Effettua una richiesta REST di rimozione alla risorsa
   pubblicizzata da IndexService fornendo come argomenti l'indice passato come argomento. \\
-  Se l'eliminazione ha successo viene lanciato l'aggiornamento della vista corrente con il Document eliminato, altrimenti si
-  richiama la callback di errore.
+  Se l'eliminazione ha successo viene lanciato l'aggiornamento della vista corrente con il Document eliminato, altrimenti si richiama la callback di errore.
+  \end{description}
+  
   
  \end{description}
 \end{description}
@@ -2225,16 +2297,22 @@ Fornisce un immediato elenco delle collection disponibili.
  
  \item[Attributi] \hfill \\
  \begin{itemize}
- \item  \$scope.isAdmin;
- \item \$scope.signup\textunderscore enabled;
+ \item \$scope.credentials;
  \end{itemize}
  
  \item[Funzionalità] \hfill \\
  \begin{description}
-  \item[ CollectionListService.get] \hfill \\
-  Richiama la richiesta RESTful \textit{query} sulla \$resource fornita da CollectionListService.
-  Con questa funzione viene prelevato l'elenco delle collection disponibili.
-  Se l'utente ha inserito dati corretti, esso viene autenticato e reindirizzato alla dashboard, altrimenti viene mostrato un errore.
+  \item[\$scope.login] \hfill \\
+  \begin{description}
+  	\item[Parametro] \hfill
+  	\begin{description}
+  		\item \$scope.credentials; \hfill \\
+  		Credenziali di accesso inserite dall'utente.
+  	\end{description}
+  	\item[Descrizione] \hfill \\
+  	Funzione che trasmette al server le credenziali inserite dall'utente e verifica se sono corrette.
+  	In caso positivo autentica l'utente, altrimenti mostra un errore.
+  \end{description}
  
   
  \end{description}
@@ -2246,7 +2324,8 @@ Fornisce un immediato elenco delle collection disponibili.
  Modulo che descrive il Controller della barra di navigazione superiore.
  
  \item[Utilizzo] \hfill \\
- 
+ Viene utilizzato per gestire i link e le informazioni contenute sulla barra di navigazione presente in tutte le pagine protette da autenticazione.
+ Contiene i link alle varie collection e i pulsanti per la gestione del profilo utente e per il logout.
  \item[Dipendendenze iniettate al controller] \hfill \\
  \begin{itemize}
   \item \$scope;
@@ -2260,21 +2339,18 @@ Fornisce un immediato elenco delle collection disponibili.
  
  \item[Attributi] \hfill \\
  \begin{itemize}
- \item  \$scope.credentials;
+ \item \$scope.isAdmin;
+ \item \$scope.singup\_enabled.
 
  \end{itemize}
  
  \item[Funzionalità] \hfill \\
  \begin{description}
-  \item[login()] \hfill \\
-  Richiama la richiesta RESTful \textit{query} sulla \$resource fornita da AuthService.
-  Con questa funzione vengono prelevati i dati legati al form di login e trasmessi al server per l'autenticazione.
-	Se non vengono visualizzati risultati, ovvero se la Collection non esiste, avviene un redirect alla pagina
-  che mostra l'errore 404. 
+   
   	\item[logout()] \hfill \\
   Richiama la richiesta RESTful \textit{logout} sulla \$resource fornita da LogoutService.
   Con questa funzione viene distrutta la sessione riguardante l'utente presente sul server e si viene poi disconnessi.
-  che mostra l'errore 404. 
+   
  \end{description}
 \end{description}
 
@@ -2284,6 +2360,7 @@ Fornisce un immediato elenco delle collection disponibili.
  Modulo che descrive il Controller della pagina di gestione del profilo.
  
  \item[Utilizzo] \hfill \\
+ Controller utilizzato da AngularJS che permette all'utente di gestire il suo profilo, visualizzandone le informazioni contentute.\\
  
  \item[Dipendendenze iniettate al controller] \hfill \\
  \begin{itemize}
@@ -2304,14 +2381,20 @@ Fornisce un immediato elenco delle collection disponibili.
  \item[Funzionalità] \hfill \\
  \begin{description}
   \item[ProfileDataService.query] \hfill \\
-  Richiama la richiesta RESTful \textit{query} sulla \$resource fornita da ProfileDataService.
-  Con questa funzione vengono prelevati i dati legati al profilo utente e caricati sullo scope.
-	Se non vengono visualizzati risultati, ovvero se il profilo non esiste, avviene un redirect alla pagina
-  che mostra l'errore 404. 
-  	\item[delete\textunderscore document()] \hfill \\
-  Richiama la richiesta RESTful \textit{remove} sulla \$resource fornita da ProfileEditService.
-  Con questa funzione viene cancellato dal server il profilo dell'utente corrente.
- \end{description}
+   \begin{description}
+  	\item[Descrizione] \hfill \\
+	Funzione che richiede al server le informazioni riguardanti il profilo dell'utente autenticato.
+	\end{description}
+	
+	 \item[\$scope.deleteDocument()] \hfill \\
+	 
+	 \begin{description}	 
+  Funzione che elimina dal server il profilo dell'utente autenticato, cancellando l'utente dal sistema.
+  	 \end{description}
+
+  \end{description}
+  
+  
 \end{description}
 
 \paragraph{@ProfileEditController}
@@ -2320,8 +2403,7 @@ Fornisce un immediato elenco delle collection disponibili.
  Modulo che descrive il Controller della pagina di modifica di un documento.
  
  \item[Utilizzo] \hfill \\
- Controller utilizzato da AngularJS per fornire e gestire i dati durante la modifica di un document.
- 
+ Controller utilizzato da AngularJS che permette all'utente di gestire il suo profilo, visualizzando e modificando le informazioni contentute.\\ 
  \item[Dipendendenze iniettate al controller] \hfill \\
  \begin{itemize}
   \item \$scope;
@@ -2343,16 +2425,30 @@ Fornisce un immediato elenco delle collection disponibili.
  \item[Funzionalità] \hfill \\
  \begin{description}
   \item[ProfileEditService.query] \hfill \\
+  \begin{description}
+  
    Richiama la richiesta RESTful \textit{query} sulla \$resource fornita da ProfileEditService.
   Con questa funzione vengono prelevati i dati legati al profilo utente e caricati sullo scope.
-	Se non vengono visualizzati risultati, ovvero se il profilo non esiste, avviene un redirect alla pagina
-  che mostra l'errore 404. 
+	 
+  \end{description}
+
   \item[edit\textunderscore document()] \hfill \\
-  Funzione che invia al server il profilo modificato nel client.
-  Assembla un JSON a partire da original\textunderscore keys e original\textunderscore data. Quest'ultima variabile nel frattempo è stata 
-  modificata con i nuovi valori del documento.
-  \item[delete\textunderscore document()] \hfill \\
-  Funzione che cancella dal server il profilo attualmente visualizzato.
+  \begin{description}
+  	\item[Parametro]
+  		\begin{mldescription}
+  			\mlitem json\_data;
+       \end{mldescription}
+  	\item[Descrizione] \hfill \\
+Funzione che invia al server il profilo modificato nel client.
+  Assembla un JSON a partire da original\textunderscore keys e original\textunderscore data. Quest'ultima variabile nel frattempo è stata modificata con i nuovi valori del documento.
+    \end{description}
+  
+  
+\item[\$scope.deleteDocument()] \hfill \\
+	 
+	 \begin{description}	 
+  Funzione che elimina dal server il profilo dell'utente autenticato, cancellando l'utente dal sistema.
+  	 \end{description}
  \end{description}
 \end{description}
 
@@ -2387,8 +2483,7 @@ Fornisce un immediato elenco delle collection disponibili.
  \item[Funzionalità] \hfill \\
  \begin{description}
   \item[init()] \hfill \\
-  Funzione di inizializzazione del CollectionController. Imposta i valori iniziali delle variabili dello
-  \$scope associate alla Collection view ed esegue la funzione \emph{getData()}.
+  Funzione di inizializzazione del QueryController. Imposta i valori iniziali delle variabili ed esegue la funzione \emph{getData()}.
   
   \item[getData()] \hfill \\
   Richiama la richiesta RESTful \textit{query} sulla \$resource fornita dal QueryService.
@@ -2398,43 +2493,92 @@ Fornisce un immediato elenco delle collection disponibili.
   che mostra l'errore 404.
   
     \item[\$scope.createIndex(id)] \hfill \\
+    \begin{description}
+  	\item[Parametro]
+  		\begin{mldescription}
+  			\mlitem id;
+       \end{mldescription}
+  	\item[Descrizione] \hfill \\
   Funzione ausiliaria che crea un indice a partire da una delle query presenti nella collection delle query.
+
+    \end{description}
   
   \item[\$scope.numerify(num)] \hfill \\
-  Funzione ausiliaria che crea un array di dimensione num che verrà poi usato dalla directive   ng-repeat di angular per la creazione del 
-  numero di pagine  disponibili.
+   \begin{description}
+  	\item[Parametro]
+  		\begin{mldescription}
+  			\mlitem num;
+       \end{mldescription}
+  	\item[Descrizione] \hfill \\
+ Funzione ausiliaria che crea un array di dimensione num che verrà poi usato dalla directive   ng-repeat di angular per la creazione del numero di pagine  disponibili.
+    \end{description}
+ 
   
   \item[\$scope.previousPage()] \hfill \\
+  \begin{description}
+  
   Aggiunge allo \$scope la funzionalità di passaggio alla pagina di visualizzazione precedente alla corrente.
   Diminuisce di 1 l'indicatore della pagina corrente e esegue una nuova richiesta al server per i dati corrispondenti
   alla pagina precedente con \emph{getData()}.
+    \end{description}
+
   
   \item[\$scope.nextPage()] \hfill \\
+  \begin{description}
+  
   Aggiunge allo \$scope la funzionalità di passaggio alla pagina di visualizzazione successiva alla corrente.
   Aumenta di 1 l'indicatore della pagina corrente e esegue una nuova richiesta al server per i dati corrispondenti
   alla pagina successiva con \emph{getData()}.
+    \end{description}
+
   
   \item[\$scope.toPage(index)] \hfill \\
-  Aggiunge allo \$scope la funzionalità di passaggio alla pagina di visualizzazione specificata dal parametro \emph{index}.
+  \begin{description}
+  	\item[Parametro]
+  		\begin{mldescription}
+  			\mlitem index;
+       \end{mldescription}
+  	\item[Descrizione] \hfill \\
+   Aggiunge allo \$scope la funzionalità di passaggio alla pagina di visualizzazione specificata dal parametro \emph{index}.
   Aggiorna l'indicatore della pagina corrente settandolo all'indice passato per parametro alla funzione.
   Successivamente esegue una richiesta al server per ottenere i dati per la nuova visualizzazione.
+    \end{description}
+
   
   \item[changeSort()] \hfill \\
-  Cambia la variabile \$current\_sort dello \$scope che regola l'ordine di visualizzazione dei Document, da discendente ad
-  ascendente e viceversa.
+  \begin{description}
+  
+  Cambia la variabile \$current\_sort dello \$scope che regola l'ordine di visualizzazione dei Document, da discendente ad ascendente e viceversa.
+    \end{description}
+
   
   \item[\$scope.columnSort(index)] \hfill \\
-  Funzione che cambia l'ordinamento di visualizzazione di una colonna della Collection view. \\
+   \begin{description}
+  	\item[Parametro]
+  		\begin{mldescription}
+  			\mlitem index;
+       \end{mldescription}
+  	\item[Descrizione] \hfill \\
+   Funzione che cambia l'ordinamento di visualizzazione di una colonna. \\
   Se la colonna in questione è una colonna diversa da quella che precedentemente ordinata,
   la variabile \emph{current\_sorted\_column} dello \$scope viene aggiornata, altrimenti la funzione cambia solamente
   l'ordinamento della colonna.
+    \end{description}
+    
+  
   
   \item[\$scope.deleteDocument(index)] \hfill \\
-  Funzione che elimina il Document identificato dall'indice \emph{index}. Effettua una richiesta REST di rimozione alla risorsa
-  pubblicizzata da DocumentEditService fornendo come argomenti l'identificativo della Collection correntemente visualizzata e l'indice
-  del Document da eliminare. \\
-  Se l'eliminazione ha successo viene lanciato l'aggiornamento della vista corrente con il Document eliminato, altrimenti si
-  richiama la callback di errore.
+  \begin{description}
+  	\item[Parametro]
+  		\begin{mldescription}
+  			\mlitem index;
+       \end{mldescription}
+  	\item[Descrizione] \hfill \\
+     Funzione che elimina il Document identificato dall'indice \emph{index}. Effettua una richiesta REST di rimozione alla risorsa pubblicizzata da QueryService.
+  Se l'eliminazione ha successo viene lanciato l'aggiornamento della vista corrente con il Document eliminato, altrimenti si richiama la callback di errore.
+    \end{description}
+    
+
   
  \end{description}
 \end{description}
@@ -2463,10 +2607,13 @@ Fornisce un immediato elenco delle collection disponibili.
  \item[Funzionalità] \hfill \\
  \begin{description}
   \item[ signupForm()] \hfill \\
+  \begin{description}
+  
   Nel caso in cui il form di registrazione sia compilato con dati validi, richiama la richiesta RESTful \textit{query} sulla \$resource 
   fornita da RegisterService.
   Con questa funzione viene creato un nuovo utente sul server in base ai dati inseriti.
- 
+   \end{description}
+
   
  \end{description}
 \end{description}
@@ -2479,8 +2626,6 @@ Fornisce un immediato elenco delle collection disponibili.
  
  \item[Utilizzo] \hfill \\
  Controller utilizzato da AngularJS per fornire e gestire i dati della Collection degli user.
- Fornisce l'inizializzazione di base della pagina ed esegue la mediazione tra la Collection view
- e le richieste di visualizzazione e modifica dei dati di una Collection.
  
  \item[Dipendendenze iniettate al controller] \hfill \\
  \begin{itemize}
@@ -2504,51 +2649,95 @@ Fornisce un immediato elenco delle collection disponibili.
  \item[Funzionalità] \hfill \\
  \begin{description}
   \item[init()] \hfill \\
+  \begin{description}
+  
   Funzione di inizializzazione del CollectionController. Imposta i valori iniziali delle variabili dello
   \$scope associate alla Collection view ed esegue la funzione \emph{getData()}.
-  
+    \end{description}
+
   \item[getData()] \hfill \\
+    \begin{description}
+
   Richiama la richiesta RESTful \textit{query} sulla \$resource fornita da UserCollectionService.
   Con questa funzione vengono prelevati i dati legati alla Collection da visualizzare e vengono
   passati alla Collection view tramite il binding con lo \$scope. \\
-  Se non vengono visualizzati risultati, ovvero se la Collection non esiste, avviene un redirect alla pagina
-  che mostra l'errore 404.
   
+      \end{description}
+
   \item[\$scope.numerify(num)] \hfill \\
-  Funzione ausiliaria che crea un array di dimensione   {num} che verrà poi usato dalla directive   {ng-repeat} di angular per la creazione 
-  del numero di pagine  disponibili.
+  \begin{description}
+  	\item[Parametro]
+  		\begin{mldescription}
+  			\mlitem num;
+       \end{mldescription}
+  	\item[Descrizione] \hfill \\
+     Funzione ausiliaria che crea un array di dimensione   {num} che verrà poi usato dalla directive   {ng-repeat} di angular per la creazione del numero di pagine  disponibili.
+    \end{description}
+  
   
   \item[\$scope.previousPage()] \hfill \\
+    \begin{description}
+
   Aggiunge allo \$scope la funzionalità di passaggio alla pagina di visualizzazione precedente alla corrente.
   Diminuisce di 1 l'indicatore della pagina corrente e esegue una nuova richiesta al server per i dati corrispondenti
   alla pagina precedente con \emph{getData()}.
-  
+      \end{description}
+
   \item[\$scope.nextPage()] \hfill \\
+    \begin{description}
+
   Aggiunge allo \$scope la funzionalità di passaggio alla pagina di visualizzazione successiva alla corrente.
   Aumenta di 1 l'indicatore della pagina corrente e esegue una nuova richiesta al server per i dati corrispondenti
   alla pagina successiva con \emph{getData()}.
-  
+      \end{description}
+
   \item[\$scope.toPage(index)] \hfill \\
-  Aggiunge allo \$scope la funzionalità di passaggio alla pagina di visualizzazione specificata dal parametro \emph{index}.
+  \begin{description}
+  	\item[Parametro]
+  		\begin{mldescription}
+  			\mlitem index;
+       \end{mldescription}
+  	\item[Descrizione] \hfill \\
+       Aggiunge la funzionalità di passaggio alla pagina di visualizzazione specificata dal parametro \emph{index}.
   Aggiorna l'indicatore della pagina corrente settandolo all'indice passato per parametro alla funzione.
   Successivamente esegue una richiesta al server per ottenere i dati per la nuova visualizzazione.
+    \end{description}
+    
+
   
   \item[changeSort()] \hfill \\
+    \begin{description}
+
   Cambia la variabile \$current\\textunderscore sort dello \$scope che regola l'ordine di visualizzazione dei Document, da discendente ad
   ascendente e viceversa.
-  
+      \end{description}
+
   \item[\$scope.columnSort(index)] \hfill \\
-  Funzione che cambia l'ordinamento di visualizzazione di una colonna della Collection view. \\
+  \begin{description}
+  	\item[Parametro]
+  		\begin{mldescription}
+  			\mlitem index;
+       \end{mldescription}
+  	\item[Descrizione] \hfill \\
+        Funzione che cambia l'ordinamento di visualizzazione di una colonna. \\
   Se la colonna in questione è una colonna diversa da quella che precedentemente ordinata,
   la variabile \emph{current\_sorted\_column} dello \$scope viene aggiornata, altrimenti la funzione cambia solamente
   l'ordinamento della colonna.
+    \end{description}
+
   
   \item[\$scope.deleteDocument(index)] \hfill \\
-  Funzione che elimina il profilo identificato dall'indice \emph{index}. Effettua una richiesta REST di rimozione alla risorsa
-  pubblicizzata da UserEditService fornendo come argomenti l'identificativo della Collection correntemente visualizzata e l'indice
-  del Document da eliminare. \\
-  Se l'eliminazione ha successo viene lanciato l'aggiornamento della vista corrente con il Document eliminato, altrimenti si
-  richiama la callback di errore.
+  \begin{description}
+  	\item[Parametro]
+  		\begin{mldescription}
+  			\mlitem index;
+       \end{mldescription}
+  	\item[Descrizione] \hfill \\
+      Funzione che elimina il profilo identificato dall'indice \emph{index}. Effettua una richiesta REST di rimozione alla risorsa
+  pubblicizzata da UserEditService fornendo come argomenti l'identificativo della Collection correntemente visualizzata e l'indice del Document da eliminare. \\
+  Se l'eliminazione ha successo viene lanciato l'aggiornamento della vista corrente con il Document eliminato, altrimenti si  richiama la callback di errore.
+    \end{description}
+  
   
  \end{description}
 \end{description}
@@ -2580,28 +2769,41 @@ Fornisce un immediato elenco delle collection disponibili.
  \item[Funzionalità] \hfill \\
  \begin{description}
   \item[UserDataService.query] \hfill \\
+  \begin{description}
+  	\item[Parametro]
+  		\begin{mldescription}
+  			\mlitem \$scope.current\textunderscore document.
+       \end{mldescription}
+  	\item[Descrizione] \hfill \\
+       
   Richiama la richiesta RESTful \textit{query} sulla \$resource fornita da UserDataService.
-  Con questa funzione vengono prelevati i dati legati alla Collection da visualizzare e vengono
-  passati alla Collection view tramite il binding con lo \$scope. \\
-  Se non vengono visualizzati risultati, ovvero se la Collection non esiste, avviene un redirect alla pagina
-  che mostra l'errore 404.
+  Con questa funzione vengono prelevati i dati legati al document da visualizzare e caricati sullo scope.
+ 
+    \end{description}
+ 
   
   \item[\$scope.deleteDocument(index)] \hfill \\
-  Funzione che elimina il profilo identificato dall'indice \emph{index}. Effettua una richiesta REST di rimozione alla risorsa
-  pubblicizzata da UserEditService fornendo come argomenti l'identificativo della Collection correntemente visualizzata e l'indice
-  del Document da eliminare. \\
-  Se l'eliminazione ha successo viene lanciato l'aggiornamento della vista corrente con il Document eliminato, altrimenti si
-  richiama la callback di errore.
+  \begin{description}
+  	\item[Parametro]
+  		\begin{mldescription}
+  			\mlitem index.
+       \end{mldescription}
+  	\item[Descrizione] \hfill \\
+       
+   Funzione che elimina il profilo identificato dall'indice \emph{index}. Effettua una richiesta REST di rimozione alla risorsa pubblicizzata da UserEditService fornendo come argomenti l'identificativo della Collection correntemente visualizzata e l'indice del Document da eliminare. \\
+  Se l'eliminazione ha successo viene lanciato l'aggiornamento della vista corrente con il Document eliminato, altrimenti si richiama la callback di errore.
+    \end{description}
+ 
  \end{description}
 \end{description}
 
 \paragraph{@UsersEditController}
 \begin{description}
  \item[Descrizione] \hfill \\
- Modulo che descrive il Controller della pagina di modifica di un documento.
+ Modulo che descrive il Controller della pagina di modifica di un profilo.
  
  \item[Utilizzo] \hfill \\
- Controller utilizzato da AngularJS per fornire e gestire i dati durante la modifica di un document.
+ Controller utilizzato da AngularJS per fornire e gestire i dati durante la modifica di un profilo.
  
  \item[Dipendendenze iniettate al controller] \hfill \\
  \begin{itemize}
@@ -2622,25 +2824,68 @@ Fornisce un immediato elenco delle collection disponibili.
  \item[Funzionalità] \hfill \\
  \begin{description}
   \item[UserEditService.query] \hfill \\
- Richiama la richiesta RESTful \textit{query} sulla \$resource fornita da UserEditService.
+  \begin{description}
+  	\item[Parametro]
+  		\begin{mldescription}
+  			\mlitem user\_id: \$routeParams.user\_id.
+       \end{mldescription}
+  	\item[Descrizione] \hfill \\
+       
+    Richiama la richiesta RESTful \textit{query} sulla \$resource fornita da UserEditService.
   Con questa funzione vengono prelevati i dati legati alla Collection da visualizzare e vengono
   passati alla Collection view tramite il binding con lo \$scope. \\
-  Se non vengono visualizzati risultati, ovvero se la Collection non esiste, avviene un redirect alla pagina
-  che mostra l'errore 404.
+  
+    \end{description}
+ 
+
   \item[edit\textunderscore document()] \hfill \\
+  \begin{description}
+  
   Funzione che invia al server il documento modificato nel client.
   Assembla un JSON a partire da original\textunderscore keys e original\textunderscore data. Quest'ultima variabile nel frattempo è stata 
   modificata con i nuovi valori del documento.
+    \end{description}
+
   \item[delete\textunderscore document()] \hfill \\
- Funzione che elimina il profilo identificato dall'indice \emph{index}. Effettua una richiesta REST di rimozione alla risorsa
-  pubblicizzata da UserEditService fornendo come argomenti l'identificativo della Collection correntemente visualizzata e l'indice
-  del Document da eliminare. \\
-  Se l'eliminazione ha successo viene lanciato l'aggiornamento della vista corrente con il Document eliminato, altrimenti si
-  richiama la callback di errore.
+    \begin{description}
+ Funzione che elimina il profilo identificato dall'indice \emph{index}. Effettua una richiesta REST di rimozione alla risorsa pubblicizzata da UserEditService fornendo come argomenti l'identificativo della Collection correntemente visualizzata e l'indice del Document da eliminare. \\
+  Se l'eliminazione ha successo viene lanciato l'aggiornamento della vista corrente con il Document eliminato, altrimenti si richiama la callback di errore.
+      \end{description}
+
  \end{description}
 \end{description}
 
 \subsubsection{::Directives}
+
+\paragraph{@Passwrod\_check}
+\begin{description}
+\item [Dipendenze iniettate] \hfill \\
+\begin{itemize}
+	\item scope;
+	\item elem;
+	\item attrs;	
+	\item ctrl.
+\end{itemize}
+ \item[Descrizione] \hfill \\
+ Directive utilizzata per verificare che il contenuto di due campi di un form sia uguale.
+ Viene utilizzata per verificare che l'utente inserisca correttamente entrambe le password durante la registrazione al fine di evitare richieste inutili al server e per prevenire errori piuttosto che correggerli.
+ Se le due password non sono uguali il form non viene validato e non può essere inviato al server.
+
+\end{description}
+
+
+\paragraph{@Unique}
+\begin{description}
+\item [Dipendenze iniettate] \hfill \\
+\begin{itemize}
+	\item \$http;
+	\item \$timeout.
+\end{itemize}
+ \item[Descrizione] \hfill \\
+ Directive utilizzata per verificare che la mail inserita dall'utente durante la registrazione non sia già utilizzata.
+  Se la mail è gia in utilizzo non viene validato il form e non si può procedere alla registrazione.
+
+\end{description}
 
 \subsection{::ModelClient}
 
@@ -2902,7 +3147,17 @@ con il metodo \textit{query}, per ottenere i dati voluti.
 
 
 \section{Diagrammi di sequenza}
+\label{sequenza}
+\subsection{Modifica della View con successo}
+\immagine{./SequenzaSuccesso}{Diagramma sequenza: Modifica View con successo}
+Il diagramma precedente illustra la sequenza di operazioni che avviene alla richiesta da parte di un utente di visualizzare un document.
+Dopo aver cliccato il bottone di visualizzazione del document avviene una serie di richieste a cascata fino ad arrivare al server. Quest'ultimo verifica l'autenticità della richiesta e risponde con il documento cercato.
+Questo documento viene ritornato dal servizio al controller di gestione dei documenti che esegue la callback "success" e prepara il json ad essere visualizzato.
+La view viene poi aggiornata con i nuovi dati.
 
-
+\subsection{Modifica della View con insuccesso}
+\immagine{./SequenzaErrore}{Diagramma sequenza: Modifica View con insuccesso}
+Questo diagramma illustra la stessa operazione del precedente con esito negativo. Il server rifiuta la richiesta e risponde con un codice di errore.
+Il controller esegue la callback "error" e la view verrà aggiornata con un messaggio di errore.
 %FINE DOCUMENTO NON CANCELLARE
 \end{document}

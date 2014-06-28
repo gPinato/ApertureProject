@@ -19,6 +19,8 @@
 * In caso lo sia invalida il form e non si può procedere con la registrazione.
 * */
 
+'use strict';
+
 angular.module('maaperture').
     directive('ensureUnique', ['$http', '$timeout', function ($http, $timeout) {
         var checking = null;
