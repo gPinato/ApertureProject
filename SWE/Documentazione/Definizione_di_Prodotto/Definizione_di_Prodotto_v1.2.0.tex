@@ -820,7 +820,7 @@ Package che racchiude i database, le loro operazioni di accesso e i file DSL con
 \subsubsection{::DataManager}
 Package che gestisce gli accessi ai database.
 
-\paragraph{::DatabaseAnalysisManager} \hfill 
+\paragraph{::DatabaseAnalysisManager} \hfill \\
 Package che gestisce le query ai database di analisi. 
 
 \subparagraph{@DatabaseAnalysisManager}
@@ -1073,7 +1073,7 @@ Viene richiesto il modello della Collection di nome \textit{collection\_name}. S
 			Richiede il modello della Collection \textit{collection\_name} e il file DSL associato. Viene controllato se l'output del DSL applica delle modifiche alla visualizzazione standard. Se ciò avviene, vengono impostate le etichette del JSON da inviare al Client come specificato nel file DSL. I campi compositi del database di analisi vengono processati e viene inviato solamente il campo \textit{id} dei campi compositi. Inoltre vengono interpretate eventuali istruzioni di \textit{populate} da applicare prima di effettuare la query. Infine, nel caso la query abbia successo, viene richiamata la funzione \textit{callback} con argomento il JSON ottenuto dalla query. Se invece la query non è andata a buon fine, viene chiamata la \textit{callback} con argomento vuoto.
 		\end{description}
 	
-	\mlitem{updateDocument(collection\_name, document\_id, newDocumentData, callback)} \hfill
+	\mlitem{updateDocument(collection\_name, document\_id, newDocumentData, callback)}
 		\begin{description}
 			\item[Parametri] \hfill
 				\begin{description}
@@ -1110,7 +1110,7 @@ il metodo \textit{remove} sul modello della Collection scelta per rimuovere il D
 
 \end{description}
 
-\paragraph{::DatabaseUserManager}
+\paragraph{::DatabaseUserManager} \hfill \\
 Package che gestisce gli accessi al database utenti.
 
 \subparagraph{@DatabaseUserManager}
@@ -1584,23 +1584,23 @@ Package realizzato per creare e gestire gli indici utilizzati nel database di an
    \begin{description}
     \item[Parametri]
      \begin{description}
-      \item[users]
+      \item[users] \hfill \\
       Array di oggetti "utente".
-      \item[config]
+      \item[config] \hfill \\
       Oggetto contenente impostazioni di configurazione.
      \end{description}
-    \item[Descrizione]
+    \item[Descrizione] \hfill \\
     Viene creato localmente l'Array delle etichette della lista utenti. Successivamente viene copiato in un Array locale ogni utente e il campo \textit{level} di ognuno viene interpretato e convertito nella stringa corrispondente. Infine viene assemblato il JSON della lista utenti e viene aggiunto l'oggetto contenente le impostazioni di configurazione della lista.
    \end{description}
    
    \mlitem{createUser(user)} \hfill
    \begin{description}
-    \item[Parametri]
+    \item[Parametri] \hfill \\
      \begin{description}
-      \item[user]
+      \item[user] \hfill \\
       Oggetto contenente i campi id, email e livello di accesso di un utente.
      \end{description}
-    \item[Descrizione]
+    \item[Descrizione] \hfill \\
     Viene creato localmente lo scheletro dell'oggetto utente. Viene poi interpretato l'intero contenuto nel campo \textit{level} dell'oggetto \textit{user}. Viene poi ritornato il JSON dell'utente formattato correttamente.
    \end{description}
    
@@ -1636,20 +1636,20 @@ Package realizzato per creare e gestire gli indici utilizzati nel database di an
    	\begin{description}
     		\item[Parametri] \hfill
     			\begin{description}
-    				\item[path]
+    				\item[path] \hfill \\
     				Percorso della cartella da svuotare.
     			\end{description}
-    		\item[Descrizione]
+    		\item[Descrizione] \hfill \\
     		Si occupa di cancellare i file e le cartelle all'interno della cartella \textit{path} specificata.
     	\end{description}
  \mlitem{checkDSL(app)} \hfill 
  	\begin{description}
     		\item[Parametri] \hfill
     			\begin{description}
-    				\item[app]
+    				\item[app] \hfill \\
     				Oggetto contenente l'applicazione di \textit{Express}.
     			\end{description}
-    		\item[Descrizione]
+    		\item[Descrizione] \hfill \\
     		Si occupa di verificare la correttezza del DSL scritto, verificando che tale file contenga un codice corretto sintatticamente e attraverso l'uso del \textit{@DSLparser} esegui il parsing vero e proprio. Controlla che il risulatato del parsing sia in formato JSON, lo salva su file e utilizza il metodo \textit{generateFunction} per creare le funzioni di trasformazione. Se non esiste, si occupa di generare lo schema \textit{Mongoose} della Collection specificata nel file DSL.
     \end{description}
  \end{mldescription}
@@ -1670,64 +1670,64 @@ Package realizzato per creare e gestire gli indici utilizzati nel database di an
  \begin{description}
      		\item[Parametri] \hfill
      			\begin{description}
-     				\item[collection]
+     				\item[collection] \hfill \\
      				Array della struttura del JSON.
-     				\item[field]
+     				\item[field] \hfill \\
      				Campo da aggiungere alla struttura del JSON.
      			\end{description}
-     		\item[Descrizione]
+     		\item[Descrizione] \hfill \\
      		Inizializza il campo field nell'Array della struttura del JSON, dove tale campo è definito nella struttura di default del JSON, con il valore di defalt.
  \end{description}
  \mlitem{checkFieldThrow((collection,field,root)}\hfill 
  \begin{description}
      		\item[Parametri] \hfill
      			\begin{description}
-     				\item[collection]
+     				\item[collection] \hfill \\
      				Array della struttura del JSON.
-     				\item[field]
+     				\item[field] \hfill \\
      				Campo da verificare nella struttura del JSON.
-     				\item[root]
+     				\item[root] \hfill \\
      				\`{E} il nome della sezione in cui deve essere definito il campo.
      			\end{description}
-     		\item[Descrizione]
+     		\item[Descrizione] \hfill \\
      		Chiama il metodo \textit{checkField} e se tale metodo ritorna \textbf{false} allora lancia un eccezione. Questo metodo serve per verificare che il campo sia definito. 
   \end{description}
  \mlitem{checkField(collection,field)} \hfill 
  \begin{description}
      		\item[Parametri] \hfill
      			\begin{description}
-     				\item[collection]
+     				\item[collection] \hfill \\
      			     Array della struttura del JSON.
-     			    \item[field]
+     			    \item[field] \hfill \\
      			     Campo da verificare nella struttura del JSON.
      			\end{description}
-     		\item[Descrizione]
+     		\item[Descrizione] \hfill \\
      		Verifica se un campo è definito, se lo è ritorna \textbf{true}, altrimenti false.
   \end{description}
  \mlitem{checkFieldContentThrow(collection,field,root)} \hfill
  \begin{description}
      		\item[Parametri] \hfill
      			\begin{description}
-     				\item[collection]
+     				\item[collection] \hfill \\
      				 Array della struttura del JSON.
-     				\item[field]
+     				\item[field] \hfill \\
      				 Campo da verificare nella struttura del JSON.
-     				\item[root]
+     				\item[root] \hfill \\
      				 \`{E} il nome della sezione in cui deve essere definito il campo.
      			\end{description}
-     		\item[Descrizione]
+     		\item[Descrizione] \hfill \\
      		Serve per verificare che il campo sia definito e non vuoto. Utilizza il metodo \textit{checkFieldContent} e se tale metodo ritorna false lancia un eccezione.
   \end{description}
  \mlitem{checkFieldContent(collection,field)} \hfill 
  \begin{description}
      		\item[Parametri] \hfill
      			\begin{description}
-     				\item[collection]
+     				\item[collection] \hfill \\
      				 Array della struttura del JSON.
-       			    \item[field]
+       			    \item[field] \hfill \\
        			     Campo da verificare nella struttura del JSON.
      			\end{description}
-     		\item[Descrizione]
+     		\item[Descrizione] \hfill \\
      		Verifica se un campo è definito e non vuoto, se lo è ritorna true, altrimenti false.
   \end{description}
   
@@ -1735,22 +1735,22 @@ Package realizzato per creare e gestire gli indici utilizzati nel database di an
  \begin{description}
      		\item[Parametri] \hfill
      			\begin{description}
-     				\item[value]
+     				\item[value] \hfill \\
      				 Valore del campo.
-     				\item[field]
+     				\item[field] \hfill \\
      				 Campo da verificare nella struttura del JSON.
      			\end{description}
-     		\item[Descrizione]
+     		\item[Descrizione] \hfill \\
      		Verifica che il valore sia numerico, se non lo è lancia un eccezione.
    \end{description}
  \mlitem{parseDSL(DSLstring)} \hfill
  \begin{description}
      		\item[Parametri] \hfill
      			\begin{description}
-     				\item[DSLstring]
+     				\item[DSLstring] \hfill \\
      				Contenuto del file maap di configurazione.
      			\end{description}
-     		\item[Descrizione]
+     		\item[Descrizione] \hfill \\
      		Si occupa di effettuare il parsing del DSL trasformandolo in JSON. Per effettuare il parsing verifica che i campi obbligatori siano definiti e non vuoti, che i campi il cui contenuto deve essere un numero lo sia e che la sintassi delle funzioni di trasformazione dei campi sia valida utilizzando il parser \textit{@JavascriptParser}.
    \end{description}
  \end{mldescription}
@@ -1771,10 +1771,10 @@ Package realizzato per creare e gestire gli indici utilizzati nel database di an
  \begin{description}
      		\item[Parametri] \hfill
      			\begin{description}
-     				\item[app]
+     				\item[app] \hfill \\
      				Oggetto contenente l'applicazione di \textit{Express}.
      			\end{description}
-     		\item[Descrizione]
+     		\item[Descrizione] \hfill \\
      		Si occupa di invocare il metodo \textit{checkDSL} di \textit{@DSLManager}.
    \end{description}
  \end{mldescription}
@@ -1802,36 +1802,36 @@ Package realizzato per creare e gestire gli indici utilizzati nel database di an
  \begin{description}
       		\item[Parametri] \hfill
       			\begin{description}
-      				\item[populateArray]
+      				\item[populateArray] \hfill \\
       				Array di oggetti contenenti la Collection su cui effettuare il populate e la chiave di riferimento.
-      				\item[key]
+      				\item[key] \hfill \\
       				Chiave da ricercare.
       			\end{description}
-      		\item[Descrizione]
+      		\item[Descrizione] \hfill \\
       		Verifica che sia presente all'interno di un array di oggetti un elemento con chiave uguale al parametro \textit{key}, se la trova ritorna la Collection corrispondente.
     \end{description}
  \mlitem{arrayAddElement(element, array)} \hfill
  \begin{description}
       		\item[Parametri] \hfill
       			\begin{description}
-      				\item[element]
+      				\item[element] \hfill \\
       				Oggetto da aggiungere all'array.
-      			   	\item[array]
+      			   	\item[array] \hfill \\
       			   	Array su cui aggiungere l'elemento.
       			\end{description}
-      		\item[Descrizione]
+      		\item[Descrizione] \hfill \\
       		Verifica che l'oggetto non sia presente all'interno dell'Array e se non lo trova lo aggiunge.
     \end{description}
  \mlitem{generate(config, dslJson)} \hfill
  \begin{description}
       		\item[Parametri] \hfill
       			\begin{description}
-      				\item[config]
+      				\item[config] \hfill \\
       				Contiene la configurazione dell'ambiente \textit{MaaP}.
-      				\item[dslJson]
+      				\item[dslJson] \hfill \\
       				Contiene il JSON del parsing del DSL.
       			\end{description}
-      		\item[Descrizione]
+      		\item[Descrizione] \hfill \\
       		Si occupa di generare lo schema della Collection per mongoose partendo dai tipi di dati specificati dall'utente nel DSL.
       		
       		
@@ -2053,7 +2053,7 @@ Fornisce un immediato elenco delle collection disponibili.
  \item  \$scope.values;
  \end{itemize}
  
- \item[Funzionalità] \hfill
+ \item[Funzionalità]
  \begin{mldescription}
   \mlitem{DocumentDataService.query()}
   \begin{description}
@@ -2069,9 +2069,7 @@ Fornisce un immediato elenco delle collection disponibili.
 	Funzione che richiede al server il document da visualizzare.
 	\end{description}
   \end{description}
- \end{mldescription}
 
-\begin{mldescription}
   \mlitem{delete\_document()}
   \begin{description}
   	\item[Parametro]
@@ -2098,7 +2096,7 @@ Fornisce un immediato elenco delle collection disponibili.
  \item[Utilizzo] \hfill \\
  Controller utilizzato da AngularJS per fornire e gestire i dati durante la modifica di un document.
  
- \item[Dipendendenze iniettate al controller] \hfill \\
+ \item[Dipendendenze iniettate al controller] \hfill
  \begin{itemize}
   \item \$scope;
   \item \$location
@@ -2107,7 +2105,7 @@ Fornisce un immediato elenco delle collection disponibili.
   
  \end{itemize}
  
- \item[Attributi] \hfill \\
+ \item[Attributi] \hfill
  \begin{itemize}
  \item  \$scope.current\textunderscore collection;
     \item  \$scope.current\textunderscore document;
@@ -2115,9 +2113,9 @@ Fornisce un immediato elenco delle collection disponibili.
     \item  \$scope.original\textunderscore keys;
  \end{itemize}
  
- \item[Funzionalità] \hfill \\
+ \item[Funzionalità] \hfill
  \begin{description}
-  \item[DocumentEditService.query()] \hfill \\
+  \item[DocumentEditService.query()] \hfill
    \begin{description}
   	\item[Parametro]
   		\begin{mldescription}
@@ -2133,7 +2131,7 @@ Fornisce un immediato elenco delle collection disponibili.
   \end{description}
  
  
-   \item[edit\_document()] \hfill \\
+   \item[edit\_document()] \hfill 
    \begin{description}
   	\item[Parametro]
   		\begin{mldescription}
@@ -2175,7 +2173,7 @@ Fornisce un immediato elenco delle collection disponibili.
  Controller utilizzato da AngularJS per fornire e gestire i dati degli indici.
 
  
- \item[Dipendendenze iniettate al controller] \hfill \\
+ \item[Dipendendenze iniettate al controller] \hfill
  \begin{itemize}
   \item \$scope;
   \item \$route;
@@ -2183,11 +2181,11 @@ Fornisce un immediato elenco delle collection disponibili.
   \item IndexService;
  \end{itemize}
  
- \item[Attributi] \hfill \\
+ \item[Attributi] \hfill
  \begin{itemize}
  \item \$scope.rows;
  \end{itemize}
- \hfill \\
+
  \item[Funzionalità] \hfill 
  \begin{description}
   \item[init()] \hfill 
@@ -2200,7 +2198,7 @@ Fornisce un immediato elenco delle collection disponibili.
   \begin{description}
   	\item[Descrizione] \hfill \\
   	Richiama la richiesta RESTful \textit{query} sulla \$resource fornita da IndexService.
-  Con questa funzione vengono prelevati i dati legati agli indici da visualizzare e vengono passati alla  view tramite il binding con lo \$scope. \\
+  Con questa funzione vengono prelevati i dati legati agli indici da visualizzare e vengono passati alla  view tramite il binding con lo \$scope.
   \end{description}
   
   \item[\$scope.numerify(num)] \hfill 
