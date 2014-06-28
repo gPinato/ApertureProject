@@ -1,0 +1,43 @@
+Analisi_dei_Requisiti_v4.2.0.tex: 69
+Incrementi.tex: 76
+MEDIA: 72
+
+Definizione_di_Prodotto_v1.2.0.tex: 62
+
+GlossarioAM.tex: 54
+GlossarioNZ.tex: 59
+Glossario_v4.2.0.tex: 57
+MEDIA: 57
+
+Manuale_Utente_EN_v1.2.0.tex: 83
+
+Norme_di_Progetto_v4.2.0.tex: 56
+
+Piano_di_Progetto_v4.2.0.tex: 50
+DescrizioneTestIntegrazione.tex: 100
+DescrizioneTestSistema.tex: 100
+DescrizioneTestUnitaClient.tex: 56
+DescrizioneTestUnitaServer.tex: 46
+MEDIA: 70
+MEDIA senza tabelle: 51
+
+Piano_di_qualifica_appendice_A.tex: 44
+Piano_di_qualifica_appendice_B.tex: 42
+Piano_di_qualifica_appendice_C.tex: 59
+Piano_di_qualifica_appendice_D.tex: 43
+Piano_di_qualifica_appendice_E.tex: 41
+Piano_di_Qualifica_v4.2.0.tex: 48
+TracciamentoCOMPTEST.tex: 100
+TracciamentoCOMPTESTUNITA_Client.tex: 100
+TracciamentoCOMPTESTUNITA_Server.tex: 100
+TracciamentoREQTEST.tex: 100
+TracciamentoTESTCOMP.tex: 100
+TracciamentoTESTREQ.tex: 100
+diagrammiAttivita.tex: 35
+MEDIA: 70
+MEDIA senza tabelle tracciamento: 45
+
+Specifica_Tecnica_v2.2.0.tex: 52
+Tracciamento.tex: 100
+
+Studio_di_fattibilita.tex: 45
