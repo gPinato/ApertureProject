@@ -1454,7 +1454,7 @@ Package realizzato per creare e gestire gli indici utilizzati nel database di an
     
    \mlitem{createIndex(query\_id,  name\_index, callback)}
     \begin{description}
-	 \item[Parametri]
+	 \item[Parametri] \hfill
 	  \begin{description}
 	   \item[query\_id] \hfill \\
 	   Id identificativo della query da associare all'indice da creare.
@@ -1497,7 +1497,7 @@ Package realizzato per creare e gestire gli indici utilizzati nel database di an
   
   \mlitem{checkLabels(labelsArray)} \hfill
    \begin{description}
-    \item[Parametri]
+    \item[Parametri] \hfill
      \begin{description}
       \item[labelsArray] \hfill \\
       Array di etichette di una Collection.
@@ -1508,7 +1508,7 @@ Package realizzato per creare e gestire gli indici utilizzati nel database di an
    
   \mlitem{createCollection(labels, data, config)} \hfill
    \begin{description}
-    \item[Parametri]
+    \item[Parametri] \hfill
      \begin{description}
       \item[labels] \hfill \\
       Array contenente l'elenco delle etichette della Collection da creare.
@@ -1523,7 +1523,7 @@ Package realizzato per creare e gestire gli indici utilizzati nel database di an
    
    \mlitem{createDocument(labels, data)} \hfill
    \begin{description}
-    \item[Parametri]
+    \item[Parametri] \hfill
      \begin{description}
       \item[labels] \hfill \\
       Array contenente l'elenco delle etichette del Document da creare.
@@ -1536,7 +1536,7 @@ Package realizzato per creare e gestire gli indici utilizzati nel database di an
    
    \mlitem{createQueriesList(queries, config)} \hfill
    \begin{description}
-    \item[Parametri]
+    \item[Parametri] \hfill
      \begin{description}
       \item[queries] \hfill \\
       Array contenente l'insieme delle query da creare.
@@ -1549,7 +1549,7 @@ Package realizzato per creare e gestire gli indici utilizzati nel database di an
    
    \mlitem{createIndexesList(indexes)} \hfill
    \begin{description}
-    \item[Parametri]
+    \item[Parametri] \hfill
      \begin{description}
       \item[indexes] \hfill \\
       Array contenente l'insieme di indici da creare.
@@ -1560,7 +1560,7 @@ Package realizzato per creare e gestire gli indici utilizzati nel database di an
    
    \mlitem{createUserProfile(user)} \hfill
    \begin{description}
-    \item[Parametri]
+    \item[Parametri] \hfill
      \begin{description}
       \item[user] \hfill \\
       Oggetto contenente i campi email e livello di accesso di un utente.
@@ -1571,12 +1571,12 @@ Package realizzato per creare e gestire gli indici utilizzati nel database di an
    
    \mlitem{createUserProfileEdit(user)} \hfill
    \begin{description}
-    \item[Parametri]
+    \item[Parametri] \hfill
      \begin{description}
-      \item[user]
+      \item[user] \hfill \\
       Oggetto contenente il campo email di un utente.
      \end{description}
-    \item[Descrizione]
+    \item[Descrizione] \hfill \\
     Viene ritornato il JSON di un utente modificabile formattato correttamente.
    \end{description}
    
@@ -1626,7 +1626,7 @@ Package realizzato per creare e gestire gli indici utilizzati nel database di an
   	\begin{description}
    		\item[Parametri] \hfill
    			\begin{description}
-   				\item[transformation]
+   				\item[transformation] \hfill \\
    				Oggetto che contiene il nome della trasformazione e il codice della trasformazione da eseguire.
    			\end{description}
    		\item[Descrizione]
@@ -2078,7 +2078,7 @@ Fornisce un immediato elenco delle collection disponibili.
   		\begin{mldescription}
   			\mlitem  \$scope.current\textunderscore collection;
             \mlitem  \$scope.current\textunderscore document;
-        \}} \hfill \\
+        \hfill \\
         Parametri che identificano la collection e il document da cancellare.
   		\end{mldescription}
  	\begin{description} 	
@@ -2147,9 +2147,6 @@ Fornisce un immediato elenco delle collection disponibili.
 	Funzione che richiede al server di sovrascrivere il document identificato dai parametri con quello modificato dall'utente.
 	\end{description}
   \end{description}
-
-  
-  
   
   
   \item[delete\textunderscore document()] \hfill 
@@ -2166,7 +2163,8 @@ Fornisce un immediato elenco delle collection disponibili.
     Funzione che richiede al server la cancellazione di un document.
 	\end{description}
   \end{description}
- \end{mldescription}
+ \end{description}
+\end{description}
 
 \paragraph{@IndexController}
 \begin{description}
@@ -2388,7 +2386,8 @@ Fornisce un immediato elenco delle collection disponibili.
 	
 	 \item[\$scope.deleteDocument()] \hfill \\
 	 
-	 \begin{description}	 
+	 \begin{description}
+	 	\item[Descrizione] \hfill \\	 
   Funzione che elimina dal server il profilo dell'utente autenticato, cancellando l'utente dal sistema.
   	 \end{description}
 
@@ -2426,7 +2425,7 @@ Fornisce un immediato elenco delle collection disponibili.
  \begin{description}
   \item[ProfileEditService.query] \hfill \\
   \begin{description}
-  
+  	\item[Descrizione] \hfill \\
    Richiama la richiesta RESTful \textit{query} sulla \$resource fornita da ProfileEditService.
   Con questa funzione vengono prelevati i dati legati al profilo utente e caricati sullo scope.
 	 
@@ -2446,7 +2445,8 @@ Funzione che invia al server il profilo modificato nel client.
   
 \item[\$scope.deleteDocument()] \hfill \\
 	 
-	 \begin{description}	 
+	 \begin{description}
+	 	\item[Descrizione] \hfill \\	 
   Funzione che elimina dal server il profilo dell'utente autenticato, cancellando l'utente dal sistema.
   	 \end{description}
  \end{description}
@@ -2516,7 +2516,7 @@ Funzione che invia al server il profilo modificato nel client.
   
   \item[\$scope.previousPage()] \hfill \\
   \begin{description}
-  
+  	\item[Descrizione] \hfill \\  
   Aggiunge allo \$scope la funzionalità di passaggio alla pagina di visualizzazione precedente alla corrente.
   Diminuisce di 1 l'indicatore della pagina corrente e esegue una nuova richiesta al server per i dati corrispondenti
   alla pagina precedente con \emph{getData()}.
@@ -2525,7 +2525,7 @@ Funzione che invia al server il profilo modificato nel client.
   
   \item[\$scope.nextPage()] \hfill \\
   \begin{description}
-  
+  	\item[Descrizione] \hfill \\  
   Aggiunge allo \$scope la funzionalità di passaggio alla pagina di visualizzazione successiva alla corrente.
   Aumenta di 1 l'indicatore della pagina corrente e esegue una nuova richiesta al server per i dati corrispondenti
   alla pagina successiva con \emph{getData()}.
@@ -2547,7 +2547,7 @@ Funzione che invia al server il profilo modificato nel client.
   
   \item[changeSort()] \hfill \\
   \begin{description}
-  
+  	\item[Descrizione] \hfill \\  
   Cambia la variabile \$current\_sort dello \$scope che regola l'ordine di visualizzazione dei Document, da discendente ad ascendente e viceversa.
     \end{description}
 
@@ -2608,7 +2608,7 @@ Funzione che invia al server il profilo modificato nel client.
  \begin{description}
   \item[ signupForm()] \hfill \\
   \begin{description}
-  
+   	\item[Descrizione] \hfill \\
   Nel caso in cui il form di registrazione sia compilato con dati validi, richiama la richiesta RESTful \textit{query} sulla \$resource 
   fornita da RegisterService.
   Con questa funzione viene creato un nuovo utente sul server in base ai dati inseriti.
@@ -2650,14 +2650,14 @@ Funzione che invia al server il profilo modificato nel client.
  \begin{description}
   \item[init()] \hfill \\
   \begin{description}
-  
+   	\item[Descrizione] \hfill \\
   Funzione di inizializzazione del CollectionController. Imposta i valori iniziali delle variabili dello
   \$scope associate alla Collection view ed esegue la funzione \emph{getData()}.
     \end{description}
 
   \item[getData()] \hfill \\
     \begin{description}
-
+  	\item[Descrizione] \hfill \\
   Richiama la richiesta RESTful \textit{query} sulla \$resource fornita da UserCollectionService.
   Con questa funzione vengono prelevati i dati legati alla Collection da visualizzare e vengono
   passati alla Collection view tramite il binding con lo \$scope. \\
@@ -2677,7 +2677,7 @@ Funzione che invia al server il profilo modificato nel client.
   
   \item[\$scope.previousPage()] \hfill \\
     \begin{description}
-
+  	\item[Descrizione] \hfill \\
   Aggiunge allo \$scope la funzionalità di passaggio alla pagina di visualizzazione precedente alla corrente.
   Diminuisce di 1 l'indicatore della pagina corrente e esegue una nuova richiesta al server per i dati corrispondenti
   alla pagina precedente con \emph{getData()}.
@@ -2685,7 +2685,7 @@ Funzione che invia al server il profilo modificato nel client.
 
   \item[\$scope.nextPage()] \hfill \\
     \begin{description}
-
+  	\item[Descrizione] \hfill \\
   Aggiunge allo \$scope la funzionalità di passaggio alla pagina di visualizzazione successiva alla corrente.
   Aumenta di 1 l'indicatore della pagina corrente e esegue una nuova richiesta al server per i dati corrispondenti
   alla pagina successiva con \emph{getData()}.
@@ -2707,7 +2707,7 @@ Funzione che invia al server il profilo modificato nel client.
   
   \item[changeSort()] \hfill \\
     \begin{description}
-
+  	\item[Descrizione] \hfill \\
   Cambia la variabile \$current\\textunderscore sort dello \$scope che regola l'ordine di visualizzazione dei Document, da discendente ad
   ascendente e viceversa.
       \end{description}
@@ -2840,7 +2840,7 @@ Funzione che invia al server il profilo modificato nel client.
 
   \item[edit\textunderscore document()] \hfill \\
   \begin{description}
-  
+   	\item[Descrizione] \hfill \\
   Funzione che invia al server il documento modificato nel client.
   Assembla un JSON a partire da original\textunderscore keys e original\textunderscore data. Quest'ultima variabile nel frattempo è stata 
   modificata con i nuovi valori del documento.
@@ -2848,6 +2848,7 @@ Funzione che invia al server il profilo modificato nel client.
 
   \item[delete\textunderscore document()] \hfill \\
     \begin{description}
+  	\item[Descrizione] \hfill \\ 
  Funzione che elimina il profilo identificato dall'indice \emph{index}. Effettua una richiesta REST di rimozione alla risorsa pubblicizzata da UserEditService fornendo come argomenti l'identificativo della Collection correntemente visualizzata e l'indice del Document da eliminare. \\
   Se l'eliminazione ha successo viene lanciato l'aggiornamento della vista corrente con il Document eliminato, altrimenti si richiama la callback di errore.
       \end{description}
