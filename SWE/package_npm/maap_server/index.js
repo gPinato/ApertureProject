@@ -113,6 +113,44 @@ var setClientServices = function(app) {
 	});
 }
 
+var clientSetup = function(app) {
+
+	var config = app.config;
+	
+	var hostURL = config.app.host + ':' + config.app.port;
+	if(config.app.ssl)
+	{
+		hostURL = 'https://' + hostURL;
+	}else{
+		hostURL = 'http://' + hostURL;
+	}
+
+	console.log('setting up client\'s services with HOST_URL: ' + hostURL + '...');
+	
+	var clientServicesFolder = fs.readdirSync(config.static_assets.dir + '/scripts/services');
+    clientServicesFolder.forEach(function(file) {
+		
+        var filePath = config.static_assets.dir + '/scripts/services/' + file;
+        var stat = fs.statSync(filePath);
+		var extension = path.extname(file);
+        if (stat && stat.isFile() && extension == '.js') {
+			
+			console.log('found client service: ' + file);			
+			
+		}
+	});
+	
+	if(config.app.enableUserRegistration)
+	{
+	
+		console.log('user registration enabled!');
+	}else{
+	
+		console.log('user registration disabled!');
+	}
+	
+}
+
 //avvia il server 
 var start = function(config) {
 
@@ -133,9 +171,10 @@ var start = function(config) {
 	var app_url = protocol + '://' + config.app.host + ':' + port;
 	var env = process.env.NODE_ENV ? ('[' + process.env.NODE_ENV + ']') : '[development]'; 
 	
-	DSL.init(app);		//inizializzo i DSL
-	DB.init(app);		//inizializzo i database
-	serverInit(app);	//inizializzo l'app express
+	clientSetup(app);			//configurazione client e servizi client
+	DSL.init(app);				//inizializzo i DSL
+	DB.init(app);				//inizializzo i database
+	serverInit(app);			//inizializzo l'app express
 	
 	console.log('starting server...');	
 	app.set('port', port);
