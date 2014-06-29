@@ -18,7 +18,12 @@
 
 angular.module('services')
     .factory('DocumentEditService', ['$resource', function ($resource) {
-        return $resource('http://localhost:9000/api/collection/:col_id/:doc_id/edit',
+		
+		//DO NOT EDIT THE NEXT LINE - Maaperture server will update the var hostURL value
+		//using the configuration file's settings everytime the server will start up.
+		var hostURL = 'maapertureServerWillWriteHere';
+		
+        return $resource( hostURL + '/api/collection/:col_id/:doc_id/edit',
             {col_id: '@col_id', doc_id: '@doc_id'}, {
                 'query': {method: 'GET'},
                 'update': {method: 'PUT'},
@@ -26,3 +31,6 @@ angular.module('services')
             });
 
     }]);
+
+
+

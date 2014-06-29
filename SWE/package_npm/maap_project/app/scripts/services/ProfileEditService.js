@@ -17,7 +17,12 @@
 
 angular.module('services')
     .factory('ProfileEditService', ['$resource', function ($resource) {
-        return $resource('http://localhost:9000/api/profile/edit',{},
+		
+		//DO NOT EDIT THE NEXT LINE - Maaperture server will update the var hostURL value
+		//using the configuration file's settings everytime the server will start up.
+		var hostURL = 'maapertureServerWillWriteHere';
+		
+        return $resource( hostURL + '/api/profile/edit',{},
              {
                 'query': {method: 'GET'},
                 'update': {method: 'PUT'},
@@ -25,3 +30,6 @@ angular.module('services')
             });
 
     }]);
+
+
+

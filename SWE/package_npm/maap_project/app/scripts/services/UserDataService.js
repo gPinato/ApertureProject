@@ -17,10 +17,18 @@
 
 angular.module('services')
     .factory('UserDataService', ['$resource', function ($resource) {
-        return $resource('http://localhost:9000/api/users/:user_id',
+		
+		//DO NOT EDIT THE NEXT LINE - Maaperture server will update the var hostURL value
+		//using the configuration file's settings everytime the server will start up.
+		var hostURL = 'maapertureServerWillWriteHere';
+		
+        return $resource( hostURL + '/api/users/:user_id',
             {user_email: '@user_id'}, {
                 'query': {method: 'GET'}
 
             });
 
     }]);
+
+
+

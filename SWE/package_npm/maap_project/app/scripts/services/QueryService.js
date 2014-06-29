@@ -17,10 +17,18 @@
 
 angular.module('services')
     .factory('QueryService', ['$resource', function ($resource) {
-        return $resource('http://localhost:9000/api/queries/list', {}, {
+		
+		//DO NOT EDIT THE NEXT LINE - Maaperture server will update the var hostURL value
+		//using the configuration file's settings everytime the server will start up.
+		var hostURL = 'maapertureServerWillWriteHere';
+		
+        return $resource( hostURL + '/api/queries/list', {}, {
 			'query': {method: 'GET'},
 			'remove': {method: 'DELETE'}
 			});
 
     }]);
+
+
+
 

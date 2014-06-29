@@ -18,7 +18,12 @@
 
 angular.module('services')
     .factory('IndexService', ['$resource', function ($resource) {
-        return $resource('http://localhost:9000/api/indexes/',
+		
+		//DO NOT EDIT THE NEXT LINE - Maaperture server will update the var hostURL value
+		//using the configuration file's settings everytime the server will start up.
+		var hostURL = 'maapertureServerWillWriteHere';
+		
+        return $resource( hostURL + '/api/indexes/',
             {}, {
                 'query': {method: 'GET'},
                 'insert': {method: 'PUT'},
@@ -26,3 +31,6 @@ angular.module('services')
             });
 
     }]);
+
+
+

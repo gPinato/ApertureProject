@@ -135,8 +135,29 @@ var clientSetup = function(app) {
 		var extension = path.extname(file);
         if (stat && stat.isFile() && extension == '.js') {
 			
-			console.log('found client service: ' + file);			
+			console.log('found client service: ' + file);	
+
+			var buffer = '';
+			fs.readFileSync(filePath).toString().split('\n').forEach(function (line) { 
+				var string2find = 'var hostURL';
+				var hostURLindex = line.indexOf(string2find);
+				if(hostURLindex > -1)
+				{
+					//se e' la riga con 'var hostURL' la modifico
+					line = line.substring(0, hostURLindex + string2find.length) + ' = \'' + hostURL + '\';';				
+				}
+				buffer += line.toString() + '\n';
+			});
 			
+			//scrivo il file del servizio client aggiornato
+			fs.writeFileSync(filePath, buffer, 'utf-8', function (err) {
+				if (err) {
+					console.error('error writing service file: ' + file);
+					throw err;
+				} 
+				console.log(file + ' saved!');
+			});	
+	
 		}
 	});
 	
