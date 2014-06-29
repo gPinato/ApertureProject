@@ -16,6 +16,8 @@
 'use strict';
 
 var express = require('express');
+var http = require('http');
+var https = require('https');
 var fs = require('fs');
 var path = require('path');
 var favicon = require('serve-favicon');
@@ -198,8 +200,20 @@ var start = function(config) {
 	serverInit(app);			//inizializzo l'app express
 	
 	console.log('starting server...');	
-	app.set('port', port);
-	var server = app.listen(app.get('port'));
+		
+	if(config.app.ssl)
+	{
+		var options = {
+			key: fs.readFileSync(config.app.ssl_key),
+			cert: fs.readFileSync(config.app.ssl_cert),
+			requestCert: true,
+			rejectUnauthorized: false
+		};
+		https.createServer(options, app).listen(port);
+	}else{
+		http.createServer(app).listen(port);
+	}
+	
 	console.log('');
 	console.log('well done! ' + config.app.title + ' listening at ' + app_url + ' ' + env);
 	console.log('');
