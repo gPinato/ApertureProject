@@ -59,6 +59,7 @@ var dispatcherInit = function (app) {
 	dispatcher.delete('/api/indexes/:index_name', passport.checkAuthenticatedAdmin, datamanager.deleteIndex);
 	
 	//gestione login
+	dispatcher.post('/api/forgotPassword', passport.checkNotAuthenticated, passport.forgotPassword);	
 	dispatcher.post('/api/check/email', passport.checkNotAuthenticated, usermanager.checkMail);	
 	dispatcher.post('/api/signup', passport.checkNotAuthenticated, usermanager.userSignup);
 	dispatcher.get('/loggedin', function(req, res){

@@ -55,7 +55,8 @@
     "serve-favicon": "latest",
     "morgan": "latest",
     "cookie-parser": "latest",
-    "body-parser": "latest"
+    "body-parser": "latest",
+	"nodemailer": "0.7.x"
   },
   "devDependencies": {
     "mocha": "~1.20.x",
