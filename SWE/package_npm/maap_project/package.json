@@ -4,15 +4,15 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
-    "start": "node index.js",
-    "start-development": "NODE_ENV=development node index.js",
-    "start-demon": "node ./node_modules/nodemon/bin/nodemon.js -e js,dsl index.js",
+    "start": "set NODE_ENV=production& node index.js",
+    "startdev": "set NODE_ENV=development& node index.js",
+    "startdemon": "set NODE_ENV=development& node ./node_modules/nodemon/bin/nodemon.js -e js,maap --delay 30 index.js",
     "postinstall": "node ./node_modules/bower/bin/bower install",
     "test": "grunt test"
   },
   "dependencies": {
-    "maaperture": "0.0.x",
-    "nodemon": "1.0.17",
+    "maaperture": "latest",
+    "nodemon": "1.2.x",
     "bower": "1.3.x"
   },
   "devDependencies": {

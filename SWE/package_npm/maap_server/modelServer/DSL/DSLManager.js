@@ -65,7 +65,8 @@ var checkDSL = function(app) {
 	var list = fs.readdirSync(collectionDataPath);
 	if(list.length > 0)
 	{
-		console.log('cleaning up collectionData files...');
+		if(config.app.env == 'development')
+			console.log('cleaning up collectionData files...');
 		deleteFolderRecursive(collectionDataPath);
 	}
 			
@@ -80,8 +81,12 @@ var checkDSL = function(app) {
 		var extension = path.extname(file);
         if (stat && stat.isFile() && extension == '.maap') {
 			results.push(filePath);
-			console.log('found dsl: ' + file);			
-			console.log('parsing ' + file + '...');
+			
+			if(config.app.env == 'development')
+			{
+				console.log('found dsl: ' + file);			
+				console.log('parsing ' + file + '...');
+			}
 			
 			//provo a leggere il dsl
 			try{
@@ -101,7 +106,8 @@ var checkDSL = function(app) {
 			var collectionPosition = result.collection.position;
 					
 			//se corretto mi ritorna un JSON con tutti i campi dati corretti
-			console.log('errors checking...');
+			if(config.app.env == 'development')
+				console.log('errors checking...');
 			
 			//test se il risultato è in formato JSON
 			var stringResult = JSON.stringify(result, null, '\t');
@@ -115,13 +121,14 @@ var checkDSL = function(app) {
 					
 			//salvo su file
 			var saveFile = __dirname + '/collectionData/' + filename + '.json';
-			console.log('saving ' + saveFile);
+			if(config.app.env == 'development')
+				console.log('saving ' + filename + '.json');
 			fs.writeFileSync(saveFile, stringResult, 'utf-8', function (err) {
 					if (err) {
 						console.error('error writing dsl\'s json file: ' + saveFile);
 						throw err;
 					} 
-					console.log(saveFile + ' saved!');
+					console.log(filename + '.json - saved!');
 				}
 			);
 			
@@ -162,20 +169,23 @@ var checkDSL = function(app) {
 			try{
 				var schema = require('./collectionData/' + filename + '_schema.js');
 			}catch(err){
-				console.log('manager not found ' + filename + '_schema.js');
+			
+				if(config.app.env == 'development')
+					console.log('DSL manager: missing ' + filename + '_schema.js');
 				
 				//qui non trovo lo schema, quindi lo creo
 				var schema = schemaGenerator.generate(app.config, result);
 				
 				//salvo su file
 				var saveFile = __dirname + '/collectionData/' + filename + '_schema.js';
-				console.log('saving ' + saveFile);
+				if(config.app.env == 'development')
+					console.log('saving ' + filename + '_schema.js');
 				fs.writeFileSync(saveFile, schema, 'utf-8', function (err) {
 						if (err) {
 							console.error('error writing schema file: ' + saveFile);
 							throw err;
 						} 
-						console.log(saveFile + ' saved!');
+						console.log(filename + '_schema.js - saved!');
 					}
 				);		
 			}
@@ -200,13 +210,14 @@ var checkDSL = function(app) {
 	//salvo su file la lista di collections in formato json
 	var stringResult = JSON.stringify(collectionsList, null, '\t');
 	var saveFile = __dirname + '/collectionData/collectionsList.json';
-	console.log('saving ' + saveFile);
+	if(config.app.env == 'development')
+		console.log('saving collectionsList.json');
 	fs.writeFileSync(saveFile, stringResult, 'utf-8', function (err) {
 			if (err) {
 				console.error('error writing collectionsList file: ' + saveFile);
 				throw err;
 			} 
-			console.log(saveFile + ' saved!');
+			console.log('collectionsList.json - saved!');
 		}
 	);	
 

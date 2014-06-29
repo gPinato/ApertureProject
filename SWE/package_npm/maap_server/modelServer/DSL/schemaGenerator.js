@@ -73,7 +73,7 @@ var generate = function(config, dslJson) {
 					//controllo se è gia presente un file schema per quella collection
 					var composed_schema = require('./collectionData/' + composed_collection + '_schema.js');
 				}catch(err){
-					console.log('generator index not found ' + composed_collection + '_schema.js');
+					//console.log('missing ' + composed_collection + '_schema.js');
 					//lo schema NON è stato definito, quindi lo creo exnovo
 					//genero lo schema
 					var filePath = config.static_assets.dsl + '/' + composed_collection + '.maap';
@@ -85,7 +85,8 @@ var generate = function(config, dslJson) {
 						var schema = generate(config, {collection:{name: composed_collection,index:{},show:{}}} );
 					}
 					var saveFile = __dirname + '/collectionData/' + composed_collection + '_schema.js';
-					console.log('saving ' + saveFile);
+					if(config.app.env == 'development')
+						console.log('saving ' + composed_collection + '_schema.js');
 					fs.writeFileSync(saveFile, schema, 'utf-8', function (err) {
 							if (err) {
 								console.error('error writing schema file: ' + saveFile);
@@ -126,7 +127,8 @@ var generate = function(config, dslJson) {
 				try{
 					var composed_schema = require('./collectionData/' + composed_collection + '_schema.js');		
 				}catch(err){
-					console.log('generator show not found ' + composed_collection + '_schema.js');
+					if(config.app.env == 'development')
+						console.log('generator show not found ' + composed_collection + '_schema.js');
 					//lo schema NON è stato definito, quindi lo creo exnovo
 					var filePath = config.static_assets.dsl + '/' + composed_collection + '.maap';
 					try{
@@ -137,7 +139,8 @@ var generate = function(config, dslJson) {
 						var schema = generate(config, {collection:{name: composed_collection,index:{},show:{}}} );
 					}
 					var saveFile = __dirname + '/collectionData/' + composed_collection + '_schema.js';
-					console.log('saving ' + saveFile);
+					if(config.app.env == 'development')
+						console.log('saving ' + saveFile);
 					fs.writeFileSync(saveFile, schema, 'utf-8', function (err) {
 							if (err) {
 								console.error('error writing schema file: ' + saveFile);

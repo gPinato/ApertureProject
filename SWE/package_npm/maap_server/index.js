@@ -58,61 +58,9 @@ function serverInit(app){
 		next();
 	});
 	
-	// catch 404 and forwarding to error handler
-	/*app.use(function(req, res, next) {
-		var err = new Error('Not Found');
-		err.status = 404;
-		next(err);
-	});
-
-	// error handlers
-
-	// development error handler
-	// will print stacktrace
-	if (app.get('env') === 'development') {
-		app.use(function(err, req, res, next) {
-			res.status(err.status || 500);
-			res.render('error', {
-				message: err.message,
-				error: err
-			});
-		});
-	}
-
-	// production error handler
-	// no stacktraces leaked to user
-	app.use(function(err, req, res, next) {
-		res.status(err.status || 500);
-		res.render('error', {
-			message: err.message,
-			error: {}
-		});
-	});
-	*/
-
 	//inizializzo le componenti del controller
 	controller.init(app);
 	
-}
-
-//imposta i vari parametri di connessione dei servizi lato client: ssl, host, porta
-var setClientServices = function(app) {
-
-	var config = app.config;
-	var servicesPath = config.static_assets.dir + '/scripts/services';
-	var servicesURL = config;
-	console.log('setting up services with: ' + servicesURL + '...');	
-    var list = fs.readdirSync(servicesPath);
-    list.forEach(function(file) {
-		
-        var filePath = servicesPath + '/' + file;
-        var stat = fs.statSync(filePath);
-		var extension = path.extname(file);
-        if (stat && stat.isFile() && extension == '.js') {
-			console.log('setting up service: ' + file);			
-			
-		}
-	});
 }
 
 var clientSetup = function(app) {
@@ -127,7 +75,12 @@ var clientSetup = function(app) {
 		hostURL = 'http://' + hostURL;
 	}
 
-	console.log('setting up client\'s services with HOST_URL: ' + hostURL + '...');
+	if(config.app.env == 'development')
+	{
+		console.log('setting up client\'s services with HOST_URL: ' + hostURL + '...');
+	}else{
+		console.log('setting up client...');
+	}
 	
 	var clientServicesFolder = fs.readdirSync(config.static_assets.dir + '/scripts/services');
     clientServicesFolder.forEach(function(file) {
@@ -137,7 +90,8 @@ var clientSetup = function(app) {
 		var extension = path.extname(file);
         if (stat && stat.isFile() && extension == '.js') {
 			
-			console.log('found client service: ' + file);	
+			if(config.app.env == 'development')
+				console.log('found client service: ' + file);	
 
 			var buffer = '';
 			fs.readFileSync(filePath).toString().split('\n').forEach(function (line) { 
@@ -151,13 +105,17 @@ var clientSetup = function(app) {
 				buffer += line.toString() + '\n';
 			});
 			
+			//rimuovo l'ultimo \n 
+			buffer = buffer.substring(0, buffer.length - 1);
+			
 			//scrivo il file del servizio client aggiornato
 			fs.writeFileSync(filePath, buffer, 'utf-8', function (err) {
 				if (err) {
 					console.error('error writing service file: ' + file);
 					throw err;
 				} 
-				console.log(file + ' saved!');
+				if(config.app.env == 'development')
+					console.log(file + ' saved!');
 			});	
 	
 		}
@@ -166,10 +124,12 @@ var clientSetup = function(app) {
 	if(config.app.enableUserRegistration)
 	{
 	
-		console.log('user registration enabled!');
+		if(config.app.env == 'development')
+			console.log('user registration enabled!');
 	}else{
 	
-		console.log('user registration disabled!');
+		if(config.app.env == 'development')
+			console.log('user registration disabled!');
 	}
 	
 }

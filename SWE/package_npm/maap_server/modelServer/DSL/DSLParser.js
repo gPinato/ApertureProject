@@ -251,7 +251,7 @@ var parseDSL = function(DSLstring) {
 				}//else
 		}//for
 	}
-
+	
 	var alltransformation=[];
 	alltransformation=transformationshow.concat(transformationindex);
 	var allfunctions=[];
@@ -261,7 +261,9 @@ var parseDSL = function(DSLstring) {
 	}
 	var all=[];
 	all=alltransformation.concat(allfunctions);
-	console.log('testing javascript trasformation...');
+	
+	//console.log('testing javascript trasformation...');
+		
 	for(var i=0;i<all.length;i++){
 	//tento il parsing del file javascript
 	if(all[i] == undefined)continue;
