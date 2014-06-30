@@ -41,16 +41,35 @@ exports.userSignup = function(req, res, next) {
 	console.log('registrazione utente');
 	console.log(JSON.stringify(req.body));
 	
-	var level = 0; //livello zero utente semplice	
-	retriever.addUser(req.body.email, req.body.pwd1, level, function(success){
-		if(success)
-		{
-			req.body = {email: req.body.email, password: req.body.pwd1};
-			next();
-		}else{
+	var level = 0; //livello zero utente semplice
+	
+	if(req.body.pwd1 != req.body.pwd2)
+	{
+		console.log('richiesta registrazione fallita: passwords doesn\'t match!');
+		res.send(400);
+	}
+	
+	//controllo che l'utente non sia presente
+	DB.users.count({
+  		email: req.body.email
+    }, function (err, count) {
+        if (count == 0) {
+			retriever.addUser(req.body.email, req.body.pwd1, level, function(success){
+				if(success)
+				{
+					req.body = {email: req.body.email, password: req.body.pwd1};
+					next();
+				}else{
+					console.log('richiesta registrazione fallita: inserimento nel db fallito');
+					res.send(400);
+				}	
+			});
+        } else {
+			console.log('richiesta registrazione fallita: utente gia presente');
 			res.send(400);
-		}	
-	});
+        }
+    });	
+	
 };
 
 //richiede la lista dei dati del proprio profilo utente
