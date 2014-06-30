@@ -46,11 +46,11 @@ angular
                 templateUrl: 'views/userCollection.html',
                 controller: 'UsersCollectionCtrl'
             })
-            .when('/users/:user_email', {
+            .when('/users/:user_id', {
                 templateUrl: 'views/userProfile.html',
                 controller: 'UsersCtrl'
             })
-            .when('/users/:user_email/edit', {
+            .when('/users/:user_id/edit', {
                 templateUrl: 'views/userEdit.html',
                 controller: 'UsersEditCtrl'
             })
@@ -73,6 +73,10 @@ angular
             .when('/register', {
                 templateUrl: 'views/register.html',
                 controller: 'RegisterCtrl'
+            })
+            .when('/recover', {
+                templateUrl: 'views/pwdrecovery.html',
+                controller: 'PwdRecoverCtrl'
             })
             .when('/404', {
                 templateUrl: 'views/404.html'

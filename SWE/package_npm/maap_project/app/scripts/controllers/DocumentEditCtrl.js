@@ -20,8 +20,7 @@ angular.module('maaperture').controller('DocumentEditCtrl', function ($scope, $l
     $scope.current_collection = $routeParams.col_id;
     $scope.current_document = $routeParams.doc_id;
     $scope.canEdit = true;
-    $scope.original_data = [];
-    $scope.original_keys = [];
+    $scope.original_data = {};
 
     //Funzione per richiedere un documento al server.
     //Passa come parametri la collection e il documento da ricevere
@@ -29,13 +28,8 @@ angular.module('maaperture').controller('DocumentEditCtrl', function ($scope, $l
             col_id: $routeParams.col_id,
             doc_id: $routeParams.doc_id },
         function success(data) {
-            $scope.labels = data.label;
-            $scope.data = data.data;
-            //inizializza un array con le chiavi originali e un array con i valori originali da modificare
-            $.each($scope.data, function (key, value) {
-                $scope.original_keys.push(key);
-                $scope.original_data.push(value);
-            });
+            $scope.original_data =  JSON.stringify(data, undefined, 2); // indentation level = 2
+
         },
         function err(error) {
             $location.path("/404");
@@ -45,13 +39,9 @@ angular.module('maaperture').controller('DocumentEditCtrl', function ($scope, $l
 
     //Funzione per inviare al server il nuovo documento
     $scope.edit_document = function () {
-        var new_data = {};
-        //Assembla il json da trasmettere.
-        for (var i = 0; i < $scope.labels.length; i++) {
-            new_data[$scope.original_keys[i]] = $scope.original_data[i];
-        }
+
         //trasforma l'oggetto new_data in JSON.
-        var json_data = JSON.stringify(new_data);
+        var json_data = $scope.original_data;
         //Trasmette al server il nuovo json
         DocumentEditService.update({
                 col_id: $scope.current_collection,

@@ -17,10 +17,7 @@
 
 angular.module('maaperture').controller('NavBarCtrl', function ($scope,$cookieStore,$location,$route, LogoutService, CollectionListService) {
     $scope.isAdmin = $cookieStore.get("isAdmin");
-	
-	//DO NOT EDIT THE NEXT LINE, maaperture server will setup the $scope.singup_enabled = true;
-	//at every start up.
-    $scope.singup_enabled = true;
+
 
     //Funzione per richiedere al server la lista di collection presenti.
 

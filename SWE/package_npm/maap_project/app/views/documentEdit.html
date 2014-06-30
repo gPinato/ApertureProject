@@ -8,15 +8,9 @@
 
             <!-- Table -->
 
+            <textarea ng-model="original_data" rows="10" cols="50">
+            </textarea>
 
-            <table class="table">
-                <th>Label</th>
-                <th>Value</th>
-                <tr ng-repeat="label in labels track by $index">
-                    <td>{{label}}</td>
-                    <td><input ng-model="original_data[$index]"></input></td>
-                </tr>
-            </table>
 
         </div>
     </div>

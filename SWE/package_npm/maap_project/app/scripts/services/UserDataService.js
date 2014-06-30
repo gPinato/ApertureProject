@@ -23,7 +23,7 @@ angular.module('services')
 		var hostURL = 'http://localhost:9000';
 		
         return $resource( hostURL + '/api/users/:user_id',
-            {user_email: '@user_id'}, {
+            {user_id: '@user_id'}, {
                 'query': {method: 'GET'}
 
             });

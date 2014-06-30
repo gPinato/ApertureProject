@@ -74,8 +74,9 @@ angular.module('maaperture').controller('QueryCtrl', function ($scope, $route, $
 
 
     $scope.createIndex = function(id){
+        var indexName = "jknoob";
         IndexService.insert({},
-            id,
+            {id:id,indexName:indexName},
             function success(response) {
                 alert("indice creato!");
 
