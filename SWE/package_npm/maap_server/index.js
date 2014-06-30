@@ -121,16 +121,31 @@ var clientSetup = function(app) {
 		}
 	});
 	
-	if(config.app.enableUserRegistration)
-	{
+	var filePath = config.static_assets.dir + '/scripts/controllers/NavBarCtrl.js';
+	var buffer = '';
+	fs.readFileSync(filePath).toString().split('\n').forEach(function (line) { 
+		var string2find = '$scope.singup_enabled';
+		var cursor = line.indexOf(string2find);
+		if(cursor > -1)
+		{
+			//se e' la riga con 'var hostURL' la modifico
+			line = line.substring(0, cursor + string2find.length) + ' = ' + config.app.enableUserRegistration + ';';				
+		}
+		buffer += line.toString() + '\n';
+	});
 	
-		if(config.app.env == 'development')
-			console.log('user registration enabled!');
-	}else{
+	//rimuovo l'ultimo \n 
+	buffer = buffer.substring(0, buffer.length - 1);
 	
+	//scrivo il file del servizio client aggiornato
+	fs.writeFileSync(filePath, buffer, 'utf-8', function (err) {
+		if (err) {
+			console.error('error writing NavBarCtrl.js');
+			throw err;
+		} 
 		if(config.app.env == 'development')
-			console.log('user registration disabled!');
-	}
+			console.log(file + ' saved!');
+	});	
 	
 }
 

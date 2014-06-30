@@ -69,6 +69,7 @@ var dispatcherInit = function (app) {
 		res.send(req.isAuthenticated() ? req.user : '0');
 	});
 	dispatcher.post('/api/login', passport.checkNotAuthenticated, passport.authenticate, function(req, res){
+		console.log(req.user);
 		res.send(req.user);
 	});	
 	dispatcher.get('/api/logout', passport.checkAuthenticated, function(req, res){
