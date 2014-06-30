@@ -12,6 +12,7 @@
  * 0.1 File creation
  ==============================================
  */
+ 
 'use strict';
 var path = require('path');
 var retriever = require('./DataRetrieverAnalysis');
@@ -39,7 +40,6 @@ var sendCollection  = function(req, res) {
 		
 		if(data.documents == undefined)
 		{
-			console.log('sending 404...');
 			res.send(404);
 		}else{
 			res.send(JSonComposer.createCollection(	data.labels,	//etichette
