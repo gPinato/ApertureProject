@@ -89,13 +89,32 @@ exports.sendDocumentEdit = function(req, res){
 	
 }
 
+exports.sendDocumentEditNew = function(req, res){
+	var config = req.config;
+	var collection_name = req.params.col_id;
+	var document_id = req.params.doc_id;
+	console.log('_________docEDITnew____________');
+	retriever.getDocumentShowEditNew(collection_name, document_id, function(document2edit){
+		
+		//TODO decidere cosa fare se il risultato e' vuoto (collection non presente nel db e/o collection vuota)
+		console.log(document2edit);
+		if(document2edit == {})
+		{
+			res.send(document2edit); //per il momento invio sempre i dati anche se vuoti
+			//res.send(404);
+		}else{
+			res.send(document2edit); //invio tutti i dati in formato JSON puro
+		}
+	});	
+	
+}
+
 exports.updateDocument = function(req, res) {
 	var config = req.config;
 	var collection_name = req.params.col_id;
 	var document_id = req.params.doc_id;
 	
-	//console.log('_________docUPDATE____________');
-	//console.log(JSON.stringify(req.body));
+	console.log('_________docUPDATE____________');
 	retriever.updateDocument(collection_name, document_id, req.body, function(success){
 		if(success)
 		{

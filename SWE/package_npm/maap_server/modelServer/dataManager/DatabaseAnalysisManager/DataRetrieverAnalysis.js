@@ -104,7 +104,7 @@ var getDocuments = function(model, querySettings, populate, callback){
 		if(!result){
 			console.log('nessun risultato') 
 		}else{
-			console.log(result);
+			//console.log(result);
 			//se è stato specificato il populate, sostituisco i vari populate...			
 			if(populate!=[])
 			{
@@ -115,8 +115,12 @@ var getDocuments = function(model, querySettings, populate, callback){
 					//estraggo le informazioni corrette
 					for(var attributename in obj)
 					{
-						//se un campo dati e' nullo non faccio nulla :)
-						if(obj[attributename] == undefined) continue;
+						//se un campo dati e' nullo lo sostituisco con un trattino :)
+						if(obj[attributename] == undefined)
+						{
+							obj.attributename = '-';
+							continue;
+						}
 						
 						for(var j=0; j<populatePath.length; j++)
 						{
@@ -142,6 +146,7 @@ var getDocuments = function(model, querySettings, populate, callback){
 
 				}
 			}
+			console.log(result);
 			callback(result);
 			
 		}
@@ -187,6 +192,8 @@ var sortDocumentsByLabels = function(documents, keys) {
 		for(var j=0; j<keys.length; j++)
 		{
 			sortedDocument[keys[j]] = documents[i][keys[j]];
+			if(sortedDocument[keys[j]] == undefined)
+				sortedDocument[keys[j]] = '-';
 		}
 		result.push(sortedDocument);
 	}	
@@ -501,6 +508,33 @@ exports.getDocumentShowEdit = function(collection_name, document_id, callback) {
 		callback({});
 	}
 }
+
+exports.getDocumentShowEditNew = function(collection_name, document_id, callback) {
+
+	var model = getModel(collection_name);
+	
+	var query = {};
+	query._id = document_id;
+	
+	var querySettings = {};
+	querySettings.where = query; 
+	querySettings.select = {};
+	querySettings.orderbycolumn = '';
+	querySettings.typeorder = '';
+	querySettings.startskip = 0;
+	querySettings.numberofrow = '';
+	
+	//eseguo una query pulita e restituisco tutti i dati in formato json senza modifiche
+	//per permettere all'utente di modificare i dati a piacimento
+	getDocuments(model,
+				querySettings,
+				'',								//niente populate
+				function(document2edit){
+					callback(document2edit[0]); //restituisco il primo ed unico json dell'array
+				});
+
+}
+
 
 exports.updateDocument = function(collection_name, document_id, newDocumentData, callback) {
 	var model = getModel(collection_name);
