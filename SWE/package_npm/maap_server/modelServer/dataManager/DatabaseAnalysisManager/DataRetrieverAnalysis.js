@@ -159,14 +159,14 @@ exports.getCollectionsList = function() {
 }
 
 //applica le varie trasformazioni presenti nel dsl ai vari campi dei documents nell'array di documents
-var applyTrasformations = function(type, documentsArray, dslArray) {
+var applyTrasformations = function(collection_name, type, documentsArray, dslArray) {
 
 	for(var i=0; i<dslArray.length; i++)
 	{
 		if(dslArray[i].transformation != null)
 		{
 			var fieldName = dslArray[i].name;
-			var file = require('../../DSL/collectionData/transformation_' + type + '_' + fieldName + '.js');
+			var file = require('../../DSL/collectionData/transformation_' + collection_name + '_' + type + '_' + fieldName + '.js');
 			var transformation = file.transformation;
 			for(var j=0; j<documentsArray.length; j++)
 			{
@@ -308,7 +308,7 @@ exports.getCollectionIndex = function(collection_name, column, order, page, call
 											//qui columns del dsl e' definita
 											result.labels = labels;	
 											documents = sortDocumentsByLabels(documents, keys);
-											result.documents = applyTrasformations('index', documents, columns);
+											result.documents = applyTrasformations(collection_name, 'index', documents, columns);
 										}else{	
 											//nel caso la column non sia definita
 											result.labels = [];
@@ -397,7 +397,7 @@ exports.getDocumentShow = function(collection_name, document_id, callback) {
 						{
 							result.labels = labels;	
 							documents = sortDocumentsByLabels(documents, keys);
-							documents = applyTrasformations('show', documents, rows);
+							documents = applyTrasformations(collection_name, 'show', documents, rows);
 						}else{	
 							//nel caso la row non sia definita
 							result.labels = [];

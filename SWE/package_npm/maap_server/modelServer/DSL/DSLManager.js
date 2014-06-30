@@ -139,7 +139,7 @@ var checkDSL = function(app) {
 			
 			for(var j=0; j<index.length; j++)
 			{
-				var saveFile = __dirname + '/collectionData/' + 'transformation_index_' + index[j].name + '.js';
+				var saveFile = __dirname + '/collectionData/' + 'transformation_' + filename + '_index_' + index[j].name + '.js';
 				var stringResult = generateFunction(index[j]);
 				fs.writeFileSync(saveFile, stringResult, 'utf-8', function (err) {
 						if (err) {
@@ -154,7 +154,7 @@ var checkDSL = function(app) {
 			for(var j=0; j<show.length; j++)
 			{
 				var stringResult = generateFunction(show[j]);
-				var saveFile = __dirname + '/collectionData/' + 'transformation_show_' + show[j].name + '.js';
+				var saveFile = __dirname + '/collectionData/' + 'transformation_' + filename + '_show_' + show[j].name + '.js';
 				fs.writeFileSync(saveFile, stringResult, 'utf-8', function (err) {
 						if (err) {
 							console.error('error writing dsl\'s transformation file: ' + saveFile);
