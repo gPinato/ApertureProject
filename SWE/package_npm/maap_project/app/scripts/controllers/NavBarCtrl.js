@@ -25,7 +25,6 @@ angular.module('maaperture').controller('NavBarCtrl', function ($scope,$cookieSt
         function success(data) {
             $scope.labels = data.labels;
             $scope.values = data.data;
-            $location.refresh();
         });
 
     //Funzione per effettuare il logout.

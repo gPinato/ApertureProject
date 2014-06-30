@@ -25,7 +25,12 @@ angular.module('maaperture').controller('LoginCtrl', function ($scope,$route,$co
     $scope.login = function () {
         AuthService.login({}, $scope.credentials,
             function success(data, status) {
-                $cookieStore.put("isAdmin",true);
+                if ( data.level === 1){
+                    $cookieStore.put("isAdmin",true);
+                }
+                else{
+                    $cookieStore.put("isAdmin",false);
+                }
                 $location.path('/');
                 $route.reload();
 
