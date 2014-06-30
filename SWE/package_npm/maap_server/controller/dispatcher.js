@@ -62,7 +62,9 @@ var dispatcherInit = function (app) {
 	//gestione login
 	dispatcher.post('/api/forgotPassword', passport.checkNotAuthenticated, passport.forgotPassword);	
 	dispatcher.post('/api/check/email', passport.checkNotAuthenticated, usermanager.checkMail);	
-	dispatcher.post('/api/signup', passport.checkNotAuthenticated, usermanager.userSignup);
+	dispatcher.post('/api/signup', passport.checkNotAuthenticated, usermanager.userSignup, passport.authenticate, function(req, res){
+		res.send(req.user);
+	});
 	dispatcher.get('/loggedin', function(req, res){
 		res.send(req.isAuthenticated() ? req.user : '0');
 	});

@@ -37,7 +37,7 @@ exports.checkMail = function(req, res) {
     });	
 };
 
-exports.userSignup = function(req, res) {
+exports.userSignup = function(req, res, next) {
 	console.log('registrazione utente');
 	console.log(JSON.stringify(req.body));
 	
@@ -45,7 +45,8 @@ exports.userSignup = function(req, res) {
 	retriever.addUser(req.body.email, req.body.pwd1, level, function(success){
 		if(success)
 		{
-			res.send(200);
+			req.body = {email: req.body.email, password: req.body.pwd1};
+			next();
 		}else{
 			res.send(400);
 		}	
