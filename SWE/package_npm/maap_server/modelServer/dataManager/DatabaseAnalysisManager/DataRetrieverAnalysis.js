@@ -541,23 +541,57 @@ exports.updateDocument = function(collection_name, document_id, newDocumentData,
 	
 	var criteria = {};
 	criteria._id = document_id;
-		
 	var options = {};
 	
-	var query = model.update(criteria, {$set: newDocumentData}, options);
-	query.lean().exec( function(err, count){
-		if(err){console.log('document update fallito: ' + err); return;}
-		if(count==0){
-			//console.log('nessun risultato'); 
-			callback(false);
-		}else{
-			//update avvenuto con successo
-			callback(true);
-		}
-	});
+	for(var key in newDocumentData)
+	{
+		if(key.indexOf('$') == 0) //rimuovo campi dati con il dollaro se ce ne sono (FIX temporaneo..)
+			delete newDocumentData[key];
+	}
+	
+	//se sto modificando i vari campi dati lasciando invariato l'_id
+	if(newDocumentData._id == document_id)
+	{
+		delete newDocumentData._id; //rimuovo l'_id perchè non posso modificarlo con mongoose
+	
+		var query = model.update(criteria, {$set: newDocumentData}, options);
+		query.lean().exec( function(err, count){
+			if(err){console.log('document update fallito: ' + err); return;}
+			if(count==0){
+				//console.log('nessun risultato'); 
+				callback(false);
+			}else{
+				//update avvenuto con successo
+				callback(true);
+			}
+		});
+	
+	}else{
+		
+		//altrimenti se l'utente vuole modificare l'id, prima rimuovo il vecchio document
+		removeDocument(collection_name, document_id, function(done){
+			if(done)
+			{
+				//ora creo un nuovo document con il nuovo id
+				model.create(newDocumentData, function(err){
+					if(err)
+					{
+						callback(false);
+					}else{
+						//creazione avvenuta con successo
+						callback(true);
+					}			
+				});
+				
+			}else{
+				callback(false);
+			}		
+		});
+	
+	}
 }
 
-exports.removeDocument = function(collection_name, document_id, callback) {
+var removeDocument = function(collection_name, document_id, callback) {
 	var criteria = {};
 	criteria._id = document_id;
 	
@@ -575,6 +609,7 @@ exports.removeDocument = function(collection_name, document_id, callback) {
 		}
 	});
 }
+exports.removeDocument = removeDocument;
 
 exports.getModel=getModel;	
 exports.sortDocumentsByLabels = sortDocumentsByLabels;
