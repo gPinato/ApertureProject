@@ -151,11 +151,11 @@ exports.updateUser = function(req, callback) {
 	});
 }; 
 
-exports.removeUser = function(email, callback) {
+exports.removeUser = function(id, callback) {
 	var model = DB.users;
 	
 	var criteria = {};
-	criteria.email = email;
+	criteria._id = id;
 		
 	var query = model.remove(criteria);
 	query.lean().exec( function(err, count){

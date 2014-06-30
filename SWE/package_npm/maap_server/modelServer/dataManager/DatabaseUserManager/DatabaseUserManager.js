@@ -153,9 +153,8 @@ exports.updateUser = function(req, res) {
 
 //rimuove un utente
 exports.removeUser = function(req, res) {
-	console.log('admin is removing an user: ' + req.params.user_email);
-	var email = req.params.user_email;
-	retriever.removeUser(email, function(done){
+	console.log('admin is removing an user: ' + req.params.user_id);
+	retriever.removeUser(req.params.user_id, function(done){
 		if(done)
 		{
 			res.send(200);
