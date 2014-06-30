@@ -183,7 +183,7 @@ exports.getIndexesList = function(req, res) {
 
 exports.createIndex = function(req, res) {
 
-	console.log(JSON.stringify(req.body));
+	//console.log(JSON.stringify(req.body));
 	
 	var query_id = req.body.query_id;
 	var index_name = req.body.indexName;
