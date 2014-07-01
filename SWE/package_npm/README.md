@@ -30,6 +30,14 @@ Examples:
 	$ maaperture create --name razorback -O c:/
 	$ maaperture create -N razorback
 	
+Heroku sample app
+-------------
+Try out a Maaperture example app on heroku:
+Heromaap -> http://heromaap.herokuapp.com
+
+Here you go some accounts details [email - password]:
+normal user: user@user.com - userpassword
+administrator: admin@admin.com - adminpassword
 	
 Maaperture collection example dsl [lavoratori.maap]
 -------------
