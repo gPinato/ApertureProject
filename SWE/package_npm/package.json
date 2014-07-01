@@ -1,7 +1,7 @@
 {
   "name": "maaperture",
   "description": "MaaP - MongoDB as an Admin Platform",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "license": "BSD-3-Clause",
   "contributors": [
     {
@@ -41,7 +41,7 @@
   ],
   "main": "./index.js",
   "bin": {
-    "maaperture": "./maap_installer/maapertureInstaller.js"
+    "maaperture": "./maap_installer/maaperture.js"
   },
   "dependencies": {
     "commander": "2.2.0",

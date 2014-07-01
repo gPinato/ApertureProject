@@ -1,7 +1,7 @@
-#!/usr/bin/env node
+#!/usr/local/bin node
 
 /**
- * File: maapertureInstaller.js
+ * File: maaperture.js
  * Module: maap_installer
  * Author: Alberto Garbui
  * Created: 02/05/14
@@ -77,7 +77,7 @@ program
 	.version(version)
 	.usage('<command> [options]')
 	.option('-N, --name <project_name>', 'specify the project\'s name')
-	.option('-O, --output [output_path]', 'specify the output path [./]', './')
+	.option('-O, --output [output_path]', 'specify the output path [./]', './');
  
 program
 	.command('create')
