@@ -41,7 +41,7 @@
   ],
   "main": "./index.js",
   "bin": {
-    "maaperture": "./maap_installer/maaperture"
+    "maaperture": "./maap_installer/maapertureInstaller.js"
   },
   "dependencies": {
     "commander": "2.2.0",
