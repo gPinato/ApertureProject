@@ -38,7 +38,7 @@ Heromaap -> http://heromaap.herokuapp.com
 Maaperture collection example dsl [lavoratori.maap]
 -------------
 
-'''javascript
+```  javascript
 collection = {
 	label: 'Lavoratori giovani fulltime', 	//collection label
 	name: 'workers',						//mongoDB collection's name
@@ -135,5 +135,4 @@ collection = {
 
 //exports collection [DO NOT REMOVE]
 exports.collection = collection;
-'''
-
+```
