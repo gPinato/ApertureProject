@@ -130,6 +130,12 @@ var clientSetup = function(app) {
 		{
 			line = line.substring(0, cursor) + '<a  ng-show="' + config.app.enableUserRegistration + '" href="/register">';			
 		}
+		var string2find = '<a  ng-show="false" href="/register">';
+		var cursor = line.indexOf(string2find);
+		if(cursor > -1)
+		{
+			line = line.substring(0, cursor) + '<a  ng-show="' + config.app.enableUserRegistration + '" href="/register">';			
+		}
 		buffer += line.toString() + '\n';
 	});
 	
