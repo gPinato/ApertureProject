@@ -54,15 +54,18 @@ exports.updateUserProfile = function(req, callback) {
 	var options = {};
 	
 	var newUserData = {};
-	newUserData.email = req.user.email;
-	newUserData.password = req.user.password;
+	newUserData.email = req.body.email;
+	newUserData.password = req.body.newpassword;
 	
 	//recupero dei vecchi dati utenti
 	//var oldEmail = req.session.passport.user.email;
 	var oldPassword = req.session.passport.user.password;
 	
-	if(oldPassword == req.user.oldPassword)
-	{
+	//il controllo vecchia password non viene eseguito, 
+	//la sicurezza si basa sul fatto che questa funzione deve essere
+	//richiamata solamente se l'utente e' correttamente autenticato
+	//if(oldPassword == req.body.oldPassword)
+	//{
 		var query = model.update(criteria, {$set: newUserData}, options);
 		query.lean().exec( function(err, count){
 			if(err){console.log('update user profile fallito: ' + err); callback(false);}
@@ -74,10 +77,10 @@ exports.updateUserProfile = function(req, callback) {
 				callback(true);
 			}
 		});
-	}else{
+	//}else{
 		//la vecchia password non corrisponde
-		callback(false);
-	}
+	//	callback(false);
+	//}
 }; 
 
 //recupera la lista utenti

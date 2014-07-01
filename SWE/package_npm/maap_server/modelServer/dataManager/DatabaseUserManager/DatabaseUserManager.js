@@ -140,7 +140,7 @@ exports.sendUserEdit = function(req, res) {
 
 //esegue l'update dei dati di un utente da parte dell'admin
 exports.updateUser = function(req, res) {
-	console.log('update user from admin: ' + JSON.stringify(req));
+	console.log('update user from admin: ' + JSON.stringify(req.body));
 	retriever.updateUser(req, function(done){
 		if(done)
 		{
