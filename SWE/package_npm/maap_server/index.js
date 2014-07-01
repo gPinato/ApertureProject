@@ -128,7 +128,6 @@ var clientSetup = function(app) {
 		var cursor = line.indexOf(string2find);
 		if(cursor > -1)
 		{
-			//se e' la riga con 'var hostURL' la modifico
 			line = line.substring(0, cursor) + '<a  ng-show="' + config.app.enableUserRegistration + '" href="/register">';			
 		}
 		buffer += line.toString() + '\n';
@@ -137,10 +136,44 @@ var clientSetup = function(app) {
 	//rimuovo l'ultimo \n 
 	buffer = buffer.substring(0, buffer.length - 1);
 	
-	//scrivo il file del servizio client aggiornato
+	//scrivo il file login.html aggiornato
 	fs.writeFileSync(filePath, buffer, 'utf-8', function (err) {
 		if (err) {
 			console.error('error writing login.html');
+			throw err;
+		} 
+		if(config.app.env == 'development')
+			console.log(file + ' saved!');
+	});	
+	
+	
+	//imposto il nome del progetto nel file index.html
+	var filePath = config.static_assets.dir + '/index.html';
+	var buffer = '';
+	fs.readFileSync(filePath).toString().split('\n').forEach(function (line) { 
+		var string2find = '<title>';
+		var cursor = line.indexOf(string2find);
+		if(cursor > -1)
+		{
+			line = line.substring(0, cursor) + '<title>' + config.app.title + '</title>';			
+		}
+		
+		var string2find = '<meta name="description" content="';
+		var cursor = line.indexOf(string2find);
+		if(cursor > -1)
+		{
+			line = line.substring(0, cursor + string2find.length) + config.app.description + '">';			
+		}
+		buffer += line.toString() + '\n';
+	});
+	
+	//rimuovo l'ultimo \n 
+	buffer = buffer.substring(0, buffer.length - 1);
+	
+	//scrivo il file index.html aggiornato
+	fs.writeFileSync(filePath, buffer, 'utf-8', function (err) {
+		if (err) {
+			console.error('error writing index.html');
 			throw err;
 		} 
 		if(config.app.env == 'development')
