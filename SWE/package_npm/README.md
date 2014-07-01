@@ -42,7 +42,7 @@ Maaperture collection example dsl [lavoratori.maap]
 collection = {
 	label: 'Lavoratori giovani fulltime', 	//collection label
 	name: 'workers',						//mongoDB collection's name
-	position: 3, 							//menu position (default -1)
+	position: 3, 							//menu position
 	
 	index : {
 		populate: [{collection: 'jobs', key: 'job'}],
@@ -117,7 +117,7 @@ collection = {
 			},
 			{
 				label: 'Interessi personali',
-				name: 'hobbies',
+				name: 'interest',
 				type: '[String]',
 				transformation: 'var result = \"\" ; \
 								for(var i=0; i<interest.length; i++) \
