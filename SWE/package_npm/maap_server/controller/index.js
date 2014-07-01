@@ -14,7 +14,7 @@
  */
 'use strict';
 
-var FrontController = require('./FrontController');
+var FrontController = require('./frontController');
 
 exports.init = function(app){
 

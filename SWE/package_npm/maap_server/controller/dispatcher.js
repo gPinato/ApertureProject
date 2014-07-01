@@ -14,11 +14,11 @@
  */
 'use strict';
 
-var passport = require("./Passport");
+var passport = require("./passport");
 var path = require('path');
-var datamanager = require('../ModelServer/DataManager/DatabaseAnalysisManager/DatabaseAnalysisManager');
-var usermanager = require('../ModelServer/DataManager/DatabaseUserManager/DatabaseUserManager');
-var indexmanager = require('../ModelServer/DataManager/IndexManager/IndexManager');
+var datamanager = require('../modelServer/dataManager/DatabaseAnalysisManager/DatabaseAnalysisManager');
+var usermanager = require('../modelServer/dataManager/DatabaseUserManager/DatabaseUserManager');
+var indexmanager = require('../modelServer/dataManager/IndexManager/IndexManager');
 
 var dispatcherInit = function (app) {
 	

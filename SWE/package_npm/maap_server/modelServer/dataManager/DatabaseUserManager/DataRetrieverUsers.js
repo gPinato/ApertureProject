@@ -14,7 +14,7 @@
  */
 'use strict';
 
-var DB = require('../../Database/MongooseDBFramework');
+var DB = require('../../database/MongooseDBFramework');
 
 //aggiunge un utente al database degli utenti
 exports.addUser = function(email, password, level, callback) {

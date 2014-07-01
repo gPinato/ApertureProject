@@ -14,7 +14,7 @@
  */
 'use strict';
 
-var Dispatcher = require("./Dispatcher");
+var Dispatcher = require("./dispatcher");
 
 var initFrontController = function(app) {
 

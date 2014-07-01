@@ -15,7 +15,7 @@
 'use strict';
 var path = require('path');
 var retriever = require('./DataRetrieverUsers');
-var DB = require('../../Database/MongooseDBFramework');
+var DB = require('../../database/MongooseDBFramework');
 var JSonComposer = require('../JSonComposer');
 
 //controlla che la mail non sia gia presente nel sistema durante la registrazione

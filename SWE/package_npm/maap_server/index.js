@@ -26,9 +26,9 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var session = require('express-session');
 
-var controller = require('./Controller');
-var DB = require('./ModelServer/Database');
-var DSL = require('./ModelServer/DSL');
+var controller = require('./controller');
+var DB = require('./modelServer/database');
+var DSL = require('./modelServer/DSL');
 
 function serverInit(app){
 

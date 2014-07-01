@@ -15,7 +15,7 @@
 'use strict';
 
 var getModel = function(collection_name) {
-	var DB = require('../../Database/MongooseDBAnalysis');
+	var DB = require('../../database/MongooseDBAnalysis');
 	var array = DB.model;
 	
 	for(var i=0; i<array.length; i++)
@@ -29,7 +29,7 @@ var getModel = function(collection_name) {
 }
 
 exports.addQuery = function(collection_name, select) {
-	var queryModel = require('../../Database/MongooseDBFramework').query;
+	var queryModel = require('../../database/MongooseDBFramework').query;
 	var findQueries = queryModel.find({collection_name: collection_name});
 	findQueries.lean().exec(function(err,data){
 		if(err)
@@ -88,8 +88,8 @@ exports.addQuery = function(collection_name, select) {
 }
 
 exports.resetQueries = function(callback) {
-	var queryModel = require('../../Database/MongooseDBFramework').query;
-	var connection = require('../../Database/MongooseDBFramework').connection;
+	var queryModel = require('../../database/MongooseDBFramework').query;
+	var connection = require('../../database/MongooseDBFramework').connection;
 	//console.log(queryModel.modelName);
 	connection.db.dropCollection(queryModel.modelName, function(err,data){
 		if(err){
@@ -104,8 +104,8 @@ exports.resetQueries = function(callback) {
 }
 
 exports.getQueries = function(page, perpage, n_elements, callback) {
-	var DB = require('../../Database/MongooseDBFramework');
-	var queryModel = require('../../Database/MongooseDBFramework').query;
+	var DB = require('../../database/MongooseDBFramework');
+	var queryModel = require('../../database/MongooseDBFramework').query;
 	var options = {};
 	
 	options.skip = page * perpage;
@@ -153,8 +153,8 @@ exports.getIndex = function(callback) {
 
 exports.createIndex = function(query_id,  name_index, callback) {
 	//var query_id = '5399ad538beb2a5c22fbf900';
-	var DB = require('../../Database/MongooseDBFramework');
-	var queryModel = require('../../Database/MongooseDBFramework').query;
+	var DB = require('../../database/MongooseDBFramework');
+	var queryModel = require('../../database/MongooseDBFramework').query;
 	var where = {};
 	where['_id'] = query_id;
 	var select = {};
