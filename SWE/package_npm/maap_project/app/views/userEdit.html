@@ -16,25 +16,32 @@
                     <td><input ng-model="original_data[$index]"> </td>
 
                 <tr>
-                <td>Password</td>
-                <td><input ng-model="oldPassword" placeholder="Insert old password here"> </td>
-                <td><input ng-model="newPassword1" placeholder="Insert new password"> </td>
-                <td><input ng-model="newPassword2" placeholder="Repeat new password"> </td>
-                <td><span ng-show="newPassword1 == newPassword2" class="glyphicon glyphicon-ok"> Passwords match!</span></td>
-                <td><span ng-show="newPassword1 != newPassword2" class="glyphicon glyphicon-remove">Passwords don't match!</span></td>
+                    <td>Password</td>
+                    <td><input ng-model="newPassword1" placeholder="Insert new password"> </td>
+                    <td><input ng-model="newPassword2" placeholder="Repeat new password"> </td>
+                    <td><span ng-show="newPassword1 == newPassword2 && newPassword1 != null" class="glyphicon glyphicon-ok"> Passwords match!</span></td>
+                    <td><span ng-show="newPassword1 != newPassword2" class="glyphicon glyphicon-remove">Passwords don't match!</span></td>
 
-            </tr>
+                </tr>
 
             </table>
 
         </div>
     </div>
     <div class="col-md-2">
-        <div class="panel panel-default">
+        <div  ng-show="admin" class="panel panel-default">
             <!-- Default panel contents -->
             <div ng-model="rows" class="panel-heading">Options</div>
 
-            <a  ng-click="edit_document()"  class="btn btn-danger"><i class="glyphicon glyphicon-pencil"></i> Save</a>
+            <a  ng-click="edit_document()" ng-disabled="newPassword1 != newPassword2 || newPassword1 == null" class="btn btn-danger"><i class="glyphicon glyphicon-pencil"></i> Save</a>
+            <a href="/users/{{current_document}}" ng-click="discard()" class="btn btn-warning"><i class="glyphicon glyphicon-trash"></i> Discard</a>
+
+        </div>
+        <div  ng-hide="admin" class="panel panel-default">
+            <!-- Default panel contents -->
+            <div ng-model="rows" class="panel-heading">Options</div>
+
+            <a  ng-click="edit_document()" ng-disabled="newPassword1 != newPassword2 || newPassword1 == null" class="btn btn-danger"><i class="glyphicon glyphicon-pencil"></i> Save</a>
             <a href="/profile" ng-click="discard()" class="btn btn-warning"><i class="glyphicon glyphicon-trash"></i> Discard</a>
 
         </div>

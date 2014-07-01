@@ -17,10 +17,14 @@
 
 'use strict';
 
-angular.module('maaperture').controller('UserEditCtrl', function ($scope, $location, UserEditService, $routeParams) {
+angular.module('maaperture').controller('UsersEditCtrl', function ($scope, $location, UserEditService, $routeParams) {
     $scope.current_document = $routeParams.user_id;
+    $scope.newPassword1 = null;
+    $scope.newPassowrd2 = null;
     $scope.original_data = [];
     $scope.original_keys = [];
+    $scope.valid = null;
+    $scope.admin = true;
 
     //Funzione per richiedere un documento al server.
     //Passa come parametri la collection e il documento da ricevere

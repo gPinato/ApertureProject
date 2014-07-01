@@ -4,7 +4,7 @@
     <div class="col-xs-8 col-xs-offset-1">
         <div class="panel panel-default">
             <!-- Default panel contents -->
-            <div ng-model="rows" class="panel-heading">Collection index</div>
+            <div ng-model="rows" class="panel-heading">{{current_collection}}</div>
 
             <!-- Table -->
 
@@ -23,9 +23,9 @@
         </div>
 
         <div>
-            <ul class="pagination">
+            <ul ng-show="pages > 1" class="pagination">
                 <li ng-click="previousPage()"><a href="">&laquo;</a></li>
-                <li ng-repeat="i in numerify(pages) track by $index " ng-click="toPage($index)"><a href="">{{$index+1}}</a></li>
+                <li ng-repeat="i in numerify(pages) track by $index " ng-click="toPage($index)" ng-class="{'disabled': $index==current_page}"><a href="">{{$index+1}}</a></li>
                 <li ng-click="nextPage()"><a href="">&raquo;</a></li>
             </ul>
         </div>

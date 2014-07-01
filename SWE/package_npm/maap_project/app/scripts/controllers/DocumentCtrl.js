@@ -16,11 +16,11 @@
 
 'use strict';
 
-angular.module('maaperture').controller('DocumentCtrl', function ($scope, $location, DocumentDataService, DocumentEditService, $routeParams) {
+angular.module('maaperture').controller('DocumentCtrl', function ($scope, $location, DocumentDataService, DocumentEditService, $routeParams, $cookieStore) {
     $scope.current_collection = $routeParams.col_id;
     $scope.current_document = $routeParams.doc_id;
     $scope.values = [];
-    $scope.canEdit = true;
+    $scope.canEdit = $cookieStore.get("isAdmin");
 
     //Funzione per richiedere un documento al server.
     //Passa come parametri la collection e il documento da ricevere

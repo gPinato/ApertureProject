@@ -18,7 +18,7 @@
 
 'use strict';
 
-angular.module('maaperture').controller('CollectionCtrl', function ($scope, $route, $location, DocumentEditService, CollectionDataService, $routeParams) {
+angular.module('maaperture').controller('CollectionCtrl', function ($scope, $route, $location, DocumentEditService, CollectionDataService, $routeParams, $cookieStore) {
 
     //Funzione di inizializzazione del controller
     var init = function () {
@@ -26,7 +26,7 @@ angular.module('maaperture').controller('CollectionCtrl', function ($scope, $rou
         $scope.column_original_name = [];
         $scope.current_sort = null;
         $scope.current_page = 0;
-        $scope.canEdit = true; //DA CAMBIARE CON QUERY
+        $scope.canEdit = $cookieStore.get("isAdmin");
         $scope.current_collection = $routeParams.col_id;
         $scope.rows = [];
         getData();

@@ -47,7 +47,7 @@ angular
                 controller: 'UsersCollectionCtrl'
             })
             .when('/users/:user_id', {
-                templateUrl: 'views/userProfile.html',
+                templateUrl: 'views/userDocument.html',
                 controller: 'UsersCtrl'
             })
             .when('/users/:user_id/edit', {

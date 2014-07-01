@@ -23,6 +23,7 @@ angular.module('services')
 		var hostURL = 'http://localhost:9000';
 		
         return $resource( hostURL + '/api/queries/list', {}, {
+            'query': {method: 'GET'},
 			'remove': {method: 'DELETE'}
 			});
 

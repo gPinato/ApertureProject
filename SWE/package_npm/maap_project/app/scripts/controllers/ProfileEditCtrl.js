@@ -14,13 +14,13 @@
  */
 
 'use strict';
+
 angular.module('maaperture').controller('ProfileEditCtrl', function ($scope, $location, ProfileEditService) {
-    $scope.oldPassword = null;
     $scope.newPassword1 = null;
     $scope.newPassowrd2 = null;
     $scope.original_data = [];
     $scope.original_keys = [];
-    $scope.valid = null;
+    $scope.admin = false;
     //Funzione per richiedere un profilo al server.
     ProfileEditService.query({
            },
@@ -47,14 +47,14 @@ angular.module('maaperture').controller('ProfileEditCtrl', function ($scope, $lo
             new_data[$scope.original_keys[i]] = $scope.original_data[i];
         }
         //trasforma l'oggetto new_data in JSON.
+        new_data.newpassword = $scope.newPassword1;
         var json_data = JSON.stringify(new_data);
         //Trasmette al server il nuovo json
         ProfileEditService.update({
-
             },
             json_data,
             function success() {
-                $location.path('/collection/' + $scope.current_collection + '/' + $scope.current_document);
+                $location.path('/profile');
             },
             function err(error) {
                 $location.path("/404");
@@ -71,7 +71,7 @@ angular.module('maaperture').controller('ProfileEditCtrl', function ($scope, $lo
             },
 
             function success() {
-                $location.path('/collection/' + $scope.current_collection);
+                $location.path('/');
             },
             function err(error) {
             }
