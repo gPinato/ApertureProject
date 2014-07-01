@@ -17,7 +17,7 @@
 var indexManager = require('../IndexManager/IndexManager');
 
 var getModel = function(collection_name) {
-	var DB = require('../../Database/MongooseDBAnalysis');
+	var DB = require('../../database/MongooseDBAnalysis');
 	var array = DB.model;
 	
 	for(var i=0; i<array.length; i++)
