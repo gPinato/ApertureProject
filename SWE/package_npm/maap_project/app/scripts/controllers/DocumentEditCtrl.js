@@ -68,6 +68,7 @@ angular.module('maaperture').controller('DocumentEditCtrl', function ($scope, $l
                 $location.path('/collection/' + $scope.current_collection);
             },
             function err(error) {
+                alert("Qualcosa è andato storto..");
             }
         );
     };

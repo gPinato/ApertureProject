@@ -22,7 +22,10 @@ angular.module('maaperture').controller('IndexCtrl', function ($scope, $route, $
 
     //Funzione di inizializzazione del controller
     var init = function () {
-
+        $scope.current_sorted_column = null;
+        $scope.column_original_name = [];
+        $scope.current_sort = null;
+        $scope.current_page = 0;
         $scope.rows = [];
         getData();
 
@@ -116,15 +119,16 @@ angular.module('maaperture').controller('IndexCtrl', function ($scope, $route, $
         }
     };
     //funzione per cancellare il documento di indice index
-    $scope.delete_document = function (index) {
+    $scope.delete = function (index) {
         IndexService.remove({
-                doc_id: index
+                index_name: index
             },
 
             function success() {
-                $location.path('/collection/');
+                $location.path('/indexes/');
             },
             function err(error) {
+                alert("Qualcosa è andato storto..");
             }
         );
     };

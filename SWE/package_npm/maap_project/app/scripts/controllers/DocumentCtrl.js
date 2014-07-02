@@ -54,6 +54,7 @@ angular.module('maaperture').controller('DocumentCtrl', function ($scope, $locat
 
             },
             function err(error) {
+                alert("Qualcosa è andato storto..");
             }
         );
     };

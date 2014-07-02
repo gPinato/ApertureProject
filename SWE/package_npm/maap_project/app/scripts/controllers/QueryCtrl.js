@@ -82,7 +82,7 @@ angular.module('maaperture').controller('QueryCtrl', function ($scope, $route, $
 
             },
             function(error){
-                alert("error");
+                alert("Qualcosa è andato storto..");
             }
         );
 
