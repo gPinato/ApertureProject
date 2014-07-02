@@ -23,7 +23,6 @@ angular.module('maaperture').controller('UsersEditCtrl', function ($scope, $loca
     $scope.newPassowrd2 = null;
     $scope.original_data = [];
     $scope.original_keys = [];
-    $scope.valid = null;
     $scope.admin = true;
 
     //Funzione per richiedere un documento al server.

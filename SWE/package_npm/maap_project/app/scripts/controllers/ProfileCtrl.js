@@ -43,9 +43,7 @@ angular.module('maaperture').controller('ProfileCtrl', function ($scope, $locati
 
     //Funzione per richiedere la cancellazione del profilo
     $scope.delete_document = function () {
-        ProfileEditService.remove({
-
-            },
+        ProfileEditService.remove({},
 
             function success() {
                 $location.path('/');
