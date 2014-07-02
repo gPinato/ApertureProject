@@ -1,7 +1,7 @@
 {
   "name": "maaperture",
   "description": "MaaP - MongoDB as an Admin Platform",
-  "version": "1.0.6",
+  "version": "1.0.8",
   "license": "BSD-3-Clause",
   "contributors": [
     {
@@ -56,7 +56,8 @@
     "morgan": "latest",
     "cookie-parser": "latest",
     "body-parser": "latest",
-	"nodemailer": "0.7.x"
+	"nodemailer": "0.7.x",
+	"deasync": "0.0.x"
   },
   "devDependencies": {
     "mocha": "~1.20.x",
