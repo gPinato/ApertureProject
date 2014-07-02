@@ -176,7 +176,8 @@ exports.getTopQueries = function(req, res) {
 //risponde con la lista degli indici presenti nel database di analisi
 exports.getIndexesList = function(req, res) {
 
-	indexManager.getIndex(function(indexes){
+	var db = req.dataDB;
+	indexManager.getIndex(db, function(indexes){
 		res.send(JSonComposer.createIndexesList(indexes));
 	});	
 }

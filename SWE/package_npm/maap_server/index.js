@@ -52,8 +52,9 @@ function serverInit(app){
 	app.use(express.static(config.static_assets.dir));
 		
 	//db e config injecting
-	app.use(function(req,res,next){
-		//req.dbuser = DB;
+	app.use(function(req, res, next){
+		req.dataDB = app.db.data;
+		req.userDB = app.db.users;
 		req.config = config;
 		next();
 	});
@@ -201,9 +202,9 @@ var start = function(config) {
 	var app_url = protocol + '://' + config.app.host + ':' + port;
 	var env = process.env.NODE_ENV ? ('[' + process.env.NODE_ENV + ']') : '[development]'; 
 	
-	clientSetup(app);			//configurazione client e servizi client
 	DSL.init(app);				//inizializzo i DSL
 	DB.init(app);				//inizializzo i database
+	clientSetup(app);			//configurazione client e servizi client
 	serverInit(app);			//inizializzo l'app express
 	
 	console.log('starting server...');	
@@ -224,7 +225,7 @@ var start = function(config) {
 	console.log('');
 	console.log('well done! ' + config.app.title + ' listening at ' + app_url + ' ' + env);
 	console.log('');
-
+	  
 };
 
 //export della funzione...

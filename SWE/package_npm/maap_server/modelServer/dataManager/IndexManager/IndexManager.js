@@ -143,11 +143,44 @@ exports.getQueries = function(page, perpage, n_elements, callback) {
 	});
 }
 
-exports.getIndex = function(callback) {
+exports.getIndex = function(db, callback) {
 
-	var model = getModel('teams');
+	//var model = getModel('teams');
+	//console.log(model);
 	
-	callback({});	//momentaneamente restituisco la lista vuota
+	/*db.getIndexes(function(err, doc) {
+      console.log("indexInformation: ");
+      console.dir(doc);
+      });
+	  */
+	
+	  var result = [];
+	  
+	  result.push({
+                "v" : 1,
+                "key" : {
+                        "_id" : 1
+                },
+                "ns" : "dati.members",
+                "name" : "_id_"
+        });
+		
+		result.push({
+                "v" : 1,
+                "key" : {
+                        "surname" : 1,
+                        "name" : 1,
+                        "interest" : 1,
+                        "email" : 1,
+                        "age" : 1,
+                        "_id" : 1
+                },
+                "ns" : "dati.members",
+                "name" : "53a0106f9b7d1e8c0bb259f3 members",
+                "background" : true
+        });
+		
+			callback(result);	//momentaneamente restituisco la lista vuota
 	
 }
 
@@ -179,7 +212,7 @@ exports.createIndex = function(query_id, name_index, callback) {
 			}
 			
 			//imposto il nome dell'indice
-			name_index = query_id + ' ' + collection_name;
+			name_index = query_id;
 			
 			var nameindex = {};
 			nameindex.name = name_index;

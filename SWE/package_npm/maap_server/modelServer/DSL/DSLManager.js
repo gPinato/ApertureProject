@@ -47,7 +47,8 @@ var deleteFolderRecursive = function(path) {
       if(fs.lstatSync(curPath).isDirectory()) { // recurse
         deleteFolderRecursive(curPath);
       } else { // delete file
-        fs.unlinkSync(curPath);
+        if (curPath.indexOf('DUMMYFILE') == -1) 
+			fs.unlinkSync(curPath);
       }
     });
 	//evito di eliminare la directory
