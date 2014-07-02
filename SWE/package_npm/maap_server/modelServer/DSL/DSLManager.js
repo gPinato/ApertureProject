@@ -55,6 +55,22 @@ var deleteFolderRecursive = function(path) {
   }
 };
 
+//salva un file nella path indicata
+var saveFile = function(buffer, fileName, filePath) {
+	
+	var fullPath = filePath + '/' + fileName;
+	
+	console.log('saving ' + fileName);
+		
+	fs.writeFileSync(fullPath, buffer, 'utf-8', function (err) {
+			if (err) {
+				console.error('error writing file: ' + fullPath);
+				throw err;
+			} 
+		}
+	);	
+}
+
 var checkDSL = function(app) {
 
 	var config = app.config;
@@ -120,18 +136,11 @@ var checkDSL = function(app) {
 			}
 					
 			//salvo su file
-			var saveFile = __dirname + '/collectionData/' + filename + '.json';
-			if(config.app.env == 'development')
-				console.log('saving ' + filename + '.json');
-			fs.writeFileSync(saveFile, stringResult, 'utf-8', function (err) {
-					if (err) {
-						console.error('error writing dsl\'s json file: ' + saveFile);
-						throw err;
-					} 
-					console.log(filename + '.json - saved!');
-				}
-			);
-			
+			saveFile(	stringResult,					//contenuto
+						filename + '.json',				//nome file
+						__dirname + '/collectionData'	//path del file
+					);
+						
 			//genero i file delle funzioni/trasformazioni
 			var transformations = DSLparser.transformations;
 			var index = transformations.index;
@@ -139,30 +148,20 @@ var checkDSL = function(app) {
 			
 			for(var j=0; j<index.length; j++)
 			{
-				var saveFile = __dirname + '/collectionData/' + 'transformation_' + filename + '_index_' + index[j].name + '.js';
-				var stringResult = generateFunction(index[j]);
-				fs.writeFileSync(saveFile, stringResult, 'utf-8', function (err) {
-						if (err) {
-							console.error('error writing dsl\'s transformation file: ' + saveFile);
-							throw err;
-						} 
-						console.log(saveFile + ' saved!');
-					}
-				);
+				//salvo su file
+				saveFile(	generateFunction(index[j]),											//contenuto
+							'transformation_' + filename + '_index_' + index[j].name + '.js',	//nome file
+							__dirname + '/collectionData'										//path del file
+						);
 			}
 						
 			for(var j=0; j<show.length; j++)
 			{
-				var stringResult = generateFunction(show[j]);
-				var saveFile = __dirname + '/collectionData/' + 'transformation_' + filename + '_show_' + show[j].name + '.js';
-				fs.writeFileSync(saveFile, stringResult, 'utf-8', function (err) {
-						if (err) {
-							console.error('error writing dsl\'s transformation file: ' + saveFile);
-							throw err;
-						} 
-						console.log(saveFile + ' saved!');
-					}
-				);
+				//salvo su file
+				saveFile(	generateFunction(show[j]),											//contenuto
+							'transformation_' + filename + '_show_' + show[j].name + '.js',	//nome file
+							__dirname + '/collectionData'										//path del file
+						);
 			}
 						
 			//genero lo schema se necessario
@@ -177,17 +176,11 @@ var checkDSL = function(app) {
 				var schema = schemaGenerator.generate(app.config, result);
 				
 				//salvo su file
-				var saveFile = __dirname + '/collectionData/' + filename + '_schema.js';
-				if(config.app.env == 'development')
-					console.log('saving ' + filename + '_schema.js');
-				fs.writeFileSync(saveFile, schema, 'utf-8', function (err) {
-						if (err) {
-							console.error('error writing schema file: ' + saveFile);
-							throw err;
-						} 
-						console.log(filename + '_schema.js - saved!');
-					}
-				);		
+				saveFile(	schema,							//contenuto
+							filename + '_schema.js',		//nome file
+							__dirname + '/collectionData'	//path del file
+						);
+	
 			}
 			
 			//aggiungo la lista di collections
@@ -209,17 +202,12 @@ var checkDSL = function(app) {
 	
 	//salvo su file la lista di collections in formato json
 	var stringResult = JSON.stringify(collectionsList, null, '\t');
-	var saveFile = __dirname + '/collectionData/collectionsList.json';
-	if(config.app.env == 'development')
-		console.log('saving collectionsList.json');
-	fs.writeFileSync(saveFile, stringResult, 'utf-8', function (err) {
-			if (err) {
-				console.error('error writing collectionsList file: ' + saveFile);
-				throw err;
-			} 
-			console.log('collectionsList.json - saved!');
-		}
-	);	
+	
+	//salvo su file
+	saveFile(	stringResult,					//contenuto
+				'collectionsList.json',			//nome file
+				__dirname + '/collectionData'	//path del file
+			);
 
 };
 
