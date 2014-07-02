@@ -63,6 +63,49 @@ function serverInit(app){
 	
 }
 
+//cambia una riga del file specificato sostituendola con quella passata in ingresso
+//filePath = path del file da modificare
+//string2find = stringa con la quale inizia la riga da modificare
+//newString = stringa con i nuovi caratteri da aggiungere 
+//restituisce true se ha trovato la stringa
+var changeFileRow = function(filePath, string2find, newString) {
+	
+	var buffer = '';
+	var found = false;
+	fs.readFileSync(filePath).toString().split('\n').forEach(function (line) { 
+		
+		var cursor = line.indexOf(string2find);
+		if(cursor > -1)
+		{
+			line = line.substring(0, cursor) + newString;		
+			found = true;
+		}
+		buffer += line.toString() + '\n';
+	});
+	
+	//rimuovo l'ultimo \n 
+	buffer = buffer.substring(0, buffer.length - 1);
+	
+	//scrivo il file aggiornato
+	if(found)
+	{
+		fs.writeFileSync(filePath, buffer, 'utf-8', function (err) {
+			if (err) {
+				console.error('error updating file: ' + filePath);
+				throw err;
+			} 
+			if(config.app.env == 'development')
+				console.log(file + ' saved!');
+				
+			return true;
+			
+		});	
+	}else{
+		return false;
+	}
+	
+};
+
 var clientSetup = function(app) {
 
 	var config = app.config;
@@ -86,107 +129,57 @@ var clientSetup = function(app) {
     clientServicesFolder.forEach(function(file) {
 		
         var filePath = config.static_assets.dir + '/scripts/services/' + file;
-        var stat = fs.statSync(filePath);
+		var stat = fs.statSync(filePath);
 		var extension = path.extname(file);
         if (stat && stat.isFile() && extension == '.js') {
 			
 			if(config.app.env == 'development')
 				console.log('found client service: ' + file);	
 
-			var buffer = '';
-			fs.readFileSync(filePath).toString().split('\n').forEach(function (line) { 
-				var string2find = 'var hostURL';
-				var hostURLindex = line.indexOf(string2find);
-				if(hostURLindex > -1)
-				{
-					//se e' la riga con 'var hostURL' la modifico
-					line = line.substring(0, hostURLindex + string2find.length) + ' = \'' + hostURL + '\';';				
-				}
-				buffer += line.toString() + '\n';
-			});
-			
-			//rimuovo l'ultimo \n 
-			buffer = buffer.substring(0, buffer.length - 1);
-			
-			//scrivo il file del servizio client aggiornato
-			fs.writeFileSync(filePath, buffer, 'utf-8', function (err) {
-				if (err) {
-					console.error('error writing service file: ' + file);
-					throw err;
-				} 
-				if(config.app.env == 'development')
-					console.log(file + ' saved!');
-			});	
-	
+			changeFileRow(	filePath, 
+							'var hostURL',
+							'var hostURL = \'' + hostURL + '\';'
+						);	
 		}
 	});
 	
-	var filePath = config.static_assets.dir + '/views/login.html';
-	var buffer = '';
-	fs.readFileSync(filePath).toString().split('\n').forEach(function (line) { 
-		var string2find = '<a  ng-show="true" href="/register">';
-		var cursor = line.indexOf(string2find);
-		if(cursor > -1)
-		{
-			line = line.substring(0, cursor) + '<a  ng-show="' + config.app.enableUserRegistration + '" href="/register">';			
-		}
-		var string2find = '<a  ng-show="false" href="/register">';
-		var cursor = line.indexOf(string2find);
-		if(cursor > -1)
-		{
-			line = line.substring(0, cursor) + '<a  ng-show="' + config.app.enableUserRegistration + '" href="/register">';			
-		}
-		buffer += line.toString() + '\n';
-	});
-	
-	//rimuovo l'ultimo \n 
-	buffer = buffer.substring(0, buffer.length - 1);
-	
-	//scrivo il file login.html aggiornato
-	fs.writeFileSync(filePath, buffer, 'utf-8', function (err) {
-		if (err) {
-			console.error('error writing login.html');
-			throw err;
-		} 
-		if(config.app.env == 'development')
-			console.log(file + ' saved!');
-	});	
-	
+	//abilito/disabilito la registrazione
+	if(!changeFileRow(	config.static_assets.dir + '/views/login.html', 
+						'<a ng-show="true" href="/register">',
+						'<a ng-show="' + config.app.enableUserRegistration + '" href="/register">'
+					))
+	{
+		changeFileRow(	config.static_assets.dir + '/views/login.html', 
+						'<a ng-show="false" href="/register">',
+						'<a ng-show="' + config.app.enableUserRegistration + '" href="/register">'
+					);
+	}
 	
 	//imposto il nome del progetto nel file index.html
-	var filePath = config.static_assets.dir + '/index.html';
-	var buffer = '';
-	fs.readFileSync(filePath).toString().split('\n').forEach(function (line) { 
-		var string2find = '<title>';
-		var cursor = line.indexOf(string2find);
-		if(cursor > -1)
-		{
-			line = line.substring(0, cursor) + '<title>' + config.app.title + '</title>';			
-		}
-		
-		var string2find = '<meta name="description" content="';
-		var cursor = line.indexOf(string2find);
-		if(cursor > -1)
-		{
-			line = line.substring(0, cursor + string2find.length) + config.app.description + '">';			
-		}
-		buffer += line.toString() + '\n';
-	});
+	changeFileRow(	config.static_assets.dir + '/index.html',
+					'<title>',
+					'<title>' + config.app.title + '</title>'
+				);
 	
-	//rimuovo l'ultimo \n 
-	buffer = buffer.substring(0, buffer.length - 1);
+	//imposto la descrizione del progetto nel file index.html
+	changeFileRow(	config.static_assets.dir + '/index.html',
+					'<meta name="description" content="',
+					'<meta name="description" content="' + config.app.description + '">'	
+				);
+					
+	//abilito/disabilito creazione degli indici
+	if(!changeFileRow(	config.static_assets.dir + '/views/queryCollection.html',
+						'<td><a ng-show="true" href="" class="btn btn-info btn-sm" ng-click="createIndex(data[$index]._id)" ><i class="glyphicon glyphicon-ok"></i> Create Index</a></td>',
+						'<td><a ng-show="' + config.adminConfig.enableIndexCreation + '" href="" class="btn btn-info btn-sm" ng-click="createIndex(data[$index]._id)" ><i class="glyphicon glyphicon-ok"></i> Create Index</a></td>'	
+					))
+	{
+		changeFileRow(	config.static_assets.dir + '/views/queryCollection.html',
+						'<td><a ng-show="false" href="" class="btn btn-info btn-sm" ng-click="createIndex(data[$index]._id)" ><i class="glyphicon glyphicon-ok"></i> Create Index</a></td>',
+						'<td><a ng-show="' + config.adminConfig.enableIndexCreation + '" href="" class="btn btn-info btn-sm" ng-click="createIndex(data[$index]._id)" ><i class="glyphicon glyphicon-ok"></i> Create Index</a></td>'	
+				);	
+	}
 	
-	//scrivo il file index.html aggiornato
-	fs.writeFileSync(filePath, buffer, 'utf-8', function (err) {
-		if (err) {
-			console.error('error writing index.html');
-			throw err;
-		} 
-		if(config.app.env == 'development')
-			console.log(file + ' saved!');
-	});	
-	
-}
+};
 
 //avvia il server 
 var start = function(config) {
