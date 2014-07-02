@@ -1,4 +1,4 @@
-#!/usr/local/bin node
+#!/usr/bin/env node
 
 /**
  * File: maaperture.js
@@ -44,6 +44,9 @@ function setProjectName(destination, project_name) {
 
 function initProject(project_name, output_path) {
 	var source = __dirname + '/../maap_project';
+	if(output_path.charAt(output_path.length-1)!='/'){
+		output_path=output_path +'/';
+	}
 	var destination = output_path + project_name;
 	var info = "JK rocks!";
 	console.log('');
@@ -69,7 +72,7 @@ function initProject(project_name, output_path) {
 		console.log('well done!');
 		console.log('');
 		console.log('you are ready to install the dependencies and start the server');
-		console.log('with: "cd ' + project_name + ' && npm install && npm start"');
+		console.log('with: "cd ' + destination + ' && npm install && npm start"');
 	});	
 }
 
