@@ -177,8 +177,17 @@ exports.getTopQueries = function(req, res) {
 exports.getIndexesList = function(req, res) {
 
 	var db = req.dataDB;
-	indexManager.getIndex(db, function(indexes){
-		res.send(JSonComposer.createIndexesList(indexes));
+	var indexesPerPage = req.config.adminConfig.indexesPerPage || 100;
+	var page = 1;
+	//var page = req.params.page;
+	
+	indexManager.getIndex(db, page, indexesPerPage, function(indexes){
+	
+		var options = {};
+		options.pages = Math.floor(indexes.length / indexesPerPage);
+		if((indexes.length  % indexesPerPage) > 0) options.pages++;
+		
+		res.send(JSonComposer.createIndexesList(indexes, options));
 	});	
 }
 
@@ -198,8 +207,10 @@ exports.createIndex = function(req, res) {
 
 exports.deleteIndex = function(req, res) {
 
-	var index_name = req.params.index_name;
-	indexManager.deleteIndex(index_name, function(done){
+	var indexName = req.params.index_name;
+	var collectionName = req.params.col_name;
+	var db = req.dataDB;
+	indexManager.deleteIndex(db, indexName, collectionName, function(done){
 		if(done)
 		{
 			res.send(200);

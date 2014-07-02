@@ -56,8 +56,8 @@ var dispatcherInit = function (app) {
 	//gestione indici nel db di analisi
 	dispatcher.get('/api/indexes', passport.checkAuthenticatedAdmin, datamanager.getIndexesList);
 	dispatcher.put('/api/indexes', passport.checkAuthenticatedAdmin, datamanager.createIndex);
-	dispatcher.delete('/api/indexes/:index_name', passport.checkAuthenticatedAdmin, datamanager.deleteIndex);
-	
+	dispatcher.delete('/api/indexes/:col_name/:index_name', passport.checkAuthenticatedAdmin, datamanager.deleteIndex);
+		
 	//gestione login
 	dispatcher.post('/api/forgot', passport.checkNotAuthenticated, passport.forgotPassword);	
 	dispatcher.post('/api/check/email', passport.checkNotAuthenticated, usermanager.checkMail);	

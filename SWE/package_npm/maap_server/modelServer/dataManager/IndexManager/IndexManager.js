@@ -143,44 +143,31 @@ exports.getQueries = function(page, perpage, n_elements, callback) {
 	});
 }
 
-exports.getIndex = function(db, callback) {
+exports.getIndex = function(db, page, indexesPerPage, callback) {
 
-	//var model = getModel('teams');
-	//console.log(model);
+	var collectionList = require('../../DSL/collectionData/collectionsList.json');
+	var result = [];
+	var done = false;
 	
-	/*db.getIndexes(function(err, doc) {
-      console.log("indexInformation: ");
-      console.dir(doc);
-      });
-	  */
+	for(var i=0; i<collectionList.length; i++)
+	{
+		var collectionName = collectionList[i].name;
+		var collection = db.collection(collectionName);
+		done = false;
+		collection.indexInformation(function(err, indexes) {
+			for(var key in indexes)
+			{
+				result.push({indexName: key, collectionName: collectionName, indexFields: indexes[key]});
+			}
+			done = true;
+		});
+		//voglio rendere la funzione sincrona per eseguire tutto il for e poi chiamare la callback
+		while(!done){require('deasync').sleep(100);}
+	}
 	
-	  var result = [];
-	  
-	  result.push({
-                "v" : 1,
-                "key" : {
-                        "_id" : 1
-                },
-                "ns" : "dati.members",
-                "name" : "_id_"
-        });
-		
-		result.push({
-                "v" : 1,
-                "key" : {
-                        "surname" : 1,
-                        "name" : 1,
-                        "interest" : 1,
-                        "email" : 1,
-                        "age" : 1,
-                        "_id" : 1
-                },
-                "ns" : "dati.members",
-                "name" : "53a0106f9b7d1e8c0bb259f3 members",
-                "background" : true
-        });
-		
-			callback(result);	//momentaneamente restituisco la lista vuota
+	//TODO caricare solamente gli indici della pagina specificata
+	
+	callback(result);
 	
 }
 
@@ -237,6 +224,17 @@ exports.createIndex = function(query_id, name_index, callback) {
 	});
 }
 
-exports.deleteIndex = function(name_index, callback) {
+exports.deleteIndex = function(db, indexName, collectionName, callback) {
+
+	var collection = db.collection(collectionName);
+	
+	collection.dropIndex(indexName, function(err, result){
+		if(err)
+		{
+			callback(false);
+		}else{
+			callback(true);
+		}	
+	});	
 	
 }
