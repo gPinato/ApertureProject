@@ -4,7 +4,7 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
-    "start": "set NODE_ENV=production& node index.js",
+    "start": "node index.js",
     "startdev": "set NODE_ENV=development& node index.js",
     "startdemon": "set NODE_ENV=development& node ./node_modules/nodemon/bin/nodemon.js -e js,maap --delay 30 index.js",
     "postinstall": "node ./node_modules/bower/bin/bower install",
