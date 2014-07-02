@@ -52,6 +52,7 @@ angular.module('maaperture').controller('UsersEditCtrl', function ($scope, $loca
             new_data[$scope.original_keys[i]] = $scope.original_data[i];
         }
         //trasforma l'oggetto new_data in JSON.
+        new_data.newpassword = $scope.newPassword1;
         var json_data = JSON.stringify(new_data);
         //Trasmette al server il nuovo json
         UserEditService.update({

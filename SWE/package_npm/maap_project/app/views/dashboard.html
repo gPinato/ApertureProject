@@ -2,7 +2,7 @@
 
 
 <div class="row-fluid">
-    <div class="col-md-10">
+    <div class="col-md-10 col-xs-offset-1">
         <div class="panel panel-default">
             <!-- Default panel contents -->
             <div ng-model="rows" class="panel-heading">Dashboard</div>
@@ -21,24 +21,5 @@
     </div>
 
 
-    <div class="col-md-2">
-        <div class="panel panel-default">
-            <div class="panel-body">
-        <form role="form">
-            <div class="form-group">
-                <label>Filter by name</label>
-                <input ng-model="search.customer" type="test" class="form-control" id="filtername" placeholder="Enter name">
-            </div>
-            <div class="form-group">
-                <label>ID</label>
-                <input  ng-model="search.ID" type="number" class="form-control" id="filterid" placeholder="ID">
-            </div>
 
-            <button type="submit" class="btn btn-default">Submit</button>
-            <button ng-click="search = undefined" class="btn btn-default">Reset</button>
-
-        </form>
-    </div>
-        </div>
-    </div>
 </div>
