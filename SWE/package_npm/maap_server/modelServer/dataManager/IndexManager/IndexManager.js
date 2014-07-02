@@ -151,8 +151,8 @@ exports.getIndex = function(callback) {
 	
 }
 
-exports.createIndex = function(query_id,  name_index, callback) {
-	//var query_id = '5399ad538beb2a5c22fbf900';
+exports.createIndex = function(query_id, name_index, callback) {
+	
 	var DB = require('../../database/MongooseDBFramework');
 	var queryModel = require('../../database/MongooseDBFramework').query;
 	var where = {};
@@ -168,22 +168,25 @@ exports.createIndex = function(query_id,  name_index, callback) {
 		{
 			console.log('Errore _id query cercata');
 			callback(false);
-		}else{
+		}else if(data.length > 0){
 			//console.log(data);
+					
 			var collection_name = data[0].collection_name;			
 			var fieldIndex = data[0].select;
 			var index = {};
 			for(var key in fieldIndex){
 				index[key] = 1;
 			}
-			//console.log(index);
+			
+			//imposto il nome dell'indice
+			name_index = query_id + ' ' + collection_name;
+			
 			var nameindex = {};
 			nameindex.name = name_index;
 			var collectionSchema = require('../../DSL/collectionData/'+collection_name+'_schema').schema;
-			collectionSchema.index(index,nameindex);
-			//console.log(collectionSchema);
+			collectionSchema.index(index, nameindex);
+					
 			var collectionModel = getModel(collection_name);
-			
 			collectionModel.ensureIndexes(function(err){
 				if(err)
 				{
@@ -195,6 +198,8 @@ exports.createIndex = function(query_id,  name_index, callback) {
 				}
 			});
 			
+		}else{
+			callback(false);
 		}
 	});
 }
