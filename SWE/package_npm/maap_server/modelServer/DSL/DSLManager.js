@@ -148,19 +148,24 @@ var checkDSL = function(app) {
 			
 			for(var j=0; j<index.length; j++)
 			{
+				var name = 'transformation_' + filename + '_index_' + index[j].name + '.js'; 
+			
 				//salvo su file
-				saveFile(	generateFunction(index[j]),											//contenuto
-							'transformation_' + filename + '_index_' + index[j].name + '.js',	//nome file
-							__dirname + '/collectionData'										//path del file
+				saveFile(	generateFunction(index[j]),		//contenuto
+							name,							//nome file
+							__dirname + '/collectionData'	//path del file
 						);
 			}
 						
 			for(var j=0; j<show.length; j++)
 			{
+				
+				var name = 'transformation_' + filename + '_show_' + show[j].name + '.js';
+				
 				//salvo su file
-				saveFile(	generateFunction(show[j]),											//contenuto
-							'transformation_' + filename + '_show_' + show[j].name + '.js',	//nome file
-							__dirname + '/collectionData'										//path del file
+				saveFile(	generateFunction(show[j]),		//contenuto
+							name,							//nome file
+							__dirname + '/collectionData'	//path del file
 						);
 			}
 						
