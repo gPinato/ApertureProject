@@ -21,7 +21,7 @@ angular.module('services')
         //using the configuration file's settings everytime the server will start up.
         var hostURL = 'http://localhost:9000';
 
-        return $resource( hostURL + '/api/forgotPassword', {}, {
+        return $resource( hostURL + '/api/forgot', {}, {
             'recover': {method: 'POST'}
         });
 

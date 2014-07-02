@@ -16,12 +16,16 @@
  'use strict';
 
 angular.module('maaperture').controller('PwdRecoveryCtrl', function ($scope,$route,$cookieStore, $location, RecoveryService) {
-    $scope.email = '' ;
+    $scope.credentials = {
+        email: ''
+
+    };
 
     //Funzione per il login.
     //Richiede al server di validare le credenziali inserite.
     $scope.recover = function () {
-        RecoveryService.recover({}, $scope.email,
+        RecoveryService.recover(
+            {}, $scope.credentials,
             function success(data, status) {
                 $location.path('/');
                 $route.reload();

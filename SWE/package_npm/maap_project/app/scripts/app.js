@@ -76,7 +76,7 @@ angular
             })
             .when('/recover', {
                 templateUrl: 'views/pwdrecovery.html',
-                controller: 'PwdRecoverCtrl'
+                controller: 'PwdRecoveryCtrl'
             })
             .when('/404', {
                 templateUrl: 'views/404.html'
