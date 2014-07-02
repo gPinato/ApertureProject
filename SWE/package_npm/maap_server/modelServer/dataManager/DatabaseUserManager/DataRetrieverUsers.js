@@ -126,19 +126,28 @@ exports.getUsersList = function(column, order, page, perpage, callback) {
 //update user per administrator
 exports.updateUser = function(req, callback) {
 
-	var email = req.params.user_email;
-	var user = req.body;
-	
+	var user = req.body;	
 	var model = DB.users;
 	
 	var criteria = {};
 	criteria._id = user.id;
+	
+	if(user.level == 'user')
+	{
+		user.level = 0;
+	}else if(user.level == 'administrator')
+	{
+		user.level = 1;
+	}else{
+		callback(false);
+	}
 		
 	var options = {};
 	
 	var newUserData = {};
-	newUserData.email = email;
-	newUserData.password = user.password;
+	newUserData.email = user.email;
+	if(user.newpassword != undefined)
+		newUserData.password = user.newpassword;
 	newUserData.level = user.level;
 	
 	var query = model.update(criteria, {$set: newUserData}, options);
