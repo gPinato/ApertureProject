@@ -15,7 +15,7 @@
 'use strict';
 
 angular.module('services')
-    .factory('QueryService', ['$resource', function ($resource) {
+    .factory('RecoveryService', ['$resource', function ($resource) {
 
         //DO NOT EDIT THE NEXT LINE - Maaperture server will update the var hostURL = 'http://localhost:9000';
         //using the configuration file's settings everytime the server will start up.

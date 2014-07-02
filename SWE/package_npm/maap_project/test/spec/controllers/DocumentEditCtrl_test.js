@@ -75,19 +75,6 @@ describe('Controller: DocumentEditCtrl', function () {
 
     });
 
-    it('should copy the data to the array', function(){
-        scope.$digest();
-        scope.data = MockDocService.query();
-        scope.$digest();
-        expect(scope.original_data).to.deep.equal([
-            "maap_system_unedited_value",
-            "maap_system_unedited_value",
-            "maap_system_unedited_value",
-            "maap_system_unedited_value",
-            "maap_system_unedited_value",
-            "maap_system_unedited_value"]);
-    });
-
 
 
     it('should send the correct data to update', function(){

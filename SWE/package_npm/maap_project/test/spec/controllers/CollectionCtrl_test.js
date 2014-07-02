@@ -31,6 +31,10 @@ describe('Controller: CollectionCtrl', function () {
 
         MockColService = {
             query: function(value) {
+                /*
+                * QUI DOVETE METTERE UNA COPIA DI UNA DELLE RISPOSTE DEL SERVER
+                * MA UNA COPIA SERIA E FATTA BENE
+                * */
                 return {
                     "labels" : [
                         "Name",
