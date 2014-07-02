@@ -210,80 +210,80 @@ Di seguito vengono riportati, per ogni documento, i valori dell'indice di Gulpea
 \paragraph{Progettazione}
 Viene qui riportata una tabella riassuntiva che riporta il calcolo dei parametri di accoppiamento afferente ed efferente per i componenti individuati nella progettazione architetturale.
 
-\begin{longtable}{|p{11cm}|c|c|}
+\begin{longtable}{|p{11cm}|c|c|c|}
 \toprule
-\textbf{Componente} & \textbf{Afferente} & \textbf{Efferente} \\
+\textbf{Componente} & \textbf{Afferente} & \textbf{Efferente} & \textbf{Instabilità} \\
 
 \midrule
 MaaP::Server
-& 1 & 0\\
+& 1 & 0 & 0\\
 
 \midrule
 MaaP::Server::ModelServer
-& 3 & 0\\
+& 3 & 0 & 0\\
 
 \midrule
 MaaP::Server::ModelServer::DataManager
-& 1 & 4\\
+& 1 & 4 & 0.8\\
 
 \midrule
 MaaP::Server::ModelServer::DataManager::DatabaseAnalysisManager
-& 1 & 7\\
+& 1 & 7 & 0.8\\
 
 \midrule
 MaaP::Server::ModelServer::DataManager::DatabaseUserManager
-& 1 & 4\\
+& 1 & 4 & 0.8\\
 
 
 \midrule
 MaaP::Server::ModelServer::DataManager::IndexManager
-& 1 & 2\\
+& 1 & 2 & 0.6\\
 
 
 \midrule
 MaaP::Server::ModelServer::Database
-& 4 & 0\\
+& 4 & 0 & 0\\
 
 
 \midrule
 MaaP::Server::ModelServer::DSL
-& 1 & 0\\
+& 1 & 0 & 0\\
 
 \midrule
 MaaP::Server::Controller
-& 1 & 4\\
+& 1 & 4 & 0.8\\
 
 \midrule
 MaaP::Client
-& 0 & 1\\
+& 0 & 1 & 1\\
 
 \midrule
 MaaP::Client::View
-& 0 & 14\\
+& 0 & 14 & 1\\
 
 \midrule
 MaaP::Client::ControllerModelView
-& 14 & 22\\
+& 14 & 22 & 0.6\\
 
 \midrule
 MaaP::Client::ControllerModelView::ControllerClient
-& 14 & 22\\
+& 14 & 22 & 0.6\\
 
 \midrule
 MaaP::Client::ModelClient
-& 22 & 1\\
+& 22 & 1 & 0\\
 
 \midrule
 MaaP::Client::ModelClient::Services
-& 20 & 1\\
+& 20 & 1 & 0\\
 
 \midrule
 MaaP::Client::ModelClient::Directives
-& 2 & 0\\
+& 2 & 0 & 0\\
 
 \midrule
 MaaP::Client::ModelClient::Model
-& 0 & 0\\
+& 0 & 0 & 0\\
 
 
 \bottomrule
