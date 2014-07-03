@@ -19,12 +19,34 @@
             </table>
         </div>
 
-        <div>
+        <div ng-show=" pages > 1 " class="pagination-div">
+
             <ul class="pagination">
-                <li ng-click="previousPage()"><a href="">&laquo;</a></li>
-                <li ng-repeat="i in numerify(pages) track by $index " ng-click="toPage($index)"><a href="">{{$index+1}}</a></li>
-                <li ng-click="nextPage()"><a href="">&raquo;</a></li>
+
+                <li ng-class="DisablePrevPage()">
+
+                    <a href ng-click="prevPage()"> Prev</a>
+
+                </li>
+
+                <li ng-repeat="n in range()"
+
+                    ng-class="{'disabled': n == current_page}"
+
+                    ng-click="toPage(n)">
+
+                    <a href="">{{n+1}}</a>
+
+                </li>
+
+                <li ng-class="DisableNextPage()">
+
+                    <a href ng-click="nextPage()">Next </a>
+
+                </li>
+
             </ul>
+
         </div>
     </div>
 

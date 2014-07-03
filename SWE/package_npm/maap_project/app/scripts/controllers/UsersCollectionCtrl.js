@@ -73,29 +73,7 @@ angular.module('maaperture').controller('UsersCollectionCtrl', function ($scope,
 
     init();
 
-    //funzione per stampare correttamente il numero di pagine
-    $scope.numerify = function (num) {
-        return new Array(num);
-    };
-    //Torna alla pagina precedente
-    $scope.previousPage = function () {
-        if ($scope.current_page > 0) {
-            $scope.current_page--;
-        }
-        getData();
-    };
-    //Va alla pagina successiva
-    $scope.nextPage = function () {
-        if ($scope.current_page < $scope.pages - 1) {
-            $scope.current_page++;
-        }
-        getData();
-    };
-    //Va alla pagina $index
-    $scope.toPage = function (index) {
-        $scope.current_page = index;
-        getData();
-    };
+    
     //cambia ordinamento corrente, da asc a desc o viceversa
     var changeSort = function () {
         if ($scope.current_sort === "desc") {
@@ -131,6 +109,89 @@ angular.module('maaperture').controller('UsersCollectionCtrl', function ($scope,
             function err(error) {
             }
         );
+    };
+	
+	//=====================================================================
+	//Funzioni per paginazione avanzata
+    $scope.range = function() {
+
+        var rangeSize;
+		if( $scope.pages < 9){
+		rangeSize = $scope.pages
+		}
+		else{
+		rangeSize = 9
+		}
+		
+        var ps = [];
+
+        var start;
+
+		if ( $scope.current_page > 3){
+			start = $scope.current_page-3;
+		}
+		else{
+        start = $scope.current_page;
+		}
+		
+        if ( start > $scope.pages-rangeSize ) {
+
+            start = $scope.pages-rangeSize;
+
+        }
+
+        for (var i=start; i<start+rangeSize; i++) {
+
+            ps.push(i);
+
+        }
+
+        return ps;
+
+    };
+
+
+    $scope.prevPage = function() {
+
+        if ($scope.current_page > 0) {
+
+            $scope.current_page--;
+
+        }
+		getData();
+    };
+
+
+    $scope.DisablePrevPage = function() {
+
+        return $scope.current_page === 0 ? "disabled" : "";
+
+    };
+
+
+    
+
+    $scope.nextPage = function() {
+
+        if ($scope.current_page < $scope.pages) {
+
+            $scope.current_page++;
+
+        }
+		getData();
+    };
+
+
+    $scope.DisableNextPage = function() {
+
+        return $scope.current_page+1 === $scope.pages ? "disabled" : "";
+
+    };
+	
+	//Va alla pagina $index
+    $scope.toPage = function (index) {
+        $scope.current_page = index;
+        getData();
     };
 
 });

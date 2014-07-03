@@ -142,8 +142,14 @@ angular.module('maaperture').controller('CollectionCtrl', function ($scope, $rou
 	//Funzioni per paginazione avanzata
     $scope.range = function() {
 
-        var rangeSize = 9;
-
+        var rangeSize;
+		if( $scope.pages < 9){
+		rangeSize = $scope.pages
+		}
+		else{
+		rangeSize = 9
+		}
+		
         var ps = [];
 
         var start;
