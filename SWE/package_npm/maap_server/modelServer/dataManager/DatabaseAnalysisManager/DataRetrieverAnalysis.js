@@ -288,62 +288,50 @@ exports.getCollectionIndex = function(collection_name, column, order, page, call
 			
 		//la prima query usa start=0 e perpage='' per raccogliere tutti i documenti
 		//e calcolare il numero di pagine massimo da inviare al client
-		
-		var querySettings = {};
-		querySettings.where = query; 
-		querySettings.select = select;
-		querySettings.orderbycolumn = sortby;
-		querySettings.typeorder = order;
-		querySettings.startskip = 0;
-		querySettings.numberofrow = '';
-	
-		getDocuments(model,
-					querySettings,		//settings
-					populate,			//populate
-					function(documents){
-						var result = {};
-						result.options = {};
-						result.options.pages = Math.floor(documents.length / perpage);
-						if((documents.length % perpage) > 0) result.options.pages++;
-												
-						//TODO ottimizzare questa parte per evitare la doppia query al DB ;)
-						
-						//questa seconda query bruttissima restringe i dati ai soli richiesti dal client
-						//in base al numero di pagina richiesto
-						var querySettings = {};
-						querySettings.where = query; 
-						querySettings.select = select;
-						querySettings.orderbycolumn = sortby;
-						querySettings.typeorder = order;
-						querySettings.startskip = start;
-						querySettings.numberofrow = perpage;
-		
-						getDocuments(model,
-									querySettings,
-									populate,			//populate
-									function(documents){
-						
-										if(columns != undefined)
-										{
-											//qui columns del dsl e' definita
-											result.labels = labels;	
-											documents = sortDocumentsByLabels(documents, keys);
-											result.documents = applyTrasformations(collection_name, 'index', documents, columns);
-										}else{	
-											//nel caso la column non sia definita
-											result.labels = [];
-											if(documents.length > 0)
-											{
-												for(var key in documents[0])
-												{
-													result.labels.push(key);
-												}
-											}
-											result.documents = documents;	//documents senza trasformazioni
-										}
-										callback(result);
-						});
-					});
+			
+		model.count(query, function(err, count) {
+			
+			var result = {};
+			result.options = {};
+			result.options.pages = Math.floor(count / perpage);
+			if((count % perpage) > 0) result.options.pages++;
+
+			//questa seconda query bruttissima restringe i dati ai soli richiesti dal client
+			//in base al numero di pagina richiesto
+			var querySettings = {};
+			querySettings.where = query; 
+			querySettings.select = select;
+			querySettings.orderbycolumn = sortby;
+			querySettings.typeorder = order;
+			querySettings.startskip = start;
+			querySettings.numberofrow = perpage;
+
+			getDocuments(model,
+						querySettings,
+						populate,			//populate
+						function(documents){
+			
+							if(columns != undefined)
+							{
+								//qui columns del dsl e' definita
+								result.labels = labels;	
+								documents = sortDocumentsByLabels(documents, keys);
+								result.documents = applyTrasformations(collection_name, 'index', documents, columns);
+							}else{	
+								//nel caso la column non sia definita
+								result.labels = [];
+								if(documents.length > 0)
+								{
+									for(var key in documents[0])
+									{
+										result.labels.push(key);
+									}
+								}
+								result.documents = documents;	//documents senza trasformazioni
+							}
+							callback(result);
+			});
+		});
 	}catch(err){
 		//se la collection non e' presente, rispondo con la lista vuota
 		console.log('err: ' + err);
