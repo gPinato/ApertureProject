@@ -37,7 +37,7 @@ collection = {
 			}
 		],
 		query: {
-
+			number_players: {$lt: 30}
 		}
 	}, //end index page
 	

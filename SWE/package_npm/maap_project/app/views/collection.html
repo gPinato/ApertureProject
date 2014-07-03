@@ -25,10 +25,41 @@
         <div>
             <ul ng-show="pages > 1" class="pagination">
                 <li ng-click="previousPage()"><a href="">&laquo;</a></li>
-                <li ng-repeat="i in numerify(pages) track by $index " ng-click="toPage($index)" ng-class="{'disabled': $index==current_page}"><a href="">{{$index+1}}</a></li>
+                <li ng-repeat="i in numerify() track by $index " ng-click="toPage(i)" ng-class="{'disabled': $index==current_page}"><a href="">{{$index+1}}</a></li>
                 <li ng-click="nextPage()"><a href="">&raquo;</a></li>
             </ul>
         </div>
+
+        <div class="pagination-div">
+
+            <ul class="pagination">
+
+                <li ng-class="DisablePrevPage()">
+
+                    <a href ng-click="prevPage()"> Prev</a>
+
+                </li>
+
+                <li ng-repeat="n in range()"
+
+                    ng-class="{active: n == currentPage}"
+
+                    ng-click="setPage(n)">
+
+                    <a href="#">{{n+1}}</a>
+
+                </li>
+
+                <li ng-class="DisableNextPage()">
+
+                    <a href ng-click="nextPage()">Next </a>
+
+                </li>
+
+            </ul>
+
+        </div>
+
     </div>
 
 
