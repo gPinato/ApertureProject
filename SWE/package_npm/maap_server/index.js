@@ -161,7 +161,13 @@ var clientSetup = function(app) {
 					'<title>',
 					'<title>' + config.app.title + '</title>'
 				);
-	
+				
+	//setto il nome del progetto nella navBar e relativo link
+	changeFileRow(	config.static_assets.dir + '/views/Navbar.html',
+					'<a class="navbar-brand" href',
+					'<a class="navbar-brand" href="' + hostURL + '">' +  config.app.title + '</a>'
+				);
+				
 	//imposto la descrizione del progetto nel file index.html
 	changeFileRow(	config.static_assets.dir + '/index.html',
 					'<meta name="description" content="',
