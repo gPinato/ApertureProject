@@ -146,7 +146,7 @@ var getDocuments = function(model, querySettings, populate, callback){
 
 				}
 			}
-			console.log(result);
+			//console.log(result);
 			callback(result);
 			
 		}
