@@ -79,7 +79,8 @@ angular.module('maaperture').controller('QueryCtrl', function ($scope, $route, $
             {id:id,indexName:indexName},
             function success(response) {
                 alert("indice creato!");
-
+				$location.path('/indexes');
+				$route.reload();
             },
             function(error){
                 alert("Qualcosa è andato storto..");

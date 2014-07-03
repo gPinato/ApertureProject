@@ -121,11 +121,13 @@ angular.module('maaperture').controller('IndexCtrl', function ($scope, $route, $
     //funzione per cancellare il documento di indice index
     $scope.delete = function (index) {
         IndexService.remove({
-                index_name: index
+                index_name: index._id,
+				col_name: index.data.collection
             },
 
             function success() {
-                $location.path('/indexes/');
+                $location.path('/indexes');
+				$route.reload();
             },
             function err(error) {
                 alert("Qualcosa è andato storto..");

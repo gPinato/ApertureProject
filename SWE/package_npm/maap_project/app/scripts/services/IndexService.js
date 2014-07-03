@@ -23,8 +23,8 @@ angular.module('services')
 		//using the configuration file's settings everytime the server will start up.
 		var hostURL = 'http://localhost:9000';
 		
-        return $resource( hostURL + '/api/indexes/:index_name',
-            {index_name : '@index_name'}, {
+        return $resource( hostURL + '/api/indexes/:col_name/:index_name',
+            {index_name : '@index_name', col_name : '@col_name'}, {
                 'insert': {method: 'PUT'},
                 'remove': {method: 'DELETE'}
             });
