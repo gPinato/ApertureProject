@@ -34,12 +34,58 @@ function printHelpTitle() {
 	console.log('  --------------------------------------------------');
 }
 
+//cambia una riga del file specificato sostituendola con quella passata in ingresso
+//filePath = path del file da modificare
+//string2find = stringa con la quale inizia la riga da modificare
+//newString = stringa con i nuovi caratteri da aggiungere 
+//restituisce true se ha trovato la stringa
+var changeFileRow = function(filePath, string2find, newString) {
+	
+	var buffer = '';
+	var found = false;
+	fs.readFileSync(filePath).toString().split('\n').forEach(function (line) { 
+		
+		var cursor = line.indexOf(string2find);
+		if(cursor > -1)
+		{
+			line = line.substring(0, cursor) + newString;		
+			found = true;
+		}
+		buffer += line.toString() + '\n';
+	});
+	
+	//rimuovo l'ultimo \n 
+	buffer = buffer.substring(0, buffer.length - 1);
+	
+	//scrivo il file aggiornato
+	if(found)
+	{
+		fs.writeFileSync(filePath, buffer, 'utf-8', function (err) {
+			if (err) {
+				console.error('error updating file: ' + filePath);
+				throw err;
+			} 
+			return true;	
+		});	
+	}else{
+		return false;
+	}	
+};
+
 function setProjectName(destination, project_name) {
 	var file = destination + '/package.json';
 	var packagejson = JSON.parse(fs.readFileSync(file, 'utf8').toString());
 	packagejson.name = project_name;
 	packagejson.description = project_name + ' created with Maaperture!';
 	fs.writeFile(file, JSON.stringify(packagejson, null, '\t'));
+	changeFileRow(	destination + '/config_development.js',
+					'title: \'Maaperture\'',
+					'title: \'' + project_name + '\''			
+				);
+	changeFileRow(	destination + '/config_production.js',
+					'title: \'Maaperture\'',
+					'title: \'' + project_name + '\''			
+				);				
 }
 
 function initProject(project_name, output_path) {
