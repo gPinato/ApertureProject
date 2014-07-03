@@ -25,7 +25,7 @@ exports.checkMail = function(req, res) {
 	console.log(JSON.stringify(req.body));
 	 
 	DB.users.count({
-  		email: req.body.field
+  		email: req.body.field.toLowerCase()
     }, function (err, count) {
         if (count === 0) {
 			console.log('nessuna mail presente');
@@ -49,15 +49,17 @@ exports.userSignup = function(req, res, next) {
 		res.send(400);
 	}
 	
+	var userMail = req.body.email.toLowerCase();
+	
 	//controllo che l'utente non sia presente
 	DB.users.count({
-  		email: req.body.email
+  		email: userMail
     }, function (err, count) {
         if (count == 0) {
-			retriever.addUser(req.body.email, req.body.pwd1, level, function(success){
+			retriever.addUser(userMail, req.body.pwd1, level, function(success){
 				if(success)
 				{
-					req.body = {email: req.body.email, password: req.body.pwd1};
+					req.body = {email: userMail, password: req.body.pwd1, level: level};
 					next();
 				}else{
 					console.log('richiesta registrazione fallita: inserimento nel db fallito');

@@ -285,10 +285,7 @@ exports.getCollectionIndex = function(collection_name, column, order, page, call
 			query = {};
 		else
 			query = collection.index.query;
-			
-		//la prima query usa start=0 e perpage='' per raccogliere tutti i documenti
-		//e calcolare il numero di pagine massimo da inviare al client
-			
+						
 		model.count(query, function(err, count) {
 			
 			var result = {};
@@ -296,8 +293,6 @@ exports.getCollectionIndex = function(collection_name, column, order, page, call
 			result.options.pages = Math.floor(count / perpage);
 			if((count % perpage) > 0) result.options.pages++;
 
-			//questa seconda query bruttissima restringe i dati ai soli richiesti dal client
-			//in base al numero di pagina richiesto
 			var querySettings = {};
 			querySettings.where = query; 
 			querySettings.select = select;
