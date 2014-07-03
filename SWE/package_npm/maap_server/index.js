@@ -33,12 +33,9 @@ var DSL = require('./modelServer/DSL');
 function serverInit(app){
 
 	var config = app.config;
-
 	console.log('app init...');
 	
 	app.set('views', config.static_assets.views);
-	//app.set('view engine', 'html');
-
 	app.use(favicon(path.join(config.static_assets.dir, 'favicon.ico')));
 	
 	if(config.app.env == 'development') {
@@ -48,7 +45,6 @@ function serverInit(app){
 	app.use(bodyParser.urlencoded());
 	app.use(cookieParser());
 	app.use(session({ secret: config.session.secret, cookie: { maxAge: config.session.max_age} }));
-	
 	app.use(express.static(config.static_assets.dir));
 		
 	//db e config injecting

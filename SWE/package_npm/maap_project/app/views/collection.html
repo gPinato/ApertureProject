@@ -22,13 +22,7 @@
             </table>
         </div>
 
-        <div>
-            <ul ng-show="pages > 1" class="pagination">
-                <li ng-click="previousPage()"><a href="">&laquo;</a></li>
-                <li ng-repeat="i in numerify() track by $index " ng-click="toPage(i)" ng-class="{'disabled': $index==current_page}"><a href="">{{$index+1}}</a></li>
-                <li ng-click="nextPage()"><a href="">&raquo;</a></li>
-            </ul>
-        </div>
+       
 
         <div class="pagination-div">
 
@@ -42,11 +36,11 @@
 
                 <li ng-repeat="n in range()"
 
-                    ng-class="{active: n == currentPage}"
+                    ng-class="{'disabled': n == current_page}"
 
-                    ng-click="setPage(n)">
+                    ng-click="toPage(n)">
 
-                    <a href="#">{{n+1}}</a>
+                    <a href="">{{n+1}}</a>
 
                 </li>
 

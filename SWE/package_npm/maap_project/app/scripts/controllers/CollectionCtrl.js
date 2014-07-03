@@ -76,12 +76,12 @@ angular.module('maaperture').controller('CollectionCtrl', function ($scope, $rou
 
     init();
 
-    //funzione per stampare correttamente il numero di pagine
+   /*  //funzione per stampare correttamente il numero di pagine
     $scope.numerify = function () {
         //se ho meno di 10 pagine posso farle vedere tutte
-        if( $scope.pages < 10){
-        return new Array($scope.pages);
-        }
+        
+        return new Array(10);
+        
 
     };
     //Torna alla pagina precedente
@@ -97,12 +97,8 @@ angular.module('maaperture').controller('CollectionCtrl', function ($scope, $rou
             $scope.current_page++;
         }
         getData();
-    };
-    //Va alla pagina $index
-    $scope.toPage = function (index) {
-        $scope.current_page = index;
-        getData();
-    };
+    }; */
+    
     //cambia ordinamento corrente, da asc a desc o viceversa
     var changeSort = function () {
         if ($scope.current_sort === "desc") {
@@ -143,19 +139,25 @@ angular.module('maaperture').controller('CollectionCtrl', function ($scope, $rou
     };
 
     //=====================================================================
+	//Funzioni per paginazione avanzata
     $scope.range = function() {
 
-        var rangeSize = 4;
+        var rangeSize = 9;
 
         var ps = [];
 
         var start;
 
-        start = $scope.currentPage;
+		if ( $scope.current_page > 3){
+			start = $scope.current_page-3;
+		}
+		else{
+        start = $scope.current_page;
+		}
+		
+        if ( start > $scope.pages-rangeSize ) {
 
-        if ( start > $scope.pageCount()-rangeSize ) {
-
-            start = $scope.pageCount()-rangeSize+1;
+            start = $scope.pages-rangeSize;
 
         }
 
@@ -172,49 +174,46 @@ angular.module('maaperture').controller('CollectionCtrl', function ($scope, $rou
 
     $scope.prevPage = function() {
 
-        if ($scope.currentPage > 0) {
+        if ($scope.current_page > 0) {
 
-            $scope.currentPage--;
+            $scope.current_page--;
 
         }
+		getData();
     };
 
 
     $scope.DisablePrevPage = function() {
 
-        return $scope.currentPage === 0 ? "disabled" : "";
+        return $scope.current_page === 0 ? "disabled" : "";
 
     };
 
 
-    $scope.pageCount = function() {
-
-        return Math.ceil($scope.datalists.length/$scope.itemsPerPage)-1;
-
-    };
-
+    
 
     $scope.nextPage = function() {
 
-        if ($scope.currentPage > $scope.pageCount()) {
+        if ($scope.current_page < $scope.pages) {
 
-            $scope.currentPage++;
+            $scope.current_page++;
 
         }
+		getData();
     };
 
 
     $scope.DisableNextPage = function() {
 
-        return $scope.currentPage === $scope.pageCount() ? "disabled" : "";
+        return $scope.current_page+1 === $scope.pages ? "disabled" : "";
 
     };
-
-
-    $scope.setPage = function(n) {
-
-        $scope.currentPage = n;
-
+	
+	//Va alla pagina $index
+    $scope.toPage = function (index) {
+        $scope.current_page = index;
+        getData();
     };
+
 
 });

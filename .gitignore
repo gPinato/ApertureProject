@@ -38,6 +38,7 @@ SWE/package_npm/node_modules/*
 SWE/package_npm/maap_project/node_modules/*
 SWE/package_npm/maap_project/app/bower_components/*
 SWE/package_npm/node_modules/*
+SWE/alexdb/*
 SWE/MaaP-Steakholders/*
 SWE/package_npm/maap_server/ModelServer/DSL/collectionData/*.js
 SWE/package_npm/maap_server/ModelServer/DSL/collectionData/*.json
