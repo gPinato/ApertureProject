@@ -157,7 +157,8 @@ exports.getIndex = function(db, page, indexesPerPage, callback) {
 		collection.indexInformation(function(err, indexes) {
 			for(var key in indexes)
 			{
-				result.push({indexName: key, collectionName: collectionName, indexFields: indexes[key]});
+				if(key != '_id_')	//non aggiungo gli indici di default _id_
+					result.push({indexName: key, collectionName: collectionName, indexFields: indexes[key]});
 			}
 			done = true;
 		});
