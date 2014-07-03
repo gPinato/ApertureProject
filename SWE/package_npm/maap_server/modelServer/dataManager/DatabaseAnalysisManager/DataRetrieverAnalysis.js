@@ -153,9 +153,29 @@ var getDocuments = function(model, querySettings, populate, callback){
 	});	
 }
 
-exports.getCollectionsList = function() {
+//ritorna la lista di collections, se e' definito un campo find di ricerca, restringe il 
+//risultato alle sole collections che contengono il campo find all'interno della label
+exports.getCollectionsList = function(find) {
+
 	var collectionsList = require('../../DSL/collectionData/collectionsList.json');
+	
+	if(find != undefined && find != '')
+	{
+		var result = [];
+		for(var i=0; i<collectionsList.length; i++)
+		{
+			var label = (collectionsList[i].label).toLowerCase();
+			find = find.toLowerCase();
+			if(label.indexOf(find) != -1)
+			{
+				result.push(collectionsList[i]);
+			}		
+		}	
+		collectionsList = result;
+	}
+	
 	return collectionsList;
+	
 }
 
 //applica le varie trasformazioni presenti nel dsl ai vari campi dei documents nell'array di documents

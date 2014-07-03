@@ -30,6 +30,7 @@ var dispatcherInit = function (app) {
 	
 	//gestione collections e documents
 	dispatcher.get('/api/collection/list', passport.checkAuthenticated, datamanager.sendCollectionsList);
+	//dispatcher.get('/api/collection/list/:find', passport.checkAuthenticated, datamanager.sendCollectionsList);
 	dispatcher.get('/api/collection/:col_id', passport.checkAuthenticated, datamanager.sendCollection);
 	dispatcher.get('/api/collection/:col_id/:doc_id', passport.checkAuthenticated, datamanager.sendDocument);
 	//dispatcher.get('/api/collection/:col_id/:doc_id/edit', passport.checkAuthenticatedAdmin, datamanager.sendDocumentEdit);

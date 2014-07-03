@@ -22,7 +22,9 @@ var JSonComposer = require('../JSonComposer');
 //invia al client la lista di collections definite dai vari dsl
 exports.sendCollectionsList = function(req, res) {
 
-	var collectionsList = retriever.getCollectionsList();
+	//var find = req.params.find; //per implementare la ricerca
+	var find = '';
+	var collectionsList = retriever.getCollectionsList(find);
 	res.send(JSonComposer.createCollectionsList(collectionsList));
 	
 }
