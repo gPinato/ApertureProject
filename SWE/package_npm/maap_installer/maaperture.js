@@ -44,8 +44,8 @@ function setProjectName(destination, project_name) {
 
 function initProject(project_name, output_path) {
 	var source = __dirname + '/../maap_project';
-	if(output_path.charAt(output_path.length-1)!='/'){
-		output_path=output_path +'/';
+	if(output_path.charAt(output_path.length - 1) != '/'){
+		output_path = output_path + '/';
 	}
 	var destination = output_path + project_name;
 	var info = "JK rocks!";
@@ -65,14 +65,15 @@ function initProject(project_name, output_path) {
 	ncp(source, destination, options, function(err) {
 		if(err) {
 			return console.error(err);
+		}else{
+			console.log('setting project\'s name...');
+			setProjectName(destination, project_name);
+			console.log('');
+			console.log('well done!');
+			console.log('');
+			console.log('you are ready to install the dependencies and start the server');
+			console.log('with: "cd ' + destination + ' && npm install && npm start"');
 		}
-		console.log('setting project\'s name...');
-		setProjectName(destination, project_name);
-		console.log('');
-		console.log('well done!');
-		console.log('');
-		console.log('you are ready to install the dependencies and start the server');
-		console.log('with: "cd ' + destination + ' && npm install && npm start"');
 	});	
 }
 
