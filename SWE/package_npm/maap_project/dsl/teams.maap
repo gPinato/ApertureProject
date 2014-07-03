@@ -23,7 +23,7 @@ collection = {
 				label: 'Nome Allenatore',
 				name: 'coach.name',
 				type: 'String',
-				transformation: 'name = name + \" sfigato\";'
+				transformation: 'name = \"Mr. \" + name;'
 			},
 			{	
 				label: 'Tecnico',

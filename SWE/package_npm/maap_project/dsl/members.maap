@@ -22,11 +22,6 @@ collection = {
 				label: 'email',
 				name: 'email',
 				type: 'String'
-			},
-			{	
-				label: 'eta',
-				name: 'age',
-				type: 'Number, min: 18, max:35'
 			}
 		],
 		query: {
@@ -54,8 +49,7 @@ collection = {
 			{	
 				label: 'eta',
 				name: 'age',
-				type: 'Number, min: 18, max:35',
-				transformation: 'age = age*2'
+				type: 'Number, min: 18, max:35'
 			},
 			{	
 				label: 'Interessi',

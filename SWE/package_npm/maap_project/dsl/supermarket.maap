@@ -25,7 +25,7 @@ collection = {
 				type: 'String'
 			},
 			{
-				label: 'RepartoJK',
+				label: 'Reparto',
 				name: 'posizione.reparto',
 				type: 'String'
 			}
