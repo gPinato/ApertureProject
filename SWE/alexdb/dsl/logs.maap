@@ -1,0 +1,61 @@
+collection = {
+	label: 'System logs',
+	name: 'logs',
+	position: 0,
+	
+	index : {
+		perpage: 50,
+		sortby: 'timestamp',
+		order: 'asc',
+		column : [
+			{
+				label: 'Timestamp',
+				name: 'timestamp',
+				type: 'Number'
+			},
+			{	
+				label: 'Message',
+				name: 'message',
+				type: 'String'
+			},
+			{	
+				label: 'Level',
+				name: 'level',
+				type: 'String'
+			}
+		]
+	}, //end index page
+	
+	show : {
+		row : [
+			{
+				name: '_id',
+				type: 'ObjectId'
+			},
+			{
+				label: 'Timestamp',
+				name: 'timestamp',
+				type: 'ISODate'
+			},
+			{	
+				label: 'Message',
+				name: 'message',
+				type: 'String'
+			},
+			{	
+				label: 'Level',
+				name: 'level',
+				type: 'String'
+			},
+			{	
+				label: 'Hostname',
+				name: 'hostname',
+				type: 'String'
+			}
+		]
+	} //end show page
+	
+} //end collection	
+
+//exports collection [DO NOT REMOVE]
+exports.collection = collection;
