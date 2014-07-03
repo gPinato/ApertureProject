@@ -144,10 +144,10 @@ angular.module('maaperture').controller('CollectionCtrl', function ($scope, $rou
 
         var rangeSize;
 		if( $scope.pages < 9){
-		rangeSize = $scope.pages
+		rangeSize = $scope.pages;
 		}
 		else{
-		rangeSize = 9
+		rangeSize = 9;
 		}
 		
         var ps = [];
@@ -183,9 +183,9 @@ angular.module('maaperture').controller('CollectionCtrl', function ($scope, $rou
         if ($scope.current_page > 0) {
 
             $scope.current_page--;
-
+            getData();
         }
-		getData();
+
     };
 
 
@@ -200,18 +200,17 @@ angular.module('maaperture').controller('CollectionCtrl', function ($scope, $rou
 
     $scope.nextPage = function() {
 
-        if ($scope.current_page < $scope.pages) {
-
+        if ($scope.current_page < $scope.pages - 1) {
             $scope.current_page++;
-
+            getData();
         }
-		getData();
+
     };
 
 
     $scope.DisableNextPage = function() {
 
-        return $scope.current_page+1 === $scope.pages ? "disabled" : "";
+        return $scope.current_page === $scope.pages - 1 ? "disabled" : "";
 
     };
 	

@@ -126,30 +126,30 @@ angular.module('maaperture').controller('QueryCtrl', function ($scope, $route, $
             }
         );
     };
-	
-	//=====================================================================
-	//Funzioni per paginazione avanzata
+
+    //=====================================================================
+    //Funzioni per paginazione avanzata
     $scope.range = function() {
 
         var rangeSize;
-		if( $scope.pages < 9){
-		rangeSize = $scope.pages
-		}
-		else{
-		rangeSize = 9
-		}
-		
+        if( $scope.pages < 9){
+            rangeSize = $scope.pages;
+        }
+        else{
+            rangeSize = 9;
+        }
+
         var ps = [];
 
         var start;
 
-		if ( $scope.current_page > 3){
-			start = $scope.current_page-3;
-		}
-		else{
-        start = $scope.current_page;
-		}
-		
+        if ( $scope.current_page > 3){
+            start = $scope.current_page-3;
+        }
+        else{
+            start = $scope.current_page;
+        }
+
         if ( start > $scope.pages-rangeSize ) {
 
             start = $scope.pages-rangeSize;
@@ -172,9 +172,9 @@ angular.module('maaperture').controller('QueryCtrl', function ($scope, $route, $
         if ($scope.current_page > 0) {
 
             $scope.current_page--;
-
+            getData();
         }
-		getData();
+
     };
 
 
@@ -185,29 +185,29 @@ angular.module('maaperture').controller('QueryCtrl', function ($scope, $route, $
     };
 
 
-    
+
 
     $scope.nextPage = function() {
 
-        if ($scope.current_page < $scope.pages) {
-
+        if ($scope.current_page < $scope.pages - 1) {
             $scope.current_page++;
-
+            getData();
         }
-		getData();
+
     };
 
 
     $scope.DisableNextPage = function() {
 
-        return $scope.current_page+1 === $scope.pages ? "disabled" : "";
+        return $scope.current_page === $scope.pages - 1 ? "disabled" : "";
 
     };
-	
-	//Va alla pagina $index
+
+    //Va alla pagina $index
     $scope.toPage = function (index) {
         $scope.current_page = index;
         getData();
     };
+
 
 });
