@@ -33,7 +33,7 @@
             <!-- Default panel contents -->
             <div ng-model="rows" class="panel-heading">Options</div>
 
-            <a  ng-click="edit_document()" ng-disabled="newPassword1 != newPassword2 " class="btn btn-danger"><i class="glyphicon glyphicon-pencil"></i> Save</a>
+            <a  ng-click="edit_document()" ng-disabled="newPassword1 != newPassword2" class="btn btn-danger"><i class="glyphicon glyphicon-pencil"></i> Save</a>
             <a href="/users/{{current_document}}" ng-click="discard()" class="btn btn-warning"><i class="glyphicon glyphicon-trash"></i> Discard</a>
 
         </div>
@@ -41,7 +41,7 @@
             <!-- Default panel contents -->
             <div ng-model="rows" class="panel-heading">Options</div>
 
-            <a  ng-click="edit_document()" ng-disabled="newPassword1 != newPassword2 || newPassword1 == null" class="btn btn-danger"><i class="glyphicon glyphicon-pencil"></i> Save</a>
+            <a  ng-click="edit_document()" ng-disabled="newPassword1 != newPassword2" class="btn btn-danger"><i class="glyphicon glyphicon-pencil"></i> Save</a>
             <a href="/profile" ng-click="discard()" class="btn btn-warning"><i class="glyphicon glyphicon-trash"></i> Discard</a>
 
         </div>
