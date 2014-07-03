@@ -36,6 +36,7 @@ angular.module('maaperture').controller('LoginCtrl', function ($scope,$route,$co
 
             },
             function error(data, status) {
+				 alert("Login failed, please check your email/password and try again!");
             });
 
     };
