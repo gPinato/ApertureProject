@@ -76,28 +76,7 @@ angular.module('maaperture').controller('CollectionCtrl', function ($scope, $rou
 
     init();
 
-   /*  //funzione per stampare correttamente il numero di pagine
-    $scope.numerify = function () {
-        //se ho meno di 10 pagine posso farle vedere tutte
-        
-        return new Array(10);
-        
 
-    };
-    //Torna alla pagina precedente
-    $scope.previousPage = function () {
-        if ($scope.current_page > 0) {
-            $scope.current_page--;
-        }
-        $scope.getData();
-    };
-    //Va alla pagina successiva
-    $scope.nextPage = function () {
-        if ($scope.current_page < $scope.pages - 1) {
-            $scope.current_page++;
-        }
-        $scope.getData();
-    }; */
     
     //cambia ordinamento corrente, da asc a desc o viceversa
     var changeSort = function () {

@@ -48,7 +48,7 @@ describe('Controller: CollectionCtrl', function () {
 
         MainCtrl = $controller('CollectionCtrl', {
             $scope: scope,
-            $routeParams:routeParams,
+            $routeParams:routeParams
         });
 
     }));
@@ -126,6 +126,8 @@ describe('Controller: CollectionCtrl', function () {
         expect(scope.current_sorted_column).to.equal(1);
         scope.columnSort(1);
         expect(scope.current_sort).to.equal("desc");
+        scope.columnSort(1);
+        expect(scope.current_sort).to.equal("asc");
 
     });
 
@@ -148,6 +150,17 @@ describe('Controller: CollectionCtrl', function () {
         expect(result[0]).to.equal(11);
         expect(result[8]).to.equal(19);
 
+    });
+
+    it('should disable prev and next', function () {
+        scope.pages = 10;
+        scope.current_page = 0;
+        expect(scope.DisablePrevPage()).to.equal('disabled');
+        scope.current_page = 1;
+        expect(scope.DisablePrevPage()).to.equal('');
+        expect(scope.DisableNextPage()).to.equal('');
+        scope.current_page = scope.pages -1;
+        expect(scope.DisableNextPage()).to.equal('disabled');
     });
 
     
