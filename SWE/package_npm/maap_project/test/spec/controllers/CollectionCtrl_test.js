@@ -19,6 +19,7 @@ describe('Controller: CollectionCtrl', function () {
         scope,
         MockColService,
         MockCall,
+        response,
         mockBackend;
 
     // Initialize the controller and a mock scope
@@ -28,39 +29,57 @@ describe('Controller: CollectionCtrl', function () {
         routeParams ={};
         routeParams.col_id=0;
         routeParams.doc_id=0;
+        response =
+            [ [ 'Timestamp', 'Message', 'Level' ],
+                [ { _id: '52b31e950d715cff70000001', data: { label: [ '_id', 'Timestamp', 'Message', 'Level', 'Hostname' ],
+                    data:
+                    { _id: '52b320a93401a40800000006',
+                        timestamp: 'today',
+                        message: 'AMAIL',
+                         level: 'info',
+                        hostname: 'b6d91509-de9d-4be9-819d-e04de3699ad2' } } },
+                    { _id: '52b31ebd3401a40800000002', data: [Object] },
+                    { _id: '52b31ebd3401a40800000003', data: [Object] },
+                    { _id: '52b3347f255fbb0800000021', data: [Object] } ],
+                { pages: 4 } ];
 
-        MockColService = {
-            query: function(value) {
-                /*
-                * QUI DOVETE METTERE UNA COPIA DI UNA DELLE RISPOSTE DEL SERVER
-                * MA UNA COPIA SERIA E FATTA BENE
-                * */
-                return {
-                    "labels" : [
-                        "Name",
-                            "Email",
-                            "Created at"
-                        ],
-                    "values" : {
-                        "ID": 0,
-                        "data": {
-                            "customer": "Gina",
-                            "email": "gina@pina.com",
-                            "date": "15/12/2012"
-                        }
-                    }
-                };
-            }
-        };
 
-        MockCall = MockColService.query();
+
 
         MainCtrl = $controller('CollectionCtrl', {
             $scope: scope,
             $routeParams:routeParams,
-            CollectionDataService : MockColService
         });
+
     }));
+
+    beforeEach(function () {
+        angular.mock.inject(function ($injector) {
+            mockBackend = $injector.get('$httpBackend');
+            MockColService = $injector.get('CollectionDataService');
+        });
+    });
+/*
+    it('should load labels from the services',  inject(function (CollectionDataService)  {
+
+        mockBackend.expectGET('http://localhost:9000/api/collection/0?page=0')
+            .respond(response);
+
+
+        var result = MockColService.query({
+            col_id: routeParams.col_id,
+            order: scope.current_sort,
+            column: scope.column_original_name[scope.current_sorted_column],
+            page: scope.current_page
+
+        });
+        mockBackend.flush();
+        console.log(result);
+        expect(result).to.not.equal(null);
+
+
+    }));
+*/
 
     it('should initialize data correctly', function () {
         expect(scope.current_sorted_column).to.equal(null);
@@ -130,18 +149,7 @@ describe('Controller: CollectionCtrl', function () {
         expect(result[8]).to.equal(19);
 
     });
-    it('should load labels from the services', function () {
-        expect(scope.labels.length).to.not.equal(0);
-        expect(scope.labels[0]).to.equal("Name");
-    });
-    it('should load rows from the services', function () {
-        expect(scope.data.values).to.not.equal(0);
-        expect(scope.data.values.data.customer).to.equal("Gina");
 
-    });
-    /*
-    it('should be in the correct place', function () {
-        expect(location.path()).toEqual('/collection');
-    });*/
+    
 
 });

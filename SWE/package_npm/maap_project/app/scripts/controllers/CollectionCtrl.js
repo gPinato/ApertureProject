@@ -29,14 +29,14 @@ angular.module('maaperture').controller('CollectionCtrl', function ($scope, $rou
         $scope.canEdit = $cookieStore.get("isAdmin");
         $scope.current_collection = $routeParams.col_id;
         $scope.rows = [];
-        getData();
+        $scope.getData();
 
     };
 
     //Funzione di recupero dei dati dal server.
     //In base ai parametri dello scope effettua una query sul server e recupera i dati
     //da visualizzare
-    var getData = function () {
+    $scope.getData = function () {
 
         CollectionDataService.query({
                 col_id: $routeParams.col_id,
@@ -89,14 +89,14 @@ angular.module('maaperture').controller('CollectionCtrl', function ($scope, $rou
         if ($scope.current_page > 0) {
             $scope.current_page--;
         }
-        getData();
+        $scope.getData();
     };
     //Va alla pagina successiva
     $scope.nextPage = function () {
         if ($scope.current_page < $scope.pages - 1) {
             $scope.current_page++;
         }
-        getData();
+        $scope.getData();
     }; */
     
     //cambia ordinamento corrente, da asc a desc o viceversa
@@ -113,13 +113,13 @@ angular.module('maaperture').controller('CollectionCtrl', function ($scope, $rou
         //Determina se cambiare solo ordinamento o anche colonna ordinata
         if (index === $scope.current_sorted_column) {
             changeSort();
-            getData();
+            $scope.getData();
         }
         else {
             //cambia anche la colonna ordinata
             $scope.current_sorted_column = index;
             $scope.current_sort = "asc";
-            getData();
+            $scope.getData();
         }
     };
     //funzione per cancellare il documento di indice index
@@ -183,7 +183,7 @@ angular.module('maaperture').controller('CollectionCtrl', function ($scope, $rou
         if ($scope.current_page > 0) {
 
             $scope.current_page--;
-            getData();
+            $scope.getData();
         }
 
     };
@@ -202,7 +202,7 @@ angular.module('maaperture').controller('CollectionCtrl', function ($scope, $rou
 
         if ($scope.current_page < $scope.pages - 1) {
             $scope.current_page++;
-            getData();
+            $scope.getData();
         }
 
     };
@@ -217,7 +217,7 @@ angular.module('maaperture').controller('CollectionCtrl', function ($scope, $rou
 	//Va alla pagina $index
     $scope.toPage = function (index) {
         $scope.current_page = index;
-        getData();
+        $scope.getData();
     };
 
 
