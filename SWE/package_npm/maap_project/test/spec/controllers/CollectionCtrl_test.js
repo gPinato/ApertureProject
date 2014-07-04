@@ -59,27 +59,22 @@ describe('Controller: CollectionCtrl', function () {
             MockColService = $injector.get('CollectionDataService');
         });
     });
-/*
+
     it('should load labels from the services',  inject(function (CollectionDataService)  {
 
-        mockBackend.expectGET('http://localhost:9000/api/collection/0?page=0')
+        mockBackend.expectGET('http://localhost:9000/api/collection/0')
             .respond(response);
 
 
-        var result = MockColService.query({
-            col_id: routeParams.col_id,
-            order: scope.current_sort,
-            column: scope.column_original_name[scope.current_sorted_column],
-            page: scope.current_page
 
-        });
+        var result = MockColService.query();
         mockBackend.flush();
         console.log(result);
-        expect(result).to.not.equal(null);
+        expect(scope.labels).to.not.equal(null);
 
 
     }));
-*/
+
 
     it('should initialize data correctly', function () {
         expect(scope.current_sorted_column).to.equal(null);
