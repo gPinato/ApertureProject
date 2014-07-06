@@ -15,20 +15,46 @@ describe('UsersCtrl', function () {
 
     var MainCtrl,
         routeParams,
-        scope;
+        scope,
+        mockResource;
 
-    beforeEach(inject(function ($controller, $rootScope, _$httpBackend_) {
+    beforeEach(inject(function ($controller, $rootScope, $resource, $q) {
         scope = $rootScope.$new();
         routeParams ={};
         routeParams.user_id=0;
-
-
-
-
+        mockResource = function (prop) {
+            for(var k in properties)
+                this[k]=properties[k];
+        };
+        mockResource.query = function(){
+            var deferred = $q.defer();
+            deferred.resolve({ labels: ['labelOne', 'labelTwo'], data: {'key':'value', 'keyTwo':'two'}});
+        return deferred.promise;
+    };
         MainCtrl = $controller('UsersCtrl', {
             $scope: scope,
-            $routeParams:routeParams
+            $routeParams:routeParams,
+            UserDataService:mockResource
         });
+
+    describe('get a User', function() {
+        it('should get a User', function () {
+            mockResource.query(
+                {
+                    user_id: routeParams.user_id
+                },
+                function success(data) {
+                    scope.labels = data.labels;
+                    console.log("successo");
+                },
+                function error(err) {
+                    console.log("errore");
+                }
+            );
+            console.log(scope.labels);
+            expect(scope.labels.length).toBe(2);
+        });
+    });
 
     }));
 
@@ -41,4 +67,5 @@ describe('UsersCtrl', function () {
         });
 
     });
+
 });
