@@ -10,7 +10,9 @@
 'use strict';
 
 describe('DashboardCtrl', function () {
-    var mockUserResource, $httpBackend,scope;
+    var mockUserResource,
+        $httpBackend,
+        scope;
     beforeEach(angular.mock.module('maaperture'));
 
     beforeEach(function () {

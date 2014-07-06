@@ -16,47 +16,47 @@ describe('UsersCtrl', function () {
     var MainCtrl,
         routeParams,
         scope,
-        mockResource;
+        $httpBackend,
+        mockUserResource;
 
-    beforeEach(inject(function ($controller, $rootScope, $resource, $q) {
+    beforeEach(function () {
+        angular.mock.inject(function ($injector, $controller, $rootScope) {
+            $httpBackend = $injector.get('$httpBackend');
+            mockUserResource = $injector.get('UserDataService');
+            scope = $rootScope.$new();
+        })
+    });
+
+    describe('get the right list', function () {
+        it('should call getUser with username', inject(function () {
+            $httpBackend.expectGET('http://localhost:9000/api/users/:user_id')
+                .respond({labels:['a','b','c'],
+                    values: [1,2,3]});
+
+            var result = mockUserResource.get();
+
+            $httpBackend.flush();
+
+            expect(result.labels[0]).to.equal('a');
+            expect(result.values[1]).to.equal(2);
+        }));
+
+    });
+
+    beforeEach(inject(function ($controller, $rootScope) {
         scope = $rootScope.$new();
         routeParams ={};
         routeParams.user_id=0;
-        mockResource = function (prop) {
-            for(var k in properties)
-                this[k]=properties[k];
-        };
-        mockResource.query = function(){
-            var deferred = $q.defer();
-            deferred.resolve({ labels: ['labelOne', 'labelTwo'], data: {'key':'value', 'keyTwo':'two'}});
-        return deferred.promise;
-    };
+
         MainCtrl = $controller('UsersCtrl', {
             $scope: scope,
             $routeParams:routeParams,
-            UserDataService:mockResource
+            UserDataService:mockUserResource
         });
 
-    describe('get a User', function() {
-        it('should get a User', function () {
-            mockResource.query(
-                {
-                    user_id: routeParams.user_id
-                },
-                function success(data) {
-                    scope.labels = data.labels;
-                    console.log("successo");
-                },
-                function error(err) {
-                    console.log("errore");
-                }
-            );
-            console.log(scope.labels);
-            expect(scope.labels.length).toBe(2);
-        });
-    });
 
     }));
+
 
     describe('get the right list', function () {
         it('should initialize data correctly', function () {
