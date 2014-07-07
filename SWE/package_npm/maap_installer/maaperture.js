@@ -103,8 +103,8 @@ function initProject(project_name, output_path) {
     { 
         clobber: false, 				//avoid2write existing files (false)
         filter: function (src) {
-            //console.log(JSON.stringify(src));
-			//console.log(src);
+            if(src.indexOf('node_modules') > -1)return false;
+			if(src.indexOf('bower_components') > -1)return false;
 			return true;
         }
     };
