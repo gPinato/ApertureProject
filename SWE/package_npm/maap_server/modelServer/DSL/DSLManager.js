@@ -33,8 +33,15 @@ var generateFunction = function(transformation) {
 	
 	var result = '//maaperture auto-generated function for item \'' + transformation.name + '\':\n\n'
 	result += 'exports.transformation = function(' + transformation.name + ') {\n';
+	result += 'var originalValue = ' + transformation.name + ';\n';
+	result += 'try{\n';
 	result += transformation.transformation + '\n';
-	result += 'return ' + transformation.name + ';\n}';
+	result += '}catch(err){\n';
+	result += 'console.log(\'transformation error: \' + err);\n';
+	result += transformation.name + ' = \'transformation failed, check your DSL [ \' + originalValue + \' ]\';\n';
+	result += '}\n';
+	result += 'return ' + transformation.name + ';\n';
+	result += '}\n';
 	return result;
 }
 //for unit test
