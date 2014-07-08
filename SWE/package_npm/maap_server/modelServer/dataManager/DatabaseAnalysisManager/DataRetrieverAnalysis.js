@@ -34,8 +34,9 @@ var getModel = function(collection_name) {
 var getDocuments = function(model, querySettings, populate, callback){
 		
 	var options = {};
+	var sort = {};
+	
 	if(querySettings.orderbycolumn != '' && querySettings.typeorder != ''){
-		var sort = {};
 		sort[querySettings.orderbycolumn] = querySettings.typeorder;
 		options.sort = sort;
 	}
@@ -47,6 +48,11 @@ var getDocuments = function(model, querySettings, populate, callback){
 	}
 		
 	var query = model.find(querySettings.where, querySettings.select, options);
+	//var query = model.find(querySettings.where, {}, {});
+	
+	console.log('query: ' + JSON.stringify(querySettings));
+	console.log('options: ' + JSON.stringify(options));
+	console.log('pop: ' + JSON.stringify(populate));
 	
 	if(populate != [])
 	{
@@ -76,7 +82,7 @@ var getDocuments = function(model, querySettings, populate, callback){
 		
 	query.lean().exec( function(err,result){
 		if(err){console.log('query fallita' + err); callback({});}
-		
+					
 		//a questo punto la query ha avuto successo,
 		//controllo se la query e' stata eseguita su tutti 
 		if(querySettings.select == undefined)querySettings.select = {};
@@ -88,7 +94,7 @@ var getDocuments = function(model, querySettings, populate, callback){
 			{
 				for(var key in result[0])
 				{
-					querySettings.select[key] = 1;						//carico le chiavi utilizzate
+					querySettings.select[key] = 1;			//carico le chiavi utilizzate
 				}
 				indexManager.addQuery(model.modelName,  	//nome della collection
 									  querySettings.select	//campi select
@@ -234,10 +240,10 @@ exports.getCollectionIndex = function(collection_name, column, order, page, call
 		var labels = [];
 		var select = {};
 		var populate = [];
-			
+		var keys = [];
+		
 		if(columns != undefined)
 		{
-			var keys = [];
 			//generazione array di labels
 			for(var i=0; i<columns.length; i++){
 				if(columns[i].label != null)
@@ -288,8 +294,12 @@ exports.getCollectionIndex = function(collection_name, column, order, page, call
 		else
 			query = collection.index.query;
 						
-		model.count(query, function(err, count) {
+		var sort = {};
+		sort[sortby] = order;
+		
+		model.find(query).sort(sort).exec(function(err, docs) {
 			
+			var count = docs.length;
 			var result = {};
 			result.options = {};
 			result.options.pages = Math.floor(count / perpage);
@@ -301,13 +311,21 @@ exports.getCollectionIndex = function(collection_name, column, order, page, call
 			querySettings.orderbycolumn = sortby;
 			querySettings.typeorder = order;
 			querySettings.startskip = start;
-			querySettings.numberofrow = perpage;
+			
+			//se ci sono piu' documents di quanti ce ne starebbero nella pagina, 
+			//limito a perpage
+			if(count > perpage)
+			{
+				querySettings.numberofrow = perpage;
+			}else{
+				querySettings.numberofrow = '';
+			}
 
 			getDocuments(model,
 						querySettings,
 						populate,			//populate
 						function(documents){
-			
+									
 							if(columns != undefined)
 							{
 								//qui columns del dsl e' definita
