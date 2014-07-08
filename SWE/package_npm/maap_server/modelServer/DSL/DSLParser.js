@@ -149,14 +149,14 @@ var IntValue = function(value, field){
 exports.IntValue = IntValue;
 
 var transformationArray = {};
-transformationArray.index = [];
-transformationArray.show = [];
 
 var parseDSL = function(DSLstring) {
 
- var functionbuttonindex=[];
-  var transformationindex=[];
-  var JSONresult={};
+	transformationArray.index = [];	//fix bug, array devono essere inizializzati ad ogni richiamo della funzione parseDSL
+	transformationArray.show = [];
+	var functionbuttonindex=[];
+	var transformationindex=[];
+	var JSONresult={};
 	JSONresult.collection=DSLstring.collection;
 	var collection = DSLstring.collection; 
 		checkFieldThrow(collection,'index','collection');
