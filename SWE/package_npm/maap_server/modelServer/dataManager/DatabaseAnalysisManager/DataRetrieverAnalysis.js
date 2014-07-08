@@ -196,6 +196,8 @@ var applyTrasformations = function(collection_name, type, documentsArray, dslArr
 					if(attributename == fieldName)
 					{
 						document[attributename] = transformation(document[attributename]);
+						//se e' indefinito visualizza un trattino
+						if(document[attributename] == undefined) document[attributename]= '-';
 					}
 				}
 			}
