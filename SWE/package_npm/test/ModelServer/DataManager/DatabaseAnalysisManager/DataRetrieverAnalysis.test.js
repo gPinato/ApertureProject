@@ -20,11 +20,11 @@ var assert = chai.assert;
 var expect = chai.expect;
 
 describe("Test getModel:", function() {
-var getModel = require("../../../maap_server/modelServer/dataManager/DatabaseAnalysisManager/DataRetrieverAnalysis.js").getModel;
+//var getModel = require("../../../../maap_server/modelServer/dataManager/DatabaseAnalysisManager/DataRetrieverAnalysis.js").getModel;
 });
 
 /*describe("Test getDocuments:", function() {
-var getDocuments = require("../../../maap_server/modelServer/dataManager/DatabaseAnalysisManager/DataRetrieverAnalysis.js").getDocuments;
+var getDocuments = require("../../../../maap_server/modelServer/dataManager/DatabaseAnalysisManager/DataRetrieverAnalysis.js").getDocuments;
 
 
 	
@@ -80,15 +80,15 @@ query.lean = function(){
 });
 */
 describe("Test getCollectionsList:", function() {
-var getCollectionsList = require("../../../maap_server/modelServer/dataManager/DatabaseAnalysisManager/DataRetrieverAnalysis.js").getCollectionsList;
+//var getCollectionsList = require("../../../../maap_server/modelServer/dataManager/DatabaseAnalysisManager/DataRetrieverAnalysis.js").getCollectionsList;
 });
 
 describe("Test applyTrasformations:", function() {
-var applyTrasformations = require("../../../maap_server/modelServer/dataManager/DatabaseAnalysisManager/DataRetrieverAnalysis.js").applyTrasformations;
+//var applyTrasformations = require("../../../../maap_server/modelServer/dataManager/DatabaseAnalysisManager/DataRetrieverAnalysis.js").applyTrasformations;
 });
 
 describe("Test sortDocumentsByLabels:", function() {
-	var sortDocumentsByLabels = require("../../../maap_server/modelServer/dataManager/DatabaseAnalysisManager/DataRetrieverAnalysis.js").sortDocumentsByLabels;
+	var sortDocumentsByLabels = require("../../../../maap_server/modelServer/dataManager/DatabaseAnalysisManager/DataRetrieverAnalysis.js").sortDocumentsByLabels;
 
 	var documents = new Array();
 	documents.push({label:'a', name:'aa', position:1});
@@ -123,19 +123,19 @@ describe("Test sortDocumentsByLabels:", function() {
 });
 
 describe("Test getCollectionIndex:", function() {
-var getCollectionIndex = require("../../../maap_server/modelServer/dataManager/DatabaseAnalysisManager/DataRetrieverAnalysis.js").getCollectionIndex;
+var getCollectionIndex = require("../../../../maap_server/modelServer/dataManager/DatabaseAnalysisManager/DataRetrieverAnalysis.js").getCollectionIndex;
 });
 
 describe("Test getDocumentShow:", function() {
-var getDocumentShow = require("../../../maap_server/modelServer/dataManager/DatabaseAnalysisManager/DataRetrieverAnalysis.js").getDocumentShow;
+var getDocumentShow = require("../../../../maap_server/modelServer/dataManager/DatabaseAnalysisManager/DataRetrieverAnalysis.js").getDocumentShow;
 });
 
 describe("Test getDocumentShowEdit:", function() {
-var getDocumentShowEdit = require("../../../maap_server/modelServer/dataManager/DatabaseAnalysisManager/DataRetrieverAnalysis.js").getDocumentShowEdit;
+var getDocumentShowEdit = require("../../../../maap_server/modelServer/dataManager/DatabaseAnalysisManager/DataRetrieverAnalysis.js").getDocumentShowEdit;
 });
 
 describe("Test updateDocument:", function() {
-var updateDocument = require("../../../maap_server/modelServer/dataManager/DatabaseAnalysisManager/DataRetrieverAnalysis.js").updateDocument;
+var updateDocument = require("../../../../maap_server/modelServer/dataManager/DatabaseAnalysisManager/DataRetrieverAnalysis.js").updateDocument;
 });
 
 /*describe("Test removeDocument:", function() {
@@ -157,7 +157,7 @@ var req = {
 	req.model = function () {
 		return model;
 	};
-var removeDocument = require("../../../maap_server/modelServer/dataManager/DatabaseAnalysisManager/DataRetrieverAnalysis.js").removeDocument;
+var removeDocument = require("../../../../maap_server/modelServer/dataManager/DatabaseAnalysisManager/DataRetrieverAnalysis.js").removeDocument;
 var model = {
 		safeFindById: null
 	};

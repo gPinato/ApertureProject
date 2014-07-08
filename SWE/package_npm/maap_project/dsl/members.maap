@@ -4,7 +4,7 @@ collection = {
 	position: -1, //posizione nel menu, default -1
 	
 	index : {
-		perpage: 3,
+		perpage: 2,
 		sortby: 'age',
 		order: 'asc',
 		column : [
@@ -17,6 +17,11 @@ collection = {
 				label: 'Cognome',
 				name: 'surname',
 				type: 'String'
+			},
+			{	
+				label: 'eta',
+				name: 'age',
+				type: 'Number, min: 18, max:35'
 			},
 			{	
 				label: 'email',
