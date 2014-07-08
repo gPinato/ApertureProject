@@ -37,7 +37,7 @@ var generateFunction = function(transformation) {
 	result += 'try{\n';
 	result += transformation.transformation + '\n';
 	result += '}catch(err){\n';
-	result += 'console.log(\'trasformation error: \' + err);\n';
+	result += 'console.log(\'transformation error: \' + err);\n';
 	result += transformation.name + ' = \'transformation failed, check your DSL [ \' + originalValue + \' ]\';\n';
 	result += '}\n';
 	result += 'return ' + transformation.name + ';\n';
