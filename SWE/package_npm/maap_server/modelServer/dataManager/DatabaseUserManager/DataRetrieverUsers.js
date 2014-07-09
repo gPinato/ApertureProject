@@ -54,8 +54,10 @@ exports.updateUserProfile = function(req, callback) {
 	var options = {};
 	
 	var newUserData = {};
-	newUserData.email = req.body.email;
-	newUserData.password = req.body.newpassword;
+	newUserData.email = req.body.email.toLowerCase();
+	
+	if(req.body.newpassword != undefined)
+		newUserData.password = req.body.newpassword;
 	
 	//recupero dei vecchi dati utenti
 	//var oldEmail = req.session.passport.user.email;
@@ -146,7 +148,7 @@ exports.updateUser = function(req, callback) {
 	var options = {};
 	
 	var newUserData = {};
-	newUserData.email = user.email;
+	newUserData.email = user.email.toLowerCase();
 	if(user.newpassword != undefined)
 		newUserData.password = user.newpassword;
 	newUserData.level = user.level;

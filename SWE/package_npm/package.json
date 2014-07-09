@@ -1,7 +1,7 @@
 {
   "name": "maaperture",
   "description": "MaaP - MongoDB as an Admin Platform",
-  "version": "1.0.9",
+  "version": "1.0.11",
   "license": "BSD-3-Clause",
   "contributors": [
     {
