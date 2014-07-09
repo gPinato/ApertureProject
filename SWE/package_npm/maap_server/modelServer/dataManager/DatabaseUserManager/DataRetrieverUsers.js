@@ -69,7 +69,7 @@ exports.updateUserProfile = function(req, callback) {
 		var query = model.update(criteria, {$set: newUserData}, options);
 		query.lean().exec( function(err, count){
 			if(err){console.log('update user profile fallito: ' + err); callback(false);}
-			if(count == 0){
+			else if(count == 0){
 				//console.log('nessun risultato'); 
 				callback(false);
 			}else{

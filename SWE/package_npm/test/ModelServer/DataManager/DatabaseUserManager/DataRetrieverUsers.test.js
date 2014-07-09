@@ -75,6 +75,110 @@ describe("Test getUserProfile:", function() {
 
 describe("Test updateUserProfile:", function() {
 
+	it("updateUserProfile deve ritornare false se c'e' un errore con il DB", function() {
+		retriever.__set__('DB', {	
+		users: {
+					update: function(criteria, data, options){
+					
+								return {		
+											lean: function(){
+													return { exec: function(callback){callback('DBerror', 0);} }
+											}
+										}
+							}
+				}
+		
+		});
+		
+		var req = {body: {
+			email: 'test@mail.it',
+			newpassword: 'newPass' 
+		},
+			session: {
+				passport: {
+					user: {
+						_id: 123,
+						password: 'oldPassword'
+					}
+				}
+			}		
+		};
+		
+		retriever.updateUserProfile(req, function(result){
+			expect(result).to.equal(false);
+		});	
+		
+	});
+	
+	it("updateUserProfile deve ritornare false se l'update non ha successo", function() {
+		retriever.__set__('DB', {	
+		users: {
+					update: function(criteria, data, options){
+					
+								return {		
+											lean: function(){
+													return { exec: function(callback){callback(false, 0);} }
+											}
+										}
+							}
+				}
+		
+		});
+		
+		var req = {body: {
+			email: 'test@mail.it',
+			newpassword: 'newPass' 
+		},
+			session: {
+				passport: {
+					user: {
+						_id: 123,
+						password: 'oldPassword'
+					}
+				}
+			}		
+		};
+		
+		retriever.updateUserProfile(req, function(result){
+			expect(result).to.equal(false);
+		});	
+		
+	});
+	
+	it("updateUserProfile deve ritornare true se l'update avviene corrattamente", function() {
+		retriever.__set__('DB', {	
+		users: {
+					update: function(criteria, data, options){
+					
+								return {		
+											lean: function(){
+													return { exec: function(callback){callback(false, 1);} }
+											}
+										}
+							}
+				}
+		
+		});
+		
+		var req = {body: {
+			email: 'test@mail.it',
+			newpassword: 'newPass' 
+		},
+			session: {
+				passport: {
+					user: {
+						_id: 123,
+						password: 'oldPassword'
+					}
+				}
+			}		
+		};
+		
+		retriever.updateUserProfile(req, function(result){
+			expect(result).to.equal(true);
+		});	
+		
+	});
 
 });
 
