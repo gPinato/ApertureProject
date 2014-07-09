@@ -24,7 +24,7 @@ var retriever = rewire("../../../../maap_server/modelServer/dataManager/Database
 
 describe("Test addUser:", function() {
 	
-	it("inserimento utente deve essere eseguito con successo", function(done) {
+	/*it("inserimento utente deve essere eseguito con successo", function(done) {
 		
 		retriever.__set__('addUser.criteria', function(callback){callback(true);} );
 		
@@ -32,30 +32,41 @@ describe("Test addUser:", function() {
 			expect(done).to.equal(true);
 		});
 	
-	});
+	});*/
 	
 });
 
 describe("Test getUserProfile:", function() {
 
-	it("getUserProfile deve restituire un errore e lista vuota se ", function(done) {
+	it("getUserProfile deve restituire un errore ed un oggetto vuoto se il recupero dal DB genera un errore", function(done) {
 	
-		retriever.__set__('DB', {users: {findOne: function(obj, callback){callback(true,{user: 'testUser'});}}} );
+		retriever.__set__('DB', {users: {findOne: function(obj, callback){callback('testError',{user: 'testUser'});}}} );
 
-		var emptyDoc = {};
-		
-		retriever.getUserProfile('iduser',function(done){
-			expect(done).to.equal(emptyDoc);
+		retriever.getUserProfile('iduser',function(result){
+			expect(result.user).to.equal(undefined);
+			done();
 		});
 		
 	});
 	
-	it("getUserProfile deve restituire l'utente se il recupero ha successo", function(done) {
+	it("getUserProfile deve restituire un oggetto vuoto se il recupero ha successo ma l'utente non e' presente nel DB", function(done) {
+	
+		retriever.__set__('DB', {users: {findOne: function(obj, callback){callback(false, false);}}} );
+
+		retriever.getUserProfile('iduser',function(result){
+			expect(result.user).to.equal(undefined);
+			done();
+		});
+		
+	});
+		
+	it("getUserProfile deve restituire l'utente corretto se il recupero dal DB ha successo", function(done) {
 	
 		retriever.__set__('DB', {users: {findOne: function(obj, callback){callback(false, {user: 'testUser'});}}} );
 
-		retriever.getUserProfile('iduser',function(done){
-			expect(done).to.equal({user: 'testUser'});
+		retriever.getUserProfile('iduser',function(result){
+			expect(result.user).to.equal('testUser');
+			done();
 		});
 		
 	});
@@ -63,22 +74,293 @@ describe("Test getUserProfile:", function() {
 });
 
 describe("Test updateUserProfile:", function() {
-var updateUserProfile = require("../../../../maap_server/modelServer/dataManager/DatabaseUserManager/DataRetrieverUsers.js").updateUserProfile;
+
+
 });
 
 describe("Test getUsersList:", function() {
-var getUsersList = require("../../../../maap_server/modelServer/dataManager/DatabaseUserManager/DataRetrieverUsers.js").getUsersList;
+
+/*
+	it("getUsersList ", function() {
+		retriever.__set__('DB', {	
+		users: {
+					find: function(criteria, data, options){
+					
+								return {		
+											lean: function(){
+													return { exec: function(callback){callback(false, 1);} }
+											}
+										}
+							}
+				}
+		
+		});
+		
+		var column = ;
+		var order = ;
+		var page = ;
+		var perpage = ;
+		
+		retriever.getUsersList(column, order, page, perpage, function(result){
+			expect(result).to.equal(false);
+		});	
+		
+	});
+	*/
+
 });
 
 describe("Test updateUser:", function() {
-var updateUser = require("../../../../maap_server/modelServer/dataManager/DatabaseUserManager/DataRetrieverUsers.js").updateUser;
+
+	it("updateUser deve restituire false se il livello utente non e' valido", function() {
+		retriever.__set__('DB', {	
+		users: {
+					update: function(criteria, data, options){
+					
+								return {		
+											lean: function(){
+													return { exec: function(callback){callback(false, 1);} }
+											}
+										}
+							}
+				}
+		
+		});
+		
+		var req = {body: {
+			id: 123,
+			email: 'test@mail.it',
+			level: 'fakeLevel' 
+		}};
+		
+		retriever.updateUser(req, function(result){
+			expect(result).to.equal(false);
+		});	
+		
+	});
+	
+	it("updateUser deve restituire false per l'utente base se e' presente un errore", function() {
+		retriever.__set__('DB', {	
+		users: {
+					update: function(criteria, data, options){
+					
+								return {		
+											lean: function(){
+													return { exec: function(callback){callback('testError', 0);} }
+											}
+										}
+							}
+				}
+		
+		});
+		
+		var req = {body: {
+			id: 123,
+			email: 'test@mail.it',
+			level: 'user' 
+		}};
+		
+		retriever.updateUser(req, function(result){
+			expect(result).to.equal(false);
+		});	
+		
+	});
+	
+	it("updateUser deve restituire false per l'utente base se l'update non ha successo", function() {
+		retriever.__set__('DB', {	
+		users: {
+					update: function(criteria, data, options){
+					
+								return {		
+											lean: function(){
+													return { exec: function(callback){callback(false, 0);} }
+											}
+										}
+							}
+				}
+		
+		});
+		
+		var req = {body: {
+			id: 123,
+			email: 'test@mail.it',
+			level: 'user' 
+		}};
+		
+		retriever.updateUser(req, function(result){
+			expect(result).to.equal(false);
+		});	
+		
+	});
+	
+	it("updateUser deve restituire true per l'utente base se l'update ha successo", function() {
+		retriever.__set__('DB', {	
+		users: {
+					update: function(criteria, data, options){
+					
+								return {		
+											lean: function(){
+													return { exec: function(callback){callback(false, 1);} }
+											}
+										}
+							}
+				}
+		
+		});
+		
+		var req = {body: {
+			id: 123,
+			email: 'test@mail.it',
+			level: 'user' 
+		}};
+		
+		retriever.updateUser(req, function(result){
+			expect(result).to.equal(true);
+		});	
+		
+	});
+	
+	it("updateUser deve restituire false per l'utente administrator se e' presente un errore", function() {
+		retriever.__set__('DB', {	
+		users: {
+					update: function(criteria, data, options){
+					
+								return {		
+											lean: function(){
+													return { exec: function(callback){callback('testError', 0);} }
+											}
+										}
+							}
+				}
+		
+		});
+		
+		var req = {body: {
+			id: 123,
+			email: 'test@mail.it',
+			level: 'administrator' 
+		}};
+		
+		retriever.updateUser(req, function(result){
+			expect(result).to.equal(false);
+		});	
+		
+	});
+	
+	it("updateUser deve restituire false per l'utente administrator se l'update non ha successo", function() {
+		retriever.__set__('DB', {	
+		users: {
+					update: function(criteria, data, options){
+					
+								return {		
+											lean: function(){
+													return { exec: function(callback){callback(false, 0);} }
+											}
+										}
+							}
+				}
+		
+		});
+		
+		var req = {body: {
+			id: 123,
+			email: 'test@mail.it',
+			level: 'administrator' 
+		}};
+		
+		retriever.updateUser(req, function(result){
+			expect(result).to.equal(false);
+		});	
+		
+	});
+	
+	it("updateUser deve restituire true per l'utente administrator se l'update ha successo", function() {
+		retriever.__set__('DB', {	
+		users: {
+					update: function(criteria, data, options){
+					
+								return {		
+											lean: function(){
+													return { exec: function(callback){callback(false, 1);} }
+											}
+										}
+							}
+				}
+		
+		});
+		
+		var req = {body: {
+			id: 123,
+			email: 'test@mail.it',
+			level: 'administrator' 
+		}};
+		
+		retriever.updateUser(req, function(result){
+			expect(result).to.equal(true);
+		});	
+		
+	});
+
+
 });
 
 describe("Test removeUser:", function() {
-var removeUser = require("../../../../maap_server/modelServer/dataManager/DatabaseUserManager/DataRetrieverUsers.js").removeUser;
+
+	it("removeUser deve restituire true se la rimozione ha avuto successo", function() {
+		retriever.__set__('DB', {	
+		users: {
+					remove: function(criteria){
+					
+								return {		
+											lean: function(){
+													return { exec: function(callback){callback(false, 1);} }
+											}
+										}
+							}
+				}
+		
+		});
+		retriever.removeUser('iduser',function(result){
+			expect(result).to.equal(true);
+		});		
+	});
+	
+	it("removeUser deve restituire false se la rimozione non ha avuto successo", function() {
+		retriever.__set__('DB', {	
+		users: {
+					remove: function(criteria){
+					
+								return {		
+											lean: function(){
+													return { exec: function(callback){callback('testError', 0);} }
+											}
+										}
+							}
+				}
+		
+		});
+		retriever.removeUser('iduser',function(result){
+			expect(result).to.equal(false);
+		});		
+	});
+	
+	it("removeUser deve restituire false se l'utente non e' presente nel DB", function() {
+		retriever.__set__('DB', {	
+		users: {
+					remove: function(criteria){
+					
+								return {		
+											lean: function(){
+													return { exec: function(callback){callback(false, 0);} }
+											}
+										}
+							}
+				}
+		
+		});
+		retriever.removeUser('iduser',function(result){
+			expect(result).to.equal(false);
+		});		
+	});
+	
 });
-
-
-
-
-

@@ -34,7 +34,7 @@ exports.addUser = function(email, password, level, callback) {
 var getUserProfile = function(user_id, callback) {
 	DB.users.findOne({ _id: user_id },function(err,user){
 		if(err) { console.log('errore recupero user profile: ' + err); callback({});}
-		if(!user){
+		else if(!user){
 			console.log('no user!');
 			callback({});
 		}else{
@@ -111,7 +111,7 @@ exports.getUsersList = function(column, order, page, perpage, callback) {
 			var query = DB.users.find({}, {}, options);	
 			query.lean().exec( function(err,users){
 				if(err) { console.log('errore recupero user list: ' + err); callback(result); }
-				if(!users){
+				else if(!users){
 					console.log('no users!');
 					callback(result); 
 				}else{
@@ -140,6 +140,7 @@ exports.updateUser = function(req, callback) {
 		user.level = 1;
 	}else{
 		callback(false);
+		return;
 	}
 		
 	var options = {};
@@ -153,7 +154,7 @@ exports.updateUser = function(req, callback) {
 	var query = model.update(criteria, {$set: newUserData}, options);
 	query.lean().exec( function(err, count){
 		if(err){console.log('update user profile fallito: ' + err); callback(false);}
-		if(count==0){
+		else if(count==0){
 			//console.log('nessun risultato'); 
 			callback(false);
 		}else{

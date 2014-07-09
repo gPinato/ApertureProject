@@ -17,6 +17,8 @@ var fs = require('fs');
 var path = require('path'); 
 var mongoose = require('mongoose');
 
+var collectionDataPath = __dirname + '/../DSL/collectionData';
+
 exports.init = function(app) {
 	
 	var config = app.config;
@@ -27,7 +29,6 @@ exports.init = function(app) {
 
 	var modelArray = [];
 	
-	var collectionDataPath = __dirname + '/../DSL/collectionData';
 	var list = fs.readdirSync(collectionDataPath);
 	var schemaIsReady = list.length;
 	
