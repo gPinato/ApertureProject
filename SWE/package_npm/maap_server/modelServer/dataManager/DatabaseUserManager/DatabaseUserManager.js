@@ -22,10 +22,13 @@ var JSonComposer = require('../JSonComposer');
 exports.checkMail = function(req, res) {
 
 	console.log('controllo mail ' + req.body.field);
-	console.log(JSON.stringify(req.body));
+	var email2check = req.body.field;
+	
+	if(email2check != undefined)
+		email2check = email2check.toLowerCase();
 	 
 	DB.users.count({
-  		email: req.body.field.toLowerCase()
+  		email: email2check
     }, function (err, count) {
         if (count === 0) {
 			console.log('nessuna mail presente');
