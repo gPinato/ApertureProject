@@ -47,6 +47,7 @@ exports.userSignup = function(req, res, next) {
 	{
 		console.log('richiesta registrazione fallita: passwords doesn\'t match!');
 		res.send(400);
+		return;
 	}
 	
 	var userMail = req.body.email.toLowerCase();
