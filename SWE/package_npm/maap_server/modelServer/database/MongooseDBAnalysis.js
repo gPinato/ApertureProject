@@ -29,8 +29,12 @@ exports.init = function(app) {
 	
 	var collectionDataPath = __dirname + '/../DSL/collectionData';
 	var list = fs.readdirSync(collectionDataPath);
-    list.forEach(function(file) {		
-        var filePath = collectionDataPath + '/' + file;
+	var schemaIsReady = list.length;
+	
+	console.log('generating models...');
+	
+    list.forEach(function(file) {	
+	    var filePath = collectionDataPath + '/' + file;
         var stat = fs.statSync(filePath);
 		var extension = path.extname(file);
 		//controllo di trovare un file '*_schema.js' e carico i
@@ -42,7 +46,10 @@ exports.init = function(app) {
 			wrapperSchema.model = db.model(collectionName, schema);
 			modelArray.push(wrapperSchema);
 		}
+		schemaIsReady--;
 	});
+	
+	while(schemaIsReady > 0){require('deasync').sleep(100);}
 	
 	exports.model = modelArray;
 }

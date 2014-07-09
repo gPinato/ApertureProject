@@ -15,9 +15,11 @@
 'use strict';
 
 var indexManager = require('../IndexManager/IndexManager');
+var DB = require('../../database/MongooseDBAnalysis');
+var collectionsList = require('../../DSL/collectionData/collectionsList.json');
 
 var getModel = function(collection_name) {
-	var DB = require('../../database/MongooseDBAnalysis');
+	
 	var array = DB.model;
 	
 	for(var i=0; i<array.length; i++)
@@ -162,8 +164,6 @@ var getDocuments = function(model, querySettings, populate, callback){
 //ritorna la lista di collections, se e' definito un campo find di ricerca, restringe il 
 //risultato alle sole collections che contengono il campo find all'interno della label
 exports.getCollectionsList = function(find) {
-
-	var collectionsList = require('../../DSL/collectionData/collectionsList.json');
 	
 	if(find != undefined && find != '')
 	{
@@ -273,6 +273,7 @@ exports.getCollectionIndex = function(collection_name, column, order, page, call
 				}				
 				select[name[0]] = 1; 
 			}//for
+			select.null = 1;
 				
 		}
 		
@@ -297,7 +298,7 @@ exports.getCollectionIndex = function(collection_name, column, order, page, call
 		var sort = {};
 		sort[sortby] = order;
 		
-		model.find(query).sort(sort).exec(function(err, docs) {
+		model.find(query, null, sort).exec(function(err, docs) {
 			
 			var count = docs.length;
 			var result = {};

@@ -26,10 +26,6 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var session = require('express-session');
 
-var controller = require('./controller');
-var DB = require('./modelServer/database');
-var DSL = require('./modelServer/DSL');
-
 function serverInit(app){
 
 	var config = app.config;
@@ -56,6 +52,7 @@ function serverInit(app){
 	});
 	
 	//inizializzo le componenti del controller
+	var controller = require('./controller');
 	controller.init(app);
 	
 }
@@ -188,11 +185,11 @@ var clientSetup = function(app) {
 var start = function(config) {
 
 	console.log('');
-	console.log('  --------------------------------------------------');
+	console.log('  ----------------------------------------------------------------------------------');
 	console.log('   ' + config.app.title);
 	console.log('');
 	console.log('   ' + config.app.description);
-	console.log('  --------------------------------------------------');
+	console.log('  ----------------------------------------------------------------------------------');
 	console.log('');
 	
 	var app = express();
@@ -204,10 +201,15 @@ var start = function(config) {
 	var app_url = protocol + '://' + config.app.host + ':' + port;
 	var env = process.env.NODE_ENV ? ('[' + process.env.NODE_ENV + ']') : '[development]'; 
 	
-	DSL.init(app);				//inizializzo i DSL
-	DB.init(app);				//inizializzo i database
-	clientSetup(app);			//configurazione client e servizi client
-	serverInit(app);			//inizializzo l'app express
+	var DSL = require('./modelServer/DSL');
+	DSL.init(app);										//inizializzo i DSL (creazione di files in collectionData)
+	
+	clientSetup(app);									//configurazione client e servizi client
+	
+	var DB = require('./modelServer/database');
+	DB.init(app);										//inizializzo i database	
+	
+	serverInit(app);									//inizializzo l'app express
 	
 	console.log('starting server...');	
 		
@@ -225,7 +227,9 @@ var start = function(config) {
 	}
 	
 	console.log('');
-	console.log('well done! ' + config.app.title + ' listening at ' + app_url + ' ' + env);
+	console.log('  ----------------------------------------------------------------------------------');
+	console.log('    well done! ' + config.app.title + ' listening at ' + app_url + ' ' + env);
+	console.log('  ----------------------------------------------------------------------------------');
 	console.log('');
 	  
 };

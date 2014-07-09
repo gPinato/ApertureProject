@@ -45,6 +45,8 @@ exports.arrayAddElement = arrayAddElement;
 
 var generate = function(config, dslJson) {
 	
+	var fileSaved = false;
+		
 	var collection = dslJson.collection;
 	
 	//creo un array con coppie chiave/valore , scorro il DSL per trovare tutti i campi necessari
@@ -87,14 +89,20 @@ var generate = function(config, dslJson) {
 					var saveFile = __dirname + '/collectionData/' + composed_collection + '_schema.js';
 					if(config.app.env == 'development')
 						console.log('saving ' + composed_collection + '_schema.js');
-					fs.writeFileSync(saveFile, schema, 'utf-8', function (err) {
+					
+					fileSaved = false;
+					fs.writeFile(saveFile, schema, 'utf-8', function (err) {
 							if (err) {
 								console.error('error writing schema file: ' + saveFile);
 								throw err;
-							} 
-							console.log(saveFile + ' saved!');
+							} else {
+								console.log(composed_collection + '_schema.js saved!');
+								fileSaved = true;
+							}
 						}
-					);		
+					);	
+					while(!fileSaved){require('deasync').sleep(100);}
+					
 				}
 			}	
 			
@@ -141,14 +149,19 @@ var generate = function(config, dslJson) {
 					var saveFile = __dirname + '/collectionData/' + composed_collection + '_schema.js';
 					if(config.app.env == 'development')
 						console.log('saving ' + saveFile);
-					fs.writeFileSync(saveFile, schema, 'utf-8', function (err) {
+						
+					fileSaved = false;
+					fs.writeFile(saveFile, schema, 'utf-8', function (err) {
 							if (err) {
 								console.error('error writing schema file: ' + saveFile);
 								throw err;
-							} 
-							console.log(saveFile + ' saved!');
+							} else {
+								console.log(composed_collection + '_schema.js saved!');
+								fileSaved = true;
+							}
 						}
 					);
+					while(!fileSaved){require('deasync').sleep(100);}
 				}
 			}	
 			

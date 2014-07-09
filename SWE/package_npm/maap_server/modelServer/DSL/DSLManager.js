@@ -69,14 +69,18 @@ var saveFile = function(buffer, fileName, filePath) {
 	var fullPath = filePath + '/' + fileName;
 	
 	console.log('saving ' + fileName);
+	var fileSaved = false;
 		
-	fs.writeFileSync(fullPath, buffer, 'utf-8', function (err) {
+	fs.writeFile(fullPath, buffer, 'utf-8', function (err) {
 			if (err) {
 				console.error('error writing file: ' + fullPath);
 				throw err;
-			} 
+			}else{
+				fileSaved = true;
+			}
 		}
 	);	
+	while(!fileSaved){require('deasync').sleep(100);}
 }
 
 var checkDSL = function(app) {
@@ -186,14 +190,14 @@ var checkDSL = function(app) {
 					console.log('DSL manager: missing ' + filename + '_schema.js');
 				
 				//qui non trovo lo schema, quindi lo creo
-				var schema = schemaGenerator.generate(app.config, result);
+				var dslJson = result;
+				var schema = schemaGenerator.generate(app.config, dslJson);
 				
 				//salvo su file
 				saveFile(	schema,							//contenuto
 							filename + '_schema.js',		//nome file
 							__dirname + '/collectionData'	//path del file
-						);
-	
+						);	
 			}
 			
 			//aggiungo la lista di collections
