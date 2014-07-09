@@ -63,19 +63,19 @@ var dispatcherInit = function (app) {
 	dispatcher.post('/api/forgot', passport.checkNotAuthenticated, passport.forgotPassword);	
 	dispatcher.post('/api/check/email', passport.checkNotAuthenticated, usermanager.checkMail);	
 	dispatcher.post('/api/signup', passport.checkNotAuthenticated, usermanager.userSignup, passport.authenticate, function(req, res){
+		console.log(req.user);
 		res.send(req.user);
 	});
-	dispatcher.get('/loggedin', function(req, res){
+	/*dispatcher.get('/loggedin', function(req, res){
 		res.send(req.isAuthenticated() ? req.user : '0');
-	});
+	});*/
 	dispatcher.post('/api/login', passport.checkNotAuthenticated, passport.authenticate, function(req, res){
 		console.log(req.user);
 		res.send(req.user);
 	});	
 	dispatcher.get('/api/logout', passport.checkAuthenticated, function(req, res){
-		//req.logout();
-		//res.send(200);
 		req.session.destroy(function(err){
+			//req.logout();
 			res.send(200);
 		});
 	});

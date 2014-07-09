@@ -15,7 +15,7 @@
 
 'use strict';
 
-angular.module('maaperture').controller('RegisterCtrl', function ($scope, $location, RegisterService) {
+angular.module('maaperture').controller('RegisterCtrl', function ($scope, $location, $route, $cookieStore, RegisterService) {
     $scope.credentials = {
         email: '',
         pwd1: '',
@@ -29,12 +29,20 @@ angular.module('maaperture').controller('RegisterCtrl', function ($scope, $locat
         if ($scope.signup_form.$valid) {
             RegisterService.register({},
                 $scope.credentials,
-                function success() {
-                    //welcome to the maap
-                    $location.path("/");
-                },
+                function success(data, status) {
+					if ( data.level === 1){
+						$cookieStore.put("isAdmin",true);
+					}
+					else{
+						$cookieStore.put("isAdmin",false);
+					}
+					$location.path('/');
+					$route.reload();
+				},
                 function err(error) {
-                }
+					alert("Registration failed! We already have this email in our databases ;)");
+				}
+		
             );
         }
 
