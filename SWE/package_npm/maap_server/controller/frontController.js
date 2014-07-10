@@ -14,14 +14,14 @@
  */
 'use strict';
 
-var Dispatcher = require("./dispatcher");
+var dispatcher = require("./dispatcher");
 
 var initFrontController = function(app) {
 
-	var dispatcher = Dispatcher.init(app);
+	var new_dispatcher = dispatcher.init(app);
 	
 	//configuro l'app per reindirizzare tutte le richieste al dispatcher
-	app.use('/', dispatcher);
+	app.use('/', new_dispatcher);
 
 }
 

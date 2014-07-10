@@ -19,7 +19,6 @@ var assert = chai.assert;
 var expect = chai.expect;
 var spies = require('chai-spies');
 var rewire = require('rewire');
-
 chai.use(spies);
 
 var indexManager = rewire("../../../../maap_server/modelServer/dataManager/IndexManager/IndexManager.js");

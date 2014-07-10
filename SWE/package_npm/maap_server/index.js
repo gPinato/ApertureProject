@@ -56,6 +56,8 @@ function serverInit(app){
 	controller.init(app);
 	
 }
+//for unit test
+exports.serverInit = serverInit;
 
 //cambia una riga del file specificato sostituendola con quella passata in ingresso
 //filePath = path del file da modificare
@@ -99,6 +101,8 @@ var changeFileRow = function(filePath, string2find, newString) {
 	}
 	
 };
+//for unit test
+exports.changeFileRow = changeFileRow;
 
 var clientSetup = function(app) {
 
@@ -180,6 +184,8 @@ var clientSetup = function(app) {
 	}
 	
 };
+//for unit test
+exports.clientSetup = clientSetup;
 
 //avvia il server 
 var start = function(config) {
