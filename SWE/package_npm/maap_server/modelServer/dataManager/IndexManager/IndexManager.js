@@ -13,9 +13,13 @@
  ==============================================
  */
 'use strict';
+var DB = require('../../database/MongooseDBAnalysis');
+var queryModel = require('../../database/MongooseDBFramework').query;
+var connection = require('../../database/MongooseDBFramework').connection;
+var collectionList = require('../../DSL/collectionData/collectionsList.json');
 
 var getModel = function(collection_name) {
-	var DB = require('../../database/MongooseDBAnalysis');
+	
 	var array = DB.model;
 	
 	for(var i=0; i<array.length; i++)
@@ -27,9 +31,11 @@ var getModel = function(collection_name) {
 	}
 	return -1;
 }
+//for unit test
+exports.getModel = getModel;
 
 exports.addQuery = function(collection_name, select) {
-	var queryModel = require('../../database/MongooseDBFramework').query;
+	
 	var findQueries = queryModel.find({collection_name: collection_name});
 	findQueries.lean().exec(function(err,data){
 		if(err)
@@ -88,9 +94,7 @@ exports.addQuery = function(collection_name, select) {
 }
 
 exports.resetQueries = function(callback) {
-	var queryModel = require('../../database/MongooseDBFramework').query;
-	var connection = require('../../database/MongooseDBFramework').connection;
-	//console.log(queryModel.modelName);
+	
 	connection.db.dropCollection(queryModel.modelName, function(err,data){
 		if(err){
 			console.log('Impossibile cancellare la collection '+queryModel.modelName);
@@ -104,8 +108,7 @@ exports.resetQueries = function(callback) {
 }
 
 exports.getQueries = function(page, perpage, n_elements, callback) {
-	var DB = require('../../database/MongooseDBFramework');
-	var queryModel = require('../../database/MongooseDBFramework').query;
+	
 	var options = {};
 	
 	options.skip = page * perpage;
@@ -118,7 +121,7 @@ exports.getQueries = function(page, perpage, n_elements, callback) {
 	
 	queryModel.find({}, function(err, queries){
 		if(err) { console.log('errore recupero query list: ' + err); callback(result); }
-		if(!queries){
+		else if(!queries){
 			console.log('no queries!');
 			callback(result);
 		}else{
@@ -145,7 +148,6 @@ exports.getQueries = function(page, perpage, n_elements, callback) {
 
 exports.getIndex = function(db, page, indexesPerPage, callback) {
 
-	var collectionList = require('../../DSL/collectionData/collectionsList.json');
 	var result = [];
 	var done = false;
 	
@@ -174,8 +176,6 @@ exports.getIndex = function(db, page, indexesPerPage, callback) {
 
 exports.createIndex = function(query_id, name_index, callback) {
 	
-	var DB = require('../../database/MongooseDBFramework');
-	var queryModel = require('../../database/MongooseDBFramework').query;
 	var where = {};
 	where['_id'] = query_id;
 	var select = {};
@@ -184,8 +184,7 @@ exports.createIndex = function(query_id, name_index, callback) {
 		if(err){
 			console.log('Impossibile ritornare la query dell\' indice');
 			callback(false);
-		}
-		if(!data)
+		}else if(!data)
 		{
 			console.log('Errore _id query cercata');
 			callback(false);
