@@ -45,9 +45,11 @@
     "karma-chai": "^0.1.0",
     "karma-chrome-launcher": "^0.1.3",
     "karma-coverage": "^0.2.1",
+    "karma-jasmine": "^0.1.5",
     "karma-mocha": "^0.1.3",
     "karma-ng-html2js-preprocessor": "^0.1.0",
     "karma-ng-scenario": "^0.1.0",
+    "karma-phantomjs-launcher": "^0.1.4",
     "load-grunt-tasks": "~0.4.0",
     "mocha": "^1.18.2",
     "time-grunt": "~0.2.1"
