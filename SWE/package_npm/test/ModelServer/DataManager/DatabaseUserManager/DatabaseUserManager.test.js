@@ -1,6 +1,6 @@
 /**
  * File: DatabaseUserManager.test.js
- * Module: test::ModelServer::DataManager::DatabaseUserManager
+ * Module: test::modelServer::dataManager::DatabaseUserManager
  * Author: Alberto Garbui
  * Created: 20/06/14
  * Version: 1.0
