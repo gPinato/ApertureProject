@@ -14,7 +14,8 @@ L'utente business può recuperare la password (UC2.3);|
 L'utente business autenticato può aprire una Collection (UC2.4);|
 L'utente business autenticato può disconnettersi dal sistema (UC2.5);|
 L'utente business autenticato può gestire il profilo (UC2.6);|
-L'utente business e l'utente business autenticato possono visualizzare il manuale utente.
+L'utente business e l'utente business autenticato possono visualizzare il manuale utente (UC2.7);|
+L'utente business autenticato può effettuare la ricerca di una Collection attraverso la barra di ricerca (UC2.8).
 }
 \post
 {Il sistema ha memorizzato le informazioni inserite dall'utente business per l'autenticazione o per il recupero password e le operazioni che l'utente business autenticato può effettuare}
@@ -187,8 +188,8 @@ L'utente business autenticato può disconnettersi (UC2.5);|
 L'utente business autenticato può gestire il profilo (UC2.6);|
 L'utente business autenticato amministratore può cancellare un Document (UC2.4.4);|
 L'utente business autenticato amministratore può modificare un Document (UC2.4.5);|
-L'utente business autenticato amministratore può visualizzare le query più frequenti che il sistema gli propone (UC2.4.6);|
-L'utente business autenticato amministratore può creare degli indici sulle query più frequentemente visualizzate (UC2.4.7).
+L'utente business autenticato amministratore può gestire le query più frequenti che il sistema gli propone (UC2.4.6);|
+L'utente business autenticato amministratore può gestire degli indici sulle query più frequentemente visualizzate (UC2.4.7).
 }
 \post
 {Il sistema ha ottenuto le informazioni sulle operazioni che l'utente business autenticato o l'utente business autenticato amministratore desidera eseguire}
@@ -424,16 +425,60 @@ L'utente business autenticato amministratore può salvare il Document appena mod
 
 \UCtitle
 {Caso d'uso UC2.4.6}
-{Visualizzazione query più utilizzate}
+{Gestione query}
+\UCimmagine{UC2.4.6}{UC2.4.6 - Gestione query}
 \UC
 {UC2.4}
 {Utente business autenticato amministratore}
-{L'utente business autenticato amministratore può visualizzare le query più utilizzate che il sistema gli offre}
+{L'utente business autenticato amministratore può gestire le query più utilizzate che il sistema gli offre}
+{Il sistema reputa l'utente business autenticato come amministratore}
+\scenario
+{L'utente business autenticato amministratore può visualizzare le query più utilizzate (UC2.4.6.1);|
+L'utente business autenticato amministratore può creare un indice (UC2.4.6.2);|
+L'utente business autenticato amministratore può visualizzare il comando per la creazione dell'indice da riga di comando (UC2.4.6.3).
+}
+\post
+{Il sistema mostra all'utente business autenticato amministratore le query più utilizzate e conferma la creazione di un indice se effettuata}
+
+\UCtitle
+{Caso d'uso UC2.4.6.1}
+{Visualizzazione query più utilizzate}
+\UC
+{UC2.4.6}
+{Utente business autenticato amministratore}
+{L'utente business autenticato amministratore può visualizzare le query più utilizzate che il sistema mette a disposizione}
 {Il sistema reputa l'utente business autenticato come amministratore}
 \scenario
 {L'utente business autenticato amministratore può visualizzare le query più utilizzate.}
 \post
-{Il sistema mostra all'utente business autenticato amministratore le query più utilizzate}
+{Il sistema mostra le query più utilizzate}
+
+\UCtitle
+{Caso d'uso UC2.4.6.2}
+{Creazione indice}
+\UC
+{UC2.4.6}
+{Utente business autenticato amministratore}
+{L'utente business autenticato amministratore può creare un indice sulle query più utilizzate che il sistema mette a disposizione}
+{Il sistema reputa l'utente business autenticato come amministratore}
+\scenario
+{L'utente business autenticato amministratore può creare un indice.}
+\post
+{Il sistema conferma l'avvenuta creazione dell'indice}
+
+\UCtitle
+{Caso d'uso UC2.4.6.3}
+{Visualizzazione comando creazione indice}
+\UC
+{UC2.4.6}
+{Utente business autenticato amministratore}
+{L'utente business autenticato amministratore può visualizzare il comando per la creazione di un indice da riga di comando}
+{Il sistema reputa l'utente business autenticato come amministratore}
+\scenario
+{L'utente business autenticato amministratore può visualizzare il comando per la creazione dell'indice da riga di comando.}
+\post
+{Il sistema mostra il comando per la creazione dell'indice da riga di comando}
+
 
 \UCtitle
 {Caso d'uso UC2.4.7}
@@ -442,104 +487,32 @@ L'utente business autenticato amministratore può salvare il Document appena mod
 \UC
 {UC2.4.7}
 {Utente business autenticato amministratore}
-{L'utente business autenticato amministratore può gestire la creazione degli indici sulla base delle query più utilizzate e l'eliminazione degli indici già presenti nel sistema}
+{L'utente business autenticato amministratore visualizzare gli indici creati sulla base delle query più utilizzate e l'eliminazione degli indici già presenti nel sistema}
 {Il sistema reputa l'utente business autenticato come amministratore}
 \scenario{
-L'utente business autenticato amministratore può creare degli indici (UC2.4.7.1);|
-L'utente business autenticato amministratore può eliminare degli indici (UC2.4.7.2);|
-L'utente business autenticato amministratore può visualizzare gli indici presenti nel sistema (UC2.4.7.3).
+L'utente business autenticato amministratore può eliminare degli indici (UC2.4.7.1);|
+L'utente business autenticato amministratore può visualizzare degli indici (UC2.4.7.2).
 }
 \post
-{Il sistema ha creato un nuovo indice o eliminato un indice esistente come richiesto dall'utente business autenticato amministratore}
+{Il sistema ha visualizzato gli indici o eliminato un indice esistente come richiesto dall'utente business autenticato amministratore}
+
 
 \UCtitle
 {Caso d'uso UC2.4.7.1}
-{Creazione indici}
-\UCimmagine{UC2.4.7.1}{UC2.4.7.1 - Creazione indici}
+{Eliminazione indici}
 \UC
-{UC2.4.7.1}
+{UC2.4.7}
 {Utente business autenticato amministratore}
-{L'utente business autenticato amministratore può selezionare una query tra quelle che il sistema presenta come più utilizzate e può creare l'indice corrispondente.}
-{Il sistema reputa l'utente business autenticato come amministratore e visualizza una lista di query più utilizzate}
-\scenario{
-L'utente business autenticato amministratore può selezionare una query (UC2.4.7.1.1);|
-L'utente business autenticato amministratore può creare l'indice (UC2.4.7.1.2).
-}
-\post
-{Il sistema ha creato un nuovo indice relativo alla query selezionata dall'utente business autenticato amministratore}
-
-\UCtitle
-{Caso d'uso UC2.4.7.1.1}
-{Seleziona query}
-\UC
-{UC2.4.7.1}
-{Utente business autenticato amministratore}
-{L'utente business autenticato amministratore può selezionare una query tra quelle che il sistema presenta come più utilizzate.}
-{Il sistema reputa l'utente business autenticato come amministratore e visualizza una lista di query più utilizzate}
+{L'utente business autenticato amministratore può eliminare un indice tra quelli che il sistema mostra.}
+{Il sistema reputa l'utente business autenticato come amministratore e visualizza una lista di indici}
 \scenario
-{L'utente business autenticato amministratore può selezionare una query.}
+{L'utente business autenticato amministratore può eliminare degli indici.}
 \post
-{Il sistema ha ottentuo l'informazione riguardo alla query selezionata dall'utente business autenticato amministratore}
-
-\UCtitle
-{Caso d'uso UC2.4.7.1.2}
-{Crea indice}
-\UC
-{UC2.4.7.1}
-{Utente business autenticato amministratore}
-{L'utente business autenticato amministratore può creare un indice relativo alla query precedentemente selezionata.}
-{Il sistema reputa l'utente business autenticato come amministratore e l'utente business autenticato amministratore ha precedentemente selezionato una query}
-\scenario
-{L'utente business autenticato amministratore può creare un indice.}
-\post
-{Il sistema ha creato un indice relativo alla query selezionata dall'utente business autenticato amministratore}
+{Il sistema ha ottentuo l'informazione riguardo all' indice che l'utente business autenticato amministratore vuole cancellare}
 
 
 \UCtitle
 {Caso d'uso UC2.4.7.2}
-{Eliminazione indici}
-\UCimmagine{UC2.4.7.2}{UC2.4.7.2 - Eliminazione indici}
-\UC
-{UC2.4.7.2}
-{Utente business autenticato amministratore}
-{L'utente business autenticato amministratore può selezionare un indice tra quelli presenti nel sistema e può eliminarlo.}
-{Il sistema reputa l'utente business autenticato come amministratore e visualizza una lista degli indici presenti nel sistema.}
-\scenario{
-L'utente business autenticato amministratore può selezionare un indice (UC2.4.7.2.1);|
-L'utente business autenticato amministratore può eliminare l'indice (UC2.4.7.2.2).
-}
-\post
-{Il sistema ha eliminato l'indice selezionato dall'utente business autenticato amministratore}
-
-\UCtitle
-{Caso d'uso UC2.4.7.2.1}
-{Seleziona indice}
-\UC
-{UC2.4.7.2}
-{Utente business autenticato amministratore}
-{L'utente business autenticato amministratore può selezionare un indice tra quelli presenti nel sistema}
-{Il sistema reputa l'utente business autenticato come amministratore e visualizza una lista degli indici presenti nel sistema.}
-\scenario{
-L'utente business autenticato amministratore può selezionare un indice.}
-\post
-{Il sistema ha ottenuto le informazioni riguardo all'indice selezionato dall'utente business autenticato amministratore}
-
-\UCtitle
-{Caso d'uso UC2.4.7.2.2}
-{Elimina indice}
-\UC
-{UC2.4.7.2}
-{Utente business autenticato amministratore}
-{L'utente business autenticato amministratore può eliminare l'indice precedentemente selezionato}
-{Il sistema reputa l'utente business autenticato come amministratore e l'utente business autenticato amministratore ha selezionato un indice tra quelli presenti nel sistema.}
-\scenario{
-L'utente business autenticato amministratore può eliminare l'indice selezionato.}
-\post
-{Il sistema ha eliminato l'indice selezionato dall'utente business autenticato amministratore}
-
-
-\UCtitle
-{Caso d'uso UC2.4.7.3}
 {Visualizzazione indici}
 \UC
 {UC2.4.7}
@@ -693,3 +666,17 @@ L'utente business autenticato può annullare le modifiche apportate (UC2.6.3.4).
 {L'utente business e l'utente business autenticato possono visualizzare il manuale utente.}
 \post
 {Il sistema visualizza il manuale utente}
+
+\UCtitle
+{Caso d'uso UC2.8}
+{Ricerca Collection}
+\UCimmagine{UC2.8}{UC2.8 Ricerca Collection}
+\UC
+{UC2}
+{Utente business autenticato}
+{L'utente business autenticato può ricercare una Collection inserendo il nome della Collection nella barra di ricerca}
+{Il sistema reputa l'utente business come autenticato}
+\scenario
+{L'utente business autenticato può aprire una pagina Collection (UC 2.4).}
+\post
+{Il sistema ha visualizzato la Collection che l'utente business autenticato ha richiesto}
