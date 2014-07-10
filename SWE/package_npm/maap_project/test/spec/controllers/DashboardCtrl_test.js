@@ -33,8 +33,8 @@ describe('DashboardCtrl', function () {
 
             $httpBackend.flush();
 
-            expect(result.labels[0]).to.equal('a');
-            expect(result.values[1]).to.equal(2);
+            expect(result.labels[0]).toBe('a');
+            expect(result.values[1]).toBe(2);
         }));
 
     });

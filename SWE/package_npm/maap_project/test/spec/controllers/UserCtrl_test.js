@@ -27,21 +27,7 @@ describe('UsersCtrl', function () {
         })
     });
 
-    describe('get the right list', function () {
-        it('should call getUser with username', inject(function () {
-            $httpBackend.expectGET('http://localhost:9000/api/users/:user_id')
-                .respond({labels:['a','b','c'],
-                    values: [1,2,3]});
 
-            var result = mockUserResource.get();
-
-            $httpBackend.flush();
-
-            expect(result.labels[0]).to.equal('a');
-            expect(result.values[1]).to.equal(2);
-        }));
-
-    });
 
     beforeEach(inject(function ($controller, $rootScope) {
         scope = $rootScope.$new();
@@ -60,11 +46,27 @@ describe('UsersCtrl', function () {
 
     describe('get the right list', function () {
         it('should initialize data correctly', function () {
-            expect(scope.original_data.length).to.equal(0);
-            expect(scope.original_keys.length).to.equal(0);
-            expect(scope.current_document).to.equal(0);
+            expect(scope.original_data.length).toBe(0);
+            expect(scope.original_keys.length).toBe(0);
+            expect(scope.current_document).toBe(0);
 
         });
+
+    });
+
+    describe('get the right list', function () {
+        it('should call getUser with username', inject(function () {
+            $httpBackend.expectGET('http://localhost:9000/api/users/:user_id')
+                .respond({labels:['a','b','c'],
+                    values: [1,2,3]});
+
+            var result = mockUserResource.get();
+
+            $httpBackend.flush();
+
+            expect(result.labels[0]).toBe('a');
+            expect(result.values[1]).toBe(2);
+        }));
 
     });
 

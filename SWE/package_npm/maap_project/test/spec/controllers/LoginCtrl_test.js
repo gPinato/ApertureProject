@@ -47,7 +47,7 @@ describe('Controller: LoginCtrl', function () {
     }));
 
     it('credentials should be empity', function(){
-        expect(scope.credentials).to.deep.equal({email: '',
+        expect(scope.credentials).toEqual({email: '',
             password: ''});
     });
 
@@ -56,7 +56,7 @@ describe('Controller: LoginCtrl', function () {
             email: 'apertureswe@gmail.com',
             password: 'asdasd'
         };
-        //expect(scope.login()).to.equal(true);
+        //expect(scope.login()).toBe(true);
 
         });
 

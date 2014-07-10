@@ -57,13 +57,13 @@ describe('Controller: DocumentEditCtrl', function () {
     }));
 
     it('should not have an empty scope', function(){
-        expect(scope).not.to.equal([]);
+        expect(scope).not.toBe([]);
     });
 
 
     it('should return the correct answer', function(){
         scope.data = MockDocService.query();
-        expect(scope.data).to.deep.equal({
+        expect(scope.data).toEqual({
 
             "customer": "Snoop Dogg",
             "Address": "Bitches boulevard, swagtown",
