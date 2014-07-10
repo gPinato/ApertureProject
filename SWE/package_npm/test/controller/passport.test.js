@@ -21,141 +21,145 @@ var expect = chai.expect;
 
 var passport = require("../../maap_server/controller/passport.js");
 
-var request = function(_logged, _level){
-	this.session = {
-		passport: {
-			user: {
-				level: _level
+describe("passport Unit Test: ", function() {
+
+	var request = function(_logged, _level){
+		this.session = {
+			passport: {
+				user: {
+					level: _level
+				}
 			}
-		}
-	};
-	
-	this.isAuthenticated = function isAuthenticated(){ 
-		return _logged; 
-	};
-};
-	
-var response = function() {
-	this.statusCode = null;
-	this.send = function(status){
-		this.statusCode = status;
-	};
-};
-
-describe("Test checkAuthenticatedAdmin: ", function() {
-	
-	it("un utente non autenticato normale non deve essere autenticato admin", function(done) {
-		var res = new response();
-		var req = new request(false, 0);
-		var next = function(){};
-		passport.checkAuthenticatedAdmin(req, res, next);
-		expect(res.statusCode).to.equal(401);
-		done();
-	}),
-	
-	it("un utente non autenticato admin non deve essere autenticato admin", function(done) {
-		var res = new response();
-		var req = new request(false, 1);
-		var next = function(){};
-		passport.checkAuthenticatedAdmin(req, res, next);
-		expect(res.statusCode).to.equal(401);
-		done();
-	}),
-	
-	it("un utente autenticato normale non deve essere autenticato admin", function(done) {
-		var res = new response();
-		var req = new request(true, 0);
-		var next = function(){};
-		passport.checkAuthenticatedAdmin(req, res, next);
-		expect(res.statusCode).to.equal(401);
-		done();
-	}),
-	
-	it("un utente autenticato admin deve essere autenticato admin", function() {
-		var res = new response();
-		var req = new request(true, 1);
-		var next = function(){};
-		passport.checkAuthenticatedAdmin(req, res, next);
-		expect(res.statusCode).to.equal(null);
-	});
-	
-});
-
-
-describe("Test checkAuthenticated: ", function() {
+		};
 		
-	it("un utente non autenticato normale non deve essere autenticato", function(done) {
-		var res = new response();
-		var req = new request(false, 0);
-		var next = function(){};
-		passport.checkAuthenticated(req, res, next);
-		expect(res.statusCode).to.equal(401);
-		done();
-	}),
-	
-	it("un utente non autenticato admin non deve essere autenticato", function(done) {
-		var res = new response();
-		var req = new request(false, 1);
-		var next = function(){};
-		passport.checkAuthenticated(req, res, next);
-		expect(res.statusCode).to.equal(401);
-		done();
-	}),
-	
-	it("un utente autenticato normale deve essere autenticato", function(done) {
-		var res = new response();
-		var req = new request(true, 0);
-		var next = function(){};
-		passport.checkAuthenticated(req, res, next);
-		expect(res.statusCode).to.equal(null);
-		done();
-	}),
-	
-	it("un utente autenticato admin deve essere autenticato", function() {
-		var res = new response();
-		var req = new request(true, 1);
-		var next = function(){};
-		passport.checkAuthenticated(req, res, next);
-		expect(res.statusCode).to.equal(null);
+		this.isAuthenticated = function isAuthenticated(){ 
+			return _logged; 
+		};
+	};
+		
+	var response = function() {
+		this.statusCode = null;
+		this.send = function(status){
+			this.statusCode = status;
+		};
+	};
+
+	describe("checkAuthenticatedAdmin", function() {
+		
+		it("un utente non autenticato normale non deve essere autenticato admin", function(done) {
+			var res = new response();
+			var req = new request(false, 0);
+			var next = function(){};
+			passport.checkAuthenticatedAdmin(req, res, next);
+			expect(res.statusCode).to.equal(401);
+			done();
+		}),
+		
+		it("un utente non autenticato admin non deve essere autenticato admin", function(done) {
+			var res = new response();
+			var req = new request(false, 1);
+			var next = function(){};
+			passport.checkAuthenticatedAdmin(req, res, next);
+			expect(res.statusCode).to.equal(401);
+			done();
+		}),
+		
+		it("un utente autenticato normale non deve essere autenticato admin", function(done) {
+			var res = new response();
+			var req = new request(true, 0);
+			var next = function(){};
+			passport.checkAuthenticatedAdmin(req, res, next);
+			expect(res.statusCode).to.equal(401);
+			done();
+		}),
+		
+		it("un utente autenticato admin deve essere autenticato admin", function() {
+			var res = new response();
+			var req = new request(true, 1);
+			var next = function(){};
+			passport.checkAuthenticatedAdmin(req, res, next);
+			expect(res.statusCode).to.equal(null);
+		});
+		
 	});
 
-});
 
-describe("Test checkNotAuthenticated: ", function() {
+	describe("checkAuthenticated", function() {
+			
+		it("un utente non autenticato normale non deve essere autenticato", function(done) {
+			var res = new response();
+			var req = new request(false, 0);
+			var next = function(){};
+			passport.checkAuthenticated(req, res, next);
+			expect(res.statusCode).to.equal(401);
+			done();
+		}),
+		
+		it("un utente non autenticato admin non deve essere autenticato", function(done) {
+			var res = new response();
+			var req = new request(false, 1);
+			var next = function(){};
+			passport.checkAuthenticated(req, res, next);
+			expect(res.statusCode).to.equal(401);
+			done();
+		}),
+		
+		it("un utente autenticato normale deve essere autenticato", function(done) {
+			var res = new response();
+			var req = new request(true, 0);
+			var next = function(){};
+			passport.checkAuthenticated(req, res, next);
+			expect(res.statusCode).to.equal(null);
+			done();
+		}),
+		
+		it("un utente autenticato admin deve essere autenticato", function() {
+			var res = new response();
+			var req = new request(true, 1);
+			var next = function(){};
+			passport.checkAuthenticated(req, res, next);
+			expect(res.statusCode).to.equal(null);
+		});
 
-	it("un utente non autenticato normale deve essere non autenticato", function(done) {
-		var res = new response();
-		var req = new request(false, 0);
-		var next = function(){};
-		passport.checkNotAuthenticated(req, res, next);
-		expect(res.statusCode).to.equal(null);
-		done();
-	}),
-	
-	it("un utente non autenticato admin deve essere non autenticato", function(done) {
-		var res = new response();
-		var req = new request(false, 1);
-		var next = function(){};
-		passport.checkNotAuthenticated(req, res, next);
-		expect(res.statusCode).to.equal(null);
-		done();
-	}),
-	
-	it("un utente autenticato normale deve essere autenticato", function(done) {
-		var res = new response();
-		var req = new request(true, 0);
-		var next = function(){};
-		passport.checkNotAuthenticated(req, res, next);
-		expect(res.statusCode).to.equal(401);
-		done();
-	}),
-	
-	it("un utente autenticato admin deve essere autenticato", function() {
-		var res = new response();
-		var req = new request(true, 1);
-		var next = function(){};
-		passport.checkNotAuthenticated(req, res, next);
-		expect(res.statusCode).to.equal(401);
 	});
 
-});
+	describe("checkNotAuthenticated", function() {
+
+		it("un utente non autenticato normale deve essere non autenticato", function(done) {
+			var res = new response();
+			var req = new request(false, 0);
+			var next = function(){};
+			passport.checkNotAuthenticated(req, res, next);
+			expect(res.statusCode).to.equal(null);
+			done();
+		}),
+		
+		it("un utente non autenticato admin deve essere non autenticato", function(done) {
+			var res = new response();
+			var req = new request(false, 1);
+			var next = function(){};
+			passport.checkNotAuthenticated(req, res, next);
+			expect(res.statusCode).to.equal(null);
+			done();
+		}),
+		
+		it("un utente autenticato normale deve essere autenticato", function(done) {
+			var res = new response();
+			var req = new request(true, 0);
+			var next = function(){};
+			passport.checkNotAuthenticated(req, res, next);
+			expect(res.statusCode).to.equal(401);
+			done();
+		}),
+		
+		it("un utente autenticato admin deve essere autenticato", function() {
+			var res = new response();
+			var req = new request(true, 1);
+			var next = function(){};
+			passport.checkNotAuthenticated(req, res, next);
+			expect(res.statusCode).to.equal(401);
+		});
+
+	});
+
+}); //end passport unit test
