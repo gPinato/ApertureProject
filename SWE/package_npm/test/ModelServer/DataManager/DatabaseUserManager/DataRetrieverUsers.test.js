@@ -1,6 +1,6 @@
 /**
  * File: DataRetrieverUsers.test.js
- * Module: test::ModelServer::DataManager::DatabaseUserManager
+ * Module: test::modelServer::dataManager::DatabaseUserManager
  * Author: Alberto Garbui
  * Created: 20/06/14
  * Version: 1.0
@@ -23,7 +23,7 @@ var retriever = rewire("../../../../maap_server/modelServer/dataManager/Database
 
 describe("DataRetrieverUsers Unit Test: ", function() {
 
-	describe("Test addUser:", function() {
+	describe("addUser", function() {
 		
 		/*it("inserimento utente deve essere eseguito con successo", function(done) {
 			
@@ -37,9 +37,9 @@ describe("DataRetrieverUsers Unit Test: ", function() {
 		
 	});
 
-	describe("Test getUserProfile:", function() {
+	describe("getUserProfile", function() {
 
-		it("getUserProfile deve restituire un errore ed un oggetto vuoto se il recupero dal DB genera un errore", function(done) {
+		it("deve restituire un errore ed un oggetto vuoto se il recupero dal DB genera un errore", function(done) {
 		
 			retriever.__set__('DB', {users: {findOne: function(obj, callback){callback('testError',{user: 'testUser'});}}} );
 
@@ -50,7 +50,7 @@ describe("DataRetrieverUsers Unit Test: ", function() {
 			
 		});
 		
-		it("getUserProfile deve restituire un oggetto vuoto se il recupero ha successo ma l'utente non e' presente nel DB", function(done) {
+		it("deve restituire un oggetto vuoto se il recupero ha successo ma l'utente non e' presente nel DB", function(done) {
 		
 			retriever.__set__('DB', {users: {findOne: function(obj, callback){callback(false, false);}}} );
 
@@ -61,7 +61,7 @@ describe("DataRetrieverUsers Unit Test: ", function() {
 			
 		});
 			
-		it("getUserProfile deve restituire l'utente corretto se il recupero dal DB ha successo", function(done) {
+		it("deve restituire l'utente corretto se il recupero dal DB ha successo", function(done) {
 		
 			retriever.__set__('DB', {users: {findOne: function(obj, callback){callback(false, {user: 'testUser'});}}} );
 
@@ -74,9 +74,9 @@ describe("DataRetrieverUsers Unit Test: ", function() {
 
 	});
 
-	describe("Test updateUserProfile:", function() {
+	describe("updateUserProfile", function() {
 
-		it("updateUserProfile deve ritornare false se c'e' un errore con il DB", function() {
+		it("deve ritornare false se c'e' un errore con il DB", function() {
 			retriever.__set__('DB', {	
 			users: {
 						update: function(criteria, data, options){
@@ -111,7 +111,7 @@ describe("DataRetrieverUsers Unit Test: ", function() {
 			
 		});
 		
-		it("updateUserProfile deve ritornare false se l'update non ha successo", function() {
+		it("deve ritornare false se l'update non ha successo", function() {
 			retriever.__set__('DB', {	
 			users: {
 						update: function(criteria, data, options){
@@ -146,7 +146,7 @@ describe("DataRetrieverUsers Unit Test: ", function() {
 			
 		});
 		
-		it("updateUserProfile deve ritornare true se l'update avviene corrattamente", function() {
+		it("deve ritornare true se l'update avviene corrattamente", function() {
 			retriever.__set__('DB', {	
 			users: {
 						update: function(criteria, data, options){
@@ -183,7 +183,7 @@ describe("DataRetrieverUsers Unit Test: ", function() {
 
 	});
 
-	describe("Test getUsersList:", function() {
+	describe("getUsersList", function() {
 
 	/*
 		it("getUsersList ", function() {
@@ -215,9 +215,9 @@ describe("DataRetrieverUsers Unit Test: ", function() {
 
 	});
 
-	describe("Test updateUser:", function() {
+	describe("updateUser", function() {
 
-		it("updateUser deve restituire false se il livello utente non e' valido", function() {
+		it("deve restituire false se il livello utente non e' valido", function() {
 			retriever.__set__('DB', {	
 			users: {
 						update: function(criteria, data, options){
@@ -244,7 +244,7 @@ describe("DataRetrieverUsers Unit Test: ", function() {
 			
 		});
 		
-		it("updateUser deve restituire false per l'utente base se e' presente un errore", function() {
+		it("deve restituire false per l'utente base se e' presente un errore", function() {
 			retriever.__set__('DB', {	
 			users: {
 						update: function(criteria, data, options){
@@ -271,7 +271,7 @@ describe("DataRetrieverUsers Unit Test: ", function() {
 			
 		});
 		
-		it("updateUser deve restituire false per l'utente base se l'update non ha successo", function() {
+		it("deve restituire false per l'utente base se l'update non ha successo", function() {
 			retriever.__set__('DB', {	
 			users: {
 						update: function(criteria, data, options){
@@ -298,7 +298,7 @@ describe("DataRetrieverUsers Unit Test: ", function() {
 			
 		});
 		
-		it("updateUser deve restituire true per l'utente base se l'update ha successo", function() {
+		it("deve restituire true per l'utente base se l'update ha successo", function() {
 			retriever.__set__('DB', {	
 			users: {
 						update: function(criteria, data, options){
@@ -325,7 +325,7 @@ describe("DataRetrieverUsers Unit Test: ", function() {
 			
 		});
 		
-		it("updateUser deve restituire false per l'utente administrator se e' presente un errore", function() {
+		it("deve restituire false per l'utente administrator se e' presente un errore", function() {
 			retriever.__set__('DB', {	
 			users: {
 						update: function(criteria, data, options){
@@ -352,7 +352,7 @@ describe("DataRetrieverUsers Unit Test: ", function() {
 			
 		});
 		
-		it("updateUser deve restituire false per l'utente administrator se l'update non ha successo", function() {
+		it("deve restituire false per l'utente administrator se l'update non ha successo", function() {
 			retriever.__set__('DB', {	
 			users: {
 						update: function(criteria, data, options){
@@ -379,7 +379,7 @@ describe("DataRetrieverUsers Unit Test: ", function() {
 			
 		});
 		
-		it("updateUser deve restituire true per l'utente administrator se l'update ha successo", function() {
+		it("deve restituire true per l'utente administrator se l'update ha successo", function() {
 			retriever.__set__('DB', {	
 			users: {
 						update: function(criteria, data, options){
@@ -409,9 +409,9 @@ describe("DataRetrieverUsers Unit Test: ", function() {
 
 	});
 
-	describe("Test removeUser:", function() {
+	describe("removeUser", function() {
 
-		it("removeUser deve restituire true se la rimozione ha avuto successo", function() {
+		it("deve restituire true se la rimozione ha avuto successo", function() {
 			retriever.__set__('DB', {	
 			users: {
 						remove: function(criteria){
@@ -430,7 +430,7 @@ describe("DataRetrieverUsers Unit Test: ", function() {
 			});		
 		});
 		
-		it("removeUser deve restituire false se la rimozione non ha avuto successo", function() {
+		it("deve restituire false se la rimozione non ha avuto successo", function() {
 			retriever.__set__('DB', {	
 			users: {
 						remove: function(criteria){
@@ -449,7 +449,7 @@ describe("DataRetrieverUsers Unit Test: ", function() {
 			});		
 		});
 		
-		it("removeUser deve restituire false se l'utente non e' presente nel DB", function() {
+		it("deve restituire false se l'utente non e' presente nel DB", function() {
 			retriever.__set__('DB', {	
 			users: {
 						remove: function(criteria){
