@@ -16,10 +16,10 @@ Intestazione file
  
  Commento per metodo
  /**
- *Descriprion
  *
- @param name descr
- @return name descr 
+ *
+ *@param 
+ *@return 
  */
  
  Eventuale commento per ogni riga: //

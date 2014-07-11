@@ -13,19 +13,24 @@
  * 0.2 added serverInit
  ==============================================
  */
-'use strict';
+'use strict';//mostra tutti i warning possibili
 
-var express = require('express');
-var http = require('http');
-var https = require('https');
-var fs = require('fs');
-var path = require('path');
-var favicon = require('serve-favicon');
-var logger = require('morgan');
-var cookieParser = require('cookie-parser');
-var bodyParser = require('body-parser');
-var session = require('express-session');
+var express = require('express');//carico il modulo per express
+var http = require('http');//carico il modulo per http
+var https = require('https');//carico il modulo per https
+var fs = require('fs');//carico il modulo per fs
+var path = require('path');//carico il modulo per path
+var favicon = require('serve-favicon');//carico il modulo per favicon
+var logger = require('morgan');//carico il modulo per morgan
+var cookieParser = require('cookie-parser');//carico il modulo per cookie-parser
+var bodyParser = require('body-parser');//carico il modulo per body-parser
+var session = require('express-session');//carico il modulo per express-session
 
+/**
+ *Viene inizializzato il server e configurata l'app di express
+ *
+ *@param app contiene il middleware express
+ */
 function serverInit(app){
 
 	var config = app.config;
@@ -59,11 +64,14 @@ function serverInit(app){
 //for unit test
 exports.serverInit = serverInit;
 
-//cambia una riga del file specificato sostituendola con quella passata in ingresso
-//filePath = path del file da modificare
-//string2find = stringa con la quale inizia la riga da modificare
-//newString = stringa con i nuovi caratteri da aggiungere 
-//restituisce true se ha trovato la stringa
+ /**
+ *Cambia una riga del file specificato sostituendola con quella passata in ingresso
+ *
+ *@param filePath path del file da modificare.
+ *@param string2find stringa con la quale inizia la riga da modificare. 
+ *@param newString stringa con i nuovi caratteri da aggiungere. 
+ *@return true o false se trova la stringa o no 
+ */
 var changeFileRow = function(filePath, string2find, newString) {
 	
 	var buffer = '';
@@ -104,6 +112,11 @@ var changeFileRow = function(filePath, string2find, newString) {
 //for unit test
 exports.changeFileRow = changeFileRow;
 
+ /**
+ *Inizializza i file del client con le impostazioni del sistema
+ *
+ *@param app contiene il middleware express
+ */
 var clientSetup = function(app) {
 
 	var config = app.config;
@@ -187,7 +200,11 @@ var clientSetup = function(app) {
 //for unit test
 exports.clientSetup = clientSetup;
 
-//avvia il server 
+ /**
+ *Crea l'applicazione express, inizializza i vari moduli lato server e avvia il server.
+ *
+ *@param config contiene le configurazioni del sistema
+ */
 var start = function(config) {
 
 	console.log('');

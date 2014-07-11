@@ -12,7 +12,7 @@
  * 0.1 File creation
  ==============================================
  */
-'use strict';
+'use strict';//mostra tutti i warning possibili
 
 var passport = require("./passport");
 var path = require('path');
@@ -20,6 +20,12 @@ var datamanager = require('../modelServer/dataManager/DatabaseAnalysisManager/Da
 var usermanager = require('../modelServer/dataManager/DatabaseUserManager/DatabaseUserManager');
 var indexmanager = require('../modelServer/dataManager/IndexManager/IndexManager');
 
+ /**
+ *Gestisce le richieste del client, effettuando i controllo di autenticazioni
+ *
+ *@param app contiene il middleware express
+ *@return dispatcher ritorna il dispatcher creato 
+ */
 var dispatcherInit = function (app) {
 	
 	//inizializzo passport

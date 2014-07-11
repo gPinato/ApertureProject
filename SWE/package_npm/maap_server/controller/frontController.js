@@ -12,10 +12,15 @@
  * 0.1 File creation
  ==============================================
  */
-'use strict';
+'use strict';//mostra tutti i warning possibili
 
 var dispatcher = require("./dispatcher");
 
+ /**
+ *Inizialliza il dispatcher e configura l'applicazione express per usare il dispatcher.
+ *
+ *@param app contiene il middleware express
+ */
 var initFrontController = function(app) {
 
 	var new_dispatcher = dispatcher.init(app);

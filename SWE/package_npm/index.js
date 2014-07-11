@@ -12,7 +12,11 @@
  * 0.1 File creation
  ==============================================
  */
-'use strict';
+'use strict';//mostra tutti i warning possibili
 
-var server = require('./maap_server');
-exports.start = server.start;
+/**
+ *Descriprion: metodo che serve per avviare il server
+ *
+ */
+var server = require('./maap_server');//carico il modulo del server
+exports.start = server.start;//esporto lo start del server

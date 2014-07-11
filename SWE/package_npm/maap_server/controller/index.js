@@ -12,10 +12,15 @@
  * 0.1 File creation
  ==============================================
  */
-'use strict';
+'use strict';//mostra tutti i warning possibili
 
 var frontController = require('./frontController');
 
+ /**
+ *Viene inizializzato il front controller passandogli l'app di express.
+ *
+ *@param app contiene il middleware express
+ */
 exports.init = function(app){
 
 	console.log("controller init...");
