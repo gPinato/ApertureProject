@@ -1,0 +1,25 @@
+Intestazione file
+/**
+ * File: 
+ * Module: 
+ * Author: 
+ * Created: 
+ * Version: 
+ * Description: 
+ * Modification History:
+ ==============================================
+ * Version | Changes
+ ==============================================
+ * 0.1 File creation
+ ==============================================
+ */
+ 
+ Commento per metodo
+ /**
+ *Descriprion
+ *
+ @param name descr
+ @return name descr 
+ */
+ 
+ Eventuale commento per ogni riga: //
