@@ -9,38 +9,28 @@
  */
 'use strict';
 
-ddescribe('UsersCtrl', function () {
-
-    beforeEach(angular.mock.module('maaperture'));
+describe('UsersCtrl', function () {
 
     var UsersCtrl,
         routeParams,
         scope,
         $httpBackend,
         mockUserResource;
-
-    beforeEach(function () {
-        angular.mock.inject(function ($injector, $controller, $rootScope, UserDataService) {
-            $httpBackend = $injector.get('$httpBackend');
-            mockUserResource = $injector.get('UserDataService');
-            scope = $rootScope.$new();
-        })
-    });
-
-
-
-    beforeEach(inject(function ($controller, $rootScope) {
+    
+    beforeEach(inject(function ($injector) {
+        var $controller = $injector.get('$controller'),
+        $rootScope = $injector.get('$rootScope');
+        $httpBackend = $injector.get('$httpBackend');
+        mockUserResource = $injector.get('UserDataService');
         scope = $rootScope.$new();
-        routeParams ={};
-        routeParams.user_id=0;
+        routeParams = {};
+        routeParams.user_id = 0;
 
         UsersCtrl = $controller('UsersCtrl', {
-            $scope: scope,
-            $routeParams:routeParams,
-            UserDataService:mockUserResource
+            '$scope': scope,
+            '$routeParams': routeParams,
+            'UserDataService': mockUserResource
         });
-
-
     }));
 
 

@@ -50,9 +50,8 @@ var getDocuments = function(model, querySettings, populate, callback){
 	if(querySettings.startskip != ''){
 		options.skip = querySettings.startskip;
 	}
-		
+				
 	var query = model.find(querySettings.where, querySettings.select, options);
-	//var query = model.find(querySettings.where, {}, {});
 	
 	console.log('query: ' + JSON.stringify(querySettings));
 	console.log('options: ' + JSON.stringify(options));
@@ -85,7 +84,8 @@ var getDocuments = function(model, querySettings, populate, callback){
 	}
 		
 	query.lean().exec( function(err,result){
-		if(err){console.log('query fallita' + err); callback({});}
+	
+		if(err){console.log('query fallita' + err); callback({}); return;}
 					
 		//a questo punto la query ha avuto successo,
 		//controllo se la query e' stata eseguita su tutti 
@@ -111,9 +111,8 @@ var getDocuments = function(model, querySettings, populate, callback){
 								  );
 		}
 
-		if(!result){
-			console.log('nessun risultato') 
-		}else{
+		if(result.length > 0){
+		
 			//console.log(result);
 			//se è stato specificato il populate, sostituisco i vari populate...			
 			if(populate!=[])
@@ -156,9 +155,23 @@ var getDocuments = function(model, querySettings, populate, callback){
 
 				}
 			}
-			//console.log(result);
-			callback(result);
 			
+			//ora controllo, se stavo ordinando i campi, eseguo una query
+			//per leggere anche i campi che indefiniti, e li aggiungo in coda
+			/*if(options.sort != undefined)
+			{
+				model.find(querySettings.where, querySettings.select, options)
+				.exists(querySettings.orderbycolumn, false)
+				.lean().exec( function(err, emptyResult){
+					var totResult = result.concat(emptyResult); 
+					callback(totResult);
+				});		
+			}else{*/
+				callback(result);
+			//}
+			
+		}else{
+			//nessun risultato
 		}
 	});	
 }
@@ -186,16 +199,21 @@ exports.getCollectionsList = function(find) {
 	
 }
 
+var getTransformationFile = function(collection_name, type, fieldName) {
+	return require('../../DSL/collectionData/transformation_' + collection_name + '_' + type + '_' + fieldName + '.js');
+};
+//for unit test
+exports.getTransformationFile = getTransformationFile;
+
 //applica le varie trasformazioni presenti nel dsl ai vari campi dei documents nell'array di documents
-var applyTrasformations = function(collection_name, type, documentsArray, dslArray) {
+var applyTransformations = function(collection_name, type, documentsArray, dslArray) {
 
 	for(var i=0; i<dslArray.length; i++)
 	{
 		if(dslArray[i].transformation != null)
 		{
 			var fieldName = dslArray[i].name;
-			var file = require('../../DSL/collectionData/transformation_' + collection_name + '_' + type + '_' + fieldName + '.js');
-			var transformation = file.transformation;
+			var transformation = getTransformationFile(collection_name, type, fieldName).transformation;
 			for(var j=0; j<documentsArray.length; j++)
 			{
 				var document = documentsArray[j];
@@ -213,6 +231,8 @@ var applyTrasformations = function(collection_name, type, documentsArray, dslArr
 	}
 	return documentsArray;
 }
+//for unit test
+exports.applyTransformations = applyTransformations;
 
 var sortDocumentsByLabels = function(documents, keys) {
 	var result = [];
@@ -297,59 +317,72 @@ exports.getCollectionIndex = function(collection_name, column, order, page, call
 		else
 			query = collection.index.query;
 						
-		var sort = {};
-		sort[sortby] = order;
-		
-		model.find(query, null, sort).exec(function(err, docs) {
+		model.count(query, function(err, count){
 			
-			var count = docs.length;
-			var result = {};
-			result.options = {};
-			result.options.pages = Math.floor(count / perpage);
-			if((count % perpage) > 0) result.options.pages++;
-
-			var querySettings = {};
-			querySettings.where = query; 
-			querySettings.select = select;
-			querySettings.orderbycolumn = sortby;
-			querySettings.typeorder = order;
-			querySettings.startskip = start;
-			
-			//se ci sono piu' documents di quanti ce ne starebbero nella pagina, 
-			//limito a perpage
-			if(count > perpage)
+			if(err)
 			{
-				querySettings.numberofrow = perpage;
+			
+				console.log('error while counting docs: ' + err);
+				callback({});
+				
+			}else if(count == 0){
+			
+				console.log('got zero documents!');
+				callback({});
+				
 			}else{
-				querySettings.numberofrow = '';
-			}
+			
+				var result = {};
+				result.options = {};
+				result.options.pages = Math.floor(count / perpage);
+				if((count % perpage) > 0) result.options.pages++;
 
-			getDocuments(model,
-						querySettings,
-						populate,			//populate
-						function(documents){
-									
-							if(columns != undefined)
-							{
-								//qui columns del dsl e' definita
-								result.labels = labels;	
-								documents = sortDocumentsByLabels(documents, keys);
-								result.documents = applyTrasformations(collection_name, 'index', documents, columns);
-							}else{	
-								//nel caso la column non sia definita
-								result.labels = [];
-								if(documents.length > 0)
+				var querySettings = {};
+				querySettings.where = query; 
+				querySettings.select = select;
+				querySettings.orderbycolumn = sortby;
+				querySettings.typeorder = order;
+				querySettings.startskip = start;
+				
+				//se ci sono piu' documents di quanti ce ne starebbero nella pagina, 
+				//limito a perpage
+				if(count > perpage)
+				{
+					querySettings.numberofrow = perpage;
+				}else{
+					querySettings.numberofrow = '';
+				}
+
+				getDocuments(model,
+							querySettings,
+							populate,			//populate
+							function(documents){
+										
+								if(columns != undefined)
 								{
-									for(var key in documents[0])
+									//qui columns del dsl e' definita
+									result.labels = labels;	
+									documents = sortDocumentsByLabels(documents, keys);
+									result.documents = applyTransformations(collection_name, 'index', documents, columns);
+								}else{	
+									//nel caso la column non sia definita
+									result.labels = [];
+									if(documents.length > 0)
 									{
-										result.labels.push(key);
+										for(var key in documents[0])
+										{
+											result.labels.push(key);
+										}
 									}
+									result.documents = documents;	//documents senza trasformazioni
 								}
-								result.documents = documents;	//documents senza trasformazioni
-							}
-							callback(result);
-			});
-		});
+								callback(result);
+								
+				}); //end getDocuments
+				
+			}
+		}); //end model.count()
+		
 	}catch(err){
 		//se la collection non e' presente, rispondo con la lista vuota
 		console.log('err: ' + err);
@@ -423,7 +456,7 @@ exports.getDocumentShow = function(collection_name, document_id, callback) {
 						{
 							result.labels = labels;	
 							documents = sortDocumentsByLabels(documents, keys);
-							documents = applyTrasformations(collection_name, 'show', documents, rows);
+							documents = applyTransformations(collection_name, 'show', documents, rows);
 						}else{	
 							//nel caso la row non sia definita
 							result.labels = [];
@@ -582,7 +615,7 @@ exports.updateDocument = function(collection_name, document_id, newDocumentData,
 	
 		var query = model.update(criteria, {$set: newDocumentData}, options);
 		query.lean().exec( function(err, count){
-			if(err){console.log('document update fallito: ' + err); return;}
+			if(err){console.log('document update fallito: ' + err); callback(false); return;}
 			if(count==0){
 				//console.log('nessun risultato'); 
 				callback(false);
@@ -625,7 +658,7 @@ var removeDocument = function(collection_name, document_id, callback) {
 	
 	var query = model.remove(criteria);
 	query.lean().exec( function(err, count){
-		if(err){console.log('rimozione document fallita: ' + err); return;}
+		if(err){console.log('rimozione document fallita: ' + err); callback(false); return;}
 		if(count == 0) {
 			//console.log('niente da eliminare'); 
 			callback(false);
@@ -640,4 +673,3 @@ exports.removeDocument = removeDocument;
 exports.getModel=getModel;	
 exports.sortDocumentsByLabels = sortDocumentsByLabels;
 exports.getDocuments = getDocuments;
-exports.applyTrasformations = applyTrasformations;
