@@ -18,6 +18,12 @@ var queryModel = require('../../database/MongooseDBFramework').query;
 var connection = require('../../database/MongooseDBFramework').connection;
 var collectionList = require('../../DSL/collectionData/collectionsList.json');
 
+ /**
+ * Preleva il modello relativo ad una specifica collection
+ *
+ *@param collection_name - nome della collection relativa al modello da cercare
+ *@return modello relativo alla collection specificata, -1 se il modello non è presente.
+ */
 var getModel = function(collection_name) {
 	
 	var array = DB.model;
@@ -34,8 +40,15 @@ var getModel = function(collection_name) {
 //for unit test
 exports.getModel = getModel;
 
+ /**
+ * Aggiunge una query nel database delle query
+ *
+ *@param collection_name - nome della collection relativa alla query da creare
+ *@param select - lista di campi selezionati 
+ */
 exports.addQuery = function(collection_name, select) {
 	
+	//cerca tutte le query relative ad una determinata collection
 	var findQueries = queryModel.find({collection_name: collection_name});
 	findQueries.lean().exec(function(err,data){
 		if(err)
@@ -44,16 +57,24 @@ exports.addQuery = function(collection_name, select) {
 		}else{
 			if(data.length == 0)
 			{
+				//se non e' presente nessuna query relativa alla collection specificata
+				//creo una nuova query con il modello corretto, il nome della collection e la lista dei campi select
+				//con contatore impostato ad uno
 				var criteria = new queryModel({collection_name:collection_name, select:select, counter: 1});
 				criteria.save(function(err){
 					if(err)
 					{
-						console.log('inserimento query fallito 1');
+						console.log('inserimento query fallito: ' + err);
 					}
 				});
 			}else{
+			
+				//se la query per la relativa collection e' gia' presente nel database
 				var contadata = 0;
+				
+				//controllo se la lista dei campi selezionati e' identica a quella specificata
 				for(var i = 0;i<data.length;i++){
+				
 					if(data[i].select.length == select.length){
 						var countmatch = 0;
 						for(var key in select){
@@ -62,12 +83,17 @@ exports.addQuery = function(collection_name, select) {
 								countmatch++;		
 							}
 						}
+						
+						//se la lista di campi select e' identica, devo incrementare solamente il campo counter
 						if(countmatch == Object.keys(select).length){
 							var counter = data[i].counter + 1;
 							var id2update = data[i]._id;
+							
+							//aggiorno la query con il campo counter incrementato
 							queryModel.update({_id: id2update}, {$set:{counter: counter}}).exec(function(err,count){
-								if(err){console.log('update counter fallito'); }
-								if(count==0){
+								if(err){console.log('update counter fallito: ' + err); }
+								else if(count==0){
+									//visualizzo l'errore in caso l'update non trova la query da aggiornare
 									console.log('impossibile aggiornare la query.'); 
 								}
 							});
@@ -79,12 +105,14 @@ exports.addQuery = function(collection_name, select) {
 				
 				if(contadata == data.length)
 				{
-					//qui non ho fatto nessun update, quindi inserisco
+					//qui non ho fatto nessun update, quindi inserisco una nuova query con counter impostato
+					//ad uno
 					var criteria = new queryModel({collection_name:collection_name, select:select, counter: 1});
 					criteria.save(function(err){
 						if(err)
 						{
-							console.log('inserimento query fallito 2');
+							//visualizzo e stampo l'errore
+							console.log('inserimento query fallito 2: ' + err);
 						}
 					});
 				}
@@ -93,20 +121,36 @@ exports.addQuery = function(collection_name, select) {
 	});
 }
 
+ /**
+ * Rimuove tutte le query nel database
+ *
+ *@param callback - callback da richiamare al termine dell'esecuzione della funzione
+ */
 exports.resetQueries = function(callback) {
 	
+	//elimino l'intera collezione di query nel database
 	connection.db.dropCollection(queryModel.modelName, function(err,data){
 		if(err){
-			console.log('Impossibile cancellare la collection '+queryModel.modelName);
+			//notifico l'utente in caso di errore
+			console.log('Impossibile cancellare la collection '+ queryModel.modelName + ': ' + err);
+			//richiamo la callback con false
 			callback(false);
 		}
 		else{
-			//console.log(data);
+			//in caso positivo richiamo la callback con true
 			callback(true);
 		}
 	});
 }
 
+ /**
+ * Recupera la lista di query presenti nel database
+ *
+ *@param page - numero di pagina da visualizzare
+ *@param perpage - numero di query da visualizzare per pagina 
+ *@param n_elements - numero di query totali da recuperare
+ *@param callback - funzione da richiamare al termine dell'esecuzione
+ */
 exports.getQueries = function(page, perpage, n_elements, callback) {
 	
 	var options = {};

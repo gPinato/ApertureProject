@@ -19,6 +19,12 @@ var mongoose = require('mongoose');
 
 var collectionDataPath = __dirname + '/../DSL/collectionData';
 
+ /**
+ * Inizializza il database di analisi creando i modelli per ogni schema presente nella cartella collectionData e
+ * ed esporta tutti i modelli creati in un unico array
+ *
+ *@param app - applicazione express contenente la configurazione del sistema
+ */
 exports.init = function(app) {
 	
 	var config = app.config;
