@@ -11,10 +11,6 @@ module.exports = function(config) {
 
     // list of files / patterns to load in the browser
       files: [
-      /* A PRIMA VISTA, pare che i bower components non siano in quei
-      *  path, non riesce a caricarli. Dovrò cercarli, ma adesso ho
-      *  troppo sonno. 
-      */
           //'app/bower_components/jquery/jquery.js',
           //'app/bower_components/jquery-ui/ui/jquery-ui.js',
           'app/bower_components/angular/angular.js',
@@ -28,7 +24,8 @@ module.exports = function(config) {
           'app/scripts/*.js',
           'app/scripts/controllers/*.js',
           //'test/mock/**/*.js',
-          'test/spec/controllers/*.js',
+          'test/spec/**/*.js',
+          'test/spec/**/*.test.js'
       ],
 
     // list of files / patterns to exclude
@@ -45,6 +42,12 @@ module.exports = function(config) {
 
     // enable / disable watching file and executing tests whenever any file changes
     autoWatch: true,
+
+    // Which plugins to enable
+    plugins: [
+      'karma-chrome-launcher',
+      'karma-jasmine'
+    ],
 
       // coverage reporter generates the coverage
       reporters: ['progress','coverage'],
