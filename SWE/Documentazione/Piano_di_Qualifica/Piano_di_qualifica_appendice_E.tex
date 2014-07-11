@@ -363,6 +363,192 @@ Di seguito vengono riportati, per ogni documento, i valori dell'indice di Gulpea
 \label{tab:changelog}
 \end{longtable}
 
+\subsubsection{Verifica e Validazione}
+\paragraph{Processi}
+Di seguito vengono riportati i valori degli indici SV e BV calcolati durante il periodo di tempo dedicato alla Verifica e Validazione.
+\begin{longtable}{|c|p{3cm}|p{3cm}|}
+\toprule
+\textbf{Attività} & \textbf{SV} & \textbf{BV} \\
+
+%aggiungere qui una midrule per aggiungere una nuova riga alla tabella
+
+\midrule
+\emph{Analisi dei Requisiti} &  &  \\
+\midrule
+\emph{Glossario} &  &   \\
+\midrule
+\emph{Norme di Progetto} &  &  \\
+\midrule
+\emph{Piano di Progetto} &  &  \\
+\midrule
+\emph{Piano di Qualifica} &  & \\
+\midrule
+\emph{Specifica Tecnica} &  & \\
+\midrule
+\emph{Definizione di Prodotto} &  &  \\
+\midrule
+\emph{Manuale utente} &  &  \\
+\midrule
+\emph{Codifica} &  &  \\
+\midrule
+\emph{Verifica della Codifica} &  &  \\
+\bottomrule
+\caption{BV e SV calcolati sui documenti durante la Verifica e Validazione}
+\label{tab:changelog}
+\end{longtable}
+
+\paragraph{Conclusioni}
+bla bla
+
+
+\paragraph{Documenti}
+Di seguito vengono riportati, per ogni documento, i valori dell'indice di Gulpease calcolati durante il periodo di tempo dedicato alla Verifica e Validazione.
+
+\begin{longtable}{|c|p{3cm}|p{3cm}|}
+\toprule
+\textbf{Documento} & \textbf{Valore indice} & \textbf{Esito} \\
+
+%aggiungere qui una midrule per aggiungere una nuova riga alla tabella
+
+\midrule
+\emph{Analisi dei Requisiti v5.2.0} &  &  \\
+\midrule
+\emph{Glossario v5.2.0} &  &  \\
+\midrule
+\emph{Norme di Progetto v5.2.0} &  &  \\
+\midrule
+\emph{Piano di Progetto v5.2.0} &  & \\
+\midrule
+\emph{Piano di Qualifica v5.2.0} &  &  \\
+\midrule
+\emph{Specifica Tecnica v3.2.0} &  & \\
+\midrule
+\emph{Definizione di Prodotto v2.2.0} &  & \\
+\midrule
+\emph{Manuale Utente v2.2.0} &  & \\
+\bottomrule
+\caption{Esiti dell'indice di Gulpease calcolato sui documenti durante la Verifica e Validazione}
+\label{tab:changelog}
+\end{longtable}
+
+\paragraph{Risultati delle misurazioni sul codice}
+Di seguito vengono riportati i risultati dei test di analisi statica e dinamica effettuati sul codice.
+Per ogni test effettuato si riporta il valore medio e il valore massimo.
+\begin{itemize}
+\item{\textbf{Complessità ciclomatica}}
+\begin{itemize}
+\item{\textbf{Valore medio: }}3.7
+\end{itemize}
+\item{\textbf{Parametri per metodo}}
+\begin{itemize}
+\item{\textbf{Valore medio: }}1
+\end{itemize}
+\item{\textbf{Linee di codice per metodo}}
+\begin{itemize}
+\item{\textbf{Valore medio: }}13
+\end{itemize}
+\item{\textbf{Linee di codice per linee di commento}}
+\begin{itemize}
+\item{\textbf{Valore medio: }}
+\end{itemize}
+\item{\textbf{Instabilità}}
+\begin{itemize}
+\item{\textbf{Valore medio: }}0.4
+\end{itemize}
+\end{itemize}
+\begin{longtable}{|p{11cm}|c|c|c|}
+\toprule
+\textbf{Componente} & \textbf{Instabilità} \\
+
+\midrule
+MaaP::Server
+& 0\\
+
+\midrule
+MaaP::Server::ModelServer
+& 0\\
+
+\midrule
+MaaP::Server::ModelServer::DataManager
+& 0.8\\
+
+\midrule
+MaaP::Server::ModelServer::DataManager::DatabaseAnalysisManager
+& 0.8\\
+
+\midrule
+MaaP::Server::ModelServer::DataManager::DatabaseUserManager
+& 0.8\\
+
+
+\midrule
+MaaP::Server::ModelServer::DataManager::IndexManager
+& 0.6\\
+
+
+\midrule
+MaaP::Server::ModelServer::Database
+& 0\\
+
+
+\midrule
+MaaP::Server::ModelServer::DSL
+& 0\\
+
+\midrule
+MaaP::Server::Controller
+& 0.8\\
+
+\midrule
+MaaP::Client
+& 1\\
+
+\midrule
+MaaP::Client::View
+& 1\\
+
+\midrule
+MaaP::Client::ControllerModelView
+& 0.6\\
+
+\midrule
+MaaP::Client::ControllerModelView::ControllerClient
+& 0.6\\
+
+\midrule
+MaaP::Client::ModelClient
+& 0\\
+
+\midrule
+MaaP::Client::ModelClient::Services
+& 0\\
+
+\midrule
+MaaP::Client::ModelClient::Directives
+& 0\\
+
+\midrule
+MaaP::Client::ModelClient::Model
+& 0\\
+
+
+\bottomrule
+\caption{Tabella accoppiamento componenti}
+\end{longtable}
+
+\subparagraph{Conclusioni}
+bla bla
+
+\paragraph{Copertura del codice}
+
+
+
+
+
+
+
+
+
 \subsection{Dettaglio dell'esito delle revisioni}
 Per ciascuna revisione alla quale si intende partecipare, il Committente avrà il compito di segnalare eventuali problematiche trovate, dando una valutazione globale dell'andamento del progetto e una descrizione per ciascun documento con correzioni e accorgimenti da apportare.
 Di seguito vengono elencate le modifiche apportate ai documenti, come suggerito dal Committente, per ciascuna revisione.
