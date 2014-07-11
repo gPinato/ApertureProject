@@ -57,10 +57,7 @@ describe('Controller: CollectionCtrl', function () {
     beforeEach(function(){
         MockColService = {
             query: function(value) {
-                return {
-                    "_id" : { "$oid" : "53217b62f33ab349012ed581" },
-                    "value" : "John"
-                };
+                return response;
             }
         };
         spyOn(MockColService, 'query').andCallThrough();
@@ -69,11 +66,10 @@ describe('Controller: CollectionCtrl', function () {
 
     it('should call the service',function()  {
         expect(MockColService.query).toHaveBeenCalled();
+
     });
 
-    it('should call the service',function()  {
-        expect(MockColService.query).toHaveBeenCalled();
-    });
+
 
 
     it('should initialize data correctly', function () {
