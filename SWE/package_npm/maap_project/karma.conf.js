@@ -11,10 +11,7 @@ module.exports = function(config) {
 
     // list of files / patterns to load in the browser
       files: [
-      /* A PRIMA VISTA, pare che i bower components non siano in quei
-      *  path, non riesce a caricarli. Dovrò cercarli, ma adesso ho
-      *  troppo sonno. 
-      */
+      
           //'app/bower_components/jquery/jquery.js',
           //'app/bower_components/jquery-ui/ui/jquery-ui.js',
           'app/bower_components/angular/angular.js',
