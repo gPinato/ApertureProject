@@ -31,6 +31,8 @@ var getModel = function(collection_name) {
 	}
 	return -1;
 }
+//for unit test
+exports.getModel = getModel;
 
 
 var getDocuments = function(model, querySettings, populate, callback){

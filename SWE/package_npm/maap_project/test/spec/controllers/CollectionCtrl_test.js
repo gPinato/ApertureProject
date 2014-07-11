@@ -53,36 +53,36 @@ describe('Controller: CollectionCtrl', function () {
 
     }));
 
-    beforeEach(function () {
-        angular.mock.inject(function ($injector) {
-            mockBackend = $injector.get('$httpBackend');
-            MockColService = $injector.get('CollectionDataService');
-        });
+
+    beforeEach(function(){
+        MockColService = {
+            query: function(value) {
+                return {
+                    "_id" : { "$oid" : "53217b62f33ab349012ed581" },
+                    "value" : "John"
+                };
+            }
+        };
+        spyOn(MockColService, 'query').andCallThrough();
+        MockCall = MockColService.query();
     });
 
-    it('should load labels from the services',  inject(function (CollectionDataService)  {
+    it('should call the service',function()  {
+        expect(MockColService.query).toHaveBeenCalled();
+    });
 
-        mockBackend.expectGET('http://localhost:9000/api/collection/0')
-            .respond(response);
-
-
-
-        var result = MockColService.query();
-        mockBackend.flush();
-        console.log(result);
-        expect(scope.labels).to.not.equal(null);
-
-
-    }));
+    it('should call the service',function()  {
+        expect(MockColService.query).toHaveBeenCalled();
+    });
 
 
     it('should initialize data correctly', function () {
-        expect(scope.current_sorted_column).to.equal(null);
-        expect(scope.current_sort).to.equal(null);
-        expect(scope.column_original_name.length).to.equal(0);
-        expect(scope.current_page).to.equal(0);
-        expect(scope.current_collection).to.equal(routeParams.col_id);
-        expect(scope.rows.length).to.equal(0);
+        expect(scope.current_sorted_column).toBe(null);
+        expect(scope.current_sort).toBe(null);
+        expect(scope.column_original_name.length).toBe(0);
+        expect(scope.current_page).toBe(0);
+        expect(scope.current_collection).toBe(routeParams.col_id);
+        expect(scope.rows.length).toBe(0);
     });
 
 
@@ -90,7 +90,7 @@ describe('Controller: CollectionCtrl', function () {
     it('should go to the correct page', function () {
         scope.current_page=2;
         scope.toPage(4);
-        expect(scope.current_page).to.equal(4);
+        expect(scope.current_page).toBe(4);
 
     });
 
@@ -98,64 +98,64 @@ describe('Controller: CollectionCtrl', function () {
         scope.pages = 3;
         scope.current_page=0;
         scope.nextPage();
-        expect(scope.current_page).to.equal(1);
+        expect(scope.current_page).toBe(1);
         scope.current_page= 2 ;
         scope.nextPage();
-        expect(scope.current_page).to.equal(scope.pages - 1);
+        expect(scope.current_page).toBe(scope.pages - 1);
     });
     it('should decrease page correctly', function () {
         scope.pages = 3;
         scope.current_page=0;
         scope.prevPage();
-        expect(scope.current_page).to.equal(0);
+        expect(scope.current_page).toBe(0);
         scope.current_page= scope.pages - 1 ;
         scope.prevPage();
-        expect(scope.current_page).to.equal(scope.pages - 2);
+        expect(scope.current_page).toBe(scope.pages - 2);
     });
     it('should change sort correctly', function () {
         scope.current_sort = "asc";
         scope.current_sorted_column = 0;
 
         scope.columnSort(1);
-        expect(scope.current_sort).to.equal("asc");
-        expect(scope.current_sorted_column).to.equal(1);
+        expect(scope.current_sort).toBe("asc");
+        expect(scope.current_sorted_column).toBe(1);
         scope.columnSort(1);
-        expect(scope.current_sort).to.equal("desc");
+        expect(scope.current_sort).toBe("desc");
         scope.columnSort(1);
-        expect(scope.current_sort).to.equal("asc");
+        expect(scope.current_sort).toBe("asc");
 
     });
 
     it('should calculate the correct range', function () {
         scope.pages = 3;
         var result = scope.range();
-        expect(result.length).to.equal(3);
+        expect(result.length).toBe(3);
         scope.pages = 10;
          result = scope.range();
-        expect(result.length).to.equal(9);
+        expect(result.length).toBe(9);
         scope.pages = 20;
         scope.current_page=8;
         result = scope.range();
-        expect(result.length).to.equal(9);
-        expect(result[0]).to.equal(5);
-        expect(result[8]).to.equal(13);
+        expect(result.length).toBe(9);
+        expect(result[0]).toBe(5);
+        expect(result[8]).toBe(13);
         scope.current_page=19;
         result = scope.range();
-        expect(result.length).to.equal(9);
-        expect(result[0]).to.equal(11);
-        expect(result[8]).to.equal(19);
+        expect(result.length).toBe(9);
+        expect(result[0]).toBe(11);
+        expect(result[8]).toBe(19);
 
     });
 
     it('should disable prev and next', function () {
         scope.pages = 10;
         scope.current_page = 0;
-        expect(scope.DisablePrevPage()).to.equal('disabled');
+        expect(scope.DisablePrevPage()).toBe('disabled');
         scope.current_page = 1;
-        expect(scope.DisablePrevPage()).to.equal('');
-        expect(scope.DisableNextPage()).to.equal('');
+        expect(scope.DisablePrevPage()).toBe('');
+        expect(scope.DisableNextPage()).toBe('');
         scope.current_page = scope.pages -1;
-        expect(scope.DisableNextPage()).to.equal('disabled');
+        expect(scope.DisableNextPage()).toBe('disabled');
     });
 
     

@@ -42,11 +42,11 @@ describe('Controller: UsersEditCtrl', function () {
 
 
     it('should initialize data correctly', function () {
-        expect(scope.newPassword1).to.equal(null);
-        expect(scope.newPassowrd2).to.equal(null);
-        expect(scope.original_data.length).to.equal(0);
-        expect(scope.original_keys.length).to.equal(0);
-        expect(scope.admin).to.equal(true);
+        expect(scope.newPassword1).toBe(null);
+        expect(scope.newPassowrd2).toBe(null);
+        expect(scope.original_data.length).toBe(0);
+        expect(scope.original_keys.length).toBe(0);
+        expect(scope.admin).toBe(true);
     });
 
 

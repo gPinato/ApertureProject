@@ -52,12 +52,12 @@ describe('Controller: DocumentCtrl', function () {
     }));
 
     it('should not have an empty scope', function(){
-        expect(scope).not.to.equal([]);
+        expect(scope).not.toBe([]);
     });
 
     it('should return the correct answer', function(){
         var MockCall = MockDocService.query();
-        expect(MockCall).to.deep.equal({
+        expect(MockCall).toEqual({
 
             "customer": "Snoop Dogg",
             "Address": "Bitches boulevard, swagtown",

@@ -14,13 +14,13 @@
  */
 'use strict';
 
-var FrontController = require('./frontController');
+var frontController = require('./frontController');
 
 exports.init = function(app){
 
 	console.log("controller init...");
 	
 	//inizializzo il frontController
-	FrontController.init(app);	
+	frontController.init(app);	
 	
 }
