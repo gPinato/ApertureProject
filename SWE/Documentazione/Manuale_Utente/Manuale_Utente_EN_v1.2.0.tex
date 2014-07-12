@@ -63,7 +63,7 @@ Diario delle modifiche
 1.0.1 & 2014-06-16 & Alessandro Benetti (AM) & Prima stesura del documento.\\
 
 \bottomrule
-\caption{Registro delle modifiche}
+\caption{Changelog}
 \label{tab:changelog}
 
 \end{longtable}
@@ -83,22 +83,24 @@ Diario delle modifiche
 \section{Introduction}
 \subsection{Document purpose}
 This document wants to be a reference guide for a developer user. \\
-This will guide you through the installation, configuration and maintenance of the MaaP framework.
+This will guide you through the installation process, explaining the various options and commands that are available, and through the configuration and maintenance of the MaaP framework.
+This guide is fairly technical and intended for a reader who's familiar with the javascript sintax and noSQL databases.
+It is not to be intended as an end user guide.
 
 \newpage
 \section{MaaP}
-Hello and welcome to MaaPerture User Manual.
-In this manual we'll go through all the stuff you need to do to get MaaPerture up and running in no time, while also taking a look at some more advanced features.
+Hello and welcome to MaaP User Manual.
+In this manual we'll go through all the stuff you need to do to get MaaP up and running in no time, while also taking a look at some more advanced features.
 
 \section{Prerequirements}
-The only thing you need before installing MaaPerture is node.js.
+The only thing you need before installing MaaP is node.js.
 You can download the latest version of node.js from the official website
 \begin{center}
 http://nodejs.org/
 \end{center}
 
 \section{Quick Start}
-The quickest way to get MaaPerture is to get it directly from npm using
+The quickest way to get MaaP is to get it directly from npm using
 \begin{center}
 \textit{npm install -g maaperture}
 \end{center}
@@ -108,10 +110,10 @@ You can also install it from a local npm package using
 \textit{npm install . -g}
 \end{center}
 
-The "-g" option allows MaaPerture to be installed globally and thus allows you to launch it from everywhere on your computer.\\
+The "-g" option allows MaaP to be installed globally and thus allows you to launch it from everywhere on your computer.\\
 We will go through all the other options in section \ref{commands}.\\
 
-After you've installed MaaPerture you want to create your first project.\\
+After you've installed MaaP you want to create your first project.\\
 To do this open a terminal in the directory you want your project to be created in and just type
 \begin{center}
 \textit{ maaperture create -N myFirstProject}
@@ -123,7 +125,13 @@ Now you just need to type
 \textit{npm start}
 \end{center}
 
-and your server will be up and running!
+and your server will be up and running!\\
+
+MaaP uses some default settings, but more than likely you will want to change them. In order to do so we have put all the configurable setting in a configuration file which will be described in the next section.\\
+
+Once you have configured MaaP as you need the last thing you have to do is to describe your pages and the data you want to display.
+In order to do so you will need to create some description files, one per every page you plan to make, using our DSL.
+This last step will be described in the section \ref{DSL}.\\
 
 
 
@@ -172,7 +180,7 @@ This snippet contains setting regarding the session, such as the session secret 
 exports.userDB = {
 	host: 'localhost',
 	port: 27017,
-	db_name: 'utenti',
+	db_name: 'userdb',
 	usersCollection: 'users',
 	queryCollection: 'query'
 }
@@ -180,7 +188,7 @@ exports.userDB = {
 exports.dataDB = {
 	host: 'localhost',
 	port: 27017,
-	db_name: 'dati'
+	db_name: 'datadb'
 }
 \end{lstlisting}
 
@@ -201,7 +209,8 @@ exports.static_assets = {
 This last snippets sets the directory used by the framework and should not be messed with unless by expert developers.
 
 \section{Domain Specific Language}
-The DSL is one of the most crucial part of MaaPerture.\\
+\label{DSL}
+The DSL is one of the most crucial part of MaaP.\\
 Our DSL allows you to describe how you want your data to be displayed to the end user, so the better you can master it the more you'll get from our framework.
 You can define any number of columns, name them as you want, populate them directly from your database or by an elaborate query, sort them and much more.\\
 
@@ -209,18 +218,18 @@ We'll go through each and every available feature  in the next paragraph and to 
 
 \begin{lstlisting}
 collection = {
-	label: 'etichetta collection',
+	label: 'collection label',
 	name: 'maapertureCollection',
 	position: 3,
 	
 	index : {
-		populate: [{collection: 'nome_collection', key: 'chiave_document'}],
+		populate: [{collection: 'collection_name', key: 'document_key'}],
 		perpage: 20,
 		sortby: 'age',
 		order: 'asc',
 		column : [
 			{
-				label: 'Identificativo',
+				label: 'ID',
 				name: '_id',
 				type: 'Number, min: 18, max:65',
 				transformation: 'function nome(val) { 	\
@@ -228,12 +237,12 @@ collection = {
 				}'
 			},
 			{	
-				label: 'Data Avvio',
-				name: 'data_nascita',
+				label: 'Birthday',
+				name: 'birth_date',
 				type: 'Date, default: Date.now'
 			},
 			{	
-				label: 'etichetta colonna3',
+				label: 'label number 3',
 				name: 'nome3_db',
 				type: 'String'
 			},
@@ -243,14 +252,14 @@ collection = {
 				label: 'Calculate',
 				name: 'button1',
 				function: 'function nome() {	\
-					return "ciao";				\
+					return "hello";				\
 				}'
 			},
 			{
 				label: 'Calculate2',
 				name: 'button2',
 				function: 'function nome() {	\
-					return "hello";				\
+					return "hi";				\
 				}'
 			}		
 		],
@@ -262,7 +271,7 @@ collection = {
 	show : {
 		row : [
 			{
-				label: 'etichetta riga1',
+				label: 'label row1',
 				name: 'nome1_db',
 				type: 'String',
 				transformation: 'function nome(val) {	\
@@ -270,17 +279,17 @@ collection = {
 				}'
 			},
 			{	
-				label: 'etichetta riga2',
+				label: 'label row2',
 				name: 'nome2_db',
 				type: 'String'
 			},
 			{	
-				label: 'etichetta riga3',
+				label: 'label row3',
 				name: 'nome3_db',
 				type: 'String'
 			},
 			{	
-				label: 'etichetta riga4',
+				label: 'label row4',
 				name: 'nome3_db',
 				type: 'String'
 			},
@@ -290,7 +299,7 @@ collection = {
 				label: 'CalculateShow',
 				name: 'button1show',
 				function: 'function nome() {	\
-					console.log("ciaoShow");	\
+					console.log("Show");	\
 				}'
 			},
 			{
@@ -308,10 +317,10 @@ collection = {
 exports.collection = collection;
 \end{lstlisting}
 
-This is a complete DSL file that describes a collection, both it's index view (where all the documents contained in the collection are displayed) and it's document view (where you can see a single document).\\
+This is a complete DSL file that describes a collection, both its index view (where all the documents contained in the collection are displayed) and its document view (where you can see a single document).\\
 
-So let's begin with the basics:\\
-In the first line you declare you want to describe a collection and you want to set it's name and where to get the data, therefore
+So lets begin with the basics:\\
+In the first line you declare you want to describe a collection and you want to set its name and where to get the data, therefore
 
 \begin{lstlisting}
 collection = {
@@ -320,11 +329,11 @@ collection = {
 	position: 3,
 \end{lstlisting}
 
-The label field is where you specify what's the name you want displayed on the web pages.\\
-With MaaPerture you can rename almost everything you want without every worrying about mismatches, we'll handle all the dirty job.
+The label field is where you specify what name you want displayed on the web pages.\\
+With MaaP you can rename almost everything you want without every worrying about mismatches, we'll handle all the dirty job.
 If you don't specify any label the original name will be used instead.\\
 The name field specify what collection on your database you want to use as the source of your data, and lastly the position field specify the position you want this collection to be on the navigation bar menu of the browser.\\
-If you don't specify any values MaaPerture will sort things by himself.\\
+If you don't specify any values MaaP will sort things by himself.\\
 
 In the next piece we'll see how to set the index of the collection, also called collection view.\\
 
@@ -356,12 +365,12 @@ index : {
 		],
 \end{lstlisting}
 
-"index:" tells MaaPerture that you're beginning to set the collection view.\\
+"index:" tells MaaP that you're beginning to set the collection view.\\
 The perpage field specify how many rows (hence how many documents) should be displayed on a single page. So if you have 120 documents and you set perpage to 50 you'll get 3 pages, two with 50 document each and one with 20.\\
-The sortby field specify what's the column that get's sorted by default and, as you could probably imagine, order specify what order.\\
+The sortby field specify what is the column that gets sorted by default and, as you could probably imagine, order specify what order.\\
 
 The column keyword marks the beginning of the columns definition.
-For each column you can specify a label, the source field from the database and it's type.
+For each column you can specify a label, the source field from the database and its type.
 You can also specify some restrictions on the values, such as min and max.\\
 
 The populate keyword allows you to define an array of collections from which you can get additional data.\\
@@ -390,25 +399,25 @@ And at last we see how you can describe the view for your documents.\\
 show : {
 		row : [
 			{
-				label: 'etichetta riga1',
+				label: 'label row1',
 				name: 'nome1_db',
 				type: 'String',
-				transformation: 'function nome(val) {	
-					return val+" junior";				
+				transformation: 'function nome(val) {	\
+					return val+" junior";				\
 				}'
 			},
 			{	
-				label: 'etichetta riga2',
+				label: 'label row2',
 				name: 'nome2_db',
 				type: 'String'
 			},
 			{	
-				label: 'etichetta riga3',
+				label: 'label row3',
 				name: 'nome3_db',
 				type: 'String'
 			},
 			{	
-				label: 'etichetta riga4',
+				label: 'label row4',
 				name: 'nome3_db',
 				type: 'String'
 			},
@@ -419,14 +428,14 @@ show : {
 
 
 The keyword show starts the document section of the DSL file.\\
-The show sections offers the same functionality available on the index section, so there's nothing we haven't already seen.
+The show sections offers the same functionality available on the index section, so there is nothing we haven't already seen.
 
 
 \section{Commands and options}
 
 \subsection{Commands}
 \label{commands}
-The only command available on MaaPerture for now is create, which is the command used to create a new project.
+The only command available on MaaP for now is create, which is the command used to create a new project.
 
 \subsection{Options}
 \label{options}
@@ -434,9 +443,23 @@ The following options are available:
 \begin{itemize}
 \item -h, --help    :              output usage information
 \item -V, --version  :             output the version number
-\item -N, --name [project\_ name] :  specify the project's name
-\item -O, --output [output\_ path] : specify the output path ( default is "./" )
+\item -N, --name [project\_name] :  specify the project's name
+\item -O, --output [output\_path] : specify the output path ( default is "./" )
 \end{itemize}
+
+\section{Issue and bug reporting}
+In the unlikely event that you have a problem with MaaP or find a bug, you are more than welcome to report it using the issue service of our repository at
+\begin{center}
+\textit{https://github.com/ApertureSoftware/MaaP
+
+\end{center}}
+
+We are also open to suggestion, so if you would like a new features feel free to notify us.
+
+
+
+
+
 
 %FINE DOCUMENTO NON CANCELLARE
 \end{document}

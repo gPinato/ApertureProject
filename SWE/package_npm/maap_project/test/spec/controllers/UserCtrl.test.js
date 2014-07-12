@@ -11,29 +11,28 @@
 
 ddescribe('UsersCtrl - Mattia Version', function () {
 
-	var scope, location, fakeDataService, fakeEditService, routeParams, UsersCtrl, deferred;
-
-	beforeEach(function() {
+	var scope, location, fakeDataService, fakeEditService, routeParams, UsersCtrl;
+    var getDeferred;
+    var data={label:["a","b"]};
+    beforeEach(function() {
 		module('maaperture');
 	});
 
-	beforeEach(angular.mock.inject(function($rootScope, $location, $routeParams, $controller, $q) {
+	beforeEach(angular.mock.inject(function( $rootScope, $location, $routeParams, $controller, $q) {
 		scope = $rootScope.$new();
 		location = $location;
 		routeParams = $routeParams;
 		fakeDataService = {
-			query: function() {
-				deferred = $q.defer();
-				deferred.resolve({'label': ['one', 'two', 'three'], 'data': {'cosa': 'cose', 'roba': 'robe'}});
-				return deferred.promise;
-			}
+			query: function() {return $http().then();}
 		};
-		spyOn(fakeDataService, 'query').andCallThrough();
-		fakeEditService = jasmine.createSpy('UserEditService');
-		fakeEditService.query = function() {
-			return {'roba': 'altra roba'};
-		};
-		UsersCtrl = $controller('UsersCtrl', {
+
+        getDeferred = $q.defer();
+        getDeferred.resolve(data);
+
+        spyOn(fakeDataService, 'query').andReturn(getDeferred);
+
+
+        UsersCtrl = $controller('UsersCtrl', {
 			'$scope': scope,
 			'$location': location,
 			'UserDataService': fakeDataService,
@@ -42,13 +41,25 @@ ddescribe('UsersCtrl - Mattia Version', function () {
 		});
 	}));
 
-	it('should initialise the scope properly', function() {
-		expect(scope).toBeDefined();
-	});
+    it('should call stuff', function () {
+        expect(fakeDataService.query).toHaveBeenCalled();
+    });
 
-	it('should fetch the data from the fake service', function() {
-		scope.$apply();
-		expect(fakeDataService.query).toHaveBeenCalled();
-	});
+    it('should set some data on the scope when successful', function () {
+        scope.loadData();
+        scope.$apply();
+        scope.$digest();
+        expect(fakeDataService.get).toHaveBeenCalled();
+        expect(scope.data).toEqual(getResponse.data);
+    });
+
+    it('should do something else when unsuccessful', function () {
+        getDeferred.reject(data);
+        scope.loadData();
+        scope.$apply();
+        expect(fakeDataService.get).toHaveBeenCalled();
+        expect(scope.error).toEqual('ERROR');
+    });
+
 
 });
