@@ -23,7 +23,7 @@ angular.module('maaperture').controller('ProfileEditCtrl', function ($scope, $lo
     $scope.admin = false;
     //Funzione per richiedere un profilo al server.
     ProfileEditService.query({
-           },
+           }).$promise.then(
         function success(data) {
             $scope.labels = data.label;
             $scope.data = data.data;
@@ -52,7 +52,7 @@ angular.module('maaperture').controller('ProfileEditCtrl', function ($scope, $lo
         //Trasmette al server il nuovo json
         ProfileEditService.update({
             },
-            json_data,
+            json_data).$promise.then(
             function success() {
                 $location.path('/profile');
             },
@@ -68,7 +68,7 @@ angular.module('maaperture').controller('ProfileEditCtrl', function ($scope, $lo
     $scope.delete_document = function () {
         ProfileEditService.remove({
 
-            },
+            }).$promise.then(
 
             function success() {
                 $location.path('/');

@@ -21,7 +21,7 @@ angular.module('maaperture').controller('NavBarCtrl', function ($scope,$cookieSt
 
     //Funzione per richiedere al server la lista di collection presenti.
 
-    CollectionListService.get(
+    CollectionListService.get().$promise.then(
         function success(data) {
             $scope.labels = data.labels;
             $scope.values = data.data;
@@ -31,7 +31,7 @@ angular.module('maaperture').controller('NavBarCtrl', function ($scope,$cookieSt
     $scope.logout = function () {
         $location.path('/login');
 		$route.reload();
-        LogoutService.logout(),
+        LogoutService.logout().$promise.then(
             function success(response) {
 				$cookieStore.remove("loggedIn");
 				$cookieStore.remove("isAdmin");
@@ -42,7 +42,7 @@ angular.module('maaperture').controller('NavBarCtrl', function ($scope,$cookieSt
 				alert("I dunno why, but the logout failed :/");
 				$location.path('/');
 				$route.reload();
-            };
+            });
     };
 
 

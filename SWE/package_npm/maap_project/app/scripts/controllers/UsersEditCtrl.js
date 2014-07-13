@@ -28,7 +28,7 @@ angular.module('maaperture').controller('UsersEditCtrl', function ($scope, $loca
     //Funzione per richiedere un documento al server.
     //Passa come parametri la collection e il documento da ricevere
     UserEditService.query({
-            user_id: $routeParams.user_id },
+            user_id: $routeParams.user_id }).$promise.then(
         function success(data) {
             $scope.labels = data.label;
             $scope.data = data.data;
@@ -57,7 +57,7 @@ angular.module('maaperture').controller('UsersEditCtrl', function ($scope, $loca
         UserEditService.update({
                 user_id: $scope.current_document
             },
-            json_data,
+            json_data).$promise.then(
             function success() {
                 $location.path('/users/' + $scope.current_document);
             },
@@ -71,7 +71,7 @@ angular.module('maaperture').controller('UsersEditCtrl', function ($scope, $loca
     $scope.delete_document = function () {
         UserEditService.remove({
                 user_id: $scope.current_document
-            },
+            }).$promise.then(
 
             function success() {
                 $location.path('/users/');

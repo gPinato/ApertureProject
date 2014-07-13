@@ -39,7 +39,7 @@ angular.module('maaperture').controller('IndexCtrl', function ($scope, $route, $
 
         IndexService.query({
 
-            }, function success(response) {
+            }).$promise.then( function success(response) {
                 $scope.labels = response[0];
                 $scope.data = response[1];
                 //$scope.pages = response[2].pages;
@@ -101,7 +101,7 @@ angular.module('maaperture').controller('IndexCtrl', function ($scope, $route, $
         IndexService.remove({
                 index_name: index._id,
 				col_name: index.data.collection
-            },
+            }).$promise.then(
 
             function success() {
                 $location.path('/indexes');

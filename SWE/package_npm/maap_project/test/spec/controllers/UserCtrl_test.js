@@ -38,11 +38,13 @@ describe('UsersCtrl', function () {
         $httpBackend.whenGET('http://localhost:9000/api/users/' + routeParams.user_id).respond(200, data);
 
         // When
-        scope.loadData();
+        //scope.loadData();
         $httpBackend.flush();
 
         // Then
         expect(scope.data).toEqual(data.data);
+        expect(scope.labels).toEqual(data.label);
+
     });
 
 });

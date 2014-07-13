@@ -25,7 +25,7 @@ angular.module('maaperture').controller('PwdRecoveryCtrl', function ($scope,$rou
     //Richiede al server di validare le credenziali inserite.
     $scope.recover = function () {
         RecoveryService.recover(
-            {}, $scope.credentials,
+            {}, $scope.credentials).$promise.then(
             function success(data, status) {
 				alert("password has been sent!");
                 $location.path('/');
