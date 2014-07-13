@@ -11,63 +11,38 @@
 
 describe('UsersCtrl', function () {
 
-    beforeEach(angular.mock.module('maaperture'));
 
-    var MainCtrl,
-        routeParams,
-        scope,
-        $httpBackend,
-        mockUserResource;
+    var scope, routeParams, UsersCtrl;
+    var $httpBackend;
 
-    beforeEach(function () {
-        angular.mock.inject(function ($injector, $controller, $rootScope) {
-            $httpBackend = $injector.get('$httpBackend');
-            mockUserResource = $injector.get('UserDataService');
-            scope = $rootScope.$new();
-        })
-    });
+    var data = { label: [ 'Email', 'Level' ],
+        data: { email: 'bb@bb.com', level: 'administrator' } };
 
+    beforeEach(module('maaperture', 'services', 'ngResource', 'ngRoute'));
 
-
-    beforeEach(inject(function ($controller, $rootScope) {
+    beforeEach(angular.mock.inject(function ($rootScope, $routeParams, $controller, _$httpBackend_) {
         scope = $rootScope.$new();
-        routeParams ={};
-        routeParams.user_id=0;
+        routeParams = $routeParams;
+        $httpBackend = _$httpBackend_;
 
-        MainCtrl = $controller('UsersCtrl', {
-            $scope: scope,
-            $routeParams:routeParams,
-            UserDataService:mockUserResource
+        routeParams.user_id = 1;
+
+        UsersCtrl = $controller('UsersCtrl', {
+            '$scope': scope,
+            '$routeParams': routeParams
         });
-
-
     }));
 
+    it('should set some data on the scope when successful', function () {
+        // Given
+        $httpBackend.whenGET('http://localhost:9000/api/users/' + routeParams.user_id).respond(200, data);
 
-    describe('get the right list', function () {
-        it('should initialize data correctly', function () {
-            expect(scope.original_data.length).toBe(0);
-            expect(scope.original_keys.length).toBe(0);
-            expect(scope.current_document).toBe(0);
+        // When
+        scope.loadData();
+        $httpBackend.flush();
 
-        });
-
-    });
-
-    describe('get the right list', function () {
-        it('should call getUser with username', inject(function () {
-            $httpBackend.expectGET('http://localhost:9000/api/users/:user_id')
-                .respond({labels:['a','b','c'],
-                    values: [1,2,3]});
-
-            var result = mockUserResource.get();
-
-            $httpBackend.flush();
-
-            expect(result.labels[0]).toBe('a');
-            expect(result.values[1]).toBe(2);
-        }));
-
+        // Then
+        expect(scope.data).toEqual(data.data);
     });
 
 });

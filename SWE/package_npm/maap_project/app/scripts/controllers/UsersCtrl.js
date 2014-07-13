@@ -26,8 +26,9 @@ angular.module('maaperture').controller('UsersCtrl', function ($scope, $location
 
     //Funzione per richiedere un documento al server.
     //Passa come parametri la collection e il documento da ricevere
+    $scope.loadData = function(){
     UserDataService.query({
-            user_id: $routeParams.user_id },
+            user_id: $routeParams.user_id }).$promise.then(
         function success(data) {
             $scope.labels = data.label;
             $scope.data = data.data;
@@ -41,7 +42,7 @@ angular.module('maaperture').controller('UsersCtrl', function ($scope, $location
             $location.path("/404");
 
         }
-    );
+    )};
 
 
 
