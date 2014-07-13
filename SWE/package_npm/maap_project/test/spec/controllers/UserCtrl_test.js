@@ -20,16 +20,16 @@ describe('UsersCtrl', function () {
 
     beforeEach(module('maaperture', 'services', 'ngResource', 'ngRoute'));
 
-    beforeEach(angular.mock.inject(function ($rootScope, $routeParams, $controller, _$httpBackend_) {
+    beforeEach(angular.mock.inject(function ($rootScope, $routeParams,$location, $controller, _$httpBackend_) {
         scope = $rootScope.$new();
         routeParams = $routeParams;
         $httpBackend = _$httpBackend_;
-
-        routeParams.user_id = 1;
+        routeParams.user_id = 1
 
         UsersCtrl = $controller('UsersCtrl', {
             '$scope': scope,
-            '$routeParams': routeParams
+            '$routeParams': routeParams,
+            'location': $location
         });
     }));
 
@@ -40,11 +40,21 @@ describe('UsersCtrl', function () {
         // When
         //scope.loadData();
         $httpBackend.flush();
-
         // Then
         expect(scope.data).toEqual(data.data);
         expect(scope.labels).toEqual(data.label);
+        expect(scope.original_keys).toEqual(["email","level"]);
+        expect(scope.original_data).toEqual(['bb@bb.com',"administrator"]);
 
     });
 
+    it('should display an error when not successful', function () {
+        // Given
+        $httpBackend.whenGET('http://localhost:9000/api/users/' + routeParams.user_id).respond(400);
+
+        // When
+        //scope.loadData();
+        $httpBackend.flush();
+        // Then
+    });
 });
