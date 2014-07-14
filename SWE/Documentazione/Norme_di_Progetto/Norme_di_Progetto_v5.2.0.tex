@@ -3,7 +3,7 @@
 
 \newcommand{\Versione}{\versioneNormeDiProgetto{}}	%Versione Finale
 \newcommand{\Data}{2013-11-20}						%Data di creazione
-\newcommand{\DataUltimaModifica}{2014-04-17}
+\newcommand{\DataUltimaModifica}{2014-07-xx}
 \newcommand{\TipoDocumento}{Norme di Progetto}		%tipo documento
 
 %includo il file header.tex (logo grande in prima pagina piu qualche altra regola)
@@ -48,6 +48,13 @@ Diario delle modifiche
 \textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Modifiche effettuate}\\
 
 %aggiungere qui una midrule per aggiungere una nuova riga alla tabella
+
+\midrule
+5.2.0 & 2014-07-xx & (RE) & Approvazione documento.\\
+\midrule
+5.1.0 & 2014-07-xx  & (VR) & Verifica documento.\\
+\midrule
+5.0.1 & 2014-07-xx & (AM) & Effettuate correzioni segnalate dal Committente.\\
 
 \midrule
 4.2.0 & 2014-04-17 & Mattia Sorgato (RE) & Approvazione documento.\\
@@ -118,6 +125,78 @@ Questo documento è volto a definire le norme che dovranno essere osservate da t
 \label{1.2}
 \Prodotto{}
 
+\subsection{Ruoli di Progetto}
+
+Per la piena riuscita del progetto è indispensabile distinguere i vari ruoli che concorrono alla creazione del prodotto finale e le loro diverse responsabilità e competenze.
+Ogni ruolo avrà una specifica area di competenza, degli specifici compiti, oneri e particolari autorizzazioni. Ogni componente dovrà limitarsi ai compiti ad esso assegnati e, nel caso qualcosa esuli dal suo campo di pertinenza, lo stesso dovrà rivolgersi al collega occupante il ruolo corrispondente.\\
+Tutti i membri, a rotazione, dovranno occupare come minimo una volta ciascuno dei ruoli descritti sottostante. Per fare in modo che la rotazione dei ruoli non causi problematiche o conflitti, è necessario che ciascuna attività venga pianificata e le persone interessate devono attenersi agli incarichi a loro assegnati.\\
+I ruoli vengono assegnati in base al carico di lavoro che le attivit\`{a} richiedono (per essere svolte entro le scadenze fissate) e anche in base al budget massimo prefissato. A causa di quanto descritto in precedenza il gruppo ha deciso di assegnare più ruoli per persone, garantendo sempre che non vadano in conflitto tra di loro e che nella stessa giornata lavorativa una persona non svolge più ruoli contemporaneamente.
+Solo dopo aver garantito quanto scritto sopra, il Verificatore dovrà visionare il diario delle modifiche di ciascun documento per scovare incongruenze.\\
+Verrà di seguito fornita una descrizione dei ruoli di progetto, accompagnata dalle responsabilità e le modalità operative alle quali le persone incaricate dovranno attenersi.
+
+\subsubsection{Responsabile di Progetto} %2.1
+
+Il Responsabile di Progetto incentra su di sé le responsabilità di scelta ed approvazione dei lavori. Ricopre il ruolo di rappresentante del gruppo nei contatti con l'esterno e durante la presentazione dei lavori.\\
+Le sue competenze principali comprendono:
+\begin{itemize}
+\item Pianificazione, coordinamento e controllo delle attivit\`{a};
+\item Gestione e controllo delle risorse;
+\item Approvazione delle analisi di gestione e rischio;
+\item Approvazione dei documenti;
+\item Comunicazioni con i Committenti/Proponenti.
+\end{itemize}
+Il Responsabile ha il compito di assicurarsi che le attivit\`{a} di Verifica vengano svolte sistematicamente seguendo le \emph{Norme\_di\_Progetto\_v3.2.0}. Deve al contempo accertarsi che vengano rispettati i ruoli e le competenze assegnate nel \emph{Piano\_di\_Progetto\_v3.2.0} e che non vi siano conflitti di interesse tra redattori e Verificatori. A tale proposito, sarà sua responsabilità stilare un \emph{Piano di Progetto} in cui ogni redattore di uno specifico documento o codice potrà solamente verificare prodotti altrui.\\
+Ha inoltre l'onere di gestire la creazione e l'assegnazione dei ticket di pianificazione e di assegnare ad un membro del gruppo il ruolo di Responsabile di quest'ultimo, nel caso riguardi una sotto-attivit\`{a}.\\
+Redige il Piano di Progetto e collabora alla stesura del Piano di Qualifica, per quanto riguarda gli ambiti di pianificazione delle attivit\`{a}.
+
+\subsubsection{Amministratore}
+
+L'\gloss{Amministratore} è il responsabile del controllo, dell'efficienza e dell'operatività dell'ambiente di lavoro e degli strumenti per la condivisone e la sincronizzazione.\\
+Egli deve garantire:
+\begin{itemize}
+\item L'individuazione e la gestione di strumenti per automatizzare quanto più possibile processi o attivit\`{a};
+\item L'individuazione e la gestione di strumenti per il controllo dei processi e delle risorse;
+\item L'individuazione e la gestione di strumenti e strategie per il controllo della qualità;
+\item Gestione del versionamento.
+\end{itemize}
+Redige la sezione delle Norme di Progetto, nei paragrafi e sezioni relativi agli strumenti utilizzati a supporto dei processi. Inoltre redige la sezione del Piano di Qualifica inerente agli strumenti di Verifica.
+
+\subsubsection{Analista}
+
+L'Analista è il responsabile delle attivit\`{a} di Analisi all'interno del progetto. Il suoi compiti comprendono:
+\begin{itemize}
+\item La piena comprensione del problema e il suo dominio;
+\item La stesura di una specifica precisa, completa e comprensibile dal Proponente, dal Committente e dal Progettista.
+\end{itemize}
+L'Analista redige il documento di Studio di Fattibilità, successivamente l' Analisi dei Requisiti e in parte il Piano di Qualifica.
+
+\subsubsection{Progettista}
+
+Il progettista è colui il quale ricerca e delinea la giusta struttura del sistema per soddisfare il problema posto dal Committente e dal Proponente.\\
+I suoi compiti principali sono:
+\begin{itemize}
+\item Disegnare una soluzione fattibile e adatta a soddisfare i requisiti delineati dagli Analisti;
+\item Implementare soluzioni di progettazione ottimali, ottimizzate e collaudate;
+\item Utilizzare tecnologie e standard che rendano facile la realizzazione e la manutenzione del prodotto.
+\end{itemize}
+Redige la Specifica Tecnica e la Definizione di Prodotto, oltre a partecipare alla stesura delle metriche di verifica della progettazione del Piano di Qualifica.
+
+\subsubsection{Verificatore}
+
+Il Verificatore è responsabile delle attivit\`{a} di Verifica. Ha il compito di assicurare che i documenti e il codice siano conformi alle norme stabilite nel documento \emph{Norme\_di\_Progetto\_v3.2.0}. Inoltre deve controllare che lo stato di ciclo di vita sia corrispondente a quello attuale.
+Redige la sezione del Piano di Qualifica che illustra gli esiti delle prove e delle verifiche effettuate.
+
+\subsubsection{Programmatore}
+
+Il \gloss{Programmatore} è responsabile delle attivit\`{a} di Codifica e delle componenti di ausilio
+necessarie per l'esecuzione delle prove di Verifica e Validazione. Le responsabilità di tale ruolo sono:
+\begin{itemize}
+\item Implementare rigorosamente le soluzioni descritte dal Progettista per la Realizzazione del progetto;
+\item Scrivere codice e la sua relativa documentazione affinché entrambi rispettino gli standard stabiliti per la loro scrittura;
+\item Implementare i test sul codice scritto, necessari per prove di Verifica e Validazione.
+\end{itemize}
+Redige il Manuale Utente e tutta la documentazione relativa al codice.
+
 \subsection{Glossario}%1.2
 \label{1.3}
 \Glossario{}
@@ -136,179 +215,6 @@ Ingegneria dei requisiti: \url{http://www.math.unipd.it/~tullio/IS-1/2013/};
 \item \grassetto{Piano di Progetto}: \emph{Piano\_di\_Progetto\_v4.2.0}.
 \end{itemize}
 
-\newpage
-\section{Collaborazione}
-\label{3.0}
-
-\subsection{Comunicazioni interne}
-\label{3.2}
-Le comunicazioni interne sono divise in comunicazioni formali e informali, in base alla natura della comunicazione stessa.
-
-\subsubsection{Comunicazioni interne formali}
-Le comunicazioni interne formali appartengono all'area di organizzazione generale del gruppo. A questa categoria appartengono tutti gli avvisi di impegni collettivi del team, la segnalazione di imprevisti organizzativi o la convocazione di riunioni.
-
-\paragraph{Mailing List} \hfill \\
-È stata creata una mailing list all'indirizzo \textbf{\url{aperture-team@googlegroups.com}}.
-Ogni \gloss{email} inviata a tale indirizzo verrà inoltrata alla email personale di ogni componente nel gruppo.
-La mailing list è collegata ad un gruppo su \gloss{Google} Groups, che permette di velocizzare le comunicazioni implementando una \gloss{simil-chat} tramite email distribuite; inoltre mantiene uno storico di qualsiasi comunicazione. Va usato quindi come strumento per discussioni e comunicazioni ufficiali.
-Una mail usata per la comunicazione interna deve avere la seguente struttura:
-\begin{itemize}
-\item \grassetto{Destinatario:} l'unico indirizzo possibile è aperture-team@googlegroups.com;
-\item \grassetto{Mittente:} è l'indirizzo email personale di chi scrive il messaggio;
-\item \grassetto{Oggetto:} deve essere una sintesi del contenuto della email;
-\item \grassetto{Corpo:} contiene una descrizione completa di tutte le informazioni che si vogliono comunicare; esse devono essere facilmente capibili e possibilmente strutturate in maniera che siano leggibili; inoltre le frasi devono essere corte e contenere termini di linguaggio comune;
-\item \grassetto{Allegati:} si possono usare, qualora se ne ritenga necessario, degli allegati per completare l'informazione che si vuole spedire. Un esempio utile potrebbe essere quello di allegare un verbale o un resoconto di incontri con il Proponente  o con il Committente.
-\end{itemize}
-
-
-\subsubsection{Comunicazioni interne informali}
-Le comunicazioni riguardanti dubbi o chiarimenti marginali o comunque non inerenti all'organizzazione del gruppo, vengono definiti informali. Per loro natura, queste comunicazioni devono essere veloci e non complesse, quindi abbiamo deciso di utilizzare strumenti immediati di comunicazione, quali le \gloss{chat}. In questo caso, un membro del gruppo esprime il dubbio come messaggio istantaneo, il quale sarà visibile da ogni altro componente.
-
-\paragraph{\gloss{Skype}} \hfill \\
-Per facilitare le comunicazioni istantanee è stata creata su Skype una chat di gruppo dove sono presenti tutti i membri del team. Tale chat deve essere usata solo per conversazioni non ufficiali o per discussioni non importanti come lo scambio di articoli, consigli o comunicazioni non rilevanti.
-
-\paragraph{Gruppo \gloss{Facebook}} \hfill \\
-Data la grande diffusione di questo \gloss{social network} e l'aderenza di tutti i membri del gruppo ad esso, abbiamo deciso di creare un gruppo apposito su questa piattaforma. Facebook fornisce un accesso ancora più immediato di Skype, data la sua diffusione su dispositivi mobile.
-
-\subsection{Comunicazioni esterne}
-\subsubsection{Email}
-La email ufficiale del gruppo è \textbf{\url{ApertureSWE@gmail.com}}.\\
-Tale email può essere usata soltanto dal Responsabile di Progetto e verrà utilizzata per tutte le comunicazioni che il gruppo terrà con l'\gloss{ambiente} esterno.
-Una mail usata per la comunicazione interna deve avere la seguente struttura:
-\begin{itemize}
-\item \grassetto{Destinatario:} l'indirizzo email può essere quello del Proponente oppure quello del Committente, che può essere o il Prof. Tullio Vardanega o il Prof. Riccardo Cardin;
-\item \grassetto{Mittente:} l'unico indirizzo possibile è ApertureSWE@gmail.com e deve essere usato solo dal Responsabile di Progetto;
-\item \grassetto{Oggetto:} deve essere una sintesi del contenuto della email;
-\item \grassetto{Corpo:} contiene una descrizione completa di tutte le informazioni che si vogliono comunicare; esse devono essere facilmente capibili e possibilmente strutturate in maniera che siano leggibili; inoltre le frasi devono essere corte e contenere termini specifici dell'ambiente \gloss{business} inerenti al progetto;
-\item \grassetto{Allegati:} si possono, qualora se ne ritenga necessario, usare degli allegati, per completare l'informazione che si vuole spedire. Un esempio utile potrebbe essere quello di allegare un verbale o un resoconto di incontri con il Proponente  o con il Committente.
-\end{itemize}
-
-
-\subsection{Riunioni}
-
-
-\subsubsection{Richiesta}
-
-Ogni membro del team può richiedere che venga organizzata una riunione al Responsabile che, una volta verificata la motivazione della richiesta, accoglie o meno la stessa.
-Il Responsabile di Progetto ha la facoltà di indire riunioni qualora sentisse la necessità di farlo.
-La riunione deve essere segnalata sul calendario di gruppo con almeno due giorni di anticipo e non deve andare a sovrapporsi con impegni precedenti di altri componenti, a meno che la loro presenza non possa essere esclusa. Deve inoltre essere inviata una email di promemoria a tutti i membri del gruppo indicante giorno, ora e motivazione della riunione.
-
-\subsubsection{Svolgimento}
-
-Alle riunioni è gradita, ma non richiesta, la partecipazione di tutti i membri del gruppo. È giustificata l'assenza nel caso in cui la riunione riguardi temi non inerenti al ruolo di progetto che si sta ricoprendo o nel caso di impegni validi, giustificabili e improrogabili.
-
-\subsubsection{Verbale}
-
-Ad ogni riunione verrà eletto un segretario che avrà il compito di annotare gli argomenti di discussione e le decisioni prese durante la stessa.
-Dovrà inoltre redigere un verbale che verrà ufficialmente raccolto e archiviato come documentazione interna entro tre giorni dalla data della riunione.
-La struttura del Verbale deve contenere i seguenti elementi:
-\begin{itemize}
-\item Data;
-\item Luogo;
-\item Ora;
-\item Durata;
-\item Partecipanti interni;
-\item Partecipanti esterni;
-\item Motivazione della riunione/incontro;
-\item Argomenti trattati.
-\end{itemize}
-
-\subsection{Comunicazioni con i Committenti e Proponenti}
-
-\subsubsection{Prerequisiti}
-
-Prima di richiedere un colloquio personale con il Proponente e/o Committente il team deve preparare un documento che riassume i punti che verranno discussi contenente argomenti, dubbi e domande da porre.
-
-\subsubsection{Richiesta di colloquio}
-
-I colloqui con i committenti di progetto possono essere richiesti dal Responsabile mediante la email ufficiale del team. Tutti i membri devono essere avvisati prima di richiedere un incontro con il Committente.
-
-\subsubsection{Svolgimento del colloquio}
-Al fine di ottimizzare l'estrapolazione delle informazioni derivanti dal colloquio, durante tutto lo svolgimento dello stesso dovrà essere registrata una traccia audio come supporto alla stesura del verbale.
-
-\subsubsection{Verbale}
-
-Alla fine del colloquio verrà redatto un verbale, vedi sezione 2.3.3 di questo documento, che riassume gli argomenti trattati, le conclusioni, nonché le strategie che si sono delineate in concordanza col Committente/Proponente.
-
-
-
-\newpage
-
-
-
-
-\newpage
-\section{Ruoli di progetto}%2.0
-
-Per la piena riuscita del progetto è indispensabile distinguere i vari ruoli che concorrono alla creazione del prodotto finale e le loro diverse responsabilità e competenze.
-Ogni ruolo avrà una specifica area di competenza, degli specifici compiti, oneri e particolari autorizzazioni. Ogni componente dovrà limitarsi ai compiti ad esso assegnati e, nel caso qualcosa esuli dal suo campo di pertinenza, lo stesso dovrà rivolgersi al collega occupante il ruolo corrispondente.\\
-Tutti i membri, a rotazione, dovranno occupare come minimo una volta ciascuno dei ruoli descritti sottostante. Per fare in modo che la rotazione dei ruoli non causi problematiche o conflitti, è necessario che ciascuna attività venga pianificata e le persone interessate devono attenersi agli incarichi a loro assegnati.\\
-I ruoli vengono assegnati in base al carico di lavoro che le attivit\`{a} richiedono (per essere svolte entro le scadenze fissate) e anche in base al budget massimo prefissato. A causa di quanto descritto in precedenza il gruppo ha deciso di assegnare più ruoli per persone, garantendo sempre che non vadano in conflitto tra di loro e che nella stessa giornata lavorativa una persona non svolge più ruoli contemporaneamente.
-Solo dopo aver garantito quanto scritto sopra, il Verificatore dovrà visionare il diario delle modifiche di ciascun documento per scovare incongruenze.\\
-Verrà di seguito fornita una descrizione dei ruoli di progetto, accompagnata dalle responsabilità e le modalità operative alle quali le persone incaricate dovranno attenersi.
-
-\subsection{Responsabile di Progetto} %2.1
-
-Il Responsabile di Progetto incentra su di sé le responsabilità di scelta ed approvazione dei lavori. Ricopre il ruolo di rappresentante del gruppo nei contatti con l'esterno e durante la presentazione dei lavori.\\
-Le sue competenze principali comprendono:
-\begin{itemize}
-\item Pianificazione, coordinamento e controllo delle attivit\`{a};
-\item Gestione e controllo delle risorse;
-\item Approvazione delle analisi di gestione e rischio;
-\item Approvazione dei documenti;
-\item Comunicazioni con i Committenti/Proponenti.
-\end{itemize}
-Il Responsabile ha il compito di assicurarsi che le attivit\`{a} di Verifica vengano svolte sistematicamente seguendo le \emph{Norme\_di\_Progetto\_v3.2.0}. Deve al contempo accertarsi che vengano rispettati i ruoli e le competenze assegnate nel \emph{Piano\_di\_Progetto\_v3.2.0} e che non vi siano conflitti di interesse tra redattori e Verificatori. A tale proposito, sarà sua responsabilità stilare un \emph{Piano di Progetto} in cui ogni redattore di uno specifico documento o codice potrà solamente verificare prodotti altrui.\\
-Ha inoltre l'onere di gestire la creazione e l'assegnazione dei ticket di pianificazione e di assegnare ad un membro del gruppo il ruolo di Responsabile di quest'ultimo, nel caso riguardi una sotto-attivit\`{a}.\\
-Redige il Piano di Progetto e collabora alla stesura del Piano di Qualifica, per quanto riguarda gli ambiti di pianificazione delle attivit\`{a}.
-
-\subsection{Amministratore}
-
-L'\gloss{Amministratore} è il responsabile del controllo, dell'efficienza e dell'operatività dell'ambiente di lavoro e degli strumenti per la condivisone e la sincronizzazione.\\
-Egli deve garantire:
-\begin{itemize}
-\item L'individuazione e la gestione di strumenti per automatizzare quanto più possibile processi o attivit\`{a};
-\item L'individuazione e la gestione di strumenti per il controllo dei processi e delle risorse;
-\item L'individuazione e la gestione di strumenti e strategie per il controllo della qualità;
-\item Gestione del versionamento.
-\end{itemize}
-Redige la sezione delle Norme di Progetto, nei paragrafi e sezioni relativi agli strumenti utilizzati a supporto dei processi. Inoltre redige la sezione del Piano di Qualifica inerente agli strumenti di Verifica.
-
-\subsection{Analista}
-
-L'Analista è il responsabile delle attivit\`{a} di Analisi all'interno del progetto. Il suoi compiti comprendono:
-\begin{itemize}
-\item La piena comprensione del problema e il suo dominio;
-\item La stesura di una specifica precisa, completa e comprensibile dal Proponente, dal Committente e dal Progettista.
-\end{itemize}
-L'Analista redige il documento di Studio di Fattibilità, successivamente l' Analisi dei Requisiti e in parte il Piano di Qualifica.
-
-\subsection{Progettista}
-
-Il progettista è colui il quale ricerca e delinea la giusta struttura del sistema per soddisfare il problema posto dal Committente e dal Proponente.\\
-I suoi compiti principali sono:
-\begin{itemize}
-\item Disegnare una soluzione fattibile e adatta a soddisfare i requisiti delineati dagli Analisti;
-\item Implementare soluzioni di progettazione ottimali, ottimizzate e collaudate;
-\item Utilizzare tecnologie e standard che rendano facile la realizzazione e la manutenzione del prodotto.
-\end{itemize}
-Redige la Specifica Tecnica e la Definizione di Prodotto, oltre a partecipare alla stesura delle metriche di verifica della progettazione del Piano di Qualifica.
-
-\subsection{Verificatore}
-
-Il Verificatore è responsabile delle attivit\`{a} di Verifica. Ha il compito di assicurare che i documenti e il codice siano conformi alle norme stabilite nel documento \emph{Norme\_di\_Progetto\_v3.2.0}. Inoltre deve controllare che lo stato di ciclo di vita sia corrispondente a quello attuale.
-Redige la sezione del Piano di Qualifica che illustra gli esiti delle prove e delle verifiche effettuate.
-
-\subsection{Programmatore}
-
-Il \gloss{Programmatore} è responsabile delle attivit\`{a} di Codifica e delle componenti di ausilio
-necessarie per l'esecuzione delle prove di Verifica e Validazione. Le responsabilità di tale ruolo sono:
-\begin{itemize}
-\item Implementare rigorosamente le soluzioni descritte dal Progettista per la Realizzazione del progetto;
-\item Scrivere codice e la sua relativa documentazione affinché entrambi rispettino gli standard stabiliti per la loro scrittura;
-\item Implementare i test sul codice scritto, necessari per prove di Verifica e Validazione.
-\end{itemize}
-Redige il Manuale Utente e tutta la documentazione relativa al codice.
 
 \newpage
 \section{Processi}
@@ -928,6 +834,84 @@ Eclipse,Mocha.
 
 
 \section{Processi di supporto}
+
+\subsection{Comunicazioni}
+\subsubsection{Comunicazioni interne}
+Le comunicazioni interne sono divise in comunicazioni formali e informali, in base alla natura della comunicazione stessa. A questa categoria appartengono tutti gli avvisi di impegni collettivi del team, la segnalazione di
+imprevisti organizzativi o la convocazione di riunioni.
+\paragraph{Comunicazioni interne formali}
+Le comunicazioni interne formali appartengono all'area di organizzazione generale del gruppo. 
+\subparagraph{Procedure}
+Ogni \gloss{email} inviata a tale indirizzo, per segnalazioni di imprevisti o convocazioni di riunioni, verrà inoltrata alla email personale di ogni componente nel gruppo.
+\subparagraph{Strumenti}
+È stata creata una mailing list all'indirizzo \textbf{\url{aperture-team@googlegroups.com}}.
+La mailing list è collegata ad un gruppo su \gloss{Google} Groups, che permette di velocizzare le comunicazioni implementando una \gloss{simil-chat} tramite email distribuite; inoltre mantiene uno storico di qualsiasi comunicazione. Va usato quindi come strumento per discussioni e comunicazioni ufficiali.
+Una mail usata per la comunicazione interna deve avere la seguente struttura:
+\begin{itemize}
+\item \grassetto{Destinatario:} l'unico indirizzo possibile è aperture-team@googlegroups.com;
+\item \grassetto{Mittente:} è l'indirizzo email personale di chi scrive il messaggio;
+\item \grassetto{Oggetto:} deve essere una sintesi del contenuto della email;
+\item \grassetto{Corpo:} contiene una descrizione completa di tutte le informazioni che si vogliono comunicare; esse devono essere facilmente capibili e possibilmente strutturate in maniera che siano leggibili; inoltre le frasi devono essere corte e contenere termini di linguaggio comune;
+\item \grassetto{Allegati:} si possono usare, qualora se ne ritenga necessario, degli allegati per completare l'informazione che si vuole spedire. Un esempio utile potrebbe essere quello di allegare un verbale o un resoconto di incontri con il Proponente  o con il Committente.
+\end{itemize}
+
+\paragraph{Comunicazioni interne informali}
+Le comunicazioni riguardanti dubbi o chiarimenti marginali o comunque non inerenti all'organizzazione del gruppo, vengono definiti informali. Per loro natura, queste comunicazioni devono essere veloci e non complesse, quindi abbiamo deciso di utilizzare strumenti immediati di comunicazione, quali le \gloss{chat}.
+\subparagraph{Procedure}
+Un membro del gruppo esprime il dubbio come messaggio istantaneo, il quale sarà visibile da ogni altro componente.
+\subparagraph{Strumenti}
+\subparagraph{\gloss{Skype}} \hfill \\
+Per facilitare le comunicazioni istantanee è stata creata su Skype una chat di gruppo dove sono presenti tutti i membri del team. Tale chat deve essere usata solo per conversazioni non ufficiali o per discussioni non importanti come lo scambio di articoli, consigli o comunicazioni non rilevanti.
+
+\subparagraph{Gruppo \gloss{Facebook}} \hfill \\
+Data la grande diffusione di questo \gloss{social network} e l'aderenza di tutti i membri del gruppo ad esso, abbiamo deciso di creare un gruppo apposito su questa piattaforma. Facebook fornisce un accesso ancora più immediato di Skype, data la sua diffusione su dispositivi mobile.
+
+
+\subsubsection{Comunicazioni esterne}
+\paragraph{Procedure}
+L' email può essere usata soltanto dal Responsabile di Progetto e verrà utilizzata per tutte le comunicazioni che il gruppo terrà con l'\gloss{ambiente} esterno.
+\paragraph{Strumenti}
+La email ufficiale del gruppo è \textbf{\url{ApertureSWE@gmail.com}}.\\
+Una mail usata per la comunicazione interna deve avere la seguente struttura:
+\begin{itemize}
+\item \grassetto{Destinatario:} l'indirizzo email può essere quello del Proponente oppure quello del Committente, che può essere o il Prof. Tullio Vardanega o il Prof. Riccardo Cardin;
+\item \grassetto{Mittente:} l'unico indirizzo possibile è ApertureSWE@gmail.com e deve essere usato solo dal Responsabile di Progetto;
+\item \grassetto{Oggetto:} deve essere una sintesi del contenuto della email;
+\item \grassetto{Corpo:} contiene una descrizione completa di tutte le informazioni che si vogliono comunicare; esse devono essere facilmente capibili e possibilmente strutturate in maniera che siano leggibili; inoltre le frasi devono essere corte e contenere termini specifici dell'ambiente \gloss{business} inerenti al progetto;
+\item \grassetto{Allegati:} si possono, qualora se ne ritenga necessario, usare degli allegati, per completare l'informazione che si vuole spedire. Un esempio utile potrebbe essere quello di allegare un verbale o un resoconto di incontri con il Proponente  o con il Committente.
+\end{itemize}
+
+\subsubsection{Riunioni}
+Ogni membro del team può richiedere che venga organizzata una riunione al Responsabile che, una volta verificata la motivazione della richiesta, accoglie o meno la stessa.
+Il Responsabile di Progetto ha la facoltà di indire riunioni qualora sentisse la necessità di farlo.
+Alle riunioni è gradita, ma non richiesta, la partecipazione di tutti i membri del gruppo. È giustificata l'assenza nel caso in cui la riunione riguardi temi non inerenti al ruolo di progetto che si sta ricoprendo o nel caso di impegni validi, giustificabili e improrogabili.
+Ad ogni riunione verrà eletto un segretario che avrà il compito di annotare gli argomenti di discussione e le decisioni prese durante la stessa.
+Dovrà inoltre redigere un verbale che verrà ufficialmente raccolto e archiviato come documentazione interna entro tre giorni dalla data della riunione.
+La struttura del Verbale deve contenere i seguenti elementi:
+\begin{itemize}
+\item Data;
+\item Luogo;
+\item Ora;
+\item Durata;
+\item Partecipanti interni;
+\item Partecipanti esterni;
+\item Motivazione della riunione/incontro;
+\item Argomenti trattati.
+\end{itemize}
+\paragraph{Procedura}
+La riunione deve essere segnalata sul calendario di gruppo con almeno due giorni di anticipo e non deve andare a sovrapporsi con impegni precedenti di altri componenti, a meno che la loro presenza non possa essere esclusa. Deve inoltre essere inviata una email di promemoria a tutti i membri del gruppo indicante giorno, ora e motivazione della riunione.
+\paragraph{Strumenti}
+Google Calendar.
+
+\subsubsection{Comunicazioni con i Committenti e Proponenti}
+Prima di richiedere un colloquio personale con il Proponente e/o Committente il team deve preparare un documento che riassume i punti che verranno discussi contenente argomenti, dubbi e domande da porre.\\
+Alla fine del colloquio verrà redatto un verbale, vedi sezione 2.3.3 di questo documento, che riassume gli argomenti trattati, le conclusioni, nonché le strategie che si sono delineate in concordanza col Committente/Proponente.
+
+\paragraph{Procedura}
+I colloqui con i committenti di progetto possono essere richiesti dal Responsabile mediante la email ufficiale del team. Tutti i membri devono essere avvisati prima di richiedere un incontro con il Committente.
+
+\paragraph{Strumenti}
+Registratore audio.
 
 \subsection{Verifica}
 Questa attivit\`{a} comprende tutte i compiti volti a verificare che i processi precedentemente attuati non abbiano introdotto errori.

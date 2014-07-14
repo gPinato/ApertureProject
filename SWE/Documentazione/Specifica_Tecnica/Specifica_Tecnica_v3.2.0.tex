@@ -213,7 +213,7 @@ Si descriveranno i \gloss{package} e i componenti per poi dettagliare le singole
 L'architettura del framework segue un modello di architettura in stile Client-Server che prevede la suddivisione dell'applicazione in due parti: la parte client composta dall'\gloss{interfaccia utente} (Client) e la parte server composta dalla \gloss{business} logic (Controller) e alla gestione dei dati persistenti (ModelServer).\\
 La parte Client segue il design pattern \gloss{MVVM} utilizzato da AngularJS che gestisce la parte frontend del progetto, esso accede ai dati attraverso chiamate AJAX utilizzando le API fornite dal server.\\
 La parte Server utilizza Node.js ed il framework Express per gestire tutte le richieste \gloss{REST} del client. Grazie all'utilizzo di Mongoose, l'applicativo lato server può interagire con il database MongoDB, recuperare i dati necessari e rispondere al client tramite oggetti JSON opportuni.\\ L'utilizzo del middleware Passport permette di gestire l'autenticazione utente, ottenendo così un'architettura di tipo \gloss{RESTlike}.\\
-Un esempio di stack MEAN che rispecchia le funzionalità base del framework MaaP è il seguente:
+Un esempio di stack \gloss{MEAN}, acronimo di MongoDB Express AngularJs NodeJs, che rispecchia le funzionalità base del framework MaaP è il seguente:
 \immagine{./mean}{Esempio di stack MEAN}
 
 I seguenti diagrammi rappresentano l'architettura ad alto livello del framework, indicando i package, le classi e le relazioni che intercorrono tra queste.
@@ -225,7 +225,7 @@ Vengono inoltre presentati tutti i sotto-package così da facilitare la comprens
 
 \subsubsection{Classi}
 \immagine{./Diagrammi/GeneraleClassi}{Architettura generale del software}
-Nel precedente diagramma è presente l'architettura ad alto livello del software e vengono indicate le classi fondamentali per rappresentare le relazioni dell'architettura Client-server. I diagrammi di sequenza relativi allo scambio di segnali, lo scopo ed il contesto di utilizzo sono presenti nella sezione \ref{sequenza}.
+Nel precedente diagramma è presente l'architettura ad alto livello del software e vengono indicate le classi fondamentali per rappresentare le relazioni dell'architettura Client-server. I diagrammi di sequenza relativi allo scambio di segnali, lo scopo ed il contesto di utilizzo sono presenti nella sezione 6 del documento \emph{Definizione\_di\_Prodotto\versioneDefinizioneDiProdotto{}}.pdf.
 
 \newpage
 \section{Componenti e Classi}
