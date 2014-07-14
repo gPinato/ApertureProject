@@ -3,17 +3,16 @@
 <div class="col-md-3 col-xs-12 manual-aside" >
     <nav>
         <ul class="nav nav-pills nav-stacked span2">
-            <li><a scroll-to="Step1"> 1. Registrazione </a></li>
-            <li><a scroll-to="Step2"> 2. Autenticazione </a></li>
-            <li><a scroll-to="Step3"> 3. Logout </a> </li>
-            <li><a scroll-to="Step4"> 4. Recupero Password </a></li>
-            <li><a scroll-to="Step5"> 5. Accesso e modifica profilo personale </a> </li>
-            <li><a scroll-to="Step6"> 6. Visualizzazione Dashboard </a></li>
-            <li><a scroll-to="Step7"> 7. Apertura Collection Index </a></li>
-            <li><a scroll-to="Step8"> 8. Apertura della Show Page di un Document </a></li>
-            <li><a scroll-to="Step9"> 9. Visualizzazione Show Page attributi innestati </a></li>
-            <li><a scroll-to="Step10"> 10. Come riportare problemi e anomalie </a></li>
-            <li class="divider"><a href="" eat-click></a></li>
+            <li><a href="#Step1"> 1. Registrazione </a></li>
+            <li><a href="#Step2"> 2. Autenticazione </a></li>
+            <li><a href="#Step3"> 3. Logout </a> </li>
+            <li><a href="#Step4"> 4. Recupero Password </a></li>
+            <li><a href="#Step5"> 5. Accesso e modifica profilo personale </a> </li>
+            <li><a href="#Step6"> 6. Visualizzazione Dashboard </a></li>
+            <li><a href="#Step7"> 7. Apertura Collection Index </a></li>
+            <li><a href="#Step8"> 8. Apertura della Show Page di un Document </a></li>
+            <li><a href="#Step9"> 9. Come riportare problemi e anomalie </a></li>
+            <li class="divider"></li>
         </ul>
     </nav>
 </div>
@@ -25,17 +24,17 @@
             <h2>1. Registrazione </h2>
         </div>
         <p>
-            Il primo passo per poter utilizzare  MaaP è la registrazione. <br>
-            È possibile registrasi cliccando sul pulsante
+            Il primo passo per poter utilizzare  MaaP e' la registrazione. <br>
+            e' possibile registrasi cliccando sul pulsante
             <a href="/register">Become a member of the awesome MaaPerture community!</a> presente nella pagina di login. <br>
-             Per registrarsi è richiesto di inserire
+             Per registrarsi e' richiesto di inserire
         <ul>
             <li>
-                <strong>email:</strong> inserire l’indirizzo mail con il quale registrarsi.
+                email: inserire l’indirizzo mail con il quale registrarsi.
             </li>
-            <li><strong>password:</strong> inserire una password;</li>
-            <li><strong>password confirmation</strong> inserire nuovamente la password del punto precedente;</li>
-            <li><strong>Signup:</strong> Se il form contiene dati validi, la pressione del bottone "Signup" confermerà la registrazione</li>
+            <li>password: inserire una password;</li>
+            <li>password confirmation inserire nuovamente la password del punto precedente;</li>
+            <li>Signup: Se il form contiene dati validi, la pressione del bottone "Signup" confermera' la registrazione</li>
         </ul>
         </p>
     </section>
@@ -45,11 +44,11 @@
             <h2>2. Autenticazione</h2>
         </div>
         <p>
-            Per poter effettuare il login è necessario essere registrati. <br>
-            Il login permette di accedere alla dashboard del sistema e quindi a tutte le funzionalità offerte da MaaP. <br>
-            Per autenticarsi è necessario compilare il form proposto nella pagina di <a href="/login">login</a><br>
-            Viene richiesto di inserire <strong>email</strong>, <strong>password </strong> e di cliccare sul pulsante <strong>Login.</strong> <br> Terminata l’autenticazione, l’utente viene reindirizzato sulla <i>dashboard</i>. <br>
-            Per il recupero della password vedi il capitolo <a href="" scroll-to="Step4">4.Recupero Password</a>.
+            Per poter effettuare il login e' necessario essere registrati. <br>
+            Il login permette di accedere alla dashboard del sistema e quindi a tutte le funzionalita' offerte da MaaP. <br>
+            Per autenticarsi e' necessario compilare il form proposto nella pagina di <a href="/login">login</a><br>
+            Viene richiesto di inserire email, password  e di cliccare sul pulsante Login. <br> Terminata l’autenticazione, l’utente viene reindirizzato sulla dashboard. <br>
+            Per il recupero della password vedi il capitolo <a href="#Step4">4.Recupero Password</a>.
         </p>
     </section>
 
@@ -58,126 +57,88 @@
             <h2>3. Logout </h2>
         </div>
         <p>
-            Per poter effettuare il logout è necessario essere registrati ed autenticati. <br>
-            Il logout permette di terminare la propria sessione di lavoro. Un volta effettuato il logout, al successivo accesso alla piattaforma sarà richiesto di autenticarsi. <br>
-            Per effettuare il logout cliccare sul pulsante con scritto <strong>Logout</strong> nella barra di navigazione.
+            Per poter effettuare il logout e' necessario essere registrati ed autenticati. <br>
+            Il logout permette di terminare la propria sessione di lavoro. Un volta effettuato il logout, al successivo accesso alla piattaforma sara' richiesto di autenticarsi. <br>
+            Per effettuare il logout cliccare sul pulsante con scritto Logout nella barra di navigazione.
         </p>
     </section>
 
     <section id="Step4">
         <div class="page-header" >
-            <h2>4. Recupero Password <small>Manuale Utente {{user_manual_version}}</small></h2>
+            <h2>4. Recupero Password</h2>
         </div>
         <p>
-            Il recupero password avviene nel caso in cui l’utente abbia perso la password. <br>
-            Per poter procedere con un recupero password è necessario conoscere l’<a href="#" scroll-to="Step1">email di registrazione</a>. <br>
-            Il recupero dalla password avviene partendo dalla pagina di <a href="#/login">login</a> cliccando sul link <strong>Forgot your password?</strong>
-            <img src="images/user_manual/forgotpwd.png" class="img-small">
+
+            Per poter procedere con un recupero password e' necessario conoscere l’<a href="#Step1">email di registrazione</a>. <br>
+            Il recupero dalla password avviene partendo dalla pagina di <a href="#/login">login</a> cliccando sul link Forgot your password?
         </p>
         <p>
-            Verrà proposto un form dove sarà richiesto di inserire l’<strong>email di registrazione (1)</strong> e cliccare il pulsante di <strong>reset password (2)</strong>
+            Verra' mostrato un form dove sara' richiesto di inserire l'email di registrazione e cliccare il pulsante di Get it!
         </p>
-        <img src="images/user_manual/forgotPwdForm.png" class="img-small">
-        L’utente riceverà un messaggio nella casella di posta associata contenente l’url da seguire per procedere al reset della password.
-        <img src="images/user_manual/mailResetPwd.png" class="img-small">
-        <p>
-            Una volta raggiunto tramite browser il link ricevuto al punto precedente sarà necessario compilare il form per il reset della password inserendo la <strong>nuova password</strong> due volte <strong>(1)</strong> e <strong>(2)</strong>, e completando l'operazione con la pressione del pulsante <strong>Change Password (3)</strong>
-            <img src="images/user_manual/resetPwdForm.png" class="img-small">
-        </p>
+        L’utente ricevera' un messaggio nella casella di posta associata contenente la nuova password per l'accesso.
+        Dopo aver recuperato la password e' fortemente consigliato cambiarla nuovamente con una più sicura.
+
     </section>
 
     <section id="Step5">
         <div class="page-header">
-            <h2>5. Accesso e modifica profilo personale <small>Manuale Utente {{user_manual_version}}</small></h2>
+            <h2>5. Accesso e modifica profilo personale</h2>
         </div>
         <p>
-            Per accedere alla pagina di modifica del profilo cliccare sul proprio indirizzo mail posto sulla barra del menù e selezionare la voce <strong>Profile</strong>.
-            <img src="images/user_manual/profileButton.png" class="img-small">
+            Per accedere alla pagina di modifica del profilo cliccare sul pulsante "Profile" in alto a sinistra nella barra di navigazione.
         </p>
         <p>
-            La pagina <i>Profile</i> visualizza le informazioni personali dell’utente <strong>(1)</strong>. <br>
-            La modifica della password di registrazione avviene cliccando sul pulsante <strong>Edit password (2)</strong>.
-            <img src="images/user_manual/showProfile.png" class="img-small">
+            La pagina Profile visualizza le informazioni personali dell’utente. <br>
+            La modifica della password di registrazione avviene cliccando sul pulsante "Edit".
         </p>
         <p>
-            Viene proposto un form nel quale va inserita la <strong>nuova password</strong> due volte <strong>(1)</strong> e <strong>(2)</strong>, la <strong>password vecchia</strong> che si vuole sostituire <strong>(3)</strong> e confermare cliccando sul pulsante <strong>Save changes (4)</strong>. <br>
-            Se l’utente desidera interrompere l’operazione di modifica password può cliccare il pulsante <i>Cancel</i>.
-            <img src="images/user_manual/changePwdForm.png" class="img-small">
+            Viene proposto un form nel quale va inserita la nuova password due volte. <br>
+            Se l’utente desidera interrompere l’operazione di modifica password può cliccare il pulsante Discard.
         </p>
     </section>
 
     <section id="Step6">
         <div class="page-header" >
-            <h2>6. Visualizzazione Dashboard <small>Manuale Utente {{user_manual_version}}</small></h2>
+            <h2>6. Visualizzazione Dashboard </h2>
         </div>
         <p>
-            La <i>Dashboard</i> è la pagina principale dalla quale è possibile avere accesso alla lista delle collections presenti nel sistema e alle altre funzionalità. <br>
-            Per accedervi è necessario aver eseguito l’<a href="#" scroll-to="Step2">autenticazione</a>. <br>
-            È possible filtrare la lista delle collection digitando il nome della collection desiderata nel campo di ricerca <strong>(1)</strong>.
-            <img src="images/user_manual/dashboard.png" class="img-large">
+            La Dashboard e' la pagina principale dalla quale e' possibile selezionare una delle collection presenti nel sistema. <br>
+            Per accedervi e' necessario aver eseguito l’autenticazione. <br>
         </p>
     </section>
 
     <section id="Step7">
         <div class="page-header" >
-            <h2>7. Apertura Collection Index <small>Manuale Utente {{user_manual_version}}</small></h2>
+            <h2>7. Apertura Collection Index </h2>
         </div>
         <p>
-            La <i>Collection Index</i> è la pagina in cui viene visualizzato il contenuto di una collection in forma tabellare. <br>
-            Per aprire una collection index è necessario cliccare sul relativo link presente nella barra dei menù <strong>(2)</strong> oppure nel link visualizzato nella pagina dashboard <strong>(1)</strong>.
-            <img src="images/user_manual/aperturaCollection.png" class="img-large">
+            La Collection Index e' la pagina in cui viene visualizzato il contenuto di una collection in forma tabellare. <br>
+            Per aprire una collection index e' necessario cliccare sul relativo link presente nel menu' collection oppure nel link visualizzato nella pagina dashboard.
         </p>
         <p>
-            La pagina collection index visualizzerà l’intero contenuto della collection. <br>
-            La tabella visualizza i documenti dei quali è possibile aprire la <a href="#" scroll-to="Step8">Show Page</a> cliccando sul relativo link <strong>(1)</strong>.
-            <img src="images/user_manual/collection.png" class="img-large">
+            La pagina collection index visualizzera' l’intero contenuto della collection in forma paginata. <br>
+
         </p>
     </section>
 
     <section id="Step8">
         <div class="page-header" >
-            <h2>8. Apertura della Show Page di un document <small>Manuale Utente {{user_manual_version}}</small></h2>
+            <h2>8. Apertura della Document View</h2>
         </div>
         <p>
-            La <i>Show Page</i> di un document visualizza gli attributi del documento in forma tabellare. <br>
-            Per accedere ad una show page è necessario posizionarsi nella <a href="#" scroll-to="Step7">collection index</a> di appartenenza e seguire il punto <strong>(1)</strong>.
-            <img src="images/user_manual/showpage.png" class="img-small">
+            La Document View di un documento visualizza gli attributi del documento in forma tabellare. <br>
+            Per accedervi è necessario premere il pulsante "View" posizionato accanto ad ogni documento.
         </p>
     </section>
+
 
     <section id="Step9">
-        <div class="page-header">
-            <h2>9. Visualizzazione Show Page attributi innestati <small>Manuale Utente {{user_manual_version}}</small></h2>
-        </div>
-        <p>
-            La presenza di document innestati viene evidenziata dalla visualizzazione dell’attributo come un link <strong>(1)</strong>, attraverso il quale è possibile accedere alla <a href="#" scroll-to="Step8">show page</a>. <br>
-            Nell esempio riportato i punti <strong>(2)</strong> e <strong>(3)</strong> evidenziano come sia possibile avere molteplici attributi innestati e quindi visualizzabili.
-            <img src="images/user_manual/attributiInnestati.png" class="img-large">
-        </p>
-    </section>
-
-    <section id="Step10">
         <div class="page-header" >
-            <h2>10. Come riportare problemi e anomalie <small>Manuale Utente {{user_manual_version}}</small></h2>
+            <h2>9. Come riportare problemi e anomalie</h2>
         </div>
         <p>
-            La segnalazione di problemi e malfunzionamenti avviene creando una issue di GitHub tramite il pulsante <a href="#/report">Report a problem</a> collocato nel footer di ogni pagina.
-            <img src="images/user_manual/probelmReportButton.png" class="img-small">
-        </p>
-        <p>
-            La pagina di report mostra un pulsante che permette di aprire una issue su GitHub, per eseguire tale operazione è necessario possedere un account di GitHub. Per aprire un account su GitHub andare su <a href="https://github.com/join">https://github.com/join</a>, la procedura è guidata ben descritta nella pagina stessa.
-            <img src="images/user_manual/paginaProbelmReport.png" class="img-small">
-            La descrizione del problema dovrà contenere i seguenti punti:
-        <ul>
-            <li>Titolo della issue dovrà essere conciso e descrittivo del problema riscontrato.</li>
-            <li>
-                Descrizione estesa delle operazioni che hanno portato all’anomalia, corredata di tutte le note ritenute utili alla comprensione del problema.
-            </li>
-            <li>Riferimento temporale;</li>
-            <li>Azioni e pagine in cui si è riscontrato il problema;</li>
-            <li>Codice dell’errore se visualizzato;</li>
-            <li>Label di GitHub impostata su bug.</li>
-        </ul>
+            Per la segnalazione di problemi o suggerimenti è a disposizione il sistema di Issue del repository ufficiale di MaaP
+            a <a href="https://github.com/ApertureSoftware/MaaP">questo indirizzo</a>.
         </p>
     </section>
 
