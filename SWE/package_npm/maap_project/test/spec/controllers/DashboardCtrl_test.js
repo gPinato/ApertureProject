@@ -10,31 +10,35 @@
 'use strict';
 
 describe('DashboardCtrl', function () {
-    var mockUserResource,
+    var DashboardCtrl,
         $httpBackend,
-        scope;
-    beforeEach(angular.mock.module('maaperture'));
+        scope,
+        data = {labels:['a','b','c'],
+            data: [1,2,3]};
+    beforeEach(module('maaperture', 'services', 'ngResource', 'ngRoute'));
 
     beforeEach(function () {
-        angular.mock.inject(function ($injector, $controller, $rootScope) {
-            $httpBackend = $injector.get('$httpBackend');
-            mockUserResource = $injector.get('CollectionListService');
+        angular.mock.inject(function ($injector, $controller,_$httpBackend_, $rootScope) {
+            $httpBackend = _$httpBackend_;
             scope = $rootScope.$new();
+
+            DashboardCtrl = $controller('DashboardCtrl', {
+                '$scope': scope
+            });
         })
     });
 
     describe('get the right list', function () {
         it('should call getUser with username', inject(function () {
-            $httpBackend.expectGET('http://localhost:9000/api/collection/list')
-                .respond({labels:['a','b','c'],
-                          values: [1,2,3]});
 
-            var result = mockUserResource.get();
+            $httpBackend.whenGET('http://localhost:9000/api/collection/list').respond(200, data);
 
+            // When
             $httpBackend.flush();
 
-            expect(result.labels[0]).toBe('a');
-            expect(result.values[1]).toBe(2);
+
+            expect(scope.labels).toEqual(data.labels);
+            expect(scope.values).toEqual(data.data);
         }));
 
     });

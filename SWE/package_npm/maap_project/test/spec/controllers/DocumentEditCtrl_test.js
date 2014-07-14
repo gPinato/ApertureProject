@@ -28,24 +28,6 @@ describe('Controller: DocumentEditCtrl', function () {
         routeParams.col_id=0;
         routeParams.doc_id=0;
 
-        MockDocService = {
-            query: function() {
-                return {
-
-                    "customer": "Snoop Dogg",
-                    "Address": "Bitches boulevard, swagtown",
-                    "Sex": "All the time",
-                    "email": "snoop@dogg.ganja",
-                    "date": "15/12/2015",
-                    "Something": "something else"
-                }
-
-            },
-            update: function(value) {
-
-                return value;
-            }
-        };
 
 
 
@@ -62,16 +44,7 @@ describe('Controller: DocumentEditCtrl', function () {
 
 
     it('should return the correct answer', function(){
-        scope.data = MockDocService.query();
-        expect(scope.data).toEqual({
 
-            "customer": "Snoop Dogg",
-            "Address": "Bitches boulevard, swagtown",
-            "Sex": "All the time",
-            "email": "snoop@dogg.ganja",
-            "date": "15/12/2015",
-            "Something": "something else"
-        });
 
     });
 

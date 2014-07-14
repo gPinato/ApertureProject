@@ -27,7 +27,7 @@ angular.module('maaperture').controller('IndexCtrl', function ($scope, $route, $
         $scope.current_sort = null;
         $scope.current_page = 0;
         $scope.rows = [];
-        getData();
+        $scope.getData();
 
     };
 
@@ -35,7 +35,7 @@ angular.module('maaperture').controller('IndexCtrl', function ($scope, $route, $
     //In base ai parametri dello scope effettua una query sul server e recupera i dati
     //da visualizzare
 
-    var getData = function () {
+    $scope.getData = function () {
 
         IndexService.query({
 
@@ -87,13 +87,13 @@ angular.module('maaperture').controller('IndexCtrl', function ($scope, $route, $
         //Determina se cambiare solo ordinamento o anche colonna ordinata
         if (index === $scope.current_sorted_column) {
             changeSort();
-            getData();
+            $scope.getData();
         }
         else {
             //cambia anche la colonna ordinata
             $scope.current_sorted_column = index;
             $scope.current_sort = "asc";
-            getData();
+            $scope.getData();
         }
     };
     //funzione per cancellare il documento di indice index
@@ -158,7 +158,7 @@ angular.module('maaperture').controller('IndexCtrl', function ($scope, $route, $
         if ($scope.current_page > 0) {
 
             $scope.current_page--;
-            getData();
+            $scope.getData();
         }
 
     };
@@ -177,7 +177,7 @@ angular.module('maaperture').controller('IndexCtrl', function ($scope, $route, $
 
         if ($scope.current_page < $scope.pages - 1) {
             $scope.current_page++;
-            getData();
+            $scope.getData();
         }
 
     };
@@ -192,7 +192,7 @@ angular.module('maaperture').controller('IndexCtrl', function ($scope, $route, $
     //Va alla pagina $index
     $scope.toPage = function (index) {
         $scope.current_page = index;
-        getData();
+        $scope.getData();
     };
 
 

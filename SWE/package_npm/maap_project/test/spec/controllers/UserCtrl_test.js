@@ -51,10 +51,13 @@ describe('UsersCtrl', function () {
     it('should display an error when not successful', function () {
         // Given
         $httpBackend.whenGET('http://localhost:9000/api/users/' + routeParams.user_id).respond(400);
-
         // When
         //scope.loadData();
         $httpBackend.flush();
         // Then
+        expect(location.path()).toBe('/404');
+
+        spyOn(location, 'path');
+        expect(location.path()).toHaveBeenCalledWith('/404');
     });
 });
