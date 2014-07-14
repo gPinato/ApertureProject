@@ -26,7 +26,7 @@ angular.module('maaperture').controller('DocumentEditCtrl', function ($scope, $l
     //Passa come parametri la collection e il documento da ricevere
     DocumentEditService.query({
             col_id: $routeParams.col_id,
-            doc_id: $routeParams.doc_id },
+            doc_id: $routeParams.doc_id }).$promise.then(
         function success(data) {
             $scope.original_data =  JSON.stringify(data, undefined, 2); // indentation level = 2
 
@@ -47,7 +47,7 @@ angular.module('maaperture').controller('DocumentEditCtrl', function ($scope, $l
                 col_id: $scope.current_collection,
                 doc_id: $scope.current_document
             },
-            json_data,
+            json_data).$promise.then(
             function success() {
                 $location.path('/collection/' + $scope.current_collection + '/' + $scope.current_document);
             },
@@ -62,8 +62,7 @@ angular.module('maaperture').controller('DocumentEditCtrl', function ($scope, $l
         DocumentEditService.remove({
                 col_id: $scope.current_collection,
                 doc_id: $scope.current_document
-            },
-
+            }).$promise.then(
             function success() {
                 $location.path('/collection/' + $scope.current_collection);
             },

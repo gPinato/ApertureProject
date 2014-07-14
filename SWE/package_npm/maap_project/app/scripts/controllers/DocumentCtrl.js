@@ -26,7 +26,7 @@ angular.module('maaperture').controller('DocumentCtrl', function ($scope, $locat
     //Passa come parametri la collection e il documento da ricevere
     DocumentDataService.query({
             col_id: $routeParams.col_id,
-            doc_id: $routeParams.doc_id },
+            doc_id: $routeParams.doc_id }).$promise.then(
         function success(response) {
             $scope.data = response.data;
             $.each($scope.data, function (key, value) {
@@ -47,9 +47,7 @@ angular.module('maaperture').controller('DocumentCtrl', function ($scope, $locat
         DocumentEditService.remove({
                 col_id: $scope.current_collection,
                 doc_id: $scope.current_document
-            },
-
-            function success() {
+            }).$promise.then(function success() {
                 $location.path('/collection/' + $scope.current_collection);
 
             },

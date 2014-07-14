@@ -44,7 +44,7 @@ angular.module('maaperture').controller('CollectionCtrl', function ($scope, $rou
                 column: $scope.column_original_name[$scope.current_sorted_column],
                 page: $scope.current_page
 
-            }, function success(response) {
+            }).$promise.then( function success(response) {
                 $scope.labels = response[0];
                 $scope.data = response[1];
                 $scope.pages = response[2].pages;
@@ -106,9 +106,7 @@ angular.module('maaperture').controller('CollectionCtrl', function ($scope, $rou
         DocumentEditService.remove({
                 col_id: $scope.current_collection,
                 doc_id: index
-            },
-
-            function success() {
+            }).$promise.then(function success() {
                 $location.path('/collection/' + $scope.current_collection);
             },
             function err(error) {

@@ -26,24 +26,24 @@ angular.module('maaperture').controller('UsersCtrl', function ($scope, $location
 
     //Funzione per richiedere un documento al server.
     //Passa come parametri la collection e il documento da ricevere
-    $scope.loadData = function(){
-    UserDataService.query({
-            user_id: $routeParams.user_id }
-    ).$promise.then (function (data) {
-        $scope.labels = data.label;
-        $scope.data = data.data;
-        //inizializza un array con le chiavi originali e un array con i valori originali da modificare
-        $.each($scope.data, function (key, value) {
-            $scope.original_keys.push(key);
-            $scope.original_data.push(value);
-        });
-    },
-    function (error) {
-        $location.path("/404");
 
-    });
-    };
-    $scope.loadData();
+    UserDataService.query({
+            user_id: $routeParams.user_id }).$promise.then(
+        function success(data) {
+            $scope.labels = data.label;
+            $scope.data = data.data;
+            //inizializza un array con le chiavi originali e un array con i valori originali da modificare
+            $.each($scope.data, function (key, value) {
+                $scope.original_keys.push(key);
+                $scope.original_data.push(value);
+            });
+        },
+        function err(error) {
+            $location.path("/404");
+
+        }
+    );
+
 
 
     $scope.delete_document = function () {

@@ -40,7 +40,7 @@ angular.module('maaperture').controller('QueryCtrl', function ($scope, $route, $
         QueryService.query({
 
 
-            }, function success(response) {
+            }).$promise.then( function success(response) {
                 $scope.labels = response[0];
                 $scope.data = response[1];
                 //$scope.pages = response[2].pages;
@@ -76,7 +76,7 @@ angular.module('maaperture').controller('QueryCtrl', function ($scope, $route, $
     $scope.createIndex = function(id){
         var indexName = "jknoob";
         IndexService.insert({},
-            {id:id,indexName:indexName},
+            {id:id,indexName:indexName}).$promise.then(
             function success(response) {
                 alert("indice creato!");
 				$location.path('/indexes');

@@ -11,7 +11,8 @@ module.exports = function(config) {
 
     // list of files / patterns to load in the browser
       files: [
-          //'app/bower_components/jquery/jquery.js',
+      
+          'app/bower_components/jquery/dist/jquery.js',
           //'app/bower_components/jquery-ui/ui/jquery-ui.js',
           'app/bower_components/angular/angular.js',
           'app/bower_components/angular-ui-sortable/sortable.js',
@@ -22,10 +23,9 @@ module.exports = function(config) {
           'app/bower_components/angular-sanitize/angular-sanitize.js',
           'app/bower_components/angular-route/angular-route.js',
           'app/scripts/*.js',
-          'app/scripts/controllers/*.js',
-          //'test/mock/**/*.js',
-          'test/spec/**/*.js',
-          'test/spec/**/*.test.js'
+          'app/scripts/**/*.js',
+          'test/mock/**/*.js',
+          'test/spec/controllers/*.js',
       ],
 
     // list of files / patterns to exclude
@@ -42,12 +42,6 @@ module.exports = function(config) {
 
     // enable / disable watching file and executing tests whenever any file changes
     autoWatch: true,
-
-    // Which plugins to enable
-    plugins: [
-      'karma-chrome-launcher',
-      'karma-jasmine'
-    ],
 
       // coverage reporter generates the coverage
       reporters: ['progress','coverage'],

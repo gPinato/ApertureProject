@@ -18,8 +18,7 @@
 angular.module('maaperture').controller('DashboardCtrl', function ($scope, CollectionListService) {
 
     // Servizio per ricevere la lista di collection dal server.
-    CollectionListService.get(
-        function success(data) {
+    CollectionListService.get().$promise.then(function success(data) {
             $scope.labels = data.labels;
             $scope.values = data.data;
         });

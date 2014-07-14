@@ -23,7 +23,7 @@ angular.module('maaperture').controller('ProfileCtrl', function ($scope, $locati
     //Funzione per richiedere il profilo al server.
 
     ProfileDataService.query({
-             },
+             }).$promise.then(
         function success(data) {
             $scope.labels = data.label;
             $scope.data = data.data;
@@ -43,7 +43,7 @@ angular.module('maaperture').controller('ProfileCtrl', function ($scope, $locati
 
     //Funzione per richiedere la cancellazione del profilo
     $scope.delete_document = function () {
-        ProfileEditService.remove({},
+        ProfileEditService.remove({}).$promise.then(
 
             function success() {
                 $location.path('/');

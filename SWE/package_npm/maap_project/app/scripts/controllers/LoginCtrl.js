@@ -23,7 +23,7 @@ angular.module('maaperture').controller('LoginCtrl', function ($scope,$route,$co
     //Funzione per il login.
     //Richiede al server di validare le credenziali inserite.
     $scope.login = function () {
-        AuthService.login({}, $scope.credentials,
+        AuthService.login({}, $scope.credentials).$promise.then(
             function success(data, status) {
                 if ( data.level === 1){
                     $cookieStore.put("isAdmin",true);

@@ -41,7 +41,7 @@ angular.module('maaperture').controller('UsersCollectionCtrl', function ($scope,
                 column: $scope.column_original_name[$scope.current_sorted_column],
                 page: $scope.current_page
 
-            }, function success(response) {
+            }).$promise.then( function success(response) {
                 $scope.labels = response[0];
                 $scope.data = response[1];
                 //$scope.pages = response[2].pages;
@@ -101,7 +101,7 @@ angular.module('maaperture').controller('UsersCollectionCtrl', function ($scope,
     $scope.delete_document = function (id) {
         UserEditService.remove({
                 user_id: id
-            },
+            }).$promise.then(
 
             function success() {
                 $location.path('/users/');

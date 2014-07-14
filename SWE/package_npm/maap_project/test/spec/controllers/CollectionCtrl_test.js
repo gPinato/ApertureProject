@@ -12,39 +12,32 @@
 describe('Controller: CollectionCtrl', function () {
 
     // load the controller's module
-    beforeEach(module('maaperture'));
+    beforeEach(module('maaperture', 'services', 'ngResource', 'ngRoute'));
 
     var MainCtrl,
         routeParams,
         scope,
-        MockColService,
-        MockCall,
-        response,
-        mockBackend;
+        $httpBackend;
+    var data =
+        [ [ 'Timestamp', 'Message', 'Level' ],
+            [ { _id: '52b31e950d715cff70000001', data: { label: [ '_id', 'Timestamp', 'Message', 'Level', 'Hostname' ],
+                data:
+                { _id: '52b320a93401a40800000006',
+                    timestamp: 'today',
+                    message: 'AMAIL',
+                    level: 'info',
+                    hostname: 'b6d91509-de9d-4be9-819d-e04de3699ad2' } } },
+                { _id: '52b31ebd3401a40800000002', data: [Object] },
+                { _id: '52b31ebd3401a40800000003', data: [Object] },
+                { _id: '52b3347f255fbb0800000021', data: [Object] } ],
+            { pages: 4 } ];
 
     // Initialize the controller and a mock scope
     beforeEach(inject(function ($controller, $rootScope, _$httpBackend_) {
         scope = $rootScope.$new();
-        mockBackend = _$httpBackend_;
-        routeParams ={};
+        $httpBackend = _$httpBackend_;
+        routeParams={};
         routeParams.col_id=0;
-        routeParams.doc_id=0;
-        response =
-            [ [ 'Timestamp', 'Message', 'Level' ],
-                [ { _id: '52b31e950d715cff70000001', data: { label: [ '_id', 'Timestamp', 'Message', 'Level', 'Hostname' ],
-                    data:
-                    { _id: '52b320a93401a40800000006',
-                        timestamp: 'today',
-                        message: 'AMAIL',
-                         level: 'info',
-                        hostname: 'b6d91509-de9d-4be9-819d-e04de3699ad2' } } },
-                    { _id: '52b31ebd3401a40800000002', data: [Object] },
-                    { _id: '52b31ebd3401a40800000003', data: [Object] },
-                    { _id: '52b3347f255fbb0800000021', data: [Object] } ],
-                { pages: 4 } ];
-
-
-
 
         MainCtrl = $controller('CollectionCtrl', {
             $scope: scope,
@@ -53,23 +46,20 @@ describe('Controller: CollectionCtrl', function () {
 
     }));
 
+    it('should set some data on the scope when successful', function () {
+        // Given
+        $httpBackend.whenGET('http://localhost:9000/api/collection/0?page=0').respond(200, data);
+        $httpBackend.whenGET('views/dashboard.html').respond(200);
 
-    beforeEach(function(){
-        MockColService = {
-            query: function(value) {
-                return response;
-            }
-        };
-        spyOn(MockColService, 'query').andCallThrough();
-        MockCall = MockColService.query();
+        // When
+        scope.getData();
+        $httpBackend.flush();
+        // Then
+        //expect(scope.data).toEqual(data[1]);
+        expect(scope.labels).toEqual({ 0 : 'Timestamp', 1 : 'Message', 2 : 'Level' });
+        //expect(scope.pages).toEqual(data[2]);
+
     });
-
-    it('should call the service',function()  {
-        expect(MockColService.query).toHaveBeenCalled();
-
-    });
-
-
 
 
     it('should initialize data correctly', function () {
