@@ -1,1 +1,0 @@
-mocha --recursive -R nyan
