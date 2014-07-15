@@ -12,8 +12,10 @@
  * 0.1 File creation
  ==============================================
  */
-'use strict';//mostra tutti i warning possibili
+ //mostra tutti i warning possibili
+'use strict';
 
+//prelevo il modulo riguardante il dispatcher
 var dispatcher = require("./dispatcher");
 
  /**
@@ -30,4 +32,5 @@ var initFrontController = function(app) {
 
 }
 
+//esporto la funzione per inizializzare il front controller
 exports.init = initFrontController;

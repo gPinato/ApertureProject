@@ -12,12 +12,17 @@
  * 0.1 File creation
  ==============================================
  */
-'use strict';//mostra tutti i warning possibili
+ //mostra tutti i warning possibili
+'use strict';
 
+//richiedo il modulo passport per gestire l'autenticazione
 var passport = require("./passport");
 var path = require('path');
+//prelevo il modulo riguardante il database di analisi
 var datamanager = require('../modelServer/dataManager/DatabaseAnalysisManager/DatabaseAnalysisManager');
+//prelevo il modulo riguardante il database degli utenti
 var usermanager = require('../modelServer/dataManager/DatabaseUserManager/DatabaseUserManager');
+//prelevo il modulo riguardante l'index manager
 var indexmanager = require('../modelServer/dataManager/IndexManager/IndexManager');
 
  /**
@@ -67,24 +72,35 @@ var dispatcherInit = function (app) {
 		
 	//registrazione nuovo utente per l'admin
 	dispatcher.put('/api/signup', passport.checkAuthenticatedAdmin, usermanager.userSignup, function(req, res){
+		//mando una risposta al client, formata da uno stato HTTP 200, ovvero successo
 		res.send(200);
 	});
 	
 	//gestione login
+	//gestisco il recupero password dimenticata
 	dispatcher.post('/api/forgot', passport.checkNotAuthenticated, passport.forgotPassword);	
 	dispatcher.post('/api/check/email', passport.checkNotAuthenticated, usermanager.checkMail);
+	//prima della registrazione controllo che l'utente non sia loggato
 	dispatcher.post('/api/signup', passport.checkNotAuthenticated, usermanager.userSignup, passport.authenticate, function(req, res){
+		//stampo sulla console l'utente
 		console.log(req.user);
+		//invio una risposta al client
 		res.send(req.user);
 	});
 	
+	//prima di effettuare il login controllo che l'utente non sia autenticato
 	dispatcher.post('/api/login', passport.checkNotAuthenticated, passport.authenticate, function(req, res){
+		//stampo sulla console l'utente
 		console.log(req.user);
+		//invio una risposta al client
 		res.send(req.user);
-	});	
+	});
+	//gestisco la disconnessione
 	dispatcher.get('/api/logout', passport.checkAuthenticated, function(req, res){
+		//distruggo la sessione corrispondente all'utente
 		req.session.destroy(function(err){
 			//req.logout();
+			//invio uno stato HTTP di successo(200) al client, per segnalare disconnessione avvenuta
 			res.send(200);
 		});
 	});
@@ -99,5 +115,5 @@ var dispatcherInit = function (app) {
 	//restituisco il dispatcher inizializzato e configurato
 	return dispatcher;
 }
-
+//esporto la funzione per inizializzare il dispatcher
 exports.init = dispatcherInit;
