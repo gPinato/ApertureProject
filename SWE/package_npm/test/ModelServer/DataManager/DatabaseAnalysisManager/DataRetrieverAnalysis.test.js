@@ -256,6 +256,18 @@ describe("DataRetrieverAnalysis Unit Test: ", function() {
 		
 	});
 
+	describe("countDocuments", function() {
+	
+	});
+	
+	describe("findDocuments", function() {
+	
+	});
+	
+	describe("getDocumentsForIndex", function() {
+	
+	});
+	
 	describe("getCollectionIndex", function() {
 	
 	});

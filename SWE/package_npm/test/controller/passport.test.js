@@ -44,6 +44,14 @@ describe("passport Unit Test: ", function() {
 		};
 	};
 
+	describe("initPassport", function() {
+	
+	});
+	
+	describe("forgotPassword", function() {
+	
+	});
+	
 	describe("checkAuthenticatedAdmin", function() {
 		
 		it("un utente non autenticato normale non deve essere autenticato admin", function(done) {

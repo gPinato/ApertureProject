@@ -59,13 +59,6 @@ describe("dispatcher Unit Test: ", function() {
 			
 		});
 		
-		/*it("deve inizializzare il dispatcher", function() {
-		
-	
-			dispatcher.init(app);
-			
-		});*/
-		
 	});
 
 }); //end dispatcher Unit Test
