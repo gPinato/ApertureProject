@@ -44,33 +44,38 @@ var getModel = function(collection_name) {
 exports.getModel = getModel;
 
  /**
- * Preleva il modello relativo ad una specifica collection
+ * Preleva i dati di un documento per visualizzarli nella pagina documentShow
  *
- *@param collection_name - nome della collection relativa al modello da cercare
- *@return modello relativo alla collection specificata, -1 se il modello non è presente.
+ *@param model - modello di mongoose su cui effettuare la query
+ *@param querySettings - impostazioni sulla query da effettuare
+ *@param populate - definizione del populate da effetturare durante la query
+ *@param callback - funzione da eseguire al termine delle operazioni
  */
 var getDocuments = function(model, querySettings, populate, callback){
 		
 	var options = {};
 	var sort = {};
 	
+	//imposto l'ordinamento se sono specificate la colonna su cui ordinare ed il tipo di ordinamento
 	if(querySettings.orderbycolumn != '' && querySettings.typeorder != ''){
 		sort[querySettings.orderbycolumn] = querySettings.typeorder;
 		options.sort = sort;
 	}
+	
+	//imposto il limite per la query
 	if(querySettings.numberofrow != ''){
 		options.limit = querySettings.numberofrow;
 	}
+	
+	//imposto lo skip della query
 	if(querySettings.startskip != ''){
 		options.skip = querySettings.startskip;
 	}
-				
+		
+	//preparo la query
 	var query = model.find(querySettings.where, querySettings.select, options);
 	
-	console.log('query: ' + JSON.stringify(querySettings));
-	console.log('options: ' + JSON.stringify(options));
-	console.log('pop: ' + JSON.stringify(populate));
-	
+	//se populate non e' vuoto, setto la query con il relativo populate
 	if(populate != [])
 	{
 		var populatePath = [];
@@ -97,14 +102,18 @@ var getDocuments = function(model, querySettings, populate, callback){
 		}
 	}
 		
+	//eseguo la query
 	query.lean().exec( function(err,result){
 	
 		if(err){console.log('query fallita' + err); callback({}); return;}
 					
 		//a questo punto la query ha avuto successo,
-		//controllo se la query e' stata eseguita su tutti 
+		//controllo se la query e' stata eseguita su tutti i campi
+		
+		//se select era indefinito, creo l'oggetto vuoto
 		if(querySettings.select == undefined)querySettings.select = {};
 		
+		//per tutte le chiavi dell'oggetto select
 		if(Object.keys(querySettings.select).length == 0)
 		{
 			//se sono stati selezionati tutti i campi, ora riempio la select per scrivere la query nel db
@@ -125,9 +134,9 @@ var getDocuments = function(model, querySettings, populate, callback){
 								  );
 		}
 
+		//se ci sono risultati
 		if(result.length > 0){
 		
-			//console.log(result);
 			//se è stato specificato il populate, sostituisco i vari populate...			
 			if(populate!=[])
 			{
@@ -149,6 +158,7 @@ var getDocuments = function(model, querySettings, populate, callback){
 						{
 							if(attributename == populatePath[j])
 							{
+								//creo il nuovo campo con il valore derivante dal populate
 								var newfield = obj[populatePath[j]][populateField[j]];
 								obj[populatePath[j] + '.' + populateField[j]] = newfield;
 							}
@@ -170,16 +180,23 @@ var getDocuments = function(model, querySettings, populate, callback){
 				}
 			}
 			
+			//ritorno il risultato
 			callback(result);
 					
 		}else{
-			//nessun risultato
+			//nessun risultato, array vuoto
+			callback([]);
 		}
 	});	
 }
 
-//ritorna la lista di collections, se e' definito un campo find di ricerca, restringe il 
-//risultato alle sole collections che contengono il campo find all'interno della label
+/**
+ * Ritorna la lista di collections presenti nel sistema, se e' definito un campo find di ricerca
+ * restringe il risultato alle sole collections che contengono il campo find all'interno della label
+ *
+ *@param find - stringa da cercare all'interno delle etichette delle collections
+ *@return lista delle collections presenti nel sistema, eventualmente ristrette al campo find
+ */
 exports.getCollectionsList = function(find) {
 	
 	if(find != undefined && find != '')
@@ -201,21 +218,43 @@ exports.getCollectionsList = function(find) {
 	
 }
 
+/**
+ * Preleva un file contenente la trasformazione da applicare ad un determinato campo
+ *
+ *@param collection_name - nome della collection relativa alla trasformazione richiesta
+ *@param type - tipo di pagina a cui fa riferimento la trasformazione [index, show]
+ *@param fieldName - nome del campo relativo alla trasformazione richiesta
+ *@return file di trasformazione richiesto
+ */
 var getTransformationFile = function(collection_name, type, fieldName) {
 	return require('../../DSL/collectionData/transformation_' + collection_name + '_' + type + '_' + fieldName + '.js');
 };
 //for unit test
 exports.getTransformationFile = getTransformationFile;
 
-//applica le varie trasformazioni presenti nel dsl ai vari campi dei documents nell'array di documents
+/**
+ * Applica le varie trasformazioni presenti nel dsl ai vari campi dei documents nell'array di documents
+ *
+ *@param collection_name - nome della collection relativa alla trasformazione da applicare
+ *@param type - tipo di pagina a cui fa riferimento la trasformazione [index, show]
+ *@param documentsArray - array di documenti da modificare
+ *@param dslArray - array di trasformazioni da applicare
+ *@return array di documenti a cui sono state applicate le trasformazioni
+ */
 var applyTransformations = function(collection_name, type, documentsArray, dslArray) {
 
+	//per tutte le trasformazioni
 	for(var i=0; i<dslArray.length; i++)
 	{
+		//se la trasformazione non e' nulla
 		if(dslArray[i].transformation != null)
 		{
 			var fieldName = dslArray[i].name;
+			
+			//prelevo il file di trasformazione
 			var transformation = getTransformationFile(collection_name, type, fieldName).transformation;
+			
+			//applico le trasformazioni per tutti i documenti
 			for(var j=0; j<documentsArray.length; j++)
 			{
 				var document = documentsArray[j];
@@ -223,7 +262,9 @@ var applyTransformations = function(collection_name, type, documentsArray, dslAr
 				{
 					if(attributename == fieldName)
 					{
+						//applico la trasformazione
 						document[attributename] = transformation(document[attributename]);
+						
 						//se e' indefinito visualizza un trattino
 						if(document[attributename] == undefined) document[attributename]= '-';
 					}
@@ -236,11 +277,21 @@ var applyTransformations = function(collection_name, type, documentsArray, dslAr
 //for unit test
 exports.applyTransformations = applyTransformations;
 
+/**
+ * Ordina i documenti seguendo l'ordine dettato dall'array di chiavi fornito in ingresso
+ *
+ *@param documents - array di documents da ordinare
+ *@param keys - array di chiavi che dettano il tipo di ordinamento
+ *@return array di documenti ordinati
+ */
 var sortDocumentsByLabels = function(documents, keys) {
 	var result = [];
+	
+	//per tutti i documenti
 	for(var i=0; i<documents.length; i++)
 	{
 		var sortedDocument = {};
+		//ordino tutte le chiavi
 		for(var j=0; j<keys.length; j++)
 		{
 			sortedDocument[keys[j]] = documents[i][keys[j]];
@@ -249,44 +300,75 @@ var sortDocumentsByLabels = function(documents, keys) {
 		}
 		result.push(sortedDocument);
 	}	
+	
+	//restituisco l'array con i documenti ordinati
 	return result;
 }
 
+/**
+ * Conta i documenti di una determinata collection
+ *
+ *@param model - modello della collection su cui si vuole eseguire il conteggio dei documenti
+ *@param where - eventuale campo per inserire una query per restringere il conteggio
+ *@return promessa di esecuzione della query
+ */
 var countDocuments = function(model, where) {
 
+	//creazione della promessa
 	var deferred = Q.defer();
 
+	//definizione della query di conteggio documenti
 	model.count(where, function(err, count){
 		if(err)
 		{
-			console.log('countDOcuments err: ' + err);
+			//in caso negativo visualizza l'errore e conclude la promessa ritornando zero
+			console.log('countDocuments err: ' + err);
 			deferred.resolve(0);
 		}else{
+			//in caso positivo concludo la mia promessa ritornando il risultato
 			deferred.resolve(count);
 		}		
 	});
 
+	//restituisco la promessa
 	return deferred.promise;
 }
 
+/**
+ * Esegue una determinata query specificata
+ *
+ *@param query - query da eseguire
+ *@return promessa di esecuzione della query
+ */
 var findDocuments = function(query) {
 
+	//creo la promessa
 	var deferred = Q.defer();
 
+	//eseguo la query
 	query.lean().exec(function(err, result){
 		if(err)
 		{
+			//in caso d'errore visualizzo l'errore e termino la promessa ritornando un array vuoto
 			console.log('findDocuments err: ' + err);
 			deferred.resolve([]);
 		}else{
-			console.log('finddd: ' + result.length + ' --> ' + JSON.stringify(result));
+			//in caso positivo termino la promessa restituendo il risultato della query
 			deferred.resolve(result);
 		}
 	});
 
+	//restituisco la promessa
 	return deferred.promise;
 }
 
+/**
+ * Preleva i documenti relativi ad una determinata collection per visualizzarli nella pagina CollectionIndex
+ *
+ *@param model - modello della collection su cui si vogliono prelevare i documenti
+ *@param querySettings - impostazioni per l'esecuzione della query
+ *@return promessa di esecuzione dell'operazione
+ */
 var getDocumentsForIndex = function(model, querySettings){
 
 	//inizio la creazione della promessa
@@ -300,16 +382,14 @@ var getDocumentsForIndex = function(model, querySettings){
 	var page = querySettings.page;
 	var perpage = querySettings.perpage;
 	var populate = querySettings.populate;
-	
-	console.log(querySettings);
-	
+		
 	var numberOfPages = 0;
 	var totDocuments = 0;
 	var undefinedCount = 0;
 	var definedCount = 0;
 	var firstResult = [];
 	
-	//controllo se devo gestire il populate
+	//Gestione del populate
 	var populatePath = [];
 	var populateField = [];
 	
@@ -330,7 +410,6 @@ var getDocumentsForIndex = function(model, querySettings){
 	
 	.then(function(count){
 		//calcolo il numero di pagine per visualizzare tutti i documenti
-		console.log('conta documents totali inside: ' +  count);
 		numberOfPages = Math.floor(count / perpage);
 		if((count % perpage) > 0) numberOfPages++;	
 		totDocuments = count;
@@ -347,25 +426,20 @@ var getDocumentsForIndex = function(model, querySettings){
 		//ora conosco quanti documenti posso ordinare e quanti non hanno il campo da ordinare
 		undefinedCount = count;
 		definedCount = totDocuments - undefinedCount;
-		
-		console.log('conta documents undefined ' + undefinedCount);
-		console.log('quindi defined ' + definedCount);
-		
+				
 		//preparo le opzioni per la prossima query
 		var options = {
 			limit: perpage,
 			skip: perpage * page	
 		};
 		
+		//imposto il tipo di ordinamento
 		var sort = {};	
 		if(querySettings.column != '' && querySettings.order != ''){
 			sort[querySettings.column] = querySettings.order;
 			options.sort = sort;
 		}
-	
-		console.log('WHEREEEEEEEEEE1 ' + JSON.stringify(where));
-		//delete where[querySettings.column];
-		
+			
 		//preparo il campo where
 		var whereFull = {};
 		for(var key in where)
@@ -374,8 +448,6 @@ var getDocumentsForIndex = function(model, querySettings){
 		//aggiungo la condizione per prendere solo i campi definiti
 		whereFull[querySettings.column] = {$exists: true};
 			
-		console.log('WHEREEEEEEEEEE2 ' + JSON.stringify(where));
-		console.log('WHEREEEEEEEEEE3 ' + JSON.stringify(whereFull));
 		//preparo la query e ritorno come promessa l'esecuzione della stessa
 		var query = model.find(whereFull, select, options)
 		
@@ -398,11 +470,9 @@ var getDocumentsForIndex = function(model, querySettings){
 		//result e' un array di documenti ordinati secondo un certo campo		
 		//lo salvo.
 		firstResult = result;
-		console.log('first: ' + result.length);
-				
+						
 		if(result.length < perpage && undefinedCount > 0)
 		{
-			console.log('first: if');
 			//qui ho meno risultati di quanti potrebbero stare in una singola pagina
 			//quindi aggiungo i documents con campi non definiti
 			var numberOfPagesDefined = Math.floor(definedCount / perpage);
@@ -411,52 +481,47 @@ var getDocumentsForIndex = function(model, querySettings){
 			//resetto le impostazioni della query, in particolare mi interessa
 			//rimuovere l'ordinamento secondo un determinato campo
 			var options = {};
-			console.log('first: if2');
-			
+						
 			if(page == numberOfPagesDefined - 1)
 			{
 				//se la pagina richiesta e' proprio quella intermedia composta da sorted documents ed
 				//undefined documents
 				options.limit = perpage - result.length;
 				options.skip = 0;
-				console.log('first: if3');
-			
+							
 			}else{
 			
 				//altrimenti ho solo documents con campo sorted non definito
 				options.limit = perpage;	
 				options.skip = (perpage * page) - definedCount;
 				if(options.skip < 0) options.skip = 0;
-				console.log('first: if4');
+				
 			}
 			
-			console.log('first: if5');
 			//preparo la nuova query per prelevare i documents che non contengono il campo
 			//da ordinare
 			var query = model.find(where, select, options);
-			
-			console.log('first: if6');
-			
+						
 			query.exists(querySettings.column, false);
 
-			console.log('first: ready');
 			//ritorno la promessa di eseguire la suddetta query
 			return findDocuments(query);
 				
 		}else{
+		
 			//qui ho gia' riempito la pagina con perpage risultati
 			//quindi termino la promessa passando il risultato
-			console.log('first: else');
 			deferred.resolve(result);		
 			
 		}			
 	})
 
 	.then(function(emptyResult){	
+	
 		//eseguo la concatenazione dei risultati del primo risultato di documenti ordinati
 		//assieme al secondo risultato di documenti con il campo da ordinare non presente
 		var totResult = {};
-		console.log('last STEPPPPP');
+		
 		if(order != 'desc')
 		{
 			console.log('ASC!!');
@@ -473,8 +538,18 @@ var getDocumentsForIndex = function(model, querySettings){
 				
 }//end function getDocumentsForIndex
 
+/**
+ * Preleva la lista di documenti da visualizzare nella pagina collectionIndex
+ *
+ *@param collection_name - nome della collection da gestire
+ *@param column - colonna da ordinare
+ *@param order - tipo di ordinamento [asc, desc]
+ *@param page - pagina da visualizzare
+ *@param callback - funzione da eseguire al termine dell'operazione
+ */
 exports.getCollectionIndex = function(collection_name, column, order, page, callback) {
 
+	//prelevo il modello relativo alla collection specificata
 	var model = getModel(collection_name);
 	
 	try{
@@ -540,8 +615,10 @@ exports.getCollectionIndex = function(collection_name, column, order, page, call
 			var sortby = column;
 		}
 		
+		//prelevo il numero di documents da visualizzare per pagina
 		var perpage = collection.index.perpage;
 		
+		//preparo il campo where
 		var where;
 		if(collection.index.query == null)
 			where = {};
@@ -574,9 +651,7 @@ exports.getCollectionIndex = function(collection_name, column, order, page, call
 		countDocuments(model, where)
 		
 		.then(function(count){
-			
-			console.log('conta documents totali ' + count);
-			
+		
 			//calcolo il numero di pagine totali per visualizzarli
 			result.options = {};
 			result.options.pages = Math.floor(count / perpage);
@@ -591,14 +666,13 @@ exports.getCollectionIndex = function(collection_name, column, order, page, call
 			querySettings.perpage = perpage;
 			querySettings.populate = populate;
 			
-			return getDocumentsForIndex(model, querySettings);		
+			//ritorno la promessa di esecuzione di getDocumentsForIndex
+			return getDocumentsForIndex(model, querySettings);	
+			
 		})
 								
 		.then(function(documents){
 		
-			console.log('here you go!' + documents.length);
-			console.log(documents);
-			
 			//controllo quanti documenti ho recuperato
 			if(documents.length == 0)
 			{
@@ -627,14 +701,11 @@ exports.getCollectionIndex = function(collection_name, column, order, page, call
 										  querySettings.select	//campi select
 										  );
 				}
-
-				console.log('CHECKPOPULATE');
-				
+			
 				//se è stato specificato il populate, sostituisco i vari populate...			
 				if(populate != [])
 				{
-					console.log('OKPOPULATE');
-					
+		
 					for(var i=0; i<documents.length; i++)
 					{
 						var obj = documents[i];
@@ -666,25 +737,24 @@ exports.getCollectionIndex = function(collection_name, column, order, page, call
 							{
 								if(attributename == populatePath[j])
 								{
-									console.log('DELETESTART');
 									delete obj[populatePath[j]];
-									console.log('DELETESTOP');
 								}
 							}
 						}
 
 					}
 				}//end if populate != []
-				
-				console.log('OKAPPA');
-				
+						
 				if(columns != undefined)
 				{
+				
 					//qui columns del dsl e' definita
 					result.labels = labels;	
 					documents = sortDocumentsByLabels(documents, keys);
 					result.documents = applyTransformations(collection_name, 'index', documents, columns);
+				
 				}else{	
+				
 					//nel caso la column non sia definita
 					result.labels = [];
 					if(documents.length > 0)
@@ -710,9 +780,18 @@ exports.getCollectionIndex = function(collection_name, column, order, page, call
 	}
 }
 
+/**
+ * Preleva i dati relativi ad un documento da visualizzare nella pagina documentShow
+ *
+ *@param collection_name - nome della collection da gestire
+ *@param document_id - id del documento da visualizzare
+ *@param callback - funzione da eseguire al termine dell'operazione
+ */
 exports.getDocumentShow = function(collection_name, document_id, callback) {
 
 	try{
+	
+		//preleva il modello relativo alla collection
 		var model = getModel(collection_name);
 		var collection = require('../../DSL/collectionData/' + collection_name + '.json').collection;
 		var rows = collection.show.row;
@@ -756,9 +835,11 @@ exports.getDocumentShow = function(collection_name, document_id, callback) {
 			
 		}
 		
+		//preparo la query impostando l'id del documento da visualizzare
 		var query = {};
 		query._id = document_id;
 		
+		//preparo le impostazioni della query
 		var querySettings = {};
 		querySettings.where = query; 
 		querySettings.select = select;
@@ -767,6 +848,7 @@ exports.getDocumentShow = function(collection_name, document_id, callback) {
 		querySettings.startskip = 0;
 		querySettings.numberofrow = '';
 		
+		//prelevo i dati del document
 		getDocuments(model,
 					querySettings,
 					populate,			//populate
@@ -795,13 +877,23 @@ exports.getDocumentShow = function(collection_name, document_id, callback) {
 	}
 }
 
+/**
+ * Preleva i dati relativi ad un specifico documento per visualizzare la pagina di editing
+ *
+ *@param collection_name - nome della collection da gestire
+ *@param document_id - id del documento da editare
+ *@param callback - funzione da eseguire al termine dell'operazione
+ */
 exports.getDocumentShowEdit = function(collection_name, document_id, callback) {
 
+	//prelevo il modello relativo alla collection specificata
 	var model = getModel(collection_name);
 	
+	//preparo la query con l'id del documento da modificare
 	var query = {};
 	query._id = document_id;
 	
+	//setto le impostazioni della query
 	var querySettings = {};
 	querySettings.where = query; 
 	querySettings.select = {};
@@ -821,17 +913,27 @@ exports.getDocumentShowEdit = function(collection_name, document_id, callback) {
 
 }
 
-
+/**
+ * Aggiorna un documento con i nuovi dati passati in ingresso
+ *
+ *@param collection_name - nome della collection da gestire
+ *@param document_id - id del documento da aggiornare
+ *@param newDocumentData - oggetto JSON contenente i nuovi dati da scrivere nel document
+ *@param callback - funzione da eseguire al termine dell'operazione
+ */
 exports.updateDocument = function(collection_name, document_id, newDocumentData, callback) {
+
+	//prelevo il modello relativo alla collection specificata
 	var model = getModel(collection_name);
 	
+	//imposto i criteri per l'update (id del documento da aggiornare)
 	var criteria = {};
 	criteria._id = document_id;
-	var options = {};
 	
+	var options = {};	
 	for(var key in newDocumentData)
 	{
-		if(key.indexOf('$') == 0) //rimuovo campi dati con il dollaro se ce ne sono (FIX temporaneo..)
+		if(key.indexOf('$') == 0) //rimuovo campi dati con il dollaro se ce ne sono
 			delete newDocumentData[key];
 	}
 	
@@ -870,6 +972,7 @@ exports.updateDocument = function(collection_name, document_id, newDocumentData,
 				});
 				
 			}else{
+				//rimozione del vecchio document fallito
 				callback(false);
 			}		
 		});

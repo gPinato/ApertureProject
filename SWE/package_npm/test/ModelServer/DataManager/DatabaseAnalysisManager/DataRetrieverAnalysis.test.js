@@ -266,10 +266,6 @@ describe("DataRetrieverAnalysis Unit Test: ", function() {
 
 	describe("getDocumentShowEdit", function() {
 	
-	});
-	
-	describe("getDocumentShowEditNew", function() {
-	
 		
 		it("deve invocare getDocuments con il model corretto", function() {
 			
@@ -284,7 +280,7 @@ describe("DataRetrieverAnalysis Unit Test: ", function() {
 			retriever.__set__('getModel', getModel );
 			retriever.__set__('getDocuments', getDocuments );
 			
-			retriever.getDocumentShowEditNew('name', 'docID', function(doc){
+			retriever.getDocumentShowEdit('name', 'docID', function(doc){
 				expect(doc).to.equal('name');
 			});
 			
@@ -303,7 +299,7 @@ describe("DataRetrieverAnalysis Unit Test: ", function() {
 			retriever.__set__('getModel', getModel );
 			retriever.__set__('getDocuments', getDocuments );
 			
-			retriever.getDocumentShowEditNew('name', 'docID', function(doc){
+			retriever.getDocumentShowEdit('name', 'docID', function(doc){
 				expect(doc).to.equal('');
 			});
 			
@@ -322,7 +318,7 @@ describe("DataRetrieverAnalysis Unit Test: ", function() {
 			retriever.__set__('getModel', getModel );
 			retriever.__set__('getDocuments', getDocuments );
 			
-			retriever.getDocumentShowEditNew('name', 'docID', function(doc){
+			retriever.getDocumentShowEdit('name', 'docID', function(doc){
 				expect(doc.where._id).to.equal('docID');
 				expect(doc.select.field).to.equal(undefined);
 				expect(doc.orderbycolumn).to.equal('');
@@ -348,7 +344,7 @@ describe("DataRetrieverAnalysis Unit Test: ", function() {
 			retriever.__set__('getModel', getModel );
 			retriever.__set__('getDocuments', spy );
 			
-			retriever.getDocumentShowEditNew('name', 'docID', function(doc){
+			retriever.getDocumentShowEdit('name', 'docID', function(doc){
 				
 			});
 			
