@@ -1,3 +1,79 @@
 /**
- * Created by Jack on 04/07/14.
+ * File: LoginCtrl_test;
+ * Module: modulo di appartenenza;
+ * Author: Giacomo Pinato;
+ * Created: 18/05/14;
+ * Version: versione corrente;
+ * Description: descrizione dettagliata del file;
+ * Modification History:
+ ==============================================
+ * Version | Changes
+ ==============================================
+ * 0.1 file creation
+ ==============================================
  */
+
+
+'use strict';
+
+describe('Controller: RegisterCtrl', function () {
+
+    // load the controller's module
+    beforeEach(module('maaperture', 'services', 'ngResource','ngCookies', 'ngRoute'));
+
+    var MainCtrl,
+        routeParams,
+        $httpBackend,
+        scope,
+        cookieStore,
+       credentials;
+
+    // Initialize the controller and a mock scope
+    beforeEach(inject(function ($controller, $rootScope,_$httpBackend_,$cookieStore ) {
+        scope = $rootScope.$new();
+        $httpBackend = _$httpBackend_;
+        cookieStore = $cookieStore,
+        credentials = {
+                email: '1',
+                pwd1: '1',
+                pwd2: '1'
+            };
+
+        MainCtrl = $controller('RegisterCtrl', {
+            $scope: scope,
+            $routeParams:routeParams,
+            $cookieStore:cookieStore
+        });
+    }));
+
+    it('should register an user correclty', function () {
+        // Given
+        scope.signup_form={};
+        scope.signup_form.$valid=true;
+        $httpBackend.whenGET('views/dashboard.html').respond(200);
+        $httpBackend.whenPOST('http://localhost:9000/api/signup').respond(200);
+
+        // When
+        scope.signupForm();
+        $httpBackend.flush();
+        // Then
+
+
+    });
+
+    it('should give an error when not succesfull', function () {
+        // Given
+
+        $httpBackend.whenGET('http://localhost:9000/api/signup').respond(400);
+        $httpBackend.whenGET('views/dashboard.html').respond(200);
+
+        // When
+        $httpBackend.flush();
+        // Then
+
+
+    });
+
+
+});
+

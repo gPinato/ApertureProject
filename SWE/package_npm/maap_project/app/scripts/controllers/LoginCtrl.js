@@ -14,7 +14,7 @@
  */
 'use strict';
 
-angular.module('maaperture').controller('LoginCtrl', function ($scope,$route,$cookieStore, $location, AuthService) {
+angular.module('maaperture').controller('LoginCtrl', function ($scope,$route,$cookieStore, $location,AuthService) {
     $scope.credentials = {
         email: '',
         password: ''
@@ -24,7 +24,7 @@ angular.module('maaperture').controller('LoginCtrl', function ($scope,$route,$co
     //Richiede al server di validare le credenziali inserite.
     $scope.login = function () {
         AuthService.login({}, $scope.credentials).$promise.then(
-            function success(data, status) {
+            function success(data) {
                 if ( data.level === 1){
                     $cookieStore.put("isAdmin",true);
                 }
@@ -35,7 +35,7 @@ angular.module('maaperture').controller('LoginCtrl', function ($scope,$route,$co
                 $route.reload();
 
             },
-            function error(data, status) {
+            function error() {
 				 alert("Login failed, please check your email/password and try again!");
             });
 

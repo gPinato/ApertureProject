@@ -32,14 +32,15 @@ angular.module('maaperture').controller('UsersCollectionCtrl', function ($scope,
         $scope.current_sort = null;
         $scope.current_page = 0;
         $scope.rows = [];
-        getData();
+        $scope.getData();
 
     };
+
 
     //Funzione di recupero dei dati dal server.
     //In base ai parametri dello scope effettua una query sul server e recupera i dati
     //da visualizzare
-    var getData = function () {
+    $scope.getData = function () {
 
         UserCollectionService.query({
                 order: $scope.current_sort,
@@ -84,7 +85,7 @@ angular.module('maaperture').controller('UsersCollectionCtrl', function ($scope,
                 $scope.credentials).$promise.then(
                 function success() {
                     alert("User created correctly");
-                    getData();
+                    $scope.getData();
                 },
                 function err(error) {
                     alert("Registration failed! We already have this email in our databases ;)");
@@ -110,13 +111,13 @@ angular.module('maaperture').controller('UsersCollectionCtrl', function ($scope,
         //Determina se cambiare solo ordinamento o anche colonna ordinata
         if (index === $scope.current_sorted_column) {
             changeSort();
-            getData();
+            $scope.getData();
         }
         else {
             //cambia anche la colonna ordinata
             $scope.current_sorted_column = index;
             $scope.current_sort = "asc";
-            getData();
+            $scope.getData();
         }
     };
     //funzione per cancellare il documento di indice index
@@ -178,7 +179,7 @@ angular.module('maaperture').controller('UsersCollectionCtrl', function ($scope,
         if ($scope.current_page > 0) {
 
             $scope.current_page--;
-            getData();
+            $scope.getData();
         }
 
     };
@@ -197,7 +198,7 @@ angular.module('maaperture').controller('UsersCollectionCtrl', function ($scope,
 
         if ($scope.current_page < $scope.pages - 1) {
             $scope.current_page++;
-            getData();
+            $scope.getData();
         }
 
     };
@@ -212,7 +213,7 @@ angular.module('maaperture').controller('UsersCollectionCtrl', function ($scope,
     //Va alla pagina $index
     $scope.toPage = function (index) {
         $scope.current_page = index;
-        getData();
+        $scope.getData();
     };
 
 

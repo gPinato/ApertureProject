@@ -19,46 +19,69 @@
 describe('Controller: LoginCtrl', function () {
 
     // load the controller's module
-    beforeEach(module('maaperture'));
+    beforeEach(module('maaperture', 'services', 'ngResource','ngCookies', 'ngRoute'));
 
     var MainCtrl,
-        MockServer,
-        scope;
+        routeParams,
+        $httpBackend,
+        scope,
+        cookieStore,
+        data;
 
-    // Initialize the controller and a mock server
-    beforeEach(inject(function ($controller, $rootScope ) {
+    // Initialize the controller and a mock scope
+    beforeEach(inject(function ($controller, $rootScope,_$httpBackend_,$cookieStore ) {
         scope = $rootScope.$new();
-        MockServer = {
-            post:function(email, password) {
-                if (email.valueOf() === 'apertureswe@gmail.com' &&
-                    password.valueOf() === 'asdasd')
-                    return  true;
-                else
-                    return  false;
-            }
-        };
-
-
+        $httpBackend = _$httpBackend_;
+        cookieStore = $cookieStore,
+        data ={};
+        data.level=1;
 
         MainCtrl = $controller('LoginCtrl', {
             $scope: scope,
-            AuthService : MockServer
+            $routeParams:routeParams,
+            $cookieStore:cookieStore
         });
     }));
 
-    it('credentials should be empity', function(){
-        expect(scope.credentials).toEqual({email: '',
-            password: ''});
+    it('should set user data correctly when successful (admin)', function () {
+        // Given
+
+        $httpBackend.whenGET('http://localhost:9000/api/login').respond(200, data);
+        $httpBackend.whenGET('views/dashboard.html').respond(200);
+
+        // When
+        $httpBackend.flush();
+        // Then
+        var temp = cookieStore.get("isAdmin");
+        expect(temp).toBe(true);
+
     });
 
-    it('should log in the correct user', function(){
-        scope.credentials = {
-            email: 'apertureswe@gmail.com',
-            password: 'asdasd'
-        };
-        //expect(scope.login()).toBe(true);
+    it('should set user data correctly when successful (user)', function () {
+        // Given
+        data.level=0;
+        $httpBackend.whenGET('http://localhost:9000/api/login').respond(200, data);
+        $httpBackend.whenGET('views/dashboard.html').respond(200);
 
-        });
+        // When
+        $httpBackend.flush();
+        // Then
+        var temp = cookieStore.get("isAdmin");
+        expect(temp).toBe(false);
 
+    });
+
+    it('should set user data correctly when successful (user)', function () {
+        // Given
+        data.level=0;
+        $httpBackend.whenGET('http://localhost:9000/api/login').respond(400);
+        $httpBackend.whenGET('views/dashboard.html').respond(200);
+
+        // When
+        $httpBackend.flush();
+        // Then
+
+
+    });
 });
 

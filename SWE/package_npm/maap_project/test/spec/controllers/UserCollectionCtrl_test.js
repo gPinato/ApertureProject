@@ -12,19 +12,33 @@
 describe('Controller: UsersCollectionCtrl', function () {
 
     // load the controller's module
-    beforeEach(module('maaperture'));
+    beforeEach(module('maaperture', 'services', 'ngResource', 'ngRoute'));
 
     var MainCtrl,
         routeParams,
         scope,
-
-        mockBackend;
+        location,
+        $httpBackend;
+    var data =
+        [ [ 'Timestamp', 'Message', 'Level' ],
+            [ { _id: '52b31e950d715cff70000001', data: { label: [ '_id', 'Timestamp', 'Message', 'Level', 'Hostname' ],
+                data:
+                { _id: '52b320a93401a40800000006',
+                    timestamp: 'today',
+                    message: 'AMAIL',
+                    level: 'info',
+                    hostname: 'b6d91509-de9d-4be9-819d-e04de3699ad2' } } },
+                { _id: '52b31ebd3401a40800000002', data: [Object] },
+                { _id: '52b31ebd3401a40800000003', data: [Object] },
+                { _id: '52b3347f255fbb0800000021', data: [Object] } ],
+            { pages: 4 } ];
 
     // Initialize the controller and a mock scope
-    beforeEach(inject(function ($controller, $rootScope, _$httpBackend_) {
+    beforeEach(inject(function ($controller,$location, $rootScope, _$httpBackend_) {
         scope = $rootScope.$new();
-        mockBackend = _$httpBackend_;
+        $httpBackend = _$httpBackend_;
 
+        location = $location;
 
         MainCtrl = $controller('UsersCollectionCtrl', {
             $scope: scope,
@@ -33,34 +47,84 @@ describe('Controller: UsersCollectionCtrl', function () {
 
     }));
 
-    beforeEach(function () {
-        angular.mock.inject(function ($injector) {
-            mockBackend = $injector.get('$httpBackend');
-        });
+    it('should set some data on the scope when successful', function () {
+        // Given
+        $httpBackend.whenGET('http://localhost:9000/api/users/list').respond(200, data);
+        $httpBackend.whenGET('views/dashboard.html').respond(200);
+        $httpBackend.whenGET('http://localhost:9000/api/users/list?page=0&query=%7B%22method%22:%22GET%22%7D').respond(200, data);
+
+        // When
+        scope.getData();
+        $httpBackend.flush();
+        // Then
+        expect(scope.data).toEqual(data);
+        expect(scope.labels).toEqual({ 0 : 'Timestamp', 1 : 'Message', 2 : 'Level' });
+        //expect(scope.pages).toEqual(data[2]);
+
     });
-    /*
-     it('should load labels from the services',  inject(function (CollectionDataService)  {
 
-     mockBackend.expectGET('http://localhost:9000/api/collection/0?page=0')
-     .respond(response);
+    it('should display an error when not successful', function () {
+        // Given
+        $httpBackend.whenGET('http://localhost:9000/api/users/list?page=0&query=%7B%22method%22:%22GET%22%7D').respond(200, data);
 
-
-     var result = MockColService.query({
-     col_id: routeParams.col_id,
-     order: scope.current_sort,
-     column: scope.column_original_name[scope.current_sorted_column],
-     page: scope.current_page
-
-     });
-     mockBackend.flush();
-     console.log(result);
-     expect(result).to.not.equal(null);
+        $httpBackend.whenGET('http://localhost:9000/api/users/list').respond(400);
+        $httpBackend.whenGET('views/dashboard.html').respond(200);
+        $httpBackend.whenGET('views/404.html').respond(200);
 
 
-     }));
-     */
+        // When
+        //scope.loadData();
+        $httpBackend.flush();
+        // Then
+
+    });
+
+    it('should delete a document correctly', function () {
+        // Given
+        $httpBackend.whenGET('views/dashboard.html').respond(200);
+        $httpBackend.whenGET('views/userCollection.html').respond(200);
+
+        $httpBackend.whenGET('http://localhost:9000/api/users/list').respond(200, data);
+        $httpBackend.whenDELETE('http://localhost:9000/api/users/edit').respond(200);
+        $httpBackend.whenGET('http://localhost:9000/api/users/list?page=0&query=%7B%22method%22:%22GET%22%7D').respond(200, data);
+
+
+        // When
+        scope.delete_document();
+        $httpBackend.flush();
+        // Then
+        //test sul path
+
+    });
+
+    it('should display an error when the delete fails', function () {
+        // Given
+        $httpBackend.whenGET('http://localhost:9000/api/users/list?page=0&query=%7B%22method%22:%22GET%22%7D').respond(200, data);
+        $httpBackend.whenGET('views/dashboard.html').respond(200);
+
+        $httpBackend.whenGET('http://localhost:9000/api/users/list').respond(200, data);
+        $httpBackend.whenDELETE('http://localhost:9000/api/users/edit').respond(400);
+
+
+        // When
+        scope.delete_document();
+        $httpBackend.flush();
+        // Then
+
+
+    });
+
 
     it('should initialize data correctly', function () {
+
+        var localcred = {
+            email: '',
+            pwd1: '',
+            pwd2: ''
+        };
+
+        expect(scope.credentials).toEqual(localcred);
+
         expect(scope.current_sorted_column).toBe(null);
         expect(scope.current_sort).toBe(null);
         expect(scope.column_original_name.length).toBe(0);

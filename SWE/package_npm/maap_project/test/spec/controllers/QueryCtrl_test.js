@@ -95,19 +95,7 @@ describe('Controller: QueryCtrl', function () {
         scope.prevPage();
         expect(scope.current_page).toBe(scope.pages - 2);
     });
-    it('should change sort correctly', function () {
-        scope.current_sort = "asc";
-        scope.current_sorted_column = 0;
 
-        scope.columnSort(1);
-        expect(scope.current_sort).toBe("asc");
-        expect(scope.current_sorted_column).toBe(1);
-        scope.columnSort(1);
-        expect(scope.current_sort).toBe("desc");
-        scope.columnSort(1);
-        expect(scope.current_sort).toBe("asc");
-
-    });
 
     it('should calculate the correct range', function () {
         scope.pages = 3;
