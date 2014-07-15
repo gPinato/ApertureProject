@@ -40,5 +40,17 @@ describe("DSLManager Unit Test: ", function() {
 		});
 
 	});
+	
+	describe("deleteFolderRecursive", function() {
+	
+	});
+	
+	describe("saveFile", function() {
+	
+	});
+	
+	describe("checkDSL", function() {
+	
+	});
 
 }); //end DSLManager unit test

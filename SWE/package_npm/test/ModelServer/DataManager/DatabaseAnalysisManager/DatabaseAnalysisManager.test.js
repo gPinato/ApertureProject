@@ -227,36 +227,6 @@ describe("DatabaseAnalysisManager Unit Test: ", function() {
 	
 	describe("sendDocumentEdit", function() {
 	
-		it("deve usare il nome della collection presente nella request", function() {
-			
-			manager.__set__('retriever', {getDocumentShowEdit: function(collection_name, document_id, callback){ callback(collection_name);}} );
-			manager.__set__('JSonComposer', {createDocument: function(labels, rows, options){return labels;}} );
-			
-			var req = {body:{}, config: {}, params: {col_id: 'colName', doc_id: 'docName'}};
-			
-			manager.sendDocumentEdit(req, {send: function(response){
-				expect(response).to.equal('colName');
-			}});
-		
-		});	
-		
-		it("deve usare il nome del document presente nella request", function() {
-			
-			manager.__set__('retriever', {getDocumentShowEdit: function(collection_name, document_id, callback){ callback(document_id);}} );
-			manager.__set__('JSonComposer', {createDocument: function(labels, rows, options){return labels;}} );
-			
-			var req = {body:{}, config: {}, params: {col_id: 'colName', doc_id: 'docName'}};
-			
-			manager.sendDocumentEdit(req, {send: function(response){
-				expect(response).to.equal('docName');
-			}});
-		
-		});	
-					
-	});
-	
-	describe("sendDocumentEdit", function() {
-	
 		it("deve rispondere con document in JSON prodotto dal JSonComposer", function() {
 			
 			var document2edit = {test: 'testField'};
