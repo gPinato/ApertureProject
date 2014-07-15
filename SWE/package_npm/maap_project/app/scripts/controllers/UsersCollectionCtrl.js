@@ -18,10 +18,15 @@
 
 'use strict';
 
-angular.module('maaperture').controller('UsersCollectionCtrl', function ($scope, $route, $location, UserCollectionService, UserEditService) {
+angular.module('maaperture').controller('UsersCollectionCtrl', function ($scope, $route, $location,RegisterService, UserCollectionService, UserEditService) {
 
     //Funzione di inizializzazione del controller
     var init = function () {
+        $scope.credentials = {
+            email: '',
+            pwd1: '',
+            pwd2: ''
+        };
         $scope.current_sorted_column = null;
         $scope.column_original_name = [];
         $scope.current_sort = null;
@@ -72,6 +77,23 @@ angular.module('maaperture').controller('UsersCollectionCtrl', function ($scope,
     };
 
     init();
+
+    $scope.signupForm = function () {
+        if ($scope.signup_form.$valid) {
+            RegisterService.createuser({},
+                $scope.credentials).$promise.then(
+                function success() {
+                    alert("User created correctly");
+                    getData();
+                },
+                function err(error) {
+                    alert("Registration failed! We already have this email in our databases ;)");
+                }
+
+            );
+        }
+
+    };
 
     
     //cambia ordinamento corrente, da asc a desc o viceversa
