@@ -2087,7 +2087,7 @@ userProfile & Pagina per la visualizzazione del profilo utente (user) / di un ut
   		Numero intero che definisce il numero del Document da eliminare.
   	\end{description}
   	\item[Descizione] \hfill \\
-  Funzione che elimina il Document identificato dall'indice \emph{index}. Effettua una richiesta REST di rimozione alla risorsa pubblicizzata da DocumentEditService fornendo come argomenti l'identificativo della Collection correntemente visualizzata e l'indice del Document da eliminare. \\
+  Funzione che elimina il Document identificato dall'indice \emph{index}. Effettua una richiesta REST di rimozione alla risorsa gestita da DocumentEditService fornendo come argomenti l'identificativo della Collection correntemente visualizzata e l'indice del Document da eliminare. \\
   Se l'eliminazione ha successo viene lanciato l'aggiornamento della vista corrente con il Document eliminato, altrimenti si richiama la callback di errore.
   \end{description}
   
@@ -2357,7 +2357,7 @@ Fornisce un immediato elenco delle collection disponibili.
   	\end{description}
   	\item[Descrizione] \hfill \\
   	  Funzione che elimina l'indice identificato dall'indice \emph{index}. Effettua una richiesta REST di rimozione alla risorsa
-  pubblicizzata da IndexService fornendo come argomenti l'indice passato come argomento. \\
+  gestita da IndexService fornendo come argomenti l'indice passato come argomento. \\
   Se l'eliminazione ha successo viene lanciato l'aggiornamento della vista corrente con il Document eliminato, altrimenti si richiama la callback di errore.
   \end{description}
   
@@ -2680,7 +2680,7 @@ Funzione che invia al server il profilo modificato nel client.
   			Indice che rappresenta il Document da eliminare.
        \end{description}
   	\item[Descrizione] \hfill \\
-     Funzione che elimina il Document identificato dall'indice \emph{index}. Effettua una richiesta REST di rimozione alla risorsa pubblicizzata da QueryService.
+     Funzione che elimina il Document identificato dall'indice \emph{index}. Effettua una richiesta REST di rimozione alla risorsa gestita da QueryService.
   Se l'eliminazione ha successo viene lanciato l'aggiornamento della vista corrente con il Document eliminato, altrimenti si richiama la callback di errore.
     \end{description}
     
@@ -2843,7 +2843,7 @@ Funzione che invia al server il profilo modificato nel client.
        \end{description}
   	\item[Descrizione] \hfill \\
       Funzione che elimina il profilo identificato dall'indice \emph{index}. Effettua una richiesta REST di rimozione alla risorsa
-  pubblicizzata da \textit{@UserEditService} fornendo come argomenti l'identificativo della Collection correntemente visualizzata e l'indice del Document da eliminare. \\
+  gestita da \textit{@UserEditService} fornendo come argomenti l'identificativo della Collection correntemente visualizzata e l'indice del Document da eliminare. \\
   Se l'eliminazione ha successo viene lanciato l'aggiornamento della vista corrente con il Document eliminato, altrimenti si  richiama la callback di errore.
     \end{description}
   
@@ -2899,7 +2899,7 @@ Funzione che invia al server il profilo modificato nel client.
   			Indice del profilo da eliminare.
        \end{description}
   	\item[Descrizione] \hfill \\
-   Funzione che elimina il profilo identificato dall'indice \emph{index}. Effettua una richiesta REST di rimozione alla risorsa pubblicizzata da UserEditService fornendo come argomenti l'identificativo della Collection correntemente visualizzata e l'indice del Document da eliminare. \\
+   Funzione che elimina il profilo identificato dall'indice \emph{index}. Effettua una richiesta REST di rimozione alla risorsa gestita da UserEditService fornendo come argomenti l'identificativo della Collection correntemente visualizzata e l'indice del Document da eliminare. \\
   Se l'eliminazione ha successo viene lanciato l'aggiornamento della vista corrente con il Document eliminato, altrimenti si richiama la callback di errore.
     \end{description}
  
@@ -2958,7 +2958,7 @@ Funzione che invia al server il profilo modificato nel client.
   \item[delete\textunderscore document()] \hfill
     \begin{description}
   	\item[Descrizione] \hfill \\ 
- Funzione che elimina il profilo identificato dall'indice \emph{index}. Effettua una richiesta REST di rimozione alla risorsa pubblicizzata da UserEditService fornendo come argomenti l'identificativo della Collection correntemente visualizzata e l'indice del Document da eliminare. \\
+ Funzione che elimina il profilo identificato dall'indice \emph{index}. Effettua una richiesta REST di rimozione alla risorsa gestita da UserEditService fornendo come argomenti l'identificativo della Collection correntemente visualizzata e l'indice del Document da eliminare. \\
   Se l'eliminazione ha successo viene lanciato l'aggiornamento della vista corrente con il Document eliminato, altrimenti si richiama la callback di errore.
       \end{description}
 
@@ -3000,7 +3000,7 @@ Funzione che invia al server il profilo modificato nel client.
 \subsection{::ModelClient}
 
 \subsubsection{::Services}
-I Servizi del Client sono i tramite tra il Client ed il Server. I componenti di questa sezione sono gli esecutori materiali delle richieste REST per ottenere le informazioni dei dati presenti nei database di analisi e utenti presenti nel Server. Essi pubblicizzano delle risorse su cui i Controller associati manipolano le informazioni richieste dal Client.
+I Servizi del Client sono i tramite tra il Client ed il Server. I componenti di questa sezione sono gli esecutori materiali delle richieste REST per ottenere le informazioni dei dati presenti nei database di analisi e utenti presenti nel Server. Essi gestiscono delle risorse su cui i Controller associati manipolano le informazioni richieste dal Client.
 
 \paragraph{@AuthService}
 \begin{description}
@@ -3098,7 +3098,7 @@ I Servizi del Client sono i tramite tra il Client ed il Server. I componenti di 
 \paragraph{@IndexService}
 \begin{description}
  \item[Descrizione] \hfill \\
- Modulo che pubblicizza una \$resource legata ad un indice.
+ Modulo che gestisce una \$resource legata ad un indice.
  \item[Utilizzo] \hfill \\
  Questo servizio ritorna una \$resource legata ad un indice fornito dal server, per essere utilizzata dall'IndexCtrl per gestire i vari 
  indici visualizzati nel Client. Il presente modulo viene inoltre iniettato nel QueryCtrl per creare un nuovo indice a partire da una 
@@ -3121,7 +3121,7 @@ I Servizi del Client sono i tramite tra il Client ed il Server. I componenti di 
  Modulo che fornisce la \$resource legata al servizio di logout di un utente autenticato del Client.
  \item[Utilizzo] \hfill \\
   Questo servizio fornisce un'astrazione del metodo di logout eseguito dal server. La \$resource esportata dal servizio viene utilizzata
-  nel NavBarCtrl per effettuare il logout di un autente autenticato, tramite il metodo pubblicizzato \textit{logout}. 
+  nel NavBarCtrl per effettuare il logout di un autente autenticato, tramite il metodo esposto \textit{logout}. 
  \item[Funzionalità] \hfill \\
  \emph{Dipendendenze iniettate:}
  \begin{itemize}
