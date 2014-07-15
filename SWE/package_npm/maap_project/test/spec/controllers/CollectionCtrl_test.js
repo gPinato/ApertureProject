@@ -9,7 +9,7 @@
  */
 'use strict';
 
-describe('Controller: CollectionCtrl', function () {
+ddescribe('Controller: CollectionCtrl', function () {
 
     // load the controller's module
     beforeEach(module('maaperture', 'services', 'ngResource', 'ngRoute'));
@@ -58,7 +58,7 @@ describe('Controller: CollectionCtrl', function () {
         scope.getData();
         $httpBackend.flush();
         // Then
-        expect(scope.data).toEqual(data[1]);
+        expect(scope.data).toEqual(data);
         expect(scope.labels).toEqual({ 0 : 'Timestamp', 1 : 'Message', 2 : 'Level' });
         //expect(scope.pages).toEqual(data[2]);
 
