@@ -9,7 +9,7 @@
             <!-- Table -->
 
             <table class="table">
-                <th ng-click="columnSort($index)" ng-repeat="label in labels"><a href="">{{label}}</a></th>
+                <th ng-click="columnSort($index)" ng-repeat="label in labels">{{label}}</a></th>
                 <th>Options</th>
                 <tr ng-repeat="row in rows track by $index" >
                     <td ng-repeat="value in row">{{value}}</td>
