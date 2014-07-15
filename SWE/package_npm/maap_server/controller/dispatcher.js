@@ -32,6 +32,7 @@ var dispatcherInit = function (app) {
 	passport.init(app);
 	var config = app.config;
 	
+	//creo il dispatcher (router di express)
 	var dispatcher = app.express.Router();
 	
 	//gestione collections e documents
@@ -65,16 +66,19 @@ var dispatcherInit = function (app) {
 	dispatcher.put('/api/indexes', passport.checkAuthenticatedAdmin, datamanager.createIndex);
 	dispatcher.delete('/api/indexes/:col_name/:index_name', passport.checkAuthenticatedAdmin, datamanager.deleteIndex);
 		
+	//registrazione nuovo utente per l'admin
+	dispatcher.put('/api/signup', passport.checkAuthenticatedAdmin, usermanager.userSignup, function(req, res){
+		res.send(200);
+	});
+	
 	//gestione login
 	dispatcher.post('/api/forgot', passport.checkNotAuthenticated, passport.forgotPassword);	
-	dispatcher.post('/api/check/email', passport.checkNotAuthenticated, usermanager.checkMail);	
+	dispatcher.post('/api/check/email', passport.checkNotAuthenticated, usermanager.checkMail);
 	dispatcher.post('/api/signup', passport.checkNotAuthenticated, usermanager.userSignup, passport.authenticate, function(req, res){
 		console.log(req.user);
 		res.send(req.user);
 	});
-	/*dispatcher.get('/loggedin', function(req, res){
-		res.send(req.isAuthenticated() ? req.user : '0');
-	});*/
+	
 	dispatcher.post('/api/login', passport.checkNotAuthenticated, passport.authenticate, function(req, res){
 		console.log(req.user);
 		res.send(req.user);
@@ -87,10 +91,13 @@ var dispatcherInit = function (app) {
 	});
 	
 	//per tutte le altre richieste... c'e' sempre il dispatcher!	
+	//(qualsiasi richiesta che non inizia con /api/... arrivera' qui e come risposta sara' inviato il file index.html.
+	//sara' poi il client a caricare angular, tutti i controllers e relativi servizi)
 	dispatcher.get('*', function(req, res){
 		res.sendfile(path.join(config.static_assets.dir, 'index.html'));
 	});
 
+	//restituisco il dispatcher inizializzato e configurato
 	return dispatcher;
 }
 
