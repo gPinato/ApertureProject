@@ -171,9 +171,11 @@ Le sue caratteristiche più vantaggiose sono:
 \item Modello asincrono: grazie a questa caratteristica è possibile ridurre al minimo i tempi di morti in quanto, nell'attesa del completamento di una operazione, si procede con altri flussi logici.
 \item Grande scalabilità: Grazie al modo in cui è implementato, Node.js riesce ad essere largamente scalabile con minimo sforzo.
 \end{itemize}
+Nel nostro prodotto MaaP, tutto il server è realizzato utilizzando Node.js.
 
 \subsection{Express}
 Express è un framework minimale e flessibile per la creazione di applicazioni web basate su Node.js. Esso contiene una varietà di funzioni sia per la creazione di applicazioni a singola pagina che multi-pagina oltre che applicazioni ibride.
+Nel nostro prodotto MaaP, Express è utilizzato per ricevere e gestire le richieste da e verso il client. Essendo un framework per Node.js, si integra perfettamente all'interno del server.
 
 \subsection{JSON}
 Rappresenta il tipo di messaggi con cui client e \gloss{server} si scambiano informazioni. I vantaggi offerti sono:
@@ -184,6 +186,7 @@ Svantaggi:
 \begin{itemize}
 \item Restrittività: JSON è meno restrittivo rispetto ad XML, e questo può permettere di inserire errori nello scambio di messaggi.
 \end{itemize}
+Nel nostro prodotto MaaP, il server e il client comunicano tra di loro inviandosi oggetti in formato JSON.
 
 \subsection{AngularJS}
 AngularJS è un framework open-source scritto in Javascript e mantenuto da Google, adatto a sviluppare applicazioni web. Il suo obiettivo principale è fornire alle applicazioni web le funzionalità di MVC, in modo da rendere sia lo sviluppo che il test più semplici.
@@ -194,14 +197,17 @@ Le sue caratteristiche più significative sono:
 \item \gloss{Dependency Injection}: AngularJS dispone di uno strumento di dependency injection, che aiuta gli sviluppatori facilitando la creazione, la comprensione e il \gloss{testing} dell'applicazione.
 \item \gloss{Directives}: Le directives possono essere usate per definire tag HTML personalizzati che fungono da \gloss{widget}. Possono inoltre essere usate per "decorare" elementi con comportamenti personalizzati o per manipolare attributi del DOM.
 \end{itemize}
+Nel nostro prodotto MaaP, tutto il lato client è realizzato usando AngularJS. Si integra perfettamente con il tutto in quanto appartiene allo stack MEAN(MongoDB, Express, AngularJS, Node.js).
 
 \subsection{Passport}
 Passport è un \gloss{middleware} per Node.js estremamente flessibile e modulare, applicabile facilmente a qualsiasi applicazione web basata su \gloss{Express}. Esso fornisce tutte le funzionalità per implementare un sistema di autenticazione facile e sicuro mediante username e password, oppure mediante login preesistenti derivanti da sistemi di autenticazione per piattaforme social tipo Facebook, Twitter e molti altri.
+Nel nostro prodotto MaaP, Passport è utilizzato, dal server, per gestire l'autenticazione e deautenticazione degli utenti lato client.
 
 \subsection{HTML5}
 \gloss{HTML5} è un \gloss{linguaggio di markup} per la strutturazione delle \gloss{pagine web}.\\
 Nel progetto MaaP è stato scelto di utilizzare HTML5 perché introduce novità finalizzate soprattutto a migliorare il \gloss{disaccoppiamento} tra struttura, definita dal markup, caratteristiche di resa (tipo di carattere, colori, eccetera), definite dalle direttive di stile, e contenuti di una pagina web, definiti dal testo vero e proprio.\\
 Inoltre HTML5 prevede il supporto per la memorizzazione locale di grosse quantità di dati scaricati dal web browser, ideale per consentire l'utilizzo di applicazioni web e quindi per il \gloss{framework} MaaP.
+Nel nostro prodotto MaaP, i template per le pagine web sono scritte utilizzando HTML5.
 
 \newpage
 \section{Descrizione architettura}
@@ -224,8 +230,9 @@ Nel precedente diagramma sono presenti le relazioni tra i package Client ed il p
 Vengono inoltre presentati tutti i sotto-package così da facilitare la comprensione dell'intero sistema.
 
 \subsubsection{Classi}
-\immagine{./Diagrammi/GeneraleClassi}{Architettura generale del software}
-Nel precedente diagramma è presente l'architettura ad alto livello del software e vengono indicate le classi fondamentali per rappresentare le relazioni dell'architettura Client-server. I diagrammi di sequenza relativi allo scambio di segnali, lo scopo ed il contesto di utilizzo sono presenti nella sezione 6 del documento \emph{Definizione\_di\_Prodotto\versioneDefinizioneDiProdotto{}}.pdf.
+\immagine{./Diagrammi/GeneraleClassiClient}{Architettura generale del software, parte client}
+\immagine{./Diagrammi/GeneraleClassiServer}{Architettura generale del software, parte server}
+Nei precedenti diagrammi è presente l'architettura ad alto livello del software e vengono indicate le classi fondamentali per rappresentare le relazioni dell'architettura Client-server. I diagrammi di sequenza relativi allo scambio di segnali, lo scopo ed il contesto di utilizzo sono presenti nella sezione 6 del documento \emph{Definizione\_di\_Prodotto\versioneDefinizioneDiProdotto{}}.pdf.
 
 \newpage
 \section{Componenti e Classi}

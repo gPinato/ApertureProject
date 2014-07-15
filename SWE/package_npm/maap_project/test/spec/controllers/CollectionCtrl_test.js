@@ -58,7 +58,7 @@ describe('Controller: CollectionCtrl', function () {
         scope.getData();
         $httpBackend.flush();
         // Then
-        expect(scope.data).toEqual(data[1]);
+        expect(scope.data).toEqual(data);
         expect(scope.labels).toEqual({ 0 : 'Timestamp', 1 : 'Message', 2 : 'Level' });
         //expect(scope.pages).toEqual(data[2]);
 

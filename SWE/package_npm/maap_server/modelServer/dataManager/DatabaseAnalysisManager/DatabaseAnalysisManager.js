@@ -76,27 +76,7 @@ exports.sendDocumentEdit = function(req, res){
 	var collection_name = req.params.col_id;
 	var document_id = req.params.doc_id;
 	console.log('_________docEDIT____________');
-	retriever.getDocumentShowEdit(collection_name, document_id, function(data){
-		
-		if(data.rows == undefined)
-		{
-			res.send(404);
-		}else{
-			res.send(JSonComposer.createDocument( 	data.labels,	//etichette
-													data.rows,		//dati
-													data.options	//opzioni
-												));
-		}
-	});	
-	
-}
-
-exports.sendDocumentEditNew = function(req, res){
-	var config = req.config;
-	var collection_name = req.params.col_id;
-	var document_id = req.params.doc_id;
-	console.log('_________docEDITnew____________');
-	retriever.getDocumentShowEditNew(collection_name, document_id, function(document2edit){
+	retriever.getDocumentShowEdit(collection_name, document_id, function(document2edit){
 		
 		//TODO decidere cosa fare se il risultato e' vuoto (collection non presente nel db e/o collection vuota)
 		console.log(document2edit);

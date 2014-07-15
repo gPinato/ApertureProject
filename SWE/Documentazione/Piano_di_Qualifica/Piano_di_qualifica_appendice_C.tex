@@ -5,7 +5,11 @@ Di seguito verranno visualizzate delle tabelle, strutturate secondo la sezione 5
 
 \subsection{Test di unità}
 Di seguito verrà mostrata la tabella che riporta tutti i test di unità pianificati, associati alla componente testata.\\
-
+Per ciascun test, verrà specificato anche il suo stato. Esso può essere di due tipi:
+\begin{itemize}
+\item \grassetto{D.E.}: ovvero da eseguire;
+\item \grassetto{Superato}: ovvero test che ha avuto esito positivo.
+\end{itemize}
 \subsubsection{Descrizione dei test di unità}
 
 \input{./DescrizioneTestUnitaClient.tex}
@@ -13,6 +17,7 @@ Di seguito verrà mostrata la tabella che riporta tutti i test di unità pianifi
 
 \subsubsection{Tracciamento}
 Di seguito verranno riportati in forma tabellare i tracciamenti componente-test d'unità sia lato server che lato client.\\
+
 
 \paragraph{Tracciamento componente server-test di unità}
 \input{./TracciamentoCOMPTESTUNITA_Server.tex}
@@ -202,11 +207,17 @@ Dovrà quindi seguire la seguente procedura:
 \item Cliccare sul bottone Create Index;
 \item Verificare che venga creato l'indice nel sistema;
 \begin{enumerate}
-\item Verificare la corretta visualizzazione del popup di conferma di avvenuta creazione;
-\item Cliccare sul bottone Ok all'interno del popup;
+\item Verificare la corretta visualizzazione del \gloss{pop-up} di conferma di avvenuta creazione;
+\item Cliccare sul bottone Ok all'interno del pop-up;
 \item Verificare la corretta visualizzazione dell'elenco degli indici nel sistema.
 \end{enumerate}
 \end{enumerate}
+\item Verificare che si possa visualizzare il comando di creazione indice da riga di comando;
+\begin{enumerate}
+\item Cliccare sul bottone Index cmd;
+Verificare la corretta visualizzazione del pop-up contenente il comando.
+\end{enumerate}
+
 \end{enumerate}
 \subsubsection{TV 6 - Lato Utente Business Amministratore}
 
