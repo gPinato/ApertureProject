@@ -12,11 +12,13 @@
  * 0.1 File creation
  ==============================================
  */
+ //mostra tutti i warning possibili
 'use strict';
 var fs = require('fs');
 var path = require('path'); 
 var mongoose = require('mongoose');
 
+//prendo il percorso dove è contenuta la lista di collection
 var collectionDataPath = __dirname + '/../DSL/collectionData';
 
  /**
@@ -40,6 +42,7 @@ exports.init = function(app) {
 	
 	console.log('generating models...');
 	
+	//scorro la lista di collection
     list.forEach(function(file) {	
 	    var filePath = collectionDataPath + '/' + file;
         var stat = fs.statSync(filePath);
@@ -58,5 +61,6 @@ exports.init = function(app) {
 	
 	while(schemaIsReady > 0){require('deasync').sleep(100);}
 	
+	//esporto i modelli
 	exports.model = modelArray;
 }
