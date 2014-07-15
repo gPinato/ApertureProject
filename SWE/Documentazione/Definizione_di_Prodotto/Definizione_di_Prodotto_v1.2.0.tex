@@ -88,9 +88,7 @@ Diario delle modifiche
 \newpage
 \section{Introduzione}
 \subsection{Scopo del documento}
-Il seguente documento ha lo scopo di definire nel dettaglio la struttura del sistema \gloss{MaaP}, approfondendo quanto già riportato 
-nella Specifica Tecnica. Tale documento fornisce una struttura dettagliata e completa che viene utilizzata dai \emph{Programmatori} per le 
-attività di codifica.
+Il seguente documento ha lo scopo di definire nel dettaglio la struttura del sistema \gloss{MaaP}, approfondendo quanto già riportato nella Specifica Tecnica. Tale documento fornisce una struttura dettagliata e completa che viene utilizzata dai \emph{Programmatori} per le attività di codifica. 
 
 \subsection{Scopo del prodotto}
 \Prodotto{}
@@ -98,8 +96,10 @@ attività di codifica.
 \subsection{Glossario}
 \Glossario{}
 
-\subsection{Abbreviazioni}
-Le notazioni utilizzate per indicare l'identificazione di un package o di un modulo sono specificate nel documento \emph{Norme\_{}di\_{}Progetto\_{}v\versioneNormeDiProgetto{}.pdf}. La sezione da consultare è la numero XXXXXXXXXXXXXXXXXX <--------- DA CAMBIARE.
+\subsection{Notazioni}
+Per maggiore chiarezza, il nome ogni modulo verrà riportato in grassetto e con il simbolo "@" prima del nome.\\
+Ogni riferimento ad un metodo, invece, sarà identificato dalla formattazione in grassetto del nome del metodo stesso. 
+I parametri preceduti dal simbolo "\$", nel lato Client identificano i servizi messi a disposizione da AngularJS. Infine, lato Server, i moduli che non hanno alcun simbolo a precedere il loro nome, identificano quei moduli di NodeJS che sono stati importati da fonti esterne.
 
 \subsection{Riferimenti}
 
@@ -259,11 +259,11 @@ Package che gestisce il dialogo con il Client di MaaP.
 \begin{description}
  \item[Descrizione] \hfill \\
 Modulo di inizializzazione della componente Server utilizzata per la trasmissione dei dati al Client. \\
-Il modulo \textit{dispatcher} gestisce tutte le richieste effettuate dal Client al Server, effettuando le dovute redirezioni e le chiamate per ottenere i dati dai database nel Server. Le richieste che pervengono al 
-\textit{dispatcher} sono di tipo REST, a cui il modulo stesso risponde con il JSON della risorsa richiesta. 
+Il modulo \grassetto{dispatcher} gestisce tutte le richieste effettuate dal Client al Server, effettuando le dovute redirezioni e le chiamate per ottenere i dati dai database nel Server. Le richieste che pervengono al 
+\grassetto{@dispatcher} sono di tipo REST, a cui il modulo stesso risponde con il JSON della risorsa richiesta. 
 Questo avviene solamente se l'utente che ha richiesto la risorsa è registrato ed autenticato, prima di 
-effettuare la richiesta, e che abbia i dovuti permessi per effettuare la richiesta. Infatti, prima di eseguire ogni richiesta di accesso ai dati del Server, il \textit{dispatcher} esegue una chiamata al modulo \textit{passport} per verificare l'autenticazione del richiedente e per distinguere gli utenti standard dagli utenti amministratori. \\
-Per ultima cosa, il \textit{dispatcher} gestisce eventuali richieste di risorse inesistenti o errate reindirizzando il chiamante alla pagina iniziale del Client AngularJS.
+effettuare la richiesta, e che abbia i dovuti permessi per effettuare la richiesta. Infatti, prima di eseguire ogni richiesta di accesso ai dati del Server, il \grassetto{@dispatcher} esegue una chiamata a \grassetto{@passport} per verificare l'autenticazione del richiedente e per distinguere gli utenti standard dagli utenti amministratori. \\
+Per ultima cosa, il \grassetto{@dispatcher} gestisce eventuali richieste di risorse inesistenti o errate reindirizzando il chiamante alla pagina iniziale del Client AngularJS.
  \item[Dipendendenze] \hfill
  \begin{itemize}
  \item @passport;
