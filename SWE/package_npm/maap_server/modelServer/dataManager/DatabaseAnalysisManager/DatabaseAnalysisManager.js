@@ -19,25 +19,28 @@ var retriever = require('./DataRetrieverAnalysis');
 var indexManager = require('../IndexManager/IndexManager');
 var JSonComposer = require('../JSonComposer');
 
-//invia al client la lista di collections definite dai vari dsl
+ /**
+ * invia al client la lista di collections definite dai vari dsl
+ *
+ *@param req - richiesta del client
+ *@param res - risposta per il client
+ */
 exports.sendCollectionsList = function(req, res) {
 
 	//var find = req.params.find; //per implementare la ricerca
 	var find = '';
 	var collectionsList = retriever.getCollectionsList(find);
 	res.send(JSonComposer.createCollectionsList(collectionsList));
-	
 }
 
 var sendCollection  = function(req, res) {
+
 	var config = req.config;
 	var collection_name = req.params.col_id;
 	var column = req.query.column;
 	var order = req.query.order;
 	var page = req.query.page;
 		
-	//NB. il recupero dei dati sul db è asincrono quindi uso una callback per eseguire
-	//il restante codice solamente quando ho la risposta dal db :)
 	retriever.getCollectionIndex(collection_name, column, order, page, function(data){
 		
 		if(data.documents == undefined)
@@ -50,6 +53,7 @@ var sendCollection  = function(req, res) {
 												   ));
 		}
 	});	
+	
 }
 
 exports.sendDocument = function(req, res){

@@ -333,6 +333,8 @@ var countDocuments = function(model, where) {
 	//restituisco la promessa
 	return deferred.promise;
 }
+//for unit test
+exports.countDocuments = countDocuments;
 
 /**
  * Esegue una determinata query specificata
@@ -361,6 +363,9 @@ var findDocuments = function(query) {
 	//restituisco la promessa
 	return deferred.promise;
 }
+//for unit test
+exports.findDocuments = findDocuments;
+
 
 /**
  * Preleva i documenti relativi ad una determinata collection per visualizzarli nella pagina CollectionIndex
@@ -537,6 +542,8 @@ var getDocumentsForIndex = function(model, querySettings){
 	return deferred.promise;
 				
 }//end function getDocumentsForIndex
+//for unit test
+exports.getDocumentsForIndex = getDocumentsForIndex;
 
 /**
  * Preleva la lista di documenti da visualizzare nella pagina collectionIndex
