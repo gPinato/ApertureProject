@@ -86,9 +86,31 @@ angular.module('maaperture').controller('QueryCtrl', function ($scope, $route, $
                 alert("Qualcosa è andato storto..");
             }
         );
-
-
     };
+	
+	//visualizza informazioni all'utente per creare la index
+	//da shell
+	$scope.showIndexInfo = function(indexData){
+		
+		var queryID = indexData._id;
+		var collectionName = indexData.data.name;
+		var fields = indexData.data.fields;
+		fields = fields.split(',');
+	
+		var info = 'You may create a new index from your mongoDB shell with this command:\n\n'
+		var indexCMD = 'db.' + collectionName + '.ensureIndex( {';
+		
+		for(var i=0; i<fields.length; i++)
+		{
+			if(i!=0) indexCMD += ',';
+			indexCMD += fields[i] + ': 1'; 
+		}
+		
+		indexCMD += ' } )';
+		
+		prompt(info, indexCMD);
+	
+	 };
    
     //cambia ordinamento corrente, da asc a desc o viceversa
     var changeSort = function () {
