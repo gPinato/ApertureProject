@@ -18,6 +18,12 @@ All'inizio della progettazione, le attività principali e maggiormente propedeut
 All'inizio i documenti erano sviluppati utilizzando \gloss{editor} di testo come OpenOffice e in seguito, una volta completati, trasformati in \LaTeX\ con una formattazione appropriata.
 In seguito si è visto come lo sviluppo dei documenti direttamente in \LaTeX, nonostante sia più oneroso in termini di tempo durante la stesura, sia comunque più rapido rispetto al primo metodo e, soprattutto, privo degli errori di trasposizione, riducendo quindi le ore/persona necessarie e gli errori contenuti nei documenti.
 
+\item Miglior verifica del codice:
+Per migliorare la Verifica del codice si è cercato di essere il più proattivo possibile durante la scrittura del codice stesso. Per ogni pezzo di codice aggiunto si effettuavano delle misure di analisi statica, e se i valori rientravano nei rispettivi range delle metriche, allora quel codice era accettabile.
+
+\item Miglioramento nella scrittura di test:
+Ogni qualvolta che veniva codificato un modulo, si procedeva subito alla scrittura del test per soddisfarlo.
+
 \end{itemize}
 
 
@@ -40,7 +46,6 @@ Nel periodo precedente a questa revisione i documenti sono stati controllati dai
 sezione 4.1 di questo documento, e riportati i corrispondenti valori di BV e SV in forma tabellare.
 \subsubsection{Revisione di Accettazione}
 Nel periodo precedente a questa revisione i documenti sono stati controllati dai verificatori seguendo le \emph{Norme\_di\_progetto\_v\versioneNormeDiProgetto{}.pdf}; è stata applicata l'analisi statica descritta nell'appendice B sezione 5.1 di questo documento. Inizialmente è stata applicata la tecnica di Walkthrough, dove sono scovati e successivamente corretti gli errori; ogni volta che si trovava un errore, esso veniva messo nell'apposta lista che serve per l'Inspection. Dopo il Walkthrough è stata applicata la tecnica di Inspection, utilizzando l'apposita lista, disponibile in appendice delle Norme di Progetto. E' stata posta particolare attenzione ai documenti Definizione di Prodotto e Manuale Utente. Per quanto riguarda i processi, essi sono stati controllati e verificati secondo le metodologie descritte nelle\emph{Norme\_di\_progetto\_v\versioneNormeDiProgetto{}.pdf}. Sono state calcolate le metriche per i processi descritti in sezione 4.1 di questo documento, e riportati i corrispondenti valori di BV e SV in forma tabellare.
-
 \subsection{Dettaglio delle verifiche tramite analisi}
 \subsubsection{Analisi dei Requisiti}
 \paragraph{Processi}
@@ -546,6 +551,14 @@ MaaP::Client::ModelClient::Model
 
 \subparagraph{Conclusioni}
 bla bla bla.....
+Allo stato attuale sono stati sodddisfatti i seguenti requisiti:
+\begin{itemize}
+\item \grassetto{Obbligatori}:
+\item \grassetto{Desiderabili}:
+\item \grassetto{Opzionali}:
+\end{itemize}
+C'è stata una copertura di codice del....
+Una volta effettuate tutte le misurazioni, si è notato che tutte le misure rientravano nei range  di valori ottimali, e in pochi casi nei range di valori soddisfacenti, delle metriche prestabilite.
 Per quanto riguarda l'instabilità, la stragrande maggioranza dei package rientra nel range di accettazione, molti dei quali anche nel range ottimale. L'unico package che risulta essere instabile, è la view del client. Questo, ampiamente preventivato in precedenza, è dovuto all'utilizzo di AngularJS per la parte client.
 
 \paragraph{Copertura del codice}
