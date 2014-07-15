@@ -107,7 +107,7 @@ I parametri preceduti dal simbolo "\$", nel lato Client identificano i servizi m
 \begin{itemize}
 \item \grassetto{Analisi dei requisiti}: \emph{Analisi\_{}dei\_{}Requisiti\_{}v\versioneAnalisiDeiRequisiti{}.pdf};
 \item \grassetto{Norme di Progetto}: \emph{Norme\_{}di\_{}Progetto\_{}v\versioneNormeDiProgetto{}.pdf};
-\item \grassetto{Specifica Tecnica}: \emph{Specifica\_{}Tecnica\_{}v\versioneSpecificaTecnica{}.pdf};
+\item \grassetto{Specifica Tecnica}: \emph{Specifica\_{}Tecnica\_{}v\versioneNormeDiProgetto{}.pdf};
 \end{itemize}
 
 \subsubsection{Informativi}
@@ -154,99 +154,6 @@ Gli strumenti di lavoro sono trattati nelle sezioni 4.3.5.2.2 e 4.3.5.3.2 del do
 Namespace generale del progetto. In accordo con il design pattern architetturale Client-Server che 
 abbiamo adottato, le interazioni che il Client ha con il Server sono di tipo REST-like.
 
-
-\subsection{::Installer}
-Package che gestisce l'installazione del framework MaaP. 
-
-
-\subsubsection{@maaperture}
-
-\begin{description}
- \item[Descrizione] \hfill \\
-Modulo di installazione del framework Maap. Si occupa di gestire le richiesti provenienti da linea di comando gestendo i vari comandi.
- \item[Dipendendenze] \hfill
- \begin{itemize}
- 	\item @fs;
- 	\item @commander;
- 	\item @ncp.
- \end{itemize}
- \item[Metodi] \hfill
-  \begin{mldescription}
-   \mlitem{printHelpTitle()} \hfill
-   \begin{description}
-    \item[Descrizione] \hfill \\
-    Si occupa di stampare nel log il nome, la versione e la descrizione del framework Maap.
-   \end{description}
-  
-   \mlitem{changeFileRow(filePath, string2find, newString)} \hfill
-      \begin{description}
-      	    \item[Parametri] \hfill 
-      	     \begin{description}
-      	      \item['filePath'] \hfill \\
-      	      Path del file da modificare.
-      	      \item[string2find] \hfill \\
-      	      Stringa con la quale inizia la riga da modificare.
-      	      \item[newString] \hfill \\
-      	      Stringa con i nuovi caratteri da aggiungere.
-      	     \end{description}
-      	    
-       \item[Descrizione] \hfill \\
-      Si occupa di cambiare una riga del file specificato sostituendola con quella passata in ingresso.
-      \end{description}
-
-   \mlitem{setProjectName(destination, project\_name)} \hfill
-   \begin{description}
-   \item[Parametri] \hfill 
-         	     \begin{description}
-         	      \item['destination'] \hfill \\
-         	      Path di dove sarà situato il progetto.
-         	      \item[project\_name] \hfill \\
-         	      Nome del progetto.
-         	      
-         	     \end{description}
-    \item[Descrizione] \hfill \\
-    Si occupa di sostituire nei file di configurazione del progetto il nome del progetto scelto.
-   \end{description}
-
-   \mlitem{initProject(project\_name, output\_path)} \hfill
-   \begin{description}
-  
-    \item[Descrizione] \hfill \\
-	    Si occupa di copiare ricorsivamente i file di default del progetto Maap all'interno del percorso specificato in output\_path settando il nome di progetto specificato con project\_name.
-   \end{description}
-   \end{mldescription}
-   \item[Comandi] \hfill
-     \begin{mldescription}
-      \mlitem{maaperture} \hfill
-      \begin{description}
-       \item[Descrizione] \hfill \\
-       Si occupa di stampare la versione del framework, e un piccolo help sull'uso del framework.
-      \end{description}
-      \mlitem{create} \hfill
-            \begin{description}
-            \item[Parametri] \hfill 
-                         	     \begin{description}
-                         	      \item['name'] \hfill \\
-                         	      Nome del progetto.
-                         	      \item[output] \hfill \\
-                         	      Percorso di installazione del progetto.
-                         	      
-                         	     \end{description}
-             \item[Descrizione] \hfill \\
-             Si occupa di creare il progetto nella cartella specificate con il nome scelto
-            \end{description}
-      \mlitem{--help} \hfill
-                  \begin{description}
-                   \item[Descrizione] \hfill \\
-                   Si occupa di stampare degli esempi d'uso dei comandi.
-                  \end{description}
-      \mlitem{*} \hfill
-      \begin{description}
-      \item[Descrizione] \hfill \\
-      Si occupa di invocare printHelpTitle().
-      \end{description}
-\end{description}
-
 \section{Specifica componenti MaaP::Server}
 
 Package Server del Design Pattern Client-Server. 
@@ -259,7 +166,7 @@ Package che gestisce il dialogo con il Client di MaaP.
 \begin{description}
  \item[Descrizione] \hfill \\
 Modulo di inizializzazione della componente Server utilizzata per la trasmissione dei dati al Client. \\
-Il modulo \grassetto{dispatcher} gestisce tutte le richieste effettuate dal Client al Server, effettuando le dovute redirezioni e le chiamate per ottenere i dati dai database nel Server. Le richieste che pervengono al 
+Il modulo \grassetto{@dispatcher} gestisce tutte le richieste effettuate dal Client al Server, effettuando le dovute redirezioni e le chiamate per ottenere i dati dai database nel Server. Le richieste che pervengono al 
 \grassetto{@dispatcher} sono di tipo REST, a cui il modulo stesso risponde con il JSON della risorsa richiesta. 
 Questo avviene solamente se l'utente che ha richiesto la risorsa è registrato ed autenticato, prima di 
 effettuare la richiesta, e che abbia i dovuti permessi per effettuare la richiesta. Infatti, prima di eseguire ogni richiesta di accesso ai dati del Server, il \grassetto{@dispatcher} esegue una chiamata a \grassetto{@passport} per verificare l'autenticazione del richiedente e per distinguere gli utenti standard dagli utenti amministratori. \\
@@ -304,7 +211,7 @@ Per ultima cosa, il \grassetto{@dispatcher} gestisce eventuali richieste di riso
      Callback da richiamare al termine dell'autenticazione.
     \end{description}
    \item[Descrizione] \hfill \\
-  Intercetta la richiesta di generare l'elenco dei Document all'interno di una Collection specificata con \textit{:col\_id}. Verifica che essa sia autenticata e richiama il metodo \textit{sendDocument} del \textit{@datamanager}.
+  Intercetta la richiesta di generare l'elenco dei Document all'interno di una Collection specificata con \textit{:col\_id}. Verifica che essa sia autenticata e richiama il metodo \textit{sendDocument} del \grassetto{@datamanager}.
   \end{description}
   
   \mlitem{get('/api/collection/:col\_id/:doc\_id', passport.checkAuthenticated,\\datamanager.sendDocument)} \hfill 
@@ -314,12 +221,12 @@ Per ultima cosa, il \grassetto{@dispatcher} gestisce eventuali richieste di riso
      \item['/api/collection/:col\_id/:doc\_id'] \hfill \\
      Stringa contenente l'indirizzo della API da richiamare.
      \item[passport.checkAuthenticated] \hfill \\
-     Funzione di \textit{@passport} che verifica che l'utente sia autenticato.
+     Funzione di \grassetto{@passport} che verifica che l'utente sia autenticato.
      \item[datamanager.sendDocument] \hfill \\
      Callback da richiamare al termine dell'autenticazione.
      \end{description}
    \item[Descrizione] \hfill \\ 
-  Intercetta la richiesta di generare i dati di un Document specificato con \textit{:doc\_id} all'interno della Collection specificata con :col\_id per visualizzarli. Verifica che essa sia autenticata e richiama il metodo \textit{sendDocument} del \textit{@datamanager}.
+  Intercetta la richiesta di generare i dati di un Document specificato con \textit{:doc\_id} all'interno della Collection specificata con :col\_id per visualizzarli. Verifica che essa sia autenticata e richiama il metodo \textit{sendDocument} del \grassetto{@datamanager}.
   \end{description}
   
   \mlitem{get('/api/collection/:col\_id/:doc\_id/edit', passport.checkAuthenticatedAdmin, \\datamanager.sendDocumentEdit)} \hfill 
@@ -329,12 +236,12 @@ Per ultima cosa, il \grassetto{@dispatcher} gestisce eventuali richieste di riso
      \item['/api/collection/:col\_id/:doc\_id/edit'] \hfill \\
      Stringa contenente l'indirizzo della API da richiamare.
      \item[passport.checkAuthenticatedAdmin] \hfill \\
-     Funzione di \textit{@passport} che verifica che l'utente sia autenticato e che il suo livello di accesso sia "Amministratore".
+     Funzione di \grassetto{@passport} che verifica che l'utente sia autenticato e che il suo livello di accesso sia "Amministratore".
      \item[datamanager.sendDocumentEdit] \hfill \\
      Callback da richiamare al termine dell'autenticazione.
      \end{description}
    \item[Descrizione] \hfill \\ 
-  Intercetta la richiesta di generare i dati di un Document specificato con \textit{:doc\_id} all'interno della Collection specificata con :col\_id per modificarli. Verifica che essa sia autenticata e richiama il metodo \textit{sendDocumentEdit} del \textit{@datamanager}.
+  Intercetta la richiesta di generare i dati di un Document specificato con \textit{:doc\_id} all'interno della Collection specificata con :col\_id per modificarli. Verifica che essa sia autenticata e richiama il metodo \textit{sendDocumentEdit} del \grassetto{@datamanager}.
   \end{description}
   
   \mlitem{put('/api/collection/:col\_id/:doc\_id/edit', passport.checkAuthenticatedAdmin, \\datamanager.updateDocument)} \hfill 
@@ -344,12 +251,12 @@ Per ultima cosa, il \grassetto{@dispatcher} gestisce eventuali richieste di riso
      \item['/api/collection/:col\_id/:doc\_id/edit'] \hfill \\
      Stringa contenente l'indirizzo della API da richiamare.
      \item[passport.checkAuthenticatedAdmin] \hfill \\
-     Funzione di \textit{@passport} che verifica che l'utente sia autenticato e che il suo livello di accesso sia "Amministratore".
+     Funzione di \grassetto{@passport} che verifica che l'utente sia autenticato e che il suo livello di accesso sia "Amministratore".
      \item[datamanager.updateDocument] \hfill \\
      Callback da richiamare al termine dell'autenticazione.
      \end{description}
    \item[Descrizione] \hfill \\ 
-  Intercetta la richiesta di modificare i dati di un Document specificato con \textit{:doc\_id} all'interno della Collection specificata con :col\_id. Verifica che essa sia autenticata come amministratore e richiama il metodo \textit{updateDocument} del \textit{@datamanager}.
+  Intercetta la richiesta di modificare i dati di un Document specificato con \textit{:doc\_id} all'interno della Collection specificata con :col\_id. Verifica che essa sia autenticata come amministratore e richiama il metodo \textit{updateDocument} del \grassetto{@datamanager}.
   \end{description}
   
   \mlitem{delete('/api/collection/:col\_id/:doc\_id/edit', passport.checkAuthenticatedAdmin, \\datamanager.removeDocument)} \hfill 
@@ -359,12 +266,12 @@ Per ultima cosa, il \grassetto{@dispatcher} gestisce eventuali richieste di riso
      \item['/api/collection/:col\_id/:doc\_id/edit'] \hfill \\
      Stringa contenente l'indirizzo della API da richiamare.
      \item[passport.checkAuthenticatedAdmin] \hfill \\
-     Funzione di \textit{@passport} che verifica che l'utente sia autenticato e che il suo livello di accesso sia "Amministratore".
+     Funzione di \grassetto{@passport} che verifica che l'utente sia autenticato e che il suo livello di accesso sia "Amministratore".
      \item[datamanager.removeDocument] \hfill \\
      Callback da richiamare al termine dell'autenticazione.
      \end{description}
    \item[Descrizione] \hfill \\ 
-  Intercetta la richiesta di cancellare un Document specificato con \textit{:doc\_id} all'interno della Collection specificata con :col\_id. Verifica che essa sia autenticata come amministratore e richiama il metodo \textit{removeDocument} del \textit{@datamanager}.
+  Intercetta la richiesta di cancellare un Document specificato con \textit{:doc\_id} all'interno della Collection specificata con :col\_id. Verifica che essa sia autenticata come amministratore e richiama il metodo \textit{removeDocument} del \grassetto{@datamanager}.
   \end{description}
  
  \end{mldescription}
@@ -378,12 +285,12 @@ Per ultima cosa, il \grassetto{@dispatcher} gestisce eventuali richieste di riso
       \item['/api/profile'] \hfill \\
       Stringa contenente l'indirizzo della API da richiamare.
       \item[passport.checkAuthenticated] \hfill \\
-      Funzione di \textit{@passport} che verifica che l'utente sia autenticato.
+      Funzione di \grassetto{@passport} che verifica che l'utente sia autenticato.
       \item[usermanager.sendUserProfile] \hfill \\
       Callback da richiamare al termine dell'autenticazione.
      \end{description}
     \item[Descrizione] \hfill \\
-    Intercetta la richiesta di generare i dati del profilo utente per visualizzarli, verificando che essa sia autenticata e richiama il metodo \textit{sendUserProfile} del \textit{@usermanager}.
+    Intercetta la richiesta di generare i dati del profilo utente per visualizzarli, verificando che essa sia autenticata e richiama il metodo \textit{sendUserProfile} del \grassetto{@usermanager}.
     \end{description}
     
    \mlitem{get('/api/profile/edit', passport.checkAuthenticated, \\usermanager.sendUserProfileEdit)} \hfill 
@@ -393,12 +300,12 @@ Per ultima cosa, il \grassetto{@dispatcher} gestisce eventuali richieste di riso
       \item['/api/profile/edit'] \hfill \\
       Stringa contenente l'indirizzo della API da richiamare.
       \item[passport.checkAuthenticated] \hfill \\
-      Funzione di \textit{@passport} che verifica che l'utente sia autenticato.
+      Funzione di \grassetto{@passport} che verifica che l'utente sia autenticato.
       \item[usermanager.sendUserProfileEdit] \hfill \\
       Callback da richiamare al termine dell'autenticazione.
      \end{description}
     \item[Descrizione] \hfill \\
-   Intercetta la richiesta di generare i dati del profilo utente per modificarli, verificando che essa sia autenticata e richiama il metodo \textit{sendUserProfileEdit} del \textit{@usermanager}.
+   Intercetta la richiesta di generare i dati del profilo utente per modificarli, verificando che essa sia autenticata e richiama il metodo \textit{sendUserProfileEdit} del \grassetto{@usermanager}.
    \end{description} 
    
    \mlitem{put('/api/profile/edit', passport.checkAuthenticated, \\usermanager.updateUserProfile)} \hfill 
@@ -408,12 +315,12 @@ Per ultima cosa, il \grassetto{@dispatcher} gestisce eventuali richieste di riso
       \item['/api/profile/edit'] \hfill \\
       Stringa contenente l'indirizzo della API da richiamare.
       \item[passport.checkAuthenticated] \hfill \\
-      Funzione di \textit{@passport} che verifica che l'utente sia autenticato.
+      Funzione di \grassetto{@passport} che verifica che l'utente sia autenticato.
       \item[usermanager.updateUserProfile] \hfill \\
       Callback da richiamare al termine dell'autenticazione.
      \end{description}
     \item[Descrizione] \hfill \\ 
-   Intercetta la richiesta di modificare i dati del profilo utente, verificando che essa sia autenticata e richiama il metodo \textit{updateUserProfile} del \textit{@usermanager}.
+   Intercetta la richiesta di modificare i dati del profilo utente, verificando che essa sia autenticata e richiama il metodo \textit{updateUserProfile} del \grassetto{@usermanager}.
    \end{description}
  
  \end{mldescription}  
@@ -427,12 +334,12 @@ Per ultima cosa, il \grassetto{@dispatcher} gestisce eventuali richieste di riso
       \item['/api/users/list'] \hfill \\
       Stringa contenente l'indirizzo della API da richiamare.
       \item[passport.checkAuthenticatedAdmin] \hfill \\
-      Funzione di \textit{@passport} che verifica che l'utente sia autenticato e che il suo livello di accesso sia "Amministratore".
+      Funzione di \grassetto{@passport} che verifica che l'utente sia autenticato e che il suo livello di accesso sia "Amministratore".
       \item[usermanager.getUsersList] \hfill \\
       Callback da richiamare al termine dell'autenticazione.
      \end{description}
     \item[Descrizione] \hfill \\
-    Intercetta la richiesta di generare l'elenco degli Utenti per visualizzarlo, verificando che essa sia autenticata come ammistratore e richiama il metodo \textit{getUsersListionsList} del \textit{@usermanager}.
+    Intercetta la richiesta di generare l'elenco degli Utenti per visualizzarlo, verificando che essa sia autenticata come ammistratore e richiama il metodo \textit{getUsersListionsList} del \grassetto{@usermanager}.
     \end{description} 
     
     \mlitem{get('/api/users/:user\_id', passport.checkAuthenticatedAdmin,\\usermanager.sendUser)} \hfill
@@ -442,12 +349,12 @@ Per ultima cosa, il \grassetto{@dispatcher} gestisce eventuali richieste di riso
       \item['/api/users/:user\_id'] \hfill \\
       Stringa contenente l'indirizzo della API da richiamare.
       \item[passport.checkAuthenticatedAdmin] \hfill \\
-      Funzione di \textit{@passport} che verifica che l'utente sia autenticato e che il suo livello di accesso sia "Amministratore".
+      Funzione di \grassetto{@passport} che verifica che l'utente sia autenticato e che il suo livello di accesso sia "Amministratore".
       \item[usermanager.sendUser] \hfill \\
       Callback da richiamare al termine dell'autenticazione.
      \end{description}
     \item[Descrizione] \hfill \\
-    Intercetta la richiesta di generare i dati di un Utente specificato con :user\_id per visualizzarli. Verifica che essa sia autenticata come amministratore e richiama il metodo \textit{sendUser} del \textit{@usermanager}.
+    Intercetta la richiesta di generare i dati di un Utente specificato con :user\_id per visualizzarli. Verifica che essa sia autenticata come amministratore e richiama il metodo \textit{sendUser} del \grassetto{@usermanager}.
     \end{description} 
     
     \mlitem{get('/api/users/:user\_id/edit', passport.checkAuthenticatedAdmin, \\usermanager.sendUserEdit)} \hfill 
@@ -457,12 +364,12 @@ Per ultima cosa, il \grassetto{@dispatcher} gestisce eventuali richieste di riso
       \item['/api/users/:user\_id/edit'] \hfill \\
       Stringa contenente l'indirizzo della API da richiamare.
       \item[passport.checkAuthenticatedAdmin] \hfill \\
-      Funzione di \textit{@passport} che verifica che l'utente sia autenticato e che il suo livello di accesso sia "Amministratore".
+      Funzione di \grassetto{@passport} che verifica che l'utente sia autenticato e che il suo livello di accesso sia "Amministratore".
       \item[usermanager.sendUserEdit] \hfill \\
       Callback da richiamare al termine dell'autenticazione.
      \end{description}
     \item[Descrizione] \hfill \\
-    Intercetta la richiesta di generare i dati di un Utente specificato per con :user\_id per modificarli. Verifica che essa sia autenticata come amministratore e richiama il metodo \textit{sendUserEdit} del \textit{@usermanager}.
+    Intercetta la richiesta di generare i dati di un Utente specificato per con :user\_id per modificarli. Verifica che essa sia autenticata come amministratore e richiama il metodo \textit{sendUserEdit} del \grassetto{@usermanager}.
     \end{description} 
     
     \mlitem{put('/api/users/:user\_id/edit', passport.checkAuthenticatedAdmin,\\usermanager.updateUser)} \hfill 
@@ -472,12 +379,12 @@ Per ultima cosa, il \grassetto{@dispatcher} gestisce eventuali richieste di riso
       \item['/api/users/:user\_id/edit'] \hfill \\
       Stringa contenente l'indirizzo della API da richiamare.
       \item[passport.checkAuthenticatedAdmin] \hfill \\
-      Funzione di \textit{@passport} che verifica che l'utente sia autenticato e che il suo livello di accesso sia "Amministratore".
+      Funzione di \grassetto{@passport} che verifica che l'utente sia autenticato e che il suo livello di accesso sia "Amministratore".
       \item[usermanager.updateUser] \hfill \\
       Callback da richiamare al termine dell'autenticazione.
      \end{description}
     \item[Descrizione] \hfill \\
-    Intercetta la richiesta di modificare i dati di un Utente specificato per con :user\_id. Verifica che essa sia autenticata come amministratore e richiama il metodo \textit{updateUser} del \textit{@usermanager}.
+    Intercetta la richiesta di modificare i dati di un Utente specificato per con :user\_id. Verifica che essa sia autenticata come amministratore e richiama il metodo \textit{updateUser} del \grassetto{@usermanager}.
     \end{description}
     
     \mlitem{delete('/api/users/:user\_id/edit', passport.checkAuthenticatedAdmin,\\usermanager.removeUser)} \hfill 
@@ -487,12 +394,12 @@ Per ultima cosa, il \grassetto{@dispatcher} gestisce eventuali richieste di riso
       \item['/api/users/:user\_id/edit'] \hfill \\
       Stringa contenente l'indirizzo della API da richiamare.
       \item[passport.checkAuthenticatedAdmin] \hfill \\
-      Funzione di \textit{@passport} che verifica che l'utente sia autenticato e che il suo livello di accesso sia "Amministratore".
+      Funzione di \grassetto{@passport} che verifica che l'utente sia autenticato e che il suo livello di accesso sia "Amministratore".
       \item[usermanager.removeUser] \hfill \\
       Callback da richiamare al termine dell'autenticazione.
      \end{description}
     \item[Descrizione] \hfill \\
-    Intercetta la richiesta di eliminare un Utente specificato per con :user\_id. Verifica che essa sia autenticata come amministratore e richiama il metodo \textit{removeUser} del \textit{@usermanager}. 
+    Intercetta la richiesta di eliminare un Utente specificato per con :user\_id. Verifica che essa sia autenticata come amministratore e richiama il metodo \textit{removeUser} del \grassetto{@usermanager}. 
   \end{description}
   
   \end{mldescription}    
@@ -506,12 +413,12 @@ Per ultima cosa, il \grassetto{@dispatcher} gestisce eventuali richieste di riso
       \item['/api/queries/list'] \hfill \\
       Stringa contenente l'indirizzo della API da richiamare.
       \item[passport.checkAuthenticatedAdmin] \hfill \\
-      Funzione di \textit{@passport} che verifica che l'utente sia autenticato e che il suo livello di accesso sia "Amministratore".
+      Funzione di \grassetto{@passport} che verifica che l'utente sia autenticato e che il suo livello di accesso sia "Amministratore".
       \item[datamanager.getTopQueries] \hfill \\
       Callback da richiamare al termine dell'autenticazione.
      \end{description}
     \item[Descrizione] \hfill \\
-    Intercetta la richiesta di generare l'elenco delle query più utilizzate. Verifica che essa sia autenticata come amministratore e richiama il metodo \textit{getTopQueries} del \textit{@datamanager}.
+    Intercetta la richiesta di generare l'elenco delle query più utilizzate. Verifica che essa sia autenticata come amministratore e richiama il metodo \textit{getTopQueries} del \grassetto{@datamanager}.
     \end{description}
     
     \mlitem{delete('/api/queries/list', passport.checkAuthenticatedAdmin,\\datamanager.resetQueries)} \hfill 
@@ -521,12 +428,12 @@ Per ultima cosa, il \grassetto{@dispatcher} gestisce eventuali richieste di riso
       \item['/api/queries/list'] \hfill \\
       Stringa contenente l'indirizzo della API da richiamare.
       \item[passport.checkAuthenticatedAdmin] \hfill \\
-      Funzione di \textit{@passport} che verifica che l'utente sia autenticato e che il suo livello di accesso sia "Amministratore".
+      Funzione di \grassetto{@passport} che verifica che l'utente sia autenticato e che il suo livello di accesso sia "Amministratore".
       \item[datamanager.resetQueries] \hfill \\
       Callback da richiamare al termine dell'autenticazione.
      \end{description}
     \item[Descrizione] \hfill \\
-    Intercetta la richiesta di eliminare tutte le query più utilizzate. Verifica che essa sia autenticata come amministratore e richiama il metodo \textit{resetQueries} del \textit{@datamanager}.
+    Intercetta la richiesta di eliminare tutte le query più utilizzate. Verifica che essa sia autenticata come amministratore e richiama il metodo \textit{resetQueries} del \grassetto{@datamanager}.
     \end{description}
  
  \end{mldescription}  
@@ -540,12 +447,12 @@ Per ultima cosa, il \grassetto{@dispatcher} gestisce eventuali richieste di riso
       \item['/api/indexes'] \hfill \\
       Stringa contenente l'indirizzo della API da richiamare.
       \item[passport.checkAuthenticatedAdmin] \hfill \\
-      Funzione di \textit{@passport} che verifica che l'utente sia autenticato e che il suo livello di accesso sia "Amministratore".
+      Funzione di \grassetto{@passport} che verifica che l'utente sia autenticato e che il suo livello di accesso sia "Amministratore".
       \item[datamanager.getIndexesList] \hfill \\
       Callback da richiamare al termine dell'autenticazione.
      \end{description}
     \item[Descrizione] \hfill \\
-    Intercetta la richiesta di generare l'elenco degli indici esistenti sul database di analisi. Verifica che essa sia autenticata come amministratore e richiama il metodo \textit{getIndexesList} del \textit{@datamanager}.
+    Intercetta la richiesta di generare l'elenco degli indici esistenti sul database di analisi. Verifica che essa sia autenticata come amministratore e richiama il metodo \textit{getIndexesList} del \grassetto{@datamanager}.
     \end{description}
     
     \mlitem{put('/api/indexes', passport.checkAuthenticatedAdmin,\\datamanager.createIndex)} \hfill 
@@ -555,12 +462,12 @@ Per ultima cosa, il \grassetto{@dispatcher} gestisce eventuali richieste di riso
       \item['/api/indexes'] \hfill \\
       Stringa contenente l'indirizzo della API da richiamare.
       \item[passport.checkAuthenticatedAdmin] \hfill \\
-      Funzione di \textit{@passport} che verifica che l'utente sia autenticato e che il suo livello di accesso sia "Amministratore".
+      Funzione di \grassetto{@passport} che verifica che l'utente sia autenticato e che il suo livello di accesso sia "Amministratore".
       \item[datamanager.createIndex] \hfill \\
       Callback da richiamare al termine dell'autenticazione.
      \end{description}
     \item[Descrizione] \hfill \\
-    Intercetta la richiesta di inserire un indice nel database di analisi. Verifica che essa sia autenticata come amministratore e richiama il metodo \textit{createIndex} del \textit{@datamanager}.
+    Intercetta la richiesta di inserire un indice nel database di analisi. Verifica che essa sia autenticata come amministratore e richiama il metodo \textit{createIndex} del \grassetto{@datamanager}.
     \end{description}
     
     \mlitem{delete('/api/indexes/:index\_name', passport.checkAuthenticatedAdmin,\\datamanager.deleteIndex)} \hfill 
@@ -570,12 +477,12 @@ Per ultima cosa, il \grassetto{@dispatcher} gestisce eventuali richieste di riso
       \item['/api/indexes/:index\_name'] \hfill \\
       Stringa contenente l'indirizzo della API da richiamare.
       \item[passport.checkAuthenticatedAdmin] \hfill \\
-      Funzione di \textit{@passport} che verifica che l'utente sia autenticato e che il suo livello di accesso sia "Amministratore".
+      Funzione di \grassetto{@passport} che verifica che l'utente sia autenticato e che il suo livello di accesso sia "Amministratore".
       \item[datamanager.deleteIndex] \hfill \\
       Callback da richiamare al termine dell'autenticazione.
      \end{description}
     \item[Descrizione] \hfill \\
-    Intercetta la richiesta di cancellare un indice dal database di analisi. Verifica che essa sia autenticata come amministratore e richiama il metodo \textit{deleteIndex} del \textit{@datamanager}.
+    Intercetta la richiesta di cancellare un indice dal database di analisi. Verifica che essa sia autenticata come amministratore e richiama il metodo \textit{deleteIndex} del \grassetto{@datamanager}.
    \end{description}
  
  \end{mldescription} 
@@ -589,12 +496,12 @@ Per ultima cosa, il \grassetto{@dispatcher} gestisce eventuali richieste di riso
       \item['/api/indexes/:index\_name'] \hfill \\
       Stringa contenente l'indirizzo della API da richiamare.
       \item[passport.checkNotAuthenticated]
-      Funzione di \textit{@passport} che verifica che l'utente non sia autenticato.
+      Funzione di \grassetto{@passport} che verifica che l'utente non sia autenticato.
       \item[usermanager.checkMail] \hfill \\
       Callback da richiamare al termine dell'autenticazione.
      \end{description}
     \item[Descrizione]
-    Gestisce la richiesta di controllo della presenza di una particolare email già registrata al sistema. La condizione per richiedere questa informazione è che l'utente non sia autenticato, da qui la chiamata alla funzione \textit{passport.checkNotAuthenticated}. Nel caso la chiamata alla precedente funzione abbia successo, viene richiamato il metodo \textit{checkMail} di \textit{@DatabaseAnalysisManager}.
+    Gestisce la richiesta di controllo della presenza di una particolare email già registrata al sistema. La condizione per richiedere questa informazione è che l'utente non sia autenticato, da qui la chiamata alla funzione \textit{passport.checkNotAuthenticated}. Nel caso la chiamata alla precedente funzione abbia successo, viene richiamato il metodo \textit{checkMail} di \grassetto{@DatabaseAnalysisManager}.
  \end{description}
  
  \mlitem{post('/api/signup', passport.checkNotAuthenticated, usermanager.userSignup)}
@@ -604,12 +511,12 @@ Per ultima cosa, il \grassetto{@dispatcher} gestisce eventuali richieste di riso
       \item['/api/signup'] \hfill \\
       Stringa contenente l'indirizzo della API da richiamare.
       \item[passport.checkNotAuthenticated]
-      Funzione di \textit{@passport} che verifica che l'utente non sia autenticato.
+      Funzione di \grassetto{@passport} che verifica che l'utente non sia autenticato.
       \item[usermanager.userSignup] \hfill \\
       Callback da richiamare al termine dell'autenticazione.
      \end{description}
     \item[Descrizione]
-    Gestisce la richiesta di registrazione da parte di un utente non autenticato. Se l'utente associato alla richiesta non è autenticato, viene richiamato il metodo \textit{userSignup} di \textit{@DatabaseAnalysisManager}.
+    Gestisce la richiesta di registrazione da parte di un utente non autenticato. Se l'utente associato alla richiesta non è autenticato, viene richiamato il metodo \textit{userSignup} di \grassetto{@DatabaseAnalysisManager}.
  \end{description}
  
  \mlitem{get('/loggedin', function(req, res) \{ res.send(req.isAuthenticated() ? req.user : '0'); \})}
@@ -632,9 +539,9 @@ Per ultima cosa, il \grassetto{@dispatcher} gestisce eventuali richieste di riso
     \mlitem{'/api/login'} \hfill \\
     Stringa contenente l'indirizzo della API da richiamare.
     \mlitem{passport.checkNotAuthenticated} \hfill \\
-    Funzione di \textit{@passport} che verifica che l'utente non sia autenticato.
+    Funzione di \grassetto{@passport} che verifica che l'utente non sia autenticato.
     \mlitem{passport.authenticate} \hfill \\
-    Funzione di \textit{@passport} che esegue l'autenticazione.
+    Funzione di \grassetto{@passport} che esegue l'autenticazione.
     \mlitem{function(req, res) \{ res.send(req.user); \}} \hfill \\
     Funzione anonima che manda al richiedente la risposta contenente il suo campo \textit{user}.
    \end{mldescription}
@@ -649,7 +556,7 @@ Per ultima cosa, il \grassetto{@dispatcher} gestisce eventuali richieste di riso
     \mlitem{'/api/logout'} \hfill \\
     Stringa contenente l'indirizzo della API da richiamare.
     \mlitem{passport.checkAuthenticated} \hfill \\
-    Funzione di \textit{@passport} che verifica che l'utente sia autenticato.
+    Funzione di \grassetto{@passport} che verifica che l'utente sia autenticato.
     \mlitem{function(req, res) \{ req.logout(); res.send(200); \}} \hfill \\
     Funzione anonima che effettua la disconnessione del richiedente \textit{req} e manda al Client il codice \textit{http} 200.
    \end{mldescription}
@@ -671,7 +578,7 @@ Per ultima cosa, il \grassetto{@dispatcher} gestisce eventuali richieste di riso
     Funzione anonima che reindirizza il richiedente alla pagina iniziale della view del Client.
    \end{mldescription}
   \item[Descrizione]
- La presente funzione gestisce ogni richiesta di pagina o file che il Server non possiede. L'argomento "*" della funzione \textit{get} consente di gestire tutte le richieste che non sono state servite dalle precedenti funzioni del \textit{@dispatcher}. Questa funzione viene richiamata soltanto quando non le funzioni precedenti non sono state chiamate.
+ La presente funzione gestisce ogni richiesta di pagina o file che il Server non possiede. L'argomento "*" della funzione \textit{get} consente di gestire tutte le richieste che non sono state servite dalle precedenti funzioni del \grassetto{@dispatcher}. Questa funzione viene richiamata soltanto quando non le funzioni precedenti non sono state chiamate.
  \end{description} 
  \end{mldescription}
 
@@ -682,10 +589,10 @@ Per ultima cosa, il \grassetto{@dispatcher} gestisce eventuali richieste di riso
    \item[Parametro] \hfill 
     \begin{description}
      \item[app] \hfill \\
-     Applicazione di \textit{Express}.
+     Applicazione di \grassetto{Express}.
     \end{description}
    \item[Descrizione] \hfill \\
-   Si occupa dell'inizializzazione del \textit{@dispatcher}. Viene esportato come init().
+   Si occupa dell'inizializzazione del \grassetto{@dispatcher}. Viene esportato come \textit{init()}.
   \end{description}
  \end{description}
 \end{description}
@@ -696,7 +603,7 @@ Per ultima cosa, il \grassetto{@dispatcher} gestisce eventuali richieste di riso
 \subsubsection{@frontController}
 \begin{description}
  \item[Descrizione] \hfill \\
- Il frontController è l'interfaccia di connessione tra il Server ed il Client. Si occupa dell'inizializzazione del \textit{@dispatcher} reindirizzando ad esso le richieste del Client.
+ Il frontController è l'interfaccia di connessione tra il Server ed il Client. Si occupa dell'inizializzazione del \grassetto{@dispatcher} reindirizzando ad esso le richieste del Client.
  \item[Dipendendenze] \hfill
  \begin{itemize}
  \item @dispatcher.
@@ -708,10 +615,10 @@ Per ultima cosa, il \grassetto{@dispatcher} gestisce eventuali richieste di riso
        		\item[Parametro] \hfill
        			\begin{description}
        				\item[app] \hfill \\
-       				Oggetto contenente l'applicazione di \textit{Express}.
+       				Oggetto contenente l'applicazione di \grassetto{Express}.
        			\end{description}
        		\item[Descrizione] \hfill \\
-       		\`{E} la funzione di inizializzazione del \textit{@frontController} ed indica di reindirizzare le richieste del Client al \textit{@dispatcher} per gestirle. Viene esportato come init().
+       		\`{E} la funzione di inizializzazione del \grassetto{@frontController} ed indica di reindirizzare le richieste del Client al \grassetto{@dispatcher} per gestirle. Viene esportato come \textit{init()}.
    \end{description}
   \end{description}
 \end{description}
@@ -731,10 +638,10 @@ Per ultima cosa, il \grassetto{@dispatcher} gestisce eventuali richieste di riso
            		\item[Parametro] \hfill
            			\begin{description}
            				\item[app] \hfill \\
-           				Oggetto contenente l'applicazione di \textit{Express}.
+           				Oggetto contenente l'applicazione di \grassetto{Express}.
            			\end{description}
            		\item[Descrizione] \hfill \\
-           		\`{E} la funzione di inizializzazione dell'\textit{@index}, si occupa di inizializzare il \textit{@frontController}.
+           		\`{E} la funzione di inizializzazione dell'\grassetto{@index}, si occupa di inizializzare il \grassetto{@frontController}.
        \end{description}
   	
   \end{description}
@@ -763,10 +670,10 @@ Controller che si occupa dell'inizializzazione e gestione del modulo passort per
           \item[Parametro] \hfill
           \begin{description}
            \item[app] \hfill \\
-           Oggetto contenente l'applicazione di \textit{Express}.
+           Oggetto contenente l'applicazione di \grassetto{Express}.
           \end{description}
           \item[Descrizione] \hfill \\
-          Inizializza il controller \textit{@passport}, inizializzando e avviando la sessione del modulo \textit{@passport} e definisce le strategie di autenticazione.
+          Inizializza il controller \grassetto{@passport}, inizializzando e avviando la sessione del modulo \grassetto{@passport} e definisce le strategie di autenticazione.
             \end{description}
             
      \item[checkAuthenticatedAdmin(req, res, next)] \hfill 
@@ -811,7 +718,7 @@ Controller che si occupa dell'inizializzazione e gestione del modulo passort per
         Funzione da invocare nel caso di successo.
       \end{description}
       \item[Descrizione] \hfill \\
-      Verifica che la richiesta proveniente dal client non sia autenticataa.
+      Verifica che la richiesta proveniente dal client non sia autenticata.
      \end{description}
   \end{description}
 \end{description}
@@ -838,17 +745,17 @@ Package che racchiude i database, le loro operazioni di accesso e i file DSL con
     		\item[Parametro] \hfill
     			\begin{description}
     				\item[app] \hfill \\
-    				Oggetto contenente l'applicazione di \textit{Express}.
+    				Oggetto contenente l'applicazione di \grassetto{Express}.
     			\end{description}
     		\item[Descrizione] \hfill \\
-    		Si occupa dell'inizializzazione dei database. Effettua la connessione al database utenti e a quello di analisi. Inizializza lo userDBManager, invoca addAdminDefault e inizializza il \textit{@dataDBManager}. Viene esportata come init().
+    		Si occupa dell'inizializzazione dei database. Effettua la connessione al database utenti e a quello di analisi. Inizializza lo \grassetto{@userDBManager}, invoca \textit{addAdminDefault} e inizializza il \grassetto{@dataDBManager}. Viene esportata come \textit{init()}.
     	\end{description}
   \item[addAdminDefault(config, userDB))] \hfill 
   \begin{description}
       		\item[Parametri] \hfill
       			\begin{description}
       				\item[config] \hfill \\
-      				Oggetto contenente l'applicazione di Express.
+      				Oggetto contenente l'applicazione di \grassetto{Express}.
       				\item[userDB] \hfill \\
       				Connessione a database degli utenti.
       			\end{description}
@@ -862,7 +769,7 @@ Package che racchiude i database, le loro operazioni di accesso e i file DSL con
 \paragraph{@MongooseDBAnalysis}
 \begin{description}
  \item[Descrizione] \hfill \\
- Si occupa dell'inizializzazione dei modelli di \textit{Mongoose}.
+ Si occupa dell'inizializzazione dei modelli di \grassetto{Mongoose}.
  \item[Dipendendenze] \hfill
     \begin{itemize}
     \item fs;
@@ -876,10 +783,10 @@ Package che racchiude i database, le loro operazioni di accesso e i file DSL con
      		\item[Parametro] \hfill
      			\begin{description}
      				\item[app] \hfill \\
-     				Oggetto contenente l'applicazione di \textit{Express}.
+     				Oggetto contenente l'applicazione di \grassetto{Express}.
      			\end{description}
      		\item[Descrizione] \hfill \\
-     		 Legge la cartella contenente le \textit{collectionData} dei DSL e per ogni file inizializza il modello di \textit{Mongoose} come elemento dell'Array \textit{modelArray} che poi esporta come model.
+     		 Legge la cartella contenente le \textit{collectionData} dei DSL e per ogni file inizializza il modello di \grassetto{Mongoose} come elemento dell'Array \textit{modelArray} che poi esporta come model.
      	\end{description}
 
  \end{description}
@@ -888,7 +795,7 @@ Package che racchiude i database, le loro operazioni di accesso e i file DSL con
 \paragraph{@MongooseDBFramework}
 \begin{description}
  \item[Descrizione] \hfill \\
- Si occupa dell'inizializzazione dei modelli di \textit{Mongoose}.
+ Si occupa dell'inizializzazione dei modelli di \grassetto{Mongoose}.
   \item[Dipendendenze] \hfill
   \begin{itemize}
   \item mongoose.
@@ -900,10 +807,10 @@ Package che racchiude i database, le loro operazioni di accesso e i file DSL con
      		\item[Parametro] \hfill
      			\begin{description}
      				\item[app] \hfill \\
-     				Oggetto contenente l'applicazione di \textit{Express}.
+     				Oggetto contenente l'applicazione di \grassetto{Express}.
      			\end{description}
      		\item[Descrizione] \hfill \\
-     		  Si occupa di creare gli schemi di \textit{Mongoose} per la Collection utenti e la Collection query, esporta tali modelli come users e query e la connessione al database come connection.
+     		  Si occupa di creare gli schemi di \grassetto{Mongoose} per la Collection utenti e la Collection query, esporta tali modelli come users e query e la connessione al database come connection.
      	\end{description}
  \end{description}
 \end{description}
@@ -918,7 +825,7 @@ Package che gestisce le query ai database di analisi.
 \begin{description}
  \item[Descrizione] \hfill \\
 Modulo del ModelServer che si occupa di interpretare i dati richiesti e spediti da e al database di analisi. 
-Prepara le query da effettuare e contatta il \textit{@DataRetrieverAnalysis} per ottenere i dati voluti.
+Prepara le query da effettuare e contatta il \grassetto{@DataRetrieverAnalysis} per ottenere i dati voluti.
  \item[Dipendendenze] \hfill
  \begin{itemize}
   \item path;
@@ -941,7 +848,7 @@ Prepara le query da effettuare e contatta il \textit{@DataRetrieverAnalysis} per
    Oggetto duale a \textit{req} su cui invocare i metodi per inviare informazioni al Client richiedente.
   \end{description}
  \item[Descrizione] \hfill \\
- Richiede al \textit{@DataRetrieverAnalysis} l'elenco delle Collection e richiama il metodo di creazione dell'oggetto Collection del \textit{@JSonComposer}. Infine ritorna l'oggetto CollectionList ottenuto.
+ Richiede al \grassetto{@DataRetrieverAnalysis} l'elenco delle Collection e richiama il metodo di creazione dell'oggetto Collection del \grassetto{@JSonComposer}. Infine ritorna l'oggetto CollectionList ottenuto.
  \end{description}
  
  \item[sendCollection(req, res)] \hfill 
@@ -954,7 +861,7 @@ Prepara le query da effettuare e contatta il \textit{@DataRetrieverAnalysis} per
    Oggetto duale a \textit{req} su cui invocare i metodi per inviare informazioni al Client richiedente.
   \end{description}
  \item[Descrizione] \hfill \\
- Esegue una chiamata asincrona al \textit{@DataRetrieverAnalysis} per ottenere una particolare Collection. Nel caso la Collection esista, viene richiamato il metodo \textit{createCollection} di \textit{@JSonComposer} per inviare al richiedente l'oggetto Collection desiderato. In caso la Collection non esista nel Server, viene ritornato il codice di errore \textit{http} 404 al Client.
+ Esegue una chiamata asincrona al \grassetto{@DataRetrieverAnalysis} per ottenere una particolare Collection. Nel caso la Collection esista, viene richiamato il metodo \textit{createCollection} di \grassetto{@JSonComposer} per inviare al richiedente l'oggetto Collection desiderato. In caso la Collection non esista nel Server, viene ritornato il codice di errore \textit{http} 404 al Client.
  \end{description}
  
  \item[sendDocument(req, res)] \hfill 
@@ -967,7 +874,7 @@ Prepara le query da effettuare e contatta il \textit{@DataRetrieverAnalysis} per
    Oggetto duale a \textit{req} su cui invocare i metodi per inviare informazioni al Client richiedente.
   \end{description}
  \item[Descrizione] \hfill \\
- Esegue una chiamata asincrona al \textit{@DataRetrieverAnalysis} per ottenere un particolare Document. Nel caso il Document esista, viene richiamato il metodo \textit{createDocument} di \textit{@JSonComposer} per inviare al richiedente l'oggetto Document desiderato. In caso il Document non esista nel Server, viene ritornato il codice di errore \textit{http} 404 al Client.
+ Esegue una chiamata asincrona al \textit{@DataRetrieverAnalysis} per ottenere un particolare Document. Nel caso il Document esista, viene richiamato il metodo \textit{createDocument} di \grassetto{@JSonComposer} per inviare al richiedente l'oggetto Document desiderato. In caso il Document non esista nel Server, viene ritornato il codice di errore \textit{http} 404 al Client.
  \end{description}
  
  \item[sendDocumentEdit(req, res)] \hfill 
@@ -980,7 +887,7 @@ Prepara le query da effettuare e contatta il \textit{@DataRetrieverAnalysis} per
    Oggetto duale a \textit{req} su cui invocare i metodi per inviare informazioni al Client richiedente.
   \end{description}
  \item[Descrizione] \hfill \\
- Esegue una chiamata asincrona al \textit{@DataRetrieverAnalysis} per ottenere un particolare Document modificabile. Nel caso il Document esista, viene richiamato il metodo \textit{createDocument} di \textit{@JSonComposer} per inviare al richiedente l'oggetto Document desiderato. In caso il Document non esista nel Server, viene ritornato il codice di errore \textit{http} 404 al Client.
+ Esegue una chiamata asincrona al \grassetto{@DataRetrieverAnalysis} per ottenere un particolare Document modificabile. Nel caso il Document esista, viene richiamato il metodo \textit{createDocument} di \grassetto{@JSonComposer} per inviare al richiedente l'oggetto Document desiderato. In caso il Document non esista nel Server, viene ritornato il codice di errore \textit{http} 404 al Client.
  \end{description}
  
  \item[updateDocument(req, res)] \hfill 
@@ -993,7 +900,7 @@ Prepara le query da effettuare e contatta il \textit{@DataRetrieverAnalysis} per
    Oggetto duale a \textit{req} su cui invocare i metodi per inviare informazioni al Client richiedente.
   \end{description}
  \item[Descrizione] \hfill \\
- Esegue una chiamata asincrona al metodo \textit{updateDocument} di \textit{@DataRetrieverAnalysis} per modificare un Document esistente nel Server. Nel caso la modifica effettuata dal \textit{@DataRetrieverAnalysis} vada a buon fine, viene ritornato al Client un codice \textit{http} di successo "200", altrimenti viene mandato il codice di errore \textit{http} 404.
+ Esegue una chiamata asincrona al metodo \textit{updateDocument} di \grassetto{@DataRetrieverAnalysis} per modificare un Document esistente nel Server. Nel caso la modifica effettuata dal \grassetto{@DataRetrieverAnalysis} vada a buon fine, viene ritornato al Client un codice \textit{http} di successo "200", altrimenti viene mandato il codice di errore \textit{http} 404.
  \end{description}
  
  \item[removeDocument(req, res)] \hfill 
@@ -1006,7 +913,7 @@ Prepara le query da effettuare e contatta il \textit{@DataRetrieverAnalysis} per
    Oggetto duale a \textit{req} su cui invocare i metodi per inviare informazioni al Client richiedente.
   \end{description}
  \item[Descrizione] \hfill \\
- Esegue una chiamata asincrona al metodo \textit{removeDocument} di \textit{@DataRetrieverAnalysis} per modificare un Document esistente nel Server. Nel caso la rimozione effettuata dal \textit{@DataRetrieverAnalysis} vada a buon fine, viene ritornato al Client un codice \textit{http} di successo "200", altrimenti viene mandato il codice di errore \textit{http} 404.
+ Esegue una chiamata asincrona al metodo \textit{removeDocument} di \grassetto{@DataRetrieverAnalysis} per modificare un Document esistente nel Server. Nel caso la rimozione effettuata dal \grassetto{@DataRetrieverAnalysis} vada a buon fine, viene ritornato al Client un codice \textit{http} di successo "200", altrimenti viene mandato il codice di errore \textit{http} 404.
  \end{description}
  
  \end{description}
@@ -1208,8 +1115,8 @@ Package che gestisce gli accessi al database utenti.
 \begin{description}
  \item[Descrizione] \hfill \\
 Modulo del ModelServer che si occupa di interpretare i dati richiesti e spediti da e al database utenti. 
-Prepara le query da effettuare e contatta il \textit{@DataRetrieverUsers} per ottenere i dati voluti. 
-Inoltre dialoga direttamente con \textit{@MongooseDBFramework} per l'esecuzione di test durante la registrazione. 
+Prepara le query da effettuare e contatta il \grassetto{@DataRetrieverUsers} per ottenere i dati voluti. 
+Inoltre dialoga direttamente con \grassetto{@MongooseDBFramework} per l'esecuzione di test durante la registrazione. 
  \item[Dipendendenze] \hfill
  \begin{itemize}
   \item path;
@@ -1242,7 +1149,7 @@ Inoltre dialoga direttamente con \textit{@MongooseDBFramework} per l'esecuzione 
 	    Oggetto duale a \textit{req} su cui invocare i metodi per inviare informazioni al Client richiedente.
 	  \end{description}
 	\item[Descrizione] \hfill \\
-	Richiama il metodo \textit{addUser} di \textit{@DataRetrieverUsers} per registrare un nuovo utente al sistema. Vengono passati al metodo \textit{addUser} le credenziali contenute nell'oggetto \textit{req}. In caso di avvenuto inserimento, viene inviato al Client il codice di conferma \textit{http} 200. In caso contrario, viene inviato il 	codice di errore \textit{http} 404.
+	Richiama il metodo \textit{addUser} di \grassetto{@DataRetrieverUsers} per registrare un nuovo utente al sistema. Vengono passati al metodo \textit{addUser} le credenziali contenute nell'oggetto \textit{req}. In caso di avvenuto inserimento, viene inviato al Client il codice di conferma \textit{http} 200. In caso contrario, viene inviato il 	codice di errore \textit{http} 404.
       \end{description}
     
     \item[sendUserProfile(req, res)] \hfill
@@ -1255,8 +1162,7 @@ Inoltre dialoga direttamente con \textit{@MongooseDBFramework} per l'esecuzione 
 	    Oggetto duale a \textit{req} su cui invocare i metodi per inviare informazioni al Client richiedente.
 	  \end{description}
 	\item[Descrizione] \hfill \\
-	Richiama il metodo \textit{getUserProfile} di \textit{@DataRetrieverUsers} per ottenere l'oggetto utente 
-	sulla base dei parametri inviati da \textit{req}. Successivamente invia a \textit{res} il JSON dell'utente 	creato tramite il metodo \textit{createUserProfile} di \textit{JsonComposer}.
+	Richiama il metodo \textit{getUserProfile} di \grassetto{@DataRetrieverUsers} per ottenere l'oggetto utente sulla base dei parametri inviati da \textit{req}. Successivamente invia a \textit{res} il JSON dell'utente 	creato tramite il metodo \textit{createUserProfile} di \grassetto{@JsonComposer}.
       \end{description}
       
     \item[sendUserProfileEdit(req, res)] \hfill
@@ -1269,8 +1175,7 @@ Inoltre dialoga direttamente con \textit{@MongooseDBFramework} per l'esecuzione 
 	    Oggetto duale a \textit{req} su cui invocare i metodi per inviare informazioni al Client richiedente.
 	  \end{description}
 	\item[Descrizione]
-	Richiama il metodo \textit{getUserProfile} di \textit{@DataRetrieverUsers} per ottenere l'oggetto utente 
-	sulla base dei parametri inviati da \textit{req}. Successivamente invia a \textit{res} il JSON dell'utente 	creato tramite il metodo \textit{createUserProfileEdit} di \textit{@JsonComposer}.
+	Richiama il metodo \textit{getUserProfile} di \grassetto{@DataRetrieverUsers} per ottenere l'oggetto utente sulla base dei parametri inviati da \textit{req}. Successivamente invia a \textit{res} il JSON dell'utente 	creato tramite il metodo \textit{createUserProfileEdit} di \grassetto{@JsonComposer}.
       \end{description}
       
     \item[updateUserProfile(req, res)] \hfill
@@ -1283,7 +1188,7 @@ Inoltre dialoga direttamente con \textit{@MongooseDBFramework} per l'esecuzione 
 	    Oggetto duale a \textit{req} su cui invocare i metodi per inviare informazioni al Client richiedente.
 	  \end{description}
 	\item[Descrizione] \hfill \\
-	Richiama il metodo \textit{updateUserProfile} di \textit{@DataRetrieverUsers} passando come parametro il richiedente \textit{req} del Client. Ritorna al Client un codice \textit{http} 200 in caso di riuscita, un codice 400 altrimenti.
+	Richiama il metodo \textit{updateUserProfile} di \grassetto{@DataRetrieverUsers} passando come parametro il richiedente \textit{req} del Client. Ritorna al Client un codice \textit{http} 200 in caso di riuscita, un codice 400 altrimenti.
       \end{description}
       
     \item[getUsersList(req, res)] \hfill
@@ -1296,7 +1201,7 @@ Inoltre dialoga direttamente con \textit{@MongooseDBFramework} per l'esecuzione 
 	    Oggetto duale a \textit{req} su cui invocare i metodi per inviare informazioni al Client richiedente.
 	  \end{description}
 	\item[Descrizione] \hfill \\
-	Richiama il metodo \textit{getUsersList} di \textit{@DataRetrieverUsers} utilizzando i parametri di visualizzazione di \textit{req} o assegnando dei valori di default. Ottenuti i dati, risponde a \textit{res} inviando il risultato della chiamata del metodo \textit{createUsersList} di \textit{@JsonComposer}.
+	Richiama il metodo \textit{getUsersList} di \grassetto{@DataRetrieverUsers} utilizzando i parametri di visualizzazione di \textit{req} o assegnando dei valori di default. Ottenuti i dati, risponde a \textit{res} inviando il risultato della chiamata del metodo \textit{createUsersList} di \grassetto{@JsonComposer}.
       \end{description}
       
     \item[sendUser(req, res)] \hfill
@@ -1309,7 +1214,7 @@ Inoltre dialoga direttamente con \textit{@MongooseDBFramework} per l'esecuzione 
 	    Oggetto duale a \textit{req} su cui invocare i metodi per inviare informazioni al Client richiedente.
 	  \end{description}
 	\item[Descrizione] \hfill \\
-	Richiama il metodo \textit{getUserProfile} di \textit{@DataRetrieverUsers} passando come parametro il campo \textit{user\_id} di \textit{req}. Risponde a \textit{res} inviando il risultato della chiamata del metodo \textit{createUser} di \textit{@JsonComposer}.
+	Richiama il metodo \textit{getUserProfile} di \grassetto{@DataRetrieverUsers} passando come parametro il campo \textit{user\_id} di \textit{req}. Risponde a \textit{res} inviando il risultato della chiamata del metodo \textit{createUser} di \grassetto{@JsonComposer}.
       \end{description}
       
     \item[sendUserEdit(req, res)] \hfill
@@ -1322,7 +1227,7 @@ Inoltre dialoga direttamente con \textit{@MongooseDBFramework} per l'esecuzione 
 	    Oggetto duale a \textit{req} su cui invocare i metodi per inviare informazioni al Client richiedente.
 	  \end{description}
 	\item[Descrizione] \hfill \\
-	Richiama il metodo \textit{getUserProfile} di \textit{@DataRetrieverUsers} passando come parametro il campo \textit{user\_id} di \textit{req}. Risponde a \textit{res} inviando il risultato della chiamata del metodo \textit{createUser} di \textit{@JsonComposer}.
+	Richiama il metodo \textit{getUserProfile} di \grassetto{@DataRetrieverUsers} passando come parametro il campo \textit{user\_id} di \textit{req}. Risponde a \textit{res} inviando il risultato della chiamata del metodo \textit{createUser} di \grassetto{@JsonComposer}.
       \end{description}
 	
     \item[updateUser(req, res)] \hfill
@@ -1335,7 +1240,7 @@ Inoltre dialoga direttamente con \textit{@MongooseDBFramework} per l'esecuzione 
 	    Oggetto duale a \textit{req} su cui invocare i metodi per inviare informazioni al Client richiedente.
 	  \end{description}
 	\item[Descrizione] \hfill \\
-	Richiama il metodo \textit{updateUser} di \textit{@DataRetrieverUsers} passando come parametro il richiedente \textit{req}. Ritorna al Client un codice \textit{http} 200 in caso di riuscita, un codice 400 altrimenti.
+	Richiama il metodo \textit{updateUser} di \grassetto{@DataRetrieverUsers} passando come parametro il richiedente \textit{req}. Ritorna al Client un codice \textit{http} 200 in caso di riuscita, un codice 400 altrimenti.
       \end{description}
       
     \item[removeUser(req, res)] \hfill
@@ -1348,7 +1253,7 @@ Inoltre dialoga direttamente con \textit{@MongooseDBFramework} per l'esecuzione 
 	    Oggetto duale a \textit{req} su cui invocare i metodi per inviare informazioni al Client richiedente.
 	  \end{description}
 	\item[Descrizione] \hfill \\
-	Richiama il metodo \textit{removeUser} di \textit{@DataRetrieverUsers} passando come parametro il campo \textit{email} del richiedente \textit{req}. Ritorna al Client un codice \textit{http} 200 in caso di riuscita, un codice 400 altrimenti.
+	Richiama il metodo \textit{removeUser} di \grassetto{@DataRetrieverUsers} passando come parametro il campo \textit{email} del richiedente \textit{req}. Ritorna al Client un codice \textit{http} 200 in caso di riuscita, un codice 400 altrimenti.
       \end{description}
       
  \end{description}
@@ -1359,7 +1264,7 @@ Inoltre dialoga direttamente con \textit{@MongooseDBFramework} per l'esecuzione 
 \subparagraph{@DataRetrieverUsers}
 \begin{description}
  \item[Descrizione] \hfill \\
- Modulo che dialoga direttamente con \textit{@MongooseDBFramework} per effettuare le query di visualizzazione e modifica dei dati contenuti nel database degli utenti.
+ Modulo che dialoga direttamente con \grassetto{@MongooseDBFramework} per effettuare le query di visualizzazione e modifica dei dati contenuti nel database degli utenti.
  \item[Dipendenze] \hfill 
  	\begin{itemize}
  		\item @MongooseDBFramework.
@@ -1478,7 +1383,7 @@ Package realizzato per creare e gestire gli indici utilizzati nel database di an
 	   \item @MongooseDBAnalysis.
 	  \end{itemize}
 	 \item[Descrizione] \hfill \\
-	 Richiede al modulo \textit{@MongooseDBAnalysis} il modello della Collection di nome \textit{collection\_name}. Se la Collection è presente, la funzione \textit{getModel} ritorna il suo modello, altrimenti ritorna -1.
+	 Richiede al modulo \grassetto{@MongooseDBAnalysis} il modello della Collection di nome \textit{collection\_name}. Se la Collection è presente, la funzione \textit{getModel} ritorna il suo modello, altrimenti ritorna -1.
 	\end{description}	    
     
    \mlitem{addQuery(collection\_name, select)}
@@ -1738,10 +1643,10 @@ Package realizzato per creare e gestire gli indici utilizzati nel database di an
     		\item[Parametro] \hfill
     			\begin{description}
     				\item[app] \hfill \\
-    				Oggetto contenente l'applicazione di \textit{Express}.
+    				Oggetto contenente l'applicazione di \grassetto{Express}.
     			\end{description}
     		\item[Descrizione] \hfill \\
-    		Si occupa di verificare la correttezza del DSL scritto, verificando che tale file contenga un codice corretto sintatticamente e attraverso l'uso del \textit{@DSLparser} esegui il parsing vero e proprio. Controlla che il risulatato del parsing sia in formato JSON, lo salva su file e utilizza il metodo \textit{generateFunction} per creare le funzioni di trasformazione. Se non esiste, si occupa di generare lo schema \textit{Mongoose} della Collection specificata nel file DSL.
+    		Si occupa di verificare la correttezza del DSL scritto, verificando che tale file contenga un codice corretto sintatticamente e attraverso l'uso del \grassetto{@DSLparser} esegui il parsing vero e proprio. Controlla che il risulatato del parsing sia in formato JSON, lo salva su file e utilizza il metodo \textit{generateFunction} per creare le funzioni di trasformazione. Se non esiste, si occupa di generare lo schema \grassetto{Mongoose} della Collection specificata nel file DSL.
     \end{description}
  \end{mldescription}
  
@@ -1842,7 +1747,7 @@ Package realizzato per creare e gestire gli indici utilizzati nel database di an
      				Contenuto del file maap di configurazione.
      			\end{description}
      		\item[Descrizione] \hfill \\
-     		Si occupa di effettuare il parsing del DSL trasformandolo in JSON. Per effettuare il parsing verifica che i campi obbligatori siano definiti e non vuoti, che i campi il cui contenuto deve essere un numero lo sia e che la sintassi delle funzioni di trasformazione dei campi sia valida utilizzando il parser \textit{@JavascriptParser}.
+     		Si occupa di effettuare il parsing del DSL trasformandolo in JSON. Per effettuare il parsing verifica che i campi obbligatori siano definiti e non vuoti, che i campi il cui contenuto deve essere un numero lo sia e che la sintassi delle funzioni di trasformazione dei campi sia valida utilizzando il parser \grassetto{@JavascriptParser}.
    \end{description}
  \end{mldescription}
  
@@ -1850,7 +1755,7 @@ Package realizzato per creare e gestire gli indici utilizzati nel database di an
 \subparagraph{@index}
 \begin{description}
  \item[Descrizione] \hfill
-  Modulo che si occupa dell'inizializzazione del \textit{@DSLManager}.
+  Modulo che si occupa dell'inizializzazione del \grassetto{@DSLManager}.
  \item[Dipendendenze] \hfill
  \begin{itemize}
   \item{@DSLManager}.
@@ -1863,10 +1768,10 @@ Package realizzato per creare e gestire gli indici utilizzati nel database di an
      		\item[Parametro] \hfill
      			\begin{description}
      				\item[app] \hfill \\
-     				Oggetto contenente l'applicazione di \textit{Express}.
+     				Oggetto contenente l'applicazione di \grassetto{Express}.
      			\end{description}
      		\item[Descrizione] \hfill \\
-     		Si occupa di invocare il metodo \textit{checkDSL} di \textit{@DSLManager}.
+     		Si occupa di invocare il metodo \textit{checkDSL} di \grassetto{@DSLManager}.
    \end{description}
  \end{mldescription}
  
@@ -1881,7 +1786,7 @@ Package realizzato per creare e gestire gli indici utilizzati nel database di an
 \subparagraph{@schemaGenerator}
 \begin{description}
  \item[Descrizione] \hfill \\
-  Modulo che si occupa dell'inizializzazione del \textit{@DSLManager}.
+  Modulo che si occupa dell'inizializzazione del \grassetto{@DSLManager}.
  \item[Dipendendenza] \hfill
  \begin{itemize}
   \item{fs}.
@@ -1918,7 +1823,7 @@ Package realizzato per creare e gestire gli indici utilizzati nel database di an
       		\item[Parametri] \hfill
       			\begin{description}
       				\item[config] \hfill \\
-      				Contiene la configurazione dell'ambiente \textit{MaaP}.
+      				Contiene la configurazione dell'ambiente \grassetto{MaaP}.
       				\item[dslJson] \hfill \\
       				Contiene il JSON del parsing del DSL.
       			\end{description}
@@ -1994,8 +1899,8 @@ userProfile & Pagina per la visualizzazione del profilo utente (user) / di un ut
   \item \$route;
   \item \$location;
   \item \$routeParams;
-  \item DocumentEditService;
-  \item CollectionDataService;
+  \item @DocumentEditService;
+  \item @CollectionDataService;
  \end{itemize}
  
  \item[Attributi] \hfill
@@ -2014,7 +1919,7 @@ userProfile & Pagina per la visualizzazione del profilo utente (user) / di un ut
   	\begin{description}
   		\item[Descrizione] \hfill \\
   Funzione di inizializzazione del CollectionController. Imposta i valori iniziali delle variabili dello
-  \$scope associate alla Collection view ed esegue la funzione \emph{getData()}.
+  \$scope associate alla Collection view ed esegue la funzione \textit{getData()}.
   	\end{description}
   	
   \item[getData()] \hfill 
@@ -2034,20 +1939,19 @@ userProfile & Pagina per la visualizzazione del profilo utente (user) / di un ut
   		Intero rappresentante il numero di pagine da visualizzare.
 	\end{description}  		
   	\item[Descrizione] \hfill \\
-  Funzione ausiliaria che crea un array di dimensione   {num} che verrà poi usato dalla directive   {ng-repeat} di angular per la creazione 
-  del numero di   pagine disponibili.
+  Funzione ausiliaria che crea un array di dimensione \textit{num} che verrà poi usato dalla directive \textit{ng-repeat} di angular per la creazione del numero di pagine disponibili.
   \end{description}
   
   \item[\$scope.previousPage()] \hfill 
   \begin{description}
   		\item[Descrizione] \hfill \\
-  Aggiunge allo \$scope la funzionalità di passaggio dalla pagina di visualizzazione corrente alla precedente. Diminuisce di 1 l'indicatore della pagina corrente e esegue una nuova richiesta al server per i dati corrispondenti alla pagina precedente con \emph{getData()}.
+  Aggiunge allo \$scope la funzionalità di passaggio dalla pagina di visualizzazione corrente alla precedente. Diminuisce di 1 l'indicatore della pagina corrente e esegue una nuova richiesta al server per i dati corrispondenti alla pagina precedente con \textit{getData()}.
   \end{description}
   
   \item[\$scope.nextPage()] \hfill
   \begin{description}
   		\item[Descrizione] \hfill \\
-  Aggiunge allo \$scope la funzionalità di passaggio dalla pagina di visualizzazione corrente alla successiva. Aumenta di 1 l'indicatore della pagina corrente e esegue una nuova richiesta al server per i dati corrispondenti alla pagina successiva con \emph{getData()}.
+  Aggiunge allo \$scope la funzionalità di passaggio dalla pagina di visualizzazione corrente alla successiva. Aumenta di 1 l'indicatore della pagina corrente e esegue una nuova richiesta al server per i dati corrispondenti alla pagina successiva con \textit{getData()}.
   \end{description}
   
   \item[\$scope.toPage(index)] \hfill
@@ -2058,7 +1962,7 @@ userProfile & Pagina per la visualizzazione del profilo utente (user) / di un ut
   		Numero intero che definisce il numero della pagina da visualizzare.
   	\end{description}
   	\item[Descrizione] \hfill \\
-  Aggiunge allo \$scope la funzionalità di passaggio alla pagina di visualizzazione specificata dal parametro \emph{index}. Aggiorna l'indicatore della pagina corrente settandolo all'indice passato per parametro alla funzione. Successivamente esegue una richiesta al server per ottenere i dati per la nuova visualizzazione.
+  Aggiunge allo \$scope la funzionalità di passaggio alla pagina di visualizzazione specificata dal parametro \textit{index}. Aggiorna l'indicatore della pagina corrente settandolo all'indice passato per parametro alla funzione. Successivamente esegue una richiesta al server per ottenere i dati per la nuova visualizzazione.
   \end{description}
   
   \item[changeSort()] \hfill 
@@ -2087,7 +1991,7 @@ userProfile & Pagina per la visualizzazione del profilo utente (user) / di un ut
   		Numero intero che definisce il numero del Document da eliminare.
   	\end{description}
   	\item[Descizione] \hfill \\
-  Funzione che elimina il Document identificato dall'indice \emph{index}. Effettua una richiesta REST di rimozione alla risorsa pubblicizzata da DocumentEditService fornendo come argomenti l'identificativo della Collection correntemente visualizzata e l'indice del Document da eliminare. \\
+  Funzione che elimina il Document identificato dall'indice \textit{index}. Effettua una richiesta REST di rimozione alla risorsa pubblicizzata da DocumentEditService fornendo come argomenti l'identificativo della Collection correntemente visualizzata e l'indice del Document da eliminare. \\
   Se l'eliminazione ha successo viene lanciato l'aggiornamento della vista corrente con il Document eliminato, altrimenti si richiama la callback di errore.
   \end{description}
   
