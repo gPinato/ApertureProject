@@ -17,6 +17,7 @@ describe('Controller: CollectionCtrl', function () {
     var MainCtrl,
         routeParams,
         scope,
+        location,
         $httpBackend;
     var data =
         [ [ 'Timestamp', 'Message', 'Level' ],
@@ -33,11 +34,13 @@ describe('Controller: CollectionCtrl', function () {
             { pages: 4 } ];
 
     // Initialize the controller and a mock scope
-    beforeEach(inject(function ($controller, $rootScope, _$httpBackend_) {
+    beforeEach(inject(function ($controller,$location, $rootScope, _$httpBackend_) {
         scope = $rootScope.$new();
         $httpBackend = _$httpBackend_;
         routeParams={};
         routeParams.col_id=0;
+        routeParams.doc_id=0;
+        location = $location;
 
         MainCtrl = $controller('CollectionCtrl', {
             $scope: scope,
@@ -55,9 +58,56 @@ describe('Controller: CollectionCtrl', function () {
         scope.getData();
         $httpBackend.flush();
         // Then
-        //expect(scope.data).toEqual(data[1]);
+        expect(scope.data).toEqual(data[1]);
         expect(scope.labels).toEqual({ 0 : 'Timestamp', 1 : 'Message', 2 : 'Level' });
         //expect(scope.pages).toEqual(data[2]);
+
+    });
+
+    it('should display an error when not successful', function () {
+        // Given
+        $httpBackend.whenGET('http://localhost:9000/api/collection/0?page=0').respond(400);
+        $httpBackend.whenGET('views/dashboard.html').respond(200);
+        $httpBackend.whenGET('views/404.html').respond(200);
+
+
+        // When
+        //scope.loadData();
+        $httpBackend.flush();
+        // Then
+
+    });
+
+    it('should delete a document correctly', function () {
+        // Given
+        $httpBackend.whenGET('views/collection.html').respond(200);
+
+        $httpBackend.whenGET('views/dashboard.html').respond(200);
+        $httpBackend.whenGET('http://localhost:9000/api/collection/0?page=0').respond(200, data);
+        $httpBackend.whenDELETE('http://localhost:9000/api/collection/0/edit').respond(200);
+
+
+        // When
+        scope.delete_document();
+        $httpBackend.flush();
+        // Then
+        //test sul path
+
+    });
+
+    it('should display an error when the delete fails', function () {
+        // Given
+        $httpBackend.whenGET('views/collection.html').respond(200);
+        $httpBackend.whenGET('views/dashboard.html').respond(200);
+        $httpBackend.whenGET('http://localhost:9000/api/collection/0?page=0').respond(200, data);
+        $httpBackend.whenDELETE('http://localhost:9000/api/collection/0/edit').respond(400);
+
+
+        // When
+        scope.delete_document();
+        $httpBackend.flush();
+        // Then
+
 
     });
 

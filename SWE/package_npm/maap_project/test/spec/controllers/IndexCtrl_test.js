@@ -12,19 +12,27 @@
 describe('Controller: IndexCtrl', function () {
 
     // load the controller's module
-    beforeEach(module('maaperture'));
+    beforeEach(module('maaperture', 'services', 'ngResource', 'ngRoute'));
 
     var MainCtrl,
         routeParams,
         scope,
-
-        mockBackend;
+        deleteIndex,
+        $httpBackend,
+        data = [['a','b','c'],
+            [1,2,3]];
 
     // Initialize the controller and a mock scope
     beforeEach(inject(function ($controller, $rootScope, _$httpBackend_) {
         scope = $rootScope.$new();
-        mockBackend = _$httpBackend_;
-
+        $httpBackend = _$httpBackend_;
+        routeParams={};
+        routeParams.col_name=0;
+        routeParams.index_name=0;
+        deleteIndex={};
+        deleteIndex._id=0;
+        deleteIndex.data={};
+        deleteIndex.data.collection=0;
 
         MainCtrl = $controller('IndexCtrl', {
             $scope: scope,
@@ -33,32 +41,73 @@ describe('Controller: IndexCtrl', function () {
 
     }));
 
-    beforeEach(function () {
-        angular.mock.inject(function ($injector) {
-            mockBackend = $injector.get('$httpBackend');
-        });
+
+    it('should set some data on the scope when successful', function () {
+        // Given
+        $httpBackend.whenGET('http://localhost:9000/api/indexes').respond(200, data);
+        $httpBackend.whenGET('views/dashboard.html').respond(200);
+
+
+        // When
+        scope.getData();
+        $httpBackend.flush();
+        // Then
+        expect(scope.data).toEqual(data[1]);
+        expect(scope.labels).toEqual(data[0]);
+        //expect(scope.pages).toEqual(data[2]);
+
     });
-    /*
-     it('should load labels from the services',  inject(function (CollectionDataService)  {
 
-     mockBackend.expectGET('http://localhost:9000/api/collection/0?page=0')
-     .respond(response);
-
-
-     var result = MockColService.query({
-     col_id: routeParams.col_id,
-     order: scope.current_sort,
-     column: scope.column_original_name[scope.current_sorted_column],
-     page: scope.current_page
-
-     });
-     mockBackend.flush();
-     console.log(result);
-     expect(result).to.not.equal(null);
+    it('should display an error when not successful', function () {
+        // Given
+        $httpBackend.whenGET('http://localhost:9000/api/indexes').respond(400);
+        $httpBackend.whenGET('views/dashboard.html').respond(200);
+        $httpBackend.whenGET('views/404.html').respond(200);
 
 
-     }));
-     */
+
+        // When
+        //scope.loadData();
+        $httpBackend.flush();
+        // Then
+
+    });
+
+    it('should delete an index correctly', function () {
+        // Given
+        $httpBackend.whenGET('http://localhost:9000/api/indexes').respond(400);
+        $httpBackend.whenDELETE('http://localhost:9000/api/indexes/0/0').respond(400);
+        $httpBackend.whenGET('views/404.html').respond(200);
+
+        $httpBackend.whenGET('views/dashboard.html').respond(200);
+
+
+        // When
+        scope.delete(deleteIndex);
+        $httpBackend.flush();
+        // Then
+        //test sul path
+
+    });
+
+    it('should display an error when the delete fails', function () {
+        // Given
+        $httpBackend.whenGET('http://localhost:9000/api/indexes').respond(400);
+        $httpBackend.whenDELETE('http://localhost:9000/api/indexes/0/0').respond(400);
+
+        $httpBackend.whenGET('views/dashboard.html').respond(200);
+        $httpBackend.whenGET('views/404.html').respond(200);
+
+
+
+        // When
+        scope.delete(deleteIndex);
+        $httpBackend.flush();
+        // Then
+
+
+    });
+
 
     it('should initialize data correctly', function () {
         expect(scope.current_sorted_column).toBe(null);

@@ -22,7 +22,8 @@ angular.module('services')
 		var hostURL = 'http://localhost:9000';
 		
         return $resource( hostURL + '/api/signup', {}, {
-            'register': {method: 'POST'}
+            'register': {method: 'POST'},
+			'createuser': {method: 'PUT'}
         });
     }
     ]);
