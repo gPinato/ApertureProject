@@ -154,9 +154,6 @@ Gli strumenti di lavoro sono trattati nelle sezioni 4.3.5.2.2 e 4.3.5.3.2 del do
 Namespace generale del progetto. In accordo con il design pattern architetturale Client-Server che 
 abbiamo adottato, le interazioni che il Client ha con il Server sono di tipo REST-like.
 
-<<<<<<< HEAD
-=======
-
 \subsection{::Installer}
 Package che gestisce l'installazione del framework MaaP. 
 
@@ -249,7 +246,6 @@ Modulo di installazione del framework Maap. Si occupa di gestire le richiesti pr
       \end{description}
 \end{description}
 
->>>>>>> ae2d958d7aef69b2aa576204be2a170e6fe3dabe
 \section{Specifica componenti MaaP::Server}
 
 Package Server del Design Pattern Client-Server. 
@@ -287,12 +283,12 @@ Per ultima cosa, il \grassetto{@dispatcher} gestisce eventuali richieste di riso
      \item['/api/collection/list'] \hfill \\
      Stringa contenente l'indirizzo della API da richiamare.
      \item[passport.checkAuthenticated] \hfill \\
-     Funzione di \textit{@passport} che verifica che l'utente sia autenticato.
+     Funzione di \grassetto{@passport} che verifica che l'utente sia autenticato.
      \item[datamanager.sendCollectionsList] \hfill \\
      Callback da richiamare al termine dell'autenticazione.
     \end{description}
    \item[Descrizione] \hfill \\
-   Intercetta la richiesta di generare l'elenco delle Collection per visualizzarlo, verificando che essa sia autenticata e richiama il metodo \textit{sendCollectionsList} del \textit{@datamanager}.
+   Intercetta la richiesta di generare l'elenco delle Collection per visualizzarlo, verificando che essa sia autenticata e richiama il metodo \textit{sendCollectionsList} del \grassetto{@datamanager}.
   \end{description}
   
   \mlitem{get('/api/collection/:col\_id', passport.checkAuthenticated, \\datamanager.sendCollection)}\hfill 
@@ -302,7 +298,7 @@ Per ultima cosa, il \grassetto{@dispatcher} gestisce eventuali richieste di riso
      \item['/api/collection/:col\_id'] \hfill \\
      Stringa contenente l'indirizzo della API da richiamare.
      \item[passport.checkAuthenticated] \hfill \\
-     Funzione di \textit{@passport} che verifica che l'utente sia autenticato.
+     Funzione di \grassetto{@passport} che verifica che l'utente sia autenticato.
      \item[datamanager.sendCollection] \hfill \\
      Callback da richiamare al termine dell'autenticazione.
     \end{description}
@@ -957,11 +953,8 @@ Prepara le query da effettuare e contatta il \grassetto{@DataRetrieverAnalysis} 
    Oggetto duale a \textit{req} su cui invocare i metodi per inviare informazioni al Client richiedente.
   \end{description}
  \item[Descrizione] \hfill \\
-<<<<<<< HEAD
+
  Esegue una chiamata asincrona al \grassetto{@DataRetrieverAnalysis} per ottenere una particolare Collection. Nel caso la Collection esista, viene richiamato il metodo \textit{createCollection} di \grassetto{@JSonComposer} per inviare al richiedente l'oggetto Collection desiderato. In caso la Collection non esista nel Server, viene ritornato il codice di errore \textit{http} 404 al Client.
-=======
- Esegue una chiamata asincrona al \textit{@DataRetrieverAnalysis} per ottenere una particolare Collection. Nel caso la Collection esista, viene richiamato il metodo \textit{createCollection} di \textit{@JSonComposer} per inviare alla richiesta HTTP l'oggetto Collection desiderato. In caso la Collection non esista nel Server, viene ritornato il codice di errore \textit{http} 404 al Client.
->>>>>>> ae2d958d7aef69b2aa576204be2a170e6fe3dabe
  \end{description}
  
  \item[sendDocument(req, res)] \hfill 
@@ -974,11 +967,7 @@ Prepara le query da effettuare e contatta il \grassetto{@DataRetrieverAnalysis} 
    Oggetto duale a \textit{req} su cui invocare i metodi per inviare informazioni al Client richiedente.
   \end{description}
  \item[Descrizione] \hfill \\
-<<<<<<< HEAD
- Esegue una chiamata asincrona al \textit{@DataRetrieverAnalysis} per ottenere un particolare Document. Nel caso il Document esista, viene richiamato il metodo \textit{createDocument} di \grassetto{@JSonComposer} per inviare al richiedente l'oggetto Document desiderato. In caso il Document non esista nel Server, viene ritornato il codice di errore \textit{http} 404 al Client.
-=======
- Esegue una chiamata asincrona al \textit{@DataRetrieverAnalysis} per ottenere un particolare Document. Nel caso il Document esista, viene richiamato il metodo \textit{createDocument} di \textit{@JSonComposer} per inviare alla richiesta HTTP l'oggetto Document desiderato. In caso il Document non esista nel Server, viene ritornato il codice di errore \textit{http} 404 al Client.
->>>>>>> ae2d958d7aef69b2aa576204be2a170e6fe3dabe
+ Esegue una chiamata asincrona al \grassetto{@DataRetrieverAnalysis} per ottenere un particolare Document. Nel caso il Document esista, viene richiamato il metodo \textit{createDocument} di \grassetto{@JSonComposer} per inviare al richiedente l'oggetto Document desiderato. In caso il Document non esista nel Server, viene ritornato il codice di errore \textit{http} 404 al Client.
  \end{description}
  
  \item[sendDocumentEdit(req, res)] \hfill 
@@ -991,11 +980,7 @@ Prepara le query da effettuare e contatta il \grassetto{@DataRetrieverAnalysis} 
    Oggetto duale a \textit{req} su cui invocare i metodi per inviare informazioni al Client richiedente.
   \end{description}
  \item[Descrizione] \hfill \\
-<<<<<<< HEAD
  Esegue una chiamata asincrona al \grassetto{@DataRetrieverAnalysis} per ottenere un particolare Document modificabile. Nel caso il Document esista, viene richiamato il metodo \textit{createDocument} di \grassetto{@JSonComposer} per inviare al richiedente l'oggetto Document desiderato. In caso il Document non esista nel Server, viene ritornato il codice di errore \textit{http} 404 al Client.
-=======
- Esegue una chiamata asincrona al \textit{@DataRetrieverAnalysis} per ottenere un particolare Document modificabile. Nel caso il Document esista, viene richiamato il metodo \textit{createDocument} di \textit{@JSonComposer} per inviare alla richiesta HTTP l'oggetto Document desiderato. In caso il Document non esista nel Server, viene ritornato il codice di errore \textit{http} 404 al Client.
->>>>>>> ae2d958d7aef69b2aa576204be2a170e6fe3dabe
  \end{description}
  
  \item[updateDocument(req, res)] \hfill 
@@ -1296,11 +1281,8 @@ Inoltre dialoga direttamente con \grassetto{@MongooseDBFramework} per l'esecuzio
 	    Oggetto duale a \textit{req} su cui invocare i metodi per inviare informazioni al Client richiedente.
 	  \end{description}
 	\item[Descrizione] \hfill \\
-<<<<<<< HEAD
 	Richiama il metodo \textit{updateUserProfile} di \grassetto{@DataRetrieverUsers} passando come parametro il richiedente \textit{req} del Client. Ritorna al Client un codice \textit{http} 200 in caso di riuscita, un codice 400 altrimenti.
-=======
-	Richiama il metodo \textit{updateUserProfile} di \textit{@DataRetrieverUsers} passando come parametro la richiesta HTTP \textit{req} del Client. Ritorna al Client un codice \textit{http} 200 in caso di riuscita, un codice 400 altrimenti.
->>>>>>> ae2d958d7aef69b2aa576204be2a170e6fe3dabe
+
       \end{description}
       
     \item[getUsersList(req, res)] \hfill
@@ -1352,11 +1334,8 @@ Inoltre dialoga direttamente con \grassetto{@MongooseDBFramework} per l'esecuzio
 	    Oggetto duale a \textit{req} su cui invocare i metodi per inviare informazioni al Client richiedente.
 	  \end{description}
 	\item[Descrizione] \hfill \\
-<<<<<<< HEAD
 	Richiama il metodo \textit{updateUser} di \grassetto{@DataRetrieverUsers} passando come parametro il richiedente \textit{req}. Ritorna al Client un codice \textit{http} 200 in caso di riuscita, un codice 400 altrimenti.
-=======
-	Richiama il metodo \textit{updateUser} di \textit{@DataRetrieverUsers} passando come parametro la richiesta HTTP \textit{req}. Ritorna al Client un codice \textit{http} 200 in caso di riuscita, un codice 400 altrimenti.
->>>>>>> ae2d958d7aef69b2aa576204be2a170e6fe3dabe
+
       \end{description}
       
     \item[removeUser(req, res)] \hfill
@@ -1369,11 +1348,7 @@ Inoltre dialoga direttamente con \grassetto{@MongooseDBFramework} per l'esecuzio
 	    Oggetto duale a \textit{req} su cui invocare i metodi per inviare informazioni al Client richiedente.
 	  \end{description}
 	\item[Descrizione] \hfill \\
-<<<<<<< HEAD
 	Richiama il metodo \textit{removeUser} di \grassetto{@DataRetrieverUsers} passando come parametro il campo \textit{email} del richiedente \textit{req}. Ritorna al Client un codice \textit{http} 200 in caso di riuscita, un codice 400 altrimenti.
-=======
-	Richiama il metodo \textit{removeUser} di \textit{@DataRetrieverUsers} passando come parametro il campo \textit{email} della richiesta HTTP \textit{req}. Ritorna al Client un codice \textit{http} 200 in caso di riuscita, un codice 400 altrimenti.
->>>>>>> ae2d958d7aef69b2aa576204be2a170e6fe3dabe
       \end{description}
       
  \end{description}
@@ -1431,7 +1406,7 @@ Inoltre dialoga direttamente con \grassetto{@MongooseDBFramework} per l'esecuzio
  							Funzione da richiamare alla fine dell'aggiornamento del profilo utente.
  					\end{description}
  				\item[Descrizione] \hfill \\
- 					Vengono estratti i dati da aggiornare dall'oggetto \textit{req} della richiesta HTTP. Successivamente viene effettuata una query di aggiornamento sul database degli utenti con i dati forniti da \textit{req}. In caso l'aggiornamento dei dati avvenga con successo, 	viene chiamata la funzione \textit{callback} con argomento \textbf{true}, altrimenti 	viene chiamata con argomento \textbf{false}.  
+ 					Vengono estratti i dati da aggiornare dall'oggetto \textit{req} della richiesta HTTP. Successivamente viene effettuata una query di aggiornamento sul database degli utenti con i dati forniti da \textit{req}. In caso l'aggiornamento dei dati avvenga con successo, 	viene chiamata la funzione \textit{callback} con argomento \textbf{true}, altrimenti viene chiamata con argomento \textbf{false}.  
  			\end{description}
  			
  		\mlitem{getUsersList(column, order, page, perpage, callback)} \hfill
@@ -1728,7 +1703,7 @@ Package realizzato per creare e gestire gli indici utilizzati nel database di an
 \subparagraph{@DSLManager}
 \begin{description}
  \item[Descrizione] \hfill \\
-  Modulo del \textit{ModelServer} che si occupa controllare la presenza dei file DSL nell'apposita cartella definita nel file di configurazione e invoca il parser dei DSL.
+  Modulo del \grassetto{ModelServer} che si occupa controllare la presenza dei file DSL nell'apposita cartella definita nel file di configurazione e invoca il parser dei DSL.
  \item[Dipendendenze] \hfill 
  \begin{itemize}
  \item{fs};
@@ -2111,11 +2086,7 @@ userProfile & Pagina per la visualizzazione del profilo utente (user) / di un ut
   		Numero intero che definisce il numero del Document da eliminare.
   	\end{description}
   	\item[Descizione] \hfill \\
-<<<<<<< HEAD
   Funzione che elimina il Document identificato dall'indice \textit{index}. Effettua una richiesta REST di rimozione alla risorsa pubblicizzata da DocumentEditService fornendo come argomenti l'identificativo della Collection correntemente visualizzata e l'indice del Document da eliminare. \\
-=======
-  Funzione che elimina il Document identificato dall'indice \emph{index}. Effettua una richiesta REST di rimozione alla risorsa gestita da DocumentEditService fornendo come argomenti l'identificativo della Collection correntemente visualizzata e l'indice del Document da eliminare. \\
->>>>>>> ae2d958d7aef69b2aa576204be2a170e6fe3dabe
   Se l'eliminazione ha successo viene lanciato l'aggiornamento della vista corrente con il Document eliminato, altrimenti si richiama la callback di errore.
   \end{description}
   
