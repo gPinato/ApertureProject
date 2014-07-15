@@ -9,7 +9,7 @@
  */
 'use strict';
 
-ddescribe('Controller: CollectionCtrl', function () {
+describe('Controller: CollectionCtrl', function () {
 
     // load the controller's module
     beforeEach(module('maaperture', 'services', 'ngResource', 'ngRoute'));
