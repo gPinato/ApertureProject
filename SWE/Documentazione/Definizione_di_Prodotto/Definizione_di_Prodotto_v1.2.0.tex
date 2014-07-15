@@ -262,7 +262,7 @@ Modulo di inizializzazione della componente Server utilizzata per la trasmission
 Il modulo \grassetto{dispatcher} gestisce tutte le richieste effettuate dal Client al Server, effettuando le dovute redirezioni e le chiamate per ottenere i dati dai database nel Server. Le richieste che pervengono al 
 \grassetto{@dispatcher} sono di tipo REST, a cui il modulo stesso risponde con il JSON della risorsa richiesta. 
 Questo avviene solamente se l'utente che ha richiesto la risorsa è registrato ed autenticato, prima di 
-effettuare la richiesta, e che abbia i dovuti permessi per effettuare la richiesta. Infatti, prima di eseguire ogni richiesta di accesso ai dati del Server, il \grassetto{@dispatcher} esegue una chiamata a \grassetto{@passport} per verificare l'autenticazione del richiedente e per distinguere gli utenti standard dagli utenti amministratori. \\
+effettuare la richiesta, e che abbia i dovuti permessi per effettuare la richiesta. Infatti, prima di eseguire ogni richiesta di accesso ai dati del Server, il \grassetto{@dispatcher} esegue una chiamata a \grassetto{@passport} per verificare l'autenticazione della richiesta HTTP e per distinguere gli utenti standard dagli utenti amministratori. \\
 Per ultima cosa, il \grassetto{@dispatcher} gestisce eventuali richieste di risorse inesistenti o errate reindirizzando il chiamante alla pagina iniziale del Client AngularJS.
  \item[Dipendendenze] \hfill
  \begin{itemize}
@@ -619,10 +619,10 @@ Per ultima cosa, il \grassetto{@dispatcher} gestisce eventuali richieste di riso
     \mlitem{'/loggedin'} \hfill \\
     Stringa contenente l'indirizzo della API da richiamare.
     \mlitem{function(req, res) \{ res.send(req.isAuthenticated() ? req.user : '0'); \}} \hfill \\
-    Funzione anonima che richiama il metodo isAuthenticated sul richiedente. Se il metodo ritorna valore booleano \textbf{true}, viene ritornato al richiedente il proprio campo \textit{user}, altrimenti ritorna 0.
+    Funzione anonima che richiama il metodo isAuthenticated sulla richiesta HTTP. Se il metodo ritorna valore booleano \textbf{true}, viene ritornato al  il proprio campo \textit{user}, altrimenti ritorna 0.
    \end{mldescription}
   \item[Descrizione] \hfill \\
- Gestisce la richiesta di controllo dell'avvenuta autenticazione di un utente. Viene richiamato sul richiedente il metodo locale \textit{isAuthenticated()}. Se l'utente è autenticato, gli vengono inviate le proprie informazioni associate, altrimenti viene ritornato 0.
+ Gestisce la richiesta di controllo dell'avvenuta autenticazione di un utente. Viene richiamato sulla richiesta HTTP il metodo locale \textit{isAuthenticated()}. Se l'utente è autenticato, gli vengono inviate le proprie informazioni associate, altrimenti viene ritornato 0.
  \end{description}
  
  \mlitem{post('/api/login', passport.checkNotAuthenticated, passport.authenticate, function(req, res) \{ res.send(req.user); \})}
@@ -636,10 +636,10 @@ Per ultima cosa, il \grassetto{@dispatcher} gestisce eventuali richieste di riso
     \mlitem{passport.authenticate} \hfill \\
     Funzione di \textit{@passport} che esegue l'autenticazione.
     \mlitem{function(req, res) \{ res.send(req.user); \}} \hfill \\
-    Funzione anonima che manda al richiedente la risposta contenente il suo campo \textit{user}.
+    Funzione anonima che manda alla richiesta HTTP la risposta contenente il suo campo \textit{user}.
    \end{mldescription}
   \item[Descrizione] \hfill \\
- Gestisce le richieste di autenticazione al Server. L'utente che richiede questa operazione non deve essere autenticato ma deve essere presente nel database degli utenti presente nel Server. Nel caso di risposta affermativa ad entrambe le precedenti condizioni, viene creata una nuova sessione per l'utente richiedente.
+ Gestisce le richieste di autenticazione al Server. L'utente che richiede questa operazione non deve essere autenticato ma deve essere presente nel database degli utenti presente nel Server. Nel caso di risposta affermativa ad entrambe le precedenti condizioni, viene creata una nuova sessione per la richiesta HTTP.
  \end{description}
  
  \mlitem{get('/api/logout', passport.checkAuthenticated, function(req, res) \{ req.logout(); res.send(200); \})}
@@ -651,10 +651,10 @@ Per ultima cosa, il \grassetto{@dispatcher} gestisce eventuali richieste di riso
     \mlitem{passport.checkAuthenticated} \hfill \\
     Funzione di \textit{@passport} che verifica che l'utente sia autenticato.
     \mlitem{function(req, res) \{ req.logout(); res.send(200); \}} \hfill \\
-    Funzione anonima che effettua la disconnessione del richiedente \textit{req} e manda al Client il codice \textit{http} 200.
+    Funzione anonima che effettua la disconnessione della richiesta HTTP \textit{req} e manda al Client il codice \textit{http} 200.
    \end{mldescription}
   \item[Descrizione] \hfill \\
- Gestisce le richieste di disconnessione dal sistema. Per effettuare questa operazione, l'utente deve essere autenticato. In caso affermativo, viene richiesto il \textit{logout()} del richiedente.
+ Gestisce le richieste di disconnessione dal sistema. Per effettuare questa operazione, l'utente deve essere autenticato. In caso affermativo, viene richiesto il \textit{logout()} della richiesta HTTP.
  \end{description}
  
  \end{mldescription}
@@ -668,7 +668,7 @@ Per ultima cosa, il \grassetto{@dispatcher} gestisce eventuali richieste di riso
     \mlitem{'*'} \hfill \\
     Stringa contentente l'indirizzo delle API da richiamare. In questo caso, l'idirizzo è una stringa qualsiasi.
     \mlitem{function(req, res) \{ res.sendfile(path.join(config.static\_assets.dir, 'index.html')); \}} \hfill \\
-    Funzione anonima che reindirizza il richiedente alla pagina iniziale della view del Client.
+    Funzione anonima che reindirizza la richiesta HTTP alla pagina iniziale della view del Client.
    \end{mldescription}
   \item[Descrizione]
  La presente funzione gestisce ogni richiesta di pagina o file che il Server non possiede. L'argomento "*" della funzione \textit{get} consente di gestire tutte le richieste che non sono state servite dalle precedenti funzioni del \textit{@dispatcher}. Questa funzione viene richiamata soltanto quando non le funzioni precedenti non sono state chiamate.
@@ -774,7 +774,7 @@ Controller che si occupa dell'inizializzazione e gestione del modulo passort per
             \item[Parametri] \hfill
             \begin{description}
              \item[req] \hfill \\
-	         Oggetto contenente i parametri e le informazioni del Client richiedente.
+	         Oggetto contenente i parametri e le informazioni della richiesta HTTP del Client.
 	         \item[res] \hfill \\
 	         Oggetto duale a \textit{req} su cui invocare i metodi per inviare informazioni al Client richiedente.
              \item[next] \hfill \\
@@ -788,7 +788,7 @@ Controller che si occupa dell'inizializzazione e gestione del modulo passort per
       \item[Parametri] \hfill
       \begin{description}
        \item[req] \hfill \\
-	    Oggetto contenente i parametri e le informazioni del Client richiedente.
+	    Oggetto contenente i parametri e le informazioni della richiesta HTTP del Client.
 	    \item[res] \hfill \\
 	    Oggetto duale a \textit{req} su cui invocare i metodi per inviare informazioni al Client richiedente.
         La risposta al Client.
@@ -804,7 +804,7 @@ Controller che si occupa dell'inizializzazione e gestione del modulo passort per
       \item[Parametri] \hfill
       \begin{description}
        \item[req] \hfill \\
-	    Oggetto contenente i parametri e le informazioni del Client richiedente.
+	    Oggetto contenente i parametri e le informazioni della richiesta HTTP del Client.
 	   \item[res] \hfill \\
 	    Oggetto duale a \textit{req} su cui invocare i metodi per inviare informazioni al Client richiedente.
        \item[next] \hfill \\
@@ -936,7 +936,7 @@ Prepara le query da effettuare e contatta il \textit{@DataRetrieverAnalysis} per
  \item[Parametri] \hfill
   \begin{description}
    \item[req] \hfill \\
-   Oggetto contenente i parametri e le informazioni del Client richiedente.
+   Oggetto contenente i parametri e le informazioni della richiesta HTTP del Client.
    \item[res] \hfill \\
    Oggetto duale a \textit{req} su cui invocare i metodi per inviare informazioni al Client richiedente.
   \end{description}
@@ -949,12 +949,12 @@ Prepara le query da effettuare e contatta il \textit{@DataRetrieverAnalysis} per
  \item[Parametri] \hfill
   \begin{description}
    \item[req] \hfill \\
-   Oggetto contenente i parametri e le informazioni del Client richiedente.
+   Oggetto contenente i parametri e le informazioni della richiesta HTTP del Client.
    \item[res] \hfill \\
    Oggetto duale a \textit{req} su cui invocare i metodi per inviare informazioni al Client richiedente.
   \end{description}
  \item[Descrizione] \hfill \\
- Esegue una chiamata asincrona al \textit{@DataRetrieverAnalysis} per ottenere una particolare Collection. Nel caso la Collection esista, viene richiamato il metodo \textit{createCollection} di \textit{@JSonComposer} per inviare al richiedente l'oggetto Collection desiderato. In caso la Collection non esista nel Server, viene ritornato il codice di errore \textit{http} 404 al Client.
+ Esegue una chiamata asincrona al \textit{@DataRetrieverAnalysis} per ottenere una particolare Collection. Nel caso la Collection esista, viene richiamato il metodo \textit{createCollection} di \textit{@JSonComposer} per inviare alla richiesta HTTP l'oggetto Collection desiderato. In caso la Collection non esista nel Server, viene ritornato il codice di errore \textit{http} 404 al Client.
  \end{description}
  
  \item[sendDocument(req, res)] \hfill 
@@ -962,12 +962,12 @@ Prepara le query da effettuare e contatta il \textit{@DataRetrieverAnalysis} per
  \item[Parametri] \hfill
   \begin{description}
    \item[req] \hfill \\
-   Oggetto contenente i parametri e le informazioni del Client richiedente.
+   Oggetto contenente i parametri e le informazioni della richiesta HTTP del Client.
    \item[res] \hfill \\
    Oggetto duale a \textit{req} su cui invocare i metodi per inviare informazioni al Client richiedente.
   \end{description}
  \item[Descrizione] \hfill \\
- Esegue una chiamata asincrona al \textit{@DataRetrieverAnalysis} per ottenere un particolare Document. Nel caso il Document esista, viene richiamato il metodo \textit{createDocument} di \textit{@JSonComposer} per inviare al richiedente l'oggetto Document desiderato. In caso il Document non esista nel Server, viene ritornato il codice di errore \textit{http} 404 al Client.
+ Esegue una chiamata asincrona al \textit{@DataRetrieverAnalysis} per ottenere un particolare Document. Nel caso il Document esista, viene richiamato il metodo \textit{createDocument} di \textit{@JSonComposer} per inviare alla richiesta HTTP l'oggetto Document desiderato. In caso il Document non esista nel Server, viene ritornato il codice di errore \textit{http} 404 al Client.
  \end{description}
  
  \item[sendDocumentEdit(req, res)] \hfill 
@@ -975,12 +975,12 @@ Prepara le query da effettuare e contatta il \textit{@DataRetrieverAnalysis} per
  \item[Parametri] \hfill
   \begin{description}
    \item[req] \hfill \\
-   Oggetto contenente i parametri e le informazioni del Client richiedente.
+   Oggetto contenente i parametri e le informazioni della richiesta HTTP del Client.
    \item[res] \hfill \\
    Oggetto duale a \textit{req} su cui invocare i metodi per inviare informazioni al Client richiedente.
   \end{description}
  \item[Descrizione] \hfill \\
- Esegue una chiamata asincrona al \textit{@DataRetrieverAnalysis} per ottenere un particolare Document modificabile. Nel caso il Document esista, viene richiamato il metodo \textit{createDocument} di \textit{@JSonComposer} per inviare al richiedente l'oggetto Document desiderato. In caso il Document non esista nel Server, viene ritornato il codice di errore \textit{http} 404 al Client.
+ Esegue una chiamata asincrona al \textit{@DataRetrieverAnalysis} per ottenere un particolare Document modificabile. Nel caso il Document esista, viene richiamato il metodo \textit{createDocument} di \textit{@JSonComposer} per inviare alla richiesta HTTP l'oggetto Document desiderato. In caso il Document non esista nel Server, viene ritornato il codice di errore \textit{http} 404 al Client.
  \end{description}
  
  \item[updateDocument(req, res)] \hfill 
@@ -988,7 +988,7 @@ Prepara le query da effettuare e contatta il \textit{@DataRetrieverAnalysis} per
  \item[Parametri] \hfill
   \begin{description}
    \item[req] \hfill \\
-   Oggetto contenente i parametri e le informazioni del Client richiedente.
+   Oggetto contenente i parametri e le informazioni della richiesta HTTP del Client.
    \item[res] \hfill \\
    Oggetto duale a \textit{req} su cui invocare i metodi per inviare informazioni al Client richiedente.
   \end{description}
@@ -1001,7 +1001,7 @@ Prepara le query da effettuare e contatta il \textit{@DataRetrieverAnalysis} per
  \item[Parametri] \hfill
   \begin{description}
    \item[req] \hfill \\
-   Oggetto contenente i parametri e le informazioni del Client richiedente.
+   Oggetto contenente i parametri e le informazioni della richiesta HTTP del Client.
    \item[res] \hfill \\
    Oggetto duale a \textit{req} su cui invocare i metodi per inviare informazioni al Client richiedente.
   \end{description}
@@ -1225,7 +1225,7 @@ Inoltre dialoga direttamente con \textit{@MongooseDBFramework} per l'esecuzione 
 	   \item[Parametri] \hfill
 	  \begin{description}
 	    \item[req] \hfill \\
-	    Oggetto contenente i parametri e le informazioni del Client richiedente.
+	    Oggetto contenente i parametri e le informazioni della richiesta HTTP del Client.
 	    \item[res] \hfill \\
 	    Oggetto duale a \textit{req} su cui invocare i metodi per inviare informazioni al Client richiedente.
 	  \end{description}
@@ -1237,7 +1237,7 @@ Inoltre dialoga direttamente con \textit{@MongooseDBFramework} per l'esecuzione 
 	\item[Parametri] \hfill
 	  \begin{description}
 	    \item[req] \hfill \\
-	    Oggetto contenente i parametri e le informazioni del Client richiedente.
+	    Oggetto contenente i parametri e le informazioni della richiesta HTTP del Client.
 	    \item[res] \hfill \\
 	    Oggetto duale a \textit{req} su cui invocare i metodi per inviare informazioni al Client richiedente.
 	  \end{description}
@@ -1250,7 +1250,7 @@ Inoltre dialoga direttamente con \textit{@MongooseDBFramework} per l'esecuzione 
 	\item[Parametri] \hfill
 	  \begin{description}
 	    \item[req] \hfill \\
-	    Oggetto contenente i parametri e le informazioni del Client richiedente.
+	    Oggetto contenente i parametri e le informazioni della richiesta HTTP del Client.
 	    \item[res] \hfill \\
 	    Oggetto duale a \textit{req} su cui invocare i metodi per inviare informazioni al Client richiedente.
 	  \end{description}
@@ -1264,7 +1264,7 @@ Inoltre dialoga direttamente con \textit{@MongooseDBFramework} per l'esecuzione 
 	\item[Parametri] \hfill
 	  \begin{description}
 	    \item[req] \hfill \\
-	    Oggetto contenente i parametri e le informazioni del Client richiedente.
+	    Oggetto contenente i parametri e le informazioni della richiesta HTTP del Client.
 	    \item[res] \hfill \\
 	    Oggetto duale a \textit{req} su cui invocare i metodi per inviare informazioni al Client richiedente.
 	  \end{description}
@@ -1278,12 +1278,12 @@ Inoltre dialoga direttamente con \textit{@MongooseDBFramework} per l'esecuzione 
 	\item[Parametri] \hfill
 	  \begin{description}
 	    \item[req] \hfill \\
-	    Oggetto contenente i parametri e le informazioni del Client richiedente.
+	    Oggetto contenente i parametri e le informazioni della richiesta HTTP del Client.
 	    \item[res] \hfill \\
 	    Oggetto duale a \textit{req} su cui invocare i metodi per inviare informazioni al Client richiedente.
 	  \end{description}
 	\item[Descrizione] \hfill \\
-	Richiama il metodo \textit{updateUserProfile} di \textit{@DataRetrieverUsers} passando come parametro il richiedente \textit{req} del Client. Ritorna al Client un codice \textit{http} 200 in caso di riuscita, un codice 400 altrimenti.
+	Richiama il metodo \textit{updateUserProfile} di \textit{@DataRetrieverUsers} passando come parametro la richiesta HTTP \textit{req} del Client. Ritorna al Client un codice \textit{http} 200 in caso di riuscita, un codice 400 altrimenti.
       \end{description}
       
     \item[getUsersList(req, res)] \hfill
@@ -1291,7 +1291,7 @@ Inoltre dialoga direttamente con \textit{@MongooseDBFramework} per l'esecuzione 
 	\item[Parametri] \hfill
 	  \begin{description}
 	    \item[req] \hfill \\
-	    Oggetto contenente i parametri e le informazioni del Client richiedente.
+	    Oggetto contenente i parametri e le informazioni della richiesta HTTP del Client.
 	    \item[res] \hfill \\
 	    Oggetto duale a \textit{req} su cui invocare i metodi per inviare informazioni al Client richiedente.
 	  \end{description}
@@ -1304,7 +1304,7 @@ Inoltre dialoga direttamente con \textit{@MongooseDBFramework} per l'esecuzione 
 	\item[Parametri] \hfill
 	  \begin{description}
 	    \item[req] \hfill \\
-	    Oggetto contenente i parametri e le informazioni del Client richiedente.
+	    Oggetto contenente i parametri e le informazioni della richiesta HTTP del Client.
 	    \item[res] \hfill \\
 	    Oggetto duale a \textit{req} su cui invocare i metodi per inviare informazioni al Client richiedente.
 	  \end{description}
@@ -1317,7 +1317,7 @@ Inoltre dialoga direttamente con \textit{@MongooseDBFramework} per l'esecuzione 
 	\item[Parametri] \hfill
 	  \begin{description}
 	    \item[req] \hfill \\
-	    Oggetto contenente i parametri e le informazioni del Client richiedente.
+	    Oggetto contenente i parametri e le informazioni della richiesta HTTP del Client.
 	    \item[res] \hfill \\
 	    Oggetto duale a \textit{req} su cui invocare i metodi per inviare informazioni al Client richiedente.
 	  \end{description}
@@ -1330,12 +1330,12 @@ Inoltre dialoga direttamente con \textit{@MongooseDBFramework} per l'esecuzione 
 	\item[Parametri] \hfill
 	  \begin{description}
 	    \item[req] \hfill \\
-	    Oggetto contenente i parametri e le informazioni del Client richiedente.
+	    Oggetto contenente i parametri e le informazioni della richiesta HTTP del Client.
 	    \item[res] \hfill \\
 	    Oggetto duale a \textit{req} su cui invocare i metodi per inviare informazioni al Client richiedente.
 	  \end{description}
 	\item[Descrizione] \hfill \\
-	Richiama il metodo \textit{updateUser} di \textit{@DataRetrieverUsers} passando come parametro il richiedente \textit{req}. Ritorna al Client un codice \textit{http} 200 in caso di riuscita, un codice 400 altrimenti.
+	Richiama il metodo \textit{updateUser} di \textit{@DataRetrieverUsers} passando come parametro la richiesta HTTP \textit{req}. Ritorna al Client un codice \textit{http} 200 in caso di riuscita, un codice 400 altrimenti.
       \end{description}
       
     \item[removeUser(req, res)] \hfill
@@ -1343,12 +1343,12 @@ Inoltre dialoga direttamente con \textit{@MongooseDBFramework} per l'esecuzione 
 	\item[Parametri] \hfill
 	  \begin{description}
 	    \item[req] \hfill \\
-	    Oggetto contenente i parametri e le informazioni del Client richiedente.
+	    Oggetto contenente i parametri e le informazioni della richiesta HTTP del Client.
 	    \item[res] \hfill \\
 	    Oggetto duale a \textit{req} su cui invocare i metodi per inviare informazioni al Client richiedente.
 	  \end{description}
 	\item[Descrizione] \hfill \\
-	Richiama il metodo \textit{removeUser} di \textit{@DataRetrieverUsers} passando come parametro il campo \textit{email} del richiedente \textit{req}. Ritorna al Client un codice \textit{http} 200 in caso di riuscita, un codice 400 altrimenti.
+	Richiama il metodo \textit{removeUser} di \textit{@DataRetrieverUsers} passando come parametro il campo \textit{email} della richiesta HTTP \textit{req}. Ritorna al Client un codice \textit{http} 200 in caso di riuscita, un codice 400 altrimenti.
       \end{description}
       
  \end{description}
@@ -1401,12 +1401,12 @@ Inoltre dialoga direttamente con \textit{@MongooseDBFramework} per l'esecuzione 
  				\item[Parametri] \hfill
  					\begin{description}
  						\item[req] \hfill \\
- 							Oggetto contenente i parametri e le informazioni del Client richiedente.
+ 							Oggetto contenente i parametri e le informazioni della richiesta HTTP del Client.
  						\item[callback] \hfill \\
  							Funzione da richiamare alla fine dell'aggiornamento del profilo utente.
  					\end{description}
  				\item[Descrizione] \hfill \\
- 					Vengono estratti i dati da aggiornare dall'oggetto \textit{req} del richiedente. Successivamente viene effettuata una query di aggiornamento sul database degli utenti con i dati forniti da \textit{req}. In caso l'aggiornamento dei dati avvenga con successo, 	viene chiamata la funzione \textit{callback} con argomento \textbf{true}, altrimenti 	viene chiamata con argomento \textbf{false}.  
+ 					Vengono estratti i dati da aggiornare dall'oggetto \textit{req} della richiesta HTTP. Successivamente viene effettuata una query di aggiornamento sul database degli utenti con i dati forniti da \textit{req}. In caso l'aggiornamento dei dati avvenga con successo, 	viene chiamata la funzione \textit{callback} con argomento \textbf{true}, altrimenti 	viene chiamata con argomento \textbf{false}.  
  			\end{description}
  			
  		\mlitem{getUsersList(column, order, page, perpage, callback)} \hfill
@@ -1433,12 +1433,12 @@ Inoltre dialoga direttamente con \textit{@MongooseDBFramework} per l'esecuzione 
  				\item[Parametri] \hfill
  					\begin{description}
  						\item[req] \hfill \\
- 							Oggetto contenente i parametri e le informazioni del Client richiedente.
+ 							Oggetto contenente i parametri e le informazioni della richiesta HTTP del Client.
  						\item[callback] \hfill \\
  							Funzione da richiamare alla fine dell'aggiornamento del profilo utente.
  					\end{description}
  				\item[Descrizione] \hfill \\
- 				Vengono estratti i dati da aggiornare dal richiedente \textit{req} inerenti all'utente da aggiornare. Successivamente viene effettuata la query di aggiornamento sul modello del database utenti estratto. Infine viene richiamata la funzione \textit{callback} con argomento \textbf{true} se l'aggiornamento è andato a buon fine, l'argomento è \textbf{false} altrimenti.
+ 				Vengono estratti i dati da aggiornare dalla richiesta HTTP \textit{req} inerenti all'utente da aggiornare. Successivamente viene effettuata la query di aggiornamento sul modello del database utenti estratto. Infine viene richiamata la funzione \textit{callback} con argomento \textbf{true} se l'aggiornamento è andato a buon fine, l'argomento è \textbf{false} altrimenti.
  			\end{description}
  			
  		\mlitem{removeUser(email, callback)} \hfill
