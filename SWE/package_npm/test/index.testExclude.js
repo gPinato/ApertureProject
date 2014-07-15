@@ -18,8 +18,11 @@ var should = chai.should();
 var assert = chai.assert;
 var expect = chai.expect;
 
+/* istanbul ignore next */
 describe("serverIndex Unit Test: ", function() {
 
+	var index = require('../maap_server/index.js');
+	
 	describe("serverInit", function() {
 	
 	});
