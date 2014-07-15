@@ -227,64 +227,9 @@ describe("DatabaseAnalysisManager Unit Test: ", function() {
 	
 	describe("sendDocumentEdit", function() {
 	
-		it("deve rispondere con document in JSON prodotto dal JSonComposer con il campo labels corretto", function() {
-			
-			var data = {labels: 'labels', rows: 'rows', options: 'options'};
-			manager.__set__('retriever', {getDocumentShowEdit: function(collection_name, document_id, callback){callback(data);}} );
-			manager.__set__('JSonComposer', {createDocument: function(labels, rows, options){return labels;}} );
-			
-			var req = {body:{}, config: {}, params: {col_id: 0, doc_id: 0}};
-			
-			manager.sendDocumentEdit(req, {send: function(response){
-				expect(response).to.equal('labels');
-			}});
-		
-		});	
-
-		it("deve rispondere con document in JSON prodotto dal JSonComposer con il campo rows corretto", function() {
-			
-			var data = {labels: 'labels', rows: 'rows', options: 'options'};
-			manager.__set__('retriever', {getDocumentShowEdit: function(collection_name, document_id, callback){callback(data);}} );
-			manager.__set__('JSonComposer', {createDocument: function(labels, rows, options){return rows;}} );
-			
-			var req = {body:{}, config: {}, params: {col_id: 0, doc_id: 0}};
-			
-			manager.sendDocumentEdit(req, {send: function(response){
-				expect(response).to.equal('rows');
-			}});
-		
-		});	
-		
-		it("deve rispondere con document in JSON prodotto dal JSonComposer con il campo options corretto", function() {
-			
-			var data = {labels: 'labels', rows: 'rows', options: 'options'};
-			manager.__set__('retriever', {getDocumentShowEdit: function(collection_name, document_id, callback){callback(data);}} );
-			manager.__set__('JSonComposer', {createDocument: function(labels, rows, options){return options;}} );
-			
-			var req = {body:{}, config: {}, params: {col_id: 0, doc_id: 0}};
-			
-			manager.sendDocumentEdit(req, {send: function(response){
-				expect(response).to.equal('options');
-			}});
-		
-		});	
-		
-		it("deve rispondere con codice 404 se il campo rows e' indefinito", function() {
-			
-			var data = {labels: 'labels', options: 'options'};
-			manager.__set__('retriever', {getDocumentShowEdit: function(collection_name, document_id, callback){callback(data);}} );
-			
-			var req = {body:{}, config: {}, params: {col_id: 0, doc_id: 0}};
-			
-			manager.sendDocumentEdit(req, {send: function(responseCode){
-				expect(responseCode).to.equal(404);
-			}});
-		
-		});	
-		
 		it("deve usare il nome della collection presente nella request", function() {
 			
-			manager.__set__('retriever', {getDocumentShowEdit: function(collection_name, document_id, callback){var data = {labels: collection_name, rows: 'rows', options: 'options'}; callback(data);}} );
+			manager.__set__('retriever', {getDocumentShowEdit: function(collection_name, document_id, callback){ callback(collection_name);}} );
 			manager.__set__('JSonComposer', {createDocument: function(labels, rows, options){return labels;}} );
 			
 			var req = {body:{}, config: {}, params: {col_id: 'colName', doc_id: 'docName'}};
@@ -297,7 +242,7 @@ describe("DatabaseAnalysisManager Unit Test: ", function() {
 		
 		it("deve usare il nome del document presente nella request", function() {
 			
-			manager.__set__('retriever', {getDocumentShowEdit: function(collection_name, document_id, callback){var data = {labels: document_id, rows: 'rows', options: 'options'}; callback(data);}} );
+			manager.__set__('retriever', {getDocumentShowEdit: function(collection_name, document_id, callback){ callback(document_id);}} );
 			manager.__set__('JSonComposer', {createDocument: function(labels, rows, options){return labels;}} );
 			
 			var req = {body:{}, config: {}, params: {col_id: 'colName', doc_id: 'docName'}};
@@ -310,16 +255,16 @@ describe("DatabaseAnalysisManager Unit Test: ", function() {
 					
 	});
 	
-	describe("sendDocumentEditNew", function() {
+	describe("sendDocumentEdit", function() {
 	
 		it("deve rispondere con document in JSON prodotto dal JSonComposer", function() {
 			
 			var document2edit = {test: 'testField'};
-			manager.__set__('retriever', {getDocumentShowEditNew: function(collection_name, document_id, callback){callback(document2edit);}} );
+			manager.__set__('retriever', {getDocumentShowEdit: function(collection_name, document_id, callback){callback(document2edit);}} );
 			
 			var req = {body:{}, config: {}, params: {col_id: 0, doc_id: 0}};
 			
-			manager.sendDocumentEditNew(req, {send: function(response){
+			manager.sendDocumentEdit(req, {send: function(response){
 				expect(response.test).to.equal('testField');
 			}});
 		
@@ -327,11 +272,11 @@ describe("DatabaseAnalysisManager Unit Test: ", function() {
 
 		it("deve usare il nome della collection presente nella request", function() {
 			
-			manager.__set__('retriever', {getDocumentShowEditNew: function(collection_name, document_id, callback){callback(collection_name);}} );
+			manager.__set__('retriever', {getDocumentShowEdit: function(collection_name, document_id, callback){callback(collection_name);}} );
 			
 			var req = {body:{}, config: {}, params: {col_id: 'colID', doc_id: 'docID'}};
 			
-			manager.sendDocumentEditNew(req, {send: function(response){
+			manager.sendDocumentEdit(req, {send: function(response){
 				expect(response).to.equal('colID');
 			}});
 		
@@ -339,11 +284,11 @@ describe("DatabaseAnalysisManager Unit Test: ", function() {
 		
 		it("deve usare il nome del document presente nella request", function() {
 			
-			manager.__set__('retriever', {getDocumentShowEditNew: function(collection_name, document_id, callback){callback(document_id);}} );
+			manager.__set__('retriever', {getDocumentShowEdit: function(collection_name, document_id, callback){callback(document_id);}} );
 			
 			var req = {body:{}, config: {}, params: {col_id: 'colID', doc_id: 'docID'}};
 			
-			manager.sendDocumentEditNew(req, {send: function(response){
+			manager.sendDocumentEdit(req, {send: function(response){
 				expect(response).to.equal('docID');
 			}});
 		
