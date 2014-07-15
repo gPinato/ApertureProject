@@ -154,6 +154,102 @@ Gli strumenti di lavoro sono trattati nelle sezioni 4.3.5.2.2 e 4.3.5.3.2 del do
 Namespace generale del progetto. In accordo con il design pattern architetturale Client-Server che 
 abbiamo adottato, le interazioni che il Client ha con il Server sono di tipo REST-like.
 
+<<<<<<< HEAD
+=======
+
+\subsection{::Installer}
+Package che gestisce l'installazione del framework MaaP. 
+
+
+\subsubsection{@maaperture}
+
+\begin{description}
+ \item[Descrizione] \hfill \\
+Modulo di installazione del framework Maap. Si occupa di gestire le richiesti provenienti da linea di comando gestendo i vari comandi.
+ \item[Dipendendenze] \hfill
+ \begin{itemize}
+ 	\item fs;
+ 	\item commander;
+ 	\item ncp.
+ \end{itemize}
+ \item[Metodi] \hfill
+  \begin{mldescription}
+   \mlitem{printHelpTitle()} \hfill
+   \begin{description}
+    \item[Descrizione] \hfill \\
+    Si occupa di stampare nel log il nome, la versione e la descrizione del framework Maap.
+   \end{description}
+  
+   \mlitem{changeFileRow(filePath, string2find, newString)} \hfill
+      \begin{description}
+      	    \item[Parametri] \hfill 
+      	     \begin{description}
+      	      \item['filePath'] \hfill \\
+      	      Path del file da modificare.
+      	      \item[string2find] \hfill \\
+      	      Stringa con la quale inizia la riga da modificare.
+      	      \item[newString] \hfill \\
+      	      Stringa con i nuovi caratteri da aggiungere.
+      	     \end{description}
+      	    
+       \item[Descrizione] \hfill \\
+      Si occupa di cambiare una riga del file specificato sostituendola con quella passata in ingresso.
+      \end{description}
+
+   \mlitem{setProjectName(destination, project\_name)} \hfill
+   \begin{description}
+   \item[Parametri] \hfill 
+         	     \begin{description}
+         	      \item['destination'] \hfill \\
+         	      Path di dove sarà situato il progetto.
+         	      \item[project\_name] \hfill \\
+         	      Nome del progetto.
+         	      
+         	     \end{description}
+    \item[Descrizione] \hfill \\
+    Si occupa di sostituire nei file di configurazione del progetto il nome del progetto scelto.
+   \end{description}
+
+   \mlitem{initProject(project\_name, output\_path)} \hfill
+   \begin{description}
+  
+    \item[Descrizione] \hfill \\
+	    Si occupa di copiare ricorsivamente i file di default del progetto Maap all'interno del percorso specificato in output\_path settando il nome di progetto specificato con project\_name.
+   \end{description}
+   \end{mldescription}
+   \item[Comandi] \hfill
+     \begin{mldescription}
+      \mlitem{maaperture} \hfill
+      \begin{description}
+       \item[Descrizione] \hfill \\
+       Si occupa di stampare la versione del framework, e un piccolo help sull'uso del framework.
+      \end{description}
+      \mlitem{create} \hfill
+            \begin{description}
+            \item[Parametri] \hfill 
+                         	     \begin{description}
+                         	      \item['name'] \hfill \\
+                         	      Nome del progetto.
+                         	      \item[output] \hfill \\
+                         	      Percorso di installazione del progetto.
+                         	      
+                         	     \end{description}
+             \item[Descrizione] \hfill \\
+             Si occupa di creare il progetto nella cartella specificate con il nome scelto
+            \end{description}
+      \mlitem{--help} \hfill
+                  \begin{description}
+                   \item[Descrizione] \hfill \\
+                   Si occupa di stampare degli esempi d'uso dei comandi.
+                  \end{description}
+      \mlitem{*} \hfill
+      \begin{description}
+      \item[Descrizione] \hfill \\
+      Si occupa di invocare printHelpTitle().
+      \end{description}
+\end{description}
+
+>>>>>>> ae2d958d7aef69b2aa576204be2a170e6fe3dabe
 \section{Specifica componenti MaaP::Server}
 
 Package Server del Design Pattern Client-Server. 
@@ -169,7 +265,7 @@ Modulo di inizializzazione della componente Server utilizzata per la trasmission
 Il modulo \grassetto{@dispatcher} gestisce tutte le richieste effettuate dal Client al Server, effettuando le dovute redirezioni e le chiamate per ottenere i dati dai database nel Server. Le richieste che pervengono al 
 \grassetto{@dispatcher} sono di tipo REST, a cui il modulo stesso risponde con il JSON della risorsa richiesta. 
 Questo avviene solamente se l'utente che ha richiesto la risorsa è registrato ed autenticato, prima di 
-effettuare la richiesta, e che abbia i dovuti permessi per effettuare la richiesta. Infatti, prima di eseguire ogni richiesta di accesso ai dati del Server, il \grassetto{@dispatcher} esegue una chiamata a \grassetto{@passport} per verificare l'autenticazione del richiedente e per distinguere gli utenti standard dagli utenti amministratori. \\
+effettuare la richiesta, e che abbia i dovuti permessi per effettuare la richiesta. Infatti, prima di eseguire ogni richiesta di accesso ai dati del Server, il \grassetto{@dispatcher} esegue una chiamata a \grassetto{@passport} per verificare l'autenticazione della richiesta HTTP e per distinguere gli utenti standard dagli utenti amministratori. \\
 Per ultima cosa, il \grassetto{@dispatcher} gestisce eventuali richieste di risorse inesistenti o errate reindirizzando il chiamante alla pagina iniziale del Client AngularJS.
  \item[Dipendendenze] \hfill
  \begin{itemize}
@@ -526,10 +622,10 @@ Per ultima cosa, il \grassetto{@dispatcher} gestisce eventuali richieste di riso
     \mlitem{'/loggedin'} \hfill \\
     Stringa contenente l'indirizzo della API da richiamare.
     \mlitem{function(req, res) \{ res.send(req.isAuthenticated() ? req.user : '0'); \}} \hfill \\
-    Funzione anonima che richiama il metodo isAuthenticated sul richiedente. Se il metodo ritorna valore booleano \textbf{true}, viene ritornato al richiedente il proprio campo \textit{user}, altrimenti ritorna 0.
+    Funzione anonima che richiama il metodo isAuthenticated sulla richiesta HTTP. Se il metodo ritorna valore booleano \textbf{true}, viene ritornato al  il proprio campo \textit{user}, altrimenti ritorna 0.
    \end{mldescription}
   \item[Descrizione] \hfill \\
- Gestisce la richiesta di controllo dell'avvenuta autenticazione di un utente. Viene richiamato sul richiedente il metodo locale \textit{isAuthenticated()}. Se l'utente è autenticato, gli vengono inviate le proprie informazioni associate, altrimenti viene ritornato 0.
+ Gestisce la richiesta di controllo dell'avvenuta autenticazione di un utente. Viene richiamato sulla richiesta HTTP il metodo locale \textit{isAuthenticated()}. Se l'utente è autenticato, gli vengono inviate le proprie informazioni associate, altrimenti viene ritornato 0.
  \end{description}
  
  \mlitem{post('/api/login', passport.checkNotAuthenticated, passport.authenticate, function(req, res) \{ res.send(req.user); \})}
@@ -543,10 +639,10 @@ Per ultima cosa, il \grassetto{@dispatcher} gestisce eventuali richieste di riso
     \mlitem{passport.authenticate} \hfill \\
     Funzione di \grassetto{@passport} che esegue l'autenticazione.
     \mlitem{function(req, res) \{ res.send(req.user); \}} \hfill \\
-    Funzione anonima che manda al richiedente la risposta contenente il suo campo \textit{user}.
+    Funzione anonima che manda alla richiesta HTTP la risposta contenente il suo campo \textit{user}.
    \end{mldescription}
   \item[Descrizione] \hfill \\
- Gestisce le richieste di autenticazione al Server. L'utente che richiede questa operazione non deve essere autenticato ma deve essere presente nel database degli utenti presente nel Server. Nel caso di risposta affermativa ad entrambe le precedenti condizioni, viene creata una nuova sessione per l'utente richiedente.
+ Gestisce le richieste di autenticazione al Server. L'utente che richiede questa operazione non deve essere autenticato ma deve essere presente nel database degli utenti presente nel Server. Nel caso di risposta affermativa ad entrambe le precedenti condizioni, viene creata una nuova sessione per la richiesta HTTP.
  \end{description}
  
  \mlitem{get('/api/logout', passport.checkAuthenticated, function(req, res) \{ req.logout(); res.send(200); \})}
@@ -558,10 +654,10 @@ Per ultima cosa, il \grassetto{@dispatcher} gestisce eventuali richieste di riso
     \mlitem{passport.checkAuthenticated} \hfill \\
     Funzione di \grassetto{@passport} che verifica che l'utente sia autenticato.
     \mlitem{function(req, res) \{ req.logout(); res.send(200); \}} \hfill \\
-    Funzione anonima che effettua la disconnessione del richiedente \textit{req} e manda al Client il codice \textit{http} 200.
+    Funzione anonima che effettua la disconnessione della richiesta HTTP \textit{req} e manda al Client il codice \textit{http} 200.
    \end{mldescription}
   \item[Descrizione] \hfill \\
- Gestisce le richieste di disconnessione dal sistema. Per effettuare questa operazione, l'utente deve essere autenticato. In caso affermativo, viene richiesto il \textit{logout()} del richiedente.
+ Gestisce le richieste di disconnessione dal sistema. Per effettuare questa operazione, l'utente deve essere autenticato. In caso affermativo, viene richiesto il \textit{logout()} della richiesta HTTP.
  \end{description}
  
  \end{mldescription}
@@ -575,7 +671,7 @@ Per ultima cosa, il \grassetto{@dispatcher} gestisce eventuali richieste di riso
     \mlitem{'*'} \hfill \\
     Stringa contentente l'indirizzo delle API da richiamare. In questo caso, l'idirizzo è una stringa qualsiasi.
     \mlitem{function(req, res) \{ res.sendfile(path.join(config.static\_assets.dir, 'index.html')); \}} \hfill \\
-    Funzione anonima che reindirizza il richiedente alla pagina iniziale della view del Client.
+    Funzione anonima che reindirizza la richiesta HTTP alla pagina iniziale della view del Client.
    \end{mldescription}
   \item[Descrizione]
  La presente funzione gestisce ogni richiesta di pagina o file che il Server non possiede. L'argomento "*" della funzione \textit{get} consente di gestire tutte le richieste che non sono state servite dalle precedenti funzioni del \grassetto{@dispatcher}. Questa funzione viene richiamata soltanto quando non le funzioni precedenti non sono state chiamate.
@@ -681,7 +777,7 @@ Controller che si occupa dell'inizializzazione e gestione del modulo passort per
             \item[Parametri] \hfill
             \begin{description}
              \item[req] \hfill \\
-	         Oggetto contenente i parametri e le informazioni del Client richiedente.
+	         Oggetto contenente i parametri e le informazioni della richiesta HTTP del Client.
 	         \item[res] \hfill \\
 	         Oggetto duale a \textit{req} su cui invocare i metodi per inviare informazioni al Client richiedente.
              \item[next] \hfill \\
@@ -695,7 +791,7 @@ Controller che si occupa dell'inizializzazione e gestione del modulo passort per
       \item[Parametri] \hfill
       \begin{description}
        \item[req] \hfill \\
-	    Oggetto contenente i parametri e le informazioni del Client richiedente.
+	    Oggetto contenente i parametri e le informazioni della richiesta HTTP del Client.
 	    \item[res] \hfill \\
 	    Oggetto duale a \textit{req} su cui invocare i metodi per inviare informazioni al Client richiedente.
         La risposta al Client.
@@ -711,7 +807,7 @@ Controller che si occupa dell'inizializzazione e gestione del modulo passort per
       \item[Parametri] \hfill
       \begin{description}
        \item[req] \hfill \\
-	    Oggetto contenente i parametri e le informazioni del Client richiedente.
+	    Oggetto contenente i parametri e le informazioni della richiesta HTTP del Client.
 	   \item[res] \hfill \\
 	    Oggetto duale a \textit{req} su cui invocare i metodi per inviare informazioni al Client richiedente.
        \item[next] \hfill \\
@@ -843,7 +939,7 @@ Prepara le query da effettuare e contatta il \grassetto{@DataRetrieverAnalysis} 
  \item[Parametri] \hfill
   \begin{description}
    \item[req] \hfill \\
-   Oggetto contenente i parametri e le informazioni del Client richiedente.
+   Oggetto contenente i parametri e le informazioni della richiesta HTTP del Client.
    \item[res] \hfill \\
    Oggetto duale a \textit{req} su cui invocare i metodi per inviare informazioni al Client richiedente.
   \end{description}
@@ -856,12 +952,16 @@ Prepara le query da effettuare e contatta il \grassetto{@DataRetrieverAnalysis} 
  \item[Parametri] \hfill
   \begin{description}
    \item[req] \hfill \\
-   Oggetto contenente i parametri e le informazioni del Client richiedente.
+   Oggetto contenente i parametri e le informazioni della richiesta HTTP del Client.
    \item[res] \hfill \\
    Oggetto duale a \textit{req} su cui invocare i metodi per inviare informazioni al Client richiedente.
   \end{description}
  \item[Descrizione] \hfill \\
+<<<<<<< HEAD
  Esegue una chiamata asincrona al \grassetto{@DataRetrieverAnalysis} per ottenere una particolare Collection. Nel caso la Collection esista, viene richiamato il metodo \textit{createCollection} di \grassetto{@JSonComposer} per inviare al richiedente l'oggetto Collection desiderato. In caso la Collection non esista nel Server, viene ritornato il codice di errore \textit{http} 404 al Client.
+=======
+ Esegue una chiamata asincrona al \textit{@DataRetrieverAnalysis} per ottenere una particolare Collection. Nel caso la Collection esista, viene richiamato il metodo \textit{createCollection} di \textit{@JSonComposer} per inviare alla richiesta HTTP l'oggetto Collection desiderato. In caso la Collection non esista nel Server, viene ritornato il codice di errore \textit{http} 404 al Client.
+>>>>>>> ae2d958d7aef69b2aa576204be2a170e6fe3dabe
  \end{description}
  
  \item[sendDocument(req, res)] \hfill 
@@ -869,12 +969,16 @@ Prepara le query da effettuare e contatta il \grassetto{@DataRetrieverAnalysis} 
  \item[Parametri] \hfill
   \begin{description}
    \item[req] \hfill \\
-   Oggetto contenente i parametri e le informazioni del Client richiedente.
+   Oggetto contenente i parametri e le informazioni della richiesta HTTP del Client.
    \item[res] \hfill \\
    Oggetto duale a \textit{req} su cui invocare i metodi per inviare informazioni al Client richiedente.
   \end{description}
  \item[Descrizione] \hfill \\
+<<<<<<< HEAD
  Esegue una chiamata asincrona al \textit{@DataRetrieverAnalysis} per ottenere un particolare Document. Nel caso il Document esista, viene richiamato il metodo \textit{createDocument} di \grassetto{@JSonComposer} per inviare al richiedente l'oggetto Document desiderato. In caso il Document non esista nel Server, viene ritornato il codice di errore \textit{http} 404 al Client.
+=======
+ Esegue una chiamata asincrona al \textit{@DataRetrieverAnalysis} per ottenere un particolare Document. Nel caso il Document esista, viene richiamato il metodo \textit{createDocument} di \textit{@JSonComposer} per inviare alla richiesta HTTP l'oggetto Document desiderato. In caso il Document non esista nel Server, viene ritornato il codice di errore \textit{http} 404 al Client.
+>>>>>>> ae2d958d7aef69b2aa576204be2a170e6fe3dabe
  \end{description}
  
  \item[sendDocumentEdit(req, res)] \hfill 
@@ -882,12 +986,16 @@ Prepara le query da effettuare e contatta il \grassetto{@DataRetrieverAnalysis} 
  \item[Parametri] \hfill
   \begin{description}
    \item[req] \hfill \\
-   Oggetto contenente i parametri e le informazioni del Client richiedente.
+   Oggetto contenente i parametri e le informazioni della richiesta HTTP del Client.
    \item[res] \hfill \\
    Oggetto duale a \textit{req} su cui invocare i metodi per inviare informazioni al Client richiedente.
   \end{description}
  \item[Descrizione] \hfill \\
+<<<<<<< HEAD
  Esegue una chiamata asincrona al \grassetto{@DataRetrieverAnalysis} per ottenere un particolare Document modificabile. Nel caso il Document esista, viene richiamato il metodo \textit{createDocument} di \grassetto{@JSonComposer} per inviare al richiedente l'oggetto Document desiderato. In caso il Document non esista nel Server, viene ritornato il codice di errore \textit{http} 404 al Client.
+=======
+ Esegue una chiamata asincrona al \textit{@DataRetrieverAnalysis} per ottenere un particolare Document modificabile. Nel caso il Document esista, viene richiamato il metodo \textit{createDocument} di \textit{@JSonComposer} per inviare alla richiesta HTTP l'oggetto Document desiderato. In caso il Document non esista nel Server, viene ritornato il codice di errore \textit{http} 404 al Client.
+>>>>>>> ae2d958d7aef69b2aa576204be2a170e6fe3dabe
  \end{description}
  
  \item[updateDocument(req, res)] \hfill 
@@ -895,7 +1003,7 @@ Prepara le query da effettuare e contatta il \grassetto{@DataRetrieverAnalysis} 
  \item[Parametri] \hfill
   \begin{description}
    \item[req] \hfill \\
-   Oggetto contenente i parametri e le informazioni del Client richiedente.
+   Oggetto contenente i parametri e le informazioni della richiesta HTTP del Client.
    \item[res] \hfill \\
    Oggetto duale a \textit{req} su cui invocare i metodi per inviare informazioni al Client richiedente.
   \end{description}
@@ -908,7 +1016,7 @@ Prepara le query da effettuare e contatta il \grassetto{@DataRetrieverAnalysis} 
  \item[Parametri] \hfill
   \begin{description}
    \item[req] \hfill \\
-   Oggetto contenente i parametri e le informazioni del Client richiedente.
+   Oggetto contenente i parametri e le informazioni della richiesta HTTP del Client.
    \item[res] \hfill \\
    Oggetto duale a \textit{req} su cui invocare i metodi per inviare informazioni al Client richiedente.
   \end{description}
@@ -1132,7 +1240,7 @@ Inoltre dialoga direttamente con \grassetto{@MongooseDBFramework} per l'esecuzio
 	   \item[Parametri] \hfill
 	  \begin{description}
 	    \item[req] \hfill \\
-	    Oggetto contenente i parametri e le informazioni del Client richiedente.
+	    Oggetto contenente i parametri e le informazioni della richiesta HTTP del Client.
 	    \item[res] \hfill \\
 	    Oggetto duale a \textit{req} su cui invocare i metodi per inviare informazioni al Client richiedente.
 	  \end{description}
@@ -1144,7 +1252,7 @@ Inoltre dialoga direttamente con \grassetto{@MongooseDBFramework} per l'esecuzio
 	\item[Parametri] \hfill
 	  \begin{description}
 	    \item[req] \hfill \\
-	    Oggetto contenente i parametri e le informazioni del Client richiedente.
+	    Oggetto contenente i parametri e le informazioni della richiesta HTTP del Client.
 	    \item[res] \hfill \\
 	    Oggetto duale a \textit{req} su cui invocare i metodi per inviare informazioni al Client richiedente.
 	  \end{description}
@@ -1157,7 +1265,7 @@ Inoltre dialoga direttamente con \grassetto{@MongooseDBFramework} per l'esecuzio
 	\item[Parametri] \hfill
 	  \begin{description}
 	    \item[req] \hfill \\
-	    Oggetto contenente i parametri e le informazioni del Client richiedente.
+	    Oggetto contenente i parametri e le informazioni della richiesta HTTP del Client.
 	    \item[res] \hfill \\
 	    Oggetto duale a \textit{req} su cui invocare i metodi per inviare informazioni al Client richiedente.
 	  \end{description}
@@ -1170,7 +1278,7 @@ Inoltre dialoga direttamente con \grassetto{@MongooseDBFramework} per l'esecuzio
 	\item[Parametri] \hfill
 	  \begin{description}
 	    \item[req] \hfill \\
-	    Oggetto contenente i parametri e le informazioni del Client richiedente.
+	    Oggetto contenente i parametri e le informazioni della richiesta HTTP del Client.
 	    \item[res] \hfill \\
 	    Oggetto duale a \textit{req} su cui invocare i metodi per inviare informazioni al Client richiedente.
 	  \end{description}
@@ -1183,12 +1291,16 @@ Inoltre dialoga direttamente con \grassetto{@MongooseDBFramework} per l'esecuzio
 	\item[Parametri] \hfill
 	  \begin{description}
 	    \item[req] \hfill \\
-	    Oggetto contenente i parametri e le informazioni del Client richiedente.
+	    Oggetto contenente i parametri e le informazioni della richiesta HTTP del Client.
 	    \item[res] \hfill \\
 	    Oggetto duale a \textit{req} su cui invocare i metodi per inviare informazioni al Client richiedente.
 	  \end{description}
 	\item[Descrizione] \hfill \\
+<<<<<<< HEAD
 	Richiama il metodo \textit{updateUserProfile} di \grassetto{@DataRetrieverUsers} passando come parametro il richiedente \textit{req} del Client. Ritorna al Client un codice \textit{http} 200 in caso di riuscita, un codice 400 altrimenti.
+=======
+	Richiama il metodo \textit{updateUserProfile} di \textit{@DataRetrieverUsers} passando come parametro la richiesta HTTP \textit{req} del Client. Ritorna al Client un codice \textit{http} 200 in caso di riuscita, un codice 400 altrimenti.
+>>>>>>> ae2d958d7aef69b2aa576204be2a170e6fe3dabe
       \end{description}
       
     \item[getUsersList(req, res)] \hfill
@@ -1196,7 +1308,7 @@ Inoltre dialoga direttamente con \grassetto{@MongooseDBFramework} per l'esecuzio
 	\item[Parametri] \hfill
 	  \begin{description}
 	    \item[req] \hfill \\
-	    Oggetto contenente i parametri e le informazioni del Client richiedente.
+	    Oggetto contenente i parametri e le informazioni della richiesta HTTP del Client.
 	    \item[res] \hfill \\
 	    Oggetto duale a \textit{req} su cui invocare i metodi per inviare informazioni al Client richiedente.
 	  \end{description}
@@ -1209,7 +1321,7 @@ Inoltre dialoga direttamente con \grassetto{@MongooseDBFramework} per l'esecuzio
 	\item[Parametri] \hfill
 	  \begin{description}
 	    \item[req] \hfill \\
-	    Oggetto contenente i parametri e le informazioni del Client richiedente.
+	    Oggetto contenente i parametri e le informazioni della richiesta HTTP del Client.
 	    \item[res] \hfill \\
 	    Oggetto duale a \textit{req} su cui invocare i metodi per inviare informazioni al Client richiedente.
 	  \end{description}
@@ -1222,7 +1334,7 @@ Inoltre dialoga direttamente con \grassetto{@MongooseDBFramework} per l'esecuzio
 	\item[Parametri] \hfill
 	  \begin{description}
 	    \item[req] \hfill \\
-	    Oggetto contenente i parametri e le informazioni del Client richiedente.
+	    Oggetto contenente i parametri e le informazioni della richiesta HTTP del Client.
 	    \item[res] \hfill \\
 	    Oggetto duale a \textit{req} su cui invocare i metodi per inviare informazioni al Client richiedente.
 	  \end{description}
@@ -1235,12 +1347,16 @@ Inoltre dialoga direttamente con \grassetto{@MongooseDBFramework} per l'esecuzio
 	\item[Parametri] \hfill
 	  \begin{description}
 	    \item[req] \hfill \\
-	    Oggetto contenente i parametri e le informazioni del Client richiedente.
+	    Oggetto contenente i parametri e le informazioni della richiesta HTTP del Client.
 	    \item[res] \hfill \\
 	    Oggetto duale a \textit{req} su cui invocare i metodi per inviare informazioni al Client richiedente.
 	  \end{description}
 	\item[Descrizione] \hfill \\
+<<<<<<< HEAD
 	Richiama il metodo \textit{updateUser} di \grassetto{@DataRetrieverUsers} passando come parametro il richiedente \textit{req}. Ritorna al Client un codice \textit{http} 200 in caso di riuscita, un codice 400 altrimenti.
+=======
+	Richiama il metodo \textit{updateUser} di \textit{@DataRetrieverUsers} passando come parametro la richiesta HTTP \textit{req}. Ritorna al Client un codice \textit{http} 200 in caso di riuscita, un codice 400 altrimenti.
+>>>>>>> ae2d958d7aef69b2aa576204be2a170e6fe3dabe
       \end{description}
       
     \item[removeUser(req, res)] \hfill
@@ -1248,12 +1364,16 @@ Inoltre dialoga direttamente con \grassetto{@MongooseDBFramework} per l'esecuzio
 	\item[Parametri] \hfill
 	  \begin{description}
 	    \item[req] \hfill \\
-	    Oggetto contenente i parametri e le informazioni del Client richiedente.
+	    Oggetto contenente i parametri e le informazioni della richiesta HTTP del Client.
 	    \item[res] \hfill \\
 	    Oggetto duale a \textit{req} su cui invocare i metodi per inviare informazioni al Client richiedente.
 	  \end{description}
 	\item[Descrizione] \hfill \\
+<<<<<<< HEAD
 	Richiama il metodo \textit{removeUser} di \grassetto{@DataRetrieverUsers} passando come parametro il campo \textit{email} del richiedente \textit{req}. Ritorna al Client un codice \textit{http} 200 in caso di riuscita, un codice 400 altrimenti.
+=======
+	Richiama il metodo \textit{removeUser} di \textit{@DataRetrieverUsers} passando come parametro il campo \textit{email} della richiesta HTTP \textit{req}. Ritorna al Client un codice \textit{http} 200 in caso di riuscita, un codice 400 altrimenti.
+>>>>>>> ae2d958d7aef69b2aa576204be2a170e6fe3dabe
       \end{description}
       
  \end{description}
@@ -1306,12 +1426,12 @@ Inoltre dialoga direttamente con \grassetto{@MongooseDBFramework} per l'esecuzio
  				\item[Parametri] \hfill
  					\begin{description}
  						\item[req] \hfill \\
- 							Oggetto contenente i parametri e le informazioni del Client richiedente.
+ 							Oggetto contenente i parametri e le informazioni della richiesta HTTP del Client.
  						\item[callback] \hfill \\
  							Funzione da richiamare alla fine dell'aggiornamento del profilo utente.
  					\end{description}
  				\item[Descrizione] \hfill \\
- 					Vengono estratti i dati da aggiornare dall'oggetto \textit{req} del richiedente. Successivamente viene effettuata una query di aggiornamento sul database degli utenti con i dati forniti da \textit{req}. In caso l'aggiornamento dei dati avvenga con successo, 	viene chiamata la funzione \textit{callback} con argomento \textbf{true}, altrimenti 	viene chiamata con argomento \textbf{false}.  
+ 					Vengono estratti i dati da aggiornare dall'oggetto \textit{req} della richiesta HTTP. Successivamente viene effettuata una query di aggiornamento sul database degli utenti con i dati forniti da \textit{req}. In caso l'aggiornamento dei dati avvenga con successo, 	viene chiamata la funzione \textit{callback} con argomento \textbf{true}, altrimenti 	viene chiamata con argomento \textbf{false}.  
  			\end{description}
  			
  		\mlitem{getUsersList(column, order, page, perpage, callback)} \hfill
@@ -1338,12 +1458,12 @@ Inoltre dialoga direttamente con \grassetto{@MongooseDBFramework} per l'esecuzio
  				\item[Parametri] \hfill
  					\begin{description}
  						\item[req] \hfill \\
- 							Oggetto contenente i parametri e le informazioni del Client richiedente.
+ 							Oggetto contenente i parametri e le informazioni della richiesta HTTP del Client.
  						\item[callback] \hfill \\
  							Funzione da richiamare alla fine dell'aggiornamento del profilo utente.
  					\end{description}
  				\item[Descrizione] \hfill \\
- 				Vengono estratti i dati da aggiornare dal richiedente \textit{req} inerenti all'utente da aggiornare. Successivamente viene effettuata la query di aggiornamento sul modello del database utenti estratto. Infine viene richiamata la funzione \textit{callback} con argomento \textbf{true} se l'aggiornamento è andato a buon fine, l'argomento è \textbf{false} altrimenti.
+ 				Vengono estratti i dati da aggiornare dalla richiesta HTTP \textit{req} inerenti all'utente da aggiornare. Successivamente viene effettuata la query di aggiornamento sul modello del database utenti estratto. Infine viene richiamata la funzione \textit{callback} con argomento \textbf{true} se l'aggiornamento è andato a buon fine, l'argomento è \textbf{false} altrimenti.
  			\end{description}
  			
  		\mlitem{removeUser(email, callback)} \hfill
@@ -1991,7 +2111,11 @@ userProfile & Pagina per la visualizzazione del profilo utente (user) / di un ut
   		Numero intero che definisce il numero del Document da eliminare.
   	\end{description}
   	\item[Descizione] \hfill \\
+<<<<<<< HEAD
   Funzione che elimina il Document identificato dall'indice \textit{index}. Effettua una richiesta REST di rimozione alla risorsa pubblicizzata da DocumentEditService fornendo come argomenti l'identificativo della Collection correntemente visualizzata e l'indice del Document da eliminare. \\
+=======
+  Funzione che elimina il Document identificato dall'indice \emph{index}. Effettua una richiesta REST di rimozione alla risorsa gestita da DocumentEditService fornendo come argomenti l'identificativo della Collection correntemente visualizzata e l'indice del Document da eliminare. \\
+>>>>>>> ae2d958d7aef69b2aa576204be2a170e6fe3dabe
   Se l'eliminazione ha successo viene lanciato l'aggiornamento della vista corrente con il Document eliminato, altrimenti si richiama la callback di errore.
   \end{description}
   
@@ -2261,7 +2385,7 @@ Fornisce un immediato elenco delle collection disponibili.
   	\end{description}
   	\item[Descrizione] \hfill \\
   	  Funzione che elimina l'indice identificato dall'indice \emph{index}. Effettua una richiesta REST di rimozione alla risorsa
-  pubblicizzata da IndexService fornendo come argomenti l'indice passato come argomento. \\
+  gestita da IndexService fornendo come argomenti l'indice passato come argomento. \\
   Se l'eliminazione ha successo viene lanciato l'aggiornamento della vista corrente con il Document eliminato, altrimenti si richiama la callback di errore.
   \end{description}
   
@@ -2584,7 +2708,7 @@ Funzione che invia al server il profilo modificato nel client.
   			Indice che rappresenta il Document da eliminare.
        \end{description}
   	\item[Descrizione] \hfill \\
-     Funzione che elimina il Document identificato dall'indice \emph{index}. Effettua una richiesta REST di rimozione alla risorsa pubblicizzata da QueryService.
+     Funzione che elimina il Document identificato dall'indice \emph{index}. Effettua una richiesta REST di rimozione alla risorsa gestita da QueryService.
   Se l'eliminazione ha successo viene lanciato l'aggiornamento della vista corrente con il Document eliminato, altrimenti si richiama la callback di errore.
     \end{description}
     
@@ -2747,7 +2871,7 @@ Funzione che invia al server il profilo modificato nel client.
        \end{description}
   	\item[Descrizione] \hfill \\
       Funzione che elimina il profilo identificato dall'indice \emph{index}. Effettua una richiesta REST di rimozione alla risorsa
-  pubblicizzata da \textit{@UserEditService} fornendo come argomenti l'identificativo della Collection correntemente visualizzata e l'indice del Document da eliminare. \\
+  gestita da \textit{@UserEditService} fornendo come argomenti l'identificativo della Collection correntemente visualizzata e l'indice del Document da eliminare. \\
   Se l'eliminazione ha successo viene lanciato l'aggiornamento della vista corrente con il Document eliminato, altrimenti si  richiama la callback di errore.
     \end{description}
   
@@ -2803,7 +2927,7 @@ Funzione che invia al server il profilo modificato nel client.
   			Indice del profilo da eliminare.
        \end{description}
   	\item[Descrizione] \hfill \\
-   Funzione che elimina il profilo identificato dall'indice \emph{index}. Effettua una richiesta REST di rimozione alla risorsa pubblicizzata da UserEditService fornendo come argomenti l'identificativo della Collection correntemente visualizzata e l'indice del Document da eliminare. \\
+   Funzione che elimina il profilo identificato dall'indice \emph{index}. Effettua una richiesta REST di rimozione alla risorsa gestita da UserEditService fornendo come argomenti l'identificativo della Collection correntemente visualizzata e l'indice del Document da eliminare. \\
   Se l'eliminazione ha successo viene lanciato l'aggiornamento della vista corrente con il Document eliminato, altrimenti si richiama la callback di errore.
     \end{description}
  
@@ -2862,7 +2986,7 @@ Funzione che invia al server il profilo modificato nel client.
   \item[delete\textunderscore document()] \hfill
     \begin{description}
   	\item[Descrizione] \hfill \\ 
- Funzione che elimina il profilo identificato dall'indice \emph{index}. Effettua una richiesta REST di rimozione alla risorsa pubblicizzata da UserEditService fornendo come argomenti l'identificativo della Collection correntemente visualizzata e l'indice del Document da eliminare. \\
+ Funzione che elimina il profilo identificato dall'indice \emph{index}. Effettua una richiesta REST di rimozione alla risorsa gestita da UserEditService fornendo come argomenti l'identificativo della Collection correntemente visualizzata e l'indice del Document da eliminare. \\
   Se l'eliminazione ha successo viene lanciato l'aggiornamento della vista corrente con il Document eliminato, altrimenti si richiama la callback di errore.
       \end{description}
 
@@ -2904,7 +3028,7 @@ Funzione che invia al server il profilo modificato nel client.
 \subsection{::ModelClient}
 
 \subsubsection{::Services}
-I Servizi del Client sono i tramite tra il Client ed il Server. I componenti di questa sezione sono gli esecutori materiali delle richieste REST per ottenere le informazioni dei dati presenti nei database di analisi e utenti presenti nel Server. Essi pubblicizzano delle risorse su cui i Controller associati manipolano le informazioni richieste dal Client.
+I Servizi del Client sono i tramite tra il Client ed il Server. I componenti di questa sezione sono gli esecutori materiali delle richieste REST per ottenere le informazioni dei dati presenti nei database di analisi e utenti presenti nel Server. Essi gestiscono delle risorse su cui i Controller associati manipolano le informazioni richieste dal Client.
 
 \paragraph{@AuthService}
 \begin{description}
@@ -3002,7 +3126,7 @@ I Servizi del Client sono i tramite tra il Client ed il Server. I componenti di 
 \paragraph{@IndexService}
 \begin{description}
  \item[Descrizione] \hfill \\
- Modulo che pubblicizza una \$resource legata ad un indice.
+ Modulo che gestisce una \$resource legata ad un indice.
  \item[Utilizzo] \hfill \\
  Questo servizio ritorna una \$resource legata ad un indice fornito dal server, per essere utilizzata dall'IndexCtrl per gestire i vari 
  indici visualizzati nel Client. Il presente modulo viene inoltre iniettato nel QueryCtrl per creare un nuovo indice a partire da una 
@@ -3025,7 +3149,7 @@ I Servizi del Client sono i tramite tra il Client ed il Server. I componenti di 
  Modulo che fornisce la \$resource legata al servizio di logout di un utente autenticato del Client.
  \item[Utilizzo] \hfill \\
   Questo servizio fornisce un'astrazione del metodo di logout eseguito dal server. La \$resource esportata dal servizio viene utilizzata
-  nel NavBarCtrl per effettuare il logout di un autente autenticato, tramite il metodo pubblicizzato \textit{logout}. 
+  nel NavBarCtrl per effettuare il logout di un autente autenticato, tramite il metodo esposto \textit{logout}. 
  \item[Funzionalità] \hfill \\
  \emph{Dipendendenze iniettate:}
  \begin{itemize}
