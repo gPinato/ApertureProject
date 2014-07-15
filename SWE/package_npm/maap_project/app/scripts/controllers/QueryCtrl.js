@@ -112,29 +112,7 @@ angular.module('maaperture').controller('QueryCtrl', function ($scope, $route, $
 	
 	 };
    
-    //cambia ordinamento corrente, da asc a desc o viceversa
-    var changeSort = function () {
-        if ($scope.current_sort === "desc") {
-            $scope.current_sort = "asc";
-        }
-        else {
-            $scope.current_sort = "desc";
-        }
-    };
-    //Ordina la colonna di posizione $index
-    $scope.columnSort = function (index) {
-        //Determina se cambiare solo ordinamento o anche colonna ordinata
-        if (index === $scope.current_sorted_column) {
-            changeSort();
-            getData();
-        }
-        else {
-            //cambia anche la colonna ordinata
-            $scope.current_sorted_column = index;
-            $scope.current_sort = "asc";
-            getData();
-        }
-    };
+
     //funzione per cancellare il documento di indice index
     $scope.delete_document = function (index) {
         QueryService.remove({

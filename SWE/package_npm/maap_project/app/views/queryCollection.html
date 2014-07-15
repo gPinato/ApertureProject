@@ -9,7 +9,7 @@
             <!-- Table -->
 
             <table class="table">
-                <th ng-click="columnSort($index)" ng-repeat="label in labels"><a href="">{{label}}</a> <span  ng-show="current_sorted_column == $index"> <span ng-show="current_sort == 'asc'" class = "glyphicon glyphicon-arrow-up"> </span><span ng-show="current_sort == 'desc'" class = "glyphicon glyphicon-arrow-down"> </span></span></th>
+                <th ng-click="columnSort($index)" ng-repeat="label in labels"><a href="">{{label}}</a></th>
                 <th>Options</th>
                 <tr ng-repeat="row in rows track by $index" >
                     <td ng-repeat="value in row">{{value}}</td>
