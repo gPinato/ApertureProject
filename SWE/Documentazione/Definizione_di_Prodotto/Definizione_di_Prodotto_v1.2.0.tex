@@ -1103,6 +1103,24 @@ Se essa è presente, ne ritorna il modello, altrimenti ritorna l'intero "-1".
 			l'ordine stabilito nell'array di chiavi \textit{keys}.
 		\end{description}			
 	
+	
+	
+	
+	
+	%AGGIUNGI COUNTDOCUMENTS	
+	
+	
+	
+	% E FINDDOCUMENTS
+	
+	
+	
+	% PIU' GETDOCUMENTSFORINDEX
+	
+	
+	
+	
+	
 	\mlitem{getCollectionIndex(collection\_name, column, order, page, callback)} \hfill 
 		\begin{description}
 			\item[Parametri] \hfill
@@ -1961,18 +1979,6 @@ Package contenente i vari Template utilizzati dal Client AngularJS per visualizz
 		Array contenente il contenuto di ogni Document della Collection, salvato per riga.
 		\item[\$scope.pages] \hfill \\
 		Intero contenente il numero di pagine di Document nella view corrente.
-		\item[\$scope.range()] \hfill \\
-		Funzione utilizzata per calcolare il range di indici di pagine da visualizzare.
-		\item[\$scope.prevPage()] \hfill \\
-		Funzione che permette di ottenere dal Server i dati del precedente gruppo di Document nella Collection.
-		\item[\$scope.DisablePrevPage()] \hfill \\
-		Funzione che permette la disabilitazione del pulsante di selezione della pagina precedente se si è già nella prima pagina della Collection.
-		\item[\$scope.nextPage] \hfill \\
-		Funzione che permette di ottenere dal Server i dati del prossimo gruppo di Document nella Collection.
-		\item[\$scope.DisableNextPage] \hfill \\
-		Funzione che permette la disabilitazione del pulsante di selezione della pagina successiva se si è già nell'ultima pagina della Collection.
-		\item[\$scope.toPage(index)] \hfill \\
-		Funzione che permette di saltare alla visualizzazione della pagina di Document identificata dal numero intero presente in \textit{index}.
 	\end{description}
  	
 \end{description}
@@ -1980,30 +1986,54 @@ Package contenente i vari Template utilizzati dal Client AngularJS per visualizz
 \subsubsection{@dashboard.html}
 \begin{description}
 	\item[Descrizione] \hfill \\
-	
+	Pagina principale visualizzata dopo il login.
 	\item[Utilizzo]
-	
+	Questa view viene utilizzata per far visualizzare all'utente autenticato la lista delle Collection tra cui egli può scegliere.
 	\item[Attributi] \hfill
+	\begin{description}
+		\item[\$scope.labels] \hfill \\
+		Array contenente i nomi delle Collection tra cui scegliere.
+		\item[\$scope.values] \hfill \\
+		Array contenente gli identificativi delle Collection che verranno utilizzati per il reindirizzamento alla scelta della Collection desiderata.
+		
+	\end{description}
  	
 \end{description}
 
 \subsubsection{@document.html}
 \begin{description}
 	\item[Descrizione] \hfill \\
-	
+	Pagina per la visualizzazione di un singolo Document.
 	\item[Utilizzo]
-	
+	In questa pagina di visualizzazione vengono forniti i dati di un singolo Document all'utente autenticato. Se l'utente in questione possiede i privilegi di amministratore, può anche decidere di modificare o eliminare un Document. 
 	\item[Attributi] \hfill
- 	
+	\begin{description}
+		\item[\$scope.current\_collection] \hfill \\
+		Stringa contenente il nome della Collection che racchiude in Document correntemente visualizzato.
+		\item[\$scope.current\_document] \hfill \\
+		Stringa contenente l'identificativo del Document correntemente visualizzato.
+		\item[\$scope.labels] \hfill \\
+		Array contenente i nomi delle colonne dei dati del Document visualizzato.
+		\item[\$scope.values] \hfill \\
+		Array contenente i dati sensibili del Document da visualizzare nella pagina.
+		\item[\$scope.canEdit] \hfill \\
+		Valore booleano che identifica se l'utente correntemente autenticato possa modificare o meno il Document visualizzato.
+	\end{description}
 \end{description}
 
 \subsubsection{@documentEdit.html}
 \begin{description}
 	\item[Descrizione] \hfill \\
-	
+	Pagina per la modifica di un singolo Document.
 	\item[Utilizzo]
-	
+	La pagina è composta principalmente di una TextArea in cui viene visualizzato il JSON del Document che si è deciso di modificare. In questa TextArea è possibile modificare l'intero Document, per poi salvare i cambiamenti o annullarli.
 	\item[Attributi] \hfill
+	\begin{description}
+		\item[\$scope.current\_collection] \hfill \\
+		Stringa contenente il nome della Collection che racchiude in Document correntemente visualizzato.
+		\item[\$scope.current\_document] \hfill \\
+		Stringa contenente l'identificativo del Document correntemente visualizzato.
+	\end{description}
  	
 \end{description}
 
@@ -2136,12 +2166,6 @@ I template utilizzati da AngularJs per la generazione delle pagine sono i seguen
 \textbf{Template} & \textbf{Pagina} \\
 
 %aggiungere qui una midrule per aggiungere una nuova riga alla tabella
-\midrule
-collection.html & Pagina contenente i documenti di una determinata collection\\
-\midrule
-dashboard.html & Pagina principale visualizzata dopo il login\\
- \midrule
-document.html & Pagina per la visualizzazione di un singolo document\\
  \midrule
 documentEdit.html &  Pagina per la modifica di un singolo document\\
  \midrule
