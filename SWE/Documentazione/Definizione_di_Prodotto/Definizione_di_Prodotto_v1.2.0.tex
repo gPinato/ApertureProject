@@ -1942,10 +1942,38 @@ Package contenente i vari Template utilizzati dal Client AngularJS per visualizz
 	\item[Descrizione] \hfill \\
 	Pagina contenente i documenti di una determinata Collection.
 	\item[Utilizzo] \hfill \\
-		
+	Questa view viene utilizzata per visualizzare e gestire i Document di una data Collection, ordinabili su ogni colonna visualizzata. Mediante un click sul bottone di visualizzazione di un Document, è possibile visualizzare il Document desiderato.
 	\item[Attributi] \hfill
- 	\begin{itemize}
- 	\end{itemize}
+	\begin{description}
+		\item[\$scope.current\_sorted\_column] \hfill \\
+		Indice della colonna correntemente utilizzata per l'ordinamento.
+		\item[\$scope.column\_original\_name] \hfill \\
+		Array contenente le etichette originali delle colonne della Collection.
+		\item[\$scope.current\_sort] \hfill \\
+		Stringa contenente l'ordinamento corrente della colonna identificata da \textit{\$scope.current\_sorted\_column}.
+		\item[\$scope.current\_page] \hfill \\
+		Intero che rappresenta la pagina correntemente visualizzata.
+		\item[\$scope.canEdit] \hfill \\
+		Valore booleano che identifica se l'utente correntemente autenticato possa modificare o meno i Document visualizzati.
+		\item[\$scope.current\_collection] \hfill \\
+		Stringa contenente il nome della Collection correntemente visualizzata.
+		\item[\$scope.rows] \hfill \\
+		Array contenente il contenuto di ogni Document della Collection, salvato per riga.
+		\item[\$scope.pages] \hfill \\
+		Intero contenente il numero di pagine di Document nella view corrente.
+		\item[\$scope.range()] \hfill \\
+		Funzione utilizzata per calcolare il range di indici di pagine da visualizzare.
+		\item[\$scope.prevPage()] \hfill \\
+		Funzione che permette di ottenere dal Server i dati del precedente gruppo di Document nella Collection.
+		\item[\$scope.DisablePrevPage()] \hfill \\
+		Funzione che permette la disabilitazione del pulsante di selezione della pagina precedente se si è già nella prima pagina della Collection.
+		\item[\$scope.nextPage] \hfill \\
+		Funzione che permette di ottenere dal Server i dati del prossimo gruppo di Document nella Collection.
+		\item[\$scope.DisableNextPage] \hfill \\
+		Funzione che permette la disabilitazione del pulsante di selezione della pagina successiva se si è già nell'ultima pagina della Collection.
+		\item[\$scope.toPage(index)] \hfill \\
+		Funzione che permette di saltare alla visualizzazione della pagina di Document identificata dal numero intero presente in \textit{index}.
+	\end{description}
  	
 \end{description}
 
@@ -1956,8 +1984,6 @@ Package contenente i vari Template utilizzati dal Client AngularJS per visualizz
 	\item[Utilizzo]
 	
 	\item[Attributi] \hfill
- 	\begin{itemize}
- 	\end{itemize}
  	
 \end{description}
 
@@ -1968,8 +1994,6 @@ Package contenente i vari Template utilizzati dal Client AngularJS per visualizz
 	\item[Utilizzo]
 	
 	\item[Attributi] \hfill
- 	\begin{itemize}
- 	\end{itemize}
  	
 \end{description}
 
@@ -1980,8 +2004,6 @@ Package contenente i vari Template utilizzati dal Client AngularJS per visualizz
 	\item[Utilizzo]
 	
 	\item[Attributi] \hfill
- 	\begin{itemize}
- 	\end{itemize}
  	
 \end{description}
 
@@ -1992,8 +2014,6 @@ Package contenente i vari Template utilizzati dal Client AngularJS per visualizz
 	\item[Utilizzo]
 	
 	\item[Attributi] \hfill
- 	\begin{itemize}
- 	\end{itemize}
  	
 \end{description}
 
@@ -2004,8 +2024,6 @@ Package contenente i vari Template utilizzati dal Client AngularJS per visualizz
 	\item[Utilizzo]
 	
 	\item[Attributi] \hfill
- 	\begin{itemize}
- 	\end{itemize}
  	
 \end{description}
 
@@ -2016,8 +2034,6 @@ Package contenente i vari Template utilizzati dal Client AngularJS per visualizz
 	\item[Utilizzo]
 	
 	\item[Attributi] \hfill
- 	\begin{itemize}
- 	\end{itemize}
  	
 \end{description}
 
@@ -2028,8 +2044,6 @@ Package contenente i vari Template utilizzati dal Client AngularJS per visualizz
 	\item[Utilizzo]
 	
 	\item[Attributi] \hfill
- 	\begin{itemize}
- 	\end{itemize}
  	
 \end{description}
 
@@ -2040,8 +2054,6 @@ Package contenente i vari Template utilizzati dal Client AngularJS per visualizz
 	\item[Utilizzo]
 	
 	\item[Attributi] \hfill
- 	\begin{itemize}
- 	\end{itemize}
  	
 \end{description}
 
@@ -2052,8 +2064,6 @@ Package contenente i vari Template utilizzati dal Client AngularJS per visualizz
 	\item[Utilizzo]
 	
 	\item[Attributi] \hfill
- 	\begin{itemize}
- 	\end{itemize}
  	
 \end{description}
 
@@ -2064,8 +2074,6 @@ Package contenente i vari Template utilizzati dal Client AngularJS per visualizz
 	\item[Utilizzo]
 	
 	\item[Attributi] \hfill
- 	\begin{itemize}
- 	\end{itemize}
  	
 \end{description}
 
@@ -2076,8 +2084,6 @@ Package contenente i vari Template utilizzati dal Client AngularJS per visualizz
 	\item[Utilizzo]
 	
 	\item[Attributi] \hfill
- 	\begin{itemize}
- 	\end{itemize}
  	
 \end{description}
 
@@ -2088,9 +2094,7 @@ Package contenente i vari Template utilizzati dal Client AngularJS per visualizz
 	\item[Utilizzo]
 	
 	\item[Attributi] \hfill
- 	\begin{itemize}
- 	\end{itemize}
- 	
+
 \end{description}
 
 \subsubsection{@userDocument.html}
@@ -2100,8 +2104,6 @@ Package contenente i vari Template utilizzati dal Client AngularJS per visualizz
 	\item[Utilizzo]
 	
 	\item[Attributi] \hfill
- 	\begin{itemize}
- 	\end{itemize}
  	
 \end{description}
 
@@ -2112,8 +2114,6 @@ Package contenente i vari Template utilizzati dal Client AngularJS per visualizz
 	\item[Utilizzo]
 	
 	\item[Attributi] \hfill
- 	\begin{itemize}
- 	\end{itemize}
  	
 \end{description}
 
@@ -2124,8 +2124,6 @@ Package contenente i vari Template utilizzati dal Client AngularJS per visualizz
 	\item[Utilizzo]
 	
 	\item[Attributi] \hfill
- 	\begin{itemize}
- 	\end{itemize}
  	
 \end{description}
 
