@@ -169,7 +169,7 @@ Modulo di installazione del framework Maap. Si occupa di gestire le richiesti pr
  	\item commander;
  	\item ncp.
  \end{itemize}
- \item[Metodi] \hfill
+ \item[Metodi]
   \begin{mldescription}
    \mlitem{printHelpTitle()} \hfill
    \begin{description}
@@ -181,7 +181,7 @@ Modulo di installazione del framework Maap. Si occupa di gestire le richiesti pr
       \begin{description}
       	    \item[Parametri] \hfill 
       	     \begin{description}
-      	      \item['filePath'] \hfill \\
+      	      \item[filePath] \hfill \\
       	      Path del file da modificare.
       	      \item[string2find] \hfill \\
       	      Stringa con la quale inizia la riga da modificare.
@@ -197,7 +197,7 @@ Modulo di installazione del framework Maap. Si occupa di gestire le richiesti pr
    \begin{description}
    \item[Parametri] \hfill 
          	     \begin{description}
-         	      \item['destination'] \hfill \\
+         	      \item[destination] \hfill \\
          	      Path di dove sarà situato il progetto.
          	      \item[project\_name] \hfill \\
          	      Nome del progetto.
@@ -214,7 +214,7 @@ Modulo di installazione del framework Maap. Si occupa di gestire le richiesti pr
 	    Si occupa di copiare ricorsivamente i file di default del progetto Maap all'interno del percorso specificato in output\_path settando il nome di progetto specificato con project\_name.
    \end{description}
    \end{mldescription}
-   \item[Comandi] \hfill
+   \item[Comandi]
      \begin{mldescription}
       \mlitem{maaperture} \hfill
       \begin{description}
@@ -225,7 +225,7 @@ Modulo di installazione del framework Maap. Si occupa di gestire le richiesti pr
             \begin{description}
             \item[Parametri] \hfill 
                          	     \begin{description}
-                         	      \item['name'] \hfill \\
+                         	      \item[name] \hfill \\
                          	      Nome del progetto.
                          	      \item[output] \hfill \\
                          	      Percorso di installazione del progetto.
@@ -244,6 +244,7 @@ Modulo di installazione del framework Maap. Si occupa di gestire le richiesti pr
       \item[Descrizione] \hfill \\
       Si occupa di invocare printHelpTitle().
       \end{description}
+      \end{mldescription}
 \end{description}
 
 \section{Specifica componenti MaaP::Server}
@@ -348,7 +349,7 @@ Per ultima cosa, il \grassetto{@dispatcher} gestisce eventuali richieste di riso
      Callback da richiamare al termine dell'autenticazione.
      \end{description}
    \item[Descrizione] \hfill \\ 
-  Intercetta la richiesta di modificare i dati di un Document specificato con \textit{:doc\_id} all'interno della Collection specificata con :col\_id. Verifica che essa sia autenticata come amministratore e richiama il metodo \textit{updateDocument} del \grassetto{@datamanager}.
+  Intercetta la richiesta di modificare i dati di un Document specificato con \textit{:doc\_id} all'interno della Collection specificata con :col\_id. Verifica che essa sia autenticata come amministratore e richiama il metodo \textit{updateDocument} del \grassetto{@datamanager}. I dati associati alla richiesta \textit{PUT} contengono le informazioni da modificare nel Database del Document con id \textit{doc\_id} della Collection \textit{col\_id}. 
   \end{description}
   
   \mlitem{delete('/api/collection/:col\_id/:doc\_id/edit', passport.checkAuthenticatedAdmin, \\datamanager.removeDocument)} \hfill 
@@ -412,7 +413,7 @@ Per ultima cosa, il \grassetto{@dispatcher} gestisce eventuali richieste di riso
       Callback da richiamare al termine dell'autenticazione.
      \end{description}
     \item[Descrizione] \hfill \\ 
-   Intercetta la richiesta di modificare i dati del profilo utente, verificando che essa sia autenticata e richiama il metodo \textit{updateUserProfile} del \grassetto{@usermanager}.
+   Intercetta la richiesta di modificare i dati del profilo utente, verificando che essa sia autenticata e richiama il metodo \textit{updateUserProfile} del \grassetto{@usermanager}. I dati associati alla richiesta \textit{PUT} contengono le informazioni da modificare nel Database dell'utente correntemente autenticato. 
    \end{description}
  
  \end{mldescription}  
@@ -476,7 +477,7 @@ Per ultima cosa, il \grassetto{@dispatcher} gestisce eventuali richieste di riso
       Callback da richiamare al termine dell'autenticazione.
      \end{description}
     \item[Descrizione] \hfill \\
-    Intercetta la richiesta di modificare i dati di un Utente specificato per con :user\_id. Verifica che essa sia autenticata come amministratore e richiama il metodo \textit{updateUser} del \grassetto{@usermanager}.
+    Intercetta la richiesta di modificare i dati di un Utente specificato per con :user\_id. Verifica che essa sia autenticata come amministratore e richiama il metodo \textit{updateUser} dello \grassetto{@usermanager}. I dati associati alla richiesta \textit{PUT} contengono le informazioni da modificare nel Database degli utenti con id \textit{user\_}. 
     \end{description}
     
     \mlitem{delete('/api/users/:user\_id/edit', passport.checkAuthenticatedAdmin,\\usermanager.removeUser)} \hfill 
@@ -559,7 +560,7 @@ Per ultima cosa, il \grassetto{@dispatcher} gestisce eventuali richieste di riso
       Callback da richiamare al termine dell'autenticazione.
      \end{description}
     \item[Descrizione] \hfill \\
-    Intercetta la richiesta di inserire un indice nel database di analisi. Verifica che essa sia autenticata come amministratore e richiama il metodo \textit{createIndex} del \grassetto{@datamanager}.
+    Intercetta la richiesta di inserire un indice nel database di analisi. Verifica che essa sia autenticata come amministratore e richiama il metodo \textit{createIndex} del \grassetto{@datamanager}. I dati associati alla richiesta \textit{PUT} contengono le informazioni del nuovo indice da inserire nel Database nella sezione degli indici. 
     \end{description}
     
     \mlitem{delete('/api/indexes/:index\_name', passport.checkAuthenticatedAdmin,\\datamanager.deleteIndex)} \hfill 
@@ -695,7 +696,7 @@ Per ultima cosa, il \grassetto{@dispatcher} gestisce eventuali richieste di riso
 \subsubsection{@frontController}
 \begin{description}
  \item[Descrizione] \hfill \\
- Il frontController è l'interfaccia di connessione tra il Server ed il Client. Si occupa dell'inizializzazione del \grassetto{@dispatcher} reindirizzando ad esso le richieste del Client.
+ Il \grassetto{@frontController} è l'interfaccia di connessione tra il Server ed il Client. Si occupa dell'inizializzazione del \grassetto{@dispatcher} reindirizzando ad esso le richieste del Client.
  \item[Dipendendenze] \hfill
  \begin{itemize}
  \item @dispatcher.
@@ -1934,6 +1935,199 @@ Package realizzato per creare e gestire gli indici utilizzati nel database di an
 \section{Specifica componenti Maap::Client}
 
 \subsection{::View}
+Package contenente i vari Template utilizzati dal Client AngularJS per visualizzare e gestire i dati delle varie Collection.
+
+\subsubsection{@collection.html}
+\begin{description}
+	\item[Descrizione] \hfill \\
+	Pagina contenente i documenti di una determinata Collection.
+	\item[Utilizzo] \hfill \\
+		
+	\item[Attributi] \hfill
+ 	\begin{itemize}
+ 	\end{itemize}
+ 	
+\end{description}
+
+\subsubsection{@dashboard.html}
+\begin{description}
+	\item[Descrizione] \hfill \\
+	
+	\item[Utilizzo]
+	
+	\item[Attributi] \hfill
+ 	\begin{itemize}
+ 	\end{itemize}
+ 	
+\end{description}
+
+\subsubsection{@document.html}
+\begin{description}
+	\item[Descrizione] \hfill \\
+	
+	\item[Utilizzo]
+	
+	\item[Attributi] \hfill
+ 	\begin{itemize}
+ 	\end{itemize}
+ 	
+\end{description}
+
+\subsubsection{@documentEdit.html}
+\begin{description}
+	\item[Descrizione] \hfill \\
+	
+	\item[Utilizzo]
+	
+	\item[Attributi] \hfill
+ 	\begin{itemize}
+ 	\end{itemize}
+ 	
+\end{description}
+
+\subsubsection{@help.html}
+\begin{description}
+	\item[Descrizione] \hfill \\
+	
+	\item[Utilizzo]
+	
+	\item[Attributi] \hfill
+ 	\begin{itemize}
+ 	\end{itemize}
+ 	
+\end{description}
+
+\subsubsection{@indexCollection.html}
+\begin{description}
+	\item[Descrizione] \hfill \\
+	
+	\item[Utilizzo]
+	
+	\item[Attributi] \hfill
+ 	\begin{itemize}
+ 	\end{itemize}
+ 	
+\end{description}
+
+\subsubsection{@login.html}
+\begin{description}
+	\item[Descrizione] \hfill \\
+	
+	\item[Utilizzo]
+	
+	\item[Attributi] \hfill
+ 	\begin{itemize}
+ 	\end{itemize}
+ 	
+\end{description}
+
+\subsubsection{@logout.html}
+\begin{description}
+	\item[Descrizione] \hfill \\
+	
+	\item[Utilizzo]
+	
+	\item[Attributi] \hfill
+ 	\begin{itemize}
+ 	\end{itemize}
+ 	
+\end{description}
+
+\subsubsection{@NavBar.html}
+\begin{description}
+	\item[Descrizione] \hfill \\
+	
+	\item[Utilizzo]
+	
+	\item[Attributi] \hfill
+ 	\begin{itemize}
+ 	\end{itemize}
+ 	
+\end{description}
+
+\subsubsection{@pwdrecovery.html}
+\begin{description}
+	\item[Descrizione] \hfill \\
+	
+	\item[Utilizzo]
+	
+	\item[Attributi] \hfill
+ 	\begin{itemize}
+ 	\end{itemize}
+ 	
+\end{description}
+
+\subsubsection{@queryCollection.html}
+\begin{description}
+	\item[Descrizione] \hfill \\
+	
+	\item[Utilizzo]
+	
+	\item[Attributi] \hfill
+ 	\begin{itemize}
+ 	\end{itemize}
+ 	
+\end{description}
+
+\subsubsection{@register.html}
+\begin{description}
+	\item[Descrizione] \hfill \\
+	
+	\item[Utilizzo]
+	
+	\item[Attributi] \hfill
+ 	\begin{itemize}
+ 	\end{itemize}
+ 	
+\end{description}
+
+\subsubsection{@userCollection.html}
+\begin{description}
+	\item[Descrizione] \hfill \\
+	
+	\item[Utilizzo]
+	
+	\item[Attributi] \hfill
+ 	\begin{itemize}
+ 	\end{itemize}
+ 	
+\end{description}
+
+\subsubsection{@userDocument.html}
+\begin{description}
+	\item[Descrizione] \hfill \\
+	
+	\item[Utilizzo]
+	
+	\item[Attributi] \hfill
+ 	\begin{itemize}
+ 	\end{itemize}
+ 	
+\end{description}
+
+\subsubsection{@userEdit.html}
+\begin{description}
+	\item[Descrizione] \hfill \\
+	
+	\item[Utilizzo]
+	
+	\item[Attributi] \hfill
+ 	\begin{itemize}
+ 	\end{itemize}
+ 	
+\end{description}
+
+\subsubsection{@userProfile.html}
+\begin{description}
+	\item[Descrizione] \hfill \\
+	
+	\item[Utilizzo]
+	
+	\item[Attributi] \hfill
+ 	\begin{itemize}
+ 	\end{itemize}
+ 	
+\end{description}
 
 \subsubsection{::Template}
 I template utilizzati da AngularJs per la generazione delle pagine sono i seguenti:
@@ -1975,8 +2169,10 @@ userProfile & Pagina per la visualizzazione del profilo utente (user) / di un ut
 
 
 \subsection{::ControllerModelView}
+Package che gestisce il dialogo tra la View ed il Model del Client.
 
 \subsubsection{::ControllerClient}
+Package che racchiude i Controller del Client. Il primo metodo descritto di ogni Controller è la funzione base di recupero dei dati dal Server attraverso la chiamata del metodo di fetch del proprio Service.
 
 \paragraph{@CollectionController}
 \begin{description}
@@ -2086,7 +2282,7 @@ userProfile & Pagina per la visualizzazione del profilo utente (user) / di un ut
   		Numero intero che definisce il numero del Document da eliminare.
   	\end{description}
   	\item[Descizione] \hfill \\
-  Funzione che elimina il Document identificato dall'indice \textit{index}. Effettua una richiesta REST di rimozione alla risorsa pubblicizzata da DocumentEditService fornendo come argomenti l'identificativo della Collection correntemente visualizzata e l'indice del Document da eliminare. \\
+  Funzione che elimina il Document identificato dall'indice \textit{index}. Effettua una richiesta REST di rimozione alla risorsa pubblicizzata da \grassetto{@DocumentEditService} fornendo come argomenti l'identificativo della Collection correntemente visualizzata e l'indice del Document da eliminare. \\
   Se l'eliminazione ha successo viene lanciato l'aggiornamento della vista corrente con il Document eliminato, altrimenti si richiama la callback di errore.
   \end{description}
   
@@ -2105,7 +2301,7 @@ Fornisce un immediato elenco delle collection disponibili.
  \item[Dipendendenze iniettate al controller] \hfill
  \begin{itemize}
   \item \$scope;
-  \item CollectionListService;
+  \item @CollectionListService;
  \end{itemize}
  
  \item[Funzionalità]
@@ -2712,7 +2908,7 @@ Funzione che invia al server il profilo modificato nel client.
   \begin{description}
    	\item[Descrizione] \hfill \\
   Nel caso in cui il form di registrazione sia compilato con dati validi, richiama la richiesta RESTful \textit{query} sulla \$resource 
-  fornita da RegisterService.
+  fornita da \grassetto{@RegisterService}.
   Con questa funzione viene creato un nuovo utente sul server in base ai dati inseriti.
    \end{description}
 
@@ -2888,7 +3084,7 @@ Funzione che invia al server il profilo modificato nel client.
   			Indice del profilo da eliminare.
        \end{description}
   	\item[Descrizione] \hfill \\
-   Funzione che elimina il profilo identificato dall'indice \emph{index}. Effettua una richiesta REST di rimozione alla risorsa gestita da UserEditService fornendo come argomenti l'identificativo della Collection correntemente visualizzata e l'indice del Document da eliminare. \\
+   Funzione che elimina il profilo identificato dall'indice \textit{index}. Effettua una richiesta REST di rimozione alla risorsa gestita da \grassetto{@UserEditService} fornendo come argomenti l'identificativo della Collection correntemente visualizzata e l'indice del Document da eliminare. \\
   Se l'eliminazione ha successo viene lanciato l'aggiornamento della vista corrente con il Document eliminato, altrimenti si richiama la callback di errore.
     \end{description}
  
@@ -2907,7 +3103,7 @@ Funzione che invia al server il profilo modificato nel client.
  \begin{itemize}
   \item \$scope;
   \item \$location
-  \item UserEditService;
+  \item @UserEditService;
   \item \$routeParams.
   
  \end{itemize}
@@ -2923,7 +3119,7 @@ Funzione che invia al server il profilo modificato nel client.
  \begin{description}
   \item[UserEditService.query()] \hfill
   \begin{description}
-  	\item[Parametro] \hfill \\
+  	\item[Parametro] \hfill 
   		\begin{description}
   			\item[\$routeParams.user\_id] \hfill \\
   			Campo di \$routeParams contenente il codice identificativo dell'utente di cui richiedere il Document.
@@ -2946,7 +3142,7 @@ Funzione che invia al server il profilo modificato nel client.
   \item[delete\textunderscore document()] \hfill
     \begin{description}
   	\item[Descrizione] \hfill \\ 
- Funzione che elimina il profilo identificato dall'indice \textit{index}. Effettua una richiesta REST di rimozione alla risorsa gestita da UserEditService fornendo come argomenti l'identificativo della Collection correntemente visualizzata e l'indice del Document da eliminare. \\
+ Funzione che elimina il profilo identificato dall'indice \textit{index}. Effettua una richiesta REST di rimozione alla risorsa gestita da \grassetto{@UserEditService} fornendo come argomenti l'identificativo della Collection correntemente visualizzata e l'indice del Document da eliminare. \\
   Se l'eliminazione ha successo viene lanciato l'aggiornamento della vista corrente con il Document eliminato, altrimenti si richiama la callback di errore.
       \end{description}
 
@@ -3002,7 +3198,7 @@ I Servizi del Client sono i tramite tra il Client ed il Server. I componenti di 
  \begin{itemize}
   \item \$resource.
  \end{itemize}
- L'istruzione di ritorno crea una nuova \$resource che espone il metodo \textit{login} che verrà invocato dal LoginCtrl.
+ L'istruzione di ritorno crea una nuova \$resource che espone il metodo \textit{login} che verrà invocato dal \grassetto{@LoginCtrl}.
 \end{description}
 
 \paragraph{@CollectionDataService}
@@ -3011,7 +3207,7 @@ I Servizi del Client sono i tramite tra il Client ed il Server. I componenti di 
  Modulo che espone un oggetto \$resource legato ad una particolare Collection. 
  
  \item[Utilizzo] \hfill \\
- Viene utilizzato come astrazione della risorsa Collection, su cui il \grassetto{@CollectionController} invocherà delle richieste RESTful aggiungendo i parametri necessari. La risorsa fornita conterr\'{a} i Document ad essa correlati e quest'ultimi verranno visualizzati in base alle opzioni della richiesta RESTful.
+ Crea ed espone una \$resource legata ad una particolare Collection, su cui il \grassetto{@CollectionController} invocherà delle richieste RESTful aggiungendo i parametri necessari. La risorsa fornita conterrà i Document ad essa correlati e quest'ultimi verranno visualizzati in base alle opzioni della richiesta RESTful.
  
  \item[Funzionalità] \hfill \\
  %qui ci andrebbe tipo uno screenshot del codice, devo ancora capire come esporre le informazioni del sorgente
@@ -3063,7 +3259,7 @@ I Servizi del Client sono i tramite tra il Client ed il Server. I componenti di 
  Modulo che espone un oggetto \$resource legato ad un particolare Document modificabile.
  
  \item[Utilizzo] \hfill \\
- Questo servizio ritorna un oggetto \$resource legato ad un particolare Document, che verrà  utilizzato dal DocumentEditController tramite 
+ Questo servizio ritorna un oggetto \$resource legato ad un particolare Document, che verrà  utilizzato dal \grassetto{@DocumentEditController} tramite 
  richieste RESTful, sia per visualizzarne  le informazioni, sia per modificarne le proprietà.
  
  \item[Funzionalità] \hfill \\
@@ -3071,7 +3267,7 @@ I Servizi del Client sono i tramite tra il Client ed il Server. I componenti di 
  \begin{itemize}
   \item \$resource.
  \end{itemize}
- L'oggetto ritornato da questa Factory lega la \$resource ritornata al Document \emph{doc\_id} della Collection
+ L'oggetto ritornato da questa Factory lega la \$resource ritornata al Document \textit{doc\_id} della Collection
  \textit{col\_id}. Inoltre, oltre alla visualizzazione, descrive che le richieste di \textit{update} vengono effettuate
  con richieste di \textit{PUT}, mentre le richieste di \textit{remove} useranno il metodo http \textit{DELETE}.
  
@@ -3082,7 +3278,7 @@ I Servizi del Client sono i tramite tra il Client ed il Server. I componenti di 
  \item[Descrizione] \hfill \\
  Modulo che gestisce una \$resource legata ad un indice.
  \item[Utilizzo] \hfill \\
- Questo servizio ritorna una \$resource legata ad un indice fornito dal server, per essere utilizzata dall'IndexCtrl per gestire i vari 
+ Questo servizio ritorna una \$resource legata ad un indice fornito dal server, per essere utilizzata dall'\grassetto{@IndexCtrl} per gestire i vari 
  indici visualizzati nel Client. Il presente modulo viene inoltre iniettato nel \grassetto{@QueryCtrl} per creare un nuovo indice a partire da una 
  query data. Questa risorsa esportata è dotata di tre metodi di accesso e modifica dei dati dell'indice, ovvero
  \textit{query}, \textit{insert} e \textit{remove}.
@@ -3187,7 +3383,7 @@ I Servizi del Client sono i tramite tra il Client ed il Server. I componenti di 
  Servizio che fornisce una \$resource legata alla lista degli utenti ordinari non amministratori.  
  \item[Utilizzo] \hfill \\
  La risorsa messa a disposizione dallo \grassetto{@UserCollectionService} contiene la lista di tutti gli utenti 
- del sistema. Questa \$resource viene utilizzata dallo UsersCollectionController per visualizzare 
+ del sistema. Questa \$resource viene utilizzata dallo \grassetto{@UsersCollectionCtrl} per visualizzare 
  correttamente tutti gli utenti del sistema ed organizzarli nell'apposita vista. Il modulo esporta 
  con la \$resource il metodo \textit{query}. 
  \item[Funzionalità] \hfill \\
@@ -3228,7 +3424,7 @@ con il metodo \textit{query}, per ottenere i dati voluti.
   \item \$resource.
  \end{itemize}
   L'oggetto ritornato da questo servizio lega la \$resource ritornata all'utente con il campo 
-  \textit{id} uguale a quello utilizzato per la ricerca. Inoltre, oltre alla visualizzazione espressa tramite il metodo \textit{query} realizzato con una richiesta \textit{GET} RESTful, descrive che le richieste di \emph{update} vengano effettuate
+  \textit{id} uguale a quello utilizzato per la ricerca. Inoltre, oltre alla visualizzazione espressa tramite il metodo \textit{query} realizzato con una richiesta \textit{GET} RESTful, descrive che le richieste di \textit{update} vengano effettuate
  con richieste di \textit{PUT}, mentre le richieste di \textit{remove} useranno il metodo http \textit{DELETE}.
 \end{description}
 
