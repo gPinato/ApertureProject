@@ -195,20 +195,20 @@
     </style>
 </head>
 <body>
-<div class="header low">
+<div class="header medium">
     <h1>Code coverage report for <span class="entity">controllers/RegisterCtrl.js</span></h1>
     <h2>
         
-        Statements: <span class="metric">7.69% <small>(1 / 13)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Statements: <span class="metric">76.92% <small>(10 / 13)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
         
         
-        Branches: <span class="metric">0% <small>(0 / 4)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Branches: <span class="metric">50% <small>(2 / 4)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
         
         
-        Functions: <span class="metric">0% <small>(0 / 4)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Functions: <span class="metric">75% <small>(3 / 4)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
         
         
-        Lines: <span class="metric">7.69% <small>(1 / 13)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Lines: <span class="metric">76.92% <small>(10 / 13)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
         
         Ignored: <span class="metric"><span class="ignore-none">none</span></span> &nbsp;&nbsp;&nbsp;&nbsp;
     </h2>
@@ -290,28 +290,28 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -345,29 +345,29 @@
 &nbsp;
 'use strict';
 &nbsp;
-angular.module('maaperture').controller('RegisterCtrl', <span class="fstat-no" title="function not covered" >function ($scope, $location, $route, $cookieStore, RegisterService) {</span>
-<span class="cstat-no" title="statement not covered" >    $scope.credentials = {</span>
+angular.module('maaperture').controller('RegisterCtrl', function ($scope, $location, $route, $cookieStore, RegisterService) {
+    $scope.credentials = {
         email: '',
         pwd1: '',
         pwd2: ''
     };
 &nbsp;
-<span class="cstat-no" title="statement not covered" >    $scope.submitted = false;</span>
+    $scope.submitted = false;
     //Funzione per inviare il form di registrazione al server.
     //Invia soltanto se il client ritiene che il form sia compilato con dati validi.
-<span class="cstat-no" title="statement not covered" >    $scope.signupForm = <span class="fstat-no" title="function not covered" >function () {</span></span>
-<span class="cstat-no" title="statement not covered" >        if ($scope.signup_form.$valid) {</span>
-<span class="cstat-no" title="statement not covered" >            RegisterService.register({},</span>
+    $scope.signupForm = function () {
+        <span class="missing-if-branch" title="else path not taken" >E</span>if ($scope.signup_form.$valid) {
+            RegisterService.register({},
                 $scope.credentials).$promise.then(
-<span class="fstat-no" title="function not covered" >                function success(data, status) {</span>
-<span class="cstat-no" title="statement not covered" >					if ( data.level === 1){</span>
+                function success(data, status) {
+					<span class="missing-if-branch" title="if path not taken" >I</span>if ( data.level === 1){
 <span class="cstat-no" title="statement not covered" >						$cookieStore.put("isAdmin",true);</span>
 					}
 					else{
-<span class="cstat-no" title="statement not covered" >						$cookieStore.put("isAdmin",false);</span>
+						$cookieStore.put("isAdmin",false);
 					}
-<span class="cstat-no" title="statement not covered" >					$location.path('/');</span>
-<span class="cstat-no" title="statement not covered" >					$route.reload();</span>
+					$location.path('/');
+					$route.reload();
 				},
 <span class="fstat-no" title="function not covered" >                function err(error) {</span>
 <span class="cstat-no" title="statement not covered" >					alert("Registration failed! We already have this email in our databases ;)");</span>
@@ -389,7 +389,7 @@ angular.module('maaperture').controller('RegisterCtrl', <span class="fstat-no" t
 
 </div>
 <div class="footer">
-    <div class="meta">Generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Mon Jul 14 2014 23:43:55 GMT+0200 (CEST)</div>
+    <div class="meta">Generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Tue Jul 15 2014 23:12:27 GMT+0200 (CEST)</div>
 </div>
 
 <script src="../prettify.js"></script>

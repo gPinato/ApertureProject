@@ -195,20 +195,20 @@
     </style>
 </head>
 <body>
-<div class="header low">
+<div class="header high">
     <h1>Code coverage report for <span class="entity">controllers/ProfileCtrl.js</span></h1>
     <h2>
         
-        Statements: <span class="metric">7.69% <small>(1 / 13)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Statements: <span class="metric">100% <small>(13 / 13)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
         
         
         Branches: <span class="metric">100% <small>(0 / 0)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
         
         
-        Functions: <span class="metric">0% <small>(0 / 7)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Functions: <span class="metric">85.71% <small>(6 / 7)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
         
         
-        Lines: <span class="metric">7.69% <small>(1 / 13)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Lines: <span class="metric">100% <small>(13 / 13)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
         
         Ignored: <span class="metric"><span class="ignore-none">none</span></span> &nbsp;&nbsp;&nbsp;&nbsp;
     </h2>
@@ -290,36 +290,36 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">4</span>
+<span class="cline-any cline-yes">4</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">4</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-yes">2</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-yes">10</span>
+<span class="cline-any cline-yes">10</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -343,26 +343,26 @@
 &nbsp;
 'use strict';
 &nbsp;
-angular.module('maaperture').controller('ProfileCtrl', <span class="fstat-no" title="function not covered" >function ($scope, $location, ProfileDataService, ProfileEditService) {</span>
+angular.module('maaperture').controller('ProfileCtrl', function ($scope, $location, ProfileDataService, ProfileEditService) {
 &nbsp;
-<span class="cstat-no" title="statement not covered" >    $scope.original_data = [];</span>
-<span class="cstat-no" title="statement not covered" >    $scope.original_keys = [];</span>
+    $scope.original_data = [];
+    $scope.original_keys = [];
 &nbsp;
     //Funzione per richiedere il profilo al server.
 &nbsp;
-<span class="cstat-no" title="statement not covered" >    ProfileDataService.query({</span>
+    ProfileDataService.query({
              }).$promise.then(
-<span class="fstat-no" title="function not covered" >        function success(data) {</span>
-<span class="cstat-no" title="statement not covered" >            $scope.labels = data.label;</span>
-<span class="cstat-no" title="statement not covered" >            $scope.data = data.data;</span>
+        function success(data) {
+            $scope.labels = data.label;
+            $scope.data = data.data;
             //inizializza un array con le chiavi originali e un array con i valori originali da modificare
-<span class="cstat-no" title="statement not covered" >            $.each($scope.data, <span class="fstat-no" title="function not covered" >function (key, value) {</span></span>
-<span class="cstat-no" title="statement not covered" >                $scope.original_keys.push(key);</span>
-<span class="cstat-no" title="statement not covered" >                $scope.original_data.push(value);</span>
+            $.each($scope.data, function (key, value) {
+                $scope.original_keys.push(key);
+                $scope.original_data.push(value);
             });
         },
-<span class="fstat-no" title="function not covered" >        function err(error) {</span>
-<span class="cstat-no" title="statement not covered" >            $location.path("/404");</span>
+        function err(error) {
+            $location.path("/404");
 &nbsp;
         }
     );
@@ -370,11 +370,11 @@ angular.module('maaperture').controller('ProfileCtrl', <span class="fstat-no" ti
 &nbsp;
 &nbsp;
     //Funzione per richiedere la cancellazione del profilo
-<span class="cstat-no" title="statement not covered" >    $scope.delete_document = <span class="fstat-no" title="function not covered" >function () {</span></span>
-<span class="cstat-no" title="statement not covered" >        ProfileEditService.remove({}).$promise.then(</span>
+    $scope.delete_document = function () {
+        ProfileEditService.remove({}).$promise.then(
 &nbsp;
-<span class="fstat-no" title="function not covered" >            function success() {</span>
-<span class="cstat-no" title="statement not covered" >                $location.path('/');</span>
+            function success() {
+                $location.path('/');
             },
 <span class="fstat-no" title="function not covered" >            function err(error) {</span>
             }
@@ -386,7 +386,7 @@ angular.module('maaperture').controller('ProfileCtrl', <span class="fstat-no" ti
 
 </div>
 <div class="footer">
-    <div class="meta">Generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Mon Jul 14 2014 23:43:55 GMT+0200 (CEST)</div>
+    <div class="meta">Generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Tue Jul 15 2014 23:12:27 GMT+0200 (CEST)</div>
 </div>
 
 <script src="../prettify.js"></script>
