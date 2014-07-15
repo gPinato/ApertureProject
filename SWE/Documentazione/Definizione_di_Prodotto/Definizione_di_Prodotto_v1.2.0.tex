@@ -104,7 +104,7 @@ attività di codifica.
 \begin{itemize}
 \item \grassetto{Analisi dei requisiti}: \emph{Analisi\_{}dei\_{}Requisiti\_{}v\versioneAnalisiDeiRequisiti{}.pdf};
 \item \grassetto{Norme di Progetto}: \emph{Norme\_{}di\_{}Progetto\_{}v\versioneNormeDiProgetto{}.pdf};
-\item \grassetto{Specifica Tecnica}: \emph{Specifica\_{}Tecnica\_{}v\versioneNormeDiProgetto{}.pdf};
+\item \grassetto{Specifica Tecnica}: \emph{Specifica\_{}Tecnica\_{}v\versioneSpecificaTecnica{}.pdf};
 \end{itemize}
 
 \subsubsection{Informativi}
@@ -150,6 +150,99 @@ Gli strumenti di lavoro sono trattati nelle sezioni 4.3.5.2.2 e 4.3.5.3.2 del do
 %qui ci va la figura della vista generale dei package
 Namespace generale del progetto. In accordo con il design pattern architetturale Client-Server che 
 abbiamo adottato, le interazioni che il Client ha con il Server sono di tipo REST-like.
+
+
+\subsection{::Installer}
+Package che gestisce l'installazione del framework MaaP. 
+
+
+\subsubsection{@maaperture}
+
+\begin{description}
+ \item[Descrizione] \hfill \\
+Modulo di installazione del framework Maap. Si occupa di gestire le richiesti provenienti da linea di comando gestendo i vari comandi.
+ \item[Dipendendenze] \hfill
+ \begin{itemize}
+ 	\item @fs;
+ 	\item @commander;
+ 	\item @ncp.
+ \end{itemize}
+ \item[Metodi] \hfill
+  \begin{mldescription}
+   \mlitem{printHelpTitle()} \hfill
+   \begin{description}
+    \item[Descrizione] \hfill \\
+    Si occupa di stampare nel log il nome, la versione e la descrizione del framework Maap.
+   \end{description}
+  
+   \mlitem{changeFileRow(filePath, string2find, newString)} \hfill
+      \begin{description}
+      	    \item[Parametri] \hfill 
+      	     \begin{description}
+      	      \item['filePath'] \hfill \\
+      	      Path del file da modificare.
+      	      \item[string2find] \hfill \\
+      	      Stringa con la quale inizia la riga da modificare.
+      	      \item[newString] \hfill \\
+      	      Stringa con i nuovi caratteri da aggiungere.
+      	     \end{description}
+      	    
+       \item[Descrizione] \hfill \\
+      Si occupa di cambiare una riga del file specificato sostituendola con quella passata in ingresso.
+      \end{description}
+
+   \mlitem{setProjectName(destination, project\_name)} \hfill
+   \begin{description}
+   \item[Parametri] \hfill 
+         	     \begin{description}
+         	      \item['destination'] \hfill \\
+         	      Path di dove sarà situato il progetto.
+         	      \item[project\_name] \hfill \\
+         	      Nome del progetto.
+         	      
+         	     \end{description}
+    \item[Descrizione] \hfill \\
+    Si occupa di sostituire nei file di configurazione del progetto il nome del progetto scelto.
+   \end{description}
+
+   \mlitem{initProject(project\_name, output\_path)} \hfill
+   \begin{description}
+  
+    \item[Descrizione] \hfill \\
+	    Si occupa di copiare ricorsivamente i file di default del progetto Maap all'interno del percorso specificato in output\_path settando il nome di progetto specificato con project\_name.
+   \end{description}
+   \end{mldescription}
+   \item[Comandi] \hfill
+     \begin{mldescription}
+      \mlitem{maaperture} \hfill
+      \begin{description}
+       \item[Descrizione] \hfill \\
+       Si occupa di stampare la versione del framework, e un piccolo help sull'uso del framework.
+      \end{description}
+      \mlitem{create} \hfill
+            \begin{description}
+            \item[Parametri] \hfill 
+                         	     \begin{description}
+                         	      \item['name'] \hfill \\
+                         	      Nome del progetto.
+                         	      \item[output] \hfill \\
+                         	      Percorso di installazione del progetto.
+                         	      
+                         	     \end{description}
+             \item[Descrizione] \hfill \\
+             Si occupa di creare il progetto nella cartella specificate con il nome scelto
+            \end{description}
+      \mlitem{--help} \hfill
+                  \begin{description}
+                   \item[Descrizione] \hfill \\
+                   Si occupa di stampare degli esempi d'uso dei comandi.
+                  \end{description}
+      \mlitem{*} \hfill
+      \begin{description}
+      \item[Descrizione] \hfill \\
+      Si occupa di invocare printHelpTitle().
+      \end{description}
+\end{description}
 
 \section{Specifica componenti MaaP::Server}
 
