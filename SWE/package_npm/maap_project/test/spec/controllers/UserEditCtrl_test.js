@@ -1,54 +1,89 @@
 /**
- * File: ControllerColl;
+ * File: DocumentEditCtrl_test;
  * Module: modulo di appartenenza;
  * Author: jack;
- * Created: 10/05/14;
+ * Created: 16/05/14;
  * Version: versione corrente;
  * Description: descrizione dettagliata del file;
  * Modification History: tabella dei cambiamenti effettuati sul file.
  */
+
 'use strict';
 
 describe('Controller: UsersEditCtrl', function () {
 
     // load the controller's module
-    beforeEach(module('maaperture'));
+    beforeEach(module('maaperture', 'services', 'ngResource', 'ngRoute'));
 
     var MainCtrl,
         routeParams,
+        $httpBackend,
         scope,
-
-        mockBackend;
-
+        data = { label: [ '_id', 'Timestamp', 'Message' ],
+            data:
+            {   timestamp: 'today',
+                message: 'AMAIL',
+                level: 'info' } };
     // Initialize the controller and a mock scope
-    beforeEach(inject(function ($controller, $rootScope, _$httpBackend_) {
+    beforeEach(inject(function ($controller, $rootScope,_$httpBackend_ ) {
         scope = $rootScope.$new();
-        mockBackend = _$httpBackend_;
+        $httpBackend = _$httpBackend_;
+
         routeParams ={};
-        routeParams.user_id=0;
+        routeParams.col_id=0;
+        routeParams.doc_id=0;
 
         MainCtrl = $controller('UsersEditCtrl', {
             $scope: scope,
             $routeParams:routeParams
         });
-
     }));
 
-    beforeEach(function () {
-        angular.mock.inject(function ($injector) {
-            mockBackend = $injector.get('$httpBackend');
-        });
+    it('should set some data on the scope when successful', function () {
+        // Given
+        $httpBackend.whenGET('http://localhost:9000/api/users/edit').respond(200, data);
+
+        // When
+        $httpBackend.flush();
+        // Then
+
+
     });
 
+    it('should display an error when not successful', function () {
+        // Given
+        $httpBackend.whenGET('http://localhost:9000/api/users/edit').respond(400);
 
-    it('should initialize data correctly', function () {
-        expect(scope.newPassword1).toBe(null);
-        expect(scope.newPassowrd2).toBe(null);
-        expect(scope.original_data.length).toBe(0);
-        expect(scope.original_keys.length).toBe(0);
-        expect(scope.admin).toBe(true);
+        // When
+        //scope.loadData();
+        $httpBackend.flush();
+        // Then
+
     });
 
+    it('should delete a document correctly', function () {
+        // Given
+        $httpBackend.whenGET('http://localhost:9000/api/users/edit').respond(200,data);
+        $httpBackend.whenDELETE('http://localhost:9000/api/users/edit').respond(200);
+
+        // When
+        scope.delete_document();
+        $httpBackend.flush();
+        // Then
+        //test sul path
+
+    });
+
+    it('should display an error when the delete fails', function () {
+        // Given
+        $httpBackend.whenGET('http://localhost:9000/api/users/edit').respond(400);
+        $httpBackend.whenDELETE('http://localhost:9000/api/users/edit').respond(200);
+
+        // When
+        scope.delete_document();
+        $httpBackend.flush();
+        // Then
 
 
+    });
 });
