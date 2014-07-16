@@ -28,8 +28,9 @@ angular.module('maaperture').controller('DocumentEditCtrl', function ($scope, $l
             col_id: $routeParams.col_id,
             doc_id: $routeParams.doc_id }).$promise.then(
         function success(data) {
-            $scope.original_data =  JSON.stringify(data, undefined, 2); // indentation level = 2
-
+			delete data.$promise;
+			delete data.$resolved;
+	        $scope.original_data =  JSON.stringify(data, undefined, 2); // indentation level = 2
         },
         function err(error) {
             $location.path("/404");
