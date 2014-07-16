@@ -46,7 +46,7 @@ describe('Controller: IndexCtrl', function () {
 
     it('should set some data on the scope when successful', function () {
         // Given
-        $httpBackend.whenGET('http://localhost:9000/api/indexes').respond(200, data);
+        $httpBackend.whenGET('http://localhost:9000/api/indexes?page=0').respond(200, data);
         $httpBackend.whenGET('views/dashboard.html').respond(200);
 
 
@@ -57,7 +57,6 @@ describe('Controller: IndexCtrl', function () {
         expect(scope.pages).toBe(data[2].pages);
         expect(scope.labels[0]).toBe('Index name');
         expect(scope.labels[1]).toBe('Collection');
-       // expect(scope.labels[3]).toBe('Selected fields');
 
         expect(scope.data[0]._id).toBe('53a00ffa23365b641abdfa7e coaches');
         expect(scope.pages).toBe(data[2].pages);
@@ -68,7 +67,7 @@ describe('Controller: IndexCtrl', function () {
 
     it('should display an error when not successful', function () {
         // Given
-        $httpBackend.whenGET('http://localhost:9000/api/indexes').respond(400);
+        $httpBackend.whenGET('http://localhost:9000/api/indexes?page=0').respond(400);
         $httpBackend.whenGET('views/dashboard.html').respond(200);
         $httpBackend.whenGET('views/404.html').respond(200);
 
@@ -83,7 +82,7 @@ describe('Controller: IndexCtrl', function () {
 
     it('should delete an index correctly', function () {
         // Given
-        $httpBackend.whenGET('http://localhost:9000/api/indexes').respond(400);
+        $httpBackend.whenGET('http://localhost:9000/api/indexes?page=0').respond(400);
         $httpBackend.whenDELETE('http://localhost:9000/api/indexes/0/0').respond(400);
         $httpBackend.whenGET('views/404.html').respond(200);
 
@@ -100,7 +99,7 @@ describe('Controller: IndexCtrl', function () {
 
     it('should display an error when the delete fails', function () {
         // Given
-        $httpBackend.whenGET('http://localhost:9000/api/indexes').respond(400);
+        $httpBackend.whenGET('http://localhost:9000/api/indexes?page=0').respond(400);
         $httpBackend.whenDELETE('http://localhost:9000/api/indexes/0/0').respond(400);
 
         $httpBackend.whenGET('views/dashboard.html').respond(200);

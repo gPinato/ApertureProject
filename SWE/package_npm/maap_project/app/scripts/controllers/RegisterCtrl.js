@@ -29,13 +29,7 @@ angular.module('maaperture').controller('RegisterCtrl', function ($scope, $locat
         if ($scope.signup_form.$valid) {
             RegisterService.register({},
                 $scope.credentials).$promise.then(
-                function success(data, status) {
-					if ( data.level === 1){
-						$cookieStore.put("isAdmin",true);
-					}
-					else{
-						$cookieStore.put("isAdmin",false);
-					}
+                function success() {
 					$location.path('/');
 					$route.reload();
 				},
