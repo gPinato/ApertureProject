@@ -199,16 +199,16 @@
     <h1>Code coverage report for <span class="entity">controllers/IndexCtrl.js</span></h1>
     <h2>
         
-        Statements: <span class="metric">88.06% <small>(59 / 67)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Statements: <span class="metric">97.01% <small>(65 / 67)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
         
         
         Branches: <span class="metric">100% <small>(18 / 18)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
         
         
-        Functions: <span class="metric">83.33% <small>(15 / 18)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Functions: <span class="metric">94.12% <small>(16 / 17)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
         
         
-        Lines: <span class="metric">88.06% <small>(59 / 67)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Lines: <span class="metric">97.01% <small>(65 / 67)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
         
         Ignored: <span class="metric"><span class="ignore-none">none</span></span> &nbsp;&nbsp;&nbsp;&nbsp;
     </h2>
@@ -414,7 +414,12 @@
 196
 197
 198
-199</td><td class="line-coverage"><span class="cline-any cline-neutral">&nbsp;</span>
+199
+200
+201
+202
+203
+204</td><td class="line-coverage"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -441,6 +446,7 @@
 <span class="cline-any cline-yes">11</span>
 <span class="cline-any cline-yes">11</span>
 <span class="cline-any cline-yes">11</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">11</span>
 <span class="cline-any cline-yes">11</span>
 <span class="cline-any cline-yes">11</span>
@@ -456,27 +462,31 @@
 <span class="cline-any cline-yes">18</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1</span>
-<span class="cline-any cline-yes">1</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4</span>
+<span class="cline-any cline-yes">4</span>
+<span class="cline-any cline-yes">4</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -637,8 +647,9 @@ angular.module('maaperture').controller('IndexCtrl', function ($scope, $route, $
     //Funzione di inizializzazione del controller
     var init = function () {
         $scope.current_sorted_column = null;
-        $scope.column_original_name = [];
         $scope.current_sort = null;
+        $scope.column_original_name = [];
+&nbsp;
         $scope.current_page = 0;
         $scope.rows = [];
         $scope.getData();
@@ -652,29 +663,33 @@ angular.module('maaperture').controller('IndexCtrl', function ($scope, $route, $
     $scope.getData = function () {
 &nbsp;
         IndexService.query({
+            index_name: null,
+            col_name:  null,
+            order: $scope.current_sort,
+            column: $scope.column_original_name[$scope.current_sorted_column],
+            page: $scope.current_page
 &nbsp;
             }).$promise.then( function success(response) {
                 $scope.labels = response[0];
                 $scope.data = response[1];
-                //$scope.pages = response[2].pages;
+                $scope.pages = response[2].pages;
+&nbsp;
 &nbsp;
                 //Salva i nomi originali delle colonne per le query a database
-                $.each($scope.data[0].data, <span class="fstat-no" title="function not covered" >function (key, value) {</span>
-<span class="cstat-no" title="statement not covered" >                    $scope.column_original_name.push(key);</span>
-                });
 &nbsp;
+                $scope.column_original_name = Object.keys( $scope.data[0].data);
 &nbsp;
-<span class="cstat-no" title="statement not covered" >                for (var i = 0; i &lt; Object.keys($scope.data).length; i++) {</span>
+                for (var i = 0; i &lt; Object.keys($scope.data).length; i++) {
                     //Copia i valori da stampare in un array per mantenere l'ordine
                     //Ogni riga viene salvata in un array contenuto nell'oggetto rows.
-<span class="cstat-no" title="statement not covered" >                    $scope.rows[i] = [];</span>
-<span class="cstat-no" title="statement not covered" >                    $.each($scope.data[i].data, <span class="fstat-no" title="function not covered" >function (key, value) {</span></span>
-<span class="cstat-no" title="statement not covered" >                        $scope.rows[i].push(value);</span>
+                    $scope.rows[i] = [];
+                    $.each($scope.data[i].data, function (key, value) {
+                        $scope.rows[i].push(value);
                     });
 &nbsp;
                 }
                 //Nel caso di aggiornamento dei dati rimuovo quelli vecchi.
-<span class="cstat-no" title="statement not covered" >                $scope.rows.splice(i, $scope.rows.length);</span>
+                $scope.rows.splice(i, $scope.rows.length);
 &nbsp;
             },
             function err(error) {
@@ -815,7 +830,7 @@ angular.module('maaperture').controller('IndexCtrl', function ($scope, $route, $
 
 </div>
 <div class="footer">
-    <div class="meta">Generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Tue Jul 15 2014 23:12:27 GMT+0200 (CEST)</div>
+    <div class="meta">Generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Thu Jul 17 2014 00:47:25 GMT+0200 (CEST)</div>
 </div>
 
 <script src="../prettify.js"></script>
