@@ -230,9 +230,8 @@ exports.getCollectionsList = function(find) {
 			}		
 		}
 
-		//se ho almeno un risultato aggiorno la lista delle collections
-		if(result.length > 0)
-			collectionsList = result;
+		//mando la lista di risultati sempre, anche vuota se serve!
+		collectionsList = result;
 	}
 	
 	//restituisco la lista delle collections

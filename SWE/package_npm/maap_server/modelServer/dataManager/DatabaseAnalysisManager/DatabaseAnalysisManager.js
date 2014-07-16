@@ -33,7 +33,12 @@ exports.sendCollectionsList = function(req, res) {
 
 	//prelevo il campo da ricercare
 	var find = req.params.find; 
-	console.log('got a find request: ' + req.params.find);
+	
+	if(find == undefined){
+		find = '';
+	}else{
+		console.log('got a find request: ' + find);
+	}
 	
 	//prelevo la lista di collection
 	var collectionsList = retriever.getCollectionsList(find);
