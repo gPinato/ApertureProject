@@ -563,11 +563,11 @@ Per ultima cosa, il \grassetto{@dispatcher} gestisce eventuali richieste di riso
     Intercetta la richiesta di inserire un indice nel database di analisi. Verifica che essa sia autenticata come amministratore e richiama il metodo \textit{createIndex} del \grassetto{@datamanager}. I dati associati alla richiesta \textit{PUT} contengono le informazioni del nuovo indice da inserire nel Database nella sezione degli indici. 
     \end{description}
     
-    \mlitem{delete('/api/indexes/:index\_name', passport.checkAuthenticatedAdmin,\\datamanager.deleteIndex)} \hfill 
+    \mlitem{delete('/api/indexes/:col\_name/:index\_name', passport.checkAuthenticatedAdmin,\\datamanager.deleteIndex)} \hfill 
  \begin{description}
     \item[Parametri] \hfill
      \begin{description}
-      \item['/api/indexes/:index\_name'] \hfill \\
+      \item['/api/indexes/:col\_name/:index\_name'] \hfill \\
       Stringa contenente l'indirizzo della API da richiamare.
       \item[passport.checkAuthenticatedAdmin] \hfill \\
       Funzione di \grassetto{@passport} che verifica che l'utente sia autenticato e che il suo livello di accesso sia "Amministratore".
@@ -580,8 +580,43 @@ Per ultima cosa, il \grassetto{@dispatcher} gestisce eventuali richieste di riso
  
  \end{mldescription} 
  
+ \item[Registrazione nuovo utente per l'admin]
+ \begin{mldescription}
+  \mlitem{put('/api/signup', passport.checkAuthenticatedAdmin, usermanager.userSignup,function(req,res){res.send(200);})}
+  \begin{description}
+     \item[Parametri] \hfill
+      \begin{description}
+       \item['/api/signup'] \hfill \\
+       Stringa contenente l'indirizzo della API da richiamare.
+       \item[passport.checkAuthenticatedAdmincated]
+       Funzione di \grassetto{@passport} che verifica che l'utente sia autenticato e che il suo livello di accesso sia "Amministratore".
+       \item[usermanager.userSignup] \hfill \\
+       Callback da richiamare al termine dell'autenticazione.
+       \item[function(req,res){res.send(200);}] \hfill \\
+       Callback che risponde alla richiesta HTTP del client con codice 200 ovvero successo.
+      \end{description}
+     \item[Descrizione]
+     Intercetta la richiesta di inserire un nuovo utente Admin. Verifica che essa sia autenticata come amministratore e richiama il metodo \textit{userSignup} del \grassetto{@usermanager} e alla fine invia la risposta di successo al Client.
+  \end{description}
+ \end{mldescription}
+  
  \item[Gestione Login]
  \begin{mldescription}
+ \mlitem{post('/api/forgot', passport.checkNotAuthenticated, passport.forgotPassword)}
+  \begin{description}
+     \item[Parametri] \hfill
+      \begin{description}
+       \item['/api/forgot'] \hfill \\
+       Stringa contenente l'indirizzo della API da richiamare.
+       \item[passport.checkNotAuthenticated]
+       Funzione di \grassetto{@passport} che verifica che l'utente non sia autenticato.
+       \item[passport.forgotPassword] \hfill \\
+       Callback da richiamare al termine dell'autenticazione.
+      \end{description}
+     \item[Descrizione]
+     Gestisce la richiesta di recupero della password nel caso in cui sia stata dimenticata. La condizione per richiedere questa informazione è che l'utente non sia autenticato, da qui la chiamata alla funzione \textit{passport.checkNotAuthenticated}. Nel caso la chiamata alla precedente funzione abbia successo, viene richiamato il metodo \textit{forgotPassword} di \grassetto{@passport}.
+  \end{description}
+  
  \mlitem{post('/api/check/email', passport.checkNotAuthenticated, usermanager.checkMail)}
  \begin{description}
     \item[Parametri] \hfill
@@ -597,7 +632,7 @@ Per ultima cosa, il \grassetto{@dispatcher} gestisce eventuali richieste di riso
     Gestisce la richiesta di controllo della presenza di una particolare email già registrata al sistema. La condizione per richiedere questa informazione è che l'utente non sia autenticato, da qui la chiamata alla funzione \textit{passport.checkNotAuthenticated}. Nel caso la chiamata alla precedente funzione abbia successo, viene richiamato il metodo \textit{checkMail} di \grassetto{@DatabaseAnalysisManager}.
  \end{description}
  
- \mlitem{post('/api/signup', passport.checkNotAuthenticated, usermanager.userSignup)}
+ \mlitem{post('/api/signup', passport.checkNotAuthenticated, usermanager.userSignup,passport.authenticate, function(req,res){res.send(200););})}
  \begin{description}
     \item[Parametri] \hfill
      \begin{description}
@@ -606,23 +641,14 @@ Per ultima cosa, il \grassetto{@dispatcher} gestisce eventuali richieste di riso
       \item[passport.checkNotAuthenticated]
       Funzione di \grassetto{@passport} che verifica che l'utente non sia autenticato.
       \item[usermanager.userSignup] \hfill \\
-      Callback da richiamare al termine dell'autenticazione.
+      Callback da richiamare per registrare l'utente;
+      \item[passport.authenticate] \hfill \\
+      Callback da richiamare per eseguire l'autenticazione;
+      \item[function(req,res){console.log('req.user);res.send(200););}] \hfill \\
+      Callback da richiamare al termine dell'autenticazione per inviare una risposta al server.
      \end{description}
     \item[Descrizione]
-    Gestisce la richiesta di registrazione da parte di un utente non autenticato. Se l'utente associato alla richiesta non è autenticato, viene richiamato il metodo \textit{userSignup} di \grassetto{@DatabaseAnalysisManager}.
- \end{description}
- 
- \mlitem{get('/loggedin', function(req, res) \{ res.send(req.isAuthenticated() ? req.user : '0'); \})}
- \begin{description}
-  \item[Parametri]
-   \begin{mldescription}
-    \mlitem{'/loggedin'} \hfill \\
-    Stringa contenente l'indirizzo della API da richiamare.
-    \mlitem{function(req, res) \{ res.send(req.isAuthenticated() ? req.user : '0'); \}} \hfill \\
-    Funzione anonima che richiama il metodo isAuthenticated sulla richiesta HTTP. Se il metodo ritorna valore booleano \textbf{true}, viene ritornato al  il proprio campo \textit{user}, altrimenti ritorna 0.
-   \end{mldescription}
-  \item[Descrizione] \hfill \\
- Gestisce la richiesta di controllo dell'avvenuta autenticazione di un utente. Viene richiamato sulla richiesta HTTP il metodo locale \textit{isAuthenticated()}. Se l'utente è autenticato, gli vengono inviate le proprie informazioni associate, altrimenti viene ritornato 0.
+    Gestisce la richiesta di registrazione da parte di un utente non autenticato. Se l'utente associato alla richiesta non è autenticato, viene richiamato il metodo \textit{userSignup} di \grassetto{@DatabaseAnalysisManager} per creare l'utente, il metodo \textit{authenticate} di \grassetto{@passport} per eseguire l'autenticazione e poi viene inviata la risposta di successo al client.
  \end{description}
  
  \mlitem{post('/api/login', passport.checkNotAuthenticated, passport.authenticate, function(req, res) \{ res.send(req.user); \})}
@@ -642,7 +668,7 @@ Per ultima cosa, il \grassetto{@dispatcher} gestisce eventuali richieste di riso
  Gestisce le richieste di autenticazione al Server. L'utente che richiede questa operazione non deve essere autenticato ma deve essere presente nel database degli utenti presente nel Server. Nel caso di risposta affermativa ad entrambe le precedenti condizioni, viene creata una nuova sessione per la richiesta HTTP.
  \end{description}
  
- \mlitem{get('/api/logout', passport.checkAuthenticated, function(req, res) \{ req.logout(); res.send(200); \})}
+ \mlitem{get('/api/logout', passport.checkAuthenticated, function(req, res) \{ req.session.destroy(function(err){ res.send(200);}) \})}
  \begin{description}
   \item[Parametri]
    \begin{mldescription}
@@ -650,8 +676,8 @@ Per ultima cosa, il \grassetto{@dispatcher} gestisce eventuali richieste di riso
     Stringa contenente l'indirizzo della API da richiamare.
     \mlitem{passport.checkAuthenticated} \hfill \\
     Funzione di \grassetto{@passport} che verifica che l'utente sia autenticato.
-    \mlitem{function(req, res) \{ req.logout(); res.send(200); \}} \hfill \\
-    Funzione anonima che effettua la disconnessione della richiesta HTTP \textit{req} e manda al Client il codice \textit{http} 200.
+    \mlitem{function(req, res) \{ req.session.destroy(function(err){ res.send(200);}); \}} \hfill \\
+    Funzione anonima che effettua la distruzione della sessione della richiesta HTTP \textit{req} e manda al Client il codice \textit{http} 200 di successo.
    \end{mldescription}
   \item[Descrizione] \hfill \\
  Gestisce le richieste di disconnessione dal sistema. Per effettuare questa operazione, l'utente deve essere autenticato. In caso affermativo, viene richiesto il \textit{logout()} della richiesta HTTP.
