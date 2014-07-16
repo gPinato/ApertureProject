@@ -23,10 +23,12 @@ var DB = require('../../database/MongooseDBFramework');
 var JSonComposer = require('../JSonComposer');
 
 /**
- * controlla che la mail non sia gia presente nel sistema durante la registrazione
+ * Effettua un controllo di presenza nel database utenti della email specificata dal Client.
+ *In caso di presenza, viene inviato al client un errore http 400. In caso contrario, viene
+ *segnalato all'utente la mancanza di un indirizzo email gi‡ registrato e viene inviato il codice http 304.
  *
- *@param req - richiesta del client
- *@param res - risposta per il client
+ *@param req - Oggetto contenente i parametri e le informazioni della richiesta HTTP del Client.
+ *@param res - Oggetto duale a req su cui invocare i metodi per inviare informazioni al Client richiedente.
  */
 exports.checkMail = function(req, res) {
 
@@ -59,10 +61,13 @@ exports.checkMail = function(req, res) {
 };
 
 /**
- * viene gestita la registrazione di un utente
+ * Richiama il metodo addUser di DataRetrieverUsers per registrare un nuovo
+ *utente al sistema. Vengono passati al metodo addUser le credenziali contenute nell'oggetto req.
+ *In caso di avvenuto inserimento, viene inviato al Client il codice di
+ *conferma http 200. In caso contrario, viene inviato il codice di errore http 404.
  *
- *@param req - richiesta del client
- *@param res - risposta per il client
+ *@param req - Oggetto contenente i parametri e le informazioni della richiesta HTTP del Client.
+ *@param res - Oggetto duale a req su cui invocare i metodi per inviare informazioni al Client richiedente.
  */
 exports.userSignup = function(req, res, next) {
 	//stampo sulla console un messaggio di registrazione utente
@@ -120,10 +125,12 @@ exports.userSignup = function(req, res, next) {
 };
 
 /**
- * richiede la lista dei dati del proprio profilo utente
+ * Richiama il metodo getUserProfile di @ÏDataRetrieverUsers per ottenere l'oggetto
+ *utente sulla base dei parametri inviati da req. Successivamente invia a res il JSON
+ *dell'utente creato tramite il metodo createUserProfile di JsonComposer.
  *
- *@param req - richiesta del client
- *@param res - risposta per il client
+ *@param req - Oggetto contenente i parametri e le informazioni della richiesta HTTP del Client.
+ *@param res - Oggetto duale a req su cui invocare i metodi per inviare informazioni al Client richiedente.
  */
 exports.sendUserProfile = function(req, res) {
 	//prendo l'id dell'user
@@ -138,10 +145,12 @@ exports.sendUserProfile = function(req, res) {
 //req.session.passport.user        contiene _id, email, password, level
 
 /**
- * richiede la lista dei dati del proprio profilo per editarlo
+ * Richiama il metodo getUserProfile di DataRetrieverUsers per ottenere
+ *l'oggetto utente sulla base dei parametri inviati da req. Successivamente invia a res
+ *il JSON dell'utente creato tramite il metodo createUserProfileEdit di JsonComposer.
  *
- *@param req - richiesta del client
- *@param res - risposta per il client
+ *@param req - Oggetto contenente i parametri e le informazioni della richiesta HTTP del Client.
+ *@param res - Oggetto duale a req su cui invocare i metodi per inviare informazioni al Client richiedente.
  */
 exports.sendUserProfileEdit = function(req, res) {
 	//prendo l'id dell'user
@@ -155,10 +164,11 @@ exports.sendUserProfileEdit = function(req, res) {
 };
 
 /**
- * esegue l'aggiornamento dei dati del proprio profilo
+ * Richiama il metodo updateUserProfile di DataRetrieverUsers passando come
+ *parametro il richiedente req del Client. Ritorna al Client un codice http 200 in caso di riuscita, un codice 400 altrimenti.
  *
- *@param req - richiesta del client
- *@param res - risposta per il client
+ *@param req - Oggetto contenente i parametri e le informazioni della richiesta HTTP del Client.
+ *@param res - Oggetto duale a req su cui invocare i metodi per inviare informazioni al Client richiedente.
  */
 exports.updateUserProfile = function(req, res) {
 
@@ -179,10 +189,12 @@ exports.updateUserProfile = function(req, res) {
 };
 
 /**
- * richiede la lista di utenti registrati
+ * Richiama il metodo getUsersList di DataRetrieverUsers utilizzando i parametri
+ * di visualizzazione di req o assegnando dei valori di default. Ottenuti i dati,
+ *risponde a res inviando il risultato della chiamata del metodo createUsersList di JsonComposer.
  *
- *@param req - richiesta del client
- *@param res - risposta per il client
+ *@param req - Oggetto contenente i parametri e le informazioni della richiesta HTTP del Client.
+ *@param res - Oggetto duale a req su cui invocare i metodi per inviare informazioni al Client richiedente.
  */
 exports.getUsersList = function(req, res) {
 	//stampo sulla console un messaggio di richiesta utenti registrati
@@ -204,10 +216,11 @@ exports.getUsersList = function(req, res) {
 };
 
 /**
- * richiede i dati di un utente per la visualizzazione
+ * Richiama il metodo getUserProfile di DataRetrieverUsers passando come parametro
+ * il campo user id di req. Risponde a res inviando il risultato della chiamata del metodo createUser di JsonComposer.
  *
- *@param req - richiesta del client
- *@param res - risposta per il client
+ *@param req - Oggetto contenente i parametri e le informazioni della richiesta HTTP del Client.
+ *@param res - Oggetto duale a req su cui invocare i metodi per inviare informazioni al Client richiedente.
  */
 exports.sendUser = function(req, res) {
 	//stampo un messaggio sulla console per richiedere i dati utente
@@ -222,10 +235,11 @@ exports.sendUser = function(req, res) {
 };
 
 /**
- * richiede i dati di un utente per l'edit
+ * Richiama il metodo getUserProfile di DataRetrieverUsers passando come parametro il campo user id di req.
+ *Risponde a res inviando il risultato della chiamata del metodo createUser di JsonComposer.
  *
- *@param req - richiesta del client
- *@param res - risposta per il client
+ *@param req - Oggetto contenente i parametri e le informazioni della richiesta HTTP del Client.
+ *@param res - Oggetto duale a req su cui invocare i metodi per inviare informazioni al Client richiedente.
  */
 exports.sendUserEdit = function(req, res) {
 	//stampo sulla console un messaggio di modifica utente
@@ -240,10 +254,11 @@ exports.sendUserEdit = function(req, res) {
 };
 
 /**
- * esegue l'update dei dati di un utente da parte dell'admin
+ * Richiama il metodo updateUser di @DataRetrieverUsers passando come parametro il richiedente req. 
+ *Ritorna al Client un codice http 200 in caso di riuscita, un codice 400 altrimenti.
  *
- *@param req - richiesta del client
- *@param res - risposta per il client
+ *@param req - Oggetto contenente i parametri e le informazioni della richiesta HTTP del Client.
+ *@param res - Oggetto duale a req su cui invocare i metodi per inviare informazioni al Client richiedente.
  */
 exports.updateUser = function(req, res) {
 	//stampo sulla console un messaggio di aggiornamento dati utente
@@ -263,10 +278,11 @@ exports.updateUser = function(req, res) {
 };
 
 /**
- * viene rimosso un utente
+ * Richiama il metodo removeUser di @DataRetrieverUsers passando come parametro il campo email del richiedente req. 
+ *Ritorna al Client un codice http 200 in caso di riuscita, un codice 400 altrimenti.
  *
- *@param req - richiesta del client
- *@param res - risposta per il client
+ *@param req - Oggetto contenente i parametri e le informazioni della richiesta HTTP del Client.
+ *@param res - Oggetto duale a req su cui invocare i metodi per inviare informazioni al Client richiedente.
  */
 exports.removeUser = function(req, res) {
 	//stampo sulla console un messaggio di rimozione utente

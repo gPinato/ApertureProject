@@ -18,11 +18,12 @@ var DB = require('../../database/MongooseDBFramework');
 
 
  /**
- * Aggiunge un utente al database degli utenti
+ * La funzione inserisce un nuovo utente nel database utenti del sistema. Alla fine dell'inserimento,
+ *se non sono sollevati errori richiama la funzione callback assegnando come parametro true, altrimenti assegna il parametro false.
  *
- *@param email - email dell'utente da aggiungere
- *@param password - password dell'utente da aggiungere
- *@param level - livello dell'utente da aggiungere
+ *@param email -Stringa contenente l'indirizzo email del nuovo utente.
+ *@param password - Stringa contenente la password del nuovo utente.
+ *@param level - Numero intero che identifica il livello di permesso di un utente. Il numero identifica un utente standard, 1 individua un utente admin.
  *@param callback - funzione da chiamare al termine dell'esecuzione
  */
 //
@@ -43,10 +44,12 @@ exports.addUser = function(email, password, level, callback) {
 };
 
  /**
- * Recupera il profilo di un utente
+ * Viene ricercato nel database utenti un utente registrato con id uguale a user id. 
+ *Nel caso venga trovato, viene richiamata la funzione callback passando come parametro
+ *l'utente trovato, altrimenti viene chiamata con un oggetto vuoto.
  *
- *@param user_id - id dell'utente da recuperare
- *@param callback - funzione da chiamare al termine dell'esecuzione
+ *@param user_id - Id univoco di un utente registrato al sistema.
+ *@param callback - funzione da chiamare al termine dell'esecuzione.
  */
 
 var getUserProfile = function(user_id, callback) {
@@ -72,10 +75,14 @@ var getUserProfile = function(user_id, callback) {
 exports.getUserProfile = getUserProfile;
 
  /**
- * Aggiorna profilo utente
+ *Vengono estratti i dati da aggiornare dall'oggetto req della richiesta HTTP. 
+ *Successivamente viene effettuata una query di aggiornamento sul database degli utenti
+ *con i dati forniti da req. In caso l'aggiornamento dei dati avvenga con successo,
+ *viene chiamata la funzione callback con argomento true, altrimenti viene chiamata
+ *con argomento false.
  *
- *@param req - richiesta del client
- *@param callback - funzione da chiamare al termine dell'esecuzione
+ *@param req - Oggetto contenente i parametri e le informazioni della richiesta HTTP del Client.
+ *@param callback - funzione da chiamare al termine dell'esecuzione.
  */
 
 
@@ -128,13 +135,18 @@ exports.updateUserProfile = function(req, callback) {
 }; 
 
  /**
- * Recupera la lista utenti
+ * Viene innanzitutto importata l'intera lista degli utenti del sistema. Successivamente,
+ * se il risultato della query è vuoto, viene richiamata la funzione callback come
+ *argomento un oggetto vuoto. Altrimenti, viene processata l'intera lista al fine di
+ *invocare la callback specificando come argomento l'insieme di Document desiderato.
+ *I Document saranno quelli che corrispondono alla pagina page correntemente
+ *richiesta con l'ordinamento order desiderato sulla colonna scelta column.
  *
- *@param column - colonna sulla quale effettuare l'ordinamento
- *@param order - tipo di ordinamento
- *@param page - numero di pagina
- *@param perpage - numero di elementi per ogni pagina
- *@param callback - funzione da chiamare al termine dell'esecuzione
+ *@param column - Stringa contenente il nome della colonna su cui ordinare gli utenti.
+ *@param order - Stringa che specifica l'ordinamento ascendente o discendente degli utenti.
+ *@param page - Numero intero che specifica il numero della pagina di utenti da visualizzare.
+ *@param perpage - Numero intero che specifica la quantità di utenti da visualizzare per pagina.
+ *@param callback - funzione da chiamare al termine dell'esecuzione.
  */
 
 //
@@ -191,10 +203,13 @@ exports.getUsersList = function(column, order, page, perpage, callback) {
 }; 
 
 /**
- * Update user per administrator
+ * Vengono estratti i dati da aggiornare dalla richiesta HTTP req inerenti all'utente da aggiornare
+ *Successivamente viene effettuata la query di aggiornamento sul
+ *modello del database utenti estratto. Infine viene richiamata la funzione callback
+ *con argomento true se l'aggiornamento è andato a buon fine, l'argomento è false altrimenti.
  *
- *@param req - richiesta del client
- *@param callback - funzione da chiamare al termine dell'esecuzione
+ *@param req - Oggetto contenente i parametri e le informazioni della richiesta HTTP del Client.
+ *@param callback - funzione da chiamare al termine dell'esecuzione.
  */
 
 exports.updateUser = function(req, callback) {
@@ -247,9 +262,12 @@ exports.updateUser = function(req, callback) {
 }; 
 
 /**
- * Rimuove un utente
+ *Viene estratto il modello degli utenti su cui verrà invocato il metodo remove per
+ *eliminare l'utente con campo email uguale al parametro email passato alla funzione
+ *Al termine della query di eliminazione, viene richiamata la funzione callback
+ *con argomento true se l'aggiornamento è andato a buon fine, l'argomento è false altrimenti.
  *
- *@param id - id dell'utente da rimuovere
+ *@param id - Stringa contenente l'id da rimuovere.
  *@param callback - funzione da chiamare al termine dell'esecuzione
  */
 
