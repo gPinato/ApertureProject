@@ -1503,12 +1503,12 @@ Inoltre dialoga direttamente con \grassetto{@MongooseDBFramework} per l'esecuzio
  				Vengono estratti i dati da aggiornare dalla richiesta HTTP \textit{req} inerenti all'utente da aggiornare. Successivamente viene effettuata la query di aggiornamento sul modello del database utenti estratto. Infine viene richiamata la funzione \textit{callback} con argomento \textbf{true} se l'aggiornamento è andato a buon fine, l'argomento è \textbf{false} altrimenti.
  			\end{description}
  			
- 		\mlitem{removeUser(email, callback)} \hfill
+ 		\mlitem{removeUser(id, callback)} \hfill
  			\begin{description}
  				\item[Parametri] \hfill
  					\begin{description}
- 						\item[email] \hfill \\
- 							Stringa contenente l'indirizzo email dell'utente che si desidera eliminare dal database.
+ 						\item[id] \hfill \\
+ 							Stringa contenente l'indentificativo dell'utente che si desidera eliminare dal database.
  						\item[callback] \hfill \\
  							Funzione da richiamare alla fine dell'eliminazione del profilo utente.
  					\end{description}
@@ -1526,8 +1526,20 @@ Package realizzato per creare e gestire gli indici utilizzati nel database di an
 \begin{description}
  \item[Descrizione] \hfill \\
  Modulo del ModelServer che si occupa di creare e gestire gli indici utilizzati nel database di analisi. 
+  \item[Dipendendenze] \hfill
+  \begin{itemize}
+   \item @MongooseDBAnalysis;
+   \item @MongooseDBFramework.query;
+   \item @MongooseDBFramework.connection.
+  \end{itemize}
  \item[Metodi]
   \begin{mldescription}
+   \mlitem{getCollectionsListFile()}
+   	\begin{description}
+   	 \item[Descrizione] \hfill \\
+   	 Recupera il file con la lista delle collection e la restituisce in formato Json.
+   	\end{description}
+   	
    \mlitem{getModel(collection\_name)}
 	\begin{description}
 	 \item[Parametro] \hfill
@@ -1598,12 +1610,22 @@ Package realizzato per creare e gestire gli indici utilizzati nel database di an
 	 Richiede l'intera Collection delle query al database di analisi. Calcola il sottoinsieme di query da visualizzare tenendo conto dell'indicatore della pagina da visualizzare e dagli elementi da visualizzare per pagina. Esegue quindi una nuova query per ottenere l'insieme delle query che rispettano suddetti parametri. Se avviene un errore o se non esistono query che rispettano i parametri scelti, viene passato alla \textit{callback} un oggetto vuoto. Se invece la ricerca ha avuto esito positivo, viene richiamata la \textit{callback} passando come parametro l'insieme delle query che soddisfano i requisiti. 
 	\end{description}	    
     
-   %\mlitem{getIndex(callback)}
-    %\begin{description}
-	 %\item[Parametri]			MOMENTANEAMENTE FUORI USO
-	 %\item[Dipendenza]
-	 %\item[Descrizione]
-	%\end{description}	    
+   \mlitem{getIndex(db, page, indexesPerPage, callback)}
+       \begin{description}
+   	 \item[Parametri] \hfill
+   	  \begin{description}
+   	   \item[db] \hfill \\
+   	   Il database su cui cercare gli indici;
+   	   \item[page] \hfill \\
+   	   Stringa contenente il numero di pagina da visualizzare;
+   	   \item[indexesPerPage] \hfill \\
+   	   Stringa contenente il numero di indici da visualizzare per pagina;
+   	   \item[callback] \hfill \\
+   	   Funzione da richiamare alla fine dell'eliminazione dell'indice.
+   	  \end{description}
+   	 \item[Descrizione] \hfill \\
+   	 Per ogni collection vengono richiesti con l'uso di \textit{indexInformation} i relativi indici e si inseriscono i risultati nell'array result. Viene chiamata la funzione \textit{callback} con argomento \textbf{result} ovvero l'array di risultati degli indici.  	 
+   	\end{description} 	    
     
    \mlitem{createIndex(query\_id,  name\_index, callback)}
     \begin{description}
@@ -1623,10 +1645,26 @@ Package realizzato per creare e gestire gli indici utilizzati nel database di an
 	   \item schema della Collection su cui la query di cui si vuole creare l'indice esegue le richieste.
 	  \end{itemize}
 	 \item[Descrizione] \hfill \\
-	 Viene richiesto il modello della query, grazie a cui viene cercata nel database di analisi la query con campo "\_id" uguale al parametro \textit{\_id}. Se la query non esiste o si riscontrano problemi di accesso al database, viene chiamata la funzione \textit{callback} con argomento \textbf{false}. Altrimenti viene caricato lo schema della Collection su cui la query viene eseguita. Sulla collection viene creato l'indice voluto. Se l'operazione di creazione non ha successo, viene viene chiamata la funzione \textit{callback} con argomento \textbf{false}, altrimenti viene chiamata la \textit{callback} con argomento \textbf{true}.
-	 
+	 Viene richiesto il modello della query, grazie a cui viene cercata nel database di analisi la query con campo "\_id" uguale al parametro \textit{\_id}. Se la query non esiste o si riscontrano problemi di accesso al database, viene chiamata la funzione \textit{callback} con argomento \textbf{false}. Altrimenti viene caricato lo schema della Collection su cui la query viene eseguita. Sulla collection viene creato l'indice voluto. Se l'operazione di creazione non ha successo, viene chiamata la funzione \textit{callback} con argomento \textbf{false}, altrimenti viene chiamata la \textit{callback} con argomento \textbf{true}.
 	\end{description}	    
-    
+   
+   \mlitem{deleteIndex(db, indexName, collectionName, callback)}
+       \begin{description}
+   	 \item[Parametri] \hfill
+   	  \begin{description}
+   	   \item[db] \hfill \\
+   	   Il database su cui cercare gli indici;
+   	   \item[indexName] \hfill \\
+   	   Stringa contenente il nome dell'indice da creare;
+   	   \item[collectionName] \hfill \\
+   	   Stringa contenente il nome della collection;
+   	   \item[callback] \hfill \\
+   	   Funzione da richiamare alla fine dell'eliminazione dell'indice.
+   	  \end{description}
+   	 \item[Descrizione] \hfill \\
+   	 Viene cancellato nella collection specificata con \textit{collectionName} l'indice specificato con \textit{indexName}. Se l'operazione di eliminazione non ha successo, viene chiamata la funzione \textit{callback} con argomento \textbf{false}, altrimenti viene chiamata la \textit{callback} con argomento \textbf{true}.  	 
+   	\end{description} 
+   	
   \end{mldescription}
 \end{description}
 
@@ -1700,12 +1738,14 @@ Package realizzato per creare e gestire gli indici utilizzati nel database di an
     Viene creato localmente l'Array contenente le etichette dell'oggetto "lista di query". Viene successivamente scorso l'Array delle query e vengono copiati localmente i loro campi sensibili, per poi essere formattati correttamente. Infine viene realizzato e ritornato il JSON corrispondente, aggiungendo l'oggetto contenente le impostazioni di configurazione della lista di query.
    \end{description}
    
-   \mlitem{createIndexesList(indexes)} \hfill
+   \mlitem{createIndexesList(indexes,config)} \hfill
    \begin{description}
     \item[Parametro] \hfill
      \begin{description}
       \item[indexes] \hfill \\
-      Array contenente l'insieme di indici da creare.
+      Array contenente l'insieme di indici da creare;
+      \item[config] \hfill \\
+      Oggetto contenente impostazioni di configurazione.
      \end{description}
     \item[Descrizione] \hfill \\
     Viene creato localmente l'Array contenente le etichette dell'oggetto "lista di indici". Viene successivamente scorso l'Array degli indici e vengono copiati localmente i loro campi sensibili, per poi essere formattati correttamente. Infine viene realizzato e ritornato il JSON corrispondente.
