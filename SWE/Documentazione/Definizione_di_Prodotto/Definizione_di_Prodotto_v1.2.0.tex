@@ -1131,11 +1131,19 @@ Modulo che dialoga con il database di analisi per mezzo dell'infrastruttura \tex
 linguaggio DSL per richiedere e inviare i dati che l'utente sviluppatore decide di visualizzare e modificare.
 \item[Dipendenze] \hfill 
 \begin{itemize}
-\item @IndexManager.
+\item @IndexManager;
+\item @MongooseDBAnalysis;
+\item q.
 \end{itemize}
 
 \item[Metodi]
 \begin{mldescription}
+	\mlitem{getCollectionsListFile()}
+   	\begin{description}
+   	 \item[Descrizione] \hfill \\
+   	 Recupera il file con la lista delle collection e la restituisce in formato Json.
+   	\end{description}
+		
 	\mlitem{getModel(collection\_name)} \hfill 
 		\begin{description}
 			\item[Parametro] \hfill
@@ -1169,20 +1177,41 @@ Se essa è presente, ne ritorna il modello, altrimenti ritorna l'intero "-1".
 			Viene effettuata una query sul modello \textit{model} passato come argomento alla funzione. Si utilizzano come opzioni di ricerca i campi dell'oggetto \textit{querySettings}. Viene in questo modo creato un oggetto locale che verrà passato all fine dell'esecuzione della funzione alla \textit{callback} come argomento. Se non pervengono risultati dalla query, l'oggetto passato sarà vuoto. Nel caso il risultato della query non sia nullo, viene poi effettuata l'operazione di popolamento specificata dal parametro \textit{populate}. Infine viene richiamata la \textit{callback} passando come argomento l'oggetto locale contenente il risulatato della query e del populate.
 		\end{description}			
 	 
-	\mlitem{getCollectionsList()} \hfill 
+	\mlitem{getCollectionsList(find)} \hfill 
 		\begin{description}
 			\item[Dipendenza] \hfill
 				\begin{itemize}
 					\item DSL/collectionData/collectionsList.json.
 				\end{itemize}
+			\item[Parametri] \hfill
+							\begin{description}
+								\item[find] \hfill \\
+									Stringa da cercare all'interno delle etichette della collections.
 			\item[Descrizione] \hfill \\
-			Ritorna la lista delle Collection visibili dopo l'interpretazione del DSL. 
+			Ritorna la lista delle Collection visibili dopo l'interpretazione del DSL eventualmente ristrette al campo find. 
 		\end{description}
+		\end{description}
+	\mlitem{getTransormationFile((collection\_name, type, fieldName)}
+	   	\begin{description}
+	   		\item[Parametri] \hfill
+	   					\begin{description}
+	   						\item[collection\_name] \hfill \\
+	   						Stringa contenente il nome della collection relativa alla trasformazione da applicare.
+	   						\item[type] \hfill \\
+	   						Stringa contenente il tipo di visualizzazione dei Document presenti in \textit{documentsArray}.
+	   						\item[fieldName] \hfill \\
+	   						Stringa contenente il nome del campo relativo alla trasformazione richiesta.
+	   					\end{description}
+	   	 \item[Descrizione] \hfill \\
+	   	 Recupera il file contenente la trasformazione da applicare ad un determinato campo.
+	   	\end{description}
 		
-	\mlitem{applyTransformations(type, documentsArray, dslArray)} \hfill 
+	\mlitem{applyTransformations(collection\_name, type, documentsArray, dslArray)} \hfill 
 		\begin{description}
 			\item[Parametri] \hfill
 				\begin{description}
+				\item[collection\_name] \hfill \\
+					Stringa contenente il nome della collection relativa alla trasformazione da applicare.
 					\item[type] \hfill \\
 						Stringa contenente il tipo di visualizzazione dei Document presenti in 										\textit{documentsArray}.
 					\item[documentsArray] \hfill \\
@@ -1224,11 +1253,18 @@ Se essa è presente, ne ritorna il modello, altrimenti ritorna l'intero "-1".
 	
 	
 	
-	% PIU' GETDOCUMENTSFORINDEX
+	% E GETDOCUMENTSFORINDEX
 	
 	
+	% E GETCOLLECTIONINDEX
 	
+	%E GETDOCUMENTSHOW
 	
+	%E GETDOCUMENTSHOWEDIT
+	
+	%E UPDATEDOCUMENT
+	
+	%E REMOVEDOCUMENT
 	
 	\mlitem{getCollectionIndex(collection\_name, column, order, page, callback)} \hfill 
 		\begin{description}
