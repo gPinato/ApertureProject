@@ -773,6 +773,7 @@ Controller che si occupa dell'inizializzazione e gestione del modulo passort per
 \item[Dipendendenze] \hfill
   \begin{itemize}
    \item passport;
+   \item nodemailer;
    \item passport-local.Strategy;
    \item @MongooseDBFramework.
   \end{itemize}
@@ -794,7 +795,22 @@ Controller che si occupa dell'inizializzazione e gestione del modulo passort per
           \item[Descrizione] \hfill \\
           Inizializza il controller \grassetto{@passport}, inizializzando e avviando la sessione del modulo \grassetto{@passport} e definisce le strategie di autenticazione.
             \end{description}
-            
+     
+     \item[forgotPassword(req, res, next)] \hfill 
+     \begin{description}
+     \item[Parametri] \hfill
+     \begin{description}
+     \item[req] \hfill \\
+     	         Oggetto contenente i parametri e le informazioni della richiesta HTTP del Client.
+     	         \item[res] \hfill \\
+     	         Oggetto duale a \textit{req} su cui invocare i metodi per inviare informazioni al Client richiedente.
+                  \item[next] \hfill \\
+                  Funzione da invocare nel caso di successo.
+     \end{description}
+     \item[Descrizione] \hfill \\
+     Recupera la password nel db utenti in base all'username indicato nella request ed invia la mail contenente username e password all'utente.
+     \end{description}
+                        
      \item[checkAuthenticatedAdmin(req, res, next)] \hfill 
           \begin{description}
             \item[Parametri] \hfill
@@ -809,6 +825,7 @@ Controller che si occupa dell'inizializzazione e gestione del modulo passort per
             \item[Descrizione] \hfill \\
             Verifica che la richiesta proveniente dal client sia autenticata e che il livello dell'utente sia 1. 
          \end{description}
+    
      \item[checkAuthenticated(req, res, next)] \hfill 
      \begin{description}
       \item[Parametri] \hfill
