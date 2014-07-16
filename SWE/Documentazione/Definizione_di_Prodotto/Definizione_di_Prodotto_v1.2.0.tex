@@ -1010,72 +1010,6 @@ Prepara le query da effettuare e contatta il \grassetto{@DataRetrieverAnalysis} 
  Esegue una chiamata asincrona al metodo \textit{removeDocument} di \grassetto{@DataRetrieverAnalysis} per modificare un Document esistente nel Server. Nel caso la rimozione effettuata dal \grassetto{@DataRetrieverAnalysis} vada a buon fine, viene ritornato al Client un codice \textit{http} di successo "200", altrimenti viene mandato il codice di errore \textit{http} 404.
  \end{description}
  
-  \item[resetQueries(req, res)] \hfill 
-  \begin{description}
-  \item[Parametri] \hfill
-   \begin{description}
-    \item[req] \hfill \\
-    Oggetto contenente i parametri e le informazioni della richiesta HTTP del Client.
-    \item[res] \hfill \\
-    Oggetto duale a \textit{req} su cui invocare i metodi per inviare informazioni al Client richiedente.
-   \end{description}
-  \item[Descrizione] \hfill \\
-  Esegue una chiamata asincrona al metodo \textit{resetQueries} di \grassetto{@indexManager} per eliminare una lista di query. Nel caso la rimozione effettuata dall' \grassetto{@indexManager} vada a buon fine, viene ritornato al Client un codice \textit{http} di successo "200", altrimenti viene mandato il codice di errore \textit{http} 404.
-  \end{description}
- 
- \item[getTopQueries(req, res)] \hfill 
-   \begin{description}
-   \item[Parametri] \hfill
-    \begin{description}
-     \item[req] \hfill \\
-     Oggetto contenente i parametri e le informazioni della richiesta HTTP del Client.
-     \item[res] \hfill \\
-     Oggetto duale a \textit{req} su cui invocare i metodi per inviare informazioni al Client richiedente.
-    \end{description}
-   \item[Descrizione] \hfill \\
-   Esegue una chiamata asincrona al metodo \textit{getTopQueries} di \grassetto{@indexManager} per prelevare la lista di query più utilizzate. Nel caso la richiesta effettuata al \grassetto{@indexManager} vada a buon fine, viene ritornato al Client un codice \textit{http} di successo "200", altrimenti viene mandato il codice di errore \textit{http} 404.
-   \end{description}
-   
-    \item[getIndexesList(req, res)] \hfill 
-      \begin{description}
-      \item[Parametri] \hfill
-       \begin{description}
-        \item[req] \hfill \\
-        Oggetto contenente i parametri e le informazioni della richiesta HTTP del Client.
-        \item[res] \hfill \\
-        Oggetto duale a \textit{req} su cui invocare i metodi per inviare informazioni al Client richiedente.
-       \end{description}
-      \item[Descrizione] \hfill \\
-      Esegue una chiamata asincrona al metodo \textit{getIndex} di \grassetto{@indexManager} per ottenere una lista di indici. Tale lista viene dettagliata utilizzando il metodo \textit{createIndexesList} di \grassetto{@JsonComposer} e viene ritornata al client.
-      \end{description}
-      
-      \item[createIndex(req, res)] \hfill 
-           \begin{description}
-           \item[Parametri] \hfill
-            \begin{description}
-             \item[req] \hfill \\
-             Oggetto contenente i parametri e le informazioni della richiesta HTTP del Client.
-             \item[res] \hfill \\
-             Oggetto duale a \textit{req} su cui invocare i metodi per inviare informazioni al Client richiedente.
-            \end{description}
-           \item[Descrizione] \hfill \\
-           Esegue una chiamata asincrona al metodo \textit{createIndex} di \grassetto{@indexManager} per creare l' indice. Nel caso la richiesta effettuata al \grassetto{@indexManager} vada a buon fine, viene ritornato al Client un codice \textit{http} di successo "200", altrimenti viene mandato il codice di errore \textit{http} 404.
-           \end{description}
-           
-      \item[deleteIndex(req, res)] \hfill 
-                 \begin{description}
-                 \item[Parametri] \hfill
-                  \begin{description}
-                   \item[req] \hfill \\
-                   Oggetto contenente i parametri e le informazioni della richiesta HTTP del Client.
-                   \item[res] \hfill \\
-                   Oggetto duale a \textit{req} su cui invocare i metodi per inviare informazioni al Client richiedente.
-                  \end{description}
-                 \item[Descrizione] \hfill \\
-                 Esegue una chiamata asincrona al metodo \textit{deleteIndex} di \grassetto{@indexManager} per eliminare l' indice. Nel caso la richiesta effettuata al \grassetto{@indexManager} vada a buon fine, viene ritornato al Client un codice \textit{http} di successo "200", altrimenti viene mandato il codice di errore \textit{http} 404.
-                 \end{description}
-  
-  
  \end{description}
  
 \end{description} %forse è in più.
@@ -1578,12 +1512,12 @@ Inoltre dialoga direttamente con \grassetto{@MongooseDBFramework} per l'esecuzio
  				Vengono estratti i dati da aggiornare dalla richiesta HTTP \textit{req} inerenti all'utente da aggiornare. Successivamente viene effettuata la query di aggiornamento sul modello del database utenti estratto. Infine viene richiamata la funzione \textit{callback} con argomento \textbf{true} se l'aggiornamento è andato a buon fine, l'argomento è \textbf{false} altrimenti.
  			\end{description}
  			
- 		\mlitem{removeUser(id, callback)} \hfill
+ 		\mlitem{removeUser(email, callback)} \hfill
  			\begin{description}
  				\item[Parametri] \hfill
  					\begin{description}
- 						\item[id] \hfill \\
- 							Stringa contenente l'indentificativo dell'utente che si desidera eliminare dal database.
+ 						\item[email] \hfill \\
+ 							Stringa contenente l'indirizzo email dell'utente che si desidera eliminare dal database.
  						\item[callback] \hfill \\
  							Funzione da richiamare alla fine dell'eliminazione del profilo utente.
  					\end{description}
@@ -1601,20 +1535,8 @@ Package realizzato per creare e gestire gli indici utilizzati nel database di an
 \begin{description}
  \item[Descrizione] \hfill \\
  Modulo del ModelServer che si occupa di creare e gestire gli indici utilizzati nel database di analisi. 
-  \item[Dipendendenze] \hfill
-  \begin{itemize}
-   \item @MongooseDBAnalysis;
-   \item @MongooseDBFramework.query;
-   \item @MongooseDBFramework.connection.
-  \end{itemize}
  \item[Metodi]
   \begin{mldescription}
-   \mlitem{getCollectionsListFile()}
-   	\begin{description}
-   	 \item[Descrizione] \hfill \\
-   	 Recupera il file con la lista delle collection e la restituisce in formato Json.
-   	\end{description}
-   	
    \mlitem{getModel(collection\_name)}
 	\begin{description}
 	 \item[Parametro] \hfill
@@ -1685,22 +1607,12 @@ Package realizzato per creare e gestire gli indici utilizzati nel database di an
 	 Richiede l'intera Collection delle query al database di analisi. Calcola il sottoinsieme di query da visualizzare tenendo conto dell'indicatore della pagina da visualizzare e dagli elementi da visualizzare per pagina. Esegue quindi una nuova query per ottenere l'insieme delle query che rispettano suddetti parametri. Se avviene un errore o se non esistono query che rispettano i parametri scelti, viene passato alla \textit{callback} un oggetto vuoto. Se invece la ricerca ha avuto esito positivo, viene richiamata la \textit{callback} passando come parametro l'insieme delle query che soddisfano i requisiti. 
 	\end{description}	    
     
-   \mlitem{getIndex(db, page, indexesPerPage, callback)}
-       \begin{description}
-   	 \item[Parametri] \hfill
-   	  \begin{description}
-   	   \item[db] \hfill \\
-   	   Il database su cui cercare gli indici;
-   	   \item[page] \hfill \\
-   	   Stringa contenente il numero di pagina da visualizzare;
-   	   \item[indexesPerPage] \hfill \\
-   	   Stringa contenente il numero di indici da visualizzare per pagina;
-   	   \item[callback] \hfill \\
-   	   Funzione da richiamare alla fine dell'eliminazione dell'indice.
-   	  \end{description}
-   	 \item[Descrizione] \hfill \\
-   	 Per ogni collection vengono richiesti con l'uso di \textit{indexInformation} i relativi indici e si inseriscono i risultati nell'array result. Viene chiamata la funzione \textit{callback} con argomento \textbf{result} ovvero l'array di risultati degli indici.  	 
-   	\end{description} 	    
+   %\mlitem{getIndex(callback)}
+    %\begin{description}
+	 %\item[Parametri]			MOMENTANEAMENTE FUORI USO
+	 %\item[Dipendenza]
+	 %\item[Descrizione]
+	%\end{description}	    
     
    \mlitem{createIndex(query\_id,  name\_index, callback)}
     \begin{description}
@@ -1720,26 +1632,10 @@ Package realizzato per creare e gestire gli indici utilizzati nel database di an
 	   \item schema della Collection su cui la query di cui si vuole creare l'indice esegue le richieste.
 	  \end{itemize}
 	 \item[Descrizione] \hfill \\
-	 Viene richiesto il modello della query, grazie a cui viene cercata nel database di analisi la query con campo "\_id" uguale al parametro \textit{\_id}. Se la query non esiste o si riscontrano problemi di accesso al database, viene chiamata la funzione \textit{callback} con argomento \textbf{false}. Altrimenti viene caricato lo schema della Collection su cui la query viene eseguita. Sulla collection viene creato l'indice voluto. Se l'operazione di creazione non ha successo, viene chiamata la funzione \textit{callback} con argomento \textbf{false}, altrimenti viene chiamata la \textit{callback} con argomento \textbf{true}.
+	 Viene richiesto il modello della query, grazie a cui viene cercata nel database di analisi la query con campo "\_id" uguale al parametro \textit{\_id}. Se la query non esiste o si riscontrano problemi di accesso al database, viene chiamata la funzione \textit{callback} con argomento \textbf{false}. Altrimenti viene caricato lo schema della Collection su cui la query viene eseguita. Sulla collection viene creato l'indice voluto. Se l'operazione di creazione non ha successo, viene viene chiamata la funzione \textit{callback} con argomento \textbf{false}, altrimenti viene chiamata la \textit{callback} con argomento \textbf{true}.
+	 
 	\end{description}	    
-   
-   \mlitem{deleteIndex(db, indexName, collectionName, callback)}
-       \begin{description}
-   	 \item[Parametri] \hfill
-   	  \begin{description}
-   	   \item[db] \hfill \\
-   	   Il database su cui cercare gli indici;
-   	   \item[indexName] \hfill \\
-   	   Stringa contenente il nome dell'indice da creare;
-   	   \item[collectionName] \hfill \\
-   	   Stringa contenente il nome della collection;
-   	   \item[callback] \hfill \\
-   	   Funzione da richiamare alla fine dell'eliminazione dell'indice.
-   	  \end{description}
-   	 \item[Descrizione] \hfill \\
-   	 Viene cancellato nella collection specificata con \textit{collectionName} l'indice specificato con \textit{indexName}. Se l'operazione di eliminazione non ha successo, viene chiamata la funzione \textit{callback} con argomento \textbf{false}, altrimenti viene chiamata la \textit{callback} con argomento \textbf{true}.  	 
-   	\end{description} 
-   	
+    
   \end{mldescription}
 \end{description}
 
@@ -1813,14 +1709,12 @@ Package realizzato per creare e gestire gli indici utilizzati nel database di an
     Viene creato localmente l'Array contenente le etichette dell'oggetto "lista di query". Viene successivamente scorso l'Array delle query e vengono copiati localmente i loro campi sensibili, per poi essere formattati correttamente. Infine viene realizzato e ritornato il JSON corrispondente, aggiungendo l'oggetto contenente le impostazioni di configurazione della lista di query.
    \end{description}
    
-   \mlitem{createIndexesList(indexes,config)} \hfill
+   \mlitem{createIndexesList(indexes)} \hfill
    \begin{description}
     \item[Parametro] \hfill
      \begin{description}
       \item[indexes] \hfill \\
-      Array contenente l'insieme di indici da creare;
-      \item[config] \hfill \\
-      Oggetto contenente impostazioni di configurazione.
+      Array contenente l'insieme di indici da creare.
      \end{description}
     \item[Descrizione] \hfill \\
     Viene creato localmente l'Array contenente le etichette dell'oggetto "lista di indici". Viene successivamente scorso l'Array degli indici e vengono copiati localmente i loro campi sensibili, per poi essere formattati correttamente. Infine viene realizzato e ritornato il JSON corrispondente.
@@ -1934,7 +1828,7 @@ Package realizzato per creare e gestire gli indici utilizzati nel database di an
     				Oggetto contenente l'applicazione di \grassetto{Express}.
     			\end{description}
     		\item[Descrizione] \hfill \\
-    		Si occupa di verificare la correttezza del DSL scritto, verificando che tale file contenga un codice corretto sintatticamente e attraverso l'uso del \grassetto{@DSLparser} esegua il parsing vero e proprio. Controlla che il risulatato del parsing sia in formato JSON, lo salva su file e utilizza il metodo \textit{generateFunction} per creare le funzioni di trasformazione. Se non esiste, si occupa di generare lo schema \grassetto{Mongoose} della Collection specificata nel file DSL.
+    		Si occupa di verificare la correttezza del DSL scritto, verificando che tale file contenga un codice corretto sintatticamente e attraverso l'uso del \grassetto{@DSLparser} esegui il parsing vero e proprio. Controlla che il risulatato del parsing sia in formato JSON, lo salva su file e utilizza il metodo \textit{generateFunction} per creare le funzioni di trasformazione. Se non esiste, si occupa di generare lo schema \grassetto{Mongoose} della Collection specificata nel file DSL.
     \end{description}
  \end{mldescription}
  
@@ -2433,6 +2327,7 @@ Package che racchiude i Controller del Client. Il primo metodo descritto di ogni
   \item \$route;
   \item \$location;
   \item \$routeParams;
+  \item \$cookieStore;
   \item @DocumentEditService;
   \item @CollectionDataService;
  \end{itemize}
@@ -2456,7 +2351,7 @@ Package che racchiude i Controller del Client. Il primo metodo descritto di ogni
   \$scope associate alla Collection view ed esegue la funzione \textit{getData()}.
   	\end{description}
   	
-  \item[getData()] \hfill 
+  \item[\$scope.getData()] \hfill 
   \begin{description}
   		\item[Descrizione] \hfill \\
   Richiama la richiesta RESTful \textit{query} sulla \$resource fornita dal \grassetto{@CollectionDataService}.
@@ -2465,21 +2360,58 @@ Package che racchiude i Controller del Client. Il primo metodo descritto di ogni
   
   \end{description}
   
-  \item[\$scope.numerify(num)] \hfill 
+  \item[changeSort()] \hfill 
+  \begin{description}
+  	\item[Descrizione] \hfill \\
+  Cambia la variabile \$current\_sort dello \$scope che regola l'ordine di visualizzazione dei Document, da discendente ad ascendente e viceversa.
+  \end{description}
+  
+  \item[\$scope.columnSort(index)] \hfill
   \begin{description}
   	\item[Parametro] \hfill
   	\begin{description}
-  		\item[num] \hfill \\
-  		Intero rappresentante il numero di pagine da visualizzare.
-	\end{description}  		
+  		\item[index] \hfill \\
+  		Numero intero che definisce il numero della colonna a cui applicare l'ordinamento.
+  	\end{description}
   	\item[Descrizione] \hfill \\
-  Funzione ausiliaria che crea un array di dimensione \textit{num} che verrà poi usato dalla directive \textit{ng-repeat} di AngularJS per la creazione del numero di pagine disponibili.
+  Funzione che cambia l'ordinamento di visualizzazione di una colonna della Collection view. \\
+  Se la colonna in questione è una colonna diversa da quella che precedentemente ordinata, la variabile \textit{current\_sorted\_column} dello \$scope viene aggiornata, altrimenti la funzione cambia solamente l'ordinamento della colonna.
+  \end{description}  
+  
+  \item[\$scope.deleteDocument(index)] \hfill 
+  \begin{description}
+  	\item[Parametro] \hfill
+  	\begin{description}
+  		\item[index] \hfill \\
+  		Numero intero che definisce il numero del Document da eliminare.
+  	\end{description}
+  	\item[Descrizione] \hfill \\
+  Funzione che elimina il Document identificato dall'indice \textit{index}. Effettua una richiesta REST di rimozione alla risorsa esportata da \grassetto{@DocumentEditService} fornendo come argomenti l'identificativo della Collection correntemente visualizzata e l'indice del Document da eliminare. \\
+  Se l'eliminazione ha successo viene lanciato l'aggiornamento della vista corrente con il Document eliminato, altrimenti si richiama la callback di errore.
   \end{description}
   
-  \item[\$scope.previousPage()] \hfill 
+  \item[\$scope.range()] \hfill
+  \begin{description}
+  	\item[Descrizione] \hfill \\
+  	Funzione che gestisce la visualizzazione del numero delle pagine correntemente esposte. Questa funzione impone che sia visualizzato un numero massimo di 9 pagine tra cui navigare per volta. Se il numero di pagine di Document è minore, verrà visualizzato il numero effettivo di pagine. Se il numero è maggiore, ad ogni cambio di pagina la barra gestione delle pagine verrà aggiornata.
+  \end{description}
+  
+  \item[\$scope.prevPage()] \hfill 
   \begin{description}
   		\item[Descrizione] \hfill \\
-  Aggiunge allo \$scope la funzionalità di passaggio dalla pagina di visualizzazione corrente alla precedente. Diminuisce di 1 l'indicatore della pagina corrente e esegue una nuova richiesta al server per i dati corrispondenti alla pagina precedente con \textit{getData()}.
+  Aggiunge allo \$scope la funzionalità di passaggio dalla pagina di visualizzazione corrente alla precedente. Diminuisce di 1 l'indicatore della pagina corrente e esegue una nuova richiesta al server per i dati corrispondenti alla pagina precedente con \textit{\$scope.getData()}.
+  \end{description}
+  
+  \item[\$scope.DisablePrevPage()] \hfill
+  \begin{description}
+  	\item[Descrizione] \hfill \\
+  	Funzione che disabilita la funzionalità di passaggio alla pagina precedente a quella correntemente visualizzata, se questa è la prima pagina di visualizzazione della Collection.
+  \end{description}
+  
+  \item[\$scope.DisableNextPage()] \hfill
+  \begin{description}
+  	\item[Descrizione] \hfill \\
+  	Funzione che disabilita la funzionalità di passaggio alla pagina successiva a quella correntemente visualizzata, se questa è l'ultima pagina di visualizzazione della Collection.
   \end{description}
   
   \item[\$scope.nextPage()] \hfill
@@ -2499,35 +2431,9 @@ Package che racchiude i Controller del Client. Il primo metodo descritto di ogni
   Aggiunge allo \$scope la funzionalità di passaggio alla pagina di visualizzazione specificata dal parametro \textit{index}. Aggiorna l'indicatore della pagina corrente settandolo all'indice passato per parametro alla funzione. Successivamente esegue una richiesta al server per ottenere i dati per la nuova visualizzazione.
   \end{description}
   
-  \item[changeSort()] \hfill 
-  \begin{description}
-  	\item[Descrizione] \hfill \\
-  Cambia la variabile \$current\_sort dello \$scope che regola l'ordine di visualizzazione dei Document, da discendente ad ascendente e viceversa.
-  \end{description}
+ 
   
-  \item[\$scope.columnSort(index)] \hfill
-  \begin{description}
-  	\item[Parametro] \hfill
-  	\begin{description}
-  		\item[index] \hfill \\
-  		Numero intero che definisce il numero della colonna a cui applicare l'ordinamento.
-  	\end{description}
-  	\item[Descrizione] \hfill \\
-  Funzione che cambia l'ordinamento di visualizzazione di una colonna della Collection view. \\
-  Se la colonna in questione è una colonna diversa da quella che precedentemente ordinata, la variabile \textit{current\_sorted\_column} dello \$scope viene aggiornata, altrimenti la funzione cambia solamente l'ordinamento della colonna.
-  \end{description}
-  
-  \item[\$scope.deleteDocument(index)] \hfill 
-  \begin{description}
-  	\item[Parametro] \hfill
-  	\begin{description}
-  		\item[index] \hfill \\
-  		Numero intero che definisce il numero del Document da eliminare.
-  	\end{description}
-  	\item[Descizione] \hfill \\
-  Funzione che elimina il Document identificato dall'indice \textit{index}. Effettua una richiesta REST di rimozione alla risorsa pubblicizzata da \grassetto{@DocumentEditService} fornendo come argomenti l'identificativo della Collection correntemente visualizzata e l'indice del Document da eliminare. \\
-  Se l'eliminazione ha successo viene lanciato l'aggiornamento della vista corrente con il Document eliminato, altrimenti si richiama la callback di errore.
-  \end{description}
+ 
   
  \end{description}
 \end{description}

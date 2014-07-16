@@ -117,8 +117,10 @@ angular.module('maaperture').controller('CollectionCtrl', function ($scope, $rou
 
     //=====================================================================
 	//Funzioni per paginazione avanzata
+	
+	//Funzione per far visualizzare un numero non superiore a 9 pagine
+	//nella barra di navigazione tra pigine di una collection
     $scope.range = function() {
-
         var rangeSize;
 		if( $scope.pages < 9){
 		rangeSize = $scope.pages;
@@ -154,7 +156,7 @@ angular.module('maaperture').controller('CollectionCtrl', function ($scope, $rou
 
     };
 
-
+	//Funzione che fa visualizzare la pagina precedente alla corrente
     $scope.prevPage = function() {
 
         if ($scope.current_page > 0) {
@@ -165,7 +167,8 @@ angular.module('maaperture').controller('CollectionCtrl', function ($scope, $rou
 
     };
 
-
+	//Funzione che disabilita il pulsante di passaggio alla pagina
+	//precedente nella visualizzazione
     $scope.DisablePrevPage = function() {
 
         return $scope.current_page === 0 ? "disabled" : "";
@@ -174,7 +177,7 @@ angular.module('maaperture').controller('CollectionCtrl', function ($scope, $rou
 
 
     
-
+	//Funzione che fa visualizzare la pagina successiva alla corrente
     $scope.nextPage = function() {
 
         if ($scope.current_page < $scope.pages - 1) {
@@ -184,7 +187,8 @@ angular.module('maaperture').controller('CollectionCtrl', function ($scope, $rou
 
     };
 
-
+	//Funzione che disabilita il pulsante di passaggio alla pagina
+	//successiva nella visualizzazione
     $scope.DisableNextPage = function() {
 
         return $scope.current_page === $scope.pages - 1 ? "disabled" : "";
