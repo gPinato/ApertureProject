@@ -195,20 +195,20 @@
     </style>
 </head>
 <body>
-<div class="header low">
+<div class="header high">
     <h1>Code coverage report for <span class="entity">controllers/PwdRecoveryCtrl.js</span></h1>
     <h2>
         
-        Statements: <span class="metric">10% <small>(1 / 10)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Statements: <span class="metric">100% <small>(10 / 10)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
         
         
         Branches: <span class="metric">100% <small>(0 / 0)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
         
         
-        Functions: <span class="metric">0% <small>(0 / 4)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Functions: <span class="metric">100% <small>(4 / 4)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
         
         
-        Lines: <span class="metric">10% <small>(1 / 10)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Lines: <span class="metric">100% <small>(10 / 10)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
         
         Ignored: <span class="metric"><span class="ignore-none">none</span></span> &nbsp;&nbsp;&nbsp;&nbsp;
     </h2>
@@ -278,26 +278,26 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">2</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-yes">2</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -321,27 +321,27 @@
 &nbsp;
  'use strict';
 &nbsp;
-angular.module('maaperture').controller('PwdRecoveryCtrl', <span class="fstat-no" title="function not covered" >function ($scope,$route,$cookieStore, $location, RecoveryService) {</span>
-<span class="cstat-no" title="statement not covered" >    $scope.credentials = {</span>
+angular.module('maaperture').controller('PwdRecoveryCtrl', function ($scope,$route,$cookieStore, $location, RecoveryService) {
+    $scope.credentials = {
         email: ''
 &nbsp;
     };
 &nbsp;
     //Funzione per il login.
     //Richiede al server di validare le credenziali inserite.
-<span class="cstat-no" title="statement not covered" >    $scope.recover = <span class="fstat-no" title="function not covered" >function () {</span></span>
-<span class="cstat-no" title="statement not covered" >        RecoveryService.recover(</span>
+    $scope.recover = function () {
+        RecoveryService.recover(
             {}, $scope.credentials).$promise.then(
-<span class="fstat-no" title="function not covered" >            function success(data, status) {</span>
-<span class="cstat-no" title="statement not covered" >				alert("password has been sent!");</span>
-<span class="cstat-no" title="statement not covered" >                $location.path('/');</span>
-<span class="cstat-no" title="statement not covered" >                $route.reload();</span>
+            function success() {
+				alert("password has been sent!");
+                $location.path('/');
+                $route.reload();
 &nbsp;
             },
-<span class="fstat-no" title="function not covered" >            function error(data, status) {</span>
-<span class="cstat-no" title="statement not covered" >				alert("we didn't found this email, please check it and try again!");</span>
-<span class="cstat-no" title="statement not covered" >				$location.path('/recover');</span>
-<span class="cstat-no" title="statement not covered" >                $route.reload();</span>
+            function error() {
+				alert("we didn't found this email, please check it and try again!");
+				$location.path('/recover');
+                $route.reload();
             });
 &nbsp;
     };
@@ -353,7 +353,7 @@ angular.module('maaperture').controller('PwdRecoveryCtrl', <span class="fstat-no
 
 </div>
 <div class="footer">
-    <div class="meta">Generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Tue Jul 15 2014 23:12:27 GMT+0200 (CEST)</div>
+    <div class="meta">Generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Thu Jul 17 2014 00:47:25 GMT+0200 (CEST)</div>
 </div>
 
 <script src="../prettify.js"></script>
