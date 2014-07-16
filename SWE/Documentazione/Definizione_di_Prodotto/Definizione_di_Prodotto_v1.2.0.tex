@@ -1198,30 +1198,46 @@ Se essa è presente, ne ritorna il modello, altrimenti ritorna l'intero "-1".
 			l'ordine stabilito nell'array di chiavi \textit{keys}.
 		\end{description}			
 	
+		\mlitem{countDocuments(model, where) } \hfill 
+			\begin{description}
+				\item[Parametri] \hfill
+					\begin{description}
+						\item[model] \hfill \\
+							Modello della collection su cui si vuole eseguire il conteggio dei documenti;
+						\item[where] \hfill \\
+							Eventuale campo per inserire una query per restringere il conteggio.
+					\end{description}
+				\item[Descrizione] \hfill \\
+Vengono contati il numero di documenti presenti nel modello passato con il parametro \textit{model} eventualmente ristretti nella selezione in base alla query passata con il parametro \textit{where}. Se il conteggio viene portato a termine viene conclusa la promessa ritornando il numero trovato come risultato. Altrimenti viene conclusa la promessa ritornando 0 come risultato.
+				
+			\end{description}
 	
+			\mlitem{findDocuments(query) } \hfill 
+				\begin{description}
+					\item[Parametri] \hfill
+						\begin{description}
+							\item[query] \hfill \\
+								Campo per inserire la query da eseguire.
+						\end{description}
+					\item[Descrizione] \hfill \\
+	Viene eseguita la query passata con il parametro \textit{query}. Se la query viene eseguita correttamente viene conclusa la promessa ritornando il risultato della query. Altrimenti viene conclusa la promessa ritornando l'errore come risultato.
+					
+				\end{description}
+				
+\mlitem{getDocumentsForIndex(model, querySettingsy) } \hfill 
+				\begin{description}
+					\item[Parametri] \hfill
+						\begin{description}	
+						\item[model] \hfill \\
+						Modello della collection su cui si vogliono prelevare i documenti.
+						\item[querySettings] \hfill \\
+						Impostazioni per l'esecuzione della query.
+						\end{description}
+					\item[Descrizione] \hfill \\
+	Preleva i documenti relativi ad una determinata collection passata con la variabile \textit{model} utilizzando filtri, limitazioni e ordinamenti specificati nella variabile \textit{querySettings} per visualizzarli nella pagina CollectionIndex.
+					
+				\end{description}
 	
-	
-	
-	%AGGIUNGI COUNTDOCUMENTS	
-	
-	
-	
-	% E FINDDOCUMENTS
-	
-	
-	
-	% E GETDOCUMENTSFORINDEX
-	
-	
-	% E GETCOLLECTIONINDEX
-	
-	%E GETDOCUMENTSHOW
-	
-	%E GETDOCUMENTSHOWEDIT
-	
-	%E UPDATEDOCUMENT
-	
-	%E REMOVEDOCUMENT
 	
 	\mlitem{getCollectionIndex(collection\_name, column, order, page, callback)} \hfill 
 		\begin{description}
