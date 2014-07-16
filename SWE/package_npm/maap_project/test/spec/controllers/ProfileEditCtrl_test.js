@@ -19,11 +19,7 @@ describe('Controller: ProfileEditCtrl', function () {
         routeParams,
         $httpBackend,
         scope,
-        data = { label: [ '_id', 'Timestamp', 'Message' ],
-            data:
-            {   timestamp: 'today',
-                message: 'AMAIL',
-                level: 'info' } };
+        data = { label: [ 'Email' ], data: { email: 'bb@bb.com' } };
     // Initialize the controller and a mock scope
     beforeEach(inject(function ($controller, $rootScope,_$httpBackend_ ) {
         scope = $rootScope.$new();
@@ -46,8 +42,9 @@ describe('Controller: ProfileEditCtrl', function () {
         // When
         $httpBackend.flush();
         // Then
-        var temp = JSON.stringify(data, undefined, 2);
-        expect(scope.original_data).toEqual(temp);
+        expect(scope.labels).toEqual = data.label;
+        expect(scope.data).toEqual = data.data;
+
 
     });
 

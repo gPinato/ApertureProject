@@ -19,8 +19,10 @@ describe('Controller: IndexCtrl', function () {
         scope,
         deleteIndex,
         $httpBackend,
-        data = [['a','b','c'],
-            [1,2,3]];
+        data = [ [ 'Index name', 'Collection', 'Selected fields' ],
+            [ { _id: '53a00ffa23365b641abdfa7e coaches', data: [Object] },
+                { _id: '53a00ffb23365b641abdfa7f coaches', data: [Object] } ],
+            { pages: 1 } ];
 
     // Initialize the controller and a mock scope
     beforeEach(inject(function ($controller, $rootScope, _$httpBackend_) {
@@ -52,9 +54,15 @@ describe('Controller: IndexCtrl', function () {
         scope.getData();
         $httpBackend.flush();
         // Then
-        expect(scope.data).toEqual(data[1]);
-        expect(scope.labels).toEqual(data[0]);
-        //expect(scope.pages).toEqual(data[2]);
+        expect(scope.pages).toBe(data[2].pages);
+        expect(scope.labels[0]).toBe('Index name');
+        expect(scope.labels[1]).toBe('Collection');
+       // expect(scope.labels[3]).toBe('Selected fields');
+
+        expect(scope.data[0]._id).toBe('53a00ffa23365b641abdfa7e coaches');
+        expect(scope.pages).toBe(data[2].pages);
+
+        expect(scope.rows).toEqual([["Walter","Mazzarri"]]);
 
     });
 

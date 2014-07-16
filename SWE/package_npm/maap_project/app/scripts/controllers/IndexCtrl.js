@@ -23,7 +23,6 @@ angular.module('maaperture').controller('IndexCtrl', function ($scope, $route, $
     //Funzione di inizializzazione del controller
     var init = function () {
         $scope.current_sorted_column = null;
-        $scope.column_original_name = [];
         $scope.current_sort = null;
         $scope.current_page = 0;
         $scope.rows = [];
@@ -42,12 +41,7 @@ angular.module('maaperture').controller('IndexCtrl', function ($scope, $route, $
             }).$promise.then( function success(response) {
                 $scope.labels = response[0];
                 $scope.data = response[1];
-                //$scope.pages = response[2].pages;
-
-                //Salva i nomi originali delle colonne per le query a database
-                $.each($scope.data[0].data, function (key, value) {
-                    $scope.column_original_name.push(key);
-                });
+                $scope.pages = response[2].pages;
 
 
                 for (var i = 0; i < Object.keys($scope.data).length; i++) {

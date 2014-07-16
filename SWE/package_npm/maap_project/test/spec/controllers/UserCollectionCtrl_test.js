@@ -19,19 +19,12 @@ describe('Controller: UsersCollectionCtrl', function () {
         scope,
         location,
         $httpBackend;
-    var data =
-        [ [ 'Timestamp', 'Message', 'Level' ],
-            [ { _id: '52b31e950d715cff70000001', data: { label: [ '_id', 'Timestamp', 'Message', 'Level', 'Hostname' ],
-                data:
-                { _id: '52b320a93401a40800000006',
-                    timestamp: 'today',
-                    message: 'AMAIL',
-                    level: 'info',
-                    hostname: 'b6d91509-de9d-4be9-819d-e04de3699ad2' } } },
-                { _id: '52b31ebd3401a40800000002', data: [Object] },
-                { _id: '52b31ebd3401a40800000003', data: [Object] },
-                { _id: '52b3347f255fbb0800000021', data: [Object] } ],
-            { pages: 4 } ];
+    var data =[ [ 'ID', 'Email', 'Level' ],
+        [ { _id: '510c35dd8fada716c89d0013', data: [Object] },
+            { _id: '510c35dd8fada716c89d0014', data: [Object] },
+            { _id: '510c35dd8fada716c89d0016', data: [Object] },
+            { _id: '53b3fb845e8c8684127fa8a1', data: [Object] } ],
+        { pages: 1 } ];
 
     // Initialize the controller and a mock scope
     beforeEach(inject(function ($controller,$location, $rootScope, _$httpBackend_) {
@@ -57,9 +50,13 @@ describe('Controller: UsersCollectionCtrl', function () {
         scope.getData();
         $httpBackend.flush();
         // Then
-        expect(scope.data).toEqual(data);
-        expect(scope.labels).toEqual({ 0 : 'Timestamp', 1 : 'Message', 2 : 'Level' });
-        //expect(scope.pages).toEqual(data[2]);
+        expect(scope.pages).toBe(data[2].pages);
+        expect(scope.labels[0]).toBe('ID');
+        expect(scope.labels[1]).toBe('Email');
+        expect(scope.labels[2]).toBe('Level');
+
+        expect(scope.data[0]._id).toBe('510c35dd8fada716c89d0013');
+        expect(scope.pages).toBe(data[2].pages);
 
     });
 

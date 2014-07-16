@@ -50,12 +50,12 @@ angular.module('maaperture').controller('UsersCollectionCtrl', function ($scope,
             }).$promise.then( function success(response) {
                 $scope.labels = response[0];
                 $scope.data = response[1];
-                //$scope.pages = response[2].pages;
+                $scope.pages = response[2].pages;
 
                 //Salva i nomi originali delle colonne per le query a database
-                $.each($scope.data[0].data, function (key, value) {
-                    $scope.column_original_name.push(key);
-                });
+                $scope.column_original_name = Object.keys( $scope.data[0].data);
+
+
 
 
                 for (var i = 0; i < Object.keys($scope.data).length; i++) {

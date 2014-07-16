@@ -19,19 +19,7 @@ describe('Controller: CollectionCtrl', function () {
         scope,
         location,
         $httpBackend;
-    var data =
-        [ [ 'Timestamp', 'Message', 'Level' ],
-            [ { _id: '52b31e950d715cff70000001', data: { label: [ '_id', 'Timestamp', 'Message', 'Level', 'Hostname' ],
-                data:
-                { _id: '52b320a93401a40800000006',
-                    timestamp: 'today',
-                    message: 'AMAIL',
-                    level: 'info',
-                    hostname: 'b6d91509-de9d-4be9-819d-e04de3699ad2' } } },
-                { _id: '52b31ebd3401a40800000002', data: [Object] },
-                { _id: '52b31ebd3401a40800000003', data: [Object] },
-                { _id: '52b3347f255fbb0800000021', data: [Object] } ],
-            { pages: 4 } ];
+    var data = [["Nome","Cognome"],[{"_id":"107c35dd8fada716c89d0014","data":{"name":"Walter","surname":"Mazzarri"}}],{"pages":1}]
 
     // Initialize the controller and a mock scope
     beforeEach(inject(function ($controller,$location, $rootScope, _$httpBackend_) {
@@ -49,7 +37,7 @@ describe('Controller: CollectionCtrl', function () {
 
     }));
 
-    it('should set some data on the scope when successful', function () {
+    it('should set  data on the scope when successful', function () {
         // Given
         $httpBackend.whenGET('http://localhost:9000/api/collection/0?page=0').respond(200, data);
         $httpBackend.whenGET('views/dashboard.html').respond(200);
@@ -58,9 +46,17 @@ describe('Controller: CollectionCtrl', function () {
         scope.getData();
         $httpBackend.flush();
         // Then
-        expect(scope.data).toEqual(data);
-        expect(scope.labels).toEqual({ 0 : 'Timestamp', 1 : 'Message', 2 : 'Level' });
-        //expect(scope.pages).toEqual(data[2]);
+        expect(scope.pages).toBe(data[2].pages);
+        expect(scope.labels[0]).toBe('Nome');
+        expect(scope.labels[1]).toBe('Cognome');
+
+        expect(scope.data[0]._id).toBe('107c35dd8fada716c89d0014');
+        expect(scope.data[0].data).toEqual({"name":"Walter","surname":"Mazzarri"});
+        expect(scope.pages).toBe(data[2].pages);
+
+        expect(scope.column_original_name).toEqual(["name","surname"]);
+        expect(scope.rows).toEqual([["Walter","Mazzarri"]]);
+
 
     });
 

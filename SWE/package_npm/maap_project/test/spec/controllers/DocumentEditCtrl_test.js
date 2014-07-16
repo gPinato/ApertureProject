@@ -19,11 +19,11 @@ describe('Controller: DocumentEditCtrl', function () {
         routeParams,
         $httpBackend,
         scope,
-        data = { label: [ '_id', 'Timestamp', 'Message' ],
-            data:
-            {   timestamp: 'today',
-                message: 'AMAIL',
-                level: 'info' } };
+        data = { _id: 'WM',
+            name: 'Walter',
+            surname: 'Mazzarri',
+            email: 'walter@mazzarri.com',
+            age: 45 }
     // Initialize the controller and a mock scope
     beforeEach(inject(function ($controller, $rootScope,_$httpBackend_ ) {
         scope = $rootScope.$new();
@@ -46,7 +46,18 @@ describe('Controller: DocumentEditCtrl', function () {
         // When
         $httpBackend.flush();
         // Then
-        var temp = JSON.stringify(data, undefined, 2);
+
+
+        var temp = JSON.stringify({
+            "_id": "WM",
+            "name": "Walter",
+            "surname": "Mazzarri",
+            "email": "walter@mazzarri.com",
+            "age": 45,
+            "$promise": {},
+            "$resolved": true
+        }, undefined, 2)
+
         expect(scope.original_data).toEqual(temp);
 
     });
