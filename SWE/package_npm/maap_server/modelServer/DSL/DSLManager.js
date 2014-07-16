@@ -14,16 +14,17 @@
  */
 'use strict';
 
-//DSL manager
-// controlla la presenza di file dsl nell'apposita cartella definita
-//nel file di configurazione e cerca di eseguire il parser di ogni file
-// utilizzando DSLParser.js che controlla la correttezza dei campi dati 
-// del dsl.
 
 var fs = require('fs'); 
 var path = require('path'); 
 var DSLparser = require('./DSLParser');
 var schemaGenerator = require('./schemaGenerator');
+
+ /**
+ * Genera le funzioni JavaScript per gestire le trasformazioni dei dati definite nel DSL ed esporta tutti i modelli creati in un unico array
+ *
+ *@param trasformation - Si occupa di generare le funzioni JavaScript per gestire le trasformazionidei dati definite nel DSL
+ */
 
 var generateFunction = function(transformation) {
 
@@ -47,6 +48,12 @@ var generateFunction = function(transformation) {
 //for unit test
 exports.generateFunction = generateFunction;
 
+ /**
+ * Si occupa di cancellare i file e le cartelle all’interno della cartella path specificata
+ *
+ *@param path - Percorso della cartella da svuotare
+ */
+
 var deleteFolderRecursive = function(path) {
   if( fs.existsSync(path) ) {
     fs.readdirSync(path).forEach(function(file,index){
@@ -63,7 +70,8 @@ var deleteFolderRecursive = function(path) {
   }
 };
 
-//salva un file nella path indicata
+
+ 
 var saveFile = function(buffer, fileName, filePath) {
 	
 	var fullPath = filePath + '/' + fileName;
@@ -82,6 +90,17 @@ var saveFile = function(buffer, fileName, filePath) {
 	);	
 	while(!fileSaved){require('deasync').sleep(100);}
 }
+
+/**
+ * Si occupa di verficare la correttezza del DSL scritto, verficando che talefile contenga
+ * un codice corretto sintatticamente e attraverso l'uso del DSLParser esegua
+ * il parsing vero e proprio. Controlla che il risulatato del parsing sia in formato
+ * JSON, lo salva su file e utilizza il metodo generateFunction per creare le funzioni
+ * di trasformazione. Se non esiste, si occupa di generare lo schema Mongoose della
+ * Collection specificata nel file DSL
+ *
+ *@param app - Oggetto contenente l'applicazione di Express
+ */
 
 var checkDSL = function(app) {
 
