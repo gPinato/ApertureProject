@@ -207,23 +207,35 @@ var getDocuments = function(model, querySettings, populate, callback){
  */
 exports.getCollectionsList = function(find) {
 	
+	//prelevo il file contenente la lista delle collections
 	var collectionsList = getCollectionsListFile();
 	
+	//se il campo find di ricerca e' definito e non vuoto
 	if(find != undefined && find != '')
 	{
+		//preparo il risultato
 		var result = [];
+		
+		//scorro tutte le collections
 		for(var i=0; i<collectionsList.length; i++)
 		{
 			var label = (collectionsList[i].label).toLowerCase();
 			find = find.toLowerCase();
+			
+			//se l'etichetta contiene il campo find
 			if(label.indexOf(find) != -1)
 			{
+				//inserisco la collection nell'array dei risultati
 				result.push(collectionsList[i]);
 			}		
-		}	
-		collectionsList = result;
+		}
+
+		//se ho almeno un risultato aggiorno la lista delle collections
+		if(result.length > 0)
+			collectionsList = result;
 	}
 	
+	//restituisco la lista delle collections
 	return collectionsList;
 	
 }

@@ -31,8 +31,10 @@ var JSonComposer = require('../JSonComposer');
  */
 exports.sendCollectionsList = function(req, res) {
 
-	//var find = req.params.find; //per implementare la ricerca
-	var find = '';
+	//prelevo il campo da ricercare
+	var find = req.params.find; 
+	console.log('got a find request: ' + req.params.find);
+	
 	//prelevo la lista di collection
 	var collectionsList = retriever.getCollectionsList(find);
 	//invio al client la lista di collection
