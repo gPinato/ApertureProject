@@ -24,6 +24,8 @@ angular.module('maaperture').controller('IndexCtrl', function ($scope, $route, $
     var init = function () {
         $scope.current_sorted_column = null;
         $scope.current_sort = null;
+        $scope.column_original_name = [];
+
         $scope.current_page = 0;
         $scope.rows = [];
         $scope.getData();
@@ -37,12 +39,21 @@ angular.module('maaperture').controller('IndexCtrl', function ($scope, $route, $
     $scope.getData = function () {
 
         IndexService.query({
+            index_name: null,
+            col_name:  null,
+            order: $scope.current_sort,
+            column: $scope.column_original_name[$scope.current_sorted_column],
+            page: $scope.current_page
 
             }).$promise.then( function success(response) {
                 $scope.labels = response[0];
                 $scope.data = response[1];
                 $scope.pages = response[2].pages;
 
+
+                //Salva i nomi originali delle colonne per le query a database
+
+                $scope.column_original_name = Object.keys( $scope.data[0].data);
 
                 for (var i = 0; i < Object.keys($scope.data).length; i++) {
                     //Copia i valori da stampare in un array per mantenere l'ordine
