@@ -2195,96 +2195,129 @@ Package contenente i vari Template utilizzati dal Client AngularJS per visualizz
 \subsubsection{@pwdrecovery.html}
 \begin{description}
 	\item[Descrizione] \hfill \\
-	
+	Pagina utilizzata per il recupero password di un utente iscritto al sistema.
 	\item[Utilizzo] \hfill \\
-	
+	Questa pagina fornisce un form di input all'utente che desidera recuperare la password dimenticata. L'utente dovrà inserire la mail con cui si è iscritto al sistema. Il sistema stesso, successivamente, invierà una mail all'indirizzo specificato con la nuova password.
 	\item[Attributi] \hfill
- 	
+ 	\begin{description}
+ 		\item[\$scope.credentials] \hfill \\
+ 		Oggetto contenente l'indirizzo email specificato dall'utente che desidera recuperare la password.
+ 	\end{description}
 \end{description}
 
 \subsubsection{@queryCollection.html}
 \begin{description}
 	\item[Descrizione] \hfill \\
-	
+	Pagina per la visualizzazione delle query più utilizzate. Questa pagina è riservata agli utenti che possiedono privilegi di amministrazione.
 	\item[Utilizzo] \hfill \\
-	
+	In questa pagina è possibile visualizzare le query più utilizzate nel sistema. Esse sono correlate da un numero che esprime la quantità di volte che la query è stata utilizzata. Successivamente è possibile creare un indice su una query visualizzata. In alternativa, sempre in questa pagina, è possibile visualizzare il comando da utilizzare nel terminale per creare l'indice manualmente.
 	\item[Attributi] \hfill
- 	
+ 	\begin{description}
+ 		\item[\$scope.current\_sorted\_column] \hfill \\
+ 		Indice della colonna correntemente utilizzata per l'ordinamento.
+ 		\item[\$scope.column\_original\_name] \hfill \\
+		Array contenente le etichette originali delle colonne della gestione delle query.
+		\item[\$scope.current\_sort] \hfill \\
+		Stringa contenente l'ordinamento corrente della colonna identificata da \textit{\$scope.current\_sorted\_column}.
+		\item[\$scope.current\_page] \hfill \\
+		Intero che rappresenta la pagina correntemente visualizzata.
+		\item[\$scope.rows] \hfill \\
+		Array contenente il contenuto di ogni query. Ovvero, comprende: la Collection di apparteneneza, i campi su cui viene effettuata la query ed il numero di volte che essa è stata effettuata.
+ 	\end{description}
 \end{description}
 
 \subsubsection{@register.html}
 \begin{description}
 	\item[Descrizione] \hfill \\
-	
+	Pagina utilizzata per la registrazione di un nuovo utente.
 	\item[Utilizzo] \hfill \\
-	
+	Questa pagina fornisce un form di inserimento in cui l'utente deve inserire la propria mail e la password scelta. La mail deve essere valida e non deve essere presente nel Server un utente con la medesima mail.
 	\item[Attributi] \hfill
- 	
+ 	\begin{description}
+ 		\item[\$scope.credentials] \hfill \\
+ 		Oggetto contenente le credenziali immesse dall'utente, ovvero la sua mail, la password desiderata e la conferma della password.
+ 		\item[\$scope.submitted] \hfill \\
+ 		Valore booleano che definisce se il bottone di conferma della registrazione sia abilitato o meno. Questo si verifica solamente quando l'intero form è stato riempito con campi validi.
+ 	\end{description}
 \end{description}
 
 \subsubsection{@userCollection.html}
 \begin{description}
 	\item[Descrizione] \hfill \\
-	
+	Pagina per la gestione della Collection degli utenti di Maap. Questa pagina è visibile solamente per un utente che possiede i privilegi di amministrazione.
 	\item[Utilizzo] \hfill \\
-	
+	In questa pagina vengono visualizzati tutti gli utenti registrati al sistema. Da qui l'utente amministratore può decidere di visualizzare un profilo utente, modificarlo o eliminarlo. Nella finestra a destra della Collection, è inoltre possibile refistrare un nuovo utente.
 	\item[Attributi] \hfill
-
+	\begin{description}
+		\item[\$scope.credentials] \hfill \\
+		Oggetto contenente le credenziali immesse dall'utente amministratore alla creazione di un nuovo utente, ovvero la mail, la password desiderata e la conferma della password.
+		\item[\$scope.current\_sorted\_column] \hfill \\
+ 		Indice della colonna correntemente utilizzata per l'ordinamento.
+ 		\item[\$scope.column\_original\_name] \hfill \\
+		Array contenente le etichette originali delle colonne dei campi utente.
+		\item[\$scope.current\_sort] \hfill \\
+		Stringa contenente l'ordinamento corrente della colonna identificata da \textit{\$scope.current\_sorted\_column}.
+		\item[\$scope.current\_page] \hfill \\
+		Intero che rappresenta la pagina correntemente visualizzata.
+		\item[\$scope.rows] \hfill \\
+		Array contenente il contenuto di ogni profilo utente, memorizzato per riga.
+	\end{description}
 \end{description}
 
 \subsubsection{@userDocument.html}
 \begin{description}
 	\item[Descrizione] \hfill \\
-	
+	Pagina utilizzata per la visualizzazione dei dati di un singolo utente, amministratore o non.
 	\item[Utilizzo] \hfill \\
-	
+	Questa pagina presenta in un'unica visualizzazione le informazioni legate ad un utente registrato al sistema. A destra della visualizzazione è presente un pulsante che porta alla pagina di modifica dei propri dati.
 	\item[Attributi] \hfill
- 	
+ 	\begin{description}
+ 		\item[\$scope.current\_document] \hfill \\
+		Stringa contenente l'identificativo del profilo utente correntemente visualizzato.
+		\item[\$scope.original\_data] \hfill \\
+		Array contenente i campi dati del profilo visualizzato.
+		\item[\$scope.original\_keys] \hfill \\
+		Array contenente le etichette originali dei campi dati utente.
+ 	\end{description}
 \end{description}
 
 \subsubsection{@userEdit.html}
 \begin{description}
 	\item[Descrizione] \hfill \\
-	
+	Pagina per la modifica del profilo di un utente, amministratore e non.
 	\item[Utilizzo] \hfill \\
-	
+	In questa pagina vengono visualizzati i campi di un utente, in caselle di testo modificabili. L'utente può quindi modificare i suoi dati e salvarli o annullarli.
 	\item[Attributi] \hfill
- 	
+ 	\begin{description}
+ 		\item[\$scope.current\_document] \hfill \\
+		Stringa contenente l'identificativo del profilo utente correntemente visualizzato.
+		\item[\$scope.newPassword1] \hfill \\
+		Stringa contenente la nuova password inserita.
+		\item[\$scope.newPassword2] \hfill \\
+		Stringa contenente la conferma della nuova password inserita.
+		\item[\$scope.original\_data] \hfill \\
+		Array contenente i campi dati del profilo visualizzato.
+		\item[\$scope.original\_keys] \hfill \\
+		Array contenente le etichette originali dei campi dati utente.
+		\item[\$scope.admin] \hfill \\
+		Valore booleano che specifica se l'utente sia amministratore o meno.
+	\end{description}
 \end{description}
 
 \subsubsection{@userProfile.html}
 \begin{description}
 	\item[Descrizione] \hfill \\
-	
+	Pagina per la visualizzazione del proprio profilo utente.
 	\item[Utilizzo]
-	
+	Questa pagina mostra i dati del proprio profilo utente. Da questa visualizzazione è possibile passare alla pagina di modifica dei propri dati.
 	\item[Attributi] \hfill
- 	
+ 	\begin{description}
+ 		\item[\$scope.original\_data] \hfill \\
+		Array contenente i campi dati del proprio profilo.
+		\item[\$scope.original\_keys] \hfill \\
+		Array contenente le etichette originali dei propri campi dati utente.
+ 	\end{description}
 \end{description}
-
-\subsubsection{::Template}
-I template utilizzati da AngularJs per la generazione delle pagine sono i seguenti:
-
-\begin{center}
-\begin{longtable}{|c|c|c|p{0.5\linewidth}|}
-\toprule
-\textbf{Template} & \textbf{Pagina} \\
-
-%aggiungere qui una midrule per aggiungere una nuova riga alla tabella
- \midrule
-queryCollection.html & Pagina per la visualizzazione delle query pi\'{u} utilizzate (admin)\\
- \midrule
-register.html & Pagina per la registrazione\\
- \midrule
-userCollection.html & Pagina per la visualizzazione della collection degli utenti maap (admin)\\
- \midrule
-userEdit.html & Pagina per la modifica del profilo dell'utente (user) / di un utente (admin)\\
- \midrule
-userProfile & Pagina per la visualizzazione del profilo utente (user) / di un utente (admin)\\
- \bottomrule
- 
-\end{longtable}
-\end{center}
 
 
 \subsection{::ControllerModelView}
