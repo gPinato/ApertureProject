@@ -21,7 +21,7 @@ angular.module('maaperture').controller('NavBarCtrl', function ($scope,$cookieSt
 
     //Funzione per richiedere al server la lista di collection presenti.
 
-    CollectionListService.get().$promise.then(
+    CollectionListService.get({}).$promise.then(
         function success(data) {
             $scope.labels = data.labels;
             $scope.values = data.data;

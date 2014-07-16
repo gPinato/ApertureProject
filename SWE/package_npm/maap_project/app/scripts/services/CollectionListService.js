@@ -22,7 +22,8 @@ angular.module('services')
 		//using the configuration file's settings everytime the server will start up.
 		var hostURL = 'http://localhost:9000';
 		
-        return $resource( hostURL + '/api/collection/list');
+        return $resource( hostURL + '/api/collection/list/:find',
+            {find: '@find'});
 
     }]);
 

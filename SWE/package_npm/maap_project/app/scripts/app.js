@@ -112,14 +112,7 @@ angular
                 );
             }
         });
-    })
-
-    /*
-     * Preffiso di locasStorage impostato su ls per evitare interferenze
-     */
-    .config(['localStorageServiceProvider', function (localStorageServiceProvider) {
-        localStorageServiceProvider.setPrefix('ls');
-    }]);
+    });
 
 
 
