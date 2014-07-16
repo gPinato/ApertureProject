@@ -16,7 +16,15 @@
 var DB = require('../../database/MongooseDBAnalysis');
 var queryModel = require('../../database/MongooseDBFramework').query;
 var connection = require('../../database/MongooseDBFramework').connection;
-var collectionList = require('../../DSL/collectionData/collectionsList.json');
+
+ /**
+ * Recupera il file con la lista delle collections
+ *
+ *@return lista delle collections presenti nel sistema in formato json
+ */
+var getCollectionsListFile = function(){
+	return require('../../DSL/collectionData/collectionsList.json');
+}
 
  /**
  * Preleva il modello relativo ad una specifica collection
@@ -195,9 +203,11 @@ exports.getIndex = function(db, page, indexesPerPage, callback) {
 	var result = [];
 	var done = false;
 	
-	for(var i=0; i<collectionList.length; i++)
+	var collectionsList = getCollectionsListFile();
+	
+	for(var i=0; i<collectionsList.length; i++)
 	{
-		var collectionName = collectionList[i].name;
+		var collectionName = collectionsList[i].name;
 		var collection = db.collection(collectionName);
 		done = false;
 		collection.indexInformation(function(err, indexes) {

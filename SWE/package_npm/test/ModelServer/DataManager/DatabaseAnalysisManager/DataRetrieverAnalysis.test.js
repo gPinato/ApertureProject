@@ -115,7 +115,7 @@ describe("DataRetrieverAnalysis Unit Test: ", function() {
 			{label: 'pluto'},
 			{label: 'test'}
 		];
-		retriever.__set__('collectionsList', collectionsList );
+		retriever.__set__('getCollectionsListFile', function(){return collectionsList;} );
 		
 		it("deve ritornare la lista completa se il campo find e' undefined", function() {
 

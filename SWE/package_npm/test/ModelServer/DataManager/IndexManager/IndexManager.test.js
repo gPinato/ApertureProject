@@ -160,7 +160,7 @@ describe("IndexManager Unit Test: ", function() {
 	
 	describe("getIndex", function() {
 	
-		var collectionList = [
+		var collectionsList = [
 			{
 				name: 'col1',					
 			},
@@ -169,7 +169,7 @@ describe("IndexManager Unit Test: ", function() {
 			}			
 		];
 		
-		indexManager.__set__('collectionList', collectionList );
+		indexManager.__set__('getCollectionsListFile', function(){return collectionsList;} );
 		
 		var indexes = {
 			_id_: 'idfields',
@@ -209,7 +209,6 @@ describe("IndexManager Unit Test: ", function() {
 	
 	describe("createIndex", function() {
 	
-		
 		it("deve ritornare false se c'e' un errore nel recupero della query nel DB", function() {
 			
 			indexManager.__set__('queryModel', {find: function(where, select){ return {lean: function(){return {exec: function(callback){callback(true, false);} };} }; } } );

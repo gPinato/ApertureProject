@@ -1987,7 +1987,7 @@ Package contenente i vari Template utilizzati dal Client AngularJS per visualizz
 \begin{description}
 	\item[Descrizione] \hfill \\
 	Pagina principale visualizzata dopo il login.
-	\item[Utilizzo]
+	\item[Utilizzo] \hfill \\
 	Questa view viene utilizzata per far visualizzare all'utente autenticato la lista delle Collection tra cui egli può scegliere.
 	\item[Attributi] \hfill
 	\begin{description}
@@ -2004,7 +2004,7 @@ Package contenente i vari Template utilizzati dal Client AngularJS per visualizz
 \begin{description}
 	\item[Descrizione] \hfill \\
 	Pagina per la visualizzazione di un singolo Document.
-	\item[Utilizzo]
+	\item[Utilizzo] \hfill \\
 	In questa pagina di visualizzazione vengono forniti i dati di un singolo Document all'utente autenticato. Se l'utente in questione possiede i privilegi di amministratore, può anche decidere di modificare o eliminare un Document. 
 	\item[Attributi] \hfill
 	\begin{description}
@@ -2025,7 +2025,7 @@ Package contenente i vari Template utilizzati dal Client AngularJS per visualizz
 \begin{description}
 	\item[Descrizione] \hfill \\
 	Pagina per la modifica di un singolo Document.
-	\item[Utilizzo]
+	\item[Utilizzo] \hfill \\
 	La pagina è composta principalmente di una TextArea in cui viene visualizzato il JSON del Document che si è deciso di modificare. In questa TextArea è possibile modificare l'intero Document, per poi salvare i cambiamenti o annullarli.
 	\item[Attributi] \hfill
 	\begin{description}
@@ -2033,17 +2033,18 @@ Package contenente i vari Template utilizzati dal Client AngularJS per visualizz
 		Stringa contenente il nome della Collection che racchiude in Document correntemente visualizzato.
 		\item[\$scope.current\_document] \hfill \\
 		Stringa contenente l'identificativo del Document correntemente visualizzato.
+		\item[\$scope.canEdit] \hfill \\
+		Valore booleano che identifica se l'utente correntemente autenticato possa modificare o meno il Document visualizzato. Nel controller di questa view, esso è impostato di default a \textbf{true}.
+		\item[\$scope.original\_data] \hfill \\
+		Oggetto contenente i dati originali del Document corrente.
 	\end{description}
- 	
 \end{description}
 
 \subsubsection{@help.html}
 \begin{description}
 	\item[Descrizione] \hfill \\
-	
-	\item[Utilizzo]
-	
-	\item[Attributi] \hfill
+	Pagina contenente la sezione di aiuto per l'utente autenticato.
+	\item[Utilizzo] \hfill \\
  	
 \end{description}
 
@@ -2051,7 +2052,7 @@ Package contenente i vari Template utilizzati dal Client AngularJS per visualizz
 \begin{description}
 	\item[Descrizione] \hfill \\
 	
-	\item[Utilizzo]
+	\item[Utilizzo] \hfill \\
 	
 	\item[Attributi] \hfill
  	
@@ -2061,7 +2062,7 @@ Package contenente i vari Template utilizzati dal Client AngularJS per visualizz
 \begin{description}
 	\item[Descrizione] \hfill \\
 	
-	\item[Utilizzo]
+	\item[Utilizzo] \hfill \\
 	
 	\item[Attributi] \hfill
  	
@@ -2071,7 +2072,7 @@ Package contenente i vari Template utilizzati dal Client AngularJS per visualizz
 \begin{description}
 	\item[Descrizione] \hfill \\
 	
-	\item[Utilizzo]
+	\item[Utilizzo] \hfill \\
 	
 	\item[Attributi] \hfill
  	
@@ -2081,7 +2082,7 @@ Package contenente i vari Template utilizzati dal Client AngularJS per visualizz
 \begin{description}
 	\item[Descrizione] \hfill \\
 	
-	\item[Utilizzo]
+	\item[Utilizzo] \hfill \\
 	
 	\item[Attributi] \hfill
  	
@@ -2091,7 +2092,7 @@ Package contenente i vari Template utilizzati dal Client AngularJS per visualizz
 \begin{description}
 	\item[Descrizione] \hfill \\
 	
-	\item[Utilizzo]
+	\item[Utilizzo] \hfill \\
 	
 	\item[Attributi] \hfill
  	
@@ -2101,7 +2102,7 @@ Package contenente i vari Template utilizzati dal Client AngularJS per visualizz
 \begin{description}
 	\item[Descrizione] \hfill \\
 	
-	\item[Utilizzo]
+	\item[Utilizzo] \hfill \\
 	
 	\item[Attributi] \hfill
  	
@@ -2111,7 +2112,7 @@ Package contenente i vari Template utilizzati dal Client AngularJS per visualizz
 \begin{description}
 	\item[Descrizione] \hfill \\
 	
-	\item[Utilizzo]
+	\item[Utilizzo] \hfill \\
 	
 	\item[Attributi] \hfill
  	
@@ -2121,7 +2122,7 @@ Package contenente i vari Template utilizzati dal Client AngularJS per visualizz
 \begin{description}
 	\item[Descrizione] \hfill \\
 	
-	\item[Utilizzo]
+	\item[Utilizzo] \hfill \\
 	
 	\item[Attributi] \hfill
 
@@ -2131,7 +2132,7 @@ Package contenente i vari Template utilizzati dal Client AngularJS per visualizz
 \begin{description}
 	\item[Descrizione] \hfill \\
 	
-	\item[Utilizzo]
+	\item[Utilizzo] \hfill \\
 	
 	\item[Attributi] \hfill
  	
@@ -2141,7 +2142,7 @@ Package contenente i vari Template utilizzati dal Client AngularJS per visualizz
 \begin{description}
 	\item[Descrizione] \hfill \\
 	
-	\item[Utilizzo]
+	\item[Utilizzo] \hfill \\
 	
 	\item[Attributi] \hfill
  	
@@ -2166,8 +2167,6 @@ I template utilizzati da AngularJs per la generazione delle pagine sono i seguen
 \textbf{Template} & \textbf{Pagina} \\
 
 %aggiungere qui una midrule per aggiungere una nuova riga alla tabella
- \midrule
-documentEdit.html &  Pagina per la modifica di un singolo document\\
  \midrule
 indexCollection & Pagina per la visualizzazione degli indici creati (admin)\\
  \midrule
