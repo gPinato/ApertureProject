@@ -1053,6 +1053,72 @@ Prepara le query da effettuare e contatta il \grassetto{@DataRetrieverAnalysis} 
  Esegue una chiamata asincrona al metodo \textit{removeDocument} di \grassetto{@DataRetrieverAnalysis} per modificare un Document esistente nel Server. Nel caso la rimozione effettuata dal \grassetto{@DataRetrieverAnalysis} vada a buon fine, viene ritornato al Client un codice \textit{http} di successo "200", altrimenti viene mandato il codice di errore \textit{http} 404.
  \end{description}
  
+  \item[resetQueries(req, res)] \hfill 
+  \begin{description}
+  \item[Parametri] \hfill
+   \begin{description}
+    \item[req] \hfill \\
+    Oggetto contenente i parametri e le informazioni della richiesta HTTP del Client.
+    \item[res] \hfill \\
+    Oggetto duale a \textit{req} su cui invocare i metodi per inviare informazioni al Client richiedente.
+   \end{description}
+  \item[Descrizione] \hfill \\
+  Esegue una chiamata asincrona al metodo \textit{resetQueries} di \grassetto{@indexManager} per eliminare una lista di query. Nel caso la rimozione effettuata dall' \grassetto{@indexManager} vada a buon fine, viene ritornato al Client un codice \textit{http} di successo "200", altrimenti viene mandato il codice di errore \textit{http} 404.
+  \end{description}
+ 
+ \item[getTopQueries(req, res)] \hfill 
+   \begin{description}
+   \item[Parametri] \hfill
+    \begin{description}
+     \item[req] \hfill \\
+     Oggetto contenente i parametri e le informazioni della richiesta HTTP del Client.
+     \item[res] \hfill \\
+     Oggetto duale a \textit{req} su cui invocare i metodi per inviare informazioni al Client richiedente.
+    \end{description}
+   \item[Descrizione] \hfill \\
+   Esegue una chiamata asincrona al metodo \textit{getTopQueries} di \grassetto{@indexManager} per prelevare la lista di query più utilizzate. Nel caso la richiesta effettuata al \grassetto{@indexManager} vada a buon fine, viene ritornato al Client un codice \textit{http} di successo "200", altrimenti viene mandato il codice di errore \textit{http} 404.
+   \end{description}
+   
+    \item[getIndexesList(req, res)] \hfill 
+      \begin{description}
+      \item[Parametri] \hfill
+       \begin{description}
+        \item[req] \hfill \\
+        Oggetto contenente i parametri e le informazioni della richiesta HTTP del Client.
+        \item[res] \hfill \\
+        Oggetto duale a \textit{req} su cui invocare i metodi per inviare informazioni al Client richiedente.
+       \end{description}
+      \item[Descrizione] \hfill \\
+      Esegue una chiamata asincrona al metodo \textit{getIndex} di \grassetto{@indexManager} per ottenere una lista di indici. Tale lista viene dettagliata utilizzando il metodo \textit{createIndexesList} di \grassetto{@JsonComposer} e viene ritornata al client.
+      \end{description}
+      
+      \item[createIndex(req, res)] \hfill 
+           \begin{description}
+           \item[Parametri] \hfill
+            \begin{description}
+             \item[req] \hfill \\
+             Oggetto contenente i parametri e le informazioni della richiesta HTTP del Client.
+             \item[res] \hfill \\
+             Oggetto duale a \textit{req} su cui invocare i metodi per inviare informazioni al Client richiedente.
+            \end{description}
+           \item[Descrizione] \hfill \\
+           Esegue una chiamata asincrona al metodo \textit{createIndex} di \grassetto{@indexManager} per creare l' indice. Nel caso la richiesta effettuata al \grassetto{@indexManager} vada a buon fine, viene ritornato al Client un codice \textit{http} di successo "200", altrimenti viene mandato il codice di errore \textit{http} 404.
+           \end{description}
+           
+      \item[deleteIndex(req, res)] \hfill 
+                 \begin{description}
+                 \item[Parametri] \hfill
+                  \begin{description}
+                   \item[req] \hfill \\
+                   Oggetto contenente i parametri e le informazioni della richiesta HTTP del Client.
+                   \item[res] \hfill \\
+                   Oggetto duale a \textit{req} su cui invocare i metodi per inviare informazioni al Client richiedente.
+                  \end{description}
+                 \item[Descrizione] \hfill \\
+                 Esegue una chiamata asincrona al metodo \textit{deleteIndex} di \grassetto{@indexManager} per eliminare l' indice. Nel caso la richiesta effettuata al \grassetto{@indexManager} vada a buon fine, viene ritornato al Client un codice \textit{http} di successo "200", altrimenti viene mandato il codice di errore \textit{http} 404.
+                 \end{description}
+  
+  
  \end{description}
  
 \end{description} %forse è in più.
@@ -1843,7 +1909,7 @@ Package realizzato per creare e gestire gli indici utilizzati nel database di an
     				Oggetto contenente l'applicazione di \grassetto{Express}.
     			\end{description}
     		\item[Descrizione] \hfill \\
-    		Si occupa di verificare la correttezza del DSL scritto, verificando che tale file contenga un codice corretto sintatticamente e attraverso l'uso del \grassetto{@DSLparser} esegui il parsing vero e proprio. Controlla che il risulatato del parsing sia in formato JSON, lo salva su file e utilizza il metodo \textit{generateFunction} per creare le funzioni di trasformazione. Se non esiste, si occupa di generare lo schema \grassetto{Mongoose} della Collection specificata nel file DSL.
+    		Si occupa di verificare la correttezza del DSL scritto, verificando che tale file contenga un codice corretto sintatticamente e attraverso l'uso del \grassetto{@DSLparser} esegua il parsing vero e proprio. Controlla che il risulatato del parsing sia in formato JSON, lo salva su file e utilizza il metodo \textit{generateFunction} per creare le funzioni di trasformazione. Se non esiste, si occupa di generare lo schema \grassetto{Mongoose} della Collection specificata nel file DSL.
     \end{description}
  \end{mldescription}
  
