@@ -12,8 +12,11 @@
  * 0.1 File creation
  ==============================================
  */
+//mostra tutti i warning possibili
 'use strict';
+//carico il modulo di MongooseDBAnalysis per il db di analisi
 var DB = require('../../database/MongooseDBAnalysis');
+//carico il modulo di MongooseDBAnalysis per le query
 var queryModel = require('../../database/MongooseDBFramework').query;
 var connection = require('../../database/MongooseDBFramework').connection;
 
@@ -23,6 +26,7 @@ var connection = require('../../database/MongooseDBFramework').connection;
  *@return lista delle collections presenti nel sistema in formato json
  */
 var getCollectionsListFile = function(){
+	//ritorno la lista delle collection
 	return require('../../DSL/collectionData/collectionsList.json');
 }
 
@@ -34,18 +38,24 @@ var getCollectionsListFile = function(){
  */
 var getModel = function(collection_name) {
 	
+	//prendo tutti i modelli
 	var array = DB.model;
 	
+	//scorro l'array di modelli
 	for(var i=0; i<array.length; i++)
 	{
+		//controllo se il nome del modello corrisponde al nome passato
 		if(array[i].name == collection_name)
 		{
+			//se ho trovato il modello corrispondente lo faccio ritornare
 			return array[i].model;
 		}
 	}
+	//se non trovo nessun modello, ritorno -1
 	return -1;
 }
 //for unit test
+//esporto la funzione
 exports.getModel = getModel;
 
  /**
@@ -61,8 +71,11 @@ exports.addQuery = function(collection_name, select) {
 	findQueries.lean().exec(function(err,data){
 		if(err)
 		{
+			//se la query da errore allora stampo sulla console un messaggio di errore
 			console.log('Impossibile recuperare lista query con la collection: '+collection_name);
 		}else{
+			//se la query non da errori allora procedo
+			//controllo se la lista che la query ritorna è vuota
 			if(data.length == 0)
 			{
 				//se non e' presente nessuna query relativa alla collection specificata
@@ -72,6 +85,7 @@ exports.addQuery = function(collection_name, select) {
 				criteria.save(function(err){
 					if(err)
 					{
+						//se il save da errori stampo un messaggio di errore
 						console.log('inserimento query fallito: ' + err);
 					}
 				});
@@ -84,6 +98,7 @@ exports.addQuery = function(collection_name, select) {
 				for(var i = 0;i<data.length;i++){
 				
 					if(data[i].select.length == select.length){
+						//contatore
 						var countmatch = 0;
 						for(var key in select){
 							if(data[i].select[key] != undefined)
@@ -161,59 +176,99 @@ exports.resetQueries = function(callback) {
  */
 exports.getQueries = function(page, perpage, n_elements, callback) {
 	
+	//creo un array vuoto di opzioni
 	var options = {};
 	
+	//aggiungo lo skip, ovvero da dove partire a prendere gli elementi, alle opzioni
 	options.skip = page * perpage;
+	//aggiungo il limit, ovvero quanti elementi prendere, alle opzioni
 	options.limit = perpage;
+	//aggiungo il tipo di ordinamento alle opzioni
 	options.sort = {counter:'desc'};
 	
+	//creo un array di risultati vuoto
 	var result = {};
 	result.data = [];
 	result.options = {};
 	
+	//faccio la query su db per recuperare i dati
 	queryModel.find({}, function(err, queries){
-		if(err) { console.log('errore recupero query list: ' + err); callback(result); }
+		//controllo se la query da problemi
+		if(err) { 
+			//se la query da problemi allora stampo un messaggio di errore sulla console
+			console.log('errore recupero query list: ' + err); callback(result); 
+		}
 		else if(!queries){
+			//se non ci sono query allora stampo un messaggio di errore
 			console.log('no queries!');
+			//do alla callback il risultato
 			callback(result);
 		}else{
+			//se ci sono delle query
+			//calcolo il numero di pagine da visualizzare
 			result.options.pages = Math.floor(queries.length / perpage);
+			//se la divisione ha resto, allora aumento il numero di pagine di 1
 			if((queries.length % perpage) > 0) result.options.pages++;
-			
+			//definisco la query
 			var query = queryModel.find({},{},options);
+			//eseguo la query e trasformo il risultato in JSON
 			query.lean().exec(function(err,data){
+				//controllo se la query dà errori
 				if(err){
+					//se la query da problemi allora stampo un messaggio di errore sulla console
 					console.log('Impossibile ritornare le query');
+					//do alla callback il risultato
 					callback(result);
 				}
+				//controllo se il risultato è nullo
 				if(!data)
 				{
+					//se il risultato è nullo allora stampo un messaggio sulla console
 					console.log('Non ci sono query da visualizzare');
 				}else{
+					//se il risultato non è vuoto allora lo aggiungo all'array di risultati
 					result.data = data;
 				}
+				//do alla callback il risultato contenenti le query da visualizzare
 				callback(result);
 			});
 		}		
 	});
 }
 
+ /**
+ * Recupera la lista di indici presenti nel database
+ *
+ *@param db - contiene il db dove cercare gli indici
+ *@param page - numero di pagina da visualizzare
+ *@param indexesPerPage - numero di indici da visualizzare per pagina 
+ *@param callback - funzione da richiamare al termine dell'esecuzione
+ */
 exports.getIndex = function(db, page, indexesPerPage, callback) {
 
+	//deinisco un array vuoto di risultati
 	var result = [];
+	//variabile di supporto per rendere la funzione sincrona
 	var done = false;
 	
+	//prendo la lista di collection
 	var collectionsList = getCollectionsListFile();
 	
+	//scorro la lista di collection
 	for(var i=0; i<collectionsList.length; i++)
 	{
+		//prendo il nome i-esimo della collection
 		var collectionName = collectionsList[i].name;
+		//prendo la collection
 		var collection = db.collection(collectionName);
 		done = false;
+		//sulla collection chiamo indexInformation per ottenere gli indici di quella collection
 		collection.indexInformation(function(err, indexes) {
+			//scorro gli indici
 			for(var key in indexes)
 			{
-				if(key != '_id_')	//non aggiungo gli indici di default _id_
+				if(key != '_id_')	
+					//non aggiungo gli indici di default _id_
 					result.push({indexName: key, collectionName: collectionName, indexFields: indexes[key]});
 			}
 			done = true;
@@ -222,71 +277,113 @@ exports.getIndex = function(db, page, indexesPerPage, callback) {
 		while(!done){require('deasync').sleep(100);}
 	}
 	
-	//TODO caricare solamente gli indici della pagina specificata
-	
+	//passo alla callback l'array di indici
 	callback(result);
 	
 }
 
+ /**
+ * Crea un indice per i campi di una collection
+ *
+ *@param query_id - contiene l'id della query sulla quale creare un indice
+ *@param name_index - contiene il nome dell'indice
+ *@param callback - funzione da richiamare al termine dell'esecuzione
+ */
 exports.createIndex = function(query_id, name_index, callback) {
-	
+	//creo l'oggetto per la condizione where di una query
 	var where = {};
 	where['_id'] = query_id;
+	//creo l'oggetto per il select di una query
 	var select = {};
+	//definisco la query
 	var query = queryModel.find(where,select);
+	//eseguo la query sul db
 	query.lean().exec(function(err,data){
+		//controllo se la query da errori
 		if(err){
+			//se la query da errori allora stampo un messaggio di errore
 			console.log('Impossibile ritornare la query dell\' indice');
+			//passo false alla callback
 			callback(false);
-		}else if(!data)
+		}else 
+		//controllo se la query non da risultati
+		if(!data)
 		{
+			//se non c'è risultato allora stampo un messaggio di errore
 			console.log('Errore _id query cercata');
+			//passo false alla callback
 			callback(false);
-		}else if(data.length > 0){
-			//console.log(data);
-					
-			var collection_name = data[0].collection_name;			
+		}else 
+			//se la query produce risultato
+			if(data.length > 0){
+			//recupero il nome della collection		
+			var collection_name = data[0].collection_name;		
+			//recupero i campi della select della query
 			var fieldIndex = data[0].select;
+			//creo un oggetto index vuoto
 			var index = {};
+			//scorro ogni campo in fieldIndex
 			for(var key in fieldIndex){
+				//aggiungo il campo dentro l'oggetto index e lo imposto a 1
 				index[key] = 1;
 			}
 			
 			//imposto il nome dell'indice
 			name_index = query_id;
-			
+			//creo l'oggetto nameindex vuoto
 			var nameindex = {};
+			//imposto il nome di nameindex con il nome dell'indice
 			nameindex.name = name_index;
+			//prelevo lo schema della collection
 			var collectionSchema = require('../../DSL/collectionData/'+collection_name+'_schema').schema;
+			//definisco un indice nello schema
 			collectionSchema.index(index, nameindex);
-					
+			//prendo il model della collection		
 			var collectionModel = getModel(collection_name);
+			//provo a creare l'indice
 			collectionModel.ensureIndexes(function(err){
+				//controllo se la creazione dell'indice ha prodotto errori
 				if(err)
 				{
+					//se la creazione ha prodotto errori allora stampo un messaggio sulla console
 					console.log('Impossibile creare l\'indice');
+					//passo false alla callback
 					callback(false);
 				}else{
+					//se la creazione non ha prodotto errori
 					//indice creato correttamente
+					//passo true alla callback
 					callback(true);
 				}
 			});
 			
 		}else{
+		//se non c'è risultato allora passo false alla callback
 			callback(false);
 		}
 	});
 }
 
+ /**
+ * Elimino un indice
+ *
+ *@param db - contiene il db dove cercare gli indici
+ *@param name_index - contiene il nome dell'indice
+ *@param callback - funzione da richiamare al termine dell'esecuzione
+ */
 exports.deleteIndex = function(db, indexName, collectionName, callback) {
 
+	//prendo la collection
 	var collection = db.collection(collectionName);
-	
+	//cancello un indice dalla collection
 	collection.dropIndex(indexName, function(err, result){
+		//controllo se la cancellazione ha prodotto errori
 		if(err)
 		{
+			//se la cancellazione ha prodotto errori, allora passo false alla callback
 			callback(false);
 		}else{
+			//se la cancellazione non ha prodotto errori, allora passo true alla callback
 			callback(true);
 		}	
 	});	
