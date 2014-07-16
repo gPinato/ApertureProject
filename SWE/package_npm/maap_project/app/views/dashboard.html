@@ -20,6 +20,7 @@
 
             <table class="table">
                 <th>Choose a collection</th>
+                <span ng-show="data.values.length == 0"><h2>No results found!</h2></span>
                 <tr ng-repeat="element in labels"><td><a href="/collection/{{values[$index]}}"><button>{{element}}</button></a></td></tr>
 
 
