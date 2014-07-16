@@ -2053,39 +2053,60 @@ Package contenente i vari Template utilizzati dal Client AngularJS per visualizz
 	\item[Descrizione] \hfill \\
 	Pagina per la visualizzazione degli indici creati, riservata all'amministratore.
 	\item[Utilizzo] \hfill \\
-	
+	Questa pagina mostra gli indici creati sul Database di analisi, correlati alla loro Collection e i campi utilizzati. \`{E} eventualmente possibile eliminare indici attualmente presenti.
 	\item[Attributi] \hfill
- 	
+ 	\begin{description}
+ 		\item[\$scope.current\_sorted\_column] \hfill \\
+ 		Indice della colonna correntemente utilizzata per l'ordinamento.
+ 		\item[\$scope.column\_original\_name] \hfill \\
+		Array contenente le etichette originali delle colonne della gestione degli indici.
+		\item[\$scope.current\_sort] \hfill \\
+		Stringa contenente l'ordinamento corrente della colonna identificata da \textit{\$scope.current\_sorted\_column}.
+		\item[\$scope.current\_page] \hfill \\
+		Intero che rappresenta la pagina correntemente visualizzata.
+		\item[\$scope.rows] \hfill \\
+		Array contenente il contenuto di ogni indice della Collection, salvato per riga.
+ 	\end{description}
 \end{description}
 
 \subsubsection{@login.html}
 \begin{description}
 	\item[Descrizione] \hfill \\
-	
+	Pagina adibita al login utente.
 	\item[Utilizzo] \hfill \\
-	
+	Questa pagina viene utilizzata per l'inserimento delle credenziali dell'utente. Contiene collegamenti alla pagina di recupero password, alla registrazione e alla sezione di aiuto.
 	\item[Attributi] \hfill
- 	
+ 	\begin{description}
+ 		\item[\$scope.credentials] \hfill \\
+ 		Oggetto contenente il campo \textit{username} e \textit{password} inseriti dall'utente.
+ 	\end{description}
 \end{description}
 
-\subsubsection{@logout.html}
-\begin{description}
-	\item[Descrizione] \hfill \\
-	
-	\item[Utilizzo] \hfill \\
-	
-	\item[Attributi] \hfill
+%\subsubsection{@logout.html}
+%\begin{description}
+%	\item[Descrizione] \hfill \\
+%	Pagina di gestione 
+%	\item[Utilizzo] \hfill \\
+%	
+%	\item[Attributi] \hfill
  	
-\end{description}
+%\end{description}
 
-\subsubsection{@NavBar.html}
+\subsubsection{@Navbar.html}
 \begin{description}
 	\item[Descrizione] \hfill \\
-	
+	Barra di navigazione superiore, inclusa nella maggior parte delle pagine.
 	\item[Utilizzo] \hfill \\
-	
+	Sezione di pagina contenente i pulsanti primari di navigazione di \textit{Maap}. Sono presenti i pulsanti di scelta delle Collection e della gestione del profilo utente. Se l'utente autenticato ha privilegi di amministratore, può consultare anche le Collection degli utenti ed accedere all'area di gestione dei profili utente registrati al sistema.
 	\item[Attributi] \hfill
- 	
+ 	\begin{description}
+ 		\item[\$scope.isAdmin] \hfill \\
+ 		Valore booleano che definisce se l'utente autenticato abbia o meno i privilegi di amministrazione.
+ 		\item[\$scope.labels] \hfill \\
+ 		Array contenente i nomi delle Collection presenti nel sistema.
+ 		\item[\$scope.values] \hfill \\
+ 		Array contenente i nomi delle Collection necessari per eseguire la navigazione ad una data Collection tramite \textit{query string}.
+ 	\end{description}
 \end{description}
 
 \subsubsection{@pwdrecovery.html}
@@ -2167,12 +2188,6 @@ I template utilizzati da AngularJs per la generazione delle pagine sono i seguen
 \textbf{Template} & \textbf{Pagina} \\
 
 %aggiungere qui una midrule per aggiungere una nuova riga alla tabella
- \midrule
-indexCollection & Pagina per la visualizzazione degli indici creati (admin)\\
- \midrule
-login.html & Pagina per il login\\
-\midrule
-navbar.html & Barra di navigazione superiore, inclusa nella maggior parte delle pagine\\
  \midrule
 queryCollection.html & Pagina per la visualizzazione delle query pi\'{u} utilizzate (admin)\\
  \midrule
