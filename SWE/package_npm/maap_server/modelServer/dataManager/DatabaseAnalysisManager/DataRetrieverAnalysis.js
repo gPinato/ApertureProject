@@ -16,10 +16,18 @@
 
 var indexManager = require('../IndexManager/IndexManager');
 var DB = require('../../database/MongooseDBAnalysis');
-var collectionsList = require('../../DSL/collectionData/collectionsList.json');
 
 //utilizzo il modulo q per la gestione delle promesse
 var Q = require('q');
+
+ /**
+ * Recupera il file con la lista delle collections
+ *
+ *@return lista delle collections presenti nel sistema in formato json
+ */
+var getCollectionsListFile = function(){
+	return require('../../DSL/collectionData/collectionsList.json');
+}
 
  /**
  * Preleva il modello relativo ad una specifica collection
@@ -198,6 +206,8 @@ var getDocuments = function(model, querySettings, populate, callback){
  *@return lista delle collections presenti nel sistema, eventualmente ristrette al campo find
  */
 exports.getCollectionsList = function(find) {
+	
+	var collectionsList = getCollectionsListFile();
 	
 	if(find != undefined && find != '')
 	{
