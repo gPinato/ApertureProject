@@ -397,9 +397,11 @@ exports.createIndex = function(query_id, name_index, callback) {
 }
 
  /**
- * Elimino un indice
+ * Viene cancellato nella collection specificata con collectionName l'indice specificato con indexName.
+ *Se l'operazione di eliminazione non ha successo, viene chiamata la funzione callback con argomento false, 
+ *altrimenti viene chiamata la callback con argomento true.
  *
- *@param db - contiene il db dove cercare gli indici.
+ *@param db - Il database su cui cercare gli indici.
  *@param name_index - Stringa contenente il nome dell'indice da creare.
  *@param callback - funzione da richiamare al termine dell'esecuzione.
  */
