@@ -25,13 +25,15 @@ describe('Controller: PwdRecoveryCtrl', function () {
         routeParams,
         $httpBackend,
         scope,
+        location,
         cookieStore,
         credentials;
 
     // Initialize the controller and a mock scope
-    beforeEach(inject(function ($controller, $rootScope,_$httpBackend_,$cookieStore ) {
+    beforeEach(inject(function ($controller,$location, $rootScope,_$httpBackend_,$cookieStore ) {
         scope = $rootScope.$new();
-        $httpBackend = _$httpBackend_;
+        $httpBackend = _$httpBackend_,
+        location = $location;
         cookieStore = $cookieStore,
             credentials = {
                 email: '1'
@@ -44,16 +46,13 @@ describe('Controller: PwdRecoveryCtrl', function () {
         });
     }));
 
-    it('should register an user correclty', function () {
-        // Given
+    it('should recover the password correctly', function () {
         $httpBackend.whenGET('views/dashboard.html').respond(200);
-
         $httpBackend.whenPOST('http://localhost:9000/api/forgot').respond(200);
 
-        // When
         scope.recover();
         $httpBackend.flush();
-        // Then
+        expect(location.path()).toBe('/');
 
 
     });
@@ -66,10 +65,9 @@ describe('Controller: PwdRecoveryCtrl', function () {
         $httpBackend.whenGET('views/pwdrecovery.html').respond(200);
 
 
-        // When
         scope.recover();
         $httpBackend.flush();
-        // Then
+        expect(location.path()).toBe('/recover');
 
 
     });

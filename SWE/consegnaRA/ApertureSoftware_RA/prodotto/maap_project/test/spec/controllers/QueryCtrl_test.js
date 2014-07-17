@@ -17,16 +17,18 @@ describe('Controller: QueryCtrl', function () {
     var MainCtrl,
         routeParams,
         scope,
+        location,
         $httpBackend,
         data = [ [ 'Collection Name', 'Selected fields', 'Score' ],
             [ { _id: '53b5bed9fe9816304863597b', data: [Object] },
                 { _id: '53b65af79e533fc815e6b3e8', data: [Object] } ],
-            { pages: 1 } ]
+            { pages: 1 } ];
 
     // Initialize the controller and a mock scope
-    beforeEach(inject(function ($controller, $rootScope, _$httpBackend_) {
+    beforeEach(inject(function ($controller,$location, $rootScope, _$httpBackend_) {
         scope = $rootScope.$new();
-        $httpBackend = _$httpBackend_;
+        $httpBackend = _$httpBackend_,
+        location = $location;
 
 
         MainCtrl = $controller('QueryCtrl', {
@@ -63,31 +65,24 @@ describe('Controller: QueryCtrl', function () {
         $httpBackend.whenGET('http://localhost:9000/api/queries/list?page=0').respond(400);
         $httpBackend.whenGET('views/dashboard.html').respond(200);
         $httpBackend.whenGET('views/404.html').respond(200);
+        scope.getData();
 
-
-        // When
-        //scope.loadData();
         $httpBackend.flush();
-        // Then
+        expect(location.path()).toBe('/404');
 
     });
 
-    it('should delete a document correctly', function () {
+    it('should delete an index correctly', function () {
         // Given
         $httpBackend.whenGET('views/queryCollection.html').respond(200);
         $httpBackend.whenGET('views/dashboard.html').respond(200);
-        $httpBackend.whenGET('views/indexCollection.html').respond(200);
         $httpBackend.whenGET('http://localhost:9000/api/queries/list?page=0').respond(200, data);
-        $httpBackend.whenPUT('http://localhost:9000/api/indexes').respond(200);
-
         $httpBackend.whenDELETE('http://localhost:9000/api/queries/list').respond(200);
 
 
-        // When
-        scope.createIndex();
+        scope.delete_document();
         $httpBackend.flush();
-        // Then
-        //test sul path
+        expect(location.path()).toBe('/queries');
 
     });
 
@@ -99,16 +94,14 @@ describe('Controller: QueryCtrl', function () {
         $httpBackend.whenDELETE('http://localhost:9000/api/queries/list').respond(400);
 
 
-        // When
         scope.delete_document();
         $httpBackend.flush();
-        // Then
 
 
     });
 
 
-    it('should delete a document correctly', function () {
+    it('should create an index correctly', function () {
         // Given
         $httpBackend.whenGET('views/queryCollection.html').respond(200);
         $httpBackend.whenGET('views/dashboard.html').respond(200);
@@ -116,86 +109,28 @@ describe('Controller: QueryCtrl', function () {
         $httpBackend.whenGET('http://localhost:9000/api/queries/list?page=0').respond(200, data);
         $httpBackend.whenPUT('http://localhost:9000/api/indexes').respond(200);
 
-        $httpBackend.whenDELETE('http://localhost:9000/api/queries/list').respond(200);
 
-
-        // When
         scope.createIndex();
         $httpBackend.flush();
-        // Then
-        //test sul path
-
-    });
-
-    it('should display an error when the delete fails', function () {
-        // Given
-        $httpBackend.whenGET('views/dashboard.html').respond(200);
-        $httpBackend.whenGET('http://localhost:9000/api/queries/list?page=0').respond(200, data);
-        $httpBackend.whenDELETE('http://localhost:9000/api/queries/list').respond(400);
-
-
-        // When
-        scope.delete_document();
-        $httpBackend.flush();
-        // Then
+        expect(location.path()).toBe('/indexes');
 
 
     });
 
-
-    it('delete a query ', function () {
+    it('should display an error when the index creation fails', function () {
         // Given
         $httpBackend.whenGET('views/queryCollection.html').respond(200);
-        $httpBackend.whenGET('http://localhost:9000/api/queries/list?page=0').respond(200, data);
         $httpBackend.whenGET('views/dashboard.html').respond(200);
-        $httpBackend.whenDELETE('http://localhost:9000/api/queries/list?index=index').respond(200);
-
-
-        // When
-        scope.delete_document('index');
-        $httpBackend.flush();
-        // Then
-        //test sul path
-
-    });
-
-    it('should not delete a query', function () {
-        // Given
+        $httpBackend.whenGET('views/indexCollection.html').respond(200);
         $httpBackend.whenGET('http://localhost:9000/api/queries/list?page=0').respond(200, data);
-        $httpBackend.whenDELETE('http://localhost:9000/api/queries/list').respond(400);
-        $httpBackend.whenGET('views/dashboard.html').respond(200);
+        $httpBackend.whenPUT('http://localhost:9000/api/indexes').respond(400);
 
 
-        // When
-        scope.delete_document();
+        scope.createIndex();
         $httpBackend.flush();
-        // Then
 
 
     });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
     it('should initialize data correctly', function () {

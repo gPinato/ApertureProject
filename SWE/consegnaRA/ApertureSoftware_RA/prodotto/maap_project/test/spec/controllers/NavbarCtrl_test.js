@@ -40,12 +40,10 @@ describe('Controller: NavBarCtrl', function () {
         $httpBackend.whenGET('http://localhost:9000/api/collection/list').respond(200, data);
         $httpBackend.whenGET('views/dashboard.html').respond(200);
 
-        // When
         $httpBackend.flush();
-        // Then
+
         expect(scope.labels).toEqual(data.labels);
         expect(scope.values).toEqual(data.data);
-        //expect(scope.pages).toEqual(data[2]);
 
     });
 
@@ -67,13 +65,15 @@ describe('Controller: NavBarCtrl', function () {
         $httpBackend.whenGET('http://localhost:9000/api/logout').respond(200);
         $httpBackend.whenGET('http://localhost:9000/api/collection/list').respond(400);
         $httpBackend.whenGET('views/login.html').respond(200);
+        $httpBackend.whenGET('views/dashboard.html').respond(200);
 
-        // When
+
         scope.logout();
         $httpBackend.flush();
-        // Then
 
         expect(scope.isAdmin).toBe(false);
+        expect(location.path()).toBe('/login');
+
 
     });
 
@@ -87,7 +87,8 @@ describe('Controller: NavBarCtrl', function () {
         // When
         scope.logout();
         $httpBackend.flush();
-        // Then
+        expect(location.path()).toBe('/');
+
     });
 
 

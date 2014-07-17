@@ -62,17 +62,15 @@ describe('Controller: UsersCollectionCtrl', function () {
 
     it('should display an error when not successful', function () {
         // Given
-        $httpBackend.whenGET('http://localhost:9000/api/users/list?page=0&query=%7B%22method%22:%22GET%22%7D').respond(200, data);
+        $httpBackend.whenGET('http://localhost:9000/api/users/list?page=0&query=%7B%22method%22:%22GET%22%7D').respond(400);
 
         $httpBackend.whenGET('http://localhost:9000/api/users/list').respond(400);
         $httpBackend.whenGET('views/dashboard.html').respond(200);
         $httpBackend.whenGET('views/404.html').respond(200);
 
-
-        // When
-        //scope.loadData();
+        scope.getData();
         $httpBackend.flush();
-        // Then
+        expect(location.path()).toBe('/404');
 
     });
 
@@ -89,8 +87,8 @@ describe('Controller: UsersCollectionCtrl', function () {
         // When
         scope.delete_document();
         $httpBackend.flush();
-        // Then
-        //test sul path
+        expect(location.path()).toBe('/users');
+
 
     });
 

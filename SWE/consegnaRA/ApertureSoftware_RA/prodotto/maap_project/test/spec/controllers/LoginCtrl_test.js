@@ -26,13 +26,15 @@ describe('Controller: LoginCtrl', function () {
         $httpBackend,
         scope,
         cookieStore,
+        location,
         data;
 
     // Initialize the controller and a mock scope
-    beforeEach(inject(function ($controller, $rootScope,_$httpBackend_,$cookieStore ) {
+    beforeEach(inject(function ($controller, $rootScope,_$httpBackend_,$cookieStore,$location ) {
         scope = $rootScope.$new();
         $httpBackend = _$httpBackend_;
         cookieStore = $cookieStore,
+        location=$location,
         data ={};
         data.level=1;
 
@@ -43,45 +45,35 @@ describe('Controller: LoginCtrl', function () {
         });
     }));
 
-    it('should set user data correctly when successful (admin)', function () {
-        // Given
+
+    it('should redirect if already logged in', function () {
+        scope.loggedIn = true;
+        $httpBackend.whenGET('views/dashboard.html').respond(200);
+
+        $httpBackend.flush();
+        expect(location.path()).toBe('/');
+
+
+    });
+
+
+    it('should set user data correctly when successful', function () {
 
         $httpBackend.whenGET('http://localhost:9000/api/login').respond(200, data);
         $httpBackend.whenGET('views/dashboard.html').respond(200);
 
-        // When
         $httpBackend.flush();
-        // Then
-        var temp = cookieStore.get("isAdmin");
-        expect(temp).toBe(true);
+        expect(location.path()).toBe('/');
 
     });
 
-    it('should set user data correctly when successful (user)', function () {
-        // Given
-        data.level=0;
-        $httpBackend.whenGET('http://localhost:9000/api/login').respond(200, data);
+
+
+    it('should display an error when not successful ', function () {
         $httpBackend.whenGET('views/dashboard.html').respond(200);
-
-        // When
-        $httpBackend.flush();
-        // Then
-        var temp = cookieStore.get("isAdmin");
-        expect(temp).toBe(false);
-
-    });
-
-    it('should set user data correctly when successful (user)', function () {
-        // Given
-        data.level=0;
         $httpBackend.whenGET('http://localhost:9000/api/login').respond(400);
-        $httpBackend.whenGET('views/dashboard.html').respond(200);
 
-        // When
         $httpBackend.flush();
-        // Then
-
-
     });
 });
 
