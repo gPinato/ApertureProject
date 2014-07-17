@@ -1,10 +1,10 @@
 /**
  * File: NavBarCtrl;
- * Module: modulo di appartenenza;
+ * Module: app:controllers;
  * Author: Giacomo Pinato;
  * Created: 01/06/14;
- * Version: versione corrente;
- * Description: descrizione dettagliata del file;
+ * Version: 0.1;
+ * Description: C;
  * Modification History:
  ==============================================
  * Version | Changes
@@ -32,13 +32,12 @@ angular.module('maaperture').controller('NavBarCtrl', function ($scope,$cookieSt
         $location.path('/login');
 		$route.reload();
         LogoutService.logout().$promise.then(
-            function success(response) {
+            function success() {
 				$cookieStore.remove("loggedIn");
 				$cookieStore.remove("isAdmin");
-                $scope.isLoggedIn = false;
 				$scope.isAdmin = false;
             },
-            function error(error) {
+            function error() {
 				alert("I dunno why, but the logout failed :/");
 				$location.path('/');
 				$route.reload();

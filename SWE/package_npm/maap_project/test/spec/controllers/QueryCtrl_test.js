@@ -12,18 +12,21 @@
 describe('Controller: QueryCtrl', function () {
 
     // load the controller's module
-    beforeEach(module('maaperture'));
+    beforeEach(module('maaperture', 'services', 'ngResource', 'ngRoute'));
 
     var MainCtrl,
         routeParams,
         scope,
-
-        mockBackend;
+        $httpBackend,
+        data = [ [ 'Collection Name', 'Selected fields', 'Score' ],
+            [ { _id: '53b5bed9fe9816304863597b', data: [Object] },
+                { _id: '53b65af79e533fc815e6b3e8', data: [Object] } ],
+            { pages: 1 } ]
 
     // Initialize the controller and a mock scope
     beforeEach(inject(function ($controller, $rootScope, _$httpBackend_) {
         scope = $rootScope.$new();
-        mockBackend = _$httpBackend_;
+        $httpBackend = _$httpBackend_;
 
 
         MainCtrl = $controller('QueryCtrl', {
@@ -33,37 +36,169 @@ describe('Controller: QueryCtrl', function () {
 
     }));
 
-    beforeEach(function () {
-        angular.mock.inject(function ($injector) {
-            mockBackend = $injector.get('$httpBackend');
-        });
+    it('should initialize data correctly', function () {
+        expect(scope.current_page).toBe(0);
+        expect(scope.rows.length).toBe(0);
     });
-    /*
-     it('should load labels from the services',  inject(function (CollectionDataService)  {
 
-     mockBackend.expectGET('http://localhost:9000/api/collection/0?page=0')
-     .respond(response);
+    it('should set  data on the scope when successful', function () {
+        // Given
+        $httpBackend.whenGET('http://localhost:9000/api/queries/list?page=0').respond(200, data);
+        $httpBackend.whenGET('views/dashboard.html').respond(200);
 
-
-     var result = MockColService.query({
-     col_id: routeParams.col_id,
-     order: scope.current_sort,
-     column: scope.column_original_name[scope.current_sorted_column],
-     page: scope.current_page
-
-     });
-     mockBackend.flush();
-     console.log(result);
-     expect(result).to.not.equal(null);
+        // When
+        scope.getData();
+        $httpBackend.flush();
+        // Then
+        expect(scope.pages).toBe(data[2].pages);
+        expect(scope.labels[0]).toBe('Collection Name');
+        expect(scope.labels[1]).toBe('Selected fields');
+        expect(scope.labels[2]).toBe('Score');
 
 
-     }));
-     */
+    });
+
+    it('should go to 404 when not successful', function () {
+        // Given
+        $httpBackend.whenGET('http://localhost:9000/api/queries/list?page=0').respond(400);
+        $httpBackend.whenGET('views/dashboard.html').respond(200);
+        $httpBackend.whenGET('views/404.html').respond(200);
+
+
+        // When
+        //scope.loadData();
+        $httpBackend.flush();
+        // Then
+
+    });
+
+    it('should delete a document correctly', function () {
+        // Given
+        $httpBackend.whenGET('views/queryCollection.html').respond(200);
+        $httpBackend.whenGET('views/dashboard.html').respond(200);
+        $httpBackend.whenGET('views/indexCollection.html').respond(200);
+        $httpBackend.whenGET('http://localhost:9000/api/queries/list?page=0').respond(200, data);
+        $httpBackend.whenPUT('http://localhost:9000/api/indexes').respond(200);
+
+        $httpBackend.whenDELETE('http://localhost:9000/api/queries/list').respond(200);
+
+
+        // When
+        scope.createIndex();
+        $httpBackend.flush();
+        // Then
+        //test sul path
+
+    });
+
+    it('should display an error when the delete fails', function () {
+        // Given
+        $httpBackend.whenGET('views/collection.html').respond(200);
+        $httpBackend.whenGET('views/dashboard.html').respond(200);
+        $httpBackend.whenGET('http://localhost:9000/api/queries/list?page=0').respond(200, data);
+        $httpBackend.whenDELETE('http://localhost:9000/api/queries/list').respond(400);
+
+
+        // When
+        scope.delete_document();
+        $httpBackend.flush();
+        // Then
+
+
+    });
+
+
+    it('should delete a document correctly', function () {
+        // Given
+        $httpBackend.whenGET('views/queryCollection.html').respond(200);
+        $httpBackend.whenGET('views/dashboard.html').respond(200);
+        $httpBackend.whenGET('views/indexCollection.html').respond(200);
+        $httpBackend.whenGET('http://localhost:9000/api/queries/list?page=0').respond(200, data);
+        $httpBackend.whenPUT('http://localhost:9000/api/indexes').respond(200);
+
+        $httpBackend.whenDELETE('http://localhost:9000/api/queries/list').respond(200);
+
+
+        // When
+        scope.createIndex();
+        $httpBackend.flush();
+        // Then
+        //test sul path
+
+    });
+
+    it('should display an error when the delete fails', function () {
+        // Given
+        $httpBackend.whenGET('views/dashboard.html').respond(200);
+        $httpBackend.whenGET('http://localhost:9000/api/queries/list?page=0').respond(200, data);
+        $httpBackend.whenDELETE('http://localhost:9000/api/queries/list').respond(400);
+
+
+        // When
+        scope.delete_document();
+        $httpBackend.flush();
+        // Then
+
+
+    });
+
+
+    it('delete a query ', function () {
+        // Given
+        $httpBackend.whenGET('views/queryCollection.html').respond(200);
+        $httpBackend.whenGET('http://localhost:9000/api/queries/list?page=0').respond(200, data);
+        $httpBackend.whenGET('views/dashboard.html').respond(200);
+        $httpBackend.whenDELETE('http://localhost:9000/api/queries/list?index=index').respond(200);
+
+
+        // When
+        scope.delete_document('index');
+        $httpBackend.flush();
+        // Then
+        //test sul path
+
+    });
+
+    it('should not delete a query', function () {
+        // Given
+        $httpBackend.whenGET('http://localhost:9000/api/queries/list?page=0').respond(200, data);
+        $httpBackend.whenDELETE('http://localhost:9000/api/queries/list').respond(400);
+        $httpBackend.whenGET('views/dashboard.html').respond(200);
+
+
+        // When
+        scope.delete_document();
+        $httpBackend.flush();
+        // Then
+
+
+    });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     it('should initialize data correctly', function () {
-        expect(scope.current_sorted_column).toBe(null);
-        expect(scope.current_sort).toBe(null);
-        expect(scope.column_original_name.length).toBe(0);
         expect(scope.current_page).toBe(0);
         expect(scope.rows.length).toBe(0);
     });
