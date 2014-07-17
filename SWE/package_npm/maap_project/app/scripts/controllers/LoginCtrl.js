@@ -15,16 +15,26 @@
 'use strict';
 
 angular.module('maaperture').controller('LoginCtrl', function ($scope,$route,$cookieStore, $location,AuthService) {
-    $scope.credentials = {
+    
+	$scope.loggedIn = $cookieStore.get("loggedIn");
+
+	//se sono gia' autenticato  evito il login
+	if($scope.loggedIn){
+		$location.path('/');
+		$route.reload();
+	}
+	
+	$scope.credentials = {
         email: '',
         password: ''
-    };
-
+    };	
+	
     //Funzione per il login.
     //Richiede al server di validare le credenziali inserite.
     $scope.login = function () {
         AuthService.login({}, $scope.credentials).$promise.then(
             function success(data) {
+				$cookieStore.put("loggedIn",true);
                 if ( data.level === 1){
                     $cookieStore.put("isAdmin",true);
                 }

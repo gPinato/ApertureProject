@@ -69,7 +69,7 @@ var sendCollection  = function(req, res) {
 	retriever.getCollectionIndex(collection_name, column, order, page, function(data){
 		
 		//controllo se quello che ritorna il retriever è indefinito
-		if(data.documents == undefined)
+		if(data == -1)
 		{
 			//invio stato HTTP di non trovato
 			res.send(404);
