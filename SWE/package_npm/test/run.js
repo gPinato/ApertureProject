@@ -3,7 +3,7 @@
  * Module: test
  * Author: Alberto Garbui
  * Created: 20/06/14
- * Version: 0.1
+ * Version: 1.0.0
  * Description: avvio test con mocha
  * Modification History:
  ==============================================

@@ -96,7 +96,7 @@ angular
         //Intercetto ogni risposta dal server e verifico che l'utente sia autenticato prima di visualizzare qualsiasi
         //informazione.
 
-        $httpProvider.responseInterceptors.push(function ($q, $location) {
+        $httpProvider.responseInterceptors.push(function ($q, $location, $cookieStore) {
             return function (promise) {
                 return promise.then(
                     // Success: just return the response
@@ -106,8 +106,12 @@ angular
                     // Error: check the error status to get only the 401
                     function (response) {
                         if (response.status === 401)
+						{
+							$cookieStore.remove("loggedIn");
+							$cookieStore.remove("isAdmin");
                             $location.url('/login');
-                        return $q.reject(response);
+						}
+						return $q.reject(response);
                     }
                 );
             }

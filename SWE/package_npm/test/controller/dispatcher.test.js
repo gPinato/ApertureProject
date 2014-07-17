@@ -1,9 +1,9 @@
 /**
  * File: dispatcher.test.js
  * Module: test::controller
- * Author: Alberto Garbui
+ * Author: Fabio Miotto
  * Created: 24/06/14
- * Version: 1.0
+ * Version: 1.0.0
  * Description: test del dispatcher
  * Modification History:
  ==============================================

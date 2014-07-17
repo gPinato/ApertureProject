@@ -45,13 +45,13 @@ Le tecniche di analisi statica sono:
 \item \grassetto{Inspection};
 \end{itemize}
 
-\paragraph{Walkthrough}
+\paragraph{Walkthrough} \hfill\\
 Questa tecnica utilizza una scansione ampia e non mirata dell'oggetto in verifica, data la mancanza di esperienza \gloss{best practice} del Verificatore.
 L'attuazione di questa tecnica di Analisi è quindi molto onerosa, per questo sarà nostro obiettivo renderla più parallelizzabile possibile, così da ridurre i costi di Verifica e per essere più efficace ed efficiente.
 Si comincia con una attività preliminare di lettura, seguita da una individuazione degli errori; poi si procede con la correzione degli stessi e con una successiva attività di lettura per controllare le modifiche apportate.
 Dopo ogni attività di Verifica tramite Walkthrough, sperabilmente avremo trovato la maggior parte degli errori, fornendoci una visione delle erroneità commesse, di conseguenza potremo raffinare l'Analisi e avvicinarci alla metodologia di Inspection.
 
-\paragraph{Inspection}
+\paragraph{Inspection} \hfill\\
 Questa tecnica è un'evoluzione del Walkthrough e applica una ricerca più mirata e specifica. È possibile utilizzare questa tecnica dopo aver acquisito dimestichezza con l'attività di Verifica, stilando una lista di controllo contenente i maggiori errori riscontrati applicando la tecnica di Walkthrough, quindi non sarà possibile utilizzarla fin da subito in quanto la lista inizialmente è vuota. \`{E} obiettivo di una fase di Inspection la ricerca mirata di errori, aumentando l'efficienza della Verifica e riducendo i costi in termini di tempo e risorse.
 Durante l'utilizzo della tecnica di Inspection la lista verrà aggiornata; la lista risultante è in appendice B delle \emph{Norme\_di\_progetto\_v\versioneNormeDiProgetto{}.pdf}.
 

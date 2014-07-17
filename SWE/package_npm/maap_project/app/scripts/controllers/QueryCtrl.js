@@ -35,13 +35,15 @@ angular.module('maaperture').controller('QueryCtrl', function ($scope, $route, $
     $scope.getData = function () {
 
         QueryService.query({
-            page: $scope.current_page
-            }).$promise.then( function success(response) {
+				page: $scope.current_page				
+           }).$promise.then( function success(response) {
+		   
                 $scope.labels = response[0];
                 $scope.data = response[1];
                 $scope.pages = response[2].pages;
 
-
+                //Salva i nomi originali delle colonne per le query a database
+                $scope.column_original_name = Object.keys( $scope.data[0].data);
 
                 for (var i = 0; i < Object.keys($scope.data).length; i++) {
                     //Copia i valori da stampare in un array per mantenere l'ordine

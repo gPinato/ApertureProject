@@ -3,7 +3,7 @@
  * Module: maaperture
  * Author: Alberto Garbui
  * Created: 02/05/14
- * Version: 0.1
+ * Version: 1.0.0
  * Description: avvio del server
  * Modification History:
  ==============================================

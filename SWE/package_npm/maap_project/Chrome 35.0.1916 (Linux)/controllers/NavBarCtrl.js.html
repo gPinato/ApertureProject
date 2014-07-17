@@ -195,20 +195,20 @@
     </style>
 </head>
 <body>
-<div class="header low">
+<div class="header high">
     <h1>Code coverage report for <span class="entity">controllers/NavBarCtrl.js</span></h1>
     <h2>
         
-        Statements: <span class="metric">37.5% <small>(6 / 16)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Statements: <span class="metric">100% <small>(15 / 15)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
         
         
         Branches: <span class="metric">100% <small>(0 / 0)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
         
         
-        Functions: <span class="metric">40% <small>(2 / 5)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Functions: <span class="metric">100% <small>(5 / 5)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
         
         
-        Lines: <span class="metric">37.5% <small>(6 / 16)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Lines: <span class="metric">100% <small>(15 / 15)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
         
         Ignored: <span class="metric"><span class="ignore-none">none</span></span> &nbsp;&nbsp;&nbsp;&nbsp;
     </h2>
@@ -265,8 +265,7 @@
 47
 48
 49
-50
-51</td><td class="line-coverage"><span class="cline-any cline-neutral">&nbsp;</span>
+50</td><td class="line-coverage"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -291,25 +290,24 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">4</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">3</span>
-<span class="cline-any cline-yes">3</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">4</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">2</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -318,11 +316,11 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">/**
  * File: NavBarCtrl;
- * Module: modulo di appartenenza;
+ * Module: app:controllers;
  * Author: Giacomo Pinato;
  * Created: 01/06/14;
- * Version: versione corrente;
- * Description: descrizione dettagliata del file;
+ * Version: 0.1;
+ * Description: C;
  * Modification History:
  ==============================================
  * Version | Changes
@@ -346,20 +344,19 @@ angular.module('maaperture').controller('NavBarCtrl', function ($scope,$cookieSt
         });
 &nbsp;
     //Funzione per effettuare il logout.
-    $scope.logout = <span class="fstat-no" title="function not covered" >function () {</span>
-<span class="cstat-no" title="statement not covered" >        $location.path('/login');</span>
-<span class="cstat-no" title="statement not covered" >		$route.reload();</span>
-<span class="cstat-no" title="statement not covered" >        LogoutService.logout().$promise.then(</span>
-<span class="fstat-no" title="function not covered" >            function success(response) {</span>
-<span class="cstat-no" title="statement not covered" >				$cookieStore.remove("loggedIn");</span>
-<span class="cstat-no" title="statement not covered" >				$cookieStore.remove("isAdmin");</span>
-<span class="cstat-no" title="statement not covered" >                $scope.isLoggedIn = false;</span>
-<span class="cstat-no" title="statement not covered" >				$scope.isAdmin = false;</span>
+    $scope.logout = function () {
+        LogoutService.logout().$promise.then(
+            function success() {
+				$cookieStore.remove("loggedIn");
+				$cookieStore.remove("isAdmin");
+				$scope.isAdmin = false;
+				$location.path('/login');
+				$route.reload();
             },
-<span class="fstat-no" title="function not covered" >            function error(error) {</span>
-<span class="cstat-no" title="statement not covered" >				alert("I dunno why, but the logout failed :/");</span>
-<span class="cstat-no" title="statement not covered" >				$location.path('/');</span>
-<span class="cstat-no" title="statement not covered" >				$route.reload();</span>
+            function error() {
+				alert("I dunno why, but the logout failed :/");
+				$location.path('/');
+				$route.reload();
             });
     };
 &nbsp;
@@ -371,7 +368,7 @@ angular.module('maaperture').controller('NavBarCtrl', function ($scope,$cookieSt
 
 </div>
 <div class="footer">
-    <div class="meta">Generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Thu Jul 17 2014 00:47:25 GMT+0200 (CEST)</div>
+    <div class="meta">Generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Thu Jul 17 2014 14:01:05 GMT+0200 (CEST)</div>
 </div>
 
 <script src="../prettify.js"></script>
