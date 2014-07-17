@@ -64,34 +64,39 @@ Di seguito verranno riportati in forma tabellare i tracciamenti componente-test 
 In questa sezione vengono descritti i test di validazione, utili ad accertarsi che il prodotto realizzato sia conforme alle attese.
 Per ogni test viene descritta la serie di passi che un utente deve eseguire per validare la conformità ai requisiti ad esso associati.
 
-\subsubsection{TV 1 - Lato Utente Business}
+\subsubsection{TV 1 - Lato Utente Business Autenticato}
 
 L'utente vuole verificare le funzionalità di visualizzazione di Collection e Document, per tanto gli è richiesto di:
 
 
 \begin{enumerate}
-\item Cliccare sul bottone Collections;
+\item Cliccare sul bottone "Collections";
 \item Selezionare la Collection da visualizzare dall'apposito elenco;
 \begin{enumerate}
 \item Scorrere le pagine della Collection fino a trovare il Document ricercato;
 \item Ordinare una \gloss{chiave} in ordine crescente o decrescente;
 \end{enumerate}
-\item Selezionare il Document ricercato cliccando sul bottone View;
+\item Selezionare il Document ricercato cliccando sul bottone "View";
 \item Verificare che il Document venga visualizzato correttamente.
 \end{enumerate}
 
 In alternativa può:
 \begin{enumerate}
-\item Cliccare sul bottone Dashboard nel pannello superiore;
+\item Cliccare sul bottone "Dashboard" nel pannello superiore;
 \item Inserire una stringa nella barra di ricerca delle collection;
 \item  Verificare che la lista delle Collections, le quali soddisfano la ricerca, venga visualizzata correttamente;
-\item Cliccare sul bottone con il nome dell Collection che vuole visualizzare;
+\item Cliccare sul bottone con il nome della Collection che vuole visualizzare;
 \begin{enumerate}
 \item Scorrere le pagine della Collection fino a trovare il Document ricercato;
 \item Ordinare una \gloss{chiave} in ordine crescente o decrescente;
 \end{enumerate}
-\item Selezionare il Document ricercato cliccando sul bottone View;
+\item Selezionare il Document ricercato cliccando sul bottone "View";
 \item Verificare che il Document venga visualizzato correttamente.
+\end{enumerate}
+L'utente vuole verificare la funzionalità di visualizzazione del manuale utente online.
+Quindi è richiesto di:
+\begin{enumerate}
+\item Cliccare sul bottone "Help" del pannello superiore.
 \end{enumerate}
 
 \subsubsection{TV 2 - Lato Utente Business}
@@ -103,7 +108,7 @@ Si dovrà quindi seguire la seguente \gloss{procedura} di validazione:
 \begin{enumerate}
 \item Cliccare sul link "Or become a member of the awesome MaaPerture community";
 \item Compilare il \gloss{form} di registrazione con dati validi;
-\item Confermare la registrazione mediante il bottone SignUp.
+\item Confermare la registrazione mediante il bottone "SignUp".
 \end{enumerate}
 \item Verificare di poter recuperare la password in caso di dimenticanza;
 \begin{enumerate}
@@ -115,32 +120,37 @@ Si dovrà quindi seguire la seguente \gloss{procedura} di validazione:
 \item Verificare di poter effettuare l'autenticazione;
 \begin{enumerate}
 \item Inserire le credenziali precedentemente registrate;
-\item Confermare l'autenticazione mediante il bottone Login.
+\item Confermare l'autenticazione mediante il bottone "Login".
 \end{enumerate}
 \item Verificare che il sistema effettui correttamente l' autenticazione;
 \item Verificare di poter modificare i propri dati utente;
 \begin{enumerate}
-\item Entrare nel proprio profilo utente cliccando il bottone Profile nel pannello superiore;
-\item Cliccare sul bottone di Edit;
+\item Entrare nel proprio profilo utente cliccando il bottone "Profile" nel pannello superiore;
+\item Cliccare sul bottone di "Edit";
 \item Verificare di poter modificare una o più chiavi del profilo;
-\item Verificare di poter salvare le modifiche mediante il bottone Save;
-\item Verificare di poter annullare le modifiche mediante il bottone Discard.
+\item Verificare di poter salvare le modifiche mediante il bottone "Save";
+\item Verificare di poter annullare le modifiche mediante il bottone "Discard".
 \end{enumerate}
 \item Verificare di poter aggiungere un nuovo utente;
 \begin{enumerate}
-\item Cliccare sul bottone Manage Users nel pannello superiore;
+\item Cliccare sul bottone "Manage Users" nel pannello superiore;
 \item Compilare il form con dati validi;
-\item Verificare di poter aggiungere l'utente mediante il bottone Register new user;
+\item Verificare di poter aggiungere l'utente mediante il bottone "Register new user";
 \item Verificare che il nuovo utente sia presente nella lista degli utenti. 
 \end{enumerate}
 \item Verificare di potersi disconnettere correttamente dal sistema;
 \begin{enumerate}
-\item Cliccare sul bottone Logout nel pannello superiore;
+\item Cliccare sul bottone "Logout" nel pannello superiore;
 \item Verificare di non poter più accedere a pagine riservate ad utenti autenticati.
 \end{enumerate}
+\item Verificare di poter consultare il manuale utente online;
+\begin{enumerate}
+\item Cliccare sul bottone link "Help".
 \end{enumerate}
 
-\subsubsection{TV 3 - Lato Utente Business Amministratore}
+\end{enumerate}
+
+\subsubsection{TV 3 - Lato Utente Business Autenticato Amministratore}
 
 L'utente amministratore vuole verificare il corretto funzionamento della gestione dei profili utenti.
 Si dovrà quindi seguire la seguente procedura:
@@ -152,82 +162,82 @@ Si dovrà quindi seguire la seguente procedura:
 \end{enumerate}
 \item Verificare di poter accedere alla sezione per la gestione degli utenti;
 \begin{enumerate}
-\item Cliccare sul bottone Manage Users o in alternativa sul bottone Collections selezionando la Collection Users;
+\item Cliccare sul bottone "Manage User"s o in alternativa sul bottone "Collections" selezionando la Collection "Users";
 \end{enumerate}
 \item Verificare di poter modificare i dati profilo di un utente;
 \begin{enumerate}
-\item Cliccare sul bottone Edit;
+\item Cliccare sul bottone "Edit";
 \item Verificare di poter modificare una o più chiavi del profilo;
-\item Verificare di poter salvare le modifiche mediante il bottone Save;
-\item Verificare di poter annullare le modifiche mediante il bottone Discard.
+\item Verificare di poter salvare le modifiche mediante il bottone "Save";
+\item Verificare di poter annullare le modifiche mediante il bottone "Discard".
 \end{enumerate}
 \item Verificare di poter modificare i permessi associati al profilo utente;
 \begin{enumerate}
-\item Cliccare sul bottone Edit;
+\item Cliccare sul bottone "Edit";
 \item Verificare di poter modificare i permessi disponibili;
-\item Verificare di poter salvare le modifiche mediante il bottone Save;
-\item Verificare di poter annullare le modifiche mediante il bottone Discard.
+\item Verificare di poter salvare le modifiche mediante il bottone "Save";
+\item Verificare di poter annullare le modifiche mediante il bottone "Discard".
 \end{enumerate}
 \item Verificare di poter eliminare correttamente un utente;
 \begin{enumerate}
-\item Cliccare sul bottone Delete;
+\item Cliccare sul bottone "Delete";
 \item Verificare che le credenziali dell'utente cancellato non siano più presenti nel sistema.
 \end{enumerate}
 \end{enumerate}
 
 
-\subsubsection{TV 4 - Lato Utente Business Amministratore}
+\subsubsection{TV 4 - Lato Utente Business Autenticato Amministratore}
 
 L’utente amministratore vuole verificare il corretto funzionamento della gestione dei Document.
 Dovrà quindi seguire la seguente procedura:
 
 
 \begin{enumerate}
-\item Dopo essere entrato in una pagina Collection, selezionare un Document mediante il bottone View;
+\item Dopo essere entrato in una pagina Collection, selezionare un Document mediante il bottone "View";
 \item Verificare di poter modificare un Document;
 \begin{enumerate}
-\item Cliccare sul bottone Edit;
+\item Cliccare sul bottone "Edit";
 \item Verificare di poter modificare le chiavi disponibili;
-\item Verificare di poter salvare le modifiche mediante il bottone Save;
-\item Verificare di poter annullare le modifiche mediante il bottone Discard.
+\item Verificare di poter salvare le modifiche mediante il bottone "Save";
+\item Verificare di poter annullare le modifiche mediante il bottone "Discard".
 \end{enumerate}
 \item Verificare di poter cancellare un Document;
 \begin{enumerate}
-\item Cliccare sul bottone Delete;
+\item Cliccare sul bottone "Delete";
 \item Verificare che il Document non sia più presente nel sistema.
 \end{enumerate}
 \end{enumerate}
 
 
-\subsubsection{TV 5 - Lato Utente Business Amministratore}
+\subsubsection{TV 5 - Lato Utente Business Autenticato Amministratore}
 L’utente amministratore vuole verificare corretta gestione delle query più utilizzate dal sistema.
 Dovrà quindi seguire la seguente procedura:
 
 \begin{enumerate}
 \item Entrare nella gestione queries;
 \begin{enumerate}
-\item Cliccare sul bottone Collections;
-\item Selezionare la Collection Queries.
+\item Cliccare sul bottone "Collections";
+\item Selezionare la Collection "Queries".
 \end{enumerate}
 \item Verificare che l'elenco delle queries più utilizzate venga visualizzato correttamente;
 \item Verificare di poter creare un indice su una query;
 \begin{enumerate}
-\item Cliccare sul bottone Create Index;
+\item Cliccare sul bottone "Create Index";
 \item Verificare che venga creato l'indice nel sistema;
 \begin{enumerate}
 \item Verificare la corretta visualizzazione del \gloss{pop-up} di conferma di avvenuta creazione;
-\item Cliccare sul bottone Ok all'interno del pop-up;
+\item Cliccare sul bottone "Ok" all'interno del pop-up;
 \item Verificare la corretta visualizzazione dell'elenco degli indici nel sistema.
 \end{enumerate}
 \end{enumerate}
 \item Verificare che si possa visualizzare il comando di creazione indice da riga di comando;
 \begin{enumerate}
-\item Cliccare sul bottone Index cmd;
+\item Cliccare sul bottone "Index cmd";
 Verificare la corretta visualizzazione del pop-up contenente il comando.
 \end{enumerate}
 
 \end{enumerate}
-\subsubsection{TV 6 - Lato Utente Business Amministratore}
+\subsubsection{TV 6 - Lato Utente Business Autenticato Amministratore}
 
 L’utente amministratore vuole verificare il corretto funzionamento della gestione degli indici.
 Dovrà quindi seguire la seguente procedura:
@@ -235,12 +245,12 @@ Dovrà quindi seguire la seguente procedura:
 \begin{enumerate}
 \item Entrare nella gestione degli indici;
 \begin{enumerate}
-\item Cliccare sul bottone Collections;
-\item Selezionare la Collection Indexes.
+\item Cliccare sul bottone "Collections";
+\item Selezionare la Collection "Indexes".
 \end{enumerate}
 \item Verificare di poter eliminare un indice;
 \begin{enumerate}
-\item Cliccare sul bottone Delete Index;
+\item Cliccare sul bottone "Delete Index";
 \item Verificare che l'indice non sia più presente.
 \end{enumerate}
 \end{enumerate}
