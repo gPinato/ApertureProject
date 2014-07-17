@@ -659,9 +659,9 @@ Per ultima cosa, il \grassetto{@dispatcher} gestisce eventuali richieste di riso
       \item[passport.checkNotAuthenticated]
       Funzione di \grassetto{@passport} che verifica che l'utente non sia autenticato.
       \item[usermanager.userSignup] \hfill \\
-      Callback da richiamare per registrare l'utente;
+      Callback da richiamare per registrare l'utente.
       \item[passport.authenticate] \hfill \\
-      Callback da richiamare per eseguire l'autenticazione;
+      Callback da richiamare per eseguire l'autenticazione.
       \item[function(req,res){res.send(200););}] \hfill \\
       Callback da richiamare al termine dell'autenticazione per inviare una risposta al server.
      \end{description}
@@ -1262,7 +1262,7 @@ Se essa è presente, ne ritorna il modello, altrimenti ritorna l'intero "-1".
 				\item[Parametri] \hfill
 					\begin{description}
 						\item[model] \hfill \\
-							Modello della collection su cui si vuole eseguire il conteggio dei documenti;
+							Modello della collection su cui si vuole eseguire il conteggio dei documenti.
 						\item[where] \hfill \\
 							Eventuale campo per inserire una query per restringere il conteggio.
 					\end{description}
@@ -1748,11 +1748,11 @@ Package realizzato per creare e gestire gli indici utilizzati nel database di an
       	 \item[Parametri] \hfill
       	  \begin{description}
       	   \item[db] \hfill \\
-      	   Il database su cui cercare gli indici;
+      	   Il database su cui cercare gli indici.
       	   \item[page] \hfill \\
-      	   Stringa contenente il numero di pagina da visualizzare;
+      	   Stringa contenente il numero di pagina da visualizzare.
       	   \item[indexesPerPage] \hfill \\
-      	   Stringa contenente il numero di indici da visualizzare per pagina;
+      	   Stringa contenente il numero di indici da visualizzare per pagina.
       	   \item[callback] \hfill \\
       	   Funzione da richiamare alla fine dell'eliminazione dell'indice.
       	  \end{description}
@@ -1786,11 +1786,11 @@ Package realizzato per creare e gestire gli indici utilizzati nel database di an
       	 \item[Parametri] \hfill
       	  \begin{description}
       	   \item[db] \hfill \\
-      	   Il database su cui cercare gli indici;
+      	   Il database su cui cercare gli indici.
       	   \item[indexName] \hfill \\
-      	   Stringa contenente il nome dell'indice da creare;
+      	   Stringa contenente il nome dell'indice da creare.
       	   \item[collectionName] \hfill \\
-      	   Stringa contenente il nome della collection;
+      	   Stringa contenente il nome della collection.
       	   \item[callback] \hfill \\
       	   Funzione da richiamare alla fine dell'eliminazione dell'indice.
       	  \end{description}
@@ -1876,7 +1876,7 @@ Package realizzato per creare e gestire gli indici utilizzati nel database di an
        \item[Parametro] \hfill
         \begin{description}
          \item[indexes] \hfill \\
-         Array contenente l'insieme di indici da creare;
+         Array contenente l'insieme di indici da creare.
          \item[config] \hfill \\
          Oggetto contenente impostazioni di configurazione.
         \end{description}
@@ -1974,9 +1974,9 @@ Package realizzato per creare e gestire gli indici utilizzati nel database di an
      		\item[Parametro] \hfill
      			\begin{description}
      				\item[buffer] \hfill \\
-     				Variabile contenente il contenuto da salvare nel file;
+     				Variabile contenente il contenuto da salvare nel file.
      				\item[fileName] \hfill \\
-     				Stringa contenente il nome del file da salvare;
+     				Stringa contenente il nome del file da salvare.
      				\item[filePath] \hfill \\
      				Stringa contenente il percorso nel quale salvare il file.
      			\end{description}
@@ -2705,7 +2705,7 @@ Fornisce un immediato elenco delle collection disponibili.
  \item[Dipendendenze iniettate al controller] \hfill
  \begin{itemize}
   \item \$scope;
-  \item \$location
+  \item \$location;
   \item @DocumentEditService;
   \item \$routeParams.
   
@@ -2894,7 +2894,7 @@ Fornisce un immediato elenco delle collection disponibili.
  \item[Attributi] \hfill
  \begin{itemize}
  \item \$scope.credentials;
- \item \$scope.loggedIn;
+ \item \$scope.loggedIn.
  \end{itemize}
  
  \item[Funzionalità] \hfill
@@ -3008,7 +3008,7 @@ Fornisce un immediato elenco delle collection disponibili.
  \item[Dipendendenze iniettate al controller] \hfill
  \begin{itemize}
   \item \$scope;
-  \item \$location
+  \item \$location;
   \item @ProfileEditService.
   
  \end{itemize}
@@ -3097,7 +3097,7 @@ Funzione che invia al server il profilo modificato nel client.
   \item \$route;
   \item \$location;
   \item @QueryService;
-  \item @IndexService;
+  \item @IndexService.
  \end{itemize}
  
  \item[Attributi] \hfill
@@ -3444,7 +3444,7 @@ Funzione che invia al server il profilo modificato nel client.
  \item[Dipendendenze iniettate al controller] \hfill
  \begin{itemize}
   \item \$scope;
-  \item \$location
+  \item \$location;
   \item @UserEditService;
   \item \$routeParams.
   
@@ -3792,53 +3792,7 @@ Il controller esegue la callback "error" e la view verrà aggiornata con un mess
 \section{Tracciamento}
 \label{sequenza}
 \subsection{Tracciamento requisiti - moduli}
-\begin{center}
-\begin{longtable}{|c|c{0.5\linewidth}|}
-\toprule
-\textbf{Requisito} & \textbf{Modulo}\\
 
-%aggiungere qui una midrule per aggiungere una nuova riga alla tabella
-
-\midrule
-2.2.0 & 2014-07-17\\
-
-\midrule
-2.1.1 & 2014-07-17\\
-
-\midrule
-2.1.0 & 2014-07-16\\
-
-\midrule
-2.0.3 & 2014-07-15\\
-
-\midrule
-2.0.2 & 2014-07-14\\
-
-\midrule
-2.0.1 & 2014-07-14\\
-
-\midrule
-1.2.0 & 2014-05-19\\
-\midrule
-1.1.1 & 2014-05-19\\
-\midrule
-1.1.0 & 2014-05-16\\
-\midrule
-
-1.0.4 & 2014-05-08\\
-\midrule
-1.0.3 & 2014-05-01\\
-\midrule
-1.0.2 & 2014-04-29\\
-\midrule
-1.0.2 & 2014-04-23\\
-\midrule
-1.0.1 & 2014-04-21\\
-
-\bottomrule
-\caption{Tracciamento requisiti - moduli}
-\end{longtable}
-\end{center}
 \subsection{Tracciamento moduli - requisiti}
 %FINE DOCUMENTO NON CANCELLARE
 \end{document}
