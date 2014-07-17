@@ -48,7 +48,6 @@ describe('Controller: LoginCtrl', function () {
 
     it('should redirect if already logged in', function () {
         scope.loggedIn = true;
-        $httpBackend.whenGET('http://localhost:9000/api/login').respond(200, data);
         $httpBackend.whenGET('views/dashboard.html').respond(200);
 
         $httpBackend.flush();

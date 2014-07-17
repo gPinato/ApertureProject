@@ -34,9 +34,7 @@ describe('DashboardCtrl', function () {
 
             $httpBackend.whenGET('http://localhost:9000/api/collection/list').respond(200, data);
 
-            // When
             $httpBackend.flush();
-
 
             expect(scope.labels).toEqual(data.labels);
             expect(scope.values).toEqual(data.data);

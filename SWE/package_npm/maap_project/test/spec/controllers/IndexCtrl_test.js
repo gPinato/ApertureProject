@@ -104,12 +104,8 @@ describe('Controller: IndexCtrl', function () {
         $httpBackend.whenGET('views/dashboard.html').respond(200);
         $httpBackend.whenGET('views/404.html').respond(200);
 
-
-
-        // When
         scope.delete(deleteIndex);
         $httpBackend.flush();
-        // Then
 
 
     });

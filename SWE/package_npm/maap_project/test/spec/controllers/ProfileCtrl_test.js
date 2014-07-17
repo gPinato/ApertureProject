@@ -44,12 +44,9 @@ describe('Controller: ProfileCtrl', function () {
     }));
 
     it('should set some data on the scope when successful', function () {
-        // Given
         $httpBackend.whenGET('http://localhost:9000/api/profile').respond(200, data);
 
-        // When
         $httpBackend.flush();
-        // Then
         expect(scope.data).toEqual(data.data);
         expect(scope.labels).toEqual(data.label);
 
@@ -77,9 +74,8 @@ describe('Controller: ProfileCtrl', function () {
     });
 
     it('should display an error when the delete fails', function () {
-        $httpBackend.whenGET('http://localhost:9000/api/profile').respond(400);
-        $httpBackend.whenDELETE('http://localhost:9000/api/profile/edit').respond(200);
-
+        $httpBackend.whenGET('http://localhost:9000/api/profile').respond(200,data);
+        $httpBackend.whenDELETE('http://localhost:9000/api/profile/edit').respond(400);
 
         scope.delete_document();
         $httpBackend.flush();

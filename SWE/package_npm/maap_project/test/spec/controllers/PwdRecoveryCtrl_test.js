@@ -46,7 +46,7 @@ describe('Controller: PwdRecoveryCtrl', function () {
         });
     }));
 
-    it('should register an user correclty', function () {
+    it('should recover the password correctly', function () {
         $httpBackend.whenGET('views/dashboard.html').respond(200);
         $httpBackend.whenPOST('http://localhost:9000/api/forgot').respond(200);
 
@@ -65,7 +65,6 @@ describe('Controller: PwdRecoveryCtrl', function () {
         $httpBackend.whenGET('views/pwdrecovery.html').respond(200);
 
 
-        // When
         scope.recover();
         $httpBackend.flush();
         expect(location.path()).toBe('/recover');

@@ -80,32 +80,5 @@ describe('Controller: UsersEditCtrl', function () {
 
 
     });
-/*
-    it('should redirect to self after succesful update', function () {
-        scope.newPassword1 = 12;
-        $httpBackend.whenGET('http://localhost:9000/api/users/edit').respond(200,data);
-        $httpBackend.whenPUT('http://localhost:9000/api/users/edit').respond(200);
 
-        // When
-        scope.edit_document();
-        $httpBackend.flush();
-        expect(scope.labels).toEqual(data.label);
-
-        expect(location.path()).toBe('/users/1');
-
-    });
-
-    it('should display an error when the update fails', function () {
-        scope.newPassword1 = 12;
-        $httpBackend.whenGET('http://localhost:9000/api/users/edit').respond(200,data);
-        $httpBackend.whenPUT('http://localhost:9000/api/users/edit').respond(400);
-
-        scope.edit_document();
-        $httpBackend.flush();
-        expect(scope.labels).toEqual(data.label);
-
-        expect(location.path()).toBe('/404');
-
-
-    });*/
 });

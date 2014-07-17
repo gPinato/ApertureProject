@@ -95,7 +95,7 @@ describe('Controller: DocumentEditCtrl', function () {
     });
 
     it('should display an error when the delete fails', function () {
-        $httpBackend.whenGET('http://localhost:9000/api/collection/0/0/edit').respond(400);
+        $httpBackend.whenGET('http://localhost:9000/api/collection/0/0/edit').respond(200,data);
         $httpBackend.whenDELETE('http://localhost:9000/api/collection/0/0/edit').respond(200);
 
         scope.delete_document();
