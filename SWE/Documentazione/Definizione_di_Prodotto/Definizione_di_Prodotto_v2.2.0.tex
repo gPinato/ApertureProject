@@ -2082,6 +2082,8 @@ Package contenente i vari Template utilizzati dal Client AngularJS per visualizz
 		Array contenente i nomi delle Collection tra cui scegliere.
 		\item[\$scope.values] \hfill \\
 		Array contenente gli identificativi delle Collection che verranno utilizzati per il reindirizzamento alla scelta della Collection desiderata.
+		\item[\$scope.searchbox] \hfill \\
+		Stringa contenente il parametro di ricerca utilizzato nella pagina per ricercare una data Collection.
 		
 	\end{description}
  	
@@ -2330,7 +2332,7 @@ Package che gestisce il dialogo tra la View ed il Model del Client.
 \subsubsection{::ControllerClient}
 Package che racchiude i Controller del Client. Il primo metodo descritto di ogni Controller è la funzione base di recupero dei dati dal Server attraverso la chiamata del metodo di fetch del proprio Service.
 
-\paragraph{@CollectionController}
+\paragraph{@CollectionCtrl}
 \begin{description}
  \item[Descrizione] \hfill \\
  Modulo che descrive il Controller della Collection view.
@@ -2348,7 +2350,7 @@ Package che racchiude i Controller del Client. Il primo metodo descritto di ogni
   \item \$routeParams;
   \item \$cookieStore;
   \item @DocumentEditService;
-  \item @CollectionDataService;
+  \item @CollectionDataService.
  \end{itemize}
  
  \item[Attributi] \hfill
@@ -2358,7 +2360,7 @@ Package che racchiude i Controller del Client. Il primo metodo descritto di ogni
  \item \$scope.current \textunderscore sort;
  \item \$scope.current \textunderscore page;
  \item \$scope.current\textunderscore collection;
- \item \$scope.rows;
+ \item \$scope.rows.
  \end{itemize}
  
  \item[Funzionalità] \hfill
@@ -2449,15 +2451,10 @@ Package che racchiude i Controller del Client. Il primo metodo descritto di ogni
   	\item[Descrizione] \hfill \\
   Aggiunge allo \$scope la funzionalità di passaggio alla pagina di visualizzazione specificata dal parametro \textit{index}. Aggiorna l'indicatore della pagina corrente settandolo all'indice passato per parametro alla funzione. Successivamente esegue una richiesta al server per ottenere i dati per la nuova visualizzazione.
   \end{description}
-  
- 
-  
- 
-  
  \end{description}
 \end{description}
 
-\paragraph{@DashboardController}
+\paragraph{@DashboardCtrl}
 \begin{description}
  \item[Descrizione] \hfill \\
  Modulo che descrive il Controller della Dashboard.
@@ -2469,20 +2466,31 @@ Fornisce un immediato elenco delle collection disponibili.
  \item[Dipendendenze iniettate al controller] \hfill
  \begin{itemize}
   \item \$scope;
-  \item @CollectionListService;
+  \item @CollectionListService.
+ \end{itemize}
+ 
+ \item[Attributi] \hfill
+ \begin{itemize}
+	 \item \$scope.searchbox.
  \end{itemize}
  
  \item[Funzionalità]
  \begin{mldescription}
+  \mlitem{\$scope.Search()}
+  \begin{description}
+  	\item[Descrizione] \hfill \\
+  	Funzione che richiama \textit{CollectionListService.get()}, effettuando una ricerca di Collection filtrata con il parametro \textit{\$scope.searchbox} impostato nella View \textbf{@dashboard.html}.
+  \end{description}
+  
   \mlitem{CollectionListService.get()}
   \begin{description}
   	\item[Descrizione] \hfill \\
-    Funzione che richiede al server l'elenco delle collection disponibli e le inserisce nello scope.
+    Funzione che richiede al server l'elenco delle collection disponibli e le inserisce nello scope, filtrando le Collection che non rispettano i parametri di ricerca di \textit{\$scope.searchbox}.
   \end{description}
  \end{mldescription}
 \end{description}
 
-\paragraph{@DocumentController}
+\paragraph{@DocumentCtrl}
 \begin{description}
  \item[Descrizione] \hfill \\
  Modulo che descrive il Controller della pagina di visualizzazione di un documento.
@@ -2493,7 +2501,8 @@ Fornisce un immediato elenco delle collection disponibili.
  \item[Dipendendenze iniettate al controller] \hfill
  \begin{itemize}
   \item \$scope;
-  \item \$location
+  \item \$location;
+  \item \$cookieStore;
   \item @DocumentDataService;
   \item @DocumentEditService;
   \item \$routeParams.
@@ -2502,9 +2511,10 @@ Fornisce un immediato elenco delle collection disponibili.
  
  \item[Attributi] \hfill
  \begin{itemize}
- \item  \$scope.current\textunderscore collection;
- \item  \$scope.current\textunderscore document;
- \item  \$scope.values;
+ \item \$scope.current\textunderscore collection;
+ \item \$scope.current\textunderscore document;
+ \item \$scope.values;
+ \item \$scope.canEdit.
  \end{itemize}
  
  \item[Funzionalità]
@@ -2515,7 +2525,6 @@ Fornisce un immediato elenco delle collection disponibili.
   		\begin{mldescription}
   			\mlitem{\$scope.current\textunderscore collection;}
             \mlitem{\$scope.current\textunderscore document.}
-        
         Parametri che identificano la collection e il document da visualizzare.
   		\end{mldescription}
   	\begin{description}
@@ -2536,12 +2545,11 @@ Fornisce un immediato elenco delle collection disponibili.
   	\item[Descrizione] \hfill \\
     Funzione che richiede al server la cancellazione di un document.
     \end{description}
-
   \end{description}
  \end{mldescription}
 \end{description}
 
-\paragraph{@DocumentEditController}
+\paragraph{@DocumentEditCtrl}
 \begin{description}
  \item[Descrizione] \hfill \\
  Modulo che descrive il Controller della pagina di modifica di un documento.
@@ -2560,10 +2568,10 @@ Fornisce un immediato elenco delle collection disponibili.
  
  \item[Attributi] \hfill
  \begin{itemize}
- \item  \$scope.current\textunderscore collection;
+ 	\item  \$scope.current\textunderscore collection;
     \item  \$scope.current\textunderscore document;
     \item  \$scope.original\textunderscore data;
-    \item  \$scope.original\textunderscore keys;
+    \item  \$scope.canEdit.
  \end{itemize}
  
  \item[Funzionalità] \hfill
@@ -2584,40 +2592,22 @@ Fornisce un immediato elenco delle collection disponibili.
   \end{description}
  
  
-   \item[edit\_document()] \hfill 
+   \item[\$scope.edit\_document()] \hfill 
    \begin{description}
-  	\item[Parametri]
-  		\begin{mldescription}
-  			\mlitem{\$scope.current\textunderscore collection;}
-            \mlitem{\$scope.current\textunderscore document.}
-        
-        Parametri che identificano la collection e il document da sovrascrivere.
-  		\end{mldescription}
-  	\begin{description}
   	\item[Descrizione] \hfill \\
-	Funzione che richiede al server di sovrascrivere il document identificato dai parametri con quello modificato dall'utente.
-	\end{description}
+	Funzione che richiede al server di sovrascrivere il document identificato dai parametri con quello modificato dall'utente. Richiama il metodo \textit{update()} di \textbf{@DocumentEditService} passando come parametri \textit{\$scope.current\_collection} e \textit{\$scope.current\_document}.
   \end{description}
   
   
-  \item[delete\textunderscore document()] \hfill 
+  \item[\$scope.delete\_document()] \hfill 
    \begin{description}
-  	\item[Parametri]
-  		\begin{mldescription}
-  			\mlitem{\$scope.current\textunderscore collection;}
-            \mlitem{\$scope.current\textunderscore document.}
-      
-        Parametri che identificano la collection e il document da cancellare.
-  		\end{mldescription}
-  	\begin{description}
   	\item[Descrizione] \hfill \\
-    Funzione che richiede al server la cancellazione di un document.
-	\end{description}
-  \end{description}
+    Funzione che richiede al server la cancellazione di un document. Richiama il metodo \textit{remove()} di \textbf{@DocumentEditService} passando come parametri \textit{\$scope.current\_collection} e \textit{\$scope.current\_document}.
+   \end{description}
  \end{description}
 \end{description}
 
-\paragraph{@IndexController}
+\paragraph{@IndexCtrl}
 \begin{description}
  \item[Descrizione] \hfill \\
  Modulo che descrive il Controller della pagina di gestione degli indici.
@@ -2631,12 +2621,17 @@ Fornisce un immediato elenco delle collection disponibili.
   \item \$scope;
   \item \$route;
   \item \$location;
-  \item @IndexService;
+  \item @IndexService.
  \end{itemize}
  
  \item[Attributi] \hfill
  \begin{itemize}
- \item \$scope.rows;
+ 	\item \$scope.current\_sorted\_column;
+ 	\item \$scope.current\_sort;
+ 	\item \$scope.column\_original\_name;
+ 	\item \$scope.current\_page;
+ 	\item \$scope.rows.
+ 	
  \end{itemize}
 
  \item[Funzionalità] \hfill 
@@ -2647,47 +2642,11 @@ Fornisce un immediato elenco delle collection disponibili.
   		Funzione di inizializzazione dell'\grassetto{@IndexController}. Imposta i valori iniziali delle variabili dello \$scope ed esegue la funzione \textit{getData()}.
   	\end{description}
   
-  \item[getData()] \hfill 
+  \item[\$scope.getData()] \hfill 
   \begin{description}
   	\item[Descrizione] \hfill \\
-  	Richiama la richiesta RESTful \textit{query} sulla \$resource fornita da \grassetto{@IndexService}.
+  	Richiama la richiesta RESTful \textit{query()} sulla \$resource fornita da \grassetto{@IndexService}.
   Con questa funzione vengono prelevati i dati legati agli indici da visualizzare e vengono passati alla  view tramite il binding con lo \$scope.
-  \end{description}
-  
-  \item[\$scope.numerify(num)] \hfill 
-  \begin{description}
-  	\item[Parametro] \hfill
-  	\begin{description}
-  		\item[num] \hfill \\
-  		Numero intero che specifica il numero di pagine da visualizzare.
-  	\end{description}
-  	\item[Descrizione] \hfill \\
-  	Funzione ausiliaria che crea un array di dimensione \textit{num} che verrà poi usato dalla directive \textit{ng-repeat} di AngularJS per la creazione del numero di pagine disponibili.
-  \end{description}
-  
-  \item[\$scope.previousPage()] \hfill 
-  \begin{description}
-  	\item[Descrizione] \hfill \\
-  	Aggiunge allo \$scope la funzionalità di passaggio alla pagina di visualizzazione precedente alla corrente. Diminuisce di 1 l'indicatore della pagina corrente e esegue una nuova richiesta al server per i dati corrispondenti alla pagina precedente con \textit{getData()}.
-  \end{description}
-  
-  \item[\$scope.nextPage()] \hfill
-  \begin{description}
-  	\item[Descrizione] \hfill \\
-  Aggiunge allo \$scope la funzionalità di passaggio alla pagina di visualizzazione successiva alla corrente. Aumenta di 1 l'indicatore della pagina corrente e esegue una nuova richiesta al server per i dati corrispondenti alla pagina successiva con \textit{getData()}.
-  \end{description}
-  
-  \item[\$scope.toPage(index)] \hfill
-  \begin{description}
-  	\item[Parametro] \hfill
-  	\begin{description}
-  		\item[index] \hfill \\
-  		Numero intero che specifica il numero di pagine da visualizzare.
-  	\end{description}
-  	\item[Descrizione] \hfill \\
-  	Aggiunge allo \$scope la funzionalità di passaggio alla pagina di visualizzazione specificata dal parametro \textit{index}.
-  Aggiorna l'indicatore della pagina corrente settandolo all'indice passato per parametro alla funzione.
-  Successivamente esegue una richiesta al server per ottenere i dati per la nuova visualizzazione.
   \end{description}
   
   \item[changeSort()] \hfill 
@@ -2709,9 +2668,8 @@ Fornisce un immediato elenco delle collection disponibili.
   la variabile \textit{current\_sorted\_column} dello \$scope viene aggiornata, altrimenti la funzione cambia solamente
   l'ordinamento della colonna.
   \end{description}
-
   
-  \item[\$scope.deleteDocument(index)] \hfill
+  \item[\$scope.delete(index)] \hfill
   \begin{description}
   	\item[Parametro] \hfill
   	\begin{description}
@@ -2724,7 +2682,48 @@ Fornisce un immediato elenco delle collection disponibili.
   Se l'eliminazione ha successo viene lanciato l'aggiornamento della vista corrente con il Document eliminato, altrimenti si richiama la callback di errore.
   \end{description}
   
+  \item[\$scope.range()] \hfill
+  \begin{description}
+  	\item[Descrizione] \hfill \\
+  	Funzione che gestisce la visualizzazione del numero delle pagine correntemente esposte. Questa funzione impone che sia visualizzato un numero massimo di 9 pagine tra cui navigare per volta. Se il numero di pagine di indici è minore, verrà visualizzato il numero effettivo di pagine. Se il numero è maggiore, ad ogni cambio di pagina la barra gestione delle pagine verrà aggiornata.
+  \end{description}
   
+  \item[\$scope.prevPage()] \hfill 
+  \begin{description}
+  	\item[Descrizione] \hfill \\
+  	Aggiunge allo \$scope la funzionalità di passaggio alla pagina di visualizzazione precedente alla corrente. Diminuisce di 1 l'indicatore della pagina corrente e esegue una nuova richiesta al server per i dati corrispondenti alla pagina precedente con \textit{getData()}.
+  \end{description}
+  
+  \item[\$scope.DisablePrevPage()] \hfill
+  \begin{description}
+  	\item[Descrizione] \hfill \\
+  	Funzione che disabilita la funzionalità di passaggio alla pagina precedente a quella correntemente visualizzata, se questa è la prima pagina di visualizzazione della Collection.
+  \end{description}
+  
+  \item[\$scope.nextPage()] \hfill
+  \begin{description}
+  	\item[Descrizione] \hfill \\
+  Aggiunge allo \$scope la funzionalità di passaggio alla pagina di visualizzazione successiva alla corrente. Aumenta di 1 l'indicatore della pagina corrente e esegue una nuova richiesta al server per i dati corrispondenti alla pagina successiva con \textit{getData()}.
+  \end{description}
+  
+  \item[\$scope.DisableNextPage()] \hfill
+  \begin{description}
+  	\item[Descrizione] \hfill \\
+  	Funzione che disabilita la funzionalità di passaggio alla pagina successiva a quella correntemente visualizzata, se questa è l'ultima pagina di visualizzazione della Collection.
+  \end{description}
+  
+  \item[\$scope.toPage(index)] \hfill
+  \begin{description}
+  	\item[Parametro] \hfill
+  	\begin{description}
+  		\item[index] \hfill \\
+  		Numero intero che specifica il numero di pagine da visualizzare.
+  	\end{description}
+  	\item[Descrizione] \hfill \\
+  	Aggiunge allo \$scope la funzionalità di passaggio alla pagina di visualizzazione specificata dal parametro \textit{index}.
+  Aggiorna l'indicatore della pagina corrente settandolo all'indice passato per parametro alla funzione.
+  Successivamente esegue una richiesta al server per ottenere i dati per la nuova visualizzazione.
+  \end{description}
  \end{description}
 \end{description}
 
