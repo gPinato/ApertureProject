@@ -3760,7 +3760,7 @@ con il metodo \textit{query}, per ottenere i dati voluti.
  Servizio che fornisce una \$resource legata ad un particolare utente con campi modificabili registrato al sistema.
  \item[Utilizzo] \hfill \\
   Questa risorsa viene utilizzata nello \grassetto{@UserEditCtrl} per richiedere al Server le informazioni associate ad un utente. L'argomento della richiesta al 
-  Server è l dell'utente. Le funzioni esportate con la \$resource sono: \textit{query}, \textit{update} e 
+  Server è l'\textit{id} dell'utente. Le funzioni esportate con la \$resource sono: \textit{query}, \textit{update} e 
   \textit{remove}.
  \item[Funzionalità] \hfill \\
  \emph{Dipendendenze iniettate:}
@@ -3788,5 +3788,57 @@ La view viene poi aggiornata con i nuovi dati.
 \immagine{./SequenzaErrore}{Diagramma sequenza: Modifica View con insuccesso}
 Questo diagramma illustra la stessa operazione del precedente con esito negativo. Il server rifiuta la richiesta e risponde con un codice di errore.
 Il controller esegue la callback "error" e la view verrà aggiornata con un messaggio di errore.
+
+\section{Tracciamento}
+\label{sequenza}
+\subsection{Tracciamento requisiti - moduli}
+\begin{center}
+\begin{longtable}{|c|c{0.5\linewidth}|}
+\toprule
+\textbf{Requisito} & \textbf{Modulo}\\
+
+%aggiungere qui una midrule per aggiungere una nuova riga alla tabella
+
+\midrule
+2.2.0 & 2014-07-17\\
+
+\midrule
+2.1.1 & 2014-07-17\\
+
+\midrule
+2.1.0 & 2014-07-16\\
+
+\midrule
+2.0.3 & 2014-07-15\\
+
+\midrule
+2.0.2 & 2014-07-14\\
+
+\midrule
+2.0.1 & 2014-07-14\\
+
+\midrule
+1.2.0 & 2014-05-19\\
+\midrule
+1.1.1 & 2014-05-19\\
+\midrule
+1.1.0 & 2014-05-16\\
+\midrule
+
+1.0.4 & 2014-05-08\\
+\midrule
+1.0.3 & 2014-05-01\\
+\midrule
+1.0.2 & 2014-04-29\\
+\midrule
+1.0.2 & 2014-04-23\\
+\midrule
+1.0.1 & 2014-04-21\\
+
+\bottomrule
+\caption{Tracciamento requisiti - moduli}
+\end{longtable}
+\end{center}
+\subsection{Tracciamento moduli - requisiti}
 %FINE DOCUMENTO NON CANCELLARE
 \end{document}
