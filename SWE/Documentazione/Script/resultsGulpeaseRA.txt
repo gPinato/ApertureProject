@@ -1,0 +1,36 @@
+Analisi_dei_Requisiti_v5.2.0.tex: 69
+Incrementi.tex: 76
+MEDIA: 73
+
+Definizione_di_Prodotto_v2.2.0.tex: 63
+
+GlossarioAM.tex: 57
+GlossarioNZ.tex: 58
+Glossario_v5.2.0.tex: 57
+MEDIA: 57
+
+
+Manuale_Utente_EN_v2.2.0.tex: 81
+
+Norme_di_Progetto_v5.2.0.tex: 56
+
+Piano_di_Progetto_v5.2.0.tex: 49
+DescrizioneTestUnitaClient.tex: 56
+DescrizioneTestUnitaServer.tex: 47
+MEDIA: 51
+
+
+Piano_di_qualifica_appendice_A.tex: 44
+Piano_di_qualifica_appendice_B.tex: 42
+Piano_di_qualifica_appendice_C.tex: 58
+Piano_di_qualifica_appendice_D.tex: 43
+Piano_di_qualifica_appendice_E.tex: 44
+Piano_di_Qualifica_v5.2.0.tex: 48
+diagrammiAttivita.tex: 35
+MEDIA: 51
+
+
+Specifica_Tecnica_v3.2.0.tex: 51
+
+
+Studio_di_fattibilita.tex: 45
