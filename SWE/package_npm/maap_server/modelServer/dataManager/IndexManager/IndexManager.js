@@ -72,7 +72,7 @@ exports.addQuery = function(collection_name, select) {
 		if(err)
 		{
 			//se la query da errore allora stampo sulla console un messaggio di errore
-			console.log('Impossibile recuperare lista query con la collection: '+collection_name);
+			console.log('Impossibile recuperare lista query con la collection ' + collection_name + ': ' + err);
 		}else{
 			//se la query non da errori allora procedo
 			//controllo se la lista che la query ritorna è vuota
@@ -216,7 +216,7 @@ exports.getQueries = function(page, perpage, n_elements, callback) {
 				//controllo se la query dà errori
 				if(err){
 					//se la query da problemi allora stampo un messaggio di errore sulla console
-					console.log('Impossibile ritornare le query');
+					console.log('Impossibile ritornare le query: ' + err);
 					//do alla callback il risultato
 					callback(result);
 				}
@@ -264,6 +264,10 @@ exports.getIndex = function(db, page, indexesPerPage, callback) {
 		done = false;
 		//sulla collection chiamo indexInformation per ottenere gli indici di quella collection
 		collection.indexInformation(function(err, indexes) {
+		
+			//visualizzo errore in caso
+			if(err){console.log('error reading indexes: ' + err);}
+			
 			//scorro gli indici
 			for(var key in indexes)
 			{
@@ -276,6 +280,13 @@ exports.getIndex = function(db, page, indexesPerPage, callback) {
 		//voglio rendere la funzione sincrona per eseguire tutto il for e poi chiamare la callback
 		while(!done){require('deasync').sleep(100);}
 	}
+	
+	//restringo l'array in base al page e perpage
+	var skip = page * indexesPerPage;
+	var limit = indexesPerPage;
+	
+	result = result;
+	//TODO
 	
 	//passo alla callback l'array di indici
 	callback(result);
@@ -302,7 +313,7 @@ exports.createIndex = function(query_id, name_index, callback) {
 		//controllo se la query da errori
 		if(err){
 			//se la query da errori allora stampo un messaggio di errore
-			console.log('Impossibile ritornare la query dell\' indice');
+			console.log('Impossibile ritornare la query dell\' indice: ' + err);
 			//passo false alla callback
 			callback(false);
 		}else 
@@ -314,8 +325,8 @@ exports.createIndex = function(query_id, name_index, callback) {
 			//passo false alla callback
 			callback(false);
 		}else 
-			//se la query produce risultato
-			if(data.length > 0){
+		//se la query produce risultato
+		if(data.length > 0){
 			//recupero il nome della collection		
 			var collection_name = data[0].collection_name;		
 			//recupero i campi della select della query
@@ -335,7 +346,8 @@ exports.createIndex = function(query_id, name_index, callback) {
 			//imposto il nome di nameindex con il nome dell'indice
 			nameindex.name = name_index;
 			//prelevo lo schema della collection
-			var collectionSchema = require('../../DSL/collectionData/'+collection_name+'_schema').schema;
+			var collectionSchema = require('../../DSL/collectionData/' + collection_name + '_schema').schema;
+			console.log(JSON.stringify(collectionSchema));
 			//definisco un indice nello schema
 			collectionSchema.index(index, nameindex);
 			//prendo il model della collection		
@@ -346,7 +358,7 @@ exports.createIndex = function(query_id, name_index, callback) {
 				if(err)
 				{
 					//se la creazione ha prodotto errori allora stampo un messaggio sulla console
-					console.log('Impossibile creare l\'indice');
+					console.log('Impossibile creare l\'indice: ' + err);
 					//passo false alla callback
 					callback(false);
 				}else{
@@ -380,6 +392,7 @@ exports.deleteIndex = function(db, indexName, collectionName, callback) {
 		//controllo se la cancellazione ha prodotto errori
 		if(err)
 		{
+			console.log('error while deleting index: ' + err);
 			//se la cancellazione ha prodotto errori, allora passo false alla callback
 			callback(false);
 		}else{
