@@ -99,8 +99,6 @@ var changeFileRow = function(filePath, string2find, newString) {
 				console.error('error updating file: ' + filePath);
 				throw err;
 			} 
-			if(config.app.env == 'development')
-				console.log(file + ' saved!');
 			done = true;			
 		});	
 		
