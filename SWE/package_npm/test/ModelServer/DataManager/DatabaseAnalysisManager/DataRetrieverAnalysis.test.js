@@ -97,14 +97,6 @@ describe("DataRetrieverAnalysis Unit Test: ", function() {
 		
 		retriever.__set__('indexManager', {addQuery: function(){} } );
 		
-		/*it("", function() {
-			
-			retriever.getDocuments(model, querySettings, populate, function(response){
-			
-			
-				expect(response).to.equal('collectionsList');
-			});
-		});*/
 		
 	});
 	
