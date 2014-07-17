@@ -78,6 +78,10 @@ MaaP::Client::ControllerModelView::ControllerClient ::ProfileEditCtrl
 & ROF10.3.1.3\\
 
 \midrule
+MaaP::Client::ControllerModelView::ControllerClient ::PwdRecoveryCtrl
+& ROF9\\
+
+\midrule
 MaaP::Client::ControllerModelView::ControllerClient ::QueryCtrl
 & RDF10.6.3\\
 & ROF10.6\\
@@ -89,6 +93,14 @@ MaaP::Client::ControllerModelView::ControllerClient ::RegisterCtrl
 & RDF8\\
 & RDF8.1\\
 & RDF8.2\\
+
+\midrule
+MaaP::Client::ControllerModelView::ControllerClient ::UsersCollectionCtrl
+& ROF10.3\\
+
+\midrule
+MaaP::Client::ControllerModelView::ControllerClient ::UsersCtrl
+& ROF10.3\\
 
 \midrule
 MaaP::Client::ControllerModelView::ControllerClient ::UsersEditCtrl
@@ -163,10 +175,22 @@ MaaP::Client::ModelClient::Services::QueryService
 & ROF10.6.2\\
 
 \midrule
+MaaP::Client::ModelClient::Services::RecoveryService
+& ROF9\\
+
+\midrule
 MaaP::Client::ModelClient::Services::RegisterService
 & RDF8\\
 & RDF8.1\\
 & RDF8.2\\
+
+\midrule
+MaaP::Client::ModelClient::Services::UserCollectionService
+& ROF10.3\\
+
+\midrule
+MaaP::Client::ModelClient::Services::UserDataService
+& ROF10.3\\
 
 \midrule
 MaaP::Client::ModelClient::Services::UserEditService
@@ -210,9 +234,6 @@ MaaP::Client::View::documentEdit
 \midrule
 Maap::Client::View::indexCollection
 & ROF10.7\\
-
-\midrule
-MaaP::Client::View::indexCollection
 & ROF10.7.1\\
 & ROF10.7.2\\
 
@@ -232,6 +253,11 @@ MaaP::Client::View::Navbar
 & ROF10.2.4\\
 
 \midrule
+MaaP::Client::View::pwdrecovery
+& ROF10.3\\
+
+
+\midrule
 MaaP::Client::View::queryCollection
 & RDF10.6.3\\
 & ROF10.6\\
@@ -246,6 +272,10 @@ MaaP::Client::View::register
 \midrule
 MaaP::Client::View::userCollection
 & ROF1\\
+
+\midrule
+MaaP::Client::View::userDocument
+& ROF10.3\\
 
 \midrule
 MaaP::Client::View::userEdit
@@ -283,14 +313,6 @@ MaaP::Server::Controller::FrontController
 & ROF9\\
 
 \midrule
-MaaP::Server::Controller::IPassport
-& ROF10.2.4\\
-& ROF7\\
-& ROF7.1\\
-& ROF7.2\\
-& ROF7.2.1\\
-
-\midrule
 MaaP::Server::Controller::Passport
 & ROF10.2.4\\
 & ROF7\\
@@ -299,44 +321,6 @@ MaaP::Server::Controller::Passport
 & ROF7.2.1\\
 
 \midrule
-MaaP::Server::Controller::PassportAdapter
-& ROF10.2.4\\
-& ROF7\\
-& ROF7.1\\
-& ROF7.2\\
-& ROF7.2.1\\
-
-\midrule
-MaaP::Server::ModelServer::Database::DBAnalysis
-& ROF10.4\\
-& ROF10.5\\
-& ROF10.5.2\\
-& ROF10.6\\
-& ROF10.6.1\\
-& ROF10.6.2\\
-
-\midrule
-Maap::Server::ModelServer::Database::DBAnalysis
-& ROF10.7\\
-
-\midrule
-MaaP::Server::ModelServer::Database::DBAnalysis
-& ROF10.7.2\\
-
-\midrule
-MaaP::Server::ModelServer::Database::DBFramework
-& ROF10.3\\
-& ROF10.3.1\\
-& ROF10.3.1.2\\
-& ROF10.3.1.4\\
-& ROF10.3.2\\
-& ROF10.3.3\\
-& ROF7\\
-& ROF7.1\\
-& ROF7.2\\
-& ROF7.2.1\\
-
-\midrule
 MaaP::Server::ModelServer::Database::MongooseDBAnalysis
 & ROF10.4\\
 & ROF10.5\\
@@ -344,13 +328,7 @@ MaaP::Server::ModelServer::Database::MongooseDBAnalysis
 & ROF10.6\\
 & ROF10.6.1\\
 & ROF10.6.2\\
-
-\midrule
-Maap::Server::ModelServer::Database::MongooseDBAnalysis
 & ROF10.7\\
-
-\midrule
-MaaP::Server::ModelServer::Database::MongooseDBAnalysis
 & ROF10.7.2\\
 
 \midrule
@@ -398,13 +376,7 @@ MaaP::Server::ModelServer::DataManager::DatabaseAnalysisManager ::DatabaseAnalys
 & ROF10.6\\
 & ROF10.6.1\\
 & ROF10.6.2\\
-
-\midrule
-Maap::Server::ModelServer::DataManager::DatabaseAnalysisManager ::DatabaseAnalysisManager
 & ROF10.7\\
-
-\midrule
-MaaP::Server::ModelServer::DataManager::DatabaseAnalysisManager ::DatabaseAnalysisManager
 & ROF10.7.2\\
 
 \midrule
@@ -442,7 +414,7 @@ MaaP::Server::ModelServer::DataManager::DatabaseUserManager ::DataRetrieverUsers
 & ROF10.3.3\\
 
 \midrule
-MaaP::Server::ModelServer::DataManager::IDatabaseManager
+MaaP::Server::ModelServer::DataManager::DatabaseManager
 & RDF10.2\\
 & RDF10.2.1\\
 & RDF10.2.1.1\\
@@ -464,17 +436,11 @@ MaaP::Server::ModelServer::DataManager::IDatabaseManager
 & ROF10.6\\
 & ROF10.6.1\\
 & ROF10.6.2\\
-
-\midrule
-Maap::Server::ModelServer::DataManager::IDatabaseManager
 & ROF10.7\\
-
-\midrule
-MaaP::Server::ModelServer::DataManager::IDatabaseManager
 & ROF10.7.2\\
 
 \midrule
-MaaP::Server::ModelServer::DataManager::IDataRetriever
+MaaP::Server::ModelServer::DataManager::DataRetriever
 & RDF10.2\\
 & RDF10.2.1\\
 & RDF10.2.1.1\\
@@ -499,18 +465,8 @@ MaaP::Server::ModelServer::DataManager::IDataRetriever
 \midrule
 MaaP::Server::ModelServer::DataManager::IndexManager ::IndexManager
 & ROF10.6.2\\
-
-\midrule
-Maap::Server::ModelServer::DataManager::IndexManager ::IndexManager
 & ROF10.7\\
-
-\midrule
-MaaP::Server::ModelServer::DataManager::IndexManager ::IndexManager
 & ROF10.7.2\\
-
-\midrule
-MaaP::Server::ModelServer::DSL::DSLDescriptionFile
-& ROF3\\
 
 \midrule
 MaaP::Server::ModelServer::DSL::DSLManager
@@ -525,11 +481,7 @@ MaaP::Server::ModelServer::DSL::ParserInterface
 & ROF4\\
 
 \midrule
-MaaPCLI::ProjectClone
-& ROF1.6\\
-
-\midrule
-MaaPCLI::ProjectCreate
+MaaPCLI::Installer
 & RDF5.3\\
 & ROF1\\
 & ROF1.1\\
@@ -538,11 +490,6 @@ MaaPCLI::ProjectCreate
 & ROF1.4\\
 & ROF1.4.1\\
 & ROF5\\
-
-\midrule
-MaaPCLI::ProjectRemove
-& ROF1.5\\
-
 \end{longtable}
 \end{center}
 
@@ -2034,54 +1981,41 @@ ROF4
 & & MaaP::Server::ModelServer ::DSL::ParserInterface\\
 
 \midrule
-ROF1.6
-& Il sistema MaaP deve essere in grado di clonare un progetto esistente
-& MaaPCLI::ProjectClone\\
-
-\midrule
 ROF1.2
 & Il sistema MaaP deve generare i file di configurazione necessari al funzionamento del progetto
-& MaaPCLI::ProjectCreate\\
+& MaaPCLI::Installer\\
 
 \midrule
 ROF5
 & Il sistema deve permettere all'utente sviluppatore la modifica dei file di configurazione
-& MaaPCLI::ProjectCreate\\
+& MaaPCLI::Installer\\
 
 \midrule
 RDF5.3
 & Il sistema MaaP deve permettere all'utente sviluppatore di modificare i template per le pagine web
-& MaaPCLI::ProjectCreate\\
+& MaaPCLI::Installer\\
 
 \midrule
 ROF1
 & Il sistema MaaP deve essere in grado di generare lo scheletro del progetto
-& MaaPCLI::ProjectCreate\\
+& MaaPCLI::Installer\\
 
 \midrule
 ROF1.1
 & Il sistema MaaP deve installare le librerie necessarie al funzionamento del progetto
-& MaaPCLI::ProjectCreate\\
+& MaaPCLI::Installer\\
 
 \midrule
 ROF1.3
 & Il sistema MaaP deve generare le directory necessarie al funzionamento del progetto
-& MaaPCLI::ProjectCreate\\
+& MaaPCLI::Installer\\
 
-\midrule
-ROF1.4
-& Il sistema MaaP deve generare il sistema di autenticazione per le pagine web
-& MaaPCLI::ProjectCreate\\
 
 \midrule
 ROF1.4.1
 & Il sistema di autenticazione per le pagine web deve essere generato insieme ad un profilo amministratore di default
-& MaaPCLI::ProjectCreate\\
+& MaaPCLI::Installer\\
 
-\midrule
-ROF1.5
-& Il sistema MaaP deve essere in grado di eliminare un progetto esistente
-& MaaPCLI::ProjectRemove\\
 
 \end{longtable}
 \end{center}
