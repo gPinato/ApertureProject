@@ -35,25 +35,25 @@ TU40
 TU41
 & Il test verifica che il dispatcher venga inizializzato in maniera corretta.
 & maap\_server::controller::frontController:: initFrontController()
-& D.E.\\
+& Superato\\
 
 \midrule
 TU42
 & Il test verifica che il front controller venga inizializzato in maniera corretta.
 & maap\_server::controller::index:: init()
-& D.E.\\
+& Superato\\
 
 \midrule
 TU43
 & Il test verifica che il modulo passport, utilizzato per la gestione dell'autenticazione, venga inizializzato in maniera corretta e che l'utente sia correttamente autenticato.
 & maap\_server::controller::passport:: initPassport()
-& superato.\\
+& D.E.\\
 & & maap\_server::controller::passport:: checkAuthenticatedAdmin()
-& superato.\\
+& Superato.\\
 & & maap\_server::controller::passport:: checkAuthenticated()
-& superato.\\
+& Superato.\\
 & & maap\_server::controller::passport:: checkNotAuthenticated()
-& superato.\\
+& Superato.\\
 
 \midrule
 TU44
@@ -79,27 +79,27 @@ TU46
 TU47
 & Il test verifica che la gestione dei dati nel database di analisi avvenga in maniera corretta. In particolare viene controllato che le collection restituite siano quelle presenti nel database, che un document possa venir modificato o rimosso. Si verifica che le query possano essere cancellate o mostrate le più utilizzate; inoltre viene verificato anche il comportamento per la creazione, rimozione o restituzione di indici.
 & maap\_server::modelServer:: dataManager:: DatabaseAnalysisManager::DatabaseAnalysisManager:: sendCollectionsList()
-& D.E.\\
+& Superato.\\
 & & maap\_server::modelServer:: dataManager:: DatabaseAnalysisManager::DatabaseAnalysisManager:: sendCollection()
-& D.E.\\
+& Superato.\\
 & & maap\_server::modelServer:: dataManager:: DatabaseAnalysisManager::DatabaseAnalysisManager:: sendDocument()
-& D.E.\\
+& Superato.\\
 & & maap\_server::modelServer:: dataManager:: DatabaseAnalysisManager::DatabaseAnalysisManager:: sendDocumentEdit()
-& D.E.\\
+& Superato.\\
 & & maap\_server::modelServer:: dataManager:: DatabaseAnalysisManager::DatabaseAnalysisManager:: updateDocument()
-& D.E.\\
+& Superato.\\
 & & maap\_server::modelServer:: dataManager:: DatabaseAnalysisManager::DatabaseAnalysisManager:: removeDocument()
-& D.E.\\
+& Superato.\\
 & & maap\_server::modelServer:: dataManager:: DatabaseAnalysisManager::DatabaseAnalysisManager:: resetQueries()
-& D.E.\\
+& Superato.\\
 & & maap\_server::modelServer:: dataManager:: DatabaseAnalysisManager::DatabaseAnalysisManager:: getTopQueries()
-& D.E.\\
+& Superato.\\
 & & maap\_server::modelServer:: dataManager:: DatabaseAnalysisManager::DatabaseAnalysisManager:: getIndexesList()
-& D.E.\\
+& Superato.\\
 & & maap\_server::modelServer:: dataManager:: DatabaseAnalysisManager::DatabaseAnalysisManager:: createIndex()
-& D.E.\\
+& Superato.\\
 & & maap\_server::modelServer:: dataManager:: DatabaseAnalysisManager::DatabaseAnalysisManager:: deleteIndex()
-& D.E.\\
+& Superato.\\
 
 \midrule
 TU48
@@ -107,49 +107,49 @@ TU48
 Inoltre viene verificato che la richiesta di visualizzare una collection con dei document avvenga in maniera corretta, in base alle scelte effettuate dall'utente.
 Viene testato anche il comportamento riguardante la modifica di un document e la sua eventuale rimozione.
 & maap\_server::modelServer:: dataManager:: DatabaseAnalysisManager::DataRetrieverAnalysis:: getModel()
-& D.E.\\
+& Superato.\\
 & & maap\_server::modelServer:: dataManager:: DatabaseAnalysisManager::DataRetrieverAnalysis:: getDocuments()
 & D.E.\\
 & & maap\_server::modelServer:: dataManager:: DatabaseAnalysisManager::DataRetrieverAnalysis:: getCollectionsList()
-& D.E.\\
+& Superato.\\
 & & maap\_server::modelServer:: dataManager:: DatabaseAnalysisManager::DataRetrieverAnalysis:: applyTrasformations()
-& D.E.\\
+& Superato.\\
 & & maap\_server::modelServer:: dataManager:: DatabaseAnalysisManager::DataRetrieverAnalysis:: sortDocumentsByLabels()
-& D.E.\\
+& Superato.\\
 & & maap\_server::modelServer:: dataManager:: DatabaseAnalysisManager::DataRetrieverAnalysis:: getCollectionIndex()
 & D.E.\\
 & & maap\_server::modelServer:: dataManager:: DatabaseAnalysisManager::DataRetrieverAnalysis:: getDocumentShow()
 & D.E.\\
 & & maap\_server::modelServer:: dataManager:: DatabaseAnalysisManager::DataRetrieverAnalysis:: getDocumentShowEdit()
-& D.E.\\
+& Superato.\\
 & & maap\_server::modelServer:: dataManager:: DatabaseAnalysisManager::DataRetrieverAnalysis:: updateDocument()
-& D.E.\\
+& Superato.\\
 & & maap\_server::modelServer:: dataManager:: DatabaseAnalysisManager::DataRetrieverAnalysis:: removeDocument()
-& D.E.\\
+& Superato.\\
 
 \midrule
 TU49
 & Il test verifica la gestione di utente; in particolare viene verificata la mail dell'utente, la possibilità di effettuare la registrazione o di modificare i dati del profilo. Inoltre viene controllata la visualizzazione degli utenti quando richiesta e la possibilità di rimuovere un utente dal database.
 &  maap\_server::modelServer:: dataManager:: DatabaseUserManager::DatabaseUserManager:: checkMail()
-& D.E.\\
+& Superato.\\
 & & maap\_server::modelServer:: dataManager:: DatabaseUserManager::DatabaseUserManager:: userSignup()
-& D.E.\\
+& Superato.\\
 & & maap\_server::modelServer:: dataManager:: DatabaseUserManager::DatabaseUserManager:: sendUserProfile()
-& D.E.\\
+& Superato.\\
 & & maap\_server::modelServer:: dataManager:: DatabaseUserManager::DatabaseUserManager:: sendUserProfileEdit()
-& D.E.\\
+& Superato.\\
 & & maap\_server::modelServer:: dataManager:: DatabaseUserManager::DatabaseUserManager:: updateUserProfile()
-& D.E.\\
+& Superato.\\
 & & maap\_server::modelServer:: dataManager:: DatabaseUserManager::DatabaseUserManager:: getUsersList()
-& D.E.\\
+& Superato.\\
 & & maap\_server::modelServer:: dataManager:: DatabaseUserManager::DatabaseUserManager:: sendUser()
-& D.E.\\
+& Superato.\\
 & & maap\_server::modelServer:: dataManager:: DatabaseUserManager::DatabaseUserManager:: sendUserEdit()
-& D.E.\\
+& Superato.\\
 & & maap\_server::modelServer:: dataManager:: DatabaseUserManager::DatabaseUserManager:: updateUser()
-& D.E.\\
+& Superato.\\
 & & maap\_server::modelServer:: dataManager:: DatabaseUserManager::DatabaseUserManager:: removeUser()
-& D.E.\\
+& Superato.\\
 
 \midrule
 TU50
@@ -157,103 +157,103 @@ TU50
 &  maap\_server::modelServer:: dataManager:: DatabaseUserManager::DataRetrieverUsers:: addUser()
 & D.E.\\
 & & maap\_server::modelServer:: dataManager:: DatabaseUserManager::DataRetrieverUsers:: getUserProfile()
-& D.E.\\
+& Superato.\\
 & & maap\_server::modelServer:: dataManager:: DatabaseUserManager::DataRetrieverUsers::updateUserProfile()
-& D.E.\\
+& Superato.\\
 & & maap\_server::modelServer:: dataManager:: DatabaseUserManager::DataRetrieverUsers::getUsersList()
 & D.E.\\
 & & maap\_server::modelServer:: dataManager:: DatabaseUserManager::DataRetrieverUsers::updateUser()
-& D.E.\\
+& Superato.\\
 & & maap\_server::modelServer:: dataManager:: DatabaseUserManager::DataRetrieverUsers::removeUser()
-& D.E.\\
+& Superato.\\
 
 \midrule
 TU51
 & Il test verifica che le query effettuate sul database avvengano in maniera corretta. Inoltre vengono controllate le funzionalità riguardanti la creazione di indici.
 &  maap\_server::modelServer:: dataManager:: IndexManager::IndexManager:: getModel()
-& D.E.\\
+& Superato.\\
 & & maap\_server::modelServer:: dataManager:: IndexManager::IndexManager:: addQuery()
 & D.E.\\
 & & maap\_server::modelServer:: dataManager:: IndexManager::IndexManager:: resetQueries()
-& D.E.\\
+& Superato.\\
 & & maap\_server::modelServer:: dataManager:: IndexManager::IndexManager:: getQueries()
-& D.E.\\
+& Superato.\\
 & & maap\_server::modelServer:: dataManager:: IndexManager::IndexManager:: getIndex()
-& D.E.\\
+& Superato.\\
 & & maap\_server::modelServer:: dataManager:: IndexManager::IndexManager:: createIndex()
-& D.E.\\
-& & maap\_server::modelServer:: dataManager:: IndexManager::IndexManager:: createIndex()
-& D.E.\\
+& Superato.\\
+& & maap\_server::modelServer:: dataManager:: IndexManager::IndexManager:: deleteIndex()
+& Superato.\\
 
 \midrule
 TU52
 & Il test verifica che il JSON creato corrisponde alle richieste ricevute.
 &  maap\_server::modelServer:: dataManager:: JSonComposer:: createCollectionsList()
-& superato\\
+& Superato.\\
 & & maap\_server::modelServer:: dataManager:: JSonComposer:: checkLabels()
-& superato\\
+& Superato.\\
 & & maap\_server::modelServer:: dataManager:: JSonComposer:: createCollection()
-& superato\\
+& Superato.\\
 & & maap\_server::modelServer:: dataManager:: JSonComposer:: createDocument()
-& superato\\
+& Superato.\\
 & & maap\_server::modelServer:: dataManager:: JSonComposer:: createQueriesList()
-& superato\\
+& Superato.\\
 & & maap\_server::modelServer:: dataManager:: JSonComposer:: createIndexesList()
-& superato\\
+& Superato.\\
 & & maap\_server::modelServer:: dataManager:: JSonComposer:: createUserProfile()
-& superato\\
+& Superato.\\
 & & maap\_server::modelServer:: dataManager:: JSonComposer:: createUserProfileEdit()
-& superato\\
+& Superato.\\
 & & maap\_server::modelServer:: dataManager:: JSonComposer:: createUsersList()
-& superato\\
+& Superato.\\
 & & maap\_server::modelServer:: dataManager:: JSonComposer:: createUser()
-& superato\\
-& & maap\_server::modelServer:: dataManager:: JSonComposer:: createUser()
-& superato\\
+& Superato.\\
 
 \midrule
 TU53
 & Il test verifica che esistono dei file DSL presenti in uno spazio apposito, e viene eseguito il parser su di essi.
 &  maap\_server::modelServer:: DSL:: DSLManager:: generateFunction()
-& superato\\
+& Superato.\\
 & & maap\_server::modelServer:: DSL:: DSLManager:: deleteFolderRecursive()
 & D.E.\\
 & & maap\_server::modelServer:: DSL:: DSLManager:: checkDSL()
-& superato\\
+& D.E.\\
+& & maap\_server::modelServer:: DSL:: DSLManager:: saveFile()
+& D.E.\\
 
 \midrule
 TU54
 & Il test verifica che il parser di un file DSL venga effettuato in maniera corretta; vengono eseguiti i controlli sui campi scritti nel DSL per verificarne il contenuto.
 &  maap\_server::modelServer:: DSL:: DSLParser:: addField()
-& superato\\
+& Superato.\\
 & & maap\_server::modelServer:: DSL:: DSLParser:: checkFieldThrow()
-& superato\\
+& Superato.\\
 & & maap\_server::modelServer:: DSL:: DSLParser:: checkField()
-& superato\\
+& Superato.\\
 & & maap\_server::modelServer:: DSL:: DSLParser:: checkFieldContentThrow()
-& superato\\
+& Superato.\\
 & & maap\_server::modelServer:: DSL:: DSLParser:: checkFieldContent()
-& superato\\
+& Superato.\\
 & & maap\_server::modelServer:: DSL:: DSLParser:: IntValue()
-& superato\\
+& Superato.\\
 & & maap\_server::modelServer:: DSL:: DSLParser:: parseDSL()
-& superato\\
+& Superato.\\
 
 \midrule
 TU55
 & Il test verifica che il controllo sui file DSL parta all'avvio del server.
 &  maap\_server::modelServer:: DSL:: index:: init()
-& superato\\
+& Superato.\\
 
 \midrule
 TU56
 & Il test verifica che vengono creati gli schemi giusti per le collection scritte nel DSL; inoltre viene effettuato un controllo se gli schemi sono già presenti.
 &  maap\_server::modelServer:: DSL:: schemaGenerator:: getPopulatedCollection()
-& superato\\
+& Superato.\\
 & & maap\_server::modelServer:: DSL:: schemaGenerator:: arrayAddElement()
-& superato\\
+& Superato.\\
 & & maap\_server::modelServer:: DSL:: schemaGenerator:: generate()
-& superato\\
+& Superato.\\
 
 \end{longtable}
 \end{center}
