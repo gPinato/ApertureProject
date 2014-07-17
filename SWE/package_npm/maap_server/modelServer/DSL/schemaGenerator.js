@@ -183,7 +183,7 @@ var generate = function(config, dslJson) {
 		var type = schemaElements[i].value;
 		schema += key + ': { type: ' + type + ' }';
 	}
-	schema += '\n}, { collection: \'' + collection.name + '\' });\n\n';
+	schema += '\n}, { autoIndex: false, collection: \'' + collection.name + '\' });\n\n';
 	
 	return schema;
 }

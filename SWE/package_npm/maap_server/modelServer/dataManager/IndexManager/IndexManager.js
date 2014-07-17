@@ -31,9 +31,10 @@ var getCollectionsListFile = function(){
 }
 
  /**
- * Preleva il modello relativo ad una specifica collection
+ * Richiede al modulo MongooseDBAnalysis il modello della Collection di nome
+ *collection name. Se la Collection è presente, la funzione getModel ritorna il suo modello, altrimenti ritorna -1.
  *
- *@param collection_name - nome della collection relativa al modello da cercare
+ *@param collection_name - Stringa contenente il nome della Collection di cui ottenere il modello.
  *@return modello relativo alla collection specificata, -1 se il modello non è presente.
  */
 var getModel = function(collection_name) {
@@ -59,10 +60,12 @@ var getModel = function(collection_name) {
 exports.getModel = getModel;
 
  /**
- * Aggiunge una query nel database delle query
+ *Viene richiesto l'insieme delle query effettuate sul database di analisi precedentemente alla query corrente.
+ *Successivamente, se la query è stata eseguita per la prima volta, viene inserita nell'insieme delle query effettuate. 
+ *Se invece la query è stata già eseguita, il suo contatore viene incrementato.
  *
- *@param collection_name - nome della collection relativa alla query da creare
- *@param select - lista di campi selezionati 
+ *@param collection_name - Stringa contenente il nome della Collection su cui è stata effettuata la query.
+ *@param select - Array contenente i campi visualizzati della Collection. 
  */
 exports.addQuery = function(collection_name, select) {
 	
@@ -72,7 +75,7 @@ exports.addQuery = function(collection_name, select) {
 		if(err)
 		{
 			//se la query da errore allora stampo sulla console un messaggio di errore
-			console.log('Impossibile recuperare lista query con la collection: '+collection_name);
+			console.log('Impossibile recuperare lista query con la collection ' + collection_name + ': ' + err);
 		}else{
 			//se la query non da errori allora procedo
 			//controllo se la lista che la query ritorna è vuota
@@ -145,9 +148,10 @@ exports.addQuery = function(collection_name, select) {
 }
 
  /**
- * Rimuove tutte le query nel database
+ * Richiede il modello della Collection delle query, su cui poi viene applicato il metodo
+ *dropCollection che resetta la Collection delle query nel database.
  *
- *@param callback - callback da richiamare al termine dell'esecuzione della funzione
+ *@param callback - callback da richiamare al termine dell'esecuzione della funzione.
  */
 exports.resetQueries = function(callback) {
 	
@@ -167,11 +171,16 @@ exports.resetQueries = function(callback) {
 }
 
  /**
- * Recupera la lista di query presenti nel database
+ * Richiede l'intera Collection delle query al database di analisi. Calcola il sottoinsieme di query da visualizzare 
+ *tenendo conto dell'indicatore della pagina da visualizzare e dagli elementi da visualizzare per pagina.
+ *Esegue quindi una nuova query per ottenere l'insieme delle query che rispettano suddetti parametri. 
+ *Se avviene un errore o se non esistono query che rispettano i parametri scelti, viene passato alla
+ *callback un oggetto vuoto. Se invece la ricerca ha avuto esito positivo, viene richiamata la callback 
+ *passando come parametro l'insieme delle query che soddisfano i requisiti.
  *
- *@param page - numero di pagina da visualizzare
- *@param perpage - numero di query da visualizzare per pagina 
- *@param n_elements - numero di query totali da recuperare
+ *@param page - Numero intero che indica la pagina delle query da visualizzare.
+ *@param perpage - Numero intero che indica il numero di query da visualizzare per pagina. 
+ *@param n_elements - Numero intero che indica il numero di query totali da visualizzare.
  *@param callback - funzione da richiamare al termine dell'esecuzione
  */
 exports.getQueries = function(page, perpage, n_elements, callback) {
@@ -216,7 +225,7 @@ exports.getQueries = function(page, perpage, n_elements, callback) {
 				//controllo se la query dà errori
 				if(err){
 					//se la query da problemi allora stampo un messaggio di errore sulla console
-					console.log('Impossibile ritornare le query');
+					console.log('Impossibile ritornare le query: ' + err);
 					//do alla callback il risultato
 					callback(result);
 				}
@@ -239,10 +248,10 @@ exports.getQueries = function(page, perpage, n_elements, callback) {
  /**
  * Recupera la lista di indici presenti nel database
  *
- *@param db - contiene il db dove cercare gli indici
- *@param page - numero di pagina da visualizzare
- *@param indexesPerPage - numero di indici da visualizzare per pagina 
- *@param callback - funzione da richiamare al termine dell'esecuzione
+ *@param db - contiene il db dove cercare gli indici.
+ *@param page - numero di pagina da visualizzare.
+ *@param indexesPerPage - numero di indici da visualizzare per pagina .
+ *@param callback - funzione da richiamare al termine dell'esecuzione.
  */
 exports.getIndex = function(db, page, indexesPerPage, callback) {
 
@@ -264,6 +273,10 @@ exports.getIndex = function(db, page, indexesPerPage, callback) {
 		done = false;
 		//sulla collection chiamo indexInformation per ottenere gli indici di quella collection
 		collection.indexInformation(function(err, indexes) {
+		
+			//visualizzo errore in caso
+			if(err){console.log('error reading indexes: ' + err);}
+			
 			//scorro gli indici
 			for(var key in indexes)
 			{
@@ -277,17 +290,28 @@ exports.getIndex = function(db, page, indexesPerPage, callback) {
 		while(!done){require('deasync').sleep(100);}
 	}
 	
+	//restringo l'array in base al page e perpage
+	var skip = page * indexesPerPage;
+	var limit = indexesPerPage;
+	
+	result = result;
+	//TODO
+	
 	//passo alla callback l'array di indici
 	callback(result);
 	
 }
 
  /**
- * Crea un indice per i campi di una collection
+ * Viene richiesto il modello della query, grazie a cui viene cercata nel database di analisi la query con campo id uguale al parametro id.
+ *Se la query non esiste o si riscontrano problemi di accesso al database, viene chiamata la funzione callback con argomento false. 
+ *Altrimenti viene caricato lo schema della Collection su cui la query viene eseguita. 
+ *Sulla collection viene creato l'indice voluto. Se l'operazione di creazione non ha successo, viene viene chiamata la funzione callback con argomento
+ *false, altrimenti viene chiamata la callback con argomento true.
  *
- *@param query_id - contiene l'id della query sulla quale creare un indice
- *@param name_index - contiene il nome dell'indice
- *@param callback - funzione da richiamare al termine dell'esecuzione
+ *@param query_id - Id identificativo della query da associare all'indice da creare.
+ *@param name_index - Stringa contenente il nome dell'indice da creare.
+ *@param callback - funzione da richiamare al termine dell'esecuzione.
  */
 exports.createIndex = function(query_id, name_index, callback) {
 	//creo l'oggetto per la condizione where di una query
@@ -302,7 +326,7 @@ exports.createIndex = function(query_id, name_index, callback) {
 		//controllo se la query da errori
 		if(err){
 			//se la query da errori allora stampo un messaggio di errore
-			console.log('Impossibile ritornare la query dell\' indice');
+			console.log('Impossibile ritornare la query dell\' indice: ' + err);
 			//passo false alla callback
 			callback(false);
 		}else 
@@ -314,8 +338,8 @@ exports.createIndex = function(query_id, name_index, callback) {
 			//passo false alla callback
 			callback(false);
 		}else 
-			//se la query produce risultato
-			if(data.length > 0){
+		//se la query produce risultato
+		if(data.length > 0){
 			//recupero il nome della collection		
 			var collection_name = data[0].collection_name;		
 			//recupero i campi della select della query
@@ -335,7 +359,8 @@ exports.createIndex = function(query_id, name_index, callback) {
 			//imposto il nome di nameindex con il nome dell'indice
 			nameindex.name = name_index;
 			//prelevo lo schema della collection
-			var collectionSchema = require('../../DSL/collectionData/'+collection_name+'_schema').schema;
+			var collectionSchema = require('../../DSL/collectionData/' + collection_name + '_schema').schema;
+			console.log(JSON.stringify(collectionSchema));
 			//definisco un indice nello schema
 			collectionSchema.index(index, nameindex);
 			//prendo il model della collection		
@@ -346,7 +371,7 @@ exports.createIndex = function(query_id, name_index, callback) {
 				if(err)
 				{
 					//se la creazione ha prodotto errori allora stampo un messaggio sulla console
-					console.log('Impossibile creare l\'indice');
+					console.log('Impossibile creare l\'indice: ' + err);
 					//passo false alla callback
 					callback(false);
 				}else{
@@ -367,9 +392,9 @@ exports.createIndex = function(query_id, name_index, callback) {
  /**
  * Elimino un indice
  *
- *@param db - contiene il db dove cercare gli indici
- *@param name_index - contiene il nome dell'indice
- *@param callback - funzione da richiamare al termine dell'esecuzione
+ *@param db - contiene il db dove cercare gli indici.
+ *@param name_index - Stringa contenente il nome dell'indice da creare.
+ *@param callback - funzione da richiamare al termine dell'esecuzione.
  */
 exports.deleteIndex = function(db, indexName, collectionName, callback) {
 
@@ -380,6 +405,7 @@ exports.deleteIndex = function(db, indexName, collectionName, callback) {
 		//controllo se la cancellazione ha prodotto errori
 		if(err)
 		{
+			console.log('error while deleting index: ' + err);
 			//se la cancellazione ha prodotto errori, allora passo false alla callback
 			callback(false);
 		}else{

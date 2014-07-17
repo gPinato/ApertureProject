@@ -4,11 +4,11 @@
 
 \newcommand{\Versione}{\versioneManualeUtente{}} %Versione Finale
 \newcommand{\Data}{2014-06-16}				     %Data di creazione
-\newcommand{\DataUltimaModifica}{2014-06-23}
+\newcommand{\DataUltimaModifica}{2014-07-17}
 \newcommand{\TipoDocumento}{User Manual}	 	%tipo documento
 
 %includo il file header.tex (logo grande in prima pagina piu qualche altra regola)
-\input{../Logo&Header/header.tex}
+\input{../Logo&Header/header_EN.tex}
 %\vspace{.05in}
 
 %informazioni documento
@@ -16,53 +16,64 @@
 %\section{Informazioni documento}
 \begin{tabular}{r|l}
 %\textbf{Nome} &\TipoDocumento \\
-\textbf{Versione} & \Versione{} \\
-\textbf{Data creazione} & \Data{} \\
-\textbf{Data ultima modifica} & \DataUltimaModifica{} \\
-\textbf{Stato del Documento} & Formale \\		          %CAMBIARE QUI
-\textbf{Uso del Documento} & Esterno \\			          %CAMBIARE QUI
-\textbf{Redazione} &  Pinato Giacomo, Andrea Perin\\
-& Alessandro Benetti, Mattia Sorgato\\
-\textbf{Verifica} & Alberto Garbui\\  %ED ANCHE QUI!
-\textbf{Approvazione} & Mattia Sorgato\\				      %CAMBIARE QUI
-\textbf{Distribuzione} & \parbox[t]{4cm}{\NomeGruppo{}\\Prof. Vardanega Tullio\\Prof. Cardin Riccardo\\ \Prop{} }\\
+\textbf{Version} & \Versione{} \\
+\textbf{Creation date} & \Data{} \\
+\textbf{Last modified date} & \DataUltimaModifica{} \\
+\textbf{Document status} & Formal \\		          %CAMBIARE QUI
+\textbf{Document use} & External \\			          %CAMBIARE QUI
+\textbf{Editorial staff} &  Mattia Sorgato,\\
+& Alessandro Benetti, Fabio Miotto\\
+\textbf{Verification} & Michele Maso\\  %ED ANCHE QUI!
+\textbf{Approval} & Giacomo Pinato\\				      %CAMBIARE QUI
+\textbf{Release} & \parbox[t]{4cm}{\NomeGruppo{}\\Prof. Vardanega Tullio\\Prof. Cardin Riccardo\\ \Prop{} }\\
 \end{tabular}
 \end{center}
 
 \vspace{0.05in}
-
+%\usepackage[italian,english ]{babel}
 %inizio sommario del documento
+
 \begin{abstract}
 \begin{center}
 \Progetto{} User manual.
 \end{center}
+%\end{abstract}
 \end{abstract}
+
 
 %\vspace{.4in}
 
 %seconda pagina, diario delle modifiche
 \newpage
-Diario delle modifiche
+Changelog
 \begin{center}
 \begin{longtable}{|c|c|c|p{0.5\linewidth}|}
 \toprule
-\textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Modifiche effettuate}\\
+\textbf{Version} & \textbf{Date} & \textbf{Author} & \textbf{Changes made}\\
 
 %aggiungere qui una midrule per aggiungere una nuova riga alla tabella
 \midrule
-2.0.1 & 2014-07-13 & Giacomo Pinato (PR) & Incremento documento.\\
+2.2.0 & 2014-07-17 & Giacomo Pinato (RE) & Document approval.\\
 \midrule
-1.2.0 & 2014-06-23 & Mattia Sorgato (RE) & Approvazione documento.\\
+2.1.0 & 2014-07-17 & Michele Maso (VR) & Document check.\\
 \midrule
-1.1.0 & 2014-06-23 & Alberto Garbui (VR) & Verifica documento.\\
+2.0.3 & 2014-07-16 & Alessandro Benetti (PR) & Document increase.\\
 \midrule
-1.0.4 & 2014-06-20 & Mattia Sorgato (PR) & Stesura manuale.\\
+2.0.2 & 2014-07-15 & Fabio Miotto (PT) & Document increase.\\
 \midrule
-1.0.3 & 2014-06-18 & Giacomo Pinato (PR) & Stesura manuale.\\
+2.0.1 & 2014-07-14 & Mattia Sorgato (AM) & Document correction.\\
 \midrule
-1.0.2 & 2014-06-17 & Andrea Perin (PT) & Stesura manuale.\\
+1.2.0 & 2014-06-23 & Mattia Sorgato (RE) & Document approval.\\
 \midrule
-1.0.1 & 2014-06-16 & Alessandro Benetti (AM) & Prima stesura del documento.\\
+1.1.0 & 2014-06-23 & Alberto Garbui (VR) & Document check.\\
+\midrule
+1.0.4 & 2014-06-20 & Mattia Sorgato (PR) & Writing manual.\\
+\midrule
+1.0.3 & 2014-06-18 & Giacomo Pinato (PR) & Writing manual.\\
+\midrule
+1.0.2 & 2014-06-17 & Andrea Perin (PT) & Writing manual.\\
+\midrule
+1.0.1 & 2014-06-16 & Alessandro Benetti (AM) & First writing manual.\\
 
 \bottomrule
 \caption{Changelog}
