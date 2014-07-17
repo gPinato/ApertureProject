@@ -1,9 +1,9 @@
 /**
  * File: DatabaseAnalysisManager.js
  * Module: maap_server::modelServer::dataManager::DatabaseAnalysisManager
- * Author: Alberto Garbui
+ * Author: Mattia Sorgato
  * Created: 20/05/14
- * Version: 0.1
+ * Version: 1.0.0
  * Description: gestione dati dal database di analisi
  * Modification History:
  ==============================================

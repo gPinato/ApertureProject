@@ -1,9 +1,9 @@
 /**
  * File: DSLManager.js
  * Module: maap_server::modelServer::DSL
- * Author: Alberto Garbui
+ * Author: Andrea Perin
  * Created: 10/05/14
- * Version: 0.1
+ * Version: 1.0.0
  * Description: gestione file dsl
  * Modification History:
  ==============================================
