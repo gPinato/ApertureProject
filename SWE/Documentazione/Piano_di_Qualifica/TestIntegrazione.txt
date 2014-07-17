@@ -1,31 +1,12 @@
-"TI.MaaP";"Test di integrazione finale tra client e server
-client e server";"MaaP";"D.E."
-"TI.Server";"Verifica il corretto funzionamento delle componenti del server, quindi la corretta integrazione tra ModelServer e Controller del server. In particolare, viene verificato che le funzionalità presenti nel Controller  debano agire consistentemente sui dati del ModelServer
-quindi la corretta integrazione
-tra ModelServer e Controller
-del server. In particolare, viene
-verificato che le funzionalità presenti nel Controller debbano agire consistentemente sui dati del
-ModelServer.";"MaaP::Server";"D.E."
-"TI.Server.ModelServer";"Verifica che tutte le operazioni di lettura, scrittura e interpretazione dei dati avvengano correttamente
-correttamente.";"MaaP::Server::ModelServer";"D.E."
-"TI.Server.ModelServer.DataManager-Database";"Verifica che i gestori dei dati siano correttamente integrati ai database di riferimento
-siano correttamente integrati ai
-database di riferimento.";"MaaP::Server::ModelServer::DataManager";"D.E."
-"TI.Server.ModelServer.DataManager-Database";"Verifica che i gestori dei dati siano correttamente integrati ai database di riferimento
-siano correttamente integrati ai
-database di riferimento.";"MaaP::Server::ModelServer::Database";"D.E."
-"TI.Server.ModelServer.DataManager";"Verifica che le operazioni di recupero, gestione e scrittura dati nei database avvengano correttamente.
-recupero, gestione e scrittura
-dati nei database avvengano
-correttamente.";"MaaP::Server::ModelServer::DataManager";"D.E."
-"TI.Client";"Verifica che i dati ottenuti e forniti da e verso il client siano corretti e correttamente gestiti all'interno del client stesso
-corretti e correttamente gestiti
-all'interno del client stesso.";"MaaP::Client";"D.E."
-"TI.Client.View-ControllerModelView";"Verifica che i dati uscenti ed entranti la View siano gestiti correttamente dal ControllerModelView";"MaaP::Client::View";"D.E."
-"TI.Client.View-ControllerModelView";"Verifica che i dati uscenti ed entranti la View siano gestiti correttamente dal ControllerModelView";"MaaP::Client::ControllerModelView";"D.E."
-"TI.Client.ControllerModelView-ModelClient";"Viene verificato che le funzionalità del ControllerModelView agiscano correttamente sul ModelClient
-ModelClient";"MaaP::Client::ControllerModelView";"D.E."
-"TI.Client.ControllerModelView";"Viene verificato che le funzioni del ClientController modifichino correttamente i dati presenti nello Scope
-nello Scope";"MaaP::Client::ModelClient";"D.E."
-"TI.Client.ControllerModelView";"Viene verificato che le funzioni del ClientController modifichino correttamente i dati presenti nello Scope
-nello Scope";"MaaP::Client::ControllerModelView";"D.E."
+"TI.MaaP";"Test di integrazione finale tra client e server";"MaaP";"Superato."
+"TI.Server";"Verifica il corretto funzionamento delle componenti del server, quindi la corretta integrazione tra ModelServer e Controller del server. In particolare, viene verificato che le funzionalità presenti nel Controller  debano agire consistentemente sui dati del ModelServer";"MaaP::Server";"Superato."
+"TI.Server.ModelServer";"Verifica che tutte le operazioni di lettura, scrittura e interpretazione dei dati avvengano correttamente";"MaaP::Server::ModelServer";"Superato."
+"TI.Server.ModelServer.DataManager-Database";"Verifica che i gestori dei dati siano correttamente integrati ai database di riferimento";"MaaP::Server::ModelServer::DataManager";"Superato."
+"TI.Server.ModelServer.DataManager-Database";"Verifica che i gestori dei dati siano correttamente integrati ai database di riferimento";"MaaP::Server::ModelServer::Database";"Superato."
+"TI.Server.ModelServer.DataManager";"Verifica che le operazioni di recupero, gestione e scrittura dati nei database avvengano correttamente.";"MaaP::Server::ModelServer::DataManager";"Superato."
+"TI.Client";"Verifica che i dati ottenuti e forniti da e verso il client siano corretti e correttamente gestiti all'interno del client stesso";"MaaP::Client";"Superato."
+"TI.Client.View-ControllerModelView";"Verifica che i dati uscenti ed entranti la View siano gestiti correttamente dal ControllerModelView";"MaaP::Client::View";"Superato."
+"TI.Client.View-ControllerModelView";"Verifica che i dati uscenti ed entranti la View siano gestiti correttamente dal ControllerModelView";"MaaP::Client::ControllerModelView";"Superato."
+"TI.Client.ControllerModelView-ModelClient";"Viene verificato che le funzionalità del ControllerModelView agiscano correttamente sul ModelClient";"MaaP::Client::ControllerModelView";"Superato."
+"TI.Client.ControllerModelView";"Viene verificato che le funzioni del ClientController modifichino correttamente i dati presenti nello Scope";"MaaP::Client::ModelClient";"Superato."
+"TI.Client.ControllerModelView";"Viene verificato che le funzioni del ClientController modifichino correttamente i dati presenti nello Scope";"MaaP::Client::ControllerModelView";"Superato."

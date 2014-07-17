@@ -80,13 +80,25 @@ var dispatcherInit = function (app) {
 	//gestisco il recupero password dimenticata
 	dispatcher.post('/api/forgot', passport.checkNotAuthenticated, passport.forgotPassword);	
 	dispatcher.post('/api/check/email', passport.checkNotAuthenticated, usermanager.checkMail);
+	
 	//prima della registrazione controllo che l'utente non sia loggato
-	dispatcher.post('/api/signup', passport.checkNotAuthenticated, usermanager.userSignup, passport.authenticate, function(req, res){
-		//stampo sulla console l'utente
-		console.log(req.user);
-		//invio una risposta al client
-		res.send(req.user);
-	});
+	//solo se la registrazione e' abilitata da DSL
+	console.log('');
+	console.log('  ----------------------------------------------------------------------------------');
+	if(config.app.enableUserRegistration)
+	{
+		console.log('    user registration enabled! ');
+		dispatcher.post('/api/signup', passport.checkNotAuthenticated, usermanager.userSignup, passport.authenticate, function(req, res){
+			//stampo sulla console l'utente
+			console.log(req.user);
+			//invio una risposta al client
+			res.send(req.user);
+		});
+	}else{
+		console.log('    user registration disabled! ');
+	}
+	console.log('  ----------------------------------------------------------------------------------');
+	console.log('');
 	
 	//prima di effettuare il login controllo che l'utente non sia autenticato
 	dispatcher.post('/api/login', passport.checkNotAuthenticated, passport.authenticate, function(req, res){
