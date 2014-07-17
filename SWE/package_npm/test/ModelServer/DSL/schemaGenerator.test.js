@@ -69,7 +69,7 @@ describe("schemaGenerator Unit Test: ", function() {
 		var config = require("./configForSchemaGenerator.js");
 
 		var jsString = schemaGenerator.generate(config, dslJson);
-		var expectedResult = '//maaperture auto-generated mongoose schema for collection \'members\'\n\nvar mongoose = require(\'mongoose\');\nvar ObjectId = mongoose.Schema.ObjectId;\n\nexports.schemaName = \'members\';\n\nexports.schema = new mongoose.Schema({\nname: { type: String },\nsurname: { type: String },\nemail: { type: String },\nage: { type: Number, min: 18, max:35 },\ninterest: { type: [String] }\n}, { collection: \'members\' });\n\n';
+		var expectedResult = '//maaperture auto-generated mongoose schema for collection \'members\'\n\nvar mongoose = require(\'mongoose\');\nvar ObjectId = mongoose.Schema.ObjectId;\n\nexports.schemaName = \'members\';\n\nexports.schema = new mongoose.Schema({\nname: { type: String },\nsurname: { type: String },\nemail: { type: String },\nage: { type: Number, min: 18, max:35 },\ninterest: { type: [String] }\n}, { autoIndex: false, collection: \'members\' });\n\n';
 				
 		it("generate deve generare uno schema corretto", function() {
 			expect(jsString).to.equal(expectedResult);
