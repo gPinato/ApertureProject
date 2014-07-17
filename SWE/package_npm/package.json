@@ -1,7 +1,7 @@
 {
   "name": "maaperture",
   "description": "MaaP - MongoDB as an Admin Platform",
-  "version": "1.0.12",
+  "version": "1.0.13",
   "license": "BSD-3-Clause",
   "contributors": [
     {
@@ -28,10 +28,10 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/ApertureSoftware/Maaperture.git"
+    "url": "https://github.com/ApertureSoftware/MaaP.git"
   },
   "bugs": {
-    "url": "https://github.com/ApertureSoftware/Maaperture/issues",
+    "url": "https://github.com/ApertureSoftware/MaaP/issues",
     "email": "apertureSWE@gmail.com"
   },
   "keywords": [

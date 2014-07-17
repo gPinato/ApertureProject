@@ -1,12 +1,11 @@
 {
   "name": "maaperture_empty_project",
   "description": "maaperture_empty_project_description",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "private": true,
   "scripts": {
     "start": "node index.js",
-    "startdev": "set NODE_ENV=development& node index.js",
-    "startdemon": "set NODE_ENV=development& node ./node_modules/nodemon/bin/nodemon.js -e js,maap --delay 30 index.js",
+    "startdemon": "nodemon -e js,maap --delay 30 index.js",
     "postinstall": "node ./node_modules/bower/bin/bower install",
     "test": "grunt test"
   },
@@ -55,6 +54,6 @@
     "time-grunt": "~0.2.1"
   },
   "engines": {
-    "node": "0.10.x"
+    "node": "latest"
   }
 }
