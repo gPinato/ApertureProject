@@ -199,16 +199,16 @@
     <h1>Code coverage report for <span class="entity">controllers/IndexCtrl.js</span></h1>
     <h2>
         
-        Statements: <span class="metric">97.01% <small>(65 / 67)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Statements: <span class="metric">100% <small>(67 / 67)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
         
         
         Branches: <span class="metric">100% <small>(18 / 18)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
         
         
-        Functions: <span class="metric">94.12% <small>(16 / 17)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Functions: <span class="metric">100% <small>(17 / 17)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
         
         
-        Lines: <span class="metric">97.01% <small>(65 / 67)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Lines: <span class="metric">100% <small>(67 / 67)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
         
         Ignored: <span class="metric"><span class="ignore-none">none</span></span> &nbsp;&nbsp;&nbsp;&nbsp;
     </h2>
@@ -499,7 +499,6 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">11</span>
 <span class="cline-any cline-yes">2</span>
 <span class="cline-any cline-yes">1</span>
@@ -530,11 +529,11 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -590,10 +589,10 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">11</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">2</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -604,6 +603,7 @@
 <span class="cline-any cline-yes">2</span>
 <span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -627,7 +627,7 @@
  * Module: app:controllers;
  * Author: Giacomo Pinato;
  * Created: 10/05/14;
- * Version: versione corrente;
+ * Version: 0.4;
  * Description: Controller for the collection view
  * Modification History:
  ==============================================
@@ -642,7 +642,7 @@
 &nbsp;
 'use strict';
 &nbsp;
-angular.module('maaperture').controller('IndexCtrl', function ($scope, $route, $location,IndexService) {
+angular.module('maaperture').controller('IndexCtrl', function ($scope, $route, $location, IndexService) {
 &nbsp;
     //Funzione di inizializzazione del controller
     var init = function () {
@@ -664,12 +664,12 @@ angular.module('maaperture').controller('IndexCtrl', function ($scope, $route, $
 &nbsp;
         IndexService.query({
             index_name: null,
-            col_name:  null,
+            col_name: null,
             order: $scope.current_sort,
             column: $scope.column_original_name[$scope.current_sorted_column],
             page: $scope.current_page
 &nbsp;
-            }).$promise.then( function success(response) {
+        }).$promise.then(function success(response) {
                 $scope.labels = response[0];
                 $scope.data = response[1];
                 $scope.pages = response[2].pages;
@@ -677,7 +677,7 @@ angular.module('maaperture').controller('IndexCtrl', function ($scope, $route, $
 &nbsp;
                 //Salva i nomi originali delle colonne per le query a database
 &nbsp;
-                $scope.column_original_name = Object.keys( $scope.data[0].data);
+                $scope.column_original_name = Object.keys($scope.data[0].data);
 &nbsp;
                 for (var i = 0; i &lt; Object.keys($scope.data).length; i++) {
                     //Copia i valori da stampare in un array per mantenere l'ordine
@@ -701,7 +701,6 @@ angular.module('maaperture').controller('IndexCtrl', function ($scope, $route, $
     init();
 &nbsp;
 &nbsp;
-    
     //cambia ordinamento corrente, da asc a desc o viceversa
     var changeSort = function () {
         if ($scope.current_sort === "desc") {
@@ -728,13 +727,13 @@ angular.module('maaperture').controller('IndexCtrl', function ($scope, $route, $
     //funzione per cancellare il documento di indice index
     $scope.delete = function (index) {
         IndexService.remove({
-                index_name: index._id,
-				col_name: index.data.collection
-            }).$promise.then(
+            index_name: index._id,
+            col_name: index.data.collection
+        }).$promise.then(
 &nbsp;
-<span class="fstat-no" title="function not covered" >            function success() {</span>
-<span class="cstat-no" title="statement not covered" >                $location.path('/indexes');</span>
-<span class="cstat-no" title="statement not covered" >				$route.reload();</span>
+            function success() {
+                $location.path('/indexes');
+                $route.reload();
             },
             function err(error) {
                 alert("Qualcosa è andato storto..");
@@ -744,13 +743,13 @@ angular.module('maaperture').controller('IndexCtrl', function ($scope, $route, $
 &nbsp;
     //=====================================================================
     //Funzioni per paginazione avanzata
-    $scope.range = function() {
+    $scope.range = function () {
 &nbsp;
         var rangeSize;
-        if( $scope.pages &lt; 9){
+        if ($scope.pages &lt; 9) {
             rangeSize = $scope.pages;
         }
-        else{
+        else {
             rangeSize = 9;
         }
 &nbsp;
@@ -758,20 +757,20 @@ angular.module('maaperture').controller('IndexCtrl', function ($scope, $route, $
 &nbsp;
         var start;
 &nbsp;
-        if ( $scope.current_page &gt; 3){
-            start = $scope.current_page-3;
+        if ($scope.current_page &gt; 3) {
+            start = $scope.current_page - 3;
         }
-        else{
+        else {
             start = $scope.current_page;
         }
 &nbsp;
-        if ( start &gt; $scope.pages-rangeSize ) {
+        if (start &gt; $scope.pages - rangeSize) {
 &nbsp;
-            start = $scope.pages-rangeSize;
+            start = $scope.pages - rangeSize;
 &nbsp;
         }
 &nbsp;
-        for (var i=start; i&lt;start+rangeSize; i++) {
+        for (var i = start; i &lt; start + rangeSize; i++) {
 &nbsp;
             ps.push(i);
 &nbsp;
@@ -781,8 +780,8 @@ angular.module('maaperture').controller('IndexCtrl', function ($scope, $route, $
 &nbsp;
     };
 &nbsp;
-&nbsp;
-    $scope.prevPage = function() {
+    //Funzione che fa visualizzare la pagina precedente alla corrente
+    $scope.prevPage = function () {
 &nbsp;
         if ($scope.current_page &gt; 0) {
 &nbsp;
@@ -792,17 +791,17 @@ angular.module('maaperture').controller('IndexCtrl', function ($scope, $route, $
 &nbsp;
     };
 &nbsp;
-&nbsp;
-    $scope.DisablePrevPage = function() {
+    //Funzione che disabilita il pulsante di passaggio alla pagina
+    //precedente nella visualizzazione
+    $scope.DisablePrevPage = function () {
 &nbsp;
         return $scope.current_page === 0 ? "disabled" : "";
 &nbsp;
     };
 &nbsp;
+    //Funzione che fa visualizzare la pagina successiva alla corrente
 &nbsp;
-&nbsp;
-&nbsp;
-    $scope.nextPage = function() {
+    $scope.nextPage = function () {
 &nbsp;
         if ($scope.current_page &lt; $scope.pages - 1) {
             $scope.current_page++;
@@ -811,8 +810,9 @@ angular.module('maaperture').controller('IndexCtrl', function ($scope, $route, $
 &nbsp;
     };
 &nbsp;
-&nbsp;
-    $scope.DisableNextPage = function() {
+    //Funzione che disabilita il pulsante di passaggio alla pagina
+    //successiva nella visualizzazione
+    $scope.DisableNextPage = function () {
 &nbsp;
         return $scope.current_page === $scope.pages - 1 ? "disabled" : "";
 &nbsp;
@@ -830,7 +830,7 @@ angular.module('maaperture').controller('IndexCtrl', function ($scope, $route, $
 
 </div>
 <div class="footer">
-    <div class="meta">Generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Thu Jul 17 2014 14:01:05 GMT+0200 (CEST)</div>
+    <div class="meta">Generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Fri Jul 18 2014 00:30:53 GMT+0200 (CEST)</div>
 </div>
 
 <script src="../prettify.js"></script>

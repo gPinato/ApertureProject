@@ -199,16 +199,16 @@
     <h1>Code coverage report for <span class="entity">controllers/UsersCollectionCtrl.js</span></h1>
     <h2>
         
-        Statements: <span class="metric">91.67% <small>(66 / 72)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Statements: <span class="metric">93.06% <small>(67 / 72)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
         
         
         Branches: <span class="metric">90% <small>(18 / 20)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
         
         
-        Functions: <span class="metric">80% <small>(16 / 20)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Functions: <span class="metric">85% <small>(17 / 20)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
         
         
-        Lines: <span class="metric">91.67% <small>(66 / 72)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Lines: <span class="metric">93.06% <small>(67 / 72)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
         
         Ignored: <span class="metric"><span class="ignore-none">none</span></span> &nbsp;&nbsp;&nbsp;&nbsp;
     </h2>
@@ -433,9 +433,7 @@
 215
 216
 217
-218
-219
-220</td><td class="line-coverage"><span class="cline-any cline-neutral">&nbsp;</span>
+218</td><td class="line-coverage"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -479,42 +477,42 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">11</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">18</span>
+<span class="cline-any cline-yes">19</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">5</span>
-<span class="cline-any cline-yes">5</span>
-<span class="cline-any cline-yes">5</span>
+<span class="cline-any cline-yes">4</span>
+<span class="cline-any cline-yes">4</span>
+<span class="cline-any cline-yes">4</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">5</span>
+<span class="cline-any cline-yes">4</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">5</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">20</span>
-<span class="cline-any cline-yes">20</span>
-<span class="cline-any cline-yes">20</span>
+<span class="cline-any cline-yes">16</span>
+<span class="cline-any cline-yes">16</span>
+<span class="cline-any cline-yes">16</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">5</span>
+<span class="cline-any cline-yes">4</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">2</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">11</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">11</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -629,8 +627,6 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">11</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">2</span>
@@ -659,8 +655,8 @@
  * Module: app:controllers;
  * Author: Giacomo Pinato;
  * Created: 10/05/14;
- * Version: versione corrente;
- * Description: Controller for the collection view
+ * Version: 0.4;
+ * Description: Controller for the user collection view (admin only);
  * Modification History:
  ==============================================
  * Version | Changes
@@ -674,7 +670,7 @@
 &nbsp;
 'use strict';
 &nbsp;
-angular.module('maaperture').controller('UsersCollectionCtrl', function ($scope, $route, $location,RegisterService, UserCollectionService, UserEditService) {
+angular.module('maaperture').controller('UsersCollectionCtrl', function ($scope, $route, $location, RegisterService, UserCollectionService, UserEditService) {
 &nbsp;
     //Funzione di inizializzazione del controller
     var init = function () {
@@ -699,19 +695,17 @@ angular.module('maaperture').controller('UsersCollectionCtrl', function ($scope,
     $scope.getData = function () {
 &nbsp;
         UserCollectionService.query({
-                order: $scope.current_sort,
-                column: $scope.column_original_name[$scope.current_sorted_column],
-                page: $scope.current_page
+            order: $scope.current_sort,
+            column: $scope.column_original_name[$scope.current_sorted_column],
+            page: $scope.current_page
 &nbsp;
-            }).$promise.then( function success(response) {
+        }).$promise.then(function success(response) {
                 $scope.labels = response[0];
                 $scope.data = response[1];
                 $scope.pages = response[2].pages;
 &nbsp;
                 //Salva i nomi originali delle colonne per le query a database
-                $scope.column_original_name = Object.keys( $scope.data[0].data);
-&nbsp;
-&nbsp;
+                $scope.column_original_name = Object.keys($scope.data[0].data);
 &nbsp;
 &nbsp;
                 for (var i = 0; i &lt; Object.keys($scope.data).length; i++) {
@@ -727,14 +721,16 @@ angular.module('maaperture').controller('UsersCollectionCtrl', function ($scope,
                 $scope.rows.splice(i, $scope.rows.length);
 &nbsp;
             },
-<span class="fstat-no" title="function not covered" >            function err(error) {</span>
-<span class="cstat-no" title="statement not covered" >                $location.path("/404");</span>
+            function err(error) {
+                $location.path("/404");
             }
         );
     };
 &nbsp;
     init();
 &nbsp;
+&nbsp;
+    //Funzione che permette all'amministratore di aggiungere un utente
     $scope.signupForm = <span class="fstat-no" title="function not covered" >function () {</span>
 <span class="cstat-no" title="statement not covered" >        if ($scope.signup_form.$valid) {</span>
 <span class="cstat-no" title="statement not covered" >            RegisterService.createuser({},</span>
@@ -743,8 +739,8 @@ angular.module('maaperture').controller('UsersCollectionCtrl', function ($scope,
 <span class="cstat-no" title="statement not covered" >                    alert("User created correctly");</span>
 <span class="cstat-no" title="statement not covered" >                    $scope.getData();</span>
                 },
-<span class="fstat-no" title="function not covered" >                function err(error) {</span>
-<span class="cstat-no" title="statement not covered" >                    alert("Registration failed! We already have this email in our databases ;)");</span>
+<span class="fstat-no" title="function not covered" >                function err() {</span>
+<span class="cstat-no" title="statement not covered" >                    alert("Registration failed! Try again later ;)");</span>
                 }
 &nbsp;
             );
@@ -752,7 +748,7 @@ angular.module('maaperture').controller('UsersCollectionCtrl', function ($scope,
 &nbsp;
     };
 &nbsp;
-    
+&nbsp;
     //cambia ordinamento corrente, da asc a desc o viceversa
     var changeSort = function () {
         if ($scope.current_sort === "desc") {
@@ -776,11 +772,11 @@ angular.module('maaperture').controller('UsersCollectionCtrl', function ($scope,
             $scope.getData();
         }
     };
-    //funzione per cancellare il documento di indice index
+    //funzione per cancellare l'utente di indice index
     $scope.delete_document = function (id) {
         UserEditService.remove({
-                user_id: id
-            }).$promise.then(
+            user_id: id
+        }).$promise.then(
 &nbsp;
             function success() {
                 $location.path('/users/');
@@ -792,13 +788,13 @@ angular.module('maaperture').controller('UsersCollectionCtrl', function ($scope,
 &nbsp;
     //=====================================================================
     //Funzioni per paginazione avanzata
-    $scope.range = function() {
+    $scope.range = function () {
 &nbsp;
         var rangeSize;
-        if( $scope.pages &lt; 9){
+        if ($scope.pages &lt; 9) {
             rangeSize = $scope.pages;
         }
-        else{
+        else {
             rangeSize = 9;
         }
 &nbsp;
@@ -806,20 +802,20 @@ angular.module('maaperture').controller('UsersCollectionCtrl', function ($scope,
 &nbsp;
         var start;
 &nbsp;
-        if ( $scope.current_page &gt; 3){
-            start = $scope.current_page-3;
+        if ($scope.current_page &gt; 3) {
+            start = $scope.current_page - 3;
         }
-        else{
+        else {
             start = $scope.current_page;
         }
 &nbsp;
-        if ( start &gt; $scope.pages-rangeSize ) {
+        if (start &gt; $scope.pages - rangeSize) {
 &nbsp;
-            start = $scope.pages-rangeSize;
+            start = $scope.pages - rangeSize;
 &nbsp;
         }
 &nbsp;
-        for (var i=start; i&lt;start+rangeSize; i++) {
+        for (var i = start; i &lt; start + rangeSize; i++) {
 &nbsp;
             ps.push(i);
 &nbsp;
@@ -830,7 +826,7 @@ angular.module('maaperture').controller('UsersCollectionCtrl', function ($scope,
     };
 &nbsp;
 &nbsp;
-    $scope.prevPage = function() {
+    $scope.prevPage = function () {
 &nbsp;
         if ($scope.current_page &gt; 0) {
 &nbsp;
@@ -841,16 +837,14 @@ angular.module('maaperture').controller('UsersCollectionCtrl', function ($scope,
     };
 &nbsp;
 &nbsp;
-    $scope.DisablePrevPage = function() {
+    $scope.DisablePrevPage = function () {
 &nbsp;
         return $scope.current_page === 0 ? "disabled" : "";
 &nbsp;
     };
 &nbsp;
 &nbsp;
-&nbsp;
-&nbsp;
-    $scope.nextPage = function() {
+    $scope.nextPage = function () {
 &nbsp;
         if ($scope.current_page &lt; $scope.pages - 1) {
             $scope.current_page++;
@@ -860,7 +854,7 @@ angular.module('maaperture').controller('UsersCollectionCtrl', function ($scope,
     };
 &nbsp;
 &nbsp;
-    $scope.DisableNextPage = function() {
+    $scope.DisableNextPage = function () {
 &nbsp;
         return $scope.current_page === $scope.pages - 1 ? "disabled" : "";
 &nbsp;
@@ -878,7 +872,7 @@ angular.module('maaperture').controller('UsersCollectionCtrl', function ($scope,
 
 </div>
 <div class="footer">
-    <div class="meta">Generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Thu Jul 17 2014 14:01:05 GMT+0200 (CEST)</div>
+    <div class="meta">Generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Fri Jul 18 2014 00:30:53 GMT+0200 (CEST)</div>
 </div>
 
 <script src="../prettify.js"></script>

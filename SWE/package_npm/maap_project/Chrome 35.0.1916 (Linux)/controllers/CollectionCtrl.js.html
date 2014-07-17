@@ -419,9 +419,7 @@
 201
 202
 203
-204
-205
-206</td><td class="line-coverage"><span class="cline-any cline-neutral">&nbsp;</span>
+204</td><td class="line-coverage"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -468,6 +466,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">4</span>
 <span class="cline-any cline-yes">4</span>
 <span class="cline-any cline-yes">4</span>
@@ -475,7 +474,6 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">4</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">4</span>
@@ -498,7 +496,6 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">11</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -600,7 +597,6 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">11</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">2</span>
@@ -667,20 +663,20 @@ angular.module('maaperture').controller('CollectionCtrl', function ($scope, $rou
     $scope.getData = function () {
 &nbsp;
         CollectionDataService.query({
-                col_id: $routeParams.col_id,
-                order: $scope.current_sort,
-                column: $scope.column_original_name[$scope.current_sorted_column],
-                page: $scope.current_page
+            col_id: $routeParams.col_id,
+            order: $scope.current_sort,
+            column: $scope.column_original_name[$scope.current_sorted_column],
+            page: $scope.current_page
 &nbsp;
-            }).$promise.then( function success(response) {
+        }).$promise.then(function success(response) {
+                //Callback di successo
                 $scope.labels = response[0];
                 $scope.data = response[1];
                 $scope.pages = response[2].pages;
-               
+&nbsp;
                 //Salva i nomi originali delle colonne per le query a database
 &nbsp;
-                $scope.column_original_name = Object.keys( $scope.data[0].data);
-&nbsp;
+                $scope.column_original_name = Object.keys($scope.data[0].data);
 &nbsp;
 &nbsp;
                 for (var i = 0; i &lt; Object.keys($scope.data).length; i++) {
@@ -696,7 +692,7 @@ angular.module('maaperture').controller('CollectionCtrl', function ($scope, $rou
                 $scope.rows.splice(i, $scope.rows.length);
 &nbsp;
             },
-            function err(error) {
+            function err() {
                 $location.path("/404");
             }
         );
@@ -705,7 +701,6 @@ angular.module('maaperture').controller('CollectionCtrl', function ($scope, $rou
     init();
 &nbsp;
 &nbsp;
-    
     //cambia ordinamento corrente, da asc a desc o viceversa
     var changeSort = function () {
         if ($scope.current_sort === "desc") {
@@ -732,9 +727,9 @@ angular.module('maaperture').controller('CollectionCtrl', function ($scope, $rou
     //funzione per cancellare il documento di indice index
     $scope.delete_document = function (index) {
         DocumentEditService.remove({
-                col_id: $scope.current_collection,
-                doc_id: index
-            }).$promise.then(function success() {
+            col_id: $scope.current_collection,
+            doc_id: index
+        }).$promise.then(function success() {
                 $location.path('/collection/' + $scope.current_collection);
             },
             function err(error) {
@@ -744,37 +739,37 @@ angular.module('maaperture').controller('CollectionCtrl', function ($scope, $rou
     };
 &nbsp;
     //=====================================================================
-	//Funzioni per paginazione avanzata
-	
-	//Funzione per far visualizzare un numero non superiore a 9 pagine
-	//nella barra di navigazione tra pigine di una collection
-    $scope.range = function() {
+    //Funzioni per paginazione avanzata
+&nbsp;
+    //Funzione per far visualizzare un numero non superiore a 9 pagine
+    //nella barra di navigazione tra pigine di una collection
+    $scope.range = function () {
         var rangeSize;
-		if( $scope.pages &lt; 9){
-		rangeSize = $scope.pages;
-		}
-		else{
-		rangeSize = 9;
-		}
-		
+        if ($scope.pages &lt; 9) {
+            rangeSize = $scope.pages;
+        }
+        else {
+            rangeSize = 9;
+        }
+&nbsp;
         var ps = [];
 &nbsp;
         var start;
 &nbsp;
-		if ( $scope.current_page &gt; 3){
-			start = $scope.current_page-3;
-		}
-		else{
-        start = $scope.current_page;
-		}
-		
-        if ( start &gt; $scope.pages-rangeSize ) {
+        if ($scope.current_page &gt; 3) {
+            start = $scope.current_page - 3;
+        }
+        else {
+            start = $scope.current_page;
+        }
 &nbsp;
-            start = $scope.pages-rangeSize;
+        if (start &gt; $scope.pages - rangeSize) {
+&nbsp;
+            start = $scope.pages - rangeSize;
 &nbsp;
         }
 &nbsp;
-        for (var i=start; i&lt;start+rangeSize; i++) {
+        for (var i = start; i &lt; start + rangeSize; i++) {
 &nbsp;
             ps.push(i);
 &nbsp;
@@ -784,8 +779,8 @@ angular.module('maaperture').controller('CollectionCtrl', function ($scope, $rou
 &nbsp;
     };
 &nbsp;
-	//Funzione che fa visualizzare la pagina precedente alla corrente
-    $scope.prevPage = function() {
+    //Funzione che fa visualizzare la pagina precedente alla corrente
+    $scope.prevPage = function () {
 &nbsp;
         if ($scope.current_page &gt; 0) {
 &nbsp;
@@ -795,18 +790,17 @@ angular.module('maaperture').controller('CollectionCtrl', function ($scope, $rou
 &nbsp;
     };
 &nbsp;
-	//Funzione che disabilita il pulsante di passaggio alla pagina
-	//precedente nella visualizzazione
-    $scope.DisablePrevPage = function() {
+    //Funzione che disabilita il pulsante di passaggio alla pagina
+    //precedente nella visualizzazione
+    $scope.DisablePrevPage = function () {
 &nbsp;
         return $scope.current_page === 0 ? "disabled" : "";
 &nbsp;
     };
 &nbsp;
 &nbsp;
-    
-	//Funzione che fa visualizzare la pagina successiva alla corrente
-    $scope.nextPage = function() {
+    //Funzione che fa visualizzare la pagina successiva alla corrente
+    $scope.nextPage = function () {
 &nbsp;
         if ($scope.current_page &lt; $scope.pages - 1) {
             $scope.current_page++;
@@ -815,15 +809,15 @@ angular.module('maaperture').controller('CollectionCtrl', function ($scope, $rou
 &nbsp;
     };
 &nbsp;
-	//Funzione che disabilita il pulsante di passaggio alla pagina
-	//successiva nella visualizzazione
-    $scope.DisableNextPage = function() {
+    //Funzione che disabilita il pulsante di passaggio alla pagina
+    //successiva nella visualizzazione
+    $scope.DisableNextPage = function () {
 &nbsp;
         return $scope.current_page === $scope.pages - 1 ? "disabled" : "";
 &nbsp;
     };
-	
-	//Va alla pagina $index
+&nbsp;
+    //Va alla pagina numero $index
     $scope.toPage = function (index) {
         $scope.current_page = index;
         $scope.getData();
@@ -836,7 +830,7 @@ angular.module('maaperture').controller('CollectionCtrl', function ($scope, $rou
 
 </div>
 <div class="footer">
-    <div class="meta">Generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Thu Jul 17 2014 14:01:05 GMT+0200 (CEST)</div>
+    <div class="meta">Generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Fri Jul 18 2014 00:30:53 GMT+0200 (CEST)</div>
 </div>
 
 <script src="../prettify.js"></script>

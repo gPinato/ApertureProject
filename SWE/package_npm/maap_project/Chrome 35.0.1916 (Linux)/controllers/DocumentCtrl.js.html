@@ -199,16 +199,16 @@
     <h1>Code coverage report for <span class="entity">controllers/DocumentCtrl.js</span></h1>
     <h2>
         
-        Statements: <span class="metric">93.33% <small>(14 / 15)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Statements: <span class="metric">100% <small>(15 / 15)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
         
         
         Branches: <span class="metric">100% <small>(0 / 0)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
         
         
-        Functions: <span class="metric">85.71% <small>(6 / 7)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Functions: <span class="metric">100% <small>(7 / 7)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
         
         
-        Lines: <span class="metric">93.33% <small>(14 / 15)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Lines: <span class="metric">100% <small>(15 / 15)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
         
         Ignored: <span class="metric"><span class="ignore-none">none</span></span> &nbsp;&nbsp;&nbsp;&nbsp;
     </h2>
@@ -276,7 +276,9 @@
 58
 59
 60
-61</td><td class="line-coverage"><span class="cline-any cline-neutral">&nbsp;</span>
+61
+62
+63</td><td class="line-coverage"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -295,42 +297,44 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4</span>
 <span class="cline-any cline-yes">4</span>
 <span class="cline-any cline-yes">4</span>
 <span class="cline-any cline-yes">4</span>
-<span class="cline-any cline-yes">4</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">4</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2</span>
-<span class="cline-any cline-yes">2</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">10</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">4</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3</span>
+<span class="cline-any cline-yes">3</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">15</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4</span>
 <span class="cline-any cline-yes">2</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -341,7 +345,7 @@
  * Module: app:controllers;
  * Author: Giacomo Pinato;
  * Created: 10/05/14;
- * Version: versione corrente;
+ * Version: 0.2;
  * Description: Controller for the document view
  * Modification History:
  ==============================================
@@ -355,6 +359,7 @@
 'use strict';
 &nbsp;
 angular.module('maaperture').controller('DocumentCtrl', function ($scope, $location, DocumentDataService, DocumentEditService, $routeParams, $cookieStore) {
+&nbsp;
     $scope.current_collection = $routeParams.col_id;
     $scope.current_document = $routeParams.doc_id;
     $scope.values = [];
@@ -363,8 +368,8 @@ angular.module('maaperture').controller('DocumentCtrl', function ($scope, $locat
     //Funzione per richiedere un documento al server.
     //Passa come parametri la collection e il documento da ricevere
     DocumentDataService.query({
-            col_id: $routeParams.col_id,
-            doc_id: $routeParams.doc_id }).$promise.then(
+        col_id: $routeParams.col_id,
+        doc_id: $routeParams.doc_id }).$promise.then(
         function success(response) {
             $scope.data = response.data;
             $.each($scope.data, function (key, value) {
@@ -374,23 +379,24 @@ angular.module('maaperture').controller('DocumentCtrl', function ($scope, $locat
             //Salva le etichette in un array
             $scope.labels = response.label;
         },
-        function error (err){
+        function error() {
             $location.path("/404");
 &nbsp;
         }
 &nbsp;
     );
 &nbsp;
+    //Funzione per cancellare il documento attualmente visualizzato
     $scope.delete_document = function () {
         DocumentEditService.remove({
-                col_id: $scope.current_collection,
-                doc_id: $scope.current_document
-            }).$promise.then(function success() {
+            col_id: $scope.current_collection,
+            doc_id: $scope.current_document
+        }).$promise.then(function success() {
                 $location.path('/collection/' + $scope.current_collection);
 &nbsp;
             },
-<span class="fstat-no" title="function not covered" >            function err(error) {</span>
-<span class="cstat-no" title="statement not covered" >                alert("Qualcosa è andato storto..");</span>
+            function err() {
+                alert("Qualcosa è andato storto..");
             }
         );
     };
@@ -401,7 +407,7 @@ angular.module('maaperture').controller('DocumentCtrl', function ($scope, $locat
 
 </div>
 <div class="footer">
-    <div class="meta">Generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Thu Jul 17 2014 14:01:05 GMT+0200 (CEST)</div>
+    <div class="meta">Generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Fri Jul 18 2014 00:30:53 GMT+0200 (CEST)</div>
 </div>
 
 <script src="../prettify.js"></script>
