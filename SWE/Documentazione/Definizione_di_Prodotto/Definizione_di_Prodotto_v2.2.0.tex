@@ -3005,7 +3005,7 @@ Funzione che invia al server il profilo modificato nel client.
   	Funzione che consente di visualizzare il comando diretto da shell per la creazione di un dato indice su una query. Essa compone il comando a partire dal parametro \textit{indexData}, contenente le informazioni necessarie alla creazione dell'indice.
  \end{description}
  
- \item[\$scope.delete_document(index)] \hfill
+ \item[\$scope.delete\_document(index)] \hfill
   \begin{description}
   	\item[Parametro] \hfill
   		\begin{description}
@@ -3153,7 +3153,7 @@ Funzione che invia al server il profilo modificato nel client.
   fornita da \grassetto{@RegisterService}.
   Con questa funzione viene richiesta la creazione di  un nuovo utente sul server in base ai dati inseriti.
    \end{description}
- \end{description}
+
   
   \item[changeSort()] \hfill
     \begin{description}
@@ -3174,7 +3174,7 @@ Funzione che invia al server il profilo modificato nel client.
   l'ordinamento della colonna.
     \end{description}
 
-  \item[\$scope.delete_document(index)] \hfill
+  \item[\$scope.delete\_document(index)] \hfill
   \begin{description}
   	\item[Parametro] \hfill
   		\begin{description}
@@ -3272,7 +3272,7 @@ Funzione che invia al server il profilo modificato nel client.
     \end{description}
  
   
-  \item[\$scope.delete_document()] \hfill
+  \item[\$scope.delete\_document()] \hfill
   \begin{description}
   	\item[Parametro] \hfill
   		\begin{description}
@@ -3280,7 +3280,7 @@ Funzione che invia al server il profilo modificato nel client.
   			Indice del profilo da eliminare.
        \end{description}
   	\item[Descrizione] \hfill \\
-   Funzione che elimina il profilo identificato dall'indice \textit{\$scope.current\textunderscore document. Effettua una richiesta REST di rimozione alla risorsa gestita da \grassetto{@UserEditService} fornendo come argomenti l'identificativo della Collection correntemente visualizzata. \\
+   Funzione che elimina il profilo identificato dall'indice \textit{\$scope.current\_document}. Effettua una richiesta REST di rimozione alla risorsa gestita da \grassetto{@UserEditService} fornendo come argomenti l'identificativo della Collection correntemente visualizzata. \\
   Se l'eliminazione ha successo viene lanciato l'aggiornamento della vista corrente con il Document eliminato, altrimenti si richiama la callback di errore.
     \end{description}
  
