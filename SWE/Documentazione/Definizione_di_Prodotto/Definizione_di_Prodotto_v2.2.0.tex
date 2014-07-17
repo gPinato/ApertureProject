@@ -271,6 +271,7 @@ Modulo di installazione del framework Maap. Si occupa di gestire le richiesti pr
 Package Server del Design Pattern Client-Server. 
 
 \subsection{::Controller}
+\immagine{./Diagrammi/ControllerPackage}{Diagramma del package Maap::Server::Controller}
 Package che gestisce il dialogo con il Client di MaaP. 
 
 \subsubsection{@dispatcher}
@@ -880,6 +881,7 @@ Controller che si occupa dell'inizializzazione e gestione del modulo passort per
 Package che racchiude i database, le loro operazioni di accesso e i file DSL con i relativi interpreti.
 
 \subsubsection{::Database}
+\immagine{./Diagrammi/DatabasePackage}{Diagramma del package Maap::Server::ModelServer::Database}
 \paragraph{@index}
 \begin{description}
  \item[Descrizione] \hfill \\
@@ -969,6 +971,7 @@ Package che racchiude i database, le loro operazioni di accesso e i file DSL con
 \end{description}
 
 \subsubsection{::DataManager}
+\immagine{./Diagrammi/DataManagerPackage}{Diagramma del package Maap::Server::ModelServer::DataManager}
 Package che gestisce gli accessi ai database.
 
 \paragraph{::DatabaseAnalysisManager} \hfill \\
@@ -1935,6 +1938,7 @@ Package realizzato per creare e gestire gli indici utilizzati nel database di an
 \end{description}
 
 \subsubsection{::DSL}
+\immagine{./Diagrammi/DSLPackage}{Diagramma del package Maap::Server::ModelServer::DSL}
 \subparagraph{@DSLManager}
 \begin{description}
  \item[Descrizione] \hfill \\
@@ -2185,6 +2189,7 @@ Package realizzato per creare e gestire gli indici utilizzati nel database di an
 \section{Specifica componenti Maap::Client}
 
 \subsection{::View}
+\immagine{./Diagrammi/ViewPackage}{Diagramma del package Maap::Client::View}
 Package contenente i vari Template utilizzati dal Client AngularJS per visualizzare e gestire i dati delle varie Collection.
 
 \subsubsection{@collection.html}
@@ -2472,9 +2477,11 @@ Package contenente i vari Template utilizzati dal Client AngularJS per visualizz
 
 
 \subsection{::ControllerModelView}
+\immagine{./Diagrammi/ControllerModelViewPackage}{Diagramma del package Maap::Client::ControllerModelView}
 Package che gestisce il dialogo tra la View ed il Model del Client.
 
 \subsubsection{::ControllerClient}
+\immagine{./Diagrammi/ControllerClientPackage}{Diagramma del package Maap::Client::ControllerModelView::ControllerClient}
 Package che racchiude i Controller del Client. Il primo metodo descritto di ogni Controller è la funzione base di recupero dei dati dal Server attraverso la chiamata del metodo di fetch del proprio Service.
 
 \paragraph{@CollectionCtrl}
@@ -3494,6 +3501,7 @@ Funzione che invia al server il profilo modificato nel client.
 \end{description}
 
 \subsubsection{::Directives}
+\immagine{./Diagrammi/DirectivesPackage}{Diagramma del package Maap::Client::ControllerModelView::Directives}
 
 \paragraph{@Passwrod\_check}
 \begin{description}
@@ -3526,8 +3534,10 @@ Funzione che invia al server il profilo modificato nel client.
 \end{description}
 
 \subsection{::ModelClient}
+\immagine{./Diagrammi/ModelClientPackage}{Diagramma del package Maap::Client::ModelClient}
 
 \subsubsection{::Services}
+\immagine{./Diagrammi/ServicesPackage}{Diagramma del package Maap::Client::ModelClient::Services}
 I Servizi del Client sono i tramite tra il Client ed il Server. I componenti di questa sezione sono gli esecutori materiali delle richieste REST per ottenere le informazioni dei dati presenti nei database di analisi e utenti presenti nel Server. Essi gestiscono delle risorse su cui i Controller associati manipolano le informazioni richieste dal Client.
 
 \paragraph{@AuthService}
