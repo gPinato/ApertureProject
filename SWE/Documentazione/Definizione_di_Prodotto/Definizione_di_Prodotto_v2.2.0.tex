@@ -2728,7 +2728,7 @@ Fornisce un immediato elenco delle collection disponibili.
 \end{description}
 
 
-\paragraph{@LoginController}
+\paragraph{@LoginCtrl}
 \begin{description}
  \item[Descrizione] \hfill \\
  Modulo che descrive il Controller della pagina di login.
@@ -2742,7 +2742,7 @@ Fornisce un immediato elenco delle collection disponibili.
   \item \$route;
   \item \$cookieStore;
   \item \$location;
-  \item @AuthService;
+  \item @AuthService.
   
  \end{itemize}
  
@@ -2761,15 +2761,13 @@ Fornisce un immediato elenco delle collection disponibili.
   		Credenziali di accesso inserite dall'utente.
   	\end{description}
   	\item[Descrizione] \hfill \\
-  	Funzione che trasmette al server le credenziali inserite dall'utente e verifica se sono corrette.
+  	Funzione che trasmette al server le credenziali inserite dall'utente e verifica se sono corrette. Richiama il metodo \textit{login()} di \textbf{@AuthService}, passando come paramatro \textit{\$scope.credentials}.
   	In caso positivo autentica l'utente, altrimenti mostra un errore.
   \end{description}
- 
-  
  \end{description}
 \end{description}
 
-\paragraph{@NavBarController}
+\paragraph{@NavBarCtrl}
 \begin{description}
  \item[Descrizione] \hfill \\
  Modulo che descrive il Controller della barra di navigazione superiore.
@@ -2798,17 +2796,21 @@ Fornisce un immediato elenco delle collection disponibili.
  
  \item[Funzionalità] \hfill 
  \begin{description}
-   
-  	\item[logout()] \hfill \\
+    \item[CollectionListService.get()] \hfill
+    \begin{description}
+  		\item[Descrizione] \hfill \\
+    Funzione che richiede al server l'elenco delle collection disponibli e le inserisce nello scope.
+  \end{description}
+  
+  	\item[\$scope.logout()] \hfill \\
   	\begin{description}
   	\item[Descrizione] \hfill \\
   Richiama la richiesta RESTful \textit{logout} sulla \$resource fornita da \grassetto{@LogoutService}. Con questa funzione viene distrutta la sessione riguardante l'utente presente sul server e si viene poi disconnessi.
   	\end{description}
-   
  \end{description}
 \end{description}
 
-\paragraph{@ProfileController}
+\paragraph{@ProfileCtrl}
 \begin{description}
  \item[Descrizione] \hfill \\
  Modulo che descrive il Controller della pagina di gestione del profilo.
@@ -2821,15 +2823,14 @@ Fornisce un immediato elenco delle collection disponibili.
   \item \$scope;
   \item \$location;
   \item @ProfileDataService;
-  \item @ProfileEditService;
+  \item @ProfileEditService.
   
  \end{itemize}
  
  \item[Attributi] \hfill 
  \begin{itemize}
- \item \$scope.original\textunderscore data;
- \item \$scope.original\textunderscore keys;
-
+ 	\item \$scope.original\textunderscore data;
+ 	\item \$scope.original\textunderscore keys.
  \end{itemize}
  
  \item[Funzionalità] \hfill 
@@ -2840,9 +2841,8 @@ Fornisce un immediato elenco delle collection disponibili.
 	Funzione che richiede al server le informazioni riguardanti il profilo dell'utente autenticato.
 	\end{description}
 	
-	 \item[\$scope.deleteDocument()] \hfill
-	 
-	 \begin{description}
+ \item[\$scope.delete\_document()] \hfill
+    \begin{description}
 	 	\item[Descrizione] \hfill \\	 
   Funzione che elimina dal server il profilo dell'utente autenticato, cancellando l'utente dal sistema.
   	 \end{description}
@@ -2852,7 +2852,7 @@ Fornisce un immediato elenco delle collection disponibili.
   
 \end{description}
 
-\paragraph{@ProfileEditController}
+\paragraph{@ProfileEditCtrl}
 \begin{description}
  \item[Descrizione] \hfill \\
  Modulo che descrive il Controller della pagina di modifica di un documento.
@@ -2863,7 +2863,7 @@ Fornisce un immediato elenco delle collection disponibili.
  \begin{itemize}
   \item \$scope;
   \item \$location
-  \item @ProfileEditService;
+  \item @ProfileEditService.
   
  \end{itemize}
  
@@ -2874,7 +2874,7 @@ Fornisce un immediato elenco delle collection disponibili.
  \item \$scope.newPassowrd2;
  \item \$scope.original\textunderscore data;
  \item \$scope.original\textunderscore keys;
- \item \$scope.valid.
+ \item \$scope.admin.
  \end{itemize}
  
  \item[Funzionalità] \hfill
@@ -2887,7 +2887,7 @@ Fornisce un immediato elenco delle collection disponibili.
 	 
   \end{description}
 
-  \item[edit\textunderscore document()] \hfill 
+  \item[\$scope.edit\textunderscore document()] \hfill 
   \begin{description}
   	\item[Parametro] \hfill
   		\begin{description}
@@ -2900,8 +2900,7 @@ Funzione che invia al server il profilo modificato nel client.
     \end{description}
   
   
-\item[\$scope.deleteDocument()] \hfill
-	 
+\item[\$scope.delete\_document()] \hfill
 	 \begin{description}
 	 	\item[Descrizione] \hfill \\	 
   Funzione che elimina dal server il profilo dell'utente autenticato, cancellando l'utente dal sistema.
@@ -2909,7 +2908,35 @@ Funzione che invia al server il profilo modificato nel client.
  \end{description}
 \end{description}
 
-\paragraph{@QueryController}
+\paragraph{@PwdRecoveryCtrl}
+\begin{description}
+	\item[Descrizione] \hfill \\
+	Modulo che descrive il Controller della pagina di recupero della password di un utente registrato al sistema.
+	\item[Utilizzo] \hfill \\
+	Controller utilizzato da AngularJS per gestire il recupero di una password utente.
+	\item[Dipendendenze iniettate al controller] \hfill
+	\begin{itemize}
+		\item \$scope;
+		\item \$route;
+		\item \$cookieStore;
+		\item \$location;
+		\item @RecoveryService.
+	\end{itemize}
+	\item[Attributi] \hfill
+	\begin{itemize}
+		\item \$scope.credentials.
+	\end{itemize}
+	\item[Funzionalità] \hfill
+	\begin{description}
+  		\item[\$scope.recover()] \hfill \\
+  		\begin{description}
+  			\item[Descrizione] \hfill \\
+  			Funzione che richiama il metodo \textit{recover()} di \textbf{@RecoveryService} per richiedere l'invio di una mail contenente la nuova password all'utente che ha richiesto questa funzionalità. Viene passato come parametro \textit{\$scope.credentials}, contenente l'indirizzo email del richiedente. Se l'utente è registrato al sistema, viene inviata una mail con la nuova password e viene mostrato un messaggio di successo, altrimenti viene mostrato un messaggio di errore.
+  		\end{description}
+  	\end{description}
+\end{description}
+
+\paragraph{@QueryCtrl}
 \begin{description}
  \item[Descrizione] \hfill \\
  Modulo che descrive il Controller della pagina di gestione delle query.
@@ -2934,7 +2961,7 @@ Funzione che invia al server il profilo modificato nel client.
  \item \$scope.current\textunderscore sort;
  \item \$scope.current\textunderscore page;
  \item \$scope.current\textunderscore collection;
- \item \$scope.rows;
+ \item \$scope.rows.
  \end{itemize}
  
  \item[Funzionalità] \hfill
@@ -2966,26 +2993,48 @@ Funzione che invia al server il profilo modificato nel client.
   Funzione ausiliaria che crea un indice a partire da una delle query presenti nella collection delle query.
 
     \end{description}
-  
-  \item[\$scope.numerify(num)] \hfill
-   \begin{description}
-  	\item[Parametro] \hfill
+ 
+ \item[\$scope.showIndexInfo(indexData)] \hfill
+ \begin{description}
+ 	\item[Parametro] \hfill
   		\begin{description}
-  			\item[num] \hfill \\
-  			Intero rappresentante il numero di pagine disponibili.
+  			\item[indexData] \hfill \\
+  			Oggetto contenente i dati sensivili di un indice.
        \end{description}
   	\item[Descrizione] \hfill \\
- Funzione ausiliaria che crea un Array di dimensione \textit{num} che verrà poi usato dalla direttiva \textit{ng-repeat} di angular per la creazione del numero di pagine disponibili.
-    \end{description}
+  	Funzione che consente di visualizzare il comando diretto da shell per la creazione di un dato indice su una query. Essa compone il comando a partire dal parametro \textit{indexData}, contenente le informazioni necessarie alla creazione dell'indice.
+ \end{description}
  
+ \item[\$scope.delete_document(index)] \hfill
+  \begin{description}
+  	\item[Parametro] \hfill
+  		\begin{description}
+  			\item[index] \hfill \\
+  			Indice che rappresenta il Document da eliminare.
+       \end{description}
+  	\item[Descrizione] \hfill \\
+     Funzione che elimina il Document identificato dall'indice \textit{index}. Effettua una richiesta REST di rimozione alla risorsa gestita da \grassetto{@QueryService}.
+  Se l'eliminazione ha successo viene lanciato l'aggiornamento della vista corrente con il Document eliminato, altrimenti si richiama la \textit{callback} di errore.
+    \end{description}
+    
+  \item[\$scope.range()] \hfill
+  \begin{description}
+  	\item[Descrizione] \hfill \\
+  	Funzione che gestisce la visualizzazione del numero delle pagine correntemente esposte. Questa funzione impone che sia visualizzato un numero massimo di 9 pagine tra cui navigare per volta. Se il numero di pagine di query è minore, verrà visualizzato il numero effettivo di pagine. Se il numero è maggiore, ad ogni cambio di pagina la barra gestione delle pagine verrà aggiornata.
+  \end{description}
   
-  \item[\$scope.previousPage()] \hfill
+  \item[\$scope.prevPage()] \hfill
   \begin{description}
   	\item[Descrizione] \hfill \\  
   Aggiunge allo \$scope la funzionalità di passaggio alla pagina di visualizzazione precedente alla corrente.
   Diminuisce di 1 l'indicatore della pagina corrente e esegue una nuova richiesta al server per i dati corrispondenti alla pagina precedente con \textit{getData()}.
     \end{description}
 
+  \item[\$scope.DisablePrevPage()] \hfill
+  \begin{description}
+  	\item[Descrizione] \hfill \\
+  	Funzione che disabilita la funzionalità di passaggio alla pagina precedente a quella correntemente visualizzata, se questa è la prima pagina di visualizzazione della Collection.
+  \end{description}
   
   \item[\$scope.nextPage()] \hfill
   \begin{description}
@@ -2994,6 +3043,11 @@ Funzione che invia al server il profilo modificato nel client.
   Aumenta di 1 l'indicatore della pagina corrente e esegue una nuova richiesta al server per i dati corrispondenti alla pagina successiva con \textit{getData()}.
     \end{description}
 
+  \item[\$scope.DisableNextPage()] \hfill
+  \begin{description}
+  	\item[Descrizione] \hfill \\
+  	Funzione che disabilita la funzionalità di passaggio alla pagina successiva a quella correntemente visualizzata, se questa è l'ultima pagina di visualizzazione della Collection.
+  \end{description}
   
   \item[\$scope.toPage(index)] \hfill
   \begin{description}
@@ -3007,48 +3061,10 @@ Funzione che invia al server il profilo modificato nel client.
   Aggiorna l'indicatore della pagina corrente settandolo all'indice passato per parametro alla funzione.
   Successivamente esegue una richiesta al server per ottenere i dati per la nuova visualizzazione.
     \end{description}
-
-  
-  \item[changeSort()] \hfill
-  \begin{description}
-  	\item[Descrizione] \hfill \\  
-  Cambia la variabile \$current\_sort dello \$scope che regola l'ordine di visualizzazione dei Document, da discendente ad ascendente e viceversa.
-    \end{description}
-
-  
-  \item[\$scope.columnSort(index)] \hfill
-   \begin{description}
-  	\item[Parametro] \hfill
-  		\begin{description}
-  			\item[index] \hfill \\
-  			Numero intero che rappresenta l'indice della colonna da ordinare.
-       \end{description}
-  	\item[Descrizione] \hfill \\
-   Funzione che cambia l'ordinamento di visualizzazione di una colonna. \\
-  Se la colonna in questione è una colonna diversa da quella che precedentemente ordinata,
-  la variabile \textit{current\_sorted\_column} dello \$scope viene aggiornata, altrimenti la funzione cambia solamente l'ordinamento della colonna.
-    \end{description}
-    
-  
-  
-  \item[\$scope.deleteDocument(index)] \hfill
-  \begin{description}
-  	\item[Parametro] \hfill
-  		\begin{description}
-  			\item[index] \hfill \\
-  			Indice che rappresenta il Document da eliminare.
-       \end{description}
-  	\item[Descrizione] \hfill \\
-     Funzione che elimina il Document identificato dall'indice \textit{index}. Effettua una richiesta REST di rimozione alla risorsa gestita da \grassetto{@QueryService}.
-  Se l'eliminazione ha successo viene lanciato l'aggiornamento della vista corrente con il Document eliminato, altrimenti si richiama la \textit{callback} di errore.
-    \end{description}
-    
-
-  
  \end{description}
 \end{description}
 
-\paragraph{@RegisterController}
+\paragraph{@RegisterCtrl}
 \begin{description}
  \item[Descrizione] \hfill \\
  Modulo che descrive il Controller della pagina di registrazione.
@@ -3060,31 +3076,31 @@ Funzione che invia al server il profilo modificato nel client.
  \begin{itemize}
   \item \$scope;
   \item \$location;
-  \item @RegisterService;
-  
+  \item \$route;
+  \item \$cookieStore;
+  \item @RegisterService.
  \end{itemize}
  
  \item[Attributi] \hfill
  \begin{itemize}
- \item  \$scope.credentials;
+ \item \$scope.credentials;
+ \item \$scope.submitted.
  \end{itemize}
  
  \item[Funzionalità] \hfill
  \begin{description}
-  \item[signupForm()] \hfill
+  \item[\$scope.signupForm()] \hfill
   \begin{description}
    	\item[Descrizione] \hfill \\
-  Nel caso in cui il form di registrazione sia compilato con dati validi, richiama la richiesta RESTful \textit{query} sulla \$resource 
+  Nel caso in cui il form di registrazione sia compilato con dati validi, richiama la richiesta RESTful \textit{register} sulla \$resource 
   fornita da \grassetto{@RegisterService}.
-  Con questa funzione viene creato un nuovo utente sul server in base ai dati inseriti.
+  Con questa funzione viene richiesta la creazione di un nuovo utente sul server in base ai dati inseriti.
    \end{description}
-
-  
  \end{description}
 \end{description}
 
 
-\paragraph{@UsersCollectionController}
+\paragraph{@UsersCollectionCtrl}
 \begin{description}
  \item[Descrizione] \hfill \\
  Modulo che descrive il Controller della Collection degli user.
@@ -3097,18 +3113,19 @@ Funzione che invia al server il profilo modificato nel client.
   \item \$scope;
   \item \$route;
   \item \$location;
+  \item @RegisterService;
   \item @UserCollectionService;
-  \item @UserEditService;
+  \item @UserEditService.
  \end{itemize}
  
  \item[Attributi] \hfill
  \begin{itemize}
+ \item \$scope.credentials;
  \item \$scope.current\textunderscore sorted\textunderscore column;
  \item \$scope.column\textunderscore original\textunderscore name;
  \item \$scope.current\textunderscore sort;
  \item \$scope.current\textunderscore page;
- \item \$scope.current\textunderscore collection;
- \item \$scope.rows;
+ \item \$scope.rows.
  \end{itemize}
  
  \item[Funzionalità] \hfill
@@ -3120,7 +3137,7 @@ Funzione che invia al server il profilo modificato nel client.
   \$scope associate alla Collection view ed esegue la funzione \textit{getData()}.
     \end{description}
 
-  \item[getData()] \hfill
+  \item[\$scope.getData()] \hfill
     \begin{description}
   	\item[Descrizione] \hfill \\
   Richiama la richiesta RESTful \textit{query} sulla \$resource fornita da \grassetto{@UserCollectionService}.
@@ -3129,50 +3146,21 @@ Funzione che invia al server il profilo modificato nel client.
   
       \end{description}
 
-  \item[\$scope.numerify(num)] \hfill
+  \item[\$scope.signupForm()] \hfill
   \begin{description}
-  	\item[Parametro] \hfill
-  		\begin{description}
-  			\item[num] \hfill \\
-  			Numero intero che rappresenta il numero di pagine disponibili.
-       \end{description}
-  	\item[Descrizione] \hfill \\
-     Funzione ausiliaria che crea un Array di dimensione \textit{num} che verrà poi usato dalla directive   \textit{ng-repeat} di angular per la creazione del numero di pagine disponibili.
-    \end{description}
+   	\item[Descrizione] \hfill \\
+  Nel caso in cui il form di registrazione sia compilato con dati validi, richiama la richiesta RESTful \textit{createUser} sulla \$resource 
+  fornita da \grassetto{@RegisterService}.
+  Con questa funzione viene richiesta la creazione di  un nuovo utente sul server in base ai dati inseriti.
+   \end{description}
+ \end{description}
   
-  
-  \item[\$scope.previousPage()] \hfill
-    \begin{description}
-  	\item[Descrizione] \hfill \\
-  Aggiunge allo \$scope la funzionalità di passaggio alla pagina di visualizzazione precedente alla corrente.
-  Diminuisce di 1 l'indicatore della pagina corrente e esegue una nuova richiesta al server per i dati corrispondenti alla pagina precedente con \textit{getData()}.
-      \end{description}
-
-  \item[\$scope.nextPage()] \hfill
-    \begin{description}
-  	\item[Descrizione] \hfill \\
-  Aggiunge allo \$scope la funzionalità di passaggio alla pagina di visualizzazione successiva alla corrente.
-  Aumenta di 1 l'indicatore della pagina corrente e esegue una nuova richiesta al server per i dati corrispondenti alla pagina successiva con \textit{getData()}.
-      \end{description}
-
-  \item[\$scope.toPage(index)] \hfill
-  \begin{description}
-  	\item[Parametro] \hfill
-  		\begin{description}
-  			\item[index] \hfill \\
-  			Numero intero che rappresenta la pagina desiderata.
-       \end{description}
-  	\item[Descrizione] \hfill \\
-       Aggiunge la funzionalità di passaggio alla pagina di visualizzazione specificata dal parametro \textit{index}. Aggiorna l'indicatore della pagina corrente settandolo all'indice passato per parametro alla funzione. Successivamente esegue una richiesta al server per ottenere i dati per la nuova visualizzazione.
-    \end{description}
-    
-
   \item[changeSort()] \hfill
     \begin{description}
   	\item[Descrizione] \hfill \\
   Cambia la variabile \$current\textunderscore sort dello \$scope che regola l'ordine di visualizzazione dei Document, da discendente ad ascendente e viceversa.
       \end{description}
-
+      
   \item[\$scope.columnSort(index)] \hfill
   \begin{description}
   	\item[Parametro] \hfill
@@ -3186,8 +3174,7 @@ Funzione che invia al server il profilo modificato nel client.
   l'ordinamento della colonna.
     \end{description}
 
-  
-  \item[\$scope.deleteDocument(index)] \hfill
+  \item[\$scope.delete_document(index)] \hfill
   \begin{description}
   	\item[Parametro] \hfill
   		\begin{description}
@@ -3198,12 +3185,53 @@ Funzione che invia al server il profilo modificato nel client.
       Funzione che elimina il profilo identificato dall'indice \textit{index}. Effettua una richiesta REST di rimozione alla risorsa gestita da \grassetto{@UserEditService} fornendo come argomenti l'identificativo della Collection correntemente visualizzata e l'indice del Document da eliminare. \\
   Se l'eliminazione ha successo viene lanciato l'aggiornamento della vista corrente con il Document eliminato, altrimenti si richiama la callback di errore.
     \end{description}
-  
-  
+    
+    \item[\$scope.range()] \hfill
+  \begin{description}
+  	\item[Descrizione] \hfill \\
+  	Funzione che gestisce la visualizzazione del numero delle pagine correntemente esposte. Questa funzione impone che sia visualizzato un numero massimo di 9 pagine tra cui navigare per volta. Se il numero di pagine di utenti è minore, verrà visualizzato il numero effettivo di pagine. Se il numero è maggiore, ad ogni cambio di pagina la barra gestione delle pagine verrà aggiornata.
+  \end{description}
+
+	\item[\$scope.prevPage()] \hfill
+    	\begin{description}
+  		\item[Descrizione] \hfill \\
+  Aggiunge allo \$scope la funzionalità di passaggio alla pagina di visualizzazione precedente alla corrente.
+  Diminuisce di 1 l'indicatore della pagina corrente e esegue una nuova richiesta al server per i dati corrispondenti alla pagina precedente con \textit{getData()}.
+    \end{description}
+    
+  \item[\$scope.DisablePrevPage()] \hfill
+  \begin{description}
+  	\item[Descrizione] \hfill \\
+  	Funzione che disabilita la funzionalità di passaggio alla pagina precedente a quella correntemente visualizzata, se questa è la prima pagina di visualizzazione della Collection.
+  \end{description}
+
+  \item[\$scope.nextPage()] \hfill
+    \begin{description}
+  	\item[Descrizione] \hfill \\
+  Aggiunge allo \$scope la funzionalità di passaggio alla pagina di visualizzazione successiva alla corrente.
+  Aumenta di 1 l'indicatore della pagina corrente e esegue una nuova richiesta al server per i dati corrispondenti alla pagina successiva con \textit{getData()}.
+      \end{description}
+      
+  \item[\$scope.DisableNextPage()] \hfill
+  \begin{description}
+  	\item[Descrizione] \hfill \\
+  	Funzione che disabilita la funzionalità di passaggio alla pagina successiva a quella correntemente visualizzata, se questa è l'ultima pagina di visualizzazione della Collection.
+  \end{description}
+
+  \item[\$scope.toPage(index)] \hfill
+  \begin{description}
+  	\item[Parametro] \hfill
+  		\begin{description}
+  			\item[index] \hfill \\
+  			Numero intero che rappresenta la pagina desiderata.
+       \end{description}
+  	\item[Descrizione] \hfill \\
+       Aggiunge la funzionalità di passaggio alla pagina di visualizzazione specificata dal parametro \textit{index}. Aggiorna l'indicatore della pagina corrente settandolo all'indice passato per parametro alla funzione. Successivamente esegue una richiesta al server per ottenere i dati per la nuova visualizzazione.
+    \end{description}
  \end{description}
 \end{description}
 
-\paragraph{@UsersController}
+\paragraph{@UsersCtrl}
 \begin{description}
  \item[Descrizione] \hfill \\
  Modulo che descrive il Controller della pagina di visualizzazione di un profilo utente da parte di un amministratore.
@@ -3224,7 +3252,8 @@ Funzione che invia al server il profilo modificato nel client.
  \item[Attributi] \hfill
  \begin{itemize}
   \item \$scope.current\textunderscore document;
-  \item \$scope.values;
+  \item \$scope.original\_data;
+  \item \$scope.original\_keys.
  \end{itemize}
  
  \item[Funzionalità] \hfill
@@ -3243,7 +3272,7 @@ Funzione che invia al server il profilo modificato nel client.
     \end{description}
  
   
-  \item[\$scope.deleteDocument(index)] \hfill
+  \item[\$scope.delete_document()] \hfill
   \begin{description}
   	\item[Parametro] \hfill
   		\begin{description}
@@ -3251,14 +3280,14 @@ Funzione che invia al server il profilo modificato nel client.
   			Indice del profilo da eliminare.
        \end{description}
   	\item[Descrizione] \hfill \\
-   Funzione che elimina il profilo identificato dall'indice \textit{index}. Effettua una richiesta REST di rimozione alla risorsa gestita da \grassetto{@UserEditService} fornendo come argomenti l'identificativo della Collection correntemente visualizzata e l'indice del Document da eliminare. \\
+   Funzione che elimina il profilo identificato dall'indice \textit{\$scope.current\textunderscore document. Effettua una richiesta REST di rimozione alla risorsa gestita da \grassetto{@UserEditService} fornendo come argomenti l'identificativo della Collection correntemente visualizzata. \\
   Se l'eliminazione ha successo viene lanciato l'aggiornamento della vista corrente con il Document eliminato, altrimenti si richiama la callback di errore.
     \end{description}
  
  \end{description}
 \end{description}
 
-\paragraph{@UsersEditController}
+\paragraph{@UsersEditCtrl}
 \begin{description}
  \item[Descrizione] \hfill \\
  Modulo che descrive il Controller della pagina di modifica di un profilo.
@@ -3277,9 +3306,12 @@ Funzione che invia al server il profilo modificato nel client.
  
  \item[Attributi] \hfill
  \begin{itemize}
-    \item  \$scope.current\textunderscore document;
-    \item  \$scope.original\textunderscore data;
-    \item  \$scope.original\textunderscore keys;
+    \item \$scope.current\textunderscore document;
+    \item \$scope.original\textunderscore data;
+    \item \$scope.original\textunderscore keys;
+    \item \$scope.newPassword1;
+    \item \$scope.newPassowrd2;
+    \item \$scope.admin.
  \end{itemize}
  
  \item[Funzionalità] \hfill
@@ -3299,20 +3331,19 @@ Funzione che invia al server il profilo modificato nel client.
     \end{description}
  
 
-  \item[edit\textunderscore document()] \hfill
+  \item[\$scope.edit\_document()] \hfill
   \begin{description}
    	\item[Descrizione] \hfill \\
   Funzione che invia al server il documento modificato nel client.
   Assembla un JSON a partire da original\textunderscore keys e original\textunderscore data. Quest'ultima variabile nel frattempo è stata modificata con i nuovi valori del documento.
     \end{description}
 
-  \item[delete\textunderscore document()] \hfill
+  \item[\$scope.delete\_document()] \hfill
     \begin{description}
   	\item[Descrizione] \hfill \\ 
  Funzione che elimina il profilo identificato dall'indice \textit{index}. Effettua una richiesta REST di rimozione alla risorsa gestita da \grassetto{@UserEditService} fornendo come argomenti l'identificativo della Collection correntemente visualizzata e l'indice del Document da eliminare. \\
   Se l'eliminazione ha successo viene lanciato l'aggiornamento della vista corrente con il Document eliminato, altrimenti si richiama la callback di errore.
       \end{description}
-
  \end{description}
 \end{description}
 
