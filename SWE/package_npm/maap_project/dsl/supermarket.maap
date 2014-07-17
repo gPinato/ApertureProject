@@ -1,11 +1,11 @@
 collection = {
 	label: 'Prodotti Supermercato',
 	name: 'supermarket',
-	position: 1,
+	position: 3,
 	
 	index : {
 		perpage: 5,
-		sortby: 'nome',
+		sortby: 'offerta',
 		order: 'asc',
 		populate: [{collection: 'positions', key: 'posizione'}],
 		column : [
@@ -33,7 +33,6 @@ collection = {
 		query: {
 			offerta: 'si',
 			prezzo: {$lte: 1.50}
-			//posizione: {reparto: 'Bibite'}
 		}
 	}, //end index page
 	

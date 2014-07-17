@@ -5,3 +5,4 @@
 { "_id" : { "$oid" :"187c35dd8fada716c89d0021"}, "reparto" : "Bibite", "scaffale" : 1, "colonna" : 6}
 { "_id" : { "$oid" :"187c35dd8fada716c89d0022"}, "reparto" : "Bibite", "scaffale" : 1, "colonna" : 6}
 { "_id" : { "$oid" :"187c35dd8fada716c89d0023"}, "reparto" : "Bibite", "scaffale" : 1, "colonna" : 5 }
+{ "_id" : { "$oid" :"187c35dd8fada716c89d0024"}, "scaffale" : 1, "colonna" : 7 }

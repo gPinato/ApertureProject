@@ -1,11 +1,11 @@
 collection = {
 	label: 'Squadre',
 	name: 'teams',
-	position: 3, //posizione nel menu, default -1
+	position: 1, 
 	
 	index : {
 		populate: [{collection: 'coaches', key: 'coach'},{collection: 'coaches', key: 'coach2'},{collection: 'supermarket', key: 'market'}],
-		perpage: 2,
+		perpage: 3,
 		sortby: 'name',
 		order: 'asc',
 		column : [
@@ -37,7 +37,7 @@ collection = {
 			}
 		],
 		query: {
-			number_players: {$lt: 30}
+			number_players: {$lt: 40}
 		}
 	}, //end index page
 	

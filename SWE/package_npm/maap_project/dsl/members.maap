@@ -1,10 +1,10 @@
 collection = {
 	label: 'Membri',
 	name: 'members',
-	position: -1, //posizione nel menu, default -1
+	position: 2,
 	
 	index : {
-		perpage: 2,
+		perpage: 5,
 		sortby: 'age',
 		order: 'asc',
 		column : [
@@ -59,7 +59,7 @@ collection = {
 			{	
 				label: 'Interessi',
 				name: 'interest',
-				type: '[String]',
+				type: 'Array',
 				transformation: 'var result = \"\" ; \
 								for(var i=0; i<interest.length; i++) \
 								{ \
