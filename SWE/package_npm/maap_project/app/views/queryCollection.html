@@ -8,8 +8,8 @@
 
             <!-- Table -->
 
-            <table class="table">
-                <th ng-click="columnSort($index)" ng-repeat="label in labels">{{label}}</a></th>
+            <table class="table" ng-show="rows.length != 0">
+                <th ng-click="columnSort($index)" ng-repeat="label in labels">{{label}}</th>
                 <th>Options</th>
                 <tr ng-repeat="row in rows track by $index" >
                     <td ng-repeat="value in row">{{value}}</td>
@@ -17,6 +17,9 @@
 					<td><a ng-show="true" href="" class="btn btn-info btn-sm" ng-click="showIndexInfo(data[$index])" ><i class="glyphicon glyphicon-ok"></i>Index cmd</a></td>
               	</tr>
             </table>
+			<div class="page-header">
+				<span ng-show="rows.length == 0"><h2>No queries found!</h2>Queries are automatically created while viewing a collection/document.</span>
+			</div>
         </div>
 
         <div ng-show=" pages > 1 " class="pagination-div">
