@@ -253,10 +253,13 @@ exports.getTopQueries = function(req, res) {
 	////prendo dal file di configurazione il valore corrispondente, se è indefinito allora uso 20
 	var numberOfQueries2show = req.config.adminConfig.queriesToShow || 10;
 	
+	var page = req.query.page;
+	console.log('xxxpage: ' + page);
+	
 	//chiamo al funzione getQueries dell'indexManager per prelevae le query più richieste
 	indexManager.getQueries(
 							//numero di pagina
-							req.query.page,			
+							page,			
 							//numero di query per pagina
 							queriesPerPage,	
 							//numero di query da visualizzare							
@@ -279,20 +282,16 @@ exports.getIndexesList = function(req, res) {
 	var db = req.dataDB;
 	//prendo dal file di configurazione il valore corrispondente, se è indefinito allora uso 100
 	var indexesPerPage = req.config.adminConfig.indexesPerPage || 100;
-	var page = 1;
-	//var page = req.params.page;
+	
+	var page = req.query.page;
+	
+	console.log('s:' + indexesPerPage + ' ' + page);
 	
 	//chiamo getIndex di indexManager per ottenere gli indici
-	indexManager.getIndex(db, page, indexesPerPage, function(indexes){
+	indexManager.getIndex(db, page, indexesPerPage, function(data){
 	
-		var options = {};
-		//calcolo il numero di pagine per visualizzare gl indici ritornati
-		options.pages = Math.floor(indexes.length / indexesPerPage);
-		//controllo se il resto della divisione è >0 allora aggiungo una pagina in più
-		if((indexes.length  % indexesPerPage) > 0) options.pages++;
-		
 		//invio al client una lista di indici create con il JSonComposer
-		res.send(JSonComposer.createIndexesList(indexes, options));
+		res.send(JSonComposer.createIndexesList(data.indexes, data.options));
 	});	
 }
 

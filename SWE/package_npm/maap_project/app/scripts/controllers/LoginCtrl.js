@@ -14,7 +14,7 @@
  */
 'use strict';
 
-angular.module('maaperture').controller('LoginCtrl', function ($scope,$route,$cookieStore, $location,AuthService) {
+angular.module('maaperture').controller('LoginCtrl', function ($scope,$route,$cookieStore, $location, AuthService) {
     
 	$scope.loggedIn = $cookieStore.get("loggedIn");
 

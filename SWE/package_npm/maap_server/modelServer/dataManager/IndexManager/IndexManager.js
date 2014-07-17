@@ -290,15 +290,21 @@ exports.getIndex = function(db, page, indexesPerPage, callback) {
 		while(!done){require('deasync').sleep(100);}
 	}
 	
+	var answer = {};	
+	answer.options = {};
+	//calcolo il numero di pagine per visualizzare gl indici ritornati
+	answer.options.pages = Math.floor(result.length / indexesPerPage);
+	//controllo se il resto della divisione è >0 allora aggiungo una pagina in più
+	if((result.length  % indexesPerPage) > 0) answer.options.pages++;
+	
 	//restringo l'array in base al page e perpage
 	var skip = page * indexesPerPage;
 	var limit = indexesPerPage;
-	
-	result = result;
-	//TODO
-	
+	result = result.slice(skip, skip + limit);
+	answer.indexes = result;
+		
 	//passo alla callback l'array di indici
-	callback(result);
+	callback(answer);
 	
 }
 
