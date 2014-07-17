@@ -83,14 +83,6 @@ describe("IndexManager Unit Test: ", function() {
 	
 	describe("addQuery", function() {
 		
-		/*
-		it("", function() {
-			
-			
-			indexManager.addQuery(collection_name, select);
-			
-		});
-		*/
 		
 	});
 	
@@ -153,7 +145,6 @@ describe("IndexManager Unit Test: ", function() {
 		
 		});
 		
-		//TODO, here 
 		
 	});
 	
@@ -248,33 +239,6 @@ describe("IndexManager Unit Test: ", function() {
 		
 		});
 		
-		/*
-		it("deve ritornare false se la creazione dell'indice non ha successo", function() {
-			
-			indexManager.__set__('queryModel', {find: function(where, select){ return {lean: function(){return {exec: function(callback){callback(false, [] );} };} }; } } );
-			
-			var query_id = 'testIDquery';
-			var name_index = 'testIndexName';
-			
-			indexManager.createIndex(query_id, name_index, function(response){
-				expect(response).to.equal(false);
-			});
-		
-		});
-		
-		it("deve ritornare true se la creazione dell'indice ha successo", function() {
-			
-			indexManager.__set__('queryModel', {find: function(where, select){ return {lean: function(){return {exec: function(callback){callback(false, [] );} };} }; } } );
-			
-			var query_id = 'testIDquery';
-			var name_index = 'testIndexName';
-			
-			indexManager.createIndex(query_id, name_index, function(response){
-				expect(response).to.equal(true);
-			});
-		
-		});
-		*/	
 			
 	});
 	
@@ -304,37 +268,6 @@ describe("IndexManager Unit Test: ", function() {
 		
 		});
 		
-		/*
-		it("deve richiamare dropIndex passandogli il nome dell'indice da eliminare", function() {
-			
-			var dropIndex = function(){};
-			var spy = chai.spy(dropIndex);
-			
-			var db = {collection: function(collectionName){ return {dropIndex: function(indexName, callback){ callback(indexName);} } } };
-			var indexName = 'testIndice';
-			var collectionName = 'testCollection';
-			
-			indexManager.deleteIndex(db, indexName, collectionName, function(response){
-				expect(spy).to.have.been.called();
-			});
-		
-		});
-		
-		it("deve richiamare collection passandogli il nome della collection", function() {
-			
-			var dropIndex = function(){};
-			var spy = chai.spy(dropIndex);
-			
-			var db = {collection: function(collectionName){ return {dropIndex: function(indexName, callback){ callback(indexName);} } } };
-			var indexName = 'testIndice';
-			var collectionName = 'testCollection';
-			
-			indexManager.deleteIndex(db, indexName, collectionName, function(response){
-				expect(spy).to.have.been.called();
-			});
-		
-		});
-		*/
 		
 	});
 

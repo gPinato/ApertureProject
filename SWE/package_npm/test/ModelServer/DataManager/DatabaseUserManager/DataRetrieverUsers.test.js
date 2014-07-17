@@ -25,16 +25,6 @@ describe("DataRetrieverUsers Unit Test: ", function() {
 
 	describe("addUser", function() {
 		
-		/*it("inserimento utente deve essere eseguito con successo", function(done) {
-			
-			retriever.__set__('addUser.criteria', function(callback){callback(true);} );
-			
-			retriever.addUser('email','password',0,function(done){
-				expect(done).to.equal(true);
-			});
-		
-		});*/
-		
 	});
 
 	describe("getUserProfile", function() {
@@ -185,33 +175,6 @@ describe("DataRetrieverUsers Unit Test: ", function() {
 
 	describe("getUsersList", function() {
 
-	/*
-		it("getUsersList ", function() {
-			retriever.__set__('DB', {	
-			users: {
-						find: function(criteria, data, options){
-						
-									return {		
-												lean: function(){
-														return { exec: function(callback){callback(false, 1);} }
-												}
-											}
-								}
-					}
-			
-			});
-			
-			var column = ;
-			var order = ;
-			var page = ;
-			var perpage = ;
-			
-			retriever.getUsersList(column, order, page, perpage, function(result){
-				expect(result).to.equal(false);
-			});	
-			
-		});
-		*/
 
 	});
 
