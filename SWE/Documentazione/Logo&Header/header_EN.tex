@@ -1,0 +1,206 @@
+%questo file contiene impostazioni comuni per tutte i documenti
+
+%definizione packages utilizzati
+\documentclass[a4paper]{article}
+\usepackage[utf8x]{inputenc}
+\usepackage{enumitem}
+\usepackage[english]{babel}
+\usepackage{latexsym}
+\usepackage{xparse}
+\usepackage{float}
+\usepackage{subfloat}
+\usepackage{subfig}
+\usepackage{fancyhdr}
+\usepackage{eurofont}
+\usepackage{lastpage}
+\usepackage{graphicx}
+\usepackage{textcomp}
+\usepackage{booktabs}
+\usepackage{color}
+\usepackage{lscape}
+\usepackage{hyperref}
+%\usepackage[bookmarks=false]{hyperref}
+\hypersetup{colorlinks=true, linkcolor=black, anchorcolor=red, urlcolor=blue}
+\usepackage{longtable}
+\usepackage{tabularx}
+\usepackage{abstract}
+\usepackage{appendix}
+\usepackage{multicol}
+\usepackage{bmpsize}
+\usepackage[all]{hypcap}
+\usepackage{titlesec}
+\usepackage{indentfirst}
+\usepackage{lipsum,titletoc}
+\usepackage{scrextend}
+\usepackage{listings}
+
+
+
+
+%\setcounter{secnumdepth}{4}
+
+%****************INIZIO GESTIONE SUBSECTION MULTIPLE
+\makeatletter
+\newcommand\level[1]{%
+\ifcase#1\relax\expandafter\chapter\or
+\expandafter\section\or
+\expandafter\subsection\or
+\expandafter\subsubsection\else
+\def\next{\@level{#1}}\expandafter\next
+\fi}
+\newcommand{\@level}[1]{%
+\@startsection{level#1}
+{#1}
+{\z@}%
+{-3.25ex\@plus -1ex \@minus -.2ex}%
+{1.5ex \@plus .2ex}%
+{\normalfont\normalsize\bfseries}}
+
+\newdimen\@leveldim
+\newdimen\@dotsdim
+{\normalfont\normalsize
+\sbox\z@{0}\global\@leveldim=\wd\z@
+\sbox\z@{.}\global\@dotsdim=\wd\z@
+}
+
+\newcounter{level4}[subsubsection]
+\@namedef{thelevel4}{\thesubsubsection.\arabic{level4}}
+\@namedef{level4mark}#1{}
+\def\l@section{\@dottedtocline{1}{0pt}{\dimexpr\@leveldim*4+\@dotsdim*1+6pt\relax}}
+\def\l@subsection{\@dottedtocline{2}{0pt}{\dimexpr\@leveldim*5+\@dotsdim*2+6pt\relax}}
+\def\l@subsubsection{\@dottedtocline{3}{0pt}{\dimexpr\@leveldim*6+\@dotsdim*3+6pt\relax}}
+\@namedef{l@level4}{\@dottedtocline{4}{0pt}{\dimexpr\@leveldim*7+\@dotsdim*4+6pt\relax}}
+
+\count@=4
+\def\@ncp#1{\number\numexpr\count@+#1\relax}
+\loop\ifnum\count@<100
+\begingroup\edef\x{\endgroup
+\noexpand\newcounter{level\@ncp{1}}[level\number\count@]
+\noexpand\@namedef{thelevel\@ncp{1}}{%
+\noexpand\@nameuse{thelevel\@ncp{0}}.\noexpand\arabic{level\@ncp{1}}}
+\noexpand\@namedef{level\@ncp{1}mark}####1{}%
+\noexpand\@namedef{l@level\@ncp{1}}%
+{\noexpand\@dottedtocline{\@ncp{1}}{0pt}{\the\dimexpr\@leveldim*\@ncp{5}+\@dotsdim*\@ncp{0}\relax}}}%
+\x
+\advance\count@\@ne
+\repeat
+\makeatother
+\setcounter{secnumdepth}{100}
+\setcounter{tocdepth}{100}
+%****************FINE GESTIONE SUBSECTION MULTIPLE
+
+%impostazioni relative alla visualizzazione delle section
+%nell'indice
+\titlecontents{section}
+[0pt]%left indent
+{\bfseries}
+{\contentslabel{2.3em}}
+{\hspace*{-2.3em}}
+{\hfill\contentspage}
+[]%separator
+
+
+\oddsidemargin=.15in
+\evensidemargin=.15in
+\textwidth=6in
+\topmargin=-.5in
+\parindent=0in
+\headheight=1in
+\DeclareMathSizes{10}{10}{10}{10} %per piano qualifica
+\pagestyle{fancy}
+\lhead{
+\bfseries {\Large \TipoDocumento}\\
+\bfseries Versione: \Versione\\
+}
+\chead{}
+\lhead{
+\includegraphics[scale=0.455]{../Logo&Header/apertureHead.png}
+}
+\lfoot{\bfseries \TipoDocumento{} v\Versione}
+\cfoot{}
+\rfoot{\thepage\ of \mypageref{LastPage}}
+\newcommand{\mypageref}[1]{
+\hypersetup{linkcolor=black}\pageref{#1}\hypersetup{linkcolor=black}}
+%\userpackage{lipsum}
+\renewcommand{\footrulewidth}{0.4pt}
+
+%definizioni comandi comuni utilizzati
+\newcommand{\numref}[1]{\textsl{\nameref{#1} (\ref{#1})}}
+\newcommand{\NomeGruppo}{Aperture Software}
+\newcommand{\Progetto}{MaaP: MongoDB as an admin Platform}
+\newcommand{\Prop}{CoffeeStrap}
+
+%definizione del nuovo environment per avere definizioni su più righe
+\newenvironment{mldescription}{%
+  \begin{addmargin}[2em]{1em}
+    \setlength{\parindent}{-1em}%
+    \newcommand*{\mlitem}[1]{\par\textbf{##1}\quad}\indent
+}{%
+  \end{addmargin}
+  \medskip
+}
+
+%definizione tecnologie
+\newcommand{\Node}{Node.js}
+\newcommand{\NodeJS}{Node.js}
+\newcommand{\Nodejs}{Node.js}
+
+\newcommand{\mongodb}{MongoDB}
+
+%tanti sub quanti ne vogliamo! :)
+\newcommand{\subsubsubsection}{\level{4}}
+\newcommand{\subsubsubsubsection}{\level{5}}
+\newcommand{\subsubsubsubsubsection}{\level{6}}
+\newcommand{\subsubsubsubsubsubsection}{\level{7}}
+\newcommand{\subsubsubsubsubsubsubsection}{\level{8}}
+
+
+%definizione comando per parola glossario
+\newcommand{\gloss}[1]{\emph{#1}\ped{\emph{\tiny{G}}}}
+
+\newcommand{\grassetto}{\textbf}
+
+%per inserire immagini
+\newcommand{\immagine}[2]{
+\begin{center}
+\begin{figure}[H]
+\includegraphics[width=\textwidth]{{{#1}}}
+\caption{#2}
+\label{#1}
+\end{figure}
+\end{center}
+}
+
+\newcommand{\Glossario}{
+Al fine di evitare ogni ambiguità nella comprensione del linguaggio utilizzato nel presente documento e, in generale, nella documentazione fornita dal gruppo \NomeGruppo{}, ogni termine tecnico di difficile comprensione o di necessario approfondimento verrà inserito nel documento \emph{Glossario\_{}v\versioneGlossario{}.pdf}.\\
+Saranno in esso definiti e descritti tutti i termini in corsivo e allo stesso tempo marcati da una lettera "G" maiuscola in pedice nella documentazione fornita.
+}
+
+\newcommand{\Prodotto}{
+Lo scopo del prodotto è produrre un \gloss{framework} per generare interfacce web di amministrazione dei dati di business basato sullo stack \gloss{\Nodejs{}} e \gloss{\mongodb{}}.\\
+L'obiettivo è quello di semplificare il lavoro allo \gloss{sviluppatore} che dovrà rispondere in modo rapido e standard alle richieste degli esperti di \gloss{business}.
+}
+
+%inizio pagina del documento
+\begin{document}
+\thispagestyle{empty}
+
+\begin{center}\centerline{
+%inserisco il logo grande della prima pagina
+\includegraphics[scale=0.8]{../Logo&Header/logo.png}}
+
+%metto il link dell'email sotto al logo
+%{\href{mailto:ApertureSWE@gmail.com}{\color[rgb]{0.39,0.37,0.38}%ApertureSWE@gmail.com}}\\ [3pc]
+
+\vspace{0.5in}
+
+%titolo del progetto
+{\Huge {\Progetto}}\\[.5pc]
+
+\underline{\hspace{6in}}\\[8pc]
+
+{\Huge {\TipoDocumento}}\\[1pc]
+%{\emph{Versione \Versione}}\\
+\end{center}
+
+%\vspace{.05in}
