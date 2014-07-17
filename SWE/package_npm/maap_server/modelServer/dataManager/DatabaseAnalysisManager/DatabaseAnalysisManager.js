@@ -285,8 +285,6 @@ exports.getIndexesList = function(req, res) {
 	
 	var page = req.query.page;
 	
-	console.log('s:' + indexesPerPage + ' ' + page);
-	
 	//chiamo getIndex di indexManager per ottenere gli indici
 	indexManager.getIndex(db, page, indexesPerPage, function(data){
 	

@@ -169,30 +169,30 @@ describe("IndexManager Unit Test: ", function() {
 			index3Name: 'fieldsIndex3'
 		}
 		var db = {collection: function(collectionName){ return {indexInformation: function(callback){callback(false, indexes );} }; } };
-		var page = 2;
+		var page = 0;
 		var indexesPerPage = 10;
 						
 		it("deve ritornare la lista degli indici totali senza gli indici di default _id_", function() {
 			indexManager.getIndex(db, page, indexesPerPage, function(response){
-				expect(response.length).to.equal(2*3);
+				expect(response.indexes.length).to.equal(2*3);
 			});
 		});
 		
 		it("deve ritornare il nome dell'indice", function() {
 			indexManager.getIndex(db, page, indexesPerPage, function(response){
-				expect(response[0].indexName).to.equal('index1Name');
+				expect(response.indexes[0].indexName).to.equal('index1Name');
 			});
 		});
 		
 		it("deve ritornare il nome della collection a cui l'indice si riferisce", function() {
 			indexManager.getIndex(db, page, indexesPerPage, function(response){
-				expect(response[0].collectionName).to.equal('col1');
+				expect(response.indexes[0].collectionName).to.equal('col1');
 			});
 		});
 		
 		it("deve ritornare la lista di campi a cui l'indice si riferisce", function() {
 			indexManager.getIndex(db, page, indexesPerPage, function(response){
-				expect(response[0].indexFields).to.equal('fieldsIndex1');
+				expect(response.indexes[0].indexFields).to.equal('fieldsIndex1');
 			});
 		});
 			

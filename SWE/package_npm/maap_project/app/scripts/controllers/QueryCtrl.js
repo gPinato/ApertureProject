@@ -35,11 +35,7 @@ angular.module('maaperture').controller('QueryCtrl', function ($scope, $route, $
     $scope.getData = function () {
 
         QueryService.query({
-		
-				order: $scope.current_sort,
-				column: $scope.column_original_name[$scope.current_sorted_column],
-				page: $scope.current_page
-				
+				page: $scope.current_page				
            }).$promise.then( function success(response) {
 		   
                 $scope.labels = response[0];

@@ -142,7 +142,7 @@ describe("DatabaseAnalysisManager Unit Test: ", function() {
 		it("deve rispondere con codice 404 se il campo documents e' indefinito", function() {
 			
 			var data = {labels: 'labels', options: 'options'};
-			manager.__set__('retriever', {getCollectionIndex: function(collection_name, column, order, page, callback){callback(data);}} );
+			manager.__set__('retriever', {getCollectionIndex: function(collection_name, column, order, page, callback){callback(-1);}} );
 		
 			var req = {config: {}, params: {col_id: 'colName'}, query:{column: 'column', order: 'asc', page: 0}};
 						
@@ -426,72 +426,16 @@ describe("DatabaseAnalysisManager Unit Test: ", function() {
 		
 		it("deve ritornare la lista degli indici creata dal JSonComposer", function() {
 			
-			var indexes = ['index1','index2'];
-			manager.__set__('indexManager', {getIndex: function(db, page, indexesPerPage, callback){callback(indexes);}} );
+			var _indexes = ['index1','index2'];
+			manager.__set__('indexManager', {getIndex: function(db, page, indexesPerPage, callback){callback({indexes: _indexes, options: {pages: 2}});}} );
 			manager.__set__('JSonComposer', {createIndexesList: function(indexes, options){return indexes;}} );
 			
-			var req = {dataDB: {}, config: {adminConfig: {indexesPerPage: 10}} };
+			var req = {query:{page: 0}, dataDB: {}, config: {adminConfig: {indexesPerPage: 10}} };
 			
 			manager.getIndexesList(req, {send: function(response){
 				expect(response.length).to.equal(2);
 				expect(response[0]).to.equal('index1');
 				expect(response[1]).to.equal('index2');
-			}});
-		
-		});	
-
-		it("deve calcolare il numero di pagine intero", function() {
-			
-			var indexes = ['index1','index2','index3'];
-			manager.__set__('indexManager', {getIndex: function(db, page, indexesPerPage, callback){callback(indexes);}} );
-			manager.__set__('JSonComposer', {createIndexesList: function(indexes, options){return options;}} );
-			
-			var req = {dataDB: {}, config: {adminConfig: {indexesPerPage: 3}} };
-			
-			manager.getIndexesList(req, {send: function(response){
-				expect(response.pages).to.equal(1);
-			}});
-		
-		});
-		
-		it("deve calcolare il numero di pagine intero", function() {
-			
-			var indexes = ['index1','index2','index3'];
-			manager.__set__('indexManager', {getIndex: function(db, page, indexesPerPage, callback){callback(indexes);}} );
-			manager.__set__('JSonComposer', {createIndexesList: function(indexes, options){return options;}} );
-			
-			var req = {dataDB: {}, config: {adminConfig: {indexesPerPage: 3}} };
-			
-			manager.getIndexesList(req, {send: function(response){
-				expect(response.pages).to.equal(1);
-			}});
-		
-		});
-		
-		it("deve calcolare il numero di pagine intero con valore di default", function() {
-			
-			var indexes = ['index1','index2','index3'];
-			manager.__set__('indexManager', {getIndex: function(db, page, indexesPerPage, callback){callback(indexes);}} );
-			manager.__set__('JSonComposer', {createIndexesList: function(indexes, options){return options;}} );
-			
-			var req = {dataDB: {}, config: {adminConfig: {}} };
-			
-			manager.getIndexesList(req, {send: function(response){
-				expect(response.pages).to.equal(1);
-			}});
-		
-		});
-
-		it("deve calcolare il numero di pagine arrotondato per eccesso", function() {
-			
-			var indexes = ['index1','index2','index3'];
-			manager.__set__('indexManager', {getIndex: function(db, page, indexesPerPage, callback){callback(indexes);}} );
-			manager.__set__('JSonComposer', {createIndexesList: function(indexes, options){return options;}} );
-			
-			var req = {dataDB: {}, config: {adminConfig: {indexesPerPage: 2}} };
-			
-			manager.getIndexesList(req, {send: function(response){
-				expect(response.pages).to.equal(2);
 			}});
 		
 		});		
