@@ -582,11 +582,11 @@ Per ultima cosa, il \grassetto{@dispatcher} gestisce eventuali richieste di riso
     Intercetta la richiesta di inserire un indice nel database di analisi. Verifica che essa sia autenticata come amministratore e richiama il metodo \textit{createIndex} del \grassetto{@datamanager}. I dati associati alla richiesta \textit{PUT} contengono le informazioni del nuovo indice da inserire nel Database nella sezione degli indici. 
     \end{description}
     
-    \mlitem{delete('/api/indexes/:index\_name', passport.checkAuthenticatedAdmin,\\datamanager.deleteIndex)} \hfill 
+    \mlitem{delete('/api/indexes/:col\_name/:index\_name', passport.checkAuthenticatedAdmin,\\datamanager.deleteIndex)} \hfill 
  \begin{description}
     \item[Parametri] \hfill
      \begin{description}
-      \item['/api/indexes/:index\_name'] \hfill \\
+      \item['/api/indexes/:col\_name/:index\_name'] \hfill \\
       Stringa contenente l'indirizzo della API da richiamare.
       \item[passport.checkAuthenticatedAdmin] \hfill \\
       Funzione di \grassetto{@passport} che verifica che l'utente sia autenticato e che il suo livello di accesso sia "Amministratore".
@@ -598,9 +598,43 @@ Per ultima cosa, il \grassetto{@dispatcher} gestisce eventuali richieste di riso
    \end{description}
  
  \end{mldescription} 
- 
+ \item[Registrazione nuovo utente per l'admin]
+ \begin{mldescription}
+  \mlitem{put('/api/signup', passport.checkAuthenticatedAdmin, usermanager.userSignup,function(req,res){res.send(200);})}
+  \begin{description}
+     \item[Parametri] \hfill
+      \begin{description}
+       \item['/api/signup'] \hfill \\
+       Stringa contenente l'indirizzo della API da richiamare.
+       \item[passport.checkAuthenticatedAdmincated]
+       Funzione di \grassetto{@passport} che verifica che l'utente sia autenticato e che il suo livello di accesso sia "Amministratore".
+       \item[usermanager.userSignup] \hfill \\
+       Callback da richiamare al termine dell'autenticazione.
+       \item[function(req,res){res.send(200);}] \hfill \\
+       Callback che risponde alla richiesta HTTP del client con codice 200 ovvero successo.
+      \end{description}
+     \item[Descrizione]
+     Intercetta la richiesta di inserire un nuovo utente Admin. Verifica che essa sia autenticata come amministratore e richiama il metodo \textit{userSignup} del \grassetto{@usermanager} e alla fine invia la risposta di successo al Client.
+  \end{description}
+ \end{mldescription}
+  
  \item[Gestione Login]
  \begin{mldescription}
+ \mlitem{post('/api/forgot', passport.checkNotAuthenticated, passport.forgotPassword)}
+   \begin{description}
+      \item[Parametri] \hfill
+       \begin{description}
+        \item['/api/forgot'] \hfill \\
+        Stringa contenente l'indirizzo della API da richiamare.
+        \item[passport.checkNotAuthenticated]
+        Funzione di \grassetto{@passport} che verifica che l'utente non sia autenticato.
+        \item[passport.forgotPassword] \hfill \\
+        Callback da richiamare al termine dell'autenticazione.
+       \end{description}
+      \item[Descrizione]
+      Gestisce la richiesta di recupero della password nel caso in cui sia stata dimenticata. La condizione per richiedere questa informazione è che l'utente non sia autenticato, da qui la chiamata alla funzione \textit{passport.checkNotAuthenticated}. Nel caso la chiamata alla precedente funzione abbia successo, viene richiamato il metodo \textit{forgotPassword} di \grassetto{@passport}.
+   \end{description}
+   
  \mlitem{post('/api/check/email', passport.checkNotAuthenticated, usermanager.checkMail)}
  \begin{description}
     \item[Parametri] \hfill
@@ -616,7 +650,7 @@ Per ultima cosa, il \grassetto{@dispatcher} gestisce eventuali richieste di riso
     Gestisce la richiesta di controllo della presenza di una particolare email già registrata al sistema. La condizione per richiedere questa informazione è che l'utente non sia autenticato, da qui la chiamata alla funzione \textit{passport.checkNotAuthenticated}. Nel caso la chiamata alla precedente funzione abbia successo, viene richiamato il metodo \textit{checkMail} di \grassetto{@DatabaseAnalysisManager}.
  \end{description}
  
- \mlitem{post('/api/signup', passport.checkNotAuthenticated, usermanager.userSignup)}
+\mlitem{post('/api/signup', passport.checkNotAuthenticated, usermanager.userSignup,passport.authenticate, function(req,res){res.send(200););})}
  \begin{description}
     \item[Parametri] \hfill
      \begin{description}
@@ -625,23 +659,14 @@ Per ultima cosa, il \grassetto{@dispatcher} gestisce eventuali richieste di riso
       \item[passport.checkNotAuthenticated]
       Funzione di \grassetto{@passport} che verifica che l'utente non sia autenticato.
       \item[usermanager.userSignup] \hfill \\
-      Callback da richiamare al termine dell'autenticazione.
+      Callback da richiamare per registrare l'utente;
+      \item[passport.authenticate] \hfill \\
+      Callback da richiamare per eseguire l'autenticazione;
+      \item[function(req,res){res.send(200););}] \hfill \\
+      Callback da richiamare al termine dell'autenticazione per inviare una risposta al server.
      \end{description}
     \item[Descrizione]
-    Gestisce la richiesta di registrazione da parte di un utente non autenticato. Se l'utente associato alla richiesta non è autenticato, viene richiamato il metodo \textit{userSignup} di \grassetto{@DatabaseAnalysisManager}.
- \end{description}
- 
- \mlitem{get('/loggedin', function(req, res) \{ res.send(req.isAuthenticated() ? req.user : '0'); \})}
- \begin{description}
-  \item[Parametri]
-   \begin{mldescription}
-    \mlitem{'/loggedin'} \hfill \\
-    Stringa contenente l'indirizzo della API da richiamare.
-    \mlitem{function(req, res) \{ res.send(req.isAuthenticated() ? req.user : '0'); \}} \hfill \\
-    Funzione anonima che richiama il metodo isAuthenticated sulla richiesta HTTP. Se il metodo ritorna valore booleano \textbf{true}, viene ritornato al  il proprio campo \textit{user}, altrimenti ritorna 0.
-   \end{mldescription}
-  \item[Descrizione] \hfill \\
- Gestisce la richiesta di controllo dell'avvenuta autenticazione di un utente. Viene richiamato sulla richiesta HTTP il metodo locale \textit{isAuthenticated()}. Se l'utente è autenticato, gli vengono inviate le proprie informazioni associate, altrimenti viene ritornato 0.
+    Gestisce la richiesta di registrazione da parte di un utente non autenticato. Se l'utente associato alla richiesta non è autenticato, viene richiamato il metodo \textit{userSignup} di \grassetto{@DatabaseAnalysisManager} per creare l'utente, il metodo \textit{authenticate} di \grassetto{@passport} per eseguire l'autenticazione e poi viene inviata la risposta di successo al client.
  \end{description}
  
  \mlitem{post('/api/login', passport.checkNotAuthenticated, passport.authenticate, function(req, res) \{ res.send(req.user); \})}
@@ -661,7 +686,7 @@ Per ultima cosa, il \grassetto{@dispatcher} gestisce eventuali richieste di riso
  Gestisce le richieste di autenticazione al Server. L'utente che richiede questa operazione non deve essere autenticato ma deve essere presente nel database degli utenti presente nel Server. Nel caso di risposta affermativa ad entrambe le precedenti condizioni, viene creata una nuova sessione per la richiesta HTTP.
  \end{description}
  
- \mlitem{get('/api/logout', passport.checkAuthenticated, function(req, res) \{ req.logout(); res.send(200); \})}
+\mlitem{get('/api/logout', passport.checkAuthenticated, function(req, res) \{ req.session.destroy(function(err){ res.send(200);}) \})}
  \begin{description}
   \item[Parametri]
    \begin{mldescription}
@@ -669,8 +694,8 @@ Per ultima cosa, il \grassetto{@dispatcher} gestisce eventuali richieste di riso
     Stringa contenente l'indirizzo della API da richiamare.
     \mlitem{passport.checkAuthenticated} \hfill \\
     Funzione di \grassetto{@passport} che verifica che l'utente sia autenticato.
-    \mlitem{function(req, res) \{ req.logout(); res.send(200); \}} \hfill \\
-    Funzione anonima che effettua la disconnessione della richiesta HTTP \textit{req} e manda al Client il codice \textit{http} 200.
+    \mlitem{function(req, res) \{ req.session.destroy(function(err){ res.send(200);}); \}} \hfill \\
+    Funzione anonima che effettua la distruzione della sessione della richiesta HTTP \textit{req} e manda al Client il codice \textit{http} 200 di successo.
    \end{mldescription}
   \item[Descrizione] \hfill \\
  Gestisce le richieste di disconnessione dal sistema. Per effettuare questa operazione, l'utente deve essere autenticato. In caso affermativo, viene richiesto il \textit{logout()} della richiesta HTTP.
@@ -766,6 +791,7 @@ Controller che si occupa dell'inizializzazione e gestione del modulo passort per
 \item[Dipendendenze] \hfill
   \begin{itemize}
    \item passport;
+   \item nodemailer;
    \item passport-local.Strategy;
    \item @MongooseDBFramework.
   \end{itemize}
@@ -787,7 +813,22 @@ Controller che si occupa dell'inizializzazione e gestione del modulo passort per
           \item[Descrizione] \hfill \\
           Inizializza il controller \grassetto{@passport}, inizializzando e avviando la sessione del modulo \grassetto{@passport} e definisce le strategie di autenticazione.
             \end{description}
-            
+    
+     \item[forgotPassword(req, res, next)] \hfill 
+          \begin{description}
+          \item[Parametri] \hfill
+          \begin{description}
+          \item[req] \hfill \\
+          	         Oggetto contenente i parametri e le informazioni della richiesta HTTP del Client.
+          	         \item[res] \hfill \\
+          	         Oggetto duale a \textit{req} su cui invocare i metodi per inviare informazioni al Client richiedente.
+                       \item[next] \hfill \\
+                       Funzione da invocare nel caso di successo.
+          \end{description}
+          \item[Descrizione] \hfill \\
+          Recupera la password nel db utenti in base all'username indicato nella request ed invia la mail contenente username e password all'utente.
+          \end{description}
+                 
      \item[checkAuthenticatedAdmin(req, res, next)] \hfill 
           \begin{description}
             \item[Parametri] \hfill
@@ -1028,10 +1069,75 @@ Prepara le query da effettuare e contatta il \grassetto{@DataRetrieverAnalysis} 
  \item[Descrizione] \hfill \\
  Esegue una chiamata asincrona al metodo \textit{removeDocument} di \grassetto{@DataRetrieverAnalysis} per modificare un Document esistente nel Server. Nel caso la rimozione effettuata dal \grassetto{@DataRetrieverAnalysis} vada a buon fine, viene ritornato al Client un codice \textit{http} di successo "200", altrimenti viene mandato il codice di errore \textit{http} 404.
  \end{description}
+\item[resetQueries(req, res)] \hfill 
+  \begin{description}
+  \item[Parametri] \hfill
+   \begin{description}
+    \item[req] \hfill \\
+    Oggetto contenente i parametri e le informazioni della richiesta HTTP del Client.
+    \item[res] \hfill \\
+    Oggetto duale a \textit{req} su cui invocare i metodi per inviare informazioni al Client richiedente.
+   \end{description}
+  \item[Descrizione] \hfill \\
+  Esegue una chiamata asincrona al metodo \textit{resetQueries} di \grassetto{@indexManager} per eliminare una lista di query. Nel caso la rimozione effettuata dall' \grassetto{@indexManager} vada a buon fine, viene ritornato al Client un codice \textit{http} di successo "200", altrimenti viene mandato il codice di errore \textit{http} 404.
+  \end{description}
  
+ \item[getTopQueries(req, res)] \hfill 
+   \begin{description}
+   \item[Parametri] \hfill
+    \begin{description}
+     \item[req] \hfill \\
+     Oggetto contenente i parametri e le informazioni della richiesta HTTP del Client.
+     \item[res] \hfill \\
+     Oggetto duale a \textit{req} su cui invocare i metodi per inviare informazioni al Client richiedente.
+    \end{description}
+   \item[Descrizione] \hfill \\
+   Esegue una chiamata asincrona al metodo \textit{getTopQueries} di \grassetto{@indexManager} per prelevare la lista di query più utilizzate. Nel caso la richiesta effettuata al \grassetto{@indexManager} vada a buon fine, viene ritornato al Client un codice \textit{http} di successo "200", altrimenti viene mandato il codice di errore \textit{http} 404.
+   \end{description}
+   
+    \item[getIndexesList(req, res)] \hfill 
+      \begin{description}
+      \item[Parametri] \hfill
+       \begin{description}
+        \item[req] \hfill \\
+        Oggetto contenente i parametri e le informazioni della richiesta HTTP del Client.
+        \item[res] \hfill \\
+        Oggetto duale a \textit{req} su cui invocare i metodi per inviare informazioni al Client richiedente.
+       \end{description}
+      \item[Descrizione] \hfill \\
+      Esegue una chiamata asincrona al metodo \textit{getIndex} di \grassetto{@indexManager} per ottenere una lista di indici. Tale lista viene dettagliata utilizzando il metodo \textit{createIndexesList} di \grassetto{@JsonComposer} e viene ritornata al client.
+      \end{description}
+      
+      \item[createIndex(req, res)] \hfill 
+           \begin{description}
+           \item[Parametri] \hfill
+            \begin{description}
+             \item[req] \hfill \\
+             Oggetto contenente i parametri e le informazioni della richiesta HTTP del Client.
+             \item[res] \hfill \\
+             Oggetto duale a \textit{req} su cui invocare i metodi per inviare informazioni al Client richiedente.
+            \end{description}
+           \item[Descrizione] \hfill \\
+           Esegue una chiamata asincrona al metodo \textit{createIndex} di \grassetto{@indexManager} per creare l' indice. Nel caso la richiesta effettuata al \grassetto{@indexManager} vada a buon fine, viene ritornato al Client un codice \textit{http} di successo "200", altrimenti viene mandato il codice di errore \textit{http} 404.
+           \end{description}
+           
+      \item[deleteIndex(req, res)] \hfill 
+                 \begin{description}
+                 \item[Parametri] \hfill
+                  \begin{description}
+                   \item[req] \hfill \\
+                   Oggetto contenente i parametri e le informazioni della richiesta HTTP del Client.
+                   \item[res] \hfill \\
+                   Oggetto duale a \textit{req} su cui invocare i metodi per inviare informazioni al Client richiedente.
+                  \end{description}
+                 \item[Descrizione] \hfill \\
+                 Esegue una chiamata asincrona al metodo \textit{deleteIndex} di \grassetto{@indexManager} per eliminare l' indice. Nel caso la richiesta effettuata al \grassetto{@indexManager} vada a buon fine, viene ritornato al Client un codice \textit{http} di successo "200", altrimenti viene mandato il codice di errore \textit{http} 404.
+                 \end{description}
+  
+  
  \end{description}
  
-\end{description} %forse è in più.
+\end{description} %forse è in più.}
 
 
 \subparagraph{@DataRetrieverAnalysis}
@@ -1531,18 +1637,18 @@ Inoltre dialoga direttamente con \grassetto{@MongooseDBFramework} per l'esecuzio
  				Vengono estratti i dati da aggiornare dalla richiesta HTTP \textit{req} inerenti all'utente da aggiornare. Successivamente viene effettuata la query di aggiornamento sul modello del database utenti estratto. Infine viene richiamata la funzione \textit{callback} con argomento \textbf{true} se l'aggiornamento è andato a buon fine, l'argomento è \textbf{false} altrimenti.
  			\end{description}
  			
- 		\mlitem{removeUser(email, callback)} \hfill
- 			\begin{description}
- 				\item[Parametri] \hfill
- 					\begin{description}
- 						\item[email] \hfill \\
- 							Stringa contenente l'indirizzo email dell'utente che si desidera eliminare dal database.
- 						\item[callback] \hfill \\
- 							Funzione da richiamare alla fine dell'eliminazione del profilo utente.
- 					\end{description}
- 				\item[Descrizione] \hfill \\
- 				Viene estratto il modello degli utenti su cui verrà invocato il metodo \textit{remove} per eliminare l'utente con campo email uguale al parametro \textit{email} passato alla funzione. Al termine della query di eliminazione, viene richiamata la funzione \textit{callback} con argomento \textbf{true} se l'aggiornamento è andato a buon fine, l'argomento è \textbf{false} altrimenti.
- 			\end{description}
+ 		\mlitem{removeUser(id, callback)} \hfill
+ 		 			\begin{description}
+ 		 				\item[Parametri] \hfill
+ 		 					\begin{description}
+ 		 						\item[id] \hfill \\
+ 		 							Stringa contenente l'indentificativo dell'utente che si desidera eliminare dal database.
+ 		 						\item[callback] \hfill \\
+ 		 							Funzione da richiamare alla fine dell'eliminazione del profilo utente.
+ 		 					\end{description}
+ 		 				\item[Descrizione] \hfill \\
+ 		 				Viene estratto il modello degli utenti su cui verrà invocato il metodo \textit{remove} per eliminare l'utente con campo email uguale al parametro \textit{email} passato alla funzione. Al termine della query di eliminazione, viene richiamata la funzione \textit{callback} con argomento \textbf{true} se l'aggiornamento è andato a buon fine, l'argomento è \textbf{false} altrimenti.
+ 		 			\end{description}
  			
  	\end{mldescription}
 \end{description}
@@ -1554,8 +1660,19 @@ Package realizzato per creare e gestire gli indici utilizzati nel database di an
 \begin{description}
  \item[Descrizione] \hfill \\
  Modulo del ModelServer che si occupa di creare e gestire gli indici utilizzati nel database di analisi. 
+ \item[Dipendendenze] \hfill
+   \begin{itemize}
+    \item @MongooseDBAnalysis;
+    \item @MongooseDBFramework.query;
+    \item @MongooseDBFramework.connection.
+   \end{itemize}
  \item[Metodi]
   \begin{mldescription}
+  \mlitem{getCollectionsListFile()}
+     	\begin{description}
+     	 \item[Descrizione] \hfill \\
+     	 Recupera il file con la lista delle collection e la restituisce in formato Json.
+     	\end{description}
    \mlitem{getModel(collection\_name)}
 	\begin{description}
 	 \item[Parametro] \hfill
@@ -1626,34 +1743,60 @@ Package realizzato per creare e gestire gli indici utilizzati nel database di an
 	 Richiede l'intera Collection delle query al database di analisi. Calcola il sottoinsieme di query da visualizzare tenendo conto dell'indicatore della pagina da visualizzare e dagli elementi da visualizzare per pagina. Esegue quindi una nuova query per ottenere l'insieme delle query che rispettano suddetti parametri. Se avviene un errore o se non esistono query che rispettano i parametri scelti, viene passato alla \textit{callback} un oggetto vuoto. Se invece la ricerca ha avuto esito positivo, viene richiamata la \textit{callback} passando come parametro l'insieme delle query che soddisfano i requisiti. 
 	\end{description}	    
     
-   %\mlitem{getIndex(callback)}
-    %\begin{description}
-	 %\item[Parametri]			MOMENTANEAMENTE FUORI USO
-	 %\item[Dipendenza]
-	 %\item[Descrizione]
-	%\end{description}	    
+   \mlitem{getIndex(db, page, indexesPerPage, callback)}
+          \begin{description}
+      	 \item[Parametri] \hfill
+      	  \begin{description}
+      	   \item[db] \hfill \\
+      	   Il database su cui cercare gli indici;
+      	   \item[page] \hfill \\
+      	   Stringa contenente il numero di pagina da visualizzare;
+      	   \item[indexesPerPage] \hfill \\
+      	   Stringa contenente il numero di indici da visualizzare per pagina;
+      	   \item[callback] \hfill \\
+      	   Funzione da richiamare alla fine dell'eliminazione dell'indice.
+      	  \end{description}
+      	 \item[Descrizione] \hfill \\
+      	 Per ogni collection vengono richiesti con l'uso di \textit{indexInformation} i relativi indici e si inseriscono i risultati nell'array result. Viene chiamata la funzione \textit{callback} con argomento \textbf{result} ovvero l'array di risultati degli indici.  	 
+      	\end{description} 	   
     
-   \mlitem{createIndex(query\_id,  name\_index, callback)}
-    \begin{description}
-	 \item[Parametri] \hfill
-	  \begin{description}
-	   \item[query\_id] \hfill \\
-	   Id identificativo della query da associare all'indice da creare.
-	   \item[name\_index] \hfill \\
-	   Stringa contenente il nome dell'indice da creare.
-	   \item[callback] \hfill \\
-	   Funzione da richiamare alla fine della creazione dell'indice.
-	  \end{description}
-	 \item[Dipendenze] \hfill
-	  \begin{itemize}
-	   \item @MongooseDBFramework;	   
-	   \item @MongooseDBFramework.query.
-	   \item schema della Collection su cui la query di cui si vuole creare l'indice esegue le richieste.
-	  \end{itemize}
-	 \item[Descrizione] \hfill \\
-	 Viene richiesto il modello della query, grazie a cui viene cercata nel database di analisi la query con campo "\_id" uguale al parametro \textit{\_id}. Se la query non esiste o si riscontrano problemi di accesso al database, viene chiamata la funzione \textit{callback} con argomento \textbf{false}. Altrimenti viene caricato lo schema della Collection su cui la query viene eseguita. Sulla collection viene creato l'indice voluto. Se l'operazione di creazione non ha successo, viene viene chiamata la funzione \textit{callback} con argomento \textbf{false}, altrimenti viene chiamata la \textit{callback} con argomento \textbf{true}.
-	 
-	\end{description}	    
+    \mlitem{createIndex(query\_id,  name\_index, callback)}
+       \begin{description}
+   	 \item[Parametri] \hfill
+   	  \begin{description}
+   	   \item[query\_id] \hfill \\
+   	   Id identificativo della query da associare all'indice da creare.
+   	   \item[name\_index] \hfill \\
+   	   Stringa contenente il nome dell'indice da creare.
+   	   \item[callback] \hfill \\
+   	   Funzione da richiamare alla fine della creazione dell'indice.
+   	  \end{description}
+   	 \item[Dipendenze] \hfill
+   	  \begin{itemize}
+   	   \item @MongooseDBFramework;	   
+   	   \item @MongooseDBFramework.query.
+   	   \item schema della Collection su cui la query di cui si vuole creare l'indice esegue le richieste.
+   	  \end{itemize}
+   	 \item[Descrizione] \hfill \\
+   	 Viene richiesto il modello della query, grazie a cui viene cercata nel database di analisi la query con campo "\_id" uguale al parametro \textit{\_id}. Se la query non esiste o si riscontrano problemi di accesso al database, viene chiamata la funzione \textit{callback} con argomento \textbf{false}. Altrimenti viene caricato lo schema della Collection su cui la query viene eseguita. Sulla collection viene creato l'indice voluto. Se l'operazione di creazione non ha successo, viene chiamata la funzione \textit{callback} con argomento \textbf{false}, altrimenti viene chiamata la \textit{callback} con argomento \textbf{true}.
+   	\end{description}	    
+      
+      \mlitem{deleteIndex(db, indexName, collectionName, callback)}
+          \begin{description}
+      	 \item[Parametri] \hfill
+      	  \begin{description}
+      	   \item[db] \hfill \\
+      	   Il database su cui cercare gli indici;
+      	   \item[indexName] \hfill \\
+      	   Stringa contenente il nome dell'indice da creare;
+      	   \item[collectionName] \hfill \\
+      	   Stringa contenente il nome della collection;
+      	   \item[callback] \hfill \\
+      	   Funzione da richiamare alla fine dell'eliminazione dell'indice.
+      	  \end{description}
+      	 \item[Descrizione] \hfill \\
+      	 Viene cancellato nella collection specificata con \textit{collectionName} l'indice specificato con \textit{indexName}. Se l'operazione di eliminazione non ha successo, viene chiamata la funzione \textit{callback} con argomento \textbf{false}, altrimenti viene chiamata la \textit{callback} con argomento \textbf{true}.  	 
+      	\end{description} 	    
     
   \end{mldescription}
 \end{description}
@@ -1728,16 +1871,18 @@ Package realizzato per creare e gestire gli indici utilizzati nel database di an
     Viene creato localmente l'Array contenente le etichette dell'oggetto "lista di query". Viene successivamente scorso l'Array delle query e vengono copiati localmente i loro campi sensibili, per poi essere formattati correttamente. Infine viene realizzato e ritornato il JSON corrispondente, aggiungendo l'oggetto contenente le impostazioni di configurazione della lista di query.
    \end{description}
    
-   \mlitem{createIndexesList(indexes)} \hfill
-   \begin{description}
-    \item[Parametro] \hfill
-     \begin{description}
-      \item[indexes] \hfill \\
-      Array contenente l'insieme di indici da creare.
-     \end{description}
-    \item[Descrizione] \hfill \\
-    Viene creato localmente l'Array contenente le etichette dell'oggetto "lista di indici". Viene successivamente scorso l'Array degli indici e vengono copiati localmente i loro campi sensibili, per poi essere formattati correttamente. Infine viene realizzato e ritornato il JSON corrispondente.
-   \end{description}
+   \mlitem{createIndexesList(indexes,config)} \hfill
+      \begin{description}
+       \item[Parametro] \hfill
+        \begin{description}
+         \item[indexes] \hfill \\
+         Array contenente l'insieme di indici da creare;
+         \item[config] \hfill \\
+         Oggetto contenente impostazioni di configurazione.
+        \end{description}
+       \item[Descrizione] \hfill \\
+       Viene creato localmente l'Array contenente le etichette dell'oggetto "lista di indici". Viene successivamente scorso l'Array degli indici e vengono copiati localmente i loro campi sensibili, per poi essere formattati correttamente. Infine viene realizzato e ritornato il JSON corrispondente.
+      \end{description}
    
    \mlitem{createUserProfile(user)} \hfill
    \begin{description}
@@ -1847,7 +1992,7 @@ Package realizzato per creare e gestire gli indici utilizzati nel database di an
     				Oggetto contenente l'applicazione di \grassetto{Express}.
     			\end{description}
     		\item[Descrizione] \hfill \\
-    		Si occupa di verificare la correttezza del DSL scritto, verificando che tale file contenga un codice corretto sintatticamente e attraverso l'uso del \grassetto{@DSLparser} esegui il parsing vero e proprio. Controlla che il risulatato del parsing sia in formato JSON, lo salva su file e utilizza il metodo \textit{generateFunction} per creare le funzioni di trasformazione. Se non esiste, si occupa di generare lo schema \grassetto{Mongoose} della Collection specificata nel file DSL.
+    		Si occupa di verificare la correttezza del DSL scritto, verificando che tale file contenga un codice corretto sintatticamente e attraverso l'uso del \grassetto{@DSLparser} esegua il parsing vero e proprio. Controlla che il risulatato del parsing sia in formato JSON, lo salva su file e utilizza il metodo \textit{generateFunction} per creare le funzioni di trasformazione. Se non esiste, si occupa di generare lo schema \grassetto{Mongoose} della Collection specificata nel file DSL.
     \end{description}
  \end{mldescription}
  
