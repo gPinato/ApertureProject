@@ -1,9 +1,9 @@
 /**
  * File: DataRetrieverAnalysis.js
  * Module: maap_server::modelServer::dataManager::DatabaseAnalysisManager
- * Author: Alberto Garbui
+ * Author: Mattia Sorgato
  * Created: 20/05/14
- * Version: 0.1
+ * Version: 1.0.0
  * Description: recupero dati dal database di analisi
  * Modification History:
  ==============================================
@@ -408,6 +408,8 @@ var getDocumentsForIndex = function(model, querySettings){
 	var page = querySettings.page;
 	var perpage = querySettings.perpage;
 	var populate = querySettings.populate;
+	
+	console.log(JSON.stringify(querySettings));
 		
 	var numberOfPages = 0;
 	var totDocuments = 0;
@@ -470,12 +472,12 @@ var getDocumentsForIndex = function(model, querySettings){
 		var whereFull = {};
 		for(var key in where)
 			whereFull[key] = where[key];
-			
-		//aggiungo la condizione per prendere solo i campi definiti
-		whereFull[querySettings.column] = {$exists: true};
-			
+						
 		//preparo la query e ritorno come promessa l'esecuzione della stessa
 		var query = model.find(whereFull, select, options)
+		
+		//aggiungo al campo where la colonna da ordinare che esista
+		query.where(querySettings.column).exists(true);
 		
 		//imposto la query con il relativo populate
 		for(var i=0; i<populatePath.length; i++)
@@ -550,10 +552,8 @@ var getDocumentsForIndex = function(model, querySettings){
 		
 		if(order != 'desc')
 		{
-			console.log('ASC!!');
 			totResult = firstResult.concat(emptyResult);
 		}else{
-			console.log('DESC!!');
 			totResult = emptyResult.concat(firstResult);
 		}
 		deferred.resolve(totResult);
@@ -802,9 +802,9 @@ exports.getCollectionIndex = function(collection_name, column, order, page, call
 		});
 			
 	}catch(err){
-		//se la collection non e' presente, rispondo con la lista vuota
+		//se la collection non e' presente, rispondo con -1
 		console.log('err: ' + err);
-		callback({});
+		callback(-1);
 	}
 }
 

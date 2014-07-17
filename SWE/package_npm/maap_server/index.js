@@ -1,9 +1,9 @@
 /**
  * File: index.js
  * Module: maap_server
- * Author: Alberto Garbui
+ * Author: Michele Maso
  * Created: 03/05/14
- * Version: 0.2
+ * Version: 1.0.0
  * Description: inizializzazione del server ed avvio
  * Modification History:
  ==============================================

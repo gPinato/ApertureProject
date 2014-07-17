@@ -1,9 +1,9 @@
 /**
  * File: schemaGenerator.js
  * Module: maap_server::modelServer::DSL
- * Author: Alberto Garbui
+ * Author: Andrea Perin
  * Created: 01/06/14
- * Version: 0.1
+ * Version: 1.0.0
  * Description: generatore di schemi per mongoose
  * Modification History:
  ==============================================

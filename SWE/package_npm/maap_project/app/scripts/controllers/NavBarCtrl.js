@@ -29,13 +29,13 @@ angular.module('maaperture').controller('NavBarCtrl', function ($scope,$cookieSt
 
     //Funzione per effettuare il logout.
     $scope.logout = function () {
-        $location.path('/login');
-		$route.reload();
         LogoutService.logout().$promise.then(
             function success() {
 				$cookieStore.remove("loggedIn");
 				$cookieStore.remove("isAdmin");
 				$scope.isAdmin = false;
+				$location.path('/login');
+				$route.reload();
             },
             function error() {
 				alert("I dunno why, but the logout failed :/");

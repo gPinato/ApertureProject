@@ -1,9 +1,9 @@
 /**
  * File: DSLParser.js
  * Module: maap_server::modelServer::DSL
- * Author: Fabio Miotto
+ * Author: Michele Maso
  * Created: 22/05/14
- * Version: 0.1
+ * Version: 1.0.0
  * Description: parser del dsl
  * Modification History:
  ==============================================

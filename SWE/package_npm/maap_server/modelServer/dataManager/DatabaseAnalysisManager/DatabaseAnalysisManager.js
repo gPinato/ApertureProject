@@ -1,9 +1,9 @@
 /**
  * File: DatabaseAnalysisManager.js
  * Module: maap_server::modelServer::dataManager::DatabaseAnalysisManager
- * Author: Alberto Garbui
+ * Author: Mattia Sorgato
  * Created: 20/05/14
- * Version: 0.1
+ * Version: 1.0.0
  * Description: gestione dati dal database di analisi
  * Modification History:
  ==============================================
@@ -69,7 +69,7 @@ var sendCollection  = function(req, res) {
 	retriever.getCollectionIndex(collection_name, column, order, page, function(data){
 		
 		//controllo se quello che ritorna il retriever è indefinito
-		if(data.documents == undefined)
+		if(data == -1)
 		{
 			//invio stato HTTP di non trovato
 			res.send(404);
