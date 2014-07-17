@@ -25,14 +25,14 @@ var version = JSON.parse(fs.readFileSync(__dirname + '/../package.json', 'utf8')
 var name = "Maaperture v" + version;
 var description = "MongoDB as an Admin Platform - Aperture Software";
 
-function printHelpTitle() {
+var printHelpTitle = function() {
 	console.log('');
 	console.log('  --------------------------------------------------');
 	console.log('   ' + name);
 	console.log('');
 	console.log('   ' + description);
 	console.log('  --------------------------------------------------');
-}
+};
 
 //cambia una riga del file specificato sostituendola con quella passata in ingresso
 //filePath = path del file da modificare
@@ -60,19 +60,24 @@ var changeFileRow = function(filePath, string2find, newString) {
 	//scrivo il file aggiornato
 	if(found)
 	{
-		fs.writeFileSync(filePath, buffer, 'utf-8', function (err) {
+		var done = false;
+		fs.writeFile(filePath, buffer, 'utf-8', function (err) {
 			if (err) {
 				console.error('error updating file: ' + filePath);
 				throw err;
 			} 
-			return true;	
+			done = true;	
 		});	
+		
+		while(!done){require('deasync').sleep(100);}
+		return true;
+		
 	}else{
 		return false;
 	}	
 };
 
-function setProjectName(destination, project_name) {
+var setProjectName = function(destination, project_name) {
 	var file = destination + '/package.json';
 	var packagejson = JSON.parse(fs.readFileSync(file, 'utf8').toString());
 	packagejson.name = project_name;
@@ -80,15 +85,15 @@ function setProjectName(destination, project_name) {
 	fs.writeFile(file, JSON.stringify(packagejson, null, '\t'));
 	changeFileRow(	destination + '/config_development.js',
 					'title: \'Maaperture\'',
-					'title: \'' + project_name + '\''			
+					'title: \'' + project_name + '\','			
 				);
 	changeFileRow(	destination + '/config_production.js',
 					'title: \'Maaperture\'',
-					'title: \'' + project_name + '\''			
+					'title: \'' + project_name + '\','			
 				);				
-}
+};
 
-function initProject(project_name, output_path) {
+var initProject = function(project_name, output_path) {
 	var source = __dirname + '/../maap_project';
 	if(output_path.charAt(output_path.length - 1) != '/'){
 		output_path = output_path + '/';
@@ -101,13 +106,14 @@ function initProject(project_name, output_path) {
 	console.log('generating the new empty project ' + project_name + ' into ' + destination + '...');
 	var options = 
     { 
-        clobber: false, 				//avoid2write existing files (false)
+        clobber: true, 				//avoid2write existing files (false) - true sovrascrive
         filter: function (src) {
-            if(src.indexOf('node_modules') > -1)return false;
-			if(src.indexOf('bower_components') > -1)return false;
+            //if(src.indexOf('node_modules') > -1)return false;
+			//if(src.indexOf('bower_components') > -1)return false;
 			return true;
         }
     };
+	
 	ncp(source, destination, options, function(err) {
 		if(err) {
 			return console.error(err);
@@ -121,7 +127,8 @@ function initProject(project_name, output_path) {
 			console.log('with: "cd ' + destination + ' && npm install && npm start"');
 		}
 	});	
-}
+			
+};
 
 program
 	.version(version)

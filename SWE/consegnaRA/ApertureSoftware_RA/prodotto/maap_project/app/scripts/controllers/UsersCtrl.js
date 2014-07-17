@@ -3,8 +3,8 @@
  * Module: app:controllers;
  * Author: Giacomo Pinato;
  * Created: 10/05/14;
- * Version: versione corrente;
- * Description: Controller for the collection view
+ * Version: 0.4;
+ * Description: Controller for the user document view (admin only);
  * Modification History:
  ==============================================
  * Version | Changes
@@ -28,7 +28,7 @@ angular.module('maaperture').controller('UsersCtrl', function ($scope, $location
     //Passa come parametri la collection e il documento da ricevere
 
     UserDataService.query({
-            user_id: $routeParams.user_id }).$promise.then(
+        user_id: $routeParams.user_id }).$promise.then(
         function success(data) {
             $scope.labels = data.label;
             $scope.data = data.data;
@@ -38,14 +38,13 @@ angular.module('maaperture').controller('UsersCtrl', function ($scope, $location
                 $scope.original_data.push(value);
             });
         },
-        function err(error) {
+        function err() {
             $location.path("/404");
 
         }
     );
 
-
-
+    //Funzione per cancellare il profilo utente attualmente visualizzato
     $scope.delete_document = function () {
         UserEditService.remove({
                 user_id: $scope.current_document
@@ -55,7 +54,7 @@ angular.module('maaperture').controller('UsersCtrl', function ($scope, $location
                 $location.path('/users/');
 
             },
-            function err(error) {
+            function err() {
             }
         );
     };

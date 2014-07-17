@@ -1,10 +1,11 @@
 /**
  * File: Authservice;
- * Module: modulo di appartenenza;
+ * Module: app:services;
  * Author: Giacomo Pinato;
  * Created: 12/05/14;
- * Version: versione corrente;
- * Description: descrizione dettagliata del file;
+ * Version: 0.1;
+ * Description: Factory that returns a $resource
+ * 	representing the login functionality;
  * Modification History:
  ==============================================
  * Version | Changes

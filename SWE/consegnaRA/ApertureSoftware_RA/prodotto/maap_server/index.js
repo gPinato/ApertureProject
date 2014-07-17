@@ -93,17 +93,20 @@ var changeFileRow = function(filePath, string2find, newString) {
 	//scrivo il file aggiornato
 	if(found)
 	{
-		fs.writeFileSync(filePath, buffer, 'utf-8', function (err) {
+		var done = false;
+		fs.writeFile(filePath, buffer, 'utf-8', function (err) {
 			if (err) {
 				console.error('error updating file: ' + filePath);
 				throw err;
 			} 
 			if(config.app.env == 'development')
 				console.log(file + ' saved!');
-				
-			return true;
-			
+			done = true;			
 		});	
+		
+		while(!done){require('deasync').sleep(100);}
+		return true;
+		
 	}else{
 		return false;
 	}
@@ -154,46 +157,56 @@ var clientSetup = function(app) {
 		}
 	});
 	
-	//abilito/disabilito la registrazione
-	if(!changeFileRow(	config.static_assets.dir + '/views/login.html', 
-						'<a ng-show="true" href="/register">',
-						'<a ng-show="' + config.app.enableUserRegistration + '" href="/register">'
-					))
+	if(config.app.enableUserRegistration != undefined)
 	{
-		changeFileRow(	config.static_assets.dir + '/views/login.html', 
-						'<a ng-show="false" href="/register">',
-						'<a ng-show="' + config.app.enableUserRegistration + '" href="/register">'
-					);
+		//abilito/disabilito la registrazione
+		if(!changeFileRow(	config.static_assets.dir + '/views/login.html', 
+							'<a ng-show="true" href="/register">',
+							'<a ng-show="' + config.app.enableUserRegistration + '" href="/register">'
+						))
+		{
+			changeFileRow(	config.static_assets.dir + '/views/login.html', 
+							'<a ng-show="false" href="/register">',
+							'<a ng-show="' + config.app.enableUserRegistration + '" href="/register">'
+						);
+		}
 	}
 	
-	//imposto il nome del progetto nel file index.html
-	changeFileRow(	config.static_assets.dir + '/index.html',
-					'<title>',
-					'<title>' + config.app.title + '</title>'
-				);
+	if(config.app.title != undefined)
+	{
+		//imposto il nome del progetto nel file index.html
+		changeFileRow(	config.static_assets.dir + '/index.html',
+						'<title>',
+						'<title>' + config.app.title + '</title>'
+					);
+					
+		//setto il nome del progetto nella navBar e relativo link
+		changeFileRow(	config.static_assets.dir + '/views/Navbar.html',
+						'<a class="navbar-brand" href',
+						'<a class="navbar-brand" href="' + hostURL + '">' +  config.app.title + '</a>'
+					);
+	}
 				
-	//setto il nome del progetto nella navBar e relativo link
-	changeFileRow(	config.static_assets.dir + '/views/Navbar.html',
-					'<a class="navbar-brand" href',
-					'<a class="navbar-brand" href="' + hostURL + '">' +  config.app.title + '</a>'
-				);
-				
+	if(config.app.description != undefined)
 	//imposto la descrizione del progetto nel file index.html
 	changeFileRow(	config.static_assets.dir + '/index.html',
 					'<meta name="description" content="',
 					'<meta name="description" content="' + config.app.description + '">'	
 				);
 					
-	//abilito/disabilito creazione degli indici
-	if(!changeFileRow(	config.static_assets.dir + '/views/queryCollection.html',
-						'<td><a ng-show="true" href="" class="btn btn-info btn-sm" ng-click="createIndex(data[$index]._id)" ><i class="glyphicon glyphicon-ok"></i> Create Index</a></td>',
-						'<td><a ng-show="' + config.adminConfig.enableIndexCreation + '" href="" class="btn btn-info btn-sm" ng-click="createIndex(data[$index]._id)" ><i class="glyphicon glyphicon-ok"></i> Create Index</a></td>'	
-					))
+	if(config.adminConfig.enableIndexCreation != undefined)
 	{
-		changeFileRow(	config.static_assets.dir + '/views/queryCollection.html',
-						'<td><a ng-show="false" href="" class="btn btn-info btn-sm" ng-click="createIndex(data[$index]._id)" ><i class="glyphicon glyphicon-ok"></i> Create Index</a></td>',
-						'<td><a ng-show="' + config.adminConfig.enableIndexCreation + '" href="" class="btn btn-info btn-sm" ng-click="createIndex(data[$index]._id)" ><i class="glyphicon glyphicon-ok"></i> Create Index</a></td>'	
-				);	
+		//abilito/disabilito creazione degli indici
+		if(!changeFileRow(	config.static_assets.dir + '/views/queryCollection.html',
+							'<td><a ng-show="true" href="" class="btn btn-info btn-sm" ng-click="createIndex(data[$index]._id)" ><i class="glyphicon glyphicon-ok"></i> Create Index</a></td>',
+							'<td><a ng-show="' + config.adminConfig.enableIndexCreation + '" href="" class="btn btn-info btn-sm" ng-click="createIndex(data[$index]._id)" ><i class="glyphicon glyphicon-ok"></i> Create Index</a></td>'	
+						))
+		{
+			changeFileRow(	config.static_assets.dir + '/views/queryCollection.html',
+							'<td><a ng-show="false" href="" class="btn btn-info btn-sm" ng-click="createIndex(data[$index]._id)" ><i class="glyphicon glyphicon-ok"></i> Create Index</a></td>',
+							'<td><a ng-show="' + config.adminConfig.enableIndexCreation + '" href="" class="btn btn-info btn-sm" ng-click="createIndex(data[$index]._id)" ><i class="glyphicon glyphicon-ok"></i> Create Index</a></td>'	
+					);	
+		}
 	}
 	
 };

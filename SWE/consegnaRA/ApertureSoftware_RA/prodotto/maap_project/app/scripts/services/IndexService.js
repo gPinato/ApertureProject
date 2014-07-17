@@ -1,11 +1,11 @@
 /**
  * File: DocumentEditService;
- * Module: modulo di appartenenza;
+ * Module: app:services;
  * Author: Giacomo Pinato;
  * Created: 13/05/14;
- * Version: versione corrente;
+ * Version: 0.1;
  * Description: Factory that returns a $resource
- * 	bounded to a specific editable Document;
+ * 	representing the functionality for collection management;
  * Modification History:
  ==============================================
  * Version | Changes

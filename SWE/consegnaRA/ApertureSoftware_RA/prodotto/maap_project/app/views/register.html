@@ -11,9 +11,9 @@
 
                     <div class="form-group">
                         <label>Email address</label>
-                        <input ng-model="credentials.email" type="email" class="form-control" name="email" ensure-unique="email" placeholder="Enter email"  ng-minlength=3 ng-maxlength=25 required/>
+                        <input ng-model="credentials.email" type="email" class="form-control" name="email" placeholder="Enter email"  ng-minlength=3 ng-maxlength=25 required/>
                         <div class="error-container"
-                             ng-show="signup_form.email.$dirty && signup_form.email.$invalid && signup_form.submitted">
+                             ng-show="signup_form.email.$dirty && signup_form.email.$invalid ">
                             <small class="error"
                                    ng-show="signup_form.email.$error.required">
                                 Your email is required.
