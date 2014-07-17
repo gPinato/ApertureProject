@@ -1,9 +1,9 @@
 /**
  * File: LoginCtrl_test;
  * Module: modulo di appartenenza;
- * Author: Giacomo Pinato;
+ * Author: Mattia Sorgato;
  * Created: 18/05/14;
- * Version: versione corrente;
+ * Version: 1.0.0;
  * Description: descrizione dettagliata del file;
  * Modification History:
  ==============================================

@@ -1,9 +1,9 @@
 /**
  * File: DatabaseAnalysisManager.test.js
  * Module: test::modelServer::dataManager::DatabaseAnalysisManager
- * Author: Alberto Garbui
+ * Author: Andrea Perin
  * Created: 22/06/14
- * Version: 1.0
+ * Version: 1.0.0
  * Description: test del DatabaseAnalysisManager
  * Modification History:
  ==============================================

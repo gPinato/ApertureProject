@@ -1,9 +1,9 @@
 /**
  * File: schemaGenerator.test.js
  * Module: test::modelServer::DSL
- * Author: Alberto Garbui
+ * Author: Michele Maso
  * Created: 23/06/14
- * Version: 1.0
+ * Version: 1.0.0
  * Description: test dello schemaGenerator
  * Modification History:
  ==============================================

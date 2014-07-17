@@ -1,9 +1,9 @@
 /**
  * File: DataRetrieverAnalysis.test.js
  * Module: test::modelServer::dataManager::DatabaseAnalysisManager
- * Author: Alberto Garbui
+ * Author: Fabio Miotto
  * Created: 20/06/14
- * Version: 1.0
+ * Version: 1.0.0
  * Description: test del DataRetrieverAnalysis 
  * Modification History:
  ==============================================

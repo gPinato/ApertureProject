@@ -1,9 +1,9 @@
 /**
  * File: DatabaseUserManager.js
  * Module: maap_server::modelServer::dataManager::DatabaseUserManager
- * Author: Alberto Garbui
+ * Author: Andrea Perin
  * Created: 20/05/14
- * Version: 0.1
+ * Version: 1.0.0
  * Description: gestione dati dal database degli utenti
  * Modification History:
  ==============================================

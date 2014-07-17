@@ -1,9 +1,9 @@
 /**
  * File: IndexManager.js
  * Module: maap_server::modelServer::dataManager::IndexManager
- * Author: Michele Maso + Fabio Miotto ;D
+ * Author: Michele Maso
  * Created: 20/05/14
- * Version: 0.1
+ * Version: 1.0.0
  * Description: gestione indici
  * Modification History:
  ==============================================

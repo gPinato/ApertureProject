@@ -1,9 +1,9 @@
 /**
  * File: DocumentEditCtrl_test;
  * Module: modulo di appartenenza;
- * Author: jack;
+ * Author: Mattia Sorgato;
  * Created: 16/05/14;
- * Version: versione corrente;
+ * Version: 1.0.0;
  * Description: descrizione dettagliata del file;
  * Modification History: tabella dei cambiamenti effettuati sul file.
  */

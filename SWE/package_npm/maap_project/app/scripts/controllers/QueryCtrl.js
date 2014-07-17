@@ -22,12 +22,9 @@ angular.module('maaperture').controller('QueryCtrl', function ($scope, $route, $
 
     //Funzione di inizializzazione del controller
     var init = function () {
-        $scope.current_sorted_column = null;
-        $scope.column_original_name = [];
-        $scope.current_sort = null;
         $scope.current_page = 0;
         $scope.rows = [];
-        getData();
+        $scope.getData();
 
     };
 
@@ -35,22 +32,22 @@ angular.module('maaperture').controller('QueryCtrl', function ($scope, $route, $
     //In base ai parametri dello scope effettua una query sul server e recupera i dati
     //da visualizzare
 
-    var getData = function () {
+    $scope.getData = function () {
 
         QueryService.query({
-			order: $scope.current_sort,
-			column: $scope.column_original_name[$scope.current_sorted_column],
-			page: $scope.current_page
-
-            }).$promise.then( function success(response) {
+		
+				order: $scope.current_sort,
+				column: $scope.column_original_name[$scope.current_sorted_column],
+				page: $scope.current_page
+				
+           }).$promise.then( function success(response) {
+		   
                 $scope.labels = response[0];
                 $scope.data = response[1];
                 $scope.pages = response[2].pages;
 
                 //Salva i nomi originali delle colonne per le query a database
                 $scope.column_original_name = Object.keys( $scope.data[0].data);
-
-
 
                 for (var i = 0; i < Object.keys($scope.data).length; i++) {
                     //Copia i valori da stampare in un array per mantenere l'ordine
@@ -78,12 +75,12 @@ angular.module('maaperture').controller('QueryCtrl', function ($scope, $route, $
         var indexName = "jknoob";
         IndexService.insert({},
             {id:id,indexName:indexName}).$promise.then(
-            function success(response) {
+            function success() {
                 alert("indice creato!");
 				$location.path('/indexes');
 				$route.reload();
             },
-            function(error){
+            function(){
                 alert("Qualcosa è andato storto..");
             }
         );
@@ -173,7 +170,7 @@ angular.module('maaperture').controller('QueryCtrl', function ($scope, $route, $
         if ($scope.current_page > 0) {
 
             $scope.current_page--;
-            getData();
+            $scope.getData();
         }
 
     };
@@ -192,7 +189,7 @@ angular.module('maaperture').controller('QueryCtrl', function ($scope, $route, $
 
         if ($scope.current_page < $scope.pages - 1) {
             $scope.current_page++;
-            getData();
+            $scope.getData();
         }
 
     };
@@ -207,7 +204,7 @@ angular.module('maaperture').controller('QueryCtrl', function ($scope, $route, $
     //Va alla pagina $index
     $scope.toPage = function (index) {
         $scope.current_page = index;
-        getData();
+        $scope.getData();
     };
 
 

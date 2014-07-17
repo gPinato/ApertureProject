@@ -1,9 +1,9 @@
 /**
  * File: DSLParser.test.js
  * Module: test::modelServer::DSL
- * Author: Alberto Garbui
+ * Author: Andrea Perin
  * Created: 23/06/14
- * Version: 1.0
+ * Version: 1.0.0
  * Description: test del DSL parser
  * Modification History:
  ==============================================

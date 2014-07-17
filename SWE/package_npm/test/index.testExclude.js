@@ -3,7 +3,7 @@
  * Module: test
  * Author: Alberto Garbui
  * Created: 20/06/14
- * Version: 1.0
+ * Version: 1.0.0
  * Description: test dell'index del server
  * Modification History:
  ==============================================

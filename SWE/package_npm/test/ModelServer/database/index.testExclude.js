@@ -1,9 +1,9 @@
 /**
  * File: index.test.js
  * Module: test::modelServer::database
- * Author: Alberto Garbui
+ * Author: Michele Maso
  * Created: 20/06/14
- * Version: 1.0
+ * Version: 1.0.0
  * Description: test dell'index
  * Modification History:
  ==============================================

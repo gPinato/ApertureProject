@@ -1,9 +1,9 @@
 /**
  * File: NavBarCtrl_test;
  * Module: modulo di appartenenza;
- * Author: jack;
+ * Author: Mattia Sorgato;
  * Created: 10/05/14;
- * Version: versione corrente;
+ * Version: 1.0.0;
  * Description: descrizione dettagliata del file;
  * Modification History: tabella dei cambiamenti effettuati sul file.
  */
@@ -35,7 +35,7 @@ describe('Controller: NavBarCtrl', function () {
 
     }));
 
-    it('should set some data on the scope when successful', function () {
+    it('should get the collections from the server', function () {
         // Given
         $httpBackend.whenGET('http://localhost:9000/api/collection/list').respond(200, data);
         $httpBackend.whenGET('views/dashboard.html').respond(200);
@@ -49,8 +49,7 @@ describe('Controller: NavBarCtrl', function () {
 
     });
 
-
-    it('should delete a document correctly', function () {
+    it('should do nothing if not authenticated', function () {
         // Given
         $httpBackend.whenGET('http://localhost:9000/api/collection/list').respond(400);
         $httpBackend.whenGET('views/dashboard.html').respond(200);
@@ -58,36 +57,38 @@ describe('Controller: NavBarCtrl', function () {
         // When
         $httpBackend.flush();
         // Then
-        expect(scope.labels).toBe(undefined);
-        expect(scope.values).toBe(undefined);
+
 
     });
 
-    it('should set some data on the scope when successful', function () {
+
+    it('should log out correctly', function () {
         // Given
-        $httpBackend.whenGET('http://localhost:9000/api/collection/list').respond(200, data);
         $httpBackend.whenGET('http://localhost:9000/api/logout').respond(200);
-        $httpBackend.whenGET('views/dashboard.html').respond(200);
+        $httpBackend.whenGET('http://localhost:9000/api/collection/list').respond(400);
+        $httpBackend.whenGET('views/login.html').respond(200);
 
         // When
+        scope.logout();
         $httpBackend.flush();
         // Then
 
+        expect(scope.isAdmin).toBe(false);
 
     });
 
-
-    it('should delete a document correctly', function () {
+    it('should display an error when logout fails', function () {
         // Given
-        $httpBackend.whenGET('http://localhost:9000/api/collection/list').respond(200, data);
-
         $httpBackend.whenGET('http://localhost:9000/api/logout').respond(400);
+        $httpBackend.whenGET('http://localhost:9000/api/collection/list').respond(400);
         $httpBackend.whenGET('views/dashboard.html').respond(200);
+        $httpBackend.whenGET('views/login.html').respond(200);
 
         // When
+        scope.logout();
         $httpBackend.flush();
         // Then
-
-
     });
+
+
 });
