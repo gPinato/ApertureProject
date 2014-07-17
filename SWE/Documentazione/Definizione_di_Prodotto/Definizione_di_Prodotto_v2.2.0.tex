@@ -3789,6 +3789,14 @@ La view viene poi aggiornata con i nuovi dati.
 Questo diagramma illustra la stessa operazione del precedente con esito negativo. Il server rifiuta la richiesta e risponde con un codice di errore.
 Il controller esegue la callback "error" e la view verrà aggiornata con un messaggio di errore.
 
+\subsection{Autenticazione con successo}
+\immagine{./Sequenza2}{Diagramma sequenza: Autenticazione con successo}
+Il diagramma mostra la sequenza di operazioni che avvengono quando un utente effettua l'autenticazione a MaaP. L'utente completa il form di autenticazione nella pagina \textbf{@login.html}. Cliccando sul pulsante di conferma, viene invocato il metodo \textit{\$scope.login()} del \textbf{@LoginCtrl}. A sua volta, il controller effettua una chiamata asincrona al metodo \textit{login()} di \textbf{@AuthService}. Da qui, il servizio invia la richiesta di autenticazione al Server, che ritornerà un codice di riuscita, allegando il JSON dell'utente stesso. Il servizio \textbf{@AuthService} risponde al \textbf{@LoginCtrl} con una \$resource contenente le informazioni dell'utente autenticato. Il controller successivamente fornisce allo \$scope i dati dell'utente e richiede un aggiornamento della vista.
+
+\subsection{Creazione indice con successo}
+\immagine{./Sequenza1}{Diagramma sequenza: Creazione indice con successo}
+Il diagramma mostra la sequenza di operazioni che avvengono quando un utente effettua la creazione di un indice. L'utente seleziona la query su cui creare un nuovo indice nella pagina \textbf{@queryCollection}. Viene quindi invocato il metodo \textit{createindex()}, passando come parametro l'iddell'indice. del \textbf{@QueryCtrl}. Il controller effettua una chiamata asincrona al metodo \textit{insert()} del \textbf{@IndexService}, passando l'id precedente e il nome dell'indice. Il servizio esegue una richiesta PUT di inserimento al Server, passando le informazioni legate ai campi utilizzati nella query legata all'indice da creare. Sarà quindi compito del Server creare l'indice, ritornando un messaggio di buona riuscita al servizio. L'\textbf{@IndexService} ritornerà quindi una \$resource al \textbf{@QueryCtrl}, che effettuerà l'aggiornamento dello \$scope e richiederà l'aggiornamento della vista.
+
 \section{Tracciamento}
 In questa sezione verranno tracciati i moduli con i requisiti. Per semplicità di lettura i requisiti associati ai figli di un componente non sono riportati anche nel padre.
 \input{./Tracciamento.tex}
