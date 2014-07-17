@@ -1,4 +1,4 @@
-%QUESTE TABELLE SONO STATE GENERATE AUTOMATICAMENTE DA TRACCIAMENTOSCRIPTST [Jun 25 14:36:20 2014]
+﻿%QUESTE TABELLE SONO STATE GENERATE AUTOMATICAMENTE DA TRACCIAMENTOSCRIPTST [Jul 17 16:51:26 2014]
 
 \subsection{Tracciamento componenti - requisiti}
 \begin{center}
@@ -52,10 +52,8 @@ MaaP::Client::ControllerModelView::ControllerClient ::DocumentEditCtrl
 \midrule
 MaaP::Client::ControllerModelView::ControllerClient ::IndexCtrl
 & ROF10.7\\
+& ROF10.7.1\\
 & ROF10.7.2\\
-& ROF10.7.2.1\\
-& ROF10.7.2.2\\
-& ROF10.7.3\\
 
 \midrule
 MaaP::Client::ControllerModelView::ControllerClient ::LoginCtrl
@@ -81,11 +79,10 @@ MaaP::Client::ControllerModelView::ControllerClient ::ProfileEditCtrl
 
 \midrule
 MaaP::Client::ControllerModelView::ControllerClient ::QueryCtrl
+& RDF10.6.3\\
 & ROF10.6\\
-& ROF10.7\\
-& ROF10.7.1\\
-& ROF10.7.1.1\\
-& ROF10.7.1.2\\
+& ROF10.6.1\\
+& ROF10.6.2\\
 
 \midrule
 MaaP::Client::ControllerModelView::ControllerClient ::RegisterCtrl
@@ -142,11 +139,8 @@ MaaP::Client::ModelClient::Services::DocumentEditService
 
 \midrule
 MaaP::Client::ModelClient::Services::IndexService
-& ROF10.7\\
+& ROF10.7.1\\
 & ROF10.7.2\\
-& ROF10.7.2.1\\
-& ROF10.7.2.2\\
-& ROF10.7.3\\
 
 \midrule
 MaaP::Client::ModelClient::Services::LogoutService
@@ -166,10 +160,7 @@ MaaP::Client::ModelClient::Services::ProfileEditService
 \midrule
 MaaP::Client::ModelClient::Services::QueryService
 & ROF10.6\\
-& ROF10.7\\
-& ROF10.7.1\\
-& ROF10.7.1.1\\
-& ROF10.7.1.2\\
+& ROF10.6.2\\
 
 \midrule
 MaaP::Client::ModelClient::Services::RegisterService
@@ -217,12 +208,13 @@ MaaP::Client::View::documentEdit
 & ROF10.5.3\\
 
 \midrule
-MaaP::Client::View::indexCollection
+Maap::Client::View::indexCollection
 & ROF10.7\\
+
+\midrule
+MaaP::Client::View::indexCollection
+& ROF10.7.1\\
 & ROF10.7.2\\
-& ROF10.7.2.1\\
-& ROF10.7.2.2\\
-& ROF10.7.3\\
 
 \midrule
 MaaP::Client::View::login
@@ -241,11 +233,9 @@ MaaP::Client::View::Navbar
 
 \midrule
 MaaP::Client::View::queryCollection
+& RDF10.6.3\\
 & ROF10.6\\
-& ROF10.7\\
-& ROF10.7.1\\
-& ROF10.7.1.1\\
-& ROF10.7.1.2\\
+& ROF10.6.2\\
 
 \midrule
 MaaP::Client::View::register
@@ -282,10 +272,10 @@ MaaP::Server::Controller::FrontController
 & ROF10.4\\
 & ROF10.5\\
 & ROF10.6\\
+& ROF10.6.1\\
+& ROF10.6.2\\
 & ROF10.7\\
-& ROF10.7.1.2\\
-& ROF10.7.2.2\\
-& ROF10.7.3\\
+& ROF10.7.2\\
 & ROF7\\
 & ROF7.1\\
 & ROF7.2\\
@@ -322,10 +312,16 @@ MaaP::Server::ModelServer::Database::DBAnalysis
 & ROF10.5\\
 & ROF10.5.2\\
 & ROF10.6\\
+& ROF10.6.1\\
+& ROF10.6.2\\
+
+\midrule
+Maap::Server::ModelServer::Database::DBAnalysis
 & ROF10.7\\
-& ROF10.7.1.2\\
-& ROF10.7.2.2\\
-& ROF10.7.3\\
+
+\midrule
+MaaP::Server::ModelServer::Database::DBAnalysis
+& ROF10.7.2\\
 
 \midrule
 MaaP::Server::ModelServer::Database::DBFramework
@@ -346,10 +342,16 @@ MaaP::Server::ModelServer::Database::MongooseDBAnalysis
 & ROF10.5\\
 & ROF10.5.2\\
 & ROF10.6\\
+& ROF10.6.1\\
+& ROF10.6.2\\
+
+\midrule
+Maap::Server::ModelServer::Database::MongooseDBAnalysis
 & ROF10.7\\
-& ROF10.7.1.2\\
-& ROF10.7.2.2\\
-& ROF10.7.3\\
+
+\midrule
+MaaP::Server::ModelServer::Database::MongooseDBAnalysis
+& ROF10.7.2\\
 
 \midrule
 MaaP::Server::ModelServer::Database::MongooseDBFramework
@@ -367,6 +369,7 @@ MaaP::Server::ModelServer::Database::MongooseDBFramework
 \midrule
 MaaP::Server::ModelServer::Database::Query
 & ROF10.6\\
+& ROF10.6.1\\
 
 \midrule
 MaaP::Server::ModelServer::Database::User
@@ -393,10 +396,16 @@ MaaP::Server::ModelServer::DataManager::DatabaseAnalysisManager ::DatabaseAnalys
 & ROF10.5\\
 & ROF10.5.2\\
 & ROF10.6\\
+& ROF10.6.1\\
+& ROF10.6.2\\
+
+\midrule
+Maap::Server::ModelServer::DataManager::DatabaseAnalysisManager ::DatabaseAnalysisManager
 & ROF10.7\\
-& ROF10.7.1.2\\
-& ROF10.7.2.2\\
-& ROF10.7.3\\
+
+\midrule
+MaaP::Server::ModelServer::DataManager::DatabaseAnalysisManager ::DatabaseAnalysisManager
+& ROF10.7.2\\
 
 \midrule
 MaaP::Server::ModelServer::DataManager::DatabaseAnalysisManager ::DataRetrieverAnalysis
@@ -413,6 +422,7 @@ MaaP::Server::ModelServer::DataManager::DatabaseAnalysisManager ::DataRetrieverA
 & ROF10.5\\
 & ROF10.5.2\\
 & ROF10.6\\
+& ROF10.6.1\\
 
 \midrule
 MaaP::Server::ModelServer::DataManager::DatabaseUserManager ::DatabaseUserManager
@@ -452,10 +462,16 @@ MaaP::Server::ModelServer::DataManager::IDatabaseManager
 & ROF10.5\\
 & ROF10.5.2\\
 & ROF10.6\\
+& ROF10.6.1\\
+& ROF10.6.2\\
+
+\midrule
+Maap::Server::ModelServer::DataManager::IDatabaseManager
 & ROF10.7\\
-& ROF10.7.1.2\\
-& ROF10.7.2.2\\
-& ROF10.7.3\\
+
+\midrule
+MaaP::Server::ModelServer::DataManager::IDatabaseManager
+& ROF10.7.2\\
 
 \midrule
 MaaP::Server::ModelServer::DataManager::IDataRetriever
@@ -478,13 +494,19 @@ MaaP::Server::ModelServer::DataManager::IDataRetriever
 & ROF10.5\\
 & ROF10.5.2\\
 & ROF10.6\\
+& ROF10.6.1\\
 
 \midrule
 MaaP::Server::ModelServer::DataManager::IndexManager ::IndexManager
+& ROF10.6.2\\
+
+\midrule
+Maap::Server::ModelServer::DataManager::IndexManager ::IndexManager
 & ROF10.7\\
-& ROF10.7.1.2\\
-& ROF10.7.2.2\\
-& ROF10.7.3\\
+
+\midrule
+MaaP::Server::ModelServer::DataManager::IndexManager ::IndexManager
+& ROF10.7.2\\
 
 \midrule
 MaaP::Server::ModelServer::DSL::DSLDescriptionFile
@@ -550,18 +572,8 @@ MaaPCLI::ProjectRemove
 \endlastfoot
 
 \midrule
-RDF10.2.1.1
-& L'utente business autenticato deve poter effettuare un ordinamento rispetto a una chiave
-& MaaP::Client::ControllerModelView ::ControllerClient::CollectionCtrl\\
-
-\midrule
-RDF10.2.3
-& L'utente business autenticato deve poter annullare il filtro
-& MaaP::Client::ControllerModelView ::ControllerClient::CollectionCtrl\\
-
-\midrule
-RDF10.2.2
-& L'utente business autenticato deve poter applicare un filtro alla visualizzazione dei Document
+ROF10
+& L'utente business autenticato deve poter aprire una Collection e visualizzare la sua pagina Collection-Index
 & MaaP::Client::ControllerModelView ::ControllerClient::CollectionCtrl\\
 
 \midrule
@@ -570,8 +582,13 @@ RDF10.2.1.2
 & MaaP::Client::ControllerModelView ::ControllerClient::CollectionCtrl\\
 
 \midrule
-RDF10.2.1
-& L'utente business autenticato deve poter selezionare dei criteri per la visualizzazione
+RDF10.2.1.1
+& L'utente business autenticato deve poter effettuare un ordinamento rispetto a una chiave
+& MaaP::Client::ControllerModelView ::ControllerClient::CollectionCtrl\\
+
+\midrule
+RDF10.2.2
+& L'utente business autenticato deve poter applicare un filtro alla visualizzazione dei Document
 & MaaP::Client::ControllerModelView ::ControllerClient::CollectionCtrl\\
 
 \midrule
@@ -580,9 +597,19 @@ RDF10.2
 & MaaP::Client::ControllerModelView ::ControllerClient::CollectionCtrl\\
 
 \midrule
-ROF10
-& L'utente business autenticato deve poter aprire una Collection e visualizzare la sua pagina Collection-Index
+RDF10.2.3
+& L'utente business autenticato deve poter annullare il filtro
 & MaaP::Client::ControllerModelView ::ControllerClient::CollectionCtrl\\
+
+\midrule
+RDF10.2.1
+& L'utente business autenticato deve poter selezionare dei criteri per la visualizzazione
+& MaaP::Client::ControllerModelView ::ControllerClient::CollectionCtrl\\
+
+\midrule
+RDF11
+& L'utente business autenticato può effettuare la ricerca di una Collection attraverso la barra di ricerca
+& MaaP::Client::ControllerModelView ::ControllerClient::DashboardCtrl\\
 
 \midrule
 ROF10.2.5
@@ -595,33 +622,18 @@ ROF10.1.2
 & MaaP::Client::ControllerModelView ::ControllerClient::DocumentCtrl\\
 
 \midrule
-ROF10.1
-& L'utente business autenticato deve poter visualizzare una pagina Document-Show
-& MaaP::Client::ControllerModelView ::ControllerClient::DocumentCtrl\\
-
-\midrule
 ROF10.1.1
 & L'utente business autenticato deve poter visualizzare il Document selezionato
 & MaaP::Client::ControllerModelView ::ControllerClient::DocumentCtrl\\
 
 \midrule
-ROF10.1.3
-& L'utente business autenticato amministratore deve poter modificare il Document che sta visualizzando
-& MaaP::Client::ControllerModelView ::ControllerClient::DocumentEditCtrl\\
+ROF10.1
+& L'utente business autenticato deve poter visualizzare una pagina Document-Show
+& MaaP::Client::ControllerModelView ::ControllerClient::DocumentCtrl\\
 
 \midrule
 ROF10.5.3
 & L'utente business autenticato amministratore deve poter annullare le modifiche apportate al Document
-& MaaP::Client::ControllerModelView ::ControllerClient::DocumentEditCtrl\\
-
-\midrule
-ROF10.5.2
-& L'utente business autenticato amministratore deve poter salvare le modifiche apportate al Document
-& MaaP::Client::ControllerModelView ::ControllerClient::DocumentEditCtrl\\
-
-\midrule
-ROF10.5.1
-& L'utente business autenticato amministratore deve poter modificare i valori associati alle chiavi
 & MaaP::Client::ControllerModelView ::ControllerClient::DocumentEditCtrl\\
 
 \midrule
@@ -630,32 +642,37 @@ ROF10.4
 & MaaP::Client::ControllerModelView ::ControllerClient::DocumentEditCtrl\\
 
 \midrule
+ROF10.5.2
+& L'utente business autenticato amministratore deve poter salvare le modifiche apportate al Document
+& MaaP::Client::ControllerModelView ::ControllerClient::DocumentEditCtrl\\
+
+\midrule
+ROF10.1.3
+& L'utente business autenticato amministratore deve poter modificare il Document che sta visualizzando
+& MaaP::Client::ControllerModelView ::ControllerClient::DocumentEditCtrl\\
+
+\midrule
+ROF10.5.1
+& L'utente business autenticato amministratore deve poter modificare i valori associati alle chiavi
+& MaaP::Client::ControllerModelView ::ControllerClient::DocumentEditCtrl\\
+
+\midrule
 ROF10.5
 & L'utente business autenticato amministratore deve poter modificare un Document
 & MaaP::Client::ControllerModelView ::ControllerClient::DocumentEditCtrl\\
 
 \midrule
-ROF10.7
-& L'utente business autenticato amministratore deve poter gestire la creazione e l'eliminazione degli indici
-& MaaP::Client::ControllerModelView ::ControllerClient::IndexCtrl\\
-
-\midrule
-ROF10.7.2
+ROF10.7.1
 & L'utente business autenticato amministratore deve poter eliminare degli indici
 & MaaP::Client::ControllerModelView ::ControllerClient::IndexCtrl\\
 
 \midrule
-ROF10.7.2.1
-& L'utente business autenticato amministratore deve poter selezionare un indice presente nel sistema
+ROF10.7
+& L'utente business autenticato amministratore deve poter gestire gli indici
 & MaaP::Client::ControllerModelView ::ControllerClient::IndexCtrl\\
 
 \midrule
-ROF10.7.2.2
-& L'utente business autenticato amministratore deve poter eliminare l'indice selezionato
-& MaaP::Client::ControllerModelView ::ControllerClient::IndexCtrl\\
-
-\midrule
-ROF10.7.3
+ROF10.7.2
 & L'utente business autenticato amministratore deve poter visualizzare gli indici presenti nel sistema
 & MaaP::Client::ControllerModelView ::ControllerClient::IndexCtrl\\
 
@@ -695,13 +712,13 @@ ROF10.3.1
 & MaaP::Client::ControllerModelView ::ControllerClient::ProfileCtrl\\
 
 \midrule
-ROF10.3.1.2
-& L'utente business autenticato deve poter  salvare le modifiche apportate
+ROF10.3.1.1
+& L'utente business autenticato deve poter modificare i propri dati utente
 & MaaP::Client::ControllerModelView ::ControllerClient::ProfileEditCtrl\\
 
 \midrule
-ROF10.3.1.1
-& L'utente business autenticato deve poter modificare i propri dati utente
+ROF10.3.1.2
+& L'utente business autenticato deve poter  salvare le modifiche apportate
 & MaaP::Client::ControllerModelView ::ControllerClient::ProfileEditCtrl\\
 
 \midrule
@@ -710,34 +727,24 @@ ROF10.3.1.3
 & MaaP::Client::ControllerModelView ::ControllerClient::ProfileEditCtrl\\
 
 \midrule
-ROF10.7
-& L'utente business autenticato amministratore deve poter gestire la creazione e l'eliminazione degli indici
-& MaaP::Client::ControllerModelView ::ControllerClient::QueryCtrl\\
-
-\midrule
-ROF10.7.1.1
-& L'utente business autenticato amministratore deve poter selezionare una query
-& MaaP::Client::ControllerModelView ::ControllerClient::QueryCtrl\\
-
-\midrule
-ROF10.7.1.2
+ROF10.6.2
 & L'utente business autenticato amministratore deve poter creare l'indice
 & MaaP::Client::ControllerModelView ::ControllerClient::QueryCtrl\\
 
 \midrule
-ROF10.7.1
-& L'utente business autenticato amministratore deve poter gestire la creazione degli indici
-& MaaP::Client::ControllerModelView ::ControllerClient::QueryCtrl\\
-
-\midrule
 ROF10.6
-& L'utente business autenticato amministratore deve poter visualizzare le query più utilizzate dal sistema MaaP
+& L'utente business autenticato amministratore deve poter gestire le query più utilizzate dal sistema MaaP
 & MaaP::Client::ControllerModelView ::ControllerClient::QueryCtrl\\
 
 \midrule
-RDF8.1
-& L'utente business, per registrarsi, deve inserire una email non presente nel sistema
-& MaaP::Client::ControllerModelView ::ControllerClient::RegisterCtrl\\
+RDF10.6.3
+& L'utente business autenticato amministratore deve poter visualizzare il comando per la creazione dell'indice da riga di comando
+& MaaP::Client::ControllerModelView ::ControllerClient::QueryCtrl\\
+
+\midrule
+ROF10.6.1
+& L'utente business autenticato amministratore deve poter visualizzare le query più utilizzate dal sistema Maap
+& MaaP::Client::ControllerModelView ::ControllerClient::QueryCtrl\\
 
 \midrule
 RDF8
@@ -745,14 +752,14 @@ RDF8
 & MaaP::Client::ControllerModelView ::ControllerClient::RegisterCtrl\\
 
 \midrule
-RDF8.2
-& L'utente business, per registrarsi, deve inserire una password
+RDF8.1
+& L'utente business, per registrarsi, deve inserire una email non presente nel sistema
 & MaaP::Client::ControllerModelView ::ControllerClient::RegisterCtrl\\
 
 \midrule
-ROF10.3.1.4
-& L'utente business autenticato amministratore deve poter modificare i permessi degli utenti business
-& MaaP::Client::ControllerModelView ::ControllerClient::UsersEditCtrl\\
+RDF8.2
+& L'utente business, per registrarsi, deve inserire una password
+& MaaP::Client::ControllerModelView ::ControllerClient::RegisterCtrl\\
 
 \midrule
 ROF10.3.2
@@ -762,6 +769,11 @@ ROF10.3.2
 \midrule
 ROF10.3.3
 & L'utente business autenticato amministratore deve poter eliminare un utente business
+& MaaP::Client::ControllerModelView ::ControllerClient::UsersEditCtrl\\
+
+\midrule
+ROF10.3.1.4
+& L'utente business autenticato amministratore deve poter modificare i permessi degli utenti business
 & MaaP::Client::ControllerModelView ::ControllerClient::UsersEditCtrl\\
 
 \midrule
@@ -775,13 +787,8 @@ ROF7.2.1
 & MaaP::Client::ModelClient ::Directives::password\_check\\
 
 \midrule
-ROF7.1
-& L'utente business deve inserire l'email per l'autenticazione
-& MaaP::Client::ModelClient ::Services::Authservice\\
-
-\midrule
-ROF9
-& L'utente business deve poter recuperare la password
+ROF7.2
+& L'utente business deve inserire la password per l'autenticazione
 & MaaP::Client::ModelClient ::Services::Authservice\\
 
 \midrule
@@ -790,13 +797,18 @@ ROF7
 & MaaP::Client::ModelClient ::Services::Authservice\\
 
 \midrule
-ROF7.2
-& L'utente business deve inserire la password per l'autenticazione
+ROF9
+& L'utente business deve poter recuperare la password
 & MaaP::Client::ModelClient ::Services::Authservice\\
 
 \midrule
-RDF10.2.1.2
-& L'utente business deve poter selezionare un numero massimo di Document da visualizzare per pagina
+ROF7.1
+& L'utente business deve inserire l'email per l'autenticazione
+& MaaP::Client::ModelClient ::Services::Authservice\\
+
+\midrule
+RDF10.2.2
+& L'utente business autenticato deve poter applicare un filtro alla visualizzazione dei Document
 & MaaP::Client::ModelClient ::Services::CollectionDataService\\
 
 \midrule
@@ -805,8 +817,18 @@ RDF10.2.3
 & MaaP::Client::ModelClient ::Services::CollectionDataService\\
 
 \midrule
+RDF10.2.1.2
+& L'utente business deve poter selezionare un numero massimo di Document da visualizzare per pagina
+& MaaP::Client::ModelClient ::Services::CollectionDataService\\
+
+\midrule
 ROF10
 & L'utente business autenticato deve poter aprire una Collection e visualizzare la sua pagina Collection-Index
+& MaaP::Client::ModelClient ::Services::CollectionDataService\\
+
+\midrule
+RDF10.2.1.1
+& L'utente business autenticato deve poter effettuare un ordinamento rispetto a una chiave
 & MaaP::Client::ModelClient ::Services::CollectionDataService\\
 
 \midrule
@@ -820,19 +842,19 @@ RDF10.2.1
 & MaaP::Client::ModelClient ::Services::CollectionDataService\\
 
 \midrule
-RDF10.2.1.1
-& L'utente business autenticato deve poter effettuare un ordinamento rispetto a una chiave
-& MaaP::Client::ModelClient ::Services::CollectionDataService\\
-
-\midrule
-RDF10.2.2
-& L'utente business autenticato deve poter applicare un filtro alla visualizzazione dei Document
-& MaaP::Client::ModelClient ::Services::CollectionDataService\\
-
-\midrule
 ROF10.2.5
 & L'utente business autenticato deve poter navigare tra la Collection
 & MaaP::Client::ModelClient ::Services::CollectionListService\\
+
+\midrule
+RDF11
+& L'utente business autenticato può effettuare la ricerca di una Collection attraverso la barra di ricerca
+& MaaP::Client::ModelClient ::Services::CollectionListService\\
+
+\midrule
+ROF10.1
+& L'utente business autenticato deve poter visualizzare una pagina Document-Show
+& MaaP::Client::ModelClient ::Services::DocumentDataService\\
 
 \midrule
 ROF10.1.2
@@ -845,28 +867,8 @@ ROF10.1.1
 & MaaP::Client::ModelClient ::Services::DocumentDataService\\
 
 \midrule
-ROF10.1
-& L'utente business autenticato deve poter visualizzare una pagina Document-Show
-& MaaP::Client::ModelClient ::Services::DocumentDataService\\
-
-\midrule
-ROF10.5.2
-& L'utente business autenticato amministratore deve poter salvare le modifiche apportate al Document
-& MaaP::Client::ModelClient ::Services::DocumentEditService\\
-
-\midrule
-ROF10.5.3
-& L'utente business autenticato amministratore deve poter annullare le modifiche apportate al Document
-& MaaP::Client::ModelClient ::Services::DocumentEditService\\
-
-\midrule
 ROF10.5
 & L'utente business autenticato amministratore deve poter modificare un Document
-& MaaP::Client::ModelClient ::Services::DocumentEditService\\
-
-\midrule
-ROF10.1.3
-& L'utente business autenticato amministratore deve poter modificare il Document che sta visualizzando
 & MaaP::Client::ModelClient ::Services::DocumentEditService\\
 
 \midrule
@@ -875,33 +877,33 @@ ROF10.4
 & MaaP::Client::ModelClient ::Services::DocumentEditService\\
 
 \midrule
+ROF10.5.3
+& L'utente business autenticato amministratore deve poter annullare le modifiche apportate al Document
+& MaaP::Client::ModelClient ::Services::DocumentEditService\\
+
+\midrule
+ROF10.5.2
+& L'utente business autenticato amministratore deve poter salvare le modifiche apportate al Document
+& MaaP::Client::ModelClient ::Services::DocumentEditService\\
+
+\midrule
+ROF10.1.3
+& L'utente business autenticato amministratore deve poter modificare il Document che sta visualizzando
+& MaaP::Client::ModelClient ::Services::DocumentEditService\\
+
+\midrule
 ROF10.5.1
 & L'utente business autenticato amministratore deve poter modificare i valori associati alle chiavi
 & MaaP::Client::ModelClient ::Services::DocumentEditService\\
 
 \midrule
-ROF10.7.3
+ROF10.7.2
 & L'utente business autenticato amministratore deve poter visualizzare gli indici presenti nel sistema
 & MaaP::Client::ModelClient ::Services::IndexService\\
 
 \midrule
-ROF10.7.2.1
-& L'utente business autenticato amministratore deve poter selezionare un indice presente nel sistema
-& MaaP::Client::ModelClient ::Services::IndexService\\
-
-\midrule
-ROF10.7.2
+ROF10.7.1
 & L'utente business autenticato amministratore deve poter eliminare degli indici
-& MaaP::Client::ModelClient ::Services::IndexService\\
-
-\midrule
-ROF10.7
-& L'utente business autenticato amministratore deve poter gestire la creazione e l'eliminazione degli indici
-& MaaP::Client::ModelClient ::Services::IndexService\\
-
-\midrule
-ROF10.7.2.2
-& L'utente business autenticato amministratore deve poter eliminare l'indice selezionato
 & MaaP::Client::ModelClient ::Services::IndexService\\
 
 \midrule
@@ -920,6 +922,11 @@ ROF10.3
 & MaaP::Client::ModelClient ::Services::ProfileDataService\\
 
 \midrule
+ROF10.3.1.1
+& L'utente business autenticato deve poter modificare i propri dati utente
+& MaaP::Client::ModelClient ::Services::ProfileEditService\\
+
+\midrule
 ROF10.3.1.3
 & L'utente business autenticato deve poter annullare le modifiche apportate
 & MaaP::Client::ModelClient ::Services::ProfileEditService\\
@@ -930,33 +937,13 @@ ROF10.3.1.2
 & MaaP::Client::ModelClient ::Services::ProfileEditService\\
 
 \midrule
-ROF10.3.1.1
-& L'utente business autenticato deve poter modificare i propri dati utente
-& MaaP::Client::ModelClient ::Services::ProfileEditService\\
-
-\midrule
-ROF10.6
-& L'utente business autenticato amministratore deve poter visualizzare le query più utilizzate dal sistema MaaP
-& MaaP::Client::ModelClient ::Services::QueryService\\
-
-\midrule
-ROF10.7.1.2
+ROF10.6.2
 & L'utente business autenticato amministratore deve poter creare l'indice
 & MaaP::Client::ModelClient ::Services::QueryService\\
 
 \midrule
-ROF10.7
-& L'utente business autenticato amministratore deve poter gestire la creazione e l'eliminazione degli indici
-& MaaP::Client::ModelClient ::Services::QueryService\\
-
-\midrule
-ROF10.7.1.1
-& L'utente business autenticato amministratore deve poter selezionare una query
-& MaaP::Client::ModelClient ::Services::QueryService\\
-
-\midrule
-ROF10.7.1
-& L'utente business autenticato amministratore deve poter gestire la creazione degli indici
+ROF10.6
+& L'utente business autenticato amministratore deve poter gestire le query più utilizzate dal sistema MaaP
 & MaaP::Client::ModelClient ::Services::QueryService\\
 
 \midrule
@@ -965,19 +952,14 @@ RDF8.2
 & MaaP::Client::ModelClient ::Services::RegisterService\\
 
 \midrule
-RDF8.1
-& L'utente business, per registrarsi, deve inserire una email non presente nel sistema
-& MaaP::Client::ModelClient ::Services::RegisterService\\
-
-\midrule
 RDF8
 & L'utente business deve potersi registrare inserendo dei dati personali
 & MaaP::Client::ModelClient ::Services::RegisterService\\
 
 \midrule
-ROF10.3.3
-& L'utente business autenticato amministratore deve poter eliminare un utente business
-& MaaP::Client::ModelClient ::Services::UserEditService\\
+RDF8.1
+& L'utente business, per registrarsi, deve inserire una email non presente nel sistema
+& MaaP::Client::ModelClient ::Services::RegisterService\\
 
 \midrule
 ROF10.3.1.4
@@ -990,34 +972,14 @@ ROF10.3.2
 & MaaP::Client::ModelClient ::Services::UserEditService\\
 
 \midrule
+ROF10.3.3
+& L'utente business autenticato amministratore deve poter eliminare un utente business
+& MaaP::Client::ModelClient ::Services::UserEditService\\
+
+\midrule
 ROF1
 & Il sistema MaaP deve essere in grado di generare lo scheletro del progetto
 & MaaP::Client::View::404\\
-
-\midrule
-RDF10.2
-& L'utente business autenticato deve poter modificare la visualizzazione dei Document
-& MaaP::Client::View::collection\\
-
-\midrule
-RDF10.2.2
-& L'utente business autenticato deve poter applicare un filtro alla visualizzazione dei Document
-& MaaP::Client::View::collection\\
-
-\midrule
-RDF10.2.3
-& L'utente business autenticato deve poter annullare il filtro
-& MaaP::Client::View::collection\\
-
-\midrule
-RDF10.2.1.2
-& L'utente business deve poter selezionare un numero massimo di Document da visualizzare per pagina
-& MaaP::Client::View::collection\\
-
-\midrule
-RDF10.2.1.1
-& L'utente business autenticato deve poter effettuare un ordinamento rispetto a una chiave
-& MaaP::Client::View::collection\\
 
 \midrule
 RDF10.2.1
@@ -1030,13 +992,43 @@ ROF10
 & MaaP::Client::View::collection\\
 
 \midrule
+RDF10.2.1.1
+& L'utente business autenticato deve poter effettuare un ordinamento rispetto a una chiave
+& MaaP::Client::View::collection\\
+
+\midrule
+RDF10.2.1.2
+& L'utente business deve poter selezionare un numero massimo di Document da visualizzare per pagina
+& MaaP::Client::View::collection\\
+
+\midrule
+RDF10.2.3
+& L'utente business autenticato deve poter annullare il filtro
+& MaaP::Client::View::collection\\
+
+\midrule
+RDF10.2
+& L'utente business autenticato deve poter modificare la visualizzazione dei Document
+& MaaP::Client::View::collection\\
+
+\midrule
+RDF10.2.2
+& L'utente business autenticato deve poter applicare un filtro alla visualizzazione dei Document
+& MaaP::Client::View::collection\\
+
+\midrule
+RDF11
+& L'utente business autenticato può effettuare la ricerca di una Collection attraverso la barra di ricerca
+& MaaP::Client::View::dashboard\\
+
+\midrule
 ROF10.2.5
 & L'utente business autenticato deve poter navigare tra la Collection
 & MaaP::Client::View::dashboard\\
 
 \midrule
-ROF10.1.2
-& L'utente business autenticato amministratore deve poter eliminare il Document che sta visualizzando
+ROF10.1
+& L'utente business autenticato deve poter visualizzare una pagina Document-Show
 & MaaP::Client::View::document\\
 
 \midrule
@@ -1045,9 +1037,14 @@ ROF10.1.1
 & MaaP::Client::View::document\\
 
 \midrule
-ROF10.1
-& L'utente business autenticato deve poter visualizzare una pagina Document-Show
+ROF10.1.2
+& L'utente business autenticato amministratore deve poter eliminare il Document che sta visualizzando
 & MaaP::Client::View::document\\
+
+\midrule
+ROF10.5.1
+& L'utente business autenticato amministratore deve poter modificare i valori associati alle chiavi
+& MaaP::Client::View::documentEdit\\
 
 \midrule
 ROF10.5.2
@@ -1057,6 +1054,11 @@ ROF10.5.2
 \midrule
 ROF10.4
 & L'utente business autenticato amministratore deve poter cancellare un Document
+& MaaP::Client::View::documentEdit\\
+
+\midrule
+ROF10.5
+& L'utente business autenticato amministratore deve poter modificare un Document
 & MaaP::Client::View::documentEdit\\
 
 \midrule
@@ -1070,38 +1072,18 @@ ROF10.1.3
 & MaaP::Client::View::documentEdit\\
 
 \midrule
-ROF10.5
-& L'utente business autenticato amministratore deve poter modificare un Document
-& MaaP::Client::View::documentEdit\\
+ROF10.7
+& L'utente business autenticato amministratore deve poter gestire gli indici
+& Maap::Client::View::indexCollection\\
 
 \midrule
-ROF10.5.1
-& L'utente business autenticato amministratore deve poter modificare i valori associati alle chiavi
-& MaaP::Client::View::documentEdit\\
-
-\midrule
-ROF10.7.3
-& L'utente business autenticato amministratore deve poter visualizzare gli indici presenti nel sistema
-& MaaP::Client::View::indexCollection\\
-
-\midrule
-ROF10.7.2
+ROF10.7.1
 & L'utente business autenticato amministratore deve poter eliminare degli indici
 & MaaP::Client::View::indexCollection\\
 
 \midrule
-ROF10.7.2.2
-& L'utente business autenticato amministratore deve poter eliminare l'indice selezionato
-& MaaP::Client::View::indexCollection\\
-
-\midrule
-ROF10.7.2.1
-& L'utente business autenticato amministratore deve poter selezionare un indice presente nel sistema
-& MaaP::Client::View::indexCollection\\
-
-\midrule
-ROF10.7
-& L'utente business autenticato amministratore deve poter gestire la creazione e l'eliminazione degli indici
+ROF10.7.2
+& L'utente business autenticato amministratore deve poter visualizzare gli indici presenti nel sistema
 & MaaP::Client::View::indexCollection\\
 
 \midrule
@@ -1115,13 +1097,13 @@ ROF7.2
 & MaaP::Client::View::login\\
 
 \midrule
-ROF7
-& L'utente business deve potersi autenticare inserendo dei dati personali
+ROF7.1
+& L'utente business deve inserire l'email per l'autenticazione
 & MaaP::Client::View::login\\
 
 \midrule
-ROF7.1
-& L'utente business deve inserire l'email per l'autenticazione
+ROF7
+& L'utente business deve potersi autenticare inserendo dei dati personali
 & MaaP::Client::View::login\\
 
 \midrule
@@ -1135,38 +1117,28 @@ ROF10.2.4
 & MaaP::Client::View::Navbar\\
 
 \midrule
-ROF10.7.1
-& L'utente business autenticato amministratore deve poter gestire la creazione degli indici
-& MaaP::Client::View::queryCollection\\
-
-\midrule
-ROF10.7
-& L'utente business autenticato amministratore deve poter gestire la creazione e l'eliminazione degli indici
-& MaaP::Client::View::queryCollection\\
-
-\midrule
-ROF10.7.1.2
+ROF10.6.2
 & L'utente business autenticato amministratore deve poter creare l'indice
 & MaaP::Client::View::queryCollection\\
 
 \midrule
-ROF10.7.1.1
-& L'utente business autenticato amministratore deve poter selezionare una query
-& MaaP::Client::View::queryCollection\\
-
-\midrule
 ROF10.6
-& L'utente business autenticato amministratore deve poter visualizzare le query più utilizzate dal sistema MaaP
+& L'utente business autenticato amministratore deve poter gestire le query più utilizzate dal sistema MaaP
 & MaaP::Client::View::queryCollection\\
 
 \midrule
-RDF8.2
-& L'utente business, per registrarsi, deve inserire una password
-& MaaP::Client::View::register\\
+RDF10.6.3
+& L'utente business autenticato amministratore deve poter visualizzare il comando per la creazione dell'indice da riga di comando
+& MaaP::Client::View::queryCollection\\
 
 \midrule
 RDF8.1
 & L'utente business, per registrarsi, deve inserire una email non presente nel sistema
+& MaaP::Client::View::register\\
+
+\midrule
+RDF8.2
+& L'utente business, per registrarsi, deve inserire una password
 & MaaP::Client::View::register\\
 
 \midrule
@@ -1185,18 +1157,8 @@ ROF10.3.1.2
 & MaaP::Client::View::userEdit\\
 
 \midrule
-ROF10.3.1.3
-& L'utente business autenticato deve poter annullare le modifiche apportate
-& MaaP::Client::View::userEdit\\
-
-\midrule
 ROF10.3.3
 & L'utente business autenticato amministratore deve poter eliminare un utente business
-& MaaP::Client::View::userEdit\\
-
-\midrule
-ROF10.3.1.4
-& L'utente business autenticato amministratore deve poter modificare i permessi degli utenti business
 & MaaP::Client::View::userEdit\\
 
 \midrule
@@ -1205,14 +1167,19 @@ ROF10.3.1.1
 & MaaP::Client::View::userEdit\\
 
 \midrule
-ROF10.3.2
-& L'utente business autenticato amministratore deve poter creare un nuovo utente business
+ROF10.3.1.3
+& L'utente business autenticato deve poter annullare le modifiche apportate
 & MaaP::Client::View::userEdit\\
 
 \midrule
-ROF10.3
-& L'utente business autenticato deve poter gestire il proprio profilo
-& MaaP::Client::View::userProfile\\
+ROF10.3.1.4
+& L'utente business autenticato amministratore deve poter modificare i permessi degli utenti business
+& MaaP::Client::View::userEdit\\
+
+\midrule
+ROF10.3.2
+& L'utente business autenticato amministratore deve poter creare un nuovo utente business
+& MaaP::Client::View::userEdit\\
 
 \midrule
 ROF10.3.1
@@ -1220,79 +1187,9 @@ ROF10.3.1
 & MaaP::Client::View::userProfile\\
 
 \midrule
-ROF10.7
-& L'utente business autenticato amministratore deve poter gestire la creazione e l'eliminazione degli indici
-& MaaP::Server::Controller ::FrontController\\
-
-\midrule
-ROF10.4
-& L'utente business autenticato amministratore deve poter cancellare un Document
-& MaaP::Server::Controller ::FrontController\\
-
-\midrule
 ROF10.3
 & L'utente business autenticato deve poter gestire il proprio profilo
-& MaaP::Server::Controller ::FrontController\\
-
-\midrule
-ROF7.1
-& L'utente business deve inserire l'email per l'autenticazione
-& MaaP::Server::Controller ::FrontController\\
-
-\midrule
-ROF9
-& L'utente business deve poter recuperare la password
-& MaaP::Server::Controller ::FrontController\\
-
-\midrule
-ROF10.7.1.2
-& L'utente business autenticato amministratore deve poter creare l'indice
-& MaaP::Server::Controller ::FrontController\\
-
-\midrule
-ROF10.2.4
-& L'utente business autenticato deve poter disconnettersi
-& MaaP::Server::Controller ::FrontController\\
-
-\midrule
-ROF7.2.1
-& La password per l'autenticazione deve essere alfanumerica e contenere almeno otto caratteri
-& MaaP::Server::Controller ::FrontController\\
-
-\midrule
-RDF8
-& L'utente business deve potersi registrare inserendo dei dati personali
-& MaaP::Server::Controller ::FrontController\\
-
-\midrule
-ROF7.2
-& L'utente business deve inserire la password per l'autenticazione
-& MaaP::Server::Controller ::FrontController\\
-
-\midrule
-ROF7
-& L'utente business deve potersi autenticare inserendo dei dati personali
-& MaaP::Server::Controller ::FrontController\\
-
-\midrule
-ROF10.7.2.2
-& L'utente business autenticato amministratore deve poter eliminare l'indice selezionato
-& MaaP::Server::Controller ::FrontController\\
-
-\midrule
-ROF10.6
-& L'utente business autenticato amministratore deve poter visualizzare le query più utilizzate dal sistema MaaP
-& MaaP::Server::Controller ::FrontController\\
-
-\midrule
-RDF8.1
-& L'utente business, per registrarsi, deve inserire una email non presente nel sistema
-& MaaP::Server::Controller ::FrontController\\
-
-\midrule
-ROF10.5
-& L'utente business autenticato amministratore deve poter modificare un Document
-& MaaP::Server::Controller ::FrontController\\
+& MaaP::Client::View::userProfile\\
 
 \midrule
 RDF8.2
@@ -1300,8 +1197,8 @@ RDF8.2
 & MaaP::Server::Controller ::FrontController\\
 
 \midrule
-ROF10.7.3
-& L'utente business autenticato amministratore deve poter visualizzare gli indici presenti nel sistema
+ROF10.7
+& L'utente business autenticato amministratore deve poter gestire gli indici
 & MaaP::Server::Controller ::FrontController\\
 
 \midrule
@@ -1312,11 +1209,86 @@ RDF8.2.1
 \midrule
 ROF7.2
 & L'utente business deve inserire la password per l'autenticazione
-& MaaP::Server::Controller ::IPassport\\
+& MaaP::Server::Controller ::FrontController\\
+
+\midrule
+ROF10.3
+& L'utente business autenticato deve poter gestire il proprio profilo
+& MaaP::Server::Controller ::FrontController\\
+
+\midrule
+ROF9
+& L'utente business deve poter recuperare la password
+& MaaP::Server::Controller ::FrontController\\
+
+\midrule
+ROF7.1
+& L'utente business deve inserire l'email per l'autenticazione
+& MaaP::Server::Controller ::FrontController\\
+
+\midrule
+ROF10.5
+& L'utente business autenticato amministratore deve poter modificare un Document
+& MaaP::Server::Controller ::FrontController\\
 
 \midrule
 ROF10.2.4
 & L'utente business autenticato deve poter disconnettersi
+& MaaP::Server::Controller ::FrontController\\
+
+\midrule
+RDF8.1
+& L'utente business, per registrarsi, deve inserire una email non presente nel sistema
+& MaaP::Server::Controller ::FrontController\\
+
+\midrule
+ROF10.6.2
+& L'utente business autenticato amministratore deve poter creare l'indice
+& MaaP::Server::Controller ::FrontController\\
+
+\midrule
+ROF7.2.1
+& La password per l'autenticazione deve essere alfanumerica e contenere almeno otto caratteri
+& MaaP::Server::Controller ::FrontController\\
+
+\midrule
+ROF10.4
+& L'utente business autenticato amministratore deve poter cancellare un Document
+& MaaP::Server::Controller ::FrontController\\
+
+\midrule
+ROF10.7.2
+& L'utente business autenticato amministratore deve poter visualizzare gli indici presenti nel sistema
+& MaaP::Server::Controller ::FrontController\\
+
+\midrule
+ROF7
+& L'utente business deve potersi autenticare inserendo dei dati personali
+& MaaP::Server::Controller ::FrontController\\
+
+\midrule
+ROF10.6.1
+& L'utente business autenticato amministratore deve poter visualizzare le query più utilizzate dal sistema Maap
+& MaaP::Server::Controller ::FrontController\\
+
+\midrule
+RDF8
+& L'utente business deve potersi registrare inserendo dei dati personali
+& MaaP::Server::Controller ::FrontController\\
+
+\midrule
+ROF10.6
+& L'utente business autenticato amministratore deve poter gestire le query più utilizzate dal sistema MaaP
+& MaaP::Server::Controller ::FrontController\\
+
+\midrule
+ROF10.2.4
+& L'utente business autenticato deve poter disconnettersi
+& MaaP::Server::Controller ::IPassport\\
+
+\midrule
+ROF7.2
+& L'utente business deve inserire la password per l'autenticazione
 & MaaP::Server::Controller ::IPassport\\
 
 \midrule
@@ -1325,15 +1297,24 @@ ROF7.1
 & MaaP::Server::Controller ::IPassport\\
 
 \midrule
+ROF7
+& L'utente business deve potersi autenticare inserendo dei dati personali
+& MaaP::Server::Controller ::IPassport\\
+
+\midrule
 ROF7.2.1
 & La password per l'autenticazione deve essere alfanumerica e contenere almeno otto caratteri
 & MaaP::Server::Controller ::IPassport\\
 
 \midrule
+ROF7.1
+& L'utente business deve inserire l'email per l'autenticazione
+& MaaP::Server::Controller ::Passport\\
+
+\midrule
 ROF7
 & L'utente business deve potersi autenticare inserendo dei dati personali
-& MaaP::Server::Controller ::IPassport\\
-& & MaaP::Server::Controller ::Passport\\
+& MaaP::Server::Controller ::Passport\\
 
 \midrule
 ROF7.2.1
@@ -1351,23 +1332,8 @@ ROF10.2.4
 & MaaP::Server::Controller ::Passport\\
 
 \midrule
-ROF7.1
-& L'utente business deve inserire l'email per l'autenticazione
-& MaaP::Server::Controller ::Passport\\
-
-\midrule
-ROF7.2.1
-& La password per l'autenticazione deve essere alfanumerica e contenere almeno otto caratteri
-& MaaP::Server::Controller ::PassportAdapter\\
-
-\midrule
 ROF7.2
 & L'utente business deve inserire la password per l'autenticazione
-& MaaP::Server::Controller ::PassportAdapter\\
-
-\midrule
-ROF7
-& L'utente business deve potersi autenticare inserendo dei dati personali
 & MaaP::Server::Controller ::PassportAdapter\\
 
 \midrule
@@ -1376,8 +1342,18 @@ ROF10.2.4
 & MaaP::Server::Controller ::PassportAdapter\\
 
 \midrule
+ROF7.2.1
+& La password per l'autenticazione deve essere alfanumerica e contenere almeno otto caratteri
+& MaaP::Server::Controller ::PassportAdapter\\
+
+\midrule
 ROF7.1
 & L'utente business deve inserire l'email per l'autenticazione
+& MaaP::Server::Controller ::PassportAdapter\\
+
+\midrule
+ROF7
+& L'utente business deve potersi autenticare inserendo dei dati personali
 & MaaP::Server::Controller ::PassportAdapter\\
 
 \midrule
@@ -1386,23 +1362,13 @@ ROF10.4
 & MaaP::Server::ModelServer ::Database::DBAnalysis\\
 
 \midrule
-ROF10.6
-& L'utente business autenticato amministratore deve poter visualizzare le query più utilizzate dal sistema MaaP
-& MaaP::Server::ModelServer ::Database::DBAnalysis\\
-
-\midrule
 ROF10.7
-& L'utente business autenticato amministratore deve poter gestire la creazione e l'eliminazione degli indici
-& MaaP::Server::ModelServer ::Database::DBAnalysis\\
+& L'utente business autenticato amministratore deve poter gestire gli indici
+& Maap::Server::ModelServer ::Database::DBAnalysis\\
 
 \midrule
-ROF10.7.2.2
-& L'utente business autenticato amministratore deve poter eliminare l'indice selezionato
-& MaaP::Server::ModelServer ::Database::DBAnalysis\\
-
-\midrule
-ROF10.7.1.2
-& L'utente business autenticato amministratore deve poter creare l'indice
+ROF10.6.1
+& L'utente business autenticato amministratore deve poter visualizzare le query più utilizzate dal sistema Maap
 & MaaP::Server::ModelServer ::Database::DBAnalysis\\
 
 \midrule
@@ -1411,7 +1377,7 @@ ROF10.5
 & MaaP::Server::ModelServer ::Database::DBAnalysis\\
 
 \midrule
-ROF10.7.3
+ROF10.7.2
 & L'utente business autenticato amministratore deve poter visualizzare gli indici presenti nel sistema
 & MaaP::Server::ModelServer ::Database::DBAnalysis\\
 
@@ -1421,8 +1387,18 @@ ROF10.5.2
 & MaaP::Server::ModelServer ::Database::DBAnalysis\\
 
 \midrule
-ROF7.2.1
-& La password per l'autenticazione deve essere alfanumerica e contenere almeno otto caratteri
+ROF10.6.2
+& L'utente business autenticato amministratore deve poter creare l'indice
+& MaaP::Server::ModelServer ::Database::DBAnalysis\\
+
+\midrule
+ROF10.6
+& L'utente business autenticato amministratore deve poter gestire le query più utilizzate dal sistema MaaP
+& MaaP::Server::ModelServer ::Database::DBAnalysis\\
+
+\midrule
+ROF7.2
+& L'utente business deve inserire la password per l'autenticazione
 & MaaP::Server::ModelServer ::Database::DBFramework\\
 
 \midrule
@@ -1431,8 +1407,8 @@ ROF10.3.1
 & MaaP::Server::ModelServer ::Database::DBFramework\\
 
 \midrule
-ROF10.3.2
-& L'utente business autenticato amministratore deve poter creare un nuovo utente business
+ROF7.1
+& L'utente business deve inserire l'email per l'autenticazione
 & MaaP::Server::ModelServer ::Database::DBFramework\\
 
 \midrule
@@ -1441,13 +1417,13 @@ ROF10.3.1.2
 & MaaP::Server::ModelServer ::Database::DBFramework\\
 
 \midrule
-ROF10.3.3
-& L'utente business autenticato amministratore deve poter eliminare un utente business
+ROF7.2.1
+& La password per l'autenticazione deve essere alfanumerica e contenere almeno otto caratteri
 & MaaP::Server::ModelServer ::Database::DBFramework\\
 
 \midrule
-ROF7.2
-& L'utente business deve inserire la password per l'autenticazione
+ROF7
+& L'utente business deve potersi autenticare inserendo dei dati personali
 & MaaP::Server::ModelServer ::Database::DBFramework\\
 
 \midrule
@@ -1461,18 +1437,18 @@ ROF10.3
 & MaaP::Server::ModelServer ::Database::DBFramework\\
 
 \midrule
-ROF7.1
-& L'utente business deve inserire l'email per l'autenticazione
+ROF10.3.2
+& L'utente business autenticato amministratore deve poter creare un nuovo utente business
 & MaaP::Server::ModelServer ::Database::DBFramework\\
 
 \midrule
-ROF7
-& L'utente business deve potersi autenticare inserendo dei dati personali
+ROF10.3.3
+& L'utente business autenticato amministratore deve poter eliminare un utente business
 & MaaP::Server::ModelServer ::Database::DBFramework\\
 
 \midrule
-ROF10.7.3
-& L'utente business autenticato amministratore deve poter visualizzare gli indici presenti nel sistema
+ROF10.6.2
+& L'utente business autenticato amministratore deve poter creare l'indice
 & MaaP::Server::ModelServer ::Database::MongooseDBAnalysis\\
 
 \midrule
@@ -1481,8 +1457,28 @@ ROF10.4
 & MaaP::Server::ModelServer ::Database::MongooseDBAnalysis\\
 
 \midrule
+ROF10.7
+& L'utente business autenticato amministratore deve poter gestire gli indici
+& Maap::Server::ModelServer ::Database::MongooseDBAnalysis\\
+
+\midrule
+ROF10.5
+& L'utente business autenticato amministratore deve poter modificare un Document
+& MaaP::Server::ModelServer ::Database::MongooseDBAnalysis\\
+
+\midrule
+ROF10.6.1
+& L'utente business autenticato amministratore deve poter visualizzare le query più utilizzate dal sistema Maap
+& MaaP::Server::ModelServer ::Database::MongooseDBAnalysis\\
+
+\midrule
+ROF10.7.2
+& L'utente business autenticato amministratore deve poter visualizzare gli indici presenti nel sistema
+& MaaP::Server::ModelServer ::Database::MongooseDBAnalysis\\
+
+\midrule
 ROF10.6
-& L'utente business autenticato amministratore deve poter visualizzare le query più utilizzate dal sistema MaaP
+& L'utente business autenticato amministratore deve poter gestire le query più utilizzate dal sistema MaaP
 & MaaP::Server::ModelServer ::Database::MongooseDBAnalysis\\
 
 \midrule
@@ -1491,48 +1487,8 @@ ROF10.5.2
 & MaaP::Server::ModelServer ::Database::MongooseDBAnalysis\\
 
 \midrule
-ROF10.5
-& L'utente business autenticato amministratore deve poter modificare un Document
-& MaaP::Server::ModelServer ::Database::MongooseDBAnalysis\\
-
-\midrule
-ROF10.7.2.2
-& L'utente business autenticato amministratore deve poter eliminare l'indice selezionato
-& MaaP::Server::ModelServer ::Database::MongooseDBAnalysis\\
-
-\midrule
-ROF10.7
-& L'utente business autenticato amministratore deve poter gestire la creazione e l'eliminazione degli indici
-& MaaP::Server::ModelServer ::Database::MongooseDBAnalysis\\
-
-\midrule
-ROF10.7.1.2
-& L'utente business autenticato amministratore deve poter creare l'indice
-& MaaP::Server::ModelServer ::Database::MongooseDBAnalysis\\
-
-\midrule
-ROF10.3.3
-& L'utente business autenticato amministratore deve poter eliminare un utente business
-& MaaP::Server::ModelServer ::Database::MongooseDBFramework\\
-
-\midrule
-ROF10.3.2
-& L'utente business autenticato amministratore deve poter creare un nuovo utente business
-& MaaP::Server::ModelServer ::Database::MongooseDBFramework\\
-
-\midrule
-ROF7.2.1
-& La password per l'autenticazione deve essere alfanumerica e contenere almeno otto caratteri
-& MaaP::Server::ModelServer ::Database::MongooseDBFramework\\
-
-\midrule
 ROF10.3.1.2
 & L'utente business autenticato deve poter  salvare le modifiche apportate
-& MaaP::Server::ModelServer ::Database::MongooseDBFramework\\
-
-\midrule
-ROF10.3.1
-& L'utente business autenticato deve poter gestire i propri dati
 & MaaP::Server::ModelServer ::Database::MongooseDBFramework\\
 
 \midrule
@@ -1541,18 +1497,28 @@ ROF10.3.1.4
 & MaaP::Server::ModelServer ::Database::MongooseDBFramework\\
 
 \midrule
-ROF10.3
-& L'utente business autenticato deve poter gestire il proprio profilo
-& MaaP::Server::ModelServer ::Database::MongooseDBFramework\\
-
-\midrule
 ROF7
 & L'utente business deve potersi autenticare inserendo dei dati personali
 & MaaP::Server::ModelServer ::Database::MongooseDBFramework\\
 
 \midrule
-ROF7.1
-& L'utente business deve inserire l'email per l'autenticazione
+ROF7.2.1
+& La password per l'autenticazione deve essere alfanumerica e contenere almeno otto caratteri
+& MaaP::Server::ModelServer ::Database::MongooseDBFramework\\
+
+\midrule
+ROF10.3
+& L'utente business autenticato deve poter gestire il proprio profilo
+& MaaP::Server::ModelServer ::Database::MongooseDBFramework\\
+
+\midrule
+ROF10.3.2
+& L'utente business autenticato amministratore deve poter creare un nuovo utente business
+& MaaP::Server::ModelServer ::Database::MongooseDBFramework\\
+
+\midrule
+ROF10.3.1
+& L'utente business autenticato deve poter gestire i propri dati
 & MaaP::Server::ModelServer ::Database::MongooseDBFramework\\
 
 \midrule
@@ -1561,11 +1527,46 @@ ROF7.2
 & MaaP::Server::ModelServer ::Database::MongooseDBFramework\\
 
 \midrule
+ROF7.1
+& L'utente business deve inserire l'email per l'autenticazione
+& MaaP::Server::ModelServer ::Database::MongooseDBFramework\\
+
+\midrule
+ROF10.3.3
+& L'utente business autenticato amministratore deve poter eliminare un utente business
+& MaaP::Server::ModelServer ::Database::MongooseDBFramework\\
+
+\midrule
 ROF10.6
-& L'utente business autenticato amministratore deve poter visualizzare le query più utilizzate dal sistema MaaP
+& L'utente business autenticato amministratore deve poter gestire le query più utilizzate dal sistema MaaP
 & MaaP::Server::ModelServer ::Database::Query\\
 
 \midrule
+ROF10.6.1
+& L'utente business autenticato amministratore deve poter visualizzare le query più utilizzate dal sistema Maap
+& MaaP::Server::ModelServer ::Database::Query\\
+
+\midrule
+ROF10.3
+& L'utente business autenticato deve poter gestire il proprio profilo
+& MaaP::Server::ModelServer ::Database::User\\
+
+\midrule
+ROF10.3.1.2
+& L'utente business autenticato deve poter  salvare le modifiche apportate
+& MaaP::Server::ModelServer ::Database::User\\
+
+\midrule
+ROF7.2.1
+& La password per l'autenticazione deve essere alfanumerica e contenere almeno otto caratteri
+& MaaP::Server::ModelServer ::Database::User\\
+
+\midrule
+ROF10.3.1
+& L'utente business autenticato deve poter gestire i propri dati
+& MaaP::Server::ModelServer ::Database::User\\
+
+\midrule
 ROF7.2
 & L'utente business deve inserire la password per l'autenticazione
 & MaaP::Server::ModelServer ::Database::User\\
@@ -1576,88 +1577,48 @@ ROF7.1
 & MaaP::Server::ModelServer ::Database::User\\
 
 \midrule
-ROF10.3
-& L'utente business autenticato deve poter gestire il proprio profilo
-& MaaP::Server::ModelServer ::Database::User\\
-
-\midrule
-ROF10.3.1.2
-& L'utente business autenticato deve poter  salvare le modifiche apportate
-& MaaP::Server::ModelServer ::Database::User\\
-
-\midrule
 ROF7
 & L'utente business deve potersi autenticare inserendo dei dati personali
 & MaaP::Server::ModelServer ::Database::User\\
 
 \midrule
-ROF10.3.1
-& L'utente business autenticato deve poter gestire i propri dati
-& MaaP::Server::ModelServer ::Database::User\\
-
-\midrule
-ROF7.2.1
-& La password per l'autenticazione deve essere alfanumerica e contenere almeno otto caratteri
-& MaaP::Server::ModelServer ::Database::User\\
-
-\midrule
-ROF10.1.1
-& L'utente business autenticato deve poter visualizzare il Document selezionato
-& MaaP::Server::ModelServer ::DataManager::DatabaseAnalysisManager::DatabaseAnalysisManager\\
-
-\midrule
-ROF10.1
-& L'utente business autenticato deve poter visualizzare una pagina Document-Show
-& MaaP::Server::ModelServer ::DataManager::DatabaseAnalysisManager::DatabaseAnalysisManager\\
-
-\midrule
-ROF10.5
-& L'utente business autenticato amministratore deve poter modificare un Document
-& MaaP::Server::ModelServer ::DataManager::DatabaseAnalysisManager::DatabaseAnalysisManager\\
-
-\midrule
-ROF10.7.3
-& L'utente business autenticato amministratore deve poter visualizzare gli indici presenti nel sistema
-& MaaP::Server::ModelServer ::DataManager::DatabaseAnalysisManager::DatabaseAnalysisManager\\
-
-\midrule
-RDF10.2
-& L'utente business autenticato deve poter modificare la visualizzazione dei Document
-& MaaP::Server::ModelServer ::DataManager::DatabaseAnalysisManager::DatabaseAnalysisManager\\
-
-\midrule
-ROF10
-& L'utente business autenticato deve poter aprire una Collection e visualizzare la sua pagina Collection-Index
-& MaaP::Server::ModelServer ::DataManager::DatabaseAnalysisManager::DatabaseAnalysisManager\\
-
-\midrule
-ROF10.7.2.2
-& L'utente business autenticato amministratore deve poter eliminare l'indice selezionato
-& MaaP::Server::ModelServer ::DataManager::DatabaseAnalysisManager::DatabaseAnalysisManager\\
-
-\midrule
-RDF10.2.1.1
-& L'utente business autenticato deve poter effettuare un ordinamento rispetto a una chiave
-& MaaP::Server::ModelServer ::DataManager::DatabaseAnalysisManager::DatabaseAnalysisManager\\
-
-\midrule
-ROF10.7.1.2
+ROF10.6.2
 & L'utente business autenticato amministratore deve poter creare l'indice
 & MaaP::Server::ModelServer ::DataManager::DatabaseAnalysisManager::DatabaseAnalysisManager\\
 
 \midrule
+ROF10.4
+& L'utente business autenticato amministratore deve poter cancellare un Document
+& MaaP::Server::ModelServer ::DataManager::DatabaseAnalysisManager::DatabaseAnalysisManager\\
+
+\midrule
+ROF10.7
+& L'utente business autenticato amministratore deve poter gestire gli indici
+& Maap::Server::ModelServer ::DataManager::DatabaseAnalysisManager::DatabaseAnalysisManager\\
+
+\midrule
+ROF10.1
+& L'utente business autenticato deve poter visualizzare una pagina Document-Show
+& MaaP::Server::ModelServer ::DataManager::DatabaseAnalysisManager::DatabaseAnalysisManager\\
+
+\midrule
+RDF10.2
+& L'utente business autenticato deve poter modificare la visualizzazione dei Document
+& MaaP::Server::ModelServer ::DataManager::DatabaseAnalysisManager::DatabaseAnalysisManager\\
+
+\midrule
+ROF10
+& L'utente business autenticato deve poter aprire una Collection e visualizzare la sua pagina Collection-Index
+& MaaP::Server::ModelServer ::DataManager::DatabaseAnalysisManager::DatabaseAnalysisManager\\
+
+\midrule
+ROF10.7.2
+& L'utente business autenticato amministratore deve poter visualizzare gli indici presenti nel sistema
+& MaaP::Server::ModelServer ::DataManager::DatabaseAnalysisManager::DatabaseAnalysisManager\\
+
+\midrule
 RDF10.2.1.2
 & L'utente business deve poter selezionare un numero massimo di Document da visualizzare per pagina
-& MaaP::Server::ModelServer ::DataManager::DatabaseAnalysisManager::DatabaseAnalysisManager\\
-
-\midrule
-ROF10.6
-& L'utente business autenticato amministratore deve poter visualizzare le query più utilizzate dal sistema MaaP
-& MaaP::Server::ModelServer ::DataManager::DatabaseAnalysisManager::DatabaseAnalysisManager\\
-
-\midrule
-RDF10.2.2
-& L'utente business autenticato deve poter applicare un filtro alla visualizzazione dei Document
 & MaaP::Server::ModelServer ::DataManager::DatabaseAnalysisManager::DatabaseAnalysisManager\\
 
 \midrule
@@ -1666,13 +1627,8 @@ ROF10.5.2
 & MaaP::Server::ModelServer ::DataManager::DatabaseAnalysisManager::DatabaseAnalysisManager\\
 
 \midrule
-RDF10.2.3
-& L'utente business autenticato deve poter annullare il filtro
-& MaaP::Server::ModelServer ::DataManager::DatabaseAnalysisManager::DatabaseAnalysisManager\\
-
-\midrule
-ROF10.4
-& L'utente business autenticato amministratore deve poter cancellare un Document
+RDF10.2.1.1
+& L'utente business autenticato deve poter effettuare un ordinamento rispetto a una chiave
 & MaaP::Server::ModelServer ::DataManager::DatabaseAnalysisManager::DatabaseAnalysisManager\\
 
 \midrule
@@ -1681,9 +1637,39 @@ RDF10.2.1
 & MaaP::Server::ModelServer ::DataManager::DatabaseAnalysisManager::DatabaseAnalysisManager\\
 
 \midrule
-ROF10.7
-& L'utente business autenticato amministratore deve poter gestire la creazione e l'eliminazione degli indici
+RDF10.2.3
+& L'utente business autenticato deve poter annullare il filtro
 & MaaP::Server::ModelServer ::DataManager::DatabaseAnalysisManager::DatabaseAnalysisManager\\
+
+\midrule
+ROF10.1.1
+& L'utente business autenticato deve poter visualizzare il Document selezionato
+& MaaP::Server::ModelServer ::DataManager::DatabaseAnalysisManager::DatabaseAnalysisManager\\
+
+\midrule
+ROF10.6.1
+& L'utente business autenticato amministratore deve poter visualizzare le query più utilizzate dal sistema Maap
+& MaaP::Server::ModelServer ::DataManager::DatabaseAnalysisManager::DatabaseAnalysisManager\\
+
+\midrule
+ROF10.5
+& L'utente business autenticato amministratore deve poter modificare un Document
+& MaaP::Server::ModelServer ::DataManager::DatabaseAnalysisManager::DatabaseAnalysisManager\\
+
+\midrule
+ROF10.6
+& L'utente business autenticato amministratore deve poter gestire le query più utilizzate dal sistema MaaP
+& MaaP::Server::ModelServer ::DataManager::DatabaseAnalysisManager::DatabaseAnalysisManager\\
+
+\midrule
+RDF10.2.2
+& L'utente business autenticato deve poter applicare un filtro alla visualizzazione dei Document
+& MaaP::Server::ModelServer ::DataManager::DatabaseAnalysisManager::DatabaseAnalysisManager\\
+
+\midrule
+RDF10.2.3
+& L'utente business autenticato deve poter annullare il filtro
+& MaaP::Server::ModelServer ::DataManager::DatabaseAnalysisManager::DataRetrieverAnalysis\\
 
 \midrule
 ROF10.5
@@ -1691,8 +1677,8 @@ ROF10.5
 & MaaP::Server::ModelServer ::DataManager::DatabaseAnalysisManager::DataRetrieverAnalysis\\
 
 \midrule
-ROF10.5.2
-& L'utente business autenticato amministratore deve poter salvare le modifiche apportate al Document
+ROF10.6.1
+& L'utente business autenticato amministratore deve poter visualizzare le query più utilizzate dal sistema Maap
 & MaaP::Server::ModelServer ::DataManager::DatabaseAnalysisManager::DataRetrieverAnalysis\\
 
 \midrule
@@ -1701,33 +1687,8 @@ ROF10
 & MaaP::Server::ModelServer ::DataManager::DatabaseAnalysisManager::DataRetrieverAnalysis\\
 
 \midrule
-ROF10.1
-& L'utente business autenticato deve poter visualizzare una pagina Document-Show
-& MaaP::Server::ModelServer ::DataManager::DatabaseAnalysisManager::DataRetrieverAnalysis\\
-
-\midrule
-RDF10.2.2
-& L'utente business autenticato deve poter applicare un filtro alla visualizzazione dei Document
-& MaaP::Server::ModelServer ::DataManager::DatabaseAnalysisManager::DataRetrieverAnalysis\\
-
-\midrule
-RDF10.2.3
-& L'utente business autenticato deve poter annullare il filtro
-& MaaP::Server::ModelServer ::DataManager::DatabaseAnalysisManager::DataRetrieverAnalysis\\
-
-\midrule
-ROF10.6
-& L'utente business autenticato amministratore deve poter visualizzare le query più utilizzate dal sistema MaaP
-& MaaP::Server::ModelServer ::DataManager::DatabaseAnalysisManager::DataRetrieverAnalysis\\
-
-\midrule
-RDF10.2.1.2
-& L'utente business deve poter selezionare un numero massimo di Document da visualizzare per pagina
-& MaaP::Server::ModelServer ::DataManager::DatabaseAnalysisManager::DataRetrieverAnalysis\\
-
-\midrule
-ROF10.1.1
-& L'utente business autenticato deve poter visualizzare il Document selezionato
+ROF10.4
+& L'utente business autenticato amministratore deve poter cancellare un Document
 & MaaP::Server::ModelServer ::DataManager::DatabaseAnalysisManager::DataRetrieverAnalysis\\
 
 \midrule
@@ -1736,8 +1697,28 @@ RDF10.2.1.1
 & MaaP::Server::ModelServer ::DataManager::DatabaseAnalysisManager::DataRetrieverAnalysis\\
 
 \midrule
-ROF10.4
-& L'utente business autenticato amministratore deve poter cancellare un Document
+ROF10.1
+& L'utente business autenticato deve poter visualizzare una pagina Document-Show
+& MaaP::Server::ModelServer ::DataManager::DatabaseAnalysisManager::DataRetrieverAnalysis\\
+
+\midrule
+RDF10.2
+& L'utente business autenticato deve poter modificare la visualizzazione dei Document
+& MaaP::Server::ModelServer ::DataManager::DatabaseAnalysisManager::DataRetrieverAnalysis\\
+
+\midrule
+RDF10.2.2
+& L'utente business autenticato deve poter applicare un filtro alla visualizzazione dei Document
+& MaaP::Server::ModelServer ::DataManager::DatabaseAnalysisManager::DataRetrieverAnalysis\\
+
+\midrule
+ROF10.1.1
+& L'utente business autenticato deve poter visualizzare il Document selezionato
+& MaaP::Server::ModelServer ::DataManager::DatabaseAnalysisManager::DataRetrieverAnalysis\\
+
+\midrule
+RDF10.2.1.2
+& L'utente business deve poter selezionare un numero massimo di Document da visualizzare per pagina
 & MaaP::Server::ModelServer ::DataManager::DatabaseAnalysisManager::DataRetrieverAnalysis\\
 
 \midrule
@@ -1746,9 +1727,19 @@ RDF10.2.1
 & MaaP::Server::ModelServer ::DataManager::DatabaseAnalysisManager::DataRetrieverAnalysis\\
 
 \midrule
-RDF10.2
-& L'utente business autenticato deve poter modificare la visualizzazione dei Document
+ROF10.5.2
+& L'utente business autenticato amministratore deve poter salvare le modifiche apportate al Document
 & MaaP::Server::ModelServer ::DataManager::DatabaseAnalysisManager::DataRetrieverAnalysis\\
+
+\midrule
+ROF10.6
+& L'utente business autenticato amministratore deve poter gestire le query più utilizzate dal sistema MaaP
+& MaaP::Server::ModelServer ::DataManager::DatabaseAnalysisManager::DataRetrieverAnalysis\\
+
+\midrule
+ROF10.3.1
+& L'utente business autenticato deve poter gestire i propri dati
+& MaaP::Server::ModelServer ::DataManager::DatabaseUserManager::DatabaseUserManager\\
 
 \midrule
 ROF10.3.3
@@ -1758,16 +1749,6 @@ ROF10.3.3
 \midrule
 ROF10.3
 & L'utente business autenticato deve poter gestire il proprio profilo
-& MaaP::Server::ModelServer ::DataManager::DatabaseUserManager::DatabaseUserManager\\
-
-\midrule
-ROF10.3.1
-& L'utente business autenticato deve poter gestire i propri dati
-& MaaP::Server::ModelServer ::DataManager::DatabaseUserManager::DatabaseUserManager\\
-
-\midrule
-ROF10.3.1.2
-& L'utente business autenticato deve poter  salvare le modifiche apportate
 & MaaP::Server::ModelServer ::DataManager::DatabaseUserManager::DatabaseUserManager\\
 
 \midrule
@@ -1781,6 +1762,21 @@ ROF10.3.1.4
 & MaaP::Server::ModelServer ::DataManager::DatabaseUserManager::DatabaseUserManager\\
 
 \midrule
+ROF10.3.1.2
+& L'utente business autenticato deve poter  salvare le modifiche apportate
+& MaaP::Server::ModelServer ::DataManager::DatabaseUserManager::DatabaseUserManager\\
+
+\midrule
+ROF10.3.3
+& L'utente business autenticato amministratore deve poter eliminare un utente business
+& MaaP::Server::ModelServer ::DataManager::DatabaseUserManager::DataRetrieverUsers\\
+
+\midrule
+ROF10.3.1.2
+& L'utente business autenticato deve poter  salvare le modifiche apportate
+& MaaP::Server::ModelServer ::DataManager::DatabaseUserManager::DataRetrieverUsers\\
+
+\midrule
 ROF10.3.1
 & L'utente business autenticato deve poter gestire i propri dati
 & MaaP::Server::ModelServer ::DataManager::DatabaseUserManager::DataRetrieverUsers\\
@@ -1791,73 +1787,38 @@ ROF10.3.1.4
 & MaaP::Server::ModelServer ::DataManager::DatabaseUserManager::DataRetrieverUsers\\
 
 \midrule
-ROF10.3.1.2
-& L'utente business autenticato deve poter  salvare le modifiche apportate
-& MaaP::Server::ModelServer ::DataManager::DatabaseUserManager::DataRetrieverUsers\\
-
-\midrule
 ROF10.3
 & L'utente business autenticato deve poter gestire il proprio profilo
 & MaaP::Server::ModelServer ::DataManager::DatabaseUserManager::DataRetrieverUsers\\
-
-\midrule
-ROF10.3.3
-& L'utente business autenticato amministratore deve poter eliminare un utente business
-& MaaP::Server::ModelServer ::DataManager::DatabaseUserManager::DataRetrieverUsers\\
-
-\midrule
-ROF10.5.2
-& L'utente business autenticato amministratore deve poter salvare le modifiche apportate al Document
-& MaaP::Server::ModelServer ::DataManager::IDatabaseManager\\
-
-\midrule
-ROF10.7.3
-& L'utente business autenticato amministratore deve poter visualizzare gli indici presenti nel sistema
-& MaaP::Server::ModelServer ::DataManager::IDatabaseManager\\
-
-\midrule
-ROF10.6
-& L'utente business autenticato amministratore deve poter visualizzare le query più utilizzate dal sistema MaaP
-& MaaP::Server::ModelServer ::DataManager::IDatabaseManager\\
-
-\midrule
-RDF10.2.2
-& L'utente business autenticato deve poter applicare un filtro alla visualizzazione dei Document
-& MaaP::Server::ModelServer ::DataManager::IDatabaseManager\\
-
-\midrule
-RDF10.2.1.2
-& L'utente business deve poter selezionare un numero massimo di Document da visualizzare per pagina
-& MaaP::Server::ModelServer ::DataManager::IDatabaseManager\\
-
-\midrule
-ROF10.3.3
-& L'utente business autenticato amministratore deve poter eliminare un utente business
-& MaaP::Server::ModelServer ::DataManager::IDatabaseManager\\
 
 \midrule
 ROF10.7
-& L'utente business autenticato amministratore deve poter gestire la creazione e l'eliminazione degli indici
+& L'utente business autenticato amministratore deve poter gestire gli indici
+& Maap::Server::ModelServer ::DataManager::IDatabaseManager\\
+
+\midrule
+RDF10.2.3
+& L'utente business autenticato deve poter annullare il filtro
 & MaaP::Server::ModelServer ::DataManager::IDatabaseManager\\
 
 \midrule
-RDF10.2.1.1
-& L'utente business autenticato deve poter effettuare un ordinamento rispetto a una chiave
+ROF10.3.3
+& L'utente business autenticato amministratore deve poter eliminare un utente business
 & MaaP::Server::ModelServer ::DataManager::IDatabaseManager\\
 
 \midrule
-ROF10.3
-& L'utente business autenticato deve poter gestire il proprio profilo
+ROF10.3.2
+& L'utente business autenticato amministratore deve poter creare un nuovo utente business
 & MaaP::Server::ModelServer ::DataManager::IDatabaseManager\\
 
 \midrule
-RDF10.2.1
-& L'utente business autenticato deve poter selezionare dei criteri per la visualizzazione
+ROF10.3.1.4
+& L'utente business autenticato amministratore deve poter modificare i permessi degli utenti business
 & MaaP::Server::ModelServer ::DataManager::IDatabaseManager\\
 
 \midrule
-ROF10.7.1.2
-& L'utente business autenticato amministratore deve poter creare l'indice
+ROF10.3.1.2
+& L'utente business autenticato deve poter  salvare le modifiche apportate
 & MaaP::Server::ModelServer ::DataManager::IDatabaseManager\\
 
 \midrule
@@ -1871,13 +1832,8 @@ ROF10.3.1
 & MaaP::Server::ModelServer ::DataManager::IDatabaseManager\\
 
 \midrule
-RDF10.2.3
-& L'utente business autenticato deve poter annullare il filtro
-& MaaP::Server::ModelServer ::DataManager::IDatabaseManager\\
-
-\midrule
-ROF10.1
-& L'utente business autenticato deve poter visualizzare una pagina Document-Show
+ROF10.3
+& L'utente business autenticato deve poter gestire il proprio profilo
 & MaaP::Server::ModelServer ::DataManager::IDatabaseManager\\
 
 \midrule
@@ -1886,23 +1842,33 @@ ROF10.5
 & MaaP::Server::ModelServer ::DataManager::IDatabaseManager\\
 
 \midrule
-ROF10.1.1
-& L'utente business autenticato deve poter visualizzare il Document selezionato
+ROF10.6.1
+& L'utente business autenticato amministratore deve poter visualizzare le query più utilizzate dal sistema Maap
 & MaaP::Server::ModelServer ::DataManager::IDatabaseManager\\
 
 \midrule
-ROF10.3.1.2
-& L'utente business autenticato deve poter  salvare le modifiche apportate
+RDF10.2.2
+& L'utente business autenticato deve poter applicare un filtro alla visualizzazione dei Document
 & MaaP::Server::ModelServer ::DataManager::IDatabaseManager\\
 
 \midrule
-ROF10.7.2.2
-& L'utente business autenticato amministratore deve poter eliminare l'indice selezionato
+ROF10.5.2
+& L'utente business autenticato amministratore deve poter salvare le modifiche apportate al Document
 & MaaP::Server::ModelServer ::DataManager::IDatabaseManager\\
 
 \midrule
-ROF10.3.2
-& L'utente business autenticato amministratore deve poter creare un nuovo utente business
+RDF10.2.1.2
+& L'utente business deve poter selezionare un numero massimo di Document da visualizzare per pagina
+& MaaP::Server::ModelServer ::DataManager::IDatabaseManager\\
+
+\midrule
+RDF10.2.1.1
+& L'utente business autenticato deve poter effettuare un ordinamento rispetto a una chiave
+& MaaP::Server::ModelServer ::DataManager::IDatabaseManager\\
+
+\midrule
+RDF10.2.1
+& L'utente business autenticato deve poter selezionare dei criteri per la visualizzazione
 & MaaP::Server::ModelServer ::DataManager::IDatabaseManager\\
 
 \midrule
@@ -1916,24 +1882,29 @@ RDF10.2
 & MaaP::Server::ModelServer ::DataManager::IDatabaseManager\\
 
 \midrule
-ROF10.3.1.4
-& L'utente business autenticato amministratore deve poter modificare i permessi degli utenti business
+ROF10.6
+& L'utente business autenticato amministratore deve poter gestire le query più utilizzate dal sistema MaaP
 & MaaP::Server::ModelServer ::DataManager::IDatabaseManager\\
 
 \midrule
-RDF10.2.1
-& L'utente business autenticato deve poter selezionare dei criteri per la visualizzazione
-& MaaP::Server::ModelServer ::DataManager::IDataRetriever\\
+ROF10.7.2
+& L'utente business autenticato amministratore deve poter visualizzare gli indici presenti nel sistema
+& MaaP::Server::ModelServer ::DataManager::IDatabaseManager\\
 
 \midrule
-ROF10.3.2
-& L'utente business autenticato amministratore deve poter creare un nuovo utente business
-& MaaP::Server::ModelServer ::DataManager::IDataRetriever\\
+ROF10.1.1
+& L'utente business autenticato deve poter visualizzare il Document selezionato
+& MaaP::Server::ModelServer ::DataManager::IDatabaseManager\\
 
 \midrule
-ROF10.3
-& L'utente business autenticato deve poter gestire il proprio profilo
-& MaaP::Server::ModelServer ::DataManager::IDataRetriever\\
+ROF10.1
+& L'utente business autenticato deve poter visualizzare una pagina Document-Show
+& MaaP::Server::ModelServer ::DataManager::IDatabaseManager\\
+
+\midrule
+ROF10.6.2
+& L'utente business autenticato amministratore deve poter creare l'indice
+& MaaP::Server::ModelServer ::DataManager::IDatabaseManager\\
 
 \midrule
 ROF10.3.1
@@ -1941,43 +1912,8 @@ ROF10.3.1
 & MaaP::Server::ModelServer ::DataManager::IDataRetriever\\
 
 \midrule
-ROF10.3.1.2
-& L'utente business autenticato deve poter  salvare le modifiche apportate
-& MaaP::Server::ModelServer ::DataManager::IDataRetriever\\
-
-\midrule
-RDF10.2.3
-& L'utente business autenticato deve poter annullare il filtro
-& MaaP::Server::ModelServer ::DataManager::IDataRetriever\\
-
-\midrule
-ROF10.3.3
-& L'utente business autenticato amministratore deve poter eliminare un utente business
-& MaaP::Server::ModelServer ::DataManager::IDataRetriever\\
-
-\midrule
-ROF10.3.1.4
-& L'utente business autenticato amministratore deve poter modificare i permessi degli utenti business
-& MaaP::Server::ModelServer ::DataManager::IDataRetriever\\
-
-\midrule
-RDF10.2.1.1
-& L'utente business autenticato deve poter effettuare un ordinamento rispetto a una chiave
-& MaaP::Server::ModelServer ::DataManager::IDataRetriever\\
-
-\midrule
-RDF10.2
-& L'utente business autenticato deve poter modificare la visualizzazione dei Document
-& MaaP::Server::ModelServer ::DataManager::IDataRetriever\\
-
-\midrule
 ROF10.5
 & L'utente business autenticato amministratore deve poter modificare un Document
-& MaaP::Server::ModelServer ::DataManager::IDataRetriever\\
-
-\midrule
-ROF10.4
-& L'utente business autenticato amministratore deve poter cancellare un Document
 & MaaP::Server::ModelServer ::DataManager::IDataRetriever\\
 
 \midrule
@@ -1986,8 +1922,53 @@ ROF10.5.2
 & MaaP::Server::ModelServer ::DataManager::IDataRetriever\\
 
 \midrule
+ROF10.1
+& L'utente business autenticato deve poter visualizzare una pagina Document-Show
+& MaaP::Server::ModelServer ::DataManager::IDataRetriever\\
+
+\midrule
+ROF10.3.1.4
+& L'utente business autenticato amministratore deve poter modificare i permessi degli utenti business
+& MaaP::Server::ModelServer ::DataManager::IDataRetriever\\
+
+\midrule
+ROF10.3.2
+& L'utente business autenticato amministratore deve poter creare un nuovo utente business
+& MaaP::Server::ModelServer ::DataManager::IDataRetriever\\
+
+\midrule
+ROF10.4
+& L'utente business autenticato amministratore deve poter cancellare un Document
+& MaaP::Server::ModelServer ::DataManager::IDataRetriever\\
+
+\midrule
+ROF10.3.3
+& L'utente business autenticato amministratore deve poter eliminare un utente business
+& MaaP::Server::ModelServer ::DataManager::IDataRetriever\\
+
+\midrule
+ROF10.6.1
+& L'utente business autenticato amministratore deve poter visualizzare le query più utilizzate dal sistema Maap
+& MaaP::Server::ModelServer ::DataManager::IDataRetriever\\
+
+\midrule
 ROF10
 & L'utente business autenticato deve poter aprire una Collection e visualizzare la sua pagina Collection-Index
+& MaaP::Server::ModelServer ::DataManager::IDataRetriever\\
+
+\midrule
+RDF10.2.1.1
+& L'utente business autenticato deve poter effettuare un ordinamento rispetto a una chiave
+& MaaP::Server::ModelServer ::DataManager::IDataRetriever\\
+
+\midrule
+ROF10.3
+& L'utente business autenticato deve poter gestire il proprio profilo
+& MaaP::Server::ModelServer ::DataManager::IDataRetriever\\
+
+\midrule
+RDF10.2.1
+& L'utente business autenticato deve poter selezionare dei criteri per la visualizzazione
 & MaaP::Server::ModelServer ::DataManager::IDataRetriever\\
 
 \midrule
@@ -1996,13 +1977,13 @@ ROF10.1.1
 & MaaP::Server::ModelServer ::DataManager::IDataRetriever\\
 
 \midrule
-RDF10.2.2
-& L'utente business autenticato deve poter applicare un filtro alla visualizzazione dei Document
+RDF10.2.3
+& L'utente business autenticato deve poter annullare il filtro
 & MaaP::Server::ModelServer ::DataManager::IDataRetriever\\
 
 \midrule
-ROF10.1
-& L'utente business autenticato deve poter visualizzare una pagina Document-Show
+RDF10.2.2
+& L'utente business autenticato deve poter applicare un filtro alla visualizzazione dei Document
 & MaaP::Server::ModelServer ::DataManager::IDataRetriever\\
 
 \midrule
@@ -2012,28 +1993,33 @@ RDF10.2.1.2
 
 \midrule
 ROF10.6
-& L'utente business autenticato amministratore deve poter visualizzare le query più utilizzate dal sistema MaaP
+& L'utente business autenticato amministratore deve poter gestire le query più utilizzate dal sistema MaaP
 & MaaP::Server::ModelServer ::DataManager::IDataRetriever\\
 
 \midrule
-ROF10.7
-& L'utente business autenticato amministratore deve poter gestire la creazione e l'eliminazione degli indici
+RDF10.2
+& L'utente business autenticato deve poter modificare la visualizzazione dei Document
+& MaaP::Server::ModelServer ::DataManager::IDataRetriever\\
+
+\midrule
+ROF10.3.1.2
+& L'utente business autenticato deve poter  salvare le modifiche apportate
+& MaaP::Server::ModelServer ::DataManager::IDataRetriever\\
+
+\midrule
+ROF10.6.2
+& L'utente business autenticato amministratore deve poter creare l'indice
 & MaaP::Server::ModelServer ::DataManager::IndexManager::IndexManager\\
 
 \midrule
-ROF10.7.2.2
-& L'utente business autenticato amministratore deve poter eliminare l'indice selezionato
-& MaaP::Server::ModelServer ::DataManager::IndexManager::IndexManager\\
-
-\midrule
-ROF10.7.3
+ROF10.7.2
 & L'utente business autenticato amministratore deve poter visualizzare gli indici presenti nel sistema
 & MaaP::Server::ModelServer ::DataManager::IndexManager::IndexManager\\
 
 \midrule
-ROF10.7.1.2
-& L'utente business autenticato amministratore deve poter creare l'indice
-& MaaP::Server::ModelServer ::DataManager::IndexManager::IndexManager\\
+ROF10.7
+& L'utente business autenticato amministratore deve poter gestire gli indici
+& Maap::Server::ModelServer ::DataManager::IndexManager::IndexManager\\
 
 \midrule
 ROF3
@@ -2053,6 +2039,11 @@ ROF1.6
 & MaaPCLI::ProjectClone\\
 
 \midrule
+ROF1.2
+& Il sistema MaaP deve generare i file di configurazione necessari al funzionamento del progetto
+& MaaPCLI::ProjectCreate\\
+
+\midrule
 ROF5
 & Il sistema deve permettere all'utente sviluppatore la modifica dei file di configurazione
 & MaaPCLI::ProjectCreate\\
@@ -2060,11 +2051,6 @@ ROF5
 \midrule
 RDF5.3
 & Il sistema MaaP deve permettere all'utente sviluppatore di modificare i template per le pagine web
-& MaaPCLI::ProjectCreate\\
-
-\midrule
-ROF1.4.1
-& Il sistema di autenticazione per le pagine web deve essere generato insieme ad un profilo amministratore di default
 & MaaPCLI::ProjectCreate\\
 
 \midrule
@@ -2078,8 +2064,8 @@ ROF1.1
 & MaaPCLI::ProjectCreate\\
 
 \midrule
-ROF1.2
-& Il sistema MaaP deve generare i file di configurazione necessari al funzionamento del progetto
+ROF1.3
+& Il sistema MaaP deve generare le directory necessarie al funzionamento del progetto
 & MaaPCLI::ProjectCreate\\
 
 \midrule
@@ -2088,8 +2074,8 @@ ROF1.4
 & MaaPCLI::ProjectCreate\\
 
 \midrule
-ROF1.3
-& Il sistema MaaP deve generare le directory necessarie al funzionamento del progetto
+ROF1.4.1
+& Il sistema di autenticazione per le pagine web deve essere generato insieme ad un profilo amministratore di default
 & MaaPCLI::ProjectCreate\\
 
 \midrule
@@ -2100,5 +2086,5 @@ ROF1.5
 \end{longtable}
 \end{center}
 
-%QUESTE TABELLE SONO STATE GENERATE AUTOMATICAMENTE DA TRACCIAMENTOSCRIPTST [Jun 25 14:36:20 2014]
+%QUESTE TABELLE SONO STATE GENERATE AUTOMATICAMENTE DA TRACCIAMENTOSCRIPTST [Jul 17 16:51:26 2014]
 
