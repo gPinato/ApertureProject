@@ -182,7 +182,7 @@ Package che gestisce l'installazione del framework MaaP.
 \begin{description}
  \item[Descrizione] \hfill \\
 Modulo di installazione del framework Maap. Si occupa di gestire le richiesti provenienti da linea di comando gestendo i vari comandi.
- \item[Dipendendenze] \hfill
+ \item[Dipendenze] \hfill
  \begin{itemize}
  	\item fs;
  	\item commander;
@@ -711,7 +711,7 @@ Per ultima cosa, il \grassetto{@dispatcher} gestisce eventuali richieste di riso
   \item[Parametri]
    \begin{mldescription}
     \mlitem{'*'} \hfill \\
-    Stringa contentente l'indirizzo delle API da richiamare. In questo caso, l'idirizzo è una stringa qualsiasi.
+    Stringa contenente l'indirizzo delle API da richiamare. In questo caso, l'indirizzo è una stringa qualsiasi.
     \mlitem{function(req, res) \{ res.sendfile(path.join(config.static\_assets.dir, 'index.html')); \}} \hfill \\
     Funzione anonima che reindirizza la richiesta HTTP alla pagina iniziale della view del Client.
    \end{mldescription}
@@ -886,7 +886,7 @@ Package che racchiude i database, le loro operazioni di accesso e i file DSL con
 \begin{description}
  \item[Descrizione] \hfill \\
  Si occupa dell'inizializzazione dei database degli utenti e di analisi. Crea l'amministratore di default di \textit{MaaP}.
- \item[Dipendendenze] \hfill
+ \item[Dipendenze] \hfill
    \begin{itemize}
    \item mongoose;
    \item @MongooseDBAnalysis;
@@ -925,7 +925,7 @@ Package che racchiude i database, le loro operazioni di accesso e i file DSL con
 \begin{description}
  \item[Descrizione] \hfill \\
  Si occupa dell'inizializzazione dei modelli di \grassetto{Mongoose}.
- \item[Dipendendenze] \hfill
+ \item[Dipendenze] \hfill
     \begin{itemize}
     \item fs;
     \item path;
@@ -951,7 +951,7 @@ Package che racchiude i database, le loro operazioni di accesso e i file DSL con
 \begin{description}
  \item[Descrizione] \hfill \\
  Si occupa dell'inizializzazione dei modelli di \grassetto{Mongoose}.
-  \item[Dipendendenze] \hfill
+  \item[Dipendenze] \hfill
   \begin{itemize}
   \item mongoose.
   \end{itemize}
@@ -982,7 +982,7 @@ Package che gestisce le query ai database di analisi.
  \item[Descrizione] \hfill \\
 Modulo del ModelServer che si occupa di interpretare i dati richiesti e spediti da e al database di analisi. 
 Prepara le query da effettuare e contatta il \grassetto{@DataRetrieverAnalysis} per ottenere i dati voluti.
- \item[Dipendendenze] \hfill
+ \item[Dipendenze] \hfill
  \begin{itemize}
   \item path;
   \item @DataRetrieverAnalysis;
@@ -1193,7 +1193,7 @@ Se essa è presente, ne ritorna il modello, altrimenti ritorna l'intero "-1".
 				Funzione da richiamare al termine della funzione \textit{getDocuments}.
 			\end{description}
 			\item[Descrizione] \hfill \\
-			Viene effettuata una query sul modello \textit{model} passato come argomento alla funzione. Si utilizzano come opzioni di ricerca i campi dell'oggetto \textit{querySettings}. Viene in questo modo creato un oggetto locale che verrà passato all fine dell'esecuzione della funzione alla \textit{callback} come argomento. Se non pervengono risultati dalla query, l'oggetto passato sarà vuoto. Nel caso il risultato della query non sia nullo, viene poi effettuata l'operazione di popolamento specificata dal parametro \textit{populate}. Infine viene richiamata la \textit{callback} passando come argomento l'oggetto locale contenente il risulatato della query e del populate.
+			Viene effettuata una query sul modello \textit{model} passato come argomento alla funzione. Si utilizzano come opzioni di ricerca i campi dell'oggetto \textit{querySettings}. Viene in questo modo creato un oggetto locale che verrà passato alla fine dell'esecuzione della funzione alla \textit{callback} come argomento. Se non pervengono risultati dalla query, l'oggetto passato sarà vuoto. Nel caso il risultato della query non sia nullo, viene poi effettuata l'operazione di popolamento specificata dal parametro \textit{populate}. Infine viene richiamata la \textit{callback} passando come argomento l'oggetto locale contenente il risultato della query e del populate.
 		\end{description}			
 	 
 	\mlitem{getCollectionsList(find)} \hfill 
@@ -1357,7 +1357,7 @@ Viene richiesto il modello della Collection di nome \textit{collection\_name}. S
 				\end{description}
 			\item[Dipendenza] \hfill
 				\begin{itemize}
-					\item JSON generato dall'inerpretazione del DSL della Collection di nome 										\textit{collection\_name}.
+					\item JSON generato dall'interpretazione del DSL della Collection di nome 										\textit{collection\_name}.
 				\end{itemize}
 			\item[Descrizione] \hfill \\
 			Richiede il modello della Collection \textit{collection\_name} e il file DSL associato. Viene controllato se l'output del DSL applica delle modifiche alla visualizzazione standard. Se ciò avviene, vengono impostate le etichette del JSON da inviare al Client come specificato nel file DSL. I campi compositi del database di analisi vengono processati e viene inviato solamente il campo \textit{id} dei campi compositi. Inoltre vengono interpretate eventuali istruzioni di \textit{populate} da applicare prima di effettuare la query. Infine, nel caso la query abbia successo, viene richiamata la funzione \textit{callback} con argomento il JSON ottenuto dalla query. Se invece la query non è andata a buon fine, viene chiamata la \textit{callback} con argomento vuoto.
@@ -1409,7 +1409,7 @@ Package che gestisce gli accessi al database utenti.
 Modulo del ModelServer che si occupa di interpretare i dati richiesti e spediti da e al database utenti. 
 Prepara le query da effettuare e contatta il \grassetto{@DataRetrieverUsers} per ottenere i dati voluti. 
 Inoltre dialoga direttamente con \grassetto{@MongooseDBFramework} per l'esecuzione di test durante la registrazione. 
- \item[Dipendendenze] \hfill
+ \item[Dipendenze] \hfill
  \begin{itemize}
   \item path;
   \item @DataRetrieverUsers;
@@ -1645,7 +1645,7 @@ Inoltre dialoga direttamente con \grassetto{@MongooseDBFramework} per l'esecuzio
  		 				\item[Parametri] \hfill
  		 					\begin{description}
  		 						\item[id] \hfill \\
- 		 							Stringa contenente l'indentificativo dell'utente che si desidera eliminare dal database.
+ 		 							Stringa contenente l'identificativo dell'utente che si desidera eliminare dal database.
  		 						\item[callback] \hfill \\
  		 							Funzione da richiamare alla fine dell'eliminazione del profilo utente.
  		 					\end{description}
@@ -1943,7 +1943,7 @@ Package realizzato per creare e gestire gli indici utilizzati nel database di an
 \begin{description}
  \item[Descrizione] \hfill \\
   Modulo del \grassetto{ModelServer} che si occupa controllare la presenza dei file DSL nell'apposita cartella definita nel file di configurazione e invoca il parser dei DSL.
- \item[Dipendendenze] \hfill 
+ \item[Dipendenze] \hfill 
  \begin{itemize}
  \item{fs};
   \item{path};
@@ -1996,7 +1996,7 @@ Package realizzato per creare e gestire gli indici utilizzati nel database di an
     				Oggetto contenente l'applicazione di \grassetto{Express}.
     			\end{description}
     		\item[Descrizione] \hfill \\
-    		Si occupa di verificare la correttezza del DSL scritto, verificando che tale file contenga un codice corretto sintatticamente e attraverso l'uso del \grassetto{@DSLparser} esegua il parsing vero e proprio. Controlla che il risulatato del parsing sia in formato JSON, lo salva su file e utilizza il metodo \textit{generateFunction} per creare le funzioni di trasformazione. Se non esiste, si occupa di generare lo schema \grassetto{Mongoose} della Collection specificata nel file DSL.
+    		Si occupa di verificare la correttezza del DSL scritto, verificando che tale file contenga un codice corretto sintatticamente e attraverso l'uso del \grassetto{@DSLparser} esegua il parsing vero e proprio. Controlla che il risultato del parsing sia in formato JSON, lo salva su file e utilizza il metodo \textit{generateFunction} per creare le funzioni di trasformazione. Se non esiste, si occupa di generare lo schema \grassetto{Mongoose} della Collection specificata nel file DSL.
     \end{description}
  \end{mldescription}
  
@@ -2005,7 +2005,7 @@ Package realizzato per creare e gestire gli indici utilizzati nel database di an
 \begin{description}
  \item[Descrizione] \hfill \\
   Modulo del ModelServer che si occupa effettuare il parsing di un DSL.
- \item[Dipendendenze] \hfill
+ \item[Dipendenze] \hfill
  \begin{itemize}
   \item{@JavascriptParser}.
  \end{itemize}
@@ -2022,7 +2022,7 @@ Package realizzato per creare e gestire gli indici utilizzati nel database di an
      				Campo da aggiungere alla struttura del JSON.
      			\end{description}
      		\item[Descrizione] \hfill \\
-     		Inizializza il campo field nell'Array della struttura del JSON, dove tale campo è definito nella struttura di default del JSON, con il valore di defalt.
+     		Inizializza il campo field nell'Array della struttura del JSON, dove tale campo è definito nella struttura di default del JSON, con il valore di default.
  \end{description}
  \mlitem{checkFieldThrow(collection, field, root)}\hfill 
  \begin{description}
@@ -2137,7 +2137,7 @@ Package realizzato per creare e gestire gli indici utilizzati nel database di an
 \begin{description}
  \item[Descrizione] \hfill \\
   Modulo che si occupa dell'inizializzazione del \grassetto{@DSLManager}.
- \item[Dipendendenza] \hfill
+ \item[Dipendenze] \hfill
  \begin{itemize}
   \item{fs}.
  \end{itemize}
@@ -2378,7 +2378,7 @@ Package contenente i vari Template utilizzati dal Client AngularJS per visualizz
 		\item[\$scope.current\_page] \hfill \\
 		Intero che rappresenta la pagina correntemente visualizzata.
 		\item[\$scope.rows] \hfill \\
-		Array contenente il contenuto di ogni query. Ovvero, comprende: la Collection di apparteneneza, i campi su cui viene effettuata la query ed il numero di volte che essa è stata effettuata.
+		Array contenente il contenuto di ogni query. Ovvero, comprende: la Collection di appartenenza, i campi su cui viene effettuata la query ed il numero di volte che essa è stata effettuata.
  	\end{description}
 \end{description}
 
@@ -2402,7 +2402,7 @@ Package contenente i vari Template utilizzati dal Client AngularJS per visualizz
 	\item[Descrizione] \hfill \\
 	Pagina per la gestione della Collection degli utenti di Maap. Questa pagina è visibile solamente per un utente che possiede i privilegi di amministrazione.
 	\item[Utilizzo] \hfill \\
-	In questa pagina vengono visualizzati tutti gli utenti registrati al sistema. Da qui l'utente amministratore può decidere di visualizzare un profilo utente, modificarlo o eliminarlo. Nella finestra a destra della Collection, è inoltre possibile refistrare un nuovo utente.
+	In questa pagina vengono visualizzati tutti gli utenti registrati al sistema. Da qui l'utente amministratore può decidere di visualizzare un profilo utente, modificarlo o eliminarlo. Nella finestra a destra della Collection, è inoltre possibile registrare un nuovo utente.
 	\item[Attributi] \hfill
 	\begin{description}
 		\item[\$scope.credentials] \hfill \\
@@ -2615,7 +2615,7 @@ Package che racchiude i Controller del Client. Il primo metodo descritto di ogni
  Controller utilizzato da AngularJS per fornire e gestire i dati della dashboard.
 Fornisce un immediato elenco delle collection disponibili.
  
- \item[Dipendendenze iniettate al controller] \hfill
+ \item[Dipendenze iniettate al controller] \hfill
  \begin{itemize}
   \item \$scope;
   \item @CollectionListService.
@@ -2637,7 +2637,7 @@ Fornisce un immediato elenco delle collection disponibili.
   \mlitem{CollectionListService.get()}
   \begin{description}
   	\item[Descrizione] \hfill \\
-    Funzione che richiede al server l'elenco delle collection disponibli e le inserisce nello scope, filtrando le Collection che non rispettano i parametri di ricerca di \textit{\$scope.searchbox}.
+    Funzione che richiede al server l'elenco delle collection disponibili e le inserisce nello scope, filtrando le Collection che non rispettano i parametri di ricerca di \textit{\$scope.searchbox}.
   \end{description}
  \end{mldescription}
 \end{description}
@@ -2650,7 +2650,7 @@ Fornisce un immediato elenco delle collection disponibili.
  \item[Utilizzo] \hfill \\
  Controller utilizzato da AngularJS per fornire e gestire i dati durante la visualizzazione di un document.
  
- \item[Dipendendenze iniettate al controller] \hfill
+ \item[Dipendenze iniettate al controller] \hfill
  \begin{itemize}
   \item \$scope;
   \item \$location;
@@ -2709,7 +2709,7 @@ Fornisce un immediato elenco delle collection disponibili.
  \item[Utilizzo] \hfill \\
  Controller utilizzato da AngularJS per fornire e gestire i dati durante la modifica di un document.
  
- \item[Dipendendenze iniettate al controller] \hfill
+ \item[Dipendenze iniettate al controller] \hfill
  \begin{itemize}
   \item \$scope;
   \item \$location;
@@ -2768,7 +2768,7 @@ Fornisce un immediato elenco delle collection disponibili.
  Controller utilizzato da AngularJS per fornire e gestire i dati degli indici.
 
  
- \item[Dipendendenze iniettate al controller] \hfill
+ \item[Dipendenze iniettate al controller] \hfill
  \begin{itemize}
   \item \$scope;
   \item \$route;
@@ -2888,7 +2888,7 @@ Fornisce un immediato elenco delle collection disponibili.
  \item[Utilizzo] \hfill \\
  Controller utilizzato da AngularJS per fornire e gestire i dati durante l'autenticazione.
  
- \item[Dipendendenze iniettate al controller] \hfill
+ \item[Dipendenze iniettate al controller] \hfill
  \begin{itemize}
   \item \$scope;
   \item \$route;
@@ -2914,7 +2914,7 @@ Fornisce un immediato elenco delle collection disponibili.
   		Credenziali di accesso inserite dall'utente.
   	\end{description}
   	\item[Descrizione] \hfill \\
-  	Funzione che trasmette al server le credenziali inserite dall'utente e verifica se sono corrette. Richiama il metodo \textit{login()} di \textbf{@AuthService}, passando come paramatro \textit{\$scope.credentials}.
+  	Funzione che trasmette al server le credenziali inserite dall'utente e verifica se sono corrette. Richiama il metodo \textit{login()} di \textbf{@AuthService}, passando come parametro \textit{\$scope.credentials}.
   	In caso positivo autentica l'utente, altrimenti mostra un errore.
   \end{description}
  \end{description}
@@ -2969,9 +2969,9 @@ Fornisce un immediato elenco delle collection disponibili.
  Modulo che descrive il Controller della pagina di gestione del profilo.
  
  \item[Utilizzo] \hfill \\
- Controller utilizzato da AngularJS che permette all'utente di gestire il suo profilo, visualizzandone le informazioni contentute.
+ Controller utilizzato da AngularJS che permette all'utente di gestire il suo profilo, visualizzandone le informazioni contenute.
  
- \item[Dipendendenze iniettate al controller] \hfill 
+ \item[Dipendenze iniettate al controller] \hfill 
  \begin{itemize}
   \item \$scope;
   \item \$location;
@@ -3011,8 +3011,8 @@ Fornisce un immediato elenco delle collection disponibili.
  Modulo che descrive il Controller della pagina di modifica di un documento.
  
  \item[Utilizzo] \hfill \\
- Controller utilizzato da AngularJS che permette all'utente di gestire il suo profilo, visualizzando e modificando le informazioni contentute.\\ 
- \item[Dipendendenze iniettate al controller] \hfill
+ Controller utilizzato da AngularJS che permette all'utente di gestire il suo profilo, visualizzando e modificando le informazioni contenute.\\ 
+ \item[Dipendenze iniettate al controller] \hfill
  \begin{itemize}
   \item \$scope;
   \item \$location;
@@ -3067,7 +3067,7 @@ Funzione che invia al server il profilo modificato nel client.
 	Modulo che descrive il Controller della pagina di recupero della password di un utente registrato al sistema.
 	\item[Utilizzo] \hfill \\
 	Controller utilizzato da AngularJS per gestire il recupero di una password utente.
-	\item[Dipendendenze iniettate al controller] \hfill
+	\item[Dipendenze iniettate al controller] \hfill
 	\begin{itemize}
 		\item \$scope;
 		\item \$route;
@@ -3098,7 +3098,7 @@ Funzione che invia al server il profilo modificato nel client.
  Controller utilizzato da AngularJS per fornire e gestire i dati della pagina di gestione delle query.
  
  
- \item[Dipendendenze iniettate al controller] \hfill
+ \item[Dipendenze iniettate al controller] \hfill
  \begin{itemize}
   \item \$scope;
   \item \$route;
@@ -3152,7 +3152,7 @@ Funzione che invia al server il profilo modificato nel client.
  	\item[Parametro] \hfill
   		\begin{description}
   			\item[indexData] \hfill \\
-  			Oggetto contenente i dati sensivili di un indice.
+  			Oggetto contenente i dati sensibili di un indice.
        \end{description}
   	\item[Descrizione] \hfill \\
   	Funzione che consente di visualizzare il comando diretto da shell per la creazione di un dato indice su una query. Essa compone il comando a partire dal parametro \textit{indexData}, contenente le informazioni necessarie alla creazione dell'indice.
@@ -3225,7 +3225,7 @@ Funzione che invia al server il profilo modificato nel client.
  \item[Utilizzo] \hfill \\
  Controller utilizzato da AngularJS per fornire e gestire i dati durante la registrazione.
  
- \item[Dipendendenze iniettate al controller] \hfill
+ \item[Dipendenze iniettate al controller] \hfill
  \begin{itemize}
   \item \$scope;
   \item \$location;
@@ -3261,7 +3261,7 @@ Funzione che invia al server il profilo modificato nel client.
  \item[Utilizzo] \hfill \\
  Controller utilizzato da AngularJS per fornire e gestire i dati della Collection degli user.
  
- \item[Dipendendenze iniettate al controller] \hfill
+ \item[Dipendenze iniettate al controller] \hfill
  \begin{itemize}
   \item \$scope;
   \item \$route;
@@ -3392,7 +3392,7 @@ Funzione che invia al server il profilo modificato nel client.
  \item[Utilizzo] \hfill \\
  Controller utilizzato da AngularJS per fornire e gestire i dati durante la visualizzazione di un document.
  
- \item[Dipendendenze iniettate al controller] \hfill
+ \item[Dipendenze iniettate al controller] \hfill
  \begin{itemize}
   \item \$scope;
   \item \$location;
@@ -3448,7 +3448,7 @@ Funzione che invia al server il profilo modificato nel client.
  \item[Utilizzo] \hfill \\
  Controller utilizzato da AngularJS per fornire e gestire i dati durante la modifica di un profilo.
  
- \item[Dipendendenze iniettate al controller] \hfill
+ \item[Dipendenze iniettate al controller] \hfill
  \begin{itemize}
   \item \$scope;
   \item \$location;
@@ -3529,7 +3529,7 @@ Funzione che invia al server il profilo modificato nel client.
 \end{itemize}
  \item[Descrizione] \hfill \\
  Directive utilizzata per verificare che la mail inserita dall'utente durante la registrazione non sia già utilizzata.
-  Se la mail è gia in utilizzo non viene validato il form e non si può procedere alla registrazione.
+  Se la mail è già in utilizzo non viene validato il form e non si può procedere alla registrazione.
 
 \end{description}
 
@@ -3543,7 +3543,7 @@ I Servizi del Client sono i tramite tra il Client ed il Server. I componenti di 
 \paragraph{@AuthService}
 \begin{description}
  \item[Descrizione] \hfill \\
- Modulo che espone un oggetto \$resource legato all'autenticazaione utente.
+ Modulo che espone un oggetto \$resource legato all'autenticazione utente.
  \item[Utilizzo] \hfill \\
  Viene utilizzato per astrarre il processo di verifica delle credenziali eseguito dal server. Questo modulo esegue una richiesta alle API del server per stabilire se le credenziali inserite dall'utente sono valide all'autenticazione. Il modulo ritorna una \$resource per rendere più semplice ed immediato il dialogo tra il Client e il sistema di autenticazione. \\
  La \$resource esportata da questo modulo viene utilizzata nel \grassetto{@LoginCtrl} per verificare le credenziali inserite lato Client.
@@ -3637,7 +3637,7 @@ I Servizi del Client sono i tramite tra il Client ed il Server. I componenti di 
  query data. Questa risorsa esportata è dotata di tre metodi di accesso e modifica dei dati dell'indice, ovvero
  \textit{query}, \textit{insert} e \textit{remove}.
  \item[Funzionalità] \hfill \\
- \emph{Dipendendenze iniettate:}
+ \emph{Dipendenze iniettate:}
  \begin{itemize}
   \item \$resource.
  \end{itemize}
@@ -3651,9 +3651,9 @@ I Servizi del Client sono i tramite tra il Client ed il Server. I componenti di 
  Modulo che fornisce la \$resource legata al servizio di logout di un utente autenticato del Client.
  \item[Utilizzo] \hfill \\
   Questo servizio fornisce un'astrazione del metodo di logout eseguito dal server. La \$resource esportata dal servizio viene utilizzata
-  nel \grassetto{@NavBarCtrl} per effettuare il logout di un autente autenticato, tramite il metodo esposto \textit{logout}. 
+  nel \grassetto{@NavBarCtrl} per effettuare il logout di un utente autenticato, tramite il metodo esposto \textit{logout}. 
  \item[Funzionalità] \hfill \\
- \emph{Dipendendenze iniettate:}
+ \emph{Dipendenze iniettate:}
  \begin{itemize}
   \item \$resource.
  \end{itemize}
@@ -3669,7 +3669,7 @@ I Servizi del Client sono i tramite tra il Client ed il Server. I componenti di 
  La risorsa ritornata da questo modulo viene utilizzata dal \grassetto{@ProfileCtrl} per dialogare con le informazioni associate ad un singolo utente.
  Il metodo \textit{query} associato alla risorsa serve per ottenere i dati associati al profilo utente associato.
  \item[Funzionalità] \hfill \\
- \emph{Dipendendenze iniettate:}
+ \emph{Dipendenze iniettate:}
  \begin{itemize}
   \item \$resource.
  \end{itemize}
@@ -3685,7 +3685,7 @@ I Servizi del Client sono i tramite tra il Client ed il Server. I componenti di 
  La risorsa ritornata da questo modulo viene utilizzata dal \grassetto{@ProfileEditCtrl} per dialogare con le informazioni associate ad un singolo utente.
  Alla risorsa ritornata vengono associati tre metodi: \textit{query}, \textit{update} e \textit{remove}.
  \item[Funzionalità] \hfill \\
- \emph{Dipendendenze iniettate:}
+ \emph{Dipendenze iniettate:}
  \begin{itemize}
   \item \$resource.
  \end{itemize}
@@ -3705,7 +3705,7 @@ I Servizi del Client sono i tramite tra il Client ed il Server. I componenti di 
  di una query al Server inviando come argomenti i dati presenti nello \$scope in quel momento. \\
  Il modulo associa alla risorsa ritornata le funzioni \textit{query} e \textit{remove}.
  \item[Funzionalità] \hfill \\
- \emph{Dipendendenze iniettate:}
+ \emph{Dipendenze iniettate:}
  \begin{itemize}
   \item \$resource.
  \end{itemize}
@@ -3723,7 +3723,7 @@ I Servizi del Client sono i tramite tra il Client ed il Server. I componenti di 
  La risorsa viene utilizzata dal \grassetto{@RegisterCtrl} per richiedere la registrazione di un nuovo utente. Viene infatti esposto il metodo \textit{register} 
  che consente di inviare una richiesta di registrazione al Server con le credenziali inserite nell'apposito form del Client. Viene inoltre esposto il metodo \grassetto{createUser} che consente all'amministratore di creare un nuovo utente dalla sua interfaccia di gestione utenti.
  \item[Funzionalità] \hfill \\
- \emph{Dipendendenze iniettate:}
+ \emph{Dipendenze iniettate:}
  \begin{itemize}
   \item \$resource.
  \end{itemize}
@@ -3741,7 +3741,7 @@ I Servizi del Client sono i tramite tra il Client ed il Server. I componenti di 
  correttamente tutti gli utenti del sistema ed organizzarli nell'apposita vista. Il modulo esporta 
  con la \$resource il metodo \textit{query}. 
  \item[Funzionalità] \hfill \\
- \emph{Dipendendenze iniettate:}
+ \emph{Dipendenze iniettate:}
  \begin{itemize}
   \item \$resource.
  \end{itemize}
@@ -3757,7 +3757,7 @@ I Servizi del Client sono i tramite tra il Client ed il Server. I componenti di 
  Questa risorsa viene utilizzata nello \grassetto{@UserCtrl} per richiedere al Server le informazioni associate ad un utente. Ogni utente è identificato dal proprio \textit{id} e questo campo viene passato dal Client per individuare un singolo utente, se presente, nel Server. La risorsa viene esportata 
 con il metodo \textit{query}, per ottenere i dati voluti.
  \item[Funzionalità] \hfill \\
- \emph{Dipendendenze iniettate:}
+ \emph{Dipendenze iniettate:}
  \begin{itemize}
   \item \$resource.
  \end{itemize}
@@ -3773,7 +3773,7 @@ con il metodo \textit{query}, per ottenere i dati voluti.
   Server è l'\textit{id} dell'utente. Le funzioni esportate con la \$resource sono: \textit{query}, \textit{update} e 
   \textit{remove}.
  \item[Funzionalità] \hfill \\
- \emph{Dipendendenze iniettate:}
+ \emph{Dipendenze iniettate:}
  \begin{itemize}
   \item \$resource.
  \end{itemize}
@@ -3805,7 +3805,7 @@ Il diagramma mostra la sequenza di operazioni che avvengono quando un utente eff
 
 \subsection{Creazione indice con successo}
 \immagine{./Sequenza1}{Diagramma sequenza: Creazione indice con successo}
-Il diagramma mostra la sequenza di operazioni che avvengono quando un utente effettua la creazione di un indice. L'utente seleziona la query su cui creare un nuovo indice nella pagina \textbf{@queryCollection}. Viene quindi invocato il metodo \textit{createindex()}, passando come parametro l'iddell'indice. del \textbf{@QueryCtrl}. Il controller effettua una chiamata asincrona al metodo \textit{insert()} del \textbf{@IndexService}, passando l'id precedente e il nome dell'indice. Il servizio esegue una richiesta PUT di inserimento al Server, passando le informazioni legate ai campi utilizzati nella query legata all'indice da creare. Sarà quindi compito del Server creare l'indice, ritornando un messaggio di buona riuscita al servizio. L'\textbf{@IndexService} ritornerà quindi una \$resource al \textbf{@QueryCtrl}, che effettuerà l'aggiornamento dello \$scope e richiederà l'aggiornamento della vista.
+Il diagramma mostra la sequenza di operazioni che avvengono quando un utente effettua la creazione di un indice. L'utente seleziona la query su cui creare un nuovo indice nella pagina \textbf{@queryCollection}. Viene quindi invocato il metodo \textit{createindex()}, passando come parametro l'id dell'indice. del \textbf{@QueryCtrl}. Il controller effettua una chiamata asincrona al metodo \textit{insert()} del \textbf{@IndexService}, passando l'id precedente e il nome dell'indice. Il servizio esegue una richiesta PUT di inserimento al Server, passando le informazioni legate ai campi utilizzati nella query legata all'indice da creare. Sarà quindi compito del Server creare l'indice, ritornando un messaggio di buona riuscita al servizio. L'\textbf{@IndexService} ritornerà quindi una \$resource al \textbf{@QueryCtrl}, che effettuerà l'aggiornamento dello \$scope e richiederà l'aggiornamento della vista.
 
 \section{Tracciamento}
 In questa sezione verranno tracciati i moduli con i requisiti. Per semplicità di lettura i requisiti associati ai figli di un componente non sono riportati anche nel padre.
