@@ -1,9 +1,9 @@
 /**
  * File: MongooseDBFramework.test.js
  * Module: test::modelServer::database
- * Author: Alberto Garbui
+ * Author: Alessandro Benetti
  * Created: 23/06/14
- * Version: 1.0
+ * Version: 1.0.0
  * Description: test del MongooseDBFramework
  * Modification History:
  ==============================================

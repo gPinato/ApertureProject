@@ -1,9 +1,9 @@
 /**
  * File: index.test.js
  * Module: test::modelServer::DSL
- * Author: Alberto Garbui
+ * Author: Alessandro Benetti
  * Created: 20/06/14
- * Version: 1.0
+ * Version: 1.0.0
  * Description: test dell'index del DSL
  * Modification History:
  ==============================================

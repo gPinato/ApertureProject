@@ -1,9 +1,9 @@
 /**
  * File: IndexManager.test.js
  * Module: test::modelServer::dataManager::IndexManager
- * Author: Alberto Garbui
+ * Author: Fabio Miotto
  * Created: 22/06/14
- * Version: 1.0
+ * Version: 1.0.0
  * Description: test dell' IndexManager
  * Modification History:
  ==============================================

@@ -1,9 +1,9 @@
 /**
  * File: DSLManager.test.js
  * Module: test::modelServer::DSL
- * Author: Alberto Garbui
+ * Author: Fabio Miotto
  * Created: 23/06/14
- * Version: 1.0
+ * Version: 1.0.0
  * Description: test del DSL manager
  * Modification History:
  ==============================================

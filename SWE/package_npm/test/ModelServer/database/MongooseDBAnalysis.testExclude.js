@@ -1,9 +1,9 @@
 /**
  * File: MongooseDBAnalysis.test.js
  * Module: test::modelServer::database
- * Author: Alberto Garbui
+ * Author: Fabio Miotto
  * Created: 20/06/14
- * Version: 1.0
+ * Version: 1.0.0
  * Description: test del MongooseDBAnalysis
  * Modification History:
  ==============================================
