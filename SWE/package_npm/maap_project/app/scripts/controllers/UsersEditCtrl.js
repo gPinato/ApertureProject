@@ -38,7 +38,7 @@ angular.module('maaperture').controller('UsersEditCtrl', function ($scope, $loca
                 $scope.original_data.push(value);
             });
         },
-        function err(error) {
+        function err() {
             $location.path("/404");
         }
     );
@@ -61,7 +61,7 @@ angular.module('maaperture').controller('UsersEditCtrl', function ($scope, $loca
             function success() {
                 $location.path('/users/' + $scope.current_document);
             },
-            function err(error) {
+            function err() {
                 $location.path("/404");
             }
         );

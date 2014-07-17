@@ -19,6 +19,7 @@ describe('Controller: ProfileCtrl', function () {
         routeParams,
         $httpBackend,
         scope,
+        location,
         data = { label: [ '_id', 'Timestamp', 'Message', 'Level', 'Hostname' ],
             data:
             { _id: '52b320a93401a40800000006',
@@ -27,9 +28,10 @@ describe('Controller: ProfileCtrl', function () {
                 level: 'info',
                 hostname: 'b6d91509-de9d-4be9-819d-e04de3699ad2' } };
     // Initialize the controller and a mock scope
-    beforeEach(inject(function ($controller, $rootScope,_$httpBackend_ ) {
+    beforeEach(inject(function ($controller,$location, $rootScope,_$httpBackend_ ) {
         scope = $rootScope.$new();
-        $httpBackend = _$httpBackend_;
+        $httpBackend = _$httpBackend_,
+            location = $location;
 
         routeParams ={};
         routeParams.col_id=0;
@@ -55,13 +57,10 @@ describe('Controller: ProfileCtrl', function () {
     });
 
     it('should display an error when not successful', function () {
-        // Given
         $httpBackend.whenGET('http://localhost:9000/api/profile').respond(400);
 
-        // When
-        //scope.loadData();
         $httpBackend.flush();
-        // Then
+        expect(location.path()).toBe('/404');
 
     });
 
@@ -70,23 +69,20 @@ describe('Controller: ProfileCtrl', function () {
         $httpBackend.whenGET('http://localhost:9000/api/profile').respond(200,data);
         $httpBackend.whenDELETE('http://localhost:9000/api/profile/edit').respond(200);
 
-        // When
         scope.delete_document();
         $httpBackend.flush();
-        // Then
-        //test sul path
+        expect(location.path()).toBe('/');
+
 
     });
 
     it('should display an error when the delete fails', function () {
-        // Given
         $httpBackend.whenGET('http://localhost:9000/api/profile').respond(400);
         $httpBackend.whenDELETE('http://localhost:9000/api/profile/edit').respond(200);
 
-        // When
+
         scope.delete_document();
         $httpBackend.flush();
-        // Then
 
 
     });

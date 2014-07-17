@@ -26,13 +26,15 @@ describe('Controller: LoginCtrl', function () {
         $httpBackend,
         scope,
         cookieStore,
+        location,
         data;
 
     // Initialize the controller and a mock scope
-    beforeEach(inject(function ($controller, $rootScope,_$httpBackend_,$cookieStore ) {
+    beforeEach(inject(function ($controller, $rootScope,_$httpBackend_,$cookieStore,$location ) {
         scope = $rootScope.$new();
         $httpBackend = _$httpBackend_;
         cookieStore = $cookieStore,
+        location=$location,
         data ={};
         data.level=1;
 
@@ -43,35 +45,36 @@ describe('Controller: LoginCtrl', function () {
         });
     }));
 
-    it('should set user data correctly when successful (admin)', function () {
+
+    it('should redirect if already logged in', function () {
+        scope.loggedIn = true;
+        $httpBackend.whenGET('http://localhost:9000/api/login').respond(200, data);
+        $httpBackend.whenGET('views/dashboard.html').respond(200);
+
+        $httpBackend.flush();
+        expect(location.path()).toBe('/');
+
+
+    });
+
+
+    it('should set user data correctly when successful', function () {
 
         $httpBackend.whenGET('http://localhost:9000/api/login').respond(200, data);
         $httpBackend.whenGET('views/dashboard.html').respond(200);
 
         $httpBackend.flush();
-
+        expect(location.path()).toBe('/');
 
     });
 
-    it('should set user data correctly when successful (user)', function () {
-        data.level=0;
-        $httpBackend.whenGET('http://localhost:9000/api/login').respond(200, data);
+
+
+    it('should display an error when not successful ', function () {
         $httpBackend.whenGET('views/dashboard.html').respond(200);
-
-        $httpBackend.flush();
-
-
-    });
-
-    it('should set user data correctly when successful (user)', function () {
-        data.level=0;
         $httpBackend.whenGET('http://localhost:9000/api/login').respond(400);
-        $httpBackend.whenGET('views/dashboard.html').respond(200);
 
         $httpBackend.flush();
-
-
-
     });
 });
 

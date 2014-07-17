@@ -22,10 +22,6 @@ angular.module('maaperture').controller('RegisterCtrl', function ($scope, $locat
         pwd2: ''
     };
 
-    //variabile che controlla se si è tentato di inviare il form con dati non validi.
-    $scope.submitted = false;
-
-
     //Funzione per inviare il form di registrazione al server.
     //Invia soltanto se il client ritiene che il form sia compilato con dati validi.
     $scope.signupForm = function () {
@@ -43,9 +39,6 @@ angular.module('maaperture').controller('RegisterCtrl', function ($scope, $locat
             );
         }
 
-        else {
-            $scope.signup_form.submitted = true;
-        }
 
     };
 

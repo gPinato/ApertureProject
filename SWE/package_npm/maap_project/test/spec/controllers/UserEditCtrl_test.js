@@ -19,15 +19,14 @@ describe('Controller: UsersEditCtrl', function () {
         routeParams,
         $httpBackend,
         scope,
-        data = { label: [ '_id', 'Timestamp', 'Message' ],
-            data:
-            {   timestamp: 'today',
-                message: 'AMAIL',
-                level: 'info' } };
+        location,
+        data = { label: [ 'Email', 'Level' ],
+            data: { email: 'bb@bb.com', level: 'administrator' } };
     // Initialize the controller and a mock scope
-    beforeEach(inject(function ($controller, $rootScope,_$httpBackend_ ) {
+    beforeEach(inject(function ($controller,$location, $rootScope,_$httpBackend_ ) {
         scope = $rootScope.$new();
-        $httpBackend = _$httpBackend_;
+        $httpBackend = _$httpBackend_,
+        location = $location;
 
         routeParams ={};
         routeParams.col_id=0;
@@ -43,21 +42,19 @@ describe('Controller: UsersEditCtrl', function () {
         // Given
         $httpBackend.whenGET('http://localhost:9000/api/users/edit').respond(200, data);
 
-        // When
         $httpBackend.flush();
-        // Then
-
+        expect(scope.data).toEqual(data.data);
+        expect(scope.labels).toEqual(data.label);
+        expect(scope.original_keys).toEqual(["email","level"]);
+        expect(scope.original_data).toEqual(['bb@bb.com',"administrator"]);
 
     });
 
     it('should display an error when not successful', function () {
-        // Given
         $httpBackend.whenGET('http://localhost:9000/api/users/edit').respond(400);
 
-        // When
-        //scope.loadData();
         $httpBackend.flush();
-        // Then
+        expect(location.path()).toBe('/404');
 
     });
 
@@ -69,21 +66,46 @@ describe('Controller: UsersEditCtrl', function () {
         // When
         scope.delete_document();
         $httpBackend.flush();
-        // Then
-        //test sul path
+        expect(location.path()).toBe('/users/');
 
     });
 
     it('should display an error when the delete fails', function () {
         // Given
-        $httpBackend.whenGET('http://localhost:9000/api/users/edit').respond(400);
-        $httpBackend.whenDELETE('http://localhost:9000/api/users/edit').respond(200);
+        $httpBackend.whenGET('http://localhost:9000/api/users/edit').respond(200,data);
+        $httpBackend.whenDELETE('http://localhost:9000/api/users/edit').respond(400);
 
-        // When
         scope.delete_document();
         $httpBackend.flush();
-        // Then
 
 
     });
+/*
+    it('should redirect to self after succesful update', function () {
+        scope.newPassword1 = 12;
+        $httpBackend.whenGET('http://localhost:9000/api/users/edit').respond(200,data);
+        $httpBackend.whenPUT('http://localhost:9000/api/users/edit').respond(200);
+
+        // When
+        scope.edit_document();
+        $httpBackend.flush();
+        expect(scope.labels).toEqual(data.label);
+
+        expect(location.path()).toBe('/users/1');
+
+    });
+
+    it('should display an error when the update fails', function () {
+        scope.newPassword1 = 12;
+        $httpBackend.whenGET('http://localhost:9000/api/users/edit').respond(200,data);
+        $httpBackend.whenPUT('http://localhost:9000/api/users/edit').respond(400);
+
+        scope.edit_document();
+        $httpBackend.flush();
+        expect(scope.labels).toEqual(data.label);
+
+        expect(location.path()).toBe('/404');
+
+
+    });*/
 });

@@ -23,12 +23,13 @@ describe('Controller: CollectionCtrl', function () {
 
     // Initialize the controller and a mock scope
     beforeEach(inject(function ($controller,$location, $rootScope, _$httpBackend_) {
-        scope = $rootScope.$new();
-        $httpBackend = _$httpBackend_;
+        scope = $rootScope.$new(),
+        $httpBackend = _$httpBackend_,
+        location = $location;
+
         routeParams={};
         routeParams.col_id=0;
         routeParams.doc_id=0;
-        location = $location;
 
         MainCtrl = $controller('CollectionCtrl', {
             $scope: scope,
@@ -70,7 +71,7 @@ describe('Controller: CollectionCtrl', function () {
         // When
         //scope.loadData();
         $httpBackend.flush();
-        // Then
+        expect(location.path()).toBe('/404');
 
     });
 
@@ -86,8 +87,8 @@ describe('Controller: CollectionCtrl', function () {
         // When
         scope.delete_document();
         $httpBackend.flush();
-        // Then
-        //test sul path
+        expect(location.path()).toBe('/collection/0');
+
 
     });
 

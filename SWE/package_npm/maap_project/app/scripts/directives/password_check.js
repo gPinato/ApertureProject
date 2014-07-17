@@ -1,15 +1,16 @@
 /**
  * File: password_check;
- * Module: modulo di appartenenza;
- * Author: jack;
+ * Module: mapp:directives;
+ * Author: Giacomo Pinato;
  * Created: 20/05/14;
- * Version: versione corrente;
- * Description: descrizione dettagliata del file;
+ * Version: 0.1;
+ * Description: Directory that checks both password are the same
+ * during registration;
  * Modification History:
  ==============================================
  * Version | Changes
  ==============================================
- *
+ * 0.1 file creation
  ==============================================
  */
 'use strict';

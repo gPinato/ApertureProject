@@ -25,13 +25,15 @@ describe('Controller: RegisterCtrl', function () {
         routeParams,
         $httpBackend,
         scope,
+        location,
         cookieStore,
        credentials;
 
     // Initialize the controller and a mock scope
-    beforeEach(inject(function ($controller, $rootScope,_$httpBackend_,$cookieStore ) {
+    beforeEach(inject(function ($controller,$location, $rootScope,_$httpBackend_,$cookieStore ) {
         scope = $rootScope.$new();
-        $httpBackend = _$httpBackend_;
+        $httpBackend = _$httpBackend_,
+        location = $location,
         cookieStore = $cookieStore,
         credentials = {
                 email: '1',
@@ -56,20 +58,20 @@ describe('Controller: RegisterCtrl', function () {
         // When
         scope.signupForm();
         $httpBackend.flush();
-        // Then
+        expect(location.path()).toBe('/');
 
 
     });
 
     it('should give an error when not succesfull', function () {
         // Given
-
+        scope.signup_form={};
+        scope.signup_form.$valid=false;
         $httpBackend.whenGET('http://localhost:9000/api/signup').respond(400);
         $httpBackend.whenGET('views/dashboard.html').respond(200);
 
         // When
         $httpBackend.flush();
-        // Then
 
 
     });

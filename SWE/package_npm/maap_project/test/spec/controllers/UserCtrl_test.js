@@ -12,7 +12,7 @@
 describe('Controller: UsersCtrl', function () {
 
 
-    var scope, routeParams, UsersCtrl;
+    var scope, routeParams, UsersCtrl,location;
     var $httpBackend;
 
     var data = { label: [ 'Email', 'Level' ],
@@ -23,8 +23,9 @@ describe('Controller: UsersCtrl', function () {
     beforeEach(angular.mock.inject(function ($rootScope, $routeParams,$location, $controller, _$httpBackend_) {
         scope = $rootScope.$new();
         routeParams = $routeParams;
-        $httpBackend = _$httpBackend_;
-        routeParams.user_id = 1
+        $httpBackend = _$httpBackend_,
+        location = $location;
+        routeParams.user_id = 1;
 
         UsersCtrl = $controller('UsersCtrl', {
             '$scope': scope,
@@ -37,10 +38,7 @@ describe('Controller: UsersCtrl', function () {
         // Given
         $httpBackend.whenGET('http://localhost:9000/api/users/' + routeParams.user_id).respond(200, data);
 
-        // When
-        //scope.loadData();
         $httpBackend.flush();
-        // Then
         expect(scope.data).toEqual(data.data);
         expect(scope.labels).toEqual(data.label);
         expect(scope.original_keys).toEqual(["email","level"]);
@@ -49,16 +47,34 @@ describe('Controller: UsersCtrl', function () {
     });
 
     it('should display an error when not successful', function () {
-        // Given
         $httpBackend.whenGET('http://localhost:9000/api/users/' + routeParams.user_id).respond(400);
-        // When
-        //scope.loadData();
+
         $httpBackend.flush();
-        // Then
-        /*
         expect(location.path()).toBe('/404');
 
-        spyOn(location, 'path');
-        expect(location.path()).toHaveBeenCalledWith('/404');*/
+    });
+
+
+    it('should delete a document correctly', function () {
+        // Given
+        $httpBackend.whenGET('http://localhost:9000/api/users/1').respond(200,data);
+        $httpBackend.whenDELETE('http://localhost:9000/api/users/1/edit').respond(200);
+
+        // When
+        scope.delete_document();
+        $httpBackend.flush();
+        expect(location.path()).toBe('/users/');
+
+
+    });
+
+    it('should display an error when the delete fails', function () {
+        $httpBackend.whenGET('http://localhost:9000/api/users/1').respond(400);
+        $httpBackend.whenDELETE('http://localhost:9000/api/users/1/edit').respond(400);
+
+        scope.delete_document();
+        $httpBackend.flush();
+
+
     });
 });

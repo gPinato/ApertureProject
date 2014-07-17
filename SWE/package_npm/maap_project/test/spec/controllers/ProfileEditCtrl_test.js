@@ -19,11 +19,13 @@ describe('Controller: ProfileEditCtrl', function () {
         routeParams,
         $httpBackend,
         scope,
+        location,
         data = { label: [ 'Email' ], data: { email: 'bb@bb.com' } };
     // Initialize the controller and a mock scope
-    beforeEach(inject(function ($controller, $rootScope,_$httpBackend_ ) {
+    beforeEach(inject(function ($controller,$location, $rootScope,_$httpBackend_ ) {
         scope = $rootScope.$new();
-        $httpBackend = _$httpBackend_;
+        $httpBackend = _$httpBackend_,
+        location = $location;
 
         routeParams ={};
         routeParams.col_id=0;
@@ -36,12 +38,11 @@ describe('Controller: ProfileEditCtrl', function () {
     }));
 
     it('should set some data on the scope when successful', function () {
-        // Given
         $httpBackend.whenGET('http://localhost:9000/api/profile/edit').respond(200, data);
 
-        // When
+
         $httpBackend.flush();
-        // Then
+
         expect(scope.labels).toEqual = data.label;
         expect(scope.data).toEqual = data.data;
 
@@ -49,38 +50,50 @@ describe('Controller: ProfileEditCtrl', function () {
     });
 
     it('should display an error when not successful', function () {
-        // Given
         $httpBackend.whenGET('http://localhost:9000/api/profile/edit').respond(400);
-
-        // When
-        //scope.loadData();
         $httpBackend.flush();
-        // Then
+        expect(location.path()).toBe('/404');
+
+
+    });
+
+
+    it('should edit a document correctly', function () {
+        $httpBackend.whenGET('http://localhost:9000/api/profile/edit').respond(200,data);
+        $httpBackend.whenPOST('http://localhost:9000/api/profile/edit').respond(200,data);
+
+        $httpBackend.flush();
+        scope.edit_document();
+
+    });
+
+    it('should display an error when the edit fails', function () {
+        $httpBackend.whenGET('http://localhost:9000/api/profile/edit').respond(200,data);
+        $httpBackend.whenPOST('http://localhost:9000/api/profile/edit').respond(400);
+
+        $httpBackend.flush();
+        scope.edit_document();
+
+
 
     });
 
     it('should delete a document correctly', function () {
-        // Given
         $httpBackend.whenGET('http://localhost:9000/api/profile/edit').respond(200,data);
         $httpBackend.whenDELETE('http://localhost:9000/api/profile/edit').respond(200);
 
-        // When
         scope.delete_document();
         $httpBackend.flush();
-        // Then
-        //test sul path
+        expect(location.path()).toBe('/');
 
     });
 
     it('should display an error when the delete fails', function () {
-        // Given
         $httpBackend.whenGET('http://localhost:9000/api/profile/edit').respond(400);
         $httpBackend.whenDELETE('http://localhost:9000/api/profile/edit').respond(200);
 
-        // When
         scope.delete_document();
         $httpBackend.flush();
-        // Then
 
 
     });

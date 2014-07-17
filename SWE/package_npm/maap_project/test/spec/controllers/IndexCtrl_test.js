@@ -18,6 +18,7 @@ describe('Controller: IndexCtrl', function () {
         routeParams,
         scope,
         deleteIndex,
+        location,
         $httpBackend,
         data = [ [ 'Index name', 'Collection', 'Selected fields' ],
             [ { _id: '53a00ffa23365b641abdfa7e coaches', data: [Object] },
@@ -25,9 +26,10 @@ describe('Controller: IndexCtrl', function () {
             { pages: 1 } ];
 
     // Initialize the controller and a mock scope
-    beforeEach(inject(function ($controller, $rootScope, _$httpBackend_) {
+    beforeEach(inject(function ($controller,$location, $rootScope, _$httpBackend_) {
         scope = $rootScope.$new();
-        $httpBackend = _$httpBackend_;
+        $httpBackend = _$httpBackend_,
+        location = $location;
         routeParams={};
         routeParams.col_name=0;
         routeParams.index_name=0;
@@ -81,17 +83,16 @@ describe('Controller: IndexCtrl', function () {
     it('should delete an index correctly', function () {
         // Given
         $httpBackend.whenGET('http://localhost:9000/api/indexes?page=0').respond(400);
-        $httpBackend.whenDELETE('http://localhost:9000/api/indexes/0/0').respond(400);
+        $httpBackend.whenDELETE('http://localhost:9000/api/indexes/0/0').respond(200);
+        $httpBackend.whenGET('views/indexCollection.html').respond(200);
         $httpBackend.whenGET('views/404.html').respond(200);
-
         $httpBackend.whenGET('views/dashboard.html').respond(200);
 
 
         // When
         scope.delete(deleteIndex);
         $httpBackend.flush();
-        // Then
-        //test sul path
+        expect(location.path()).toBe('/indexes');
 
     });
 

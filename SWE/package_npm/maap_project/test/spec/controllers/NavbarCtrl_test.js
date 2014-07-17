@@ -76,6 +76,8 @@ describe('Controller: NavBarCtrl', function () {
         // Then
 
         expect(scope.isAdmin).toBe(false);
+        expect(location.path()).toBe('/login');
+
 
     });
 
@@ -89,7 +91,8 @@ describe('Controller: NavBarCtrl', function () {
         // When
         scope.logout();
         $httpBackend.flush();
-        // Then
+        expect(location.path()).toBe('/');
+
     });
 
 
