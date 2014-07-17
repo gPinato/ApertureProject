@@ -67,6 +67,8 @@ describe('Controller: NavBarCtrl', function () {
         $httpBackend.whenGET('http://localhost:9000/api/logout').respond(200);
         $httpBackend.whenGET('http://localhost:9000/api/collection/list').respond(400);
         $httpBackend.whenGET('views/login.html').respond(200);
+        $httpBackend.whenGET('views/dashboard.html').respond(200);
+
 
         // When
         scope.logout();

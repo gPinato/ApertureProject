@@ -3,8 +3,8 @@
  * Module: app:controllers;
  * Author: Giacomo Pinato;
  * Created: 10/05/14;
- * Version: versione corrente;
- * Description: Controller for the collection view
+ * Version: 0.4;
+ * Description: Controller for the user collection view (admin only);
  * Modification History:
  ==============================================
  * Version | Changes
@@ -18,7 +18,7 @@
 
 'use strict';
 
-angular.module('maaperture').controller('UsersCollectionCtrl', function ($scope, $route, $location,RegisterService, UserCollectionService, UserEditService) {
+angular.module('maaperture').controller('UsersCollectionCtrl', function ($scope, $route, $location, RegisterService, UserCollectionService, UserEditService) {
 
     //Funzione di inizializzazione del controller
     var init = function () {
@@ -43,19 +43,17 @@ angular.module('maaperture').controller('UsersCollectionCtrl', function ($scope,
     $scope.getData = function () {
 
         UserCollectionService.query({
-                order: $scope.current_sort,
-                column: $scope.column_original_name[$scope.current_sorted_column],
-                page: $scope.current_page
+            order: $scope.current_sort,
+            column: $scope.column_original_name[$scope.current_sorted_column],
+            page: $scope.current_page
 
-            }).$promise.then( function success(response) {
+        }).$promise.then(function success(response) {
                 $scope.labels = response[0];
                 $scope.data = response[1];
                 $scope.pages = response[2].pages;
 
                 //Salva i nomi originali delle colonne per le query a database
-                $scope.column_original_name = Object.keys( $scope.data[0].data);
-
-
+                $scope.column_original_name = Object.keys($scope.data[0].data);
 
 
                 for (var i = 0; i < Object.keys($scope.data).length; i++) {
@@ -79,6 +77,8 @@ angular.module('maaperture').controller('UsersCollectionCtrl', function ($scope,
 
     init();
 
+
+    //Funzione che permette all'amministratore di aggiungere un utente
     $scope.signupForm = function () {
         if ($scope.signup_form.$valid) {
             RegisterService.createuser({},
@@ -87,8 +87,8 @@ angular.module('maaperture').controller('UsersCollectionCtrl', function ($scope,
                     alert("User created correctly");
                     $scope.getData();
                 },
-                function err(error) {
-                    alert("Registration failed! We already have this email in our databases ;)");
+                function err() {
+                    alert("Registration failed! Try again later ;)");
                 }
 
             );
@@ -96,7 +96,7 @@ angular.module('maaperture').controller('UsersCollectionCtrl', function ($scope,
 
     };
 
-    
+
     //cambia ordinamento corrente, da asc a desc o viceversa
     var changeSort = function () {
         if ($scope.current_sort === "desc") {
@@ -120,11 +120,11 @@ angular.module('maaperture').controller('UsersCollectionCtrl', function ($scope,
             $scope.getData();
         }
     };
-    //funzione per cancellare il documento di indice index
+    //funzione per cancellare l'utente di indice index
     $scope.delete_document = function (id) {
         UserEditService.remove({
-                user_id: id
-            }).$promise.then(
+            user_id: id
+        }).$promise.then(
 
             function success() {
                 $location.path('/users/');
@@ -136,13 +136,13 @@ angular.module('maaperture').controller('UsersCollectionCtrl', function ($scope,
 
     //=====================================================================
     //Funzioni per paginazione avanzata
-    $scope.range = function() {
+    $scope.range = function () {
 
         var rangeSize;
-        if( $scope.pages < 9){
+        if ($scope.pages < 9) {
             rangeSize = $scope.pages;
         }
-        else{
+        else {
             rangeSize = 9;
         }
 
@@ -150,20 +150,20 @@ angular.module('maaperture').controller('UsersCollectionCtrl', function ($scope,
 
         var start;
 
-        if ( $scope.current_page > 3){
-            start = $scope.current_page-3;
+        if ($scope.current_page > 3) {
+            start = $scope.current_page - 3;
         }
-        else{
+        else {
             start = $scope.current_page;
         }
 
-        if ( start > $scope.pages-rangeSize ) {
+        if (start > $scope.pages - rangeSize) {
 
-            start = $scope.pages-rangeSize;
+            start = $scope.pages - rangeSize;
 
         }
 
-        for (var i=start; i<start+rangeSize; i++) {
+        for (var i = start; i < start + rangeSize; i++) {
 
             ps.push(i);
 
@@ -174,7 +174,7 @@ angular.module('maaperture').controller('UsersCollectionCtrl', function ($scope,
     };
 
 
-    $scope.prevPage = function() {
+    $scope.prevPage = function () {
 
         if ($scope.current_page > 0) {
 
@@ -185,16 +185,14 @@ angular.module('maaperture').controller('UsersCollectionCtrl', function ($scope,
     };
 
 
-    $scope.DisablePrevPage = function() {
+    $scope.DisablePrevPage = function () {
 
         return $scope.current_page === 0 ? "disabled" : "";
 
     };
 
 
-
-
-    $scope.nextPage = function() {
+    $scope.nextPage = function () {
 
         if ($scope.current_page < $scope.pages - 1) {
             $scope.current_page++;
@@ -204,7 +202,7 @@ angular.module('maaperture').controller('UsersCollectionCtrl', function ($scope,
     };
 
 
-    $scope.DisableNextPage = function() {
+    $scope.DisableNextPage = function () {
 
         return $scope.current_page === $scope.pages - 1 ? "disabled" : "";
 

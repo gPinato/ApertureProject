@@ -3,8 +3,8 @@
  * Module: app:controllers;
  * Author: Giacomo Pinato;
  * Created: 10/05/14;
- * Version: versione corrente;
- * Description: Controller for the collection view
+ * Version: 0.4;
+ * Description: Controller for the query collection view
  * Modification History:
  ==============================================
  * Version | Changes
@@ -18,7 +18,7 @@
 
 'use strict';
 
-angular.module('maaperture').controller('QueryCtrl', function ($scope, $route, $location,QueryService,IndexService) {
+angular.module('maaperture').controller('QueryCtrl', function ($scope, $route, $location, QueryService, IndexService) {
 
     //Funzione di inizializzazione del controller
     var init = function () {
@@ -35,15 +35,15 @@ angular.module('maaperture').controller('QueryCtrl', function ($scope, $route, $
     $scope.getData = function () {
 
         QueryService.query({
-				page: $scope.current_page				
-           }).$promise.then( function success(response) {
-		   
+            page: $scope.current_page
+        }).$promise.then(function success(response) {
+
                 $scope.labels = response[0];
                 $scope.data = response[1];
                 $scope.pages = response[2].pages;
 
                 //Salva i nomi originali delle colonne per le query a database
-                $scope.column_original_name = Object.keys( $scope.data[0].data);
+                $scope.column_original_name = Object.keys($scope.data[0].data);
 
                 for (var i = 0; i < Object.keys($scope.data).length; i++) {
                     //Copia i valori da stampare in un array per mantenere l'ordine
@@ -58,7 +58,7 @@ angular.module('maaperture').controller('QueryCtrl', function ($scope, $route, $
                 $scope.rows.splice(i, $scope.rows.length);
 
             },
-            function err(error) {
+            function err() {
                 $location.path("/404");
             }
         );
@@ -66,46 +66,44 @@ angular.module('maaperture').controller('QueryCtrl', function ($scope, $route, $
 
     init();
 
-
-    $scope.createIndex = function(id){
+    //Funzione per creare un indice a parire dall'id di una query
+    $scope.createIndex = function (id) {
         var indexName = "jknoob";
         IndexService.insert({},
-            {id:id,indexName:indexName}).$promise.then(
+            {id: id, indexName: indexName}).$promise.then(
             function success() {
                 alert("indice creato!");
-				$location.path('/indexes');
-				$route.reload();
+                $location.path('/indexes');
+                $route.reload();
             },
-            function(){
+            function () {
                 alert("Qualcosa è andato storto..");
             }
         );
     };
-	
-	//visualizza informazioni all'utente per creare la index
-	//da shell
-	$scope.showIndexInfo = function(indexData){
-		
-		var queryID = indexData._id;
-		var collectionName = indexData.data.name;
-		var fields = indexData.data.fields;
-		fields = fields.split(',');
-	
-		var info = 'You may create a new index from your mongoDB shell with this command:\n\n'
-		var indexCMD = 'db.' + collectionName + '.ensureIndex( {';
-		
-		for(var i=0; i<fields.length; i++)
-		{
-			if(i!=0) indexCMD += ',';
-			indexCMD += fields[i] + ': 1'; 
-		}
-		
-		indexCMD += ' } )';
-		
-		prompt(info, indexCMD);
-	
-	 };
-   
+
+    //visualizza il comando per creare l'indice da shell
+    $scope.showIndexInfo = function (indexData) {
+
+        var queryID = indexData._id;
+        var collectionName = indexData.data.name;
+        var fields = indexData.data.fields;
+        fields = fields.split(',');
+
+        var info = 'You may create a new index from your mongoDB shell with this command:\n\n'
+        var indexCMD = 'db.' + collectionName + '.ensureIndex( {';
+
+        for (var i = 0; i < fields.length; i++) {
+            if (i != 0) indexCMD += ',';
+            indexCMD += fields[i] + ': 1';
+        }
+
+        indexCMD += ' } )';
+
+        prompt(info, indexCMD);
+
+    };
+
 
     //funzione per cancellare il documento di indice index
     $scope.delete_document = function (index) {
@@ -123,13 +121,13 @@ angular.module('maaperture').controller('QueryCtrl', function ($scope, $route, $
 
     //=====================================================================
     //Funzioni per paginazione avanzata
-    $scope.range = function() {
+    $scope.range = function () {
 
         var rangeSize;
-        if( $scope.pages < 9){
+        if ($scope.pages < 9) {
             rangeSize = $scope.pages;
         }
-        else{
+        else {
             rangeSize = 9;
         }
 
@@ -137,20 +135,20 @@ angular.module('maaperture').controller('QueryCtrl', function ($scope, $route, $
 
         var start;
 
-        if ( $scope.current_page > 3){
-            start = $scope.current_page-3;
+        if ($scope.current_page > 3) {
+            start = $scope.current_page - 3;
         }
-        else{
+        else {
             start = $scope.current_page;
         }
 
-        if ( start > $scope.pages-rangeSize ) {
+        if (start > $scope.pages - rangeSize) {
 
-            start = $scope.pages-rangeSize;
+            start = $scope.pages - rangeSize;
 
         }
 
-        for (var i=start; i<start+rangeSize; i++) {
+        for (var i = start; i < start + rangeSize; i++) {
 
             ps.push(i);
 
@@ -161,7 +159,7 @@ angular.module('maaperture').controller('QueryCtrl', function ($scope, $route, $
     };
 
 
-    $scope.prevPage = function() {
+    $scope.prevPage = function () {
 
         if ($scope.current_page > 0) {
 
@@ -172,16 +170,14 @@ angular.module('maaperture').controller('QueryCtrl', function ($scope, $route, $
     };
 
 
-    $scope.DisablePrevPage = function() {
+    $scope.DisablePrevPage = function () {
 
         return $scope.current_page === 0 ? "disabled" : "";
 
     };
 
 
-
-
-    $scope.nextPage = function() {
+    $scope.nextPage = function () {
 
         if ($scope.current_page < $scope.pages - 1) {
             $scope.current_page++;
@@ -191,7 +187,7 @@ angular.module('maaperture').controller('QueryCtrl', function ($scope, $route, $
     };
 
 
-    $scope.DisableNextPage = function() {
+    $scope.DisableNextPage = function () {
 
         return $scope.current_page === $scope.pages - 1 ? "disabled" : "";
 

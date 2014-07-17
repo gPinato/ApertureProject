@@ -3,8 +3,8 @@
  * Module: mapp:controllers;
  * Author: Giacomo Pinato;
  * Created: 12/05/14;
- * Version: versione corrente;
- * Description: descrizione dettagliata del file;
+ * Version: 0.3;
+ * Description: Controller for the user document edit (admin only);
  * Modification History:
  ==============================================
  * Version | Changes
@@ -28,7 +28,7 @@ angular.module('maaperture').controller('UsersEditCtrl', function ($scope, $loca
     //Funzione per richiedere un documento al server.
     //Passa come parametri la collection e il documento da ricevere
     UserEditService.query({
-            user_id: $routeParams.user_id }).$promise.then(
+        user_id: $routeParams.user_id }).$promise.then(
         function success(data) {
             $scope.labels = data.label;
             $scope.data = data.data;
@@ -70,8 +70,8 @@ angular.module('maaperture').controller('UsersEditCtrl', function ($scope, $loca
     //Funzione per richiedere la cancellazione di un documento
     $scope.delete_document = function () {
         UserEditService.remove({
-                user_id: $scope.current_document
-            }).$promise.then(
+            user_id: $scope.current_document
+        }).$promise.then(
 
             function success() {
                 $location.path('/users/');

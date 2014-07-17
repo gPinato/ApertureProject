@@ -3,8 +3,8 @@
  * Module: mapp:controllers;
  * Author: Giacomo Pinato;
  * Created: 12/05/14;
- * Version: versione corrente;
- * Description: descrizione dettagliata del file;
+ * Version: 0.1;
+ * Description: Controller for the profile edit;
  * Modification History:
  ==============================================
  * Version | Changes
@@ -21,9 +21,10 @@ angular.module('maaperture').controller('ProfileEditCtrl', function ($scope, $lo
     $scope.original_data = [];
     $scope.original_keys = [];
     $scope.admin = false;
-    //Funzione per richiedere un profilo al server.
+
+    //Funzione per richiedere il proprio profilo al server.
     ProfileEditService.query({
-           }).$promise.then(
+    }).$promise.then(
         function success(data) {
             $scope.labels = data.label;
             $scope.data = data.data;
@@ -33,13 +34,13 @@ angular.module('maaperture').controller('ProfileEditCtrl', function ($scope, $lo
                 $scope.original_data.push(value);
             });
         },
-        function err(error) {
+        function err() {
             $location.path("/404");
 
         }
     );
 
-    //Funzione per inviare al server il nuovo profilo
+    //Funzione per inviare al server dati aggiornati del proprio profilo
     $scope.edit_document = function () {
         var new_data = {};
         //Assembla il json da trasmettere.
@@ -56,9 +57,8 @@ angular.module('maaperture').controller('ProfileEditCtrl', function ($scope, $lo
             function success() {
                 $location.path('/profile');
             },
-            function err(error) {
-                $location.path("/404");
-
+            function err() {
+                alert("Something went wrong,please try again later.");
             }
         );
 
@@ -68,12 +68,14 @@ angular.module('maaperture').controller('ProfileEditCtrl', function ($scope, $lo
     $scope.delete_document = function () {
         ProfileEditService.remove({
 
-            }).$promise.then(
+        }).$promise.then(
 
             function success() {
                 $location.path('/');
             },
-            function err(error) {
+            function err() {
+                alert("Something went wrong,please try again later.");
+
             }
         );
     };

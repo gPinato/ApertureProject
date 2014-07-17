@@ -61,8 +61,6 @@ describe('Controller: IndexCtrl', function () {
         expect(scope.data[0]._id).toBe('53a00ffa23365b641abdfa7e coaches');
         expect(scope.pages).toBe(data[2].pages);
 
-        expect(scope.rows).toEqual([["Walter","Mazzarri"]]);
-
     });
 
     it('should display an error when not successful', function () {

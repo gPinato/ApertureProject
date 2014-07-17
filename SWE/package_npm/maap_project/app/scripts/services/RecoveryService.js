@@ -1,10 +1,11 @@
 /**
  * File: RecoveryService;
- * Module: services;
+ * Module: app:services;
  * Author: Giacomo Pinato;
  * Created: 01/06/14;
- * Version: versione corrente;
- * Description: Recovers the password
+ * Version: 0.1;
+ * Description: Factory that returns a $resource
+ * 	representing the functionality for password recovery;
  * Modification History:
  ==============================================
  * Version | Changes

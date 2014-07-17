@@ -21,7 +21,7 @@ describe('Controller: QueryCtrl', function () {
         data = [ [ 'Collection Name', 'Selected fields', 'Score' ],
             [ { _id: '53b5bed9fe9816304863597b', data: [Object] },
                 { _id: '53b65af79e533fc815e6b3e8', data: [Object] } ],
-            { pages: 1 } ]
+            { pages: 1 } ];
 
     // Initialize the controller and a mock scope
     beforeEach(inject(function ($controller, $rootScope, _$httpBackend_) {
@@ -173,29 +173,6 @@ describe('Controller: QueryCtrl', function () {
 
 
     });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
     it('should initialize data correctly', function () {

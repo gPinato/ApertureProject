@@ -1,11 +1,11 @@
 /**
  * File: QueryService;
- * Module: services;
+ * Module: app:services;
  * Author: Giacomo Pinato;
  * Created: 01/06/14;
- * Version: versione corrente;
+ * Version: 0.1;
  * Description: Factory that returns a $resource
- * 	bounded to the list of avaliable Collections;
+ * 	representing the functionality for query  management;
  * Modification History:
  ==============================================
  * Version | Changes

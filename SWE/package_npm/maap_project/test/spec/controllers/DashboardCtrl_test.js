@@ -15,6 +15,7 @@ describe('DashboardCtrl', function () {
         scope,
         data = {labels:['a','b','c'],
             data: [1,2,3]};
+
     beforeEach(module('maaperture', 'services', 'ngResource', 'ngRoute'));
 
     beforeEach(function () {

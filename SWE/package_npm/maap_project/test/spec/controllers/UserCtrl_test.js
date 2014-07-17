@@ -9,7 +9,7 @@
  */
 'use strict';
 
-describe('UsersCtrl', function () {
+describe('Controller: UsersCtrl', function () {
 
 
     var scope, routeParams, UsersCtrl;

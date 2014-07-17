@@ -1,10 +1,10 @@
 /**
  * File: RegisterCtrl;
- * Module: modulo di appartenenza;
+ * Module: app:controller;
  * Author: Giacomo Pinato;
  * Created: 18/05/14;
- * Version: versione corrente;
- * Description: descrizione dettagliata del file;
+ * Version: 0.1;
+ * Description: Controller for the registration page;
  * Modification History:
  ==============================================
  * Version | Changes
@@ -22,7 +22,10 @@ angular.module('maaperture').controller('RegisterCtrl', function ($scope, $locat
         pwd2: ''
     };
 
+    //variabile che controlla se si è tentato di inviare il form con dati non validi.
     $scope.submitted = false;
+
+
     //Funzione per inviare il form di registrazione al server.
     //Invia soltanto se il client ritiene che il form sia compilato con dati validi.
     $scope.signupForm = function () {
@@ -30,13 +33,13 @@ angular.module('maaperture').controller('RegisterCtrl', function ($scope, $locat
             RegisterService.register({},
                 $scope.credentials).$promise.then(
                 function success() {
-					$location.path('/');
-					$route.reload();
-				},
-                function err(error) {
-					alert("Registration failed! We already have this email in our databases ;)");
-				}
-		
+                    $location.path('/');
+                    $route.reload();
+                },
+                function err() {
+                    alert("Registration failed! We already have this email in our databases ;)");
+                }
+
             );
         }
 

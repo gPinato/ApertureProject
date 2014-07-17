@@ -3,8 +3,8 @@
  * Module: mapp:controllers;
  * Author: Giacomo Pinato;
  * Created: 12/05/14;
- * Version: versione corrente;
- * Description: descrizione dettagliata del file;
+ * Version: 0.1;
+ * Description: Controller for the profile view;
  * Modification History:
  ==============================================
  * Version | Changes
@@ -20,10 +20,10 @@ angular.module('maaperture').controller('ProfileCtrl', function ($scope, $locati
     $scope.original_data = [];
     $scope.original_keys = [];
 
-    //Funzione per richiedere il profilo al server.
+    //Funzione per richiedere il proprio profilo al server.
 
     ProfileDataService.query({
-             }).$promise.then(
+    }).$promise.then(
         function success(data) {
             $scope.labels = data.label;
             $scope.data = data.data;
@@ -33,22 +33,22 @@ angular.module('maaperture').controller('ProfileCtrl', function ($scope, $locati
                 $scope.original_data.push(value);
             });
         },
-        function err(error) {
+        function err() {
             $location.path("/404");
 
         }
     );
 
 
-
-    //Funzione per richiedere la cancellazione del profilo
+    //Funzione per richiedere la cancellazione del proprio profilo
     $scope.delete_document = function () {
         ProfileEditService.remove({}).$promise.then(
 
             function success() {
                 $location.path('/');
             },
-            function err(error) {
+            function err() {
+                alert("Something went wrong,please try again later.");
             }
         );
     };

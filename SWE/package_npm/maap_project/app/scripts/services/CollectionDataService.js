@@ -1,11 +1,11 @@
 /**
  * File: CollectionDataService;
- * Module: app::services;
+ * Module: app:services;
  * Author: Giacomo Pinato;
  * Created: 09/05/14;
- * Version: versione corrente;
- * Description: Factory that returns a $resource 
- * 	bounded with a specific Collection;
+ * Version: 0.1;
+ * Description: Factory that returns a $resource
+ * 	representing the functionality for collection management;
  * Modification History:
  ==============================================
  * Version | Changes

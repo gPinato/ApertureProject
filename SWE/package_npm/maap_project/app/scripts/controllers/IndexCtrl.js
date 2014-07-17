@@ -3,7 +3,7 @@
  * Module: app:controllers;
  * Author: Giacomo Pinato;
  * Created: 10/05/14;
- * Version: versione corrente;
+ * Version: 0.4;
  * Description: Controller for the collection view
  * Modification History:
  ==============================================
@@ -18,7 +18,7 @@
 
 'use strict';
 
-angular.module('maaperture').controller('IndexCtrl', function ($scope, $route, $location,IndexService) {
+angular.module('maaperture').controller('IndexCtrl', function ($scope, $route, $location, IndexService) {
 
     //Funzione di inizializzazione del controller
     var init = function () {
@@ -40,12 +40,12 @@ angular.module('maaperture').controller('IndexCtrl', function ($scope, $route, $
 
         IndexService.query({
             index_name: null,
-            col_name:  null,
+            col_name: null,
             order: $scope.current_sort,
             column: $scope.column_original_name[$scope.current_sorted_column],
             page: $scope.current_page
 
-            }).$promise.then( function success(response) {
+        }).$promise.then(function success(response) {
                 $scope.labels = response[0];
                 $scope.data = response[1];
                 $scope.pages = response[2].pages;
@@ -53,7 +53,7 @@ angular.module('maaperture').controller('IndexCtrl', function ($scope, $route, $
 
                 //Salva i nomi originali delle colonne per le query a database
 
-                $scope.column_original_name = Object.keys( $scope.data[0].data);
+                $scope.column_original_name = Object.keys($scope.data[0].data);
 
                 for (var i = 0; i < Object.keys($scope.data).length; i++) {
                     //Copia i valori da stampare in un array per mantenere l'ordine
@@ -77,7 +77,6 @@ angular.module('maaperture').controller('IndexCtrl', function ($scope, $route, $
     init();
 
 
-    
     //cambia ordinamento corrente, da asc a desc o viceversa
     var changeSort = function () {
         if ($scope.current_sort === "desc") {
@@ -104,13 +103,13 @@ angular.module('maaperture').controller('IndexCtrl', function ($scope, $route, $
     //funzione per cancellare il documento di indice index
     $scope.delete = function (index) {
         IndexService.remove({
-                index_name: index._id,
-				col_name: index.data.collection
-            }).$promise.then(
+            index_name: index._id,
+            col_name: index.data.collection
+        }).$promise.then(
 
             function success() {
                 $location.path('/indexes');
-				$route.reload();
+                $route.reload();
             },
             function err(error) {
                 alert("Qualcosa è andato storto..");
@@ -120,13 +119,13 @@ angular.module('maaperture').controller('IndexCtrl', function ($scope, $route, $
 
     //=====================================================================
     //Funzioni per paginazione avanzata
-    $scope.range = function() {
+    $scope.range = function () {
 
         var rangeSize;
-        if( $scope.pages < 9){
+        if ($scope.pages < 9) {
             rangeSize = $scope.pages;
         }
-        else{
+        else {
             rangeSize = 9;
         }
 
@@ -134,20 +133,20 @@ angular.module('maaperture').controller('IndexCtrl', function ($scope, $route, $
 
         var start;
 
-        if ( $scope.current_page > 3){
-            start = $scope.current_page-3;
+        if ($scope.current_page > 3) {
+            start = $scope.current_page - 3;
         }
-        else{
+        else {
             start = $scope.current_page;
         }
 
-        if ( start > $scope.pages-rangeSize ) {
+        if (start > $scope.pages - rangeSize) {
 
-            start = $scope.pages-rangeSize;
+            start = $scope.pages - rangeSize;
 
         }
 
-        for (var i=start; i<start+rangeSize; i++) {
+        for (var i = start; i < start + rangeSize; i++) {
 
             ps.push(i);
 
@@ -157,8 +156,8 @@ angular.module('maaperture').controller('IndexCtrl', function ($scope, $route, $
 
     };
 
-
-    $scope.prevPage = function() {
+    //Funzione che fa visualizzare la pagina precedente alla corrente
+    $scope.prevPage = function () {
 
         if ($scope.current_page > 0) {
 
@@ -168,17 +167,17 @@ angular.module('maaperture').controller('IndexCtrl', function ($scope, $route, $
 
     };
 
-
-    $scope.DisablePrevPage = function() {
+    //Funzione che disabilita il pulsante di passaggio alla pagina
+    //precedente nella visualizzazione
+    $scope.DisablePrevPage = function () {
 
         return $scope.current_page === 0 ? "disabled" : "";
 
     };
 
+    //Funzione che fa visualizzare la pagina successiva alla corrente
 
-
-
-    $scope.nextPage = function() {
+    $scope.nextPage = function () {
 
         if ($scope.current_page < $scope.pages - 1) {
             $scope.current_page++;
@@ -187,8 +186,9 @@ angular.module('maaperture').controller('IndexCtrl', function ($scope, $route, $
 
     };
 
-
-    $scope.DisableNextPage = function() {
+    //Funzione che disabilita il pulsante di passaggio alla pagina
+    //successiva nella visualizzazione
+    $scope.DisableNextPage = function () {
 
         return $scope.current_page === $scope.pages - 1 ? "disabled" : "";
 
