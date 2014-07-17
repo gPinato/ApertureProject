@@ -360,7 +360,8 @@ exports.createIndex = function(query_id, name_index, callback) {
 			nameindex.name = name_index;
 			//prelevo lo schema della collection
 			var collectionSchema = require('../../DSL/collectionData/' + collection_name + '_schema').schema;
-			console.log(JSON.stringify(collectionSchema));
+			//rimuovo eventuali indici nello schema
+			collectionSchema._indexes = [];
 			//definisco un indice nello schema
 			collectionSchema.index(index, nameindex);
 			//prendo il model della collection		
