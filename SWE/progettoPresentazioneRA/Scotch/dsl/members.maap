@@ -1,0 +1,60 @@
+collection = {
+	label: 'Membri',
+	name: 'members',
+	position: 2,
+	
+	index : {
+		perpage: 5,
+		sortby: 'name',
+		order: 'asc',
+		column : [
+			{
+				label: 'Nome',
+				name: 'name',
+				type: 'String'
+			},
+			{	
+				label: 'Cognome',
+				name: 'surname',
+				type: 'String'
+			},
+			{	
+				label: 'email',
+				name: 'email',
+				type: 'String'
+			}
+		],
+		query: {
+			
+		}
+	}, //end index page
+	
+	show : {
+		row : [
+			{
+				label: 'Nome',
+				name: 'name',
+				type: 'String'
+			},
+			{	
+				label: 'Cognome',
+				name: 'surname',
+				type: 'String'
+			},
+			{	
+				label: 'email',
+				name: 'email',
+				type: 'String'
+			},
+			{	
+				label: 'eta',
+				name: 'age',
+				type: 'Number, min: 18, max:35'
+			}
+		]
+	} //end show page
+	
+} //end collection	
+
+//exports collection [DO NOT REMOVE]
+exports.collection = collection;
