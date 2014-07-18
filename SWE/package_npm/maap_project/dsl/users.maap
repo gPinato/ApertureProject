@@ -1,0 +1,87 @@
+collection = {
+	label: 'Users',
+	name: 'users',
+	position: 1,
+	
+	index : {
+		perpage: 50,
+		sortby: 'email',
+		order: 'asc',
+		column : [
+			{	
+				label: 'Username',
+				name: 'username',
+				type: 'String'
+			},
+			{	
+				label: 'ID',
+				name: '_id',
+				type: 'ObjectId'
+			},
+			{
+				label: 'Email',
+				name: 'email',
+				type: 'String'
+			},
+			{	
+				label: 'Age',
+				name: 'age',
+				type: 'Number'
+			},
+			{	
+				label: 'IP',
+				name: 'signupIp',
+				type: 'String'
+			},
+			{	
+				label: 'signin counter',
+				name: 'signinCount',
+				type: 'Number'
+			}
+		]
+	}, //end index page
+	
+	show : {
+		row: [
+			{	
+				label: 'Username',
+				name: 'username',
+				type: 'String'
+			},
+			{
+				label: 'Email',
+				name: 'email',
+				type: 'String'
+			},
+			{	
+				label: 'Age',
+				name: 'ages',
+				type: 'Number'
+			},
+			{	
+				label: 'IP',
+				name: 'signupIp',
+				type: 'String',
+				transformation: 'signupIp = signupIp.failTest.pippo;'
+				
+			},
+			{	
+				label: 'signin counter',
+				name: 'signinCount',
+				type: 'Number',
+				//esempio di trasformazione errata -> causa visualizzazione errore nella tabella
+				transformation: 'signinCount = signinCount.failTest.pippo;'
+			},
+			{	
+				label: 'last notification',
+				name: 'emailReceveid',
+				type: 'String',
+				transformation: 'emailReceveid = emailReceveid.notification.lastReceveidAt;'
+			}
+		]
+	} //end show page
+	
+} //end collection	
+
+//exports collection [DO NOT REMOVE]
+exports.collection = collection;
