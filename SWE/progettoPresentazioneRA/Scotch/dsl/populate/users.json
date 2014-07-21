@@ -1,0 +1,8 @@
+{ "_id" : { "$oid" : "510c35dd8fada716c89d0013"}, "email" : "alberto.garbui@gmail.com", "password" : "aperture", "level": 0, "__v":0 }
+{ "_id" : { "$oid" : "510c35dd8fada716c89d0014"}, "email" : "apertureswe@gmail.com", "password" : "aperture", "level": 1, "__v":0 }
+{ "_id" : { "$oid" : "510c35dd8fada716c89d0015"}, "email" : "maso.michele@gmail.com", "password" : "aperture", "level": 1, "__v":0 }
+{ "_id" : { "$oid" : "510c35dd8fada716c89d0016"}, "email" : "mattia.sorgato@gmail.com", "password" : "aperture", "level": 1, "__v":0 }
+{ "_id" : { "$oid" : "510c35dd8fada716c89d0017"}, "email" : "giacomo.pinato@gmail.com", "password" : "aperture", "level": 1, "__v":0 }
+{ "_id" : { "$oid" : "510c35dd8fada716c89d0018"}, "email" : "alexbenets@gmail.com", "password" : "aperture", "level": 0, "__v":0 }
+{ "_id" : { "$oid" : "510c35dd8fada716c89d0019"}, "email" : "a.xin90@gmail.com", "password" : "aperture", "level": 1, "__v":0 }
+{ "_id" : { "$oid" : "510c35dd8fada716c89d0020"}, "email" : "fabietto.mi8@gmail.com", "password" : "aperture", "level": 1, "__v":0 }

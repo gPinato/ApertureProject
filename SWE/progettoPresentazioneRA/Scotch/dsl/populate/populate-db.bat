@@ -3,3 +3,4 @@ mongoimport --host localhost --port 27017 --db dati --drop --collection coaches 
 mongoimport --host localhost --port 27017 --db dati --drop --collection members < members.json
 mongoimport --host localhost --port 27017 --db dati --drop --collection supermarket < supermarket.json
 mongoimport --host localhost --port 27017 --db dati --drop --collection positions < positions.json
+mongoimport --host localhost --port 27017 --db utenti --drop --collection users < users.json

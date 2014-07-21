@@ -4,6 +4,7 @@ collection = {
 	position: 2,
 	
 	index : {
+		populate: [{collection: 'teams', key: 'squadra_tifata'}],
 		perpage: 10,
 		sortby: 'age',
 		order: 'desc',
@@ -26,6 +27,11 @@ collection = {
 			{	
 				label: 'email',
 				name: 'email',
+				type: 'String'
+			},
+			{
+				label: 'Squadra tifata',
+				name: 'squadra_tifata.name',
 				type: 'String'
 			}
 		],
